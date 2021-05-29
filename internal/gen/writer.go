@@ -42,3 +42,20 @@ func (w *writer) Generate(templateName, fileName string, cfg config) error {
 
 	return nil
 }
+
+// WriteSource writes generated definitions to fs.
+func (g *Generator) WriteSource(fs FileSystem, pkgName string, t *template.Template) error {
+	w := &writer{
+		pkg:   pkgName,
+		fs:    fs,
+		t:     t,
+		buf:   new(bytes.Buffer),
+		wrote: map[string]bool{},
+	}
+
+	if err := w.Generate("main", "openapi.gen.go", config{}); err != nil {
+		return err
+	}
+
+	return nil
+}
