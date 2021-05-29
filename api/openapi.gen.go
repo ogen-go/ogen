@@ -18,3 +18,6 @@ var (
 	_ = errors.Is
 	_ = sort.Ints
 )
+
+type Pet struct {
+}

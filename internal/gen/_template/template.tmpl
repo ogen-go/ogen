@@ -4,4 +4,11 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
+{{ range $s:= $.Components }}
+type {{ $s.Name }} struct {
+
+}
+
+{{ end }}
+
 {{ end }}
