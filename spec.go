@@ -36,17 +36,14 @@ type Content struct {
 }
 
 type Components struct {
-	Schemas map[string]Property `json:"schemas"`
-}
-
-type Property struct {
-	Type   string `json:"type"`
-	Format string `json:"format"`
+	Schemas map[string]ComponentSchema `json:"schemas"`
 }
 
 type ComponentSchema struct {
-	Type       string              `json:"type"`
-	Properties map[string]Property `json:"properties"`
+	Description string                     `json:"description"`
+	Type        string                     `json:"type"`
+	Format      string                     `json:"format"`
+	Properties  map[string]ComponentSchema `json:"properties"`
 }
 
 type Spec struct {

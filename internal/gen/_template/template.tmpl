@@ -5,10 +5,14 @@
 {{ template "header" $ }}
 
 {{ range $s:= $.Components }}
+// {{ $s.Name }} is {{ $s.Path }}.
+//
+// {{ $s.Description }}
 type {{ $s.Name }} struct {
-
+	{{ range $f := $s.Fields }}
+		{{- $f.Name }} {{ $f.Type }} `json:"{{ $f.TagName }}"`
+	{{ end }}
 }
-
 {{ end }}
 
 {{ end }}

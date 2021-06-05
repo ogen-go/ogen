@@ -19,5 +19,10 @@ var (
 	_ = sort.Ints
 )
 
+// Pet is #/components/schemas/Pet.
+//
+// Cute and lovely creature.
 type Pet struct {
+	ID   int64  `json:"id"`
+	Name string `json:"name"`
 }

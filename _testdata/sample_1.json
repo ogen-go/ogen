@@ -38,6 +38,7 @@
   "components": {
     "schemas": {
       "Pet": {
+        "description": "cute and lovely creature",
         "type": "object",
         "properties": {
           "id": {

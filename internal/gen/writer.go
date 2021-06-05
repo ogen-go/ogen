@@ -53,11 +53,8 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string, t *template.Templ
 		wrote: map[string]bool{},
 	}
 
-	cfg := config{}
-	for k := range g.spec.Components.Schemas {
-		cfg.Components = append(cfg.Components, componentStructDef{
-			Name: k,
-		})
+	cfg := config{
+		Components: g.components,
 	}
 
 	if err := w.Generate("main", "openapi.gen.go", cfg); err != nil {
