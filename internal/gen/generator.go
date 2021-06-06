@@ -7,7 +7,6 @@ import (
 type Generator struct {
 	spec       *ogen.Spec
 	components []componentStructDef
-	groups     []pathGroupDef
 	server     serverDef
 }
 
@@ -21,10 +20,6 @@ func NewGenerator(spec *ogen.Spec) (*Generator, error) {
 	}
 
 	if err := g.generateServer(); err != nil {
-		return nil, err
-	}
-
-	if err := g.generatePaths(); err != nil {
 		return nil, err
 	}
 

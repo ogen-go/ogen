@@ -55,7 +55,6 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string, t *template.Templ
 
 	cfg := config{
 		Components: g.components,
-		Groups:     g.groups,
 		Server:     g.server,
 	}
 

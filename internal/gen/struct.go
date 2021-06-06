@@ -13,17 +13,6 @@ type field struct {
 	TagName string
 }
 
-type pathGroupDef struct {
-	Path    string
-	Methods []pathMethodDef
-}
-
-type pathMethodDef struct {
-	HTTPMethod   string
-	ServerMethod string
-	RequestType  string
-}
-
 type serverDef struct {
 	Methods []serverMethodDef
 }
@@ -31,6 +20,8 @@ type serverDef struct {
 type serverMethodDef struct {
 	Name         string
 	OperationID  string
+	Path         string
+	HTTPMethod   string
 	RequestType  string
 	ResponseType string
 }
