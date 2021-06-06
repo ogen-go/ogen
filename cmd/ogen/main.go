@@ -68,7 +68,7 @@ func main() {
 			if !strings.HasSuffix(name, ".gen.go") {
 				continue
 			}
-			if !strings.HasPrefix(name, "openapi.") {
+			if !strings.HasPrefix(name, "openapi") {
 				continue
 			}
 			if err := os.Remove(filepath.Join(*targetDir, name)); err != nil {

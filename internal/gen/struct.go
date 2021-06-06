@@ -12,3 +12,20 @@ type field struct {
 	Type    string
 	TagName string
 }
+
+type pathGroupDef struct {
+	Path    string
+	Methods []pathMethodDef
+}
+
+type pathMethodDef struct {
+	Method string
+}
+
+type serverDef struct {
+	Methods []serverMethodDef
+}
+
+type serverMethodDef struct {
+	Name string
+}

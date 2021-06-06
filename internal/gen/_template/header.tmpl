@@ -11,6 +11,8 @@ import (
 "fmt"
 "sort"
 "strings"
+
+"github.com/go-chi/chi/v5"
 )
 
 // No-op definition for keeping imports.
@@ -20,6 +22,7 @@ var (
   _ = strings.Builder{}
   _ = errors.Is
   _ = sort.Ints
+  _ = chi.Context{}
 )
 
 {{ end }}

@@ -1,0 +1,13 @@
+{{- /*gotype: github.com/ernado/ogen/internal/gen.config*/ -}}
+
+{{ define "server" }}
+    {{ $pkg := $.Package }}
+    {{ template "header" $ }}
+
+	type Server interface {
+    {{- range $m := $.Server.Methods }}
+		// {{ $m.Name }}
+		{{ $m.Name }}(ctx context.Context) (error)
+    {{- end }}
+	}
+{{ end }}

@@ -16,7 +16,9 @@ type Server struct {
 	URL  string `json:"url"`
 }
 
-type Path struct {
+type Path map[string]PathMethod
+
+type PathMethod struct {
 	Description string `json:"description"`
 	OperationID string `json:"operationId"`
 }

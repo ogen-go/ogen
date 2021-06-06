@@ -8,6 +8,8 @@ import (
 	"fmt"
 	"sort"
 	"strings"
+
+	"github.com/go-chi/chi/v5"
 )
 
 // No-op definition for keeping imports.
@@ -17,12 +19,10 @@ var (
 	_ = strings.Builder{}
 	_ = errors.Is
 	_ = sort.Ints
+	_ = chi.Context{}
 )
 
-// Pet is #/components/schemas/Pet.
-//
-// Cute and lovely creature.
-type Pet struct {
-	ID   int64  `json:"id"`
-	Name string `json:"name"`
+type Server interface {
+	// PetsGet
+	PetsGet(ctx context.Context) error
 }

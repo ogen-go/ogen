@@ -1,0 +1,18 @@
+{{- /*gotype: github.com/ernado/ogen/internal/gen.config*/ -}}
+
+{{ define "router" }}
+    {{ $pkg := $.Package }}
+    {{ template "header" $ }}
+
+	func Register(r chi.Router, s Server) {
+    {{- range $g := $.Groups }}
+		r.Route("{{ $g.Path }}", func(r chi.Router) {
+			{{- range $m := $g.Methods }}
+				r.Method("{{ $m.Method }}", "/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+					w.WriteHeader(http.StatusOK)
+				}))
+            {{- end }}
+		})
+    {{- end }}
+	}
+{{ end }}
