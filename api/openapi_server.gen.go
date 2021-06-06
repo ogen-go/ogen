@@ -23,6 +23,6 @@ var (
 )
 
 type Server interface {
-	// PetsGet
-	PetsGet(ctx context.Context) error
+	// PetGet
+	PetGet(ctx context.Context) (*Pet, error)
 }

@@ -15,18 +15,15 @@
   "paths": {
     "/pets": {
       "get": {
-        "description": "Returns all pets from the system that the user has access to",
-        "operationId": "petsGet",
+        "description": "Returns pet from the system that the user has access to",
+        "operationId": "petGet",
         "responses": {
           "200": {
-            "description": "A list of pets.",
+            "description": "A pet.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Pet"
-                  }
+                  "$ref": "#/components/schemas/Pet"
                 }
               }
             }

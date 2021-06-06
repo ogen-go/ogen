@@ -27,5 +27,6 @@ type serverDef struct {
 }
 
 type serverMethodDef struct {
-	Name string
+	Name         string
+	ResponseType string
 }

@@ -46,3 +46,13 @@ func (g *Generator) generateComponents() error {
 
 	return nil
 }
+
+func (g *Generator) componentByRef(ref string) string {
+	for _, c := range g.components {
+		if c.Path == ref {
+			return c.Name
+		}
+	}
+
+	return ""
+}

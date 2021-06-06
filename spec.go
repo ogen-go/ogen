@@ -19,18 +19,22 @@ type Server struct {
 type Path map[string]PathMethod
 
 type PathMethod struct {
-	Description string `json:"description"`
-	OperationID string `json:"operationId"`
+	Description string              `json:"description"`
+	OperationID string              `json:"operationId"`
+	Responses   map[string]Response `json:"responses"`
 }
 
 type Response struct {
-	Description string             `json:"description"`
-	Content     map[string]Content `json:"content"`
+	Description string                 `json:"description"`
+	Header      map[string]interface{} // TODO: implement
+	Content     map[string]Content     `json:"content"`
+	Links       map[string]interface{} // TODO: implement
 }
 
 type ContentSchema struct {
 	Type  string            `json:"type"`
 	Items map[string]string `json:"items"`
+	Ref   string            `json:"$ref"`
 }
 
 type Content struct {

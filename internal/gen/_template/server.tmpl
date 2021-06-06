@@ -7,7 +7,11 @@
 	type Server interface {
     {{- range $m := $.Server.Methods }}
 		// {{ $m.Name }}
-		{{ $m.Name }}(ctx context.Context) (error)
+		{{- if ne $m.ResponseType "" }}
+		{{ $m.Name }}(ctx context.Context) (*{{ $m.ResponseType }}, error)
+		{{ else }}
+            {{ $m.Name }}(ctx context.Context) error
+		{{ end }}
     {{- end }}
 	}
 {{ end }}
