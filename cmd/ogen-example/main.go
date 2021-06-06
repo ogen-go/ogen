@@ -18,6 +18,11 @@ func (s server) PetGet(ctx context.Context) (*api.Pet, error) {
 	}, nil
 }
 
+func (s server) PetCreate(ctx context.Context, req *api.Pet) (*api.Pet, error) {
+	req.ID = 1337
+	return req, nil
+}
+
 func main() {
 	mux := chi.NewRouter()
 	api.Register(mux, server{})

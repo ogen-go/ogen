@@ -21,6 +21,7 @@ type Path map[string]PathMethod
 type PathMethod struct {
 	Description string              `json:"description"`
 	OperationID string              `json:"operationId"`
+	RequestBody RequestBody         `json:"requestBody"`
 	Responses   map[string]Response `json:"responses"`
 }
 
@@ -29,6 +30,12 @@ type Response struct {
 	Header      map[string]interface{} // TODO: implement
 	Content     map[string]Content     `json:"content"`
 	Links       map[string]interface{} // TODO: implement
+}
+
+type RequestBody struct {
+	Description string             `json:"description"`
+	Content     map[string]Content `json:"content"`
+	Required    bool               `json:"required"` // TODO: implement
 }
 
 type ContentSchema struct {

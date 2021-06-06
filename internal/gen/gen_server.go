@@ -14,6 +14,15 @@ func (g *Generator) generateServer() error {
 				OperationID: pm.OperationID,
 			}
 
+			for _, content := range pm.RequestBody.Content {
+				name := g.componentByRef(content.Schema.Ref)
+				if name == "" {
+					return fmt.Errorf("ref %s not found", content.Schema.Ref)
+				}
+
+				method.RequestType = name
+			}
+
 			for status, resp := range pm.Responses {
 				if status != "200" {
 					continue

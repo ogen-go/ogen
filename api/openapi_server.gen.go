@@ -31,6 +31,9 @@ var (
 )
 
 type Server interface {
+	// PetCreate
+	PetCreate(ctx context.Context, req *Pet) (*Pet, error)
+
 	// PetGet
 	PetGet(ctx context.Context) (*Pet, error)
 }

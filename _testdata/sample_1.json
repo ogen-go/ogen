@@ -29,6 +29,32 @@
             }
           }
         }
+      },
+      "post": {
+        "description": "Creates pet",
+        "operationId": "petCreate",
+        "requestBody": {
+          "description": "pet to add to the system",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "A new pet.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet"
+                }
+              }
+            }
+          }
+        }
       }
     }
   },

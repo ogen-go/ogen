@@ -8,7 +8,7 @@
     {{- range $m := $.Server.Methods }}
 		// {{ $m.Name }}
 		{{- if ne $m.ResponseType "" }}
-		{{ $m.Name }}(ctx context.Context) (*{{ $m.ResponseType }}, error)
+		{{ $m.Name }}(ctx context.Context{{- if ne $m.RequestType "" }}, req *{{$m.RequestType}}{{ end }}) (*{{ $m.ResponseType }}, error)
 		{{ else }}
             {{ $m.Name }}(ctx context.Context) error
 		{{ end }}

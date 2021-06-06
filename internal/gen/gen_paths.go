@@ -13,15 +13,27 @@ func (g *Generator) generatePaths() error {
 		}
 
 		for m, pm := range group {
+			pathMethod := pathMethodDef{
+				HTTPMethod: strings.ToUpper(m),
+			}
+
 			serverMethod := g.serverMethod(pm.OperationID)
 			if serverMethod == "" {
 				return fmt.Errorf("server method not found for %s", pm.OperationID)
 			}
 
-			pathGroup.Methods = append(pathGroup.Methods, pathMethodDef{
-				HTTPMethod:   strings.ToUpper(m),
-				ServerMethod: serverMethod,
-			})
+			pathMethod.ServerMethod = serverMethod
+
+			for _, content := range pm.RequestBody.Content {
+				name := g.componentByRef(content.Schema.Ref)
+				if name == "" {
+					return fmt.Errorf("ref %s not found", content.Schema.Ref)
+				}
+
+				pathMethod.RequestType = name
+			}
+
+			pathGroup.Methods = append(pathGroup.Methods, pathMethod)
 		}
 
 		sort.SliceStable(pathGroup.Methods, func(i, j int) bool {
