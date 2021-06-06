@@ -10,7 +10,8 @@ func (g *Generator) generateServer() error {
 	for _, group := range g.spec.Paths {
 		for _, pm := range group {
 			method := serverMethodDef{
-				Name: toFirstUpper(pm.OperationID),
+				Name:        toFirstUpper(pm.OperationID),
+				OperationID: pm.OperationID,
 			}
 
 			for status, resp := range pm.Responses {

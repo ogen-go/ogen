@@ -3,9 +3,13 @@
 package api
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
+	"net/http"
 	"sort"
 	"strings"
 
@@ -20,6 +24,10 @@ var (
 	_ = errors.Is
 	_ = sort.Ints
 	_ = chi.Context{}
+	_ = http.MethodGet
+	_ = io.Copy
+	_ = json.Marshal
+	_ = bytes.NewReader
 )
 
 type Server interface {

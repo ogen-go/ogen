@@ -20,11 +20,11 @@ func NewGenerator(spec *ogen.Spec) (*Generator, error) {
 		return nil, err
 	}
 
-	if err := g.generatePaths(); err != nil {
+	if err := g.generateServer(); err != nil {
 		return nil, err
 	}
 
-	if err := g.generateServer(); err != nil {
+	if err := g.generatePaths(); err != nil {
 		return nil, err
 	}
 

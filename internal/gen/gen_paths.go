@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"fmt"
 	"sort"
 	"strings"
 )
@@ -11,14 +12,20 @@ func (g *Generator) generatePaths() error {
 			Path: p,
 		}
 
-		for m := range group {
+		for m, pm := range group {
+			serverMethod := g.serverMethod(pm.OperationID)
+			if serverMethod == "" {
+				return fmt.Errorf("server method not found for %s", pm.OperationID)
+			}
+
 			pathGroup.Methods = append(pathGroup.Methods, pathMethodDef{
-				Method: strings.ToUpper(m),
+				HTTPMethod:   strings.ToUpper(m),
+				ServerMethod: serverMethod,
 			})
 		}
 
 		sort.SliceStable(pathGroup.Methods, func(i, j int) bool {
-			return strings.Compare(pathGroup.Methods[i].Method, pathGroup.Methods[j].Method) < 0
+			return strings.Compare(pathGroup.Methods[i].HTTPMethod, pathGroup.Methods[j].HTTPMethod) < 0
 		})
 
 		g.groups = append(g.groups, pathGroup)
@@ -29,4 +36,14 @@ func (g *Generator) generatePaths() error {
 	})
 
 	return nil
+}
+
+func (g *Generator) serverMethod(operationID string) string {
+	for _, m := range g.server.Methods {
+		if m.OperationID == operationID {
+			return m.Name
+		}
+	}
+
+	return ""
 }

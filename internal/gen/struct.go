@@ -19,7 +19,8 @@ type pathGroupDef struct {
 }
 
 type pathMethodDef struct {
-	Method string
+	HTTPMethod   string
+	ServerMethod string
 }
 
 type serverDef struct {
@@ -28,5 +29,6 @@ type serverDef struct {
 
 type serverMethodDef struct {
 	Name         string
+	OperationID  string
 	ResponseType string
 }

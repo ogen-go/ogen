@@ -3,9 +3,13 @@
 package api
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
+	"net/http"
 	"sort"
 	"strings"
 
@@ -20,12 +24,30 @@ var (
 	_ = errors.Is
 	_ = sort.Ints
 	_ = chi.Context{}
+	_ = http.MethodGet
+	_ = io.Copy
+	_ = json.Marshal
+	_ = bytes.NewReader
 )
 
 func Register(r chi.Router, s Server) {
-	r.Route("/pets", func(r chi.Router) {
+	r.Route("/pet", func(r chi.Router) {
 		r.Method("GET", "/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			resp, err := s.PetGet(r.Context())
+			if err != nil {
+				w.WriteHeader(http.StatusInternalServerError)
+				return
+			}
+
+			b, err := json.Marshal(resp)
+			if err != nil {
+				w.WriteHeader(http.StatusInternalServerError)
+				return
+			}
+
+			w.Header().Set("content-type", "application/json")
 			w.WriteHeader(http.StatusOK)
+			io.Copy(w, bytes.NewReader(b))
 		}))
 	})
 }

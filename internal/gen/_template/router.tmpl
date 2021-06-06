@@ -8,8 +8,22 @@
     {{- range $g := $.Groups }}
 		r.Route("{{ $g.Path }}", func(r chi.Router) {
 			{{- range $m := $g.Methods }}
-				r.Method("{{ $m.Method }}", "/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				r.Method("{{ $m.HTTPMethod }}", "/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+					resp, err := s.{{ $m.ServerMethod }}(r.Context())
+					if err != nil {
+						w.WriteHeader(http.StatusInternalServerError)
+						return
+					}
+
+					b, err := json.Marshal(resp)
+					if err != nil {
+						w.WriteHeader(http.StatusInternalServerError)
+						return
+					}
+
+					w.Header().Set("content-type", "application/json")
 					w.WriteHeader(http.StatusOK)
+					io.Copy(w, bytes.NewReader(b))
 				}))
             {{- end }}
 		})

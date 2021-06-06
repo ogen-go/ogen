@@ -13,7 +13,7 @@
   },
   "version": "1.0.1",
   "paths": {
-    "/pets": {
+    "/pet": {
       "get": {
         "description": "Returns pet from the system that the user has access to",
         "operationId": "petGet",
