@@ -7,11 +7,13 @@ import (
 )
 
 func (g *Generator) generateServer() error {
-	for _, group := range g.spec.Paths {
-		for _, pm := range group {
+	for p, group := range g.spec.Paths {
+		for m, pm := range group {
 			method := serverMethodDef{
 				Name:        toFirstUpper(pm.OperationID),
 				OperationID: pm.OperationID,
+				Path:        p,
+				HTTPMethod:  strings.ToUpper(m),
 			}
 
 			for _, content := range pm.RequestBody.Content {
@@ -43,7 +45,8 @@ func (g *Generator) generateServer() error {
 	}
 
 	sort.SliceStable(g.server.Methods, func(i, j int) bool {
-		return strings.Compare(g.server.Methods[i].Name, g.server.Methods[j].Name) < 0
+		return strings.Compare(g.server.Methods[i].Path, g.server.Methods[j].Path) < 0 ||
+			strings.Compare(g.server.Methods[i].HTTPMethod, g.server.Methods[j].HTTPMethod) < 0
 	})
 
 	return nil

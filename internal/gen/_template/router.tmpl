@@ -5,38 +5,34 @@
     {{ template "header" $ }}
 
 	func Register(r chi.Router, s Server) {
-    {{- range $g := $.Groups }}
-		r.Route("{{ $g.Path }}", func(r chi.Router) {
-			{{- range $m := $g.Methods }}
-				r.Method("{{ $m.HTTPMethod }}", "/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-					{{- if ne $m.RequestType ""}}
-					var req {{ $m.RequestType }}
-					if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-						w.WriteHeader(http.StatusInternalServerError)
-						return
-					}
+	{{- range $m := $.Server.Methods }}
+		r.Method("{{ $m.HTTPMethod }}", "{{ $m.Path }}", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			{{- if ne $m.RequestType ""}}
+			var req {{ $m.RequestType }}
+			if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+				w.WriteHeader(http.StatusInternalServerError)
+				return
+			}
 
-					resp, err := s.{{ $m.ServerMethod }}(r.Context(), &req)
-					{{- else }}
-					resp, err := s.{{ $m.ServerMethod }}(r.Context())
-					{{- end}}
-					if err != nil {
-						w.WriteHeader(http.StatusInternalServerError)
-						return
-					}
+			resp, err := s.{{ $m.Name }}(r.Context(), &req)
+			{{- else }}
+			resp, err := s.{{ $m.Name }}(r.Context())
+			{{- end}}
+			if err != nil {
+				w.WriteHeader(http.StatusInternalServerError)
+				return
+			}
 
-					b, err := json.Marshal(resp)
-					if err != nil {
-						w.WriteHeader(http.StatusInternalServerError)
-						return
-					}
+			b, err := json.Marshal(resp)
+			if err != nil {
+				w.WriteHeader(http.StatusInternalServerError)
+				return
+			}
 
-					w.Header().Set("content-type", "application/json")
-					w.WriteHeader(http.StatusOK)
-					io.Copy(w, bytes.NewReader(b))
-				}))
-            {{- end }}
-		})
-    {{- end }}
+			w.Header().Set("content-type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			io.Copy(w, bytes.NewReader(b))
+		}))
+	{{- end }}
 	}
 {{ end }}

@@ -31,46 +31,44 @@ var (
 )
 
 func Register(r chi.Router, s Server) {
-	r.Route("/pet", func(r chi.Router) {
-		r.Method("GET", "/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			resp, err := s.PetGet(r.Context())
-			if err != nil {
-				w.WriteHeader(http.StatusInternalServerError)
-				return
-			}
+	r.Method("GET", "/pet", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		resp, err := s.PetGet(r.Context())
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
 
-			b, err := json.Marshal(resp)
-			if err != nil {
-				w.WriteHeader(http.StatusInternalServerError)
-				return
-			}
+		b, err := json.Marshal(resp)
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
 
-			w.Header().Set("content-type", "application/json")
-			w.WriteHeader(http.StatusOK)
-			io.Copy(w, bytes.NewReader(b))
-		}))
-		r.Method("POST", "/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			var req Pet
-			if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-				w.WriteHeader(http.StatusInternalServerError)
-				return
-			}
+		w.Header().Set("content-type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		io.Copy(w, bytes.NewReader(b))
+	}))
+	r.Method("POST", "/pet", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		var req Pet
+		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
 
-			resp, err := s.PetCreate(r.Context(), &req)
-			if err != nil {
-				w.WriteHeader(http.StatusInternalServerError)
-				return
-			}
+		resp, err := s.PetCreate(r.Context(), &req)
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
 
-			b, err := json.Marshal(resp)
-			if err != nil {
-				w.WriteHeader(http.StatusInternalServerError)
-				return
-			}
+		b, err := json.Marshal(resp)
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
 
-			w.Header().Set("content-type", "application/json")
-			w.WriteHeader(http.StatusOK)
-			io.Copy(w, bytes.NewReader(b))
-		}))
-	})
+		w.Header().Set("content-type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		io.Copy(w, bytes.NewReader(b))
+	}))
 }
