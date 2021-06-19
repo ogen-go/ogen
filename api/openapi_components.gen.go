@@ -11,6 +11,7 @@ import (
 	"io"
 	"net/http"
 	"sort"
+	"strconv"
 	"strings"
 
 	"github.com/go-chi/chi/v5"
@@ -28,6 +29,7 @@ var (
 	_ = io.Copy
 	_ = json.Marshal
 	_ = bytes.NewReader
+	_ = strconv.ParseInt
 )
 
 // Pet is #/components/schemas/Pet.

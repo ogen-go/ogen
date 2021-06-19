@@ -40,6 +40,33 @@ func (g *Generator) generateServer() error {
 				}
 			}
 
+			if len(pm.Parameters) != 0 {
+				method.Parameters = make(map[ParameterType][]Parameter)
+			}
+
+			for _, param := range pm.Parameters {
+				types := map[string]ParameterType{
+					"query":  ParameterTypeQuery,
+					"header": ParameterTypeHeader,
+					"path":   ParameterTypePath,
+					"cookie": ParameterCookie,
+				}
+
+				t, exists := types[strings.ToLower(param.In)]
+				if !exists {
+					return fmt.Errorf("unsupported parameter type %s", param.In)
+				}
+
+				if _, exists := method.Parameters[t]; !exists {
+					method.Parameters[t] = []Parameter{}
+				}
+
+				method.Parameters[t] = append(method.Parameters[t], Parameter{
+					Name: pascal(param.Name),
+					Type: param.Schema.Format,
+				})
+			}
+
 			g.server.Methods = append(g.server.Methods, method)
 		}
 	}

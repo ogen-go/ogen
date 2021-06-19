@@ -11,9 +11,9 @@ import (
 
 type server struct{}
 
-func (s server) PetGet(ctx context.Context) (*api.Pet, error) {
+func (s server) PetGet(ctx context.Context, params *api.PetGetParameters) (*api.Pet, error) {
 	return &api.Pet{
-		ID:   1337,
+		ID:   params.Query.PetID,
 		Name: "DOG",
 	}, nil
 }

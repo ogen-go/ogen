@@ -21,8 +21,19 @@ type Path map[string]PathMethod
 type PathMethod struct {
 	Description string              `json:"description"`
 	OperationID string              `json:"operationId"`
+	Parameters  []Parameter         `json:"parameters"`
 	RequestBody RequestBody         `json:"requestBody"`
 	Responses   map[string]Response `json:"responses"`
+}
+
+type Parameter struct {
+	Name            string          `json:"name"`
+	In              string          `json:"in"`
+	Description     string          `json:"description"`
+	Schema          ComponentSchema `json:"schema"`
+	Required        bool            `json:"required"`         // TODO: implement
+	Deprecated      bool            `json:"deprecated"`       // TODO: implement
+	AllowEmptyValue bool            `json:" allowEmptyValue"` // TODO: implement
 }
 
 type Response struct {

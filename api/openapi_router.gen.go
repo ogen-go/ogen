@@ -11,6 +11,7 @@ import (
 	"io"
 	"net/http"
 	"sort"
+	"strconv"
 	"strings"
 
 	"github.com/go-chi/chi/v5"
@@ -28,11 +29,18 @@ var (
 	_ = io.Copy
 	_ = json.Marshal
 	_ = bytes.NewReader
+	_ = strconv.ParseInt
 )
 
 func Register(r chi.Router, s Server) {
 	r.Method("GET", "/pet", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		resp, err := s.PetGet(r.Context())
+		params, err := ParsePetGetParameters(r)
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
+
+		resp, err := s.PetGet(r.Context(), params)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
 			return
@@ -51,7 +59,7 @@ func Register(r chi.Router, s Server) {
 	r.Method("POST", "/pet", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		var req Pet
 		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
+			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
 

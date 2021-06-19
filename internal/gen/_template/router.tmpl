@@ -7,17 +7,23 @@
 	func Register(r chi.Router, s Server) {
 	{{- range $m := $.Server.Methods }}
 		r.Method("{{ $m.HTTPMethod }}", "{{ $m.Path }}", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			{{- if ne $m.RequestType ""}}
-			var req {{ $m.RequestType }}
-			if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-				w.WriteHeader(http.StatusInternalServerError)
+			{{- if $m.Parameters }}
+			params, err :=  Parse{{ $m.Name }}Parameters(r)
+			if err != nil {
+				w.WriteHeader(http.StatusBadRequest)
 				return
 			}
+			{{- end }}
 
-			resp, err := s.{{ $m.Name }}(r.Context(), &req)
-			{{- else }}
-			resp, err := s.{{ $m.Name }}(r.Context())
+			{{- if $m.RequestType}}
+			var req {{ $m.RequestType }}
+			if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+				w.WriteHeader(http.StatusBadRequest)
+				return
+			}
 			{{- end}}
+
+			resp, err := s.{{ $m.Name }}(r.Context(){{ if $m.RequestType }}, &req{{ end }}{{ if $m.Parameters }}, params{{ end }})
 			if err != nil {
 				w.WriteHeader(http.StatusInternalServerError)
 				return

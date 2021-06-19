@@ -1,0 +1,48 @@
+{{- /*gotype: github.com/ernado/ogen/internal/gen.config*/ -}}
+
+{{ define "parameters" }}
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+{{- range $m := $.Server.Methods }}
+{{ if $m.Parameters }}
+type {{ $m.Name }}Parameters struct {
+	{{- range $t, $params := $m.Parameters }}
+		{{ $t }} {{ $m.Name }}{{ $t }}Parameters
+	{{- end}}
+}
+{{ range $t, $params := $m.Parameters }}
+type {{ $m.Name }}{{ $t }}Parameters struct {
+	{{- range $p := $params }}
+		{{ $p.Name }} {{ $p.Type }}
+	{{- end }}
+}
+{{- end }}
+
+func Parse{{ $m.Name }}Parameters(r *http.Request) (*{{ $m.Name }}Parameters, error) {
+	var parameters {{ $m.Name }}Parameters
+	{{ range $t, $params := $m.Parameters }}
+		{{- range $p := $params }}
+		{{- if eq $t "Query" }}
+			param := r.URL.Query().Get("{{ $p.Name }}")
+			{{ if eq $p.Type "int64" }}
+			v, err := strconv.ParseInt(param, 10, 64)
+			if err != nil {
+				return nil, fmt.Errorf("param {{ $t }} {{ $p.Name }} parse: %w", err)
+			}
+
+			parameters.{{ $t }}.{{ $p.Name }} = v
+			{{- else }}
+			return nil, fmt.Errorf("unsupported param type %s", "{{ $t }}")
+			{{- end }}
+		{{- else }}
+		{{- end }}
+		{{- end }}
+	{{- end }}
+
+	return &parameters, nil
+}
+{{- end }}
+{{- end }}
+
+{{ end }}

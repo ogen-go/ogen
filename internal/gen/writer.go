@@ -67,6 +67,9 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string, t *template.Templ
 	if err := w.Generate("server", "openapi_server.gen.go", cfg); err != nil {
 		return err
 	}
+	if err := w.Generate("parameters", "openapi_parameters.gen.go", cfg); err != nil {
+		return err
+	}
 
 	return nil
 }

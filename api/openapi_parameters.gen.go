@@ -32,9 +32,25 @@ var (
 	_ = strconv.ParseInt
 )
 
-type Server interface {
-	// PetGet
-	PetGet(ctx context.Context, params *PetGetParameters) (*Pet, error)
-	// PetCreate
-	PetCreate(ctx context.Context, req *Pet) (*Pet, error)
+type PetGetParameters struct {
+	Query PetGetQueryParameters
+}
+
+type PetGetQueryParameters struct {
+	PetID int64
+}
+
+func ParsePetGetParameters(r *http.Request) (*PetGetParameters, error) {
+	var parameters PetGetParameters
+
+	param := r.URL.Query().Get("PetID")
+
+	v, err := strconv.ParseInt(param, 10, 64)
+	if err != nil {
+		return nil, fmt.Errorf("param Query PetID parse: %w", err)
+	}
+
+	parameters.Query.PetID = v
+
+	return &parameters, nil
 }

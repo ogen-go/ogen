@@ -22,6 +22,7 @@ type serverMethodDef struct {
 	OperationID  string
 	Path         string
 	HTTPMethod   string
+	Parameters   map[ParameterType][]Parameter
 	RequestType  string
 	ResponseType string
 }
