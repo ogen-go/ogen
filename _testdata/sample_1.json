@@ -21,7 +21,7 @@
           {
             "name": "petID",
             "in": "query",
-            "description": "ID of pet that needs to be updated",
+            "description": "ID of pet",
             "required": true,
             "schema": {
               "type": "integer",
@@ -58,6 +58,35 @@
         "responses": {
           "200": {
             "description": "A new pet.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pet/{name}": {
+      "get": {
+        "description": "Returns pet by name from the system that the user has access to",
+        "operationId": "petGetByName",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "Name of pet",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A pet.",
             "content": {
               "application/json": {
                 "schema": {

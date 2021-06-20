@@ -10,6 +10,7 @@ var (
 type ParameterType string
 
 type Parameter struct {
-	Name string
-	Type string
+	Name       string
+	SourceName string
+	Type       string
 }

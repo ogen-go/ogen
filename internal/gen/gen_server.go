@@ -2,6 +2,7 @@ package gen
 
 import (
 	"fmt"
+	"regexp"
 	"sort"
 	"strings"
 )
@@ -61,9 +62,26 @@ func (g *Generator) generateServer() error {
 					method.Parameters[t] = []Parameter{}
 				}
 
+				if t == ParameterTypePath {
+					exists, err := regexp.MatchString(fmt.Sprintf("{%s}", param.Name), p)
+					if err != nil {
+						return fmt.Errorf("match path param '%s': %w", param.Name, err)
+					}
+
+					if !exists {
+						return fmt.Errorf("param '%s' not found in path '%s'", param.Name, p)
+					}
+				}
+
+				paramType := param.Schema.Format
+				if paramType == "" {
+					paramType = param.Schema.Type
+				}
+
 				method.Parameters[t] = append(method.Parameters[t], Parameter{
-					Name: pascal(param.Name),
-					Type: param.Schema.Format,
+					Name:       pascal(param.Name),
+					SourceName: param.Name,
+					Type:       paramType,
 				})
 			}
 

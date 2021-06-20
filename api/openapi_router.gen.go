@@ -56,6 +56,29 @@ func Register(r chi.Router, s Server) {
 		w.WriteHeader(http.StatusOK)
 		io.Copy(w, bytes.NewReader(b))
 	}))
+	r.Method("GET", "/pet/{name}", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		params, err := ParsePetGetByNameParameters(r)
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
+
+		resp, err := s.PetGetByName(r.Context(), params)
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+
+		b, err := json.Marshal(resp)
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+
+		w.Header().Set("content-type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		io.Copy(w, bytes.NewReader(b))
+	}))
 	r.Method("POST", "/pet", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		var req Pet
 		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {

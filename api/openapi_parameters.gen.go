@@ -43,14 +43,38 @@ type PetGetQueryParameters struct {
 func ParsePetGetParameters(r *http.Request) (*PetGetParameters, error) {
 	var parameters PetGetParameters
 
-	param := r.URL.Query().Get("PetID")
+	{
+		param := r.URL.Query().Get("petID")
 
-	v, err := strconv.ParseInt(param, 10, 64)
-	if err != nil {
-		return nil, fmt.Errorf("param Query PetID parse: %w", err)
+		v, err := strconv.ParseInt(param, 10, 64)
+		if err != nil {
+			return nil, fmt.Errorf("param Query petID parse: %w", err)
+		}
+
+		parameters.Query.PetID = v
 	}
 
-	parameters.Query.PetID = v
+	return &parameters, nil
+}
+
+type PetGetByNameParameters struct {
+	Path PetGetByNamePathParameters
+}
+
+type PetGetByNamePathParameters struct {
+	Name string
+}
+
+func ParsePetGetByNameParameters(r *http.Request) (*PetGetByNameParameters, error) {
+	var parameters PetGetByNameParameters
+
+	{
+		param := chi.URLParam(r, "name")
+
+		v := param
+
+		parameters.Path.Name = v
+	}
 
 	return &parameters, nil
 }

@@ -17,26 +17,34 @@ type {{ $m.Name }}{{ $t }}Parameters struct {
 		{{ $p.Name }} {{ $p.Type }}
 	{{- end }}
 }
-{{- end }}
+{{ end }}
 
 func Parse{{ $m.Name }}Parameters(r *http.Request) (*{{ $m.Name }}Parameters, error) {
 	var parameters {{ $m.Name }}Parameters
 	{{ range $t, $params := $m.Parameters }}
 		{{- range $p := $params }}
-		{{- if eq $t "Query" }}
-			param := r.URL.Query().Get("{{ $p.Name }}")
+		{
+			{{- if eq $t "Query" }}
+				param := r.URL.Query().Get("{{ $p.SourceName }}")
+			{{- else if eq $t "Path" }}
+				param := chi.URLParam(r, "{{ $p.SourceName }}")
+			{{- else }}
+				return fmt.Errorf("unsupported param type %s", "{{ $t }}")
+			{{- end }}
+
 			{{ if eq $p.Type "int64" }}
-			v, err := strconv.ParseInt(param, 10, 64)
-			if err != nil {
-				return nil, fmt.Errorf("param {{ $t }} {{ $p.Name }} parse: %w", err)
-			}
+				v, err := strconv.ParseInt(param, 10, 64)
+				if err != nil {
+					return nil, fmt.Errorf("param {{ $t }} {{ $p.SourceName }} parse: %w", err)
+				}
+			{{ else if eq $p.Type "string" }}
+				v := param
+			{{- else }}
+				return nil, fmt.Errorf("unsupported param value type %s", "{{ $p.Type }}")
+			{{- end }}
 
 			parameters.{{ $t }}.{{ $p.Name }} = v
-			{{- else }}
-			return nil, fmt.Errorf("unsupported param type %s", "{{ $t }}")
-			{{- end }}
-		{{- else }}
-		{{- end }}
+		}
 		{{- end }}
 	{{- end }}
 
