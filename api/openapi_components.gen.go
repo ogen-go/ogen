@@ -13,6 +13,7 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/go-chi/chi/v5"
 )
@@ -30,12 +31,15 @@ var (
 	_ = json.Marshal
 	_ = bytes.NewReader
 	_ = strconv.ParseInt
+	_ = time.Time{}
 )
 
 // Pet is #/components/schemas/Pet.
 //
 // Cute and lovely creature.
 type Pet struct {
-	ID   int64  `json:"id"`
-	Name string `json:"name"`
+	Birthday time.Time `json:"birthday"`
+	Friends  []Pet     `json:"friends"`
+	ID       int64     `json:"id"`
+	Name     string    `json:"name"`
 }

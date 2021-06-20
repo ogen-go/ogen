@@ -68,6 +68,8 @@ type ComponentSchema struct {
 	Type        string                     `json:"type"`
 	Format      string                     `json:"format"`
 	Properties  map[string]ComponentSchema `json:"properties"`
+	Items       *ComponentSchema           `json:"items"`
+	Ref         string                     `json:"$ref"`
 }
 
 type Spec struct {

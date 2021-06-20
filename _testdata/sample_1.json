@@ -111,6 +111,17 @@
           },
           "name": {
             "type": "string"
+          },
+          "birthday": {
+            "type": "string",
+            "format": "date"
+          },
+          "friends": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "$ref": "#/components/schemas/Pet"
+            }
           }
         }
       }

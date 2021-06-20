@@ -13,6 +13,7 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/go-chi/chi/v5"
 )
@@ -30,6 +31,7 @@ var (
 	_ = json.Marshal
 	_ = bytes.NewReader
 	_ = strconv.ParseInt
+	_ = time.Time{}
 )
 
 func Register(r chi.Router, s Server) {
