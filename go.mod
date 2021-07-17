@@ -1,4 +1,4 @@
-module github.com/ernado/ogen
+module github.com/ogen-go/ogen
 
 go 1.16
 
