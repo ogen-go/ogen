@@ -16,6 +16,7 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/ogen-go/ogen/conv"
 )
 
 // No-op definition for keeping imports.
@@ -32,6 +33,7 @@ var (
 	_ = bytes.NewReader
 	_ = strconv.ParseInt
 	_ = time.Time{}
+	_ = conv.ToInt32
 )
 
 func Register(r chi.Router, s Server) {

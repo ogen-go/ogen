@@ -5,7 +5,53 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+
+	"github.com/ogen-go/ogen"
 )
+
+func parseParameter(param ogen.Parameter, path string) (*Parameter, error) {
+	types := map[string]ParameterType{
+		"query":  ParameterTypeQuery,
+		"header": ParameterTypeHeader,
+		"path":   ParameterTypePath,
+		"cookie": ParameterCookie,
+	}
+
+	t, exists := types[strings.ToLower(param.In)]
+	if !exists {
+		return nil, fmt.Errorf("unsupported parameter type %s", param.In)
+	}
+
+	if t == ParameterTypePath {
+		exists, err := regexp.MatchString(fmt.Sprintf("{%s}", param.Name), path)
+		if err != nil {
+			return nil, fmt.Errorf("match path param '%s': %w", param.Name, err)
+		}
+
+		if !exists {
+			return nil, fmt.Errorf("param '%s' not found in path '%s'", param.Name, path)
+		}
+	}
+
+	var allowArrayType bool
+	if t == ParameterTypeHeader {
+		allowArrayType = true
+	}
+
+	pType, err := parseSimpleType(param.Schema, parseSimpleTypeParams{
+		AllowArrays: allowArrayType,
+	})
+	if err != nil {
+		return nil, fmt.Errorf("parse type: %w", err)
+	}
+
+	return &Parameter{
+		Name:       pascal(param.Name),
+		SourceName: param.Name,
+		Type:       pType,
+		In:         t,
+	}, nil
+}
 
 func (g *Generator) generateServer() error {
 	for p, group := range g.spec.Paths {
@@ -46,43 +92,16 @@ func (g *Generator) generateServer() error {
 			}
 
 			for _, param := range pm.Parameters {
-				types := map[string]ParameterType{
-					"query":  ParameterTypeQuery,
-					"header": ParameterTypeHeader,
-					"path":   ParameterTypePath,
-					"cookie": ParameterCookie,
+				parameter, err := parseParameter(param, p)
+				if err != nil {
+					return fmt.Errorf("parse method %s parameter %s: %w", pm.OperationID, param.Name, err)
 				}
 
-				t, exists := types[strings.ToLower(param.In)]
-				if !exists {
-					return fmt.Errorf("unsupported parameter type %s", param.In)
+				if _, exists := method.Parameters[parameter.In]; !exists {
+					method.Parameters[parameter.In] = []Parameter{}
 				}
 
-				if _, exists := method.Parameters[t]; !exists {
-					method.Parameters[t] = []Parameter{}
-				}
-
-				if t == ParameterTypePath {
-					exists, err := regexp.MatchString(fmt.Sprintf("{%s}", param.Name), p)
-					if err != nil {
-						return fmt.Errorf("match path param '%s': %w", param.Name, err)
-					}
-
-					if !exists {
-						return fmt.Errorf("param '%s' not found in path '%s'", param.Name, p)
-					}
-				}
-
-				paramType := param.Schema.Format
-				if paramType == "" {
-					paramType = param.Schema.Type
-				}
-
-				method.Parameters[t] = append(method.Parameters[t], Parameter{
-					Name:       pascal(param.Name),
-					SourceName: param.Name,
-					Type:       paramType,
-				})
+				method.Parameters[parameter.In] = append(method.Parameters[parameter.In], *parameter)
 			}
 
 			g.server.Methods = append(g.server.Methods, method)

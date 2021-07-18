@@ -2,16 +2,20 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"log"
 	"net/http"
 
-	"github.com/ernado/ogen/api"
 	"github.com/go-chi/chi/v5"
+	"github.com/ogen-go/ogen/api"
 )
 
 type server struct{}
 
 func (s server) PetGet(ctx context.Context, params *api.PetGetParameters) (*api.Pet, error) {
+	p, _ := json.Marshal(params)
+	log.Println(string(p))
+
 	return &api.Pet{
 		ID:   params.Query.PetID,
 		Name: "DOG",

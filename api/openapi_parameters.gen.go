@@ -16,6 +16,7 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/ogen-go/ogen/conv"
 )
 
 // No-op definition for keeping imports.
@@ -32,10 +33,21 @@ var (
 	_ = bytes.NewReader
 	_ = strconv.ParseInt
 	_ = time.Time{}
+	_ = conv.ToInt32
 )
 
 type PetGetParameters struct {
-	Query PetGetQueryParameters
+	Cookie PetGetCookieParameters
+	Header PetGetHeaderParameters
+	Query  PetGetQueryParameters
+}
+
+type PetGetCookieParameters struct {
+	Token string
+}
+
+type PetGetHeaderParameters struct {
+	XScope []string
 }
 
 type PetGetQueryParameters struct {
@@ -46,9 +58,34 @@ func ParsePetGetParameters(r *http.Request) (*PetGetParameters, error) {
 	var parameters PetGetParameters
 
 	{
+		c, err := r.Cookie("token")
+		if err != nil {
+			return nil, fmt.Errorf("cookie param token: %w", err)
+		}
+
+		param := c.Value
+
+		v, err := conv.ToString(param)
+		if err != nil {
+			return nil, fmt.Errorf("param Cookie token parse: %w", err)
+		}
+
+		parameters.Cookie.Token = v
+	}
+	{
+		param := r.Header.Values("x-scope")
+
+		v, err := conv.ToStringArray(param)
+		if err != nil {
+			return nil, fmt.Errorf("param Header x-scope parse: %w", err)
+		}
+
+		parameters.Header.XScope = v
+	}
+	{
 		param := r.URL.Query().Get("petID")
 
-		v, err := strconv.ParseInt(param, 10, 64)
+		v, err := conv.ToInt64(param)
 		if err != nil {
 			return nil, fmt.Errorf("param Query petID parse: %w", err)
 		}
@@ -73,7 +110,10 @@ func ParsePetGetByNameParameters(r *http.Request) (*PetGetByNameParameters, erro
 	{
 		param := chi.URLParam(r, "name")
 
-		v := param
+		v, err := conv.ToString(param)
+		if err != nil {
+			return nil, fmt.Errorf("param Path name parse: %w", err)
+		}
 
 		parameters.Path.Name = v
 	}

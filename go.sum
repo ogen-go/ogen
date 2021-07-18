@@ -1,3 +1,5 @@
+github.com/ogen-go/ogen v0.0.0-20210620080022-a00536efe7f0 h1:239GLxjr+HbI32OSi5uxIeOL0gb8HJTnVpT39eK4MZA=
+github.com/ogen-go/ogen v0.0.0-20210620080022-a00536efe7f0/go.mod h1:LzWSe6OObd8X+iuOibrfZP7S3GU5BwhFprl0pKGVpYM=
 github.com/go-chi/chi/v5 v5.0.3 h1:khYQBdPivkYG1s1TAzDQG1f6eX4kD2TItYVZexL5rS4=
 github.com/go-chi/chi/v5 v5.0.3/go.mod h1:DslCQbL2OYiznFReuXYUmQ2hGd1aDpCnlMNITLSKoi8=
 github.com/go-openapi/inflect v0.19.0 h1:9jCH9scKIbHeV9m12SmPilScz6krDxKRasNNSNPXu/4=

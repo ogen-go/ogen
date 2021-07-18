@@ -1,7 +1,7 @@
 package gen
 
 import (
-	"github.com/ernado/ogen"
+	"github.com/ogen-go/ogen"
 )
 
 type Generator struct {

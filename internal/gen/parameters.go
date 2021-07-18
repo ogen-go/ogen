@@ -13,4 +13,5 @@ type Parameter struct {
 	Name       string
 	SourceName string
 	Type       string
+	In         ParameterType
 }

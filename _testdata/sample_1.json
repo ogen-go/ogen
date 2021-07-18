@@ -27,6 +27,27 @@
               "type": "integer",
               "format": "int64"
             }
+          },
+          {
+            "name": "x-scope",
+            "in": "header",
+            "description": "pet scopes",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "token",
+            "in": "cookie",
+            "description": "token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {

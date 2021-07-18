@@ -6,10 +6,15 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/ernado/ogen"
+	"github.com/ogen-go/ogen"
 )
 
-func getType(schema ogen.ComponentSchema) (string, error) {
+type parseSimpleTypeParams struct {
+	AllowArrays       bool
+	AllowNestedArrays bool
+}
+
+func parseSimpleType(schema ogen.ComponentSchema, params parseSimpleTypeParams) (string, error) {
 	t := strings.ToLower(schema.Type)
 	f := strings.ToLower(schema.Format)
 
@@ -35,13 +40,43 @@ func getType(schema ogen.ComponentSchema) (string, error) {
 		},
 	}
 
-	if formats, exists := simpleTypes[t]; exists {
-		if fType, formatExists := formats[f]; formatExists {
-			return fType, nil
+	switch t {
+	case "array":
+		if !params.AllowArrays {
+			return "", fmt.Errorf("unsupported simple type %s", t)
 		}
 
-		return "", fmt.Errorf("unsupported type %s format %s", t, f)
+		if schema.Items == nil {
+			return "", fmt.Errorf("items field is missed for array type")
+		}
+
+		itemType, err := parseSimpleType(*schema.Items, parseSimpleTypeParams{
+			AllowArrays:       params.AllowNestedArrays,
+			AllowNestedArrays: params.AllowNestedArrays,
+		})
+		if err != nil {
+			return "", fmt.Errorf("array item type: %w", err)
+		}
+
+		return fmt.Sprintf("[]%s", itemType), nil
+	default:
+		formats, exists := simpleTypes[t]
+		if !exists {
+			return "", fmt.Errorf("unsupported simple type %s", t)
+		}
+
+		fType, exists := formats[f]
+		if !exists {
+			return "", fmt.Errorf("unsupported simple type %s format %s", t, f)
+		}
+
+		return fType, nil
 	}
+}
+
+func parseType(schema ogen.ComponentSchema) (string, error) {
+	t := strings.ToLower(schema.Type)
+	f := strings.ToLower(schema.Format)
 
 	switch t {
 	case "object":
@@ -55,22 +90,21 @@ func getType(schema ogen.ComponentSchema) (string, error) {
 			return "", fmt.Errorf("items field is missed for array type")
 		}
 
-		itemType, err := getType(*schema.Items)
+		itemType, err := parseType(*schema.Items)
 		if err != nil {
 			return "", fmt.Errorf("array item type: %w", err)
 		}
 
 		return fmt.Sprintf("[]%s", itemType), nil
 	default:
-		if formats, exists := simpleTypes[t]; exists {
-			if fType, formatExists := formats[f]; !formatExists {
-				return fType, nil
-			}
-
+		fType, err := parseSimpleType(schema, parseSimpleTypeParams{
+			AllowArrays: false, // Arrays are already supported in the branch above.
+		})
+		if err != nil {
 			return "", fmt.Errorf("unsupported type %s format %s", t, f)
 		}
 
-		return "", fmt.Errorf("unsupported type %s", t)
+		return fType, nil
 	}
 }
 
@@ -86,7 +120,7 @@ func parseComponent(name string, schema ogen.ComponentSchema) (*componentStructD
 	}
 
 	for pName, pSchema := range schema.Properties {
-		pType, err := getType(pSchema)
+		pType, err := parseType(pSchema)
 		if err != nil {
 			return nil, fmt.Errorf("property %s type: %w", pName, err)
 		}

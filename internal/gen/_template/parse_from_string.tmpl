@@ -1,0 +1,17 @@
+{{- define "parse_from_string" }}
+{{- if eq . "int32" }}conv.ToInt32
+{{- else if eq . "int64" }}conv.ToInt64
+{{- else if eq . "float32" }}conv.ToFloat32
+{{- else if eq . "float64" }}conv.ToFloat64
+{{- else if eq . "string" }}conv.ToString
+{{- else if eq . "[]byte" }}conv.ToBytes
+{{- else if eq . "time.Time" }}conv.ToTime
+{{- else if eq . "[]int32" }}conv.ToInt32Array
+{{- else if eq . "[]int64" }}conv.ToInt64Array
+{{- else if eq . "[]float32" }}conv.ToFloat32Array
+{{- else if eq . "[]float64" }}conv.ToFloat64Array
+{{- else if eq . "[]string" }}conv.ToStringArray
+{{- else if eq . "[][]byte" }}conv.ToBytesArray
+{{- else if eq . "[]time.Time" }}conv.ToTimeArray
+{{- end }}
+{{- end }}

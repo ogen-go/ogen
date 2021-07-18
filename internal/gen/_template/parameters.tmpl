@@ -1,4 +1,4 @@
-{{- /*gotype: github.com/ernado/ogen/internal/gen.config*/ -}}
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.config*/ -}}
 
 {{ define "parameters" }}
 {{ $pkg := $.Package }}
@@ -28,20 +28,23 @@ func Parse{{ $m.Name }}Parameters(r *http.Request) (*{{ $m.Name }}Parameters, er
 				param := r.URL.Query().Get("{{ $p.SourceName }}")
 			{{- else if eq $t "Path" }}
 				param := chi.URLParam(r, "{{ $p.SourceName }}")
+			{{- else if eq $t "Header" }}
+				param := r.Header.Values("{{ $p.SourceName }}")
+            {{- else if eq $t "Cookie" }}
+				c, err := r.Cookie("{{ $p.SourceName }}")
+				if err != nil {
+					return nil, fmt.Errorf("cookie param {{ $p.SourceName }}: %w", err)
+				}
+
+				param := c.Value
 			{{- else }}
-				return fmt.Errorf("unsupported param type %s", "{{ $t }}")
+				return nil, fmt.Errorf("unsupported param type {{ $t }}")
 			{{- end }}
 
-			{{ if eq $p.Type "int64" }}
-				v, err := strconv.ParseInt(param, 10, 64)
-				if err != nil {
-					return nil, fmt.Errorf("param {{ $t }} {{ $p.SourceName }} parse: %w", err)
-				}
-			{{ else if eq $p.Type "string" }}
-				v := param
-			{{- else }}
-				return nil, fmt.Errorf("unsupported param value type %s", "{{ $p.Type }}")
-			{{- end }}
+			v, err := {{ template "parse_from_string" $p.Type }}(param)
+			if err != nil {
+				return nil, fmt.Errorf("param {{ $t }} {{ $p.SourceName }} parse: %w", err)
+			}
 
 			parameters.{{ $t }}.{{ $p.Name }} = v
 		}

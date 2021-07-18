@@ -9,8 +9,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/ernado/ogen"
-	"github.com/ernado/ogen/internal/gen"
+	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/gen"
 )
 
 type formattedSource struct {
