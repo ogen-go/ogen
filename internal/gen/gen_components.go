@@ -14,7 +14,7 @@ type parseSimpleTypeParams struct {
 	AllowNestedArrays bool
 }
 
-func parseSimpleType(schema ogen.ComponentSchema, params parseSimpleTypeParams) (string, error) {
+func parseSimpleType(schema ogen.Schema, params parseSimpleTypeParams) (string, error) {
 	t := strings.ToLower(schema.Type)
 	f := strings.ToLower(schema.Format)
 
@@ -74,7 +74,7 @@ func parseSimpleType(schema ogen.ComponentSchema, params parseSimpleTypeParams) 
 	}
 }
 
-func parseType(schema ogen.ComponentSchema) (string, error) {
+func parseType(schema ogen.Schema) (string, error) {
 	t := strings.ToLower(schema.Type)
 	f := strings.ToLower(schema.Format)
 
@@ -108,7 +108,7 @@ func parseType(schema ogen.ComponentSchema) (string, error) {
 	}
 }
 
-func parseComponent(name string, schema ogen.ComponentSchema) (*componentStructDef, error) {
+func parseComponent(name string, schema ogen.Schema) (*componentStructDef, error) {
 	component := componentStructDef{
 		Name:        name,
 		Description: toFirstUpper(schema.Description),
