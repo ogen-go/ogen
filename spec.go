@@ -86,12 +86,15 @@ type Operation struct {
 type Parameter struct {
 	Name string `json:"name"`
 	// The location of the parameter. Possible values are "query", "header", "path" or "cookie".
-	In              string `json:"in"`
-	Description     string `json:"description"`
-	Schema          Schema `json:"schema"`
-	Required        bool   `json:"required"`        // TODO: implement
-	Deprecated      bool   `json:"deprecated"`      // TODO: implement
-	AllowEmptyValue bool   `json:"allowEmptyValue"` // TODO: implement
+	In          string `json:"in"`
+	Description string `json:"description"`
+	Schema      Schema `json:"schema"`
+	// Determines whether this parameter is mandatory.
+	// If the parameter location is "path", this property is REQUIRED
+	// and its value MUST be true.
+	// Otherwise, the property MAY be included and its default value is false.
+	Required   bool `json:"required"`
+	Deprecated bool `json:"deprecated"` // TODO: implement
 }
 
 type RequestBody struct {

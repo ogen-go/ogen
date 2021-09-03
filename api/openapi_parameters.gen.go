@@ -64,30 +64,39 @@ func ParsePetGetParameters(r *http.Request) (*PetGetParameters, error) {
 		}
 
 		param := c.Value
+		if len(param) == 0 {
+			return nil, fmt.Errorf("Cookie param 'token' is empty")
+		}
 
 		v, err := conv.ToString(param)
 		if err != nil {
-			return nil, fmt.Errorf("param Cookie token parse: %w", err)
+			return nil, fmt.Errorf("parse Cookie param 'token': %w", err)
 		}
 
 		parameters.Cookie.Token = v
 	}
 	{
 		param := r.Header.Values("x-scope")
+		if len(param) == 0 {
+			return nil, fmt.Errorf("Header param 'x-scope' is empty")
+		}
 
 		v, err := conv.ToStringArray(param)
 		if err != nil {
-			return nil, fmt.Errorf("param Header x-scope parse: %w", err)
+			return nil, fmt.Errorf("parse Header param 'x-scope': %w", err)
 		}
 
 		parameters.Header.XScope = v
 	}
 	{
 		param := r.URL.Query().Get("petID")
+		if len(param) == 0 {
+			return nil, fmt.Errorf("Query param 'petID' is empty")
+		}
 
 		v, err := conv.ToInt64(param)
 		if err != nil {
-			return nil, fmt.Errorf("param Query petID parse: %w", err)
+			return nil, fmt.Errorf("parse Query param 'petID': %w", err)
 		}
 
 		parameters.Query.PetID = v
@@ -109,10 +118,13 @@ func ParsePetGetByNameParameters(r *http.Request) (*PetGetByNameParameters, erro
 
 	{
 		param := chi.URLParam(r, "name")
+		if len(param) == 0 {
+			return nil, fmt.Errorf("Path param 'name' is empty")
+		}
 
 		v, err := conv.ToString(param)
 		if err != nil {
-			return nil, fmt.Errorf("param Path name parse: %w", err)
+			return nil, fmt.Errorf("parse Path param 'name': %w", err)
 		}
 
 		parameters.Path.Name = v

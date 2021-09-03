@@ -47,10 +47,11 @@ func parseParameter(param ogen.Parameter, path string) (*Parameter, error) {
 	}
 
 	return &Parameter{
-		Name:       pascal(param.Name),
-		SourceName: param.Name,
-		Type:       pType,
-		In:         t,
+		Name:            pascal(param.Name),
+		SourceName:      param.Name,
+		Type:            pType,
+		In:              t,
+		Required:        param.Required,
 	}, nil
 }
 
