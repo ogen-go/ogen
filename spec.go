@@ -1,6 +1,9 @@
 package ogen
 
 type Spec struct {
+	// This string MUST be the semantic version number
+	// of the OpenAPI Specification version that the OpenAPI document uses.
+	OpenAPI        string      `json:"openapi"`
 	Title          string      `json:"title"`
 	Description    string      `json:"description"`
 	TermsOfService string      `json:"termsOfService"`
