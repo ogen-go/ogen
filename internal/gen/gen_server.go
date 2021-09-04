@@ -2,6 +2,7 @@ package gen
 
 import (
 	"fmt"
+	"net/http"
 	"regexp"
 	"sort"
 	"strings"
@@ -46,65 +47,43 @@ func parseParameter(param ogen.Parameter, path string) (*Parameter, error) {
 	}
 
 	return &Parameter{
-		Name:       pascal(param.Name),
-		SourceName: param.Name,
-		Type:       pType,
-		In:         t,
+		Name:            pascal(param.Name),
+		SourceName:      param.Name,
+		Type:            pType,
+		In:              t,
+		Required:        param.Required,
 	}, nil
 }
 
 func (g *Generator) generateServer() error {
-	for p, group := range g.spec.Paths {
-		for m, pm := range group {
-			method := serverMethodDef{
-				Name:        toFirstUpper(pm.OperationID),
-				OperationID: pm.OperationID,
-				Path:        p,
-				HTTPMethod:  strings.ToUpper(m),
-			}
+	for path, item := range g.spec.Paths {
+		if item.Ref != "" {
+			return fmt.Errorf("reference objects in PathItem not supported yet")
+		}
 
-			for _, content := range pm.RequestBody.Content {
-				name := g.componentByRef(content.Schema.Ref)
-				if name == "" {
-					return fmt.Errorf("ref %s not found", content.Schema.Ref)
-				}
-
-				method.RequestType = name
-			}
-
-			for status, resp := range pm.Responses {
-				if status != "200" {
-					continue
-				}
-
-				for _, content := range resp.Content {
-					name := g.componentByRef(content.Schema.Ref)
-					if name == "" {
-						return fmt.Errorf("ref %s not found", content.Schema.Ref)
-					}
-
-					method.ResponseType = name
-				}
-			}
-
-			if len(pm.Parameters) != 0 {
-				method.Parameters = make(map[ParameterType][]Parameter)
-			}
-
-			for _, param := range pm.Parameters {
-				parameter, err := parseParameter(param, p)
-				if err != nil {
-					return fmt.Errorf("parse method %s parameter %s: %w", pm.OperationID, param.Name, err)
-				}
-
-				if _, exists := method.Parameters[parameter.In]; !exists {
-					method.Parameters[parameter.In] = []Parameter{}
-				}
-
-				method.Parameters[parameter.In] = append(method.Parameters[parameter.In], *parameter)
-			}
-
-			g.server.Methods = append(g.server.Methods, method)
+		if err := g.generateOperation(path, http.MethodGet, item.Get); err != nil {
+			return fmt.Errorf("generate op: %w", err)
+		}
+		if err := g.generateOperation(path, http.MethodPut, item.Put); err != nil {
+			return fmt.Errorf("generate op: %w", err)
+		}
+		if err := g.generateOperation(path, http.MethodPost, item.Post); err != nil {
+			return fmt.Errorf("generate op: %w", err)
+		}
+		if err := g.generateOperation(path, http.MethodDelete, item.Delete); err != nil {
+			return fmt.Errorf("generate op: %w", err)
+		}
+		if err := g.generateOperation(path, http.MethodOptions, item.Options); err != nil {
+			return fmt.Errorf("generate op: %w", err)
+		}
+		if err := g.generateOperation(path, http.MethodHead, item.Head); err != nil {
+			return fmt.Errorf("generate op: %w", err)
+		}
+		if err := g.generateOperation(path, http.MethodPatch, item.Patch); err != nil {
+			return fmt.Errorf("generate op: %w", err)
+		}
+		if err := g.generateOperation(path, http.MethodTrace, item.Trace); err != nil {
+			return fmt.Errorf("generate op: %w", err)
 		}
 	}
 
@@ -113,5 +92,62 @@ func (g *Generator) generateServer() error {
 			strings.Compare(g.server.Methods[i].HTTPMethod, g.server.Methods[j].HTTPMethod) < 0
 	})
 
+	return nil
+}
+
+func (g *Generator) generateOperation(path, httpMethod string, op *ogen.Operation) error {
+	if op == nil {
+		return nil
+	}
+
+	method := serverMethodDef{
+		Name:        toFirstUpper(op.OperationID),
+		OperationID: op.OperationID,
+		Path:        path,
+		HTTPMethod:  strings.ToUpper(httpMethod),
+	}
+
+	for _, content := range op.RequestBody.Content {
+		name := g.componentByRef(content.Schema.Ref)
+		if name == "" {
+			return fmt.Errorf("ref %s not found", content.Schema.Ref)
+		}
+
+		method.RequestType = name
+	}
+
+	for status, resp := range op.Responses {
+		if status != "200" {
+			return fmt.Errorf("unsupported response status code: %s", status)
+		}
+
+		for _, content := range resp.Content {
+			name := g.componentByRef(content.Schema.Ref)
+			if name == "" {
+				return fmt.Errorf("ref %s not found", content.Schema.Ref)
+			}
+
+			method.ResponseType = name
+		}
+	}
+
+	if len(op.Parameters) != 0 {
+		method.Parameters = make(map[ParameterType][]Parameter)
+	}
+
+	for _, param := range op.Parameters {
+		parameter, err := parseParameter(param, path)
+		if err != nil {
+			return fmt.Errorf("parse method %s parameter %s: %w", op.OperationID, param.Name, err)
+		}
+
+		if _, exists := method.Parameters[parameter.In]; !exists {
+			method.Parameters[parameter.In] = []Parameter{}
+		}
+
+		method.Parameters[parameter.In] = append(method.Parameters[parameter.In], *parameter)
+	}
+
+	g.server.Methods = append(g.server.Methods, method)
 	return nil
 }

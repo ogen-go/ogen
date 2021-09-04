@@ -14,4 +14,5 @@ type Parameter struct {
 	SourceName string
 	Type       string
 	In         ParameterType
+	Required   bool
 }

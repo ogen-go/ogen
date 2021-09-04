@@ -1,4 +1,5 @@
 {
+  "openapi": "3.0.3",
   "title": "Sample Pet Store App",
   "description": "This is a sample server for a pet store.",
   "termsOfService": "https://example.com/terms/",

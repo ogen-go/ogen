@@ -41,12 +41,27 @@ func Parse{{ $m.Name }}Parameters(r *http.Request) (*{{ $m.Name }}Parameters, er
 				return nil, fmt.Errorf("unsupported param type {{ $t }}")
 			{{- end }}
 
+			{{- if $p.Required }}
+			if len(param) == 0 {
+				return nil, fmt.Errorf("{{ $t }} param '{{ $p.SourceName }}' is empty")
+			}
+
 			v, err := {{ template "parse_from_string" $p.Type }}(param)
 			if err != nil {
-				return nil, fmt.Errorf("param {{ $t }} {{ $p.SourceName }} parse: %w", err)
+				return nil, fmt.Errorf("parse {{ $t }} param '{{ $p.SourceName }}': %w", err)
 			}
 
 			parameters.{{ $t }}.{{ $p.Name }} = v
+			{{- else }}
+			if len(param) > 0 {
+				v, err := {{ template "parse_from_string" $p.Type }}(param)
+				if err != nil {
+					return nil, fmt.Errorf("param {{ $t }} {{ $p.SourceName }} parse: %w", err)
+				}
+
+				parameters.{{ $t }}.{{ $p.Name }} = v
+			}
+			{{- end }}
 		}
 		{{- end }}
 	{{- end }}
