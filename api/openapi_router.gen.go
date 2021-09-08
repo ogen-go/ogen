@@ -61,13 +61,19 @@ func Register(r chi.Router, s Server) {
 		io.Copy(w, bytes.NewReader(b))
 	}))
 	r.Method("POST", "/pet", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		var req Pet
-		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-			w.WriteHeader(http.StatusBadRequest)
-			return
+		req := new(Pet)
+		if err := json.NewDecoder(r.Body).Decode(req); err != nil {
+			// Requets body is optional.
+			if !errors.Is(err, io.EOF) {
+				// Unexpected error.
+				w.WriteHeader(http.StatusBadRequest)
+				return
+			}
+
+			req = nil
 		}
 
-		resp, err := s.PetCreate(r.Context(), &req)
+		resp, err := s.PetCreate(r.Context(), req)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
 			return

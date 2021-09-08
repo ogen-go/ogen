@@ -40,6 +40,8 @@ type Server interface {
 	// PetGet
 	PetGet(ctx context.Context, params *PetGetParameters) (*Pet, error)
 	// PetCreate
+	//
+	// Note: req can be nil.
 	PetCreate(ctx context.Context, req *Pet) (*Pet, error)
 	// PetGetByName
 	PetGetByName(ctx context.Context, params *PetGetByNameParameters) (*Pet, error)
