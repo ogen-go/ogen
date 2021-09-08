@@ -32,11 +32,11 @@ type Server struct {
 }
 
 type Components struct {
-	Schemas map[string]Schema `json:"schemas"`
-	// Responses       map[string]Response        `json:"responses"`
-	// Parameters      map[string]Parameter       `json:"parameters"`
+	Schemas    map[string]Schema    `json:"schemas"`
+	Responses  map[string]Response  `json:"responses"`
+	Parameters map[string]Parameter `json:"parameters"`
 	// Examples        map[string]Example         `json:"example"`
-	// RequiesBodies   map[string]RequestBody     `json:"requestBodies"`
+	RequestBodies map[string]RequestBody `json:"requestBodies"`
 	// Headers         map[string]Header          `json:"headers"`
 	// SecuritySchemes map[string]SecuritySchema  `json:"securitySchemes"`
 	// Links           map[string]Link            `json:"links"`
@@ -84,6 +84,7 @@ type Operation struct {
 }
 
 type Parameter struct {
+	Ref  string `json:"$ref"`
 	Name string `json:"name"`
 
 	// The location of the parameter. Possible values are "query", "header", "path" or "cookie".
@@ -114,6 +115,7 @@ type Parameter struct {
 
 // RequestBody describes a single request body.
 type RequestBody struct {
+	Ref         string `json:"$ref"`
 	Description string `json:"description"`
 
 	// The content of the request body.
@@ -131,6 +133,7 @@ type RequestBody struct {
 type Responses map[string]Response
 
 type Response struct {
+	Ref         string                 `json:"$ref"`
 	Description string                 `json:"description"`
 	Header      map[string]interface{} // TODO: implement
 	Content     map[string]Media       `json:"content"`
