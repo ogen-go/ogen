@@ -97,10 +97,17 @@ type Parameter struct {
 	Deprecated bool `json:"deprecated"` // TODO: implement
 }
 
+// RequestBody describes a single request body.
 type RequestBody struct {
-	Description string             `json:"description"`
-	Content     map[string]Content `json:"content"`
-	Required    bool               `json:"required"` // TODO: implement
+	Description string `json:"description"`
+
+	// The content of the request body.
+	// The key is a media type or media type range and the value describes it.
+	// For requests that match multiple keys, only the most specific key is applicable.
+	// e.g. text/plain overrides text/*
+	Content map[string]Media `json:"content"`
+
+	Required bool `json:"required"` // TODO: implement
 }
 
 // Responses - a container for the expected responses of an operation.
@@ -110,7 +117,7 @@ type Responses map[string]Response
 type Response struct {
 	Description string                 `json:"description"`
 	Header      map[string]interface{} // TODO: implement
-	Content     map[string]Content     `json:"content"`
+	Content     map[string]Media       `json:"content"`
 	Links       map[string]interface{} // TODO: implement
 }
 
@@ -120,8 +127,8 @@ type ContentSchema struct {
 	Ref   string            `json:"$ref"`
 }
 
-type Content struct {
-	Schema ContentSchema `json:"schema"`
+type Media struct {
+	Schema Schema `json:"schema"`
 }
 
 type Schema struct {
