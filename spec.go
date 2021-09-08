@@ -107,7 +107,8 @@ type RequestBody struct {
 	// e.g. text/plain overrides text/*
 	Content map[string]Media `json:"content"`
 
-	Required bool `json:"required"` // TODO: implement
+	// Determines if the request body is required in the request. Defaults to false.
+	Required bool `json:"required"`
 }
 
 // Responses - a container for the expected responses of an operation.

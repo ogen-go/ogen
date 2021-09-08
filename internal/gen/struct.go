@@ -18,11 +18,14 @@ type serverDef struct {
 }
 
 type serverMethodDef struct {
-	Name         string
-	OperationID  string
-	Path         string
-	HTTPMethod   string
-	Parameters   map[ParameterType][]Parameter
-	RequestType  string
+	Name        string
+	OperationID string
+	Path        string
+	HTTPMethod  string
+	Parameters  map[ParameterType][]Parameter
+
+	RequestType         string
+	RequestBodyRequired bool
+
 	ResponseType string
 }

@@ -16,14 +16,26 @@
 			{{- end }}
 
 			{{- if $m.RequestType}}
-			var req {{ $m.RequestType }}
-			if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+			req := new({{ $m.RequestType }})
+			if err := json.NewDecoder(r.Body).Decode(req); err != nil {
+				{{- if $m.RequestBodyRequired }}
+				// Unexpected error.
 				w.WriteHeader(http.StatusBadRequest)
 				return
-			}
-			{{- end}}
+				{{- else }}
+				// Requets body is optional.
+				if !errors.Is(err, io.EOF) {
+					// Unexpected error.
+					w.WriteHeader(http.StatusBadRequest)
+					return
+				}
 
-			resp, err := s.{{ $m.Name }}(r.Context(){{ if $m.RequestType }}, &req{{ end }}{{ if $m.Parameters }}, params{{ end }})
+				req = nil
+				{{- end }}
+			}
+			{{- end }}
+
+			resp, err := s.{{ $m.Name }}(r.Context(){{ if $m.RequestType }}, req{{ end }}{{ if $m.Parameters }}, params{{ end }})
 			if err != nil {
 				w.WriteHeader(http.StatusInternalServerError)
 				return

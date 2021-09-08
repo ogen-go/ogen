@@ -7,6 +7,10 @@
 	type Server interface {
     {{- range $m := $.Server.Methods }}
 		// {{ $m.Name }}
+		{{- if $m.RequestType }}{{- if not $m.RequestBodyRequired }}
+		//
+		// Note: req can be nil.
+		{{- end }}{{- end }}
 		{{- if ne $m.ResponseType "" }}
 		{{ $m.Name }}(ctx context.Context{{- if $m.RequestType }}, req *{{$m.RequestType}}{{ end }}{{- if $m.Parameters }}, params *{{ $m.Name }}Parameters{{ end }}) (*{{ $m.ResponseType }}, error)
 		{{- else }}

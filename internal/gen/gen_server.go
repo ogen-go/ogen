@@ -105,10 +105,11 @@ func (g *Generator) generateOperation(path, httpMethod string, op *ogen.Operatio
 	}
 
 	method := serverMethodDef{
-		Name:        toFirstUpper(op.OperationID),
-		OperationID: op.OperationID,
-		Path:        path,
-		HTTPMethod:  strings.ToUpper(httpMethod),
+		Name:                toFirstUpper(op.OperationID),
+		OperationID:         op.OperationID,
+		Path:                path,
+		HTTPMethod:          strings.ToUpper(httpMethod),
+		RequestBodyRequired: op.RequestBody.Required,
 	}
 
 	if len(op.RequestBody.Content) > 1 {
