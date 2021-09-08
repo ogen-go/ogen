@@ -61,29 +61,34 @@ func (g *Generator) generateServer() error {
 			return fmt.Errorf("reference objects in PathItem not supported yet")
 		}
 
-		if err := g.generateOperation(path, http.MethodGet, item.Get); err != nil {
-			return fmt.Errorf("generate op: %w", err)
-		}
-		if err := g.generateOperation(path, http.MethodPut, item.Put); err != nil {
-			return fmt.Errorf("generate op: %w", err)
-		}
-		if err := g.generateOperation(path, http.MethodPost, item.Post); err != nil {
-			return fmt.Errorf("generate op: %w", err)
-		}
-		if err := g.generateOperation(path, http.MethodDelete, item.Delete); err != nil {
-			return fmt.Errorf("generate op: %w", err)
-		}
-		if err := g.generateOperation(path, http.MethodOptions, item.Options); err != nil {
-			return fmt.Errorf("generate op: %w", err)
-		}
-		if err := g.generateOperation(path, http.MethodHead, item.Head); err != nil {
-			return fmt.Errorf("generate op: %w", err)
-		}
-		if err := g.generateOperation(path, http.MethodPatch, item.Patch); err != nil {
-			return fmt.Errorf("generate op: %w", err)
-		}
-		if err := g.generateOperation(path, http.MethodTrace, item.Trace); err != nil {
-			return fmt.Errorf("generate op: %w", err)
+		if err := func() error {
+			if err := g.generateOperation(path, http.MethodGet, item.Get); err != nil {
+				return fmt.Errorf("method %s: %w", http.MethodGet, err)
+			}
+			if err := g.generateOperation(path, http.MethodPut, item.Put); err != nil {
+				return fmt.Errorf("method %s: %w", http.MethodPut, err)
+			}
+			if err := g.generateOperation(path, http.MethodPost, item.Post); err != nil {
+				return fmt.Errorf("method %s: %w", http.MethodPost, err)
+			}
+			if err := g.generateOperation(path, http.MethodDelete, item.Delete); err != nil {
+				return fmt.Errorf("method %s: %w", http.MethodDelete, err)
+			}
+			if err := g.generateOperation(path, http.MethodOptions, item.Options); err != nil {
+				return fmt.Errorf("method %s: %w", http.MethodOptions, err)
+			}
+			if err := g.generateOperation(path, http.MethodHead, item.Head); err != nil {
+				return fmt.Errorf("method %s: %w", http.MethodHead, err)
+			}
+			if err := g.generateOperation(path, http.MethodPatch, item.Patch); err != nil {
+				return fmt.Errorf("method %s: %w", http.MethodPatch, err)
+			}
+			if err := g.generateOperation(path, http.MethodTrace, item.Trace); err != nil {
+				return fmt.Errorf("method %s: %w", http.MethodTrace, err)
+			}
+			return nil
+		}(); err != nil {
+			return fmt.Errorf("path %s: %w", path, err)
 		}
 	}
 
@@ -107,10 +112,14 @@ func (g *Generator) generateOperation(path, httpMethod string, op *ogen.Operatio
 		HTTPMethod:  strings.ToUpper(httpMethod),
 	}
 
-	for _, content := range op.RequestBody.Content {
-		name := g.schemaComponentByRef(content.Schema.Ref)
+	if len(op.RequestBody.Content) > 1 {
+		return fmt.Errorf("parse requestBody: multiple contents not supported yet")
+	}
+
+	for contentType, media := range op.RequestBody.Content {
+		name := g.schemaComponentByRef(media.Schema.Ref)
 		if name == "" {
-			return fmt.Errorf("ref %s not found", content.Schema.Ref)
+			return fmt.Errorf("parse requestBody: %s: ref %s not found", contentType, media.Schema.Ref)
 		}
 
 		method.RequestType = name
@@ -118,13 +127,17 @@ func (g *Generator) generateOperation(path, httpMethod string, op *ogen.Operatio
 
 	for status, resp := range op.Responses {
 		if status != "200" {
-			return fmt.Errorf("unsupported response status code: %s", status)
+			return fmt.Errorf("parse responses: unsupported status code: %s", status)
 		}
 
-		for _, content := range resp.Content {
-			name := g.schemaComponentByRef(content.Schema.Ref)
+		if len(resp.Content) > 1 {
+			return fmt.Errorf("parse response: %s: multiple contents not supported yet", status)
+		}
+
+		for contentType, media := range resp.Content {
+			name := g.schemaComponentByRef(media.Schema.Ref)
 			if name == "" {
-				return fmt.Errorf("ref %s not found", content.Schema.Ref)
+				return fmt.Errorf("parse response: %s: %s: ref %s not found", status, contentType, media.Schema.Ref)
 			}
 
 			method.ResponseType = name
