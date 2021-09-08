@@ -1,10 +1,10 @@
 {{- /*gotype: github.com/ogen-go/ogen/internal/gen.config*/ -}}
 
-{{ define "components" }}
+{{ define "schemas" }}
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-{{ range $s:= $.Components }}
+{{ range $s:= $.Schemas }}
 // {{ $s.Name }} is {{ $s.Path }}.
 //
 // {{ $s.Description }}

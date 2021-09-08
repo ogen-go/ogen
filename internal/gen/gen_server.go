@@ -47,11 +47,11 @@ func parseParameter(param ogen.Parameter, path string) (*Parameter, error) {
 	}
 
 	return &Parameter{
-		Name:            pascal(param.Name),
-		SourceName:      param.Name,
-		Type:            pType,
-		In:              t,
-		Required:        param.Required,
+		Name:       pascal(param.Name),
+		SourceName: param.Name,
+		Type:       pType,
+		In:         t,
+		Required:   param.Required,
 	}, nil
 }
 
@@ -108,7 +108,7 @@ func (g *Generator) generateOperation(path, httpMethod string, op *ogen.Operatio
 	}
 
 	for _, content := range op.RequestBody.Content {
-		name := g.componentByRef(content.Schema.Ref)
+		name := g.schemaComponentByRef(content.Schema.Ref)
 		if name == "" {
 			return fmt.Errorf("ref %s not found", content.Schema.Ref)
 		}
@@ -122,7 +122,7 @@ func (g *Generator) generateOperation(path, httpMethod string, op *ogen.Operatio
 		}
 
 		for _, content := range resp.Content {
-			name := g.componentByRef(content.Schema.Ref)
+			name := g.schemaComponentByRef(content.Schema.Ref)
 			if name == "" {
 				return fmt.Errorf("ref %s not found", content.Schema.Ref)
 			}

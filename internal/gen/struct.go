@@ -1,6 +1,6 @@
 package gen
 
-type componentStructDef struct {
+type schemaStructDef struct {
 	Name        string
 	Fields      []field
 	Description string

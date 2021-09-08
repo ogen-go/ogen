@@ -54,11 +54,11 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string, t *template.Templ
 	}
 
 	cfg := config{
-		Components: g.components,
-		Server:     g.server,
+		Schemas: g.schemas,
+		Server:  g.server,
 	}
 
-	if err := w.Generate("components", "openapi_components.gen.go", cfg); err != nil {
+	if err := w.Generate("schemas", "openapi_schemas.gen.go", cfg); err != nil {
 		return err
 	}
 	if err := w.Generate("router", "openapi_router.gen.go", cfg); err != nil {

@@ -108,11 +108,10 @@ func parseType(schema ogen.Schema) (string, error) {
 	}
 }
 
-func parseComponent(name string, schema ogen.Schema) (*componentStructDef, error) {
-	component := componentStructDef{
+func parseSchema(name string, schema ogen.Schema) (*schemaStructDef, error) {
+	component := schemaStructDef{
 		Name:        name,
 		Description: toFirstUpper(schema.Description),
-		Path:        path.Join("#/components/schemas", name),
 	}
 
 	if !strings.HasSuffix(component.Description, ".") {
@@ -141,25 +140,26 @@ func parseComponent(name string, schema ogen.Schema) (*componentStructDef, error
 	return &component, nil
 }
 
-func (g *Generator) generateComponents() error {
+func (g *Generator) generateSchemaComponents() error {
 	for n, s := range g.spec.Components.Schemas {
-		component, err := parseComponent(n, s)
+		schema, err := parseSchema(n, s)
 		if err != nil {
 			return fmt.Errorf("parse component %s: %w", n, err)
 		}
 
-		g.components = append(g.components, *component)
+		schema.Path = path.Join("#/components/schemas", n)
+		g.schemas = append(g.schemas, *schema)
 	}
 
-	sort.SliceStable(g.components, func(i, j int) bool {
-		return strings.Compare(g.components[i].Name, g.components[j].Name) < 0
+	sort.SliceStable(g.schemas, func(i, j int) bool {
+		return strings.Compare(g.schemas[i].Name, g.schemas[j].Name) < 0
 	})
 
 	return nil
 }
 
-func (g *Generator) componentByRef(ref string) string {
-	for _, c := range g.components {
+func (g *Generator) schemaComponentByRef(ref string) string {
+	for _, c := range g.schemas {
 		if c.Path == ref {
 			return c.Name
 		}

@@ -10,9 +10,9 @@ import (
 const openapiVersion = "3.0.3"
 
 type Generator struct {
-	spec       *ogen.Spec
-	components []componentStructDef
-	server     serverDef
+	spec    *ogen.Spec
+	schemas []schemaStructDef
+	server  serverDef
 }
 
 func NewGenerator(spec *ogen.Spec) (*Generator, error) {
@@ -32,7 +32,7 @@ func NewGenerator(spec *ogen.Spec) (*Generator, error) {
 		)
 	}
 
-	if err := g.generateComponents(); err != nil {
+	if err := g.generateSchemaComponents(); err != nil {
 		return nil, err
 	}
 
