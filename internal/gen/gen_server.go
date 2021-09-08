@@ -104,25 +104,34 @@ func (g *Generator) generateOperation(path, httpMethod string, op *ogen.Operatio
 		return nil
 	}
 
+	if httpMethod != http.MethodPost &&
+		httpMethod != http.MethodPut &&
+		httpMethod != http.MethodPatch &&
+		op.RequestBody != nil {
+		return fmt.Errorf("requestBody is not supported for this http method")
+	}
+
 	method := serverMethodDef{
-		Name:                toFirstUpper(op.OperationID),
-		OperationID:         op.OperationID,
-		Path:                path,
-		HTTPMethod:          strings.ToUpper(httpMethod),
-		RequestBodyRequired: op.RequestBody.Required,
+		Name:        toFirstUpper(op.OperationID),
+		OperationID: op.OperationID,
+		Path:        path,
+		HTTPMethod:  strings.ToUpper(httpMethod),
 	}
 
-	if len(op.RequestBody.Content) > 1 {
-		return fmt.Errorf("parse requestBody: multiple contents not supported yet")
-	}
-
-	for contentType, media := range op.RequestBody.Content {
-		name := g.schemaComponentByRef(media.Schema.Ref)
-		if name == "" {
-			return fmt.Errorf("parse requestBody: %s: ref %s not found", contentType, media.Schema.Ref)
+	if op.RequestBody != nil {
+		method.RequestBodyRequired = op.RequestBody.Required
+		if len(op.RequestBody.Content) > 1 {
+			return fmt.Errorf("parse requestBody: multiple contents not supported yet")
 		}
 
-		method.RequestType = name
+		for contentType, media := range op.RequestBody.Content {
+			name := g.schemaComponentByRef(media.Schema.Ref)
+			if name == "" {
+				return fmt.Errorf("parse requestBody: %s: ref %s not found", contentType, media.Schema.Ref)
+			}
+
+			method.RequestType = name
+		}
 	}
 
 	for status, resp := range op.Responses {

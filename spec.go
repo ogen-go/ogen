@@ -75,12 +75,12 @@ type PathItem struct {
 type Operation struct {
 	// A list of tags for API documentation control.
 	// Tags can be used for logical grouping of operations by resources or any other qualifier.
-	Tags        []string    `json:"tags,omitempty"`
-	Description string      `json:"description,omitempty"`
-	OperationID string      `json:"operationId"`
-	Parameters  []Parameter `json:"parameters"`
-	RequestBody RequestBody `json:"requestBody"`
-	Responses   Responses   `json:"responses"`
+	Tags        []string     `json:"tags,omitempty"`
+	Description string       `json:"description,omitempty"`
+	OperationID string       `json:"operationId"`
+	Parameters  []Parameter  `json:"parameters"`
+	RequestBody *RequestBody `json:"requestBody"`
+	Responses   Responses    `json:"responses"`
 }
 
 type Parameter struct {
