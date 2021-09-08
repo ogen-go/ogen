@@ -85,16 +85,31 @@ type Operation struct {
 
 type Parameter struct {
 	Name string `json:"name"`
+
 	// The location of the parameter. Possible values are "query", "header", "path" or "cookie".
 	In          string `json:"in"`
 	Description string `json:"description"`
 	Schema      Schema `json:"schema"`
+
 	// Determines whether this parameter is mandatory.
 	// If the parameter location is "path", this property is REQUIRED
 	// and its value MUST be true.
 	// Otherwise, the property MAY be included and its default value is false.
-	Required   bool `json:"required"`
+	Required bool `json:"required"`
+
+	// Specifies that a parameter is deprecated and SHOULD be transitioned out of usage.
+	// Default value is false.
 	Deprecated bool `json:"deprecated"` // TODO: implement
+
+	// For more complex scenarios, the content property can define the media type and schema of the parameter.
+	// A parameter MUST contain either a schema property, or a content property, but not both.
+	// When example or examples are provided in conjunction with the schema object,
+	// the example MUST follow the prescribed serialization strategy for the parameter.
+	//
+	// A map containing the representations for the parameter.
+	// The key is the media type and the value describes it.
+	// The map MUST only contain one entry.
+	Content map[string]Media `json:"content"` // TODO: implement
 }
 
 // RequestBody describes a single request body.
@@ -122,13 +137,9 @@ type Response struct {
 	Links       map[string]interface{} // TODO: implement
 }
 
-type ContentSchema struct {
-	Type  string            `json:"type"`
-	Items map[string]string `json:"items"`
-	Ref   string            `json:"$ref"`
-}
-
+// Media provides schema and examples for the media type identified by its key.
 type Media struct {
+	// The schema defining the content of the request, response, or parameter.
 	Schema Schema `json:"schema"`
 }
 
