@@ -93,8 +93,7 @@ func (g *Generator) generateServer() error {
 	}
 
 	sort.SliceStable(g.server.Methods, func(i, j int) bool {
-		return strings.Compare(g.server.Methods[i].Path, g.server.Methods[j].Path) < 0 ||
-			strings.Compare(g.server.Methods[i].HTTPMethod, g.server.Methods[j].HTTPMethod) < 0
+		return strings.Compare(g.server.Methods[i].Path, g.server.Methods[j].Path) < 0
 	})
 
 	return nil
