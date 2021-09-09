@@ -16,6 +16,7 @@ type Generator struct {
 }
 
 func NewGenerator(spec *ogen.Spec) (*Generator, error) {
+	initSpec(spec)
 	g := &Generator{
 		spec: spec,
 	}
@@ -41,4 +42,22 @@ func NewGenerator(spec *ogen.Spec) (*Generator, error) {
 	}
 
 	return g, nil
+}
+
+func initSpec(spec *ogen.Spec) {
+	if spec.Components == nil {
+		spec.Components = &ogen.Components{}
+	}
+	if spec.Components.Parameters == nil {
+		spec.Components.Parameters = make(map[string]ogen.Parameter)
+	}
+	if spec.Components.RequestBodies == nil {
+		spec.Components.RequestBodies = make(map[string]ogen.RequestBody)
+	}
+	if spec.Components.Responses == nil {
+		spec.Components.Responses = make(map[string]ogen.Response)
+	}
+	if spec.Components.Schemas == nil {
+		spec.Components.Schemas = make(map[string]ogen.Schema)
+	}
 }

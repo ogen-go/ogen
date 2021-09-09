@@ -118,13 +118,23 @@ func (g *Generator) generateOperation(path, httpMethod string, op *ogen.Operatio
 		HTTPMethod:  strings.ToUpper(httpMethod),
 	}
 
-	if op.RequestBody != nil {
-		method.RequestBodyRequired = op.RequestBody.Required
-		if len(op.RequestBody.Content) > 1 {
+	if body := op.RequestBody; body != nil {
+		// Try to get request body from components section.
+		if body.Ref != "" {
+			rbody, found := g.componentsRequestBody(body.Ref)
+			if !found {
+				return fmt.Errorf("parse requestBody: ref '%s' not found", body.Ref)
+			}
+
+			body = &rbody
+		}
+
+		method.RequestBodyRequired = body.Required
+		if len(body.Content) > 1 {
 			return fmt.Errorf("parse requestBody: multiple contents not supported yet")
 		}
 
-		for contentType, media := range op.RequestBody.Content {
+		for contentType, media := range body.Content {
 			name := g.schemaComponentByRef(media.Schema.Ref)
 			if name == "" {
 				return fmt.Errorf("parse requestBody: %s: ref %s not found", contentType, media.Schema.Ref)
@@ -137,6 +147,16 @@ func (g *Generator) generateOperation(path, httpMethod string, op *ogen.Operatio
 	for status, resp := range op.Responses {
 		if status != "200" {
 			return fmt.Errorf("parse responses: unsupported status code: %s", status)
+		}
+
+		// Try to get response from components section.
+		if resp.Ref != "" {
+			cresp, found := g.componentsResponse(resp.Ref)
+			if !found {
+				return fmt.Errorf("parse response: ref '%s' not found", resp.Ref)
+			}
+
+			resp = cresp
 		}
 
 		if len(resp.Content) > 1 {
@@ -158,6 +178,16 @@ func (g *Generator) generateOperation(path, httpMethod string, op *ogen.Operatio
 	}
 
 	for _, param := range op.Parameters {
+		// Try to get param from components section.
+		if param.Ref != "" {
+			cparam, found := g.componentsParameter(param.Ref)
+			if !found {
+				return fmt.Errorf("parse parameters: ref '%s' not found", param.Ref)
+			}
+
+			param = cparam
+		}
+
 		parameter, err := parseParameter(param, path)
 		if err != nil {
 			return fmt.Errorf("parse method %s parameter %s: %w", op.OperationID, param.Name, err)
