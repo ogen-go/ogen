@@ -37,6 +37,58 @@ var (
 )
 
 func Register(r chi.Router, s Server) {
+	r.Method("GET", "/foobar", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		params, err := ParseFooBarGetParameters(r)
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
+
+		resp, err := s.FooBarGet(r.Context(), params)
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+
+		b, err := json.Marshal(resp)
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+
+		w.Header().Set("content-type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		io.Copy(w, bytes.NewReader(b))
+	}))
+	r.Method("POST", "/foobar", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		req := new(Pet)
+		if err := json.NewDecoder(r.Body).Decode(req); err != nil {
+			// Requets body is optional.
+			if !errors.Is(err, io.EOF) {
+				// Unexpected error.
+				w.WriteHeader(http.StatusBadRequest)
+				return
+			}
+
+			req = nil
+		}
+
+		resp, err := s.FooBarPost(r.Context(), req)
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+
+		b, err := json.Marshal(resp)
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+
+		w.Header().Set("content-type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		io.Copy(w, bytes.NewReader(b))
+	}))
 	r.Method("GET", "/pet", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		params, err := ParsePetGetParameters(r)
 		if err != nil {

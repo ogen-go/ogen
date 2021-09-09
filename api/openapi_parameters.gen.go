@@ -36,6 +36,48 @@ var (
 	_ = conv.ToInt32
 )
 
+type FooBarGetParameters struct {
+	Query FooBarGetQueryParameters
+}
+
+type FooBarGetQueryParameters struct {
+	InlinedParam int64
+	Skip         int32
+}
+
+func ParseFooBarGetParameters(r *http.Request) (*FooBarGetParameters, error) {
+	var parameters FooBarGetParameters
+
+	{
+		param := r.URL.Query().Get("inlinedParam")
+		if len(param) == 0 {
+			return nil, fmt.Errorf("Query param 'inlinedParam' is empty")
+		}
+
+		v, err := conv.ToInt64(param)
+		if err != nil {
+			return nil, fmt.Errorf("parse Query param 'inlinedParam': %w", err)
+		}
+
+		parameters.Query.InlinedParam = v
+	}
+	{
+		param := r.URL.Query().Get("skip")
+		if len(param) == 0 {
+			return nil, fmt.Errorf("Query param 'skip' is empty")
+		}
+
+		v, err := conv.ToInt32(param)
+		if err != nil {
+			return nil, fmt.Errorf("parse Query param 'skip': %w", err)
+		}
+
+		parameters.Query.Skip = v
+	}
+
+	return &parameters, nil
+}
+
 type PetGetParameters struct {
 	Cookie PetGetCookieParameters
 	Header PetGetHeaderParameters

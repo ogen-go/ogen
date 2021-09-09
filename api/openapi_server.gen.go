@@ -37,6 +37,12 @@ var (
 )
 
 type Server interface {
+	// FooBarGet
+	FooBarGet(ctx context.Context, params *FooBarGetParameters) (*Pet, error)
+	// FooBarPost
+	//
+	// Note: req can be nil.
+	FooBarPost(ctx context.Context, req *Pet) (*Pet, error)
 	// PetGet
 	PetGet(ctx context.Context, params *PetGetParameters) (*Pet, error)
 	// PetCreate
