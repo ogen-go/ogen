@@ -119,6 +119,51 @@
           }
         }
       }
+    },
+    "/foobar": {
+      "get": {
+        "description": "Dumb endpoint for testing things",
+        "operationId": "fooBarGet",
+        "parameters": [
+          {
+            "name": "inlinedParam",
+            "in": "query",
+            "description": "inlinedParam",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/skipParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/PetResponse"
+          }
+        }
+      },
+      "post": {
+        "description": "Dumb endpoint for testing things",
+        "operationId": "fooBarPost",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/PetCreate"
+        },
+        "responses": {
+          "200": {
+            "description": "A new pet.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -170,7 +215,29 @@
         }
       }
     },
+    "requestBodies": {
+      "PetCreate": {
+        "description": "pet to add to the system",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Pet"
+            }
+          }
+        }
+      }
+    },
     "responses": {
+      "PetResponse": {
+        "description": "A pet.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Pet"
+            }
+          }
+        }
+      },
       "NotFound": {
         "description": "Entity not found."
       },
