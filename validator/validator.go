@@ -193,7 +193,7 @@ func (v *validator) validateMedia(m ogen.Media) error {
 
 func (v *validator) validateSchema(s ogen.Schema) error {
 	if s.Ref != "" {
-		return nil
+		return v.validateSchemaRef(s.Ref)
 	}
 
 	switch s.Type {
@@ -275,4 +275,20 @@ func (v *validator) validateParameterRef(ref string) error {
 	}
 
 	return fmt.Errorf("referenced parameter with name '%s' not found in components section", targetName)
+}
+
+func (v *validator) validateSchemaRef(ref string) error {
+	if !strings.HasPrefix(ref, "#/components/schemas/") {
+		return fmt.Errorf("invalid schema reference: '%s'", ref)
+	}
+
+	targetName := strings.TrimPrefix(ref, "#/components/schemas/")
+	for name, schema := range v.spec.Components.Schemas {
+		if name == targetName && schema.Ref == "" {
+			return nil
+		}
+	}
+
+	return fmt.Errorf("referenced schema with name '%s' not found in components section", targetName)
+
 }

@@ -244,12 +244,20 @@
       "IllegalInput": {
         "description": "Illegal input for operation."
       },
-      "GeneralError": {
+      "Error": {
         "description": "General Error",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/GeneralError"
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
             }
           }
         }
