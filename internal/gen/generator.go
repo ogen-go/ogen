@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/validator"
 )
 
 const openapiVersion = "3.0.3"
@@ -16,6 +17,9 @@ type Generator struct {
 }
 
 func NewGenerator(spec *ogen.Spec) (*Generator, error) {
+	if err := validator.Validate(spec); err != nil {
+		return nil, err
+	}
 	initSpec(spec)
 	g := &Generator{
 		spec: spec,
