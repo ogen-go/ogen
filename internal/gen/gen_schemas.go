@@ -158,7 +158,9 @@ func (g *Generator) generateSchemaComponents() error {
 	return nil
 }
 
-func (g *Generator) schemaComponentByRef(ref string) string {
+// schemaComponentGotype returns name of the generated
+// go type for schema defined in components section.
+func (g *Generator) schemaComponentGotype(ref string) string {
 	for _, c := range g.schemas {
 		if c.Path == ref {
 			return c.Name

@@ -135,7 +135,7 @@ func (g *Generator) generateOperation(path, httpMethod string, op *ogen.Operatio
 		}
 
 		for contentType, media := range body.Content {
-			name := g.schemaComponentByRef(media.Schema.Ref)
+			name := g.schemaComponentGotype(media.Schema.Ref)
 			if name == "" {
 				return fmt.Errorf("parse requestBody: %s: ref %s not found", contentType, media.Schema.Ref)
 			}
@@ -164,7 +164,7 @@ func (g *Generator) generateOperation(path, httpMethod string, op *ogen.Operatio
 		}
 
 		for contentType, media := range resp.Content {
-			name := g.schemaComponentByRef(media.Schema.Ref)
+			name := g.schemaComponentGotype(media.Schema.Ref)
 			if name == "" {
 				return fmt.Errorf("parse response: %s: %s: ref %s not found", status, contentType, media.Schema.Ref)
 			}
