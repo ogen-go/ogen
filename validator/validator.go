@@ -290,5 +290,4 @@ func (v *validator) validateSchemaRef(ref string) error {
 	}
 
 	return fmt.Errorf("referenced schema with name '%s' not found in components section", targetName)
-
 }
