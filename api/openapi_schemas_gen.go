@@ -36,6 +36,19 @@ var (
 	_ = conv.ToInt32
 )
 
+type ErrorResponse struct {
+	Code    int64  `json:"code"`
+	Message string `json:"message"`
+}
+
+func (*ErrorResponse) implFoobarPostResponse() {}
+
+type IllegalInput struct{}
+
+type NotFound struct{}
+
+func (*NotFound) implFoobarGetResponse() {}
+
 type Pet struct {
 	Birthday time.Time `json:"birthday"`
 	Friends  []Pet     `json:"friends"`
@@ -43,7 +56,9 @@ type Pet struct {
 	Name     string    `json:"name"`
 }
 
-func (*Pet) implPetPostRequest() {}
+func (*Pet) implFoobarGetResponse()  {}
+func (*Pet) implFoobarPostResponse() {}
+func (*Pet) implPetPostRequest()     {}
 
 type PetPostTextPlainRequest string
 

@@ -38,16 +38,20 @@ var (
 
 func NewFoobarGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var err error
 		params, err := ParseFoobarGetParams(r)
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
 
-		err = s.FoobarGet(r.Context(), params)
+		response, err := s.FoobarGet(r.Context(), params)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+
+		if err := EncodeFoobarGetResponse(response, w); err != nil {
+			_ = err
 			return
 		}
 	}
@@ -55,16 +59,20 @@ func NewFoobarGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) 
 
 func NewFoobarPostHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var err error
 		request, err := DecodeFoobarPostRequest(r)
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
 
-		err = s.FoobarPost(r.Context(), request)
+		response, err := s.FoobarPost(r.Context(), request)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+
+		if err := EncodeFoobarPostResponse(response, w); err != nil {
+			_ = err
 			return
 		}
 	}
@@ -72,16 +80,20 @@ func NewFoobarPostHandler(s Server) func(w http.ResponseWriter, r *http.Request)
 
 func NewPetGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var err error
 		params, err := ParsePetGetParams(r)
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
 
-		err = s.PetGet(r.Context(), params)
+		response, err := s.PetGet(r.Context(), params)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+
+		if err := EncodePetGetResponse(response, w); err != nil {
+			_ = err
 			return
 		}
 	}
@@ -89,16 +101,20 @@ func NewPetGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 
 func NewPetPostHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var err error
 		request, err := DecodePetPostRequest(r)
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
 
-		err = s.PetPost(r.Context(), request)
+		response, err := s.PetPost(r.Context(), request)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+
+		if err := EncodePetPostResponse(response, w); err != nil {
+			_ = err
 			return
 		}
 	}
@@ -106,16 +122,20 @@ func NewPetPostHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 
 func NewPetNameGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var err error
 		params, err := ParsePetNameGetParams(r)
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
 
-		err = s.PetNameGet(r.Context(), params)
+		response, err := s.PetNameGet(r.Context(), params)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+
+		if err := EncodePetNameGetResponse(response, w); err != nil {
+			_ = err
 			return
 		}
 	}
