@@ -4,24 +4,30 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-{{- range $m := $.Server.Methods }}
+{{- range $m := $.Methods }}
 {{ if $m.Parameters }}
-type {{ $m.Name }}Parameters struct {
+{{/* Define generic parameters struct */}}
+type {{ $m.Name }}Params struct {
 	{{- range $t, $params := $m.Parameters }}
-		{{ $t }} {{ $m.Name }}{{ $t }}Parameters
+		{{ $t }} {{ $m.Name }}{{ $t }}Params
 	{{- end}}
 }
+{{/* Define generic parameters struct */}}
+
+{{/* Define located parameters struct */}}
 {{ range $t, $params := $m.Parameters }}
-type {{ $m.Name }}{{ $t }}Parameters struct {
+type {{ $m.Name }}{{ $t }}Params struct {
 	{{- range $p := $params }}
 		{{ $p.Name }} {{ $p.Type }}
 	{{- end }}
 }
 {{ end }}
+{{/* Define located parameters struct */}}
 
-func Parse{{ $m.Name }}Parameters(r *http.Request) (*{{ $m.Name }}Parameters, error) {
-	var parameters {{ $m.Name }}Parameters
-	{{ range $t, $params := $m.Parameters }}
+{{/* Parse parameters function */}}
+func Parse{{ $m.Name }}Params(r *http.Request) ({{ $m.Name }}Params, error) {
+	var params {{ $m.Name }}Params
+	{{- range $t, $params := $m.Parameters }}
 		{{- range $p := $params }}
 		{
 			{{- if eq $t "Query" }}
@@ -33,41 +39,42 @@ func Parse{{ $m.Name }}Parameters(r *http.Request) (*{{ $m.Name }}Parameters, er
             {{- else if eq $t "Cookie" }}
 				c, err := r.Cookie("{{ $p.SourceName }}")
 				if err != nil {
-					return nil, fmt.Errorf("cookie param {{ $p.SourceName }}: %w", err)
+					return params, fmt.Errorf("Cookie param '{{ $p.SourceName }}': %w", err)
 				}
 
 				param := c.Value
 			{{- else }}
-				return nil, fmt.Errorf("unsupported param type {{ $t }}")
+				return params, fmt.Errorf("unsupported param type {{ $t }}")
 			{{- end }}
 
 			{{- if $p.Required }}
 			if len(param) == 0 {
-				return nil, fmt.Errorf("{{ $t }} param '{{ $p.SourceName }}' is empty")
+				return params, fmt.Errorf("{{ $t }} param '{{ $p.SourceName }}' is empty")
 			}
 
 			v, err := {{ template "parse_from_string" $p.Type }}(param)
 			if err != nil {
-				return nil, fmt.Errorf("parse {{ $t }} param '{{ $p.SourceName }}': %w", err)
+				return params, fmt.Errorf("parse {{ $t }} param '{{ $p.SourceName }}': %w", err)
 			}
 
-			parameters.{{ $t }}.{{ $p.Name }} = v
+			params.{{ $t }}.{{ $p.Name }} = v
 			{{- else }}
 			if len(param) > 0 {
 				v, err := {{ template "parse_from_string" $p.Type }}(param)
 				if err != nil {
-					return nil, fmt.Errorf("param {{ $t }} {{ $p.SourceName }} parse: %w", err)
+					return params, fmt.Errorf("param {{ $t }} {{ $p.SourceName }} parse: %w", err)
 				}
 
-				parameters.{{ $t }}.{{ $p.Name }} = v
+				params.{{ $t }}.{{ $p.Name }} = v
 			}
 			{{- end }}
 		}
 		{{- end }}
 	{{- end }}
 
-	return &parameters, nil
+	return params, nil
 }
+{{/* Parse parameters function */}}
 {{- end }}
 {{- end }}
 

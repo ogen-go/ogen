@@ -1,0 +1,12 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.config*/ -}}
+
+{{ define "interfaces" }}
+package {{ $.Package }}
+
+{{- range $name, $methods := $.Interfaces }}
+type {{ $name }} interface {
+{{- range $method, $_ := $methods }} {{ $method }}() {{- end }}
+}
+{{ end }}
+
+{{ end }}

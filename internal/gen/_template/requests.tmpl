@@ -1,0 +1,43 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.config*/ -}}
+{{ define "requests" }}
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+{{/* Range over all methods */}}
+{{- range $m := $.Methods }}
+{{- if ne $m.RequestType "" }}
+func Decode{{ $m.Name }}Request(r *http.Request) ({{ $m.RequestType }}, error) {
+    contentType := r.Header.Get("Content-Type")
+    switch contentType {
+    {{- /* Range over all request types */ -}}
+    {{- range $ctype, $schema := $m.RequestBody.Contents }}
+    case "{{ $ctype }}":
+        var request {{ $schema.Name }}
+        {{- /* Decode json */ -}}
+        {{- if eq $ctype "application/json" }}
+        if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+            {{- if not $m.RequestBody.Required}}
+            if errors.Is(err, io.EOF) {
+                return nil, nil
+            }
+            {{- end }}
+            return nil, err
+        }
+
+        return &request, nil
+        {{- /* Decode json */ -}}
+        {{- else }}
+        _ = request
+        return nil, fmt.Errorf("{{ $ctype }} decoder not implemented")
+        {{- end }}
+    {{- end }}
+    {{- /* Range over all request types */}}
+    default:
+        return nil, fmt.Errorf("unexpected content-type: %s", contentType)
+    }
+}
+{{- end }}
+{{ end }}
+{{/* Range over all methods */}}
+
+{{ end }}

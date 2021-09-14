@@ -65,7 +65,7 @@ func main() {
 				continue
 			}
 			name := f.Name()
-			if !strings.HasSuffix(name, ".gen.go") {
+			if !strings.HasSuffix(name, "_gen.go") {
 				continue
 			}
 			if !strings.HasPrefix(name, "openapi") {
@@ -85,7 +85,7 @@ func main() {
 	if err != nil {
 		panic(fmt.Sprintf("%+v", err))
 	}
-	if err := g.WriteSource(fs, *packageName, gen.Template()); err != nil {
+	if err := g.WriteSource(fs, *packageName); err != nil {
 		panic(fmt.Sprintf("%+v", err))
 	}
 }

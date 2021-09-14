@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/ogen-go/ogen"
@@ -52,4 +53,38 @@ func (g *Generator) componentsResponse(ref string) (ogen.Response, bool) {
 	}
 
 	return ogen.Response{}, false
+}
+
+// componentsResponse searches response defined in components section.
+func (g *Generator) componentsSchema(ref string) (ogen.Schema, bool) {
+	if !strings.HasPrefix(ref, "#/components/schemas/") {
+		return ogen.Schema{}, false
+	}
+
+	targetName := strings.TrimPrefix(ref, "#/components/schemas/")
+	for name, schema := range g.spec.Components.Schemas {
+		if name == targetName && schema.Ref == "" {
+			return schema, true
+		}
+	}
+
+	return ogen.Schema{}, false
+}
+
+func componentRefGotype(ref string) (string, error) {
+	if !strings.HasPrefix(ref, "#/components/schemas/") {
+		return "", fmt.Errorf("invalid component reference: %s", ref)
+	}
+
+	targetName := strings.TrimPrefix(ref, "#/components/schemas/")
+	return pascal(targetName), nil
+}
+
+func requestBodyRefGotype(ref string) (string, error) {
+	if !strings.HasPrefix(ref, "#/components/requestBodies/") {
+		return "", fmt.Errorf("invalid requestBody reference: %s", ref)
+	}
+
+	targetName := strings.TrimPrefix(ref, "#/components/requestBodies/")
+	return pascal(targetName), nil
 }

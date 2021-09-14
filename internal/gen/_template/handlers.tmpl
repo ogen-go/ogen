@@ -1,0 +1,36 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.config*/ -}}
+
+{{ define "handlers" }}
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+{{- range $m := $.Methods }}
+func New{{ $m.Name }}Handler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+        var err error
+		{{- if $m.Parameters }}
+        params, err := Parse{{ $m.Name }}Params(r)
+        if err != nil {
+            w.WriteHeader(http.StatusBadRequest)
+            return
+        }
+        {{- end }}
+
+        {{- if $m.RequestType }}
+        request, err := Decode{{ $m.Name }}Request(r)
+        if err != nil {
+            w.WriteHeader(http.StatusBadRequest)
+            return
+        }
+        {{- end }}
+
+        err = s.{{$m.Name}}(r.Context(){{ if $m.RequestType }}, request{{ end }}{{if $m.Parameters}}, params {{ end }})
+        if err != nil {
+            w.WriteHeader(http.StatusInternalServerError)
+            return
+        }
+	}
+}
+{{ end }}
+
+{{ end }}

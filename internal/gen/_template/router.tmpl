@@ -1,56 +1,12 @@
 {{- /*gotype: github.com/ogen-go/ogen/internal/gen.config*/ -}}
 
 {{ define "router" }}
-    {{ $pkg := $.Package }}
-    {{ template "header" $ }}
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
 
-	func Register(r chi.Router, s Server) {
-	{{- range $m := $.Server.Methods }}
-		r.Method("{{ $m.HTTPMethod }}", "{{ $m.Path }}", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			{{- if $m.Parameters }}
-			params, err :=  Parse{{ $m.Name }}Parameters(r)
-			if err != nil {
-				w.WriteHeader(http.StatusBadRequest)
-				return
-			}
-			{{- end }}
-
-			{{- if $m.RequestType}}
-			req := new({{ $m.RequestType }})
-			if err := json.NewDecoder(r.Body).Decode(req); err != nil {
-				{{- if $m.RequestBodyRequired }}
-				// Unexpected error.
-				w.WriteHeader(http.StatusBadRequest)
-				return
-				{{- else }}
-				// Requets body is optional.
-				if !errors.Is(err, io.EOF) {
-					// Unexpected error.
-					w.WriteHeader(http.StatusBadRequest)
-					return
-				}
-
-				req = nil
-				{{- end }}
-			}
-			{{- end }}
-
-			resp, err := s.{{ $m.Name }}(r.Context(){{ if $m.RequestType }}, req{{ end }}{{ if $m.Parameters }}, params{{ end }})
-			if err != nil {
-				w.WriteHeader(http.StatusInternalServerError)
-				return
-			}
-
-			b, err := json.Marshal(resp)
-			if err != nil {
-				w.WriteHeader(http.StatusInternalServerError)
-				return
-			}
-
-			w.Header().Set("content-type", "application/json")
-			w.WriteHeader(http.StatusOK)
-			io.Copy(w, bytes.NewReader(b))
-		}))
-	{{- end }}
-	}
+func Register(r chi.Router, s Server) {
+{{- range $m := $.Methods }}
+    r.MethodFunc("{{ $m.HTTPMethod }}", "{{ $m.Path }}", New{{ $m.Name }}Handler(s))
+{{- end }}
+}
 {{ end }}

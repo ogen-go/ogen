@@ -4,15 +4,27 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-{{ range $s:= $.Schemas }}
-// {{ $s.Name }} is {{ $s.Path }}.
-//
-// {{ $s.Description }}
-type {{ $s.Name }} struct {
-	{{ range $f := $s.Fields }}
-		{{- $f.Name }} {{ $f.Type }} `json:"{{ $f.TagName }}"`
-	{{ end }}
+{{- range $name, $s := $.Schemas }}
+{{/* Define schema structure */}}
+{{- if eq $s.Simple "" }}
+type {{ $name }} struct {
+{{- range $f := $s.Fields }}
+    {{ $f.Name }} {{ $f.Type }} `json:"{{ $f.Tag }}"`
+{{- end }}
 }
-{{ end }}
+{{/* Define schema structure */}}
 
+{{/* Define schema simple type */}}
+{{- else }}
+type {{ $name }} {{ $s.Simple }}
+{{- end }}
+{{/* Define schema simple type */}}
+
+{{/* Define impl methods */}}
+{{- range $impl, $_ := $s.Implements }}
+func (*{{ $name}}) {{ $impl }}() {}
+{{- end }}
+{{/* Define impl methods */}}
+
+{{ end }}
 {{ end }}

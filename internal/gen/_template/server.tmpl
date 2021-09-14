@@ -1,21 +1,13 @@
 {{- /*gotype: github.com/ogen-go/ogen/internal/gen.config*/ -}}
 
 {{ define "server" }}
-    {{ $pkg := $.Package }}
-    {{ template "header" $ }}
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
 
-	type Server interface {
-    {{- range $m := $.Server.Methods }}
-		// {{ $m.Name }}
-		{{- if $m.RequestType }}{{- if not $m.RequestBodyRequired }}
-		//
-		// Note: req can be nil.
-		{{- end }}{{- end }}
-		{{- if ne $m.ResponseType "" }}
-		{{ $m.Name }}(ctx context.Context{{- if $m.RequestType }}, req *{{$m.RequestType}}{{ end }}{{- if $m.Parameters }}, params *{{ $m.Name }}Parameters{{ end }}) (*{{ $m.ResponseType }}, error)
-		{{- else }}
-            {{ $m.Name }}(ctx context.Context) error
-		{{- end }}
-    {{- end }}
-	}
+type Server interface {
+{{- range $m := $.Methods }}
+    {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req {{ $m.RequestType }}{{ end }}{{ if $m.Parameters}}, params {{ $m.Name }}Params {{ end }}) error
+{{- end }}
+}
+
 {{ end }}

@@ -108,64 +108,65 @@ func parseType(schema ogen.Schema) (string, error) {
 	}
 }
 
-func parseSchema(name string, schema ogen.Schema) (*schemaStructDef, error) {
-	component := schemaStructDef{
+func parseSchema(name string, schema ogen.Schema) (Schema, error) {
+	s := Schema{
 		Name:        name,
 		Description: toFirstUpper(schema.Description),
+		Implements:  map[string]struct{}{},
 	}
 
-	if !strings.HasSuffix(component.Description, ".") {
-		component.Description += "."
+	if s.Description != "" && !strings.HasSuffix(s.Description, ".") {
+		s.Description += "."
+	}
+
+	if schema.Type != "object" {
+		return Schema{}, fmt.Errorf("unexpected schema type: %s", schema.Type)
 	}
 
 	for pName, pSchema := range schema.Properties {
 		pType, err := parseType(pSchema)
 		if err != nil {
-			return nil, fmt.Errorf("property %s type: %w", pName, err)
+			return Schema{}, fmt.Errorf("property %s type: %w", pName, err)
 		}
 
-		f := field{
-			Name:    pascal(pName),
-			TagName: pName,
-			Type:    pType,
-		}
-
-		component.Fields = append(component.Fields, f)
+		s.Fields = append(s.Fields, SchemaField{
+			Name: pascal(pName),
+			Tag:  pName,
+			Type: pType,
+		})
 	}
 
-	sort.SliceStable(component.Fields, func(i, j int) bool {
-		return strings.Compare(component.Fields[i].Name, component.Fields[j].Name) < 0
+	sort.SliceStable(s.Fields, func(i, j int) bool {
+		return strings.Compare(s.Fields[i].Name, s.Fields[j].Name) < 0
 	})
 
-	return &component, nil
+	return s, nil
 }
 
-func (g *Generator) generateSchemaComponents() error {
-	for n, s := range g.spec.Components.Schemas {
-		schema, err := parseSchema(n, s)
+func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, error) {
+	if schema.Ref != "" {
+		return nil, fmt.Errorf("ref not supported")
+	}
+
+	switch schema.Type {
+	case "object":
+		s, err := parseSchema(name, schema)
 		if err != nil {
-			return fmt.Errorf("parse component %s: %w", n, err)
+			return nil, err
 		}
 
-		schema.Path = path.Join("#/components/schemas", n)
-		g.schemas = append(g.schemas, *schema)
-	}
-
-	sort.SliceStable(g.schemas, func(i, j int) bool {
-		return strings.Compare(g.schemas[i].Name, g.schemas[j].Name) < 0
-	})
-
-	return nil
-}
-
-// schemaComponentGotype returns name of the generated
-// go type for schema defined in components section.
-func (g *Generator) schemaComponentGotype(ref string) string {
-	for _, c := range g.schemas {
-		if c.Path == ref {
-			return c.Name
+		return &s, nil
+	default:
+		typ, err := parseType(schema)
+		if err != nil {
+			return nil, err
 		}
-	}
 
-	return ""
+		return &Schema{
+			Name:        name,
+			Description: schema.Description,
+			Simple:      typ,
+			Implements:  map[string]struct{}{},
+		}, nil
+	}
 }
