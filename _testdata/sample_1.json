@@ -147,6 +147,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/PetResponse"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
           }
         }
       },
@@ -166,6 +169,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "$ref": "#/components/responses/Error"
           }
         }
       }
@@ -257,7 +263,8 @@
               "type": "object",
               "properties": {
                 "code": {
-                  "type": "integer"
+                  "type": "integer",
+                  "format": "int64"
                 },
                 "message": {
                   "type": "string"
