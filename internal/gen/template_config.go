@@ -4,7 +4,7 @@ type TemplateConfig struct {
 	Package    string
 	Methods    []*Method
 	Schemas    map[string]*Schema
-	Interfaces map[string]map[string]struct{}
+	Interfaces map[string]*Interface
 }
 
 type ParameterLocation string
@@ -77,8 +77,9 @@ type SchemaField struct {
 }
 
 type Interface struct {
-	Name       string
-	Implements map[string]struct{}
+	Name    string
+	Methods map[string]struct{}
+	Schemas map[*Schema]struct{}
 }
 
 type RequestBody struct {

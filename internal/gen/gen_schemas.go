@@ -108,7 +108,7 @@ func parseType(schema ogen.Schema) (string, error) {
 	}
 }
 
-func parseSchema(name string, schema ogen.Schema) (Schema, error) {
+func (g *Generator) parseSchema(name string, schema ogen.Schema) (Schema, error) {
 	s := Schema{
 		Name:        name,
 		Description: toFirstUpper(schema.Description),
@@ -150,7 +150,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 
 	switch schema.Type {
 	case "object":
-		s, err := parseSchema(name, schema)
+		s, err := g.parseSchema(name, schema)
 		if err != nil {
 			return nil, err
 		}

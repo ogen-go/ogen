@@ -43,8 +43,8 @@ type Pet struct {
 	Name     string    `json:"name"`
 }
 
-func (*Pet) implPetPost() {}
+func (*Pet) implPetPostRequest() {}
 
 type PetPostTextPlainRequest string
 
-func (*PetPostTextPlainRequest) implPetPost() {}
+func (*PetPostTextPlainRequest) implPetPostRequest() {}

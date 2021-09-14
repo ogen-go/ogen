@@ -9,16 +9,14 @@ type Generator struct {
 	spec    *ogen.Spec
 	methods []*Method
 
-	// Schemas parsed from components section.
 	// map[GoType]*Schema
 	schemas map[string]*Schema
 
-	// RequestBodies parsed from components section.
 	// map[GoType]*RequestBody
 	requestBodies map[string]*RequestBody
 
 	// map[IfaceName]map[Method]
-	interfaces map[string]map[string]struct{}
+	interfaces map[string]*Interface
 }
 
 func NewGenerator(spec *ogen.Spec) (*Generator, error) {
@@ -30,7 +28,7 @@ func NewGenerator(spec *ogen.Spec) (*Generator, error) {
 		spec:          spec,
 		schemas:       map[string]*Schema{},
 		requestBodies: map[string]*RequestBody{},
-		interfaces:    map[string]map[string]struct{}{},
+		interfaces:    map[string]*Interface{},
 	}
 
 	if err := g.generateComponents(); err != nil {

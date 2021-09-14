@@ -3,9 +3,9 @@
 {{ define "interfaces" }}
 package {{ $.Package }}
 
-{{- range $name, $methods := $.Interfaces }}
-type {{ $name }} interface {
-{{- range $method, $_ := $methods }} {{ $method }}() {{- end }}
+{{- range $_, $iface := $.Interfaces }}
+type {{ $iface.Name }} interface {
+{{- range $method, $_ := $iface.Methods }} {{ $method }}() {{- end }}
 }
 {{ end }}
 

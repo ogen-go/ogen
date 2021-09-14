@@ -21,9 +21,8 @@ func (g *Generator) devirtSingleRequest(m *Method) {
 		return
 	}
 
-	delete(g.interfaces, m.RequestType)
 	for _, schema := range m.RequestBody.Contents {
-		delete(schema.Implements, "impl"+m.Name)
+		g.unimplementRequest(schema, m)
 		m.RequestType = "*" + schema.Name
 	}
 }
@@ -49,14 +48,12 @@ func (g *Generator) devirtManyEqualRequests(m *Method) {
 	}
 
 	for _, s := range schemas {
+		g.unimplementRequest(s, m)
 		delete(g.schemas, s.Name)
 	}
 
-	delete(g.interfaces, m.RequestType)
-
 	root.Name = m.Name + "Request"
 	g.schemas[root.Name] = root
-	delete(root.Implements, "impl"+m.Name)
 
 	m.RequestType = "*" + root.Name
 	for contentType := range m.RequestBody.Contents {

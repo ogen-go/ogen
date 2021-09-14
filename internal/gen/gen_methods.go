@@ -85,7 +85,7 @@ func (g *Generator) generateMethod(path, method string, op *ogen.Operation) erro
 	name = strings.ReplaceAll(name, "}", "")
 	name += "_" + strings.ToLower(method)
 	name = pascal(name)
-	m := Method{
+	m := &Method{
 		Name:       name,
 		Path:       path,
 		HTTPMethod: method,
@@ -99,16 +99,13 @@ func (g *Generator) generateMethod(path, method string, op *ogen.Operation) erro
 		}
 
 		for _, schema := range rbody.Contents {
-			schema.Implements["impl"+name] = struct{}{}
+			g.implementRequest(schema, m)
 		}
 
 		m.RequestBody = rbody
 		m.RequestType = name + "Request"
-		g.interfaces[name+"Request"] = map[string]struct{}{
-			"impl" + name: {},
-		}
 	}
 
-	g.methods = append(g.methods, &m)
+	g.methods = append(g.methods, m)
 	return nil
 }
