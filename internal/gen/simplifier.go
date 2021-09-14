@@ -11,6 +11,12 @@ func (g *Generator) simplify() {
 				g.devirtManyEqualRequests(method)
 			}
 		}
+
+		switch len(method.Responses) {
+		case 0:
+		case 1:
+			g.devirtSingleResponse(method)
+		}
 	}
 }
 
@@ -58,5 +64,20 @@ func (g *Generator) devirtManyEqualRequests(m *Method) {
 	m.RequestType = "*" + root.Name
 	for contentType := range m.RequestBody.Contents {
 		m.RequestBody.Contents[contentType] = root
+	}
+}
+
+func (g *Generator) devirtSingleResponse(m *Method) {
+	if len(m.Responses) != 1 {
+		return
+	}
+
+	for _, resp := range m.Responses {
+		if len(resp.Contents) == 1 {
+			g.unimplementResponse(resp, m)
+			for _, schema := range resp.Contents {
+				m.ResponseType = "*" + schema.Name
+			}
+		}
 	}
 }

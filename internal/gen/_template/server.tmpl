@@ -6,7 +6,7 @@
 
 type Server interface {
 {{- range $m := $.Methods }}
-    {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req {{ $m.RequestType }}{{ end }}{{ if $m.Parameters}}, params {{ $m.Name }}Params {{ end }}) error
+    {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req {{ $m.RequestType }}{{ end }}{{ if $m.Parameters}}, params {{ $m.Name }}Params {{ end }}) ({{ $m.ResponseType }}, error)
 {{- end }}
 }
 

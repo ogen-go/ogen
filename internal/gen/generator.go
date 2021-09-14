@@ -9,14 +9,10 @@ type Generator struct {
 	spec    *ogen.Spec
 	methods []*Method
 
-	// map[GoType]*Schema
-	schemas map[string]*Schema
-
-	// map[GoType]*RequestBody
+	schemas       map[string]*Schema
 	requestBodies map[string]*RequestBody
-
-	// map[IfaceName]map[Method]
-	interfaces map[string]*Interface
+	responses     map[string]*Response
+	interfaces    map[string]*Interface
 }
 
 func NewGenerator(spec *ogen.Spec) (*Generator, error) {
@@ -28,6 +24,7 @@ func NewGenerator(spec *ogen.Spec) (*Generator, error) {
 		spec:          spec,
 		schemas:       map[string]*Schema{},
 		requestBodies: map[string]*RequestBody{},
+		responses:     map[string]*Response{},
 		interfaces:    map[string]*Interface{},
 	}
 

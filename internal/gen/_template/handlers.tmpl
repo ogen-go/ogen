@@ -7,7 +7,6 @@
 {{- range $m := $.Methods }}
 func New{{ $m.Name }}Handler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-        var err error
 		{{- if $m.Parameters }}
         params, err := Parse{{ $m.Name }}Params(r)
         if err != nil {
@@ -24,9 +23,14 @@ func New{{ $m.Name }}Handler(s Server) func(w http.ResponseWriter, r *http.Reque
         }
         {{- end }}
 
-        err = s.{{$m.Name}}(r.Context(){{ if $m.RequestType }}, request{{ end }}{{if $m.Parameters}}, params {{ end }})
+        response, err := s.{{$m.Name}}(r.Context(){{ if $m.RequestType }}, request{{ end }}{{if $m.Parameters}}, params {{ end }})
         if err != nil {
             w.WriteHeader(http.StatusInternalServerError)
+            return
+        }
+
+        if err := Encode{{ $m.Name }}Response(response, w); err != nil {
+            _ = err
             return
         }
 	}

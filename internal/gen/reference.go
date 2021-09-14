@@ -88,3 +88,12 @@ func requestBodyRefGotype(ref string) (string, error) {
 	targetName := strings.TrimPrefix(ref, "#/components/requestBodies/")
 	return pascal(targetName), nil
 }
+
+func responseRefGotype(ref string) (string, error) {
+	if !strings.HasPrefix(ref, "#/components/responses/") {
+		return "", fmt.Errorf("invalid responses reference: %s", ref)
+	}
+
+	targetName := strings.TrimPrefix(ref, "#/components/responses/")
+	return pascal(targetName), nil
+}

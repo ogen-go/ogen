@@ -10,6 +10,9 @@ func (g *Generator) generateComponents() error {
 		if err := g.generateComponentRequestBodies(); err != nil {
 			return fmt.Errorf("requestBodies: %w", err)
 		}
+		if err := g.generateComponentResponses(); err != nil {
+			return fmt.Errorf("responses: %w", err)
+		}
 		return nil
 	}(); err != nil {
 		return fmt.Errorf("components: %w", err)
@@ -39,6 +42,19 @@ func (g *Generator) generateComponentRequestBodies() error {
 		}
 
 		g.requestBodies[name] = rbody
+	}
+
+	return nil
+}
+
+func (g *Generator) generateComponentResponses() error {
+	for name, resp := range g.spec.Components.Responses {
+		r, err := g.generateResponse(name, resp)
+		if err != nil {
+			return fmt.Errorf("%s: %w", name, err)
+		}
+
+		g.responses[name] = r
 	}
 
 	return nil

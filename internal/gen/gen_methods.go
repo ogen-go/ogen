@@ -106,6 +106,20 @@ func (g *Generator) generateMethod(path, method string, op *ogen.Operation) erro
 		m.RequestType = name + "Request"
 	}
 
+	if len(op.Responses) > 0 {
+		responses, err := g.generateResponses(name, op.Responses)
+		if err != nil {
+			return fmt.Errorf("responses: %w", err)
+		}
+
+		for _, resp := range responses {
+			g.implementResponse(resp, m)
+		}
+
+		m.Responses = responses
+		m.ResponseType = name + "Response"
+	}
+
 	g.methods = append(g.methods, m)
 	return nil
 }

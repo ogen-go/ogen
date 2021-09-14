@@ -17,14 +17,16 @@ const (
 )
 
 type Method struct {
-	Name       string
-	Path       string
-	HTTPMethod string
-	Parameters map[ParameterLocation][]Parameter
+	Name         string
+	Path         string
+	HTTPMethod   string
+	Parameters   map[ParameterLocation][]Parameter
+	RequestType  string
+	RequestBody  *RequestBody
+	ResponseType string
 
-	RequestType string
-
-	RequestBody *RequestBody
+	// map[statusCode]*Response
+	Responses map[int]*Response
 }
 
 type Parameter struct {
@@ -85,4 +87,35 @@ type Interface struct {
 type RequestBody struct {
 	Contents map[string]*Schema
 	Required bool
+}
+
+type Response struct {
+	NoContent *Schema
+	Contents  map[string]*Schema
+}
+
+type ResponseInfo struct {
+	StatusCode  int
+	ContentType string
+	NoContent   bool
+}
+
+func (m *Method) ListResponseSchemas() map[*Schema]ResponseInfo {
+	schemas := make(map[*Schema]ResponseInfo)
+	for statusCode, resp := range m.Responses {
+		if resp.NoContent != nil {
+			schemas[resp.NoContent] = ResponseInfo{
+				StatusCode: statusCode,
+				NoContent:  true,
+			}
+			continue
+		}
+		for contentType, schema := range resp.Contents {
+			schemas[schema] = ResponseInfo{
+				StatusCode:  statusCode,
+				ContentType: contentType,
+			}
+		}
+	}
+	return schemas
 }

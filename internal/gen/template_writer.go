@@ -55,13 +55,6 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		Interfaces: g.interfaces,
 	}
 
-	// if err := w.Generate("schemas", "openapi_schemas_gen.go", cfg); err != nil {
-	// 	return err
-	// }
-
-	// if err := w.Generate("server", "openapi_server_gen.go", cfg); err != nil {
-	// 	return err
-	// }
 	if err := w.Generate("parameters", "openapi_parameters_gen.go", cfg); err != nil {
 		return err
 	}
@@ -75,6 +68,9 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		return err
 	}
 	if err := w.Generate("requests", "openapi_requests_gen.go", cfg); err != nil {
+		return err
+	}
+	if err := w.Generate("responses", "openapi_responses_gen.go", cfg); err != nil {
 		return err
 	}
 	if len(cfg.Interfaces) > 0 {
