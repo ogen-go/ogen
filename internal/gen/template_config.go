@@ -1,5 +1,7 @@
 package gen
 
+import "strings"
+
 type TemplateConfig struct {
 	Package    string
 	Methods    []*Method
@@ -16,17 +18,19 @@ const (
 	LocationCookie ParameterLocation = "Cookie"
 )
 
-type Method struct {
-	Name         string
-	Path         string
-	HTTPMethod   string
-	Parameters   map[ParameterLocation][]Parameter
-	RequestType  string
-	RequestBody  *RequestBody
-	ResponseType string
+func (p ParameterLocation) Lower() string { return strings.ToLower(string(p)) }
 
-	// map[statusCode]*Response
-	Responses map[int]*Response
+type Method struct {
+	Name       string
+	Path       string
+	HTTPMethod string
+	Parameters map[ParameterLocation][]Parameter
+
+	RequestType string
+	RequestBody *RequestBody
+
+	ResponseType string
+	Responses    map[int]*Response
 }
 
 type Parameter struct {
