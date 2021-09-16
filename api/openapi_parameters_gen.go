@@ -50,12 +50,12 @@ func ParseFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 	{
 		param := r.URL.Query().Get("inlinedParam")
 		if len(param) == 0 {
-			return params, fmt.Errorf("Query param 'inlinedParam' is empty")
+			return params, fmt.Errorf("query param 'inlinedParam' is empty")
 		}
 
 		v, err := conv.ToInt64(param)
 		if err != nil {
-			return params, fmt.Errorf("parse Query param 'inlinedParam': %w", err)
+			return params, fmt.Errorf("parse query param 'inlinedParam': %w", err)
 		}
 
 		params.Query.InlinedParam = v
@@ -63,12 +63,12 @@ func ParseFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 	{
 		param := r.URL.Query().Get("skip")
 		if len(param) == 0 {
-			return params, fmt.Errorf("Query param 'skip' is empty")
+			return params, fmt.Errorf("query param 'skip' is empty")
 		}
 
 		v, err := conv.ToInt32(param)
 		if err != nil {
-			return params, fmt.Errorf("parse Query param 'skip': %w", err)
+			return params, fmt.Errorf("parse query param 'skip': %w", err)
 		}
 
 		params.Query.Skip = v
@@ -100,17 +100,17 @@ func ParsePetGetParams(r *http.Request) (PetGetParams, error) {
 	{
 		c, err := r.Cookie("token")
 		if err != nil {
-			return params, fmt.Errorf("Cookie param 'token': %w", err)
+			return params, fmt.Errorf("get cookie 'token': %w", err)
 		}
 
 		param := c.Value
 		if len(param) == 0 {
-			return params, fmt.Errorf("Cookie param 'token' is empty")
+			return params, fmt.Errorf("cookie param 'token' is empty")
 		}
 
 		v, err := conv.ToString(param)
 		if err != nil {
-			return params, fmt.Errorf("parse Cookie param 'token': %w", err)
+			return params, fmt.Errorf("parse cookie param 'token': %w", err)
 		}
 
 		params.Cookie.Token = v
@@ -118,12 +118,12 @@ func ParsePetGetParams(r *http.Request) (PetGetParams, error) {
 	{
 		param := r.Header.Values("x-scope")
 		if len(param) == 0 {
-			return params, fmt.Errorf("Header param 'x-scope' is empty")
+			return params, fmt.Errorf("header param 'x-scope' is empty")
 		}
 
 		v, err := conv.ToStringArray(param)
 		if err != nil {
-			return params, fmt.Errorf("parse Header param 'x-scope': %w", err)
+			return params, fmt.Errorf("parse header param 'x-scope': %w", err)
 		}
 
 		params.Header.XScope = v
@@ -131,12 +131,12 @@ func ParsePetGetParams(r *http.Request) (PetGetParams, error) {
 	{
 		param := r.URL.Query().Get("petID")
 		if len(param) == 0 {
-			return params, fmt.Errorf("Query param 'petID' is empty")
+			return params, fmt.Errorf("query param 'petID' is empty")
 		}
 
 		v, err := conv.ToInt64(param)
 		if err != nil {
-			return params, fmt.Errorf("parse Query param 'petID': %w", err)
+			return params, fmt.Errorf("parse query param 'petID': %w", err)
 		}
 
 		params.Query.PetID = v
@@ -158,12 +158,12 @@ func ParsePetNameGetParams(r *http.Request) (PetNameGetParams, error) {
 	{
 		param := chi.URLParam(r, "name")
 		if len(param) == 0 {
-			return params, fmt.Errorf("Path param 'name' is empty")
+			return params, fmt.Errorf("path param 'name' is empty")
 		}
 
 		v, err := conv.ToString(param)
 		if err != nil {
-			return params, fmt.Errorf("parse Path param 'name': %w", err)
+			return params, fmt.Errorf("parse path param 'name': %w", err)
 		}
 
 		params.Path.Name = v
