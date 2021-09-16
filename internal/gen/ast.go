@@ -2,13 +2,6 @@ package gen
 
 import "strings"
 
-type TemplateConfig struct {
-	Package    string
-	Methods    []*Method
-	Schemas    map[string]*Schema
-	Interfaces map[string]*Interface
-}
-
 type ParameterLocation string
 
 const (
@@ -29,8 +22,9 @@ type Method struct {
 	RequestType string
 	RequestBody *RequestBody
 
-	ResponseType string
-	Responses    map[int]*Response
+	ResponseType    string
+	Responses       map[int]*Response
+	ResponseDefault *Response
 }
 
 type Parameter struct {
@@ -61,6 +55,35 @@ type Schema struct {
 	Implements map[string]struct{}
 }
 
+func (g *Generator) createSchema(name string) *Schema {
+	s := &Schema{
+		Name:       name,
+		Implements: map[string]struct{}{},
+	}
+	g.schemas[name] = s
+	return s
+}
+
+func (g *Generator) createSchemaSimple(name, typ string) *Schema {
+	s := g.createSchema(name)
+	s.Simple = typ
+	return s
+}
+
+func (s *Schema) implement(iface *Interface) {
+	iface.Implementations[s] = struct{}{}
+	for method := range iface.Methods {
+		s.Implements[method] = struct{}{}
+	}
+}
+
+func (s *Schema) unimplement(iface *Interface) {
+	delete(iface.Implementations, s)
+	for method := range iface.Methods {
+		delete(s.Implements, method)
+	}
+}
+
 func (s Schema) EqualFields(another Schema) bool {
 	if len(s.Fields) != len(another.Fields) {
 		return false
@@ -83,9 +106,26 @@ type SchemaField struct {
 }
 
 type Interface struct {
-	Name    string
-	Methods map[string]struct{}
-	Schemas map[*Schema]struct{}
+	Name            string
+	Methods         map[string]struct{}
+	Implementations map[*Schema]struct{}
+}
+
+func (g *Generator) createIface(name string) *Interface {
+	iface := &Interface{
+		Name:            name,
+		Methods:         map[string]struct{}{},
+		Implementations: map[*Schema]struct{}{},
+	}
+	g.interfaces[name] = iface
+	return iface
+}
+
+func (i *Interface) addMethod(method string) {
+	i.Methods[method] = struct{}{}
+	for schema := range i.Implementations {
+		schema.Implements[method] = struct{}{}
+	}
 }
 
 type RequestBody struct {
@@ -93,15 +133,48 @@ type RequestBody struct {
 	Required bool
 }
 
+func (g *Generator) createRequestBody() *RequestBody {
+	return &RequestBody{
+		Contents: map[string]*Schema{},
+	}
+}
+
 type Response struct {
 	NoContent *Schema
 	Contents  map[string]*Schema
+}
+
+func (g *Generator) createResponse(name string) *Response {
+	return &Response{
+		Contents: map[string]*Schema{},
+	}
+}
+
+func (r *Response) implement(iface *Interface) {
+	if s := r.NoContent; s != nil {
+		s.implement(iface)
+	}
+
+	for _, schema := range r.Contents {
+		schema.implement(iface)
+	}
+}
+
+func (r *Response) unimplement(iface *Interface) {
+	if s := r.NoContent; s != nil {
+		s.unimplement(iface)
+	}
+
+	for _, schema := range r.Contents {
+		schema.unimplement(iface)
+	}
 }
 
 type ResponseInfo struct {
 	StatusCode  int
 	ContentType string
 	NoContent   bool
+	Default     bool
 }
 
 func (m *Method) ListResponseSchemas() map[*Schema]ResponseInfo {
@@ -117,6 +190,20 @@ func (m *Method) ListResponseSchemas() map[*Schema]ResponseInfo {
 		for contentType, schema := range resp.Contents {
 			schemas[schema] = ResponseInfo{
 				StatusCode:  statusCode,
+				ContentType: contentType,
+			}
+		}
+	}
+
+	if def := m.ResponseDefault; def != nil {
+		if noc := def.NoContent; noc != nil {
+			schemas[noc] = ResponseInfo{
+				Default: true,
+			}
+		}
+		for contentType, schema := range def.Contents {
+			schemas[schema] = ResponseInfo{
+				Default:     true,
 				ContentType: contentType,
 			}
 		}

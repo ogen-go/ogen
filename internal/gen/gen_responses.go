@@ -9,11 +9,103 @@ import (
 	"github.com/ogen-go/ogen"
 )
 
-func (g *Generator) generateResponses(name string, responses ogen.Responses) (map[int]*Response, error) {
-	resps := make(map[int]*Response)
-	for status, resp := range responses {
+type methodResponse struct {
+	Responses map[int]*Response
+	Default   *Response
+}
+
+func (g *Generator) generateResponses(methodName string, methodResponses ogen.Responses) (*methodResponse, error) {
+	var (
+		responses   = make(map[int]*Response)
+		defaultResp *Response
+	)
+
+	// Iterate over method responses...
+	for status, responseSchema := range methodResponses {
+		// Default response.
 		if status == "default" {
-			return nil, fmt.Errorf("default status code not supported")
+			// Referenced response.
+			if ref := responseSchema.Ref; ref != "" {
+				// Validate reference & get response component name.
+				name, err := componentName(ref)
+				if err != nil {
+					return nil, err
+				}
+
+				// Lookup for alias response.
+				if alias, ok := g.responses[name+"Default"]; ok {
+					defaultResp = alias
+					continue
+				}
+
+				// Create new type containing referenced response
+				// and status code field.
+				referencedResponse, found := g.responses[name]
+				if !found {
+					return nil, fmt.Errorf("response by reference '%s', not found", ref)
+				}
+
+				aliasResponse := g.createResponse(name + "Default")
+				for contentType, schema := range referencedResponse.Contents {
+					alias := g.createSchema(schema.Name + "Default")
+					alias.Simple = schema.Simple
+					alias.Fields = append([]SchemaField{
+						{
+							Name: "StatusCode",
+							Tag:  "-",
+							Type: "int",
+						},
+					}, schema.Fields...)
+					aliasResponse.Contents[contentType] = alias
+				}
+
+				if schema := referencedResponse.NoContent; schema != nil {
+					alias := g.createSchema(schema.Name + "Default")
+					alias.Simple = schema.Simple
+					alias.Fields = append([]SchemaField{
+						{
+							Name: "StatusCode",
+							Tag:  "-",
+							Type: "int",
+						},
+					}, schema.Fields...)
+					aliasResponse.NoContent = alias
+				}
+
+				defaultResp = aliasResponse
+				continue
+			}
+
+			// Inlined response.
+			// Use method name + Default as prefix for response schemas.
+			response, err := g.generateResponse(methodName+"Default", responseSchema)
+			if err != nil {
+				return nil, err
+			}
+
+			// Append status code for all response schemas fields.
+			for _, schema := range response.Contents {
+				schema.Fields = append([]SchemaField{
+					{
+						Name: "StatusCode",
+						Tag:  "-",
+						Type: "int",
+					},
+				}, schema.Fields...)
+			}
+
+			if response.NoContent != nil {
+				response.NoContent.Fields = append([]SchemaField{
+					{
+						Name: "StatusCode",
+						Tag:  "-",
+						Type: "int",
+					},
+				}, response.NoContent.Fields...)
+			}
+
+			defaultResp = response
+			continue
 		}
 
 		statusCode, err := strconv.Atoi(status)
@@ -21,75 +113,73 @@ func (g *Generator) generateResponses(name string, responses ogen.Responses) (ma
 			return nil, fmt.Errorf("invalid status code: '%s'", status)
 		}
 
-		if ref := resp.Ref; ref != "" {
-			typeName, err := responseRefGotype(ref)
+		// Referenced response.
+		if ref := responseSchema.Ref; ref != "" {
+			// Validate reference & get response component name.
+			name, err := componentName(ref)
 			if err != nil {
 				return nil, err
 			}
 
-			componentResponse, found := g.responses[typeName]
+			// Lookup for response component.
+			componentResponse, found := g.responses[name]
 			if !found {
-				panic("unreachable")
+				return nil, fmt.Errorf("response by reference '%s' not found", ref)
 			}
 
-			resps[statusCode] = componentResponse
+			responses[statusCode] = componentResponse
 			continue
 		}
 
-		respName := name
+		responseName := methodName
 		if len(responses) > 1 {
 			// Use status code in response name to avoid collisions.
-			respName = name + http.StatusText(statusCode)
+			responseName = methodName + http.StatusText(statusCode)
 		}
 
-		resp, err := g.generateResponse(respName, resp)
+		resp, err := g.generateResponse(responseName, responseSchema)
 		if err != nil {
 			return nil, fmt.Errorf("invalid status code: '%s'", status)
 		}
 
-		resps[statusCode] = resp
+		responses[statusCode] = resp
 	}
 
-	return resps, nil
+	return &methodResponse{
+		Responses: responses,
+		Default:   defaultResp,
+	}, nil
 }
 
 func (g *Generator) generateResponse(name string, resp ogen.Response) (*Response, error) {
-	response := &Response{
-		Contents: map[string]*Schema{},
-	}
+	response := g.createResponse(name)
 
 	// Response without content.
 	// Create empty struct.
 	if len(resp.Content) == 0 {
-		s := &Schema{
-			Name:       name,
-			Simple:     "struct{}",
-			Implements: map[string]struct{}{},
-		}
-		response.NoContent = s
-		g.schemas[name] = s
+		response.NoContent = g.createSchemaSimple(name, "struct{}")
 		return response, nil
 	}
 
 	for contentType, media := range resp.Content {
-		respName := name + "Response"
-
+		// Create unique response name.
+		responseStructName := name + "Response"
 		if len(resp.Content) > 1 {
-			// Use content type in response name to avoid collisions.
-			respName = pascal(
+			responseStructName = pascal(
 				name+"_"+strings.ReplaceAll(contentType, "/", "_"),
 			) + "Response"
 		}
 
+		// Referenced response schema.
 		if ref := media.Schema.Ref; ref != "" {
-			typeName, err := componentRefGotype(ref)
+			refSchemaName, err := componentName(ref)
 			if err != nil {
 				return nil, err
 			}
 
-			schema, found := g.schemas[typeName]
+			schema, found := g.schemas[refSchemaName]
 			if !found {
-				panic("unreachable")
+				return nil, fmt.Errorf("schema referenced by '%s' not found", ref)
 			}
 
 			// Response have only one content.
@@ -101,23 +191,18 @@ func (g *Generator) generateResponse(name string, resp ogen.Response) (*Response
 
 			// Response have multiple contents.
 			// Alias them with new response type.
-			s := &Schema{
-				Name:       respName,
-				Simple:     schema.Name,
-				Implements: map[string]struct{}{},
-			}
-
-			g.schemas[respName] = s
+			s := g.createSchemaSimple(responseStructName, schema.Name)
 			response.Contents[contentType] = s
 			continue
 		}
 
-		schema, err := g.generateSchema(respName, media.Schema)
+		// Inlined response schema.
+		schema, err := g.generateSchema(responseStructName, media.Schema)
 		if err != nil {
 			return nil, fmt.Errorf("content: %s: parse schema: %w", contentType, err)
 		}
 
-		g.schemas[respName] = schema
+		g.schemas[responseStructName] = schema
 		response.Contents[contentType] = schema
 	}
 

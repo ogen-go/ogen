@@ -80,44 +80,55 @@ func (g *Generator) generateMethod(path, method string, op *ogen.Operation) erro
 	}
 
 	// Use path + method as unique identifier.
-	name := strings.ReplaceAll(path, "/", "_")
-	name = strings.ReplaceAll(name, "{", "")
-	name = strings.ReplaceAll(name, "}", "")
-	name += "_" + strings.ToLower(method)
-	name = pascal(name)
+	methodName := strings.ReplaceAll(path, "/", "_")
+	methodName = strings.ReplaceAll(methodName, "{", "")
+	methodName = strings.ReplaceAll(methodName, "}", "")
+	methodName += "_" + strings.ToLower(method)
+	methodName = pascal(methodName)
 	m := &Method{
-		Name:       name,
+		Name:       methodName,
 		Path:       path,
 		HTTPMethod: method,
 		Parameters: params,
 	}
 
 	if op.RequestBody != nil {
-		rbody, err := g.generateRequestBody(name, op.RequestBody)
+		iface := g.createIface(methodName + "Request")
+		iface.addMethod("impl" + methodName + "Request")
+
+		rbody, err := g.generateRequestBody(methodName, op.RequestBody)
 		if err != nil {
 			return fmt.Errorf("requestBody: %w", err)
 		}
 
 		for _, schema := range rbody.Contents {
-			g.implementRequest(schema, m)
+			schema.implement(iface)
 		}
 
 		m.RequestBody = rbody
-		m.RequestType = name + "Request"
+		m.RequestType = iface.Name
 	}
 
 	if len(op.Responses) > 0 {
-		responses, err := g.generateResponses(name, op.Responses)
+		iface := g.createIface(methodName + "Response")
+		iface.addMethod("impl" + methodName + "Response")
+
+		resp, err := g.generateResponses(methodName, op.Responses)
 		if err != nil {
 			return fmt.Errorf("responses: %w", err)
 		}
 
-		for _, resp := range responses {
-			g.implementResponse(resp, m)
+		for _, resp := range resp.Responses {
+			resp.implement(iface)
 		}
 
-		m.Responses = responses
-		m.ResponseType = name + "Response"
+		if def := resp.Default; def != nil {
+			m.ResponseDefault = def
+			def.implement(iface)
+		}
+
+		m.Responses = resp.Responses
+		m.ResponseType = iface.Name
 	}
 
 	g.methods = append(g.methods, m)

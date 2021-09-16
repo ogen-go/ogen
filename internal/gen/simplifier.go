@@ -18,6 +18,8 @@ func (g *Generator) simplify() {
 			g.devirtSingleResponse(method)
 		}
 	}
+
+	g.removeUnusedIfaces()
 }
 
 // devirtSingleRequest removes interface in case
@@ -27,9 +29,11 @@ func (g *Generator) devirtSingleRequest(m *Method) {
 		return
 	}
 
-	for _, schema := range m.RequestBody.Contents {
-		g.unimplementRequest(schema, m)
-		m.RequestType = "*" + schema.Name
+	if iface, ok := g.interfaces[m.RequestType]; ok {
+		for _, schema := range m.RequestBody.Contents {
+			schema.unimplement(iface)
+			m.RequestType = "*" + schema.Name
+		}
 	}
 }
 
@@ -38,6 +42,11 @@ func (g *Generator) devirtSingleRequest(m *Method) {
 // if all schemas in different content-types have the same fields.
 func (g *Generator) devirtManyEqualRequests(m *Method) {
 	if len(m.RequestBody.Contents) < 2 {
+		return
+	}
+
+	iface, ok := g.interfaces[m.RequestType]
+	if !ok {
 		return
 	}
 
@@ -54,12 +63,8 @@ func (g *Generator) devirtManyEqualRequests(m *Method) {
 	}
 
 	for _, s := range schemas {
-		g.unimplementRequest(s, m)
-		delete(g.schemas, s.Name)
+		s.unimplement(iface)
 	}
-
-	root.Name = m.Name + "Request"
-	g.schemas[root.Name] = root
 
 	m.RequestType = "*" + root.Name
 	for contentType := range m.RequestBody.Contents {
@@ -68,16 +73,26 @@ func (g *Generator) devirtManyEqualRequests(m *Method) {
 }
 
 func (g *Generator) devirtSingleResponse(m *Method) {
-	if len(m.Responses) != 1 {
+	if len(m.Responses) != 1 || m.ResponseDefault != nil {
 		return
 	}
 
-	for _, resp := range m.Responses {
-		if len(resp.Contents) == 1 {
-			g.unimplementResponse(resp, m)
-			for _, schema := range resp.Contents {
-				m.ResponseType = "*" + schema.Name
+	if iface, ok := g.interfaces[m.ResponseType]; ok {
+		for _, resp := range m.Responses {
+			if len(resp.Contents) == 1 {
+				resp.unimplement(iface)
+				for _, schema := range resp.Contents {
+					m.ResponseType = "*" + schema.Name
+				}
 			}
+		}
+	}
+}
+
+func (g *Generator) removeUnusedIfaces() {
+	for name, iface := range g.interfaces {
+		if len(iface.Implementations) == 0 {
+			delete(g.interfaces, name)
 		}
 	}
 }

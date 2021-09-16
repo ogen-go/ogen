@@ -12,36 +12,52 @@ func Encode{{ $m.Name }}Response(response {{ $m.ResponseType }}, w http.Response
     {{- if eq $schemasLength 1 }}
 
     {{- range $schema, $info := $m.ListResponseSchemas }}
-        {{- if $info.NoContent }}
+        {{- /* Set status code */}}
+        {{- if $info.Default }}
+        w.WriteHeader(response.StatusCode)
+        {{- else }}
         w.WriteHeader({{ $info.StatusCode }})
+        {{- end }}
+        {{- /* Set status code */}}
+
+        {{- /* Encode content */}}
+        {{- if $info.NoContent }}
         return nil
         {{- else }}
         w.Header().Set("Content-Type", "{{ $info.ContentType }}")
-        w.WriteHeader({{ $info.StatusCode }})
         {{- if eq $info.ContentType "application/json" }}
         return json.NewEncoder(w).Encode(response)
         {{- else }}
         return fmt.Errorf("{{ $info.ContentType }} encoder not implemented")
         {{- end }}
         {{- end }}
+        {{- /* Encode content */}}
     {{- end }}
 
     {{- else }}
     switch response := response.(type) {
     {{- range $schema, $info := $m.ListResponseSchemas }}
     case *{{ $schema.Name }}:
-        {{- if $info.NoContent }}
+        {{- /* Set status code */}}
+        {{- if $info.Default }}
+        w.WriteHeader(response.StatusCode)
+        {{- else }}
         w.WriteHeader({{ $info.StatusCode }})
+        {{- end }}
+        {{- /* Set status code */}}
+
+        {{- /* Encode content */}}
+        {{- if $info.NoContent }}
         return nil
         {{- else }}
         w.Header().Set("Content-Type", "{{ $info.ContentType }}")
-        w.WriteHeader({{ $info.StatusCode }})
         {{- if eq $info.ContentType "application/json" }}
         return json.NewEncoder(w).Encode(response)
         {{- else }}
         return fmt.Errorf("{{ $info.ContentType }} encoder not implemented")
         {{- end }}
         {{- end }}
+        {{- /* Encode content */}}
     {{- end }}
     default:
         return fmt.Errorf("{{ $m.Path}}: unexpected response type for method: %T", response)

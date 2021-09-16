@@ -8,6 +8,13 @@ import (
 	"golang.org/x/xerrors"
 )
 
+type TemplateConfig struct {
+	Package    string
+	Methods    []*Method
+	Schemas    map[string]*Schema
+	Interfaces map[string]*Interface
+}
+
 // FileSystem represents a directory of generated package.
 type FileSystem interface {
 	WriteFile(baseName string, source []byte) error
