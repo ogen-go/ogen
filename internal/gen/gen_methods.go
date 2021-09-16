@@ -94,7 +94,7 @@ func (g *Generator) generateMethod(path, method string, op *ogen.Operation) erro
 
 	if op.RequestBody != nil {
 		iface := g.createIface(methodName + "Request")
-		iface.addMethod("impl" + methodName + "Request")
+		iface.addMethod(camel(methodName + "Request"))
 
 		rbody, err := g.generateRequestBody(methodName, op.RequestBody)
 		if err != nil {
@@ -111,7 +111,7 @@ func (g *Generator) generateMethod(path, method string, op *ogen.Operation) erro
 
 	if len(op.Responses) > 0 {
 		iface := g.createIface(methodName + "Response")
-		iface.addMethod("impl" + methodName + "Response")
+		iface.addMethod(camel(methodName + "Response"))
 
 		resp, err := g.generateResponses(methodName, op.Responses)
 		if err != nil {
