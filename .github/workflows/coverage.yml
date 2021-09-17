@@ -49,7 +49,7 @@ jobs:
           retention-days: 1
 
       - name: Send coverage
-        uses: codecov/codecov-action@v2.0.3
+        uses: codecov/codecov-action@v2.1.0
         with:
           file: profile.out
 
@@ -67,6 +67,6 @@ jobs:
           name: coverage
 
       - name: Send coverage
-        uses: codecov/codecov-action@v2.0.3
+        uses: codecov/codecov-action@v2.1.0
         with:
           file: profile.out
