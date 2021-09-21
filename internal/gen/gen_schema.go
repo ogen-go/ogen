@@ -2,12 +2,17 @@ package gen
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 
 	"github.com/ogen-go/ogen"
 )
 
 func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, error) {
+	return g.generateSchemaWithOpts(name, schema, true)
+}
+
+func (g *Generator) generateSchemaWithOpts(name string, schema ogen.Schema, allowNestedArrays bool) (*Schema, error) {
 	if ref := schema.Ref; ref != "" {
 		componentName, err := componentName(ref)
 		if err != nil {
@@ -28,9 +33,14 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 			return nil, fmt.Errorf("object must contain at least one property")
 		}
 
-		s := g.createSchema(name)
+		s := g.createSchemaStruct(name)
 		s.Description = schema.Description
+		g.schemas[s.Name] = s
 		for propName, propSchema := range schema.Properties {
+			if !allowNestedArrays && propSchema.Type == "array" {
+				return nil, fmt.Errorf("property %s: nested array not allowed", propName)
+			}
+
 			prop, err := g.generateSchema(name+pascal(propName), propSchema)
 			if err != nil {
 				return nil, fmt.Errorf("%s: %w", propName, err)
@@ -42,10 +52,17 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 				Type: prop.typeName(),
 			})
 		}
+		sort.SliceStable(s.Fields, func(i, j int) bool {
+			return strings.Compare(s.Fields[i].Name, s.Fields[j].Name) < 0
+		})
 		return s, nil
 	case "array":
 		if schema.Items == nil {
 			return nil, fmt.Errorf("empty items field")
+		}
+
+		if !allowNestedArrays && schema.Items.Type == "array" {
+			return nil, fmt.Errorf("item: nested arrays not allowed")
 		}
 
 		item, err := g.generateSchema(name+"Item", *schema.Items)
@@ -53,12 +70,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 			return nil, err
 		}
 
-		return &Schema{
-			Name:        name,
-			Description: schema.Description,
-			Simple:      "[]" + item.typeName(),
-			Implements:  map[string]struct{}{},
-		}, nil
+		return g.createSchemaSimple(name, "[]"+item.typeName()), nil
 	default:
 		simpleType, err := parseSimple(
 			strings.ToLower(schema.Type),
@@ -68,12 +80,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 			return nil, err
 		}
 
-		return &Schema{
-			Name:        name,
-			Description: schema.Description,
-			Simple:      simpleType,
-			Implements:  map[string]struct{}{},
-		}, nil
+		return g.createSchemaSimple(name, simpleType), nil
 	}
 }
 

@@ -47,8 +47,7 @@ func (g *Generator) generateResponses(methodName string, methodResponses ogen.Re
 
 				aliasResponse := g.createResponse(name + "Default")
 				for contentType, schema := range referencedResponse.Contents {
-					alias := g.createSchema(schema.Name + "Default")
-					alias.Simple = schema.Simple
+					alias := g.createSchemaStruct(schema.Name + "Default")
 					alias.Fields = append([]SchemaField{
 						{
 							Name: "StatusCode",
@@ -57,11 +56,11 @@ func (g *Generator) generateResponses(methodName string, methodResponses ogen.Re
 						},
 					}, schema.Fields...)
 					aliasResponse.Contents[contentType] = alias
+					g.schemas[alias.Name] = alias
 				}
 
 				if schema := referencedResponse.NoContent; schema != nil {
-					alias := g.createSchema(schema.Name + "Default")
-					alias.Simple = schema.Simple
+					alias := g.createSchemaStruct(schema.Name + "Default")
 					alias.Fields = append([]SchemaField{
 						{
 							Name: "StatusCode",
@@ -70,6 +69,7 @@ func (g *Generator) generateResponses(methodName string, methodResponses ogen.Re
 						},
 					}, schema.Fields...)
 					aliasResponse.NoContent = alias
+					g.schemas[alias.Name] = alias
 				}
 
 				defaultResp = aliasResponse
@@ -157,7 +157,9 @@ func (g *Generator) generateResponse(name string, resp ogen.Response) (*Response
 	// Response without content.
 	// Create empty struct.
 	if len(resp.Content) == 0 {
-		response.NoContent = g.createSchemaSimple(name, "struct{}")
+		s := g.createSchemaSimple(name, "struct{}")
+		g.schemas[s.Name] = s
+		response.NoContent = s
 		return response, nil
 	}
 
@@ -192,18 +194,19 @@ func (g *Generator) generateResponse(name string, resp ogen.Response) (*Response
 			// Response have multiple contents.
 			// Alias them with new response type.
 			s := g.createSchemaSimple(responseStructName, schema.Name)
+			g.schemas[s.Name] = s
 			response.Contents[contentType] = s
 			continue
 		}
 
 		// Inlined response schema.
-		schema, err := g.generateSchema(responseStructName, media.Schema)
+		s, err := g.generateSchema(responseStructName, media.Schema)
 		if err != nil {
 			return nil, fmt.Errorf("content: %s: parse schema: %w", contentType, err)
 		}
 
-		g.schemas[responseStructName] = schema
-		response.Contents[contentType] = schema
+		g.schemas[s.Name] = s
+		response.Contents[contentType] = s
 	}
 
 	return response, nil

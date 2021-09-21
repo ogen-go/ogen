@@ -1,6 +1,9 @@
 package gen
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 type ParameterLocation string
 
@@ -45,7 +48,15 @@ type Parameter struct {
 	Required bool
 }
 
+type SchemaKind string
+
+const (
+	KindStruct SchemaKind = "struct"
+	KindSimple SchemaKind = "simple"
+)
+
 type Schema struct {
+	Kind        SchemaKind
 	Name        string
 	Description string
 
@@ -56,25 +67,31 @@ type Schema struct {
 }
 
 func (s Schema) typeName() string {
-	if len(s.Fields) > 0 {
+	switch s.Kind {
+	case KindStruct:
 		return s.Name
+	case KindSimple:
+		return s.Simple
+	default:
+		panic(fmt.Errorf("unexpected SchemaKind: %s", s.Kind))
 	}
-	return s.Simple
 }
 
-func (g *Generator) createSchema(name string) *Schema {
-	s := &Schema{
+func (g *Generator) createSchemaStruct(name string) *Schema {
+	return &Schema{
+		Kind:       KindStruct,
 		Name:       name,
 		Implements: map[string]struct{}{},
 	}
-	g.schemas[name] = s
-	return s
 }
 
 func (g *Generator) createSchemaSimple(name, typ string) *Schema {
-	s := g.createSchema(name)
-	s.Simple = typ
-	return s
+	return &Schema{
+		Kind:       KindSimple,
+		Name:       name,
+		Simple:     typ,
+		Implements: map[string]struct{}{},
+	}
 }
 
 func (s *Schema) implement(iface *Interface) {
