@@ -57,10 +57,10 @@ func (*NotFound) foobarGetResponse()  {}
 func (*NotFound) foobarPostResponse() {}
 
 type Pet struct {
-	ID       int64     `json:"id"`
-	Name     string    `json:"name"`
 	Birthday time.Time `json:"birthday"`
 	Friends  []Pet     `json:"friends"`
+	ID       int64     `json:"id"`
+	Name     string    `json:"name"`
 }
 
 func (*Pet) foobarGetResponse()  {}
