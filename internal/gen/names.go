@@ -7,23 +7,6 @@ import (
 	"github.com/go-openapi/inflect"
 )
 
-func toFirstUpper(s string) string {
-	if s == "" {
-		return ""
-	}
-
-	var b strings.Builder
-
-	for i, r := range s {
-		if i == 0 {
-			r = unicode.ToUpper(r)
-		}
-		b.WriteRune(r)
-	}
-
-	return b.String()
-}
-
 func pascalWords(words []string) string {
 	for i, w := range words {
 		upper := strings.ToUpper(w)
