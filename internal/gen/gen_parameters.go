@@ -8,7 +8,7 @@ import (
 	"github.com/ogen-go/ogen"
 )
 
-func parseParameter(param ogen.Parameter, path string) (Parameter, error) {
+func (g *Generator) parseParameter(param ogen.Parameter, path string) (Parameter, error) {
 	types := map[string]ParameterLocation{
 		"query":  LocationQuery,
 		"header": LocationHeader,
@@ -32,23 +32,17 @@ func parseParameter(param ogen.Parameter, path string) (Parameter, error) {
 		}
 	}
 
-	var allowArrayType bool
-	if t == LocationHeader {
-		allowArrayType = true
-	}
-
-	pType, err := parseSimpleType(param.Schema, parseSimpleTypeParams{
-		AllowArrays: allowArrayType,
-	})
+	name := pascal(param.Name)
+	schema, err := g.generateSchema(name, param.Schema)
 	if err != nil {
 		return Parameter{}, fmt.Errorf("parse type: %w", err)
 	}
 
 	return Parameter{
-		Name:       pascal(param.Name),
+		Name:       name,
 		In:         t,
 		SourceName: param.Name,
-		Type:       pType,
+		Type:       schema.typeName(),
 		Required:   param.Required,
 	}, nil
 }

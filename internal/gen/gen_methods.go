@@ -69,7 +69,7 @@ func (g *Generator) generateMethod(path, method string, op *ogen.Operation) erro
 			p = componentParam
 		}
 
-		param, err := parseParameter(p, path)
+		param, err := g.parseParameter(p, path)
 		if err != nil {
 			return fmt.Errorf("parse parameter '%s': %w", p.Name, err)
 		}

@@ -147,6 +147,7 @@ type Media struct {
 }
 
 type Schema struct {
+	Ref         string `json:"$ref"`
 	Description string `json:"description"`
 	// Value MUST be a string. Multiple types via an array are not supported.
 	Type string `json:"type"`
@@ -159,5 +160,7 @@ type Schema struct {
 	Properties map[string]Schema `json:"properties"`
 	// Value MUST be an object and not an array. Inline or referenced schema MUST be of a Schema Object and not a standard
 	Items *Schema `json:"items"`
-	Ref   string  `json:"$ref"`
+	// The value of this keyword MUST be an array.  This array SHOULD have
+	// at least one element.  Elements in the array SHOULD be unique.
+	Enum []interface{} `json:"enum"`
 }

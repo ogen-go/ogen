@@ -55,6 +55,13 @@ type Schema struct {
 	Implements map[string]struct{}
 }
 
+func (s Schema) typeName() string {
+	if len(s.Fields) > 0 {
+		return s.Name
+	}
+	return s.Simple
+}
+
 func (g *Generator) createSchema(name string) *Schema {
 	s := &Schema{
 		Name:       name,
