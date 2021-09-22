@@ -36,16 +36,7 @@ var (
 	_ = conv.ToInt32
 )
 
-type FoobarGetParams struct {
-	Query FoobarGetQueryParams
-}
-
-type FoobarGetQueryParams struct {
-	InlinedParam int64
-	Skip         int32
-}
-
-func ParseFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
+func DecodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 	var params FoobarGetParams
 	{
 		param := r.URL.Query().Get("inlinedParam")
@@ -77,25 +68,7 @@ func ParseFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 	return params, nil
 }
 
-type PetGetParams struct {
-	Cookie PetGetCookieParams
-	Header PetGetHeaderParams
-	Query  PetGetQueryParams
-}
-
-type PetGetCookieParams struct {
-	Token string
-}
-
-type PetGetHeaderParams struct {
-	XScope []string
-}
-
-type PetGetQueryParams struct {
-	PetID int64
-}
-
-func ParsePetGetParams(r *http.Request) (PetGetParams, error) {
+func DecodePetGetParams(r *http.Request) (PetGetParams, error) {
 	var params PetGetParams
 	{
 		c, err := r.Cookie("token")
@@ -145,15 +118,7 @@ func ParsePetGetParams(r *http.Request) (PetGetParams, error) {
 	return params, nil
 }
 
-type PetNameGetParams struct {
-	Path PetNameGetPathParams
-}
-
-type PetNameGetPathParams struct {
-	Name string
-}
-
-func ParsePetNameGetParams(r *http.Request) (PetNameGetParams, error) {
+func DecodePetNameGetParams(r *http.Request) (PetNameGetParams, error) {
 	var params PetNameGetParams
 	{
 		param := chi.URLParam(r, "name")

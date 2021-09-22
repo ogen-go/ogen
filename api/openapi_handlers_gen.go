@@ -38,7 +38,7 @@ var (
 
 func NewFoobarGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := ParseFoobarGetParams(r)
+		params, err := DecodeFoobarGetParams(r)
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 			return
@@ -80,7 +80,7 @@ func NewFoobarPostHandler(s Server) func(w http.ResponseWriter, r *http.Request)
 
 func NewPetGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := ParsePetGetParams(r)
+		params, err := DecodePetGetParams(r)
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 			return
@@ -122,7 +122,7 @@ func NewPetPostHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 
 func NewPetNameGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := ParsePetNameGetParams(r)
+		params, err := DecodePetNameGetParams(r)
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 			return
