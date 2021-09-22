@@ -1,5 +1,5 @@
 {{- /*gotype: github.com/ogen-go/ogen/internal/gen.config*/ -}}
-{{ define "requests" }}
+{{ define "request_decoders" }}
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
@@ -7,8 +7,7 @@
 {{- range $m := $.Methods }}
 {{- if ne $m.RequestType "" }}
 func Decode{{ $m.Name }}Request(r *http.Request) ({{ $m.RequestType }}, error) {
-    contentType := r.Header.Get("Content-Type")
-    switch contentType {
+    switch r.Header.Get("Content-Type") {
     {{- /* Range over all request types */ -}}
     {{- range $ctype, $schema := $m.RequestBody.Contents }}
     case "{{ $ctype }}":
@@ -33,7 +32,7 @@ func Decode{{ $m.Name }}Request(r *http.Request) ({{ $m.RequestType }}, error) {
     {{- end }}
     {{- /* Range over all request types */}}
     default:
-        return nil, fmt.Errorf("unexpected content-type: %s", contentType)
+        return nil, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
     }
 }
 {{- end }}

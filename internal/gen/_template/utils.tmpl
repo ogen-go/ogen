@@ -1,0 +1,35 @@
+{{- define "parse_from_string" }}
+{{- if eq . "int32" }}conv.ToInt32
+{{- else if eq . "int64" }}conv.ToInt64
+{{- else if eq . "float32" }}conv.ToFloat32
+{{- else if eq . "float64" }}conv.ToFloat64
+{{- else if eq . "string" }}conv.ToString
+{{- else if eq . "[]byte" }}conv.ToBytes
+{{- else if eq . "time.Time" }}conv.ToTime
+{{- else if eq . "[]int32" }}conv.ToInt32Array
+{{- else if eq . "[]int64" }}conv.ToInt64Array
+{{- else if eq . "[]float32" }}conv.ToFloat32Array
+{{- else if eq . "[]float64" }}conv.ToFloat64Array
+{{- else if eq . "[]string" }}conv.ToStringArray
+{{- else if eq . "[][]byte" }}conv.ToBytesArray
+{{- else if eq . "[]time.Time" }}conv.ToTimeArray
+{{- end }}
+{{- end }}
+
+{{- define "convert_to_string" }}
+{{- if eq . "int32" }}conv.Int32ToString
+{{- else if eq . "int64" }}conv.Int64ToString
+{{- else if eq . "float32" }}conv.Float32ToString
+{{- else if eq . "float64" }}conv.Float64ToString
+{{- else if eq . "string" }}conv.StringToString
+{{- else if eq . "[]byte" }}conv.BytesToString
+{{- else if eq . "time.Time" }}conv.TimeToString
+{{- else if eq . "[]int32" }}conv.Int32ArrayToString
+{{- else if eq . "[]int64" }}conv.Int64ArrayToString
+{{- else if eq . "[]float32" }}conv.Float32ArrayToString
+{{- else if eq . "[]float64" }}conv.Float64ArrayToString
+{{- else if eq . "[]string" }}conv.StringArrayToString
+{{- else if eq . "[][]byte" }}conv.BytesArrayToString
+{{- else if eq . "[]time.Time" }}conv.TimeArrayToString
+{{- end }}
+{{- end }}

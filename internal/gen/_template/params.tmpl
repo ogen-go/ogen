@@ -1,81 +1,24 @@
 {{- /*gotype: github.com/ogen-go/ogen/internal/gen.config*/ -}}
 
-{{ define "parameters" }}
+{{ define "params" }}
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-{{- range $m := $.Methods }}
-{{ if $m.Parameters }}
-{{/* Define generic parameters struct */}}
+{{- range $m := $.Methods }}{{/* Range over methods */}}
+{{ if $m.Parameters }}{{/* Check parameters existence */}}
 type {{ $m.Name }}Params struct {
 	{{- range $t, $params := $m.Parameters }}
 		{{ $t }} {{ $m.Name }}{{ $t }}Params
 	{{- end}}
 }
-{{/* Define generic parameters struct */}}
 
-{{/* Define located parameters struct */}}
-{{ range $t, $params := $m.Parameters }}
+{{ range $t, $params := $m.Parameters }}{{/* Range over method parameters */}}
 type {{ $m.Name }}{{ $t }}Params struct {
 	{{- range $p := $params }}
 		{{ $p.Name }} {{ $p.Type }}
 	{{- end }}
 }
-{{ end }}
-{{/* Define located parameters struct */}}
-
-{{/* Parse parameters function */}}
-func Parse{{ $m.Name }}Params(r *http.Request) ({{ $m.Name }}Params, error) {
-	var params {{ $m.Name }}Params
-	{{- range $t, $params := $m.Parameters }}
-		{{- range $p := $params }}
-		{
-			{{- if eq $t "Query" }}
-				param := r.URL.Query().Get("{{ $p.SourceName }}")
-			{{- else if eq $t "Path" }}
-				param := chi.URLParam(r, "{{ $p.SourceName }}")
-			{{- else if eq $t "Header" }}
-				param := r.Header.Values("{{ $p.SourceName }}")
-            {{- else if eq $t "Cookie" }}
-				c, err := r.Cookie("{{ $p.SourceName }}")
-				if err != nil {
-					return params, fmt.Errorf("get cookie '{{ $p.SourceName }}': %w", err)
-				}
-
-				param := c.Value
-			{{- else }}
-				return params, fmt.Errorf("unsupported param type {{ $t }}")
-			{{- end }}
-
-			{{- if $p.Required }}
-			if len(param) == 0 {
-				return params, fmt.Errorf("{{ $t.Lower }} param '{{ $p.SourceName }}' is empty")
-			}
-
-			v, err := {{ template "parse_from_string" $p.Type }}(param)
-			if err != nil {
-				return params, fmt.Errorf("parse {{ $t.Lower }} param '{{ $p.SourceName }}': %w", err)
-			}
-
-			params.{{ $t }}.{{ $p.Name }} = v
-			{{- else }}
-			if len(param) > 0 {
-				v, err := {{ template "parse_from_string" $p.Type }}(param)
-				if err != nil {
-					return params, fmt.Errorf("parse {{ $t.Lower }} param '{{ $p.SourceName }}': %w", err)
-				}
-
-				params.{{ $t }}.{{ $p.Name }} = v
-			}
-			{{- end }}
-		}
-		{{- end }}
-	{{- end }}
-
-	return params, nil
-}
-{{/* Parse parameters function */}}
-{{- end }}
-{{- end }}
-
+{{ end }}{{/* Range over method parameters */}}
+{{ end }}{{/* Check parameters existence */}}
+{{ end }}{{/* Range over methods */}}
 {{ end }}

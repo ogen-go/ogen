@@ -1,0 +1,134 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.config*/ -}}
+
+{{ define "client" }}
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+type Client struct {
+    serverURL string
+    http *http.Client
+}
+
+func NewClient(serverURL string) *Client {
+    return &Client{
+        serverURL: serverURL,
+        http: &http.Client{
+            Timeout: time.Second * 15,
+        },
+    }
+}
+
+{{ range $m := $.Methods }}
+func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req {{ $m.RequestType }}{{ end }}{{ if $m.Parameters}}, params {{ $m.Name }}Params {{ end }}) ({{ $m.ResponseType }}, error) {
+    {{- if $m.RequestBody }}
+    body, contentType, err := Encode{{ $m.Name }}Request(req)
+    if err != nil {
+        return nil, err
+    }
+    {{ end }}
+
+    {{- template "encode_path" $m }}
+    
+    r, err := http.NewRequest("{{ $m.HTTPMethod }}", path, {{ if $m.RequestBody }}bytes.NewReader(body){{ else }}nil{{ end }})
+    if err != nil {
+        return nil, fmt.Errorf("create request: %w", err)
+    }
+
+    {{ if $m.RequestBody }}r.Header.Set("Content-Type", contentType){{ end }}
+
+    {{- template "encode_header_params" $m }}
+    {{- template "encode_query_params" $m }}
+    {{- template "encode_cookie_params" $m }}
+
+    resp, err := c.http.Do(r)
+    if err != nil {
+        return nil, fmt.Errorf("do request: %w", err)
+    }
+    defer resp.Body.Close()
+
+    decoded, err := Decode{{ $m.Name }}Response(resp)
+    if err != nil {
+        return nil, fmt.Errorf("decode response: %w", err)
+    }
+
+    return decoded, nil
+}
+{{ end }}
+{{ end }}
+
+{{ define "encode_path" }}
+path := c.serverURL
+{{- range $part := $.PathParts }}{{/* Range over path parts */}}
+    {{- if $part.Raw }}
+    path += "/{{ $part.Raw }}"
+    {{- else }}
+    {
+        value := {{ template "convert_to_string" $part.Param.Type }}(params.Path.{{ $part.Param.Name }})
+        {{- if $part.Param.IsArrayType }}
+        path += "/" + strings.Join(value, ",")
+        {{- else }}
+        path += "/" + value
+        {{- end }}
+    }
+    {{- end }}
+{{- end }}{{/* Range over path parts */}}
+{{ end }}
+
+
+{{ define "encode_query_params" }}
+{{ $pcount := len $.QueryParams }}{{ if ne $pcount 0 }}{{/* Check params existence */}}
+q := r.URL.Query()
+{{- range $param := $.QueryParams }}{{/* Range over params */}}
+    {
+    s := {{ template "convert_to_string" $param.Type }}(params.Query.{{ $param.Name }})
+    {{- if $param.IsArrayType }}
+    for _, v := range s {
+        q.Add("{{ $param.SourceName }}", v)
+    }
+    {{- else }}
+    q.Set("{{ $param.SourceName }}", s)
+    {{- end }}
+    }
+{{- end }}{{/* Range over params */}}
+r.URL.RawQuery = q.Encode()
+{{ end }}{{/* Check params existence */}}
+{{ end }}
+
+
+{{ define "encode_cookie_params" }}
+{{- range $param := $.CookieParams }}{{/* Range over params */}}
+{
+value := {{ template "convert_to_string" $param.Type }}(params.Cookie.{{ $param.Name }})
+{{- if $param.IsArrayType }}
+r.AddCookie(&http.Cookie{
+    Name: "{{ $param.SourceName }}",
+    Value: strings.Join(value, "/"),
+    MaxAge: 1337,
+})
+{{- else }}
+r.AddCookie(&http.Cookie{
+    Name: "{{ $param.SourceName }}",
+    Value: value,
+    MaxAge: 1337,
+})
+{{- end }}
+}
+{{- end }}{{/* Range over params */}}
+{{ end }}
+
+
+{{ define "encode_header_params" }}
+{{- range $param := $.HeaderParams }}{{/* Range over params */}}
+{
+value := {{ template "convert_to_string" $param.Type }}(params.Header.{{ $param.Name }})
+{{- if $param.IsArrayType }}
+for _, v := range value {
+    r.Header.Add("{{ $param.SourceName }}", v)
+}
+{{- else }}
+r.Header.Set("{{ $param.SourceName }}", v)
+{{- end }}
+}
+{{- end }}{{/* Range over params */}}
+{{ end }}
+

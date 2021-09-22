@@ -62,7 +62,10 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		Interfaces: g.interfaces,
 	}
 
-	if err := w.Generate("parameters", "openapi_parameters_gen.go", cfg); err != nil {
+	if err := w.Generate("params", "openapi_params_gen.go", cfg); err != nil {
+		return err
+	}
+	if err := w.Generate("param_decoders", "openapi_param_decoders_gen.go", cfg); err != nil {
 		return err
 	}
 	if err := w.Generate("handlers", "openapi_handlers_gen.go", cfg); err != nil {
@@ -74,10 +77,16 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 	if err := w.Generate("schemas", "openapi_schemas_gen.go", cfg); err != nil {
 		return err
 	}
-	if err := w.Generate("requests", "openapi_requests_gen.go", cfg); err != nil {
+	if err := w.Generate("request_decoders", "openapi_request_decoders_gen.go", cfg); err != nil {
 		return err
 	}
-	if err := w.Generate("responses", "openapi_responses_gen.go", cfg); err != nil {
+	if err := w.Generate("request_encoders", "openapi_request_encoders_gen.go", cfg); err != nil {
+		return err
+	}
+	if err := w.Generate("response_encoders", "openapi_response_encoders_gen.go", cfg); err != nil {
+		return err
+	}
+	if err := w.Generate("response_decoders", "openapi_response_decoders_gen.go", cfg); err != nil {
 		return err
 	}
 	if len(cfg.Interfaces) > 0 {
@@ -86,6 +95,9 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		}
 	}
 	if err := w.Generate("server", "openapi_server_gen.go", cfg); err != nil {
+		return err
+	}
+	if err := w.Generate("client", "openapi_client_gen.go", cfg); err != nil {
 		return err
 	}
 

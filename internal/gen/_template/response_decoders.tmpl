@@ -1,0 +1,66 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.config*/ -}}
+
+{{ define "response_decoders" }}
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+{{- range $m := $.Methods }}{{/* Range over all methods */}}
+
+func Decode{{ $m.Name }}Response(resp *http.Response) ({{ $m.ResponseType }}, error) {
+    switch resp.StatusCode {
+    {{- range $statusCode, $response := $m.Responses }}{{/* Range over responses */}}
+    case {{ $statusCode }}:
+        {{- if $response.NoContent }}{{/* Decode NoContent response */}}
+        return &{{ $response.NoContent.Name }}{}, nil
+        {{- else }}{{/* Decode content response */}}
+        switch resp.Header.Get("Content-Type") {
+        {{- range $ctype, $schema := $response.Contents }}{{/* Range over contents */}}
+        case "{{ $ctype }}":
+            {{- if eq $ctype "application/json" }}{{/* Decode */}}
+            var response {{ $schema.Name }}
+            if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
+                return nil, err
+            }
+
+            return &response, nil
+            {{- else }}
+            return nil, fmt.Errorf("{{ $ctype }} decoder not implemented")
+            {{- end }}{{/* Decode */}}
+        {{- end }}{{/* Range over contents */}}
+        default:
+            return nil, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+        }
+        {{- end }}{{/* Decode content response */}}
+    {{- end }}{{/* Range over responses */}}
+    default:
+        {{- if $m.ResponseDefault }}{{/* Decode default response */}}
+        {{- if $m.ResponseDefault.NoContent }}{{/* Decode NoContent response */}}
+        return &{{ $m.ResponseDefault.NoContent.Name }}{StatusCode: resp.StatusCode}, nil
+        {{- else }}{{/* Decode content response */}}
+        switch resp.Header.Get("Content-Type") {
+        {{- range $ctype, $schema := $m.ResponseDefault.Contents }}{{/* Range over contents */}}
+        case "{{ $ctype }}":
+            {{- if eq $ctype "application/json" }}{{/* Decode */}}
+            var response {{ $schema.Name }}
+            if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
+                return nil, err
+            }
+
+            response.StatusCode = resp.StatusCode
+            return &response, nil
+            {{- else }}
+            return nil, fmt.Errorf("{{ $ctype }} decoder not implemented")
+            {{- end }}{{/* Decode */}}
+        {{- end }}{{/* Range over contents */}}
+        default:
+            return nil, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+        }
+        {{- end }}{{/* Decode content response */}}
+        {{- else }}
+        return nil, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+        {{- end }}{{- /* Decode default response */}}
+    }
+}
+
+{{- end }}{{/* Range over all methods */}}
+{{ end }}

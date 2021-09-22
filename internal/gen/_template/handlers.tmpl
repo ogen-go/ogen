@@ -8,7 +8,7 @@
 func New{{ $m.Name }}Handler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		{{- if $m.Parameters }}
-        params, err := Parse{{ $m.Name }}Params(r)
+        params, err := Decode{{ $m.Name }}Params(r)
         if err != nil {
             w.WriteHeader(http.StatusBadRequest)
             return

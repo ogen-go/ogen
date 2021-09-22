@@ -18,7 +18,7 @@ func (p ParameterLocation) Lower() string { return strings.ToLower(string(p)) }
 
 type Method struct {
 	Name       string
-	Path       string
+	PathParts  []PathPart
 	HTTPMethod string
 	Parameters map[ParameterLocation][]Parameter
 
@@ -30,11 +30,34 @@ type Method struct {
 	ResponseDefault *Response
 }
 
+func (m *Method) QueryParams() []Parameter  { return m.Parameters[LocationQuery] }
+func (m *Method) CookieParams() []Parameter { return m.Parameters[LocationCookie] }
+func (m *Method) HeaderParams() []Parameter { return m.Parameters[LocationHeader] }
+
+type PathPart struct {
+	Raw   string
+	Param Parameter
+}
+
+func (m *Method) Path() string {
+	var path string
+	for _, part := range m.PathParts {
+		if part.Raw != "" {
+			path += "/" + part.Raw
+			continue
+		}
+
+		path += "/{" + part.Param.SourceName + "}"
+	}
+	return path
+}
+
 type Parameter struct {
-	Name       string
-	SourceName string
-	Type       string
-	In         ParameterLocation
+	Name        string
+	SourceName  string
+	Type        string
+	IsArrayType bool
+	In          ParameterLocation
 
 	// In - [Possible style values]
 	//   "path"   - "simple", "label", "matrix".

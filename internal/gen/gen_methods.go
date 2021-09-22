@@ -47,7 +47,7 @@ func (g *Generator) generateMethods() error {
 	}
 
 	sort.SliceStable(g.methods, func(i, j int) bool {
-		return strings.Compare(g.methods[i].Path, g.methods[j].Path) < 0
+		return strings.Compare(g.methods[i].Path(), g.methods[j].Path()) < 0
 	})
 
 	return nil
@@ -85,9 +85,15 @@ func (g *Generator) generateMethod(path, method string, op *ogen.Operation) erro
 	methodName = strings.ReplaceAll(methodName, "}", "")
 	methodName += "_" + strings.ToLower(method)
 	methodName = pascal(methodName)
+
+	parts, err := parsePath(path, params[LocationPath])
+	if err != nil {
+		return fmt.Errorf("parse path: %w", err)
+	}
+
 	m := &Method{
 		Name:       methodName,
-		Path:       path,
+		PathParts:  parts,
 		HTTPMethod: method,
 		Parameters: params,
 	}
@@ -133,4 +139,34 @@ func (g *Generator) generateMethod(path, method string, op *ogen.Operation) erro
 
 	g.methods = append(g.methods, m)
 	return nil
+}
+
+func parsePath(path string, params []Parameter) (parts []PathPart, err error) {
+	lookup := func(name string) (Parameter, bool) {
+		for _, p := range params {
+			if p.SourceName == name {
+				return p, true
+			}
+		}
+		return Parameter{}, false
+	}
+
+	for _, s := range strings.Split(path, "/") {
+		if len(s) == 0 {
+			continue
+		}
+		if len(s) > 2 && s[0] == '{' && s[len(s)-1] == '}' {
+			name := s[1 : len(s)-1]
+			param, found := lookup(name)
+			if !found {
+				return nil, fmt.Errorf("parameter '%s' not found in path", name)
+			}
+
+			parts = append(parts, PathPart{Param: param})
+			continue
+		}
+
+		parts = append(parts, PathPart{Raw: s})
+	}
+	return
 }

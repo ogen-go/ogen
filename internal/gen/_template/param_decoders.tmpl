@@ -1,0 +1,62 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.config*/ -}}
+
+{{ define "param_decoders" }}
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+{{- range $m := $.Methods }}{{/* Range over methods */}}
+{{ if $m.Parameters }}{{/* Check parameters existence */}}
+
+func Decode{{ $m.Name }}Params(r *http.Request) ({{ $m.Name }}Params, error) {
+	var params {{ $m.Name }}Params
+	{{- range $t, $params := $m.Parameters }}
+		{{- range $p := $params }}
+		{
+			{{- if eq $t "Query" }}
+				param := r.URL.Query().Get("{{ $p.SourceName }}")
+			{{- else if eq $t "Path" }}
+				param := chi.URLParam(r, "{{ $p.SourceName }}")
+			{{- else if eq $t "Header" }}
+				param := r.Header.Values("{{ $p.SourceName }}")
+            {{- else if eq $t "Cookie" }}
+				c, err := r.Cookie("{{ $p.SourceName }}")
+				if err != nil {
+					return params, fmt.Errorf("get cookie '{{ $p.SourceName }}': %w", err)
+				}
+
+				param := c.Value
+			{{- else }}
+				return params, fmt.Errorf("unsupported param type {{ $t }}")
+			{{- end }}
+
+			{{- if $p.Required }}
+			if len(param) == 0 {
+				return params, fmt.Errorf("{{ $t.Lower }} param '{{ $p.SourceName }}' is empty")
+			}
+
+			v, err := {{ template "parse_from_string" $p.Type }}(param)
+			if err != nil {
+				return params, fmt.Errorf("parse {{ $t.Lower }} param '{{ $p.SourceName }}': %w", err)
+			}
+
+			params.{{ $t }}.{{ $p.Name }} = v
+			{{- else }}
+			if len(param) > 0 {
+				v, err := {{ template "parse_from_string" $p.Type }}(param)
+				if err != nil {
+					return params, fmt.Errorf("parse {{ $t.Lower }} param '{{ $p.SourceName }}': %w", err)
+				}
+
+				params.{{ $t }}.{{ $p.Name }} = v
+			}
+			{{- end }}
+		}
+		{{- end }}
+	{{- end }}
+
+	return params, nil
+}
+
+{{- end }}{{/* Check parameters existence */}}
+{{- end }}{{/* Range over methods */}}
+{{ end }}
