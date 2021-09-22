@@ -54,7 +54,7 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarG
 	path := c.serverURL
 	path += "/foobar"
 
-	r, err := http.NewRequest("GET", path, nil)
+	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
 	if err != nil {
 		return nil, fmt.Errorf("create request: %w", err)
 	}
@@ -76,12 +76,12 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarG
 	}
 	defer resp.Body.Close()
 
-	decoded, err := DecodeFoobarGetResponse(resp)
+	result, err := DecodeFoobarGetResponse(resp)
 	if err != nil {
 		return nil, fmt.Errorf("decode response: %w", err)
 	}
 
-	return decoded, nil
+	return result, nil
 }
 
 func (c *Client) FoobarPost(ctx context.Context, req *Pet) (FoobarPostResponse, error) {
@@ -93,7 +93,7 @@ func (c *Client) FoobarPost(ctx context.Context, req *Pet) (FoobarPostResponse, 
 	path := c.serverURL
 	path += "/foobar"
 
-	r, err := http.NewRequest("POST", path, bytes.NewReader(body))
+	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
 	if err != nil {
 		return nil, fmt.Errorf("create request: %w", err)
 	}
@@ -106,19 +106,19 @@ func (c *Client) FoobarPost(ctx context.Context, req *Pet) (FoobarPostResponse, 
 	}
 	defer resp.Body.Close()
 
-	decoded, err := DecodeFoobarPostResponse(resp)
+	result, err := DecodeFoobarPostResponse(resp)
 	if err != nil {
 		return nil, fmt.Errorf("decode response: %w", err)
 	}
 
-	return decoded, nil
+	return result, nil
 }
 
 func (c *Client) PetGet(ctx context.Context, params PetGetParams) (PetGetResponse, error) {
 	path := c.serverURL
 	path += "/pet"
 
-	r, err := http.NewRequest("GET", path, nil)
+	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
 	if err != nil {
 		return nil, fmt.Errorf("create request: %w", err)
 	}
@@ -152,12 +152,12 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (PetGetRespons
 	}
 	defer resp.Body.Close()
 
-	decoded, err := DecodePetGetResponse(resp)
+	result, err := DecodePetGetResponse(resp)
 	if err != nil {
 		return nil, fmt.Errorf("decode response: %w", err)
 	}
 
-	return decoded, nil
+	return result, nil
 }
 
 func (c *Client) PetPost(ctx context.Context, req PetPostRequest) (*Pet, error) {
@@ -169,7 +169,7 @@ func (c *Client) PetPost(ctx context.Context, req PetPostRequest) (*Pet, error) 
 	path := c.serverURL
 	path += "/pet"
 
-	r, err := http.NewRequest("POST", path, bytes.NewReader(body))
+	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
 	if err != nil {
 		return nil, fmt.Errorf("create request: %w", err)
 	}
@@ -182,12 +182,12 @@ func (c *Client) PetPost(ctx context.Context, req PetPostRequest) (*Pet, error) 
 	}
 	defer resp.Body.Close()
 
-	decoded, err := DecodePetPostResponse(resp)
+	result, err := DecodePetPostResponse(resp)
 	if err != nil {
 		return nil, fmt.Errorf("decode response: %w", err)
 	}
 
-	return decoded, nil
+	return result, nil
 }
 
 func (c *Client) PetNameGet(ctx context.Context, params PetNameGetParams) (*Pet, error) {
@@ -198,7 +198,7 @@ func (c *Client) PetNameGet(ctx context.Context, params PetNameGetParams) (*Pet,
 		path += "/" + value
 	}
 
-	r, err := http.NewRequest("GET", path, nil)
+	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
 	if err != nil {
 		return nil, fmt.Errorf("create request: %w", err)
 	}
@@ -209,10 +209,10 @@ func (c *Client) PetNameGet(ctx context.Context, params PetNameGetParams) (*Pet,
 	}
 	defer resp.Body.Close()
 
-	decoded, err := DecodePetNameGetResponse(resp)
+	result, err := DecodePetNameGetResponse(resp)
 	if err != nil {
 		return nil, fmt.Errorf("decode response: %w", err)
 	}
 
-	return decoded, nil
+	return result, nil
 }

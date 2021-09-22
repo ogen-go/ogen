@@ -29,7 +29,7 @@ func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req 
 
     {{- template "encode_path" $m }}
     
-    r, err := http.NewRequest("{{ $m.HTTPMethod }}", path, {{ if $m.RequestBody }}bytes.NewReader(body){{ else }}nil{{ end }})
+    r, err := http.NewRequestWithContext(ctx, "{{ $m.HTTPMethod }}", path, {{ if $m.RequestBody }}bytes.NewReader(body){{ else }}nil{{ end }})
     if err != nil {
         return nil, fmt.Errorf("create request: %w", err)
     }
@@ -46,12 +46,12 @@ func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req 
     }
     defer resp.Body.Close()
 
-    decoded, err := Decode{{ $m.Name }}Response(resp)
+    result, err := Decode{{ $m.Name }}Response(resp)
     if err != nil {
         return nil, fmt.Errorf("decode response: %w", err)
     }
 
-    return decoded, nil
+    return result, nil
 }
 {{ end }}
 {{ end }}
