@@ -39,8 +39,8 @@ var (
 func EncodeFoobarGetResponse(response FoobarGetResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Pet:
-		w.WriteHeader(200)
 		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
 		return json.NewEncoder(w).Encode(response)
 	case *NotFound:
 		w.WriteHeader(404)
@@ -53,15 +53,15 @@ func EncodeFoobarGetResponse(response FoobarGetResponse, w http.ResponseWriter) 
 func EncodeFoobarPostResponse(response FoobarPostResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Pet:
-		w.WriteHeader(200)
 		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
 		return json.NewEncoder(w).Encode(response)
 	case *NotFound:
 		w.WriteHeader(404)
 		return nil
 	case *ErrorResponseDefault:
-		w.WriteHeader(response.StatusCode)
 		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
 		return json.NewEncoder(w).Encode(response)
 	default:
 		return fmt.Errorf("/foobar: unexpected response type for method: %T", response)
@@ -71,12 +71,12 @@ func EncodeFoobarPostResponse(response FoobarPostResponse, w http.ResponseWriter
 func EncodePetGetResponse(response PetGetResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Pet:
-		w.WriteHeader(200)
 		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
 		return json.NewEncoder(w).Encode(response)
 	case *PetGetDefaultResponse:
-		w.WriteHeader(response.StatusCode)
 		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
 		return json.NewEncoder(w).Encode(response)
 	default:
 		return fmt.Errorf("/pet: unexpected response type for method: %T", response)
@@ -84,13 +84,13 @@ func EncodePetGetResponse(response PetGetResponse, w http.ResponseWriter) error 
 }
 
 func EncodePetPostResponse(response *Pet, w http.ResponseWriter) error {
-	w.WriteHeader(200)
 	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
 	return json.NewEncoder(w).Encode(response)
 }
 
 func EncodePetNameGetResponse(response *Pet, w http.ResponseWriter) error {
-	w.WriteHeader(200)
 	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
 	return json.NewEncoder(w).Encode(response)
 }

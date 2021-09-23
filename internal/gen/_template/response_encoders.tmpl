@@ -4,60 +4,21 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-{{/* Range over all methods */}}
-{{- range $m := $.Methods }}
+{{- range $m := $.Methods }}{{/* Range over all methods */}}
 
 func Encode{{ $m.Name }}Response(response {{ $m.ResponseType }}, w http.ResponseWriter) error {
     {{- $schemasLength := len $m.ListResponseSchemas }}
     {{- if eq $schemasLength 1 }}
 
     {{- range $schema, $info := $m.ListResponseSchemas }}
-        {{- /* Set status code */}}
-        {{- if $info.Default }}
-        w.WriteHeader(response.StatusCode)
-        {{- else }}
-        w.WriteHeader({{ $info.StatusCode }})
-        {{- end }}
-        {{- /* Set status code */}}
-
-        {{- /* Encode content */}}
-        {{- if $info.NoContent }}
-        return nil
-        {{- else }}
-        w.Header().Set("Content-Type", "{{ $info.ContentType }}")
-        {{- if eq $info.ContentType "application/json" }}
-        return json.NewEncoder(w).Encode(response)
-        {{- else }}
-        return fmt.Errorf("{{ $info.ContentType }} encoder not implemented")
-        {{- end }}
-        {{- end }}
-        {{- /* Encode content */}}
+        {{- template "respond" $info }}
     {{- end }}
 
     {{- else }}
     switch response := response.(type) {
     {{- range $schema, $info := $m.ListResponseSchemas }}
     case *{{ $schema.Name }}:
-        {{- /* Set status code */}}
-        {{- if $info.Default }}
-        w.WriteHeader(response.StatusCode)
-        {{- else }}
-        w.WriteHeader({{ $info.StatusCode }})
-        {{- end }}
-        {{- /* Set status code */}}
-
-        {{- /* Encode content */}}
-        {{- if $info.NoContent }}
-        return nil
-        {{- else }}
-        w.Header().Set("Content-Type", "{{ $info.ContentType }}")
-        {{- if eq $info.ContentType "application/json" }}
-        return json.NewEncoder(w).Encode(response)
-        {{- else }}
-        return fmt.Errorf("{{ $info.ContentType }} encoder not implemented")
-        {{- end }}
-        {{- end }}
-        {{- /* Encode content */}}
+        {{- template "respond" $info }}
     {{- end }}
     default:
         return fmt.Errorf("{{ $m.Path}}: unexpected response type for method: %T", response)
@@ -65,7 +26,26 @@ func Encode{{ $m.Name }}Response(response {{ $m.ResponseType }}, w http.Response
     {{- end }}
 }
 
-{{/* Range over all methods */}}
-{{- end }}
 
+{{- end }}{{/* Range over all methods */}}
+{{ end }}
+
+{{ define "respond" }}
+{{- if not $.NoContent }}{{- /* Set content-type */}}
+w.Header().Set("Content-Type", "{{ $.ContentType }}")
+{{- end }}{{- /* Set content-type */}}
+
+{{- if $.Default }}{{- /* Set status code */}}
+w.WriteHeader(response.StatusCode)
+{{- else }}
+w.WriteHeader({{ $.StatusCode }})
+{{- end }}{{- /* Set status code */}}
+
+{{- if $.NoContent }}{{- /* Encode content */}}
+return nil
+{{- else if eq $.ContentType "application/json" }}
+return json.NewEncoder(w).Encode(response)
+{{- else }}
+return fmt.Errorf("{{ $.ContentType }} encoder not implemented")
+{{- end }}{{- /* Encode content */ -}}
 {{ end }}
