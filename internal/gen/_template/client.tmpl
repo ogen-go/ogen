@@ -126,7 +126,7 @@ for _, v := range value {
     r.Header.Add("{{ $param.SourceName }}", v)
 }
 {{- else }}
-r.Header.Set("{{ $param.SourceName }}", v)
+r.Header.Set("{{ $param.SourceName }}", value)
 {{- end }}
 }
 {{- end }}{{/* Range over params */}}

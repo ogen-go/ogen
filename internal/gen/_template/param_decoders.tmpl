@@ -17,7 +17,11 @@ func Decode{{ $m.Name }}Params(r *http.Request) ({{ $m.Name }}Params, error) {
 			{{- else if eq $t "Path" }}
 				param := chi.URLParam(r, "{{ $p.SourceName }}")
 			{{- else if eq $t "Header" }}
+				{{- if $p.IsArrayType }}
 				param := r.Header.Values("{{ $p.SourceName }}")
+				{{- else }}
+				param := r.Header.Get("{{ $p.SourceName }}")
+				{{- end }}
             {{- else if eq $t "Cookie" }}
 				c, err := r.Cookie("{{ $p.SourceName }}")
 				if err != nil {

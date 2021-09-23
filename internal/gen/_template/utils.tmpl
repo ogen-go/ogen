@@ -4,6 +4,7 @@
 {{- else if eq . "float32" }}conv.ToFloat32
 {{- else if eq . "float64" }}conv.ToFloat64
 {{- else if eq . "string" }}conv.ToString
+{{- else if eq . "bool" }}conv.ToBool
 {{- else if eq . "[]byte" }}conv.ToBytes
 {{- else if eq . "time.Time" }}conv.ToTime
 {{- else if eq . "[]int32" }}conv.ToInt32Array
@@ -22,6 +23,7 @@
 {{- else if eq . "float32" }}conv.Float32ToString
 {{- else if eq . "float64" }}conv.Float64ToString
 {{- else if eq . "string" }}conv.StringToString
+{{- else if eq . "bool" }}conv.BoolToString
 {{- else if eq . "[]byte" }}conv.BytesToString
 {{- else if eq . "time.Time" }}conv.TimeToString
 {{- else if eq . "[]int32" }}conv.Int32ArrayToString
