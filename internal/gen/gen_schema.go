@@ -9,10 +9,6 @@ import (
 )
 
 func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, error) {
-	return g.generateSchemaWithOpts(name, schema, true)
-}
-
-func (g *Generator) generateSchemaWithOpts(name string, schema ogen.Schema, allowNestedArrays bool) (*Schema, error) {
 	if ref := schema.Ref; ref != "" {
 		componentName, err := componentName(ref)
 		if err != nil {
@@ -46,10 +42,6 @@ func (g *Generator) generateSchemaWithOpts(name string, schema ogen.Schema, allo
 		s.Description = schema.Description
 		g.schemas[s.Name] = s
 		for propName, propSchema := range schema.Properties {
-			if !allowNestedArrays && propSchema.Type == "array" {
-				return nil, fmt.Errorf("properties: %s: nested array not allowed", propName)
-			}
-
 			if !required(propName) {
 				return nil, fmt.Errorf("properties: %s: optional properties not supported", propName)
 			}
@@ -72,10 +64,6 @@ func (g *Generator) generateSchemaWithOpts(name string, schema ogen.Schema, allo
 	case "array":
 		if schema.Items == nil {
 			return nil, fmt.Errorf("empty items field")
-		}
-
-		if !allowNestedArrays && schema.Items.Type == "array" {
-			return nil, fmt.Errorf("item: nested arrays not allowed")
 		}
 
 		item, err := g.generateSchema(name+"Item", *schema.Items)
