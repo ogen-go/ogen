@@ -6,7 +6,7 @@
 
 {{- range $name, $s := $.Schemas }}
 {{/* Define schema structure */}}
-{{- if eq $s.Simple "" }}
+{{- if eq $s.Kind "struct" }}
 type {{ $name }} struct {
 {{- range $f := $s.Fields }}
     {{ $f.Name }} {{ $f.Type }} `json:"{{ $f.Tag }}"`
@@ -16,7 +16,7 @@ type {{ $name }} struct {
 
 {{/* Define schema simple type */}}
 {{- else }}
-type {{ $name }} {{ $s.Simple }}
+type {{ $name }} {{ $s.Type }}
 {{- end }}
 {{/* Define schema simple type */}}
 

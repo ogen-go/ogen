@@ -111,6 +111,16 @@ type Parameter struct {
 	// The key is the media type and the value describes it.
 	// The map MUST only contain one entry.
 	Content map[string]Media `json:"content"` // TODO: implement
+
+	// Describes how the parameter value will be serialized
+	// depending on the type of the parameter value.
+	Style   string `json:"style"`
+
+	// When this is true, parameter values of type array or object
+	// generate separate parameters for each value of the array
+	// or key-value pair of the map.
+	// For other types of parameters this property has no effect.
+	Explode *bool  `json:"explode"`
 }
 
 // RequestBody describes a single request body.

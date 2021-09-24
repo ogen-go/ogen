@@ -15,7 +15,7 @@ type {{ $m.Name }}Params struct {
 {{ range $t, $params := $m.Parameters }}{{/* Range over method parameters */}}
 type {{ $m.Name }}{{ $t }}Params struct {
 	{{- range $p := $params }}
-		{{ $p.Name }} {{ $p.Type }}
+		{{ $p.Name }} {{ $p.Schema.Type }}
 	{{- end }}
 }
 {{ end }}{{/* Range over method parameters */}}

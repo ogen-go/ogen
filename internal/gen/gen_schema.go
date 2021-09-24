@@ -49,7 +49,7 @@ func (g *Generator) generateSchemaWithOpts(name string, schema ogen.Schema, allo
 			s.Fields = append(s.Fields, SchemaField{
 				Name: pascal(propName),
 				Tag:  propName,
-				Type: prop.typeName(),
+				Type: prop.Type(),
 			})
 		}
 		sort.SliceStable(s.Fields, func(i, j int) bool {
@@ -70,7 +70,7 @@ func (g *Generator) generateSchemaWithOpts(name string, schema ogen.Schema, allo
 			return nil, err
 		}
 
-		return g.createSchemaSimple(name, "[]"+item.typeName()), nil
+		return g.createSchemaArray(name, item), nil
 	default:
 		simpleType, err := parseSimple(
 			strings.ToLower(schema.Type),
@@ -80,7 +80,7 @@ func (g *Generator) generateSchemaWithOpts(name string, schema ogen.Schema, allo
 			return nil, err
 		}
 
-		return g.createSchemaSimple(name, simpleType), nil
+		return g.createSchemaPrimitive(name, simpleType), nil
 	}
 }
 

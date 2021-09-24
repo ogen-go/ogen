@@ -30,6 +30,7 @@ type Method struct {
 	ResponseDefault *Response
 }
 
+func (m *Method) PathParams() []Parameter   { return m.Parameters[LocationPath] }
 func (m *Method) QueryParams() []Parameter  { return m.Parameters[LocationQuery] }
 func (m *Method) CookieParams() []Parameter { return m.Parameters[LocationCookie] }
 func (m *Method) HeaderParams() []Parameter { return m.Parameters[LocationHeader] }
@@ -55,27 +56,22 @@ func (m *Method) Path() string {
 type Parameter struct {
 	Name        string
 	SourceName  string
-	Type        string
+	Schema      *Schema
 	IsArrayType bool
 	In          ParameterLocation
-
-	// In - [Possible style values]
-	//   "path"   - "simple", "label", "matrix".
-	//   "query"  - "form", "spaceDelimited", "pipeDelimited", "deepObject".
-	//   "header" - "simple".
-	//   "cookie" - "form".
-	// Style string
-
-	// Explode bool
+	Style       string
+	Explode     bool
 
 	Required bool
 }
 
-type SchemaKind string
+type SchemaKind = string
 
 const (
-	KindStruct SchemaKind = "struct"
-	KindSimple SchemaKind = "simple"
+	KindStruct    SchemaKind = "struct"
+	KindAlias     SchemaKind = "alias"
+	KindPrimitive SchemaKind = "primitive"
+	KindArray     SchemaKind = "array"
 )
 
 type Schema struct {
@@ -83,18 +79,24 @@ type Schema struct {
 	Name        string
 	Description string
 
-	Simple string
-	Fields []SchemaField
+	AliasTo   string
+	Primitive string
+	Item      *Schema
+	Fields    []SchemaField
 
 	Implements map[string]struct{}
 }
 
-func (s Schema) typeName() string {
+func (s Schema) Type() string {
 	switch s.Kind {
 	case KindStruct:
 		return s.Name
-	case KindSimple:
-		return s.Simple
+	case KindAlias:
+		return s.AliasTo
+	case KindPrimitive:
+		return s.Primitive
+	case KindArray:
+		return "[]" + s.Item.Type()
 	default:
 		panic(fmt.Errorf("unexpected SchemaKind: %s", s.Kind))
 	}
@@ -108,11 +110,29 @@ func (g *Generator) createSchemaStruct(name string) *Schema {
 	}
 }
 
-func (g *Generator) createSchemaSimple(name, typ string) *Schema {
+func (g *Generator) createSchemaPrimitive(name, typ string) *Schema {
 	return &Schema{
-		Kind:       KindSimple,
+		Kind:       KindPrimitive,
 		Name:       name,
-		Simple:     typ,
+		Primitive:  typ,
+		Implements: map[string]struct{}{},
+	}
+}
+
+func (g *Generator) createSchemaAlias(name, typ string) *Schema {
+	return &Schema{
+		Kind:       KindAlias,
+		Name:       name,
+		AliasTo:    typ,
+		Implements: map[string]struct{}{},
+	}
+}
+
+func (g *Generator) createSchemaArray(name string, item *Schema) *Schema {
+	return &Schema{
+		Kind:       KindArray,
+		Name:       name,
+		Item:       item,
 		Implements: map[string]struct{}{},
 	}
 }

@@ -131,7 +131,7 @@ func (g *Generator) generateResponse(name string, resp ogen.Response) (*Response
 	// Response without content.
 	// Create empty struct.
 	if len(resp.Content) == 0 {
-		s := g.createSchemaSimple(name, "struct{}")
+		s := g.createSchemaAlias(name, "struct{}")
 		g.schemas[s.Name] = s
 		response.NoContent = s
 		return response, nil
@@ -167,7 +167,7 @@ func (g *Generator) generateResponse(name string, resp ogen.Response) (*Response
 
 			// Response have multiple contents.
 			// Alias them with new response type.
-			s := g.createSchemaSimple(responseStructName, schema.Name)
+			s := g.createSchemaAlias(responseStructName, schema.Name)
 			g.schemas[s.Name] = s
 			response.Contents[contentType] = s
 			continue
@@ -225,7 +225,7 @@ func (g *Generator) wrapStatusCode(schema *Schema) *Schema {
 		{
 			Name: "Response",
 			Tag:  "-",
-			Type: schema.typeName(),
+			Type: schema.Type(),
 		},
 	}
 	g.schemas[newSchema.Name] = newSchema
