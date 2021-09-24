@@ -2,10 +2,9 @@ package gen
 
 import (
 	"bytes"
+	"fmt"
 	"os"
 	"text/template"
-
-	"golang.org/x/xerrors"
 )
 
 type TemplateConfig struct {
@@ -30,16 +29,16 @@ type writer struct {
 // Generate executes template to file using config.
 func (w *writer) Generate(templateName, fileName string, cfg TemplateConfig) error {
 	if w.wrote[fileName] {
-		return xerrors.Errorf("name collision (already wrote %s)", fileName)
+		return fmt.Errorf("name collision (already wrote %s)", fileName)
 	}
 
 	w.buf.Reset()
 	if err := w.t.ExecuteTemplate(w.buf, templateName, cfg); err != nil {
-		return xerrors.Errorf("failed to execute template %s for %s: %w", templateName, fileName, err)
+		return fmt.Errorf("failed to execute template %s for %s: %w", templateName, fileName, err)
 	}
 	if err := w.fs.WriteFile(fileName, w.buf.Bytes()); err != nil {
 		_ = os.WriteFile(fileName+".dump", w.buf.Bytes(), 0600)
-		return xerrors.Errorf("failed to write file %s: %w", fileName, err)
+		return fmt.Errorf("failed to write file %s: %w", fileName, err)
 	}
 	w.wrote[fileName] = true
 
