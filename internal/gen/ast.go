@@ -211,7 +211,7 @@ type Response struct {
 	Contents  map[string]*Schema
 }
 
-func (g *Generator) createResponse(name string) *Response {
+func (g *Generator) createResponse() *Response {
 	return &Response{
 		Contents: map[string]*Schema{},
 	}

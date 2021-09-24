@@ -103,7 +103,7 @@ func (g *Generator) createDefaultResponse(methodName string, r ogen.Response) (*
 			return nil, fmt.Errorf("response by reference '%s', not found", ref)
 		}
 
-		alias := g.createResponse(name + "Default")
+		alias := g.createResponse()
 		for contentType, schema := range response.Contents {
 			alias.Contents[contentType] = g.wrapStatusCode(schema)
 		}
@@ -141,7 +141,7 @@ func (g *Generator) createDefaultResponse(methodName string, r ogen.Response) (*
 
 // generateResponse creates new response based on schema definition.
 func (g *Generator) generateResponse(rname string, resp ogen.Response) (*Response, error) {
-	response := g.createResponse(rname)
+	response := g.createResponse()
 
 	// Response without content.
 	// Create empty struct.
