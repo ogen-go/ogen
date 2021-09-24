@@ -114,13 +114,13 @@ type Parameter struct {
 
 	// Describes how the parameter value will be serialized
 	// depending on the type of the parameter value.
-	Style   string `json:"style"`
+	Style string `json:"style"`
 
 	// When this is true, parameter values of type array or object
 	// generate separate parameters for each value of the array
 	// or key-value pair of the map.
 	// For other types of parameters this property has no effect.
-	Explode *bool  `json:"explode"`
+	Explode *bool `json:"explode"`
 }
 
 // RequestBody describes a single request body.
@@ -159,18 +159,30 @@ type Media struct {
 type Schema struct {
 	Ref         string `json:"$ref"`
 	Description string `json:"description"`
+
 	// Value MUST be a string. Multiple types via an array are not supported.
 	Type string `json:"type"`
+
 	// See Data Type Formats for further details (https://swagger.io/specification/#data-type-format).
 	// While relying on JSON Schema's defined formats,
 	// the OAS offers a few additional predefined formats.
 	Format string `json:"format"`
+
 	// Property definitions MUST be a Schema Object and not a standard JSON Schema
 	// (inline or referenced).
 	Properties map[string]Schema `json:"properties"`
-	// Value MUST be an object and not an array. Inline or referenced schema MUST be of a Schema Object and not a standard
+
+	// The value of this keyword MUST be an array.
+	// This array MUST have at least one element.
+	// Elements of this array MUST be strings, and MUST be unique.
+	Required []string `json:"required"`
+
+	// Value MUST be an object and not an array.
+	// Inline or referenced schema MUST be of a Schema Object and not a standard
 	Items *Schema `json:"items"`
-	// The value of this keyword MUST be an array.  This array SHOULD have
-	// at least one element.  Elements in the array SHOULD be unique.
-	Enum []interface{} `json:"enum"`
+
+	// The value of this keyword MUST be an array.
+	// This array SHOULD have at least one element.
+	// Elements in the array SHOULD be unique.
+	Enum []interface{} `json:"enum"` // TODO: implement.
 }

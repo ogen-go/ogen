@@ -33,12 +33,25 @@ func (g *Generator) generateSchemaWithOpts(name string, schema ogen.Schema, allo
 			return nil, fmt.Errorf("object must contain at least one property")
 		}
 
+		required := func(name string) bool {
+			for _, p := range schema.Required {
+				if p == name {
+					return true
+				}
+			}
+			return false
+		}
+
 		s := g.createSchemaStruct(name)
 		s.Description = schema.Description
 		g.schemas[s.Name] = s
 		for propName, propSchema := range schema.Properties {
 			if !allowNestedArrays && propSchema.Type == "array" {
 				return nil, fmt.Errorf("properties: %s: nested array not allowed", propName)
+			}
+
+			if !required(propName) {
+				return nil, fmt.Errorf("properties: %s: optional properties not supported", propName)
 			}
 
 			prop, err := g.generateSchema(name+pascal(propName), propSchema)
