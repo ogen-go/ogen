@@ -21,7 +21,11 @@ func (g *Generator) parseParameter(param ogen.Parameter, path string) (Parameter
 		return Parameter{}, fmt.Errorf("unsupported parameter type %s", param.In)
 	}
 
-	if t == "path" {
+	if t == LocationPath {
+		if !param.Required {
+			return Parameter{}, fmt.Errorf("parameters located in 'path' must be required")
+		}
+
 		exists, err := regexp.MatchString(fmt.Sprintf("{%s}", param.Name), path)
 		if err != nil {
 			return Parameter{}, fmt.Errorf("match path param '%s': %w", param.Name, err)
