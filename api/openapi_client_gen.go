@@ -50,7 +50,7 @@ func NewClient(serverURL string) *Client {
 	}
 }
 
-func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetResponse, error) {
+func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetResponder, error) {
 	path := c.serverURL
 	path += "/foobar"
 
@@ -84,7 +84,7 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarG
 	return result, nil
 }
 
-func (c *Client) FoobarPost(ctx context.Context, req *Pet) (FoobarPostResponse, error) {
+func (c *Client) FoobarPost(ctx context.Context, req *Pet) (FoobarPostResponder, error) {
 	body, contentType, err := EncodeFoobarPostRequest(req)
 	if err != nil {
 		return nil, err
@@ -114,7 +114,7 @@ func (c *Client) FoobarPost(ctx context.Context, req *Pet) (FoobarPostResponse, 
 	return result, nil
 }
 
-func (c *Client) PetGet(ctx context.Context, params PetGetParams) (PetGetResponse, error) {
+func (c *Client) PetGet(ctx context.Context, params PetGetParams) (PetGetResponder, error) {
 	path := c.serverURL
 	path += "/pet"
 
@@ -160,7 +160,7 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (PetGetRespons
 	return result, nil
 }
 
-func (c *Client) PetPost(ctx context.Context, req PetPostRequest) (*Pet, error) {
+func (c *Client) PetPost(ctx context.Context, req PetPostRequester) (*Pet, error) {
 	body, contentType, err := EncodePetPostRequest(req)
 	if err != nil {
 		return nil, err

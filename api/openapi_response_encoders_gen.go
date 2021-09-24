@@ -36,7 +36,7 @@ var (
 	_ = conv.ToInt32
 )
 
-func EncodeFoobarGetResponse(response FoobarGetResponse, w http.ResponseWriter) error {
+func EncodeFoobarGetResponse(response FoobarGetResponder, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
@@ -50,7 +50,7 @@ func EncodeFoobarGetResponse(response FoobarGetResponse, w http.ResponseWriter) 
 	}
 }
 
-func EncodeFoobarPostResponse(response FoobarPostResponse, w http.ResponseWriter) error {
+func EncodeFoobarPostResponse(response FoobarPostResponder, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
@@ -68,7 +68,7 @@ func EncodeFoobarPostResponse(response FoobarPostResponse, w http.ResponseWriter
 	}
 }
 
-func EncodePetGetResponse(response PetGetResponse, w http.ResponseWriter) error {
+func EncodePetGetResponse(response PetGetResponder, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")

@@ -1,17 +1,17 @@
 package api
 
-type FoobarGetResponse interface {
-	foobarGetResponse()
+type FoobarGetResponder interface {
+	foobarGetResponder()
 }
 
-type FoobarPostResponse interface {
-	foobarPostResponse()
+type FoobarPostResponder interface {
+	foobarPostResponder()
 }
 
-type PetGetResponse interface {
-	petGetResponse()
+type PetGetResponder interface {
+	petGetResponder()
 }
 
-type PetPostRequest interface {
-	petPostRequest()
+type PetPostRequester interface {
+	petPostRequester()
 }

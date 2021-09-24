@@ -46,14 +46,14 @@ type ErrorResponseStatusCode struct {
 	Response   ErrorResponse `json:"-"`
 }
 
-func (*ErrorResponseStatusCode) foobarPostResponse() {}
+func (*ErrorResponseStatusCode) foobarPostResponder() {}
 
 type IllegalInput struct{}
 
 type NotFound struct{}
 
-func (*NotFound) foobarGetResponse()  {}
-func (*NotFound) foobarPostResponse() {}
+func (*NotFound) foobarGetResponder()  {}
+func (*NotFound) foobarPostResponder() {}
 
 type Pet struct {
 	Birthday time.Time `json:"birthday"`
@@ -62,10 +62,10 @@ type Pet struct {
 	Name     string    `json:"name"`
 }
 
-func (*Pet) foobarGetResponse()  {}
-func (*Pet) foobarPostResponse() {}
-func (*Pet) petGetResponse()     {}
-func (*Pet) petPostRequest()     {}
+func (*Pet) foobarGetResponder()  {}
+func (*Pet) foobarPostResponder() {}
+func (*Pet) petGetResponder()     {}
+func (*Pet) petPostRequester()    {}
 
 type PetGetDefaultResponse struct {
 	Message string `json:"message"`
@@ -76,8 +76,8 @@ type PetGetDefaultResponseStatusCode struct {
 	Response   PetGetDefaultResponse `json:"-"`
 }
 
-func (*PetGetDefaultResponseStatusCode) petGetResponse() {}
+func (*PetGetDefaultResponseStatusCode) petGetResponder() {}
 
 type PetPostTextPlainRequest string
 
-func (*PetPostTextPlainRequest) petPostRequest() {}
+func (*PetPostTextPlainRequest) petPostRequester() {}
