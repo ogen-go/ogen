@@ -2,7 +2,6 @@ package gen
 
 import (
 	"fmt"
-	"net/http"
 	"sort"
 	"strings"
 
@@ -15,34 +14,13 @@ func (g *Generator) generateMethods() error {
 			return fmt.Errorf("referenced paths are not supported")
 		}
 
-		if err := func() error {
-			if err := g.generateMethod(path, http.MethodGet, item.Get); err != nil {
-				return fmt.Errorf("method %s: %w", http.MethodGet, err)
-			}
-			if err := g.generateMethod(path, http.MethodPut, item.Put); err != nil {
-				return fmt.Errorf("method %s: %w", http.MethodPut, err)
-			}
-			if err := g.generateMethod(path, http.MethodPost, item.Post); err != nil {
-				return fmt.Errorf("method %s: %w", http.MethodPost, err)
-			}
-			if err := g.generateMethod(path, http.MethodDelete, item.Delete); err != nil {
-				return fmt.Errorf("method %s: %w", http.MethodDelete, err)
-			}
-			if err := g.generateMethod(path, http.MethodOptions, item.Options); err != nil {
-				return fmt.Errorf("method %s: %w", http.MethodOptions, err)
-			}
-			if err := g.generateMethod(path, http.MethodHead, item.Head); err != nil {
-				return fmt.Errorf("method %s: %w", http.MethodHead, err)
-			}
-			if err := g.generateMethod(path, http.MethodPatch, item.Patch); err != nil {
-				return fmt.Errorf("method %s: %w", http.MethodPatch, err)
-			}
-			if err := g.generateMethod(path, http.MethodTrace, item.Trace); err != nil {
-				return fmt.Errorf("method %s: %w", http.MethodTrace, err)
+		if err := forEachOps(item, func(method string, op ogen.Operation) error {
+			if err := g.generateMethod(path, strings.ToUpper(method), op); err != nil {
+				return fmt.Errorf("%s: %w", method, err)
 			}
 			return nil
-		}(); err != nil {
-			return fmt.Errorf("path %s: %w", path, err)
+		}); err != nil {
+			return fmt.Errorf("paths: %s: %w", path, err)
 		}
 	}
 
@@ -53,11 +31,7 @@ func (g *Generator) generateMethods() error {
 	return nil
 }
 
-func (g *Generator) generateMethod(path, method string, op *ogen.Operation) error {
-	if op == nil {
-		return nil
-	}
-
+func (g *Generator) generateMethod(path, method string, op ogen.Operation) error {
 	params := make(map[ParameterLocation][]Parameter)
 	for _, p := range op.Parameters {
 		if p.Ref != "" {

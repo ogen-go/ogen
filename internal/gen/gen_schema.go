@@ -38,7 +38,7 @@ func (g *Generator) generateSchemaWithOpts(name string, schema ogen.Schema, allo
 		g.schemas[s.Name] = s
 		for propName, propSchema := range schema.Properties {
 			if !allowNestedArrays && propSchema.Type == "array" {
-				return nil, fmt.Errorf("property %s: nested array not allowed", propName)
+				return nil, fmt.Errorf("properties: %s: nested array not allowed", propName)
 			}
 
 			prop, err := g.generateSchema(name+pascal(propName), propSchema)
