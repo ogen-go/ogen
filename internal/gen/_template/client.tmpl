@@ -64,7 +64,7 @@ path := c.serverURL
     {{- else }}
     {
         value := {{ template "convert_to_string" $part.Param.Schema.Type }}(params.Path.{{ $part.Param.Name }})
-        {{- if $part.Param.IsArrayType }}
+        {{- if eq $part.Param.Schema.Kind "array" }}
         path += "/" + strings.Join(value, ",")
         {{- else }}
         path += "/" + value
@@ -81,7 +81,7 @@ q := r.URL.Query()
 {{- range $param := $.QueryParams }}{{/* Range over params */}}
     {
     s := {{ template "convert_to_string" $param.Schema.Type }}(params.Query.{{ $param.Name }})
-    {{- if $param.IsArrayType }}
+    {{- if eq $param.Schema.Kind "array" }}
     for _, v := range s {
         q.Add("{{ $param.SourceName }}", v)
     }
@@ -99,7 +99,7 @@ r.URL.RawQuery = q.Encode()
 {{- range $param := $.CookieParams }}{{/* Range over params */}}
 {
 value := {{ template "convert_to_string" $param.Schema.Type }}(params.Cookie.{{ $param.Name }})
-{{- if $param.IsArrayType }}
+{{- if eq $param.Schema.Kind "array" }}
 r.AddCookie(&http.Cookie{
     Name: "{{ $param.SourceName }}",
     Value: strings.Join(value, "/"),
@@ -121,7 +121,7 @@ r.AddCookie(&http.Cookie{
 {{- range $param := $.HeaderParams }}{{/* Range over params */}}
 {
 value := {{ template "convert_to_string" $param.Schema.Type }}(params.Header.{{ $param.Name }})
-{{- if $param.IsArrayType }}
+{{- if eq $param.Schema.Kind "array" }}
 for _, v := range value {
     r.Header.Add("{{ $param.SourceName }}", v)
 }

@@ -54,13 +54,12 @@ func (m *Method) Path() string {
 }
 
 type Parameter struct {
-	Name        string
-	SourceName  string
-	Schema      *Schema
-	IsArrayType bool
-	In          ParameterLocation
-	Style       string
-	Explode     bool
+	Name       string
+	SourceName string
+	Schema     *Schema
+	In         ParameterLocation
+	Style      string
+	Explode    bool
 
 	Required bool
 }

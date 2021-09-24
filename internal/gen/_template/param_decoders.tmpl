@@ -17,7 +17,7 @@ func Decode{{ $m.Name }}Params(r *http.Request) ({{ $m.Name }}Params, error) {
 			{{- else if eq $t "Path" }}
 				param := chi.URLParam(r, "{{ $p.SourceName }}")
 			{{- else if eq $t "Header" }}
-				{{- if $p.IsArrayType }}
+				{{- if eq $p.Schema.Kind "array" }}
 				param := r.Header.Values("{{ $p.SourceName }}")
 				{{- else }}
 				param := r.Header.Get("{{ $p.SourceName }}")

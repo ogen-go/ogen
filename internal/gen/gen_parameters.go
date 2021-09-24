@@ -57,14 +57,13 @@ func (g *Generator) parseParameter(param ogen.Parameter, path string) (Parameter
 	}
 
 	return Parameter{
-		Name:        name,
-		In:          locatedIn,
-		SourceName:  param.Name,
-		Schema:      schema,
-		Style:       style,
-		Explode:     paramExplode(locatedIn, param.Explode),
-		IsArrayType: schema.Kind == KindArray,
-		Required:    param.Required,
+		Name:       name,
+		In:         locatedIn,
+		SourceName: param.Name,
+		Schema:     schema,
+		Style:      style,
+		Explode:    paramExplode(locatedIn, param.Explode),
+		Required:   param.Required,
 	}, nil
 }
 
