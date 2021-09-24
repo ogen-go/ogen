@@ -82,8 +82,6 @@ func (g *Generator) generateResponses(methodName string, methodResponses ogen.Re
 }
 
 // createDefaultResponse creates new default response.
-//
-//
 func (g *Generator) createDefaultResponse(methodName string, r ogen.Response) (*Response, error) {
 	if ref := r.Ref; ref != "" {
 		// Validate reference & get response component name.
@@ -111,6 +109,7 @@ func (g *Generator) createDefaultResponse(methodName string, r ogen.Response) (*
 			response.NoContent = g.wrapStatusCode(schema)
 		}
 
+		g.responses[name+"Default"] = alias
 		return alias, nil
 	}
 
