@@ -41,13 +41,12 @@ type ErrorResponse struct {
 	Message string `json:"message"`
 }
 
-type ErrorResponseDefault struct {
-	StatusCode int    `json:"-"`
-	Code       int64  `json:"code"`
-	Message    string `json:"message"`
+type ErrorResponseStatusCode struct {
+	StatusCode int           `json:"-"`
+	Response   ErrorResponse `json:"-"`
 }
 
-func (*ErrorResponseDefault) foobarPostResponse() {}
+func (*ErrorResponseStatusCode) foobarPostResponse() {}
 
 type IllegalInput struct{}
 
@@ -69,11 +68,15 @@ func (*Pet) petGetResponse()     {}
 func (*Pet) petPostRequest()     {}
 
 type PetGetDefaultResponse struct {
-	StatusCode int    `json:"-"`
-	Message    string `json:"message"`
+	Message string `json:"message"`
 }
 
-func (*PetGetDefaultResponse) petGetResponse() {}
+type PetGetDefaultResponseStatusCode struct {
+	StatusCode int                   `json:"-"`
+	Response   PetGetDefaultResponse `json:"-"`
+}
+
+func (*PetGetDefaultResponseStatusCode) petGetResponse() {}
 
 type PetPostTextPlainRequest string
 

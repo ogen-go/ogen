@@ -59,10 +59,10 @@ func EncodeFoobarPostResponse(response FoobarPostResponse, w http.ResponseWriter
 	case *NotFound:
 		w.WriteHeader(404)
 		return nil
-	case *ErrorResponseDefault:
+	case *ErrorResponseStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		return json.NewEncoder(w).Encode(response)
+		return json.NewEncoder(w).Encode(response.Response)
 	default:
 		return fmt.Errorf("/foobar: unexpected response type for method: %T", response)
 	}
@@ -74,10 +74,10 @@ func EncodePetGetResponse(response PetGetResponse, w http.ResponseWriter) error 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		return json.NewEncoder(w).Encode(response)
-	case *PetGetDefaultResponse:
+	case *PetGetDefaultResponseStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		return json.NewEncoder(w).Encode(response)
+		return json.NewEncoder(w).Encode(response.Response)
 	default:
 		return fmt.Errorf("/pet: unexpected response type for method: %T", response)
 	}
