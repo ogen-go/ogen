@@ -38,38 +38,18 @@ func (g *Generator) generateResponses(methodName string, methodResponses ogen.Re
 					continue
 				}
 
-				// Create new type containing referenced response
-				// and status code field.
-				referencedResponse, found := g.responses[name]
+				// Lookup for reference response.
+				response, found := g.responses[name]
 				if !found {
 					return nil, fmt.Errorf("response by reference '%s', not found", ref)
 				}
 
 				aliasResponse := g.createResponse(name + "Default")
-				for contentType, schema := range referencedResponse.Contents {
-					alias := g.createSchemaStruct(schema.Name + "Default")
-					alias.Fields = append([]SchemaField{
-						{
-							Name: "StatusCode",
-							Tag:  "-",
-							Type: "int",
-						},
-					}, schema.Fields...)
-					aliasResponse.Contents[contentType] = alias
-					g.schemas[alias.Name] = alias
+				for contentType, schema := range response.Contents {
+					aliasResponse.Contents[contentType] = g.wrapStatusCode(schema)
 				}
-
-				if schema := referencedResponse.NoContent; schema != nil {
-					alias := g.createSchemaStruct(schema.Name + "Default")
-					alias.Fields = append([]SchemaField{
-						{
-							Name: "StatusCode",
-							Tag:  "-",
-							Type: "int",
-						},
-					}, schema.Fields...)
-					aliasResponse.NoContent = alias
-					g.schemas[alias.Name] = alias
+				if schema := response.NoContent; schema != nil {
+					response.NoContent = g.wrapStatusCode(schema)
 				}
 
 				defaultResp = aliasResponse
@@ -83,25 +63,19 @@ func (g *Generator) generateResponses(methodName string, methodResponses ogen.Re
 				return nil, err
 			}
 
-			// Append status code for all response schemas fields.
-			for _, schema := range response.Contents {
-				schema.Fields = append([]SchemaField{
-					{
-						Name: "StatusCode",
-						Tag:  "-",
-						Type: "int",
-					},
-				}, schema.Fields...)
+			// We need to inject StatusCode field to response structs somehow...
+			// Iterate over all responses and create new response schema wrapper:
+			//
+			// type <WrapperName> struct {
+			//     StatusCode int            `json:"-"`
+			//     Response   <ResponseType> `json:"-"`
+			// }
+			for contentType, schema := range response.Contents {
+				defaultSchema := g.wrapStatusCode(schema)
+				response.Contents[contentType] = defaultSchema
 			}
-
-			if response.NoContent != nil {
-				response.NoContent.Fields = append([]SchemaField{
-					{
-						Name: "StatusCode",
-						Tag:  "-",
-						Type: "int",
-					},
-				}, response.NoContent.Fields...)
+			if schema := response.NoContent; schema != nil {
+				response.NoContent = g.wrapStatusCode(schema)
 			}
 
 			defaultResp = response
@@ -210,4 +184,50 @@ func (g *Generator) generateResponse(name string, resp ogen.Response) (*Response
 	}
 
 	return response, nil
+}
+
+// wrapStatusCode wraps provided schema with newtype containing StatusCode field.
+//
+// Example 1:
+//   Schema:
+//   type FoobarGetDefaultResponse {
+//       Message string `json:"message"`
+//       Code    int64  `json:"code"`
+//   }
+//
+//   Wrapper:
+//   type FoobarGetDefaultResponseStatusCode {
+//       StatusCode int                      `json:"-"`
+//       Response   FoobarGetDefaultResponse `json:"-"`
+//   }
+//
+// Example 2:
+//   Schema:
+//   type FoobarGetDefaultResponse string
+//
+//   Wrapper:
+//   type FoobarGetDefaultResponseStatusCode {
+//       StatusCode int    `json:"-"`
+//       Response   string `json:"-"`
+//   }
+//
+// TODO: Remove unused schema (Example 2).
+func (g *Generator) wrapStatusCode(schema *Schema) *Schema {
+	// Use 'StatusCode' postfix for wrapper struct name
+	// to avoid name collision with original response schema.
+	newSchema := g.createSchemaStruct(schema.Name + "StatusCode")
+	newSchema.Fields = []SchemaField{
+		{
+			Name: "StatusCode",
+			Tag:  "-",
+			Type: "int",
+		},
+		{
+			Name: "Response",
+			Tag:  "-",
+			Type: schema.typeName(),
+		},
+	}
+	g.schemas[newSchema.Name] = newSchema
+	return newSchema
 }

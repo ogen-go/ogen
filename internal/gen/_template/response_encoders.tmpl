@@ -44,7 +44,7 @@ w.WriteHeader({{ $.StatusCode }})
 {{- if $.NoContent }}{{- /* Encode content */}}
 return nil
 {{- else if eq $.ContentType "application/json" }}
-return json.NewEncoder(w).Encode(response)
+return json.NewEncoder(w).Encode({{ if $.Default }}response.Response{{ else }}response{{ end }})
 {{- else }}
 return fmt.Errorf("{{ $.ContentType }} encoder not implemented")
 {{- end }}{{- /* Encode content */ -}}

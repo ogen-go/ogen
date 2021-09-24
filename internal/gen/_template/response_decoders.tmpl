@@ -42,7 +42,7 @@ func Decode{{ $m.Name }}Response(resp *http.Response) ({{ $m.ResponseType }}, er
         case "{{ $ctype }}":
             {{- if eq $ctype "application/json" }}{{/* Decode */}}
             var response {{ $schema.Name }}
-            if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
+            if err := json.NewDecoder(resp.Body).Decode(&response.Response); err != nil {
                 return nil, err
             }
 
