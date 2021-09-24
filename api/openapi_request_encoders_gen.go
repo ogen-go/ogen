@@ -45,7 +45,7 @@ func EncodeFoobarPostRequest(req *Pet) ([]byte, string, error) {
 	return b, "application/json", nil
 }
 
-func EncodePetPostRequest(req PetPostRequester) ([]byte, string, error) {
+func EncodePetCreateRequest(req PetCreateRequester) ([]byte, string, error) {
 	switch req := req.(type) {
 	case *Pet:
 		b, err := json.Marshal(req)
@@ -54,7 +54,7 @@ func EncodePetPostRequest(req PetPostRequester) ([]byte, string, error) {
 		}
 
 		return b, "application/json", nil
-	case *PetPostTextPlainRequest:
+	case *PetCreateTextPlainRequest:
 		return nil, "", fmt.Errorf("text/plain encoder not implemented")
 	default:
 		return nil, "", fmt.Errorf("unexpected request type: %T", req)

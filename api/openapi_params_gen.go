@@ -63,10 +63,10 @@ type PetGetQueryParams struct {
 	PetID int64
 }
 
-type PetNameGetParams struct {
-	Path PetNameGetPathParams
+type PetGetByNameParams struct {
+	Path PetGetByNamePathParams
 }
 
-type PetNameGetPathParams struct {
+type PetGetByNamePathParams struct {
 	Name string
 }

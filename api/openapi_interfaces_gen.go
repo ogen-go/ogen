@@ -8,10 +8,10 @@ type FoobarPostResponder interface {
 	foobarPostResponder()
 }
 
-type PetGetResponder interface {
-	petGetResponder()
+type PetCreateRequester interface {
+	petCreateRequester()
 }
 
-type PetPostRequester interface {
-	petPostRequester()
+type PetGetResponder interface {
+	petGetResponder()
 }

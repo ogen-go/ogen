@@ -64,8 +64,12 @@ type Pet struct {
 
 func (*Pet) foobarGetResponder()  {}
 func (*Pet) foobarPostResponder() {}
+func (*Pet) petCreateRequester()  {}
 func (*Pet) petGetResponder()     {}
-func (*Pet) petPostRequester()    {}
+
+type PetCreateTextPlainRequest string
+
+func (*PetCreateTextPlainRequest) petCreateRequester() {}
 
 type PetGetDefaultResponse struct {
 	Message string `json:"message"`
@@ -77,7 +81,3 @@ type PetGetDefaultResponseStatusCode struct {
 }
 
 func (*PetGetDefaultResponseStatusCode) petGetResponder() {}
-
-type PetPostTextPlainRequest string
-
-func (*PetPostTextPlainRequest) petPostRequester() {}

@@ -119,7 +119,7 @@ func DecodePetGetResponse(resp *http.Response) (PetGetResponder, error) {
 	}
 }
 
-func DecodePetPostResponse(resp *http.Response) (*Pet, error) {
+func DecodePetCreateResponse(resp *http.Response) (*Pet, error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -138,7 +138,7 @@ func DecodePetPostResponse(resp *http.Response) (*Pet, error) {
 	}
 }
 
-func DecodePetNameGetResponse(resp *http.Response) (*Pet, error) {
+func DecodePetGetByNameResponse(resp *http.Response) (*Pet, error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {

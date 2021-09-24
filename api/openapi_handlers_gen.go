@@ -99,42 +99,42 @@ func NewPetGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func NewPetPostHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPetCreateHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := DecodePetPostRequest(r)
+		request, err := DecodePetCreateRequest(r)
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
 
-		response, err := s.PetPost(r.Context(), request)
+		response, err := s.PetCreate(r.Context(), request)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}
 
-		if err := EncodePetPostResponse(response, w); err != nil {
+		if err := EncodePetCreateResponse(response, w); err != nil {
 			_ = err
 			return
 		}
 	}
 }
 
-func NewPetNameGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+func NewPetGetByNameHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := DecodePetNameGetParams(r)
+		params, err := DecodePetGetByNameParams(r)
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
 
-		response, err := s.PetNameGet(r.Context(), params)
+		response, err := s.PetGetByName(r.Context(), params)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}
 
-		if err := EncodePetNameGetResponse(response, w); err != nil {
+		if err := EncodePetGetByNameResponse(response, w); err != nil {
 			_ = err
 			return
 		}

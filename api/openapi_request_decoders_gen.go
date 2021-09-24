@@ -53,7 +53,7 @@ func DecodeFoobarPostRequest(r *http.Request) (*Pet, error) {
 	}
 }
 
-func DecodePetPostRequest(r *http.Request) (PetPostRequester, error) {
+func DecodePetCreateRequest(r *http.Request) (PetCreateRequester, error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Pet
@@ -66,7 +66,7 @@ func DecodePetPostRequest(r *http.Request) (PetPostRequester, error) {
 
 		return &request, nil
 	case "text/plain":
-		var request PetPostTextPlainRequest
+		var request PetCreateTextPlainRequest
 		_ = request
 		return nil, fmt.Errorf("text/plain decoder not implemented")
 	default:

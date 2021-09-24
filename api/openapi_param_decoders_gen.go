@@ -118,8 +118,8 @@ func DecodePetGetParams(r *http.Request) (PetGetParams, error) {
 	return params, nil
 }
 
-func DecodePetNameGetParams(r *http.Request) (PetNameGetParams, error) {
-	var params PetNameGetParams
+func DecodePetGetByNameParams(r *http.Request) (PetGetByNameParams, error) {
+	var params PetGetByNameParams
 	{
 		param := chi.URLParam(r, "name")
 		if len(param) == 0 {

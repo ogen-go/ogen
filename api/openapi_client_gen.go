@@ -160,8 +160,8 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (PetGetRespond
 	return result, nil
 }
 
-func (c *Client) PetPost(ctx context.Context, req PetPostRequester) (*Pet, error) {
-	body, contentType, err := EncodePetPostRequest(req)
+func (c *Client) PetCreate(ctx context.Context, req PetCreateRequester) (*Pet, error) {
+	body, contentType, err := EncodePetCreateRequest(req)
 	if err != nil {
 		return nil, err
 	}
@@ -182,7 +182,7 @@ func (c *Client) PetPost(ctx context.Context, req PetPostRequester) (*Pet, error
 	}
 	defer resp.Body.Close()
 
-	result, err := DecodePetPostResponse(resp)
+	result, err := DecodePetCreateResponse(resp)
 	if err != nil {
 		return nil, fmt.Errorf("decode response: %w", err)
 	}
@@ -190,7 +190,7 @@ func (c *Client) PetPost(ctx context.Context, req PetPostRequester) (*Pet, error
 	return result, nil
 }
 
-func (c *Client) PetNameGet(ctx context.Context, params PetNameGetParams) (*Pet, error) {
+func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (*Pet, error) {
 	path := c.serverURL
 	path += "/pet"
 	{
@@ -209,7 +209,7 @@ func (c *Client) PetNameGet(ctx context.Context, params PetNameGetParams) (*Pet,
 	}
 	defer resp.Body.Close()
 
-	result, err := DecodePetNameGetResponse(resp)
+	result, err := DecodePetGetByNameResponse(resp)
 	if err != nil {
 		return nil, fmt.Errorf("decode response: %w", err)
 	}

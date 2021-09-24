@@ -83,13 +83,13 @@ func EncodePetGetResponse(response PetGetResponder, w http.ResponseWriter) error
 	}
 }
 
-func EncodePetPostResponse(response *Pet, w http.ResponseWriter) error {
+func EncodePetCreateResponse(response *Pet, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	return json.NewEncoder(w).Encode(response)
 }
 
-func EncodePetNameGetResponse(response *Pet, w http.ResponseWriter) error {
+func EncodePetGetByNameResponse(response *Pet, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	return json.NewEncoder(w).Encode(response)

@@ -144,7 +144,7 @@
     "/foobar": {
       "get": {
         "description": "Dumb endpoint for testing things",
-        "operationId": "fooBarGet",
+        "operationId": "foobarGet",
         "parameters": [
           {
             "name": "inlinedParam",
@@ -171,7 +171,7 @@
       },
       "post": {
         "description": "Dumb endpoint for testing things",
-        "operationId": "fooBarPost",
+        "operationId": "foobarPost",
         "requestBody": {
           "$ref": "#/components/requestBodies/PetCreate"
         },
