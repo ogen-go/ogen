@@ -54,12 +54,7 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) error
 	}
 
 	// Use path + method as unique identifier.
-	methodName := strings.ReplaceAll(path, "/", "_")
-	methodName = strings.ReplaceAll(methodName, "{", "")
-	methodName = strings.ReplaceAll(methodName, "}", "")
-	methodName += "_" + strings.ToLower(method)
-	methodName = pascal(methodName)
-
+	methodName := pascal(path, strings.ToLower(method))
 	parts, err := parsePath(path, params[LocationPath])
 	if err != nil {
 		return fmt.Errorf("parse path: %w", err)

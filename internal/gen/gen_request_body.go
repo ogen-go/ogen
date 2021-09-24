@@ -2,7 +2,6 @@ package gen
 
 import (
 	"fmt"
-	"strings"
 
 	"github.com/ogen-go/ogen"
 )
@@ -46,17 +45,14 @@ func (g *Generator) generateRequestBody(methodName string, body *ogen.RequestBod
 
 		// Inlined schema.
 		// Create unique name based on method name and contentType.
-		inputName := methodName + "_" + strings.ReplaceAll(contentType, "/", "_") + "_Request"
-		inputName = pascal(inputName)
-
-		// Generate schema.
-		schema, err := g.generateSchema(inputName, media.Schema)
+		name := pascal(methodName, contentType, "Request")
+		schema, err := g.generateSchema(name, media.Schema)
 		if err != nil {
 			return nil, fmt.Errorf("content: %s: parse schema: %w", contentType, err)
 		}
 
 		// Register generated schema.
-		g.schemas[inputName] = schema
+		g.schemas[name] = schema
 		rbody.Contents[contentType] = schema
 	}
 

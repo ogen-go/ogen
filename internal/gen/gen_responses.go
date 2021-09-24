@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
-	"strings"
 
 	"github.com/ogen-go/ogen"
 )
@@ -57,12 +56,7 @@ func (g *Generator) generateResponses(methodName string, methodResponses ogen.Re
 				return nil
 			}
 
-			responseName := methodName
-			if len(responses) > 1 {
-				// Use status code in response name to avoid collisions.
-				responseName = methodName + http.StatusText(statusCode)
-			}
-
+			responseName := pascal(methodName, http.StatusText(statusCode))
 			resp, err := g.generateResponse(responseName, schema)
 			if err != nil {
 				return err
@@ -155,9 +149,7 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*Respons
 		// Create unique response name.
 		name := rname + "Response"
 		if len(resp.Content) > 1 {
-			name = pascal(
-				name+"_"+strings.ReplaceAll(contentType, "/", "_"),
-			) + "Response"
+			name = pascal(rname, contentType, "Response")
 		}
 
 		// Referenced response schema.
