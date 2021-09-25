@@ -1,4 +1,4 @@
-// Binary ogen generates go source code from TL schema.
+// Binary ogen generates go source code from OAS.
 package main
 
 import (
