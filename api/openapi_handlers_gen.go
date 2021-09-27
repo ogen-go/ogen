@@ -57,6 +57,22 @@ func NewFoobarGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
+func NewFoobarPutHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		response, err := s.FoobarPut(r.Context())
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+
+		if err := EncodeFoobarPutResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
 func NewFoobarPostHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		request, err := DecodeFoobarPostRequest(r)

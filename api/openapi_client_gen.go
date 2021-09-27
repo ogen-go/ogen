@@ -84,6 +84,29 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarG
 	return result, nil
 }
 
+func (c *Client) FoobarPut(ctx context.Context) (*FoobarPutDefault, error) {
+	path := c.serverURL
+	path += "/foobar"
+
+	r, err := http.NewRequestWithContext(ctx, "PUT", path, nil)
+	if err != nil {
+		return nil, fmt.Errorf("create request: %w", err)
+	}
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return nil, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := DecodeFoobarPutResponse(resp)
+	if err != nil {
+		return nil, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}
+
 func (c *Client) FoobarPost(ctx context.Context, req *Pet) (FoobarPostResponse, error) {
 	body, contentType, err := EncodeFoobarPostRequest(req)
 	if err != nil {

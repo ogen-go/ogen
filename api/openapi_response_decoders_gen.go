@@ -57,6 +57,13 @@ func DecodeFoobarGetResponse(resp *http.Response) (FoobarGetResponse, error) {
 	}
 }
 
+func DecodeFoobarPutResponse(resp *http.Response) (*FoobarPutDefault, error) {
+	switch resp.StatusCode {
+	default:
+		return &FoobarPutDefault{StatusCode: resp.StatusCode}, nil
+	}
+}
+
 func DecodeFoobarPostResponse(resp *http.Response) (FoobarPostResponse, error) {
 	switch resp.StatusCode {
 	case 200:

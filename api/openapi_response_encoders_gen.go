@@ -50,6 +50,11 @@ func EncodeFoobarGetResponse(response FoobarGetResponse, w http.ResponseWriter) 
 	}
 }
 
+func EncodeFoobarPutResponse(response *FoobarPutDefault, w http.ResponseWriter) error {
+	w.WriteHeader(response.StatusCode)
+	return nil
+}
+
 func EncodeFoobarPostResponse(response FoobarPostResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Pet:

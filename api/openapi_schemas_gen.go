@@ -48,6 +48,10 @@ type ErrorResponseStatusCode struct {
 
 func (*ErrorResponseStatusCode) foobarPostResponse() {}
 
+type FoobarPutDefault struct {
+	StatusCode int `json:"-"`
+}
+
 type IllegalInput struct{}
 
 type NotFound struct{}
