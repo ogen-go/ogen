@@ -83,7 +83,7 @@ func DecodeFoobarPostResponse(resp *http.Response) (FoobarPostResponse, error) {
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response ErrorResponseStatusCode
+			var response ErrorStatusCode
 			if err := json.NewDecoder(resp.Body).Decode(&response.Response); err != nil {
 				return nil, err
 			}
@@ -113,7 +113,7 @@ func DecodePetGetResponse(resp *http.Response) (PetGetResponse, error) {
 	default:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response PetGetDefaultResponseStatusCode
+			var response PetGetDefaultStatusCode
 			if err := json.NewDecoder(resp.Body).Decode(&response.Response); err != nil {
 				return nil, err
 			}

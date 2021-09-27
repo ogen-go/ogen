@@ -160,9 +160,9 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*Respons
 
 	for contentType, media := range resp.Content {
 		// Create unique response name.
-		name := rname + "Response"
+		name := rname
 		if len(resp.Content) > 1 {
-			name = pascal(rname, contentType, "Response")
+			name = pascal(rname, contentType)
 		}
 
 		// Referenced response schema.

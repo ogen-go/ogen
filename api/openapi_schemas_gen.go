@@ -36,17 +36,17 @@ var (
 	_ = conv.ToInt32
 )
 
-type ErrorResponse struct {
+type Error struct {
 	Code    int64  `json:"code"`
 	Message string `json:"message"`
 }
 
-type ErrorResponseStatusCode struct {
-	StatusCode int           `json:"-"`
-	Response   ErrorResponse `json:"-"`
+type ErrorStatusCode struct {
+	StatusCode int   `json:"-"`
+	Response   Error `json:"-"`
 }
 
-func (*ErrorResponseStatusCode) foobarPostResponse() {}
+func (*ErrorStatusCode) foobarPostResponse() {}
 
 type FoobarPutDefault struct {
 	StatusCode int `json:"-"`
@@ -75,13 +75,13 @@ type PetCreateTextPlainRequest string
 
 func (*PetCreateTextPlainRequest) petCreateRequest() {}
 
-type PetGetDefaultResponse struct {
+type PetGetDefault struct {
 	Message string `json:"message"`
 }
 
-type PetGetDefaultResponseStatusCode struct {
-	StatusCode int                   `json:"-"`
-	Response   PetGetDefaultResponse `json:"-"`
+type PetGetDefaultStatusCode struct {
+	StatusCode int           `json:"-"`
+	Response   PetGetDefault `json:"-"`
 }
 
-func (*PetGetDefaultResponseStatusCode) petGetResponse() {}
+func (*PetGetDefaultStatusCode) petGetResponse() {}
