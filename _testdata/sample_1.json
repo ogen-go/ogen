@@ -193,6 +193,13 @@
             "$ref": "#/components/responses/Error"
           }
         }
+      },
+      "put": {
+        "responses": {
+          "default": {
+            "description": "Empty response"
+          }
+        }
       }
     }
   },

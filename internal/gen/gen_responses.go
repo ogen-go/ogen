@@ -108,6 +108,18 @@ func (g *Generator) createDefaultResponse(methodName string, r ogen.Response) (*
 		return alias, nil
 	}
 
+	// Default response with no contents.
+	if len(r.Content) == 0 {
+		statusCode := g.createSchemaStruct(methodName + "Default")
+		statusCode.Fields = append(statusCode.Fields, SchemaField{
+			Name: "StatusCode",
+			Type: "int",
+			Tag:  "-",
+		})
+		g.schemas[methodName+"Default"] = statusCode
+		return &Response{NoContent: statusCode}, nil
+	}
+
 	// Inlined response.
 	// Use method name + Default as prefix for response schemas.
 	response, err := g.generateResponse(methodName+"Default", r)

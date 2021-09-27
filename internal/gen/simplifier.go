@@ -12,11 +12,8 @@ func (g *Generator) simplify() {
 			}
 		}
 
-		switch len(method.Responses) {
-		case 0:
-		case 1:
-			g.devirtSingleResponse(method)
-		}
+		g.devirtDefaultResponse(method)
+		g.devirtSingleResponse(method)
 	}
 
 	g.removeUnusedIfaces()
@@ -86,6 +83,21 @@ func (g *Generator) devirtSingleResponse(m *Method) {
 				}
 			}
 		}
+	}
+}
+
+func (g *Generator) devirtDefaultResponse(m *Method) {
+	if ok := (m.ResponseDefault != nil && len(m.Responses) == 0); !ok {
+		return
+	}
+
+	if len(m.ResponseDefault.Contents) > 1 {
+		return
+	}
+
+	if iface, ok := g.interfaces[m.ResponseType]; ok {
+		m.ResponseDefault.unimplement(iface)
+		m.ResponseType = "*" + m.ResponseDefault.NoContent.Name
 	}
 }
 

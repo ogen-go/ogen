@@ -264,7 +264,8 @@ func (m *Method) ListResponseSchemas() map[*Schema]ResponseInfo {
 	if def := m.ResponseDefault; def != nil {
 		if noc := def.NoContent; noc != nil {
 			schemas[noc] = ResponseInfo{
-				Default: true,
+				Default:   true,
+				NoContent: true,
 			}
 		}
 		for contentType, schema := range def.Contents {
