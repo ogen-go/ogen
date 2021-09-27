@@ -13,14 +13,13 @@ type methodResponse struct {
 	Default   *Response
 }
 
-func (g *Generator) generateResponses(methodName string, methodResponses ogen.Responses) (*methodResponse, error) {
-	var (
-		responses   = make(map[int]*Response)
-		defaultResp *Response
-	)
+func (g *Generator) generateResponses(methodName string, responses ogen.Responses) (*methodResponse, error) {
+	result := &methodResponse{
+		Responses: map[int]*Response{},
+	}
 
 	// Iterate over method responses...
-	for status, schema := range methodResponses {
+	for status, schema := range responses {
 		// Default response.
 		if status == "default" {
 			resp, err := g.createDefaultResponse(methodName, schema)
@@ -28,7 +27,7 @@ func (g *Generator) generateResponses(methodName string, methodResponses ogen.Re
 				return nil, fmt.Errorf("default: %w", err)
 			}
 
-			defaultResp = resp
+			result.Default = resp
 			continue
 		}
 
@@ -52,27 +51,29 @@ func (g *Generator) generateResponses(methodName string, methodResponses ogen.Re
 					return fmt.Errorf("response by reference '%s' not found", ref)
 				}
 
-				responses[statusCode] = r
+				result.Responses[statusCode] = r
 				return nil
 			}
 
-			responseName := pascal(methodName, http.StatusText(statusCode))
+			responseName := pascal(methodName)
+			if len(responses) > 1 {
+				// Avoid collision with <methodName>Response interface.
+				responseName = pascal(methodName, http.StatusText(statusCode))
+			}
+
 			resp, err := g.generateResponse(responseName, schema)
 			if err != nil {
 				return err
 			}
 
-			responses[statusCode] = resp
+			result.Responses[statusCode] = resp
 			return nil
 		}(); err != nil {
 			return nil, fmt.Errorf("%s: %w", status, err)
 		}
 	}
 
-	return &methodResponse{
-		Responses: responses,
-		Default:   defaultResp,
-	}, nil
+	return result, nil
 }
 
 // createDefaultResponse creates new default response.
