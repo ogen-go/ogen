@@ -37,9 +37,9 @@ var (
 )
 
 type Server interface {
-	FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetResponder, error)
-	FoobarPost(ctx context.Context, req *Pet) (FoobarPostResponder, error)
-	PetGet(ctx context.Context, params PetGetParams) (PetGetResponder, error)
-	PetCreate(ctx context.Context, req PetCreateRequester) (*Pet, error)
+	FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetResponse, error)
+	FoobarPost(ctx context.Context, req *Pet) (FoobarPostResponse, error)
+	PetGet(ctx context.Context, params PetGetParams) (PetGetResponse, error)
+	PetCreate(ctx context.Context, req PetCreateRequest) (*Pet, error)
 	PetGetByName(ctx context.Context, params PetGetByNameParams) (*Pet, error)
 }

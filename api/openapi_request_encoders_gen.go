@@ -45,7 +45,7 @@ func EncodeFoobarPostRequest(req *Pet) ([]byte, string, error) {
 	return b, "application/json", nil
 }
 
-func EncodePetCreateRequest(req PetCreateRequester) ([]byte, string, error) {
+func EncodePetCreateRequest(req PetCreateRequest) ([]byte, string, error) {
 	switch req := req.(type) {
 	case *Pet:
 		b, err := json.Marshal(req)

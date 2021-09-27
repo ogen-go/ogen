@@ -53,7 +53,7 @@ func DecodeFoobarPostRequest(r *http.Request) (*Pet, error) {
 	}
 }
 
-func DecodePetCreateRequest(r *http.Request) (PetCreateRequester, error) {
+func DecodePetCreateRequest(r *http.Request) (PetCreateRequest, error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Pet

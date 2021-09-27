@@ -36,7 +36,7 @@ var (
 	_ = conv.ToInt32
 )
 
-func DecodeFoobarGetResponse(resp *http.Response) (FoobarGetResponder, error) {
+func DecodeFoobarGetResponse(resp *http.Response) (FoobarGetResponse, error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -57,7 +57,7 @@ func DecodeFoobarGetResponse(resp *http.Response) (FoobarGetResponder, error) {
 	}
 }
 
-func DecodeFoobarPostResponse(resp *http.Response) (FoobarPostResponder, error) {
+func DecodeFoobarPostResponse(resp *http.Response) (FoobarPostResponse, error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -89,7 +89,7 @@ func DecodeFoobarPostResponse(resp *http.Response) (FoobarPostResponder, error) 
 	}
 }
 
-func DecodePetGetResponse(resp *http.Response) (PetGetResponder, error) {
+func DecodePetGetResponse(resp *http.Response) (PetGetResponse, error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
