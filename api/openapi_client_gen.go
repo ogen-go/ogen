@@ -36,9 +36,13 @@ var (
 	_ = conv.ToInt32
 )
 
+type HTTPClient interface {
+	Do(req *http.Request) (*http.Response, error)
+}
+
 type Client struct {
 	serverURL string
-	http      *http.Client
+	http      HTTPClient
 }
 
 func NewClient(serverURL string) *Client {
