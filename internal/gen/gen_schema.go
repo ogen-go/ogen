@@ -29,6 +29,10 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 			return nil, fmt.Errorf("object must contain at least one property")
 		}
 
+		if schema.Items != nil {
+			return nil, fmt.Errorf("object cannot contain 'items' field")
+		}
+
 		required := func(name string) bool {
 			for _, p := range schema.Required {
 				if p == name {
@@ -61,9 +65,13 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 			return strings.Compare(s.Fields[i].Name, s.Fields[j].Name) < 0
 		})
 		return s, nil
+
 	case "array":
 		if schema.Items == nil {
-			return nil, fmt.Errorf("empty items field")
+			return nil, fmt.Errorf("items must be specified")
+		}
+		if len(schema.Properties) > 0 {
+			return nil, fmt.Errorf("array cannot contain properties")
 		}
 
 		item, err := g.generateSchema(name+"Item", *schema.Items)
@@ -72,6 +80,10 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 		}
 
 		return g.createSchemaArray(name, item), nil
+
+	case "":
+		return nil, fmt.Errorf("type must be specified")
+
 	default:
 		simpleType, err := parseSimple(
 			strings.ToLower(schema.Type),
@@ -110,12 +122,12 @@ func parseSimple(typ, format string) (string, error) {
 
 	formats, exists := simpleTypes[typ]
 	if !exists {
-		return "", fmt.Errorf("unsupported simple type %s", typ)
+		return "", fmt.Errorf("unsupported type: '%s'", typ)
 	}
 
 	fType, exists := formats[format]
 	if !exists {
-		return "", fmt.Errorf("unsupported simple type %s format %s", typ, format)
+		return "", fmt.Errorf("unsupported format '%s' for type '%s'", format, typ)
 	}
 
 	return fType, nil
