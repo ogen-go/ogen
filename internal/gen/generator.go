@@ -1,9 +1,6 @@
 package gen
 
-import (
-	"github.com/ogen-go/ogen"
-	"github.com/ogen-go/ogen/validator"
-)
+import "github.com/ogen-go/ogen"
 
 type Generator struct {
 	spec    *ogen.Spec
@@ -17,10 +14,6 @@ type Generator struct {
 
 func NewGenerator(spec *ogen.Spec) (*Generator, error) {
 	initComponents(spec)
-	if err := validator.Validate(spec); err != nil {
-		return nil, err
-	}
-
 	g := &Generator{
 		spec:          spec,
 		schemas:       map[string]*Schema{},
