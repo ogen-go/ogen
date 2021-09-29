@@ -20,7 +20,7 @@ type Method struct {
 	Name       string
 	PathParts  []PathPart
 	HTTPMethod string
-	Parameters map[ParameterLocation][]Parameter
+	Parameters []*Parameter
 
 	RequestType string
 	RequestBody *RequestBody
@@ -30,14 +30,24 @@ type Method struct {
 	ResponseDefault *Response
 }
 
-func (m *Method) PathParams() []Parameter   { return m.Parameters[LocationPath] }
-func (m *Method) QueryParams() []Parameter  { return m.Parameters[LocationQuery] }
-func (m *Method) CookieParams() []Parameter { return m.Parameters[LocationCookie] }
-func (m *Method) HeaderParams() []Parameter { return m.Parameters[LocationHeader] }
+func (m *Method) PathParams() []*Parameter   { return m.getParams(LocationPath) }
+func (m *Method) QueryParams() []*Parameter  { return m.getParams(LocationQuery) }
+func (m *Method) CookieParams() []*Parameter { return m.getParams(LocationCookie) }
+func (m *Method) HeaderParams() []*Parameter { return m.getParams(LocationHeader) }
+
+func (m *Method) getParams(locatedIn ParameterLocation) []*Parameter {
+	var params []*Parameter
+	for _, p := range m.Parameters {
+		if p.In == locatedIn {
+			params = append(params, p)
+		}
+	}
+	return params
+}
 
 type PathPart struct {
 	Raw   string
-	Param Parameter
+	Param *Parameter
 }
 
 func (m *Method) Path() string {

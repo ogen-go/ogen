@@ -31,28 +31,7 @@ func (g *Generator) generateMethods() error {
 	return nil
 }
 
-func (g *Generator) generateMethod(path, method string, op ogen.Operation) error {
-	params := make(map[ParameterLocation][]Parameter)
-	for _, p := range op.Parameters {
-		if p.Ref != "" {
-			componentParam, found := g.componentsParameter(p.Ref)
-			if !found {
-				return fmt.Errorf("parameter by reference '%s' not found", p.Ref)
-			}
-
-			p = componentParam
-		}
-
-		param, err := g.parseParameter(p, path)
-		if err != nil {
-			return fmt.Errorf("parse parameter '%s': %w", p.Name, err)
-		}
-
-		ps := params[param.In]
-		ps = append(ps, param)
-		params[param.In] = ps
-	}
-
+func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err error) {
 	// Use path + method as unique identifier.
 	methodName := pascal(path, strings.ToLower(method))
 	if op.OperationID != "" {
@@ -60,16 +39,19 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) error
 		methodName = pascal(op.OperationID)
 	}
 
-	parts, err := parsePath(path, params[LocationPath])
-	if err != nil {
-		return fmt.Errorf("parse path: %w", err)
-	}
-
 	m := &Method{
 		Name:       methodName,
-		PathParts:  parts,
 		HTTPMethod: method,
-		Parameters: params,
+	}
+
+	m.Parameters, err = g.generateParams(path, op.Parameters)
+	if err != nil {
+		return fmt.Errorf("parameters: %w", err)
+	}
+
+	m.PathParts, err = parsePath(path, m.PathParams())
+	if err != nil {
+		return fmt.Errorf("parse path: %w", err)
 	}
 
 	if op.RequestBody != nil {
@@ -115,14 +97,14 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) error
 	return nil
 }
 
-func parsePath(path string, params []Parameter) (parts []PathPart, err error) {
-	lookup := func(name string) (Parameter, bool) {
+func parsePath(path string, params []*Parameter) (parts []PathPart, err error) {
+	lookup := func(name string) (*Parameter, bool) {
 		for _, p := range params {
 			if p.SourceName == name {
 				return p, true
 			}
 		}
-		return Parameter{}, false
+		return nil, false
 	}
 
 	for _, s := range strings.Split(path, "/") {

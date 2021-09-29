@@ -7,18 +7,11 @@
 {{- range $m := $.Methods }}{{/* Range over methods */}}
 {{ if $m.Parameters }}{{/* Check parameters existence */}}
 type {{ $m.Name }}Params struct {
-	{{- range $t, $params := $m.Parameters }}
-		{{ $t }} {{ $m.Name }}{{ $t }}Params
+	{{- range $p := $m.Parameters }}
+	{{ $p.Name }} {{ $p.Schema.Type }}
 	{{- end}}
 }
 
-{{ range $t, $params := $m.Parameters }}{{/* Range over method parameters */}}
-type {{ $m.Name }}{{ $t }}Params struct {
-	{{- range $p := $params }}
-		{{ $p.Name }} {{ $p.Schema.Type }}
-	{{- end }}
-}
-{{ end }}{{/* Range over method parameters */}}
 {{ end }}{{/* Check parameters existence */}}
 {{ end }}{{/* Range over methods */}}
 {{ end }}

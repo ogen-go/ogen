@@ -8,7 +8,48 @@ import (
 	"github.com/ogen-go/ogen"
 )
 
-func (g *Generator) parseParameter(param ogen.Parameter, path string) (Parameter, error) {
+func (g *Generator) generateParams(methodPath string, methodParams []ogen.Parameter) ([]*Parameter, error) {
+	var result []*Parameter
+	for _, p := range methodParams {
+		if p.Ref != "" {
+			componentParam, found := g.componentsParameter(p.Ref)
+			if !found {
+				return nil, fmt.Errorf("parameter by reference '%s' not found", p.Ref)
+			}
+
+			p = componentParam
+		}
+
+		param, err := g.parseParameter(p, methodPath)
+		if err != nil {
+			return nil, fmt.Errorf("parse parameter '%s': %w", p.Name, err)
+		}
+
+		result = append(result, param)
+	}
+
+	// Fix name collisions for parameters in different locations.
+	params := make(map[string]*Parameter)
+	for _, param := range result {
+		p, found := params[param.Name]
+		if !found {
+			params[param.Name] = param
+			continue
+		}
+
+		if param.Name == p.Name &&
+			param.In == p.In {
+			return nil, fmt.Errorf("parameter name collision: %s", param.Name)
+		}
+
+		param.Name = string(param.In) + param.Name
+		p.Name = string(p.In) + p.Name
+	}
+
+	return result, nil
+}
+
+func (g *Generator) parseParameter(param ogen.Parameter, path string) (*Parameter, error) {
 	types := map[string]ParameterLocation{
 		"query":  LocationQuery,
 		"header": LocationHeader,
@@ -18,45 +59,45 @@ func (g *Generator) parseParameter(param ogen.Parameter, path string) (Parameter
 
 	locatedIn, exists := types[strings.ToLower(param.In)]
 	if !exists {
-		return Parameter{}, fmt.Errorf("unsupported parameter type %s", param.In)
+		return nil, fmt.Errorf("unsupported parameter type %s", param.In)
 	}
 
 	if locatedIn == LocationPath {
 		if !param.Required {
-			return Parameter{}, fmt.Errorf("parameters located in 'path' must be required")
+			return nil, fmt.Errorf("parameters located in 'path' must be required")
 		}
 
 		exists, err := regexp.MatchString(fmt.Sprintf("{%s}", param.Name), path)
 		if err != nil {
-			return Parameter{}, fmt.Errorf("match path param '%s': %w", param.Name, err)
+			return nil, fmt.Errorf("match path param '%s': %w", param.Name, err)
 		}
 
 		if !exists {
-			return Parameter{}, fmt.Errorf("param '%s' not found in path '%s'", param.Name, path)
+			return nil, fmt.Errorf("param '%s' not found in path '%s'", param.Name, path)
 		}
 	}
 
 	name := pascal(param.Name)
 	schema, err := g.generateSchema(name, param.Schema)
 	if err != nil {
-		return Parameter{}, fmt.Errorf("schema: %w", err)
+		return nil, fmt.Errorf("schema: %w", err)
 	}
 
 	switch schema.Kind {
 	case KindStruct:
-		return Parameter{}, fmt.Errorf("object type not supported")
+		return nil, fmt.Errorf("object type not supported")
 	case KindArray:
 		if schema.Item.Kind != KindPrimitive {
-			return Parameter{}, fmt.Errorf("only arrays with primitive types supported")
+			return nil, fmt.Errorf("only arrays with primitive types supported")
 		}
 	}
 
 	style, err := paramStyle(locatedIn, param.Style)
 	if err != nil {
-		return Parameter{}, fmt.Errorf("style: %w", err)
+		return nil, fmt.Errorf("style: %w", err)
 	}
 
-	return Parameter{
+	return &Parameter{
 		Name:       name,
 		In:         locatedIn,
 		SourceName: param.Name,
