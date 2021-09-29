@@ -37,36 +37,16 @@ var (
 )
 
 type FoobarGetParams struct {
-	Query FoobarGetQueryParams
-}
-
-type FoobarGetQueryParams struct {
 	InlinedParam int64
 	Skip         int32
 }
 
 type PetGetParams struct {
-	Cookie PetGetCookieParams
-	Header PetGetHeaderParams
-	Query  PetGetQueryParams
-}
-
-type PetGetCookieParams struct {
-	Token string
-}
-
-type PetGetHeaderParams struct {
+	PetID  int64
 	XScope []string
-}
-
-type PetGetQueryParams struct {
-	PetID int64
+	Token  string
 }
 
 type PetGetByNameParams struct {
-	Path PetGetByNamePathParams
-}
-
-type PetGetByNamePathParams struct {
 	Name string
 }

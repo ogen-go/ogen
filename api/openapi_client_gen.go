@@ -65,11 +65,11 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarG
 
 	q := r.URL.Query()
 	{
-		s := conv.Int64ToString(params.Query.InlinedParam)
+		s := conv.Int64ToString(params.InlinedParam)
 		q.Set("inlinedParam", s)
 	}
 	{
-		s := conv.Int32ToString(params.Query.Skip)
+		s := conv.Int32ToString(params.Skip)
 		q.Set("skip", s)
 	}
 	r.URL.RawQuery = q.Encode()
@@ -151,7 +151,7 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (PetGetRespons
 	}
 
 	{
-		value := conv.StringArrayToString(params.Header.XScope)
+		value := conv.StringArrayToString(params.XScope)
 		for _, v := range value {
 			r.Header.Add("x-scope", v)
 		}
@@ -159,13 +159,13 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (PetGetRespons
 
 	q := r.URL.Query()
 	{
-		s := conv.Int64ToString(params.Query.PetID)
+		s := conv.Int64ToString(params.PetID)
 		q.Set("petID", s)
 	}
 	r.URL.RawQuery = q.Encode()
 
 	{
-		value := conv.StringToString(params.Cookie.Token)
+		value := conv.StringToString(params.Token)
 		r.AddCookie(&http.Cookie{
 			Name:   "token",
 			Value:  value,
@@ -221,7 +221,7 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (*
 	path := c.serverURL
 	path += "/pet"
 	{
-		value := conv.StringToString(params.Path.Name)
+		value := conv.StringToString(params.Name)
 		path += "/" + value
 	}
 
