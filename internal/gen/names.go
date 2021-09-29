@@ -51,11 +51,11 @@ func checkRules(word string) string {
 		"QPS", "RAM", "RHS", "RPC", "SLA", "SMTP", "SQL", "SSH", "SSO", "TCP",
 		"TLS", "TTL", "UDP", "UI", "UID", "URI", "URL", "UTF8", "UUID", "VM",
 		"XML", "XMPP", "XSRF", "XSS", "SMS", "CDN", "TCP", "UDP", "DC", "PFS",
-		"P2P", "SHA256", "SHA1", "MD5", "SRP", "2FA",
+		"P2P", "SHA256", "SHA1", "MD5", "SRP", "2FA", "OAuth", "OAuth2",
 	}
 
 	for _, rule := range rules {
-		if strings.ToUpper(word) == rule {
+		if strings.EqualFold(word, rule) {
 			return rule
 		}
 	}
