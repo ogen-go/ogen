@@ -10,14 +10,14 @@ func Encode{{ $m.Name }}Response(response {{ $m.ResponseType }}, w http.Response
     {{- $schemasLength := len $m.ListResponseSchemas }}
     {{- if eq $schemasLength 1 }}
 
-    {{- range $schema, $info := $m.ListResponseSchemas }}
+    {{- range $info := $m.ListResponseSchemas }}
         {{- template "respond" $info }}
     {{- end }}
 
     {{- else }}
     switch response := response.(type) {
-    {{- range $schema, $info := $m.ListResponseSchemas }}
-    case *{{ $schema.Name }}:
+    {{- range $info := $m.ListResponseSchemas }}
+    case *{{ $info.Schema.Name }}:
         {{- template "respond" $info }}
     {{- end }}
     default:
