@@ -40,7 +40,7 @@ func NewFoobarGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) 
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := DecodeFoobarGetParams(r)
 		if err != nil {
-			w.WriteHeader(http.StatusBadRequest)
+			respondError(w, err)
 			return
 		}
 
@@ -77,7 +77,7 @@ func NewFoobarPostHandler(s Server) func(w http.ResponseWriter, r *http.Request)
 	return func(w http.ResponseWriter, r *http.Request) {
 		request, err := DecodeFoobarPostRequest(r)
 		if err != nil {
-			w.WriteHeader(http.StatusBadRequest)
+			respondError(w, err)
 			return
 		}
 
@@ -98,7 +98,7 @@ func NewPetGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := DecodePetGetParams(r)
 		if err != nil {
-			w.WriteHeader(http.StatusBadRequest)
+			respondError(w, err)
 			return
 		}
 
@@ -119,7 +119,7 @@ func NewPetCreateHandler(s Server) func(w http.ResponseWriter, r *http.Request) 
 	return func(w http.ResponseWriter, r *http.Request) {
 		request, err := DecodePetCreateRequest(r)
 		if err != nil {
-			w.WriteHeader(http.StatusBadRequest)
+			respondError(w, err)
 			return
 		}
 
@@ -140,7 +140,7 @@ func NewPetGetByNameHandler(s Server) func(w http.ResponseWriter, r *http.Reques
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := DecodePetGetByNameParams(r)
 		if err != nil {
-			w.WriteHeader(http.StatusBadRequest)
+			respondError(w, err)
 			return
 		}
 
@@ -155,4 +155,14 @@ func NewPetGetByNameHandler(s Server) func(w http.ResponseWriter, r *http.Reques
 			return
 		}
 	}
+}
+
+func respondError(w http.ResponseWriter, err error) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusBadRequest)
+	_ = json.NewEncoder(w).Encode(struct {
+		ErrorMessage string `json:"error_message"`
+	}{
+		ErrorMessage: err.Error(),
+	})
 }

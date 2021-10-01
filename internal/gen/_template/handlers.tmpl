@@ -10,7 +10,7 @@ func New{{ $m.Name }}Handler(s Server) func(w http.ResponseWriter, r *http.Reque
 		{{- if $m.Parameters }}
         params, err := Decode{{ $m.Name }}Params(r)
         if err != nil {
-            w.WriteHeader(http.StatusBadRequest)
+            respondError(w, err)
             return
         }
         {{- end }}
@@ -18,7 +18,7 @@ func New{{ $m.Name }}Handler(s Server) func(w http.ResponseWriter, r *http.Reque
         {{- if $m.RequestType }}
         request, err := Decode{{ $m.Name }}Request(r)
         if err != nil {
-            w.WriteHeader(http.StatusBadRequest)
+            respondError(w, err)
             return
         }
         {{- end }}
@@ -37,4 +37,13 @@ func New{{ $m.Name }}Handler(s Server) func(w http.ResponseWriter, r *http.Reque
 }
 {{ end }}
 
+func respondError(w http.ResponseWriter, err error) {
+    w.Header().Set("Content-Type", "application/json")
+    w.WriteHeader(http.StatusBadRequest)
+    _ = json.NewEncoder(w).Encode(struct{
+        ErrorMessage string `json:"error_message"`
+    }{
+        ErrorMessage: err.Error(),
+    })
+}
 {{ end }}
