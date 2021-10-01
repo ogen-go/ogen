@@ -36,7 +36,7 @@ var (
 	_ = conv.ToInt32
 )
 
-func DecodeFoobarPostRequest(r *http.Request) (*Pet, error) {
+func decodeFoobarPostRequest(r *http.Request) (*Pet, error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Pet
@@ -53,7 +53,7 @@ func DecodeFoobarPostRequest(r *http.Request) (*Pet, error) {
 	}
 }
 
-func DecodePetCreateRequest(r *http.Request) (PetCreateRequest, error) {
+func decodePetCreateRequest(r *http.Request) (PetCreateRequest, error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Pet

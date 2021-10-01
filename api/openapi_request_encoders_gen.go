@@ -36,7 +36,7 @@ var (
 	_ = conv.ToInt32
 )
 
-func EncodeFoobarPostRequest(req *Pet) ([]byte, string, error) {
+func encodeFoobarPostRequest(req *Pet) ([]byte, string, error) {
 	b, err := json.Marshal(req)
 	if err != nil {
 		return nil, "", err
@@ -45,7 +45,7 @@ func EncodeFoobarPostRequest(req *Pet) ([]byte, string, error) {
 	return b, "application/json", nil
 }
 
-func EncodePetCreateRequest(req PetCreateRequest) ([]byte, string, error) {
+func encodePetCreateRequest(req PetCreateRequest) ([]byte, string, error) {
 	switch req := req.(type) {
 	case *Pet:
 		b, err := json.Marshal(req)

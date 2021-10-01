@@ -25,7 +25,7 @@ func NewClient(serverURL string) *Client {
 {{ range $m := $.Methods }}
 func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req {{ $m.RequestType }}{{ end }}{{ if $m.Parameters}}, params {{ $m.Name }}Params {{ end }}) ({{ $m.ResponseType }}, error) {
     {{- if $m.RequestBody }}
-    body, contentType, err := Encode{{ $m.Name }}Request(req)
+    body, contentType, err := encode{{ $m.Name }}Request(req)
     if err != nil {
         return nil, err
     }
@@ -50,7 +50,7 @@ func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req 
     }
     defer resp.Body.Close()
 
-    result, err := Decode{{ $m.Name }}Response(resp)
+    result, err := decode{{ $m.Name }}Response(resp)
     if err != nil {
         return nil, fmt.Errorf("decode response: %w", err)
     }

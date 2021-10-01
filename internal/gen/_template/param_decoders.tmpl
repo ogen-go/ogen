@@ -7,7 +7,7 @@
 {{- range $m := $.Methods }}{{/* Range over methods */}}
 {{ if $m.Parameters }}{{/* Check parameters existence */}}
 
-func Decode{{ $m.Name }}Params(r *http.Request) ({{ $m.Name }}Params, error) {
+func decode{{ $m.Name }}Params(r *http.Request) ({{ $m.Name }}Params, error) {
 	var params {{ $m.Name }}Params
 	{{- range $p := $m.Parameters }}
 	{

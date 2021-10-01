@@ -36,7 +36,7 @@ var (
 	_ = conv.ToInt32
 )
 
-func DecodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
+func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 	var params FoobarGetParams
 	{
 		param := r.URL.Query().Get("inlinedParam")
@@ -68,7 +68,7 @@ func DecodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 	return params, nil
 }
 
-func DecodePetGetParams(r *http.Request) (PetGetParams, error) {
+func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 	var params PetGetParams
 	{
 		param := r.URL.Query().Get("petID")
@@ -118,7 +118,7 @@ func DecodePetGetParams(r *http.Request) (PetGetParams, error) {
 	return params, nil
 }
 
-func DecodePetGetByNameParams(r *http.Request) (PetGetByNameParams, error) {
+func decodePetGetByNameParams(r *http.Request) (PetGetByNameParams, error) {
 	var params PetGetByNameParams
 	{
 		param := chi.URLParam(r, "name")

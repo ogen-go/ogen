@@ -6,7 +6,7 @@
 {{/* Range over all methods */}}
 {{- range $m := $.Methods }}
 {{- if ne $m.RequestType "" }}
-func Encode{{ $m.Name }}Request(req {{ $m.RequestType }}) ([]byte, string, error) {
+func encode{{ $m.Name }}Request(req {{ $m.RequestType }}) ([]byte, string, error) {
     {{- $requestsLength := len $m.RequestBody.Contents }}
     {{- if eq $requestsLength 1 }}
     {{- range $ctype, $schema := $m.RequestBody.Contents }}

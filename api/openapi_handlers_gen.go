@@ -38,7 +38,7 @@ var (
 
 func NewFoobarGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := DecodeFoobarGetParams(r)
+		params, err := decodeFoobarGetParams(r)
 		if err != nil {
 			respondError(w, err)
 			return
@@ -50,7 +50,7 @@ func NewFoobarGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) 
 			return
 		}
 
-		if err := EncodeFoobarGetResponse(response, w); err != nil {
+		if err := encodeFoobarGetResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -66,7 +66,7 @@ func NewFoobarPutHandler(s Server) func(w http.ResponseWriter, r *http.Request) 
 			return
 		}
 
-		if err := EncodeFoobarPutResponse(response, w); err != nil {
+		if err := encodeFoobarPutResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -75,7 +75,7 @@ func NewFoobarPutHandler(s Server) func(w http.ResponseWriter, r *http.Request) 
 
 func NewFoobarPostHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := DecodeFoobarPostRequest(r)
+		request, err := decodeFoobarPostRequest(r)
 		if err != nil {
 			respondError(w, err)
 			return
@@ -87,7 +87,7 @@ func NewFoobarPostHandler(s Server) func(w http.ResponseWriter, r *http.Request)
 			return
 		}
 
-		if err := EncodeFoobarPostResponse(response, w); err != nil {
+		if err := encodeFoobarPostResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -96,7 +96,7 @@ func NewFoobarPostHandler(s Server) func(w http.ResponseWriter, r *http.Request)
 
 func NewPetGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := DecodePetGetParams(r)
+		params, err := decodePetGetParams(r)
 		if err != nil {
 			respondError(w, err)
 			return
@@ -108,7 +108,7 @@ func NewPetGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		if err := EncodePetGetResponse(response, w); err != nil {
+		if err := encodePetGetResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -117,7 +117,7 @@ func NewPetGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 
 func NewPetCreateHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := DecodePetCreateRequest(r)
+		request, err := decodePetCreateRequest(r)
 		if err != nil {
 			respondError(w, err)
 			return
@@ -129,7 +129,7 @@ func NewPetCreateHandler(s Server) func(w http.ResponseWriter, r *http.Request) 
 			return
 		}
 
-		if err := EncodePetCreateResponse(response, w); err != nil {
+		if err := encodePetCreateResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -138,7 +138,7 @@ func NewPetCreateHandler(s Server) func(w http.ResponseWriter, r *http.Request) 
 
 func NewPetGetByNameHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := DecodePetGetByNameParams(r)
+		params, err := decodePetGetByNameParams(r)
 		if err != nil {
 			respondError(w, err)
 			return
@@ -150,7 +150,7 @@ func NewPetGetByNameHandler(s Server) func(w http.ResponseWriter, r *http.Reques
 			return
 		}
 
-		if err := EncodePetGetByNameResponse(response, w); err != nil {
+		if err := encodePetGetByNameResponse(response, w); err != nil {
 			_ = err
 			return
 		}

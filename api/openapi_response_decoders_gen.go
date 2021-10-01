@@ -36,7 +36,7 @@ var (
 	_ = conv.ToInt32
 )
 
-func DecodeFoobarGetResponse(resp *http.Response) (FoobarGetResponse, error) {
+func decodeFoobarGetResponse(resp *http.Response) (FoobarGetResponse, error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -57,14 +57,14 @@ func DecodeFoobarGetResponse(resp *http.Response) (FoobarGetResponse, error) {
 	}
 }
 
-func DecodeFoobarPutResponse(resp *http.Response) (*FoobarPutDefault, error) {
+func decodeFoobarPutResponse(resp *http.Response) (*FoobarPutDefault, error) {
 	switch resp.StatusCode {
 	default:
 		return &FoobarPutDefault{StatusCode: resp.StatusCode}, nil
 	}
 }
 
-func DecodeFoobarPostResponse(resp *http.Response) (FoobarPostResponse, error) {
+func decodeFoobarPostResponse(resp *http.Response) (FoobarPostResponse, error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -96,7 +96,7 @@ func DecodeFoobarPostResponse(resp *http.Response) (FoobarPostResponse, error) {
 	}
 }
 
-func DecodePetGetResponse(resp *http.Response) (PetGetResponse, error) {
+func decodePetGetResponse(resp *http.Response) (PetGetResponse, error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -126,7 +126,7 @@ func DecodePetGetResponse(resp *http.Response) (PetGetResponse, error) {
 	}
 }
 
-func DecodePetCreateResponse(resp *http.Response) (*Pet, error) {
+func decodePetCreateResponse(resp *http.Response) (*Pet, error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -145,7 +145,7 @@ func DecodePetCreateResponse(resp *http.Response) (*Pet, error) {
 	}
 }
 
-func DecodePetGetByNameResponse(resp *http.Response) (*Pet, error) {
+func decodePetGetByNameResponse(resp *http.Response) (*Pet, error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {

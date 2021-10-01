@@ -36,7 +36,7 @@ var (
 	_ = conv.ToInt32
 )
 
-func EncodeFoobarGetResponse(response FoobarGetResponse, w http.ResponseWriter) error {
+func encodeFoobarGetResponse(response FoobarGetResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
@@ -50,12 +50,12 @@ func EncodeFoobarGetResponse(response FoobarGetResponse, w http.ResponseWriter) 
 	}
 }
 
-func EncodeFoobarPutResponse(response *FoobarPutDefault, w http.ResponseWriter) error {
+func encodeFoobarPutResponse(response *FoobarPutDefault, w http.ResponseWriter) error {
 	w.WriteHeader(response.StatusCode)
 	return nil
 }
 
-func EncodeFoobarPostResponse(response FoobarPostResponse, w http.ResponseWriter) error {
+func encodeFoobarPostResponse(response FoobarPostResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
@@ -73,7 +73,7 @@ func EncodeFoobarPostResponse(response FoobarPostResponse, w http.ResponseWriter
 	}
 }
 
-func EncodePetGetResponse(response PetGetResponse, w http.ResponseWriter) error {
+func encodePetGetResponse(response PetGetResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
@@ -88,13 +88,13 @@ func EncodePetGetResponse(response PetGetResponse, w http.ResponseWriter) error 
 	}
 }
 
-func EncodePetCreateResponse(response *Pet, w http.ResponseWriter) error {
+func encodePetCreateResponse(response *Pet, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	return json.NewEncoder(w).Encode(response)
 }
 
-func EncodePetGetByNameResponse(response *Pet, w http.ResponseWriter) error {
+func encodePetGetByNameResponse(response *Pet, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	return json.NewEncoder(w).Encode(response)

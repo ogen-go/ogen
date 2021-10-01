@@ -6,7 +6,7 @@
 {{/* Range over all methods */}}
 {{- range $m := $.Methods }}
 {{- if ne $m.RequestType "" }}
-func Decode{{ $m.Name }}Request(r *http.Request) ({{ $m.RequestType }}, error) {
+func decode{{ $m.Name }}Request(r *http.Request) ({{ $m.RequestType }}, error) {
     switch r.Header.Get("Content-Type") {
     {{- /* Range over all request types */ -}}
     {{- range $ctype, $schema := $m.RequestBody.Contents }}

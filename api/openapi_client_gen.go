@@ -80,7 +80,7 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarG
 	}
 	defer resp.Body.Close()
 
-	result, err := DecodeFoobarGetResponse(resp)
+	result, err := decodeFoobarGetResponse(resp)
 	if err != nil {
 		return nil, fmt.Errorf("decode response: %w", err)
 	}
@@ -103,7 +103,7 @@ func (c *Client) FoobarPut(ctx context.Context) (*FoobarPutDefault, error) {
 	}
 	defer resp.Body.Close()
 
-	result, err := DecodeFoobarPutResponse(resp)
+	result, err := decodeFoobarPutResponse(resp)
 	if err != nil {
 		return nil, fmt.Errorf("decode response: %w", err)
 	}
@@ -112,7 +112,7 @@ func (c *Client) FoobarPut(ctx context.Context) (*FoobarPutDefault, error) {
 }
 
 func (c *Client) FoobarPost(ctx context.Context, req *Pet) (FoobarPostResponse, error) {
-	body, contentType, err := EncodeFoobarPostRequest(req)
+	body, contentType, err := encodeFoobarPostRequest(req)
 	if err != nil {
 		return nil, err
 	}
@@ -133,7 +133,7 @@ func (c *Client) FoobarPost(ctx context.Context, req *Pet) (FoobarPostResponse, 
 	}
 	defer resp.Body.Close()
 
-	result, err := DecodeFoobarPostResponse(resp)
+	result, err := decodeFoobarPostResponse(resp)
 	if err != nil {
 		return nil, fmt.Errorf("decode response: %w", err)
 	}
@@ -179,7 +179,7 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (PetGetRespons
 	}
 	defer resp.Body.Close()
 
-	result, err := DecodePetGetResponse(resp)
+	result, err := decodePetGetResponse(resp)
 	if err != nil {
 		return nil, fmt.Errorf("decode response: %w", err)
 	}
@@ -188,7 +188,7 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (PetGetRespons
 }
 
 func (c *Client) PetCreate(ctx context.Context, req PetCreateRequest) (*Pet, error) {
-	body, contentType, err := EncodePetCreateRequest(req)
+	body, contentType, err := encodePetCreateRequest(req)
 	if err != nil {
 		return nil, err
 	}
@@ -209,7 +209,7 @@ func (c *Client) PetCreate(ctx context.Context, req PetCreateRequest) (*Pet, err
 	}
 	defer resp.Body.Close()
 
-	result, err := DecodePetCreateResponse(resp)
+	result, err := decodePetCreateResponse(resp)
 	if err != nil {
 		return nil, fmt.Errorf("decode response: %w", err)
 	}
@@ -236,7 +236,7 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (*
 	}
 	defer resp.Body.Close()
 
-	result, err := DecodePetGetByNameResponse(resp)
+	result, err := decodePetGetByNameResponse(resp)
 	if err != nil {
 		return nil, fmt.Errorf("decode response: %w", err)
 	}

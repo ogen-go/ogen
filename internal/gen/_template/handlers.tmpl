@@ -8,7 +8,7 @@
 func New{{ $m.Name }}Handler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		{{- if $m.Parameters }}
-        params, err := Decode{{ $m.Name }}Params(r)
+        params, err := decode{{ $m.Name }}Params(r)
         if err != nil {
             respondError(w, err)
             return
@@ -16,7 +16,7 @@ func New{{ $m.Name }}Handler(s Server) func(w http.ResponseWriter, r *http.Reque
         {{- end }}
 
         {{- if $m.RequestType }}
-        request, err := Decode{{ $m.Name }}Request(r)
+        request, err := decode{{ $m.Name }}Request(r)
         if err != nil {
             respondError(w, err)
             return
@@ -29,7 +29,7 @@ func New{{ $m.Name }}Handler(s Server) func(w http.ResponseWriter, r *http.Reque
             return
         }
 
-        if err := Encode{{ $m.Name }}Response(response, w); err != nil {
+        if err := encode{{ $m.Name }}Response(response, w); err != nil {
             _ = err
             return
         }
