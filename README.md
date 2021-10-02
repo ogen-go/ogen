@@ -27,12 +27,14 @@ go get github.com/ogen-go/ogen
 * Middlewares, logging (e.g. how to pass request id)
 * RED metrics for client and server
 * Tracing for client and server
+* Basic validation
 * OneOf/AnyOf
 * Client retries
   * Retry strategy (e.g. exponential backoff)
   * Configuring via `x-ogen-*` annotations
   * Configuring via generation config
 * Benchmarks
+* Full validation support
 * Extreme optimizations
   * fasthttp
   * total zero alloc
