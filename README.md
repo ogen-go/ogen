@@ -19,3 +19,7 @@ Roadmap in progress.
 * RED metrics for client and server
 * Tracing for client and server
 * OneOf/AnyOf
+* Client retries
+  * Retry strategy (e.g. exponential backoff)
+  * Configuring via `x-ogen-*` annotations
+  * Configuring via generation config
