@@ -38,6 +38,10 @@ go get github.com/ogen-go/ogen
 * Tool for OAS backward compatibility check
 * DSL-based ent-like code-first approach for writing schemas
 * Benchmarks
+* Generics
+  * Target go1.18
+  * Use Optional[T]
+  * Reduce generated code via generics
 * Full validation support
 * Extreme optimizations
   * fasthttp
