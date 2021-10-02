@@ -33,6 +33,8 @@ go get github.com/ogen-go/ogen
   * Retry strategy (e.g. exponential backoff)
   * Configuring via `x-ogen-*` annotations
   * Configuring via generation config
+* Tool for OAS backward compatibility check
+* DSL-based ent-like code-first approach for writing schemas
 * Benchmarks
 * Full validation support
 * Extreme optimizations
