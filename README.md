@@ -6,8 +6,12 @@ On early stages of development.
 
 Telegram group for development: [@ogen_dev](https://t.me/ogen_dev)
 
-# Roadmap
-Roadmap in progress.
+# Install
+```console
+go get github.com/ogen-go/ogen
+```
+
+# Draft Roadmap
 
 * [Generated client](https://github.com/ogen-go/ogen/issues/8)
 * Tests
@@ -23,3 +27,5 @@ Roadmap in progress.
   * Retry strategy (e.g. exponential backoff)
   * Configuring via `x-ogen-*` annotations
   * Configuring via generation config
+* Benchmarks
+* [gnet](https://github.com/panjf2000/gnet) support
