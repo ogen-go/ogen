@@ -19,6 +19,11 @@ go get github.com/ogen-go/ogen
 * Convenient global errors schema (e.g. 500, 404)
 * End-to-end tests
 * Security (e.g. Bearer token)
+* Framework/Router support
+  * stdlib
+  * gin
+  * echo
+  * fasthttp
 * Middlewares, logging (e.g. how to pass request id)
 * RED metrics for client and server
 * Tracing for client and server
