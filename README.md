@@ -33,4 +33,8 @@ go get github.com/ogen-go/ogen
   * Configuring via `x-ogen-*` annotations
   * Configuring via generation config
 * Benchmarks
-* [gnet](https://github.com/panjf2000/gnet) support
+* Extreme optimizations
+  * fasthttp
+  * total zero alloc
+    * memory pools for entities with automatic management in generated code
+    * [gnet](https://github.com/panjf2000/gnet) support
