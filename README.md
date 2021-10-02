@@ -16,6 +16,7 @@ go get github.com/ogen-go/ogen
 * [Generated client](https://github.com/ogen-go/ogen/issues/8)
 * Tests
 * Enums
+* Optionals
 * Convenient global errors schema (e.g. 500, 404)
 * End-to-end tests
 * Security (e.g. Bearer token)
