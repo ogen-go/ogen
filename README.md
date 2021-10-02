@@ -30,6 +30,7 @@ go get github.com/ogen-go/ogen
 * Tracing for client and server
 * Basic validation
 * OneOf/AnyOf
+* Webhook support
 * Client retries
   * Retry strategy (e.g. exponential backoff)
   * Configuring via `x-ogen-*` annotations
