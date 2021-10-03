@@ -21,6 +21,9 @@ func (g *Generator) generateMethods() error {
 			}
 			return nil
 		}); err != nil {
+			if xerrors.Is(err, errSkipSchema) {
+				continue
+			}
 			return xerrors.Errorf("paths: %s: %w", path, err)
 		}
 	}
@@ -50,7 +53,7 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 		return xerrors.Errorf("parameters: %w", err)
 	}
 
-	m.PathParts, err = parsePath(path, m.PathParams())
+	m.PathParts, err = g.parsePath(path, m.PathParams())
 	if err != nil {
 		return xerrors.Errorf("parse path: %w", err)
 	}
@@ -98,7 +101,7 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 	return nil
 }
 
-func parsePath(path string, params []*Parameter) (parts []PathPart, err error) {
+func (g *Generator) parsePath(path string, params []*Parameter) (parts []PathPart, err error) {
 	lookup := func(name string) (*Parameter, bool) {
 		for _, p := range params {
 			if p.SourceName == name {
@@ -116,7 +119,10 @@ func parsePath(path string, params []*Parameter) (parts []PathPart, err error) {
 			name := s[1 : len(s)-1]
 			param, found := lookup(name)
 			if !found {
-				return nil, xerrors.Errorf("parameter '%s' not found in path", name)
+				if g.opt.debugSkipUnspecified {
+					return nil, xerrors.Errorf("param %q not found in path %q: %w", name, path, errSkipSchema)
+				}
+				return nil, xerrors.Errorf("parameter '%s' not found in path %q", name, path)
 			}
 
 			parts = append(parts, PathPart{Param: param})
