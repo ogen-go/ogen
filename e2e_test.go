@@ -43,6 +43,9 @@ func TestGenerate(t *testing.T) {
 		{
 			Name: "sample_1.json",
 		},
+		{
+			Name: "techempower.json",
+		},
 	} {
 		t.Run(tc.Name, func(t *testing.T) {
 			f, err := testdata.Open(path.Join("_testdata", tc.Name))
