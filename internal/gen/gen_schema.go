@@ -17,7 +17,12 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 
 		s, found := g.schemas[componentName]
 		if !found {
-			return nil, fmt.Errorf("component by reference '%s' not found", ref)
+			refSchema, found := g.spec.Components.Schemas[componentName]
+			if !found {
+				return nil, fmt.Errorf("component by reference '%s' not found", ref)
+			}
+
+			return g.generateSchema(componentName, refSchema)
 		}
 
 		return s, nil
