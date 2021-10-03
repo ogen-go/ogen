@@ -16,6 +16,10 @@ type Generator struct {
 type options struct {
 	// TODO: Remove
 	debugIgnoreOptionals bool
+	// TODO: Remove
+	debugIgnoreUnsupportedFormat bool
+	// TODO: Remove
+	debugAllowEmptyObjects bool
 }
 
 type Option func(o *options)
@@ -23,6 +27,16 @@ type Option func(o *options)
 // WithIgnoreOptionals ignores that optionals are not implemented.
 func WithIgnoreOptionals(o *options) {
 	o.debugIgnoreOptionals = true
+}
+
+// WithIgnoreFormat ignores unsupported formats.
+func WithIgnoreFormat(o *options) {
+	o.debugIgnoreUnsupportedFormat = true
+}
+
+// WithEmptyObjects allows empty objects.
+func WithEmptyObjects(o *options) {
+	o.debugAllowEmptyObjects = true
 }
 
 func NewGenerator(spec *ogen.Spec, opts ...Option) (*Generator, error) {

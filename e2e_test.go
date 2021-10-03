@@ -27,12 +27,16 @@ func TestGenerate(t *testing.T) {
 			Name: "firecracker.json",
 			Options: []gen.Option{
 				gen.WithIgnoreOptionals,
+				gen.WithIgnoreFormat,
+				gen.WithEmptyObjects,
 			},
 		},
 		{
 			Name: "api.github.com.json",
 			Options: []gen.Option{
 				gen.WithIgnoreOptionals,
+				gen.WithIgnoreFormat,
+				gen.WithEmptyObjects,
 			},
 		},
 		{

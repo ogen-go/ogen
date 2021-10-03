@@ -30,7 +30,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 
 	switch schema.Type {
 	case "object":
-		if len(schema.Properties) == 0 {
+		if len(schema.Properties) == 0 && !g.opt.debugAllowEmptyObjects {
 			return nil, fmt.Errorf("object must contain at least one property")
 		}
 
@@ -90,7 +90,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 		return nil, fmt.Errorf("type must be specified")
 
 	default:
-		simpleType, err := parseSimple(
+		simpleType, err := g.parseSimple(
 			strings.ToLower(schema.Type),
 			strings.ToLower(schema.Format),
 		)
@@ -102,7 +102,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 	}
 }
 
-func parseSimple(typ, format string) (string, error) {
+func (g *Generator) parseSimple(typ, format string) (string, error) {
 	simpleTypes := map[string]map[string]string{
 		"integer": {
 			"int32": "int32",
@@ -133,7 +133,7 @@ func parseSimple(typ, format string) (string, error) {
 	}
 
 	fType, exists := formats[format]
-	if !exists {
+	if !exists && !g.opt.debugIgnoreUnsupportedFormat {
 		return "", fmt.Errorf("unsupported format '%s' for type '%s'", format, typ)
 	}
 
