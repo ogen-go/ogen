@@ -1,36 +1,57 @@
 package ogen
 
+// This is the root document object of the OpenAPI document.
 type Spec struct {
 	// This string MUST be the semantic version number
 	// of the OpenAPI Specification version that the OpenAPI document uses.
-	OpenAPI        string      `json:"openapi"`
-	Title          string      `json:"title"`
-	Description    string      `json:"description"`
-	TermsOfService string      `json:"termsOfService"`
-	Contact        *Contact    `json:"contact"`
-	License        *License    `json:"license"`
-	Version        string      `json:"version"`
-	Servers        []Server    `json:"servers"`
-	Paths          Paths       `json:"paths"`
-	Components     *Components `json:"components"`
+	OpenAPI    string      `json:"openapi"`
+	Info       Info        `json:"info"`
+	Servers    []Server    `json:"servers"`
+	Paths      Paths       `json:"paths"`
+	Components *Components `json:"components"`
 }
 
+// The object provides metadata about the API.
+// The metadata MAY be used by the clients if needed,
+// and MAY be presented in editing or documentation generation tools for convenience.
+type Info struct {
+	// REQUIRED. The title of the API.
+	Title string `json:"title"`
+	// A short description of the API.
+	// CommonMark syntax MAY be used for rich text representation.
+	Description string `json:"description"`
+	// A URL to the Terms of Service for the API. MUST be in the format of a URL.
+	TermsOfService string `json:"termsOfService"`
+	// The contact information for the exposed API.
+	Contact *Contact `json:"contact"`
+	// The license information for the exposed API.
+	License *License `json:"license"`
+	// REQUIRED. The version of the OpenAPI document.
+	Version string `json:"version"`
+}
+
+// Contact information for the exposed API.
 type Contact struct {
 	Name  string `json:"name"`
 	URL   string `json:"url"`
 	Email string `json:"email"`
 }
 
+// License information for the exposed API.
 type License struct {
 	Name string `json:"name"`
 	URL  string `json:"url"`
 }
 
+// An object representing a Server.
 type Server struct {
 	Name string `json:"name"`
 	URL  string `json:"url"`
 }
 
+// Holds a set of reusable objects for different aspects of the OAS.
+// All objects defined within the components object will have no effect on the API
+// unless they are explicitly referenced from properties outside the components object.
 type Components struct {
 	Schemas    map[string]Schema    `json:"schemas"`
 	Responses  map[string]Response  `json:"responses"`
@@ -83,6 +104,8 @@ type Operation struct {
 	Responses   Responses    `json:"responses"`
 }
 
+// Describes a single operation parameter.
+// A unique parameter is defined by a combination of a name and location.
 type Parameter struct {
 	Ref  string `json:"$ref"`
 	Name string `json:"name"`
@@ -142,6 +165,8 @@ type RequestBody struct {
 // The container maps a HTTP response code to the expected response
 type Responses map[string]Response
 
+// Describes a single response from an API Operation,
+// including design-time, static links to operations based on the response.
 type Response struct {
 	Ref         string                 `json:"$ref"`
 	Description string                 `json:"description"`
@@ -156,6 +181,8 @@ type Media struct {
 	Schema Schema `json:"schema"`
 }
 
+// The Schema Object allows the definition of input and output data types.
+// These types can be objects, but also primitives and arrays.
 type Schema struct {
 	Ref         string `json:"$ref"`
 	Description string `json:"description"`
@@ -180,6 +207,18 @@ type Schema struct {
 	// Value MUST be an object and not an array.
 	// Inline or referenced schema MUST be of a Schema Object and not a standard
 	Items *Schema `json:"items"`
+
+	// AllOf takes an array of object definitions that are used
+	// for independent validation but together compose a single object.
+	// Still, it does not imply a hierarchy between the models.
+	// For that purpose, you should include the discriminator.
+	AllOf []Schema `json:"allOf"` // TODO: implement.
+
+	// OneOf validates the value against exactly one of the subschemas
+	OneOf []Schema `json:"oneOf"` // TODO: implement.
+
+	// AnyOf validates the value against any (one or more) of the subschemas
+	AnyOf []Schema `json:"anyOf"` // TODO: implement.
 
 	// The value of this keyword MUST be an array.
 	// This array SHOULD have at least one element.
