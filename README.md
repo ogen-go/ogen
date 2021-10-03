@@ -60,7 +60,12 @@ go get github.com/ogen-go/ogen
   * total zero alloc
     * memory pools for entities with automatic management in generated code
     * [gnet](https://github.com/panjf2000/gnet) support
-* Websocket support via extention?
+* Websocket support via extension?
+* Async support (Websocket, other protocols)
+  * [asyncapi](https://github.com/asyncapi/spec/blob/v2.2.0/spec/asyncapi.md)
+* More marshaling protocols support
+  * msgpack
+  * protobuf
 * Automatic end-to-end support via routing header
   * Header selects specific response variant
 * TechEmpower benchmark implementation
