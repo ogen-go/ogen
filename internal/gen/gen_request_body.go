@@ -1,7 +1,7 @@
 package gen
 
 import (
-	"fmt"
+	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen"
 )
@@ -11,13 +11,13 @@ func (g *Generator) generateRequestBody(methodName string, body *ogen.RequestBod
 		// Convert requestBody reference to go type name.
 		name, err := componentName(body.Ref)
 		if err != nil {
-			return nil, err
+			return nil, xerrors.Errorf("name: %w", err)
 		}
 
 		// Lookup for requestBody.
 		rbody, found := g.requestBodies[name]
 		if !found {
-			return nil, fmt.Errorf("requestBody by reference '%s' not found", body.Ref)
+			return nil, xerrors.Errorf("requestBody by reference '%s' not found", body.Ref)
 		}
 
 		return rbody, nil
@@ -36,7 +36,7 @@ func (g *Generator) generateRequestBody(methodName string, body *ogen.RequestBod
 			// Lookup for schema.
 			schema, found := g.schemas[name]
 			if !found {
-				return nil, fmt.Errorf("schema by reference '%s' not found", ref)
+				return nil, xerrors.Errorf("schema by reference '%s' not found", ref)
 			}
 
 			rbody.Contents[contentType] = schema
@@ -48,7 +48,7 @@ func (g *Generator) generateRequestBody(methodName string, body *ogen.RequestBod
 		name := pascal(methodName, contentType, "Request")
 		schema, err := g.generateSchema(name, media.Schema)
 		if err != nil {
-			return nil, fmt.Errorf("content: %s: parse schema: %w", contentType, err)
+			return nil, xerrors.Errorf("content: %s: parse schema: %w", contentType, err)
 		}
 
 		// Register generated schema.

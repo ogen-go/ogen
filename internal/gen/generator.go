@@ -1,6 +1,10 @@
 package gen
 
-import "github.com/ogen-go/ogen"
+import (
+	"golang.org/x/xerrors"
+
+	"github.com/ogen-go/ogen"
+)
 
 type Generator struct {
 	opt     options
@@ -56,11 +60,11 @@ func NewGenerator(spec *ogen.Spec, opts ...Option) (*Generator, error) {
 	}
 
 	if err := g.generateComponents(); err != nil {
-		return nil, err
+		return nil, xerrors.Errorf("components: %w", err)
 	}
 
 	if err := g.generateMethods(); err != nil {
-		return nil, err
+		return nil, xerrors.Errorf("methods: %w", err)
 	}
 
 	g.simplify()

@@ -1,9 +1,10 @@
 package gen
 
 import (
-	"fmt"
 	"sort"
 	"strings"
+
+	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen"
 )
@@ -11,16 +12,16 @@ import (
 func (g *Generator) generateMethods() error {
 	for path, item := range g.spec.Paths {
 		if item.Ref != "" {
-			return fmt.Errorf("referenced paths are not supported")
+			return xerrors.New("referenced paths are not supported")
 		}
 
 		if err := forEachOps(item, func(method string, op ogen.Operation) error {
 			if err := g.generateMethod(path, strings.ToUpper(method), op); err != nil {
-				return fmt.Errorf("%s: %w", method, err)
+				return xerrors.Errorf("%s: %w", method, err)
 			}
 			return nil
 		}); err != nil {
-			return fmt.Errorf("paths: %s: %w", path, err)
+			return xerrors.Errorf("paths: %s: %w", path, err)
 		}
 	}
 
@@ -46,12 +47,12 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 
 	m.Parameters, err = g.generateParams(path, op.Parameters)
 	if err != nil {
-		return fmt.Errorf("parameters: %w", err)
+		return xerrors.Errorf("parameters: %w", err)
 	}
 
 	m.PathParts, err = parsePath(path, m.PathParams())
 	if err != nil {
-		return fmt.Errorf("parse path: %w", err)
+		return xerrors.Errorf("parse path: %w", err)
 	}
 
 	if op.RequestBody != nil {
@@ -60,7 +61,7 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 
 		rbody, err := g.generateRequestBody(methodName, op.RequestBody)
 		if err != nil {
-			return fmt.Errorf("requestBody: %w", err)
+			return xerrors.Errorf("requestBody: %w", err)
 		}
 
 		for _, schema := range rbody.Contents {
@@ -77,7 +78,7 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 
 		resp, err := g.generateResponses(methodName, op.Responses)
 		if err != nil {
-			return fmt.Errorf("responses: %w", err)
+			return xerrors.Errorf("responses: %w", err)
 		}
 
 		for _, resp := range resp.Responses {
@@ -115,7 +116,7 @@ func parsePath(path string, params []*Parameter) (parts []PathPart, err error) {
 			name := s[1 : len(s)-1]
 			param, found := lookup(name)
 			if !found {
-				return nil, fmt.Errorf("parameter '%s' not found in path", name)
+				return nil, xerrors.Errorf("parameter '%s' not found in path", name)
 			}
 
 			parts = append(parts, PathPart{Param: param})

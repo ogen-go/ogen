@@ -5,6 +5,8 @@ import (
 	"net/http"
 	"strconv"
 
+	"golang.org/x/xerrors"
+
 	"github.com/ogen-go/ogen"
 )
 
@@ -24,7 +26,7 @@ func (g *Generator) generateResponses(methodName string, responses ogen.Response
 		if status == "default" {
 			resp, err := g.createDefaultResponse(methodName, schema)
 			if err != nil {
-				return nil, fmt.Errorf("default: %w", err)
+				return nil, xerrors.Errorf("default: %w", err)
 			}
 
 			result.Default = resp
@@ -33,7 +35,7 @@ func (g *Generator) generateResponses(methodName string, responses ogen.Response
 
 		statusCode, err := strconv.Atoi(status)
 		if err != nil {
-			return nil, fmt.Errorf("invalid status code: '%s'", status)
+			return nil, xerrors.Errorf("invalid status code: '%s'", status)
 		}
 
 		if err := func() error {
@@ -48,7 +50,7 @@ func (g *Generator) generateResponses(methodName string, responses ogen.Response
 				// Lookup for response component.
 				r, found := g.responses[name]
 				if !found {
-					return fmt.Errorf("response by reference '%s' not found", ref)
+					return xerrors.Errorf("response by reference '%s' not found", ref)
 				}
 
 				result.Responses[statusCode] = r
@@ -69,7 +71,7 @@ func (g *Generator) generateResponses(methodName string, responses ogen.Response
 			result.Responses[statusCode] = resp
 			return nil
 		}(); err != nil {
-			return nil, fmt.Errorf("%s: %w", status, err)
+			return nil, xerrors.Errorf("%s: %w", status, err)
 		}
 	}
 
@@ -82,7 +84,7 @@ func (g *Generator) createDefaultResponse(methodName string, r ogen.Response) (*
 		// Validate reference & get response component name.
 		name, err := componentName(ref)
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("name: %w", err)
 		}
 
 		// Lookup for alias response.
@@ -93,7 +95,7 @@ func (g *Generator) createDefaultResponse(methodName string, r ogen.Response) (*
 		// Lookup for reference response.
 		response, found := g.responses[name]
 		if !found {
-			return nil, fmt.Errorf("response by reference '%s', not found", ref)
+			return nil, xerrors.Errorf("response by reference '%s', not found", ref)
 		}
 
 		alias := g.createResponse()
@@ -169,12 +171,12 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*Respons
 		if ref := media.Schema.Ref; ref != "" {
 			refSchemaName, err := componentName(ref)
 			if err != nil {
-				return nil, fmt.Errorf("content: %s: %w", contentType, err)
+				return nil, xerrors.Errorf("content: %s: %w", contentType, err)
 			}
 
 			schema, found := g.schemas[refSchemaName]
 			if !found {
-				return nil, fmt.Errorf("content: %s: schema referenced by '%s' not found", contentType, ref)
+				return nil, xerrors.Errorf("content: %s: schema referenced by '%s' not found", contentType, ref)
 			}
 
 			// Response have only one content.
@@ -195,7 +197,7 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*Respons
 		// Inlined response schema.
 		s, err := g.generateSchema(name, media.Schema)
 		if err != nil {
-			return nil, fmt.Errorf("content: %s: schema: %w", contentType, err)
+			return nil, xerrors.Errorf("content: %s: schema: %w", contentType, err)
 		}
 
 		g.schemas[s.Name] = s

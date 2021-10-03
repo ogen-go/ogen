@@ -1,27 +1,21 @@
 package gen
 
 import (
-	"fmt"
+	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen"
 )
 
 func (g *Generator) generateComponents() error {
-	if err := func() error {
-		if err := g.generateComponentSchemas(); err != nil {
-			return fmt.Errorf("schemas: %w", err)
-		}
-		if err := g.generateComponentRequestBodies(); err != nil {
-			return fmt.Errorf("requestBodies: %w", err)
-		}
-		if err := g.generateComponentResponses(); err != nil {
-			return fmt.Errorf("responses: %w", err)
-		}
-		return nil
-	}(); err != nil {
-		return fmt.Errorf("components: %w", err)
+	if err := g.generateComponentSchemas(); err != nil {
+		return xerrors.Errorf("schemas: %w", err)
 	}
-
+	if err := g.generateComponentRequestBodies(); err != nil {
+		return xerrors.Errorf("requestBodies: %w", err)
+	}
+	if err := g.generateComponentResponses(); err != nil {
+		return xerrors.Errorf("responses: %w", err)
+	}
 	return nil
 }
 
@@ -35,7 +29,7 @@ func (g *Generator) generateComponentSchemas() error {
 
 		s, err := g.generateSchema(name, schema)
 		if err != nil {
-			return fmt.Errorf("%s: %w", name, err)
+			return xerrors.Errorf("%s: %w", name, err)
 		}
 
 		g.schemas[name] = s
@@ -44,7 +38,7 @@ func (g *Generator) generateComponentSchemas() error {
 	for name, schema := range refs {
 		s, err := g.generateSchema(name, schema)
 		if err != nil {
-			return fmt.Errorf("%s: %w", name, err)
+			return xerrors.Errorf("%s: %w", name, err)
 		}
 
 		g.schemas[name] = s
@@ -63,7 +57,7 @@ func (g *Generator) generateComponentRequestBodies() error {
 
 		rbody, err := g.generateRequestBody(name, &body)
 		if err != nil {
-			return fmt.Errorf("%s: %w", name, err)
+			return xerrors.Errorf("%s: %w", name, err)
 		}
 
 		g.requestBodies[name] = rbody
@@ -72,7 +66,7 @@ func (g *Generator) generateComponentRequestBodies() error {
 	for name, body := range refs {
 		rbody, err := g.generateRequestBody(name, &body)
 		if err != nil {
-			return fmt.Errorf("%s: %w", name, err)
+			return xerrors.Errorf("%s: %w", name, err)
 		}
 
 		g.requestBodies[name] = rbody
@@ -91,7 +85,7 @@ func (g *Generator) generateComponentResponses() error {
 
 		r, err := g.generateResponse(name, resp)
 		if err != nil {
-			return fmt.Errorf("%s: %w", name, err)
+			return xerrors.Errorf("%s: %w", name, err)
 		}
 
 		g.responses[name] = r
@@ -100,7 +94,7 @@ func (g *Generator) generateComponentResponses() error {
 	for name, resp := range refs {
 		r, err := g.generateResponse(name, resp)
 		if err != nil {
-			return fmt.Errorf("%s: %w", name, err)
+			return xerrors.Errorf("%s: %w", name, err)
 		}
 
 		g.responses[name] = r
