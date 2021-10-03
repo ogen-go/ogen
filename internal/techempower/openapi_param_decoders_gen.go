@@ -36,8 +36,42 @@ var (
 	_ = conv.ToInt32
 )
 
+func decodeCachingParams(r *http.Request) (CachingParams, error) {
+	var params CachingParams
+	{
+		param := r.URL.Query().Get("count")
+		if len(param) > 0 {
+			v, err := conv.ToInt64(param)
+			if err != nil {
+				return params, fmt.Errorf("parse query param 'count': %w", err)
+			}
+
+			params.Count = v
+		}
+	}
+
+	return params, nil
+}
+
 func decodeQueriesParams(r *http.Request) (QueriesParams, error) {
 	var params QueriesParams
+	{
+		param := r.URL.Query().Get("queries")
+		if len(param) > 0 {
+			v, err := conv.ToInt64(param)
+			if err != nil {
+				return params, fmt.Errorf("parse query param 'queries': %w", err)
+			}
+
+			params.Queries = v
+		}
+	}
+
+	return params, nil
+}
+
+func decodeUpdatesParams(r *http.Request) (UpdatesParams, error) {
+	var params UpdatesParams
 	{
 		param := r.URL.Query().Get("queries")
 		if len(param) > 0 {

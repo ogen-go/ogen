@@ -13,6 +13,14 @@ import (
 
 type techEmpowerServer struct{}
 
+func (t techEmpowerServer) Caching(ctx context.Context, params techempower.CachingParams) (*techempower.WorldObjects, error) {
+	panic("implement me")
+}
+
+func (t techEmpowerServer) Updates(ctx context.Context, params techempower.UpdatesParams) (*techempower.WorldObjects, error) {
+	panic("implement me")
+}
+
 func (t techEmpowerServer) Queries(ctx context.Context, params techempower.QueriesParams) (*techempower.WorldObjects, error) {
 	return &techempower.WorldObjects{}, nil
 }

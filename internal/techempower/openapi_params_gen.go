@@ -36,6 +36,14 @@ var (
 	_ = conv.ToInt32
 )
 
+type CachingParams struct {
+	Count int64
+}
+
 type QueriesParams struct {
+	Queries int64
+}
+
+type UpdatesParams struct {
 	Queries int64
 }

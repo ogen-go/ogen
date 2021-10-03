@@ -36,6 +36,12 @@ var (
 	_ = conv.ToInt32
 )
 
+func encodeCachingResponse(response *WorldObjects, w http.ResponseWriter) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	return json.NewEncoder(w).Encode(response)
+}
+
 func encodeDBResponse(response *WorldObject, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -49,6 +55,12 @@ func encodeJSONResponse(response *HelloWorld, w http.ResponseWriter) error {
 }
 
 func encodeQueriesResponse(response *WorldObjects, w http.ResponseWriter) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	return json.NewEncoder(w).Encode(response)
+}
+
+func encodeUpdatesResponse(response *WorldObjects, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	return json.NewEncoder(w).Encode(response)
