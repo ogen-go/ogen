@@ -2,3 +2,4 @@
 package ogen
 
 //go:generate go run ./cmd/ogen --schema _testdata/sample_1.json --clean
+//go:generate go run ./cmd/ogen --schema _testdata/techempower.json --target internal/techempower --package techempower --clean
