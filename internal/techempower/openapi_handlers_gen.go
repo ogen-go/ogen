@@ -5,7 +5,6 @@ package techempower
 import (
 	"bytes"
 	"context"
-	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
@@ -17,6 +16,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/encoding/json"
 )
 
 // No-op definition for keeping imports.
@@ -134,9 +134,12 @@ func NewUpdatesHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 func respondError(w http.ResponseWriter, err error) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusBadRequest)
-	_ = json.NewEncoder(w).Encode(struct {
+	data, writeErr := json.Marshal(struct {
 		ErrorMessage string `json:"error_message"`
 	}{
 		ErrorMessage: err.Error(),
 	})
+	if writeErr == nil {
+		w.Write(data)
+	}
 }

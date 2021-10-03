@@ -40,10 +40,13 @@ func New{{ $m.Name }}Handler(s Server) func(w http.ResponseWriter, r *http.Reque
 func respondError(w http.ResponseWriter, err error) {
     w.Header().Set("Content-Type", "application/json")
     w.WriteHeader(http.StatusBadRequest)
-    _ = json.NewEncoder(w).Encode(struct{
+    data, writeErr := json.Marshal(struct{
         ErrorMessage string `json:"error_message"`
     }{
         ErrorMessage: err.Error(),
     })
+    if writeErr == nil {
+      w.Write(data)
+    }
 }
 {{ end }}

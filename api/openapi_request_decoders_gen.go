@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
@@ -17,6 +16,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/encoding/json"
 )
 
 // No-op definition for keeping imports.
@@ -40,7 +40,11 @@ func decodeFoobarPostRequest(r *http.Request) (*Pet, error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Pet
-		if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+		data, err := io.ReadAll(r.Body)
+		if err != nil {
+			return nil, err
+		}
+		if err := json.Unmarshal(data, &request); err != nil {
 			if errors.Is(err, io.EOF) {
 				return nil, nil
 			}
@@ -57,7 +61,11 @@ func decodePetCreateRequest(r *http.Request) (PetCreateRequest, error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Pet
-		if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+		data, err := io.ReadAll(r.Body)
+		if err != nil {
+			return nil, err
+		}
+		if err := json.Unmarshal(data, &request); err != nil {
 			if errors.Is(err, io.EOF) {
 				return nil, nil
 			}

@@ -5,7 +5,6 @@ package techempower
 import (
 	"bytes"
 	"context"
-	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
@@ -17,6 +16,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/encoding/json"
 )
 
 // No-op definition for keeping imports.

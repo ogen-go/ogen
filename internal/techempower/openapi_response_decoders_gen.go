@@ -5,7 +5,6 @@ package techempower
 import (
 	"bytes"
 	"context"
-	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
@@ -17,6 +16,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/encoding/json"
 )
 
 // No-op definition for keeping imports.
@@ -42,7 +42,11 @@ func decodeCachingResponse(resp *http.Response) (*WorldObjects, error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response WorldObjects
-			if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
+			data, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return nil, err
+			}
+			if err := json.Unmarshal(data, &response); err != nil {
 				return nil, err
 			}
 
@@ -61,7 +65,11 @@ func decodeDBResponse(resp *http.Response) (*WorldObject, error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response WorldObject
-			if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
+			data, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return nil, err
+			}
+			if err := json.Unmarshal(data, &response); err != nil {
 				return nil, err
 			}
 
@@ -80,7 +88,11 @@ func decodeJSONResponse(resp *http.Response) (*HelloWorld, error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response HelloWorld
-			if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
+			data, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return nil, err
+			}
+			if err := json.Unmarshal(data, &response); err != nil {
 				return nil, err
 			}
 
@@ -99,7 +111,11 @@ func decodeQueriesResponse(resp *http.Response) (*WorldObjects, error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response WorldObjects
-			if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
+			data, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return nil, err
+			}
+			if err := json.Unmarshal(data, &response); err != nil {
 				return nil, err
 			}
 
@@ -118,7 +134,11 @@ func decodeUpdatesResponse(resp *http.Response) (*WorldObjects, error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response WorldObjects
-			if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
+			data, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return nil, err
+			}
+			if err := json.Unmarshal(data, &response); err != nil {
 				return nil, err
 			}
 

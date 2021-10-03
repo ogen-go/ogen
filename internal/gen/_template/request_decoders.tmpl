@@ -14,7 +14,11 @@ func decode{{ $m.Name }}Request(r *http.Request) ({{ $m.RequestType }}, error) {
         var request {{ $schema.Name }}
         {{- /* Decode json */ -}}
         {{- if eq $ctype "application/json" }}
-        if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+        data, err := io.ReadAll(r.Body)
+        if err != nil {
+            return nil, err
+        }
+        if err := json.Unmarshal(data, &request); err != nil {
             {{- if not $m.RequestBody.Required}}
             if errors.Is(err, io.EOF) {
                 return nil, nil

@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
@@ -17,6 +16,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/encoding/json"
 )
 
 // No-op definition for keeping imports.
@@ -41,7 +41,14 @@ func encodeFoobarGetResponse(response FoobarGetResponse, w http.ResponseWriter) 
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		return json.NewEncoder(w).Encode(response)
+		data, err := json.Marshal(response)
+		if err != nil {
+			return err
+		}
+		if _, err := w.Write(data); err != nil {
+			return err
+		}
+		return nil
 	case *NotFound:
 		w.WriteHeader(404)
 		return nil
@@ -60,14 +67,28 @@ func encodeFoobarPostResponse(response FoobarPostResponse, w http.ResponseWriter
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		return json.NewEncoder(w).Encode(response)
+		data, err := json.Marshal(response)
+		if err != nil {
+			return err
+		}
+		if _, err := w.Write(data); err != nil {
+			return err
+		}
+		return nil
 	case *NotFound:
 		w.WriteHeader(404)
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		return json.NewEncoder(w).Encode(response.Response)
+		data, err := json.Marshal(response.Response)
+		if err != nil {
+			return err
+		}
+		if _, err := w.Write(data); err != nil {
+			return err
+		}
+		return nil
 	default:
 		return fmt.Errorf("/foobar: unexpected response type for method: %T", response)
 	}
@@ -78,11 +99,25 @@ func encodePetGetResponse(response PetGetResponse, w http.ResponseWriter) error 
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		return json.NewEncoder(w).Encode(response)
+		data, err := json.Marshal(response)
+		if err != nil {
+			return err
+		}
+		if _, err := w.Write(data); err != nil {
+			return err
+		}
+		return nil
 	case *PetGetDefaultStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		return json.NewEncoder(w).Encode(response.Response)
+		data, err := json.Marshal(response.Response)
+		if err != nil {
+			return err
+		}
+		if _, err := w.Write(data); err != nil {
+			return err
+		}
+		return nil
 	default:
 		return fmt.Errorf("/pet: unexpected response type for method: %T", response)
 	}
@@ -91,11 +126,25 @@ func encodePetGetResponse(response PetGetResponse, w http.ResponseWriter) error 
 func encodePetCreateResponse(response *Pet, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	return json.NewEncoder(w).Encode(response)
+	data, err := json.Marshal(response)
+	if err != nil {
+		return err
+	}
+	if _, err := w.Write(data); err != nil {
+		return err
+	}
+	return nil
 }
 
 func encodePetGetByNameResponse(response *Pet, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	return json.NewEncoder(w).Encode(response)
+	data, err := json.Marshal(response)
+	if err != nil {
+		return err
+	}
+	if _, err := w.Write(data); err != nil {
+		return err
+	}
+	return nil
 }

@@ -5,7 +5,6 @@ package api
 import (
 	"bytes"
 	"context"
-	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
@@ -17,6 +16,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/encoding/json"
 )
 
 // No-op definition for keeping imports.
@@ -42,7 +42,11 @@ func decodeFoobarGetResponse(resp *http.Response) (FoobarGetResponse, error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response Pet
-			if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
+			data, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return nil, err
+			}
+			if err := json.Unmarshal(data, &response); err != nil {
 				return nil, err
 			}
 
@@ -70,7 +74,11 @@ func decodeFoobarPostResponse(resp *http.Response) (FoobarPostResponse, error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response Pet
-			if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
+			data, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return nil, err
+			}
+			if err := json.Unmarshal(data, &response); err != nil {
 				return nil, err
 			}
 
@@ -84,7 +92,11 @@ func decodeFoobarPostResponse(resp *http.Response) (FoobarPostResponse, error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response ErrorStatusCode
-			if err := json.NewDecoder(resp.Body).Decode(&response.Response); err != nil {
+			data, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return nil, err
+			}
+			if err := json.Unmarshal(data, &response.Response); err != nil {
 				return nil, err
 			}
 
@@ -102,7 +114,11 @@ func decodePetGetResponse(resp *http.Response) (PetGetResponse, error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response Pet
-			if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
+			data, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return nil, err
+			}
+			if err := json.Unmarshal(data, &response); err != nil {
 				return nil, err
 			}
 
@@ -114,7 +130,11 @@ func decodePetGetResponse(resp *http.Response) (PetGetResponse, error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response PetGetDefaultStatusCode
-			if err := json.NewDecoder(resp.Body).Decode(&response.Response); err != nil {
+			data, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return nil, err
+			}
+			if err := json.Unmarshal(data, &response.Response); err != nil {
 				return nil, err
 			}
 
@@ -132,7 +152,11 @@ func decodePetCreateResponse(resp *http.Response) (*Pet, error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response Pet
-			if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
+			data, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return nil, err
+			}
+			if err := json.Unmarshal(data, &response); err != nil {
 				return nil, err
 			}
 
@@ -151,7 +175,11 @@ func decodePetGetByNameResponse(resp *http.Response) (*Pet, error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response Pet
-			if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
+			data, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return nil, err
+			}
+			if err := json.Unmarshal(data, &response); err != nil {
 				return nil, err
 			}
 

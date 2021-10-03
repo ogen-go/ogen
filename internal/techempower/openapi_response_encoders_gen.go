@@ -5,7 +5,6 @@ package techempower
 import (
 	"bytes"
 	"context"
-	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
@@ -17,6 +16,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/encoding/json"
 )
 
 // No-op definition for keeping imports.
@@ -39,29 +39,64 @@ var (
 func encodeCachingResponse(response *WorldObjects, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	return json.NewEncoder(w).Encode(response)
+	data, err := json.Marshal(response)
+	if err != nil {
+		return err
+	}
+	if _, err := w.Write(data); err != nil {
+		return err
+	}
+	return nil
 }
 
 func encodeDBResponse(response *WorldObject, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	return json.NewEncoder(w).Encode(response)
+	data, err := json.Marshal(response)
+	if err != nil {
+		return err
+	}
+	if _, err := w.Write(data); err != nil {
+		return err
+	}
+	return nil
 }
 
 func encodeJSONResponse(response *HelloWorld, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	return json.NewEncoder(w).Encode(response)
+	data, err := json.Marshal(response)
+	if err != nil {
+		return err
+	}
+	if _, err := w.Write(data); err != nil {
+		return err
+	}
+	return nil
 }
 
 func encodeQueriesResponse(response *WorldObjects, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	return json.NewEncoder(w).Encode(response)
+	data, err := json.Marshal(response)
+	if err != nil {
+		return err
+	}
+	if _, err := w.Write(data); err != nil {
+		return err
+	}
+	return nil
 }
 
 func encodeUpdatesResponse(response *WorldObjects, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	return json.NewEncoder(w).Encode(response)
+	data, err := json.Marshal(response)
+	if err != nil {
+		return err
+	}
+	if _, err := w.Write(data); err != nil {
+		return err
+	}
+	return nil
 }
