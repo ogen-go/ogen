@@ -31,6 +31,7 @@ go get github.com/ogen-go/ogen
 * Basic validation
 * OneOf/AnyOf
 * Webhook support
+* Files support (with streaming, like io.Reader/Writer)
 * Client retries
   * Retry strategy (e.g. exponential backoff)
   * Configuring via `x-ogen-*` annotations
