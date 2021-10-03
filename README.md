@@ -11,6 +11,11 @@ Telegram group for development: [@ogen_dev](https://t.me/ogen_dev)
 go get github.com/ogen-go/ogen
 ```
 
+# Usage
+```go
+//go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema schema.json --target target/dir -package api --clean
+```
+
 # Draft Roadmap
 
 * [Generated client](https://github.com/ogen-go/ogen/issues/8)
