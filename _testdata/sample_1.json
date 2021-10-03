@@ -1,18 +1,20 @@
 {
   "openapi": "3.0.3",
-  "title": "Sample Pet Store App",
-  "description": "This is a sample server for a pet store.",
-  "termsOfService": "https://example.com/terms/",
-  "contact": {
-    "name": "API Support",
-    "url": "https://www.example.com/support",
-    "email": "support@example.com"
+  "info": {
+    "title": "Sample Pet Store App",
+    "description": "This is a sample server for a pet store.",
+    "termsOfService": "https://example.com/terms/",
+    "contact": {
+      "name": "API Support",
+      "url": "https://www.example.com/support",
+      "email": "support@example.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.1"
   },
-  "license": {
-    "name": "Apache 2.0",
-    "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
-  },
-  "version": "1.0.1",
   "paths": {
     "/pet": {
       "get": {
@@ -62,18 +64,20 @@
               }
             }
           },
-          "default":{
+          "default": {
             "description": "Error",
             "content": {
-              "application/json":{
-                "schema":{
-                  "type":"object",
-                  "properties":{
-                    "message":{
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
                       "type": "string"
                     }
                   },
-                  "required": ["message"]
+                  "required": [
+                    "message"
+                  ]
                 }
               }
             }
@@ -228,7 +232,12 @@
             }
           }
         },
-        "required": ["id", "name", "birthday", "friends"]
+        "required": [
+          "id",
+          "name",
+          "birthday",
+          "friends"
+        ]
       }
     },
     "parameters": {
@@ -297,7 +306,10 @@
                   "type": "string"
                 }
               },
-              "required": ["code", "message"]
+              "required": [
+                "code",
+                "message"
+              ]
             }
           }
         }
