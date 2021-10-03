@@ -37,5 +37,6 @@ var (
 )
 
 type Server interface {
+	DB(ctx context.Context) (*WorldObject, error)
 	JSON(ctx context.Context) (*HelloWorld, error)
 }

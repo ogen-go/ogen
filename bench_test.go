@@ -13,6 +13,13 @@ import (
 
 type techEmpowerServer struct{}
 
+func (t techEmpowerServer) DB(ctx context.Context) (*techempower.WorldObject, error) {
+	return &techempower.WorldObject{
+		ID:           1,
+		RandomNumber: 10,
+	}, nil
+}
+
 func (t techEmpowerServer) JSON(ctx context.Context) (*techempower.HelloWorld, error) {
 	return &techempower.HelloWorld{
 		Message: "Hello, world!",
@@ -35,6 +42,12 @@ func TestIntegration(t *testing.T) {
 			res, err := client.JSON(ctx)
 			require.NoError(t, err)
 			require.Equal(t, "Hello, world!", res.Message)
+		})
+		t.Run("DB", func(t *testing.T) {
+			res, err := client.DB(ctx)
+			require.NoError(t, err)
+			require.Equal(t, int64(1), res.ID)
+			require.Equal(t, int64(10), res.RandomNumber)
 		})
 	})
 }

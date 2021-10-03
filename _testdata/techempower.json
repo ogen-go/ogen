@@ -38,6 +38,27 @@
           }
         }
       }
+    },
+    "/db": {
+      "get": {
+        "summary": "The Single Database Query test exercises the framework's object-relational mapper (ORM), random number generator, database driver, and database connection pool.",
+        "externalDocs": {
+          "url": "https://github.com/TechEmpower/FrameworkBenchmarks/wiki/Project-Information-Framework-Tests-Overview#single-database-query"
+        },
+        "operationId": "DB",
+        "responses": {
+          "200": {
+            "description": "World object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorldObject"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -52,6 +73,23 @@
             "type": "string",
             "default": "Hello, World!",
             "description": "Should be equal to 'Hello, World!'"
+          }
+        }
+      },
+      "WorldObject": {
+        "type": "object",
+        "required": [
+          "id",
+          "randomNumber"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "randomNumber": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       }

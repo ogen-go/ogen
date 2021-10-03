@@ -54,6 +54,29 @@ func NewClient(serverURL string) *Client {
 	}
 }
 
+func (c *Client) DB(ctx context.Context) (*WorldObject, error) {
+	path := c.serverURL
+	path += "/db"
+
+	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
+	if err != nil {
+		return nil, fmt.Errorf("create request: %w", err)
+	}
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return nil, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeDBResponse(resp)
+	if err != nil {
+		return nil, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}
+
 func (c *Client) JSON(ctx context.Context) (*HelloWorld, error) {
 	path := c.serverURL
 	path += "/json"

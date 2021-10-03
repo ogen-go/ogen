@@ -36,6 +36,22 @@ var (
 	_ = conv.ToInt32
 )
 
+func NewDBHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		response, err := s.DB(r.Context())
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+
+		if err := encodeDBResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
 func NewJSONHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 
