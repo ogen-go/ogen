@@ -46,7 +46,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 		s.Description = schema.Description
 		g.schemas[s.Name] = s
 		for propName, propSchema := range schema.Properties {
-			if !required(propName) {
+			if !required(propName) && !g.opt.debugIgnoreOptionals {
 				return nil, fmt.Errorf("properties: %s: optional properties not supported", propName)
 			}
 
@@ -102,10 +102,12 @@ func parseSimple(typ, format string) (string, error) {
 		"integer": {
 			"int32": "int32",
 			"int64": "int64",
+			"":      "int",
 		},
 		"number": {
 			"float":  "float32",
 			"double": "float64",
+			"":       "float",
 		},
 		"string": {
 			"":          "string",

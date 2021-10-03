@@ -35,6 +35,7 @@ func main() {
 	targetDir := flag.String("target", "api", "Path to target dir")
 	packageName := flag.String("package", "api", "Target package name")
 	performFormat := flag.Bool("format", true, "perform code formatting")
+	debugIgnoreOptionals := flag.Bool("debug.ignore-optionals", false, "DEBUG: ignore unimplemented optionals")
 	clean := flag.Bool("clean", false, "Clean generated files before generation")
 	flag.Parse()
 	if *specPath == "" {
@@ -81,7 +82,11 @@ func main() {
 		Root:   *targetDir,
 		Format: *performFormat,
 	}
-	g, err := gen.NewGenerator(spec)
+	var opts []gen.Option
+	if *debugIgnoreOptionals {
+		opts = append(opts, gen.WithIgnoreOptionals)
+	}
+	g, err := gen.NewGenerator(spec, opts...)
 	if err != nil {
 		panic(fmt.Sprintf("%+v", err))
 	}

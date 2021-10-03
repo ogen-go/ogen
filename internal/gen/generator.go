@@ -3,6 +3,7 @@ package gen
 import "github.com/ogen-go/ogen"
 
 type Generator struct {
+	opt     options
 	spec    *ogen.Spec
 	methods []*Method
 
@@ -12,9 +13,27 @@ type Generator struct {
 	interfaces    map[string]*Interface
 }
 
-func NewGenerator(spec *ogen.Spec) (*Generator, error) {
+type options struct {
+	// TODO: Remove
+	debugIgnoreOptionals bool
+}
+
+type Option func(o *options)
+
+// WithIgnoreOptionals ignores that optionals are not implemented.
+func WithIgnoreOptionals(o *options) {
+	o.debugIgnoreOptionals = true
+}
+
+func NewGenerator(spec *ogen.Spec, opts ...Option) (*Generator, error) {
+	o := options{}
+	for _, f := range opts {
+		f(&o)
+	}
+
 	initComponents(spec)
 	g := &Generator{
+		opt:           o,
 		spec:          spec,
 		schemas:       map[string]*Schema{},
 		requestBodies: map[string]*RequestBody{},
