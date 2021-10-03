@@ -68,6 +68,27 @@ func NewJSONHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func NewQueriesHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		params, err := decodeQueriesParams(r)
+		if err != nil {
+			respondError(w, err)
+			return
+		}
+
+		response, err := s.Queries(r.Context(), params)
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+
+		if err := encodeQueriesResponse(response, w); err != nil {
+			_ = err
+			return
+		}
+	}
+}
+
 func respondError(w http.ResponseWriter, err error) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusBadRequest)

@@ -13,6 +13,10 @@ import (
 
 type techEmpowerServer struct{}
 
+func (t techEmpowerServer) Queries(ctx context.Context, params techempower.QueriesParams) (*techempower.WorldObjects, error) {
+	return &techempower.WorldObjects{}, nil
+}
+
 func (t techEmpowerServer) DB(ctx context.Context) (*techempower.WorldObject, error) {
 	return &techempower.WorldObject{
 		ID:           1,

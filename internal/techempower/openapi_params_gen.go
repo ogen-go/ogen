@@ -35,3 +35,7 @@ var (
 	_ = time.Time{}
 	_ = conv.ToInt32
 )
+
+type QueriesParams struct {
+	Queries int64
+}

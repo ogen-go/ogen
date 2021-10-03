@@ -99,3 +99,33 @@ func (c *Client) JSON(ctx context.Context) (*HelloWorld, error) {
 
 	return result, nil
 }
+
+func (c *Client) Queries(ctx context.Context, params QueriesParams) (*WorldObjects, error) {
+	path := c.serverURL
+	path += "/queries"
+
+	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
+	if err != nil {
+		return nil, fmt.Errorf("create request: %w", err)
+	}
+
+	q := r.URL.Query()
+	{
+		s := conv.Int64ToString(params.Queries)
+		q.Set("queries", s)
+	}
+	r.URL.RawQuery = q.Encode()
+
+	resp, err := c.http.Do(r)
+	if err != nil {
+		return nil, fmt.Errorf("do request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeQueriesResponse(resp)
+	if err != nil {
+		return nil, fmt.Errorf("decode response: %w", err)
+	}
+
+	return result, nil
+}

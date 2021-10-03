@@ -44,3 +44,5 @@ type WorldObject struct {
 	ID           int64 `json:"id"`
 	RandomNumber int64 `json:"randomNumber"`
 }
+
+type WorldObjects []WorldObject

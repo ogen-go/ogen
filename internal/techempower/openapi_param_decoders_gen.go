@@ -35,3 +35,20 @@ var (
 	_ = time.Time{}
 	_ = conv.ToInt32
 )
+
+func decodeQueriesParams(r *http.Request) (QueriesParams, error) {
+	var params QueriesParams
+	{
+		param := r.URL.Query().Get("queries")
+		if len(param) > 0 {
+			v, err := conv.ToInt64(param)
+			if err != nil {
+				return params, fmt.Errorf("parse query param 'queries': %w", err)
+			}
+
+			params.Queries = v
+		}
+	}
+
+	return params, nil
+}

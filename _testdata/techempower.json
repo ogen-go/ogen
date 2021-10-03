@@ -59,6 +59,37 @@
           }
         }
       }
+    },
+    "/queries": {
+      "get": {
+        "summary": "The Multiple Database Queries test is a variation of Test #2 and also uses the World table. Multiple rows are fetched to more dramatically punish the database driver and connection pool. At the highest queries-per-request tested (20), this test demonstrates all frameworks' convergence toward zero requests-per-second as database activity increases.",
+        "externalDocs": {
+          "url": "https://github.com/TechEmpower/FrameworkBenchmarks/wiki/Project-Information-Framework-Tests-Overview#multiple-database-queries"
+        },
+        "operationId": "Queries",
+        "parameters": [
+          {
+            "name": "queries",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of World objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorldObjects"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -91,6 +122,12 @@
             "type": "integer",
             "format": "int64"
           }
+        }
+      },
+      "WorldObjects": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/WorldObject"
         }
       }
     }
