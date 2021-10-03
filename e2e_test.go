@@ -37,6 +37,7 @@ func TestGenerate(t *testing.T) {
 				gen.WithIgnoreOptionals,
 				gen.WithIgnoreFormat,
 				gen.WithEmptyObjects,
+				gen.WithSkipUnspecified,
 			},
 		},
 		{

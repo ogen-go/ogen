@@ -75,6 +75,9 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 
 	case "array":
 		if schema.Items == nil {
+			if g.opt.debugSkipUnspecified {
+				return nil, xerrors.Errorf("skipping unspecified items: %w", errSkipSchema)
+			}
 			return nil, xerrors.New("items must be specified")
 		}
 		if len(schema.Properties) > 0 {
@@ -89,6 +92,9 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 		return g.createSchemaArray(name, item), nil
 
 	case "":
+		if g.opt.debugSkipUnspecified {
+			return nil, xerrors.Errorf("skipping unspecified type: %w", errSkipSchema)
+		}
 		return nil, xerrors.New("type must be specified")
 
 	default:

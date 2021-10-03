@@ -196,6 +196,9 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*Respons
 
 		// Inlined response schema.
 		s, err := g.generateSchema(name, media.Schema)
+		if xerrors.Is(err, errSkipSchema) {
+			continue
+		}
 		if err != nil {
 			return nil, xerrors.Errorf("content: %s: schema: %w", contentType, err)
 		}

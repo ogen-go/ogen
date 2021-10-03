@@ -28,6 +28,9 @@ func (g *Generator) generateComponentSchemas() error {
 		}
 
 		s, err := g.generateSchema(name, schema)
+		if xerrors.Is(err, errSkipSchema) {
+			continue
+		}
 		if err != nil {
 			return xerrors.Errorf("%s: %w", name, err)
 		}

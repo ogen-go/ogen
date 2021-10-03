@@ -24,6 +24,8 @@ type options struct {
 	debugIgnoreUnsupportedFormat bool
 	// TODO: Remove
 	debugAllowEmptyObjects bool
+	// TODO: Remove
+	debugSkipUnspecified bool
 }
 
 type Option func(o *options)
@@ -41,6 +43,11 @@ func WithIgnoreFormat(o *options) {
 // WithEmptyObjects allows empty objects.
 func WithEmptyObjects(o *options) {
 	o.debugAllowEmptyObjects = true
+}
+
+// WithSkipUnspecified skips unspecified types.
+func WithSkipUnspecified(o *options) {
+	o.debugSkipUnspecified = true
 }
 
 func NewGenerator(spec *ogen.Spec, opts ...Option) (*Generator, error) {
