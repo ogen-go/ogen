@@ -54,6 +54,7 @@ go get github.com/ogen-go/ogen
   * Reduce generated code via generics
 * Full validation support
 * Extreme optimizations
+  * [simd](https://github.com/minio/simdjson-go) for json
   * fasthttp
   * total zero alloc
     * memory pools for entities with automatic management in generated code
