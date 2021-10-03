@@ -58,3 +58,7 @@ go get github.com/ogen-go/ogen
   * total zero alloc
     * memory pools for entities with automatic management in generated code
     * [gnet](https://github.com/panjf2000/gnet) support
+* Websocket support via extention?
+* Automatic end-to-end support via routing header
+  * Header selects specific response variant
+* TechEmpower benchmark implementation
