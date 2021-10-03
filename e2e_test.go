@@ -2,7 +2,7 @@ package ogen_test
 
 import (
 	"embed"
-	"path/filepath"
+	"path"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -45,7 +45,7 @@ func TestGenerate(t *testing.T) {
 		},
 	} {
 		t.Run(tc.Name, func(t *testing.T) {
-			f, err := testdata.Open(filepath.Join("_testdata", tc.Name))
+			f, err := testdata.Open(path.Join("_testdata", tc.Name))
 			require.NoError(t, err)
 			defer require.NoError(t, f.Close())
 			spec, err := ogen.Parse(f)
