@@ -66,6 +66,7 @@ go get github.com/ogen-go/ogen
   * msgpack
   * protobuf
   * [ndjson](https://github.com/ndjson/ndjson-spec), newline-delimited json
-* Automatic end-to-end support via routing header
+* Automatic end-to-end tests support via routing header
   * Header selects specific response variant
+  * Code-generated tests with full coverage
 * TechEmpower benchmark implementation
