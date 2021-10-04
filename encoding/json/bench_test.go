@@ -67,6 +67,9 @@ func testWorld(t testing.TB) WorldData {
 	require.NoError(t, err)
 	require.NotEmpty(t, data)
 
+	t.Logf("Payload: %s", data)
+	t.Logf("Payload size: %d", len(data))
+
 	return WorldData{
 		Value: v,
 		Raw:   data,
