@@ -55,6 +55,11 @@ go get github.com/ogen-go/ogen
 * Full validation support
 * Extreme optimizations
   * [simd](https://github.com/minio/simdjson-go) for json
+    * Better for streaming multi-megabyte jsons
+  * Streaming/iterator API support
+    * Enable via x-ogen-streaming extension
+    * Iteration over array or map elements of object
+    * Also can fit njson
   * fasthttp
   * total zero alloc
     * memory pools for entities with automatic management in generated code
@@ -69,7 +74,7 @@ go get github.com/ogen-go/ogen
       * JSON
       * MessagePack
       * ProtoBuff
-  * String interning 
+  * String interning
 * Websocket support via extension?
 * Async support (Websocket, other protocols)
   * [asyncapi](https://github.com/asyncapi/spec/blob/v2.2.0/spec/asyncapi.md)
