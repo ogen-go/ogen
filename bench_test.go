@@ -87,6 +87,7 @@ func BenchmarkIntegration(b *testing.B) {
 		// Use baseline implementation to measure framework overhead.
 		b.Run("Std", func(b *testing.B) {
 			data := []byte(`Hello, world!`)
+			b.SetBytes(int64(len(data)))
 			s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 				_, _ = w.Write(data)
 			}))
@@ -144,6 +145,7 @@ func BenchmarkIntegration(b *testing.B) {
 
 			b.ResetTimer()
 			b.ReportAllocs()
+			b.SetBytes(int64(len("Hello, world!")))
 			b.RunParallel(func(pb *testing.PB) {
 				var dst []byte
 				for pb.Next() {
