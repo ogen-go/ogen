@@ -82,3 +82,5 @@ go get github.com/ogen-go/ogen
   * Header selects specific response variant
   * Code-generated tests with full coverage
 * TechEmpower benchmark implementation
+* Logo
+  * OpenAPI-like logo with Go colours
