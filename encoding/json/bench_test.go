@@ -232,5 +232,4 @@ func BenchmarkUnmarshal(b *testing.B) {
 			}
 		})
 	})
-
 }
