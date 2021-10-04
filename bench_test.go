@@ -2,13 +2,17 @@ package ogen
 
 import (
 	"context"
+	"fmt"
 	"io"
+	"net"
 	"net/http"
 	"net/http/httptest"
+	"net/url"
 	"testing"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/stretchr/testify/require"
+	"github.com/valyala/fasthttp"
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen/internal/techempower"
@@ -68,6 +72,16 @@ func TestIntegration(t *testing.T) {
 	})
 }
 
+func newLocalListener() net.Listener {
+	l, err := net.Listen("tcp", "127.0.0.1:0")
+	if err != nil {
+		if l, err = net.Listen("tcp6", "[::1]:0"); err != nil {
+			panic(fmt.Sprintf("httptest: failed to listen on a port: %v", err))
+		}
+	}
+	return l
+}
+
 func BenchmarkIntegration(b *testing.B) {
 	b.Run("Baseline", func(b *testing.B) {
 		// Use baseline implementation to measure framework overhead.
@@ -103,6 +117,48 @@ func BenchmarkIntegration(b *testing.B) {
 					}(); err != nil {
 						b.Error(err)
 					}
+				}
+			})
+		})
+		b.Run("Fasthttp", func(b *testing.B) {
+			done := make(chan struct{})
+			defer func() { <-done }()
+
+			ln := newLocalListener()
+			defer func() { _ = ln.Close() }()
+
+			go func() {
+				defer close(done)
+				if err := fasthttp.Serve(ln, func(ctx *fasthttp.RequestCtx) {
+					_, _ = ctx.WriteString("Hello, world!")
+				}); err != nil {
+					b.Error(err)
+				}
+			}()
+
+			c := &fasthttp.Client{}
+			u := (&url.URL{
+				Host:   ln.Addr().String(),
+				Scheme: "http",
+			}).String()
+
+			b.ResetTimer()
+			b.ReportAllocs()
+			b.RunParallel(func(pb *testing.PB) {
+				var dst []byte
+				for pb.Next() {
+					code, result, err := c.Get(dst, u)
+					if err != nil {
+						b.Error(err)
+						return
+					}
+					if code != http.StatusOK {
+						b.Errorf("bad code %d:", code)
+						return
+					}
+
+					// Reusing buffer.
+					dst = result[:0]
 				}
 			})
 		})
