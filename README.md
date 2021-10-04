@@ -69,6 +69,7 @@ go get github.com/ogen-go/ogen
       * JSON
       * MessagePack
       * ProtoBuff
+  * String interning 
 * Websocket support via extension?
 * Async support (Websocket, other protocols)
   * [asyncapi](https://github.com/asyncapi/spec/blob/v2.2.0/spec/asyncapi.md)
