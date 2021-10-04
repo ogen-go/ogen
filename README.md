@@ -86,3 +86,4 @@ go get github.com/ogen-go/ogen
   * OpenAPI-like logo with Go colours
 * Integrations
   * Tests with [autorest](https://github.com/Azure/autorest)
+  * Use testdata from [autorest](https://github.com/Azure/autorest.typescript/tree/main/test/integration/swaggers)
