@@ -84,3 +84,5 @@ go get github.com/ogen-go/ogen
 * TechEmpower benchmark implementation
 * Logo
   * OpenAPI-like logo with Go colours
+* Integrations
+  * Tests with [autorest](https://github.com/Azure/autorest)
