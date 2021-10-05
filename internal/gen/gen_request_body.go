@@ -28,15 +28,9 @@ func (g *Generator) generateRequestBody(methodName string, body *ogen.RequestBod
 	for contentType, media := range body.Content {
 		// Referenced schema.
 		if ref := media.Schema.Ref; ref != "" {
-			name, err := componentName(ref)
+			schema, err := g.resolveSchema(ref)
 			if err != nil {
 				return nil, err
-			}
-
-			// Lookup for schema.
-			schema, found := g.schemas[name]
-			if !found {
-				return nil, xerrors.Errorf("schema by reference '%s' not found", ref)
 			}
 
 			rbody.Contents[contentType] = schema

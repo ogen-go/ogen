@@ -173,14 +173,8 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*Respons
 
 		var schema *Schema
 		if ref := media.Schema.Ref; ref != "" {
-			// Referenced response schema.
-			refSchemaName, err := componentName(ref)
+			s, err := g.resolveSchema(ref)
 			if err != nil {
-				return nil, xerrors.Errorf("content: %s: %w", contentType, err)
-			}
-
-			s, found := g.schemas[refSchemaName]
-			if !found {
 				return nil, xerrors.Errorf("content: %s: schema referenced by '%s' not found", contentType, ref)
 			}
 
