@@ -1,5 +1,7 @@
 package gen
 
+import "github.com/ogen-go/ogen/internal/ast"
+
 func (g *Generator) simplify() {
 	for _, method := range g.methods {
 		if method.RequestBody != nil {
@@ -21,14 +23,14 @@ func (g *Generator) simplify() {
 
 // devirtSingleRequest removes interface in case
 // where method have only one content in requestBody.
-func (g *Generator) devirtSingleRequest(m *Method) {
+func (g *Generator) devirtSingleRequest(m *ast.Method) {
 	if len(m.RequestBody.Contents) != 1 {
 		return
 	}
 
 	if iface, ok := g.interfaces[m.RequestType]; ok {
 		for _, schema := range m.RequestBody.Contents {
-			schema.unimplement(iface)
+			schema.Unimplement(iface)
 			m.RequestType = "*" + schema.Type()
 		}
 	}
@@ -37,7 +39,7 @@ func (g *Generator) devirtSingleRequest(m *Method) {
 // devirtManyEqualRequests removes interface
 // and squashes all request types into a single struct
 // if all schemas in different content-types have the same fields.
-func (g *Generator) devirtManyEqualRequests(m *Method) {
+func (g *Generator) devirtManyEqualRequests(m *ast.Method) {
 	if len(m.RequestBody.Contents) < 2 {
 		return
 	}
@@ -47,7 +49,7 @@ func (g *Generator) devirtManyEqualRequests(m *Method) {
 		return
 	}
 
-	var schemas []*Schema
+	var schemas []*ast.Schema
 	for _, schema := range m.RequestBody.Contents {
 		schemas = append(schemas, schema)
 	}
@@ -60,7 +62,7 @@ func (g *Generator) devirtManyEqualRequests(m *Method) {
 	}
 
 	for _, s := range schemas {
-		s.unimplement(iface)
+		s.Unimplement(iface)
 	}
 
 	m.RequestType = "*" + root.Name
@@ -69,7 +71,7 @@ func (g *Generator) devirtManyEqualRequests(m *Method) {
 	}
 }
 
-func (g *Generator) devirtSingleResponse(m *Method) {
+func (g *Generator) devirtSingleResponse(m *ast.Method) {
 	if len(m.Responses) != 1 || m.ResponseDefault != nil {
 		return
 	}
@@ -77,13 +79,13 @@ func (g *Generator) devirtSingleResponse(m *Method) {
 	if iface, ok := g.interfaces[m.ResponseType]; ok {
 		for _, resp := range m.Responses {
 			if noc := resp.NoContent; noc != nil {
-				resp.unimplement(iface)
+				resp.Unimplement(iface)
 				m.ResponseType = "*" + noc.Type()
 				continue
 			}
 
 			if len(resp.Contents) == 1 {
-				resp.unimplement(iface)
+				resp.Unimplement(iface)
 				for _, schema := range resp.Contents {
 					m.ResponseType = "*" + schema.Type()
 				}
@@ -92,7 +94,7 @@ func (g *Generator) devirtSingleResponse(m *Method) {
 	}
 }
 
-func (g *Generator) devirtDefaultResponse(m *Method) {
+func (g *Generator) devirtDefaultResponse(m *ast.Method) {
 	if ok := (m.ResponseDefault != nil && len(m.Responses) == 0); !ok {
 		return
 	}
@@ -102,7 +104,7 @@ func (g *Generator) devirtDefaultResponse(m *Method) {
 	}
 
 	if iface, ok := g.interfaces[m.ResponseType]; ok {
-		m.ResponseDefault.unimplement(iface)
+		m.ResponseDefault.Unimplement(iface)
 		m.ResponseType = "*" + m.ResponseDefault.NoContent.Type()
 	}
 }

@@ -4,9 +4,10 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/ast"
 )
 
-func (g *Generator) generateRequestBody(methodName string, body *ogen.RequestBody) (*RequestBody, error) {
+func (g *Generator) generateRequestBody(methodName string, body *ogen.RequestBody) (*ast.RequestBody, error) {
 	if body.Ref != "" {
 		// Convert requestBody reference to go type name.
 		name, err := componentName(body.Ref)
@@ -23,7 +24,7 @@ func (g *Generator) generateRequestBody(methodName string, body *ogen.RequestBod
 		return rbody, nil
 	}
 
-	rbody := g.createRequestBody()
+	rbody := ast.CreateRequestBody()
 	// Iterate through request body contents...
 	for contentType, media := range body.Content {
 		// Referenced schema.
@@ -48,8 +49,8 @@ func (g *Generator) generateRequestBody(methodName string, body *ogen.RequestBod
 			return nil, xerrors.Errorf("content: %s: parse schema: %w", contentType, err)
 		}
 
-		if schema.is(KindPrimitive, KindArray) {
-			schema = g.createSchemaAlias(name, schema.Type())
+		if schema.Is(ast.KindPrimitive, ast.KindArray) {
+			schema = ast.CreateSchemaAlias(name, schema.Type())
 		}
 
 		g.schemas[schema.Name] = schema

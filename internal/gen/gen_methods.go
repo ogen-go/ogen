@@ -7,6 +7,7 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/ast"
 )
 
 func (g *Generator) generateMethods() error {
@@ -43,7 +44,7 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 		methodName = pascal(op.OperationID)
 	}
 
-	m := &Method{
+	m := &ast.Method{
 		Name:       methodName,
 		HTTPMethod: method,
 	}
@@ -59,8 +60,9 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 	}
 
 	if op.RequestBody != nil {
-		iface := g.createIface(methodName + "Request")
-		iface.addMethod(camel(methodName + "Request"))
+		iface := ast.CreateIface(methodName + "Request")
+		iface.AddMethod(camel(methodName + "Request"))
+		g.interfaces[iface.Name] = iface
 
 		rbody, err := g.generateRequestBody(methodName, op.RequestBody)
 		if err != nil {
@@ -68,7 +70,7 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 		}
 
 		for _, schema := range rbody.Contents {
-			schema.implement(iface)
+			schema.Implement(iface)
 		}
 
 		m.RequestBody = rbody
@@ -76,8 +78,9 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 	}
 
 	if len(op.Responses) > 0 {
-		iface := g.createIface(methodName + "Response")
-		iface.addMethod(camel(methodName + "Response"))
+		iface := ast.CreateIface(methodName + "Response")
+		iface.AddMethod(camel(methodName + "Response"))
+		g.interfaces[iface.Name] = iface
 
 		resp, err := g.generateResponses(methodName, op.Responses)
 		if err != nil {
@@ -85,12 +88,12 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 		}
 
 		for _, resp := range resp.Responses {
-			resp.implement(iface)
+			resp.Implement(iface)
 		}
 
 		if def := resp.Default; def != nil {
 			m.ResponseDefault = def
-			def.implement(iface)
+			def.Implement(iface)
 		}
 
 		m.Responses = resp.Responses
@@ -101,8 +104,8 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 	return nil
 }
 
-func (g *Generator) parsePath(path string, params []*Parameter) (parts []PathPart, err error) {
-	lookup := func(name string) (*Parameter, bool) {
+func (g *Generator) parsePath(path string, params []*ast.Parameter) (parts []ast.PathPart, err error) {
+	lookup := func(name string) (*ast.Parameter, bool) {
 		for _, p := range params {
 			if p.SourceName == name {
 				return p, true
@@ -125,11 +128,11 @@ func (g *Generator) parsePath(path string, params []*Parameter) (parts []PathPar
 				return nil, xerrors.Errorf("parameter '%s' not found in path %q", name, path)
 			}
 
-			parts = append(parts, PathPart{Param: param})
+			parts = append(parts, ast.PathPart{Param: param})
 			continue
 		}
 
-		parts = append(parts, PathPart{Raw: s})
+		parts = append(parts, ast.PathPart{Raw: s})
 	}
 	return
 }

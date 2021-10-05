@@ -4,17 +4,18 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/ast"
 )
 
 type Generator struct {
 	opt     options
 	spec    *ogen.Spec
-	methods []*Method
+	methods []*ast.Method
 
-	schemas       map[string]*Schema
-	requestBodies map[string]*RequestBody
-	responses     map[string]*Response
-	interfaces    map[string]*Interface
+	schemas       map[string]*ast.Schema
+	requestBodies map[string]*ast.RequestBody
+	responses     map[string]*ast.Response
+	interfaces    map[string]*ast.Interface
 }
 
 type options struct {
@@ -60,10 +61,10 @@ func NewGenerator(spec *ogen.Spec, opts ...Option) (*Generator, error) {
 	g := &Generator{
 		opt:           o,
 		spec:          spec,
-		schemas:       map[string]*Schema{},
-		requestBodies: map[string]*RequestBody{},
-		responses:     map[string]*Response{},
-		interfaces:    map[string]*Interface{},
+		schemas:       map[string]*ast.Schema{},
+		requestBodies: map[string]*ast.RequestBody{},
+		responses:     map[string]*ast.Response{},
+		interfaces:    map[string]*ast.Interface{},
 	}
 
 	if err := g.generateComponents(); err != nil {

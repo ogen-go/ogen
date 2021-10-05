@@ -8,9 +8,10 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/ast"
 )
 
-func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, error) {
+func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema, error) {
 	if ref := schema.Ref; ref != "" {
 		componentName, err := componentName(ref)
 		if err != nil {
@@ -29,8 +30,8 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 				return nil, err
 			}
 
-			if s.is(KindPrimitive, KindArray) {
-				s = g.createSchemaAlias(componentName, s.Type())
+			if s.Is(ast.KindPrimitive, ast.KindArray) {
+				s = ast.CreateSchemaAlias(componentName, s.Type())
 			}
 			return s, nil
 		}
@@ -57,7 +58,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 			return false
 		}
 
-		s := g.createSchemaStruct(name)
+		s := ast.CreateSchemaStruct(name)
 		s.Description = schema.Description
 		g.schemas[s.Name] = s
 		for propName, propSchema := range schema.Properties {
@@ -70,7 +71,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 				return nil, xerrors.Errorf("%s: %w", propName, err)
 			}
 
-			s.Fields = append(s.Fields, SchemaField{
+			s.Fields = append(s.Fields, ast.SchemaField{
 				Name: pascal(propName),
 				Tag:  propName,
 				Type: prop.Type(),
@@ -97,7 +98,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 			return nil, err
 		}
 
-		return g.createSchemaArray(item), nil
+		return ast.CreateSchemaArray(item), nil
 
 	case "":
 		if g.opt.debugSkipUnspecified {
@@ -114,7 +115,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 			return nil, xerrors.Errorf("parse: %w", err)
 		}
 
-		return g.createSchemaPrimitive(simpleType), nil
+		return ast.CreateSchemaPrimitive(simpleType), nil
 	}
 }
 

@@ -8,16 +8,17 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/ast"
 )
 
 type methodResponse struct {
-	Responses map[int]*Response
-	Default   *Response
+	Responses map[int]*ast.Response
+	Default   *ast.Response
 }
 
 func (g *Generator) generateResponses(methodName string, responses ogen.Responses) (*methodResponse, error) {
 	result := &methodResponse{
-		Responses: map[int]*Response{},
+		Responses: map[int]*ast.Response{},
 	}
 
 	if len(responses) == 0 {
@@ -83,7 +84,7 @@ func (g *Generator) generateResponses(methodName string, responses ogen.Response
 }
 
 // createDefaultResponse creates new default response.
-func (g *Generator) createDefaultResponse(methodName string, r ogen.Response) (*Response, error) {
+func (g *Generator) createDefaultResponse(methodName string, r ogen.Response) (*ast.Response, error) {
 	if ref := r.Ref; ref != "" {
 		// Validate reference & get response component name.
 		name, err := componentName(ref)
@@ -102,7 +103,7 @@ func (g *Generator) createDefaultResponse(methodName string, r ogen.Response) (*
 			return nil, xerrors.Errorf("response by reference '%s', not found", ref)
 		}
 
-		alias := g.createResponse()
+		alias := ast.CreateResponse()
 		for contentType, schema := range response.Contents {
 			alias.Contents[contentType] = g.wrapStatusCode(schema)
 		}
@@ -116,14 +117,14 @@ func (g *Generator) createDefaultResponse(methodName string, r ogen.Response) (*
 
 	// Default response with no contents.
 	if len(r.Content) == 0 {
-		statusCode := g.createSchemaStruct(methodName + "Default")
-		statusCode.Fields = append(statusCode.Fields, SchemaField{
+		statusCode := ast.CreateSchemaStruct(methodName + "Default")
+		statusCode.Fields = append(statusCode.Fields, ast.SchemaField{
 			Name: "StatusCode",
 			Type: "int",
 			Tag:  "-",
 		})
 		g.schemas[methodName+"Default"] = statusCode
-		return &Response{NoContent: statusCode}, nil
+		return &ast.Response{NoContent: statusCode}, nil
 	}
 
 	// Inlined response.
@@ -152,13 +153,13 @@ func (g *Generator) createDefaultResponse(methodName string, r ogen.Response) (*
 }
 
 // generateResponse creates new response based on schema definition.
-func (g *Generator) generateResponse(rname string, resp ogen.Response) (*Response, error) {
-	response := g.createResponse()
+func (g *Generator) generateResponse(rname string, resp ogen.Response) (*ast.Response, error) {
+	response := ast.CreateResponse()
 
 	// Response without content.
 	// Create empty struct.
 	if len(resp.Content) == 0 {
-		s := g.createSchemaAlias(rname, "struct{}")
+		s := ast.CreateSchemaAlias(rname, "struct{}")
 		g.schemas[s.Name] = s
 		response.NoContent = s
 		return response, nil
@@ -171,7 +172,7 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*Respons
 			name = pascal(rname, contentType)
 		}
 
-		var schema *Schema
+		var schema *ast.Schema
 		if ref := media.Schema.Ref; ref != "" {
 			s, err := g.resolveSchema(ref)
 			if err != nil {
@@ -192,8 +193,8 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*Respons
 			schema = s
 		}
 
-		if schema.is(KindPrimitive, KindArray) {
-			schema = g.createSchemaAlias(name, schema.Type())
+		if schema.Is(ast.KindPrimitive, ast.KindArray) {
+			schema = ast.CreateSchemaAlias(name, schema.Type())
 		}
 
 		g.schemas[schema.Name] = schema
@@ -229,11 +230,11 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*Respons
 //   }
 //
 // TODO: Remove unused schema (Example 2).
-func (g *Generator) wrapStatusCode(schema *Schema) *Schema {
+func (g *Generator) wrapStatusCode(schema *ast.Schema) *ast.Schema {
 	// Use 'StatusCode' postfix for wrapper struct name
 	// to avoid name collision with original response schema.
-	newSchema := g.createSchemaStruct(schema.Name + "StatusCode")
-	newSchema.Fields = []SchemaField{
+	newSchema := ast.CreateSchemaStruct(schema.Name + "StatusCode")
+	newSchema.Fields = []ast.SchemaField{
 		{
 			Name: "StatusCode",
 			Tag:  "-",

@@ -8,10 +8,11 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/ast"
 )
 
-func (g *Generator) generateParams(methodPath string, methodParams []ogen.Parameter) ([]*Parameter, error) {
-	var result []*Parameter
+func (g *Generator) generateParams(methodPath string, methodParams []ogen.Parameter) ([]*ast.Parameter, error) {
+	var result []*ast.Parameter
 	for _, p := range methodParams {
 		if p.Ref != "" {
 			componentParam, found := g.componentsParameter(p.Ref)
@@ -34,7 +35,7 @@ func (g *Generator) generateParams(methodPath string, methodParams []ogen.Parame
 	}
 
 	// Fix name collisions for parameters in different locations.
-	params := make(map[string]*Parameter)
+	params := make(map[string]*ast.Parameter)
 	for _, param := range result {
 		p, found := params[param.Name]
 		if !found {
@@ -54,12 +55,12 @@ func (g *Generator) generateParams(methodPath string, methodParams []ogen.Parame
 	return result, nil
 }
 
-func (g *Generator) parseParameter(param ogen.Parameter, path string) (*Parameter, error) {
-	types := map[string]ParameterLocation{
-		"query":  LocationQuery,
-		"header": LocationHeader,
-		"path":   LocationPath,
-		"cookie": LocationCookie,
+func (g *Generator) parseParameter(param ogen.Parameter, path string) (*ast.Parameter, error) {
+	types := map[string]ast.ParameterLocation{
+		"query":  ast.LocationQuery,
+		"header": ast.LocationHeader,
+		"path":   ast.LocationPath,
+		"cookie": ast.LocationCookie,
 	}
 
 	locatedIn, exists := types[strings.ToLower(param.In)]
@@ -67,7 +68,7 @@ func (g *Generator) parseParameter(param ogen.Parameter, path string) (*Paramete
 		return nil, xerrors.Errorf("unsupported parameter type %s", param.In)
 	}
 
-	if locatedIn == LocationPath {
+	if locatedIn == ast.LocationPath {
 		if !param.Required {
 			return nil, xerrors.Errorf("parameters located in 'path' must be required")
 		}
@@ -89,10 +90,10 @@ func (g *Generator) parseParameter(param ogen.Parameter, path string) (*Paramete
 	}
 
 	switch schema.Kind {
-	case KindStruct:
+	case ast.KindStruct:
 		return nil, xerrors.Errorf("object type not supported")
-	case KindArray:
-		if schema.Item.Kind != KindPrimitive {
+	case ast.KindArray:
+		if schema.Item.Kind != ast.KindPrimitive {
 			return nil, xerrors.Errorf("only arrays with primitive types supported")
 		}
 	}
@@ -102,7 +103,7 @@ func (g *Generator) parseParameter(param ogen.Parameter, path string) (*Paramete
 		return nil, xerrors.Errorf("style: %w", err)
 	}
 
-	return &Parameter{
+	return &ast.Parameter{
 		Name:       name,
 		In:         locatedIn,
 		SourceName: param.Name,
@@ -115,34 +116,34 @@ func (g *Generator) parseParameter(param ogen.Parameter, path string) (*Paramete
 
 // paramStyle checks parameter style field.
 // https://swagger.io/docs/specification/serialization/
-func paramStyle(locatedIn ParameterLocation, style string) (string, error) {
+func paramStyle(locatedIn ast.ParameterLocation, style string) (string, error) {
 	if style == "" {
-		defaultStyles := map[ParameterLocation]string{
-			LocationPath:   "simple",
-			LocationQuery:  "form",
-			LocationHeader: "simple",
-			LocationCookie: "form",
+		defaultStyles := map[ast.ParameterLocation]string{
+			ast.LocationPath:   "simple",
+			ast.LocationQuery:  "form",
+			ast.LocationHeader: "simple",
+			ast.LocationCookie: "form",
 		}
 
 		return defaultStyles[locatedIn], nil
 	}
 
-	allowedStyles := map[ParameterLocation]map[string]struct{}{
-		LocationPath: {
+	allowedStyles := map[ast.ParameterLocation]map[string]struct{}{
+		ast.LocationPath: {
 			"simple": struct{}{},
 			"label":  struct{}{},
 			"matrix": struct{}{},
 		},
-		LocationQuery: {
+		ast.LocationQuery: {
 			"form":           struct{}{},
 			"spaceDelimited": struct{}{},
 			"pipeDelimited":  struct{}{},
 			"deepObject":     struct{}{},
 		},
-		LocationHeader: {
+		ast.LocationHeader: {
 			"simple": struct{}{},
 		},
-		LocationCookie: {
+		ast.LocationCookie: {
 			"form": struct{}{},
 		},
 	}
@@ -156,14 +157,14 @@ func paramStyle(locatedIn ParameterLocation, style string) (string, error) {
 
 // paramExplode checks parameter explode field.
 // https://swagger.io/docs/specification/serialization/
-func paramExplode(locatedIn ParameterLocation, explode *bool) bool {
+func paramExplode(locatedIn ast.ParameterLocation, explode *bool) bool {
 	if explode != nil {
 		return *explode
 	}
 
 	// When style is form, the default value is true.
 	// For all other styles, the default value is false.
-	if locatedIn == LocationQuery || locatedIn == LocationCookie {
+	if locatedIn == ast.LocationQuery || locatedIn == ast.LocationCookie {
 		return true
 	}
 

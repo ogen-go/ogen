@@ -5,13 +5,15 @@ import (
 	"fmt"
 	"os"
 	"text/template"
+
+	"github.com/ogen-go/ogen/internal/ast"
 )
 
 type TemplateConfig struct {
 	Package    string
-	Methods    []*Method
-	Schemas    map[string]*Schema
-	Interfaces map[string]*Interface
+	Methods    []*ast.Method
+	Schemas    map[string]*ast.Schema
+	Interfaces map[string]*ast.Interface
 }
 
 // FileSystem represents a directory of generated package.

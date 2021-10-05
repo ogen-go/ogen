@@ -1,8 +1,11 @@
 package gen
 
-import "github.com/ogen-go/ogen"
+import (
+	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/ast"
+)
 
-func (g *Generator) resolveSchema(ref string) (*Schema, error) {
+func (g *Generator) resolveSchema(ref string) (*ast.Schema, error) {
 	name, err := componentName(ref)
 	if err != nil {
 		return nil, err
