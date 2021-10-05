@@ -176,7 +176,10 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*ast.Res
 		if ref := media.Schema.Ref; ref != "" {
 			s, err := g.resolveSchema(ref)
 			if err != nil {
-				return nil, xerrors.Errorf("content: %s: schema referenced by '%s' not found", contentType, ref)
+				if xerrors.Is(err, errSkipSchema) {
+					continue
+				}
+				return nil, err
 			}
 
 			schema = s

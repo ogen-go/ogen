@@ -31,6 +31,9 @@ func (g *Generator) generateRequestBody(methodName string, body *ogen.RequestBod
 		if ref := media.Schema.Ref; ref != "" {
 			schema, err := g.resolveSchema(ref)
 			if err != nil {
+				if xerrors.Is(err, errSkipSchema) {
+					continue
+				}
 				return nil, err
 			}
 
