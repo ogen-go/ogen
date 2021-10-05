@@ -8,7 +8,7 @@ func (g *Generator) simplify() {
 			case 1:
 				g.devirtSingleRequest(method)
 			default:
-				g.devirtManyEqualRequests(method)
+				// g.devirtManyEqualRequests(method)
 			}
 		}
 
