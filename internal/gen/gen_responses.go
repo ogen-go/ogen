@@ -25,10 +25,10 @@ func (g *Generator) generateResponses(methodName string, responses ogen.Response
 	}
 
 	// Iterate over method responses...
-	for status, schema := range responses {
+	for status, response := range responses {
 		// Default response.
 		if status == "default" {
-			resp, err := g.createDefaultResponse(methodName, schema)
+			resp, err := g.createDefaultResponse(methodName, response)
 			if err != nil {
 				return nil, xerrors.Errorf("default: %w", err)
 			}
@@ -44,7 +44,7 @@ func (g *Generator) generateResponses(methodName string, responses ogen.Response
 
 		if err := func() error {
 			// Referenced response.
-			if ref := schema.Ref; ref != "" {
+			if ref := response.Ref; ref != "" {
 				// Validate reference & get response component name.
 				name, err := componentName(ref)
 				if err != nil {
@@ -67,7 +67,7 @@ func (g *Generator) generateResponses(methodName string, responses ogen.Response
 				responseName = pascal(methodName, http.StatusText(statusCode))
 			}
 
-			resp, err := g.generateResponse(responseName, schema)
+			resp, err := g.generateResponse(responseName, response)
 			if err != nil {
 				return err
 			}
