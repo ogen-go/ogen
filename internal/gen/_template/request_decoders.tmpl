@@ -11,7 +11,7 @@ func decode{{ $m.Name }}Request(r *http.Request) ({{ $m.RequestType }}, error) {
     {{- /* Range over all request types */ -}}
     {{- range $ctype, $schema := $m.RequestBody.Contents }}
     case "{{ $ctype }}":
-        var request {{ $schema.Name }}
+        var request {{ $schema.Type }}
         {{- /* Decode json */ -}}
         {{- if eq $ctype "application/json" }}
         data, err := io.ReadAll(r.Body)

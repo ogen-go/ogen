@@ -102,7 +102,7 @@ func (s Schema) Type() string {
 	case KindStruct:
 		return s.Name
 	case KindAlias:
-		return s.AliasTo
+		return s.Name
 	case KindPrimitive:
 		return s.Primitive
 	case KindArray:
@@ -112,42 +112,57 @@ func (s Schema) Type() string {
 	}
 }
 
+func (s Schema) is(vs ...SchemaKind) bool {
+	for _, v := range vs {
+		if s.Kind == v {
+			return true
+		}
+	}
+
+	return false
+}
+
 func (g *Generator) createSchemaStruct(name string) *Schema {
 	return &Schema{
-		Kind:       KindStruct,
-		Name:       name,
-		Implements: map[string]struct{}{},
+		Kind: KindStruct,
+		Name: name,
 	}
 }
 
-func (g *Generator) createSchemaPrimitive(name, typ string) *Schema {
+func (g *Generator) createSchemaPrimitive(typ string) *Schema {
 	return &Schema{
-		Kind:       KindPrimitive,
-		Name:       name,
-		Primitive:  typ,
-		Implements: map[string]struct{}{},
+		Kind:      KindPrimitive,
+		Primitive: typ,
 	}
 }
 
 func (g *Generator) createSchemaAlias(name, typ string) *Schema {
 	return &Schema{
-		Kind:       KindAlias,
-		Name:       name,
-		AliasTo:    typ,
-		Implements: map[string]struct{}{},
+		Kind:    KindAlias,
+		Name:    name,
+		AliasTo: typ,
 	}
 }
 
-func (g *Generator) createSchemaArray(name string, item *Schema) *Schema {
+func (g *Generator) createSchemaArray(item *Schema) *Schema {
 	return &Schema{
-		Kind:       KindArray,
-		Name:       name,
-		Item:       item,
-		Implements: map[string]struct{}{},
+		Kind: KindArray,
+		Item: item,
 	}
 }
 
 func (s *Schema) implement(iface *Interface) {
+	if s.is(KindPrimitive, KindArray) {
+		panic("unreachable")
+	}
+
+	if s.Implements == nil {
+		s.Implements = map[string]struct{}{}
+	}
+	if iface.Implementations == nil {
+		iface.Implementations = map[*Schema]struct{}{}
+	}
+
 	iface.Implementations[s] = struct{}{}
 	for method := range iface.Methods {
 		s.Implements[method] = struct{}{}

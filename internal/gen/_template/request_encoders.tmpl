@@ -27,7 +27,7 @@ func encode{{ $m.Name }}Request(req {{ $m.RequestType }}) ([]byte, string, error
     {{- /* Multiple requests */}}
     switch req := req.(type) {
     {{- range $ctype, $schema := $m.RequestBody.Contents }}
-    case *{{ $schema.Name }}:
+    case *{{ $schema.Type }}:
         {{- if eq $ctype "application/json" }}
         b, err := json.Marshal(req)
         if err != nil {

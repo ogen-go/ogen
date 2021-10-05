@@ -17,7 +17,7 @@ func decode{{ $m.Name }}Response(resp *http.Response) ({{ $m.ResponseType }}, er
         {{- range $ctype, $schema := $response.Contents }}{{/* Range over contents */}}
         case "{{ $ctype }}":
             {{- if eq $ctype "application/json" }}{{/* Decode */}}
-            var response {{ $schema.Name }}
+            var response {{ $schema.Type }}
             data, err := io.ReadAll(resp.Body)
             if err != nil {
                 return nil, err
@@ -45,7 +45,7 @@ func decode{{ $m.Name }}Response(resp *http.Response) ({{ $m.ResponseType }}, er
         {{- range $ctype, $schema := $m.ResponseDefault.Contents }}{{/* Range over contents */}}
         case "{{ $ctype }}":
             {{- if eq $ctype "application/json" }}{{/* Decode */}}
-            var response {{ $schema.Name }}
+            var response {{ $schema.Type }}
             data, err := io.ReadAll(resp.Body)
             if err != nil {
                 return nil, err

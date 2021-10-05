@@ -29,7 +29,7 @@ func (g *Generator) devirtSingleRequest(m *Method) {
 	if iface, ok := g.interfaces[m.RequestType]; ok {
 		for _, schema := range m.RequestBody.Contents {
 			schema.unimplement(iface)
-			m.RequestType = "*" + schema.Name
+			m.RequestType = "*" + schema.Type()
 		}
 	}
 }
@@ -79,7 +79,7 @@ func (g *Generator) devirtSingleResponse(m *Method) {
 			if len(resp.Contents) == 1 {
 				resp.unimplement(iface)
 				for _, schema := range resp.Contents {
-					m.ResponseType = "*" + schema.Name
+					m.ResponseType = "*" + schema.Type()
 				}
 			}
 		}
@@ -97,7 +97,7 @@ func (g *Generator) devirtDefaultResponse(m *Method) {
 
 	if iface, ok := g.interfaces[m.ResponseType]; ok {
 		m.ResponseDefault.unimplement(iface)
-		m.ResponseType = "*" + m.ResponseDefault.NoContent.Name
+		m.ResponseType = "*" + m.ResponseDefault.NoContent.Type()
 	}
 }
 

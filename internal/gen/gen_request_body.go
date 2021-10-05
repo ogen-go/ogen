@@ -54,8 +54,11 @@ func (g *Generator) generateRequestBody(methodName string, body *ogen.RequestBod
 			return nil, xerrors.Errorf("content: %s: parse schema: %w", contentType, err)
 		}
 
-		// Register generated schema.
-		g.schemas[name] = schema
+		if schema.is(KindPrimitive, KindArray) {
+			schema = g.createSchemaAlias(name, schema.Type())
+		}
+
+		g.schemas[schema.Name] = schema
 		rbody.Contents[contentType] = schema
 	}
 

@@ -24,7 +24,15 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 				return nil, xerrors.Errorf("component by reference '%s' not found", ref)
 			}
 
-			return g.generateSchema(componentName, refSchema)
+			s, err := g.generateSchema(componentName, refSchema)
+			if err != nil {
+				return nil, err
+			}
+
+			if s.is(KindPrimitive, KindArray) {
+				s = g.createSchemaAlias(componentName, s.Type())
+			}
+			return s, nil
 		}
 
 		return s, nil
@@ -89,7 +97,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 			return nil, err
 		}
 
-		return g.createSchemaArray(name, item), nil
+		return g.createSchemaArray(item), nil
 
 	case "":
 		if g.opt.debugSkipUnspecified {
@@ -106,7 +114,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*Schema, er
 			return nil, xerrors.Errorf("parse: %w", err)
 		}
 
-		return g.createSchemaPrimitive(name, simpleType), nil
+		return g.createSchemaPrimitive(simpleType), nil
 	}
 }
 

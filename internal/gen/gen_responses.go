@@ -20,6 +20,10 @@ func (g *Generator) generateResponses(methodName string, responses ogen.Response
 		Responses: map[int]*Response{},
 	}
 
+	if len(responses) == 0 {
+		return nil, fmt.Errorf("no responses")
+	}
+
 	// Iterate over method responses...
 	for status, schema := range responses {
 		// Default response.
@@ -167,44 +171,39 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*Respons
 			name = pascal(rname, contentType)
 		}
 
-		// Referenced response schema.
+		var schema *Schema
 		if ref := media.Schema.Ref; ref != "" {
+			// Referenced response schema.
 			refSchemaName, err := componentName(ref)
 			if err != nil {
 				return nil, xerrors.Errorf("content: %s: %w", contentType, err)
 			}
 
-			schema, found := g.schemas[refSchemaName]
+			s, found := g.schemas[refSchemaName]
 			if !found {
 				return nil, xerrors.Errorf("content: %s: schema referenced by '%s' not found", contentType, ref)
 			}
 
-			// Response have only one content.
-			// Use schema directly without creating new one.
-			if len(resp.Content) == 1 {
-				response.Contents[contentType] = schema
+			schema = s
+		} else {
+			// Inlined response schema.
+			s, err := g.generateSchema(name, media.Schema)
+			if xerrors.Is(err, errSkipSchema) {
 				continue
 			}
+			if err != nil {
+				return nil, xerrors.Errorf("content: %s: schema: %w", contentType, err)
+			}
 
-			// Response have multiple contents.
-			// Alias them with new response type.
-			s := g.createSchemaAlias(name, schema.Name)
-			g.schemas[s.Name] = s
-			response.Contents[contentType] = s
-			continue
+			schema = s
 		}
 
-		// Inlined response schema.
-		s, err := g.generateSchema(name, media.Schema)
-		if xerrors.Is(err, errSkipSchema) {
-			continue
-		}
-		if err != nil {
-			return nil, xerrors.Errorf("content: %s: schema: %w", contentType, err)
+		if schema.is(KindPrimitive, KindArray) {
+			schema = g.createSchemaAlias(name, schema.Type())
 		}
 
-		g.schemas[s.Name] = s
-		response.Contents[contentType] = s
+		g.schemas[schema.Name] = schema
+		response.Contents[contentType] = schema
 	}
 
 	return response, nil

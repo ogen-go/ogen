@@ -35,6 +35,9 @@ func (g *Generator) generateComponentSchemas() error {
 			return xerrors.Errorf("%s: %w", name, err)
 		}
 
+		if s.is(KindPrimitive, KindArray) {
+			s = g.createSchemaAlias(name, s.Type())
+		}
 		g.schemas[name] = s
 	}
 
@@ -44,6 +47,9 @@ func (g *Generator) generateComponentSchemas() error {
 			return xerrors.Errorf("%s: %w", name, err)
 		}
 
+		if s.is(KindPrimitive, KindArray) {
+			s = g.createSchemaAlias(name, s.Type())
+		}
 		g.schemas[name] = s
 	}
 
