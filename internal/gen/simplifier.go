@@ -5,12 +5,8 @@ import "github.com/ogen-go/ogen/internal/ast"
 func (g *Generator) simplify() {
 	for _, method := range g.methods {
 		if method.RequestBody != nil {
-			switch len(method.RequestBody.Contents) {
-			case 0:
-			case 1:
+			if len(method.RequestBody.Contents) == 1 {
 				g.devirtSingleRequest(method)
-			default:
-				// g.devirtManyEqualRequests(method)
 			}
 		}
 
@@ -33,41 +29,6 @@ func (g *Generator) devirtSingleRequest(m *ast.Method) {
 			schema.Unimplement(iface)
 			m.RequestType = "*" + schema.Type()
 		}
-	}
-}
-
-// devirtManyEqualRequests removes interface
-// and squashes all request types into a single struct
-// if all schemas in different content-types have the same fields.
-func (g *Generator) devirtManyEqualRequests(m *ast.Method) {
-	if len(m.RequestBody.Contents) < 2 {
-		return
-	}
-
-	iface, ok := g.interfaces[m.RequestType]
-	if !ok {
-		return
-	}
-
-	var schemas []*ast.Schema
-	for _, schema := range m.RequestBody.Contents {
-		schemas = append(schemas, schema)
-	}
-
-	root := schemas[0]
-	for _, s := range schemas[1:] {
-		if !root.EqualFields(*s) {
-			return
-		}
-	}
-
-	for _, s := range schemas {
-		s.Unimplement(iface)
-	}
-
-	m.RequestType = "*" + root.Name
-	for contentType := range m.RequestBody.Contents {
-		m.RequestBody.Contents[contentType] = root
 	}
 }
 
