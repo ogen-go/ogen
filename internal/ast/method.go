@@ -9,9 +9,8 @@ type Method struct {
 	RequestType string
 	RequestBody *RequestBody
 
-	ResponseType    string
-	Responses       map[int]*Response
-	ResponseDefault *Response
+	ResponseType string
+	Responses    *MethodResponse
 }
 
 func (m *Method) PathParams() []*Parameter   { return m.getParams(LocationPath) }

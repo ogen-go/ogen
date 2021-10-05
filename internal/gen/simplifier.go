@@ -33,12 +33,12 @@ func (g *Generator) devirtSingleRequest(m *ast.Method) {
 }
 
 func (g *Generator) devirtSingleResponse(m *ast.Method) {
-	if len(m.Responses) != 1 || m.ResponseDefault != nil {
+	if len(m.Responses.StatusCode) != 1 || m.Responses.Default != nil {
 		return
 	}
 
 	if iface, ok := g.interfaces[m.ResponseType]; ok {
-		for _, resp := range m.Responses {
+		for _, resp := range m.Responses.StatusCode {
 			if noc := resp.NoContent; noc != nil {
 				resp.Unimplement(iface)
 				m.ResponseType = "*" + noc.Type()
@@ -56,17 +56,17 @@ func (g *Generator) devirtSingleResponse(m *ast.Method) {
 }
 
 func (g *Generator) devirtDefaultResponse(m *ast.Method) {
-	if ok := (m.ResponseDefault != nil && len(m.Responses) == 0); !ok {
+	if ok := (m.Responses.Default != nil && len(m.Responses.StatusCode) == 0); !ok {
 		return
 	}
 
-	if len(m.ResponseDefault.Contents) > 1 {
+	if len(m.Responses.Default.Contents) > 1 {
 		return
 	}
 
 	if iface, ok := g.interfaces[m.ResponseType]; ok {
-		m.ResponseDefault.Unimplement(iface)
-		m.ResponseType = "*" + m.ResponseDefault.NoContent.Type()
+		m.Responses.Default.Unimplement(iface)
+		m.ResponseType = "*" + m.Responses.Default.NoContent.Type()
 	}
 }
 

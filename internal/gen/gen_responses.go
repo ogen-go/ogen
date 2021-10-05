@@ -11,16 +11,8 @@ import (
 	"github.com/ogen-go/ogen/internal/ast"
 )
 
-type methodResponse struct {
-	Responses map[int]*ast.Response
-	Default   *ast.Response
-}
-
-func (g *Generator) generateResponses(methodName string, responses ogen.Responses) (*methodResponse, error) {
-	result := &methodResponse{
-		Responses: map[int]*ast.Response{},
-	}
-
+func (g *Generator) generateResponses(methodName string, responses ogen.Responses) (*ast.MethodResponse, error) {
+	result := ast.CreateMethodResponses()
 	if len(responses) == 0 {
 		return nil, fmt.Errorf("no responses")
 	}
@@ -43,34 +35,29 @@ func (g *Generator) generateResponses(methodName string, responses ogen.Response
 			return nil, xerrors.Errorf("invalid status code: '%s'", status)
 		}
 
-		if err := func() error {
-			// Referenced response.
-			if ref := response.Ref; ref != "" {
-				r, err := g.resolveResponse(ref)
-				if err != nil {
-					return err
-				}
-
-				result.Responses[statusCode] = r
-				return nil
-			}
-
-			responseName := pascal(methodName)
-			if len(responses) > 1 {
-				// Avoid collision with <methodName>Response interface.
-				responseName = pascal(methodName, http.StatusText(statusCode))
-			}
-
-			resp, err := g.generateResponse(responseName, response)
+		// Referenced response.
+		if ref := response.Ref; ref != "" {
+			r, err := g.resolveResponse(ref)
 			if err != nil {
-				return err
+				return nil, xerrors.Errorf("%s: %w", status, err)
 			}
 
-			result.Responses[statusCode] = resp
-			return nil
-		}(); err != nil {
+			result.StatusCode[statusCode] = r
+			continue
+		}
+
+		responseName := pascal(methodName)
+		if len(responses) > 1 {
+			// Avoid collision with <methodName>Response interface.
+			responseName = pascal(methodName, http.StatusText(statusCode))
+		}
+
+		resp, err := g.generateResponse(responseName, response)
+		if err != nil {
 			return nil, xerrors.Errorf("%s: %w", status, err)
 		}
+
+		result.StatusCode[statusCode] = resp
 	}
 
 	return result, nil

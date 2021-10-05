@@ -8,7 +8,7 @@
 
 func decode{{ $m.Name }}Response(resp *http.Response) ({{ $m.ResponseType }}, error) {
     switch resp.StatusCode {
-    {{- range $statusCode, $response := $m.Responses }}{{/* Range over responses */}}
+    {{- range $statusCode, $response := $m.Responses.StatusCode }}{{/* Range over responses */}}
     case {{ $statusCode }}:
         {{- if $response.NoContent }}{{/* Decode NoContent response */}}
         return &{{ $response.NoContent.Name }}{}, nil
@@ -37,12 +37,13 @@ func decode{{ $m.Name }}Response(resp *http.Response) ({{ $m.ResponseType }}, er
         {{- end }}{{/* Decode content response */}}
     {{- end }}{{/* Range over responses */}}
     default:
-        {{- if $m.ResponseDefault }}{{/* Decode default response */}}
-        {{- if $m.ResponseDefault.NoContent }}{{/* Decode NoContent response */}}
-        return &{{ $m.ResponseDefault.NoContent.Name }}{StatusCode: resp.StatusCode}, nil
+        {{- $def := $m.Responses.Default }}
+        {{- if $def }}{{/* Decode default response */}}
+        {{- if $def.NoContent }}{{/* Decode NoContent response */}}
+        return &{{ $def.NoContent.Name }}{StatusCode: resp.StatusCode}, nil
         {{- else }}{{/* Decode content response */}}
         switch resp.Header.Get("Content-Type") {
-        {{- range $ctype, $schema := $m.ResponseDefault.Contents }}{{/* Range over contents */}}
+        {{- range $ctype, $schema := $def.Contents }}{{/* Range over contents */}}
         case "{{ $ctype }}":
             {{- if eq $ctype "application/json" }}{{/* Decode */}}
             var response {{ $schema.Type }}

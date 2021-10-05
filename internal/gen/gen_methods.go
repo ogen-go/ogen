@@ -82,21 +82,20 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 		iface.AddMethod(camel(methodName + "Response"))
 		g.interfaces[iface.Name] = iface
 
-		resp, err := g.generateResponses(methodName, op.Responses)
+		responses, err := g.generateResponses(methodName, op.Responses)
 		if err != nil {
 			return xerrors.Errorf("responses: %w", err)
 		}
 
-		for _, resp := range resp.Responses {
+		for _, resp := range responses.StatusCode {
 			resp.Implement(iface)
 		}
 
-		if def := resp.Default; def != nil {
-			m.ResponseDefault = def
+		if def := responses.Default; def != nil {
 			def.Implement(iface)
 		}
 
-		m.Responses = resp.Responses
+		m.Responses = responses
 		m.ResponseType = iface.Name
 	}
 

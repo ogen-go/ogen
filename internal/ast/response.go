@@ -2,6 +2,15 @@ package ast
 
 import "sort"
 
+type MethodResponse struct {
+	StatusCode map[int]*Response
+	Default    *Response
+}
+
+func CreateMethodResponses() *MethodResponse {
+	return &MethodResponse{StatusCode: map[int]*Response{}}
+}
+
 type Response struct {
 	NoContent *Schema
 	Contents  map[string]*Schema
@@ -37,7 +46,7 @@ type ResponseInfo struct {
 
 func (m *Method) ListResponseSchemas() []ResponseInfo {
 	var result []ResponseInfo
-	for statusCode, resp := range m.Responses {
+	for statusCode, resp := range m.Responses.StatusCode {
 		if resp.NoContent != nil {
 			result = append(result, ResponseInfo{
 				Schema:     resp.NoContent,
@@ -55,7 +64,7 @@ func (m *Method) ListResponseSchemas() []ResponseInfo {
 		}
 	}
 
-	if def := m.ResponseDefault; def != nil {
+	if def := m.Responses.Default; def != nil {
 		if noc := def.NoContent; noc != nil {
 			result = append(result, ResponseInfo{
 				Schema:    noc,
