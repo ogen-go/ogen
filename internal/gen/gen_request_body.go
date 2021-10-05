@@ -7,21 +7,9 @@ import (
 	"github.com/ogen-go/ogen/internal/ast"
 )
 
-func (g *Generator) generateRequestBody(methodName string, body *ogen.RequestBody) (*ast.RequestBody, error) {
-	if body.Ref != "" {
-		// Convert requestBody reference to go type name.
-		name, err := componentName(body.Ref)
-		if err != nil {
-			return nil, xerrors.Errorf("name: %w", err)
-		}
-
-		// Lookup for requestBody.
-		rbody, found := g.requestBodies[name]
-		if !found {
-			return nil, xerrors.Errorf("requestBody by reference '%s' not found", body.Ref)
-		}
-
-		return rbody, nil
+func (g *Generator) generateRequestBody(name string, body *ogen.RequestBody) (*ast.RequestBody, error) {
+	if ref := body.Ref; ref != "" {
+		return g.resolveRequestBody(ref)
 	}
 
 	rbody := ast.CreateRequestBody()
@@ -43,7 +31,7 @@ func (g *Generator) generateRequestBody(methodName string, body *ogen.RequestBod
 
 		// Inlined schema.
 		// Create unique name based on method name and contentType.
-		name := pascal(methodName, contentType, "Request")
+		schemaName := pascal(name, contentType, "Request")
 		schema, err := g.generateSchema(name, media.Schema)
 		if xerrors.Is(err, errSkipSchema) {
 			continue
@@ -53,7 +41,7 @@ func (g *Generator) generateRequestBody(methodName string, body *ogen.RequestBod
 		}
 
 		if schema.Is(ast.KindPrimitive, ast.KindArray) {
-			schema = ast.CreateSchemaAlias(name, schema.Type())
+			schema = ast.CreateSchemaAlias(schemaName, schema.Type())
 		}
 
 		g.schemas[schema.Name] = schema

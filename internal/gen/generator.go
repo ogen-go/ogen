@@ -67,10 +67,6 @@ func NewGenerator(spec *ogen.Spec, opts ...Option) (*Generator, error) {
 		interfaces:    map[string]*ast.Interface{},
 	}
 
-	if err := g.generateComponents(); err != nil {
-		return nil, xerrors.Errorf("components: %w", err)
-	}
-
 	if err := g.generateMethods(); err != nil {
 		return nil, xerrors.Errorf("methods: %w", err)
 	}

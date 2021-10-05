@@ -46,16 +46,9 @@ func (g *Generator) generateResponses(methodName string, responses ogen.Response
 		if err := func() error {
 			// Referenced response.
 			if ref := response.Ref; ref != "" {
-				// Validate reference & get response component name.
-				name, err := componentName(ref)
+				r, err := g.resolveResponse(ref)
 				if err != nil {
 					return err
-				}
-
-				// Lookup for response component.
-				r, found := g.responses[name]
-				if !found {
-					return xerrors.Errorf("response by reference '%s' not found", ref)
 				}
 
 				result.Responses[statusCode] = r
@@ -86,21 +79,10 @@ func (g *Generator) generateResponses(methodName string, responses ogen.Response
 // createDefaultResponse creates new default response.
 func (g *Generator) createDefaultResponse(methodName string, r ogen.Response) (*ast.Response, error) {
 	if ref := r.Ref; ref != "" {
-		// Validate reference & get response component name.
-		name, err := componentName(ref)
-		if err != nil {
-			return nil, fmt.Errorf("name: %w", err)
-		}
-
-		// Lookup for alias response.
-		if alias, ok := g.responses[name+"Default"]; ok {
-			return alias, nil
-		}
-
 		// Lookup for reference response.
-		response, found := g.responses[name]
-		if !found {
-			return nil, xerrors.Errorf("response by reference '%s', not found", ref)
+		response, err := g.resolveResponse(ref)
+		if err != nil {
+			return nil, err
 		}
 
 		alias := ast.CreateResponse()
@@ -111,7 +93,6 @@ func (g *Generator) createDefaultResponse(methodName string, r ogen.Response) (*
 			response.NoContent = g.wrapStatusCode(schema)
 		}
 
-		g.responses[name+"Default"] = alias
 		return alias, nil
 	}
 

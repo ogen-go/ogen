@@ -52,8 +52,6 @@ type FoobarPutDefault struct {
 	StatusCode int `json:"-"`
 }
 
-type IllegalInput struct{}
-
 type NotFound struct{}
 
 func (*NotFound) foobarGetResponse()  {}
