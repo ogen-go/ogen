@@ -76,6 +76,12 @@ func (g *Generator) devirtSingleResponse(m *Method) {
 
 	if iface, ok := g.interfaces[m.ResponseType]; ok {
 		for _, resp := range m.Responses {
+			if noc := resp.NoContent; noc != nil {
+				resp.unimplement(iface)
+				m.ResponseType = "*" + noc.Type()
+				continue
+			}
+
 			if len(resp.Contents) == 1 {
 				resp.unimplement(iface)
 				for _, schema := range resp.Contents {
