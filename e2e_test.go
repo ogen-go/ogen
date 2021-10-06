@@ -2,6 +2,7 @@ package ogen_test
 
 import (
 	"embed"
+	"go/format"
 	"path"
 	"testing"
 
@@ -14,9 +15,13 @@ import (
 //go:embed _testdata
 var testdata embed.FS
 
-type noopFileSystem struct{}
+// TODO: Create validationFs.
+type fmtFs struct{}
 
-func (n noopFileSystem) WriteFile(baseName string, source []byte) error { return nil }
+func (n fmtFs) WriteFile(baseName string, source []byte) error {
+	_, err := format.Source(source)
+	return err
+}
 
 func TestGenerate(t *testing.T) {
 	for _, tc := range []struct {
@@ -27,7 +32,6 @@ func TestGenerate(t *testing.T) {
 			Name: "firecracker.json",
 			Options: []gen.Option{
 				gen.WithIgnoreOptionals,
-				gen.WithIgnoreFormat,
 				gen.WithEmptyObjects,
 			},
 		},
@@ -35,7 +39,6 @@ func TestGenerate(t *testing.T) {
 			Name: "api.github.com.json",
 			Options: []gen.Option{
 				gen.WithIgnoreOptionals,
-				gen.WithIgnoreFormat,
 				gen.WithEmptyObjects,
 				gen.WithSkipUnspecified,
 			},
@@ -63,7 +66,7 @@ func TestGenerate(t *testing.T) {
 			g, err := gen.NewGenerator(spec, tc.Options...)
 			require.NoError(t, err)
 
-			require.NoError(t, g.WriteSource(noopFileSystem{}, "api"))
+			require.NoError(t, g.WriteSource(fmtFs{}, "api"))
 		})
 	}
 }

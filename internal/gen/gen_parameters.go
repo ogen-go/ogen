@@ -91,10 +91,17 @@ func (g *Generator) parseParameter(param ogen.Parameter, path string) (*ast.Para
 
 	switch schema.Kind {
 	case ast.KindStruct:
-		return nil, xerrors.Errorf("object type not supported")
+		return nil, xerrors.Errorf("object types not supported")
+	case ast.KindAlias:
+		return nil, xerrors.Errorf("debug: alias types not supported")
 	case ast.KindArray:
-		if schema.Item.Kind != ast.KindPrimitive {
-			return nil, xerrors.Errorf("only arrays with primitive types supported")
+		switch schema.Item.Kind {
+		case ast.KindStruct:
+			return nil, xerrors.Errorf("arrays of objects not supported")
+		case ast.KindAlias:
+			return nil, xerrors.Errorf("debug: array of aliases not supported")
+		case ast.KindArray:
+			return nil, xerrors.Errorf("nested arrays not supported")
 		}
 	}
 

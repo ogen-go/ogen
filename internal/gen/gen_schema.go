@@ -30,9 +30,6 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 				return nil, err
 			}
 
-			if s.Is(ast.KindPrimitive, ast.KindArray) {
-				s = ast.CreateSchemaAlias(componentName, s)
-			}
 			return s, nil
 		}
 
@@ -150,7 +147,12 @@ func (g *Generator) parseSimple(typ, format string) (string, error) {
 	}
 
 	fType, exists := formats[format]
-	if !exists && !g.opt.debugIgnoreUnsupportedFormat {
+	if !exists {
+		// Fallback to string.
+		if typ == "string" {
+			return "string", nil
+		}
+
 		return "", xerrors.Errorf("unsupported format '%s' for type '%s'", format, typ)
 	}
 
