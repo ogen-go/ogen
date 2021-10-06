@@ -5,6 +5,8 @@ import (
 	"time"
 )
 
+func IntToString(v int) string { return strconv.Itoa(v) }
+
 func Int32ToString(v int32) string { return strconv.Itoa(int(v)) }
 
 func Int64ToString(v int64) string { return strconv.FormatInt(v, 10) }

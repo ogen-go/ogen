@@ -1,5 +1,6 @@
 {{- define "parse_from_string" }}
-{{- if eq . "int32" }}conv.ToInt32
+{{- if eq . "int" }}conv.ToInt
+{{- else if eq . "int32" }}conv.ToInt32
 {{- else if eq . "int64" }}conv.ToInt64
 {{- else if eq . "float32" }}conv.ToFloat32
 {{- else if eq . "float64" }}conv.ToFloat64
@@ -14,11 +15,13 @@
 {{- else if eq . "[]string" }}conv.ToStringArray
 {{- else if eq . "[][]byte" }}conv.ToBytesArray
 {{- else if eq . "[]time.Time" }}conv.ToTimeArray
+{{- else }}unexpected type{{ . }}
 {{- end }}
 {{- end }}
 
 {{- define "convert_to_string" }}
-{{- if eq . "int32" }}conv.Int32ToString
+{{- if eq . "int" }}conv.IntToString
+{{- else if eq . "int32" }}conv.Int32ToString
 {{- else if eq . "int64" }}conv.Int64ToString
 {{- else if eq . "float32" }}conv.Float32ToString
 {{- else if eq . "float64" }}conv.Float64ToString
