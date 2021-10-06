@@ -1,3 +1,4 @@
+//go:build !go1.18
 package json
 
 import (
@@ -17,19 +18,14 @@ type Helper struct {
 
 func writeSimpleObject(s *json.Stream, v Marshaler) error {
 	s.WriteObjectStart()
-	if err := v.WriteFieldJSON("key", s); err != nil {
-		return err
-	}
+	v.WriteFieldJSON("key", s)
 	s.WriteObjectEnd()
 	return s.Error
 }
 
 func readSimpleObject(i *json.Iterator, v Unmarshaler) error {
 	i.ReadObjectCB(func(i *json.Iterator, s string) bool {
-		if err := v.ReadJSON(i); err != nil {
-			i.ReportError("ReadJSON", err.Error())
-		}
-		return true
+		return v.ReadJSON(i)
 	})
 	return i.Error
 }
@@ -51,7 +47,7 @@ func (h *Helper) Read(t testing.TB, v Unmarshaler) {
 	h.i.ReadObjectCB(func(i *json.Iterator, s string) bool {
 		assert.Equal(t, "key", s)
 		assert.NoError(t, i.Error)
-		return assert.NoError(t, v.ReadJSON(i))
+		return v.ReadJSON(i)
 	})
 	require.NoError(t, h.i.Error)
 }

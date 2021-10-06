@@ -4,13 +4,13 @@ import json "github.com/json-iterator/go"
 
 // Unmarshaler implements json reading.
 type Unmarshaler interface {
-	ReadJSON(i *json.Iterator) error
+	ReadJSON(i *json.Iterator) bool
 }
 
 // Marshaler implements json writing.
 type Marshaler interface {
-	WriteFieldJSON(k string, s *json.Stream) error
-	WriteJSON(s *json.Stream) error
+	WriteFieldJSON(k string, s *json.Stream)
+	WriteJSON(s *json.Stream)
 }
 
 // Value represents a json value.

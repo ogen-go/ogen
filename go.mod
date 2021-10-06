@@ -1,6 +1,6 @@
 module github.com/ogen-go/ogen
 
-go 1.17
+go 1.18
 
 require (
 	github.com/bytedance/sonic v1.0.0-beta.0.20210924085059-00716d86349c
