@@ -36,6 +36,17 @@ go get github.com/ogen-go/ogen
 * Tracing for client and server
 * Basic validation
 * OneOf/AnyOf
+* Format
+  * [String format](https://json-schema.org/understanding-json-schema/reference/string.html)
+    * Date
+    * DateTime
+    * Time
+    * Duration
+    * IPv4/IPv6
+    * Email
+    * UUID
+    * URI
+    * Hostname
 * Webhook support
 * Files support (with streaming, like io.Reader/Writer)
 * Client retries
