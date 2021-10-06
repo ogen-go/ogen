@@ -1,5 +1,3 @@
-//go:build !go1.18
-
 package json
 
 import json "github.com/json-iterator/go"
