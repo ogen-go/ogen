@@ -13,8 +13,6 @@ type Helper struct {
 	w *bytes.Buffer
 	s *json.Stream
 	i *json.Iterator
-
-	got []byte
 }
 
 func (h *Helper) Write(t testing.TB, v Marshaler) {
