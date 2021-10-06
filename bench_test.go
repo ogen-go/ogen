@@ -20,16 +20,16 @@ import (
 
 type techEmpowerServer struct{}
 
-func (t techEmpowerServer) Caching(ctx context.Context, params techempower.CachingParams) (techempower.WorldObjects, error) {
+func (t techEmpowerServer) Caching(ctx context.Context, params techempower.CachingParams) ([]techempower.WorldObject, error) {
 	panic("implement me")
 }
 
-func (t techEmpowerServer) Updates(ctx context.Context, params techempower.UpdatesParams) (techempower.WorldObjects, error) {
+func (t techEmpowerServer) Updates(ctx context.Context, params techempower.UpdatesParams) ([]techempower.WorldObject, error) {
 	panic("implement me")
 }
 
-func (t techEmpowerServer) Queries(ctx context.Context, params techempower.QueriesParams) (techempower.WorldObjects, error) {
-	return techempower.WorldObjects{}, nil
+func (t techEmpowerServer) Queries(ctx context.Context, params techempower.QueriesParams) ([]techempower.WorldObject, error) {
+	return nil, nil
 }
 
 func (t techEmpowerServer) DB(ctx context.Context) (techempower.WorldObject, error) {

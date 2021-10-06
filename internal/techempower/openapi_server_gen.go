@@ -37,9 +37,9 @@ var (
 )
 
 type Server interface {
-	Caching(ctx context.Context, params CachingParams) (WorldObjects, error)
+	Caching(ctx context.Context, params CachingParams) ([]WorldObject, error)
 	DB(ctx context.Context) (WorldObject, error)
 	JSON(ctx context.Context) (HelloWorld, error)
-	Queries(ctx context.Context, params QueriesParams) (WorldObjects, error)
-	Updates(ctx context.Context, params UpdatesParams) (WorldObjects, error)
+	Queries(ctx context.Context, params QueriesParams) ([]WorldObject, error)
+	Updates(ctx context.Context, params UpdatesParams) ([]WorldObject, error)
 }

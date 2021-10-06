@@ -36,12 +36,12 @@ var (
 	_ = conv.ToInt32
 )
 
-func decodeCachingResponse(resp *http.Response) (_ WorldObjects, rerr error) {
+func decodeCachingResponse(resp *http.Response) (_ []WorldObject, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response WorldObjects
+			var response []WorldObject
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -117,12 +117,12 @@ func decodeJSONResponse(resp *http.Response) (_ HelloWorld, rerr error) {
 	}
 }
 
-func decodeQueriesResponse(resp *http.Response) (_ WorldObjects, rerr error) {
+func decodeQueriesResponse(resp *http.Response) (_ []WorldObject, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response WorldObjects
+			var response []WorldObject
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -144,12 +144,12 @@ func decodeQueriesResponse(resp *http.Response) (_ WorldObjects, rerr error) {
 	}
 }
 
-func decodeUpdatesResponse(resp *http.Response) (_ WorldObjects, rerr error) {
+func decodeUpdatesResponse(resp *http.Response) (_ []WorldObject, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response WorldObjects
+			var response []WorldObject
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
