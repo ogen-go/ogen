@@ -74,7 +74,7 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 		}
 
 		m.RequestBody = rbody
-		m.RequestType = iface.Name
+		m.RequestType = iface
 	}
 
 	if len(op.Responses) > 0 {
@@ -96,7 +96,7 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 		}
 
 		m.Responses = responses
-		m.ResponseType = iface.Name
+		m.ResponseType = iface
 	}
 
 	g.methods = append(g.methods, m)

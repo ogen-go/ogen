@@ -6,12 +6,12 @@
 
 {{- range $m := $.Methods }}{{/* Range over all methods */}}
 
-func decode{{ $m.Name }}Response(resp *http.Response) (_ {{ $m.ResponseType }}, rerr error) {
+func decode{{ $m.Name }}Response(resp *http.Response) (_ {{ $m.ResponseType.Type }}, rerr error) {
     switch resp.StatusCode {
     {{- range $statusCode, $response := $m.Responses.StatusCode }}{{/* Range over responses */}}
     case {{ $statusCode }}:
         {{- if $response.NoContent }}{{/* Decode NoContent response */}}
-        return &{{ $response.NoContent.Name }}{}, nil
+        return {{ if $m.IsResponseIface }}&{{ end }}{{ $response.NoContent.Name }}{}, nil
         {{- else }}{{/* Decode content response */}}
         switch resp.Header.Get("Content-Type") {
         {{- range $ctype, $schema := $response.Contents }}{{/* Range over contents */}}
@@ -28,7 +28,7 @@ func decode{{ $m.Name }}Response(resp *http.Response) (_ {{ $m.ResponseType }}, 
                 return
             }
 
-            return &response, nil
+            return {{ if $m.IsResponseIface }}&{{ end }}response, nil
             {{- else }}
             rerr = fmt.Errorf("{{ $ctype }} decoder not implemented")
             return
@@ -44,7 +44,7 @@ func decode{{ $m.Name }}Response(resp *http.Response) (_ {{ $m.ResponseType }}, 
         {{- $def := $m.Responses.Default }}
         {{- if $def }}{{/* Decode default response */}}
         {{- if $def.NoContent }}{{/* Decode NoContent response */}}
-        return &{{ $def.NoContent.Name }}{StatusCode: resp.StatusCode}, nil
+        return {{ if $m.IsResponseIface }}&{{ end }}{{ $def.NoContent.Name }}{StatusCode: resp.StatusCode}, nil
         {{- else }}{{/* Decode content response */}}
         switch resp.Header.Get("Content-Type") {
         {{- range $ctype, $schema := $def.Contents }}{{/* Range over contents */}}
@@ -62,7 +62,7 @@ func decode{{ $m.Name }}Response(resp *http.Response) (_ {{ $m.ResponseType }}, 
             }
 
             response.StatusCode = resp.StatusCode
-            return &response, nil
+            return {{ if $m.IsResponseIface }}&{{ end }}response, nil
             {{- else }}
             rerr = fmt.Errorf("{{ $ctype }} decoder not implemented")
             return

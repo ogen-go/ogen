@@ -13,6 +13,8 @@ func (g *Generator) generateRequestBody(name string, body *ogen.RequestBody) (*a
 	}
 
 	rbody := ast.CreateRequestBody()
+	rbody.Required = body.Required
+
 	// Iterate through request body contents...
 	for contentType, media := range body.Content {
 		// Referenced schema.

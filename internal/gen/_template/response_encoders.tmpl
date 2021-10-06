@@ -6,7 +6,7 @@
 
 {{- range $m := $.Methods }}{{/* Range over all methods */}}
 
-func encode{{ $m.Name }}Response(response {{ $m.ResponseType }}, w http.ResponseWriter) error {
+func encode{{ $m.Name }}Response(response {{ $m.ResponseType.Type }}, w http.ResponseWriter) error {
     {{- $schemasLength := len $m.ListResponseSchemas }}
     {{- if eq $schemasLength 1 }}
 

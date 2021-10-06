@@ -18,3 +18,5 @@ func (i *Interface) AddMethod(method string) {
 		schema.Implements[method] = struct{}{}
 	}
 }
+
+func (i *Interface) Type() string { return i.Name }

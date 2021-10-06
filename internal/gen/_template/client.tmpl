@@ -23,7 +23,7 @@ func NewClient(serverURL string) *Client {
 }
 
 {{ range $m := $.Methods }}
-func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req {{ $m.RequestType }}{{ end }}{{ if $m.Parameters}}, params {{ $m.Name }}Params {{ end }}) (_ {{ $m.ResponseType }}, rerr error) {
+func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req {{ $m.RequestType.Type }}{{ end }}{{ if $m.Parameters}}, params {{ $m.Name }}Params {{ end }}) (_ {{ $m.ResponseType.Type }}, rerr error) {
     {{- if $m.RequestBody }}
     body, contentType, err := encode{{ $m.Name }}Request(req)
     if err != nil {

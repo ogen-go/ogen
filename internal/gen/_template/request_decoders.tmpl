@@ -5,8 +5,8 @@
 
 {{/* Range over all methods */}}
 {{- range $m := $.Methods }}
-{{- if ne $m.RequestType "" }}
-func decode{{ $m.Name }}Request(r *http.Request) ({{ $m.RequestType }}, error) {
+{{- if $m.RequestType }}
+func decode{{ $m.Name }}Request(r *http.Request) (_ {{ $m.RequestType.Type }}, rerr error) {
     switch r.Header.Get("Content-Type") {
     {{- /* Range over all request types */ -}}
     {{- range $ctype, $schema := $m.RequestBody.Contents }}
@@ -16,27 +16,31 @@ func decode{{ $m.Name }}Request(r *http.Request) ({{ $m.RequestType }}, error) {
         {{- if eq $ctype "application/json" }}
         data, err := io.ReadAll(r.Body)
         if err != nil {
-            return nil, err
+            rerr = err
+            return
         }
         if err := json.Unmarshal(data, &request); err != nil {
-            {{- if not $m.RequestBody.Required}}
+            {{- if not $m.RequestBody.Required }}
             if errors.Is(err, io.EOF) {
-                return nil, nil
+                return
             }
             {{- end }}
-            return nil, err
+            rerr = err
+            return
         }
 
-        return &request, nil
+        return {{ if not $m.RequestBody.Required }}&{{ end }}request, nil
         {{- /* Decode json */ -}}
         {{- else }}
         _ = request
-        return nil, fmt.Errorf("{{ $ctype }} decoder not implemented")
+        rerr = fmt.Errorf("{{ $ctype }} decoder not implemented")
+        return
         {{- end }}
     {{- end }}
     {{- /* Range over all request types */}}
     default:
-        return nil, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+        rerr = fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+        return
     }
 }
 {{- end }}

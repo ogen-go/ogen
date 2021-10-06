@@ -24,10 +24,19 @@ func (g *Generator) devirtSingleRequest(m *ast.Method) {
 		return
 	}
 
-	if iface, ok := g.interfaces[m.RequestType]; ok {
-		for _, schema := range m.RequestBody.Contents {
-			schema.Unimplement(iface)
-			m.RequestType = "*" + schema.Type()
+	iface, ok := m.RequestType.(*ast.Interface)
+	if !ok {
+		return
+	}
+
+	for _, schema := range m.RequestBody.Contents {
+		schema.Unimplement(iface)
+		m.RequestType = schema
+
+		if !m.RequestBody.Required {
+			m.RequestType = &ast.Pointer{
+				To: schema,
+			}
 		}
 	}
 }
@@ -37,19 +46,22 @@ func (g *Generator) devirtSingleResponse(m *ast.Method) {
 		return
 	}
 
-	if iface, ok := g.interfaces[m.ResponseType]; ok {
-		for _, resp := range m.Responses.StatusCode {
-			if noc := resp.NoContent; noc != nil {
-				resp.Unimplement(iface)
-				m.ResponseType = "*" + noc.Type()
-				continue
-			}
+	iface, ok := m.ResponseType.(*ast.Interface)
+	if !ok {
+		return
+	}
 
-			if len(resp.Contents) == 1 {
-				resp.Unimplement(iface)
-				for _, schema := range resp.Contents {
-					m.ResponseType = "*" + schema.Type()
-				}
+	for _, resp := range m.Responses.StatusCode {
+		if noc := resp.NoContent; noc != nil {
+			resp.Unimplement(iface)
+			m.ResponseType = noc
+			continue
+		}
+
+		if len(resp.Contents) == 1 {
+			resp.Unimplement(iface)
+			for _, schema := range resp.Contents {
+				m.ResponseType = schema
 			}
 		}
 	}
@@ -64,10 +76,13 @@ func (g *Generator) devirtDefaultResponse(m *ast.Method) {
 		return
 	}
 
-	if iface, ok := g.interfaces[m.ResponseType]; ok {
-		m.Responses.Default.Unimplement(iface)
-		m.ResponseType = "*" + m.Responses.Default.NoContent.Type()
+	iface, ok := m.ResponseType.(*ast.Interface)
+	if !ok {
+		return
 	}
+
+	m.Responses.Default.Unimplement(iface)
+	m.ResponseType = m.Responses.Default.NoContent
 }
 
 func (g *Generator) removeUnusedIfaces() {

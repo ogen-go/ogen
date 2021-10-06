@@ -1,15 +1,20 @@
 package ast
 
+// Type is an abstraction for Interface, Schema and Pointer.
+type Type interface {
+	Type() string
+}
+
 type Method struct {
 	Name       string
 	PathParts  []PathPart
 	HTTPMethod string
 	Parameters []*Parameter
 
-	RequestType string
+	RequestType Type
 	RequestBody *RequestBody
 
-	ResponseType string
+	ResponseType Type
 	Responses    *MethodResponse
 }
 
@@ -26,4 +31,14 @@ func (m *Method) getParams(locatedIn ParameterLocation) []*Parameter {
 		}
 	}
 	return params
+}
+
+func (m *Method) IsRequestIface() bool {
+	_, ok := m.RequestType.(*Interface)
+	return ok
+}
+
+func (m *Method) IsResponseIface() bool {
+	_, ok := m.ResponseType.(*Interface)
+	return ok
 }
