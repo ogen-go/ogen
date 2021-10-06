@@ -9,32 +9,14 @@ import (
 func TestNames(t *testing.T) {
 	tests := []struct {
 		Input   string
-		AllowMP bool
 		Expect  string
+		AllowMP bool
 	}{
-		{
-			Input:  "user_id",
-			Expect: "UserID",
-		},
-		{
-			Input:   "foo+bar",
-			AllowMP: true,
-			Expect:  "FooPlusBar",
-		},
-		{
-			Input:   "+1",
-			AllowMP: true,
-			Expect:  "Plus1",
-		},
-		{
-			Input:   "foo+bar",
-			AllowMP: false,
-			Expect:  "FooBar",
-		},
-		{
-			Input:  "userId",
-			Expect: "UserId",
-		},
+		{"user_id", "UserID", false},
+		{"userId", "UserId", false},
+		{"foo+bar", "FooPlusBar", true},
+		{"foo+bar", "FooBar", false},
+		{"+1", "Plus1", true},
 	}
 
 	for _, test := range tests {
