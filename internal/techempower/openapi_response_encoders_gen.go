@@ -36,7 +36,7 @@ var (
 	_ = conv.ToInt32
 )
 
-func encodeCachingResponse(response *WorldObjects, w http.ResponseWriter) error {
+func encodeCachingResponse(response WorldObjects, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	data, err := json.Marshal(response)
@@ -49,7 +49,7 @@ func encodeCachingResponse(response *WorldObjects, w http.ResponseWriter) error 
 	return nil
 }
 
-func encodeDBResponse(response *WorldObject, w http.ResponseWriter) error {
+func encodeDBResponse(response WorldObject, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	data, err := json.Marshal(response)
@@ -62,7 +62,7 @@ func encodeDBResponse(response *WorldObject, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeJSONResponse(response *HelloWorld, w http.ResponseWriter) error {
+func encodeJSONResponse(response HelloWorld, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	data, err := json.Marshal(response)
@@ -75,7 +75,7 @@ func encodeJSONResponse(response *HelloWorld, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeQueriesResponse(response *WorldObjects, w http.ResponseWriter) error {
+func encodeQueriesResponse(response WorldObjects, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	data, err := json.Marshal(response)
@@ -88,7 +88,7 @@ func encodeQueriesResponse(response *WorldObjects, w http.ResponseWriter) error 
 	return nil
 }
 
-func encodeUpdatesResponse(response *WorldObjects, w http.ResponseWriter) error {
+func encodeUpdatesResponse(response WorldObjects, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	data, err := json.Marshal(response)

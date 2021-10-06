@@ -57,7 +57,7 @@ func encodeFoobarGetResponse(response FoobarGetResponse, w http.ResponseWriter) 
 	}
 }
 
-func encodeFoobarPutResponse(response *FoobarPutDefault, w http.ResponseWriter) error {
+func encodeFoobarPutResponse(response FoobarPutDefault, w http.ResponseWriter) error {
 	w.WriteHeader(response.StatusCode)
 	return nil
 }
@@ -123,7 +123,7 @@ func encodePetGetResponse(response PetGetResponse, w http.ResponseWriter) error 
 	}
 }
 
-func encodePetCreateResponse(response *Pet, w http.ResponseWriter) error {
+func encodePetCreateResponse(response Pet, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	data, err := json.Marshal(response)
@@ -136,7 +136,7 @@ func encodePetCreateResponse(response *Pet, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodePetGetByNameResponse(response *Pet, w http.ResponseWriter) error {
+func encodePetGetByNameResponse(response Pet, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	data, err := json.Marshal(response)

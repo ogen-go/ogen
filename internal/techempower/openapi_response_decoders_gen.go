@@ -36,7 +36,7 @@ var (
 	_ = conv.ToInt32
 )
 
-func decodeCachingResponse(resp *http.Response) (_ *WorldObjects, rerr error) {
+func decodeCachingResponse(resp *http.Response) (_ WorldObjects, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -52,7 +52,7 @@ func decodeCachingResponse(resp *http.Response) (_ *WorldObjects, rerr error) {
 				return
 			}
 
-			return &response, nil
+			return response, nil
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -63,7 +63,7 @@ func decodeCachingResponse(resp *http.Response) (_ *WorldObjects, rerr error) {
 	}
 }
 
-func decodeDBResponse(resp *http.Response) (_ *WorldObject, rerr error) {
+func decodeDBResponse(resp *http.Response) (_ WorldObject, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -79,7 +79,7 @@ func decodeDBResponse(resp *http.Response) (_ *WorldObject, rerr error) {
 				return
 			}
 
-			return &response, nil
+			return response, nil
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -90,7 +90,7 @@ func decodeDBResponse(resp *http.Response) (_ *WorldObject, rerr error) {
 	}
 }
 
-func decodeJSONResponse(resp *http.Response) (_ *HelloWorld, rerr error) {
+func decodeJSONResponse(resp *http.Response) (_ HelloWorld, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -106,7 +106,7 @@ func decodeJSONResponse(resp *http.Response) (_ *HelloWorld, rerr error) {
 				return
 			}
 
-			return &response, nil
+			return response, nil
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -117,7 +117,7 @@ func decodeJSONResponse(resp *http.Response) (_ *HelloWorld, rerr error) {
 	}
 }
 
-func decodeQueriesResponse(resp *http.Response) (_ *WorldObjects, rerr error) {
+func decodeQueriesResponse(resp *http.Response) (_ WorldObjects, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -133,7 +133,7 @@ func decodeQueriesResponse(resp *http.Response) (_ *WorldObjects, rerr error) {
 				return
 			}
 
-			return &response, nil
+			return response, nil
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -144,7 +144,7 @@ func decodeQueriesResponse(resp *http.Response) (_ *WorldObjects, rerr error) {
 	}
 }
 
-func decodeUpdatesResponse(resp *http.Response) (_ *WorldObjects, rerr error) {
+func decodeUpdatesResponse(resp *http.Response) (_ WorldObjects, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -160,7 +160,7 @@ func decodeUpdatesResponse(resp *http.Response) (_ *WorldObjects, rerr error) {
 				return
 			}
 
-			return &response, nil
+			return response, nil
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return

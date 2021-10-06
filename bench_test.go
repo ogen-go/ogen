@@ -20,27 +20,27 @@ import (
 
 type techEmpowerServer struct{}
 
-func (t techEmpowerServer) Caching(ctx context.Context, params techempower.CachingParams) (*techempower.WorldObjects, error) {
+func (t techEmpowerServer) Caching(ctx context.Context, params techempower.CachingParams) (techempower.WorldObjects, error) {
 	panic("implement me")
 }
 
-func (t techEmpowerServer) Updates(ctx context.Context, params techempower.UpdatesParams) (*techempower.WorldObjects, error) {
+func (t techEmpowerServer) Updates(ctx context.Context, params techempower.UpdatesParams) (techempower.WorldObjects, error) {
 	panic("implement me")
 }
 
-func (t techEmpowerServer) Queries(ctx context.Context, params techempower.QueriesParams) (*techempower.WorldObjects, error) {
-	return &techempower.WorldObjects{}, nil
+func (t techEmpowerServer) Queries(ctx context.Context, params techempower.QueriesParams) (techempower.WorldObjects, error) {
+	return techempower.WorldObjects{}, nil
 }
 
-func (t techEmpowerServer) DB(ctx context.Context) (*techempower.WorldObject, error) {
-	return &techempower.WorldObject{
+func (t techEmpowerServer) DB(ctx context.Context) (techempower.WorldObject, error) {
+	return techempower.WorldObject{
 		ID:           1,
 		RandomNumber: 10,
 	}, nil
 }
 
-func (t techEmpowerServer) JSON(ctx context.Context) (*techempower.HelloWorld, error) {
-	return &techempower.HelloWorld{
+func (t techEmpowerServer) JSON(ctx context.Context) (techempower.HelloWorld, error) {
+	return techempower.HelloWorld{
 		Message: "Hello, world!",
 	}, nil
 }

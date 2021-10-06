@@ -54,7 +54,7 @@ func NewClient(serverURL string) *Client {
 	}
 }
 
-func (c *Client) Caching(ctx context.Context, params CachingParams) (_ *WorldObjects, rerr error) {
+func (c *Client) Caching(ctx context.Context, params CachingParams) (_ WorldObjects, rerr error) {
 	path := c.serverURL
 	path += "/cached-worlds"
 
@@ -87,7 +87,7 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (_ *WorldObj
 	return result, nil
 }
 
-func (c *Client) DB(ctx context.Context) (_ *WorldObject, rerr error) {
+func (c *Client) DB(ctx context.Context) (_ WorldObject, rerr error) {
 	path := c.serverURL
 	path += "/db"
 
@@ -113,7 +113,7 @@ func (c *Client) DB(ctx context.Context) (_ *WorldObject, rerr error) {
 	return result, nil
 }
 
-func (c *Client) JSON(ctx context.Context) (_ *HelloWorld, rerr error) {
+func (c *Client) JSON(ctx context.Context) (_ HelloWorld, rerr error) {
 	path := c.serverURL
 	path += "/json"
 
@@ -139,7 +139,7 @@ func (c *Client) JSON(ctx context.Context) (_ *HelloWorld, rerr error) {
 	return result, nil
 }
 
-func (c *Client) Queries(ctx context.Context, params QueriesParams) (_ *WorldObjects, rerr error) {
+func (c *Client) Queries(ctx context.Context, params QueriesParams) (_ WorldObjects, rerr error) {
 	path := c.serverURL
 	path += "/queries"
 
@@ -172,7 +172,7 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (_ *WorldObj
 	return result, nil
 }
 
-func (c *Client) Updates(ctx context.Context, params UpdatesParams) (_ *WorldObjects, rerr error) {
+func (c *Client) Updates(ctx context.Context, params UpdatesParams) (_ WorldObjects, rerr error) {
 	path := c.serverURL
 	path += "/updates"
 

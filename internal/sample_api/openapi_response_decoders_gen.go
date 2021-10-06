@@ -65,10 +65,10 @@ func decodeFoobarGetResponse(resp *http.Response) (_ FoobarGetResponse, rerr err
 	}
 }
 
-func decodeFoobarPutResponse(resp *http.Response) (_ *FoobarPutDefault, rerr error) {
+func decodeFoobarPutResponse(resp *http.Response) (_ FoobarPutDefault, rerr error) {
 	switch resp.StatusCode {
 	default:
-		return &FoobarPutDefault{StatusCode: resp.StatusCode}, nil
+		return FoobarPutDefault{StatusCode: resp.StatusCode}, nil
 	}
 }
 
@@ -162,7 +162,7 @@ func decodePetGetResponse(resp *http.Response) (_ PetGetResponse, rerr error) {
 	}
 }
 
-func decodePetCreateResponse(resp *http.Response) (_ *Pet, rerr error) {
+func decodePetCreateResponse(resp *http.Response) (_ Pet, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -178,7 +178,7 @@ func decodePetCreateResponse(resp *http.Response) (_ *Pet, rerr error) {
 				return
 			}
 
-			return &response, nil
+			return response, nil
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -189,7 +189,7 @@ func decodePetCreateResponse(resp *http.Response) (_ *Pet, rerr error) {
 	}
 }
 
-func decodePetGetByNameResponse(resp *http.Response) (_ *Pet, rerr error) {
+func decodePetGetByNameResponse(resp *http.Response) (_ Pet, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -205,7 +205,7 @@ func decodePetGetByNameResponse(resp *http.Response) (_ *Pet, rerr error) {
 				return
 			}
 
-			return &response, nil
+			return response, nil
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return

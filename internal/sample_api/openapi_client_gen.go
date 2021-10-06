@@ -91,7 +91,7 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (_ Fooba
 	return result, nil
 }
 
-func (c *Client) FoobarPut(ctx context.Context) (_ *FoobarPutDefault, rerr error) {
+func (c *Client) FoobarPut(ctx context.Context) (_ FoobarPutDefault, rerr error) {
 	path := c.serverURL
 	path += "/foobar"
 
@@ -200,7 +200,7 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (_ PetGetRespo
 	return result, nil
 }
 
-func (c *Client) PetCreate(ctx context.Context, req PetCreateRequest) (_ *Pet, rerr error) {
+func (c *Client) PetCreate(ctx context.Context, req PetCreateRequest) (_ Pet, rerr error) {
 	body, contentType, err := encodePetCreateRequest(req)
 	if err != nil {
 		rerr = err
@@ -234,7 +234,7 @@ func (c *Client) PetCreate(ctx context.Context, req PetCreateRequest) (_ *Pet, r
 	return result, nil
 }
 
-func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (_ *Pet, rerr error) {
+func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (_ Pet, rerr error) {
 	path := c.serverURL
 	path += "/pet"
 	{

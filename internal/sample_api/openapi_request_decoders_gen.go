@@ -36,48 +36,55 @@ var (
 	_ = conv.ToInt32
 )
 
-func decodeFoobarPostRequest(r *http.Request) (*Pet, error) {
+func decodeFoobarPostRequest(r *http.Request) (_ *Pet, rerr error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Pet
 		data, err := io.ReadAll(r.Body)
 		if err != nil {
-			return nil, err
+			rerr = err
+			return
 		}
 		if err := json.Unmarshal(data, &request); err != nil {
 			if errors.Is(err, io.EOF) {
-				return nil, nil
+				return
 			}
-			return nil, err
+			rerr = err
+			return
 		}
 
 		return &request, nil
 	default:
-		return nil, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		rerr = fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return
 	}
 }
 
-func decodePetCreateRequest(r *http.Request) (PetCreateRequest, error) {
+func decodePetCreateRequest(r *http.Request) (_ PetCreateRequest, rerr error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Pet
 		data, err := io.ReadAll(r.Body)
 		if err != nil {
-			return nil, err
+			rerr = err
+			return
 		}
 		if err := json.Unmarshal(data, &request); err != nil {
 			if errors.Is(err, io.EOF) {
-				return nil, nil
+				return
 			}
-			return nil, err
+			rerr = err
+			return
 		}
 
 		return &request, nil
 	case "text/plain":
 		var request PetCreateTextPlainRequest
 		_ = request
-		return nil, fmt.Errorf("text/plain decoder not implemented")
+		rerr = fmt.Errorf("text/plain decoder not implemented")
+		return
 	default:
-		return nil, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		rerr = fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return
 	}
 }
