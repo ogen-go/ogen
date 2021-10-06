@@ -18,14 +18,14 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 			return nil, xerrors.Errorf("invalid schema reference: %s", ref)
 		}
 
-		s, found := g.schemas[componentName]
+		s, found := g.schemas[pascal(componentName)]
 		if !found {
 			refSchema, found := g.spec.Components.Schemas[componentName]
 			if !found {
 				return nil, xerrors.Errorf("component by reference '%s' not found", ref)
 			}
 
-			s, err := g.generateSchema(componentName, refSchema)
+			s, err := g.generateSchema(pascal(componentName), refSchema)
 			if err != nil {
 				return nil, err
 			}
@@ -66,13 +66,13 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 				return nil, xerrors.Errorf("properties: %s: optional properties not supported", propName)
 			}
 
-			prop, err := g.generateSchema(name+pascal(propName), propSchema)
+			prop, err := g.generateSchema(name+pascalMP(propName), propSchema)
 			if err != nil {
 				return nil, xerrors.Errorf("%s: %w", propName, err)
 			}
 
 			s.Fields = append(s.Fields, ast.SchemaField{
-				Name: pascal(propName),
+				Name: pascalMP(propName),
 				Tag:  propName,
 				Type: prop.Type(),
 			})

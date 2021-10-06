@@ -5,46 +5,76 @@ import (
 	"unicode"
 )
 
-func splitWords(s string) []string {
-	allowed := func(r rune) bool {
-		const alphabet = "abcdefghijklmnopqrstuvwxyz0123456789"
-		for _, c := range alphabet {
-			if c == unicode.ToLower(r) {
-				return true
-			}
-		}
-		return false
+type nameGen struct {
+	parts []string
+	src   []rune
+	pos   int
+
+	allowMP bool
+}
+
+func (g *nameGen) next() (rune, bool) {
+	if len(g.src) == g.pos {
+		return rune(0), false
 	}
 
+	defer func() { g.pos++ }()
+	return g.src[g.pos], true
+}
+
+func (g *nameGen) generate() string {
 	var (
-		words []string
-		word  []rune
-		push  = func() {
-			if len(word) > 0 {
-				words = append(words, string(word))
-				word = nil
-			}
+		part     []rune
+		upper    = true
+		pushPart = func() {
+			g.parts = append(g.parts, g.checkPart(string(part)))
+			part = nil
 		}
 	)
+	for {
+		r, ok := g.next()
+		if !ok {
+			pushPart()
+			return strings.Join(g.parts, "")
+		}
 
-	for _, r := range s {
-		if !allowed(r) {
-			push()
+		if g.isAllowed(r) {
+			if upper {
+				r = unicode.ToUpper(r)
+				upper = false
+			}
+
+			part = append(part, r)
 			continue
 		}
 
-		if unicode.IsUpper(r) {
-			push()
+		upper = true
+		if g.allowMP {
+			switch r {
+			case '+':
+				pushPart()
+				part = []rune("Plus")
+			case '-':
+				pushPart()
+				part = []rune("Minus")
+			}
 		}
 
-		word = append(word, r)
+		pushPart()
 	}
-
-	push()
-	return words
 }
 
-func checkRules(word string) string {
+func (g *nameGen) isAllowed(r rune) bool {
+	const alphabet = "abcdefghijklmnopqrstuvwxyz0123456789"
+	for _, c := range alphabet {
+		if c == unicode.ToLower(r) {
+			return true
+		}
+	}
+	return false
+}
+
+func (g *nameGen) checkPart(part string) string {
 	rules := []string{
 		"ACL", "API", "ASCII", "AWS", "CPU", "CSS", "DNS", "EOF", "GB", "GUID",
 		"HTML", "HTTP", "HTTPS", "ID", "IP", "JSON", "KB", "LHS", "MAC", "MB",
@@ -55,30 +85,25 @@ func checkRules(word string) string {
 	}
 
 	for _, rule := range rules {
-		if strings.EqualFold(word, rule) {
+		if strings.EqualFold(part, rule) {
 			return rule
 		}
 	}
 
-	return word
+	return part
 }
 
 func pascal(strs ...string) string {
-	split := func(strs []string) (out []string) {
-		for _, s := range strs {
-			out = append(out, splitWords(s)...)
-		}
-		return
-	}
+	return (&nameGen{
+		src: []rune(strings.Join(strs, " ")),
+	}).generate()
+}
 
-	var out []string
-	for _, s := range split(strs) {
-		s = checkRules(s)
-		rs := []rune(s)
-		rs[0] = unicode.ToUpper(rs[0])
-		out = append(out, string(rs))
-	}
-	return strings.Join(out, "")
+func pascalMP(strs ...string) string {
+	return (&nameGen{
+		src:     []rune(strings.Join(strs, " ")),
+		allowMP: true,
+	}).generate()
 }
 
 func camel(s string) string {
