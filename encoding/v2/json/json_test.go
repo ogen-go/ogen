@@ -24,6 +24,16 @@ func writeSimpleObject(s *json.Stream, v Marshaler) error {
 	return s.Error
 }
 
+func readSimpleObject(i *json.Iterator, v Unmarshaler) error {
+	i.ReadObjectCB(func(i *json.Iterator, s string) bool {
+		if err := v.ReadJSON(i); err != nil {
+			i.ReportError("ReadJSON", err.Error())
+		}
+		return true
+	})
+	return i.Error
+}
+
 func (h *Helper) Write(t testing.TB, v Marshaler) {
 	t.Helper()
 	require.NoError(t, writeSimpleObject(h.s, v))
@@ -105,7 +115,7 @@ func TestOptionalNullableString_ReadJSON(t *testing.T) {
 	}
 }
 
-func BenchmarkOptionalNullableString_WriteFieldJSON(b *testing.B) {
+func BenchmarkOptionalNullableString(b *testing.B) {
 	v := &OptionalNullableString{
 		Set: true,
 		NullableString: NullableString{
@@ -117,29 +127,12 @@ func BenchmarkOptionalNullableString_WriteFieldJSON(b *testing.B) {
 	require.NoError(b, writeSimpleObject(s, v))
 	require.NoError(b, s.Flush())
 
-	b.Run("Single", func(b *testing.B) {
-		b.ReportAllocs()
-		b.SetBytes(int64(buf.Len()))
+	b.Run("Write", func(b *testing.B) {
+		b.Run("Single", func(b *testing.B) {
+			b.ReportAllocs()
+			b.SetBytes(int64(buf.Len()))
 
-		for i := 0; i < b.N; i++ {
-			buf.Reset()
-			if err := writeSimpleObject(s, v); err != nil {
-				b.Fatal(err)
-			}
-			if err := s.Flush(); err != nil {
-				b.Fatal(err)
-			}
-		}
-	})
-	b.Run("Multi", func(b *testing.B) {
-		b.ReportAllocs()
-		b.SetBytes(int64(buf.Len()))
-
-		b.RunParallel(func(pb *testing.PB) {
-			buf := new(bytes.Buffer)
-			s := json.NewStream(json.ConfigFastest, buf, 1024)
-
-			for pb.Next() {
+			for i := 0; i < b.N; i++ {
 				buf.Reset()
 				if err := writeSimpleObject(s, v); err != nil {
 					b.Fatal(err)
@@ -148,6 +141,56 @@ func BenchmarkOptionalNullableString_WriteFieldJSON(b *testing.B) {
 					b.Fatal(err)
 				}
 			}
+		})
+		b.Run("Multi", func(b *testing.B) {
+			b.ReportAllocs()
+			b.SetBytes(int64(buf.Len()))
+
+			b.RunParallel(func(pb *testing.PB) {
+				buf := new(bytes.Buffer)
+				s := json.NewStream(json.ConfigFastest, buf, 1024)
+
+				for pb.Next() {
+					buf.Reset()
+					if err := writeSimpleObject(s, v); err != nil {
+						b.Fatal(err)
+					}
+					if err := s.Flush(); err != nil {
+						b.Fatal(err)
+					}
+				}
+			})
+		})
+	})
+	b.Run("Read", func(b *testing.B) {
+		b.Run("Single", func(b *testing.B) {
+			b.ReportAllocs()
+			b.SetBytes(int64(buf.Len()))
+			iter := json.NewIterator(json.ConfigFastest)
+			var out OptionalNullableString
+
+			for i := 0; i < b.N; i++ {
+				iter.ResetBytes(buf.Bytes())
+				if err := readSimpleObject(iter, &out); err != nil {
+					b.Fatal(err)
+				}
+			}
+		})
+		b.Run("Multi", func(b *testing.B) {
+			b.ReportAllocs()
+			b.SetBytes(int64(buf.Len()))
+
+			b.RunParallel(func(pb *testing.PB) {
+				iter := json.NewIterator(json.ConfigFastest)
+				var out OptionalNullableString
+
+				for pb.Next() {
+					iter.ResetBytes(buf.Bytes())
+					if err := readSimpleObject(iter, &out); err != nil {
+						b.Error(err)
+					}
+				}
+			})
 		})
 	})
 }
