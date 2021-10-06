@@ -113,16 +113,41 @@ func BenchmarkOptionalNullableString_WriteFieldJSON(b *testing.B) {
 		},
 	}
 	buf := new(bytes.Buffer)
-	s := json.NewStream(json.ConfigDefault, buf, 1024)
+	s := json.NewStream(json.ConfigFastest, buf, 1024)
 	require.NoError(b, writeSimpleObject(s, v))
 	require.NoError(b, s.Flush())
-	b.SetBytes(int64(buf.Len()))
 
-	b.ReportAllocs()
+	b.Run("Single", func(b *testing.B) {
+		b.ReportAllocs()
+		b.SetBytes(int64(buf.Len()))
 
-	for i := 0; i < b.N; i++ {
-		buf.Reset()
-		require.NoError(b, writeSimpleObject(s, v))
-		require.NoError(b, s.Flush())
-	}
+		for i := 0; i < b.N; i++ {
+			buf.Reset()
+			if err := writeSimpleObject(s, v); err != nil {
+				b.Fatal(err)
+			}
+			if err := s.Flush(); err != nil {
+				b.Fatal(err)
+			}
+		}
+	})
+	b.Run("Multi", func(b *testing.B) {
+		b.ReportAllocs()
+		b.SetBytes(int64(buf.Len()))
+
+		b.RunParallel(func(pb *testing.PB) {
+			buf := new(bytes.Buffer)
+			s := json.NewStream(json.ConfigFastest, buf, 1024)
+
+			for pb.Next() {
+				buf.Reset()
+				if err := writeSimpleObject(s, v); err != nil {
+					b.Fatal(err)
+				}
+				if err := s.Flush(); err != nil {
+					b.Fatal(err)
+				}
+			}
+		})
+	})
 }
