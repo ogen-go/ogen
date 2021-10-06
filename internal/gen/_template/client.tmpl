@@ -23,11 +23,12 @@ func NewClient(serverURL string) *Client {
 }
 
 {{ range $m := $.Methods }}
-func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req {{ $m.RequestType }}{{ end }}{{ if $m.Parameters}}, params {{ $m.Name }}Params {{ end }}) ({{ $m.ResponseType }}, error) {
+func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req {{ $m.RequestType }}{{ end }}{{ if $m.Parameters}}, params {{ $m.Name }}Params {{ end }}) (_ {{ $m.ResponseType }}, rerr error) {
     {{- if $m.RequestBody }}
     body, contentType, err := encode{{ $m.Name }}Request(req)
     if err != nil {
-        return nil, err
+        rerr = err
+        return
     }
     {{ end }}
 
@@ -35,7 +36,8 @@ func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req 
     
     r, err := http.NewRequestWithContext(ctx, "{{ $m.HTTPMethod }}", path, {{ if $m.RequestBody }}bytes.NewReader(body){{ else }}nil{{ end }})
     if err != nil {
-        return nil, fmt.Errorf("create request: %w", err)
+        rerr = fmt.Errorf("create request: %w", err)
+        return
     }
 
     {{ if $m.RequestBody }}r.Header.Set("Content-Type", contentType){{ end }}
@@ -46,13 +48,15 @@ func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req 
 
     resp, err := c.http.Do(r)
     if err != nil {
-        return nil, fmt.Errorf("do request: %w", err)
+        rerr = fmt.Errorf("do request: %w", err)
+        return
     }
     defer resp.Body.Close()
 
     result, err := decode{{ $m.Name }}Response(resp)
     if err != nil {
-        return nil, fmt.Errorf("decode response: %w", err)
+        rerr = fmt.Errorf("decode response: %w", err)
+        return
     }
 
     return result, nil

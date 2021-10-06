@@ -6,7 +6,7 @@
 
 {{- range $m := $.Methods }}{{/* Range over all methods */}}
 
-func decode{{ $m.Name }}Response(resp *http.Response) ({{ $m.ResponseType }}, error) {
+func decode{{ $m.Name }}Response(resp *http.Response) (_ {{ $m.ResponseType }}, rerr error) {
     switch resp.StatusCode {
     {{- range $statusCode, $response := $m.Responses.StatusCode }}{{/* Range over responses */}}
     case {{ $statusCode }}:
@@ -20,19 +20,23 @@ func decode{{ $m.Name }}Response(resp *http.Response) ({{ $m.ResponseType }}, er
             var response {{ $schema.Type }}
             data, err := io.ReadAll(resp.Body)
             if err != nil {
-                return nil, err
+                rerr = err
+                return
             }
             if err := json.Unmarshal(data, &response); err != nil {
-                return nil, err
+                rerr = err
+                return
             }
 
             return &response, nil
             {{- else }}
-            return nil, fmt.Errorf("{{ $ctype }} decoder not implemented")
+            rerr = fmt.Errorf("{{ $ctype }} decoder not implemented")
+            return
             {{- end }}{{/* Decode */}}
         {{- end }}{{/* Range over contents */}}
         default:
-            return nil, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+            rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+            return
         }
         {{- end }}{{/* Decode content response */}}
     {{- end }}{{/* Range over responses */}}
@@ -49,24 +53,29 @@ func decode{{ $m.Name }}Response(resp *http.Response) ({{ $m.ResponseType }}, er
             var response {{ $schema.Type }}
             data, err := io.ReadAll(resp.Body)
             if err != nil {
-                return nil, err
+                rerr = err
+                return
             }
             if err := json.Unmarshal(data, &response.Response); err != nil {
-                return nil, err
+                rerr = err
+                return
             }
 
             response.StatusCode = resp.StatusCode
             return &response, nil
             {{- else }}
-            return nil, fmt.Errorf("{{ $ctype }} decoder not implemented")
+            rerr = fmt.Errorf("{{ $ctype }} decoder not implemented")
+            return
             {{- end }}{{/* Decode */}}
         {{- end }}{{/* Range over contents */}}
         default:
-            return nil, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+            rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+            return
         }
         {{- end }}{{/* Decode content response */}}
         {{- else }}
-        return nil, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+        rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+        return
         {{- end }}{{- /* Decode default response */}}
     }
 }
