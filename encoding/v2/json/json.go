@@ -9,28 +9,13 @@ import (
 	"golang.org/x/xerrors"
 )
 
-// Unmarshaler implements json reading.
-type Unmarshaler interface {
-	ReadJSON(i *json.Iterator) error
-}
-
-// Marshaler implements json writing.
-type Marshaler interface {
-	WriteFieldJSON(k string, s *json.Stream) error
-	WriteJSON(s *json.Stream) error
-}
-
-// Value represents a json value.
-type Value interface {
-	Marshaler
-	Unmarshaler
-}
-
 // OptionalString is Optional[string].
 type OptionalString struct {
 	Value string
 	Set   bool
 }
+
+func (o OptionalString) IsSet() bool { return o.Set }
 
 // ReadJSON implements Unmarshaler.
 func (o *OptionalString) ReadJSON(i *json.Iterator) error {
@@ -71,6 +56,8 @@ type NullableString struct {
 	Nil   bool
 }
 
+func (o NullableString) IsNil() bool { return o.Nil }
+
 // OptionalNullableString is combined Optional[Nullable[string]].
 //
 // Value can be one of those:
@@ -82,6 +69,9 @@ type OptionalNullableString struct {
 	NullableString
 	Set bool
 }
+
+func (o OptionalNullableString) IsNil() bool { return o.Nil }
+func (o OptionalNullableString) IsSet() bool { return o.Set }
 
 func (o OptionalNullableString) WriteFieldJSON(k string, s *json.Stream) error {
 	if !o.Set {
