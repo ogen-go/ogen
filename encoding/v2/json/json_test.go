@@ -106,7 +106,7 @@ func TestOptionalNullableString_ReadJSON(t *testing.T) {
 }
 
 func BenchmarkOptionalNullableString_WriteFieldJSON(b *testing.B) {
-	v := OptionalNullableString{
+	v := &OptionalNullableString{
 		Set: true,
 		NullableString: NullableString{
 			Value: "Value",
