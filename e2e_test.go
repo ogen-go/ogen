@@ -50,7 +50,6 @@ func TestGenerate(t *testing.T) {
 			Name: "telegram_bot_api.json",
 			Options: []gen.Option{
 				gen.WithIgnoreOptionals,
-				gen.WithIgnoreFormat,
 				gen.WithSkipUnspecified,
 			},
 		},
