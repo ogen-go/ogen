@@ -19,17 +19,17 @@ func newReq() *http.Request {
 
 func TestSet(t *testing.T) {
 	req := newReq()
-	newCtx := context.WithValue(context.Background(), "foo", "bar")
+	newCtx := context.WithValue(context.Background(), testKey{}, "bar")
 	Set(req, newCtx)
-	if v := req.Context().Value("foo").(string); v != "bar" {
+	if v := req.Context().Value(testKey{}).(string); v != "bar" {
 		t.Errorf("unexpected value %s", v)
 	}
 }
 
 func TestSetValue(t *testing.T) {
 	req := newReq()
-	SetValue(req, "foo", "bar")
-	if v := req.Context().Value("foo").(string); v != "bar" {
+	SetValue(req, testKey{}, "bar")
+	if v := req.Context().Value(testKey{}).(string); v != "bar" {
 		t.Errorf("unexpected value %s", v)
 	}
 }
@@ -37,17 +37,19 @@ func TestSetValue(t *testing.T) {
 func BenchmarkSet(b *testing.B) {
 	b.ReportAllocs()
 	req := newReq()
-	newCtx := context.WithValue(context.Background(), "foo", "bar")
+	newCtx := context.WithValue(context.Background(), testKey{}, "bar")
 
 	for i := 0; i < b.N; i++ {
 		Set(req, newCtx)
 	}
 }
 
+type testKey struct{}
+
 func BenchmarkWithContext(b *testing.B) {
 	b.ReportAllocs()
 	req := newReq()
-	newCtx := context.WithValue(context.Background(), "foo", "bar")
+	newCtx := context.WithValue(context.Background(), testKey{}, "bar")
 
 	for i := 0; i < b.N; i++ {
 		req.WithContext(newCtx)

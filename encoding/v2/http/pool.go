@@ -40,7 +40,6 @@ func PutRequest(r *http.Request) {
 	r.Proto = ""
 	r.ProtoMajor = 0
 	r.ProtoMinor = 0
-	r.Cancel = nil
 
 	// Reusing header map.
 	if len(r.Header) > 0 {
