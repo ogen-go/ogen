@@ -22,8 +22,6 @@ type options struct {
 	// TODO: Remove
 	debugIgnoreOptionals bool
 	// TODO: Remove
-	debugAllowEmptyObjects bool
-	// TODO: Remove
 	debugSkipUnspecified bool
 }
 
@@ -32,11 +30,6 @@ type Option func(o *options)
 // WithIgnoreOptionals ignores that optionals are not implemented.
 func WithIgnoreOptionals(o *options) {
 	o.debugIgnoreOptionals = true
-}
-
-// WithEmptyObjects allows empty objects.
-func WithEmptyObjects(o *options) {
-	o.debugAllowEmptyObjects = true
 }
 
 // WithSkipUnspecified skips unspecified types.

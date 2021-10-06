@@ -38,8 +38,8 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 
 	switch schema.Type {
 	case "object":
-		if len(schema.Properties) == 0 && !g.opt.debugAllowEmptyObjects {
-			return nil, xerrors.New("object must contain at least one property")
+		if len(schema.Properties) == 0 {
+			return ast.CreateSchemaPrimitive("struct{}"), nil
 		}
 
 		if schema.Items != nil {
