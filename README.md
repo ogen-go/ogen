@@ -35,6 +35,9 @@ go get github.com/ogen-go/ogen
 * RED metrics for client and server
 * Tracing for client and server
 * Basic validation
+  * String
+    * Length
+    * Regex
 * OneOf/AnyOf
 * Format
   * [String format](https://json-schema.org/understanding-json-schema/reference/string.html)
@@ -47,6 +50,7 @@ go get github.com/ogen-go/ogen
     * UUID
     * URI
     * Hostname
+    * Regular expression
 * Webhook support
 * Files support (with streaming, like io.Reader/Writer)
 * Client retries
