@@ -3,27 +3,31 @@
 package json
 
 import (
+	"bytes"
 	"testing"
 
 	json "github.com/json-iterator/go"
 )
 
-type String string
-
-func (v String) WriteFieldJSON(k string, s *json.Stream) {
-	s.WriteObjectField(k)
-	v.WriteJSON(s)
-}
-
-func (v String) WriteJSON(s *json.Stream) {
-	s.WriteString(string(v))
-}
-
-func (v *String) ReadJSON(i *json.Iterator) bool {
-	panic("implement me")
-}
 
 func TestOptional(t *testing.T) {
-	var v Optional[String]
+	var v Optional[String, *String]
 	v.SetTo("Hello, world!")
+}
+
+func BenchmarkOptional_ReadJSON(b *testing.B) {
+	var v Optional[String, *String]
+	buf := new(bytes.Buffer)
+	buf.WriteString(`"foo"`)
+	iter := json.NewIterator(json.ConfigFastest)
+
+	b.ReportAllocs()
+
+	for i := 0; i < b.N; i++ {
+		iter.ResetBytes(buf.Bytes())
+		v.ReadJSON(iter)
+		if err := iter.Error; err != nil {
+			b.Error(err)
+		}
+	}
 }
