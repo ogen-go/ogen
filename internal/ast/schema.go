@@ -16,7 +16,7 @@ type Schema struct {
 	Name        string
 	Description string
 
-	AliasTo   string
+	AliasTo   *Schema
 	Primitive string
 	Item      *Schema
 	Fields    []SchemaField
@@ -109,7 +109,7 @@ func CreateSchemaPrimitive(typ string) *Schema {
 	}
 }
 
-func CreateSchemaAlias(name, typ string) *Schema {
+func CreateSchemaAlias(name string, typ *Schema) *Schema {
 	return &Schema{
 		Kind:    KindAlias,
 		Name:    name,

@@ -31,7 +31,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 			}
 
 			if s.Is(ast.KindPrimitive, ast.KindArray) {
-				s = ast.CreateSchemaAlias(componentName, s.Type())
+				s = ast.CreateSchemaAlias(componentName, s)
 			}
 			return s, nil
 		}

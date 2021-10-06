@@ -29,10 +29,14 @@ func (g *Generator) devirtSingleRequest(m *ast.Method) {
 		return
 	}
 
-	for _, schema := range m.RequestBody.Contents {
+	for ctype, schema := range m.RequestBody.Contents {
 		schema.Unimplement(iface)
-		m.RequestType = schema
+		schema, unwrapped := g.unwrapAlias(schema)
+		if unwrapped {
+			m.RequestBody.Contents[ctype] = schema
+		}
 
+		m.RequestType = schema
 		if !m.RequestBody.Required {
 			m.RequestType = &ast.Pointer{
 				To: schema,
@@ -54,13 +58,23 @@ func (g *Generator) devirtSingleResponse(m *ast.Method) {
 	for _, resp := range m.Responses.StatusCode {
 		if noc := resp.NoContent; noc != nil {
 			resp.Unimplement(iface)
+			noc, unwrapped := g.unwrapAlias(noc)
+			if unwrapped {
+				resp.NoContent = noc
+			}
+
 			m.ResponseType = noc
 			continue
 		}
 
 		if len(resp.Contents) == 1 {
 			resp.Unimplement(iface)
-			for _, schema := range resp.Contents {
+			for ctype, schema := range resp.Contents {
+				schema, unwrapped := g.unwrapAlias(schema)
+				if unwrapped {
+					resp.Contents[ctype] = schema
+				}
+
 				m.ResponseType = schema
 			}
 		}
@@ -91,4 +105,20 @@ func (g *Generator) removeUnusedIfaces() {
 			delete(g.interfaces, name)
 		}
 	}
+}
+
+func (g *Generator) unwrapAlias(schema *ast.Schema) (*ast.Schema, bool) {
+	if !schema.Is(ast.KindAlias) {
+		return schema, false
+	}
+
+	to := schema.AliasTo
+	if to.Is(ast.KindPrimitive) {
+		if to.Primitive == "struct{}" {
+			return schema, false
+		}
+	}
+
+	delete(g.schemas, schema.Name)
+	return schema.AliasTo, true
 }

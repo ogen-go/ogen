@@ -127,7 +127,7 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*ast.Res
 	// Response without content.
 	// Create empty struct.
 	if len(resp.Content) == 0 {
-		s := ast.CreateSchemaAlias(rname, "struct{}")
+		s := ast.CreateSchemaAlias(rname, ast.CreateSchemaPrimitive("struct{}"))
 		g.schemas[s.Name] = s
 		response.NoContent = s
 		return response, nil
@@ -165,7 +165,7 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*ast.Res
 		}
 
 		if schema.Is(ast.KindPrimitive, ast.KindArray) {
-			schema = ast.CreateSchemaAlias(name, schema.Type())
+			schema = ast.CreateSchemaAlias(name, schema)
 		}
 
 		g.schemas[schema.Name] = schema

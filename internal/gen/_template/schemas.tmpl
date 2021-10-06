@@ -16,7 +16,7 @@ type {{ $name }} struct {
 
 {{/* Define alias */}}
 {{- else if eq $s.Kind "alias" }}
-type {{ $name }} {{ $s.AliasTo }}
+type {{ $name }} {{ $s.AliasTo.Type }}
 {{/* Define alias */}}
 
 {{- end }}

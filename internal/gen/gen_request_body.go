@@ -34,7 +34,7 @@ func (g *Generator) generateRequestBody(name string, body *ogen.RequestBody) (*a
 		// Inlined schema.
 		// Create unique name based on method name and contentType.
 		schemaName := pascal(name, contentType, "Request")
-		schema, err := g.generateSchema(name, media.Schema)
+		schema, err := g.generateSchema(schemaName, media.Schema)
 		if xerrors.Is(err, errSkipSchema) {
 			continue
 		}
@@ -43,7 +43,7 @@ func (g *Generator) generateRequestBody(name string, body *ogen.RequestBody) (*a
 		}
 
 		if schema.Is(ast.KindPrimitive, ast.KindArray) {
-			schema = ast.CreateSchemaAlias(schemaName, schema.Type())
+			schema = ast.CreateSchemaAlias(schemaName, schema)
 		}
 
 		g.schemas[schema.Name] = schema
