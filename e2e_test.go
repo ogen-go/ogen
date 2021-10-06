@@ -46,6 +46,15 @@ func TestGenerate(t *testing.T) {
 		{
 			Name: "techempower.json",
 		},
+		{
+			Name: "telegram_bot_api.json",
+			Options: []gen.Option{
+				gen.WithIgnoreOptionals,
+				gen.WithIgnoreFormat,
+				gen.WithEmptyObjects,
+				gen.WithSkipUnspecified,
+			},
+		},
 	} {
 		t.Run(tc.Name, func(t *testing.T) {
 			f, err := testdata.Open(path.Join("_testdata", tc.Name))
