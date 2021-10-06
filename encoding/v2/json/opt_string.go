@@ -8,6 +8,16 @@ type OptionalString struct {
 	Set   bool
 }
 
+func (o *OptionalString) SetTo(v string) {
+	o.Value = v
+	o.Set = true
+}
+
+func (o *OptionalString) Unset() {
+	o.Set = false
+	o.Value = ""
+}
+
 func (o OptionalString) IsSet() bool { return o.Set }
 
 // ReadJSON implements Unmarshaler.
