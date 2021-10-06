@@ -15,12 +15,18 @@ type Helper struct {
 	i *json.Iterator
 }
 
+func writeSimpleObject(s *json.Stream, v Marshaler) error {
+	s.WriteObjectStart()
+	if err := v.WriteFieldJSON("key", s); err != nil {
+		return err
+	}
+	s.WriteObjectEnd()
+	return s.Error
+}
+
 func (h *Helper) Write(t testing.TB, v Marshaler) {
 	t.Helper()
-	h.s.WriteObjectStart()
-	require.NoError(t, v.WriteFieldJSON("key", h.s))
-	h.s.WriteObjectEnd()
-
+	require.NoError(t, writeSimpleObject(h.s, v))
 	require.NoError(t, h.s.Flush())
 }
 
@@ -96,5 +102,27 @@ func TestOptionalNullableString_ReadJSON(t *testing.T) {
 			New().Field(t, &tc.In, &out)
 			require.Equal(t, tc.In, out)
 		})
+	}
+}
+
+func BenchmarkOptionalNullableString_WriteFieldJSON(b *testing.B) {
+	v := OptionalNullableString{
+		Set: true,
+		NullableString: NullableString{
+			Value: "Value",
+		},
+	}
+	buf := new(bytes.Buffer)
+	s := json.NewStream(json.ConfigDefault, buf, 1024)
+	require.NoError(b, writeSimpleObject(s, v))
+	require.NoError(b, s.Flush())
+	b.SetBytes(int64(buf.Len()))
+
+	b.ReportAllocs()
+
+	for i := 0; i < b.N; i++ {
+		buf.Reset()
+		require.NoError(b, writeSimpleObject(s, v))
+		require.NoError(b, s.Flush())
 	}
 }
