@@ -36,7 +36,7 @@ var (
 	_ = conv.ToInt32
 )
 
-func decodeFoobarGetResponse(resp *http.Response) (FoobarGetResponse, error) {
+func decodeFoobarGetResponse(resp *http.Response) (_ FoobarGetResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -44,31 +44,35 @@ func decodeFoobarGetResponse(resp *http.Response) (FoobarGetResponse, error) {
 			var response Pet
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
-				return nil, err
+				rerr = err
+				return
 			}
 			if err := json.Unmarshal(data, &response); err != nil {
-				return nil, err
+				rerr = err
+				return
 			}
 
 			return &response, nil
 		default:
-			return nil, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return
 		}
 	case 404:
 		return &NotFound{}, nil
 	default:
-		return nil, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return
 	}
 }
 
-func decodeFoobarPutResponse(resp *http.Response) (*FoobarPutDefault, error) {
+func decodeFoobarPutResponse(resp *http.Response) (_ *FoobarPutDefault, rerr error) {
 	switch resp.StatusCode {
 	default:
 		return &FoobarPutDefault{StatusCode: resp.StatusCode}, nil
 	}
 }
 
-func decodeFoobarPostResponse(resp *http.Response) (FoobarPostResponse, error) {
+func decodeFoobarPostResponse(resp *http.Response) (_ FoobarPostResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -76,15 +80,18 @@ func decodeFoobarPostResponse(resp *http.Response) (FoobarPostResponse, error) {
 			var response Pet
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
-				return nil, err
+				rerr = err
+				return
 			}
 			if err := json.Unmarshal(data, &response); err != nil {
-				return nil, err
+				rerr = err
+				return
 			}
 
 			return &response, nil
 		default:
-			return nil, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return
 		}
 	case 404:
 		return &NotFound{}, nil
@@ -94,21 +101,24 @@ func decodeFoobarPostResponse(resp *http.Response) (FoobarPostResponse, error) {
 			var response ErrorStatusCode
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
-				return nil, err
+				rerr = err
+				return
 			}
 			if err := json.Unmarshal(data, &response.Response); err != nil {
-				return nil, err
+				rerr = err
+				return
 			}
 
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return nil, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return
 		}
 	}
 }
 
-func decodePetGetResponse(resp *http.Response) (PetGetResponse, error) {
+func decodePetGetResponse(resp *http.Response) (_ PetGetResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -116,15 +126,18 @@ func decodePetGetResponse(resp *http.Response) (PetGetResponse, error) {
 			var response Pet
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
-				return nil, err
+				rerr = err
+				return
 			}
 			if err := json.Unmarshal(data, &response); err != nil {
-				return nil, err
+				rerr = err
+				return
 			}
 
 			return &response, nil
 		default:
-			return nil, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return
 		}
 	default:
 		switch resp.Header.Get("Content-Type") {
@@ -132,21 +145,24 @@ func decodePetGetResponse(resp *http.Response) (PetGetResponse, error) {
 			var response PetGetDefaultStatusCode
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
-				return nil, err
+				rerr = err
+				return
 			}
 			if err := json.Unmarshal(data, &response.Response); err != nil {
-				return nil, err
+				rerr = err
+				return
 			}
 
 			response.StatusCode = resp.StatusCode
 			return &response, nil
 		default:
-			return nil, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return
 		}
 	}
 }
 
-func decodePetCreateResponse(resp *http.Response) (*Pet, error) {
+func decodePetCreateResponse(resp *http.Response) (_ *Pet, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -154,22 +170,26 @@ func decodePetCreateResponse(resp *http.Response) (*Pet, error) {
 			var response Pet
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
-				return nil, err
+				rerr = err
+				return
 			}
 			if err := json.Unmarshal(data, &response); err != nil {
-				return nil, err
+				rerr = err
+				return
 			}
 
 			return &response, nil
 		default:
-			return nil, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return
 		}
 	default:
-		return nil, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return
 	}
 }
 
-func decodePetGetByNameResponse(resp *http.Response) (*Pet, error) {
+func decodePetGetByNameResponse(resp *http.Response) (_ *Pet, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -177,17 +197,21 @@ func decodePetGetByNameResponse(resp *http.Response) (*Pet, error) {
 			var response Pet
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
-				return nil, err
+				rerr = err
+				return
 			}
 			if err := json.Unmarshal(data, &response); err != nil {
-				return nil, err
+				rerr = err
+				return
 			}
 
 			return &response, nil
 		default:
-			return nil, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return
 		}
 	default:
-		return nil, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return
 	}
 }
