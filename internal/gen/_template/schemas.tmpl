@@ -22,8 +22,8 @@ type {{ $name }} {{ $s.AliasTo.Type }}
 {{- end }}
 
 {{/* Define methods */}}
-{{- range $impl, $_ := $s.Implements }}
-func (*{{ $name}}) {{ $impl }}() {}
+{{- range $method := $s.Methods }}
+func (*{{ $name}}) {{ $method }}() {}
 {{- end }}
 {{/* Define methods */}}
 

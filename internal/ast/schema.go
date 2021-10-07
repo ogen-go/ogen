@@ -21,7 +21,7 @@ type Schema struct {
 	Item      *Schema
 	Fields    []SchemaField
 
-	Implements map[string]struct{}
+	Implements map[*Interface]struct{}
 }
 
 func (s Schema) Type() string {
@@ -55,23 +55,34 @@ func (s *Schema) Implement(iface *Interface) {
 	}
 
 	if s.Implements == nil {
-		s.Implements = map[string]struct{}{}
+		s.Implements = map[*Interface]struct{}{}
 	}
 	if iface.Implementations == nil {
 		iface.Implementations = map[*Schema]struct{}{}
 	}
 
 	iface.Implementations[s] = struct{}{}
-	for method := range iface.Methods {
-		s.Implements[method] = struct{}{}
-	}
+	s.Implements[iface] = struct{}{}
 }
 
 func (s *Schema) Unimplement(iface *Interface) {
 	delete(iface.Implementations, s)
-	for method := range iface.Methods {
-		delete(s.Implements, method)
+	delete(s.Implements, iface)
+}
+
+func (s *Schema) Methods() []string {
+	ms := make(map[string]struct{})
+	for iface := range s.Implements {
+		for m := range iface.Methods {
+			ms[m] = struct{}{}
+		}
 	}
+
+	var result []string
+	for m := range ms {
+		result = append(result, m)
+	}
+	return result
 }
 
 func (s *Schema) Equal(ss *Schema) bool {

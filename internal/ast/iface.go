@@ -14,9 +14,6 @@ func (i *Interface) AddMethod(method string) {
 		i.Methods = map[string]struct{}{}
 	}
 	i.Methods[method] = struct{}{}
-	for schema := range i.Implementations {
-		schema.Implements[method] = struct{}{}
-	}
 }
 
 func (i *Interface) Type() string { return i.Name }
