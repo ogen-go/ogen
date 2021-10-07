@@ -196,6 +196,14 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*ast.Res
 //
 // TODO: Remove unused schema (Example 2).
 func (g *Generator) wrapStatusCode(schema *ast.Schema) *ast.Schema {
+	if !schema.Is(ast.KindStruct, ast.KindAlias) {
+		panic("unreachable")
+	}
+
+	if s, ok := g.schemas[schema.Name+"StatusCode"]; ok {
+		return s
+	}
+
 	// Use 'StatusCode' postfix for wrapper struct name
 	// to avoid name collision with original response schema.
 	newSchema := ast.Struct(schema.Name + "StatusCode")
