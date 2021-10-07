@@ -96,7 +96,15 @@ func (g *Generator) devirtDefaultResponse(m *ast.Method) {
 	}
 
 	m.Responses.Default.Unimplement(iface)
-	m.ResponseType = m.Responses.Default.NoContent
+	if noc := m.Responses.Default.NoContent; noc != nil {
+		m.ResponseType = noc
+		return
+	}
+
+	for _, schema := range m.Responses.Default.Contents {
+		m.ResponseType = schema
+		return
+	}
 }
 
 func (g *Generator) removeUnusedIfaces() {
