@@ -36,6 +36,15 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 		return s, nil
 	}
 
+	switch {
+	case len(schema.OneOf) > 0:
+		return ast.Primitive("interface{}"), nil
+	case len(schema.AnyOf) > 0:
+		return ast.Primitive("interface{}"), nil
+	case len(schema.AllOf) > 0:
+		return ast.Primitive("interface{}"), nil
+	}
+
 	switch schema.Type {
 	case "object":
 		if len(schema.Properties) == 0 {
