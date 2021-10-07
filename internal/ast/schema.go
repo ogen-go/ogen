@@ -83,10 +83,17 @@ func (s *Schema) Equal(ss *Schema) bool {
 	case KindPrimitive:
 		return s.Primitive == ss.Primitive
 	case KindAlias:
+		if s.Name != ss.Name {
+			return false
+		}
 		return s.AliasTo.Equal(ss.AliasTo)
 	case KindArray:
 		return s.Item.Equal(ss.Item)
 	case KindStruct:
+		if s.Name != ss.Name {
+			return false
+		}
+
 		if len(s.Fields) != len(ss.Fields) {
 			return false
 		}
