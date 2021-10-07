@@ -68,19 +68,20 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 		s.Description = schema.Description
 		g.schemas[s.Name] = s
 		for propName, propSchema := range schema.Properties {
-			if !required(propName) && !g.opt.debugIgnoreOptionals {
-				return nil, xerrors.Errorf("properties: %s: optional properties not supported", propName)
-			}
-
 			prop, err := g.generateSchema(name+pascalMP(propName), propSchema)
 			if err != nil {
 				return nil, xerrors.Errorf("%s: %w", propName, err)
 			}
 
+			typ := prop.Type()
+			if !required(propName) {
+				typ = "*" + typ
+			}
+
 			s.Fields = append(s.Fields, ast.SchemaField{
 				Name: pascalMP(propName),
 				Tag:  propName,
-				Type: prop.Type(),
+				Type: typ,
 			})
 		}
 		sort.SliceStable(s.Fields, func(i, j int) bool {

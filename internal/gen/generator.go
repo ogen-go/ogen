@@ -20,17 +20,10 @@ type Generator struct {
 
 type options struct {
 	// TODO: Remove
-	debugIgnoreOptionals bool
-	// TODO: Remove
 	debugSkipUnspecified bool
 }
 
 type Option func(o *options)
-
-// WithIgnoreOptionals ignores that optionals are not implemented.
-func WithIgnoreOptionals(o *options) {
-	o.debugIgnoreOptionals = true
-}
 
 // WithSkipUnspecified skips unspecified types.
 func WithSkipUnspecified(o *options) {
