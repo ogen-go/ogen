@@ -55,6 +55,8 @@ func TestGenerate(t *testing.T) {
 			},
 		},
 		{
+			// https://github.com/kubernetes/kubernetes/tree/master/api/openapi-spec
+			// Generated from OpenAPI v2 (swagger) spec.
 			Name: "k8s.json",
 			Options: []gen.Option{
 				gen.WithIgnoreOptionals,
