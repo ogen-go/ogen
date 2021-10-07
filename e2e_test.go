@@ -54,6 +54,13 @@ func TestGenerate(t *testing.T) {
 				gen.WithSkipUnspecified,
 			},
 		},
+		{
+			Name: "k8s.json",
+			Options: []gen.Option{
+				gen.WithIgnoreOptionals,
+				gen.WithSkipUnspecified,
+			},
+		},
 	} {
 		t.Run(tc.Name, func(t *testing.T) {
 			f, err := testdata.Open(path.Join("_testdata", tc.Name))
