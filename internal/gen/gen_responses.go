@@ -85,7 +85,7 @@ func (g *Generator) createDefaultResponse(methodName string, r ogen.Response) (*
 
 	// Default response with no contents.
 	if len(r.Content) == 0 {
-		statusCode := ast.CreateSchemaStruct(methodName + "Default")
+		statusCode := ast.Struct(methodName + "Default")
 		statusCode.Fields = append(statusCode.Fields, ast.SchemaField{
 			Name: "StatusCode",
 			Type: "int",
@@ -127,7 +127,7 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*ast.Res
 	// Response without content.
 	// Create empty struct.
 	if len(resp.Content) == 0 {
-		s := ast.CreateSchemaAlias(rname, ast.CreateSchemaPrimitive("struct{}"))
+		s := ast.Alias(rname, ast.Primitive("struct{}"))
 		g.schemas[s.Name] = s
 		response.NoContent = s
 		return response, nil
@@ -165,7 +165,7 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*ast.Res
 		}
 
 		if schema.Is(ast.KindPrimitive, ast.KindArray) {
-			schema = ast.CreateSchemaAlias(name, schema)
+			schema = ast.Alias(name, schema)
 		}
 
 		g.schemas[schema.Name] = schema
@@ -204,7 +204,7 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*ast.Res
 func (g *Generator) wrapStatusCode(schema *ast.Schema) *ast.Schema {
 	// Use 'StatusCode' postfix for wrapper struct name
 	// to avoid name collision with original response schema.
-	newSchema := ast.CreateSchemaStruct(schema.Name + "StatusCode")
+	newSchema := ast.Struct(schema.Name + "StatusCode")
 	newSchema.Fields = []ast.SchemaField{
 		{
 			Name: "StatusCode",

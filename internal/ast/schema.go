@@ -74,19 +74,34 @@ func (s *Schema) Unimplement(iface *Interface) {
 	}
 }
 
-func (s Schema) EqualFields(another Schema) bool {
-	if len(s.Fields) != len(another.Fields) {
+func (s *Schema) Equal(ss *Schema) bool {
+	if s.Kind != ss.Kind {
 		return false
 	}
 
-	for i := 0; i < len(s.Fields); i++ {
-		l, r := s.Fields[i], another.Fields[i]
-		if l.Name != r.Name || l.Type != r.Type || l.Tag != r.Tag {
+	switch s.Kind {
+	case KindPrimitive:
+		return s.Primitive == ss.Primitive
+	case KindAlias:
+		return s.AliasTo.Equal(ss.AliasTo)
+	case KindArray:
+		return s.Item.Equal(ss.Item)
+	case KindStruct:
+		if len(s.Fields) != len(ss.Fields) {
 			return false
 		}
-	}
 
-	return true
+		for i := 0; i < len(s.Fields); i++ {
+			l, r := s.Fields[i], ss.Fields[i]
+			if l.Name != r.Name || l.Type != r.Type || l.Tag != r.Tag {
+				return false
+			}
+		}
+
+		return true
+	default:
+		panic("unreachable")
+	}
 }
 
 type SchemaField struct {
@@ -95,21 +110,21 @@ type SchemaField struct {
 	Type string
 }
 
-func CreateSchemaStruct(name string) *Schema {
+func Struct(name string) *Schema {
 	return &Schema{
 		Kind: KindStruct,
 		Name: name,
 	}
 }
 
-func CreateSchemaPrimitive(typ string) *Schema {
+func Primitive(typ string) *Schema {
 	return &Schema{
 		Kind:      KindPrimitive,
 		Primitive: typ,
 	}
 }
 
-func CreateSchemaAlias(name string, typ *Schema) *Schema {
+func Alias(name string, typ *Schema) *Schema {
 	return &Schema{
 		Kind:    KindAlias,
 		Name:    name,
@@ -117,14 +132,14 @@ func CreateSchemaAlias(name string, typ *Schema) *Schema {
 	}
 }
 
-func CreateSchemaArray(item *Schema) *Schema {
+func Array(item *Schema) *Schema {
 	return &Schema{
 		Kind: KindArray,
 		Item: item,
 	}
 }
 
-func CreateIface(name string) *Interface {
+func Iface(name string) *Interface {
 	return &Interface{
 		Name:            name,
 		Methods:         map[string]struct{}{},

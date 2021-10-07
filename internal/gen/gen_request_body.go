@@ -43,7 +43,7 @@ func (g *Generator) generateRequestBody(name string, body *ogen.RequestBody) (*a
 		}
 
 		if schema.Is(ast.KindPrimitive, ast.KindArray) {
-			schema = ast.CreateSchemaAlias(schemaName, schema)
+			schema = ast.Alias(schemaName, schema)
 		}
 
 		g.schemas[schema.Name] = schema

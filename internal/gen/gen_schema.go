@@ -39,7 +39,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 	switch schema.Type {
 	case "object":
 		if len(schema.Properties) == 0 {
-			return ast.CreateSchemaPrimitive("struct{}"), nil
+			return ast.Primitive("struct{}"), nil
 		}
 
 		if schema.Items != nil {
@@ -55,7 +55,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 			return false
 		}
 
-		s := ast.CreateSchemaStruct(name)
+		s := ast.Struct(name)
 		s.Description = schema.Description
 		g.schemas[s.Name] = s
 		for propName, propSchema := range schema.Properties {
@@ -95,7 +95,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 			return nil, err
 		}
 
-		return ast.CreateSchemaArray(item), nil
+		return ast.Array(item), nil
 
 	case "":
 		if g.opt.debugSkipUnspecified {
@@ -112,7 +112,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 			return nil, xerrors.Errorf("parse: %w", err)
 		}
 
-		return ast.CreateSchemaPrimitive(simpleType), nil
+		return ast.Primitive(simpleType), nil
 	}
 }
 
