@@ -38,13 +38,13 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 
 	switch {
 	case len(schema.Enum) > 0:
-		return ast.Primitive("string"), nil
+		return nil, ErrEnumsNotImplemented
 	case len(schema.OneOf) > 0:
-		return ast.Primitive("string"), nil
+		return nil, ErrOneOfNotImplemented
 	case len(schema.AnyOf) > 0:
-		return ast.Primitive("string"), nil
+		return nil, ErrAnyOfNotImplemented
 	case len(schema.AllOf) > 0:
-		return ast.Primitive("string"), nil
+		return nil, ErrAllOfNotImplemented
 	}
 
 	switch schema.Type {

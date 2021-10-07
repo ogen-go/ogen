@@ -19,7 +19,12 @@ type Generator struct {
 }
 
 type Options struct {
-	SpecificPath string
+	SpecificMethodPath      string
+	IgnoreUnspecifiedParams bool
+	IgnoreEnums             bool
+	IgnoreOneOf             bool
+	IgnoreAnyOf             bool
+	IgnoreAllOf             bool
 }
 
 func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {

@@ -16,15 +16,17 @@ func (g *Generator) generateMethods() error {
 			return xerrors.New("referenced paths are not supported")
 		}
 
-		if g.opt.SpecificPath != "" {
-			if g.opt.SpecificPath != path {
+		if g.opt.SpecificMethodPath != "" {
+			if g.opt.SpecificMethodPath != path {
 				continue
 			}
 		}
 
 		if err := forEachOps(item, func(method string, op ogen.Operation) error {
 			if err := g.generateMethod(path, strings.ToUpper(method), op); err != nil {
-				return xerrors.Errorf("%s: %w", method, err)
+				if err := g.checkErr(err); err != nil {
+					return xerrors.Errorf("%s: %w", method, err)
+				}
 			}
 			return nil
 		}); err != nil {
@@ -124,7 +126,9 @@ func (g *Generator) parsePath(path string, params []*ast.Parameter) (parts []ast
 			name := s[1 : len(s)-1]
 			param, found := lookup(name)
 			if !found {
-				return nil, xerrors.Errorf("path parameter '%s' not found in parameters", name)
+				return nil, &PathParameterNotSpecified{
+					ParamName: name,
+				}
 			}
 
 			parts = append(parts, ast.PathPart{Param: param})

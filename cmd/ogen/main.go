@@ -31,12 +31,21 @@ func (t formattedSource) WriteFile(name string, content []byte) error {
 }
 
 func main() {
-	specPath := flag.String("schema", "", "Path to openapi spec file")
-	targetDir := flag.String("target", "api", "Path to target dir")
-	packageName := flag.String("package", "api", "Target package name")
-	performFormat := flag.Bool("format", true, "perform code formatting")
-	specificPath := flag.String("specific_path", "", "Generate specific path method")
-	clean := flag.Bool("clean", false, "Clean generated files before generation")
+	var (
+		specPath       = flag.String("schema", "", "Path to openapi spec file")
+		targetDir      = flag.String("target", "api", "Path to target dir")
+		packageName    = flag.String("package", "api", "Target package name")
+		performFormat  = flag.Bool("format", true, "perform code formatting")
+		specificMethod = flag.String("specific-method", "", "Generate specific method by its path")
+		clean          = flag.Bool("clean", false, "Clean generated files before generation")
+
+		debugSkipUnspecifiedParams = flag.Bool("debug.skipUnspecifiedParams", false, "Ignore methods where path params are not specified")
+		debugIgnoreEnums           = flag.Bool("debug.ignoreEnums", false, "Ignore methods with enums")
+		debugIgnoreOneOf           = flag.Bool("debug.ignoreOneOf", false, "Ignore methods with oneOf")
+		debugIgnoreAnyOf           = flag.Bool("debug.ignoreAnyOf", false, "Ignore methods with anyOf")
+		debugIgnoreAllOf           = flag.Bool("debug.ignoreAllOf", false, "Ignore methods with allOf")
+	)
+
 	flag.Parse()
 	if *specPath == "" {
 		panic("no spec provided")
@@ -83,12 +92,14 @@ func main() {
 		Format: *performFormat,
 	}
 
-	var opts gen.Options
-	if *specificPath != "" {
-		opts.SpecificPath = *specificPath
-	}
-
-	g, err := gen.NewGenerator(spec, opts)
+	g, err := gen.NewGenerator(spec, gen.Options{
+		SpecificMethodPath:      *specificMethod,
+		IgnoreUnspecifiedParams: *debugSkipUnspecifiedParams,
+		IgnoreEnums:             *debugIgnoreEnums,
+		IgnoreOneOf:             *debugIgnoreOneOf,
+		IgnoreAnyOf:             *debugIgnoreAnyOf,
+		IgnoreAllOf:             *debugIgnoreAllOf,
+	})
 	if err != nil {
 		panic(fmt.Sprintf("%+v", err))
 	}
