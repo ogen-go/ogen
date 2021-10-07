@@ -37,12 +37,14 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 	}
 
 	switch {
+	case len(schema.Enum) > 0:
+		return ast.Primitive("string"), nil
 	case len(schema.OneOf) > 0:
-		return ast.Primitive("interface{}"), nil
+		return ast.Primitive("string"), nil
 	case len(schema.AnyOf) > 0:
-		return ast.Primitive("interface{}"), nil
+		return ast.Primitive("string"), nil
 	case len(schema.AllOf) > 0:
-		return ast.Primitive("interface{}"), nil
+		return ast.Primitive("string"), nil
 	}
 
 	switch schema.Type {
