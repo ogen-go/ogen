@@ -1,6 +1,7 @@
 package conv
 
 import (
+	"fmt"
 	"strconv"
 	"time"
 )
@@ -22,6 +23,8 @@ func BytesToString(v []byte) string { return string(v) }
 func TimeToString(v time.Time) string { return v.Format(time.RFC3339) }
 
 func BoolToString(v bool) string { return strconv.FormatBool(v) }
+
+func InterfaceToString(v interface{}) string { return fmt.Sprintf("%s", v) }
 
 func Int32ArrayToString(vs []int32) []string {
 	strs := make([]string, 0, len(vs))

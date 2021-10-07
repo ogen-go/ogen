@@ -44,6 +44,8 @@ func ToBool(s string) (bool, error) {
 	return strconv.ParseBool(s)
 }
 
+func ToInterface(s string) (interface{}, error) { return s, nil }
+
 func ToInt32Array(a []string) ([]int32, error) {
 	var arr []int32
 	for _, s := range a {
