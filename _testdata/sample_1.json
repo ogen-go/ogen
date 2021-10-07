@@ -235,8 +235,7 @@
         "required": [
           "id",
           "name",
-          "birthday",
-          "friends"
+          "birthday"
         ]
       }
     },
