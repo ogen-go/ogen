@@ -11,10 +11,12 @@ import (
 	"testing"
 
 	"github.com/go-chi/chi/v5"
+	json "github.com/json-iterator/go"
 	"github.com/stretchr/testify/require"
 	"github.com/valyala/fasthttp"
 	"golang.org/x/xerrors"
 
+	http2 "github.com/ogen-go/ogen/encoding/v2/http"
 	"github.com/ogen-go/ogen/internal/techempower"
 )
 
@@ -161,6 +163,52 @@ func BenchmarkIntegration(b *testing.B) {
 
 					// Reusing buffer.
 					dst = result[:0]
+				}
+			})
+		})
+	})
+
+	b.Run("Manual", func(b *testing.B) {
+		// Test with some manual optimizations.
+		s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			js := json.NewStream(json.ConfigFastest, w, 1024)
+			js.WriteObjectStart()
+			js.WriteObjectField("message")
+			js.WriteString("Hello, world!")
+			js.WriteObjectEnd()
+		}))
+		defer s.Close()
+
+		ctx := context.Background()
+		client := &http.Client{
+			Transport: &http.Transport{
+				MaxConnsPerHost:     100,
+				MaxIdleConnsPerHost: 100,
+				MaxIdleConns:        100,
+			},
+			CheckRedirect: nil,
+		}
+		b.Run("JSON", func(b *testing.B) {
+			b.ReportAllocs()
+			b.ResetTimer()
+			u, err := url.Parse(s.URL)
+			require.NoError(b, err)
+
+			b.RunParallel(func(pb *testing.PB) {
+				for pb.Next() {
+					req := http2.NewRequest(ctx, http.MethodGet, u, nil)
+					res, err := client.Do(req)
+					http2.PutRequest(req)
+					if err != nil {
+						b.Error(err)
+						break
+					}
+					io.Copy(io.Discard, res.Body)
+					res.Body.Close()
+					if res.StatusCode != http.StatusOK {
+						b.Error(res.StatusCode)
+						break
+					}
 				}
 			})
 		})
