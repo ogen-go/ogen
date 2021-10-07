@@ -36,6 +36,7 @@ func main() {
 	packageName := flag.String("package", "api", "Target package name")
 	performFormat := flag.Bool("format", true, "perform code formatting")
 	debugIgnoreOptionals := flag.Bool("debug.ignore-optionals", false, "DEBUG: ignore unimplemented optionals")
+	debugIgnoreUnspecified := flag.Bool("debug.ignore-unspecified", false, "DEBUG: ignore unspecified items")
 	clean := flag.Bool("clean", false, "Clean generated files before generation")
 	flag.Parse()
 	if *specPath == "" {
@@ -85,6 +86,9 @@ func main() {
 	var opts []gen.Option
 	if *debugIgnoreOptionals {
 		opts = append(opts, gen.WithIgnoreOptionals)
+	}
+	if *debugIgnoreUnspecified {
+		opts = append(opts, gen.WithSkipUnspecified)
 	}
 	g, err := gen.NewGenerator(spec, opts...)
 	if err != nil {
