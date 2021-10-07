@@ -51,7 +51,34 @@ func (g *Generator) resolveResponse(ref string) (*ast.Response, error) {
 
 	name := pascal(cname)
 	if r, ok := g.responses[name]; ok {
-		return r, nil
+		// Example:
+		//   ...
+		//   responses:
+		//     200:
+		//       #/components/responses/Foo
+		//     203:
+		//       #/components/responses/Foo
+		//
+		// responses:
+		//   Foo:
+		//     contents:
+		//       application/json:
+		//         schema:
+		//           type: string
+		//
+		// These responses (200, 203) in our ast representation
+		// would point to the same *ast.Response struct.
+		// It is bad because if we want to change response 200 *ast.Response.Contents map,
+		// response 203 also changes, which can be unexpected.
+		//
+		// So, we need to create new *ast.Response and copy schemas into it.
+		newR := ast.CreateResponse()
+		newR.NoContent = r.NoContent
+		newR.Contents = make(map[string]*ast.Schema)
+		for ctype, s := range r.Contents {
+			newR.Contents[ctype] = s
+		}
+		return newR, nil
 	}
 
 	component, found := g.spec.Components.Responses[cname]
