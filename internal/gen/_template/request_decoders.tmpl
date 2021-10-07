@@ -29,7 +29,7 @@ func decode{{ $m.Name }}Request(r *http.Request) (_ {{ $m.RequestType.Type }}, r
             return
         }
 
-        return {{ if not $m.RequestBody.Required }}&{{ end }}request, nil
+        return {{ if or (not $m.RequestBody.Required) ($m.IsRequestIface) }}&{{ end }}request, nil
         {{- /* Decode json */ -}}
         {{- else }}
         _ = request
