@@ -1,5 +1,6 @@
 .idea
 _bin/*
+./examples
 
 *-fuzz.zip
 

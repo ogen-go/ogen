@@ -203,8 +203,8 @@ func BenchmarkIntegration(b *testing.B) {
 						b.Error(err)
 						break
 					}
-					io.Copy(io.Discard, res.Body)
-					res.Body.Close()
+					_, _ = io.Copy(io.Discard, res.Body)
+					_ = res.Body.Close()
 					if res.StatusCode != http.StatusOK {
 						b.Error(res.StatusCode)
 						break
