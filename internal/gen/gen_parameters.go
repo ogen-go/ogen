@@ -24,9 +24,6 @@ func (g *Generator) generateParams(methodPath string, methodParams []ogen.Parame
 		}
 
 		param, err := g.parseParameter(p, methodPath)
-		if xerrors.Is(err, errSkipSchema) {
-			continue
-		}
 		if err != nil {
 			return nil, xerrors.Errorf("parse parameter '%s': %w", p.Name, err)
 		}

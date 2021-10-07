@@ -21,9 +21,6 @@ func (g *Generator) generateRequestBody(name string, body *ogen.RequestBody) (*a
 		if ref := media.Schema.Ref; ref != "" {
 			schema, err := g.resolveSchema(ref)
 			if err != nil {
-				if xerrors.Is(err, errSkipSchema) {
-					continue
-				}
 				return nil, err
 			}
 
@@ -35,9 +32,6 @@ func (g *Generator) generateRequestBody(name string, body *ogen.RequestBody) (*a
 		// Create unique name based on method name and contentType.
 		schemaName := pascal(name, contentType, "Request")
 		schema, err := g.generateSchema(schemaName, media.Schema)
-		if xerrors.Is(err, errSkipSchema) {
-			continue
-		}
 		if err != nil {
 			return nil, xerrors.Errorf("content: %s: parse schema: %w", contentType, err)
 		}

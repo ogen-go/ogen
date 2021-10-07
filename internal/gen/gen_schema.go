@@ -91,10 +91,8 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 
 	case "array":
 		if schema.Items == nil {
-			if g.opt.debugSkipUnspecified {
-				return nil, xerrors.Errorf("skipping unspecified items: %w", errSkipSchema)
-			}
-			return nil, xerrors.New("items must be specified")
+			// Fallback to string.
+			return ast.Array(ast.Primitive("string")), nil
 		}
 		if len(schema.Properties) > 0 {
 			return nil, xerrors.New("array cannot contain properties")
@@ -108,10 +106,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 		return ast.Array(item), nil
 
 	case "":
-		if g.opt.debugSkipUnspecified {
-			return nil, xerrors.Errorf("skipping unspecified type: %w", errSkipSchema)
-		}
-		return nil, xerrors.New("type must be specified")
+		return ast.Primitive("string"), nil
 
 	default:
 		simpleType, err := g.parseSimple(
@@ -136,7 +131,7 @@ func (g *Generator) parseSimple(typ, format string) (string, error) {
 		"number": {
 			"float":  "float32",
 			"double": "float64",
-			"":       "float",
+			"":       "float64",
 		},
 		"string": {
 			"":          "string",

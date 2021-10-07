@@ -8,7 +8,6 @@ import (
 )
 
 type Generator struct {
-	opt     options
 	spec    *ogen.Spec
 	methods []*ast.Method
 
@@ -18,27 +17,9 @@ type Generator struct {
 	interfaces    map[string]*ast.Interface
 }
 
-type options struct {
-	// TODO: Remove
-	debugSkipUnspecified bool
-}
-
-type Option func(o *options)
-
-// WithSkipUnspecified skips unspecified types.
-func WithSkipUnspecified(o *options) {
-	o.debugSkipUnspecified = true
-}
-
-func NewGenerator(spec *ogen.Spec, opts ...Option) (*Generator, error) {
-	o := options{}
-	for _, f := range opts {
-		f(&o)
-	}
-
+func NewGenerator(spec *ogen.Spec) (*Generator, error) {
 	initComponents(spec)
 	g := &Generator{
-		opt:           o,
 		spec:          spec,
 		schemas:       map[string]*ast.Schema{},
 		requestBodies: map[string]*ast.RequestBody{},

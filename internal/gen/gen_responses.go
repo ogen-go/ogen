@@ -144,9 +144,6 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*ast.Res
 		if ref := media.Schema.Ref; ref != "" {
 			s, err := g.resolveSchema(ref)
 			if err != nil {
-				if xerrors.Is(err, errSkipSchema) {
-					continue
-				}
 				return nil, err
 			}
 
@@ -154,9 +151,6 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*ast.Res
 		} else {
 			// Inlined response schema.
 			s, err := g.generateSchema(name, media.Schema)
-			if xerrors.Is(err, errSkipSchema) {
-				continue
-			}
 			if err != nil {
 				return nil, xerrors.Errorf("content: %s: schema: %w", contentType, err)
 			}

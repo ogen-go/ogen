@@ -22,9 +22,6 @@ func (g *Generator) generateMethods() error {
 			}
 			return nil
 		}); err != nil {
-			if xerrors.Is(err, errSkipSchema) {
-				continue
-			}
 			return xerrors.Errorf("paths: %s: %w", path, err)
 		}
 	}
@@ -121,10 +118,7 @@ func (g *Generator) parsePath(path string, params []*ast.Parameter) (parts []ast
 			name := s[1 : len(s)-1]
 			param, found := lookup(name)
 			if !found {
-				if g.opt.debugSkipUnspecified {
-					return nil, xerrors.Errorf("param %q not found in path %q: %w", name, path, errSkipSchema)
-				}
-				return nil, xerrors.Errorf("parameter '%s' not found in path %q", name, path)
+				return nil, xerrors.Errorf("path parameter '%s' not found in parameters", name)
 			}
 
 			parts = append(parts, ast.PathPart{Param: param})
