@@ -51,6 +51,7 @@ func NewGenerator(spec *ogen.Spec, opts ...Option) (*Generator, error) {
 	}
 
 	g.simplify()
+	g.fix()
 	return g, nil
 }
 
