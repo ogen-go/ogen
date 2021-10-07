@@ -13,22 +13,23 @@ func (g *Generator) resolveSchema(ref string) (*ast.Schema, error) {
 		return nil, err
 	}
 
-	return g.generateSchema(name, ogen.Schema{
+	return g.generateSchema(pascal(name), ogen.Schema{
 		Ref: ref,
 	})
 }
 
 func (g *Generator) resolveRequestBody(ref string) (*ast.RequestBody, error) {
-	name, err := componentName(ref)
+	cname, err := componentName(ref)
 	if err != nil {
 		return nil, err
 	}
 
+	name := pascal(cname)
 	if r, ok := g.requestBodies[name]; ok {
 		return r, nil
 	}
 
-	component, found := g.spec.Components.RequestBodies[name]
+	component, found := g.spec.Components.RequestBodies[cname]
 	if !found {
 		return nil, fmt.Errorf("component by reference '%s' not found", ref)
 	}
@@ -43,16 +44,17 @@ func (g *Generator) resolveRequestBody(ref string) (*ast.RequestBody, error) {
 }
 
 func (g *Generator) resolveResponse(ref string) (*ast.Response, error) {
-	name, err := componentName(ref)
+	cname, err := componentName(ref)
 	if err != nil {
 		return nil, err
 	}
 
+	name := pascal(cname)
 	if r, ok := g.responses[name]; ok {
 		return r, nil
 	}
 
-	component, found := g.spec.Components.Responses[name]
+	component, found := g.spec.Components.Responses[cname]
 	if !found {
 		return nil, fmt.Errorf("component by reference '%s' not found", ref)
 	}
