@@ -26,20 +26,13 @@ func (n fmtFs) WriteFile(baseName string, source []byte) error {
 func TestGenerate(t *testing.T) {
 	for _, tc := range []struct {
 		Name    string
-		Options []gen.Option
+		Options gen.Options
 	}{
 		{
 			Name: "firecracker.json",
-			Options: []gen.Option{
-				gen.WithIgnoreOptionals,
-			},
 		},
 		{
 			Name: "api.github.com.json",
-			Options: []gen.Option{
-				gen.WithIgnoreOptionals,
-				gen.WithSkipUnspecified,
-			},
 		},
 		{
 			Name: "sample_1.json",
@@ -49,19 +42,11 @@ func TestGenerate(t *testing.T) {
 		},
 		{
 			Name: "telegram_bot_api.json",
-			Options: []gen.Option{
-				gen.WithIgnoreOptionals,
-				gen.WithSkipUnspecified,
-			},
 		},
 		{
 			// https://github.com/kubernetes/kubernetes/tree/master/api/openapi-spec
 			// Generated from OpenAPI v2 (swagger) spec.
 			Name: "k8s.json",
-			Options: []gen.Option{
-				gen.WithIgnoreOptionals,
-				gen.WithSkipUnspecified,
-			},
 		},
 	} {
 		t.Run(tc.Name, func(t *testing.T) {
@@ -70,7 +55,7 @@ func TestGenerate(t *testing.T) {
 			defer require.NoError(t, f.Close())
 			spec, err := ogen.Parse(f)
 			require.NoError(t, err)
-			g, err := gen.NewGenerator(spec, tc.Options...)
+			g, err := gen.NewGenerator(spec, tc.Options)
 			require.NoError(t, err)
 
 			require.NoError(t, g.WriteSource(fmtFs{}, "api"))
