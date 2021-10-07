@@ -1,6 +1,9 @@
 package ast
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 type SchemaKind = string
 
@@ -82,6 +85,7 @@ func (s *Schema) Methods() []string {
 	for m := range ms {
 		result = append(result, m)
 	}
+	sort.Strings(result)
 	return result
 }
 
