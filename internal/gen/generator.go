@@ -8,6 +8,7 @@ import (
 )
 
 type Generator struct {
+	opt     Options
 	spec    *ogen.Spec
 	methods []*ast.Method
 
@@ -17,9 +18,14 @@ type Generator struct {
 	interfaces    map[string]*ast.Interface
 }
 
-func NewGenerator(spec *ogen.Spec) (*Generator, error) {
+type Options struct {
+	SpecificPath string
+}
+
+func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	initComponents(spec)
 	g := &Generator{
+		opt:           opts,
 		spec:          spec,
 		schemas:       map[string]*ast.Schema{},
 		requestBodies: map[string]*ast.RequestBody{},

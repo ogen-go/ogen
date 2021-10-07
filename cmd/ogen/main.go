@@ -35,7 +35,7 @@ func main() {
 	targetDir := flag.String("target", "api", "Path to target dir")
 	packageName := flag.String("package", "api", "Target package name")
 	performFormat := flag.Bool("format", true, "perform code formatting")
-	debugIgnoreUnspecified := flag.Bool("debug.ignore-unspecified", false, "DEBUG: ignore unspecified items")
+	specificPath := flag.String("specific_path", "", "Generate specific path method")
 	clean := flag.Bool("clean", false, "Clean generated files before generation")
 	flag.Parse()
 	if *specPath == "" {
@@ -82,14 +82,17 @@ func main() {
 		Root:   *targetDir,
 		Format: *performFormat,
 	}
-	var opts []gen.Option
-	if *debugIgnoreUnspecified {
-		opts = append(opts, gen.WithSkipUnspecified)
+
+	var opts gen.Options
+	if *specificPath != "" {
+		opts.SpecificPath = *specificPath
 	}
-	g, err := gen.NewGenerator(spec, opts...)
+
+	g, err := gen.NewGenerator(spec, opts)
 	if err != nil {
 		panic(fmt.Sprintf("%+v", err))
 	}
+
 	if err := g.WriteSource(fs, *packageName); err != nil {
 		panic(fmt.Sprintf("%+v", err))
 	}

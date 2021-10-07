@@ -16,6 +16,12 @@ func (g *Generator) generateMethods() error {
 			return xerrors.New("referenced paths are not supported")
 		}
 
+		if g.opt.SpecificPath != "" {
+			if g.opt.SpecificPath != path {
+				continue
+			}
+		}
+
 		if err := forEachOps(item, func(method string, op ogen.Operation) error {
 			if err := g.generateMethod(path, strings.ToUpper(method), op); err != nil {
 				return xerrors.Errorf("%s: %w", method, err)
