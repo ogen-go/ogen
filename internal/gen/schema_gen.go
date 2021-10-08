@@ -122,6 +122,10 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 }
 
 func (g *schemaGen) ref(ref string) (*ast.Schema, error) {
+	if !strings.HasPrefix(ref, "#/components/schemas/") {
+		return nil, fmt.Errorf("invalid schema reference '%s'", ref)
+	}
+
 	if s, ok := g.refs[ref]; ok {
 		return s, nil
 	}
