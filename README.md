@@ -1,4 +1,4 @@
-![logo](_logo/logo.x256.png)
+![logo](_logo/logo.svg)
 
 # ogen
 
