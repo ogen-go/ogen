@@ -79,7 +79,7 @@ go get github.com/ogen-go/ogen
   * fasthttp
   * total zero alloc
     * memory pools for entities with automatic management in generated code
-    * [gnet](https://github.com/panjf2000/gnet) support
+    * [cloudwego/netpoll](https://github.com/cloudwego/netpoll) support
   * Advanced Code Generation
     * HTTP
       * URI
