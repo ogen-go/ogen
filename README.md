@@ -1,4 +1,4 @@
-# ogen ![logo](./logo.svg)
+# ogen ![logo](_logo/logo.svg)
 
 WIP Opinionated OpenAPI v3 Code Generator for Go
 
