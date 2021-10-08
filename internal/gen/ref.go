@@ -8,12 +8,7 @@ import (
 )
 
 func (g *Generator) resolveSchema(ref string) (*ast.Schema, error) {
-	name, err := componentName(ref)
-	if err != nil {
-		return nil, err
-	}
-
-	return g.generateSchema(pascal(name), ogen.Schema{
+	return g.generateSchema("", ogen.Schema{
 		Ref: ref,
 	})
 }

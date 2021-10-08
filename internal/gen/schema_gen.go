@@ -5,35 +5,28 @@ import (
 	"sort"
 	"strings"
 
-	"golang.org/x/xerrors"
-
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/ast"
+	"golang.org/x/xerrors"
 )
 
-func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema, error) {
+type schemaGen struct {
+	spec *ogen.Spec
+	side []*ast.Schema
+	refs map[string]*ast.Schema
+}
+
+func (g *schemaGen) Generate(name string, schema ogen.Schema) (*ast.Schema, error) {
+	return g.generate(pascal(name), schema, true, "")
+}
+
+func (g *schemaGen) GenerateRef(ref string) (*ast.Schema, error) {
+	return g.ref(ref)
+}
+
+func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref string) (s *ast.Schema, err error) {
 	if ref := schema.Ref; ref != "" {
-		componentName, err := componentName(ref)
-		if err != nil {
-			return nil, xerrors.Errorf("invalid schema reference: %s", ref)
-		}
-
-		s, found := g.schemas[pascal(componentName)]
-		if !found {
-			refSchema, found := g.spec.Components.Schemas[componentName]
-			if !found {
-				return nil, xerrors.Errorf("component by reference '%s' not found", ref)
-			}
-
-			s, err := g.generateSchema(pascal(componentName), refSchema)
-			if err != nil {
-				return nil, err
-			}
-
-			return s, nil
-		}
-
-		return s, nil
+		return g.ref(ref)
 	}
 
 	switch {
@@ -68,9 +61,14 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 
 		s := ast.Struct(name)
 		s.Description = schema.Description
-		g.schemas[s.Name] = s
+		if ref != "" {
+			g.refs[ref] = s
+		} else if !root {
+			g.side = append(g.side, s)
+		}
+
 		for propName, propSchema := range schema.Properties {
-			prop, err := g.generateSchema(name+pascalMP(propName), propSchema)
+			prop, err := g.generate(pascalMP(name, propName), propSchema, false, "")
 			if err != nil {
 				return nil, xerrors.Errorf("%s: %w", propName, err)
 			}
@@ -100,7 +98,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 			return nil, xerrors.New("array cannot contain properties")
 		}
 
-		item, err := g.generateSchema(name+"Item", *schema.Items)
+		item, err := g.generate(name+"Item", *schema.Items, false, "")
 		if err != nil {
 			return nil, err
 		}
@@ -123,7 +121,25 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 	}
 }
 
-func (g *Generator) parseSimple(typ, format string) (string, error) {
+func (g *schemaGen) ref(ref string) (*ast.Schema, error) {
+	if s, ok := g.refs[ref]; ok {
+		return s, nil
+	}
+
+	specComponentName, err := componentName(ref)
+	if err != nil {
+		return nil, xerrors.Errorf("invalid schema reference: %s", ref)
+	}
+
+	component, found := g.spec.Components.Schemas[specComponentName]
+	if !found {
+		return nil, xerrors.Errorf("component by reference '%s' not found", ref)
+	}
+
+	return g.generate(pascal(specComponentName), component, false, ref)
+}
+
+func (g *schemaGen) parseSimple(typ, format string) (string, error) {
 	simpleTypes := map[string]map[string]string{
 		"integer": {
 			"int32": "int32",

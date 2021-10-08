@@ -13,6 +13,7 @@ type Generator struct {
 	methods []*ast.Method
 
 	schemas       map[string]*ast.Schema
+	schemaRefs    map[string]*ast.Schema
 	requestBodies map[string]*ast.RequestBody
 	responses     map[string]*ast.Response
 	interfaces    map[string]*ast.Interface
@@ -33,6 +34,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 		opt:           opts,
 		spec:          spec,
 		schemas:       map[string]*ast.Schema{},
+		schemaRefs:    map[string]*ast.Schema{},
 		requestBodies: map[string]*ast.RequestBody{},
 		responses:     map[string]*ast.Response{},
 		interfaces:    map[string]*ast.Interface{},
