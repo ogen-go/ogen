@@ -18,8 +18,6 @@ go get github.com/ogen-go/ogen
 
 # Draft Roadmap
 
-* [~~Generated client~~](https://github.com/ogen-go/ogen/issues/8)
-* Tests
 * Enums
 * Optionals
 * Convenient global errors schema (e.g. 500, 404)
