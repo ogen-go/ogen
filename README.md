@@ -1,5 +1,5 @@
 <p align="center">
-<img width="256" height="256" src="_logo/logo.svg" alt="gotd logo">
+<img width="256" height="256" src="_logo/logo.svg" alt="ogen logo">
 </p>
 
 # ogen
