@@ -3,15 +3,8 @@ package gen
 import (
 	"fmt"
 
-	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/ast"
 )
-
-func (g *Generator) resolveSchema(ref string) (*ast.Schema, error) {
-	return g.generateSchema("", ogen.Schema{
-		Ref: ref,
-	})
-}
 
 func (g *Generator) resolveRequestBody(ref string) (*ast.RequestBody, error) {
 	cname, err := componentName(ref)

@@ -140,22 +140,9 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*ast.Res
 			name = pascal(rname, contentType)
 		}
 
-		var schema *ast.Schema
-		if ref := media.Schema.Ref; ref != "" {
-			s, err := g.resolveSchema(ref)
-			if err != nil {
-				return nil, err
-			}
-
-			schema = s
-		} else {
-			// Inlined response schema.
-			s, err := g.generateSchema(name, media.Schema)
-			if err != nil {
-				return nil, xerrors.Errorf("content: %s: schema: %w", contentType, err)
-			}
-
-			schema = s
+		schema, err := g.generateSchema(name, media.Schema)
+		if err != nil {
+			return nil, xerrors.Errorf("content: %s: schema: %w", contentType, err)
 		}
 
 		if schema.Is(ast.KindPrimitive, ast.KindArray) {

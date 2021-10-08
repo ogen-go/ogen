@@ -17,19 +17,6 @@ func (g *Generator) generateRequestBody(name string, body *ogen.RequestBody) (*a
 
 	// Iterate through request body contents...
 	for contentType, media := range body.Content {
-		// Referenced schema.
-		if ref := media.Schema.Ref; ref != "" {
-			schema, err := g.resolveSchema(ref)
-			if err != nil {
-				return nil, err
-			}
-
-			rbody.Contents[contentType] = schema
-			continue
-		}
-
-		// Inlined schema.
-		// Create unique name based on method name and contentType.
 		schemaName := pascal(name, contentType, "Request")
 		schema, err := g.generateSchema(schemaName, media.Schema)
 		if err != nil {

@@ -10,18 +10,28 @@ import (
 	"golang.org/x/xerrors"
 )
 
+// schemaGen is used to convert openapi schemas into ast representation.
 type schemaGen struct {
+	// Spec is used to lookup for schema components
+	// which is not in the 'refs' cache.
 	spec *ogen.Spec
+
+	// Contains schema nested objects.
 	side []*ast.Schema
+
+	// Schema reference cache.
 	refs map[string]*ast.Schema
 }
 
+// Generate converts ogen.Schema into *ast.Schema.
+//
+// If ogen.Schema contains references to schema components,
+// these referenced schemas will be saved in g.refs.
+//
+// If ogen.Schema contains nested objects, they will be
+// collected in g.side slice.
 func (g *schemaGen) Generate(name string, schema ogen.Schema) (*ast.Schema, error) {
 	return g.generate(pascal(name), schema, true, "")
-}
-
-func (g *schemaGen) GenerateRef(ref string) (*ast.Schema, error) {
-	return g.ref(ref)
 }
 
 func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref string) (s *ast.Schema, err error) {
@@ -64,6 +74,7 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 		if ref != "" {
 			g.refs[ref] = s
 		} else if !root {
+			// Nested struct.
 			g.side = append(g.side, s)
 		}
 
