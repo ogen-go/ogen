@@ -133,25 +133,22 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 }
 
 func (g *schemaGen) ref(ref string) (*ast.Schema, error) {
-	if !strings.HasPrefix(ref, "#/components/schemas/") {
+	const prefix = "#/components/schemas/"
+	if !strings.HasPrefix(ref, prefix) {
 		return nil, fmt.Errorf("invalid schema reference '%s'", ref)
 	}
 
 	if s, ok := g.refs[ref]; ok {
 		return s, nil
 	}
-
-	specComponentName, err := componentName(ref)
-	if err != nil {
-		return nil, xerrors.Errorf("invalid schema reference: %s", ref)
-	}
-
-	component, found := g.spec.Components.Schemas[specComponentName]
+	
+	name := strings.TrimPrefix(ref, prefix)
+	component, found := g.spec.Components.Schemas[name]
 	if !found {
 		return nil, xerrors.Errorf("component by reference '%s' not found", ref)
 	}
 
-	return g.generate(pascal(specComponentName), component, false, ref)
+	return g.generate(pascal(name), component, false, ref)
 }
 
 func (g *schemaGen) parseSimple(typ, format string) (string, error) {
