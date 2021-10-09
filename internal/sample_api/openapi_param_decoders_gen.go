@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/encoding/json"
 )
@@ -34,6 +35,7 @@ var (
 	_ = strconv.ParseInt
 	_ = time.Time{}
 	_ = conv.ToInt32
+	_ = uuid.UUID{}
 )
 
 func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
@@ -82,6 +84,17 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 		}
 
 		params.PetID = v
+	}
+	{
+		param := r.Header.Values("x-tags")
+		if len(param) > 0 {
+			v, err := conv.ToUUIDArray(param)
+			if err != nil {
+				return params, fmt.Errorf("parse header param 'x-tags': %w", err)
+			}
+
+			params.XTags = v
+		}
 	}
 	{
 		param := r.Header.Values("x-scope")
