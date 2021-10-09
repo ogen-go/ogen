@@ -141,7 +141,7 @@ func (g *schemaGen) ref(ref string) (*ast.Schema, error) {
 	if s, ok := g.refs[ref]; ok {
 		return s, nil
 	}
-	
+
 	name := strings.TrimPrefix(ref, prefix)
 	component, found := g.spec.Components.Schemas[name]
 	if !found {
@@ -169,6 +169,7 @@ func (g *schemaGen) parseSimple(typ, format string) (string, error) {
 			"date":      "time.Time",
 			"date-time": "time.Time",
 			"password":  "string",
+			"uuid":      "uuid.UUID",
 			// TODO: support binary format
 		},
 		"boolean": {

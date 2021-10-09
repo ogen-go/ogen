@@ -220,6 +220,10 @@
           "name": {
             "type": "string"
           },
+          "tag": {
+            "type": "string",
+            "format": "uuid"
+          },
           "birthday": {
             "type": "string",
             "format": "date"
