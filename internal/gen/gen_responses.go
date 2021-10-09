@@ -3,6 +3,7 @@ package gen
 import (
 	"fmt"
 	"net/http"
+	"sort"
 	"strconv"
 
 	"golang.org/x/xerrors"
@@ -17,8 +18,15 @@ func (g *Generator) generateResponses(methodName string, responses ogen.Response
 		return nil, fmt.Errorf("no responses")
 	}
 
+	var statuses []string
+	for stat := range responses {
+		statuses = append(statuses, stat)
+	}
+	sort.Strings(statuses)
+
 	// Iterate over method responses...
-	for status, response := range responses {
+	for _, status := range statuses {
+		response := responses[status]
 		// Default response.
 		if status == "default" {
 			resp, err := g.createDefaultResponse(methodName, response)
@@ -133,7 +141,14 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*ast.Res
 		return response, nil
 	}
 
-	for contentType, media := range resp.Content {
+	var ctypes []string
+	for ct := range resp.Content {
+		ctypes = append(ctypes, ct)
+	}
+	sort.Strings(ctypes)
+
+	for _, contentType := range ctypes {
+		media := resp.Content[contentType]
 		// Create unique response name.
 		name := rname
 		if len(resp.Content) > 1 {
