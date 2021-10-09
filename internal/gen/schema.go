@@ -9,8 +9,9 @@ import (
 
 func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema, error) {
 	gen := &schemaGen{
-		spec: g.spec,
-		refs: g.schemaRefs,
+		spec:       g.spec,
+		globalRefs: g.schemaRefs,
+		localRefs:  make(map[string]*ast.Schema),
 	}
 
 	s, err := gen.Generate(name, schema)
@@ -28,6 +29,10 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 		}
 
 		g.schemas[side.Name] = side
+	}
+
+	for ref, schema := range gen.localRefs {
+		g.schemaRefs[ref] = schema
 	}
 
 	return s, nil

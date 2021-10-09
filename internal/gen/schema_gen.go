@@ -19,8 +19,11 @@ type schemaGen struct {
 	// Contains schema nested objects.
 	side []*ast.Schema
 
-	// Schema reference cache.
-	refs map[string]*ast.Schema
+	// Global schema reference cache from *Generator (readonly).
+	globalRefs map[string]*ast.Schema
+
+	// Local schema reference cache.
+	localRefs map[string]*ast.Schema
 }
 
 // Generate converts ogen.Schema into *ast.Schema.
@@ -72,7 +75,7 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 		s := ast.Struct(name)
 		s.Description = schema.Description
 		if ref != "" {
-			g.refs[ref] = s
+			g.localRefs[ref] = s
 		} else if !root {
 			// Nested struct.
 			g.side = append(g.side, s)
@@ -138,10 +141,14 @@ func (g *schemaGen) ref(ref string) (*ast.Schema, error) {
 		return nil, fmt.Errorf("invalid schema reference '%s'", ref)
 	}
 
-	if s, ok := g.refs[ref]; ok {
+	if s, ok := g.globalRefs[ref]; ok {
 		return s, nil
 	}
-	
+
+	if s, ok := g.localRefs[ref]; ok {
+		return s, nil
+	}
+
 	name := strings.TrimPrefix(ref, prefix)
 	component, found := g.spec.Components.Schemas[name]
 	if !found {

@@ -10,15 +10,14 @@ import (
 
 func TestSchemaGen(t *testing.T) {
 	tests := []struct {
-		TestName   string
-		Spec       *ogen.Spec
-		Name       string
-		Input      ogen.Schema
-		Expect     *ast.Schema
-		Err        error
-		InputRefs  map[string]*ast.Schema
-		ExpectRefs map[string]*ast.Schema
-		Side       []*ast.Schema
+		TestName  string
+		Spec      *ogen.Spec
+		Name      string
+		Input     ogen.Schema
+		Expect    *ast.Schema
+		Err       error
+		InputRefs map[string]*ast.Schema
+		Side      []*ast.Schema
 	}{
 		{
 			TestName: "Simple",
@@ -161,8 +160,9 @@ func TestSchemaGen(t *testing.T) {
 	for _, test := range tests {
 		t.Run(test.TestName, func(t *testing.T) {
 			gen := &schemaGen{
-				spec: test.Spec,
-				refs: test.InputRefs,
+				spec:       test.Spec,
+				globalRefs: test.InputRefs,
+				localRefs:  make(map[string]*ast.Schema),
 			}
 
 			out, err := gen.Generate(test.Name, test.Input)
