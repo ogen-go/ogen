@@ -24,7 +24,11 @@ func writeSimpleObject(s *json.Stream, v Marshaler) error {
 
 func readSimpleObject(i *json.Iterator, v Unmarshaler) error {
 	i.ReadObjectCB(func(i *json.Iterator, s string) bool {
-		return v.ReadJSON(i)
+		if err := v.ReadJSON(i); err != nil {
+			i.ReportError("ReadObject", err.Error())
+			return false
+		}
+		return true
 	})
 	return i.Error
 }
@@ -46,7 +50,8 @@ func (h *Helper) Read(t testing.TB, v Unmarshaler) {
 	h.i.ReadObjectCB(func(i *json.Iterator, s string) bool {
 		assert.Equal(t, "key", s)
 		assert.NoError(t, i.Error)
-		return v.ReadJSON(i)
+		assert.NoError(t, v.ReadJSON(i))
+		return true
 	})
 	require.NoError(t, h.i.Error)
 }

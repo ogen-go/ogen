@@ -21,9 +21,9 @@ func (o *OptionalString) Unset() {
 func (o OptionalString) IsSet() bool { return o.Set }
 
 // ReadJSON implements Unmarshaler.
-func (o *OptionalString) ReadJSON(i *json.Iterator) bool {
+func (o *OptionalString) ReadJSON(i *json.Iterator) error {
 	o.Value = i.ReadString()
-	return true
+	return i.Error
 }
 
 // WriteFieldJSON implements Marshaler.
@@ -88,7 +88,7 @@ func (o OptionalNullableString) WriteJSON(s *json.Stream) {
 	}
 }
 
-func (o *OptionalNullableString) ReadJSON(i *json.Iterator) bool {
+func (o *OptionalNullableString) ReadJSON(i *json.Iterator) error {
 	o.Value = ""
 	o.Set = false
 	o.Nil = false
@@ -97,14 +97,14 @@ func (o *OptionalNullableString) ReadJSON(i *json.Iterator) bool {
 	case json.StringValue:
 		o.Set = true
 		o.Value = i.ReadString()
-		return true
+		return i.Error
 	case json.NilValue:
 		o.Set = true
 		o.Nil = true
 		i.Skip()
-		return true
+		return i.Error
 	default:
 		i.ReportError("Read", "unexpected type")
-		return false
+		return i.Error
 	}
 }
