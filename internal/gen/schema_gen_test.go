@@ -155,6 +155,43 @@ func TestSchemaGen(t *testing.T) {
 				},
 			},
 		},
+		{
+			TestName: "ReferencedArray",
+			Spec: &ogen.Spec{
+				Components: &ogen.Components{
+					Schemas: map[string]ogen.Schema{
+						"Pets": {
+							Type: "array",
+							Items: &ogen.Schema{
+								Type: "string",
+							},
+						},
+					},
+				},
+			},
+			Name: "TestObj",
+			Input: ogen.Schema{
+				Type: "object",
+				Properties: map[string]ogen.Schema{
+					"pets": {
+						Ref: "#/components/schemas/Pets",
+					},
+				},
+				Required: []string{"pets"},
+			},
+			Expect: &ast.Schema{
+				Kind: ast.KindStruct,
+				Name: "TestObj",
+				Fields: []ast.SchemaField{
+					{
+						Name: "Pets",
+						// TODO: type Pets []string?
+						Type: "[]string",
+						Tag:  "pets",
+					},
+				},
+			},
+		},
 	}
 
 	for _, test := range tests {
