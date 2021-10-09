@@ -1,6 +1,9 @@
 package ast
 
-import "sort"
+import (
+	"sort"
+	"strings"
+)
 
 type MethodResponse struct {
 	StatusCode map[int]*Response
@@ -90,7 +93,10 @@ func (m *Method) ListResponseSchemas() []ResponseInfo {
 		if r.Default {
 			r.StatusCode = 999
 		}
-		return l.StatusCode < r.StatusCode
+		if l.StatusCode != r.StatusCode {
+			return l.StatusCode < r.StatusCode
+		}
+		return strings.Compare(l.ContentType, r.ContentType) < 0
 	})
 
 	return result
