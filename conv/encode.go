@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strconv"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 func IntToString(v int) string { return strconv.Itoa(v) }
@@ -23,6 +25,8 @@ func BytesToString(v []byte) string { return string(v) }
 func TimeToString(v time.Time) string { return v.Format(time.RFC3339) }
 
 func BoolToString(v bool) string { return strconv.FormatBool(v) }
+
+func UUIDToString(v uuid.UUID) string { return v.String() }
 
 func InterfaceToString(v interface{}) string { return fmt.Sprintf("%s", v) }
 
@@ -82,6 +86,14 @@ func BoolArrayToString(vs []bool) []string {
 	strs := make([]string, 0, len(vs))
 	for _, v := range vs {
 		strs = append(strs, BoolToString(v))
+	}
+	return strs
+}
+
+func UUIDArrayToString(vs []uuid.UUID) []string {
+	strs := make([]string, 0, len(vs))
+	for _, v := range vs {
+		strs = append(strs, UUIDToString(v))
 	}
 	return strs
 }

@@ -9,6 +9,7 @@
 {{- else if eq . "interface{}" }}conv.ToInterface
 {{- else if eq . "[]byte" }}conv.ToBytes
 {{- else if eq . "time.Time" }}conv.ToTime
+{{- else if eq . "uuid.UUID" }}conv.ToUUID
 {{- else if eq . "[]int32" }}conv.ToInt32Array
 {{- else if eq . "[]int64" }}conv.ToInt64Array
 {{- else if eq . "[]float32" }}conv.ToFloat32Array
@@ -16,6 +17,7 @@
 {{- else if eq . "[]string" }}conv.ToStringArray
 {{- else if eq . "[][]byte" }}conv.ToBytesArray
 {{- else if eq . "[]time.Time" }}conv.ToTimeArray
+{{- else if eq . "[]uuid.UUID" }}conv.ToUUIDArray
 {{- else }}unexpected type{{ . }}
 {{- end }}
 {{- end }}
@@ -31,6 +33,7 @@
 {{- else if eq . "interface{}" }}conv.InterfaceToString
 {{- else if eq . "[]byte" }}conv.BytesToString
 {{- else if eq . "time.Time" }}conv.TimeToString
+{{- else if eq . "uuid.UUID" }}conv.UUIDToString
 {{- else if eq . "[]int32" }}conv.Int32ArrayToString
 {{- else if eq . "[]int64" }}conv.Int64ArrayToString
 {{- else if eq . "[]float32" }}conv.Float32ArrayToString
@@ -38,5 +41,6 @@
 {{- else if eq . "[]string" }}conv.StringArrayToString
 {{- else if eq . "[][]byte" }}conv.BytesArrayToString
 {{- else if eq . "[]time.Time" }}conv.TimeArrayToString
+{{- else if eq . "[]uuid.UUID" }}conv.UUIDArrayToString
 {{- end }}
 {{- end }}

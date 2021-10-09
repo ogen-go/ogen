@@ -3,6 +3,8 @@ package conv
 import (
 	"strconv"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 func ToInt(s string) (int, error) {
@@ -42,6 +44,10 @@ func ToTime(s string) (time.Time, error) {
 
 func ToBool(s string) (bool, error) {
 	return strconv.ParseBool(s)
+}
+
+func ToUUID(s string) (uuid.UUID, error) {
+	return uuid.Parse(s)
 }
 
 func ToInterface(s string) (interface{}, error) { return s, nil }
@@ -134,6 +140,20 @@ func ToBoolArray(a []string) ([]bool, error) {
 	var arr []bool
 	for _, s := range a {
 		v, err := ToBool(s)
+		if err != nil {
+			return nil, err
+		}
+
+		arr = append(arr, v)
+	}
+
+	return arr, nil
+}
+
+func ToUUIDArray(a []string) ([]uuid.UUID, error) {
+	var arr []uuid.UUID
+	for _, s := range a {
+		v, err := ToUUID(s)
 		if err != nil {
 			return nil, err
 		}

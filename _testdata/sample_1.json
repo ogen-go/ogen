@@ -32,6 +32,19 @@
             }
           },
           {
+            "name": "x-tags",
+            "in": "header",
+            "description": "tags of pets",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          {
             "name": "x-scope",
             "in": "header",
             "description": "pet scopes",
