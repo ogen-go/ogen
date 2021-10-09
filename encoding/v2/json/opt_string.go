@@ -21,9 +21,9 @@ func (o *OptionalString) Unset() {
 func (o OptionalString) IsSet() bool { return o.Set }
 
 // ReadJSON implements Unmarshaler.
-func (o *OptionalString) ReadJSON(i *json.Iterator) error {
+func (o *OptionalString) ReadJSON(i *json.Iterator) bool {
 	o.Value = i.ReadString()
-	return i.Error
+	return true
 }
 
 // WriteFieldJSON implements Marshaler.
