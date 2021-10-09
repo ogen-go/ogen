@@ -2,6 +2,7 @@ package gen
 
 import (
 	"net/http"
+	"sort"
 
 	"github.com/ogen-go/ogen/internal/ast"
 )
@@ -13,69 +14,97 @@ func (g *Generator) fix() {
 }
 
 func (g *Generator) fixEqualResponses(m *ast.Method) {
-	if len(m.Responses.StatusCode) < 2 {
-		return
-	}
-
 	iface, ok := m.ResponseType.(*ast.Interface)
 	if !ok {
 		return
 	}
 
-	for lstat, lresp := range m.Responses.StatusCode {
-		for rstat, rresp := range m.Responses.StatusCode {
-			if lstat == rstat {
-				continue
-			}
+	var statusCodes []int
+	for code := range m.Responses.StatusCode {
+		statusCodes = append(statusCodes, code)
+	}
+	sort.Ints(statusCodes)
 
-			if lresp.NoContent != nil {
-				if rresp.NoContent == nil {
+	type candidate struct {
+		renameTo string
+		schema   *ast.Schema
+
+		replaceNoc   bool
+		replaceCtype string
+		response     *ast.Response
+	}
+
+	var candidates []candidate
+	for i := 0; i < len(statusCodes); i++ {
+		lcode := statusCodes[i]
+		for j := i; j < len(statusCodes); j++ {
+			rcode := statusCodes[j]
+			lresp, rresp := m.Responses.StatusCode[lcode], m.Responses.StatusCode[rcode]
+			if (lresp.NoContent != nil && rresp.NoContent != nil) && lcode != rcode {
+				if lresp.NoContent.Equal(rresp.NoContent) {
+					candidates = append(candidates, candidate{
+						renameTo:   pascal(m.Name, http.StatusText(lcode)),
+						schema:     lresp.NoContent,
+						replaceNoc: true,
+						response:   lresp,
+					})
+					candidates = append(candidates, candidate{
+						renameTo:   pascal(m.Name, http.StatusText(rcode)),
+						schema:     rresp.NoContent,
+						replaceNoc: true,
+						response:   rresp,
+					})
 					continue
 				}
-
-				if lresp.NoContent.Equal(rresp.NoContent) {
-					lname := pascal(m.Name, http.StatusText(lstat))
-					rname := pascal(m.Name, http.StatusText(rstat))
-					la := ast.Alias(lname, lresp.NoContent)
-					ra := ast.Alias(rname, rresp.NoContent)
-					lresp.NoContent.Unimplement(iface)
-					rresp.NoContent.Unimplement(iface)
-					la.Implement(iface)
-					ra.Implement(iface)
-					g.schemas[la.Name] = la
-					g.schemas[ra.Name] = ra
-					lresp.NoContent = la
-					rresp.NoContent = ra
-				}
-
-				continue
 			}
 
-			for lct, lschema := range lresp.Contents {
-				for rct, rschema := range rresp.Contents {
+			var (
+				lcontents []string
+				rcontents []string
+			)
+			for ct := range lresp.Contents {
+				lcontents = append(lcontents, ct)
+			}
+			for ct := range rresp.Contents {
+				rcontents = append(rcontents, ct)
+			}
+			sort.Strings(lcontents)
+			sort.Strings(rcontents)
+			for _, lct := range lcontents {
+				for _, rct := range rcontents {
+					if lcode == rcode && lct == rct {
+						continue
+					}
+					lschema, rschema := lresp.Contents[lct], rresp.Contents[rct]
 					if lschema.Equal(rschema) {
-						lname := pascal(m.Name, lct, http.StatusText(lstat))
-						rname := pascal(m.Name, rct, http.StatusText(rstat))
-						la := ast.Alias(lname, lschema)
-						ra := ast.Alias(rname, rschema)
-						lschema.Unimplement(iface)
-						rschema.Unimplement(iface)
-						la.Implement(iface)
-						ra.Implement(iface)
-						g.schemas[la.Name] = la
-						g.schemas[ra.Name] = ra
-						lresp.Contents[lct] = la
-						rresp.Contents[rct] = ra
+						candidates = append(candidates, candidate{
+							renameTo:     pascal(m.Name, lct, http.StatusText(lcode)),
+							schema:       lschema,
+							replaceCtype: lct,
+							response:     lresp,
+						})
+						candidates = append(candidates, candidate{
+							renameTo:     pascal(m.Name, rct, http.StatusText(rcode)),
+							schema:       rschema,
+							replaceCtype: rct,
+							response:     rresp,
+						})
 					}
 				}
 			}
 		}
 	}
 
-	for _, r := range m.Responses.StatusCode {
-		r.Implement(iface)
-	}
-	if m.Responses.Default != nil {
-		m.Responses.Default.Implement(iface)
+	for _, candidate := range candidates {
+		candidate.schema.Unimplement(iface)
+		alias := ast.Alias(candidate.renameTo, candidate.schema)
+		alias.Implement(iface)
+		g.schemas[alias.Name] = alias
+		if candidate.replaceNoc {
+			candidate.response.NoContent = alias
+			continue
+		}
+
+		candidate.response.Contents[candidate.replaceCtype] = alias
 	}
 }
