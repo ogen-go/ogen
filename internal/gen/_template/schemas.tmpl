@@ -4,28 +4,31 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-{{- range $name, $s := $.Schemas }}
+{{- range $_, $s := $.Schemas }}
+{{- template "define_schema" $s }}
+{{- end }}
+{{- end }}
+
+{{- define "define_schema" }}
 {{/* Define struct */}}
-{{- if eq $s.Kind "struct" }}
-type {{ $name }} struct {
-{{- range $f := $s.Fields }}
+{{- if eq $.Kind "struct" }}
+type {{ $.Name }} struct {
+{{- range $f := $.Fields }}
     {{ $f.Name }} {{ $f.Type }} `json:"{{ $f.Tag }}"`
 {{- end }}
 }
 {{/* Define struct */}}
 
 {{/* Define alias */}}
-{{- else if eq $s.Kind "alias" }}
-type {{ $name }} {{ $s.AliasTo.Type }}
+{{- else if eq $.Kind "alias" }}
+type {{ $.Name }} {{ $.AliasTo.Type }}
 {{/* Define alias */}}
-
 {{- end }}
 
 {{/* Define methods */}}
-{{- range $method := $s.Methods }}
-func (*{{ $name}}) {{ $method }}() {}
+{{- range $method := $.Methods }}
+func (*{{ $.Name }}) {{ $method }}() {}
 {{- end }}
 {{/* Define methods */}}
 
-{{ end }}
-{{ end }}
+{{- end }}
