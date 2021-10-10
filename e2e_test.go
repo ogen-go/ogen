@@ -37,10 +37,11 @@ func TestGenerate(t *testing.T) {
 		{
 			Name: "api.github.com.json",
 			Options: gen.Options{
-				IgnoreEnums: true,
-				IgnoreOneOf: true,
-				IgnoreAnyOf: true,
-				IgnoreAllOf: true,
+				IgnoreEnums:             true,
+				IgnoreOneOf:             true,
+				IgnoreAnyOf:             true,
+				IgnoreAllOf:             true,
+				IgnoreUnsupportedParams: true,
 			},
 		},
 		{
