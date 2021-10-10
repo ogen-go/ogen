@@ -90,343 +90,6 @@ func decodeAppsGetAuthenticatedResponse(resp *http.Response) (_ Integration, rer
 	}
 }
 
-func decodeAppsCreateFromManifestResponse(resp *http.Response) (_ AppsCreateFromManifestResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ValidationErrorSimple
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeAppsGetWebhookConfigForAppResponse(resp *http.Response) (_ AppsGetWebhookConfigForAppResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeAppsUpdateWebhookConfigForAppResponse(resp *http.Response) (_ WebhookConfig, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response WebhookConfig
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeAppsListWebhookDeliveriesResponse(resp *http.Response) (_ AppsListWebhookDeliveriesResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response AppsListWebhookDeliveriesOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 400:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeAppsGetWebhookDeliveryResponse(resp *http.Response) (_ AppsGetWebhookDeliveryResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response HookDelivery
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 400:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeAppsRedeliverWebhookDeliveryResponse(resp *http.Response) (_ AppsRedeliverWebhookDeliveryResponse, rerr error) {
-	switch resp.StatusCode {
-	case 202:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response accepted
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 400:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeAppsListInstallationsResponse(resp *http.Response) (_ AppsListInstallationsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeAppsGetInstallationResponse(resp *http.Response) (_ AppsGetInstallationResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Installation
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 415:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response preview_header_missing
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeAppsDeleteInstallationResponse(resp *http.Response) (_ AppsDeleteInstallationResponse, rerr error) {
 	switch resp.StatusCode {
 	case 204:
@@ -446,115 +109,6 @@ func decodeAppsDeleteInstallationResponse(resp *http.Response) (_ AppsDeleteInst
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeAppsCreateInstallationAccessTokenResponse(resp *http.Response) (_ AppsCreateInstallationAccessTokenResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response InstallationToken
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 415:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response preview_header_missing
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -645,11 +199,11 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (_ OAuthAu
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response OAuthAuthorizationsListGrantsApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -668,7 +222,7 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (_ OAuthAu
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response OAuthAuthorizationsListGrantsApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -687,7 +241,7 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (_ OAuthAu
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response OAuthAuthorizationsListGrantsApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -731,11 +285,11 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response) (_ OAuthAuth
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response OAuthAuthorizationsGetGrantApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -754,7 +308,7 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response) (_ OAuthAuth
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response OAuthAuthorizationsGetGrantApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -781,11 +335,11 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response) (_ OAuthA
 	case 204:
 		return &OAuthAuthorizationsDeleteGrantNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -804,7 +358,7 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response) (_ OAuthA
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response OAuthAuthorizationsDeleteGrantApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -816,213 +370,6 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response) (_ OAuthA
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeAppsDeleteAuthorizationResponse(resp *http.Response) (_ AppsDeleteAuthorizationResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &AppsDeleteAuthorizationNoContent{}, nil
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeAppsCheckTokenResponse(resp *http.Response) (_ AppsCheckTokenResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Authorization
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeAppsDeleteTokenResponse(resp *http.Response) (_ AppsDeleteTokenResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &AppsDeleteTokenNoContent{}, nil
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeAppsResetTokenResponse(resp *http.Response) (_ AppsResetTokenResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Authorization
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeAppsScopeTokenResponse(resp *http.Response) (_ AppsScopeTokenResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Authorization
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -1057,7 +404,7 @@ func decodeAppsGetBySlugResponse(resp *http.Response) (_ AppsGetBySlugResponse, 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response AppsGetBySlugApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1076,7 +423,7 @@ func decodeAppsGetBySlugResponse(resp *http.Response) (_ AppsGetBySlugResponse, 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response AppsGetBySlugApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1095,7 +442,7 @@ func decodeAppsGetBySlugResponse(resp *http.Response) (_ AppsGetBySlugResponse, 
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response preview_header_missing
+			var response PreviewHeaderMissing
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1139,11 +486,11 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (_
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1162,7 +509,7 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (_
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1181,7 +528,7 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (_
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1193,242 +540,6 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (_
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeOAuthAuthorizationsCreateAuthorizationResponse(resp *http.Response) (_ OAuthAuthorizationsCreateAuthorizationResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Authorization
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 410:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.Response) (_ OAuthAuthorizationsGetOrCreateAuthorizationForAppResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Authorization
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Authorization
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse(resp *http.Response) (_ OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Authorization
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Authorization
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -1461,11 +572,11 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response) (_ O
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1484,7 +595,7 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response) (_ O
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1511,11 +622,11 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response) (
 	case 204:
 		return &OAuthAuthorizationsDeleteAuthorizationNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1534,7 +645,7 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response) (
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1546,39 +657,6 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response) (
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeOAuthAuthorizationsUpdateAuthorizationResponse(resp *http.Response) (_ OAuthAuthorizationsUpdateAuthorizationResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Authorization
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -1611,7 +689,7 @@ func decodeCodesOfConductGetAllCodesOfConductResponse(resp *http.Response) (_ Co
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -1640,7 +718,7 @@ func decodeCodesOfConductGetConductCodeResponse(resp *http.Response) (_ CodesOfC
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -1688,7 +766,7 @@ func decodeEmojisGetResponse(resp *http.Response) (_ EmojisGetResponse, rerr err
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -2203,33 +1281,6 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(resp *htt
 	}
 }
 
-func decodeEnterpriseAdminGetAuditLogResponse(resp *http.Response) (_ []AuditLogEvent, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []AuditLogEvent
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeBillingGetGithubActionsBillingGheResponse(resp *http.Response) (_ ActionsBillingUsage, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -2333,7 +1384,7 @@ func decodeActivityListPublicEventsResponse(resp *http.Response) (_ ActivityList
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -2356,7 +1407,7 @@ func decodeActivityListPublicEventsResponse(resp *http.Response) (_ ActivityList
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response service_unavailable
+			var response ServiceUnavailable
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2427,7 +1478,7 @@ func decodeGistsListResponse(resp *http.Response) (_ GistsListResponse, rerr err
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -2443,133 +1494,6 @@ func decodeGistsListResponse(resp *http.Response) (_ GistsListResponse, rerr err
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeGistsCreateResponse(resp *http.Response) (_ GistsCreateResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response GistSimple
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeGistsListPublicResponse(resp *http.Response) (_ GistsListPublicResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response GistsListPublicOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -2602,11 +1526,11 @@ func decodeGistsListStarredResponse(resp *http.Response) (_ GistsListStarredResp
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response GistsListStarredApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2625,7 +1549,7 @@ func decodeGistsListStarredResponse(resp *http.Response) (_ GistsListStarredResp
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response GistsListStarredApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2669,11 +1593,11 @@ func decodeGistsGetResponse(resp *http.Response) (_ GistsGetResponse, rerr error
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response forbidden_gist
+			var response ForbiddenGist
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2719,11 +1643,11 @@ func decodeGistsDeleteResponse(resp *http.Response) (_ GistsDeleteResponse, rerr
 	case 204:
 		return &GistsDeleteNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response GistsDeleteApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2742,7 +1666,7 @@ func decodeGistsDeleteResponse(resp *http.Response) (_ GistsDeleteResponse, rerr
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response GistsDeleteApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2754,58 +1678,6 @@ func decodeGistsDeleteResponse(resp *http.Response) (_ GistsDeleteResponse, rerr
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeGistsUpdateResponse(resp *http.Response) (_ GistsUpdateResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response GistSimple
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -2838,11 +1710,11 @@ func decodeGistsListCommentsResponse(resp *http.Response) (_ GistsListCommentsRe
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response GistsListCommentsApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2861,7 +1733,7 @@ func decodeGistsListCommentsResponse(resp *http.Response) (_ GistsListCommentsRe
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response GistsListCommentsApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2905,11 +1777,11 @@ func decodeGistsCreateCommentResponse(resp *http.Response) (_ GistsCreateComment
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response GistsCreateCommentApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2928,7 +1800,7 @@ func decodeGistsCreateCommentResponse(resp *http.Response) (_ GistsCreateComment
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response GistsCreateCommentApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2972,11 +1844,11 @@ func decodeGistsGetCommentResponse(resp *http.Response) (_ GistsGetCommentRespon
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response forbidden_gist
+			var response ForbiddenGist
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3022,11 +1894,11 @@ func decodeGistsDeleteCommentResponse(resp *http.Response) (_ GistsDeleteComment
 	case 204:
 		return &GistsDeleteCommentNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response GistsDeleteCommentApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3045,7 +1917,7 @@ func decodeGistsDeleteCommentResponse(resp *http.Response) (_ GistsDeleteComment
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response GistsDeleteCommentApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3135,11 +2007,11 @@ func decodeGistsListCommitsResponse(resp *http.Response) (_ GistsListCommitsResp
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response GistsListCommitsApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3158,7 +2030,7 @@ func decodeGistsListCommitsResponse(resp *http.Response) (_ GistsListCommitsResp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response GistsListCommitsApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3184,16 +2056,29 @@ func decodeGistsListForksResponse(resp *http.Response) (_ GistsListForksResponse
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			var response GistsListForksOK
+			data, err := io.ReadAll(resp.Body)
+			if err != nil {
+				rerr = err
+				return
+			}
+			if err := json.Unmarshal(data, &response); err != nil {
+				rerr = err
+				return
+			}
+
+			return &response, nil
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response GistsListForksApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3212,7 +2097,7 @@ func decodeGistsListForksResponse(resp *http.Response) (_ GistsListForksResponse
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response GistsListForksApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3224,66 +2109,6 @@ func decodeGistsListForksResponse(resp *http.Response) (_ GistsListForksResponse
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeGistsForkResponse(resp *http.Response) (_ GistsForkResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -3299,7 +2124,7 @@ func decodeGistsCheckIsStarredResponse(resp *http.Response) (_ GistsCheckIsStarr
 	case 204:
 		return &GistsCheckIsStarredNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -3349,11 +2174,11 @@ func decodeGistsStarResponse(resp *http.Response) (_ GistsStarResponse, rerr err
 	case 204:
 		return &GistsStarNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response GistsStarApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3372,7 +2197,7 @@ func decodeGistsStarResponse(resp *http.Response) (_ GistsStarResponse, rerr err
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response GistsStarApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3399,11 +2224,11 @@ func decodeGistsUnstarResponse(resp *http.Response) (_ GistsUnstarResponse, rerr
 	case 204:
 		return &GistsUnstarNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response GistsUnstarApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3422,7 +2247,7 @@ func decodeGistsUnstarResponse(resp *http.Response) (_ GistsUnstarResponse, rerr
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response GistsUnstarApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3434,77 +2259,6 @@ func decodeGistsUnstarResponse(resp *http.Response) (_ GistsUnstarResponse, rerr
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeGistsGetRevisionResponse(resp *http.Response) (_ GistsGetRevisionResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response GistSimple
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -3537,7 +2291,7 @@ func decodeGitignoreGetAllTemplatesResponse(resp *http.Response) (_ GitignoreGet
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -3566,7 +2320,7 @@ func decodeGitignoreGetTemplateResponse(resp *http.Response) (_ GitignoreGetTemp
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -3595,11 +2349,11 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response) (_
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response AppsListReposAccessibleToInstallationApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3618,7 +2372,7 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response) (_
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response AppsListReposAccessibleToInstallationApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3650,47 +2404,6 @@ func decodeAppsRevokeInstallationAccessTokenResponse(resp *http.Response) (_ App
 	}
 }
 
-func decodeIssuesListResponse(resp *http.Response) (_ IssuesListResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeLicensesGetAllCommonlyUsedResponse(resp *http.Response) (_ LicensesGetAllCommonlyUsedResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -3713,7 +2426,7 @@ func decodeLicensesGetAllCommonlyUsedResponse(resp *http.Response) (_ LicensesGe
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -3742,11 +2455,11 @@ func decodeLicensesGetResponse(resp *http.Response) (_ LicensesGetResponse, rerr
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response LicensesGetApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3765,7 +2478,7 @@ func decodeLicensesGetResponse(resp *http.Response) (_ LicensesGetResponse, rerr
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response LicensesGetApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3799,7 +2512,7 @@ func decodeMarkdownRenderResponse(resp *http.Response) (_ MarkdownRenderResponse
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -3818,7 +2531,7 @@ func decodeMarkdownRenderRawResponse(resp *http.Response) (_ MarkdownRenderRawRe
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -3849,7 +2562,7 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response) (_ App
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3868,7 +2581,7 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response) (_ App
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response AppsGetSubscriptionPlanForAccountApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3914,7 +2627,7 @@ func decodeAppsListPlansResponse(resp *http.Response) (_ AppsListPlansResponse, 
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response AppsListPlansApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3933,7 +2646,7 @@ func decodeAppsListPlansResponse(resp *http.Response) (_ AppsListPlansResponse, 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response AppsListPlansApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3945,77 +2658,6 @@ func decodeAppsListPlansResponse(resp *http.Response) (_ AppsListPlansResponse, 
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeAppsListAccountsForPlanResponse(resp *http.Response) (_ AppsListAccountsForPlanResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response AppsListAccountsForPlanOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -4120,52 +2762,6 @@ func decodeAppsListPlansStubbedResponse(resp *http.Response) (_ AppsListPlansStu
 	}
 }
 
-func decodeAppsListAccountsForPlanStubbedResponse(resp *http.Response) (_ AppsListAccountsForPlanStubbedResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response AppsListAccountsForPlanStubbedOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeMetaGetResponse(resp *http.Response) (_ MetaGetResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -4188,7 +2784,7 @@ func decodeMetaGetResponse(resp *http.Response) (_ MetaGetResponse, rerr error) 
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -4219,7 +2815,7 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response) (
 	case 301:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4236,11 +2832,11 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response) (
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4259,7 +2855,7 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response) (
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4271,79 +2867,6 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response) (
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeActivityListNotificationsForAuthenticatedUserResponse(resp *http.Response) (_ ActivityListNotificationsForAuthenticatedUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ActivityListNotificationsForAuthenticatedUserOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -4378,11 +2901,11 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response) (_ Activ
 	case 205:
 		return &ActivityMarkNotificationsAsReadResetContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityMarkNotificationsAsReadApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4401,7 +2924,7 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response) (_ Activ
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityMarkNotificationsAsReadApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4445,11 +2968,11 @@ func decodeActivityGetThreadResponse(resp *http.Response) (_ ActivityGetThreadRe
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityGetThreadApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4468,7 +2991,7 @@ func decodeActivityGetThreadResponse(resp *http.Response) (_ ActivityGetThreadRe
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityGetThreadApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4495,7 +3018,7 @@ func decodeActivityMarkThreadAsReadResponse(resp *http.Response) (_ ActivityMark
 	case 205:
 		return &ActivityMarkThreadAsReadResetContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -4543,11 +3066,11 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4566,7 +3089,7 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4610,11 +3133,11 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response) (_ Activit
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivitySetThreadSubscriptionApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4633,7 +3156,7 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response) (_ Activit
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivitySetThreadSubscriptionApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4660,11 +3183,11 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response) (_ Acti
 	case 204:
 		return &ActivityDeleteThreadSubscriptionNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4683,7 +3206,7 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response) (_ Acti
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityDeleteThreadSubscriptionApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4744,7 +3267,7 @@ func decodeOrgsListResponse(resp *http.Response) (_ OrgsListResponse, rerr error
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -4787,77 +3310,6 @@ func decodeOrgsGetResponse(resp *http.Response) (_ OrgsGetResponse, rerr error) 
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeOrgsUpdateResponse(resp *http.Response) (_ OrgsUpdateResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response OrganizationFull
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 409:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 415:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response preview_header_missing
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -5462,7 +3914,7 @@ func decodeActionsCreateOrUpdateOrgSecretResponse(resp *http.Response) (_ Action
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response ActionsCreateOrUpdateOrgSecretCreated
+			var response EmptyObject
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5557,20 +4009,6 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretResponse(resp *http.Response) (
 	}
 }
 
-func decodeOrgsGetAuditLogResponse(resp *http.Response) (_ OrgsGetAuditLogResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeOrgsListBlockedUsersResponse(resp *http.Response) (_ OrgsListBlockedUsersResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -5595,7 +4033,7 @@ func decodeOrgsListBlockedUsersResponse(resp *http.Response) (_ OrgsListBlockedU
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response preview_header_missing
+			var response PreviewHeaderMissing
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5636,22 +4074,6 @@ func decodeOrgsCheckBlockedUserResponse(resp *http.Response) (_ OrgsCheckBlocked
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeOrgsBlockUserResponse(resp *http.Response) (_ OrgsBlockUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &OrgsBlockUserNoContent{}, nil
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -5847,58 +4269,6 @@ func decodeOrgsListWebhooksResponse(resp *http.Response) (_ OrgsListWebhooksResp
 	}
 }
 
-func decodeOrgsCreateWebhookResponse(resp *http.Response) (_ OrgsCreateWebhookResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response OrgHook
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeOrgsGetWebhookResponse(resp *http.Response) (_ OrgsGetWebhookResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -5974,277 +4344,6 @@ func decodeOrgsDeleteWebhookResponse(resp *http.Response) (_ OrgsDeleteWebhookRe
 	}
 }
 
-func decodeOrgsUpdateWebhookResponse(resp *http.Response) (_ OrgsUpdateWebhookResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response OrgHook
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeOrgsGetWebhookConfigForOrgResponse(resp *http.Response) (_ WebhookConfig, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response WebhookConfig
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeOrgsUpdateWebhookConfigForOrgResponse(resp *http.Response) (_ WebhookConfig, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response WebhookConfig
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeOrgsListWebhookDeliveriesResponse(resp *http.Response) (_ OrgsListWebhookDeliveriesResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response OrgsListWebhookDeliveriesOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 400:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeOrgsGetWebhookDeliveryResponse(resp *http.Response) (_ OrgsGetWebhookDeliveryResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response HookDelivery
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 400:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeOrgsRedeliverWebhookDeliveryResponse(resp *http.Response) (_ OrgsRedeliverWebhookDeliveryResponse, rerr error) {
-	switch resp.StatusCode {
-	case 202:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response accepted
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 400:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeOrgsPingWebhookResponse(resp *http.Response) (_ OrgsPingWebhookResponse, rerr error) {
 	switch resp.StatusCode {
 	case 204:
@@ -6264,107 +4363,6 @@ func decodeOrgsPingWebhookResponse(resp *http.Response) (_ OrgsPingWebhookRespon
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeAppsGetOrgInstallationResponse(resp *http.Response) (_ Installation, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Installation
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeOrgsListAppInstallationsResponse(resp *http.Response) (_ OrgsListAppInstallations, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response OrgsListAppInstallations
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeInteractionsGetRestrictionsForOrgResponse(resp *http.Response) (_ InteractionsGetRestrictionsForOrgResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeInteractionsSetRestrictionsForOrgResponse(resp *http.Response) (_ InteractionsSetRestrictionsForOrgResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response InteractionLimitResponse
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -6431,93 +4429,6 @@ func decodeOrgsListPendingInvitationsResponse(resp *http.Response) (_ OrgsListPe
 	}
 }
 
-func decodeOrgsCreateInvitationResponse(resp *http.Response) (_ OrgsCreateInvitationResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response OrganizationInvitation
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeOrgsCancelInvitationResponse(resp *http.Response) (_ OrgsCancelInvitationResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &OrgsCancelInvitationNoContent{}, nil
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeOrgsListInvitationTeamsResponse(resp *http.Response) (_ OrgsListInvitationTeamsResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -6554,87 +4465,6 @@ func decodeOrgsListInvitationTeamsResponse(resp *http.Response) (_ OrgsListInvit
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeIssuesListForOrgResponse(resp *http.Response) (_ IssuesListForOrgResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response IssuesListForOrgOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeOrgsListMembersResponse(resp *http.Response) (_ OrgsListMembersResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response OrgsListMembersOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 302:
-		return &OrgsListMembersFound{}, nil
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -6712,7 +4542,7 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response) (_ OrgsGetMembe
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response OrgsGetMembershipForUserApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6731,7 +4561,7 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response) (_ OrgsGetMembe
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response OrgsGetMembershipForUserApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6743,58 +4573,6 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response) (_ OrgsGetMembe
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeOrgsSetMembershipForUserResponse(resp *http.Response) (_ OrgsSetMembershipForUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response OrgMembership
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -6812,7 +4590,7 @@ func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response) (_ OrgsRemov
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response OrgsRemoveMembershipForUserApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6831,119 +4609,7 @@ func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response) (_ OrgsRemov
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeMigrationsListForOrgResponse(resp *http.Response) (_ []Migration, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []Migration
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeMigrationsStartForOrgResponse(resp *http.Response) (_ MigrationsStartForOrgResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Migration
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeMigrationsGetStatusForOrgResponse(resp *http.Response) (_ MigrationsGetStatusForOrgResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
+			var response OrgsRemoveMembershipForUserApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7098,33 +4764,6 @@ func decodeMigrationsListReposForOrgResponse(resp *http.Response) (_ MigrationsL
 	}
 }
 
-func decodeOrgsListOutsideCollaboratorsResponse(resp *http.Response) (_ []SimpleUser, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []SimpleUser
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp *http.Response) (_ OrgsConvertMemberToOutsideCollaboratorResponse, rerr error) {
 	switch resp.StatusCode {
 	case 202:
@@ -7204,523 +4843,6 @@ func decodeOrgsRemoveOutsideCollaboratorResponse(resp *http.Response) (_ OrgsRem
 	}
 }
 
-func decodePackagesListPackagesForOrganizationResponse(resp *http.Response) (_ PackagesListPackagesForOrganizationResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PackagesListPackagesForOrganizationOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesGetPackageForOrganizationResponse(resp *http.Response) (_ Package, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Package
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesDeletePackageForOrgResponse(resp *http.Response) (_ PackagesDeletePackageForOrgResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &PackagesDeletePackageForOrgNoContent{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesRestorePackageForOrgResponse(resp *http.Response) (_ PackagesRestorePackageForOrgResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &PackagesRestorePackageForOrgNoContent{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.Response) (_ PackagesGetAllPackageVersionsForPackageOwnedByOrgResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PackagesGetAllPackageVersionsForPackageOwnedByOrgOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesGetPackageVersionForOrganizationResponse(resp *http.Response) (_ PackageVersion, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PackageVersion
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response) (_ PackagesDeletePackageVersionForOrgResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &PackagesDeletePackageVersionForOrgNoContent{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response) (_ PackagesRestorePackageVersionForOrgResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &PackagesRestorePackageVersionForOrgNoContent{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeProjectsListForOrgResponse(resp *http.Response) (_ ProjectsListForOrgResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ProjectsListForOrgOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ValidationErrorSimple
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeProjectsCreateForOrgResponse(resp *http.Response) (_ ProjectsCreateForOrgResponse, rerr error) {
 	switch resp.StatusCode {
 	case 201:
@@ -7745,7 +4867,7 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (_ ProjectsCreateFo
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsCreateForOrgApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7764,7 +4886,7 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (_ ProjectsCreateFo
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsCreateForOrgApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7783,7 +4905,7 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (_ ProjectsCreateFo
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsCreateForOrgApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7802,7 +4924,7 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (_ ProjectsCreateFo
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsCreateForOrgApplicationJSONGone
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7915,150 +5037,6 @@ func decodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(resp *http.Res
 	switch resp.StatusCode {
 	case 204:
 		return OrgsRemovePublicMembershipForAuthenticatedUser{}, nil
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposListForOrgResponse(resp *http.Response) (_ []MinimalRepository, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []MinimalRepository
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposCreateInOrgResponse(resp *http.Response) (_ ReposCreateInOrgResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Repository
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response) (_ SecretScanningListAlertsForOrgResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response SecretScanningListAlertsForOrgOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 503:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response service_unavailable
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -8219,58 +5197,6 @@ func decodeTeamsListResponse(resp *http.Response) (_ TeamsListResponse, rerr err
 	}
 }
 
-func decodeTeamsCreateResponse(resp *http.Response) (_ TeamsCreateResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response TeamFull
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeTeamsGetByNameResponse(resp *http.Response) (_ TeamsGetByNameResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -8333,33 +5259,6 @@ func decodeTeamsUpdateInOrgResponse(resp *http.Response) (_ TeamFull, rerr error
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response TeamFull
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeTeamsListDiscussionsInOrgResponse(resp *http.Response) (_ []TeamDiscussion, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []TeamDiscussion
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8472,33 +5371,6 @@ func decodeTeamsUpdateDiscussionInOrgResponse(resp *http.Response) (_ TeamDiscus
 	}
 }
 
-func decodeTeamsListDiscussionCommentsInOrgResponse(resp *http.Response) (_ []TeamDiscussionComment, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []TeamDiscussionComment
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeTeamsCreateDiscussionCommentInOrgResponse(resp *http.Response) (_ TeamDiscussionComment, rerr error) {
 	switch resp.StatusCode {
 	case 201:
@@ -8590,39 +5462,12 @@ func decodeTeamsUpdateDiscussionCommentInOrgResponse(resp *http.Response) (_ Tea
 	}
 }
 
-func decodeReactionsListForTeamDiscussionCommentInOrgResponse(resp *http.Response) (_ []Reaction, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []Reaction
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Response) (_ ReactionsCreateForTeamDiscussionCommentInOrgResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response Reaction
+			var response ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8641,7 +5486,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Respo
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response Reaction
+			var response ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8673,39 +5518,12 @@ func decodeReactionsDeleteForTeamDiscussionCommentResponse(resp *http.Response) 
 	}
 }
 
-func decodeReactionsListForTeamDiscussionInOrgResponse(resp *http.Response) (_ []Reaction, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []Reaction
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response) (_ ReactionsCreateForTeamDiscussionInOrgResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response Reaction
+			var response ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8724,7 +5542,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response) (_
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response Reaction
+			var response ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8762,33 +5580,6 @@ func decodeTeamsListPendingInvitationsInOrgResponse(resp *http.Response) (_ []Or
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response []OrganizationInvitation
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeTeamsListMembersInOrgResponse(resp *http.Response) (_ []SimpleUser, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []SimpleUser
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9158,11 +5949,11 @@ func decodeProjectsGetCardResponse(resp *http.Response) (_ ProjectsGetCardRespon
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsGetCardApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9181,7 +5972,7 @@ func decodeProjectsGetCardResponse(resp *http.Response) (_ ProjectsGetCardRespon
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsGetCardApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9200,7 +5991,7 @@ func decodeProjectsGetCardResponse(resp *http.Response) (_ ProjectsGetCardRespon
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsGetCardApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9227,11 +6018,11 @@ func decodeProjectsDeleteCardResponse(resp *http.Response) (_ ProjectsDeleteCard
 	case 204:
 		return &ProjectsDeleteCardNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsDeleteCardApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9269,7 +6060,7 @@ func decodeProjectsDeleteCardResponse(resp *http.Response) (_ ProjectsDeleteCard
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsDeleteCardApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9313,11 +6104,11 @@ func decodeProjectsUpdateCardResponse(resp *http.Response) (_ ProjectsUpdateCard
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsUpdateCardApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9336,7 +6127,7 @@ func decodeProjectsUpdateCardResponse(resp *http.Response) (_ ProjectsUpdateCard
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsUpdateCardApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9355,7 +6146,7 @@ func decodeProjectsUpdateCardResponse(resp *http.Response) (_ ProjectsUpdateCard
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsUpdateCardApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9375,98 +6166,6 @@ func decodeProjectsUpdateCardResponse(resp *http.Response) (_ ProjectsUpdateCard
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response ValidationErrorSimple
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeProjectsMoveCardResponse(resp *http.Response) (_ ProjectsMoveCardResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ProjectsMoveCardCreated
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ProjectsMoveCardForbidden
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 503:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ProjectsMoveCardServiceUnavailable
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9510,11 +6209,11 @@ func decodeProjectsGetColumnResponse(resp *http.Response) (_ ProjectsGetColumnRe
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsGetColumnApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9533,7 +6232,7 @@ func decodeProjectsGetColumnResponse(resp *http.Response) (_ ProjectsGetColumnRe
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsGetColumnApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9552,7 +6251,7 @@ func decodeProjectsGetColumnResponse(resp *http.Response) (_ ProjectsGetColumnRe
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsGetColumnApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9579,11 +6278,11 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response) (_ ProjectsDeleteCo
 	case 204:
 		return &ProjectsDeleteColumnNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsDeleteColumnApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9602,7 +6301,7 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response) (_ ProjectsDeleteCo
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsDeleteColumnApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9646,11 +6345,11 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response) (_ ProjectsUpdateCo
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsUpdateColumnApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9669,166 +6368,7 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response) (_ ProjectsUpdateCo
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeProjectsListCardsResponse(resp *http.Response) (_ ProjectsListCardsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ProjectsListCardsOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeProjectsCreateCardResponse(resp *http.Response) (_ ProjectsCreateCardResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ProjectCard
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 503:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ProjectsCreateCardServiceUnavailable
+			var response ProjectsUpdateColumnApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9872,11 +6412,11 @@ func decodeProjectsMoveColumnResponse(resp *http.Response) (_ ProjectsMoveColumn
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsMoveColumnApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9895,7 +6435,7 @@ func decodeProjectsMoveColumnResponse(resp *http.Response) (_ ProjectsMoveColumn
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsMoveColumnApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9958,11 +6498,11 @@ func decodeProjectsGetResponse(resp *http.Response) (_ ProjectsGetResponse, rerr
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsGetApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9981,7 +6521,7 @@ func decodeProjectsGetResponse(resp *http.Response) (_ ProjectsGetResponse, rerr
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsGetApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10008,11 +6548,11 @@ func decodeProjectsDeleteResponse(resp *http.Response) (_ ProjectsDeleteResponse
 	case 204:
 		return &ProjectsDeleteNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsDeleteApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10050,7 +6590,7 @@ func decodeProjectsDeleteResponse(resp *http.Response) (_ ProjectsDeleteResponse
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsDeleteApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10069,7 +6609,7 @@ func decodeProjectsDeleteResponse(resp *http.Response) (_ ProjectsDeleteResponse
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsDeleteApplicationJSONGone
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10113,11 +6653,11 @@ func decodeProjectsUpdateResponse(resp *http.Response) (_ ProjectsUpdateResponse
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsUpdateApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10157,7 +6697,7 @@ func decodeProjectsUpdateResponse(resp *http.Response) (_ ProjectsUpdateResponse
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsUpdateApplicationJSONGone
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10198,340 +6738,6 @@ func decodeProjectsUpdateResponse(resp *http.Response) (_ ProjectsUpdateResponse
 	}
 }
 
-func decodeProjectsListCollaboratorsResponse(resp *http.Response) (_ ProjectsListCollaboratorsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ProjectsListCollaboratorsOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeProjectsAddCollaboratorResponse(resp *http.Response) (_ ProjectsAddCollaboratorResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &ProjectsAddCollaboratorNoContent{}, nil
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeProjectsRemoveCollaboratorResponse(resp *http.Response) (_ ProjectsRemoveCollaboratorResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &ProjectsRemoveCollaboratorNoContent{}, nil
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeProjectsGetPermissionForUserResponse(resp *http.Response) (_ ProjectsGetPermissionForUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response RepositoryCollaboratorPermission
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeProjectsListColumnsResponse(resp *http.Response) (_ ProjectsListColumnsResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -10554,11 +6760,11 @@ func decodeProjectsListColumnsResponse(resp *http.Response) (_ ProjectsListColum
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsListColumnsApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10577,7 +6783,7 @@ func decodeProjectsListColumnsResponse(resp *http.Response) (_ ProjectsListColum
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsListColumnsApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10621,11 +6827,11 @@ func decodeProjectsCreateColumnResponse(resp *http.Response) (_ ProjectsCreateCo
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsCreateColumnApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10644,7 +6850,7 @@ func decodeProjectsCreateColumnResponse(resp *http.Response) (_ ProjectsCreateCo
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsCreateColumnApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10707,7 +6913,7 @@ func decodeRateLimitGetResponse(resp *http.Response) (_ RateLimitGetResponse, re
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -10738,11 +6944,11 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response) (_ ReactionsDelete
 	case 204:
 		return &ReactionsDeleteLegacyNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReactionsDeleteLegacyApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10761,7 +6967,7 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response) (_ ReactionsDelete
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReactionsDeleteLegacyApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10780,7 +6986,7 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response) (_ ReactionsDelete
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReactionsDeleteLegacyApplicationJSONGone
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10799,7 +7005,7 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response) (_ ReactionsDelete
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response preview_header_missing
+			var response PreviewHeaderMissing
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10845,7 +7051,7 @@ func decodeReposGetResponse(resp *http.Response) (_ ReposGetResponse, rerr error
 	case 301:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposGetApplicationJSONMovedPermanently
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10864,7 +7070,7 @@ func decodeReposGetResponse(resp *http.Response) (_ ReposGetResponse, rerr error
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposGetApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10883,7 +7089,7 @@ func decodeReposGetResponse(resp *http.Response) (_ ReposGetResponse, rerr error
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposGetApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10912,7 +7118,7 @@ func decodeReposDeleteResponse(resp *http.Response) (_ ReposDeleteResponse, rerr
 	case 307:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposDeleteApplicationJSONTemporaryRedirect
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10950,7 +7156,7 @@ func decodeReposDeleteResponse(resp *http.Response) (_ ReposDeleteResponse, rerr
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposDeleteApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10962,96 +7168,6 @@ func decodeReposDeleteResponse(resp *http.Response) (_ ReposDeleteResponse, rerr
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposUpdateResponse(resp *http.Response) (_ ReposUpdateResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response FullRepository
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 307:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -11392,33 +7508,6 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoResponse(resp *http.Response) (_
 	}
 }
 
-func decodeActionsListWorkflowRunsForRepoResponse(resp *http.Response) (_ ActionsListWorkflowRunsForRepo, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ActionsListWorkflowRunsForRepo
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeActionsGetWorkflowRunResponse(resp *http.Response) (_ WorkflowRun, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -11488,7 +7577,7 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response) (_ ActionsAppr
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response ActionsApproveWorkflowRunCreated
+			var response EmptyObject
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -11507,7 +7596,7 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response) (_ ActionsAppr
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActionsApproveWorkflowRunApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -11526,7 +7615,7 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response) (_ ActionsAppr
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActionsApproveWorkflowRunApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -11602,33 +7691,6 @@ func decodeActionsCancelWorkflowRunResponse(resp *http.Response) (_ ActionsCance
 	}
 }
 
-func decodeActionsListJobsForWorkflowRunResponse(resp *http.Response) (_ ActionsListJobsForWorkflowRun, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ActionsListJobsForWorkflowRun
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeActionsDownloadWorkflowRunLogsResponse(resp *http.Response) (_ ActionsDownloadWorkflowRunLogs, rerr error) {
 	switch resp.StatusCode {
 	case 302:
@@ -11643,47 +7705,6 @@ func decodeActionsDeleteWorkflowRunLogsResponse(resp *http.Response) (_ ActionsD
 	switch resp.StatusCode {
 	case 204:
 		return ActionsDeleteWorkflowRunLogs{}, nil
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeActionsGetPendingDeploymentsForRunResponse(resp *http.Response) (_ ActionsGetPendingDeploymentsForRunResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeActionsReviewPendingDeploymentsForRunResponse(resp *http.Response) (_ []Deployment, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []Deployment
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -12020,39 +8041,6 @@ func decodeReposListAutolinksResponse(resp *http.Response) (_ []Autolink, rerr e
 	}
 }
 
-func decodeReposCreateAutolinkResponse(resp *http.Response) (_ ReposCreateAutolinkResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Autolink
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeReposGetAutolinkResponse(resp *http.Response) (_ ReposGetAutolinkResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -12218,7 +8206,7 @@ func decodeReposGetBranchResponse(resp *http.Response) (_ ReposGetBranchResponse
 	case 301:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposGetBranchApplicationJSONMovedPermanently
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -12237,7 +8225,7 @@ func decodeReposGetBranchResponse(resp *http.Response) (_ ReposGetBranchResponse
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposGetBranchApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -12256,7 +8244,7 @@ func decodeReposGetBranchResponse(resp *http.Response) (_ ReposGetBranchResponse
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response preview_header_missing
+			var response PreviewHeaderMissing
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -12348,7 +8336,7 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response) (_ ReposUpda
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposUpdateBranchProtectionApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -12367,7 +8355,7 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response) (_ ReposUpda
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposUpdateBranchProtectionApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -12576,39 +8564,6 @@ func decodeReposDeletePullRequestReviewProtectionResponse(resp *http.Response) (
 	}
 }
 
-func decodeReposUpdatePullRequestReviewProtectionResponse(resp *http.Response) (_ ReposUpdatePullRequestReviewProtectionResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ProtectedBranchPullRequestReview
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeReposGetCommitSignatureProtectionResponse(resp *http.Response) (_ ReposGetCommitSignatureProtectionResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -12786,58 +8741,6 @@ func decodeReposRemoveStatusCheckProtectionResponse(resp *http.Response) (_ Repo
 	}
 }
 
-func decodeReposUpdateStatusCheckProtectionResponse(resp *http.Response) (_ ReposUpdateStatusCheckProtectionResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response StatusCheckPolicy
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeReposGetAllStatusCheckContextsResponse(resp *http.Response) (_ ReposGetAllStatusCheckContextsResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -12874,181 +8777,6 @@ func decodeReposGetAllStatusCheckContextsResponse(resp *http.Response) (_ ReposG
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposSetStatusCheckContextsResponse(resp *http.Response) (_ ReposSetStatusCheckContextsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReposSetStatusCheckContextsOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposAddStatusCheckContextsResponse(resp *http.Response) (_ ReposAddStatusCheckContextsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReposAddStatusCheckContextsOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposRemoveStatusCheckContextsResponse(resp *http.Response) (_ ReposRemoveStatusCheckContextsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReposRemoveStatusCheckContextsOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -13161,105 +8889,6 @@ func decodeReposGetAppsWithAccessToProtectedBranchResponse(resp *http.Response) 
 	}
 }
 
-func decodeReposSetAppAccessRestrictionsResponse(resp *http.Response) (_ ReposSetAppAccessRestrictionsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReposSetAppAccessRestrictionsOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposAddAppAccessRestrictionsResponse(resp *http.Response) (_ ReposAddAppAccessRestrictionsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReposAddAppAccessRestrictionsOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposRemoveAppAccessRestrictionsResponse(resp *http.Response) (_ ReposRemoveAppAccessRestrictionsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReposRemoveAppAccessRestrictionsOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp *http.Response) (_ ReposGetTeamsWithAccessToProtectedBranchResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -13296,105 +8925,6 @@ func decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp *http.Response)
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposSetTeamAccessRestrictionsResponse(resp *http.Response) (_ ReposSetTeamAccessRestrictionsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReposSetTeamAccessRestrictionsOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposAddTeamAccessRestrictionsResponse(resp *http.Response) (_ ReposAddTeamAccessRestrictionsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReposAddTeamAccessRestrictionsOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposRemoveTeamAccessRestrictionsResponse(resp *http.Response) (_ ReposRemoveTeamAccessRestrictionsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReposRemoveTeamAccessRestrictionsOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -13451,231 +8981,7 @@ func decodeReposGetUsersWithAccessToProtectedBranchResponse(resp *http.Response)
 	}
 }
 
-func decodeReposSetUserAccessRestrictionsResponse(resp *http.Response) (_ ReposSetUserAccessRestrictionsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReposSetUserAccessRestrictionsOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposAddUserAccessRestrictionsResponse(resp *http.Response) (_ ReposAddUserAccessRestrictionsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReposAddUserAccessRestrictionsOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposRemoveUserAccessRestrictionsResponse(resp *http.Response) (_ ReposRemoveUserAccessRestrictionsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReposRemoveUserAccessRestrictionsOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposRenameBranchResponse(resp *http.Response) (_ ReposRenameBranchResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BranchWithProtection
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeChecksCreateResponse(resp *http.Response) (_ CheckRun, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response CheckRun
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeChecksGetResponse(resp *http.Response) (_ CheckRun, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response CheckRun
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeChecksUpdateResponse(resp *http.Response) (_ CheckRun, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -13734,7 +9040,7 @@ func decodeChecksCreateSuiteResponse(resp *http.Response) (_ ChecksCreateSuiteRe
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response CheckSuite
+			var response ChecksCreateSuiteApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -13753,7 +9059,7 @@ func decodeChecksCreateSuiteResponse(resp *http.Response) (_ ChecksCreateSuiteRe
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response CheckSuite
+			var response ChecksCreateSuiteApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -13829,33 +9135,6 @@ func decodeChecksGetSuiteResponse(resp *http.Response) (_ CheckSuite, rerr error
 	}
 }
 
-func decodeChecksListForSuiteResponse(resp *http.Response) (_ ChecksListForSuite, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ChecksListForSuite
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeChecksRerequestSuiteResponse(resp *http.Response) (_ ChecksRerequestSuite, rerr error) {
 	switch resp.StatusCode {
 	case 201:
@@ -13883,94 +9162,23 @@ func decodeChecksRerequestSuiteResponse(resp *http.Response) (_ ChecksRerequestS
 	}
 }
 
-func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response) (_ CodeScanningListAlertsForRepoResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response CodeScanningListAlertsForRepoOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 503:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response service_unavailable
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeCodeScanningGetAlertResponse(resp *http.Response) (_ CodeScanningGetAlertResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
+		case "application/json":
+			var response CodeScanningAlert
+			data, err := io.ReadAll(resp.Body)
+			if err != nil {
+				rerr = err
+				return
+			}
+			if err := json.Unmarshal(data, &response); err != nil {
+				rerr = err
+				return
+			}
+
+			return &response, nil
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -13978,7 +9186,7 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response) (_ CodeScanningGetA
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response CodeScanningGetAlertApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -13997,7 +9205,7 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response) (_ CodeScanningGetA
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response CodeScanningGetAlertApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14016,7 +9224,7 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response) (_ CodeScanningGetA
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response service_unavailable
+			var response ServiceUnavailable
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14062,7 +9270,7 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response) (_ CodeScanningU
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response CodeScanningUpdateAlertApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14081,7 +9289,7 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response) (_ CodeScanningU
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response CodeScanningUpdateAlertApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14100,7 +9308,7 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response) (_ CodeScanningU
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response service_unavailable
+			var response ServiceUnavailable
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14146,7 +9354,7 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (_ CodeSc
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response CodeScanningListAlertInstancesApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14165,7 +9373,7 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (_ CodeSc
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response CodeScanningListAlertInstancesApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14184,7 +9392,7 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (_ CodeSc
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response service_unavailable
+			var response ServiceUnavailable
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14230,7 +9438,7 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (_ CodeSc
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response CodeScanningListRecentAnalysesApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14249,7 +9457,7 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (_ CodeSc
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response CodeScanningListRecentAnalysesApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14268,7 +9476,7 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (_ CodeSc
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response service_unavailable
+			var response ServiceUnavailable
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14317,7 +9525,7 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response) (_ CodeScanningG
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response CodeScanningGetAnalysisApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14336,7 +9544,7 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response) (_ CodeScanningG
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response CodeScanningGetAnalysisApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14355,7 +9563,7 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response) (_ CodeScanningG
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response service_unavailable
+			var response ServiceUnavailable
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14401,7 +9609,7 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (_ CodeScanni
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response CodeScanningDeleteAnalysisApplicationJSONBadRequest
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14423,7 +9631,7 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (_ CodeScanni
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response CodeScanningDeleteAnalysisApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14442,7 +9650,7 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (_ CodeScanni
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response CodeScanningDeleteAnalysisApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14461,7 +9669,7 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (_ CodeScanni
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response service_unavailable
+			var response ServiceUnavailable
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14509,7 +9717,7 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response) (_ CodeScanningU
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response CodeScanningUploadSarifApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14528,7 +9736,7 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response) (_ CodeScanningU
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response CodeScanningUploadSarifApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14549,7 +9757,7 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response) (_ CodeScanningU
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response service_unavailable
+			var response ServiceUnavailable
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14616,53 +9824,7 @@ func decodeCodeScanningGetSarifResponse(resp *http.Response) (_ CodeScanningGetS
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response service_unavailable
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposListCollaboratorsResponse(resp *http.Response) (_ ReposListCollaboratorsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReposListCollaboratorsOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
+			var response ServiceUnavailable
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -14690,60 +9852,6 @@ func decodeReposCheckCollaboratorResponse(resp *http.Response) (_ ReposCheckColl
 		return &ReposCheckCollaboratorNoContent{}, nil
 	case 404:
 		return &ReposCheckCollaboratorNotFound{}, nil
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposAddCollaboratorResponse(resp *http.Response) (_ ReposAddCollaboratorResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response RepositoryInvitation
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 204:
-		return &ReposAddCollaboratorNoContent{}, nil
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -14954,142 +10062,6 @@ func decodeReposUpdateCommitCommentResponse(resp *http.Response) (_ ReposUpdateC
 	}
 }
 
-func decodeReactionsListForCommitCommentResponse(resp *http.Response) (_ ReactionsListForCommitCommentResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReactionsListForCommitCommentOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 415:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response preview_header_missing
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReactionsCreateForCommitCommentResponse(resp *http.Response) (_ ReactionsCreateForCommitCommentResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Reaction
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Reaction
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 415:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response preview_header_missing
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeReactionsDeleteForCommitCommentResponse(resp *http.Response) (_ ReactionsDeleteForCommitComment, rerr error) {
 	switch resp.StatusCode {
 	case 204:
@@ -15124,7 +10096,7 @@ func decodeReposListCommitsResponse(resp *http.Response) (_ ReposListCommitsResp
 	case 400:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposListCommitsApplicationJSONBadRequest
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -15146,7 +10118,7 @@ func decodeReposListCommitsResponse(resp *http.Response) (_ ReposListCommitsResp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposListCommitsApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -15165,7 +10137,7 @@ func decodeReposListCommitsResponse(resp *http.Response) (_ ReposListCommitsResp
 	case 409:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposListCommitsApplicationJSONConflict
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -15184,7 +10156,7 @@ func decodeReposListCommitsResponse(resp *http.Response) (_ ReposListCommitsResp
 	case 500:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposListCommitsApplicationJSONInternalServerError
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -15196,39 +10168,6 @@ func decodeReposListCommitsResponse(resp *http.Response) (_ ReposListCommitsResp
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposListBranchesForHeadCommitResponse(resp *http.Response) (_ ReposListBranchesForHeadCommitResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReposListBranchesForHeadCommitOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -15266,58 +10205,6 @@ func decodeReposListCommentsForCommitResponse(resp *http.Response) (_ []CommitCo
 	}
 }
 
-func decodeReposCreateCommitCommentResponse(resp *http.Response) (_ ReposCreateCommitCommentResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response CommitComment
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeReposListPullRequestsAssociatedWithCommitResponse(resp *http.Response) (_ []PullRequestSimple, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -15335,91 +10222,6 @@ func decodeReposListPullRequestsAssociatedWithCommitResponse(resp *http.Response
 			}
 
 			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposGetCommitResponse(resp *http.Response) (_ ReposGetCommitResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Commit
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 500:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeChecksListForRefResponse(resp *http.Response) (_ ChecksListForRefResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -15600,7 +10402,7 @@ func decodeReposCompareCommitsResponse(resp *http.Response) (_ ReposCompareCommi
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposCompareCommitsApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -15619,355 +10421,7 @@ func decodeReposCompareCommitsResponse(resp *http.Response) (_ ReposCompareCommi
 	case 500:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeAppsCreateContentAttachmentResponse(resp *http.Response) (_ AppsCreateContentAttachmentResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ContentReferenceAttachment
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 410:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 415:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response preview_header_missing
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposGetContentResponse(resp *http.Response) (_ ReposGetContentResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/vnd.github.v3.object":
-			rerr = fmt.Errorf("application/vnd.github.v3.object decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 302:
-		return &found{}, nil
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposCreateOrUpdateFileContentsResponse(resp *http.Response) (_ ReposCreateOrUpdateFileContentsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response FileCommit
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response FileCommit
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 409:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposDeleteFileResponse(resp *http.Response) (_ ReposDeleteFileResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response FileCommit
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 409:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 503:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response service_unavailable
+			var response ReposCompareCommitsApplicationJSONInternalServerError
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -16015,7 +10469,7 @@ func decodeReposListContributorsResponse(resp *http.Response) (_ ReposListContri
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposListContributorsApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -16034,121 +10488,7 @@ func decodeReposListContributorsResponse(resp *http.Response) (_ ReposListContri
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposListDeploymentsResponse(resp *http.Response) (_ []Deployment, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []Deployment
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposCreateDeploymentResponse(resp *http.Response) (_ ReposCreateDeploymentResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Deployment
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 202:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReposCreateDeploymentAccepted
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 409:
-		return &ReposCreateDeploymentConflict{}, nil
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposGetDeploymentResponse(resp *http.Response) (_ ReposGetDeploymentResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
+			var response ReposListContributorsApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -16264,39 +10604,6 @@ func decodeReposListDeploymentStatusesResponse(resp *http.Response) (_ ReposList
 	}
 }
 
-func decodeReposCreateDeploymentStatusResponse(resp *http.Response) (_ ReposCreateDeploymentStatusResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response DeploymentStatus
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeReposGetDeploymentStatusResponse(resp *http.Response) (_ ReposGetDeploymentStatusResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -16340,110 +10647,7 @@ func decodeReposGetDeploymentStatusResponse(resp *http.Response) (_ ReposGetDepl
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response preview_header_missing
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposCreateDispatchEventResponse(resp *http.Response) (_ ReposCreateDispatchEventResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &ReposCreateDispatchEventNoContent{}, nil
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposGetAllEnvironmentsResponse(resp *http.Response) (_ ReposGetAllEnvironmentsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposGetEnvironmentResponse(resp *http.Response) (_ Environment, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Environment
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposCreateOrUpdateEnvironmentResponse(resp *http.Response) (_ ReposCreateOrUpdateEnvironmentResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Environment
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
+			var response PreviewHeaderMissing
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -16492,361 +10696,6 @@ func decodeActivityListRepoEventsResponse(resp *http.Response) (_ []Event, rerr 
 			}
 
 			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposListForksResponse(resp *http.Response) (_ ReposListForksResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReposListForksOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 400:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposCreateForkResponse(resp *http.Response) (_ ReposCreateForkResponse, rerr error) {
-	switch resp.StatusCode {
-	case 202:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response FullRepository
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 400:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeGitCreateBlobResponse(resp *http.Response) (_ GitCreateBlobResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ShortBlob
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 409:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeGitGetBlobResponse(resp *http.Response) (_ GitGetBlobResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Blob
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeGitCreateCommitResponse(resp *http.Response) (_ GitCreateCommitResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response GitCommit
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -16976,400 +10825,12 @@ func decodeGitGetRefResponse(resp *http.Response) (_ GitGetRefResponse, rerr err
 	}
 }
 
-func decodeGitCreateRefResponse(resp *http.Response) (_ GitCreateRefResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response GitRef
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeGitDeleteRefResponse(resp *http.Response) (_ GitDeleteRefResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &GitDeleteRefNoContent{}, nil
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeGitUpdateRefResponse(resp *http.Response) (_ GitUpdateRefResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response GitRef
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeGitCreateTagResponse(resp *http.Response) (_ GitCreateTagResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response GitTag
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeGitGetTagResponse(resp *http.Response) (_ GitGetTagResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response GitTag
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeGitCreateTreeResponse(resp *http.Response) (_ GitCreateTreeResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response GitTree
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeGitGetTreeResponse(resp *http.Response) (_ GitGetTreeResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response GitTree
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposListWebhooksResponse(resp *http.Response) (_ ReposListWebhooksResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposCreateWebhookResponse(resp *http.Response) (_ ReposCreateWebhookResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Hook
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposGetWebhookResponse(resp *http.Response) (_ ReposGetWebhookResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Hook
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -17429,277 +10890,6 @@ func decodeReposDeleteWebhookResponse(resp *http.Response) (_ ReposDeleteWebhook
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposUpdateWebhookResponse(resp *http.Response) (_ ReposUpdateWebhookResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Hook
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposGetWebhookConfigForRepoResponse(resp *http.Response) (_ WebhookConfig, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response WebhookConfig
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposUpdateWebhookConfigForRepoResponse(resp *http.Response) (_ WebhookConfig, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response WebhookConfig
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposListWebhookDeliveriesResponse(resp *http.Response) (_ ReposListWebhookDeliveriesResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReposListWebhookDeliveriesOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 400:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposGetWebhookDeliveryResponse(resp *http.Response) (_ ReposGetWebhookDeliveryResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response HookDelivery
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 400:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposRedeliverWebhookDeliveryResponse(resp *http.Response) (_ ReposRedeliverWebhookDeliveryResponse, rerr error) {
-	switch resp.StatusCode {
-	case 202:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response accepted
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 400:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -17814,58 +11004,6 @@ func decodeMigrationsGetImportStatusResponse(resp *http.Response) (_ MigrationsG
 	}
 }
 
-func decodeMigrationsStartImportResponse(resp *http.Response) (_ MigrationsStartImportResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Import
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeMigrationsCancelImportResponse(resp *http.Response) (_ MigrationsCancelImport, rerr error) {
 	switch resp.StatusCode {
 	case 204:
@@ -17949,58 +11087,6 @@ func decodeMigrationsGetCommitAuthorsResponse(resp *http.Response) (_ Migrations
 	}
 }
 
-func decodeMigrationsMapCommitAuthorResponse(resp *http.Response) (_ MigrationsMapCommitAuthorResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PorterAuthor
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeMigrationsGetLargeFilesResponse(resp *http.Response) (_ []PorterLargeFile, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -18018,118 +11104,6 @@ func decodeMigrationsGetLargeFilesResponse(resp *http.Response) (_ []PorterLarge
 			}
 
 			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeMigrationsSetLfsPreferenceResponse(resp *http.Response) (_ MigrationsSetLfsPreferenceResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Import
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeAppsGetRepoInstallationResponse(resp *http.Response) (_ AppsGetRepoInstallationResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Installation
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 301:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeInteractionsGetRestrictionsForRepoResponse(resp *http.Response) (_ InteractionsGetRestrictionsForRepoResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -18245,238 +11219,6 @@ func decodeReposUpdateInvitationResponse(resp *http.Response) (_ RepositoryInvit
 	}
 }
 
-func decodeIssuesListForRepoResponse(resp *http.Response) (_ IssuesListForRepoResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response IssuesListForRepoOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 301:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeIssuesCreateResponse(resp *http.Response) (_ IssuesCreateResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Issue
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 410:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 503:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response service_unavailable
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeIssuesListCommentsForRepoResponse(resp *http.Response) (_ IssuesListCommentsForRepoResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response IssuesListCommentsForRepoOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeIssuesGetCommentResponse(resp *http.Response) (_ IssuesGetCommentResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -18533,212 +11275,10 @@ func decodeIssuesDeleteCommentResponse(resp *http.Response) (_ IssuesDeleteComme
 	}
 }
 
-func decodeIssuesUpdateCommentResponse(resp *http.Response) (_ IssuesUpdateCommentResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response IssueComment
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReactionsListForIssueCommentResponse(resp *http.Response) (_ ReactionsListForIssueCommentResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReactionsListForIssueCommentOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 415:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response preview_header_missing
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReactionsCreateForIssueCommentResponse(resp *http.Response) (_ ReactionsCreateForIssueCommentResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Reaction
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Reaction
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 415:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response preview_header_missing
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeReactionsDeleteForIssueCommentResponse(resp *http.Response) (_ ReactionsDeleteForIssueComment, rerr error) {
 	switch resp.StatusCode {
 	case 204:
 		return ReactionsDeleteForIssueComment{}, nil
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeIssuesListEventsForRepoResponse(resp *http.Response) (_ IssuesListEventsForRepoResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response IssuesListEventsForRepoOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -18769,7 +11309,7 @@ func decodeIssuesGetEventResponse(resp *http.Response) (_ IssuesGetEventResponse
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response IssuesGetEventApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -18788,7 +11328,7 @@ func decodeIssuesGetEventResponse(resp *http.Response) (_ IssuesGetEventResponse
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response IssuesGetEventApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -18807,221 +11347,7 @@ func decodeIssuesGetEventResponse(resp *http.Response) (_ IssuesGetEventResponse
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeIssuesGetResponse(resp *http.Response) (_ IssuesGetResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Issue
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 301:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 410:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeIssuesUpdateResponse(resp *http.Response) (_ IssuesUpdateResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Issue
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 301:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 410:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 503:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response service_unavailable
+			var response IssuesGetEventApplicationJSONGone
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -19121,7 +11447,7 @@ func decodeIssuesListCommentsResponse(resp *http.Response) (_ IssuesListComments
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response IssuesListCommentsApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -19140,130 +11466,7 @@ func decodeIssuesListCommentsResponse(resp *http.Response) (_ IssuesListComments
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeIssuesCreateCommentResponse(resp *http.Response) (_ IssuesCreateCommentResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response IssueComment
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 410:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeIssuesListEventsResponse(resp *http.Response) (_ IssuesListEventsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 410:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
+			var response IssuesListCommentsApplicationJSONGone
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -19331,110 +11534,6 @@ func decodeIssuesListLabelsOnIssueResponse(resp *http.Response) (_ IssuesListLab
 	}
 }
 
-func decodeIssuesSetLabelsResponse(resp *http.Response) (_ IssuesSetLabelsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response IssuesSetLabelsOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 410:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeIssuesAddLabelsResponse(resp *http.Response) (_ IssuesAddLabelsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response IssuesAddLabelsOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 410:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeIssuesRemoveAllLabelsResponse(resp *http.Response) (_ IssuesRemoveAllLabelsResponse, rerr error) {
 	switch resp.StatusCode {
 	case 204:
@@ -19488,7 +11587,7 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response) (_ IssuesRemoveLabelRe
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response IssuesRemoveLabelApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -19507,7 +11606,7 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response) (_ IssuesRemoveLabelRe
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response IssuesRemoveLabelApplicationJSONGone
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -19519,79 +11618,6 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response) (_ IssuesRemoveLabelRe
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeIssuesLockResponse(resp *http.Response) (_ IssuesLockResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &IssuesLockNoContent{}, nil
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 410:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -19609,7 +11635,7 @@ func decodeIssuesUnlockResponse(resp *http.Response) (_ IssuesUnlockResponse, re
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response IssuesUnlockApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -19628,7 +11654,7 @@ func decodeIssuesUnlockResponse(resp *http.Response) (_ IssuesUnlockResponse, re
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response IssuesUnlockApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -19640,161 +11666,6 @@ func decodeIssuesUnlockResponse(resp *http.Response) (_ IssuesUnlockResponse, re
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReactionsListForIssueResponse(resp *http.Response) (_ ReactionsListForIssueResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReactionsListForIssueOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 410:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 415:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response preview_header_missing
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReactionsCreateForIssueResponse(resp *http.Response) (_ ReactionsCreateForIssueResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Reaction
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Reaction
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 415:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response preview_header_missing
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -19809,71 +11680,6 @@ func decodeReactionsDeleteForIssueResponse(resp *http.Response) (_ ReactionsDele
 	switch resp.StatusCode {
 	case 204:
 		return ReactionsDeleteForIssue{}, nil
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeIssuesListEventsForTimelineResponse(resp *http.Response) (_ IssuesListEventsForTimelineResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response IssuesListEventsForTimelineOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 410:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -19897,39 +11703,6 @@ func decodeReposListDeployKeysResponse(resp *http.Response) (_ []DeployKey, rerr
 			}
 
 			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposCreateDeployKeyResponse(resp *http.Response) (_ ReposCreateDeployKeyResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response DeployKey
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -20042,58 +11815,6 @@ func decodeIssuesListLabelsForRepoResponse(resp *http.Response) (_ IssuesListLab
 	}
 }
 
-func decodeIssuesCreateLabelResponse(resp *http.Response) (_ IssuesCreateLabelResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Label
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeIssuesGetLabelResponse(resp *http.Response) (_ IssuesGetLabelResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -20177,12 +11898,12 @@ func decodeIssuesUpdateLabelResponse(resp *http.Response) (_ Label, rerr error) 
 	}
 }
 
-func decodeReposListLanguagesResponse(resp *http.Response) (_ ReposListLanguages, rerr error) {
+func decodeReposListLanguagesResponse(resp *http.Response) (_ Language, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response ReposListLanguages
+			var response Language
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -20209,7 +11930,7 @@ func decodeReposEnableLfsForRepoResponse(resp *http.Response) (_ ReposEnableLfsF
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response accepted
+			var response Accepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -20295,162 +12016,6 @@ func decodeReposMergeUpstreamResponse(resp *http.Response) (_ ReposMergeUpstream
 		return &ReposMergeUpstreamConflict{}, nil
 	case 422:
 		return &ReposMergeUpstreamUnprocessableEntity{}, nil
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposMergeResponse(resp *http.Response) (_ ReposMergeResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Commit
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 204:
-		return &ReposMergeNoContent{}, nil
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		return &ReposMergeNotFound{}, nil
-	case 409:
-		return &ReposMergeConflict{}, nil
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeIssuesListMilestonesResponse(resp *http.Response) (_ IssuesListMilestonesResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response IssuesListMilestonesOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeIssuesCreateMilestoneResponse(resp *http.Response) (_ IssuesCreateMilestoneResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Milestone
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -20646,77 +12211,6 @@ func decodeReposGetPagesResponse(resp *http.Response) (_ ReposGetPagesResponse, 
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposUpdateInformationAboutPagesSiteResponse(resp *http.Response) (_ ReposUpdateInformationAboutPagesSiteResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &ReposUpdateInformationAboutPagesSiteNoContent{}, nil
-	case 400:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposCreatePagesSiteResponse(resp *http.Response) (_ ReposCreatePagesSiteResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response Page
 			data, err := io.ReadAll(resp.Body)
@@ -20734,60 +12228,6 @@ func decodeReposCreatePagesSiteResponse(resp *http.Response) (_ ReposCreatePages
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
 		}
-	case 409:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 415:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response preview_header_missing
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposDeletePagesSiteResponse(resp *http.Response) (_ ReposDeletePagesSiteResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &ReposDeletePagesSiteNoContent{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -20803,31 +12243,6 @@ func decodeReposDeletePagesSiteResponse(resp *http.Response) (_ ReposDeletePages
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 415:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response preview_header_missing
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -20970,7 +12385,7 @@ func decodeReposGetPagesHealthCheckResponse(resp *http.Response) (_ ReposGetPage
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response ReposGetPagesHealthCheckAccepted
+			var response EmptyObject
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -21015,128 +12430,6 @@ func decodeReposGetPagesHealthCheckResponse(resp *http.Response) (_ ReposGetPage
 	}
 }
 
-func decodeProjectsListForRepoResponse(resp *http.Response) (_ ProjectsListForRepoResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ProjectsListForRepoOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 410:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ValidationErrorSimple
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeProjectsCreateForRepoResponse(resp *http.Response) (_ ProjectsCreateForRepoResponse, rerr error) {
 	switch resp.StatusCode {
 	case 201:
@@ -21161,7 +12454,7 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (_ ProjectsCreateF
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsCreateForRepoApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -21180,7 +12473,7 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (_ ProjectsCreateF
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsCreateForRepoApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -21199,7 +12492,7 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (_ ProjectsCreateF
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsCreateForRepoApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -21218,7 +12511,7 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (_ ProjectsCreateF
 	case 410:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsCreateForRepoApplicationJSONGone
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -21249,120 +12542,6 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (_ ProjectsCreateF
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePullsListResponse(resp *http.Response) (_ PullsListResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PullsListOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePullsCreateResponse(resp *http.Response) (_ PullsCreateResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PullRequest
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePullsListReviewCommentsForRepoResponse(resp *http.Response) (_ []PullRequestReviewComment, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []PullRequestReviewComment
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -21475,142 +12654,6 @@ func decodePullsUpdateReviewCommentResponse(resp *http.Response) (_ PullRequestR
 	}
 }
 
-func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response) (_ ReactionsListForPullRequestReviewCommentResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReactionsListForPullRequestReviewCommentOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 415:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response preview_header_missing
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReactionsCreateForPullRequestReviewCommentResponse(resp *http.Response) (_ ReactionsCreateForPullRequestReviewCommentResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Reaction
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Reaction
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 415:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response preview_header_missing
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeReactionsDeleteForPullRequestCommentResponse(resp *http.Response) (_ ReactionsDeleteForPullRequestComment, rerr error) {
 	switch resp.StatusCode {
 	case 204:
@@ -21643,11 +12686,11 @@ func decodePullsGetResponse(resp *http.Response) (_ PullsGetResponse, rerr error
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response PullsGetApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -21666,7 +12709,7 @@ func decodePullsGetResponse(resp *http.Response) (_ PullsGetResponse, rerr error
 	case 500:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response PullsGetApplicationJSONInternalServerError
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -21678,137 +12721,6 @@ func decodePullsGetResponse(resp *http.Response) (_ PullsGetResponse, rerr error
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePullsUpdateResponse(resp *http.Response) (_ PullsUpdateResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PullRequest
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePullsListReviewCommentsResponse(resp *http.Response) (_ []PullRequestReviewComment, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []PullRequestReviewComment
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePullsCreateReviewCommentResponse(resp *http.Response) (_ PullsCreateReviewCommentResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PullRequestReviewComment
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -21892,173 +12804,12 @@ func decodePullsListCommitsResponse(resp *http.Response) (_ []Commit, rerr error
 	}
 }
 
-func decodePullsListFilesResponse(resp *http.Response) (_ PullsListFilesResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PullsListFilesOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 500:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodePullsCheckIfMergedResponse(resp *http.Response) (_ PullsCheckIfMergedResponse, rerr error) {
 	switch resp.StatusCode {
 	case 204:
 		return &PullsCheckIfMergedNoContent{}, nil
 	case 404:
 		return &PullsCheckIfMergedNotFound{}, nil
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePullsMergeResponse(resp *http.Response) (_ PullsMergeResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PullRequestMergeResult
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 405:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PullsMergeMethodNotAllowed
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 409:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PullsMergeConflict
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -22082,87 +12833,6 @@ func decodePullsListRequestedReviewersResponse(resp *http.Response) (_ PullReque
 			}
 
 			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePullsRequestReviewersResponse(resp *http.Response) (_ PullsRequestReviewersResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PullRequestSimple
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		return &PullsRequestReviewersUnprocessableEntity{}, nil
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePullsRemoveRequestedReviewersResponse(resp *http.Response) (_ PullsRemoveRequestedReviewersResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PullRequestSimple
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -22557,7 +13227,7 @@ func decodePullsSubmitReviewResponse(resp *http.Response) (_ PullsSubmitReviewRe
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response PullsSubmitReviewApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -22576,7 +13246,7 @@ func decodePullsSubmitReviewResponse(resp *http.Response) (_ PullsSubmitReviewRe
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response PullsSubmitReviewApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -22607,162 +13277,6 @@ func decodePullsSubmitReviewResponse(resp *http.Response) (_ PullsSubmitReviewRe
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePullsUpdateBranchResponse(resp *http.Response) (_ PullsUpdateBranchResponse, rerr error) {
-	switch resp.StatusCode {
-	case 202:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PullsUpdateBranchAccepted
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposGetReadmeResponse(resp *http.Response) (_ ReposGetReadmeResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ContentFile
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposGetReadmeInDirectoryResponse(resp *http.Response) (_ ReposGetReadmeInDirectoryResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ContentFile
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -22819,58 +13333,6 @@ func decodeReposListReleasesResponse(resp *http.Response) (_ ReposListReleasesRe
 	}
 }
 
-func decodeReposCreateReleaseResponse(resp *http.Response) (_ ReposCreateReleaseResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Release
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeReposGetReleaseAssetResponse(resp *http.Response) (_ ReposGetReleaseAssetResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -22893,7 +13355,7 @@ func decodeReposGetReleaseAssetResponse(resp *http.Response) (_ ReposGetReleaseA
 			return
 		}
 	case 302:
-		return &found{}, nil
+		return &Found{}, nil
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -22916,7 +13378,7 @@ func decodeReposGetReleaseAssetResponse(resp *http.Response) (_ ReposGetReleaseA
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response preview_header_missing
+			var response PreviewHeaderMissing
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -23204,125 +13666,6 @@ func decodeReposUploadReleaseAssetResponse(resp *http.Response) (_ ReleaseAsset,
 	}
 }
 
-func decodeReactionsCreateForReleaseResponse(resp *http.Response) (_ ReactionsCreateForReleaseResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Reaction
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Reaction
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 415:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response preview_header_missing
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeSecretScanningListAlertsForRepoResponse(resp *http.Response) (_ SecretScanningListAlertsForRepoResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response SecretScanningListAlertsForRepoOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		return &SecretScanningListAlertsForRepoNotFound{}, nil
-	case 503:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response service_unavailable
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeSecretScanningGetAlertResponse(resp *http.Response) (_ SecretScanningGetAlertResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -23349,7 +13692,7 @@ func decodeSecretScanningGetAlertResponse(resp *http.Response) (_ SecretScanning
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response service_unavailable
+			var response ServiceUnavailable
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -23399,7 +13742,7 @@ func decodeSecretScanningUpdateAlertResponse(resp *http.Response) (_ SecretScann
 	case 503:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response service_unavailable
+			var response ServiceUnavailable
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -23411,26 +13754,6 @@ func decodeSecretScanningUpdateAlertResponse(resp *http.Response) (_ SecretScann
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeActivityListStargazersForRepoResponse(resp *http.Response) (_ ActivityListStargazersForRepoResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -23465,7 +13788,7 @@ func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response) (_ ReposGetCo
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response accepted
+			var response Accepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -23482,7 +13805,7 @@ func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response) (_ ReposGetCo
 			return
 		}
 	case 204:
-		return &no_content{}, nil
+		return &NoContent{}, nil
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -23513,7 +13836,7 @@ func decodeReposGetCommitActivityStatsResponse(resp *http.Response) (_ ReposGetC
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response accepted
+			var response Accepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -23530,7 +13853,7 @@ func decodeReposGetCommitActivityStatsResponse(resp *http.Response) (_ ReposGetC
 			return
 		}
 	case 204:
-		return &no_content{}, nil
+		return &NoContent{}, nil
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -23561,7 +13884,7 @@ func decodeReposGetContributorsStatsResponse(resp *http.Response) (_ ReposGetCon
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response accepted
+			var response Accepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -23578,7 +13901,7 @@ func decodeReposGetContributorsStatsResponse(resp *http.Response) (_ ReposGetCon
 			return
 		}
 	case 204:
-		return &no_content{}, nil
+		return &NoContent{}, nil
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -23653,7 +13976,7 @@ func decodeReposGetPunchCardStatsResponse(resp *http.Response) (_ ReposGetPunchC
 			return
 		}
 	case 204:
-		return &no_content{}, nil
+		return &NoContent{}, nil
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -23906,7 +14229,7 @@ func decodeReposGetAllTopicsResponse(resp *http.Response) (_ ReposGetAllTopicsRe
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response preview_header_missing
+			var response PreviewHeaderMissing
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -23971,7 +14294,7 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response) (_ ReposReplaceAll
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response preview_header_missing
+			var response PreviewHeaderMissing
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -23991,52 +14314,6 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response) (_ ReposReplaceAll
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response ValidationErrorSimple
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposGetClonesResponse(resp *http.Response) (_ ReposGetClonesResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response CloneTraffic
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -24110,52 +14387,6 @@ func decodeReposGetTopReferrersResponse(resp *http.Response) (_ ReposGetTopRefer
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response ReposGetTopReferrersOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposGetViewsResponse(resp *http.Response) (_ ReposGetViewsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ViewTraffic
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -24292,41 +14523,6 @@ func decodeReposCreateUsingTemplateResponse(resp *http.Response) (_ Repository, 
 	}
 }
 
-func decodeReposListPublicResponse(resp *http.Response) (_ ReposListPublicResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReposListPublicOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeActionsListEnvironmentSecretsResponse(resp *http.Response) (_ ActionsListEnvironmentSecrets, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -24413,7 +14609,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretResponse(resp *http.Response) (
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response ActionsCreateOrUpdateEnvironmentSecretCreated
+			var response EmptyObject
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -24565,33 +14761,6 @@ func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(resp *http.Respo
 	}
 }
 
-func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(resp *http.Response) (_ ScimEnterpriseGroup, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ScimEnterpriseGroup
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(resp *http.Response) (_ ScimUserListEnterprise, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -24737,353 +14906,16 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(resp *http.Re
 	}
 }
 
-func decodeScimListProvisionedIdentitiesResponse(resp *http.Response) (_ ScimListProvisionedIdentitiesResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 400:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ScimError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ScimError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ScimError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeScimProvisionAndInviteUserResponse(resp *http.Response) (_ ScimProvisionAndInviteUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 400:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ScimError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ScimError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ScimError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 409:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ScimError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 500:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ScimError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeScimGetProvisioningInformationForUserResponse(resp *http.Response) (_ ScimGetProvisioningInformationForUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ScimError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ScimError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeScimSetInformationForProvisionedUserResponse(resp *http.Response) (_ ScimSetInformationForProvisionedUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ScimError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ScimError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeScimDeleteUserFromOrgResponse(resp *http.Response) (_ ScimDeleteUserFromOrgResponse, rerr error) {
 	switch resp.StatusCode {
 	case 204:
 		return &ScimDeleteUserFromOrgNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response ScimError
+			var response ScimDeleteUserFromOrgApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -25105,7 +14937,7 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response) (_ ScimDeleteUserF
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response ScimError
+			var response ScimDeleteUserFromOrgApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -25120,431 +14952,6 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response) (_ ScimDeleteUserF
 		case "application/scim+json":
 			rerr = fmt.Errorf("application/scim+json decoder not implemented")
 			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeScimUpdateAttributeForUserResponse(resp *http.Response) (_ ScimUpdateAttributeForUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 400:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ScimError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ScimError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ScimError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 429:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeSearchCodeResponse(resp *http.Response) (_ SearchCodeResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response SearchCodeOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 503:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response service_unavailable
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeSearchCommitsResponse(resp *http.Response) (_ SearchCommitsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response SearchCommitsOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 415:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response preview_header_missing
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeSearchIssuesAndPullRequestsResponse(resp *http.Response) (_ SearchIssuesAndPullRequestsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response SearchIssuesAndPullRequestsOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 503:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response service_unavailable
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeSearchLabelsResponse(resp *http.Response) (_ SearchLabelsResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response SearchLabelsOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeSearchReposResponse(resp *http.Response) (_ SearchReposResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response SearchReposOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 503:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response service_unavailable
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -25577,65 +14984,11 @@ func decodeSearchTopicsResponse(resp *http.Response) (_ SearchTopicsResponse, re
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response preview_header_missing
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeSearchUsersResponse(resp *http.Response) (_ SearchUsersResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response SearchUsersOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 503:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response service_unavailable
+			var response PreviewHeaderMissing
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -25693,158 +15046,6 @@ func decodeTeamsGetLegacyResponse(resp *http.Response) (_ TeamsGetLegacyResponse
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeTeamsDeleteLegacyResponse(resp *http.Response) (_ TeamsDeleteLegacyResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &TeamsDeleteLegacyNoContent{}, nil
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeTeamsUpdateLegacyResponse(resp *http.Response) (_ TeamsUpdateLegacyResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response TeamFull
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response TeamFull
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeTeamsListDiscussionsLegacyResponse(resp *http.Response) (_ []TeamDiscussion, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []TeamDiscussion
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -25925,33 +15126,6 @@ func decodeTeamsUpdateDiscussionLegacyResponse(resp *http.Response) (_ TeamDiscu
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response TeamDiscussion
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeTeamsListDiscussionCommentsLegacyResponse(resp *http.Response) (_ []TeamDiscussionComment, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []TeamDiscussionComment
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -26064,66 +15238,12 @@ func decodeTeamsUpdateDiscussionCommentLegacyResponse(resp *http.Response) (_ Te
 	}
 }
 
-func decodeReactionsListForTeamDiscussionCommentLegacyResponse(resp *http.Response) (_ []Reaction, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []Reaction
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeReactionsCreateForTeamDiscussionCommentLegacyResponse(resp *http.Response) (_ Reaction, rerr error) {
 	switch resp.StatusCode {
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response Reaction
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReactionsListForTeamDiscussionLegacyResponse(resp *http.Response) (_ []Reaction, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []Reaction
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -26189,52 +15309,6 @@ func decodeTeamsListPendingInvitationsLegacyResponse(resp *http.Response) (_ []O
 			}
 
 			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeTeamsListMembersLegacyResponse(resp *http.Response) (_ TeamsListMembersLegacyResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response TeamsListMembersLegacyOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -26485,114 +15559,6 @@ func decodeTeamsCheckPermissionsForProjectLegacyResponse(resp *http.Response) (_
 	}
 }
 
-func decodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(resp *http.Response) (_ TeamsAddOrUpdateProjectPermissionsLegacyResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &TeamsAddOrUpdateProjectPermissionsLegacyNoContent{}, nil
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response TeamsAddOrUpdateProjectPermissionsLegacyForbidden
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeTeamsRemoveProjectLegacyResponse(resp *http.Response) (_ TeamsRemoveProjectLegacyResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &TeamsRemoveProjectLegacyNoContent{}, nil
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 415:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response preview_header_missing
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeTeamsListReposLegacyResponse(resp *http.Response) (_ TeamsListReposLegacyResponse, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -26670,41 +15636,6 @@ func decodeTeamsCheckPermissionsForRepoLegacyResponse(resp *http.Response) (_ Te
 	}
 }
 
-func decodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(resp *http.Response) (_ TeamsAddOrUpdateRepoPermissionsLegacyResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &TeamsAddOrUpdateRepoPermissionsLegacyNoContent{}, nil
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeTeamsRemoveRepoLegacyResponse(resp *http.Response) (_ TeamsRemoveRepoLegacy, rerr error) {
 	switch resp.StatusCode {
 	case 204:
@@ -26739,7 +15670,7 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response) (_ TeamsList
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response TeamsListIdpGroupsForLegacyApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -26758,7 +15689,7 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response) (_ TeamsList
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response TeamsListIdpGroupsForLegacyApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -26770,275 +15701,6 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response) (_ TeamsList
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(resp *http.Response) (_ TeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response GroupMapping
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeTeamsListChildLegacyResponse(resp *http.Response) (_ TeamsListChildLegacyResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response TeamsListChildLegacyOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeUsersGetAuthenticatedResponse(resp *http.Response) (_ UsersGetAuthenticatedResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeUsersUpdateAuthenticatedResponse(resp *http.Response) (_ UsersUpdateAuthenticatedResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PrivateUser
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -27071,11 +15733,11 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (_ Users
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersListBlockedByAuthenticatedApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27094,7 +15756,7 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (_ Users
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersListBlockedByAuthenticatedApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27113,7 +15775,7 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (_ Users
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersListBlockedByAuthenticatedApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27132,7 +15794,7 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (_ Users
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response preview_header_missing
+			var response PreviewHeaderMissing
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27159,11 +15821,11 @@ func decodeUsersCheckBlockedResponse(resp *http.Response) (_ UsersCheckBlockedRe
 	case 204:
 		return &UsersCheckBlockedNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersCheckBlockedApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27182,7 +15844,7 @@ func decodeUsersCheckBlockedResponse(resp *http.Response) (_ UsersCheckBlockedRe
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersCheckBlockedApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27201,151 +15863,7 @@ func decodeUsersCheckBlockedResponse(resp *http.Response) (_ UsersCheckBlockedRe
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeUsersBlockResponse(resp *http.Response) (_ UsersBlockResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &UsersBlockNoContent{}, nil
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeUsersUnblockResponse(resp *http.Response) (_ UsersUnblockResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &UsersUnblockNoContent{}, nil
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
+			var response UsersCheckBlockedApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27367,33 +15885,16 @@ func decodeUsersUnblockResponse(resp *http.Response) (_ UsersUnblockResponse, re
 	}
 }
 
-func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Response) (_ UsersSetPrimaryEmailVisibilityForAuthenticatedResponse, rerr error) {
+func decodeUsersUnblockResponse(resp *http.Response) (_ UsersUnblockResponse, rerr error) {
 	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response UsersSetPrimaryEmailVisibilityForAuthenticatedOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
+	case 204:
+		return &UsersUnblockNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersUnblockApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27412,7 +15913,7 @@ func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Res
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersUnblockApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27431,7 +15932,7 @@ func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Res
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersUnblockApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27443,12 +15944,6 @@ func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Res
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -27481,11 +15976,11 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (_ Users
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersListEmailsForAuthenticatedApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27504,7 +15999,7 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (_ Users
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersListEmailsForAuthenticatedApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27523,7 +16018,7 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (_ Users
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersListEmailsForAuthenticatedApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27535,173 +16030,6 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (_ Users
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeUsersAddEmailForAuthenticatedResponse(resp *http.Response) (_ UsersAddEmailForAuthenticatedResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response UsersAddEmailForAuthenticatedCreated
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeUsersDeleteEmailForAuthenticatedResponse(resp *http.Response) (_ UsersDeleteEmailForAuthenticatedResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &UsersDeleteEmailForAuthenticatedNoContent{}, nil
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -27734,11 +16062,11 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27757,7 +16085,7 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersListFollowersForAuthenticatedUserApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27801,11 +16129,11 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response) (_ User
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersListFollowedByAuthenticatedApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27824,7 +16152,7 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response) (_ User
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersListFollowedByAuthenticatedApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27851,11 +16179,11 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 	case 204:
 		return &UsersCheckPersonIsFollowedByAuthenticatedNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27874,7 +16202,7 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27893,7 +16221,7 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27920,11 +16248,11 @@ func decodeUsersFollowResponse(resp *http.Response) (_ UsersFollowResponse, rerr
 	case 204:
 		return &UsersFollowNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersFollowApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27943,7 +16271,7 @@ func decodeUsersFollowResponse(resp *http.Response) (_ UsersFollowResponse, rerr
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersFollowApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27962,7 +16290,7 @@ func decodeUsersFollowResponse(resp *http.Response) (_ UsersFollowResponse, rerr
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersFollowApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -27989,11 +16317,11 @@ func decodeUsersUnfollowResponse(resp *http.Response) (_ UsersUnfollowResponse, 
 	case 204:
 		return &UsersUnfollowNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersUnfollowApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -28012,7 +16340,7 @@ func decodeUsersUnfollowResponse(resp *http.Response) (_ UsersUnfollowResponse, 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersUnfollowApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -28031,7 +16359,7 @@ func decodeUsersUnfollowResponse(resp *http.Response) (_ UsersUnfollowResponse, 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersUnfollowApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -28075,11 +16403,11 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (_ User
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -28098,7 +16426,7 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (_ User
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersListGpgKeysForAuthenticatedApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -28117,7 +16445,7 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (_ User
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersListGpgKeysForAuthenticatedApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -28129,98 +16457,6 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (_ User
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeUsersCreateGpgKeyForAuthenticatedResponse(resp *http.Response) (_ UsersCreateGpgKeyForAuthenticatedResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response GpgKey
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -28253,11 +16489,11 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (_ UsersG
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -28276,7 +16512,7 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (_ UsersG
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -28295,168 +16531,7 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (_ UsersG
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeUsersDeleteGpgKeyForAuthenticatedResponse(resp *http.Response) (_ UsersDeleteGpgKeyForAuthenticatedResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &UsersDeleteGpgKeyForAuthenticatedNoContent{}, nil
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeAppsListInstallationsForAuthenticatedUserResponse(resp *http.Response) (_ AppsListInstallationsForAuthenticatedUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response AppsListInstallationsForAuthenticatedUserOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 415:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response preview_header_missing
+			var response UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -28500,11 +16575,11 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -28523,7 +16598,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -28550,11 +16625,11 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response) (_ AppsAddRepo
 	case 204:
 		return &AppsAddRepoToInstallationNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response AppsAddRepoToInstallationApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -28573,7 +16648,7 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response) (_ AppsAddRepo
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response AppsAddRepoToInstallationApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -28600,11 +16675,11 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response) (_ AppsRe
 	case 204:
 		return &AppsRemoveRepoFromInstallationNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response AppsRemoveRepoFromInstallationApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -28623,7 +16698,7 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response) (_ AppsRe
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response AppsRemoveRepoFromInstallationApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -28635,55 +16710,6 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response) (_ AppsRe
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeInteractionsGetRestrictionsForAuthenticatedUserResponse(resp *http.Response) (_ InteractionsGetRestrictionsForAuthenticatedUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 204:
-		return &InteractionsGetRestrictionsForAuthenticatedUserNoContent{}, nil
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeInteractionsSetRestrictionsForAuthenticatedUserResponse(resp *http.Response) (_ InteractionsSetRestrictionsForAuthenticatedUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response InteractionLimitResponse
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -28698,54 +16724,6 @@ func decodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(resp *http
 	switch resp.StatusCode {
 	case 204:
 		return InteractionsRemoveRestrictionsForAuthenticatedUser{}, nil
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeIssuesListForAuthenticatedUserResponse(resp *http.Response) (_ IssuesListForAuthenticatedUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response IssuesListForAuthenticatedUserOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -28774,11 +16752,11 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -28797,7 +16775,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -28816,7 +16794,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -28828,98 +16806,6 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeUsersCreatePublicSSHKeyForAuthenticatedResponse(resp *http.Response) (_ UsersCreatePublicSSHKeyForAuthenticatedResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Key
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -28952,11 +16838,11 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (_ 
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -28975,7 +16861,7 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (_ 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -28994,7 +16880,7 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (_ 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29021,11 +16907,11 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 	case 204:
 		return &UsersDeletePublicSSHKeyForAuthenticatedNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29044,7 +16930,7 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29063,7 +16949,7 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29107,11 +16993,11 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29130,7 +17016,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29174,7 +17060,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
@@ -29190,79 +17076,6 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeOrgsListMembershipsForAuthenticatedUserResponse(resp *http.Response) (_ OrgsListMembershipsForAuthenticatedUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response OrgsListMembershipsForAuthenticatedUserOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -29297,7 +17110,7 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response) (_
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29316,7 +17129,7 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response) (_
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29328,77 +17141,6 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response) (_
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeOrgsUpdateMembershipForAuthenticatedUserResponse(resp *http.Response) (_ OrgsUpdateMembershipForAuthenticatedUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response OrgMembership
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -29431,11 +17173,11 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (_ Mi
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response MigrationsListForAuthenticatedUserApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29454,7 +17196,7 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (_ Mi
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response MigrationsListForAuthenticatedUserApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29466,79 +17208,6 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (_ Mi
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeMigrationsStartForAuthenticatedUserResponse(resp *http.Response) (_ MigrationsStartForAuthenticatedUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Migration
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -29571,11 +17240,11 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) 
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29594,7 +17263,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29613,7 +17282,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29640,11 +17309,11 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response)
 	case 302:
 		return &MigrationsGetArchiveForAuthenticatedUserFound{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29663,7 +17332,7 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response)
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29690,11 +17359,11 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 	case 204:
 		return &MigrationsDeleteArchiveForAuthenticatedUserNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29713,7 +17382,7 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29732,7 +17401,7 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29759,11 +17428,11 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response)
 	case 204:
 		return &MigrationsUnlockRepoForAuthenticatedUserNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29782,7 +17451,7 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response)
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29801,7 +17470,7 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response)
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29891,11 +17560,11 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (_ OrgsList
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response OrgsListForAuthenticatedUserApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -29914,440 +17583,7 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (_ OrgsList
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesListPackagesForAuthenticatedUserResponse(resp *http.Response) (_ []Package, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []Package
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesGetPackageForAuthenticatedUserResponse(resp *http.Response) (_ Package, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Package
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response) (_ PackagesDeletePackageForAuthenticatedUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &PackagesDeletePackageForAuthenticatedUserNoContent{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Response) (_ PackagesRestorePackageForAuthenticatedUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &PackagesRestorePackageForAuthenticatedUserNoContent{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse(resp *http.Response) (_ PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesGetPackageVersionForAuthenticatedUserResponse(resp *http.Response) (_ PackageVersion, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PackageVersion
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.Response) (_ PackagesDeletePackageVersionForAuthenticatedUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &PackagesDeletePackageVersionForAuthenticatedUserNoContent{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.Response) (_ PackagesRestorePackageVersionForAuthenticatedUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &PackagesRestorePackageVersionForAuthenticatedUserNoContent{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
+			var response OrgsListForAuthenticatedUserApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -30391,11 +17627,11 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (_ Pr
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -30414,7 +17650,7 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (_ Pr
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ProjectsCreateForAuthenticatedUserApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -30433,7 +17669,7 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (_ Pr
 	case 415:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response preview_header_missing
+			var response PreviewHeaderMissing
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -30496,11 +17732,11 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (_
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -30519,7 +17755,7 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (_
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -30538,7 +17774,7 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (_
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -30550,193 +17786,6 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (_
 			}
 
 			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposListForAuthenticatedUserResponse(resp *http.Response) (_ ReposListForAuthenticatedUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ReposListForAuthenticatedUserOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response) (_ ReposCreateForAuthenticatedUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Repository
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 400:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/scim+json":
-			rerr = fmt.Errorf("application/scim+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return
@@ -30769,11 +17818,11 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response)
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -30792,7 +17841,7 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response)
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -30811,7 +17860,7 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response)
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -30838,11 +17887,11 @@ func decodeReposDeclineInvitationResponse(resp *http.Response) (_ ReposDeclineIn
 	case 204:
 		return &ReposDeclineInvitationNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposDeclineInvitationApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -30861,7 +17910,7 @@ func decodeReposDeclineInvitationResponse(resp *http.Response) (_ ReposDeclineIn
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposDeclineInvitationApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -30880,7 +17929,7 @@ func decodeReposDeclineInvitationResponse(resp *http.Response) (_ ReposDeclineIn
 	case 409:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposDeclineInvitationApplicationJSONConflict
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -30907,11 +17956,11 @@ func decodeReposAcceptInvitationResponse(resp *http.Response) (_ ReposAcceptInvi
 	case 204:
 		return &ReposAcceptInvitationNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposAcceptInvitationApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -30930,7 +17979,7 @@ func decodeReposAcceptInvitationResponse(resp *http.Response) (_ ReposAcceptInvi
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ReposAcceptInvitationApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -30949,77 +17998,7 @@ func decodeReposAcceptInvitationResponse(resp *http.Response) (_ ReposAcceptInvi
 	case 409:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Response) (_ ActivityListReposStarredByAuthenticatedUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ActivityListReposStarredByAuthenticatedUserOKApplicationJSON
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		case "application/vnd.github.v3.star+json":
-			rerr = fmt.Errorf("application/vnd.github.v3.star+json decoder not implemented")
-			return
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 304:
-		return &not_modified{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
+			var response ReposAcceptInvitationApplicationJSONConflict
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -31046,11 +18025,11 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 	case 204:
 		return &ActivityCheckRepoIsStarredByAuthenticatedUserNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -31069,7 +18048,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -31088,7 +18067,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -31115,11 +18094,11 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response) (_ 
 	case 204:
 		return &ActivityStarRepoForAuthenticatedUserNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -31138,7 +18117,7 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response) (_ 
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -31157,7 +18136,7 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response) (_ 
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -31184,11 +18163,11 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response) (
 	case 204:
 		return &ActivityUnstarRepoForAuthenticatedUserNoContent{}, nil
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -31207,7 +18186,7 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response) (
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -31226,7 +18205,7 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response) (
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -31270,11 +18249,11 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 401:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -31293,7 +18272,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -31337,11 +18316,11 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response) (_ TeamsLi
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
+		return &NotModified{}, nil
 	case 403:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response TeamsListForAuthenticatedUserApplicationJSONForbidden
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -31360,7 +18339,7 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response) (_ TeamsLi
 	case 404:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response BasicError
+			var response TeamsListForAuthenticatedUserApplicationJSONNotFound
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -31404,59 +18383,7 @@ func decodeUsersListResponse(resp *http.Response) (_ UsersListResponse, rerr err
 			return
 		}
 	case 304:
-		return &not_modified{}, nil
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeUsersGetByUsernameResponse(resp *http.Response) (_ UsersGetByUsernameResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 202:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response accepted
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
+		return &NotModified{}, nil
 	default:
 		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 		return
@@ -31610,111 +18537,12 @@ func decodeUsersCheckFollowingForUserResponse(resp *http.Response) (_ UsersCheck
 	}
 }
 
-func decodeGistsListForUserResponse(resp *http.Response) (_ GistsListForUserResponse, rerr error) {
+func decodeUsersListGpgKeysForUserResponse(resp *http.Response) (_ []GpgKey, rerr error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response GistsListForUserOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeUsersListGpgKeysForUserResponse(resp *http.Response) (_ UsersListGpgKeysForUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeUsersGetContextForUserResponse(resp *http.Response) (_ UsersGetContextForUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Hovercard
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeAppsGetUserInstallationResponse(resp *http.Response) (_ Installation, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Installation
+			var response []GpgKey
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -31790,497 +18618,6 @@ func decodeOrgsListForUserResponse(resp *http.Response) (_ []OrganizationSimple,
 	}
 }
 
-func decodePackagesListPackagesForUserResponse(resp *http.Response) (_ PackagesListPackagesForUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PackagesListPackagesForUserOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesGetPackageForUserResponse(resp *http.Response) (_ Package, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response Package
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesDeletePackageForUserResponse(resp *http.Response) (_ PackagesDeletePackageForUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &PackagesDeletePackageForUserNoContent{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesRestorePackageForUserResponse(resp *http.Response) (_ PackagesRestorePackageForUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &PackagesRestorePackageForUserNoContent{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http.Response) (_ PackagesGetAllPackageVersionsForPackageOwnedByUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PackagesGetAllPackageVersionsForPackageOwnedByUserOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesGetPackageVersionForUserResponse(resp *http.Response) (_ PackagesGetPackageVersionForUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response) (_ PackagesDeletePackageVersionForUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &PackagesDeletePackageVersionForUserNoContent{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response) (_ PackagesRestorePackageVersionForUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 204:
-		return &PackagesRestorePackageVersionForUserNoContent{}, nil
-	case 401:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeProjectsListForUserResponse(resp *http.Response) (_ ProjectsListForUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ProjectsListForUserOK
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return &response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	case 422:
-		switch resp.Header.Get("Content-Type") {
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
 func decodeActivityListReceivedEventsForUserResponse(resp *http.Response) (_ []Event, rerr error) {
 	switch resp.StatusCode {
 	case 200:
@@ -32314,33 +18651,6 @@ func decodeActivityListReceivedPublicEventsForUserResponse(resp *http.Response) 
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response []Event
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				rerr = err
-				return
-			}
-			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
-			}
-
-			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeReposListForUserResponse(resp *http.Response) (_ []MinimalRepository, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []MinimalRepository
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -32433,20 +18743,6 @@ func decodeBillingGetSharedStorageBillingUserResponse(resp *http.Response) (_ Co
 			}
 
 			return response, nil
-		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
-		}
-	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
-	}
-}
-
-func decodeActivityListReposStarredByUserResponse(resp *http.Response) (_ ActivityListReposStarredByUserResponse, rerr error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
 		default:
 			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 			return

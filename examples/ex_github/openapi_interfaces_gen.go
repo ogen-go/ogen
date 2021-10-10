@@ -25,6 +25,10 @@ type ActionsRemoveSelectedRepoFromOrgSecretResponse interface {
 	actionsRemoveSelectedRepoFromOrgSecretResponse()
 }
 
+type ActionsReviewPendingDeploymentsForRunRequest interface {
+	actionsReviewPendingDeploymentsForRunRequest()
+}
+
 type ActivityCheckRepoIsStarredByAuthenticatedUserResponse interface {
 	activityCheckRepoIsStarredByAuthenticatedUserResponse()
 }
@@ -45,20 +49,12 @@ type ActivityGetThreadSubscriptionForAuthenticatedUserResponse interface {
 	activityGetThreadSubscriptionForAuthenticatedUserResponse()
 }
 
-type ActivityListNotificationsForAuthenticatedUserResponse interface {
-	activityListNotificationsForAuthenticatedUserResponse()
-}
-
 type ActivityListPublicEventsForRepoNetworkResponse interface {
 	activityListPublicEventsForRepoNetworkResponse()
 }
 
 type ActivityListPublicEventsResponse interface {
 	activityListPublicEventsResponse()
-}
-
-type ActivityListReposStarredByAuthenticatedUserResponse interface {
-	activityListReposStarredByAuthenticatedUserResponse()
 }
 
 type ActivityListWatchedReposForAuthenticatedUserResponse interface {
@@ -93,44 +89,36 @@ type AppsAddRepoToInstallationResponse interface {
 	appsAddRepoToInstallationResponse()
 }
 
-type AppsCheckTokenResponse interface {
-	appsCheckTokenResponse()
+type AppsCheckTokenRequest interface {
+	appsCheckTokenRequest()
 }
 
-type AppsCreateContentAttachmentResponse interface {
-	appsCreateContentAttachmentResponse()
+type AppsCreateContentAttachmentRequest interface {
+	appsCreateContentAttachmentRequest()
 }
 
-type AppsCreateFromManifestResponse interface {
-	appsCreateFromManifestResponse()
+type AppsCreateFromManifestRequest interface {
+	appsCreateFromManifestRequest()
 }
 
-type AppsCreateInstallationAccessTokenResponse interface {
-	appsCreateInstallationAccessTokenResponse()
+type AppsCreateInstallationAccessTokenRequest interface {
+	appsCreateInstallationAccessTokenRequest()
 }
 
-type AppsDeleteAuthorizationResponse interface {
-	appsDeleteAuthorizationResponse()
+type AppsDeleteAuthorizationRequest interface {
+	appsDeleteAuthorizationRequest()
 }
 
 type AppsDeleteInstallationResponse interface {
 	appsDeleteInstallationResponse()
 }
 
-type AppsDeleteTokenResponse interface {
-	appsDeleteTokenResponse()
+type AppsDeleteTokenRequest interface {
+	appsDeleteTokenRequest()
 }
 
 type AppsGetBySlugResponse interface {
 	appsGetBySlugResponse()
-}
-
-type AppsGetInstallationResponse interface {
-	appsGetInstallationResponse()
-}
-
-type AppsGetRepoInstallationResponse interface {
-	appsGetRepoInstallationResponse()
 }
 
 type AppsGetSubscriptionPlanForAccountResponse interface {
@@ -141,24 +129,8 @@ type AppsGetSubscriptionPlanForAccountStubbedResponse interface {
 	appsGetSubscriptionPlanForAccountStubbedResponse()
 }
 
-type AppsGetWebhookDeliveryResponse interface {
-	appsGetWebhookDeliveryResponse()
-}
-
-type AppsListAccountsForPlanResponse interface {
-	appsListAccountsForPlanResponse()
-}
-
-type AppsListAccountsForPlanStubbedResponse interface {
-	appsListAccountsForPlanStubbedResponse()
-}
-
 type AppsListInstallationReposForAuthenticatedUserResponse interface {
 	appsListInstallationReposForAuthenticatedUserResponse()
-}
-
-type AppsListInstallationsForAuthenticatedUserResponse interface {
-	appsListInstallationsForAuthenticatedUserResponse()
 }
 
 type AppsListPlansResponse interface {
@@ -181,24 +153,16 @@ type AppsListSubscriptionsForAuthenticatedUserStubbedResponse interface {
 	appsListSubscriptionsForAuthenticatedUserStubbedResponse()
 }
 
-type AppsListWebhookDeliveriesResponse interface {
-	appsListWebhookDeliveriesResponse()
-}
-
-type AppsRedeliverWebhookDeliveryResponse interface {
-	appsRedeliverWebhookDeliveryResponse()
-}
-
 type AppsRemoveRepoFromInstallationResponse interface {
 	appsRemoveRepoFromInstallationResponse()
 }
 
-type AppsResetTokenResponse interface {
-	appsResetTokenResponse()
+type AppsResetTokenRequest interface {
+	appsResetTokenRequest()
 }
 
-type AppsScopeTokenResponse interface {
-	appsScopeTokenResponse()
+type AppsScopeTokenRequest interface {
+	appsScopeTokenRequest()
 }
 
 type AppsSuspendInstallationResponse interface {
@@ -233,10 +197,6 @@ type CodeScanningListAlertInstancesResponse interface {
 	codeScanningListAlertInstancesResponse()
 }
 
-type CodeScanningListAlertsForRepoResponse interface {
-	codeScanningListAlertsForRepoResponse()
-}
-
 type CodeScanningListRecentAnalysesResponse interface {
 	codeScanningListRecentAnalysesResponse()
 }
@@ -269,20 +229,12 @@ type GistsCreateCommentResponse interface {
 	gistsCreateCommentResponse()
 }
 
-type GistsCreateResponse interface {
-	gistsCreateResponse()
-}
-
 type GistsDeleteCommentResponse interface {
 	gistsDeleteCommentResponse()
 }
 
 type GistsDeleteResponse interface {
 	gistsDeleteResponse()
-}
-
-type GistsForkResponse interface {
-	gistsForkResponse()
 }
 
 type GistsGetCommentResponse interface {
@@ -293,10 +245,6 @@ type GistsGetResponse interface {
 	gistsGetResponse()
 }
 
-type GistsGetRevisionResponse interface {
-	gistsGetRevisionResponse()
-}
-
 type GistsListCommentsResponse interface {
 	gistsListCommentsResponse()
 }
@@ -305,16 +253,8 @@ type GistsListCommitsResponse interface {
 	gistsListCommitsResponse()
 }
 
-type GistsListForUserResponse interface {
-	gistsListForUserResponse()
-}
-
 type GistsListForksResponse interface {
 	gistsListForksResponse()
-}
-
-type GistsListPublicResponse interface {
-	gistsListPublicResponse()
 }
 
 type GistsListResponse interface {
@@ -337,36 +277,24 @@ type GistsUpdateCommentResponse interface {
 	gistsUpdateCommentResponse()
 }
 
-type GistsUpdateResponse interface {
-	gistsUpdateResponse()
+type GitCreateBlobRequest interface {
+	gitCreateBlobRequest()
 }
 
-type GitCreateBlobResponse interface {
-	gitCreateBlobResponse()
+type GitCreateCommitRequest interface {
+	gitCreateCommitRequest()
 }
 
-type GitCreateCommitResponse interface {
-	gitCreateCommitResponse()
+type GitCreateRefRequest interface {
+	gitCreateRefRequest()
 }
 
-type GitCreateRefResponse interface {
-	gitCreateRefResponse()
+type GitCreateTagRequest interface {
+	gitCreateTagRequest()
 }
 
-type GitCreateTagResponse interface {
-	gitCreateTagResponse()
-}
-
-type GitCreateTreeResponse interface {
-	gitCreateTreeResponse()
-}
-
-type GitDeleteRefResponse interface {
-	gitDeleteRefResponse()
-}
-
-type GitGetBlobResponse interface {
-	gitGetBlobResponse()
+type GitCreateTreeRequest interface {
+	gitCreateTreeRequest()
 }
 
 type GitGetCommitResponse interface {
@@ -381,12 +309,8 @@ type GitGetTagResponse interface {
 	gitGetTagResponse()
 }
 
-type GitGetTreeResponse interface {
-	gitGetTreeResponse()
-}
-
-type GitUpdateRefResponse interface {
-	gitUpdateRefResponse()
+type GitUpdateRefRequest interface {
+	gitUpdateRefRequest()
 }
 
 type GitignoreGetAllTemplatesResponse interface {
@@ -397,48 +321,36 @@ type GitignoreGetTemplateResponse interface {
 	gitignoreGetTemplateResponse()
 }
 
-type InteractionsGetRestrictionsForAuthenticatedUserResponse interface {
-	interactionsGetRestrictionsForAuthenticatedUserResponse()
-}
-
 type InteractionsRemoveRestrictionsForRepoResponse interface {
 	interactionsRemoveRestrictionsForRepoResponse()
 }
 
-type InteractionsSetRestrictionsForAuthenticatedUserResponse interface {
-	interactionsSetRestrictionsForAuthenticatedUserResponse()
+type InteractionsSetRestrictionsForAuthenticatedUserRequest interface {
+	interactionsSetRestrictionsForAuthenticatedUserRequest()
 }
 
-type InteractionsSetRestrictionsForOrgResponse interface {
-	interactionsSetRestrictionsForOrgResponse()
+type InteractionsSetRestrictionsForOrgRequest interface {
+	interactionsSetRestrictionsForOrgRequest()
 }
 
 type InteractionsSetRestrictionsForRepoResponse interface {
 	interactionsSetRestrictionsForRepoResponse()
 }
 
-type IssuesAddLabelsResponse interface {
-	issuesAddLabelsResponse()
-}
-
 type IssuesCheckUserCanBeAssignedResponse interface {
 	issuesCheckUserCanBeAssignedResponse()
 }
 
-type IssuesCreateCommentResponse interface {
-	issuesCreateCommentResponse()
+type IssuesCreateCommentRequest interface {
+	issuesCreateCommentRequest()
 }
 
-type IssuesCreateLabelResponse interface {
-	issuesCreateLabelResponse()
+type IssuesCreateLabelRequest interface {
+	issuesCreateLabelRequest()
 }
 
-type IssuesCreateMilestoneResponse interface {
-	issuesCreateMilestoneResponse()
-}
-
-type IssuesCreateResponse interface {
-	issuesCreateResponse()
+type IssuesCreateMilestoneRequest interface {
+	issuesCreateMilestoneRequest()
 }
 
 type IssuesDeleteMilestoneResponse interface {
@@ -461,44 +373,12 @@ type IssuesGetMilestoneResponse interface {
 	issuesGetMilestoneResponse()
 }
 
-type IssuesGetResponse interface {
-	issuesGetResponse()
-}
-
 type IssuesListAssigneesResponse interface {
 	issuesListAssigneesResponse()
 }
 
-type IssuesListCommentsForRepoResponse interface {
-	issuesListCommentsForRepoResponse()
-}
-
 type IssuesListCommentsResponse interface {
 	issuesListCommentsResponse()
-}
-
-type IssuesListEventsForRepoResponse interface {
-	issuesListEventsForRepoResponse()
-}
-
-type IssuesListEventsForTimelineResponse interface {
-	issuesListEventsForTimelineResponse()
-}
-
-type IssuesListEventsResponse interface {
-	issuesListEventsResponse()
-}
-
-type IssuesListForAuthenticatedUserResponse interface {
-	issuesListForAuthenticatedUserResponse()
-}
-
-type IssuesListForOrgResponse interface {
-	issuesListForOrgResponse()
-}
-
-type IssuesListForRepoResponse interface {
-	issuesListForRepoResponse()
 }
 
 type IssuesListLabelsForRepoResponse interface {
@@ -509,16 +389,8 @@ type IssuesListLabelsOnIssueResponse interface {
 	issuesListLabelsOnIssueResponse()
 }
 
-type IssuesListMilestonesResponse interface {
-	issuesListMilestonesResponse()
-}
-
-type IssuesListResponse interface {
-	issuesListResponse()
-}
-
-type IssuesLockResponse interface {
-	issuesLockResponse()
+type IssuesLockRequest interface {
+	issuesLockRequest()
 }
 
 type IssuesRemoveAllLabelsResponse interface {
@@ -529,20 +401,12 @@ type IssuesRemoveLabelResponse interface {
 	issuesRemoveLabelResponse()
 }
 
-type IssuesSetLabelsResponse interface {
-	issuesSetLabelsResponse()
-}
-
 type IssuesUnlockResponse interface {
 	issuesUnlockResponse()
 }
 
-type IssuesUpdateCommentResponse interface {
-	issuesUpdateCommentResponse()
-}
-
-type IssuesUpdateResponse interface {
-	issuesUpdateResponse()
+type IssuesUpdateCommentRequest interface {
+	issuesUpdateCommentRequest()
 }
 
 type LicensesGetAllCommonlyUsedResponse interface {
@@ -597,10 +461,6 @@ type MigrationsGetStatusForAuthenticatedUserResponse interface {
 	migrationsGetStatusForAuthenticatedUserResponse()
 }
 
-type MigrationsGetStatusForOrgResponse interface {
-	migrationsGetStatusForOrgResponse()
-}
-
 type MigrationsListForAuthenticatedUserResponse interface {
 	migrationsListForAuthenticatedUserResponse()
 }
@@ -613,24 +473,24 @@ type MigrationsListReposForUserResponse interface {
 	migrationsListReposForUserResponse()
 }
 
-type MigrationsMapCommitAuthorResponse interface {
-	migrationsMapCommitAuthorResponse()
+type MigrationsMapCommitAuthorRequest interface {
+	migrationsMapCommitAuthorRequest()
 }
 
-type MigrationsSetLfsPreferenceResponse interface {
-	migrationsSetLfsPreferenceResponse()
+type MigrationsSetLfsPreferenceRequest interface {
+	migrationsSetLfsPreferenceRequest()
 }
 
-type MigrationsStartForAuthenticatedUserResponse interface {
-	migrationsStartForAuthenticatedUserResponse()
+type MigrationsStartForAuthenticatedUserRequest interface {
+	migrationsStartForAuthenticatedUserRequest()
 }
 
-type MigrationsStartForOrgResponse interface {
-	migrationsStartForOrgResponse()
+type MigrationsStartForOrgRequest interface {
+	migrationsStartForOrgRequest()
 }
 
-type MigrationsStartImportResponse interface {
-	migrationsStartImportResponse()
+type MigrationsStartImportRequest interface {
+	migrationsStartImportRequest()
 }
 
 type MigrationsUnlockRepoForAuthenticatedUserResponse interface {
@@ -641,8 +501,8 @@ type MigrationsUnlockRepoForOrgResponse interface {
 	migrationsUnlockRepoForOrgResponse()
 }
 
-type OAuthAuthorizationsCreateAuthorizationResponse interface {
-	oAuthAuthorizationsCreateAuthorizationResponse()
+type OAuthAuthorizationsCreateAuthorizationRequest interface {
+	oAuthAuthorizationsCreateAuthorizationRequest()
 }
 
 type OAuthAuthorizationsDeleteAuthorizationResponse interface {
@@ -661,12 +521,12 @@ type OAuthAuthorizationsGetGrantResponse interface {
 	oAuthAuthorizationsGetGrantResponse()
 }
 
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse interface {
-	oAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse()
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest interface {
+	oAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest()
 }
 
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppResponse interface {
-	oAuthAuthorizationsGetOrCreateAuthorizationForAppResponse()
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppRequest interface {
+	oAuthAuthorizationsGetOrCreateAuthorizationForAppRequest()
 }
 
 type OAuthAuthorizationsListAuthorizationsResponse interface {
@@ -677,16 +537,8 @@ type OAuthAuthorizationsListGrantsResponse interface {
 	oAuthAuthorizationsListGrantsResponse()
 }
 
-type OAuthAuthorizationsUpdateAuthorizationResponse interface {
-	oAuthAuthorizationsUpdateAuthorizationResponse()
-}
-
-type OrgsBlockUserResponse interface {
-	orgsBlockUserResponse()
-}
-
-type OrgsCancelInvitationResponse interface {
-	orgsCancelInvitationResponse()
+type OAuthAuthorizationsUpdateAuthorizationRequest interface {
+	oAuthAuthorizationsUpdateAuthorizationRequest()
 }
 
 type OrgsCheckBlockedUserResponse interface {
@@ -705,12 +557,8 @@ type OrgsConvertMemberToOutsideCollaboratorResponse interface {
 	orgsConvertMemberToOutsideCollaboratorResponse()
 }
 
-type OrgsCreateInvitationResponse interface {
-	orgsCreateInvitationResponse()
-}
-
-type OrgsCreateWebhookResponse interface {
-	orgsCreateWebhookResponse()
+type OrgsCreateInvitationRequest interface {
+	orgsCreateInvitationRequest()
 }
 
 type OrgsDeleteWebhookResponse interface {
@@ -727,10 +575,6 @@ type OrgsGetMembershipForUserResponse interface {
 
 type OrgsGetResponse interface {
 	orgsGetResponse()
-}
-
-type OrgsGetWebhookDeliveryResponse interface {
-	orgsGetWebhookDeliveryResponse()
 }
 
 type OrgsGetWebhookResponse interface {
@@ -753,14 +597,6 @@ type OrgsListInvitationTeamsResponse interface {
 	orgsListInvitationTeamsResponse()
 }
 
-type OrgsListMembersResponse interface {
-	orgsListMembersResponse()
-}
-
-type OrgsListMembershipsForAuthenticatedUserResponse interface {
-	orgsListMembershipsForAuthenticatedUserResponse()
-}
-
 type OrgsListPendingInvitationsResponse interface {
 	orgsListPendingInvitationsResponse()
 }
@@ -769,20 +605,12 @@ type OrgsListResponse interface {
 	orgsListResponse()
 }
 
-type OrgsListWebhookDeliveriesResponse interface {
-	orgsListWebhookDeliveriesResponse()
-}
-
 type OrgsListWebhooksResponse interface {
 	orgsListWebhooksResponse()
 }
 
 type OrgsPingWebhookResponse interface {
 	orgsPingWebhookResponse()
-}
-
-type OrgsRedeliverWebhookDeliveryResponse interface {
-	orgsRedeliverWebhookDeliveryResponse()
 }
 
 type OrgsRemoveMemberResponse interface {
@@ -801,100 +629,24 @@ type OrgsRemoveSamlSSOAuthorizationResponse interface {
 	orgsRemoveSamlSSOAuthorizationResponse()
 }
 
-type OrgsSetMembershipForUserResponse interface {
-	orgsSetMembershipForUserResponse()
+type OrgsSetMembershipForUserRequest interface {
+	orgsSetMembershipForUserRequest()
 }
 
 type OrgsSetPublicMembershipForAuthenticatedUserResponse interface {
 	orgsSetPublicMembershipForAuthenticatedUserResponse()
 }
 
-type OrgsUpdateMembershipForAuthenticatedUserResponse interface {
-	orgsUpdateMembershipForAuthenticatedUserResponse()
+type OrgsUpdateMembershipForAuthenticatedUserRequest interface {
+	orgsUpdateMembershipForAuthenticatedUserRequest()
 }
 
-type OrgsUpdateResponse interface {
-	orgsUpdateResponse()
+type OrgsUpdateRequest interface {
+	orgsUpdateRequest()
 }
 
-type OrgsUpdateWebhookResponse interface {
-	orgsUpdateWebhookResponse()
-}
-
-type PackagesDeletePackageForAuthenticatedUserResponse interface {
-	packagesDeletePackageForAuthenticatedUserResponse()
-}
-
-type PackagesDeletePackageForOrgResponse interface {
-	packagesDeletePackageForOrgResponse()
-}
-
-type PackagesDeletePackageForUserResponse interface {
-	packagesDeletePackageForUserResponse()
-}
-
-type PackagesDeletePackageVersionForAuthenticatedUserResponse interface {
-	packagesDeletePackageVersionForAuthenticatedUserResponse()
-}
-
-type PackagesDeletePackageVersionForOrgResponse interface {
-	packagesDeletePackageVersionForOrgResponse()
-}
-
-type PackagesDeletePackageVersionForUserResponse interface {
-	packagesDeletePackageVersionForUserResponse()
-}
-
-type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse interface {
-	packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse()
-}
-
-type PackagesGetAllPackageVersionsForPackageOwnedByOrgResponse interface {
-	packagesGetAllPackageVersionsForPackageOwnedByOrgResponse()
-}
-
-type PackagesGetAllPackageVersionsForPackageOwnedByUserResponse interface {
-	packagesGetAllPackageVersionsForPackageOwnedByUserResponse()
-}
-
-type PackagesListPackagesForOrganizationResponse interface {
-	packagesListPackagesForOrganizationResponse()
-}
-
-type PackagesListPackagesForUserResponse interface {
-	packagesListPackagesForUserResponse()
-}
-
-type PackagesRestorePackageForAuthenticatedUserResponse interface {
-	packagesRestorePackageForAuthenticatedUserResponse()
-}
-
-type PackagesRestorePackageForOrgResponse interface {
-	packagesRestorePackageForOrgResponse()
-}
-
-type PackagesRestorePackageForUserResponse interface {
-	packagesRestorePackageForUserResponse()
-}
-
-type PackagesRestorePackageVersionForAuthenticatedUserResponse interface {
-	packagesRestorePackageVersionForAuthenticatedUserResponse()
-}
-
-type PackagesRestorePackageVersionForOrgResponse interface {
-	packagesRestorePackageVersionForOrgResponse()
-}
-
-type PackagesRestorePackageVersionForUserResponse interface {
-	packagesRestorePackageVersionForUserResponse()
-}
-
-type ProjectsAddCollaboratorResponse interface {
-	projectsAddCollaboratorResponse()
-}
-
-type ProjectsCreateCardResponse interface {
-	projectsCreateCardResponse()
+type ProjectsAddCollaboratorRequest interface {
+	projectsAddCollaboratorRequest()
 }
 
 type ProjectsCreateColumnResponse interface {
@@ -933,48 +685,20 @@ type ProjectsGetColumnResponse interface {
 	projectsGetColumnResponse()
 }
 
-type ProjectsGetPermissionForUserResponse interface {
-	projectsGetPermissionForUserResponse()
-}
-
 type ProjectsGetResponse interface {
 	projectsGetResponse()
-}
-
-type ProjectsListCardsResponse interface {
-	projectsListCardsResponse()
-}
-
-type ProjectsListCollaboratorsResponse interface {
-	projectsListCollaboratorsResponse()
 }
 
 type ProjectsListColumnsResponse interface {
 	projectsListColumnsResponse()
 }
 
-type ProjectsListForOrgResponse interface {
-	projectsListForOrgResponse()
-}
-
-type ProjectsListForRepoResponse interface {
-	projectsListForRepoResponse()
-}
-
-type ProjectsListForUserResponse interface {
-	projectsListForUserResponse()
-}
-
-type ProjectsMoveCardResponse interface {
-	projectsMoveCardResponse()
+type ProjectsMoveCardRequest interface {
+	projectsMoveCardRequest()
 }
 
 type ProjectsMoveColumnResponse interface {
 	projectsMoveColumnResponse()
-}
-
-type ProjectsRemoveCollaboratorResponse interface {
-	projectsRemoveCollaboratorResponse()
 }
 
 type ProjectsUpdateCardResponse interface {
@@ -997,12 +721,12 @@ type PullsCreateReplyForReviewCommentResponse interface {
 	pullsCreateReplyForReviewCommentResponse()
 }
 
-type PullsCreateResponse interface {
-	pullsCreateResponse()
+type PullsCreateRequest interface {
+	pullsCreateRequest()
 }
 
-type PullsCreateReviewCommentResponse interface {
-	pullsCreateReviewCommentResponse()
+type PullsCreateReviewCommentRequest interface {
+	pullsCreateReviewCommentRequest()
 }
 
 type PullsCreateReviewResponse interface {
@@ -1037,36 +761,24 @@ type PullsListCommentsForReviewResponse interface {
 	pullsListCommentsForReviewResponse()
 }
 
-type PullsListFilesResponse interface {
-	pullsListFilesResponse()
+type PullsMergeRequest interface {
+	pullsMergeRequest()
 }
 
-type PullsListResponse interface {
-	pullsListResponse()
-}
-
-type PullsMergeResponse interface {
-	pullsMergeResponse()
-}
-
-type PullsRemoveRequestedReviewersResponse interface {
-	pullsRemoveRequestedReviewersResponse()
-}
-
-type PullsRequestReviewersResponse interface {
-	pullsRequestReviewersResponse()
+type PullsRemoveRequestedReviewersRequest interface {
+	pullsRemoveRequestedReviewersRequest()
 }
 
 type PullsSubmitReviewResponse interface {
 	pullsSubmitReviewResponse()
 }
 
-type PullsUpdateBranchResponse interface {
-	pullsUpdateBranchResponse()
+type PullsUpdateBranchRequest interface {
+	pullsUpdateBranchRequest()
 }
 
-type PullsUpdateResponse interface {
-	pullsUpdateResponse()
+type PullsUpdateRequest interface {
+	pullsUpdateRequest()
 }
 
 type PullsUpdateReviewResponse interface {
@@ -1077,24 +789,24 @@ type RateLimitGetResponse interface {
 	rateLimitGetResponse()
 }
 
-type ReactionsCreateForCommitCommentResponse interface {
-	reactionsCreateForCommitCommentResponse()
+type ReactionsCreateForCommitCommentRequest interface {
+	reactionsCreateForCommitCommentRequest()
 }
 
-type ReactionsCreateForIssueCommentResponse interface {
-	reactionsCreateForIssueCommentResponse()
+type ReactionsCreateForIssueCommentRequest interface {
+	reactionsCreateForIssueCommentRequest()
 }
 
-type ReactionsCreateForIssueResponse interface {
-	reactionsCreateForIssueResponse()
+type ReactionsCreateForIssueRequest interface {
+	reactionsCreateForIssueRequest()
 }
 
-type ReactionsCreateForPullRequestReviewCommentResponse interface {
-	reactionsCreateForPullRequestReviewCommentResponse()
+type ReactionsCreateForPullRequestReviewCommentRequest interface {
+	reactionsCreateForPullRequestReviewCommentRequest()
 }
 
-type ReactionsCreateForReleaseResponse interface {
-	reactionsCreateForReleaseResponse()
+type ReactionsCreateForReleaseRequest interface {
+	reactionsCreateForReleaseRequest()
 }
 
 type ReactionsCreateForTeamDiscussionCommentInOrgResponse interface {
@@ -1109,44 +821,12 @@ type ReactionsDeleteLegacyResponse interface {
 	reactionsDeleteLegacyResponse()
 }
 
-type ReactionsListForCommitCommentResponse interface {
-	reactionsListForCommitCommentResponse()
-}
-
-type ReactionsListForIssueCommentResponse interface {
-	reactionsListForIssueCommentResponse()
-}
-
-type ReactionsListForIssueResponse interface {
-	reactionsListForIssueResponse()
-}
-
-type ReactionsListForPullRequestReviewCommentResponse interface {
-	reactionsListForPullRequestReviewCommentResponse()
-}
-
 type ReposAcceptInvitationResponse interface {
 	reposAcceptInvitationResponse()
 }
 
-type ReposAddAppAccessRestrictionsResponse interface {
-	reposAddAppAccessRestrictionsResponse()
-}
-
-type ReposAddCollaboratorResponse interface {
-	reposAddCollaboratorResponse()
-}
-
-type ReposAddStatusCheckContextsResponse interface {
-	reposAddStatusCheckContextsResponse()
-}
-
-type ReposAddTeamAccessRestrictionsResponse interface {
-	reposAddTeamAccessRestrictionsResponse()
-}
-
-type ReposAddUserAccessRestrictionsResponse interface {
-	reposAddUserAccessRestrictionsResponse()
+type ReposAddCollaboratorRequest interface {
+	reposAddCollaboratorRequest()
 }
 
 type ReposCheckCollaboratorResponse interface {
@@ -1161,64 +841,56 @@ type ReposCompareCommitsResponse interface {
 	reposCompareCommitsResponse()
 }
 
-type ReposCreateAutolinkResponse interface {
-	reposCreateAutolinkResponse()
+type ReposCreateAutolinkRequest interface {
+	reposCreateAutolinkRequest()
 }
 
-type ReposCreateCommitCommentResponse interface {
-	reposCreateCommitCommentResponse()
+type ReposCreateCommitCommentRequest interface {
+	reposCreateCommitCommentRequest()
 }
 
 type ReposCreateCommitSignatureProtectionResponse interface {
 	reposCreateCommitSignatureProtectionResponse()
 }
 
-type ReposCreateDeployKeyResponse interface {
-	reposCreateDeployKeyResponse()
+type ReposCreateDeployKeyRequest interface {
+	reposCreateDeployKeyRequest()
 }
 
-type ReposCreateDeploymentResponse interface {
-	reposCreateDeploymentResponse()
+type ReposCreateDeploymentStatusRequest interface {
+	reposCreateDeploymentStatusRequest()
 }
 
-type ReposCreateDeploymentStatusResponse interface {
-	reposCreateDeploymentStatusResponse()
+type ReposCreateDispatchEventRequest interface {
+	reposCreateDispatchEventRequest()
 }
 
-type ReposCreateDispatchEventResponse interface {
-	reposCreateDispatchEventResponse()
+type ReposCreateForAuthenticatedUserRequest interface {
+	reposCreateForAuthenticatedUserRequest()
 }
 
-type ReposCreateForAuthenticatedUserResponse interface {
-	reposCreateForAuthenticatedUserResponse()
+type ReposCreateForkRequest interface {
+	reposCreateForkRequest()
 }
 
-type ReposCreateForkResponse interface {
-	reposCreateForkResponse()
+type ReposCreateInOrgRequest interface {
+	reposCreateInOrgRequest()
 }
 
-type ReposCreateInOrgResponse interface {
-	reposCreateInOrgResponse()
+type ReposCreateOrUpdateEnvironmentRequest interface {
+	reposCreateOrUpdateEnvironmentRequest()
 }
 
-type ReposCreateOrUpdateEnvironmentResponse interface {
-	reposCreateOrUpdateEnvironmentResponse()
+type ReposCreateOrUpdateFileContentsRequest interface {
+	reposCreateOrUpdateFileContentsRequest()
 }
 
-type ReposCreateOrUpdateFileContentsResponse interface {
-	reposCreateOrUpdateFileContentsResponse()
+type ReposCreatePagesSiteRequest interface {
+	reposCreatePagesSiteRequest()
 }
 
-type ReposCreatePagesSiteResponse interface {
-	reposCreatePagesSiteResponse()
-}
-
-type ReposCreateReleaseResponse interface {
-	reposCreateReleaseResponse()
-}
-
-type ReposCreateWebhookResponse interface {
-	reposCreateWebhookResponse()
+type ReposCreateReleaseRequest interface {
+	reposCreateReleaseRequest()
 }
 
 type ReposDeclineInvitationResponse interface {
@@ -1249,12 +921,8 @@ type ReposDeleteDeploymentResponse interface {
 	reposDeleteDeploymentResponse()
 }
 
-type ReposDeleteFileResponse interface {
-	reposDeleteFileResponse()
-}
-
-type ReposDeletePagesSiteResponse interface {
-	reposDeletePagesSiteResponse()
+type ReposDeleteFileRequest interface {
+	reposDeleteFileRequest()
 }
 
 type ReposDeletePullRequestReviewProtectionResponse interface {
@@ -1301,10 +969,6 @@ type ReposGetBranchResponse interface {
 	reposGetBranchResponse()
 }
 
-type ReposGetClonesResponse interface {
-	reposGetClonesResponse()
-}
-
 type ReposGetCodeFrequencyStatsResponse interface {
 	reposGetCodeFrequencyStatsResponse()
 }
@@ -1325,16 +989,8 @@ type ReposGetCommitCommentResponse interface {
 	reposGetCommitCommentResponse()
 }
 
-type ReposGetCommitResponse interface {
-	reposGetCommitResponse()
-}
-
 type ReposGetCommitSignatureProtectionResponse interface {
 	reposGetCommitSignatureProtectionResponse()
-}
-
-type ReposGetContentResponse interface {
-	reposGetContentResponse()
 }
 
 type ReposGetContributorsStatsResponse interface {
@@ -1343,10 +999,6 @@ type ReposGetContributorsStatsResponse interface {
 
 type ReposGetDeployKeyResponse interface {
 	reposGetDeployKeyResponse()
-}
-
-type ReposGetDeploymentResponse interface {
-	reposGetDeploymentResponse()
 }
 
 type ReposGetDeploymentStatusResponse interface {
@@ -1367,14 +1019,6 @@ type ReposGetParticipationStatsResponse interface {
 
 type ReposGetPunchCardStatsResponse interface {
 	reposGetPunchCardStatsResponse()
-}
-
-type ReposGetReadmeInDirectoryResponse interface {
-	reposGetReadmeInDirectoryResponse()
-}
-
-type ReposGetReadmeResponse interface {
-	reposGetReadmeResponse()
 }
 
 type ReposGetReleaseAssetResponse interface {
@@ -1413,28 +1057,8 @@ type ReposGetUsersWithAccessToProtectedBranchResponse interface {
 	reposGetUsersWithAccessToProtectedBranchResponse()
 }
 
-type ReposGetViewsResponse interface {
-	reposGetViewsResponse()
-}
-
-type ReposGetWebhookDeliveryResponse interface {
-	reposGetWebhookDeliveryResponse()
-}
-
-type ReposGetWebhookResponse interface {
-	reposGetWebhookResponse()
-}
-
-type ReposListBranchesForHeadCommitResponse interface {
-	reposListBranchesForHeadCommitResponse()
-}
-
 type ReposListBranchesResponse interface {
 	reposListBranchesResponse()
-}
-
-type ReposListCollaboratorsResponse interface {
-	reposListCollaboratorsResponse()
 }
 
 type ReposListCommitStatusesForRefResponse interface {
@@ -1453,36 +1077,16 @@ type ReposListDeploymentStatusesResponse interface {
 	reposListDeploymentStatusesResponse()
 }
 
-type ReposListForAuthenticatedUserResponse interface {
-	reposListForAuthenticatedUserResponse()
-}
-
-type ReposListForksResponse interface {
-	reposListForksResponse()
-}
-
 type ReposListInvitationsForAuthenticatedUserResponse interface {
 	reposListInvitationsForAuthenticatedUserResponse()
-}
-
-type ReposListPublicResponse interface {
-	reposListPublicResponse()
 }
 
 type ReposListReleasesResponse interface {
 	reposListReleasesResponse()
 }
 
-type ReposListWebhookDeliveriesResponse interface {
-	reposListWebhookDeliveriesResponse()
-}
-
-type ReposListWebhooksResponse interface {
-	reposListWebhooksResponse()
-}
-
-type ReposMergeResponse interface {
-	reposMergeResponse()
+type ReposMergeRequest interface {
+	reposMergeRequest()
 }
 
 type ReposMergeUpstreamResponse interface {
@@ -1493,48 +1097,12 @@ type ReposPingWebhookResponse interface {
 	reposPingWebhookResponse()
 }
 
-type ReposRedeliverWebhookDeliveryResponse interface {
-	reposRedeliverWebhookDeliveryResponse()
-}
-
-type ReposRemoveAppAccessRestrictionsResponse interface {
-	reposRemoveAppAccessRestrictionsResponse()
-}
-
-type ReposRemoveStatusCheckContextsResponse interface {
-	reposRemoveStatusCheckContextsResponse()
-}
-
-type ReposRemoveTeamAccessRestrictionsResponse interface {
-	reposRemoveTeamAccessRestrictionsResponse()
-}
-
-type ReposRemoveUserAccessRestrictionsResponse interface {
-	reposRemoveUserAccessRestrictionsResponse()
-}
-
-type ReposRenameBranchResponse interface {
-	reposRenameBranchResponse()
+type ReposRenameBranchRequest interface {
+	reposRenameBranchRequest()
 }
 
 type ReposReplaceAllTopicsResponse interface {
 	reposReplaceAllTopicsResponse()
-}
-
-type ReposSetAppAccessRestrictionsResponse interface {
-	reposSetAppAccessRestrictionsResponse()
-}
-
-type ReposSetStatusCheckContextsResponse interface {
-	reposSetStatusCheckContextsResponse()
-}
-
-type ReposSetTeamAccessRestrictionsResponse interface {
-	reposSetTeamAccessRestrictionsResponse()
-}
-
-type ReposSetUserAccessRestrictionsResponse interface {
-	reposSetUserAccessRestrictionsResponse()
 }
 
 type ReposTestPushWebhookResponse interface {
@@ -1549,92 +1117,40 @@ type ReposUpdateCommitCommentResponse interface {
 	reposUpdateCommitCommentResponse()
 }
 
-type ReposUpdateInformationAboutPagesSiteResponse interface {
-	reposUpdateInformationAboutPagesSiteResponse()
-}
-
-type ReposUpdatePullRequestReviewProtectionResponse interface {
-	reposUpdatePullRequestReviewProtectionResponse()
+type ReposUpdatePullRequestReviewProtectionRequest interface {
+	reposUpdatePullRequestReviewProtectionRequest()
 }
 
 type ReposUpdateReleaseResponse interface {
 	reposUpdateReleaseResponse()
 }
 
-type ReposUpdateResponse interface {
-	reposUpdateResponse()
+type ReposUpdateRequest interface {
+	reposUpdateRequest()
 }
 
-type ReposUpdateStatusCheckProtectionResponse interface {
-	reposUpdateStatusCheckProtectionResponse()
-}
-
-type ReposUpdateWebhookResponse interface {
-	reposUpdateWebhookResponse()
+type ReposUpdateStatusCheckProtectionRequest interface {
+	reposUpdateStatusCheckProtectionRequest()
 }
 
 type ScimDeleteUserFromOrgResponse interface {
 	scimDeleteUserFromOrgResponse()
 }
 
-type ScimGetProvisioningInformationForUserResponse interface {
-	scimGetProvisioningInformationForUserResponse()
+type ScimProvisionAndInviteUserRequest interface {
+	scimProvisionAndInviteUserRequest()
 }
 
-type ScimListProvisionedIdentitiesResponse interface {
-	scimListProvisionedIdentitiesResponse()
-}
-
-type ScimProvisionAndInviteUserResponse interface {
-	scimProvisionAndInviteUserResponse()
-}
-
-type ScimSetInformationForProvisionedUserResponse interface {
-	scimSetInformationForProvisionedUserResponse()
-}
-
-type ScimUpdateAttributeForUserResponse interface {
-	scimUpdateAttributeForUserResponse()
-}
-
-type SearchCodeResponse interface {
-	searchCodeResponse()
-}
-
-type SearchCommitsResponse interface {
-	searchCommitsResponse()
-}
-
-type SearchIssuesAndPullRequestsResponse interface {
-	searchIssuesAndPullRequestsResponse()
-}
-
-type SearchLabelsResponse interface {
-	searchLabelsResponse()
-}
-
-type SearchReposResponse interface {
-	searchReposResponse()
+type ScimSetInformationForProvisionedUserRequest interface {
+	scimSetInformationForProvisionedUserRequest()
 }
 
 type SearchTopicsResponse interface {
 	searchTopicsResponse()
 }
 
-type SearchUsersResponse interface {
-	searchUsersResponse()
-}
-
 type SecretScanningGetAlertResponse interface {
 	secretScanningGetAlertResponse()
-}
-
-type SecretScanningListAlertsForOrgResponse interface {
-	secretScanningListAlertsForOrgResponse()
-}
-
-type SecretScanningListAlertsForRepoResponse interface {
-	secretScanningListAlertsForRepoResponse()
 }
 
 type SecretScanningUpdateAlertResponse interface {
@@ -1657,12 +1173,12 @@ type TeamsAddOrUpdateProjectPermissionsInOrgResponse interface {
 	teamsAddOrUpdateProjectPermissionsInOrgResponse()
 }
 
-type TeamsAddOrUpdateProjectPermissionsLegacyResponse interface {
-	teamsAddOrUpdateProjectPermissionsLegacyResponse()
+type TeamsAddOrUpdateProjectPermissionsLegacyRequest interface {
+	teamsAddOrUpdateProjectPermissionsLegacyRequest()
 }
 
-type TeamsAddOrUpdateRepoPermissionsLegacyResponse interface {
-	teamsAddOrUpdateRepoPermissionsLegacyResponse()
+type TeamsAddOrUpdateRepoPermissionsLegacyRequest interface {
+	teamsAddOrUpdateRepoPermissionsLegacyRequest()
 }
 
 type TeamsCheckPermissionsForProjectInOrgResponse interface {
@@ -1681,16 +1197,12 @@ type TeamsCheckPermissionsForRepoLegacyResponse interface {
 	teamsCheckPermissionsForRepoLegacyResponse()
 }
 
-type TeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse interface {
-	teamsCreateOrUpdateIdpGroupConnectionsLegacyResponse()
+type TeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest interface {
+	teamsCreateOrUpdateIdpGroupConnectionsLegacyRequest()
 }
 
-type TeamsCreateResponse interface {
-	teamsCreateResponse()
-}
-
-type TeamsDeleteLegacyResponse interface {
-	teamsDeleteLegacyResponse()
+type TeamsCreateRequest interface {
+	teamsCreateRequest()
 }
 
 type TeamsGetByNameResponse interface {
@@ -1713,20 +1225,12 @@ type TeamsGetMembershipForUserLegacyResponse interface {
 	teamsGetMembershipForUserLegacyResponse()
 }
 
-type TeamsListChildLegacyResponse interface {
-	teamsListChildLegacyResponse()
-}
-
 type TeamsListForAuthenticatedUserResponse interface {
 	teamsListForAuthenticatedUserResponse()
 }
 
 type TeamsListIdpGroupsForLegacyResponse interface {
 	teamsListIdpGroupsForLegacyResponse()
-}
-
-type TeamsListMembersLegacyResponse interface {
-	teamsListMembersLegacyResponse()
 }
 
 type TeamsListProjectsLegacyResponse interface {
@@ -1753,20 +1257,8 @@ type TeamsRemoveMembershipForUserLegacyResponse interface {
 	teamsRemoveMembershipForUserLegacyResponse()
 }
 
-type TeamsRemoveProjectLegacyResponse interface {
-	teamsRemoveProjectLegacyResponse()
-}
-
-type TeamsUpdateLegacyResponse interface {
-	teamsUpdateLegacyResponse()
-}
-
-type UsersAddEmailForAuthenticatedResponse interface {
-	usersAddEmailForAuthenticatedResponse()
-}
-
-type UsersBlockResponse interface {
-	usersBlockResponse()
+type TeamsUpdateLegacyRequest interface {
+	teamsUpdateLegacyRequest()
 }
 
 type UsersCheckBlockedResponse interface {
@@ -1781,20 +1273,12 @@ type UsersCheckPersonIsFollowedByAuthenticatedResponse interface {
 	usersCheckPersonIsFollowedByAuthenticatedResponse()
 }
 
-type UsersCreateGpgKeyForAuthenticatedResponse interface {
-	usersCreateGpgKeyForAuthenticatedResponse()
+type UsersCreateGpgKeyForAuthenticatedRequest interface {
+	usersCreateGpgKeyForAuthenticatedRequest()
 }
 
-type UsersCreatePublicSSHKeyForAuthenticatedResponse interface {
-	usersCreatePublicSSHKeyForAuthenticatedResponse()
-}
-
-type UsersDeleteEmailForAuthenticatedResponse interface {
-	usersDeleteEmailForAuthenticatedResponse()
-}
-
-type UsersDeleteGpgKeyForAuthenticatedResponse interface {
-	usersDeleteGpgKeyForAuthenticatedResponse()
+type UsersCreatePublicSSHKeyForAuthenticatedRequest interface {
+	usersCreatePublicSSHKeyForAuthenticatedRequest()
 }
 
 type UsersDeletePublicSSHKeyForAuthenticatedResponse interface {
@@ -1803,18 +1287,6 @@ type UsersDeletePublicSSHKeyForAuthenticatedResponse interface {
 
 type UsersFollowResponse interface {
 	usersFollowResponse()
-}
-
-type UsersGetAuthenticatedResponse interface {
-	usersGetAuthenticatedResponse()
-}
-
-type UsersGetByUsernameResponse interface {
-	usersGetByUsernameResponse()
-}
-
-type UsersGetContextForUserResponse interface {
-	usersGetContextForUserResponse()
 }
 
 type UsersGetGpgKeyForAuthenticatedResponse interface {
@@ -1857,8 +1329,8 @@ type UsersListResponse interface {
 	usersListResponse()
 }
 
-type UsersSetPrimaryEmailVisibilityForAuthenticatedResponse interface {
-	usersSetPrimaryEmailVisibilityForAuthenticatedResponse()
+type UsersSetPrimaryEmailVisibilityForAuthenticatedRequest interface {
+	usersSetPrimaryEmailVisibilityForAuthenticatedRequest()
 }
 
 type UsersUnblockResponse interface {
@@ -1869,6 +1341,6 @@ type UsersUnfollowResponse interface {
 	usersUnfollowResponse()
 }
 
-type UsersUpdateAuthenticatedResponse interface {
-	usersUpdateAuthenticatedResponse()
+type UsersUpdateAuthenticatedRequest interface {
+	usersUpdateAuthenticatedRequest()
 }

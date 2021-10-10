@@ -37,27 +37,34 @@ var (
 )
 
 type APIOverview struct {
-	API                              []string                      `json:"api"`
-	Actions                          []string                      `json:"actions"`
-	Dependabot                       []string                      `json:"dependabot"`
-	Git                              []string                      `json:"git"`
-	Hooks                            []string                      `json:"hooks"`
-	Importer                         []string                      `json:"importer"`
-	Packages                         []string                      `json:"packages"`
-	Pages                            []string                      `json:"pages"`
-	SSHKeyFingerprints               APIOverviewSSHKeyFingerprints `json:"ssh_key_fingerprints"`
-	VerifiablePasswordAuthentication bool                          `json:"verifiable_password_authentication"`
-	Web                              []string                      `json:"web"`
+	API                              *[]string                      `json:"api"`
+	Actions                          *[]string                      `json:"actions"`
+	Dependabot                       *[]string                      `json:"dependabot"`
+	Git                              *[]string                      `json:"git"`
+	Hooks                            *[]string                      `json:"hooks"`
+	Importer                         *[]string                      `json:"importer"`
+	Packages                         *[]string                      `json:"packages"`
+	Pages                            *[]string                      `json:"pages"`
+	SSHKeyFingerprints               *APIOverviewSSHKeyFingerprints `json:"ssh_key_fingerprints"`
+	VerifiablePasswordAuthentication bool                           `json:"verifiable_password_authentication"`
+	Web                              *[]string                      `json:"web"`
 }
 
 func (*APIOverview) metaGetResponse() {}
 
 type APIOverviewSSHKeyFingerprints struct {
-	SHA256DSA     string `json:"SHA256_DSA"`
-	SHA256ECDSA   string `json:"SHA256_ECDSA"`
-	SHA256ED25519 string `json:"SHA256_ED25519"`
-	SHA256RSA     string `json:"SHA256_RSA"`
+	SHA256DSA     *string `json:"SHA256_DSA"`
+	SHA256ECDSA   *string `json:"SHA256_ECDSA"`
+	SHA256ED25519 *string `json:"SHA256_ED25519"`
+	SHA256RSA     *string `json:"SHA256_RSA"`
 }
+
+type Accepted struct{}
+
+func (*Accepted) reposEnableLfsForRepoResponse()       {}
+func (*Accepted) reposGetCodeFrequencyStatsResponse()  {}
+func (*Accepted) reposGetCommitActivityStatsResponse() {}
+func (*Accepted) reposGetContributorsStatsResponse()   {}
 
 type ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg struct{}
 
@@ -71,9 +78,13 @@ func (*ActionsAddSelectedRepoToOrgSecretNoContent) actionsAddSelectedRepoToOrgSe
 
 type ActionsAddSelfHostedRunnerToGroupForOrg struct{}
 
-type ActionsApproveWorkflowRunCreated struct{}
+type ActionsApproveWorkflowRunApplicationJSONForbidden BasicError
 
-func (*ActionsApproveWorkflowRunCreated) actionsApproveWorkflowRunResponse() {}
+func (*ActionsApproveWorkflowRunApplicationJSONForbidden) actionsApproveWorkflowRunResponse() {}
+
+type ActionsApproveWorkflowRunApplicationJSONNotFound BasicError
+
+func (*ActionsApproveWorkflowRunApplicationJSONNotFound) actionsApproveWorkflowRunResponse() {}
 
 type ActionsBillingUsage struct {
 	IncludedMinutes      int                                     `json:"included_minutes"`
@@ -83,9 +94,9 @@ type ActionsBillingUsage struct {
 }
 
 type ActionsBillingUsageMinutesUsedBreakdown struct {
-	MACOS   int `json:"MACOS"`
-	UBUNTU  int `json:"UBUNTU"`
-	WINDOWS int `json:"WINDOWS"`
+	MACOS   *int `json:"MACOS"`
+	UBUNTU  *int `json:"UBUNTU"`
+	WINDOWS *int `json:"WINDOWS"`
 }
 
 type ActionsCancelWorkflowRun struct{}
@@ -95,34 +106,33 @@ type ActionsCreateOrUpdateEnvironmentSecretApplicationJSONRequest struct {
 	KeyID          string `json:"key_id"`
 }
 
-type ActionsCreateOrUpdateEnvironmentSecretCreated struct{}
-
-func (*ActionsCreateOrUpdateEnvironmentSecretCreated) actionsCreateOrUpdateEnvironmentSecretResponse() {
-}
-
 type ActionsCreateOrUpdateEnvironmentSecretNoContent struct{}
 
 func (*ActionsCreateOrUpdateEnvironmentSecretNoContent) actionsCreateOrUpdateEnvironmentSecretResponse() {
 }
 
 type ActionsCreateOrUpdateOrgSecretApplicationJSONRequest struct {
-	EncryptedValue        string   `json:"encrypted_value"`
-	KeyID                 string   `json:"key_id"`
-	SelectedRepositoryIds []string `json:"selected_repository_ids"`
-	Visibility            string   `json:"visibility"`
+	EncryptedValue        *string                                                        `json:"encrypted_value"`
+	KeyID                 *string                                                        `json:"key_id"`
+	SelectedRepositoryIds *[]string                                                      `json:"selected_repository_ids"`
+	Visibility            ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibility `json:"visibility"`
 }
 
-type ActionsCreateOrUpdateOrgSecretCreated struct{}
+type ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibility string
 
-func (*ActionsCreateOrUpdateOrgSecretCreated) actionsCreateOrUpdateOrgSecretResponse() {}
+const (
+	ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibilityAll      ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibility = "all"
+	ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibilityPrivate  ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibility = "private"
+	ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibilitySelected ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibility = "selected"
+)
 
 type ActionsCreateOrUpdateOrgSecretNoContent struct{}
 
 func (*ActionsCreateOrUpdateOrgSecretNoContent) actionsCreateOrUpdateOrgSecretResponse() {}
 
 type ActionsCreateOrUpdateRepoSecretApplicationJSONRequest struct {
-	EncryptedValue string `json:"encrypted_value"`
-	KeyID          string `json:"key_id"`
+	EncryptedValue *string `json:"encrypted_value"`
+	KeyID          *string `json:"key_id"`
 }
 
 type ActionsCreateOrUpdateRepoSecretCreated struct{}
@@ -134,11 +144,19 @@ type ActionsCreateOrUpdateRepoSecretNoContent struct{}
 func (*ActionsCreateOrUpdateRepoSecretNoContent) actionsCreateOrUpdateRepoSecretResponse() {}
 
 type ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest struct {
-	Name                  string `json:"name"`
-	Runners               []int  `json:"runners"`
-	SelectedRepositoryIds []int  `json:"selected_repository_ids"`
-	Visibility            string `json:"visibility"`
+	Name                  string                                                                    `json:"name"`
+	Runners               *[]int                                                                    `json:"runners"`
+	SelectedRepositoryIds *[]int                                                                    `json:"selected_repository_ids"`
+	Visibility            *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility `json:"visibility"`
 }
+
+type ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility string
+
+const (
+	ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibilitySelected ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility = "selected"
+	ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibilityAll      ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility = "all"
+	ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibilityPrivate  ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility = "private"
+)
 
 type ActionsDeleteArtifact struct{}
 
@@ -168,11 +186,13 @@ type ActionsDownloadWorkflowRunLogs struct{}
 
 type ActionsEnableSelectedRepositoryGithubActionsOrganization struct{}
 
+type ActionsEnabled bool
+
 type ActionsEnterprisePermissions struct {
-	AllowedActions           string `json:"allowed_actions"`
-	EnabledOrganizations     string `json:"enabled_organizations"`
-	SelectedActionsURL       string `json:"selected_actions_url"`
-	SelectedOrganizationsURL string `json:"selected_organizations_url"`
+	AllowedActions           *AllowedActions      `json:"allowed_actions"`
+	EnabledOrganizations     EnabledOrganizations `json:"enabled_organizations"`
+	SelectedActionsURL       *SelectedActionsURL  `json:"selected_actions_url"`
+	SelectedOrganizationsURL *string              `json:"selected_organizations_url"`
 }
 
 type ActionsListArtifactsForRepo struct {
@@ -185,11 +205,6 @@ type ActionsListEnvironmentSecrets struct {
 	TotalCount int             `json:"total_count"`
 }
 
-type ActionsListJobsForWorkflowRun struct {
-	Jobs       []Job `json:"jobs"`
-	TotalCount int   `json:"total_count"`
-}
-
 type ActionsListOrgSecrets struct {
 	Secrets    []OrganizationActionsSecret `json:"secrets"`
 	TotalCount int                         `json:"total_count"`
@@ -197,7 +212,7 @@ type ActionsListOrgSecrets struct {
 
 type ActionsListRepoAccessToSelfHostedRunnerGroupInOrg struct {
 	Repositories []MinimalRepository `json:"repositories"`
-	TotalCount   float               `json:"total_count"`
+	TotalCount   float64             `json:"total_count"`
 }
 
 type ActionsListRepoSecrets struct {
@@ -217,12 +232,12 @@ type ActionsListSelectedReposForOrgSecret struct {
 
 type ActionsListSelectedRepositoriesEnabledGithubActionsOrganization struct {
 	Repositories []Repository `json:"repositories"`
-	TotalCount   float        `json:"total_count"`
+	TotalCount   float64      `json:"total_count"`
 }
 
 type ActionsListSelfHostedRunnerGroupsForOrg struct {
 	RunnerGroups []RunnerGroupsOrg `json:"runner_groups"`
-	TotalCount   float             `json:"total_count"`
+	TotalCount   float64           `json:"total_count"`
 }
 
 type ActionsListSelfHostedRunnersForOrg struct {
@@ -237,7 +252,7 @@ type ActionsListSelfHostedRunnersForRepo struct {
 
 type ActionsListSelfHostedRunnersInGroupForOrg struct {
 	Runners    []Runner `json:"runners"`
-	TotalCount float    `json:"total_count"`
+	TotalCount float64  `json:"total_count"`
 }
 
 type ActionsListWorkflowRunArtifacts struct {
@@ -245,25 +260,20 @@ type ActionsListWorkflowRunArtifacts struct {
 	TotalCount int        `json:"total_count"`
 }
 
-type ActionsListWorkflowRunsForRepo struct {
-	TotalCount   int           `json:"total_count"`
-	WorkflowRuns []WorkflowRun `json:"workflow_runs"`
-}
-
 type ActionsOrganizationPermissions struct {
-	AllowedActions          string `json:"allowed_actions"`
-	EnabledRepositories     string `json:"enabled_repositories"`
-	SelectedActionsURL      string `json:"selected_actions_url"`
-	SelectedRepositoriesURL string `json:"selected_repositories_url"`
+	AllowedActions          *AllowedActions     `json:"allowed_actions"`
+	EnabledRepositories     EnabledRepositories `json:"enabled_repositories"`
+	SelectedActionsURL      *SelectedActionsURL `json:"selected_actions_url"`
+	SelectedRepositoriesURL *string             `json:"selected_repositories_url"`
 }
 
 type ActionsPublicKey struct {
-	CreatedAt string `json:"created_at"`
-	ID        int    `json:"id"`
-	Key       string `json:"key"`
-	KeyID     string `json:"key_id"`
-	Title     string `json:"title"`
-	URL       string `json:"url"`
+	CreatedAt *string `json:"created_at"`
+	ID        *int    `json:"id"`
+	Key       string  `json:"key"`
+	KeyID     string  `json:"key_id"`
+	Title     *string `json:"title"`
+	URL       *string `json:"url"`
 }
 
 type ActionsReRunWorkflow struct{}
@@ -283,18 +293,28 @@ func (*ActionsRemoveSelectedRepoFromOrgSecretNoContent) actionsRemoveSelectedRep
 type ActionsRemoveSelfHostedRunnerFromGroupForOrg struct{}
 
 type ActionsRepositoryPermissions struct {
-	AllowedActions     string `json:"allowed_actions"`
-	Enabled            bool   `json:"enabled"`
-	SelectedActionsURL string `json:"selected_actions_url"`
+	AllowedActions     *AllowedActions     `json:"allowed_actions"`
+	Enabled            ActionsEnabled      `json:"enabled"`
+	SelectedActionsURL *SelectedActionsURL `json:"selected_actions_url"`
 }
 
 type ActionsRetryWorkflow struct{}
 
 type ActionsReviewPendingDeploymentsForRunApplicationJSONRequest struct {
-	Comment        string `json:"comment"`
-	EnvironmentIds []int  `json:"environment_ids"`
-	State          string `json:"state"`
+	Comment        string                                                           `json:"comment"`
+	EnvironmentIds []int                                                            `json:"environment_ids"`
+	State          ActionsReviewPendingDeploymentsForRunApplicationJSONRequestState `json:"state"`
 }
+
+func (*ActionsReviewPendingDeploymentsForRunApplicationJSONRequest) actionsReviewPendingDeploymentsForRunRequest() {
+}
+
+type ActionsReviewPendingDeploymentsForRunApplicationJSONRequestState string
+
+const (
+	ActionsReviewPendingDeploymentsForRunApplicationJSONRequestStateApproved ActionsReviewPendingDeploymentsForRunApplicationJSONRequestState = "approved"
+	ActionsReviewPendingDeploymentsForRunApplicationJSONRequestStateRejected ActionsReviewPendingDeploymentsForRunApplicationJSONRequestState = "rejected"
+)
 
 type ActionsSecret struct {
 	CreatedAt time.Time `json:"created_at"`
@@ -309,15 +329,15 @@ type ActionsSetAllowedActionsRepository struct{}
 type ActionsSetGithubActionsPermissionsOrganization struct{}
 
 type ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest struct {
-	AllowedActions      string `json:"allowed_actions"`
-	EnabledRepositories string `json:"enabled_repositories"`
+	AllowedActions      *AllowedActions     `json:"allowed_actions"`
+	EnabledRepositories EnabledRepositories `json:"enabled_repositories"`
 }
 
 type ActionsSetGithubActionsPermissionsRepository struct{}
 
 type ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest struct {
-	AllowedActions string `json:"allowed_actions"`
-	Enabled        bool   `json:"enabled"`
+	AllowedActions *AllowedActions `json:"allowed_actions"`
+	Enabled        ActionsEnabled  `json:"enabled"`
 }
 
 type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg struct{}
@@ -345,8 +365,31 @@ type ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest struct {
 }
 
 type ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest struct {
-	Name       string `json:"name"`
-	Visibility string `json:"visibility"`
+	Name       string                                                                    `json:"name"`
+	Visibility *ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility `json:"visibility"`
+}
+
+type ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility string
+
+const (
+	ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibilitySelected ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility = "selected"
+	ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibilityAll      ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility = "all"
+	ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibilityPrivate  ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility = "private"
+)
+
+type ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden) activityCheckRepoIsStarredByAuthenticatedUserResponse() {
+}
+
+type ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound BasicError
+
+func (*ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound) activityCheckRepoIsStarredByAuthenticatedUserResponse() {
+}
+
+type ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized) activityCheckRepoIsStarredByAuthenticatedUserResponse() {
 }
 
 type ActivityCheckRepoIsStarredByAuthenticatedUserNoContent struct{}
@@ -356,6 +399,16 @@ func (*ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) activityCheckRepo
 
 type ActivityDeleteRepoSubscription struct{}
 
+type ActivityDeleteThreadSubscriptionApplicationJSONForbidden BasicError
+
+func (*ActivityDeleteThreadSubscriptionApplicationJSONForbidden) activityDeleteThreadSubscriptionResponse() {
+}
+
+type ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized BasicError
+
+func (*ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) activityDeleteThreadSubscriptionResponse() {
+}
+
 type ActivityDeleteThreadSubscriptionNoContent struct{}
 
 func (*ActivityDeleteThreadSubscriptionNoContent) activityDeleteThreadSubscriptionResponse() {}
@@ -364,9 +417,39 @@ type ActivityGetRepoSubscriptionNotFound struct{}
 
 func (*ActivityGetRepoSubscriptionNotFound) activityGetRepoSubscriptionResponse() {}
 
+type ActivityGetThreadApplicationJSONForbidden BasicError
+
+func (*ActivityGetThreadApplicationJSONForbidden) activityGetThreadResponse() {}
+
+type ActivityGetThreadApplicationJSONUnauthorized BasicError
+
+func (*ActivityGetThreadApplicationJSONUnauthorized) activityGetThreadResponse() {}
+
+type ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden) activityGetThreadSubscriptionForAuthenticatedUserResponse() {
+}
+
+type ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized) activityGetThreadSubscriptionForAuthenticatedUserResponse() {
+}
+
 type ActivityListNotificationsForAuthenticatedUserOK []Thread
 
-func (*ActivityListNotificationsForAuthenticatedUserOK) activityListNotificationsForAuthenticatedUserResponse() {
+type ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden BasicError
+
+func (*ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden) activityListPublicEventsForRepoNetworkResponse() {
+}
+
+type ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently BasicError
+
+func (*ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently) activityListPublicEventsForRepoNetworkResponse() {
+}
+
+type ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound BasicError
+
+func (*ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) activityListPublicEventsForRepoNetworkResponse() {
 }
 
 type ActivityListPublicEventsForRepoNetworkOK []Event
@@ -377,14 +460,14 @@ type ActivityListPublicEventsOK []Event
 
 func (*ActivityListPublicEventsOK) activityListPublicEventsResponse() {}
 
-type ActivityListReposStarredByAuthenticatedUserOKApplicationJSON []Repository
+type ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden BasicError
 
-func (*ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) activityListReposStarredByAuthenticatedUserResponse() {
+func (*ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden) activityListWatchedReposForAuthenticatedUserResponse() {
 }
 
-type ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON []StarredRepository
+type ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
-func (*ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON) activityListReposStarredByAuthenticatedUserResponse() {
+func (*ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) activityListWatchedReposForAuthenticatedUserResponse() {
 }
 
 type ActivityListWatchedReposForAuthenticatedUserOK []MinimalRepository
@@ -393,14 +476,24 @@ func (*ActivityListWatchedReposForAuthenticatedUserOK) activityListWatchedReposF
 }
 
 type ActivityMarkNotificationsAsReadAccepted struct {
-	Message string `json:"message"`
+	Message *string `json:"message"`
 }
 
 func (*ActivityMarkNotificationsAsReadAccepted) activityMarkNotificationsAsReadResponse() {}
 
+type ActivityMarkNotificationsAsReadApplicationJSONForbidden BasicError
+
+func (*ActivityMarkNotificationsAsReadApplicationJSONForbidden) activityMarkNotificationsAsReadResponse() {
+}
+
 type ActivityMarkNotificationsAsReadApplicationJSONRequest struct {
-	LastReadAt time.Time `json:"last_read_at"`
-	Read       bool      `json:"read"`
+	LastReadAt *time.Time `json:"last_read_at"`
+	Read       *bool      `json:"read"`
+}
+
+type ActivityMarkNotificationsAsReadApplicationJSONUnauthorized BasicError
+
+func (*ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) activityMarkNotificationsAsReadResponse() {
 }
 
 type ActivityMarkNotificationsAsReadResetContent struct{}
@@ -408,14 +501,14 @@ type ActivityMarkNotificationsAsReadResetContent struct{}
 func (*ActivityMarkNotificationsAsReadResetContent) activityMarkNotificationsAsReadResponse() {}
 
 type ActivityMarkRepoNotificationsAsReadAccepted struct {
-	Message string `json:"message"`
-	URL     string `json:"url"`
+	Message *string `json:"message"`
+	URL     *string `json:"url"`
 }
 
 func (*ActivityMarkRepoNotificationsAsReadAccepted) activityMarkRepoNotificationsAsReadResponse() {}
 
 type ActivityMarkRepoNotificationsAsReadApplicationJSONRequest struct {
-	LastReadAt time.Time `json:"last_read_at"`
+	LastReadAt *time.Time `json:"last_read_at"`
 }
 
 type ActivityMarkRepoNotificationsAsReadResetContent struct{}
@@ -428,17 +521,57 @@ type ActivityMarkThreadAsReadResetContent struct{}
 func (*ActivityMarkThreadAsReadResetContent) activityMarkThreadAsReadResponse() {}
 
 type ActivitySetRepoSubscriptionApplicationJSONRequest struct {
-	Ignored    bool `json:"ignored"`
-	Subscribed bool `json:"subscribed"`
+	Ignored    *bool `json:"ignored"`
+	Subscribed *bool `json:"subscribed"`
+}
+
+type ActivitySetThreadSubscriptionApplicationJSONForbidden BasicError
+
+func (*ActivitySetThreadSubscriptionApplicationJSONForbidden) activitySetThreadSubscriptionResponse() {
 }
 
 type ActivitySetThreadSubscriptionApplicationJSONRequest struct {
-	Ignored bool `json:"ignored"`
+	Ignored *bool `json:"ignored"`
+}
+
+type ActivitySetThreadSubscriptionApplicationJSONUnauthorized BasicError
+
+func (*ActivitySetThreadSubscriptionApplicationJSONUnauthorized) activitySetThreadSubscriptionResponse() {
+}
+
+type ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden) activityStarRepoForAuthenticatedUserResponse() {
+}
+
+type ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound BasicError
+
+func (*ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound) activityStarRepoForAuthenticatedUserResponse() {
+}
+
+type ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) activityStarRepoForAuthenticatedUserResponse() {
 }
 
 type ActivityStarRepoForAuthenticatedUserNoContent struct{}
 
 func (*ActivityStarRepoForAuthenticatedUserNoContent) activityStarRepoForAuthenticatedUserResponse() {
+}
+
+type ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) activityUnstarRepoForAuthenticatedUserResponse() {
+}
+
+type ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound BasicError
+
+func (*ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound) activityUnstarRepoForAuthenticatedUserResponse() {
+}
+
+type ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) activityUnstarRepoForAuthenticatedUserResponse() {
 }
 
 type ActivityUnstarRepoForAuthenticatedUserNoContent struct{}
@@ -447,47 +580,281 @@ func (*ActivityUnstarRepoForAuthenticatedUserNoContent) activityUnstarRepoForAut
 }
 
 type Actor struct {
-	AvatarURL    string `json:"avatar_url"`
-	DisplayLogin string `json:"display_login"`
-	GravatarID   string `json:"gravatar_id"`
-	ID           int    `json:"id"`
-	Login        string `json:"login"`
-	URL          string `json:"url"`
+	AvatarURL    string  `json:"avatar_url"`
+	DisplayLogin *string `json:"display_login"`
+	GravatarID   string  `json:"gravatar_id"`
+	ID           int     `json:"id"`
+	Login        string  `json:"login"`
+	URL          string  `json:"url"`
 }
 
+type AlertCreatedAt time.Time
+
+type AlertHTMLURL string
+
+type AlertInstancesURL string
+
+type AlertNumber int
+
+type AlertURL string
+
+type AllowedActions string
+
+const (
+	AllowedActionsAll       AllowedActions = "all"
+	AllowedActionsLocalOnly AllowedActions = "local_only"
+	AllowedActionsSelected  AllowedActions = "selected"
+)
+
 type AppPermissions struct {
-	Actions                       string `json:"actions"`
-	Administration                string `json:"administration"`
-	Checks                        string `json:"checks"`
-	ContentReferences             string `json:"content_references"`
-	Contents                      string `json:"contents"`
-	Deployments                   string `json:"deployments"`
-	Environments                  string `json:"environments"`
-	Issues                        string `json:"issues"`
-	Members                       string `json:"members"`
-	Metadata                      string `json:"metadata"`
-	OrganizationAdministration    string `json:"organization_administration"`
-	OrganizationHooks             string `json:"organization_hooks"`
-	OrganizationPackages          string `json:"organization_packages"`
-	OrganizationPlan              string `json:"organization_plan"`
-	OrganizationProjects          string `json:"organization_projects"`
-	OrganizationSecrets           string `json:"organization_secrets"`
-	OrganizationSelfHostedRunners string `json:"organization_self_hosted_runners"`
-	OrganizationUserBlocking      string `json:"organization_user_blocking"`
-	Packages                      string `json:"packages"`
-	Pages                         string `json:"pages"`
-	PullRequests                  string `json:"pull_requests"`
-	RepositoryHooks               string `json:"repository_hooks"`
-	RepositoryProjects            string `json:"repository_projects"`
-	SecretScanningAlerts          string `json:"secret_scanning_alerts"`
-	Secrets                       string `json:"secrets"`
-	SecurityEvents                string `json:"security_events"`
-	SingleFile                    string `json:"single_file"`
-	Statuses                      string `json:"statuses"`
-	TeamDiscussions               string `json:"team_discussions"`
-	VulnerabilityAlerts           string `json:"vulnerability_alerts"`
-	Workflows                     string `json:"workflows"`
+	Actions                       *AppPermissionsActions                       `json:"actions"`
+	Administration                *AppPermissionsAdministration                `json:"administration"`
+	Checks                        *AppPermissionsChecks                        `json:"checks"`
+	ContentReferences             *AppPermissionsContentReferences             `json:"content_references"`
+	Contents                      *AppPermissionsContents                      `json:"contents"`
+	Deployments                   *AppPermissionsDeployments                   `json:"deployments"`
+	Environments                  *AppPermissionsEnvironments                  `json:"environments"`
+	Issues                        *AppPermissionsIssues                        `json:"issues"`
+	Members                       *AppPermissionsMembers                       `json:"members"`
+	Metadata                      *AppPermissionsMetadata                      `json:"metadata"`
+	OrganizationAdministration    *AppPermissionsOrganizationAdministration    `json:"organization_administration"`
+	OrganizationHooks             *AppPermissionsOrganizationHooks             `json:"organization_hooks"`
+	OrganizationPackages          *AppPermissionsOrganizationPackages          `json:"organization_packages"`
+	OrganizationPlan              *AppPermissionsOrganizationPlan              `json:"organization_plan"`
+	OrganizationProjects          *AppPermissionsOrganizationProjects          `json:"organization_projects"`
+	OrganizationSecrets           *AppPermissionsOrganizationSecrets           `json:"organization_secrets"`
+	OrganizationSelfHostedRunners *AppPermissionsOrganizationSelfHostedRunners `json:"organization_self_hosted_runners"`
+	OrganizationUserBlocking      *AppPermissionsOrganizationUserBlocking      `json:"organization_user_blocking"`
+	Packages                      *AppPermissionsPackages                      `json:"packages"`
+	Pages                         *AppPermissionsPages                         `json:"pages"`
+	PullRequests                  *AppPermissionsPullRequests                  `json:"pull_requests"`
+	RepositoryHooks               *AppPermissionsRepositoryHooks               `json:"repository_hooks"`
+	RepositoryProjects            *AppPermissionsRepositoryProjects            `json:"repository_projects"`
+	SecretScanningAlerts          *AppPermissionsSecretScanningAlerts          `json:"secret_scanning_alerts"`
+	Secrets                       *AppPermissionsSecrets                       `json:"secrets"`
+	SecurityEvents                *AppPermissionsSecurityEvents                `json:"security_events"`
+	SingleFile                    *AppPermissionsSingleFile                    `json:"single_file"`
+	Statuses                      *AppPermissionsStatuses                      `json:"statuses"`
+	TeamDiscussions               *AppPermissionsTeamDiscussions               `json:"team_discussions"`
+	VulnerabilityAlerts           *AppPermissionsVulnerabilityAlerts           `json:"vulnerability_alerts"`
+	Workflows                     *AppPermissionsWorkflows                     `json:"workflows"`
 }
+
+type AppPermissionsActions string
+
+const (
+	AppPermissionsActionsRead  AppPermissionsActions = "read"
+	AppPermissionsActionsWrite AppPermissionsActions = "write"
+)
+
+type AppPermissionsAdministration string
+
+const (
+	AppPermissionsAdministrationRead  AppPermissionsAdministration = "read"
+	AppPermissionsAdministrationWrite AppPermissionsAdministration = "write"
+)
+
+type AppPermissionsChecks string
+
+const (
+	AppPermissionsChecksRead  AppPermissionsChecks = "read"
+	AppPermissionsChecksWrite AppPermissionsChecks = "write"
+)
+
+type AppPermissionsContentReferences string
+
+const (
+	AppPermissionsContentReferencesRead  AppPermissionsContentReferences = "read"
+	AppPermissionsContentReferencesWrite AppPermissionsContentReferences = "write"
+)
+
+type AppPermissionsContents string
+
+const (
+	AppPermissionsContentsRead  AppPermissionsContents = "read"
+	AppPermissionsContentsWrite AppPermissionsContents = "write"
+)
+
+type AppPermissionsDeployments string
+
+const (
+	AppPermissionsDeploymentsRead  AppPermissionsDeployments = "read"
+	AppPermissionsDeploymentsWrite AppPermissionsDeployments = "write"
+)
+
+type AppPermissionsEnvironments string
+
+const (
+	AppPermissionsEnvironmentsRead  AppPermissionsEnvironments = "read"
+	AppPermissionsEnvironmentsWrite AppPermissionsEnvironments = "write"
+)
+
+type AppPermissionsIssues string
+
+const (
+	AppPermissionsIssuesRead  AppPermissionsIssues = "read"
+	AppPermissionsIssuesWrite AppPermissionsIssues = "write"
+)
+
+type AppPermissionsMembers string
+
+const (
+	AppPermissionsMembersRead  AppPermissionsMembers = "read"
+	AppPermissionsMembersWrite AppPermissionsMembers = "write"
+)
+
+type AppPermissionsMetadata string
+
+const (
+	AppPermissionsMetadataRead  AppPermissionsMetadata = "read"
+	AppPermissionsMetadataWrite AppPermissionsMetadata = "write"
+)
+
+type AppPermissionsOrganizationAdministration string
+
+const (
+	AppPermissionsOrganizationAdministrationRead  AppPermissionsOrganizationAdministration = "read"
+	AppPermissionsOrganizationAdministrationWrite AppPermissionsOrganizationAdministration = "write"
+)
+
+type AppPermissionsOrganizationHooks string
+
+const (
+	AppPermissionsOrganizationHooksRead  AppPermissionsOrganizationHooks = "read"
+	AppPermissionsOrganizationHooksWrite AppPermissionsOrganizationHooks = "write"
+)
+
+type AppPermissionsOrganizationPackages string
+
+const (
+	AppPermissionsOrganizationPackagesRead  AppPermissionsOrganizationPackages = "read"
+	AppPermissionsOrganizationPackagesWrite AppPermissionsOrganizationPackages = "write"
+)
+
+type AppPermissionsOrganizationPlan string
+
+const (
+	AppPermissionsOrganizationPlanRead AppPermissionsOrganizationPlan = "read"
+)
+
+type AppPermissionsOrganizationProjects string
+
+const (
+	AppPermissionsOrganizationProjectsRead  AppPermissionsOrganizationProjects = "read"
+	AppPermissionsOrganizationProjectsWrite AppPermissionsOrganizationProjects = "write"
+	AppPermissionsOrganizationProjectsAdmin AppPermissionsOrganizationProjects = "admin"
+)
+
+type AppPermissionsOrganizationSecrets string
+
+const (
+	AppPermissionsOrganizationSecretsRead  AppPermissionsOrganizationSecrets = "read"
+	AppPermissionsOrganizationSecretsWrite AppPermissionsOrganizationSecrets = "write"
+)
+
+type AppPermissionsOrganizationSelfHostedRunners string
+
+const (
+	AppPermissionsOrganizationSelfHostedRunnersRead  AppPermissionsOrganizationSelfHostedRunners = "read"
+	AppPermissionsOrganizationSelfHostedRunnersWrite AppPermissionsOrganizationSelfHostedRunners = "write"
+)
+
+type AppPermissionsOrganizationUserBlocking string
+
+const (
+	AppPermissionsOrganizationUserBlockingRead  AppPermissionsOrganizationUserBlocking = "read"
+	AppPermissionsOrganizationUserBlockingWrite AppPermissionsOrganizationUserBlocking = "write"
+)
+
+type AppPermissionsPackages string
+
+const (
+	AppPermissionsPackagesRead  AppPermissionsPackages = "read"
+	AppPermissionsPackagesWrite AppPermissionsPackages = "write"
+)
+
+type AppPermissionsPages string
+
+const (
+	AppPermissionsPagesRead  AppPermissionsPages = "read"
+	AppPermissionsPagesWrite AppPermissionsPages = "write"
+)
+
+type AppPermissionsPullRequests string
+
+const (
+	AppPermissionsPullRequestsRead  AppPermissionsPullRequests = "read"
+	AppPermissionsPullRequestsWrite AppPermissionsPullRequests = "write"
+)
+
+type AppPermissionsRepositoryHooks string
+
+const (
+	AppPermissionsRepositoryHooksRead  AppPermissionsRepositoryHooks = "read"
+	AppPermissionsRepositoryHooksWrite AppPermissionsRepositoryHooks = "write"
+)
+
+type AppPermissionsRepositoryProjects string
+
+const (
+	AppPermissionsRepositoryProjectsRead  AppPermissionsRepositoryProjects = "read"
+	AppPermissionsRepositoryProjectsWrite AppPermissionsRepositoryProjects = "write"
+	AppPermissionsRepositoryProjectsAdmin AppPermissionsRepositoryProjects = "admin"
+)
+
+type AppPermissionsSecretScanningAlerts string
+
+const (
+	AppPermissionsSecretScanningAlertsRead  AppPermissionsSecretScanningAlerts = "read"
+	AppPermissionsSecretScanningAlertsWrite AppPermissionsSecretScanningAlerts = "write"
+)
+
+type AppPermissionsSecrets string
+
+const (
+	AppPermissionsSecretsRead  AppPermissionsSecrets = "read"
+	AppPermissionsSecretsWrite AppPermissionsSecrets = "write"
+)
+
+type AppPermissionsSecurityEvents string
+
+const (
+	AppPermissionsSecurityEventsRead  AppPermissionsSecurityEvents = "read"
+	AppPermissionsSecurityEventsWrite AppPermissionsSecurityEvents = "write"
+)
+
+type AppPermissionsSingleFile string
+
+const (
+	AppPermissionsSingleFileRead  AppPermissionsSingleFile = "read"
+	AppPermissionsSingleFileWrite AppPermissionsSingleFile = "write"
+)
+
+type AppPermissionsStatuses string
+
+const (
+	AppPermissionsStatusesRead  AppPermissionsStatuses = "read"
+	AppPermissionsStatusesWrite AppPermissionsStatuses = "write"
+)
+
+type AppPermissionsTeamDiscussions string
+
+const (
+	AppPermissionsTeamDiscussionsRead  AppPermissionsTeamDiscussions = "read"
+	AppPermissionsTeamDiscussionsWrite AppPermissionsTeamDiscussions = "write"
+)
+
+type AppPermissionsVulnerabilityAlerts string
+
+const (
+	AppPermissionsVulnerabilityAlertsRead AppPermissionsVulnerabilityAlerts = "read"
+)
+
+type AppPermissionsWorkflows string
+
+const (
+	AppPermissionsWorkflowsWrite AppPermissionsWorkflows = "write"
+)
 
 type ApplicationGrant struct {
 	App       ApplicationGrantApp `json:"app"`
@@ -496,7 +863,7 @@ type ApplicationGrant struct {
 	Scopes    []string            `json:"scopes"`
 	URL       string              `json:"url"`
 	UpdatedAt time.Time           `json:"updated_at"`
-	User      NullableSimpleUser  `json:"user"`
+	User      *NullableSimpleUser `json:"user"`
 }
 
 func (*ApplicationGrant) oAuthAuthorizationsGetGrantResponse() {}
@@ -507,6 +874,14 @@ type ApplicationGrantApp struct {
 	URL      string `json:"url"`
 }
 
+type AppsAddRepoToInstallationApplicationJSONForbidden BasicError
+
+func (*AppsAddRepoToInstallationApplicationJSONForbidden) appsAddRepoToInstallationResponse() {}
+
+type AppsAddRepoToInstallationApplicationJSONNotFound BasicError
+
+func (*AppsAddRepoToInstallationApplicationJSONNotFound) appsAddRepoToInstallationResponse() {}
+
 type AppsAddRepoToInstallationNoContent struct{}
 
 func (*AppsAddRepoToInstallationNoContent) appsAddRepoToInstallationResponse() {}
@@ -515,26 +890,35 @@ type AppsCheckTokenApplicationJSONRequest struct {
 	AccessToken string `json:"access_token"`
 }
 
+func (*AppsCheckTokenApplicationJSONRequest) appsCheckTokenRequest() {}
+
 type AppsCreateContentAttachmentApplicationJSONRequest struct {
 	Body  string `json:"body"`
 	Title string `json:"title"`
 }
 
+func (*AppsCreateContentAttachmentApplicationJSONRequest) appsCreateContentAttachmentRequest() {}
+
 type AppsCreateFromManifestApplicationJSONRequest struct{}
 
+func (*AppsCreateFromManifestApplicationJSONRequest) appsCreateFromManifestRequest() {}
+
 type AppsCreateInstallationAccessTokenApplicationJSONRequest struct {
-	Permissions   AppPermissions `json:"permissions"`
-	Repositories  []string       `json:"repositories"`
-	RepositoryIds []int          `json:"repository_ids"`
+	Permissions   *AppPermissions `json:"permissions"`
+	Repositories  *[]string       `json:"repositories"`
+	RepositoryIds *[]int          `json:"repository_ids"`
+}
+
+func (*AppsCreateInstallationAccessTokenApplicationJSONRequest) appsCreateInstallationAccessTokenRequest() {
 }
 
 type AppsDeleteAuthorizationApplicationJSONRequest struct {
 	AccessToken string `json:"access_token"`
 }
 
-type AppsDeleteAuthorizationNoContent struct{}
+func (*AppsDeleteAuthorizationApplicationJSONRequest) appsDeleteAuthorizationRequest() {}
 
-func (*AppsDeleteAuthorizationNoContent) appsDeleteAuthorizationResponse() {}
+type AppsDeleteAuthorizationNoContent struct{}
 
 type AppsDeleteInstallationNoContent struct{}
 
@@ -544,39 +928,59 @@ type AppsDeleteTokenApplicationJSONRequest struct {
 	AccessToken string `json:"access_token"`
 }
 
+func (*AppsDeleteTokenApplicationJSONRequest) appsDeleteTokenRequest() {}
+
 type AppsDeleteTokenNoContent struct{}
 
-func (*AppsDeleteTokenNoContent) appsDeleteTokenResponse() {}
+type AppsGetBySlugApplicationJSONForbidden BasicError
+
+func (*AppsGetBySlugApplicationJSONForbidden) appsGetBySlugResponse() {}
+
+type AppsGetBySlugApplicationJSONNotFound BasicError
+
+func (*AppsGetBySlugApplicationJSONNotFound) appsGetBySlugResponse() {}
+
+type AppsGetSubscriptionPlanForAccountApplicationJSONNotFound BasicError
+
+func (*AppsGetSubscriptionPlanForAccountApplicationJSONNotFound) appsGetSubscriptionPlanForAccountResponse() {
+}
+
+type AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized BasicError
+
+func (*AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) appsGetSubscriptionPlanForAccountResponse() {
+}
 
 type AppsGetSubscriptionPlanForAccountStubbedNotFound struct{}
 
 func (*AppsGetSubscriptionPlanForAccountStubbedNotFound) appsGetSubscriptionPlanForAccountStubbedResponse() {
 }
 
-type AppsListAccountsForPlanOK []MarketplacePurchase
+type AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden BasicError
 
-func (*AppsListAccountsForPlanOK) appsListAccountsForPlanResponse() {}
+func (*AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) appsListInstallationReposForAuthenticatedUserResponse() {
+}
 
-type AppsListAccountsForPlanStubbedOK []MarketplacePurchase
+type AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound BasicError
 
-func (*AppsListAccountsForPlanStubbedOK) appsListAccountsForPlanStubbedResponse() {}
+func (*AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) appsListInstallationReposForAuthenticatedUserResponse() {
+}
 
 type AppsListInstallationReposForAuthenticatedUserOK struct {
 	Repositories        []Repository `json:"repositories"`
-	RepositorySelection string       `json:"repository_selection"`
+	RepositorySelection *string      `json:"repository_selection"`
 	TotalCount          int          `json:"total_count"`
 }
 
 func (*AppsListInstallationReposForAuthenticatedUserOK) appsListInstallationReposForAuthenticatedUserResponse() {
 }
 
-type AppsListInstallationsForAuthenticatedUserOK struct {
-	Installations []Installation `json:"installations"`
-	TotalCount    int            `json:"total_count"`
-}
+type AppsListPlansApplicationJSONNotFound BasicError
 
-func (*AppsListInstallationsForAuthenticatedUserOK) appsListInstallationsForAuthenticatedUserResponse() {
-}
+func (*AppsListPlansApplicationJSONNotFound) appsListPlansResponse() {}
+
+type AppsListPlansApplicationJSONUnauthorized BasicError
+
+func (*AppsListPlansApplicationJSONUnauthorized) appsListPlansResponse() {}
 
 type AppsListPlansOK []MarketplaceListingPlan
 
@@ -586,13 +990,33 @@ type AppsListPlansStubbedOK []MarketplaceListingPlan
 
 func (*AppsListPlansStubbedOK) appsListPlansStubbedResponse() {}
 
+type AppsListReposAccessibleToInstallationApplicationJSONForbidden BasicError
+
+func (*AppsListReposAccessibleToInstallationApplicationJSONForbidden) appsListReposAccessibleToInstallationResponse() {
+}
+
+type AppsListReposAccessibleToInstallationApplicationJSONUnauthorized BasicError
+
+func (*AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) appsListReposAccessibleToInstallationResponse() {
+}
+
 type AppsListReposAccessibleToInstallationOK struct {
 	Repositories        []Repository `json:"repositories"`
-	RepositorySelection string       `json:"repository_selection"`
+	RepositorySelection *string      `json:"repository_selection"`
 	TotalCount          int          `json:"total_count"`
 }
 
 func (*AppsListReposAccessibleToInstallationOK) appsListReposAccessibleToInstallationResponse() {}
+
+type AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound BasicError
+
+func (*AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound) appsListSubscriptionsForAuthenticatedUserResponse() {
+}
+
+type AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) appsListSubscriptionsForAuthenticatedUserResponse() {
+}
 
 type AppsListSubscriptionsForAuthenticatedUserOK []UserMarketplacePurchase
 
@@ -606,7 +1030,15 @@ func (*AppsListSubscriptionsForAuthenticatedUserStubbedOK) appsListSubscriptions
 
 type AppsListWebhookDeliveriesOK []HookDeliveryItem
 
-func (*AppsListWebhookDeliveriesOK) appsListWebhookDeliveriesResponse() {}
+type AppsRemoveRepoFromInstallationApplicationJSONForbidden BasicError
+
+func (*AppsRemoveRepoFromInstallationApplicationJSONForbidden) appsRemoveRepoFromInstallationResponse() {
+}
+
+type AppsRemoveRepoFromInstallationApplicationJSONNotFound BasicError
+
+func (*AppsRemoveRepoFromInstallationApplicationJSONNotFound) appsRemoveRepoFromInstallationResponse() {
+}
 
 type AppsRemoveRepoFromInstallationNoContent struct{}
 
@@ -616,16 +1048,20 @@ type AppsResetTokenApplicationJSONRequest struct {
 	AccessToken string `json:"access_token"`
 }
 
+func (*AppsResetTokenApplicationJSONRequest) appsResetTokenRequest() {}
+
 type AppsRevokeInstallationAccessToken struct{}
 
 type AppsScopeTokenApplicationJSONRequest struct {
-	AccessToken   string         `json:"access_token"`
-	Permissions   AppPermissions `json:"permissions"`
-	Repositories  []string       `json:"repositories"`
-	RepositoryIds []int          `json:"repository_ids"`
-	Target        string         `json:"target"`
-	TargetID      int            `json:"target_id"`
+	AccessToken   string          `json:"access_token"`
+	Permissions   *AppPermissions `json:"permissions"`
+	Repositories  *[]string       `json:"repositories"`
+	RepositoryIds *[]int          `json:"repository_ids"`
+	Target        *string         `json:"target"`
+	TargetID      *int            `json:"target_id"`
 }
+
+func (*AppsScopeTokenApplicationJSONRequest) appsScopeTokenRequest() {}
 
 type AppsSuspendInstallationNoContent struct{}
 
@@ -634,12 +1070,6 @@ func (*AppsSuspendInstallationNoContent) appsSuspendInstallationResponse() {}
 type AppsUnsuspendInstallationNoContent struct{}
 
 func (*AppsUnsuspendInstallationNoContent) appsUnsuspendInstallationResponse() {}
-
-type AppsUpdateWebhookConfigForAppApplicationJSONRequest struct {
-	URL         string `json:"url"`
-	ContentType string `json:"content_type"`
-	Secret      string `json:"secret"`
-}
 
 type Artifact struct {
 	ArchiveDownloadURL string    `json:"archive_download_url"`
@@ -654,46 +1084,54 @@ type Artifact struct {
 	UpdatedAt          time.Time `json:"updated_at"`
 }
 
-type AuditLogEvent struct {
-	Repository string `json:"repository"`
-	Actor      string `json:"actor"`
+type AuthenticationToken struct {
+	ExpiresAt           time.Time                               `json:"expires_at"`
+	Permissions         *struct{}                               `json:"permissions"`
+	Repositories        *[]Repository                           `json:"repositories"`
+	RepositorySelection *AuthenticationTokenRepositorySelection `json:"repository_selection"`
+	SingleFile          *string                                 `json:"single_file"`
+	Token               string                                  `json:"token"`
 }
 
-type AuthenticationToken struct {
-	ExpiresAt           time.Time    `json:"expires_at"`
-	Permissions         struct{}     `json:"permissions"`
-	Repositories        []Repository `json:"repositories"`
-	RepositorySelection string       `json:"repository_selection"`
-	SingleFile          string       `json:"single_file"`
-	Token               string       `json:"token"`
-}
+type AuthenticationTokenRepositorySelection string
+
+const (
+	AuthenticationTokenRepositorySelectionAll      AuthenticationTokenRepositorySelection = "all"
+	AuthenticationTokenRepositorySelectionSelected AuthenticationTokenRepositorySelection = "selected"
+)
+
+type AuthorAssociation string
+
+const (
+	AuthorAssociationCOLLABORATOR         AuthorAssociation = "COLLABORATOR"
+	AuthorAssociationCONTRIBUTOR          AuthorAssociation = "CONTRIBUTOR"
+	AuthorAssociationFIRSTTIMER           AuthorAssociation = "FIRST_TIMER"
+	AuthorAssociationFIRSTTIMECONTRIBUTOR AuthorAssociation = "FIRST_TIME_CONTRIBUTOR"
+	AuthorAssociationMANNEQUIN            AuthorAssociation = "MANNEQUIN"
+	AuthorAssociationMEMBER               AuthorAssociation = "MEMBER"
+	AuthorAssociationNONE                 AuthorAssociation = "NONE"
+	AuthorAssociationOWNER                AuthorAssociation = "OWNER"
+)
 
 type Authorization struct {
-	App            AuthorizationApp           `json:"app"`
-	CreatedAt      time.Time                  `json:"created_at"`
-	ExpiresAt      time.Time                  `json:"expires_at"`
-	Fingerprint    string                     `json:"fingerprint"`
-	HashedToken    string                     `json:"hashed_token"`
-	ID             int                        `json:"id"`
-	Installation   NullableScopedInstallation `json:"installation"`
-	Note           string                     `json:"note"`
-	NoteURL        string                     `json:"note_url"`
-	Scopes         []string                   `json:"scopes"`
-	Token          string                     `json:"token"`
-	TokenLastEight string                     `json:"token_last_eight"`
-	URL            string                     `json:"url"`
-	UpdatedAt      time.Time                  `json:"updated_at"`
-	User           NullableSimpleUser         `json:"user"`
+	App            AuthorizationApp            `json:"app"`
+	CreatedAt      time.Time                   `json:"created_at"`
+	ExpiresAt      time.Time                   `json:"expires_at"`
+	Fingerprint    string                      `json:"fingerprint"`
+	HashedToken    string                      `json:"hashed_token"`
+	ID             int                         `json:"id"`
+	Installation   *NullableScopedInstallation `json:"installation"`
+	Note           string                      `json:"note"`
+	NoteURL        string                      `json:"note_url"`
+	Scopes         []string                    `json:"scopes"`
+	Token          string                      `json:"token"`
+	TokenLastEight string                      `json:"token_last_eight"`
+	URL            string                      `json:"url"`
+	UpdatedAt      time.Time                   `json:"updated_at"`
+	User           *NullableSimpleUser         `json:"user"`
 }
 
-func (*Authorization) appsCheckTokenResponse()                                                  {}
-func (*Authorization) appsResetTokenResponse()                                                  {}
-func (*Authorization) appsScopeTokenResponse()                                                  {}
-func (*Authorization) oAuthAuthorizationsCreateAuthorizationResponse()                          {}
-func (*Authorization) oAuthAuthorizationsGetAuthorizationResponse()                             {}
-func (*Authorization) oAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse() {}
-func (*Authorization) oAuthAuthorizationsGetOrCreateAuthorizationForAppResponse()               {}
-func (*Authorization) oAuthAuthorizationsUpdateAuthorizationResponse()                          {}
+func (*Authorization) oAuthAuthorizationsGetAuthorizationResponse() {}
 
 type AuthorizationApp struct {
 	ClientID string `json:"client_id"`
@@ -702,11 +1140,19 @@ type AuthorizationApp struct {
 }
 
 type AutoMerge struct {
-	CommitMessage string     `json:"commit_message"`
-	CommitTitle   string     `json:"commit_title"`
-	EnabledBy     SimpleUser `json:"enabled_by"`
-	MergeMethod   string     `json:"merge_method"`
+	CommitMessage string               `json:"commit_message"`
+	CommitTitle   string               `json:"commit_title"`
+	EnabledBy     SimpleUser           `json:"enabled_by"`
+	MergeMethod   AutoMergeMergeMethod `json:"merge_method"`
 }
+
+type AutoMergeMergeMethod string
+
+const (
+	AutoMergeMergeMethodMerge  AutoMergeMergeMethod = "merge"
+	AutoMergeMergeMethodSquash AutoMergeMergeMethod = "squash"
+	AutoMergeMergeMethodRebase AutoMergeMergeMethod = "rebase"
+)
 
 type Autolink struct {
 	ID          int    `json:"id"`
@@ -714,440 +1160,187 @@ type Autolink struct {
 	URLTemplate string `json:"url_template"`
 }
 
-func (*Autolink) reposCreateAutolinkResponse() {}
-func (*Autolink) reposGetAutolinkResponse()    {}
+func (*Autolink) reposGetAutolinkResponse() {}
 
 type BaseGist struct {
-	HTMLURL     string             `json:"html_url"`
-	Public      bool               `json:"public"`
-	UpdatedAt   time.Time          `json:"updated_at"`
 	Comments    int                `json:"comments"`
 	CommentsURL string             `json:"comments_url"`
-	Owner       SimpleUser         `json:"owner"`
 	CommitsURL  string             `json:"commits_url"`
-	GitPushURL  string             `json:"git_push_url"`
+	CreatedAt   time.Time          `json:"created_at"`
+	Description string             `json:"description"`
 	Files       struct{}           `json:"files"`
+	Forks       *[]string          `json:"forks"`
 	ForksURL    string             `json:"forks_url"`
+	GitPullURL  string             `json:"git_pull_url"`
+	GitPushURL  string             `json:"git_push_url"`
+	HTMLURL     string             `json:"html_url"`
+	History     *[]string          `json:"history"`
+	ID          string             `json:"id"`
 	NodeID      string             `json:"node_id"`
+	Owner       *SimpleUser        `json:"owner"`
+	Public      bool               `json:"public"`
+	Truncated   *bool              `json:"truncated"`
+	URL         string             `json:"url"`
+	UpdatedAt   time.Time          `json:"updated_at"`
 	User        NullableSimpleUser `json:"user"`
 }
 
 type BasicError struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-	Status           string `json:"status"`
-	URL              string `json:"url"`
+	DocumentationURL *string `json:"documentation_url"`
+	Message          *string `json:"message"`
+	Status           *string `json:"status"`
+	URL              *string `json:"url"`
 }
 
-func (*BasicError) actionsApproveWorkflowRunResponse()                                       {}
-func (*BasicError) activityCheckRepoIsStarredByAuthenticatedUserResponse()                   {}
-func (*BasicError) activityDeleteThreadSubscriptionResponse()                                {}
-func (*BasicError) activityGetRepoSubscriptionResponse()                                     {}
-func (*BasicError) activityGetThreadResponse()                                               {}
-func (*BasicError) activityGetThreadSubscriptionForAuthenticatedUserResponse()               {}
-func (*BasicError) activityListNotificationsForAuthenticatedUserResponse()                   {}
-func (*BasicError) activityListPublicEventsForRepoNetworkResponse()                          {}
-func (*BasicError) activityListPublicEventsResponse()                                        {}
-func (*BasicError) activityListReposStarredByAuthenticatedUserResponse()                     {}
-func (*BasicError) activityListWatchedReposForAuthenticatedUserResponse()                    {}
-func (*BasicError) activityMarkNotificationsAsReadResponse()                                 {}
-func (*BasicError) activityMarkThreadAsReadResponse()                                        {}
-func (*BasicError) activitySetThreadSubscriptionResponse()                                   {}
-func (*BasicError) activityStarRepoForAuthenticatedUserResponse()                            {}
-func (*BasicError) activityUnstarRepoForAuthenticatedUserResponse()                          {}
-func (*BasicError) appsAddRepoToInstallationResponse()                                       {}
-func (*BasicError) appsCheckTokenResponse()                                                  {}
-func (*BasicError) appsCreateContentAttachmentResponse()                                     {}
-func (*BasicError) appsCreateFromManifestResponse()                                          {}
-func (*BasicError) appsCreateInstallationAccessTokenResponse()                               {}
-func (*BasicError) appsDeleteInstallationResponse()                                          {}
-func (*BasicError) appsGetBySlugResponse()                                                   {}
-func (*BasicError) appsGetInstallationResponse()                                             {}
-func (*BasicError) appsGetRepoInstallationResponse()                                         {}
-func (*BasicError) appsGetSubscriptionPlanForAccountResponse()                               {}
-func (*BasicError) appsGetSubscriptionPlanForAccountStubbedResponse()                        {}
-func (*BasicError) appsGetWebhookDeliveryResponse()                                          {}
-func (*BasicError) appsListAccountsForPlanResponse()                                         {}
-func (*BasicError) appsListAccountsForPlanStubbedResponse()                                  {}
-func (*BasicError) appsListInstallationReposForAuthenticatedUserResponse()                   {}
-func (*BasicError) appsListInstallationsForAuthenticatedUserResponse()                       {}
-func (*BasicError) appsListPlansResponse()                                                   {}
-func (*BasicError) appsListPlansStubbedResponse()                                            {}
-func (*BasicError) appsListReposAccessibleToInstallationResponse()                           {}
-func (*BasicError) appsListSubscriptionsForAuthenticatedUserResponse()                       {}
-func (*BasicError) appsListSubscriptionsForAuthenticatedUserStubbedResponse()                {}
-func (*BasicError) appsListWebhookDeliveriesResponse()                                       {}
-func (*BasicError) appsRedeliverWebhookDeliveryResponse()                                    {}
-func (*BasicError) appsRemoveRepoFromInstallationResponse()                                  {}
-func (*BasicError) appsScopeTokenResponse()                                                  {}
-func (*BasicError) appsSuspendInstallationResponse()                                         {}
-func (*BasicError) appsUnsuspendInstallationResponse()                                       {}
-func (*BasicError) codeScanningDeleteAnalysisResponse()                                      {}
-func (*BasicError) codeScanningGetAlertResponse()                                            {}
-func (*BasicError) codeScanningGetAnalysisResponse()                                         {}
-func (*BasicError) codeScanningGetSarifResponse()                                            {}
-func (*BasicError) codeScanningListAlertInstancesResponse()                                  {}
-func (*BasicError) codeScanningListAlertsForRepoResponse()                                   {}
-func (*BasicError) codeScanningListRecentAnalysesResponse()                                  {}
-func (*BasicError) codeScanningUpdateAlertResponse()                                         {}
-func (*BasicError) codeScanningUploadSarifResponse()                                         {}
-func (*BasicError) codesOfConductGetConductCodeResponse()                                    {}
-func (*BasicError) gistsCheckIsStarredResponse()                                             {}
-func (*BasicError) gistsCreateCommentResponse()                                              {}
-func (*BasicError) gistsCreateResponse()                                                     {}
-func (*BasicError) gistsDeleteCommentResponse()                                              {}
-func (*BasicError) gistsDeleteResponse()                                                     {}
-func (*BasicError) gistsForkResponse()                                                       {}
-func (*BasicError) gistsGetCommentResponse()                                                 {}
-func (*BasicError) gistsGetResponse()                                                        {}
-func (*BasicError) gistsGetRevisionResponse()                                                {}
-func (*BasicError) gistsListCommentsResponse()                                               {}
-func (*BasicError) gistsListCommitsResponse()                                                {}
-func (*BasicError) gistsListForksResponse()                                                  {}
-func (*BasicError) gistsListPublicResponse()                                                 {}
-func (*BasicError) gistsListResponse()                                                       {}
-func (*BasicError) gistsListStarredResponse()                                                {}
-func (*BasicError) gistsStarResponse()                                                       {}
-func (*BasicError) gistsUnstarResponse()                                                     {}
-func (*BasicError) gistsUpdateCommentResponse()                                              {}
-func (*BasicError) gistsUpdateResponse()                                                     {}
-func (*BasicError) gitCreateBlobResponse()                                                   {}
-func (*BasicError) gitCreateCommitResponse()                                                 {}
-func (*BasicError) gitCreateTreeResponse()                                                   {}
-func (*BasicError) gitGetBlobResponse()                                                      {}
-func (*BasicError) gitGetCommitResponse()                                                    {}
-func (*BasicError) gitGetRefResponse()                                                       {}
-func (*BasicError) gitGetTagResponse()                                                       {}
-func (*BasicError) gitGetTreeResponse()                                                      {}
-func (*BasicError) issuesAddLabelsResponse()                                                 {}
-func (*BasicError) issuesCheckUserCanBeAssignedResponse()                                    {}
-func (*BasicError) issuesCreateCommentResponse()                                             {}
-func (*BasicError) issuesCreateLabelResponse()                                               {}
-func (*BasicError) issuesCreateMilestoneResponse()                                           {}
-func (*BasicError) issuesCreateResponse()                                                    {}
-func (*BasicError) issuesDeleteMilestoneResponse()                                           {}
-func (*BasicError) issuesGetCommentResponse()                                                {}
-func (*BasicError) issuesGetEventResponse()                                                  {}
-func (*BasicError) issuesGetLabelResponse()                                                  {}
-func (*BasicError) issuesGetMilestoneResponse()                                              {}
-func (*BasicError) issuesGetResponse()                                                       {}
-func (*BasicError) issuesListAssigneesResponse()                                             {}
-func (*BasicError) issuesListCommentsForRepoResponse()                                       {}
-func (*BasicError) issuesListCommentsResponse()                                              {}
-func (*BasicError) issuesListEventsForTimelineResponse()                                     {}
-func (*BasicError) issuesListEventsResponse()                                                {}
-func (*BasicError) issuesListForAuthenticatedUserResponse()                                  {}
-func (*BasicError) issuesListForOrgResponse()                                                {}
-func (*BasicError) issuesListForRepoResponse()                                               {}
-func (*BasicError) issuesListLabelsForRepoResponse()                                         {}
-func (*BasicError) issuesListLabelsOnIssueResponse()                                         {}
-func (*BasicError) issuesListMilestonesResponse()                                            {}
-func (*BasicError) issuesListResponse()                                                      {}
-func (*BasicError) issuesLockResponse()                                                      {}
-func (*BasicError) issuesRemoveAllLabelsResponse()                                           {}
-func (*BasicError) issuesRemoveLabelResponse()                                               {}
-func (*BasicError) issuesSetLabelsResponse()                                                 {}
-func (*BasicError) issuesUnlockResponse()                                                    {}
-func (*BasicError) issuesUpdateResponse()                                                    {}
-func (*BasicError) licensesGetResponse()                                                     {}
-func (*BasicError) migrationsDeleteArchiveForAuthenticatedUserResponse()                     {}
-func (*BasicError) migrationsDeleteArchiveForOrgResponse()                                   {}
-func (*BasicError) migrationsDownloadArchiveForOrgResponse()                                 {}
-func (*BasicError) migrationsGetArchiveForAuthenticatedUserResponse()                        {}
-func (*BasicError) migrationsGetCommitAuthorsResponse()                                      {}
-func (*BasicError) migrationsGetImportStatusResponse()                                       {}
-func (*BasicError) migrationsGetStatusForAuthenticatedUserResponse()                         {}
-func (*BasicError) migrationsGetStatusForOrgResponse()                                       {}
-func (*BasicError) migrationsListForAuthenticatedUserResponse()                              {}
-func (*BasicError) migrationsListReposForOrgResponse()                                       {}
-func (*BasicError) migrationsListReposForUserResponse()                                      {}
-func (*BasicError) migrationsMapCommitAuthorResponse()                                       {}
-func (*BasicError) migrationsStartForAuthenticatedUserResponse()                             {}
-func (*BasicError) migrationsStartForOrgResponse()                                           {}
-func (*BasicError) migrationsStartImportResponse()                                           {}
-func (*BasicError) migrationsUnlockRepoForAuthenticatedUserResponse()                        {}
-func (*BasicError) migrationsUnlockRepoForOrgResponse()                                      {}
-func (*BasicError) oAuthAuthorizationsCreateAuthorizationResponse()                          {}
-func (*BasicError) oAuthAuthorizationsDeleteAuthorizationResponse()                          {}
-func (*BasicError) oAuthAuthorizationsDeleteGrantResponse()                                  {}
-func (*BasicError) oAuthAuthorizationsGetAuthorizationResponse()                             {}
-func (*BasicError) oAuthAuthorizationsGetGrantResponse()                                     {}
-func (*BasicError) oAuthAuthorizationsGetOrCreateAuthorizationForAppResponse()               {}
-func (*BasicError) oAuthAuthorizationsListAuthorizationsResponse()                           {}
-func (*BasicError) oAuthAuthorizationsListGrantsResponse()                                   {}
-func (*BasicError) orgsCancelInvitationResponse()                                            {}
-func (*BasicError) orgsCheckBlockedUserResponse()                                            {}
-func (*BasicError) orgsConvertMemberToOutsideCollaboratorResponse()                          {}
-func (*BasicError) orgsCreateInvitationResponse()                                            {}
-func (*BasicError) orgsCreateWebhookResponse()                                               {}
-func (*BasicError) orgsDeleteWebhookResponse()                                               {}
-func (*BasicError) orgsGetMembershipForAuthenticatedUserResponse()                           {}
-func (*BasicError) orgsGetMembershipForUserResponse()                                        {}
-func (*BasicError) orgsGetResponse()                                                         {}
-func (*BasicError) orgsGetWebhookDeliveryResponse()                                          {}
-func (*BasicError) orgsGetWebhookResponse()                                                  {}
-func (*BasicError) orgsListFailedInvitationsResponse()                                       {}
-func (*BasicError) orgsListForAuthenticatedUserResponse()                                    {}
-func (*BasicError) orgsListInvitationTeamsResponse()                                         {}
-func (*BasicError) orgsListMembershipsForAuthenticatedUserResponse()                         {}
-func (*BasicError) orgsListPendingInvitationsResponse()                                      {}
-func (*BasicError) orgsListWebhookDeliveriesResponse()                                       {}
-func (*BasicError) orgsListWebhooksResponse()                                                {}
-func (*BasicError) orgsPingWebhookResponse()                                                 {}
-func (*BasicError) orgsRedeliverWebhookDeliveryResponse()                                    {}
-func (*BasicError) orgsRemoveMemberResponse()                                                {}
-func (*BasicError) orgsRemoveMembershipForUserResponse()                                     {}
-func (*BasicError) orgsRemoveSamlSSOAuthorizationResponse()                                  {}
-func (*BasicError) orgsSetMembershipForUserResponse()                                        {}
-func (*BasicError) orgsSetPublicMembershipForAuthenticatedUserResponse()                     {}
-func (*BasicError) orgsUpdateMembershipForAuthenticatedUserResponse()                        {}
-func (*BasicError) orgsUpdateResponse()                                                      {}
-func (*BasicError) orgsUpdateWebhookResponse()                                               {}
-func (*BasicError) packagesDeletePackageForAuthenticatedUserResponse()                       {}
-func (*BasicError) packagesDeletePackageForOrgResponse()                                     {}
-func (*BasicError) packagesDeletePackageForUserResponse()                                    {}
-func (*BasicError) packagesDeletePackageVersionForAuthenticatedUserResponse()                {}
-func (*BasicError) packagesDeletePackageVersionForOrgResponse()                              {}
-func (*BasicError) packagesDeletePackageVersionForUserResponse()                             {}
-func (*BasicError) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse() {}
-func (*BasicError) packagesGetAllPackageVersionsForPackageOwnedByOrgResponse()               {}
-func (*BasicError) packagesGetAllPackageVersionsForPackageOwnedByUserResponse()              {}
-func (*BasicError) packagesListPackagesForOrganizationResponse()                             {}
-func (*BasicError) packagesListPackagesForUserResponse()                                     {}
-func (*BasicError) packagesRestorePackageForAuthenticatedUserResponse()                      {}
-func (*BasicError) packagesRestorePackageForOrgResponse()                                    {}
-func (*BasicError) packagesRestorePackageForUserResponse()                                   {}
-func (*BasicError) packagesRestorePackageVersionForAuthenticatedUserResponse()               {}
-func (*BasicError) packagesRestorePackageVersionForOrgResponse()                             {}
-func (*BasicError) packagesRestorePackageVersionForUserResponse()                            {}
-func (*BasicError) projectsAddCollaboratorResponse()                                         {}
-func (*BasicError) projectsCreateCardResponse()                                              {}
-func (*BasicError) projectsCreateColumnResponse()                                            {}
-func (*BasicError) projectsCreateForAuthenticatedUserResponse()                              {}
-func (*BasicError) projectsCreateForOrgResponse()                                            {}
-func (*BasicError) projectsCreateForRepoResponse()                                           {}
-func (*BasicError) projectsDeleteCardResponse()                                              {}
-func (*BasicError) projectsDeleteColumnResponse()                                            {}
-func (*BasicError) projectsDeleteResponse()                                                  {}
-func (*BasicError) projectsGetCardResponse()                                                 {}
-func (*BasicError) projectsGetColumnResponse()                                               {}
-func (*BasicError) projectsGetPermissionForUserResponse()                                    {}
-func (*BasicError) projectsGetResponse()                                                     {}
-func (*BasicError) projectsListCardsResponse()                                               {}
-func (*BasicError) projectsListCollaboratorsResponse()                                       {}
-func (*BasicError) projectsListColumnsResponse()                                             {}
-func (*BasicError) projectsListForRepoResponse()                                             {}
-func (*BasicError) projectsMoveCardResponse()                                                {}
-func (*BasicError) projectsMoveColumnResponse()                                              {}
-func (*BasicError) projectsRemoveCollaboratorResponse()                                      {}
-func (*BasicError) projectsUpdateCardResponse()                                              {}
-func (*BasicError) projectsUpdateColumnResponse()                                            {}
-func (*BasicError) projectsUpdateResponse()                                                  {}
-func (*BasicError) pullsCreateReplyForReviewCommentResponse()                                {}
-func (*BasicError) pullsCreateResponse()                                                     {}
-func (*BasicError) pullsCreateReviewCommentResponse()                                        {}
-func (*BasicError) pullsCreateReviewResponse()                                               {}
-func (*BasicError) pullsDeletePendingReviewResponse()                                        {}
-func (*BasicError) pullsDeleteReviewCommentResponse()                                        {}
-func (*BasicError) pullsDismissReviewResponse()                                              {}
-func (*BasicError) pullsGetResponse()                                                        {}
-func (*BasicError) pullsGetReviewCommentResponse()                                           {}
-func (*BasicError) pullsGetReviewResponse()                                                  {}
-func (*BasicError) pullsListCommentsForReviewResponse()                                      {}
-func (*BasicError) pullsListFilesResponse()                                                  {}
-func (*BasicError) pullsMergeResponse()                                                      {}
-func (*BasicError) pullsRequestReviewersResponse()                                           {}
-func (*BasicError) pullsSubmitReviewResponse()                                               {}
-func (*BasicError) pullsUpdateBranchResponse()                                               {}
-func (*BasicError) pullsUpdateResponse()                                                     {}
-func (*BasicError) rateLimitGetResponse()                                                    {}
-func (*BasicError) reactionsDeleteLegacyResponse()                                           {}
-func (*BasicError) reactionsListForCommitCommentResponse()                                   {}
-func (*BasicError) reactionsListForIssueCommentResponse()                                    {}
-func (*BasicError) reactionsListForIssueResponse()                                           {}
-func (*BasicError) reactionsListForPullRequestReviewCommentResponse()                        {}
-func (*BasicError) reposAcceptInvitationResponse()                                           {}
-func (*BasicError) reposAddCollaboratorResponse()                                            {}
-func (*BasicError) reposAddStatusCheckContextsResponse()                                     {}
-func (*BasicError) reposCompareCommitsResponse()                                             {}
-func (*BasicError) reposCreateCommitCommentResponse()                                        {}
-func (*BasicError) reposCreateCommitSignatureProtectionResponse()                            {}
-func (*BasicError) reposCreateForAuthenticatedUserResponse()                                 {}
-func (*BasicError) reposCreateForkResponse()                                                 {}
-func (*BasicError) reposCreateInOrgResponse()                                                {}
-func (*BasicError) reposCreateOrUpdateEnvironmentResponse()                                  {}
-func (*BasicError) reposCreateOrUpdateFileContentsResponse()                                 {}
-func (*BasicError) reposCreatePagesSiteResponse()                                            {}
-func (*BasicError) reposCreateReleaseResponse()                                              {}
-func (*BasicError) reposCreateWebhookResponse()                                              {}
-func (*BasicError) reposDeclineInvitationResponse()                                          {}
-func (*BasicError) reposDeleteAdminBranchProtectionResponse()                                {}
-func (*BasicError) reposDeleteAutolinkResponse()                                             {}
-func (*BasicError) reposDeleteBranchProtectionResponse()                                     {}
-func (*BasicError) reposDeleteCommitCommentResponse()                                        {}
-func (*BasicError) reposDeleteCommitSignatureProtectionResponse()                            {}
-func (*BasicError) reposDeleteDeploymentResponse()                                           {}
-func (*BasicError) reposDeleteFileResponse()                                                 {}
-func (*BasicError) reposDeletePagesSiteResponse()                                            {}
-func (*BasicError) reposDeletePullRequestReviewProtectionResponse()                          {}
-func (*BasicError) reposDeleteResponse()                                                     {}
-func (*BasicError) reposDeleteWebhookResponse()                                              {}
-func (*BasicError) reposGetAccessRestrictionsResponse()                                      {}
-func (*BasicError) reposGetAllStatusCheckContextsResponse()                                  {}
-func (*BasicError) reposGetAllTopicsResponse()                                               {}
-func (*BasicError) reposGetAppsWithAccessToProtectedBranchResponse()                         {}
-func (*BasicError) reposGetAutolinkResponse()                                                {}
-func (*BasicError) reposGetBranchProtectionResponse()                                        {}
-func (*BasicError) reposGetBranchResponse()                                                  {}
-func (*BasicError) reposGetClonesResponse()                                                  {}
-func (*BasicError) reposGetCollaboratorPermissionLevelResponse()                             {}
-func (*BasicError) reposGetCombinedStatusForRefResponse()                                    {}
-func (*BasicError) reposGetCommitCommentResponse()                                           {}
-func (*BasicError) reposGetCommitResponse()                                                  {}
-func (*BasicError) reposGetCommitSignatureProtectionResponse()                               {}
-func (*BasicError) reposGetContentResponse()                                                 {}
-func (*BasicError) reposGetDeployKeyResponse()                                               {}
-func (*BasicError) reposGetDeploymentResponse()                                              {}
-func (*BasicError) reposGetDeploymentStatusResponse()                                        {}
-func (*BasicError) reposGetPagesHealthCheckResponse()                                        {}
-func (*BasicError) reposGetPagesResponse()                                                   {}
-func (*BasicError) reposGetParticipationStatsResponse()                                      {}
-func (*BasicError) reposGetReadmeInDirectoryResponse()                                       {}
-func (*BasicError) reposGetReadmeResponse()                                                  {}
-func (*BasicError) reposGetReleaseAssetResponse()                                            {}
-func (*BasicError) reposGetReleaseByTagResponse()                                            {}
-func (*BasicError) reposGetReleaseResponse()                                                 {}
-func (*BasicError) reposGetResponse()                                                        {}
-func (*BasicError) reposGetStatusChecksProtectionResponse()                                  {}
-func (*BasicError) reposGetTeamsWithAccessToProtectedBranchResponse()                        {}
-func (*BasicError) reposGetTopPathsResponse()                                                {}
-func (*BasicError) reposGetTopReferrersResponse()                                            {}
-func (*BasicError) reposGetUsersWithAccessToProtectedBranchResponse()                        {}
-func (*BasicError) reposGetViewsResponse()                                                   {}
-func (*BasicError) reposGetWebhookDeliveryResponse()                                         {}
-func (*BasicError) reposGetWebhookResponse()                                                 {}
-func (*BasicError) reposListBranchesResponse()                                               {}
-func (*BasicError) reposListCollaboratorsResponse()                                          {}
-func (*BasicError) reposListCommitStatusesForRefResponse()                                   {}
-func (*BasicError) reposListCommitsResponse()                                                {}
-func (*BasicError) reposListContributorsResponse()                                           {}
-func (*BasicError) reposListDeploymentStatusesResponse()                                     {}
-func (*BasicError) reposListForAuthenticatedUserResponse()                                   {}
-func (*BasicError) reposListForksResponse()                                                  {}
-func (*BasicError) reposListInvitationsForAuthenticatedUserResponse()                        {}
-func (*BasicError) reposListReleasesResponse()                                               {}
-func (*BasicError) reposListWebhookDeliveriesResponse()                                      {}
-func (*BasicError) reposListWebhooksResponse()                                               {}
-func (*BasicError) reposMergeResponse()                                                      {}
-func (*BasicError) reposPingWebhookResponse()                                                {}
-func (*BasicError) reposRedeliverWebhookDeliveryResponse()                                   {}
-func (*BasicError) reposRemoveStatusCheckContextsResponse()                                  {}
-func (*BasicError) reposRenameBranchResponse()                                               {}
-func (*BasicError) reposReplaceAllTopicsResponse()                                           {}
-func (*BasicError) reposSetStatusCheckContextsResponse()                                     {}
-func (*BasicError) reposTestPushWebhookResponse()                                            {}
-func (*BasicError) reposUpdateBranchProtectionResponse()                                     {}
-func (*BasicError) reposUpdateCommitCommentResponse()                                        {}
-func (*BasicError) reposUpdateInformationAboutPagesSiteResponse()                            {}
-func (*BasicError) reposUpdateReleaseResponse()                                              {}
-func (*BasicError) reposUpdateResponse()                                                     {}
-func (*BasicError) reposUpdateStatusCheckProtectionResponse()                                {}
-func (*BasicError) reposUpdateWebhookResponse()                                              {}
-func (*BasicError) scimUpdateAttributeForUserResponse()                                      {}
-func (*BasicError) searchCodeResponse()                                                      {}
-func (*BasicError) searchIssuesAndPullRequestsResponse()                                     {}
-func (*BasicError) searchLabelsResponse()                                                    {}
-func (*BasicError) secretScanningListAlertsForOrgResponse()                                  {}
-func (*BasicError) teamsAddMemberLegacyResponse()                                            {}
-func (*BasicError) teamsAddOrUpdateMembershipForUserLegacyResponse()                         {}
-func (*BasicError) teamsAddOrUpdateProjectPermissionsLegacyResponse()                        {}
-func (*BasicError) teamsAddOrUpdateRepoPermissionsLegacyResponse()                           {}
-func (*BasicError) teamsCreateOrUpdateIdpGroupConnectionsLegacyResponse()                    {}
-func (*BasicError) teamsCreateResponse()                                                     {}
-func (*BasicError) teamsDeleteLegacyResponse()                                               {}
-func (*BasicError) teamsGetByNameResponse()                                                  {}
-func (*BasicError) teamsGetLegacyResponse()                                                  {}
-func (*BasicError) teamsGetMembershipForUserLegacyResponse()                                 {}
-func (*BasicError) teamsListChildLegacyResponse()                                            {}
-func (*BasicError) teamsListForAuthenticatedUserResponse()                                   {}
-func (*BasicError) teamsListIdpGroupsForLegacyResponse()                                     {}
-func (*BasicError) teamsListMembersLegacyResponse()                                          {}
-func (*BasicError) teamsListProjectsLegacyResponse()                                         {}
-func (*BasicError) teamsListReposLegacyResponse()                                            {}
-func (*BasicError) teamsListResponse()                                                       {}
-func (*BasicError) teamsRemoveProjectLegacyResponse()                                        {}
-func (*BasicError) teamsUpdateLegacyResponse()                                               {}
-func (*BasicError) usersAddEmailForAuthenticatedResponse()                                   {}
-func (*BasicError) usersBlockResponse()                                                      {}
-func (*BasicError) usersCheckBlockedResponse()                                               {}
-func (*BasicError) usersCheckPersonIsFollowedByAuthenticatedResponse()                       {}
-func (*BasicError) usersCreateGpgKeyForAuthenticatedResponse()                               {}
-func (*BasicError) usersCreatePublicSSHKeyForAuthenticatedResponse()                         {}
-func (*BasicError) usersDeleteEmailForAuthenticatedResponse()                                {}
-func (*BasicError) usersDeleteGpgKeyForAuthenticatedResponse()                               {}
-func (*BasicError) usersDeletePublicSSHKeyForAuthenticatedResponse()                         {}
-func (*BasicError) usersFollowResponse()                                                     {}
-func (*BasicError) usersGetAuthenticatedResponse()                                           {}
-func (*BasicError) usersGetByUsernameResponse()                                              {}
-func (*BasicError) usersGetContextForUserResponse()                                          {}
-func (*BasicError) usersGetGpgKeyForAuthenticatedResponse()                                  {}
-func (*BasicError) usersGetPublicSSHKeyForAuthenticatedResponse()                            {}
-func (*BasicError) usersListBlockedByAuthenticatedResponse()                                 {}
-func (*BasicError) usersListEmailsForAuthenticatedResponse()                                 {}
-func (*BasicError) usersListFollowedByAuthenticatedResponse()                                {}
-func (*BasicError) usersListFollowersForAuthenticatedUserResponse()                          {}
-func (*BasicError) usersListGpgKeysForAuthenticatedResponse()                                {}
-func (*BasicError) usersListPublicEmailsForAuthenticatedResponse()                           {}
-func (*BasicError) usersListPublicSSHKeysForAuthenticatedResponse()                          {}
-func (*BasicError) usersSetPrimaryEmailVisibilityForAuthenticatedResponse()                  {}
-func (*BasicError) usersUnblockResponse()                                                    {}
-func (*BasicError) usersUnfollowResponse()                                                   {}
-func (*BasicError) usersUpdateAuthenticatedResponse()                                        {}
+func (*BasicError) activityGetRepoSubscriptionResponse()                      {}
+func (*BasicError) activityListPublicEventsResponse()                         {}
+func (*BasicError) activityMarkThreadAsReadResponse()                         {}
+func (*BasicError) appsDeleteInstallationResponse()                           {}
+func (*BasicError) appsGetSubscriptionPlanForAccountStubbedResponse()         {}
+func (*BasicError) appsListPlansStubbedResponse()                             {}
+func (*BasicError) appsListSubscriptionsForAuthenticatedUserStubbedResponse() {}
+func (*BasicError) appsSuspendInstallationResponse()                          {}
+func (*BasicError) appsUnsuspendInstallationResponse()                        {}
+func (*BasicError) codeScanningGetSarifResponse()                             {}
+func (*BasicError) codesOfConductGetConductCodeResponse()                     {}
+func (*BasicError) gistsCheckIsStarredResponse()                              {}
+func (*BasicError) gistsGetCommentResponse()                                  {}
+func (*BasicError) gistsGetResponse()                                         {}
+func (*BasicError) gistsListResponse()                                        {}
+func (*BasicError) gistsUpdateCommentResponse()                               {}
+func (*BasicError) gitGetCommitResponse()                                     {}
+func (*BasicError) gitGetRefResponse()                                        {}
+func (*BasicError) gitGetTagResponse()                                        {}
+func (*BasicError) issuesCheckUserCanBeAssignedResponse()                     {}
+func (*BasicError) issuesDeleteMilestoneResponse()                            {}
+func (*BasicError) issuesGetCommentResponse()                                 {}
+func (*BasicError) issuesGetLabelResponse()                                   {}
+func (*BasicError) issuesGetMilestoneResponse()                               {}
+func (*BasicError) issuesListAssigneesResponse()                              {}
+func (*BasicError) issuesListLabelsForRepoResponse()                          {}
+func (*BasicError) issuesListLabelsOnIssueResponse()                          {}
+func (*BasicError) issuesRemoveAllLabelsResponse()                            {}
+func (*BasicError) migrationsDeleteArchiveForOrgResponse()                    {}
+func (*BasicError) migrationsDownloadArchiveForOrgResponse()                  {}
+func (*BasicError) migrationsGetCommitAuthorsResponse()                       {}
+func (*BasicError) migrationsGetImportStatusResponse()                        {}
+func (*BasicError) migrationsListReposForOrgResponse()                        {}
+func (*BasicError) migrationsListReposForUserResponse()                       {}
+func (*BasicError) migrationsUnlockRepoForOrgResponse()                       {}
+func (*BasicError) orgsCheckBlockedUserResponse()                             {}
+func (*BasicError) orgsConvertMemberToOutsideCollaboratorResponse()           {}
+func (*BasicError) orgsDeleteWebhookResponse()                                {}
+func (*BasicError) orgsGetResponse()                                          {}
+func (*BasicError) orgsGetWebhookResponse()                                   {}
+func (*BasicError) orgsListFailedInvitationsResponse()                        {}
+func (*BasicError) orgsListInvitationTeamsResponse()                          {}
+func (*BasicError) orgsListPendingInvitationsResponse()                       {}
+func (*BasicError) orgsListWebhooksResponse()                                 {}
+func (*BasicError) orgsPingWebhookResponse()                                  {}
+func (*BasicError) orgsRemoveMemberResponse()                                 {}
+func (*BasicError) orgsRemoveSamlSSOAuthorizationResponse()                   {}
+func (*BasicError) orgsSetPublicMembershipForAuthenticatedUserResponse()      {}
+func (*BasicError) pullsCreateReplyForReviewCommentResponse()                 {}
+func (*BasicError) pullsCreateReviewResponse()                                {}
+func (*BasicError) pullsDeletePendingReviewResponse()                         {}
+func (*BasicError) pullsDeleteReviewCommentResponse()                         {}
+func (*BasicError) pullsDismissReviewResponse()                               {}
+func (*BasicError) pullsGetReviewCommentResponse()                            {}
+func (*BasicError) pullsGetReviewResponse()                                   {}
+func (*BasicError) pullsListCommentsForReviewResponse()                       {}
+func (*BasicError) rateLimitGetResponse()                                     {}
+func (*BasicError) reposCreateCommitSignatureProtectionResponse()             {}
+func (*BasicError) reposDeleteAdminBranchProtectionResponse()                 {}
+func (*BasicError) reposDeleteAutolinkResponse()                              {}
+func (*BasicError) reposDeleteBranchProtectionResponse()                      {}
+func (*BasicError) reposDeleteCommitCommentResponse()                         {}
+func (*BasicError) reposDeleteCommitSignatureProtectionResponse()             {}
+func (*BasicError) reposDeleteDeploymentResponse()                            {}
+func (*BasicError) reposDeletePullRequestReviewProtectionResponse()           {}
+func (*BasicError) reposDeleteWebhookResponse()                               {}
+func (*BasicError) reposGetAccessRestrictionsResponse()                       {}
+func (*BasicError) reposGetAllStatusCheckContextsResponse()                   {}
+func (*BasicError) reposGetAllTopicsResponse()                                {}
+func (*BasicError) reposGetAppsWithAccessToProtectedBranchResponse()          {}
+func (*BasicError) reposGetAutolinkResponse()                                 {}
+func (*BasicError) reposGetBranchProtectionResponse()                         {}
+func (*BasicError) reposGetCollaboratorPermissionLevelResponse()              {}
+func (*BasicError) reposGetCombinedStatusForRefResponse()                     {}
+func (*BasicError) reposGetCommitCommentResponse()                            {}
+func (*BasicError) reposGetCommitSignatureProtectionResponse()                {}
+func (*BasicError) reposGetDeployKeyResponse()                                {}
+func (*BasicError) reposGetDeploymentStatusResponse()                         {}
+func (*BasicError) reposGetPagesHealthCheckResponse()                         {}
+func (*BasicError) reposGetPagesResponse()                                    {}
+func (*BasicError) reposGetParticipationStatsResponse()                       {}
+func (*BasicError) reposGetReleaseAssetResponse()                             {}
+func (*BasicError) reposGetReleaseByTagResponse()                             {}
+func (*BasicError) reposGetReleaseResponse()                                  {}
+func (*BasicError) reposGetStatusChecksProtectionResponse()                   {}
+func (*BasicError) reposGetTeamsWithAccessToProtectedBranchResponse()         {}
+func (*BasicError) reposGetTopPathsResponse()                                 {}
+func (*BasicError) reposGetTopReferrersResponse()                             {}
+func (*BasicError) reposGetUsersWithAccessToProtectedBranchResponse()         {}
+func (*BasicError) reposListBranchesResponse()                                {}
+func (*BasicError) reposListCommitStatusesForRefResponse()                    {}
+func (*BasicError) reposListDeploymentStatusesResponse()                      {}
+func (*BasicError) reposListReleasesResponse()                                {}
+func (*BasicError) reposPingWebhookResponse()                                 {}
+func (*BasicError) reposReplaceAllTopicsResponse()                            {}
+func (*BasicError) reposTestPushWebhookResponse()                             {}
+func (*BasicError) reposUpdateCommitCommentResponse()                         {}
+func (*BasicError) reposUpdateReleaseResponse()                               {}
+func (*BasicError) teamsAddMemberLegacyResponse()                             {}
+func (*BasicError) teamsAddOrUpdateMembershipForUserLegacyResponse()          {}
+func (*BasicError) teamsGetByNameResponse()                                   {}
+func (*BasicError) teamsGetLegacyResponse()                                   {}
+func (*BasicError) teamsGetMembershipForUserLegacyResponse()                  {}
+func (*BasicError) teamsListProjectsLegacyResponse()                          {}
+func (*BasicError) teamsListReposLegacyResponse()                             {}
+func (*BasicError) teamsListResponse()                                        {}
 
 type Blob struct {
-	Content            string `json:"content"`
-	Encoding           string `json:"encoding"`
-	HighlightedContent string `json:"highlighted_content"`
-	NodeID             string `json:"node_id"`
-	Sha                string `json:"sha"`
-	Size               int    `json:"size"`
-	URL                string `json:"url"`
+	Content            string  `json:"content"`
+	Encoding           string  `json:"encoding"`
+	HighlightedContent *string `json:"highlighted_content"`
+	NodeID             string  `json:"node_id"`
+	Sha                string  `json:"sha"`
+	Size               int     `json:"size"`
+	URL                string  `json:"url"`
 }
 
-func (*Blob) gitGetBlobResponse() {}
-
 type BranchProtection struct {
-	AllowDeletions                 BranchProtectionAllowDeletions                 `json:"allow_deletions"`
-	AllowForcePushes               BranchProtectionAllowForcePushes               `json:"allow_force_pushes"`
-	Enabled                        bool                                           `json:"enabled"`
-	EnforceAdmins                  ProtectedBranchAdminEnforced                   `json:"enforce_admins"`
-	Name                           string                                         `json:"name"`
-	ProtectionURL                  string                                         `json:"protection_url"`
-	RequiredConversationResolution BranchProtectionRequiredConversationResolution `json:"required_conversation_resolution"`
-	RequiredLinearHistory          BranchProtectionRequiredLinearHistory          `json:"required_linear_history"`
-	RequiredPullRequestReviews     ProtectedBranchPullRequestReview               `json:"required_pull_request_reviews"`
-	RequiredSignatures             BranchProtectionRequiredSignatures             `json:"required_signatures"`
-	RequiredStatusChecks           BranchProtectionRequiredStatusChecks           `json:"required_status_checks"`
-	Restrictions                   BranchRestrictionPolicy                        `json:"restrictions"`
-	URL                            string                                         `json:"url"`
+	AllowDeletions                 *BranchProtectionAllowDeletions                 `json:"allow_deletions"`
+	AllowForcePushes               *BranchProtectionAllowForcePushes               `json:"allow_force_pushes"`
+	Enabled                        *bool                                           `json:"enabled"`
+	EnforceAdmins                  *ProtectedBranchAdminEnforced                   `json:"enforce_admins"`
+	Name                           *string                                         `json:"name"`
+	ProtectionURL                  *string                                         `json:"protection_url"`
+	RequiredConversationResolution *BranchProtectionRequiredConversationResolution `json:"required_conversation_resolution"`
+	RequiredLinearHistory          *BranchProtectionRequiredLinearHistory          `json:"required_linear_history"`
+	RequiredPullRequestReviews     *ProtectedBranchPullRequestReview               `json:"required_pull_request_reviews"`
+	RequiredSignatures             *BranchProtectionRequiredSignatures             `json:"required_signatures"`
+	RequiredStatusChecks           *BranchProtectionRequiredStatusChecks           `json:"required_status_checks"`
+	Restrictions                   *BranchRestrictionPolicy                        `json:"restrictions"`
+	URL                            *string                                         `json:"url"`
 }
 
 func (*BranchProtection) reposGetBranchProtectionResponse() {}
 
 type BranchProtectionAllowDeletions struct {
-	Enabled bool `json:"enabled"`
+	Enabled *bool `json:"enabled"`
 }
 
 type BranchProtectionAllowForcePushes struct {
-	Enabled bool `json:"enabled"`
+	Enabled *bool `json:"enabled"`
 }
 
 type BranchProtectionRequiredConversationResolution struct {
-	Enabled bool `json:"enabled"`
+	Enabled *bool `json:"enabled"`
 }
 
 type BranchProtectionRequiredLinearHistory struct {
-	Enabled bool `json:"enabled"`
+	Enabled *bool `json:"enabled"`
 }
 
 type BranchProtectionRequiredSignatures struct {
@@ -1157,10 +1350,10 @@ type BranchProtectionRequiredSignatures struct {
 
 type BranchProtectionRequiredStatusChecks struct {
 	Contexts         []string `json:"contexts"`
-	ContextsURL      string   `json:"contexts_url"`
-	EnforcementLevel string   `json:"enforcement_level"`
-	Strict           bool     `json:"strict"`
-	URL              string   `json:"url"`
+	ContextsURL      *string  `json:"contexts_url"`
+	EnforcementLevel *string  `json:"enforcement_level"`
+	Strict           *bool    `json:"strict"`
+	URL              *string  `json:"url"`
 }
 
 type BranchRestrictionPolicy struct {
@@ -1176,87 +1369,87 @@ type BranchRestrictionPolicy struct {
 func (*BranchRestrictionPolicy) reposGetAccessRestrictionsResponse() {}
 
 type BranchRestrictionPolicyAppsItem struct {
-	CreatedAt   string                                     `json:"created_at"`
-	Description string                                     `json:"description"`
-	Events      []string                                   `json:"events"`
-	ExternalURL string                                     `json:"external_url"`
-	HTMLURL     string                                     `json:"html_url"`
-	ID          int                                        `json:"id"`
-	Name        string                                     `json:"name"`
-	NodeID      string                                     `json:"node_id"`
-	Owner       BranchRestrictionPolicyAppsItemOwner       `json:"owner"`
-	Permissions BranchRestrictionPolicyAppsItemPermissions `json:"permissions"`
-	Slug        string                                     `json:"slug"`
-	UpdatedAt   string                                     `json:"updated_at"`
+	CreatedAt   *string                                     `json:"created_at"`
+	Description *string                                     `json:"description"`
+	Events      *[]string                                   `json:"events"`
+	ExternalURL *string                                     `json:"external_url"`
+	HTMLURL     *string                                     `json:"html_url"`
+	ID          *int                                        `json:"id"`
+	Name        *string                                     `json:"name"`
+	NodeID      *string                                     `json:"node_id"`
+	Owner       *BranchRestrictionPolicyAppsItemOwner       `json:"owner"`
+	Permissions *BranchRestrictionPolicyAppsItemPermissions `json:"permissions"`
+	Slug        *string                                     `json:"slug"`
+	UpdatedAt   *string                                     `json:"updated_at"`
 }
 
 type BranchRestrictionPolicyAppsItemOwner struct {
-	AvatarURL         string `json:"avatar_url"`
-	Description       string `json:"description"`
-	EventsURL         string `json:"events_url"`
-	FollowersURL      string `json:"followers_url"`
-	FollowingURL      string `json:"following_url"`
-	GistsURL          string `json:"gists_url"`
-	GravatarID        string `json:"gravatar_id"`
-	HTMLURL           string `json:"html_url"`
-	HooksURL          string `json:"hooks_url"`
-	ID                int    `json:"id"`
-	IssuesURL         string `json:"issues_url"`
-	Login             string `json:"login"`
-	MembersURL        string `json:"members_url"`
-	NodeID            string `json:"node_id"`
-	OrganizationsURL  string `json:"organizations_url"`
-	PublicMembersURL  string `json:"public_members_url"`
-	ReceivedEventsURL string `json:"received_events_url"`
-	ReposURL          string `json:"repos_url"`
-	SiteAdmin         bool   `json:"site_admin"`
-	StarredURL        string `json:"starred_url"`
-	SubscriptionsURL  string `json:"subscriptions_url"`
-	Type              string `json:"type"`
-	URL               string `json:"url"`
+	AvatarURL         *string `json:"avatar_url"`
+	Description       *string `json:"description"`
+	EventsURL         *string `json:"events_url"`
+	FollowersURL      *string `json:"followers_url"`
+	FollowingURL      *string `json:"following_url"`
+	GistsURL          *string `json:"gists_url"`
+	GravatarID        *string `json:"gravatar_id"`
+	HTMLURL           *string `json:"html_url"`
+	HooksURL          *string `json:"hooks_url"`
+	ID                *int    `json:"id"`
+	IssuesURL         *string `json:"issues_url"`
+	Login             *string `json:"login"`
+	MembersURL        *string `json:"members_url"`
+	NodeID            *string `json:"node_id"`
+	OrganizationsURL  *string `json:"organizations_url"`
+	PublicMembersURL  *string `json:"public_members_url"`
+	ReceivedEventsURL *string `json:"received_events_url"`
+	ReposURL          *string `json:"repos_url"`
+	SiteAdmin         *bool   `json:"site_admin"`
+	StarredURL        *string `json:"starred_url"`
+	SubscriptionsURL  *string `json:"subscriptions_url"`
+	Type              *string `json:"type"`
+	URL               *string `json:"url"`
 }
 
 type BranchRestrictionPolicyAppsItemPermissions struct {
-	Contents   string `json:"contents"`
-	Issues     string `json:"issues"`
-	Metadata   string `json:"metadata"`
-	SingleFile string `json:"single_file"`
+	Contents   *string `json:"contents"`
+	Issues     *string `json:"issues"`
+	Metadata   *string `json:"metadata"`
+	SingleFile *string `json:"single_file"`
 }
 
 type BranchRestrictionPolicyTeamsItem struct {
-	Description     string `json:"description"`
-	HTMLURL         string `json:"html_url"`
-	ID              int    `json:"id"`
-	MembersURL      string `json:"members_url"`
-	Name            string `json:"name"`
-	NodeID          string `json:"node_id"`
-	Parent          string `json:"parent"`
-	Permission      string `json:"permission"`
-	Privacy         string `json:"privacy"`
-	RepositoriesURL string `json:"repositories_url"`
-	Slug            string `json:"slug"`
-	URL             string `json:"url"`
+	Description     *string `json:"description"`
+	HTMLURL         *string `json:"html_url"`
+	ID              *int    `json:"id"`
+	MembersURL      *string `json:"members_url"`
+	Name            *string `json:"name"`
+	NodeID          *string `json:"node_id"`
+	Parent          *string `json:"parent"`
+	Permission      *string `json:"permission"`
+	Privacy         *string `json:"privacy"`
+	RepositoriesURL *string `json:"repositories_url"`
+	Slug            *string `json:"slug"`
+	URL             *string `json:"url"`
 }
 
 type BranchRestrictionPolicyUsersItem struct {
-	AvatarURL         string `json:"avatar_url"`
-	EventsURL         string `json:"events_url"`
-	FollowersURL      string `json:"followers_url"`
-	FollowingURL      string `json:"following_url"`
-	GistsURL          string `json:"gists_url"`
-	GravatarID        string `json:"gravatar_id"`
-	HTMLURL           string `json:"html_url"`
-	ID                int    `json:"id"`
-	Login             string `json:"login"`
-	NodeID            string `json:"node_id"`
-	OrganizationsURL  string `json:"organizations_url"`
-	ReceivedEventsURL string `json:"received_events_url"`
-	ReposURL          string `json:"repos_url"`
-	SiteAdmin         bool   `json:"site_admin"`
-	StarredURL        string `json:"starred_url"`
-	SubscriptionsURL  string `json:"subscriptions_url"`
-	Type              string `json:"type"`
-	URL               string `json:"url"`
+	AvatarURL         *string `json:"avatar_url"`
+	EventsURL         *string `json:"events_url"`
+	FollowersURL      *string `json:"followers_url"`
+	FollowingURL      *string `json:"following_url"`
+	GistsURL          *string `json:"gists_url"`
+	GravatarID        *string `json:"gravatar_id"`
+	HTMLURL           *string `json:"html_url"`
+	ID                *int    `json:"id"`
+	Login             *string `json:"login"`
+	NodeID            *string `json:"node_id"`
+	OrganizationsURL  *string `json:"organizations_url"`
+	ReceivedEventsURL *string `json:"received_events_url"`
+	ReposURL          *string `json:"repos_url"`
+	SiteAdmin         *bool   `json:"site_admin"`
+	StarredURL        *string `json:"starred_url"`
+	SubscriptionsURL  *string `json:"subscriptions_url"`
+	Type              *string `json:"type"`
+	URL               *string `json:"url"`
 }
 
 type BranchShort struct {
@@ -1274,15 +1467,14 @@ type BranchWithProtection struct {
 	Commit                       Commit                    `json:"commit"`
 	Links                        BranchWithProtectionLinks `json:"_links"`
 	Name                         string                    `json:"name"`
-	Pattern                      string                    `json:"pattern"`
+	Pattern                      *string                   `json:"pattern"`
 	Protected                    bool                      `json:"protected"`
 	Protection                   BranchProtection          `json:"protection"`
 	ProtectionURL                string                    `json:"protection_url"`
-	RequiredApprovingReviewCount int                       `json:"required_approving_review_count"`
+	RequiredApprovingReviewCount *int                      `json:"required_approving_review_count"`
 }
 
-func (*BranchWithProtection) reposGetBranchResponse()    {}
-func (*BranchWithProtection) reposRenameBranchResponse() {}
+func (*BranchWithProtection) reposGetBranchResponse() {}
 
 type BranchWithProtectionLinks struct {
 	HTML string `json:"html"`
@@ -1303,20 +1495,40 @@ type CheckAnnotation struct {
 }
 
 type CheckRun struct {
-	HeadSha    string              `json:"head_sha"`
-	NodeID     string              `json:"node_id"`
-	DetailsURL string              `json:"details_url"`
-	App        NullableIntegration `json:"app"`
-	ID         int                 `json:"id"`
-	URL        string              `json:"url"`
-	Name       string              `json:"name"`
-	Output     CheckRunOutput      `json:"output"`
-	CheckSuite CheckRunCheckSuite  `json:"check_suite"`
+	App          NullableIntegration `json:"app"`
+	CheckSuite   CheckRunCheckSuite  `json:"check_suite"`
+	CompletedAt  time.Time           `json:"completed_at"`
+	Conclusion   CheckRunConclusion  `json:"conclusion"`
+	Deployment   *DeploymentSimple   `json:"deployment"`
+	DetailsURL   string              `json:"details_url"`
+	ExternalID   string              `json:"external_id"`
+	HTMLURL      string              `json:"html_url"`
+	HeadSha      string              `json:"head_sha"`
+	ID           int                 `json:"id"`
+	Name         string              `json:"name"`
+	NodeID       string              `json:"node_id"`
+	Output       CheckRunOutput      `json:"output"`
+	PullRequests string              `json:"pull_requests"`
+	StartedAt    time.Time           `json:"started_at"`
+	Status       CheckRunStatus      `json:"status"`
+	URL          string              `json:"url"`
 }
 
 type CheckRunCheckSuite struct {
 	ID int `json:"id"`
 }
+
+type CheckRunConclusion string
+
+const (
+	CheckRunConclusionSuccess        CheckRunConclusion = "success"
+	CheckRunConclusionFailure        CheckRunConclusion = "failure"
+	CheckRunConclusionNeutral        CheckRunConclusion = "neutral"
+	CheckRunConclusionCancelled      CheckRunConclusion = "cancelled"
+	CheckRunConclusionSkipped        CheckRunConclusion = "skipped"
+	CheckRunConclusionTimedOut       CheckRunConclusion = "timed_out"
+	CheckRunConclusionActionRequired CheckRunConclusion = "action_required"
+)
 
 type CheckRunOutput struct {
 	AnnotationsCount int    `json:"annotations_count"`
@@ -1326,12 +1538,20 @@ type CheckRunOutput struct {
 	Title            string `json:"title"`
 }
 
+type CheckRunStatus string
+
+const (
+	CheckRunStatusQueued     CheckRunStatus = "queued"
+	CheckRunStatusInProgress CheckRunStatus = "in_progress"
+	CheckRunStatusCompleted  CheckRunStatus = "completed"
+)
+
 type CheckSuite struct {
 	After                string               `json:"after"`
 	App                  NullableIntegration  `json:"app"`
 	Before               string               `json:"before"`
 	CheckRunsURL         string               `json:"check_runs_url"`
-	Conclusion           string               `json:"conclusion"`
+	Conclusion           CheckSuiteConclusion `json:"conclusion"`
 	CreatedAt            time.Time            `json:"created_at"`
 	HeadBranch           string               `json:"head_branch"`
 	HeadCommit           SimpleCommit         `json:"head_commit"`
@@ -1341,12 +1561,22 @@ type CheckSuite struct {
 	NodeID               string               `json:"node_id"`
 	PullRequests         []PullRequestMinimal `json:"pull_requests"`
 	Repository           MinimalRepository    `json:"repository"`
-	Status               string               `json:"status"`
+	Status               CheckSuiteStatus     `json:"status"`
 	URL                  string               `json:"url"`
 	UpdatedAt            time.Time            `json:"updated_at"`
 }
 
-func (*CheckSuite) checksCreateSuiteResponse() {}
+type CheckSuiteConclusion string
+
+const (
+	CheckSuiteConclusionSuccess        CheckSuiteConclusion = "success"
+	CheckSuiteConclusionFailure        CheckSuiteConclusion = "failure"
+	CheckSuiteConclusionNeutral        CheckSuiteConclusion = "neutral"
+	CheckSuiteConclusionCancelled      CheckSuiteConclusion = "cancelled"
+	CheckSuiteConclusionSkipped        CheckSuiteConclusion = "skipped"
+	CheckSuiteConclusionTimedOut       CheckSuiteConclusion = "timed_out"
+	CheckSuiteConclusionActionRequired CheckSuiteConclusion = "action_required"
+)
 
 type CheckSuitePreference struct {
 	Preferences CheckSuitePreferencePreferences `json:"preferences"`
@@ -1354,7 +1584,7 @@ type CheckSuitePreference struct {
 }
 
 type CheckSuitePreferencePreferences struct {
-	AutoTriggerChecks []CheckSuitePreferencePreferencesAutoTriggerChecksItem `json:"auto_trigger_checks"`
+	AutoTriggerChecks *[]CheckSuitePreferencePreferencesAutoTriggerChecksItem `json:"auto_trigger_checks"`
 }
 
 type CheckSuitePreferencePreferencesAutoTriggerChecksItem struct {
@@ -1362,62 +1592,24 @@ type CheckSuitePreferencePreferencesAutoTriggerChecksItem struct {
 	Setting bool `json:"setting"`
 }
 
-type ChecksCreateApplicationJSONRequest struct {
-	Actions     []ChecksCreateApplicationJSONRequestActionsItem `json:"actions"`
-	CompletedAt time.Time                                       `json:"completed_at"`
-	Conclusion  string                                          `json:"conclusion"`
-	DetailsURL  string                                          `json:"details_url"`
-	ExternalID  string                                          `json:"external_id"`
-	HeadSha     string                                          `json:"head_sha"`
-	Name        string                                          `json:"name"`
-	Output      ChecksCreateApplicationJSONRequestOutput        `json:"output"`
-	StartedAt   time.Time                                       `json:"started_at"`
-	Status      string                                          `json:"status"`
-}
+type CheckSuiteStatus string
 
-type ChecksCreateApplicationJSONRequestActionsItem struct {
-	Description string `json:"description"`
-	Identifier  string `json:"identifier"`
-	Label       string `json:"label"`
-}
+const (
+	CheckSuiteStatusQueued     CheckSuiteStatus = "queued"
+	CheckSuiteStatusInProgress CheckSuiteStatus = "in_progress"
+	CheckSuiteStatusCompleted  CheckSuiteStatus = "completed"
+)
 
-type ChecksCreateApplicationJSONRequestOutput struct {
-	Annotations []ChecksCreateApplicationJSONRequestOutputAnnotationsItem `json:"annotations"`
-	Images      []ChecksCreateApplicationJSONRequestOutputImagesItem      `json:"images"`
-	Summary     string                                                    `json:"summary"`
-	Text        string                                                    `json:"text"`
-	Title       string                                                    `json:"title"`
-}
+type ChecksCreateSuiteApplicationJSONCreated CheckSuite
 
-type ChecksCreateApplicationJSONRequestOutputAnnotationsItem struct {
-	AnnotationLevel string `json:"annotation_level"`
-	EndColumn       int    `json:"end_column"`
-	EndLine         int    `json:"end_line"`
-	Message         string `json:"message"`
-	Path            string `json:"path"`
-	RawDetails      string `json:"raw_details"`
-	StartColumn     int    `json:"start_column"`
-	StartLine       int    `json:"start_line"`
-	Title           string `json:"title"`
-}
+func (*ChecksCreateSuiteApplicationJSONCreated) checksCreateSuiteResponse() {}
 
-type ChecksCreateApplicationJSONRequestOutputImagesItem struct {
-	Alt      string `json:"alt"`
-	Caption  string `json:"caption"`
-	ImageURL string `json:"image_url"`
-}
+type ChecksCreateSuiteApplicationJSONOK CheckSuite
+
+func (*ChecksCreateSuiteApplicationJSONOK) checksCreateSuiteResponse() {}
 
 type ChecksCreateSuiteApplicationJSONRequest struct {
 	HeadSha string `json:"head_sha"`
-}
-
-type ChecksListForRef struct {
-	TotalCount int `json:"total_count"`
-}
-
-type ChecksListForSuite struct {
-	CheckRuns  []CheckRun `json:"check_runs"`
-	TotalCount int        `json:"total_count"`
 }
 
 type ChecksListSuitesForRef struct {
@@ -1428,7 +1620,7 @@ type ChecksListSuitesForRef struct {
 type ChecksRerequestSuite struct{}
 
 type ChecksSetSuitesPreferencesApplicationJSONRequest struct {
-	AutoTriggerChecks []ChecksSetSuitesPreferencesApplicationJSONRequestAutoTriggerChecksItem `json:"auto_trigger_checks"`
+	AutoTriggerChecks *[]ChecksSetSuitesPreferencesApplicationJSONRequestAutoTriggerChecksItem `json:"auto_trigger_checks"`
 }
 
 type ChecksSetSuitesPreferencesApplicationJSONRequestAutoTriggerChecksItem struct {
@@ -1436,64 +1628,14 @@ type ChecksSetSuitesPreferencesApplicationJSONRequestAutoTriggerChecksItem struc
 	Setting bool `json:"setting"`
 }
 
-type ChecksUpdateApplicationJSONRequest struct {
-	Actions     []ChecksUpdateApplicationJSONRequestActionsItem `json:"actions"`
-	CompletedAt time.Time                                       `json:"completed_at"`
-	Conclusion  string                                          `json:"conclusion"`
-	DetailsURL  string                                          `json:"details_url"`
-	ExternalID  string                                          `json:"external_id"`
-	Name        string                                          `json:"name"`
-	Output      ChecksUpdateApplicationJSONRequestOutput        `json:"output"`
-	StartedAt   time.Time                                       `json:"started_at"`
-	Status      string                                          `json:"status"`
-}
-
-type ChecksUpdateApplicationJSONRequestActionsItem struct {
-	Description string `json:"description"`
-	Identifier  string `json:"identifier"`
-	Label       string `json:"label"`
-}
-
-type ChecksUpdateApplicationJSONRequestOutput struct {
-	Annotations []ChecksUpdateApplicationJSONRequestOutputAnnotationsItem `json:"annotations"`
-	Images      []ChecksUpdateApplicationJSONRequestOutputImagesItem      `json:"images"`
-	Summary     string                                                    `json:"summary"`
-	Text        string                                                    `json:"text"`
-	Title       string                                                    `json:"title"`
-}
-
-type ChecksUpdateApplicationJSONRequestOutputAnnotationsItem struct {
-	AnnotationLevel string `json:"annotation_level"`
-	EndColumn       int    `json:"end_column"`
-	EndLine         int    `json:"end_line"`
-	Message         string `json:"message"`
-	Path            string `json:"path"`
-	RawDetails      string `json:"raw_details"`
-	StartColumn     int    `json:"start_column"`
-	StartLine       int    `json:"start_line"`
-	Title           string `json:"title"`
-}
-
-type ChecksUpdateApplicationJSONRequestOutputImagesItem struct {
-	Alt      string `json:"alt"`
-	Caption  string `json:"caption"`
-	ImageURL string `json:"image_url"`
-}
-
-type CloneTraffic struct {
-	Clones  []Traffic `json:"clones"`
-	Count   int       `json:"count"`
-	Uniques int       `json:"uniques"`
-}
-
-func (*CloneTraffic) reposGetClonesResponse() {}
+type CodeFrequencyStat []int
 
 type CodeOfConduct struct {
-	Body    string `json:"body"`
-	HTMLURL string `json:"html_url"`
-	Key     string `json:"key"`
-	Name    string `json:"name"`
-	URL     string `json:"url"`
+	Body    *string `json:"body"`
+	HTMLURL string  `json:"html_url"`
+	Key     string  `json:"key"`
+	Name    string  `json:"name"`
+	URL     string  `json:"url"`
 }
 
 func (*CodeOfConduct) codesOfConductGetConductCodeResponse() {}
@@ -1506,98 +1648,143 @@ type CodeOfConductSimple struct {
 }
 
 type CodeScanningAlert struct {
-	Tool               CodeScanningAnalysisTool  `json:"tool"`
-	Number             int                       `json:"number"`
-	CreatedAt          time.Time                 `json:"created_at"`
-	InstancesURL       string                    `json:"instances_url"`
-	State              string                    `json:"state"`
-	DismissedBy        NullableSimpleUser        `json:"dismissed_by"`
-	Rule               CodeScanningAlertRule     `json:"rule"`
-	MostRecentInstance CodeScanningAlertInstance `json:"most_recent_instance"`
-	URL                string                    `json:"url"`
-	HTMLURL            string                    `json:"html_url"`
+	CreatedAt          AlertCreatedAt                   `json:"created_at"`
+	DismissedAt        CodeScanningAlertDismissedAt     `json:"dismissed_at"`
+	DismissedBy        NullableSimpleUser               `json:"dismissed_by"`
+	DismissedReason    CodeScanningAlertDismissedReason `json:"dismissed_reason"`
+	HTMLURL            AlertHTMLURL                     `json:"html_url"`
+	Instances          *string                          `json:"instances"`
+	InstancesURL       AlertInstancesURL                `json:"instances_url"`
+	MostRecentInstance CodeScanningAlertInstance        `json:"most_recent_instance"`
+	Number             AlertNumber                      `json:"number"`
+	Rule               CodeScanningAlertRule            `json:"rule"`
+	State              CodeScanningAlertState           `json:"state"`
+	Tool               CodeScanningAnalysisTool         `json:"tool"`
+	URL                AlertURL                         `json:"url"`
 }
 
+func (*CodeScanningAlert) codeScanningGetAlertResponse()    {}
 func (*CodeScanningAlert) codeScanningUpdateAlertResponse() {}
 
+type CodeScanningAlertClassification string
+
+const (
+	CodeScanningAlertClassificationSource    CodeScanningAlertClassification = "source"
+	CodeScanningAlertClassificationGenerated CodeScanningAlertClassification = "generated"
+	CodeScanningAlertClassificationTest      CodeScanningAlertClassification = "test"
+	CodeScanningAlertClassificationLibrary   CodeScanningAlertClassification = "library"
+)
+
+type CodeScanningAlertDismissedAt time.Time
+
+type CodeScanningAlertDismissedReason string
+
+const (
+	CodeScanningAlertDismissedReasonFalsePositive CodeScanningAlertDismissedReason = "false positive"
+	CodeScanningAlertDismissedReasonWonTFix       CodeScanningAlertDismissedReason = "won't fix"
+	CodeScanningAlertDismissedReasonUsedInTests   CodeScanningAlertDismissedReason = "used in tests"
+)
+
+type CodeScanningAlertEnvironment string
+
 type CodeScanningAlertInstance struct {
-	AnalysisKey     string                           `json:"analysis_key"`
-	Category        string                           `json:"category"`
-	Classifications []string                         `json:"classifications"`
-	CommitSha       string                           `json:"commit_sha"`
-	Environment     string                           `json:"environment"`
-	HTMLURL         string                           `json:"html_url"`
-	Location        CodeScanningAlertLocation        `json:"location"`
-	Message         CodeScanningAlertInstanceMessage `json:"message"`
-	Ref             string                           `json:"ref"`
-	State           string                           `json:"state"`
+	AnalysisKey     *CodeScanningAnalysisAnalysisKey   `json:"analysis_key"`
+	Category        *CodeScanningAnalysisCategory      `json:"category"`
+	Classifications *[]CodeScanningAlertClassification `json:"classifications"`
+	CommitSha       *string                            `json:"commit_sha"`
+	Environment     *CodeScanningAlertEnvironment      `json:"environment"`
+	HTMLURL         *string                            `json:"html_url"`
+	Location        *CodeScanningAlertLocation         `json:"location"`
+	Message         *CodeScanningAlertInstanceMessage  `json:"message"`
+	Ref             *CodeScanningRef                   `json:"ref"`
+	State           *CodeScanningAlertState            `json:"state"`
 }
 
 type CodeScanningAlertInstanceMessage struct {
-	Text string `json:"text"`
-}
-
-type CodeScanningAlertItems struct {
-	CreatedAt          time.Time                    `json:"created_at"`
-	DismissedAt        time.Time                    `json:"dismissed_at"`
-	DismissedBy        NullableSimpleUser           `json:"dismissed_by"`
-	DismissedReason    string                       `json:"dismissed_reason"`
-	HTMLURL            string                       `json:"html_url"`
-	InstancesURL       string                       `json:"instances_url"`
-	MostRecentInstance CodeScanningAlertInstance    `json:"most_recent_instance"`
-	Number             int                          `json:"number"`
-	Rule               CodeScanningAlertRuleSummary `json:"rule"`
-	State              string                       `json:"state"`
-	Tool               CodeScanningAnalysisTool     `json:"tool"`
-	URL                string                       `json:"url"`
+	Text *string `json:"text"`
 }
 
 type CodeScanningAlertLocation struct {
-	EndColumn   int    `json:"end_column"`
-	EndLine     int    `json:"end_line"`
-	Path        string `json:"path"`
-	StartColumn int    `json:"start_column"`
-	StartLine   int    `json:"start_line"`
+	EndColumn   *int    `json:"end_column"`
+	EndLine     *int    `json:"end_line"`
+	Path        *string `json:"path"`
+	StartColumn *int    `json:"start_column"`
+	StartLine   *int    `json:"start_line"`
 }
 
 type CodeScanningAlertRule struct {
-	Description           string   `json:"description"`
-	FullDescription       string   `json:"full_description"`
-	Help                  string   `json:"help"`
-	ID                    string   `json:"id"`
-	Name                  string   `json:"name"`
-	SecuritySeverityLevel string   `json:"security_severity_level"`
-	Severity              string   `json:"severity"`
-	Tags                  []string `json:"tags"`
+	Description           *string                                     `json:"description"`
+	FullDescription       *string                                     `json:"full_description"`
+	Help                  *string                                     `json:"help"`
+	ID                    *string                                     `json:"id"`
+	Name                  *string                                     `json:"name"`
+	SecuritySeverityLevel *CodeScanningAlertRuleSecuritySeverityLevel `json:"security_severity_level"`
+	Severity              *CodeScanningAlertRuleSeverity              `json:"severity"`
+	Tags                  *[]string                                   `json:"tags"`
 }
 
-type CodeScanningAlertRuleSummary struct {
-	Description string `json:"description"`
-	ID          string `json:"id"`
-	Name        string `json:"name"`
-	Severity    string `json:"severity"`
-}
+type CodeScanningAlertRuleSecuritySeverityLevel string
+
+const (
+	CodeScanningAlertRuleSecuritySeverityLevelLow      CodeScanningAlertRuleSecuritySeverityLevel = "low"
+	CodeScanningAlertRuleSecuritySeverityLevelMedium   CodeScanningAlertRuleSecuritySeverityLevel = "medium"
+	CodeScanningAlertRuleSecuritySeverityLevelHigh     CodeScanningAlertRuleSecuritySeverityLevel = "high"
+	CodeScanningAlertRuleSecuritySeverityLevelCritical CodeScanningAlertRuleSecuritySeverityLevel = "critical"
+)
+
+type CodeScanningAlertRuleSeverity string
+
+const (
+	CodeScanningAlertRuleSeverityNone    CodeScanningAlertRuleSeverity = "none"
+	CodeScanningAlertRuleSeverityNote    CodeScanningAlertRuleSeverity = "note"
+	CodeScanningAlertRuleSeverityWarning CodeScanningAlertRuleSeverity = "warning"
+	CodeScanningAlertRuleSeverityError   CodeScanningAlertRuleSeverity = "error"
+)
+
+type CodeScanningAlertSetState string
+
+const (
+	CodeScanningAlertSetStateOpen      CodeScanningAlertSetState = "open"
+	CodeScanningAlertSetStateDismissed CodeScanningAlertSetState = "dismissed"
+)
+
+type CodeScanningAlertState string
+
+const (
+	CodeScanningAlertStateOpen      CodeScanningAlertState = "open"
+	CodeScanningAlertStateClosed    CodeScanningAlertState = "closed"
+	CodeScanningAlertStateDismissed CodeScanningAlertState = "dismissed"
+	CodeScanningAlertStateFixed     CodeScanningAlertState = "fixed"
+)
 
 type CodeScanningAnalysis struct {
-	AnalysisKey  string                   `json:"analysis_key"`
-	Category     string                   `json:"category"`
-	CommitSha    string                   `json:"commit_sha"`
-	CreatedAt    time.Time                `json:"created_at"`
-	Deletable    bool                     `json:"deletable"`
-	Environment  string                   `json:"environment"`
-	Error        string                   `json:"error"`
-	ID           int                      `json:"id"`
-	Ref          string                   `json:"ref"`
-	ResultsCount int                      `json:"results_count"`
-	RulesCount   int                      `json:"rules_count"`
-	SarifID      string                   `json:"sarif_id"`
-	Tool         CodeScanningAnalysisTool `json:"tool"`
-	ToolName     string                   `json:"tool_name"`
-	URL          string                   `json:"url"`
-	Warning      string                   `json:"warning"`
+	AnalysisKey  CodeScanningAnalysisAnalysisKey `json:"analysis_key"`
+	Category     *CodeScanningAnalysisCategory   `json:"category"`
+	CommitSha    CodeScanningAnalysisCommitSha   `json:"commit_sha"`
+	CreatedAt    CodeScanningAnalysisCreatedAt   `json:"created_at"`
+	Deletable    bool                            `json:"deletable"`
+	Environment  CodeScanningAnalysisEnvironment `json:"environment"`
+	Error        string                          `json:"error"`
+	ID           int                             `json:"id"`
+	Ref          CodeScanningRef                 `json:"ref"`
+	ResultsCount int                             `json:"results_count"`
+	RulesCount   int                             `json:"rules_count"`
+	SarifID      CodeScanningAnalysisSarifID     `json:"sarif_id"`
+	Tool         CodeScanningAnalysisTool        `json:"tool"`
+	ToolName     *string                         `json:"tool_name"`
+	URL          CodeScanningAnalysisURL         `json:"url"`
+	Warning      string                          `json:"warning"`
 }
 
 func (*CodeScanningAnalysis) codeScanningGetAnalysisResponse() {}
+
+type CodeScanningAnalysisAnalysisKey string
+
+type CodeScanningAnalysisCategory string
+
+type CodeScanningAnalysisCommitSha string
+
+type CodeScanningAnalysisCreatedAt time.Time
 
 type CodeScanningAnalysisDeletion struct {
 	ConfirmDeleteURL string `json:"confirm_delete_url"`
@@ -1606,11 +1793,53 @@ type CodeScanningAnalysisDeletion struct {
 
 func (*CodeScanningAnalysisDeletion) codeScanningDeleteAnalysisResponse() {}
 
+type CodeScanningAnalysisEnvironment string
+
+type CodeScanningAnalysisSarifFile string
+
+type CodeScanningAnalysisSarifID string
+
 type CodeScanningAnalysisTool struct {
-	GUID    string `json:"guid"`
-	Name    string `json:"name"`
-	Version string `json:"version"`
+	GUID    *CodeScanningAnalysisToolGUID    `json:"guid"`
+	Name    *CodeScanningAnalysisToolName    `json:"name"`
+	Version *CodeScanningAnalysisToolVersion `json:"version"`
 }
+
+type CodeScanningAnalysisToolGUID string
+
+type CodeScanningAnalysisToolName string
+
+type CodeScanningAnalysisToolVersion string
+
+type CodeScanningAnalysisURL string
+
+type CodeScanningDeleteAnalysisApplicationJSONBadRequest BasicError
+
+func (*CodeScanningDeleteAnalysisApplicationJSONBadRequest) codeScanningDeleteAnalysisResponse() {}
+
+type CodeScanningDeleteAnalysisApplicationJSONForbidden BasicError
+
+func (*CodeScanningDeleteAnalysisApplicationJSONForbidden) codeScanningDeleteAnalysisResponse() {}
+
+type CodeScanningDeleteAnalysisApplicationJSONNotFound BasicError
+
+func (*CodeScanningDeleteAnalysisApplicationJSONNotFound) codeScanningDeleteAnalysisResponse() {}
+
+type CodeScanningGetAlertApplicationJSONForbidden BasicError
+
+func (*CodeScanningGetAlertApplicationJSONForbidden) codeScanningGetAlertResponse() {}
+
+type CodeScanningGetAlertApplicationJSONNotFound BasicError
+
+func (*CodeScanningGetAlertApplicationJSONNotFound) codeScanningGetAlertResponse() {}
+
+type CodeScanningGetAnalysisApplicationJSONForbidden BasicError
+
+func (*CodeScanningGetAnalysisApplicationJSONForbidden) codeScanningGetAnalysisResponse() {}
+
+type CodeScanningGetAnalysisApplicationJSONNotFound BasicError
+
+func (*CodeScanningGetAnalysisApplicationJSONNotFound) codeScanningGetAnalysisResponse() {}
 
 type CodeScanningGetAnalysisOKApplicationJSONSarif string
 
@@ -1620,44 +1849,85 @@ type CodeScanningGetSarifNotFound struct{}
 
 func (*CodeScanningGetSarifNotFound) codeScanningGetSarifResponse() {}
 
+type CodeScanningListAlertInstancesApplicationJSONForbidden BasicError
+
+func (*CodeScanningListAlertInstancesApplicationJSONForbidden) codeScanningListAlertInstancesResponse() {
+}
+
+type CodeScanningListAlertInstancesApplicationJSONNotFound BasicError
+
+func (*CodeScanningListAlertInstancesApplicationJSONNotFound) codeScanningListAlertInstancesResponse() {
+}
+
 type CodeScanningListAlertInstancesOK []CodeScanningAlertInstance
 
 func (*CodeScanningListAlertInstancesOK) codeScanningListAlertInstancesResponse() {}
 
-type CodeScanningListAlertsForRepoOK []CodeScanningAlertItems
+type CodeScanningListRecentAnalysesApplicationJSONForbidden BasicError
 
-func (*CodeScanningListAlertsForRepoOK) codeScanningListAlertsForRepoResponse() {}
+func (*CodeScanningListRecentAnalysesApplicationJSONForbidden) codeScanningListRecentAnalysesResponse() {
+}
+
+type CodeScanningListRecentAnalysesApplicationJSONNotFound BasicError
+
+func (*CodeScanningListRecentAnalysesApplicationJSONNotFound) codeScanningListRecentAnalysesResponse() {
+}
 
 type CodeScanningListRecentAnalysesOK []CodeScanningAnalysis
 
 func (*CodeScanningListRecentAnalysesOK) codeScanningListRecentAnalysesResponse() {}
 
+type CodeScanningRef string
+
 type CodeScanningSarifsReceipt struct {
-	ID  string `json:"id"`
-	URL string `json:"url"`
+	ID  *CodeScanningAnalysisSarifID `json:"id"`
+	URL *string                      `json:"url"`
 }
 
 func (*CodeScanningSarifsReceipt) codeScanningUploadSarifResponse() {}
 
 type CodeScanningSarifsStatus struct {
-	AnalysesURL      string `json:"analyses_url"`
-	ProcessingStatus string `json:"processing_status"`
+	AnalysesURL      *string                                   `json:"analyses_url"`
+	ProcessingStatus *CodeScanningSarifsStatusProcessingStatus `json:"processing_status"`
 }
 
 func (*CodeScanningSarifsStatus) codeScanningGetSarifResponse() {}
 
+type CodeScanningSarifsStatusProcessingStatus string
+
+const (
+	CodeScanningSarifsStatusProcessingStatusPending  CodeScanningSarifsStatusProcessingStatus = "pending"
+	CodeScanningSarifsStatusProcessingStatusComplete CodeScanningSarifsStatusProcessingStatus = "complete"
+)
+
+type CodeScanningUpdateAlertApplicationJSONForbidden BasicError
+
+func (*CodeScanningUpdateAlertApplicationJSONForbidden) codeScanningUpdateAlertResponse() {}
+
+type CodeScanningUpdateAlertApplicationJSONNotFound BasicError
+
+func (*CodeScanningUpdateAlertApplicationJSONNotFound) codeScanningUpdateAlertResponse() {}
+
 type CodeScanningUpdateAlertApplicationJSONRequest struct {
-	DismissedReason string `json:"dismissed_reason"`
-	State           string `json:"state"`
+	DismissedReason *CodeScanningAlertDismissedReason `json:"dismissed_reason"`
+	State           CodeScanningAlertSetState         `json:"state"`
 }
 
+type CodeScanningUploadSarifApplicationJSONForbidden BasicError
+
+func (*CodeScanningUploadSarifApplicationJSONForbidden) codeScanningUploadSarifResponse() {}
+
+type CodeScanningUploadSarifApplicationJSONNotFound BasicError
+
+func (*CodeScanningUploadSarifApplicationJSONNotFound) codeScanningUploadSarifResponse() {}
+
 type CodeScanningUploadSarifApplicationJSONRequest struct {
-	CheckoutURI string    `json:"checkout_uri"`
-	CommitSha   string    `json:"commit_sha"`
-	Ref         string    `json:"ref"`
-	Sarif       string    `json:"sarif"`
-	StartedAt   time.Time `json:"started_at"`
-	ToolName    string    `json:"tool_name"`
+	CheckoutURI *string                       `json:"checkout_uri"`
+	CommitSha   CodeScanningAnalysisCommitSha `json:"commit_sha"`
+	Ref         CodeScanningRef               `json:"ref"`
+	Sarif       CodeScanningAnalysisSarifFile `json:"sarif"`
+	StartedAt   *time.Time                    `json:"started_at"`
+	ToolName    *string                       `json:"tool_name"`
 }
 
 type CodeScanningUploadSarifBadRequest struct{}
@@ -1668,57 +1938,9 @@ type CodeScanningUploadSarifRequestEntityTooLarge struct{}
 
 func (*CodeScanningUploadSarifRequestEntityTooLarge) codeScanningUploadSarifResponse() {}
 
-type CodeSearchResultItem struct {
-	FileSize       int                           `json:"file_size"`
-	GitURL         string                        `json:"git_url"`
-	HTMLURL        string                        `json:"html_url"`
-	Language       string                        `json:"language"`
-	LastModifiedAt time.Time                     `json:"last_modified_at"`
-	LineNumbers    []string                      `json:"line_numbers"`
-	Name           string                        `json:"name"`
-	Path           string                        `json:"path"`
-	Repository     MinimalRepository             `json:"repository"`
-	Score          float                         `json:"score"`
-	Sha            string                        `json:"sha"`
-	TextMatches    []SearchResultTextMatchesItem `json:"text_matches"`
-	URL            string                        `json:"url"`
-}
-
 type CodesOfConductGetAllCodesOfConductOK []CodeOfConduct
 
 func (*CodesOfConductGetAllCodesOfConductOK) codesOfConductGetAllCodesOfConductResponse() {}
-
-type Collaborator struct {
-	AvatarURL         string                  `json:"avatar_url"`
-	Email             string                  `json:"email"`
-	EventsURL         string                  `json:"events_url"`
-	FollowersURL      string                  `json:"followers_url"`
-	FollowingURL      string                  `json:"following_url"`
-	GistsURL          string                  `json:"gists_url"`
-	GravatarID        string                  `json:"gravatar_id"`
-	HTMLURL           string                  `json:"html_url"`
-	ID                int                     `json:"id"`
-	Login             string                  `json:"login"`
-	Name              string                  `json:"name"`
-	NodeID            string                  `json:"node_id"`
-	OrganizationsURL  string                  `json:"organizations_url"`
-	Permissions       CollaboratorPermissions `json:"permissions"`
-	ReceivedEventsURL string                  `json:"received_events_url"`
-	ReposURL          string                  `json:"repos_url"`
-	SiteAdmin         bool                    `json:"site_admin"`
-	StarredURL        string                  `json:"starred_url"`
-	SubscriptionsURL  string                  `json:"subscriptions_url"`
-	Type              string                  `json:"type"`
-	URL               string                  `json:"url"`
-}
-
-type CollaboratorPermissions struct {
-	Admin    bool `json:"admin"`
-	Maintain bool `json:"maintain"`
-	Pull     bool `json:"pull"`
-	Push     bool `json:"push"`
-	Triage   bool `json:"triage"`
-}
 
 type CombinedBillingUsage struct {
 	DaysLeftInBillingCycle       int `json:"days_left_in_billing_cycle"`
@@ -1743,17 +1965,14 @@ type Commit struct {
 	CommentsURL string              `json:"comments_url"`
 	Commit      CommitCommit        `json:"commit"`
 	Committer   NullableSimpleUser  `json:"committer"`
-	Files       []CommitFilesItem   `json:"files"`
+	Files       *[]CommitFilesItem  `json:"files"`
 	HTMLURL     string              `json:"html_url"`
 	NodeID      string              `json:"node_id"`
 	Parents     []CommitParentsItem `json:"parents"`
 	Sha         string              `json:"sha"`
-	Stats       CommitStats         `json:"stats"`
+	Stats       *CommitStats        `json:"stats"`
 	URL         string              `json:"url"`
 }
-
-func (*Commit) reposGetCommitResponse() {}
-func (*Commit) reposMergeResponse()     {}
 
 type CommitActivity struct {
 	Days  []int `json:"days"`
@@ -1762,7 +1981,7 @@ type CommitActivity struct {
 }
 
 type CommitComment struct {
-	AuthorAssociation string             `json:"author_association"`
+	AuthorAssociation AuthorAssociation  `json:"author_association"`
 	Body              string             `json:"body"`
 	CommitID          string             `json:"commit_id"`
 	CreatedAt         time.Time          `json:"created_at"`
@@ -1772,13 +1991,12 @@ type CommitComment struct {
 	NodeID            string             `json:"node_id"`
 	Path              string             `json:"path"`
 	Position          int                `json:"position"`
-	Reactions         ReactionRollup     `json:"reactions"`
+	Reactions         *ReactionRollup    `json:"reactions"`
 	URL               string             `json:"url"`
 	UpdatedAt         time.Time          `json:"updated_at"`
 	User              NullableSimpleUser `json:"user"`
 }
 
-func (*CommitComment) reposCreateCommitCommentResponse() {}
 func (*CommitComment) reposGetCommitCommentResponse()    {}
 func (*CommitComment) reposUpdateCommitCommentResponse() {}
 
@@ -1789,7 +2007,7 @@ type CommitCommit struct {
 	Message      string           `json:"message"`
 	Tree         CommitCommitTree `json:"tree"`
 	URL          string           `json:"url"`
-	Verification Verification     `json:"verification"`
+	Verification *Verification    `json:"verification"`
 }
 
 type CommitCommitTree struct {
@@ -1798,93 +2016,60 @@ type CommitCommitTree struct {
 }
 
 type CommitComparison struct {
-	AheadBy         int         `json:"ahead_by"`
-	BaseCommit      Commit      `json:"base_commit"`
-	BehindBy        int         `json:"behind_by"`
-	Commits         []Commit    `json:"commits"`
-	DiffURL         string      `json:"diff_url"`
-	Files           []DiffEntry `json:"files"`
-	HTMLURL         string      `json:"html_url"`
-	MergeBaseCommit Commit      `json:"merge_base_commit"`
-	PatchURL        string      `json:"patch_url"`
-	PermalinkURL    string      `json:"permalink_url"`
-	Status          string      `json:"status"`
-	TotalCommits    int         `json:"total_commits"`
-	URL             string      `json:"url"`
+	AheadBy         int                    `json:"ahead_by"`
+	BaseCommit      Commit                 `json:"base_commit"`
+	BehindBy        int                    `json:"behind_by"`
+	Commits         []Commit               `json:"commits"`
+	DiffURL         string                 `json:"diff_url"`
+	Files           *[]DiffEntry           `json:"files"`
+	HTMLURL         string                 `json:"html_url"`
+	MergeBaseCommit Commit                 `json:"merge_base_commit"`
+	PatchURL        string                 `json:"patch_url"`
+	PermalinkURL    string                 `json:"permalink_url"`
+	Status          CommitComparisonStatus `json:"status"`
+	TotalCommits    int                    `json:"total_commits"`
+	URL             string                 `json:"url"`
 }
 
 func (*CommitComparison) reposCompareCommitsResponse() {}
 
+type CommitComparisonStatus string
+
+const (
+	CommitComparisonStatusDiverged  CommitComparisonStatus = "diverged"
+	CommitComparisonStatusAhead     CommitComparisonStatus = "ahead"
+	CommitComparisonStatusBehind    CommitComparisonStatus = "behind"
+	CommitComparisonStatusIdentical CommitComparisonStatus = "identical"
+)
+
 type CommitFilesItem struct {
-	Additions        int    `json:"additions"`
-	BlobURL          string `json:"blob_url"`
-	Changes          int    `json:"changes"`
-	ContentsURL      string `json:"contents_url"`
-	Deletions        int    `json:"deletions"`
-	Filename         string `json:"filename"`
-	Patch            string `json:"patch"`
-	PreviousFilename string `json:"previous_filename"`
-	RawURL           string `json:"raw_url"`
-	Sha              string `json:"sha"`
-	Status           string `json:"status"`
+	Additions        *int    `json:"additions"`
+	BlobURL          *string `json:"blob_url"`
+	Changes          *int    `json:"changes"`
+	ContentsURL      *string `json:"contents_url"`
+	Deletions        *int    `json:"deletions"`
+	Filename         *string `json:"filename"`
+	Patch            *string `json:"patch"`
+	PreviousFilename *string `json:"previous_filename"`
+	RawURL           *string `json:"raw_url"`
+	Sha              *string `json:"sha"`
+	Status           *string `json:"status"`
 }
 
 type CommitParentsItem struct {
-	HTMLURL string `json:"html_url"`
-	Sha     string `json:"sha"`
-	URL     string `json:"url"`
-}
-
-type CommitSearchResultItem struct {
-	Author      NullableSimpleUser                  `json:"author"`
-	CommentsURL string                              `json:"comments_url"`
-	Commit      CommitSearchResultItemCommit        `json:"commit"`
-	Committer   NullableGitUser                     `json:"committer"`
-	HTMLURL     string                              `json:"html_url"`
-	NodeID      string                              `json:"node_id"`
-	Parents     []CommitSearchResultItemParentsItem `json:"parents"`
-	Repository  MinimalRepository                   `json:"repository"`
-	Score       float                               `json:"score"`
-	Sha         string                              `json:"sha"`
-	TextMatches []SearchResultTextMatchesItem       `json:"text_matches"`
-	URL         string                              `json:"url"`
-}
-
-type CommitSearchResultItemCommit struct {
-	Author       CommitSearchResultItemCommitAuthor `json:"author"`
-	CommentCount int                                `json:"comment_count"`
-	Committer    NullableGitUser                    `json:"committer"`
-	Message      string                             `json:"message"`
-	Tree         CommitSearchResultItemCommitTree   `json:"tree"`
-	URL          string                             `json:"url"`
-	Verification Verification                       `json:"verification"`
-}
-
-type CommitSearchResultItemCommitAuthor struct {
-	Date  time.Time `json:"date"`
-	Email string    `json:"email"`
-	Name  string    `json:"name"`
-}
-
-type CommitSearchResultItemCommitTree struct {
-	Sha string `json:"sha"`
-	URL string `json:"url"`
-}
-
-type CommitSearchResultItemParentsItem struct {
-	HTMLURL string `json:"html_url"`
-	Sha     string `json:"sha"`
-	URL     string `json:"url"`
+	HTMLURL *string `json:"html_url"`
+	Sha     string  `json:"sha"`
+	URL     string  `json:"url"`
 }
 
 type CommitStats struct {
-	Additions int `json:"additions"`
-	Deletions int `json:"deletions"`
-	Total     int `json:"total"`
+	Additions *int `json:"additions"`
+	Deletions *int `json:"deletions"`
+	Total     *int `json:"total"`
 }
 
 type CommunityProfile struct {
-	ContentReportsEnabled bool                  `json:"content_reports_enabled"`
+	ContentReportsEnabled *bool                 `json:"content_reports_enabled"`
 	Description           string                `json:"description"`
 	Documentation         string                `json:"documentation"`
 	Files                 CommunityProfileFiles `json:"files"`
@@ -1913,14 +2098,11 @@ type ContentFile struct {
 	Path            string           `json:"path"`
 	Sha             string           `json:"sha"`
 	Size            int              `json:"size"`
-	SubmoduleGitURL string           `json:"submodule_git_url"`
-	Target          string           `json:"target"`
+	SubmoduleGitURL *string          `json:"submodule_git_url"`
+	Target          *string          `json:"target"`
 	Type            string           `json:"type"`
 	URL             string           `json:"url"`
 }
-
-func (*ContentFile) reposGetReadmeInDirectoryResponse() {}
-func (*ContentFile) reposGetReadmeResponse()            {}
 
 type ContentFileLinks struct {
 	Git  string `json:"git"`
@@ -1929,13 +2111,11 @@ type ContentFileLinks struct {
 }
 
 type ContentReferenceAttachment struct {
-	Body   string `json:"body"`
-	ID     int    `json:"id"`
-	NodeID string `json:"node_id"`
-	Title  string `json:"title"`
+	Body   string  `json:"body"`
+	ID     int     `json:"id"`
+	NodeID *string `json:"node_id"`
+	Title  string  `json:"title"`
 }
-
-func (*ContentReferenceAttachment) appsCreateContentAttachmentResponse() {}
 
 type ContentTraffic struct {
 	Count   int    `json:"count"`
@@ -1944,70 +2124,28 @@ type ContentTraffic struct {
 	Uniques int    `json:"uniques"`
 }
 
-type ContentTree struct {
-	DownloadURL string                   `json:"download_url"`
-	Entries     []ContentTreeEntriesItem `json:"entries"`
-	GitURL      string                   `json:"git_url"`
-	HTMLURL     string                   `json:"html_url"`
-	Links       ContentTreeLinks         `json:"_links"`
-	Name        string                   `json:"name"`
-	Path        string                   `json:"path"`
-	Sha         string                   `json:"sha"`
-	Size        int                      `json:"size"`
-	Type        string                   `json:"type"`
-	URL         string                   `json:"url"`
-}
-
-func (*ContentTree) reposGetContentResponse() {}
-
-type ContentTreeEntriesItem struct {
-	Content     string                      `json:"content"`
-	DownloadURL string                      `json:"download_url"`
-	GitURL      string                      `json:"git_url"`
-	HTMLURL     string                      `json:"html_url"`
-	Links       ContentTreeEntriesItemLinks `json:"_links"`
-	Name        string                      `json:"name"`
-	Path        string                      `json:"path"`
-	Sha         string                      `json:"sha"`
-	Size        int                         `json:"size"`
-	Type        string                      `json:"type"`
-	URL         string                      `json:"url"`
-}
-
-type ContentTreeEntriesItemLinks struct {
-	Git  string `json:"git"`
-	HTML string `json:"html"`
-	Self string `json:"self"`
-}
-
-type ContentTreeLinks struct {
-	Git  string `json:"git"`
-	HTML string `json:"html"`
-	Self string `json:"self"`
-}
-
 type Contributor struct {
-	AvatarURL         string `json:"avatar_url"`
-	Contributions     int    `json:"contributions"`
-	Email             string `json:"email"`
-	EventsURL         string `json:"events_url"`
-	FollowersURL      string `json:"followers_url"`
-	FollowingURL      string `json:"following_url"`
-	GistsURL          string `json:"gists_url"`
-	GravatarID        string `json:"gravatar_id"`
-	HTMLURL           string `json:"html_url"`
-	ID                int    `json:"id"`
-	Login             string `json:"login"`
-	Name              string `json:"name"`
-	NodeID            string `json:"node_id"`
-	OrganizationsURL  string `json:"organizations_url"`
-	ReceivedEventsURL string `json:"received_events_url"`
-	ReposURL          string `json:"repos_url"`
-	SiteAdmin         bool   `json:"site_admin"`
-	StarredURL        string `json:"starred_url"`
-	SubscriptionsURL  string `json:"subscriptions_url"`
-	Type              string `json:"type"`
-	URL               string `json:"url"`
+	AvatarURL         *string `json:"avatar_url"`
+	Contributions     int     `json:"contributions"`
+	Email             *string `json:"email"`
+	EventsURL         *string `json:"events_url"`
+	FollowersURL      *string `json:"followers_url"`
+	FollowingURL      *string `json:"following_url"`
+	GistsURL          *string `json:"gists_url"`
+	GravatarID        *string `json:"gravatar_id"`
+	HTMLURL           *string `json:"html_url"`
+	ID                *int    `json:"id"`
+	Login             *string `json:"login"`
+	Name              *string `json:"name"`
+	NodeID            *string `json:"node_id"`
+	OrganizationsURL  *string `json:"organizations_url"`
+	ReceivedEventsURL *string `json:"received_events_url"`
+	ReposURL          *string `json:"repos_url"`
+	SiteAdmin         *bool   `json:"site_admin"`
+	StarredURL        *string `json:"starred_url"`
+	SubscriptionsURL  *string `json:"subscriptions_url"`
+	Type              string  `json:"type"`
+	URL               *string `json:"url"`
 }
 
 type ContributorActivity struct {
@@ -2017,24 +2155,24 @@ type ContributorActivity struct {
 }
 
 type ContributorActivityWeeksItem struct {
-	A int `json:"a"`
-	C int `json:"c"`
-	D int `json:"d"`
-	W int `json:"w"`
+	A *int `json:"a"`
+	C *int `json:"c"`
+	D *int `json:"d"`
+	W *int `json:"w"`
 }
 
 type CredentialAuthorization struct {
-	AuthorizedCredentialID    int       `json:"authorized_credential_id"`
-	AuthorizedCredentialNote  string    `json:"authorized_credential_note"`
-	AuthorizedCredentialTitle string    `json:"authorized_credential_title"`
-	CredentialAccessedAt      time.Time `json:"credential_accessed_at"`
-	CredentialAuthorizedAt    time.Time `json:"credential_authorized_at"`
-	CredentialID              int       `json:"credential_id"`
-	CredentialType            string    `json:"credential_type"`
-	Fingerprint               string    `json:"fingerprint"`
-	Login                     string    `json:"login"`
-	Scopes                    []string  `json:"scopes"`
-	TokenLastEight            string    `json:"token_last_eight"`
+	AuthorizedCredentialID    *int       `json:"authorized_credential_id"`
+	AuthorizedCredentialNote  *string    `json:"authorized_credential_note"`
+	AuthorizedCredentialTitle *string    `json:"authorized_credential_title"`
+	CredentialAccessedAt      *time.Time `json:"credential_accessed_at"`
+	CredentialAuthorizedAt    time.Time  `json:"credential_authorized_at"`
+	CredentialID              int        `json:"credential_id"`
+	CredentialType            string     `json:"credential_type"`
+	Fingerprint               *string    `json:"fingerprint"`
+	Login                     string     `json:"login"`
+	Scopes                    *[]string  `json:"scopes"`
+	TokenLastEight            *string    `json:"token_last_eight"`
 }
 
 type DeployKey struct {
@@ -2047,63 +2185,94 @@ type DeployKey struct {
 	Verified  bool   `json:"verified"`
 }
 
-func (*DeployKey) reposCreateDeployKeyResponse() {}
-func (*DeployKey) reposGetDeployKeyResponse()    {}
-
-type Deployment struct {
-	ID                    int                 `json:"id"`
-	Ref                   string              `json:"ref"`
-	OriginalEnvironment   string              `json:"original_environment"`
-	Description           string              `json:"description"`
-	ProductionEnvironment bool                `json:"production_environment"`
-	CreatedAt             time.Time           `json:"created_at"`
-	StatusesURL           string              `json:"statuses_url"`
-	PerformedViaGithubApp NullableIntegration `json:"performed_via_github_app"`
-	URL                   string              `json:"url"`
-	NodeID                string              `json:"node_id"`
-}
-
-func (*Deployment) reposCreateDeploymentResponse() {}
+func (*DeployKey) reposGetDeployKeyResponse() {}
 
 type DeploymentBranchPolicy struct {
 	CustomBranchPolicies bool `json:"custom_branch_policies"`
 	ProtectedBranches    bool `json:"protected_branches"`
 }
 
-type DeploymentStatus struct {
-	CreatedAt             time.Time           `json:"created_at"`
-	Creator               NullableSimpleUser  `json:"creator"`
-	DeploymentURL         string              `json:"deployment_url"`
-	Description           string              `json:"description"`
-	Environment           string              `json:"environment"`
-	EnvironmentURL        string              `json:"environment_url"`
-	ID                    int                 `json:"id"`
-	LogURL                string              `json:"log_url"`
-	NodeID                string              `json:"node_id"`
-	PerformedViaGithubApp NullableIntegration `json:"performed_via_github_app"`
-	RepositoryURL         string              `json:"repository_url"`
-	State                 string              `json:"state"`
-	TargetURL             string              `json:"target_url"`
-	URL                   string              `json:"url"`
-	UpdatedAt             time.Time           `json:"updated_at"`
+type DeploymentReviewerType string
+
+const (
+	DeploymentReviewerTypeUser DeploymentReviewerType = "User"
+	DeploymentReviewerTypeTeam DeploymentReviewerType = "Team"
+)
+
+type DeploymentSimple struct {
+	CreatedAt             time.Time            `json:"created_at"`
+	Description           string               `json:"description"`
+	Environment           string               `json:"environment"`
+	ID                    int                  `json:"id"`
+	NodeID                string               `json:"node_id"`
+	OriginalEnvironment   *string              `json:"original_environment"`
+	PerformedViaGithubApp *NullableIntegration `json:"performed_via_github_app"`
+	ProductionEnvironment *bool                `json:"production_environment"`
+	RepositoryURL         string               `json:"repository_url"`
+	StatusesURL           string               `json:"statuses_url"`
+	Task                  string               `json:"task"`
+	TransientEnvironment  *bool                `json:"transient_environment"`
+	URL                   string               `json:"url"`
+	UpdatedAt             time.Time            `json:"updated_at"`
 }
 
-func (*DeploymentStatus) reposCreateDeploymentStatusResponse() {}
-func (*DeploymentStatus) reposGetDeploymentStatusResponse()    {}
+type DeploymentStatus struct {
+	CreatedAt             time.Time             `json:"created_at"`
+	Creator               NullableSimpleUser    `json:"creator"`
+	DeploymentURL         string                `json:"deployment_url"`
+	Description           string                `json:"description"`
+	Environment           *string               `json:"environment"`
+	EnvironmentURL        *string               `json:"environment_url"`
+	ID                    int                   `json:"id"`
+	LogURL                *string               `json:"log_url"`
+	NodeID                string                `json:"node_id"`
+	PerformedViaGithubApp *NullableIntegration  `json:"performed_via_github_app"`
+	RepositoryURL         string                `json:"repository_url"`
+	State                 DeploymentStatusState `json:"state"`
+	TargetURL             string                `json:"target_url"`
+	URL                   string                `json:"url"`
+	UpdatedAt             time.Time             `json:"updated_at"`
+}
+
+func (*DeploymentStatus) reposGetDeploymentStatusResponse() {}
+
+type DeploymentStatusState string
+
+const (
+	DeploymentStatusStateError      DeploymentStatusState = "error"
+	DeploymentStatusStateFailure    DeploymentStatusState = "failure"
+	DeploymentStatusStateInactive   DeploymentStatusState = "inactive"
+	DeploymentStatusStatePending    DeploymentStatusState = "pending"
+	DeploymentStatusStateSuccess    DeploymentStatusState = "success"
+	DeploymentStatusStateQueued     DeploymentStatusState = "queued"
+	DeploymentStatusStateInProgress DeploymentStatusState = "in_progress"
+)
 
 type DiffEntry struct {
-	Additions        int    `json:"additions"`
-	BlobURL          string `json:"blob_url"`
-	Changes          int    `json:"changes"`
-	ContentsURL      string `json:"contents_url"`
-	Deletions        int    `json:"deletions"`
-	Filename         string `json:"filename"`
-	Patch            string `json:"patch"`
-	PreviousFilename string `json:"previous_filename"`
-	RawURL           string `json:"raw_url"`
-	Sha              string `json:"sha"`
-	Status           string `json:"status"`
+	Additions        int             `json:"additions"`
+	BlobURL          string          `json:"blob_url"`
+	Changes          int             `json:"changes"`
+	ContentsURL      string          `json:"contents_url"`
+	Deletions        int             `json:"deletions"`
+	Filename         string          `json:"filename"`
+	Patch            *string         `json:"patch"`
+	PreviousFilename *string         `json:"previous_filename"`
+	RawURL           string          `json:"raw_url"`
+	Sha              string          `json:"sha"`
+	Status           DiffEntryStatus `json:"status"`
 }
+
+type DiffEntryStatus string
+
+const (
+	DiffEntryStatusAdded     DiffEntryStatus = "added"
+	DiffEntryStatusRemoved   DiffEntryStatus = "removed"
+	DiffEntryStatusModified  DiffEntryStatus = "modified"
+	DiffEntryStatusRenamed   DiffEntryStatus = "renamed"
+	DiffEntryStatusCopied    DiffEntryStatus = "copied"
+	DiffEntryStatusChanged   DiffEntryStatus = "changed"
+	DiffEntryStatusUnchanged DiffEntryStatus = "unchanged"
+)
 
 type Email struct {
 	Email      string `json:"email"`
@@ -2116,16 +2285,46 @@ type EmojisGetOK struct{}
 
 func (*EmojisGetOK) emojisGetResponse() {}
 
+type EmptyObject struct{}
+
+func (*EmptyObject) actionsApproveWorkflowRunResponse()              {}
+func (*EmptyObject) actionsCreateOrUpdateEnvironmentSecretResponse() {}
+func (*EmptyObject) actionsCreateOrUpdateOrgSecretResponse()         {}
+func (*EmptyObject) reposGetPagesHealthCheckResponse()               {}
+
+type EnabledOrganizations string
+
+const (
+	EnabledOrganizationsAll      EnabledOrganizations = "all"
+	EnabledOrganizationsNone     EnabledOrganizations = "none"
+	EnabledOrganizationsSelected EnabledOrganizations = "selected"
+)
+
+type EnabledRepositories string
+
+const (
+	EnabledRepositoriesAll      EnabledRepositories = "all"
+	EnabledRepositoriesNone     EnabledRepositories = "none"
+	EnabledRepositoriesSelected EnabledRepositories = "selected"
+)
+
 type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise struct{}
 
 type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise struct{}
 
 type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest struct {
-	Name                    string `json:"name"`
-	Runners                 []int  `json:"runners"`
-	SelectedOrganizationIds []int  `json:"selected_organization_ids"`
-	Visibility              string `json:"visibility"`
+	Name                    string                                                                                   `json:"name"`
+	Runners                 *[]int                                                                                   `json:"runners"`
+	SelectedOrganizationIds *[]int                                                                                   `json:"selected_organization_ids"`
+	Visibility              *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility `json:"visibility"`
 }
+
+type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility string
+
+const (
+	EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibilitySelected EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility = "selected"
+	EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibilityAll      EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility = "all"
+)
 
 type EnterpriseAdminDeleteScimGroupFromEnterprise struct{}
 
@@ -2141,33 +2340,33 @@ type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise struct{}
 
 type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise struct {
 	Organizations []OrganizationSimple `json:"organizations"`
-	TotalCount    float                `json:"total_count"`
+	TotalCount    float64              `json:"total_count"`
 }
 
 type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise struct {
 	Organizations []OrganizationSimple `json:"organizations"`
-	TotalCount    float                `json:"total_count"`
+	TotalCount    float64              `json:"total_count"`
 }
 
 type EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise struct {
 	RunnerGroups []RunnerGroupsEnterprise `json:"runner_groups"`
-	TotalCount   float                    `json:"total_count"`
+	TotalCount   float64                  `json:"total_count"`
 }
 
 type EnterpriseAdminListSelfHostedRunnersForEnterprise struct {
-	Runners    []Runner `json:"runners"`
-	TotalCount float    `json:"total_count"`
+	Runners    *[]Runner `json:"runners"`
+	TotalCount *float64  `json:"total_count"`
 }
 
 type EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise struct {
 	Runners    []Runner `json:"runners"`
-	TotalCount float    `json:"total_count"`
+	TotalCount float64  `json:"total_count"`
 }
 
 type EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest struct {
-	DisplayName string                                                                              `json:"displayName"`
-	Members     []EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestMembersItem `json:"members"`
-	Schemas     []string                                                                            `json:"schemas"`
+	DisplayName string                                                                               `json:"displayName"`
+	Members     *[]EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestMembersItem `json:"members"`
+	Schemas     []string                                                                             `json:"schemas"`
 }
 
 type EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestMembersItem struct {
@@ -2175,11 +2374,11 @@ type EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestMembe
 }
 
 type EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest struct {
-	Emails   []EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestEmailsItem `json:"emails"`
-	Groups   []EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestGroupsItem `json:"groups"`
-	Name     EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestName         `json:"name"`
-	Schemas  []string                                                                          `json:"schemas"`
-	UserName string                                                                            `json:"userName"`
+	Emails   []EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestEmailsItem  `json:"emails"`
+	Groups   *[]EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestGroupsItem `json:"groups"`
+	Name     EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestName          `json:"name"`
+	Schemas  []string                                                                           `json:"schemas"`
+	UserName string                                                                             `json:"userName"`
 }
 
 type EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestEmailsItem struct {
@@ -2189,7 +2388,7 @@ type EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestEmails
 }
 
 type EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestGroupsItem struct {
-	Value string `json:"value"`
+	Value *string `json:"value"`
 }
 
 type EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestName struct {
@@ -2206,14 +2405,14 @@ type EnterpriseAdminSetAllowedActionsEnterprise struct{}
 type EnterpriseAdminSetGithubActionsPermissionsEnterprise struct{}
 
 type EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequest struct {
-	AllowedActions       string `json:"allowed_actions"`
-	EnabledOrganizations string `json:"enabled_organizations"`
+	AllowedActions       *AllowedActions      `json:"allowed_actions"`
+	EnabledOrganizations EnabledOrganizations `json:"enabled_organizations"`
 }
 
 type EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequest struct {
-	DisplayName string                                                                                        `json:"displayName"`
-	Members     []EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequestMembersItem `json:"members"`
-	Schemas     []string                                                                                      `json:"schemas"`
+	DisplayName string                                                                                         `json:"displayName"`
+	Members     *[]EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequestMembersItem `json:"members"`
+	Schemas     []string                                                                                       `json:"schemas"`
 }
 
 type EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequestMembersItem struct {
@@ -2221,11 +2420,11 @@ type EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRe
 }
 
 type EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequest struct {
-	Emails   []EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestEmailsItem `json:"emails"`
-	Groups   []EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestGroupsItem `json:"groups"`
-	Name     EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestName         `json:"name"`
-	Schemas  []string                                                                                    `json:"schemas"`
-	UserName string                                                                                      `json:"userName"`
+	Emails   []EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestEmailsItem  `json:"emails"`
+	Groups   *[]EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestGroupsItem `json:"groups"`
+	Name     EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestName          `json:"name"`
+	Schemas  []string                                                                                     `json:"schemas"`
+	UserName string                                                                                       `json:"userName"`
 }
 
 type EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestEmailsItem struct {
@@ -2235,7 +2434,7 @@ type EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONReq
 }
 
 type EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestGroupsItem struct {
-	Value string `json:"value"`
+	Value *string `json:"value"`
 }
 
 type EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestName struct {
@@ -2261,56 +2460,52 @@ type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONReque
 	Runners []int `json:"runners"`
 }
 
-type EnterpriseAdminUpdateAttributeForEnterpriseGroupApplicationJSONRequest struct {
-}
-
-type EnterpriseAdminUpdateAttributeForEnterpriseGroupApplicationJSONRequestOperationsItem struct {
-}
-
 type EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest struct {
 	Operations []struct{} `json:"Operations"`
 	Schemas    []string   `json:"schemas"`
 }
 
 type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest struct {
-	Name       string `json:"name"`
-	Visibility string `json:"visibility"`
+	Name       *string                                                                                  `json:"name"`
+	Visibility *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility `json:"visibility"`
 }
 
-type Environment struct {
-	ID        int       `json:"id"`
-	Name      string    `json:"name"`
-	URL       string    `json:"url"`
-	HTMLURL   string    `json:"html_url"`
-	UpdatedAt time.Time `json:"updated_at"`
-	NodeID    string    `json:"node_id"`
-	CreatedAt time.Time `json:"created_at"`
-}
+type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility string
 
-func (*Environment) reposCreateOrUpdateEnvironmentResponse() {}
+const (
+	EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibilitySelected EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility = "selected"
+	EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibilityAll      EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility = "all"
+)
 
 type EnvironmentApprovals struct {
 	Comment      string                                 `json:"comment"`
 	Environments []EnvironmentApprovalsEnvironmentsItem `json:"environments"`
-	State        string                                 `json:"state"`
+	State        EnvironmentApprovalsState              `json:"state"`
 	User         SimpleUser                             `json:"user"`
 }
 
 type EnvironmentApprovalsEnvironmentsItem struct {
-	CreatedAt time.Time `json:"created_at"`
-	HTMLURL   string    `json:"html_url"`
-	ID        int       `json:"id"`
-	Name      string    `json:"name"`
-	NodeID    string    `json:"node_id"`
-	URL       string    `json:"url"`
-	UpdatedAt time.Time `json:"updated_at"`
+	CreatedAt *time.Time `json:"created_at"`
+	HTMLURL   *string    `json:"html_url"`
+	ID        *int       `json:"id"`
+	Name      *string    `json:"name"`
+	NodeID    *string    `json:"node_id"`
+	URL       *string    `json:"url"`
+	UpdatedAt *time.Time `json:"updated_at"`
 }
+
+type EnvironmentApprovalsState string
+
+const (
+	EnvironmentApprovalsStateApproved EnvironmentApprovalsState = "approved"
+	EnvironmentApprovalsStateRejected EnvironmentApprovalsState = "rejected"
+)
 
 type Event struct {
 	Actor     Actor        `json:"actor"`
 	CreatedAt time.Time    `json:"created_at"`
 	ID        string       `json:"id"`
-	Org       Actor        `json:"org"`
+	Org       *Actor       `json:"org"`
 	Payload   EventPayload `json:"payload"`
 	Public    bool         `json:"public"`
 	Repo      EventRepo    `json:"repo"`
@@ -2318,19 +2513,19 @@ type Event struct {
 }
 
 type EventPayload struct {
-	Action  string                  `json:"action"`
-	Comment IssueComment            `json:"comment"`
-	Issue   IssueSimple             `json:"issue"`
-	Pages   []EventPayloadPagesItem `json:"pages"`
+	Action  *string                  `json:"action"`
+	Comment *IssueComment            `json:"comment"`
+	Issue   *IssueSimple             `json:"issue"`
+	Pages   *[]EventPayloadPagesItem `json:"pages"`
 }
 
 type EventPayloadPagesItem struct {
-	Action   string `json:"action"`
-	HTMLURL  string `json:"html_url"`
-	PageName string `json:"page_name"`
-	Sha      string `json:"sha"`
-	Summary  string `json:"summary"`
-	Title    string `json:"title"`
+	Action   *string `json:"action"`
+	HTMLURL  *string `json:"html_url"`
+	PageName *string `json:"page_name"`
+	Sha      *string `json:"sha"`
+	Summary  *string `json:"summary"`
+	Title    *string `json:"title"`
 }
 
 type EventRepo struct {
@@ -2340,26 +2535,26 @@ type EventRepo struct {
 }
 
 type Feed struct {
-	CurrentUserActorURL         string    `json:"current_user_actor_url"`
-	CurrentUserOrganizationURL  string    `json:"current_user_organization_url"`
-	CurrentUserOrganizationUrls []string  `json:"current_user_organization_urls"`
-	CurrentUserPublicURL        string    `json:"current_user_public_url"`
-	CurrentUserURL              string    `json:"current_user_url"`
+	CurrentUserActorURL         *string   `json:"current_user_actor_url"`
+	CurrentUserOrganizationURL  *string   `json:"current_user_organization_url"`
+	CurrentUserOrganizationUrls *[]string `json:"current_user_organization_urls"`
+	CurrentUserPublicURL        *string   `json:"current_user_public_url"`
+	CurrentUserURL              *string   `json:"current_user_url"`
 	Links                       FeedLinks `json:"_links"`
-	SecurityAdvisoriesURL       string    `json:"security_advisories_url"`
+	SecurityAdvisoriesURL       *string   `json:"security_advisories_url"`
 	TimelineURL                 string    `json:"timeline_url"`
 	UserURL                     string    `json:"user_url"`
 }
 
 type FeedLinks struct {
-	CurrentUser              LinkWithType   `json:"current_user"`
-	CurrentUserActor         LinkWithType   `json:"current_user_actor"`
-	CurrentUserOrganization  LinkWithType   `json:"current_user_organization"`
-	CurrentUserOrganizations []LinkWithType `json:"current_user_organizations"`
-	CurrentUserPublic        LinkWithType   `json:"current_user_public"`
-	SecurityAdvisories       LinkWithType   `json:"security_advisories"`
-	Timeline                 LinkWithType   `json:"timeline"`
-	User                     LinkWithType   `json:"user"`
+	CurrentUser              *LinkWithType   `json:"current_user"`
+	CurrentUserActor         *LinkWithType   `json:"current_user_actor"`
+	CurrentUserOrganization  *LinkWithType   `json:"current_user_organization"`
+	CurrentUserOrganizations *[]LinkWithType `json:"current_user_organizations"`
+	CurrentUserPublic        *LinkWithType   `json:"current_user_public"`
+	SecurityAdvisories       *LinkWithType   `json:"security_advisories"`
+	Timeline                 LinkWithType    `json:"timeline"`
+	User                     LinkWithType    `json:"user"`
 }
 
 type FileCommit struct {
@@ -2367,195 +2562,223 @@ type FileCommit struct {
 	Content FileCommitContent `json:"content"`
 }
 
-func (*FileCommit) reposCreateOrUpdateFileContentsResponse() {}
-func (*FileCommit) reposDeleteFileResponse()                 {}
-
 type FileCommitCommit struct {
-	Author       FileCommitCommitAuthor        `json:"author"`
-	Committer    FileCommitCommitCommitter     `json:"committer"`
-	HTMLURL      string                        `json:"html_url"`
-	Message      string                        `json:"message"`
-	NodeID       string                        `json:"node_id"`
-	Parents      []FileCommitCommitParentsItem `json:"parents"`
-	Sha          string                        `json:"sha"`
-	Tree         FileCommitCommitTree          `json:"tree"`
-	URL          string                        `json:"url"`
-	Verification FileCommitCommitVerification  `json:"verification"`
+	Author       *FileCommitCommitAuthor        `json:"author"`
+	Committer    *FileCommitCommitCommitter     `json:"committer"`
+	HTMLURL      *string                        `json:"html_url"`
+	Message      *string                        `json:"message"`
+	NodeID       *string                        `json:"node_id"`
+	Parents      *[]FileCommitCommitParentsItem `json:"parents"`
+	Sha          *string                        `json:"sha"`
+	Tree         *FileCommitCommitTree          `json:"tree"`
+	URL          *string                        `json:"url"`
+	Verification *FileCommitCommitVerification  `json:"verification"`
 }
 
 type FileCommitCommitAuthor struct {
-	Date  string `json:"date"`
-	Email string `json:"email"`
-	Name  string `json:"name"`
+	Date  *string `json:"date"`
+	Email *string `json:"email"`
+	Name  *string `json:"name"`
 }
 
 type FileCommitCommitCommitter struct {
-	Date  string `json:"date"`
-	Email string `json:"email"`
-	Name  string `json:"name"`
+	Date  *string `json:"date"`
+	Email *string `json:"email"`
+	Name  *string `json:"name"`
 }
 
 type FileCommitCommitParentsItem struct {
-	HTMLURL string `json:"html_url"`
-	Sha     string `json:"sha"`
-	URL     string `json:"url"`
+	HTMLURL *string `json:"html_url"`
+	Sha     *string `json:"sha"`
+	URL     *string `json:"url"`
 }
 
 type FileCommitCommitTree struct {
-	Sha string `json:"sha"`
-	URL string `json:"url"`
+	Sha *string `json:"sha"`
+	URL *string `json:"url"`
 }
 
 type FileCommitCommitVerification struct {
-	Payload   string `json:"payload"`
-	Reason    string `json:"reason"`
-	Signature string `json:"signature"`
-	Verified  bool   `json:"verified"`
+	Payload   *string `json:"payload"`
+	Reason    *string `json:"reason"`
+	Signature *string `json:"signature"`
+	Verified  *bool   `json:"verified"`
 }
 
 type FileCommitContent struct {
-	DownloadURL string                 `json:"download_url"`
-	GitURL      string                 `json:"git_url"`
-	HTMLURL     string                 `json:"html_url"`
-	Links       FileCommitContentLinks `json:"_links"`
-	Name        string                 `json:"name"`
-	Path        string                 `json:"path"`
-	Sha         string                 `json:"sha"`
-	Size        int                    `json:"size"`
-	Type        string                 `json:"type"`
-	URL         string                 `json:"url"`
+	DownloadURL *string                 `json:"download_url"`
+	GitURL      *string                 `json:"git_url"`
+	HTMLURL     *string                 `json:"html_url"`
+	Links       *FileCommitContentLinks `json:"_links"`
+	Name        *string                 `json:"name"`
+	Path        *string                 `json:"path"`
+	Sha         *string                 `json:"sha"`
+	Size        *int                    `json:"size"`
+	Type        *string                 `json:"type"`
+	URL         *string                 `json:"url"`
 }
 
 type FileCommitContentLinks struct {
-	Git  string `json:"git"`
-	HTML string `json:"html"`
-	Self string `json:"self"`
+	Git  *string `json:"git"`
+	HTML *string `json:"html"`
+	Self *string `json:"self"`
 }
+
+type ForbiddenGist struct {
+	Block            *ForbiddenGistBlock `json:"block"`
+	DocumentationURL *string             `json:"documentation_url"`
+	Message          *string             `json:"message"`
+}
+
+func (*ForbiddenGist) gistsGetCommentResponse() {}
+func (*ForbiddenGist) gistsGetResponse()        {}
+
+type ForbiddenGistBlock struct {
+	CreatedAt *string `json:"created_at"`
+	HTMLURL   *string `json:"html_url"`
+	Reason    *string `json:"reason"`
+}
+
+type Found struct{}
+
+func (*Found) reposGetReleaseAssetResponse() {}
 
 type FullRepository struct {
-	AllowAutoMerge         bool                              `json:"allow_auto_merge"`
-	AllowForking           bool                              `json:"allow_forking"`
-	AllowMergeCommit       bool                              `json:"allow_merge_commit"`
-	AllowRebaseMerge       bool                              `json:"allow_rebase_merge"`
-	AllowSquashMerge       bool                              `json:"allow_squash_merge"`
-	AnonymousAccessEnabled bool                              `json:"anonymous_access_enabled"`
-	ArchiveURL             string                            `json:"archive_url"`
-	Archived               bool                              `json:"archived"`
-	AssigneesURL           string                            `json:"assignees_url"`
-	BlobsURL               string                            `json:"blobs_url"`
-	BranchesURL            string                            `json:"branches_url"`
-	CloneURL               string                            `json:"clone_url"`
-	CodeOfConduct          CodeOfConductSimple               `json:"code_of_conduct"`
-	CollaboratorsURL       string                            `json:"collaborators_url"`
-	CommentsURL            string                            `json:"comments_url"`
-	CommitsURL             string                            `json:"commits_url"`
-	CompareURL             string                            `json:"compare_url"`
-	ContentsURL            string                            `json:"contents_url"`
-	ContributorsURL        string                            `json:"contributors_url"`
-	CreatedAt              time.Time                         `json:"created_at"`
-	DefaultBranch          string                            `json:"default_branch"`
-	DeleteBranchOnMerge    bool                              `json:"delete_branch_on_merge"`
-	DeploymentsURL         string                            `json:"deployments_url"`
-	Description            string                            `json:"description"`
-	Disabled               bool                              `json:"disabled"`
-	DownloadsURL           string                            `json:"downloads_url"`
-	EventsURL              string                            `json:"events_url"`
-	Fork                   bool                              `json:"fork"`
-	Forks                  int                               `json:"forks"`
-	ForksCount             int                               `json:"forks_count"`
-	ForksURL               string                            `json:"forks_url"`
-	FullName               string                            `json:"full_name"`
-	GitCommitsURL          string                            `json:"git_commits_url"`
-	GitRefsURL             string                            `json:"git_refs_url"`
-	GitTagsURL             string                            `json:"git_tags_url"`
-	GitURL                 string                            `json:"git_url"`
-	HTMLURL                string                            `json:"html_url"`
-	HasDownloads           bool                              `json:"has_downloads"`
-	HasIssues              bool                              `json:"has_issues"`
-	HasPages               bool                              `json:"has_pages"`
-	HasProjects            bool                              `json:"has_projects"`
-	HasWiki                bool                              `json:"has_wiki"`
-	Homepage               string                            `json:"homepage"`
-	HooksURL               string                            `json:"hooks_url"`
-	ID                     int                               `json:"id"`
-	IsTemplate             bool                              `json:"is_template"`
-	IssueCommentURL        string                            `json:"issue_comment_url"`
-	IssueEventsURL         string                            `json:"issue_events_url"`
-	IssuesURL              string                            `json:"issues_url"`
-	KeysURL                string                            `json:"keys_url"`
-	LabelsURL              string                            `json:"labels_url"`
-	Language               string                            `json:"language"`
-	LanguagesURL           string                            `json:"languages_url"`
-	License                NullableLicenseSimple             `json:"license"`
-	MasterBranch           string                            `json:"master_branch"`
-	MergesURL              string                            `json:"merges_url"`
-	MilestonesURL          string                            `json:"milestones_url"`
-	MirrorURL              string                            `json:"mirror_url"`
-	Name                   string                            `json:"name"`
-	NetworkCount           int                               `json:"network_count"`
-	NodeID                 string                            `json:"node_id"`
-	NotificationsURL       string                            `json:"notifications_url"`
-	OpenIssues             int                               `json:"open_issues"`
-	OpenIssuesCount        int                               `json:"open_issues_count"`
-	Organization           NullableSimpleUser                `json:"organization"`
-	Owner                  SimpleUser                        `json:"owner"`
-	Parent                 Repository                        `json:"parent"`
-	Permissions            FullRepositoryPermissions         `json:"permissions"`
-	Private                bool                              `json:"private"`
-	PullsURL               string                            `json:"pulls_url"`
-	PushedAt               time.Time                         `json:"pushed_at"`
-	ReleasesURL            string                            `json:"releases_url"`
-	SSHURL                 string                            `json:"ssh_url"`
-	SecurityAndAnalysis    FullRepositorySecurityAndAnalysis `json:"security_and_analysis"`
-	Size                   int                               `json:"size"`
-	Source                 Repository                        `json:"source"`
-	StargazersCount        int                               `json:"stargazers_count"`
-	StargazersURL          string                            `json:"stargazers_url"`
-	StatusesURL            string                            `json:"statuses_url"`
-	SubscribersCount       int                               `json:"subscribers_count"`
-	SubscribersURL         string                            `json:"subscribers_url"`
-	SubscriptionURL        string                            `json:"subscription_url"`
-	SvnURL                 string                            `json:"svn_url"`
-	TagsURL                string                            `json:"tags_url"`
-	TeamsURL               string                            `json:"teams_url"`
-	TempCloneToken         string                            `json:"temp_clone_token"`
-	TemplateRepository     NullableRepository                `json:"template_repository"`
-	Topics                 []string                          `json:"topics"`
-	TreesURL               string                            `json:"trees_url"`
-	URL                    string                            `json:"url"`
-	UpdatedAt              time.Time                         `json:"updated_at"`
-	Visibility             string                            `json:"visibility"`
-	Watchers               int                               `json:"watchers"`
-	WatchersCount          int                               `json:"watchers_count"`
+	AllowAutoMerge         *bool                              `json:"allow_auto_merge"`
+	AllowForking           *bool                              `json:"allow_forking"`
+	AllowMergeCommit       *bool                              `json:"allow_merge_commit"`
+	AllowRebaseMerge       *bool                              `json:"allow_rebase_merge"`
+	AllowSquashMerge       *bool                              `json:"allow_squash_merge"`
+	AnonymousAccessEnabled *bool                              `json:"anonymous_access_enabled"`
+	ArchiveURL             string                             `json:"archive_url"`
+	Archived               bool                               `json:"archived"`
+	AssigneesURL           string                             `json:"assignees_url"`
+	BlobsURL               string                             `json:"blobs_url"`
+	BranchesURL            string                             `json:"branches_url"`
+	CloneURL               string                             `json:"clone_url"`
+	CodeOfConduct          *CodeOfConductSimple               `json:"code_of_conduct"`
+	CollaboratorsURL       string                             `json:"collaborators_url"`
+	CommentsURL            string                             `json:"comments_url"`
+	CommitsURL             string                             `json:"commits_url"`
+	CompareURL             string                             `json:"compare_url"`
+	ContentsURL            string                             `json:"contents_url"`
+	ContributorsURL        string                             `json:"contributors_url"`
+	CreatedAt              time.Time                          `json:"created_at"`
+	DefaultBranch          string                             `json:"default_branch"`
+	DeleteBranchOnMerge    *bool                              `json:"delete_branch_on_merge"`
+	DeploymentsURL         string                             `json:"deployments_url"`
+	Description            string                             `json:"description"`
+	Disabled               bool                               `json:"disabled"`
+	DownloadsURL           string                             `json:"downloads_url"`
+	EventsURL              string                             `json:"events_url"`
+	Fork                   bool                               `json:"fork"`
+	Forks                  int                                `json:"forks"`
+	ForksCount             int                                `json:"forks_count"`
+	ForksURL               string                             `json:"forks_url"`
+	FullName               string                             `json:"full_name"`
+	GitCommitsURL          string                             `json:"git_commits_url"`
+	GitRefsURL             string                             `json:"git_refs_url"`
+	GitTagsURL             string                             `json:"git_tags_url"`
+	GitURL                 string                             `json:"git_url"`
+	HTMLURL                string                             `json:"html_url"`
+	HasDownloads           bool                               `json:"has_downloads"`
+	HasIssues              bool                               `json:"has_issues"`
+	HasPages               bool                               `json:"has_pages"`
+	HasProjects            bool                               `json:"has_projects"`
+	HasWiki                bool                               `json:"has_wiki"`
+	Homepage               string                             `json:"homepage"`
+	HooksURL               string                             `json:"hooks_url"`
+	ID                     int                                `json:"id"`
+	IsTemplate             *bool                              `json:"is_template"`
+	IssueCommentURL        string                             `json:"issue_comment_url"`
+	IssueEventsURL         string                             `json:"issue_events_url"`
+	IssuesURL              string                             `json:"issues_url"`
+	KeysURL                string                             `json:"keys_url"`
+	LabelsURL              string                             `json:"labels_url"`
+	Language               string                             `json:"language"`
+	LanguagesURL           string                             `json:"languages_url"`
+	License                NullableLicenseSimple              `json:"license"`
+	MasterBranch           *string                            `json:"master_branch"`
+	MergesURL              string                             `json:"merges_url"`
+	MilestonesURL          string                             `json:"milestones_url"`
+	MirrorURL              string                             `json:"mirror_url"`
+	Name                   string                             `json:"name"`
+	NetworkCount           int                                `json:"network_count"`
+	NodeID                 string                             `json:"node_id"`
+	NotificationsURL       string                             `json:"notifications_url"`
+	OpenIssues             int                                `json:"open_issues"`
+	OpenIssuesCount        int                                `json:"open_issues_count"`
+	Organization           *NullableSimpleUser                `json:"organization"`
+	Owner                  SimpleUser                         `json:"owner"`
+	Parent                 *Repository                        `json:"parent"`
+	Permissions            *FullRepositoryPermissions         `json:"permissions"`
+	Private                bool                               `json:"private"`
+	PullsURL               string                             `json:"pulls_url"`
+	PushedAt               time.Time                          `json:"pushed_at"`
+	ReleasesURL            string                             `json:"releases_url"`
+	SSHURL                 string                             `json:"ssh_url"`
+	SecurityAndAnalysis    *FullRepositorySecurityAndAnalysis `json:"security_and_analysis"`
+	Size                   int                                `json:"size"`
+	Source                 *Repository                        `json:"source"`
+	StargazersCount        int                                `json:"stargazers_count"`
+	StargazersURL          string                             `json:"stargazers_url"`
+	StatusesURL            string                             `json:"statuses_url"`
+	SubscribersCount       int                                `json:"subscribers_count"`
+	SubscribersURL         string                             `json:"subscribers_url"`
+	SubscriptionURL        string                             `json:"subscription_url"`
+	SvnURL                 string                             `json:"svn_url"`
+	TagsURL                string                             `json:"tags_url"`
+	TeamsURL               string                             `json:"teams_url"`
+	TempCloneToken         *string                            `json:"temp_clone_token"`
+	TemplateRepository     *NullableRepository                `json:"template_repository"`
+	Topics                 *[]string                          `json:"topics"`
+	TreesURL               string                             `json:"trees_url"`
+	URL                    string                             `json:"url"`
+	UpdatedAt              time.Time                          `json:"updated_at"`
+	Visibility             *string                            `json:"visibility"`
+	Watchers               int                                `json:"watchers"`
+	WatchersCount          int                                `json:"watchers_count"`
 }
 
-func (*FullRepository) reposCreateForkResponse() {}
-func (*FullRepository) reposGetResponse()        {}
-func (*FullRepository) reposUpdateResponse()     {}
+func (*FullRepository) reposGetResponse() {}
 
 type FullRepositoryPermissions struct {
-	Admin    bool `json:"admin"`
-	Maintain bool `json:"maintain"`
-	Pull     bool `json:"pull"`
-	Push     bool `json:"push"`
-	Triage   bool `json:"triage"`
+	Admin    bool  `json:"admin"`
+	Maintain *bool `json:"maintain"`
+	Pull     bool  `json:"pull"`
+	Push     bool  `json:"push"`
+	Triage   *bool `json:"triage"`
 }
 
 type FullRepositorySecurityAndAnalysis struct {
-	AdvancedSecurity FullRepositorySecurityAndAnalysisAdvancedSecurity `json:"advanced_security"`
-	SecretScanning   FullRepositorySecurityAndAnalysisSecretScanning   `json:"secret_scanning"`
+	AdvancedSecurity *FullRepositorySecurityAndAnalysisAdvancedSecurity `json:"advanced_security"`
+	SecretScanning   *FullRepositorySecurityAndAnalysisSecretScanning   `json:"secret_scanning"`
 }
 
 type FullRepositorySecurityAndAnalysisAdvancedSecurity struct {
-	Status string `json:"status"`
+	Status *FullRepositorySecurityAndAnalysisAdvancedSecurityStatus `json:"status"`
 }
+
+type FullRepositorySecurityAndAnalysisAdvancedSecurityStatus string
+
+const (
+	FullRepositorySecurityAndAnalysisAdvancedSecurityStatusEnabled  FullRepositorySecurityAndAnalysisAdvancedSecurityStatus = "enabled"
+	FullRepositorySecurityAndAnalysisAdvancedSecurityStatusDisabled FullRepositorySecurityAndAnalysisAdvancedSecurityStatus = "disabled"
+)
 
 type FullRepositorySecurityAndAnalysisSecretScanning struct {
-	Status string `json:"status"`
+	Status *FullRepositorySecurityAndAnalysisSecretScanningStatus `json:"status"`
 }
 
+type FullRepositorySecurityAndAnalysisSecretScanningStatus string
+
+const (
+	FullRepositorySecurityAndAnalysisSecretScanningStatusEnabled  FullRepositorySecurityAndAnalysisSecretScanningStatus = "enabled"
+	FullRepositorySecurityAndAnalysisSecretScanningStatusDisabled FullRepositorySecurityAndAnalysisSecretScanningStatus = "disabled"
+)
+
 type GistComment struct {
-	AuthorAssociation string             `json:"author_association"`
+	AuthorAssociation AuthorAssociation  `json:"author_association"`
 	Body              string             `json:"body"`
 	CreatedAt         time.Time          `json:"created_at"`
 	ID                int                `json:"id"`
@@ -2578,54 +2801,80 @@ type GistCommit struct {
 }
 
 type GistCommitChangeStatus struct {
-	Additions int `json:"additions"`
-	Deletions int `json:"deletions"`
-	Total     int `json:"total"`
+	Additions *int `json:"additions"`
+	Deletions *int `json:"deletions"`
+	Total     *int `json:"total"`
 }
 
 type GistHistory struct {
-	ChangeStatus GistHistoryChangeStatus `json:"change_status"`
-	CommittedAt  time.Time               `json:"committed_at"`
-	URL          string                  `json:"url"`
-	User         NullableSimpleUser      `json:"user"`
-	Version      string                  `json:"version"`
+	ChangeStatus *GistHistoryChangeStatus `json:"change_status"`
+	CommittedAt  *time.Time               `json:"committed_at"`
+	URL          *string                  `json:"url"`
+	User         *NullableSimpleUser      `json:"user"`
+	Version      *string                  `json:"version"`
 }
 
 type GistHistoryChangeStatus struct {
-	Additions int `json:"additions"`
-	Deletions int `json:"deletions"`
-	Total     int `json:"total"`
+	Additions *int `json:"additions"`
+	Deletions *int `json:"deletions"`
+	Total     *int `json:"total"`
 }
 
 type GistSimple struct {
-	Files       struct{}      `json:"files"`
-	Description string        `json:"description"`
-	CommentsURL string        `json:"comments_url"`
-	CommitsURL  string        `json:"commits_url"`
-	GitPullURL  string        `json:"git_pull_url"`
-	GitPushURL  string        `json:"git_push_url"`
-	ID          string        `json:"id"`
-	UpdatedAt   string        `json:"updated_at"`
-	User        string        `json:"user"`
-	Truncated   bool          `json:"truncated"`
-	History     []GistHistory `json:"history"`
+	Comments    *int                   `json:"comments"`
+	CommentsURL *string                `json:"comments_url"`
+	CommitsURL  *string                `json:"commits_url"`
+	CreatedAt   *string                `json:"created_at"`
+	Description *string                `json:"description"`
+	Files       *struct{}              `json:"files"`
+	ForkOf      *GistSimpleForkOf      `json:"fork_of"`
+	Forks       *[]GistSimpleForksItem `json:"forks"`
+	ForksURL    *string                `json:"forks_url"`
+	GitPullURL  *string                `json:"git_pull_url"`
+	GitPushURL  *string                `json:"git_push_url"`
+	HTMLURL     *string                `json:"html_url"`
+	History     *[]GistHistory         `json:"history"`
+	ID          *string                `json:"id"`
+	NodeID      *string                `json:"node_id"`
+	Owner       *SimpleUser            `json:"owner"`
+	Public      *bool                  `json:"public"`
+	Truncated   *bool                  `json:"truncated"`
+	URL         *string                `json:"url"`
+	UpdatedAt   *string                `json:"updated_at"`
+	User        *string                `json:"user"`
 }
 
-func (*GistSimple) gistsCreateResponse()      {}
-func (*GistSimple) gistsGetResponse()         {}
-func (*GistSimple) gistsGetRevisionResponse() {}
-func (*GistSimple) gistsUpdateResponse()      {}
+func (*GistSimple) gistsGetResponse() {}
 
 type GistSimpleForkOf struct {
-	GitPushURL  string             `json:"git_push_url"`
-	HTMLURL     string             `json:"html_url"`
-	CommentsURL string             `json:"comments_url"`
-	Owner       NullableSimpleUser `json:"owner"`
-	Truncated   bool               `json:"truncated"`
-	URL         string             `json:"url"`
-	ID          string             `json:"id"`
-	GitPullURL  string             `json:"git_pull_url"`
-	Description string             `json:"description"`
+	Comments    int                 `json:"comments"`
+	CommentsURL string              `json:"comments_url"`
+	CommitsURL  string              `json:"commits_url"`
+	CreatedAt   time.Time           `json:"created_at"`
+	Description string              `json:"description"`
+	Files       struct{}            `json:"files"`
+	Forks       *[]string           `json:"forks"`
+	ForksURL    string              `json:"forks_url"`
+	GitPullURL  string              `json:"git_pull_url"`
+	GitPushURL  string              `json:"git_push_url"`
+	HTMLURL     string              `json:"html_url"`
+	History     *[]string           `json:"history"`
+	ID          string              `json:"id"`
+	NodeID      string              `json:"node_id"`
+	Owner       *NullableSimpleUser `json:"owner"`
+	Public      bool                `json:"public"`
+	Truncated   *bool               `json:"truncated"`
+	URL         string              `json:"url"`
+	UpdatedAt   time.Time           `json:"updated_at"`
+	User        NullableSimpleUser  `json:"user"`
+}
+
+type GistSimpleForksItem struct {
+	CreatedAt *time.Time  `json:"created_at"`
+	ID        *string     `json:"id"`
+	URL       *string     `json:"url"`
+	UpdatedAt *time.Time  `json:"updated_at"`
+	User      *PublicUser `json:"user"`
 }
 
 type GistsCheckIsStarredNoContent struct{}
@@ -2636,14 +2885,33 @@ type GistsCheckIsStarredNotFound struct{}
 
 func (*GistsCheckIsStarredNotFound) gistsCheckIsStarredResponse() {}
 
-type GistsCreateApplicationJSONRequest struct {
-	Description string   `json:"description"`
-	Files       struct{} `json:"files"`
-}
+type GistsCreateCommentApplicationJSONForbidden BasicError
+
+func (*GistsCreateCommentApplicationJSONForbidden) gistsCreateCommentResponse() {}
+
+type GistsCreateCommentApplicationJSONNotFound BasicError
+
+func (*GistsCreateCommentApplicationJSONNotFound) gistsCreateCommentResponse() {}
 
 type GistsCreateCommentApplicationJSONRequest struct {
 	Body string `json:"body"`
 }
+
+type GistsDeleteApplicationJSONForbidden BasicError
+
+func (*GistsDeleteApplicationJSONForbidden) gistsDeleteResponse() {}
+
+type GistsDeleteApplicationJSONNotFound BasicError
+
+func (*GistsDeleteApplicationJSONNotFound) gistsDeleteResponse() {}
+
+type GistsDeleteCommentApplicationJSONForbidden BasicError
+
+func (*GistsDeleteCommentApplicationJSONForbidden) gistsDeleteCommentResponse() {}
+
+type GistsDeleteCommentApplicationJSONNotFound BasicError
+
+func (*GistsDeleteCommentApplicationJSONNotFound) gistsDeleteCommentResponse() {}
 
 type GistsDeleteCommentNoContent struct{}
 
@@ -2653,9 +2921,25 @@ type GistsDeleteNoContent struct{}
 
 func (*GistsDeleteNoContent) gistsDeleteResponse() {}
 
+type GistsListCommentsApplicationJSONForbidden BasicError
+
+func (*GistsListCommentsApplicationJSONForbidden) gistsListCommentsResponse() {}
+
+type GistsListCommentsApplicationJSONNotFound BasicError
+
+func (*GistsListCommentsApplicationJSONNotFound) gistsListCommentsResponse() {}
+
 type GistsListCommentsOK []GistComment
 
 func (*GistsListCommentsOK) gistsListCommentsResponse() {}
+
+type GistsListCommitsApplicationJSONForbidden BasicError
+
+func (*GistsListCommitsApplicationJSONForbidden) gistsListCommitsResponse() {}
+
+type GistsListCommitsApplicationJSONNotFound BasicError
+
+func (*GistsListCommitsApplicationJSONNotFound) gistsListCommitsResponse() {}
 
 type GistsListCommitsOK []GistCommit
 
@@ -2663,7 +2947,17 @@ func (*GistsListCommitsOK) gistsListCommitsResponse() {}
 
 type GistsListForUserOK []BaseGist
 
-func (*GistsListForUserOK) gistsListForUserResponse() {}
+type GistsListForksApplicationJSONForbidden BasicError
+
+func (*GistsListForksApplicationJSONForbidden) gistsListForksResponse() {}
+
+type GistsListForksApplicationJSONNotFound BasicError
+
+func (*GistsListForksApplicationJSONNotFound) gistsListForksResponse() {}
+
+type GistsListForksOK []GistSimple
+
+func (*GistsListForksOK) gistsListForksResponse() {}
 
 type GistsListOK []BaseGist
 
@@ -2671,24 +2965,41 @@ func (*GistsListOK) gistsListResponse() {}
 
 type GistsListPublicOK []BaseGist
 
-func (*GistsListPublicOK) gistsListPublicResponse() {}
+type GistsListStarredApplicationJSONForbidden BasicError
+
+func (*GistsListStarredApplicationJSONForbidden) gistsListStarredResponse() {}
+
+type GistsListStarredApplicationJSONUnauthorized BasicError
+
+func (*GistsListStarredApplicationJSONUnauthorized) gistsListStarredResponse() {}
 
 type GistsListStarredOK []BaseGist
 
 func (*GistsListStarredOK) gistsListStarredResponse() {}
 
+type GistsStarApplicationJSONForbidden BasicError
+
+func (*GistsStarApplicationJSONForbidden) gistsStarResponse() {}
+
+type GistsStarApplicationJSONNotFound BasicError
+
+func (*GistsStarApplicationJSONNotFound) gistsStarResponse() {}
+
 type GistsStarNoContent struct{}
 
 func (*GistsStarNoContent) gistsStarResponse() {}
 
+type GistsUnstarApplicationJSONForbidden BasicError
+
+func (*GistsUnstarApplicationJSONForbidden) gistsUnstarResponse() {}
+
+type GistsUnstarApplicationJSONNotFound BasicError
+
+func (*GistsUnstarApplicationJSONNotFound) gistsUnstarResponse() {}
+
 type GistsUnstarNoContent struct{}
 
 func (*GistsUnstarNoContent) gistsUnstarResponse() {}
-
-type GistsUpdateApplicationJSONRequest struct {
-	Description string   `json:"description"`
-	Files       struct{} `json:"files"`
-}
 
 type GistsUpdateCommentApplicationJSONRequest struct {
 	Body string `json:"body"`
@@ -2707,8 +3018,7 @@ type GitCommit struct {
 	Verification GitCommitVerification  `json:"verification"`
 }
 
-func (*GitCommit) gitCreateCommitResponse() {}
-func (*GitCommit) gitGetCommitResponse()    {}
+func (*GitCommit) gitGetCommitResponse() {}
 
 type GitCommitAuthor struct {
 	Date  time.Time `json:"date"`
@@ -2741,67 +3051,101 @@ type GitCommitVerification struct {
 }
 
 type GitCreateBlobApplicationJSONRequest struct {
-	Content  string `json:"content"`
-	Encoding string `json:"encoding"`
+	Content  string  `json:"content"`
+	Encoding *string `json:"encoding"`
 }
+
+func (*GitCreateBlobApplicationJSONRequest) gitCreateBlobRequest() {}
 
 type GitCreateCommitApplicationJSONRequest struct {
-	Author    GitCreateCommitApplicationJSONRequestAuthor    `json:"author"`
-	Committer GitCreateCommitApplicationJSONRequestCommitter `json:"committer"`
-	Message   string                                         `json:"message"`
-	Parents   []string                                       `json:"parents"`
-	Signature string                                         `json:"signature"`
-	Tree      string                                         `json:"tree"`
+	Author    *GitCreateCommitApplicationJSONRequestAuthor    `json:"author"`
+	Committer *GitCreateCommitApplicationJSONRequestCommitter `json:"committer"`
+	Message   string                                          `json:"message"`
+	Parents   *[]string                                       `json:"parents"`
+	Signature *string                                         `json:"signature"`
+	Tree      string                                          `json:"tree"`
 }
 
+func (*GitCreateCommitApplicationJSONRequest) gitCreateCommitRequest() {}
+
 type GitCreateCommitApplicationJSONRequestAuthor struct {
-	Date  time.Time `json:"date"`
-	Email string    `json:"email"`
-	Name  string    `json:"name"`
+	Date  *time.Time `json:"date"`
+	Email string     `json:"email"`
+	Name  string     `json:"name"`
 }
 
 type GitCreateCommitApplicationJSONRequestCommitter struct {
-	Date  time.Time `json:"date"`
-	Email string    `json:"email"`
-	Name  string    `json:"name"`
+	Date  *time.Time `json:"date"`
+	Email *string    `json:"email"`
+	Name  *string    `json:"name"`
 }
 
 type GitCreateRefApplicationJSONRequest struct {
-	Key string `json:"key"`
-	Ref string `json:"ref"`
-	Sha string `json:"sha"`
+	Key *string `json:"key"`
+	Ref string  `json:"ref"`
+	Sha string  `json:"sha"`
 }
+
+func (*GitCreateRefApplicationJSONRequest) gitCreateRefRequest() {}
 
 type GitCreateTagApplicationJSONRequest struct {
-	Message string                                   `json:"message"`
-	Object  string                                   `json:"object"`
-	Tag     string                                   `json:"tag"`
-	Tagger  GitCreateTagApplicationJSONRequestTagger `json:"tagger"`
-	Type    string                                   `json:"type"`
+	Message string                                    `json:"message"`
+	Object  string                                    `json:"object"`
+	Tag     string                                    `json:"tag"`
+	Tagger  *GitCreateTagApplicationJSONRequestTagger `json:"tagger"`
+	Type    GitCreateTagApplicationJSONRequestType    `json:"type"`
 }
+
+func (*GitCreateTagApplicationJSONRequest) gitCreateTagRequest() {}
 
 type GitCreateTagApplicationJSONRequestTagger struct {
-	Date  time.Time `json:"date"`
-	Email string    `json:"email"`
-	Name  string    `json:"name"`
+	Date  *time.Time `json:"date"`
+	Email string     `json:"email"`
+	Name  string     `json:"name"`
 }
 
+type GitCreateTagApplicationJSONRequestType string
+
+const (
+	GitCreateTagApplicationJSONRequestTypeCommit GitCreateTagApplicationJSONRequestType = "commit"
+	GitCreateTagApplicationJSONRequestTypeTree   GitCreateTagApplicationJSONRequestType = "tree"
+	GitCreateTagApplicationJSONRequestTypeBlob   GitCreateTagApplicationJSONRequestType = "blob"
+)
+
 type GitCreateTreeApplicationJSONRequest struct {
-	BaseTree string                                        `json:"base_tree"`
+	BaseTree *string                                       `json:"base_tree"`
 	Tree     []GitCreateTreeApplicationJSONRequestTreeItem `json:"tree"`
 }
 
+func (*GitCreateTreeApplicationJSONRequest) gitCreateTreeRequest() {}
+
 type GitCreateTreeApplicationJSONRequestTreeItem struct {
-	Content string `json:"content"`
-	Mode    string `json:"mode"`
-	Path    string `json:"path"`
-	Sha     string `json:"sha"`
-	Type    string `json:"type"`
+	Content *string                                          `json:"content"`
+	Mode    *GitCreateTreeApplicationJSONRequestTreeItemMode `json:"mode"`
+	Path    *string                                          `json:"path"`
+	Sha     *string                                          `json:"sha"`
+	Type    *GitCreateTreeApplicationJSONRequestTreeItemType `json:"type"`
 }
 
-type GitDeleteRefNoContent struct{}
+type GitCreateTreeApplicationJSONRequestTreeItemMode string
 
-func (*GitDeleteRefNoContent) gitDeleteRefResponse() {}
+const (
+	GitCreateTreeApplicationJSONRequestTreeItemMode100644 GitCreateTreeApplicationJSONRequestTreeItemMode = "100644"
+	GitCreateTreeApplicationJSONRequestTreeItemMode100755 GitCreateTreeApplicationJSONRequestTreeItemMode = "100755"
+	GitCreateTreeApplicationJSONRequestTreeItemMode040000 GitCreateTreeApplicationJSONRequestTreeItemMode = "040000"
+	GitCreateTreeApplicationJSONRequestTreeItemMode160000 GitCreateTreeApplicationJSONRequestTreeItemMode = "160000"
+	GitCreateTreeApplicationJSONRequestTreeItemMode120000 GitCreateTreeApplicationJSONRequestTreeItemMode = "120000"
+)
+
+type GitCreateTreeApplicationJSONRequestTreeItemType string
+
+const (
+	GitCreateTreeApplicationJSONRequestTreeItemTypeBlob   GitCreateTreeApplicationJSONRequestTreeItemType = "blob"
+	GitCreateTreeApplicationJSONRequestTreeItemTypeTree   GitCreateTreeApplicationJSONRequestTreeItemType = "tree"
+	GitCreateTreeApplicationJSONRequestTreeItemTypeCommit GitCreateTreeApplicationJSONRequestTreeItemType = "commit"
+)
+
+type GitDeleteRefNoContent struct{}
 
 type GitRef struct {
 	NodeID string       `json:"node_id"`
@@ -2810,9 +3154,7 @@ type GitRef struct {
 	URL    string       `json:"url"`
 }
 
-func (*GitRef) gitCreateRefResponse() {}
-func (*GitRef) gitGetRefResponse()    {}
-func (*GitRef) gitUpdateRefResponse() {}
+func (*GitRef) gitGetRefResponse() {}
 
 type GitRefObject struct {
 	Sha  string `json:"sha"`
@@ -2821,18 +3163,17 @@ type GitRefObject struct {
 }
 
 type GitTag struct {
-	Message      string       `json:"message"`
-	NodeID       string       `json:"node_id"`
-	Object       GitTagObject `json:"object"`
-	Sha          string       `json:"sha"`
-	Tag          string       `json:"tag"`
-	Tagger       GitTagTagger `json:"tagger"`
-	URL          string       `json:"url"`
-	Verification Verification `json:"verification"`
+	Message      string        `json:"message"`
+	NodeID       string        `json:"node_id"`
+	Object       GitTagObject  `json:"object"`
+	Sha          string        `json:"sha"`
+	Tag          string        `json:"tag"`
+	Tagger       GitTagTagger  `json:"tagger"`
+	URL          string        `json:"url"`
+	Verification *Verification `json:"verification"`
 }
 
-func (*GitTag) gitCreateTagResponse() {}
-func (*GitTag) gitGetTagResponse()    {}
+func (*GitTag) gitGetTagResponse() {}
 
 type GitTagObject struct {
 	Sha  string `json:"sha"`
@@ -2853,22 +3194,21 @@ type GitTree struct {
 	URL       string            `json:"url"`
 }
 
-func (*GitTree) gitCreateTreeResponse() {}
-func (*GitTree) gitGetTreeResponse()    {}
-
 type GitTreeTreeItem struct {
-	Mode string `json:"mode"`
-	Path string `json:"path"`
-	Sha  string `json:"sha"`
-	Size int    `json:"size"`
-	Type string `json:"type"`
-	URL  string `json:"url"`
+	Mode *string `json:"mode"`
+	Path *string `json:"path"`
+	Sha  *string `json:"sha"`
+	Size *int    `json:"size"`
+	Type *string `json:"type"`
+	URL  *string `json:"url"`
 }
 
 type GitUpdateRefApplicationJSONRequest struct {
-	Force bool   `json:"force"`
+	Force *bool  `json:"force"`
 	Sha   string `json:"sha"`
 }
+
+func (*GitUpdateRefApplicationJSONRequest) gitUpdateRefRequest() {}
 
 type GitignoreGetAllTemplatesOK []string
 
@@ -2882,75 +3222,62 @@ type GitignoreTemplate struct {
 func (*GitignoreTemplate) gitignoreGetTemplateResponse() {}
 
 type GpgKey struct {
-	ID                int                `json:"id"`
-	Emails            []GpgKeyEmailsItem `json:"emails"`
-	CanEncryptComms   bool               `json:"can_encrypt_comms"`
-	CanEncryptStorage bool               `json:"can_encrypt_storage"`
-	CreatedAt         time.Time          `json:"created_at"`
-	CanCertify        bool               `json:"can_certify"`
-	ExpiresAt         time.Time          `json:"expires_at"`
-	RawKey            string             `json:"raw_key"`
-	PrimaryKeyID      int                `json:"primary_key_id"`
-	KeyID             string             `json:"key_id"`
-	PublicKey         string             `json:"public_key"`
+	CanCertify        bool                `json:"can_certify"`
+	CanEncryptComms   bool                `json:"can_encrypt_comms"`
+	CanEncryptStorage bool                `json:"can_encrypt_storage"`
+	CanSign           bool                `json:"can_sign"`
+	CreatedAt         time.Time           `json:"created_at"`
+	Emails            []GpgKeyEmailsItem  `json:"emails"`
+	ExpiresAt         time.Time           `json:"expires_at"`
+	ID                int                 `json:"id"`
+	KeyID             string              `json:"key_id"`
+	PrimaryKeyID      int                 `json:"primary_key_id"`
+	PublicKey         string              `json:"public_key"`
+	RawKey            string              `json:"raw_key"`
+	Subkeys           []GpgKeySubkeysItem `json:"subkeys"`
 }
 
-func (*GpgKey) usersCreateGpgKeyForAuthenticatedResponse() {}
-func (*GpgKey) usersGetGpgKeyForAuthenticatedResponse()    {}
+func (*GpgKey) usersGetGpgKeyForAuthenticatedResponse() {}
 
 type GpgKeyEmailsItem struct {
-	Email    string `json:"email"`
-	Verified bool   `json:"verified"`
+	Email    *string `json:"email"`
+	Verified *bool   `json:"verified"`
 }
 
 type GpgKeySubkeysItem struct {
-	CanEncryptComms   bool   `json:"can_encrypt_comms"`
-	CanEncryptStorage bool   `json:"can_encrypt_storage"`
-	PrimaryKeyID      int    `json:"primary_key_id"`
-	KeyID             string `json:"key_id"`
-	PublicKey         string `json:"public_key"`
+	CanCertify        *bool     `json:"can_certify"`
+	CanEncryptComms   *bool     `json:"can_encrypt_comms"`
+	CanEncryptStorage *bool     `json:"can_encrypt_storage"`
+	CanSign           *bool     `json:"can_sign"`
+	CreatedAt         *string   `json:"created_at"`
+	Emails            *[]string `json:"emails"`
+	ExpiresAt         *string   `json:"expires_at"`
+	ID                *int      `json:"id"`
+	KeyID             *string   `json:"key_id"`
+	PrimaryKeyID      *int      `json:"primary_key_id"`
+	PublicKey         *string   `json:"public_key"`
+	RawKey            *string   `json:"raw_key"`
+	Subkeys           *[]string `json:"subkeys"`
 }
 
 type GroupMapping struct {
-	Groups []GroupMappingGroupsItem `json:"groups"`
+	Groups *[]GroupMappingGroupsItem `json:"groups"`
 }
 
-func (*GroupMapping) teamsCreateOrUpdateIdpGroupConnectionsLegacyResponse() {}
-func (*GroupMapping) teamsListIdpGroupsForLegacyResponse()                  {}
+func (*GroupMapping) teamsListIdpGroupsForLegacyResponse() {}
 
 type GroupMappingGroupsItem struct {
-	GroupDescription string `json:"group_description"`
-	GroupID          string `json:"group_id"`
-	GroupName        string `json:"group_name"`
-	Status           string `json:"status"`
-	SyncedAt         string `json:"synced_at"`
-}
-
-type Hook struct {
-	Type         string       `json:"type"`
-	ID           int          `json:"id"`
-	CreatedAt    time.Time    `json:"created_at"`
-	LastResponse HookResponse `json:"last_response"`
-	PingURL      string       `json:"ping_url"`
-	Name         string       `json:"name"`
-	Active       bool         `json:"active"`
-	Events       []string     `json:"events"`
-}
-
-func (*Hook) reposCreateWebhookResponse() {}
-func (*Hook) reposGetWebhookResponse()    {}
-func (*Hook) reposUpdateWebhookResponse() {}
-
-type HookConfig struct {
-	Room      string `json:"room"`
-	Subdomain string `json:"subdomain"`
-	URL       string `json:"url"`
+	GroupDescription string  `json:"group_description"`
+	GroupID          string  `json:"group_id"`
+	GroupName        string  `json:"group_name"`
+	Status           *string `json:"status"`
+	SyncedAt         *string `json:"synced_at"`
 }
 
 type HookDelivery struct {
 	Action         string               `json:"action"`
 	DeliveredAt    time.Time            `json:"delivered_at"`
-	Duration       float                `json:"duration"`
+	Duration       float64              `json:"duration"`
 	Event          string               `json:"event"`
 	GUID           string               `json:"guid"`
 	ID             int                  `json:"id"`
@@ -2961,17 +3288,13 @@ type HookDelivery struct {
 	Response       HookDeliveryResponse `json:"response"`
 	Status         string               `json:"status"`
 	StatusCode     int                  `json:"status_code"`
-	URL            string               `json:"url"`
+	URL            *string              `json:"url"`
 }
-
-func (*HookDelivery) appsGetWebhookDeliveryResponse()  {}
-func (*HookDelivery) orgsGetWebhookDeliveryResponse()  {}
-func (*HookDelivery) reposGetWebhookDeliveryResponse() {}
 
 type HookDeliveryItem struct {
 	Action         string    `json:"action"`
 	DeliveredAt    time.Time `json:"delivered_at"`
-	Duration       float     `json:"duration"`
+	Duration       float64   `json:"duration"`
 	Event          string    `json:"event"`
 	GUID           string    `json:"guid"`
 	ID             int       `json:"id"`
@@ -2992,142 +3315,142 @@ type HookDeliveryResponse struct {
 	Payload string   `json:"payload"`
 }
 
-type HookResponse struct {
-	Code    int    `json:"code"`
-	Message string `json:"message"`
-	Status  string `json:"status"`
-}
-
-type Hovercard struct {
-	Contexts []HovercardContextsItem `json:"contexts"`
-}
-
-func (*Hovercard) usersGetContextForUserResponse() {}
-
-type HovercardContextsItem struct {
-	Message string `json:"message"`
-	Octicon string `json:"octicon"`
-}
-
 type Import struct {
-	AuthorsCount    int                        `json:"authors_count"`
-	AuthorsURL      string                     `json:"authors_url"`
-	CommitCount     int                        `json:"commit_count"`
-	ErrorMessage    string                     `json:"error_message"`
-	FailedStep      string                     `json:"failed_step"`
-	HTMLURL         string                     `json:"html_url"`
-	HasLargeFiles   bool                       `json:"has_large_files"`
-	ImportPercent   int                        `json:"import_percent"`
-	LargeFilesCount int                        `json:"large_files_count"`
-	LargeFilesSize  int                        `json:"large_files_size"`
-	Message         string                     `json:"message"`
-	ProjectChoices  []ImportProjectChoicesItem `json:"project_choices"`
-	PushPercent     int                        `json:"push_percent"`
-	RepositoryURL   string                     `json:"repository_url"`
-	Status          string                     `json:"status"`
-	StatusText      string                     `json:"status_text"`
-	SvcRoot         string                     `json:"svc_root"`
-	SvnRoot         string                     `json:"svn_root"`
-	TfvcProject     string                     `json:"tfvc_project"`
-	URL             string                     `json:"url"`
-	UseLfs          bool                       `json:"use_lfs"`
-	Vcs             string                     `json:"vcs"`
-	VcsURL          string                     `json:"vcs_url"`
+	AuthorsCount    *int                        `json:"authors_count"`
+	AuthorsURL      string                      `json:"authors_url"`
+	CommitCount     *int                        `json:"commit_count"`
+	ErrorMessage    *string                     `json:"error_message"`
+	FailedStep      *string                     `json:"failed_step"`
+	HTMLURL         string                      `json:"html_url"`
+	HasLargeFiles   *bool                       `json:"has_large_files"`
+	ImportPercent   *int                        `json:"import_percent"`
+	LargeFilesCount *int                        `json:"large_files_count"`
+	LargeFilesSize  *int                        `json:"large_files_size"`
+	Message         *string                     `json:"message"`
+	ProjectChoices  *[]ImportProjectChoicesItem `json:"project_choices"`
+	PushPercent     *int                        `json:"push_percent"`
+	RepositoryURL   string                      `json:"repository_url"`
+	Status          ImportStatus                `json:"status"`
+	StatusText      *string                     `json:"status_text"`
+	SvcRoot         *string                     `json:"svc_root"`
+	SvnRoot         *string                     `json:"svn_root"`
+	TfvcProject     *string                     `json:"tfvc_project"`
+	URL             string                      `json:"url"`
+	UseLfs          *bool                       `json:"use_lfs"`
+	Vcs             string                      `json:"vcs"`
+	VcsURL          string                      `json:"vcs_url"`
 }
 
-func (*Import) migrationsGetImportStatusResponse()  {}
-func (*Import) migrationsSetLfsPreferenceResponse() {}
-func (*Import) migrationsStartImportResponse()      {}
+func (*Import) migrationsGetImportStatusResponse() {}
 
 type ImportProjectChoicesItem struct {
-	HumanName   string `json:"human_name"`
-	TfvcProject string `json:"tfvc_project"`
-	Vcs         string `json:"vcs"`
+	HumanName   *string `json:"human_name"`
+	TfvcProject *string `json:"tfvc_project"`
+	Vcs         *string `json:"vcs"`
 }
 
-type Installation struct {
-	RepositoriesURL        string             `json:"repositories_url"`
-	AppID                  int                `json:"app_id"`
-	Permissions            AppPermissions     `json:"permissions"`
-	Events                 []string           `json:"events"`
-	SuspendedBy            NullableSimpleUser `json:"suspended_by"`
-	AccessTokensURL        string             `json:"access_tokens_url"`
-	TargetID               int                `json:"target_id"`
-	TargetType             string             `json:"target_type"`
-	SuspendedAt            time.Time          `json:"suspended_at"`
-	CreatedAt              time.Time          `json:"created_at"`
-	UpdatedAt              time.Time          `json:"updated_at"`
-	HasMultipleSingleFiles bool               `json:"has_multiple_single_files"`
-	SingleFilePaths        []string           `json:"single_file_paths"`
-	ContactEmail           string             `json:"contact_email"`
-	ID                     int                `json:"id"`
-}
+type ImportStatus string
 
-func (*Installation) appsGetInstallationResponse()     {}
-func (*Installation) appsGetRepoInstallationResponse() {}
+const (
+	ImportStatusAuth                   ImportStatus = "auth"
+	ImportStatusError                  ImportStatus = "error"
+	ImportStatusNone                   ImportStatus = "none"
+	ImportStatusDetecting              ImportStatus = "detecting"
+	ImportStatusChoose                 ImportStatus = "choose"
+	ImportStatusAuthFailed             ImportStatus = "auth_failed"
+	ImportStatusImporting              ImportStatus = "importing"
+	ImportStatusMapping                ImportStatus = "mapping"
+	ImportStatusWaitingToPush          ImportStatus = "waiting_to_push"
+	ImportStatusPushing                ImportStatus = "pushing"
+	ImportStatusComplete               ImportStatus = "complete"
+	ImportStatusSetup                  ImportStatus = "setup"
+	ImportStatusUnknown                ImportStatus = "unknown"
+	ImportStatusDetectionFoundMultiple ImportStatus = "detection_found_multiple"
+	ImportStatusDetectionFoundNothing  ImportStatus = "detection_found_nothing"
+	ImportStatusDetectionNeedsAuth     ImportStatus = "detection_needs_auth"
+)
 
 type InstallationToken struct {
-	ExpiresAt              string         `json:"expires_at"`
-	HasMultipleSingleFiles bool           `json:"has_multiple_single_files"`
-	Permissions            AppPermissions `json:"permissions"`
-	Repositories           []Repository   `json:"repositories"`
-	RepositorySelection    string         `json:"repository_selection"`
-	SingleFile             string         `json:"single_file"`
-	SingleFilePaths        []string       `json:"single_file_paths"`
-	Token                  string         `json:"token"`
+	ExpiresAt              string                                `json:"expires_at"`
+	HasMultipleSingleFiles *bool                                 `json:"has_multiple_single_files"`
+	Permissions            *AppPermissions                       `json:"permissions"`
+	Repositories           *[]Repository                         `json:"repositories"`
+	RepositorySelection    *InstallationTokenRepositorySelection `json:"repository_selection"`
+	SingleFile             *string                               `json:"single_file"`
+	SingleFilePaths        *[]string                             `json:"single_file_paths"`
+	Token                  string                                `json:"token"`
 }
 
-func (*InstallationToken) appsCreateInstallationAccessTokenResponse() {}
+type InstallationTokenRepositorySelection string
+
+const (
+	InstallationTokenRepositorySelectionAll      InstallationTokenRepositorySelection = "all"
+	InstallationTokenRepositorySelectionSelected InstallationTokenRepositorySelection = "selected"
+)
 
 type Integration struct {
-	ClientID           string                 `json:"client_id"`
-	ClientSecret       string                 `json:"client_secret"`
+	ClientID           *string                `json:"client_id"`
+	ClientSecret       *string                `json:"client_secret"`
 	CreatedAt          time.Time              `json:"created_at"`
 	Description        string                 `json:"description"`
 	Events             []string               `json:"events"`
 	ExternalURL        string                 `json:"external_url"`
 	HTMLURL            string                 `json:"html_url"`
 	ID                 int                    `json:"id"`
-	InstallationsCount int                    `json:"installations_count"`
+	InstallationsCount *int                   `json:"installations_count"`
 	Name               string                 `json:"name"`
 	NodeID             string                 `json:"node_id"`
 	Owner              NullableSimpleUser     `json:"owner"`
-	Pem                string                 `json:"pem"`
+	Pem                *string                `json:"pem"`
 	Permissions        IntegrationPermissions `json:"permissions"`
-	Slug               string                 `json:"slug"`
+	Slug               *string                `json:"slug"`
 	UpdatedAt          time.Time              `json:"updated_at"`
-	WebhookSecret      string                 `json:"webhook_secret"`
+	WebhookSecret      *string                `json:"webhook_secret"`
 }
 
 func (*Integration) appsGetBySlugResponse() {}
 
 type IntegrationPermissions struct {
-	Checks      string `json:"checks"`
-	Contents    string `json:"contents"`
-	Deployments string `json:"deployments"`
-	Issues      string `json:"issues"`
-	Metadata    string `json:"metadata"`
+	Checks      *string `json:"checks"`
+	Contents    *string `json:"contents"`
+	Deployments *string `json:"deployments"`
+	Issues      *string `json:"issues"`
+	Metadata    *string `json:"metadata"`
 }
+
+type InteractionExpiry string
+
+const (
+	InteractionExpiryOneDay    InteractionExpiry = "one_day"
+	InteractionExpiryThreeDays InteractionExpiry = "three_days"
+	InteractionExpiryOneWeek   InteractionExpiry = "one_week"
+	InteractionExpiryOneMonth  InteractionExpiry = "one_month"
+	InteractionExpirySixMonths InteractionExpiry = "six_months"
+)
+
+type InteractionGroup string
+
+const (
+	InteractionGroupExistingUsers     InteractionGroup = "existing_users"
+	InteractionGroupContributorsOnly  InteractionGroup = "contributors_only"
+	InteractionGroupCollaboratorsOnly InteractionGroup = "collaborators_only"
+)
 
 type InteractionLimit struct {
-	Expiry string `json:"expiry"`
-	Limit  string `json:"limit"`
+	Expiry *InteractionExpiry `json:"expiry"`
+	Limit  InteractionGroup   `json:"limit"`
 }
+
+func (*InteractionLimit) interactionsSetRestrictionsForAuthenticatedUserRequest() {}
+func (*InteractionLimit) interactionsSetRestrictionsForOrgRequest()               {}
 
 type InteractionLimitResponse struct {
-	ExpiresAt time.Time `json:"expires_at"`
-	Limit     string    `json:"limit"`
-	Origin    string    `json:"origin"`
+	ExpiresAt time.Time        `json:"expires_at"`
+	Limit     InteractionGroup `json:"limit"`
+	Origin    string           `json:"origin"`
 }
 
-func (*InteractionLimitResponse) interactionsSetRestrictionsForAuthenticatedUserResponse() {}
-func (*InteractionLimitResponse) interactionsSetRestrictionsForOrgResponse()               {}
-func (*InteractionLimitResponse) interactionsSetRestrictionsForRepoResponse()              {}
-
-type InteractionsGetRestrictionsForAuthenticatedUserNoContent struct{}
-
-func (*InteractionsGetRestrictionsForAuthenticatedUserNoContent) interactionsGetRestrictionsForAuthenticatedUserResponse() {
-}
+func (*InteractionLimitResponse) interactionsSetRestrictionsForRepoResponse() {}
 
 type InteractionsRemoveRestrictionsForAuthenticatedUser struct{}
 
@@ -3147,79 +3470,57 @@ type InteractionsSetRestrictionsForRepoConflict struct{}
 
 func (*InteractionsSetRestrictionsForRepoConflict) interactionsSetRestrictionsForRepoResponse() {}
 
-type Issue struct {
-	CommentsURL string             `json:"comments_url"`
-	Title       string             `json:"title"`
-	Assignee    NullableSimpleUser `json:"assignee"`
-	UpdatedAt   time.Time          `json:"updated_at"`
-	User        NullableSimpleUser `json:"user"`
-	NodeID      string             `json:"node_id"`
-	HTMLURL     string             `json:"html_url"`
-	State       string             `json:"state"`
-	Body        string             `json:"body"`
-	Locked      bool               `json:"locked"`
-	CreatedAt   time.Time          `json:"created_at"`
-	BodyText    string             `json:"body_text"`
-	EventsURL   string             `json:"events_url"`
-}
-
-func (*Issue) issuesCreateResponse() {}
-func (*Issue) issuesGetResponse()    {}
-func (*Issue) issuesUpdateResponse() {}
-
 type IssueComment struct {
-	AuthorAssociation     string              `json:"author_association"`
-	Body                  string              `json:"body"`
-	BodyHTML              string              `json:"body_html"`
-	BodyText              string              `json:"body_text"`
-	CreatedAt             time.Time           `json:"created_at"`
-	HTMLURL               string              `json:"html_url"`
-	ID                    int                 `json:"id"`
-	IssueURL              string              `json:"issue_url"`
-	NodeID                string              `json:"node_id"`
-	PerformedViaGithubApp NullableIntegration `json:"performed_via_github_app"`
-	Reactions             ReactionRollup      `json:"reactions"`
-	URL                   string              `json:"url"`
-	UpdatedAt             time.Time           `json:"updated_at"`
-	User                  NullableSimpleUser  `json:"user"`
+	AuthorAssociation     AuthorAssociation    `json:"author_association"`
+	Body                  *string              `json:"body"`
+	BodyHTML              *string              `json:"body_html"`
+	BodyText              *string              `json:"body_text"`
+	CreatedAt             time.Time            `json:"created_at"`
+	HTMLURL               string               `json:"html_url"`
+	ID                    int                  `json:"id"`
+	IssueURL              string               `json:"issue_url"`
+	NodeID                string               `json:"node_id"`
+	PerformedViaGithubApp *NullableIntegration `json:"performed_via_github_app"`
+	Reactions             *ReactionRollup      `json:"reactions"`
+	URL                   string               `json:"url"`
+	UpdatedAt             time.Time            `json:"updated_at"`
+	User                  NullableSimpleUser   `json:"user"`
 }
 
-func (*IssueComment) issuesCreateCommentResponse() {}
-func (*IssueComment) issuesGetCommentResponse()    {}
-func (*IssueComment) issuesUpdateCommentResponse() {}
+func (*IssueComment) issuesGetCommentResponse() {}
 
 type IssueEvent struct {
-	Actor                 NullableSimpleUser        `json:"actor"`
-	Assignee              NullableSimpleUser        `json:"assignee"`
-	Assigner              NullableSimpleUser        `json:"assigner"`
-	AuthorAssociation     string                    `json:"author_association"`
-	CommitID              string                    `json:"commit_id"`
-	CommitURL             string                    `json:"commit_url"`
-	CreatedAt             time.Time                 `json:"created_at"`
-	DismissedReview       IssueEventDismissedReview `json:"dismissed_review"`
-	Event                 string                    `json:"event"`
-	ID                    int                       `json:"id"`
-	Issue                 IssueSimple               `json:"issue"`
-	Label                 IssueEventLabel           `json:"label"`
-	LockReason            string                    `json:"lock_reason"`
-	Milestone             IssueEventMilestone       `json:"milestone"`
-	NodeID                string                    `json:"node_id"`
-	PerformedViaGithubApp NullableIntegration       `json:"performed_via_github_app"`
-	ProjectCard           IssueEventProjectCard     `json:"project_card"`
-	Rename                IssueEventRename          `json:"rename"`
-	RequestedReviewer     NullableSimpleUser        `json:"requested_reviewer"`
-	RequestedTeam         Team                      `json:"requested_team"`
-	ReviewRequester       NullableSimpleUser        `json:"review_requester"`
-	URL                   string                    `json:"url"`
+	Actor                 NullableSimpleUser         `json:"actor"`
+	Assignee              *NullableSimpleUser        `json:"assignee"`
+	Assigner              *NullableSimpleUser        `json:"assigner"`
+	AuthorAssociation     *AuthorAssociation         `json:"author_association"`
+	CommitID              string                     `json:"commit_id"`
+	CommitURL             string                     `json:"commit_url"`
+	CreatedAt             time.Time                  `json:"created_at"`
+	DismissedReview       *IssueEventDismissedReview `json:"dismissed_review"`
+	Event                 string                     `json:"event"`
+	ID                    int                        `json:"id"`
+	Issue                 *IssueSimple               `json:"issue"`
+	Label                 *IssueEventLabel           `json:"label"`
+	LockReason            *string                    `json:"lock_reason"`
+	Milestone             *IssueEventMilestone       `json:"milestone"`
+	NodeID                string                     `json:"node_id"`
+	PerformedViaGithubApp *NullableIntegration       `json:"performed_via_github_app"`
+	ProjectCard           *IssueEventProjectCard     `json:"project_card"`
+	Rename                *IssueEventRename          `json:"rename"`
+	RequestedReviewer     *NullableSimpleUser        `json:"requested_reviewer"`
+	RequestedTeam         *Team                      `json:"requested_team"`
+	ReviewRequester       *NullableSimpleUser        `json:"review_requester"`
+	URL                   string                     `json:"url"`
 }
 
 func (*IssueEvent) issuesGetEventResponse() {}
 
 type IssueEventDismissedReview struct {
-	DismissalCommitID string `json:"dismissal_commit_id"`
-	DismissalMessage  string `json:"dismissal_message"`
-	ReviewID          int    `json:"review_id"`
-	State             string `json:"state"`
+	DismissalCommitID *string `json:"dismissal_commit_id"`
+	DismissalMessage  string  `json:"dismissal_message"`
+	ReviewID          int     `json:"review_id"`
+	State             string  `json:"state"`
 }
 
 type IssueEventLabel struct {
@@ -3232,12 +3533,12 @@ type IssueEventMilestone struct {
 }
 
 type IssueEventProjectCard struct {
-	ColumnName         string `json:"column_name"`
-	ID                 int    `json:"id"`
-	PreviousColumnName string `json:"previous_column_name"`
-	ProjectID          int    `json:"project_id"`
-	ProjectURL         string `json:"project_url"`
-	URL                string `json:"url"`
+	ColumnName         string  `json:"column_name"`
+	ID                 int     `json:"id"`
+	PreviousColumnName *string `json:"previous_column_name"`
+	ProjectID          int     `json:"project_id"`
+	ProjectURL         string  `json:"project_url"`
+	URL                string  `json:"url"`
 }
 
 type IssueEventRename struct {
@@ -3245,133 +3546,84 @@ type IssueEventRename struct {
 	To   string `json:"to"`
 }
 
-type IssueSearchResultItem struct {
-	ActiveLockReason      string                            `json:"active_lock_reason"`
-	Assignee              NullableSimpleUser                `json:"assignee"`
-	Assignees             []SimpleUser                      `json:"assignees"`
-	AuthorAssociation     string                            `json:"author_association"`
-	Body                  string                            `json:"body"`
-	BodyHTML              string                            `json:"body_html"`
-	BodyText              string                            `json:"body_text"`
-	ClosedAt              time.Time                         `json:"closed_at"`
-	Comments              int                               `json:"comments"`
-	CommentsURL           string                            `json:"comments_url"`
-	CreatedAt             time.Time                         `json:"created_at"`
-	Draft                 bool                              `json:"draft"`
-	EventsURL             string                            `json:"events_url"`
-	HTMLURL               string                            `json:"html_url"`
-	ID                    int                               `json:"id"`
-	Labels                []IssueSearchResultItemLabelsItem `json:"labels"`
-	LabelsURL             string                            `json:"labels_url"`
-	Locked                bool                              `json:"locked"`
-	Milestone             NullableMilestone                 `json:"milestone"`
-	NodeID                string                            `json:"node_id"`
-	Number                int                               `json:"number"`
-	PerformedViaGithubApp NullableIntegration               `json:"performed_via_github_app"`
-	PullRequest           IssueSearchResultItemPullRequest  `json:"pull_request"`
-	Repository            Repository                        `json:"repository"`
-	RepositoryURL         string                            `json:"repository_url"`
-	Score                 float                             `json:"score"`
-	State                 string                            `json:"state"`
-	TextMatches           []SearchResultTextMatchesItem     `json:"text_matches"`
-	TimelineURL           string                            `json:"timeline_url"`
-	Title                 string                            `json:"title"`
-	URL                   string                            `json:"url"`
-	UpdatedAt             time.Time                         `json:"updated_at"`
-	User                  NullableSimpleUser                `json:"user"`
-}
-
-type IssueSearchResultItemLabelsItem struct {
-	Color       string `json:"color"`
-	Default     bool   `json:"default"`
-	Description string `json:"description"`
-	ID          int64  `json:"id"`
-	Name        string `json:"name"`
-	NodeID      string `json:"node_id"`
-	URL         string `json:"url"`
-}
-
-type IssueSearchResultItemPullRequest struct {
-	DiffURL  string    `json:"diff_url"`
-	HTMLURL  string    `json:"html_url"`
-	MergedAt time.Time `json:"merged_at"`
-	PatchURL string    `json:"patch_url"`
-	URL      string    `json:"url"`
-}
-
 type IssueSimple struct {
-	ActiveLockReason      string                 `json:"active_lock_reason"`
-	Assignee              NullableSimpleUser     `json:"assignee"`
-	Assignees             []SimpleUser           `json:"assignees"`
-	AuthorAssociation     string                 `json:"author_association"`
-	Body                  string                 `json:"body"`
-	BodyHTML              string                 `json:"body_html"`
-	BodyText              string                 `json:"body_text"`
-	ClosedAt              time.Time              `json:"closed_at"`
-	Comments              int                    `json:"comments"`
-	CommentsURL           string                 `json:"comments_url"`
-	CreatedAt             time.Time              `json:"created_at"`
-	EventsURL             string                 `json:"events_url"`
-	HTMLURL               string                 `json:"html_url"`
-	ID                    int                    `json:"id"`
-	Labels                []Label                `json:"labels"`
-	LabelsURL             string                 `json:"labels_url"`
-	Locked                bool                   `json:"locked"`
-	Milestone             NullableMilestone      `json:"milestone"`
-	NodeID                string                 `json:"node_id"`
-	Number                int                    `json:"number"`
-	PerformedViaGithubApp NullableIntegration    `json:"performed_via_github_app"`
-	PullRequest           IssueSimplePullRequest `json:"pull_request"`
-	Repository            Repository             `json:"repository"`
-	RepositoryURL         string                 `json:"repository_url"`
-	State                 string                 `json:"state"`
-	TimelineURL           string                 `json:"timeline_url"`
-	Title                 string                 `json:"title"`
-	URL                   string                 `json:"url"`
-	UpdatedAt             time.Time              `json:"updated_at"`
-	User                  NullableSimpleUser     `json:"user"`
+	ActiveLockReason      *string                 `json:"active_lock_reason"`
+	Assignee              NullableSimpleUser      `json:"assignee"`
+	Assignees             *[]SimpleUser           `json:"assignees"`
+	AuthorAssociation     AuthorAssociation       `json:"author_association"`
+	Body                  *string                 `json:"body"`
+	BodyHTML              *string                 `json:"body_html"`
+	BodyText              *string                 `json:"body_text"`
+	ClosedAt              time.Time               `json:"closed_at"`
+	Comments              int                     `json:"comments"`
+	CommentsURL           string                  `json:"comments_url"`
+	CreatedAt             time.Time               `json:"created_at"`
+	EventsURL             string                  `json:"events_url"`
+	HTMLURL               string                  `json:"html_url"`
+	ID                    int                     `json:"id"`
+	Labels                []Label                 `json:"labels"`
+	LabelsURL             string                  `json:"labels_url"`
+	Locked                bool                    `json:"locked"`
+	Milestone             NullableMilestone       `json:"milestone"`
+	NodeID                string                  `json:"node_id"`
+	Number                int                     `json:"number"`
+	PerformedViaGithubApp *NullableIntegration    `json:"performed_via_github_app"`
+	PullRequest           *IssueSimplePullRequest `json:"pull_request"`
+	Repository            *Repository             `json:"repository"`
+	RepositoryURL         string                  `json:"repository_url"`
+	State                 string                  `json:"state"`
+	TimelineURL           *string                 `json:"timeline_url"`
+	Title                 string                  `json:"title"`
+	URL                   string                  `json:"url"`
+	UpdatedAt             time.Time               `json:"updated_at"`
+	User                  NullableSimpleUser      `json:"user"`
 }
 
 type IssueSimplePullRequest struct {
-	DiffURL  string    `json:"diff_url"`
-	HTMLURL  string    `json:"html_url"`
-	MergedAt time.Time `json:"merged_at"`
-	PatchURL string    `json:"patch_url"`
-	URL      string    `json:"url"`
+	DiffURL  string     `json:"diff_url"`
+	HTMLURL  string     `json:"html_url"`
+	MergedAt *time.Time `json:"merged_at"`
+	PatchURL string     `json:"patch_url"`
+	URL      string     `json:"url"`
 }
 
 type IssuesAddAssigneesApplicationJSONRequest struct {
-	Assignees []string `json:"assignees"`
+	Assignees *[]string `json:"assignees"`
 }
-
-type IssuesAddLabelsOK []Label
-
-func (*IssuesAddLabelsOK) issuesAddLabelsResponse() {}
 
 type IssuesCheckUserCanBeAssignedNoContent struct{}
 
 func (*IssuesCheckUserCanBeAssignedNoContent) issuesCheckUserCanBeAssignedResponse() {}
 
-type IssuesCreateApplicationJSONRequest struct {
-	Assignees []string `json:"assignees"`
-}
-
 type IssuesCreateCommentApplicationJSONRequest struct {
 	Body string `json:"body"`
 }
 
+func (*IssuesCreateCommentApplicationJSONRequest) issuesCreateCommentRequest() {}
+
 type IssuesCreateLabelApplicationJSONRequest struct {
-	Color       string `json:"color"`
-	Description string `json:"description"`
-	Name        string `json:"name"`
+	Color       *string `json:"color"`
+	Description *string `json:"description"`
+	Name        string  `json:"name"`
 }
 
+func (*IssuesCreateLabelApplicationJSONRequest) issuesCreateLabelRequest() {}
+
 type IssuesCreateMilestoneApplicationJSONRequest struct {
-	Description string    `json:"description"`
-	DueOn       time.Time `json:"due_on"`
-	State       string    `json:"state"`
-	Title       string    `json:"title"`
+	Description *string                                           `json:"description"`
+	DueOn       *time.Time                                        `json:"due_on"`
+	State       *IssuesCreateMilestoneApplicationJSONRequestState `json:"state"`
+	Title       string                                            `json:"title"`
 }
+
+func (*IssuesCreateMilestoneApplicationJSONRequest) issuesCreateMilestoneRequest() {}
+
+type IssuesCreateMilestoneApplicationJSONRequestState string
+
+const (
+	IssuesCreateMilestoneApplicationJSONRequestStateOpen   IssuesCreateMilestoneApplicationJSONRequestState = "open"
+	IssuesCreateMilestoneApplicationJSONRequestStateClosed IssuesCreateMilestoneApplicationJSONRequestState = "closed"
+)
 
 type IssuesDeleteComment struct{}
 
@@ -3381,37 +3633,35 @@ type IssuesDeleteMilestoneNoContent struct{}
 
 func (*IssuesDeleteMilestoneNoContent) issuesDeleteMilestoneResponse() {}
 
+type IssuesGetEventApplicationJSONForbidden BasicError
+
+func (*IssuesGetEventApplicationJSONForbidden) issuesGetEventResponse() {}
+
+type IssuesGetEventApplicationJSONGone BasicError
+
+func (*IssuesGetEventApplicationJSONGone) issuesGetEventResponse() {}
+
+type IssuesGetEventApplicationJSONNotFound BasicError
+
+func (*IssuesGetEventApplicationJSONNotFound) issuesGetEventResponse() {}
+
 type IssuesListAssigneesOK []SimpleUser
 
 func (*IssuesListAssigneesOK) issuesListAssigneesResponse() {}
 
-type IssuesListCommentsForRepoOK []IssueComment
+type IssuesListCommentsApplicationJSONGone BasicError
 
-func (*IssuesListCommentsForRepoOK) issuesListCommentsForRepoResponse() {}
+func (*IssuesListCommentsApplicationJSONGone) issuesListCommentsResponse() {}
+
+type IssuesListCommentsApplicationJSONNotFound BasicError
+
+func (*IssuesListCommentsApplicationJSONNotFound) issuesListCommentsResponse() {}
 
 type IssuesListCommentsOK []IssueComment
 
 func (*IssuesListCommentsOK) issuesListCommentsResponse() {}
 
 type IssuesListEventsForRepoOK []IssueEvent
-
-func (*IssuesListEventsForRepoOK) issuesListEventsForRepoResponse() {}
-
-type IssuesListEventsForTimelineOK []struct{}
-
-func (*IssuesListEventsForTimelineOK) issuesListEventsForTimelineResponse() {}
-
-type IssuesListForAuthenticatedUserOK []Issue
-
-func (*IssuesListForAuthenticatedUserOK) issuesListForAuthenticatedUserResponse() {}
-
-type IssuesListForOrgOK []Issue
-
-func (*IssuesListForOrgOK) issuesListForOrgResponse() {}
-
-type IssuesListForRepoOK []IssueSimple
-
-func (*IssuesListForRepoOK) issuesListForRepoResponse() {}
 
 type IssuesListLabelsForRepoOK []Label
 
@@ -3421,83 +3671,122 @@ type IssuesListLabelsOnIssueOK []Label
 
 func (*IssuesListLabelsOnIssueOK) issuesListLabelsOnIssueResponse() {}
 
-type IssuesListMilestonesOK []Milestone
-
-func (*IssuesListMilestonesOK) issuesListMilestonesResponse() {}
-
 type IssuesLockApplicationJSONRequest struct {
-	LockReason string `json:"lock_reason"`
+	LockReason *IssuesLockApplicationJSONRequestLockReason `json:"lock_reason"`
 }
 
-type IssuesLockNoContent struct{}
+func (*IssuesLockApplicationJSONRequest) issuesLockRequest() {}
 
-func (*IssuesLockNoContent) issuesLockResponse() {}
+type IssuesLockApplicationJSONRequestLockReason string
+
+const (
+	IssuesLockApplicationJSONRequestLockReasonOffMinusTopic IssuesLockApplicationJSONRequestLockReason = "off-topic"
+	IssuesLockApplicationJSONRequestLockReasonTooHeated     IssuesLockApplicationJSONRequestLockReason = "too heated"
+	IssuesLockApplicationJSONRequestLockReasonResolved      IssuesLockApplicationJSONRequestLockReason = "resolved"
+	IssuesLockApplicationJSONRequestLockReasonSpam          IssuesLockApplicationJSONRequestLockReason = "spam"
+)
+
+type IssuesLockNoContent struct{}
 
 type IssuesRemoveAllLabelsNoContent struct{}
 
 func (*IssuesRemoveAllLabelsNoContent) issuesRemoveAllLabelsResponse() {}
 
 type IssuesRemoveAssigneesApplicationJSONRequest struct {
-	Assignees []string `json:"assignees"`
+	Assignees *[]string `json:"assignees"`
 }
+
+type IssuesRemoveLabelApplicationJSONGone BasicError
+
+func (*IssuesRemoveLabelApplicationJSONGone) issuesRemoveLabelResponse() {}
+
+type IssuesRemoveLabelApplicationJSONNotFound BasicError
+
+func (*IssuesRemoveLabelApplicationJSONNotFound) issuesRemoveLabelResponse() {}
 
 type IssuesRemoveLabelOK []Label
 
 func (*IssuesRemoveLabelOK) issuesRemoveLabelResponse() {}
 
-type IssuesSetLabelsOK []Label
+type IssuesUnlockApplicationJSONForbidden BasicError
 
-func (*IssuesSetLabelsOK) issuesSetLabelsResponse() {}
+func (*IssuesUnlockApplicationJSONForbidden) issuesUnlockResponse() {}
+
+type IssuesUnlockApplicationJSONNotFound BasicError
+
+func (*IssuesUnlockApplicationJSONNotFound) issuesUnlockResponse() {}
 
 type IssuesUnlockNoContent struct{}
 
 func (*IssuesUnlockNoContent) issuesUnlockResponse() {}
 
-type IssuesUpdateApplicationJSONRequest struct {
-}
-
 type IssuesUpdateCommentApplicationJSONRequest struct {
 	Body string `json:"body"`
 }
 
+func (*IssuesUpdateCommentApplicationJSONRequest) issuesUpdateCommentRequest() {}
+
 type IssuesUpdateLabelApplicationJSONRequest struct {
-	Color       string `json:"color"`
-	Description string `json:"description"`
-	NewName     string `json:"new_name"`
+	Color       *string `json:"color"`
+	Description *string `json:"description"`
+	NewName     *string `json:"new_name"`
 }
 
 type IssuesUpdateMilestoneApplicationJSONRequest struct {
-	Description string    `json:"description"`
-	DueOn       time.Time `json:"due_on"`
-	State       string    `json:"state"`
-	Title       string    `json:"title"`
+	Description *string                                           `json:"description"`
+	DueOn       *time.Time                                        `json:"due_on"`
+	State       *IssuesUpdateMilestoneApplicationJSONRequestState `json:"state"`
+	Title       *string                                           `json:"title"`
 }
+
+type IssuesUpdateMilestoneApplicationJSONRequestState string
+
+const (
+	IssuesUpdateMilestoneApplicationJSONRequestStateOpen   IssuesUpdateMilestoneApplicationJSONRequestState = "open"
+	IssuesUpdateMilestoneApplicationJSONRequestStateClosed IssuesUpdateMilestoneApplicationJSONRequestState = "closed"
+)
 
 type Job struct {
-	CheckRunURL string         `json:"check_run_url"`
-	CompletedAt time.Time      `json:"completed_at"`
-	Conclusion  string         `json:"conclusion"`
-	HTMLURL     string         `json:"html_url"`
-	HeadSha     string         `json:"head_sha"`
-	ID          int            `json:"id"`
-	Name        string         `json:"name"`
-	NodeID      string         `json:"node_id"`
-	RunID       int            `json:"run_id"`
-	RunURL      string         `json:"run_url"`
-	StartedAt   time.Time      `json:"started_at"`
-	Status      string         `json:"status"`
-	Steps       []JobStepsItem `json:"steps"`
-	URL         string         `json:"url"`
+	CheckRunURL string          `json:"check_run_url"`
+	CompletedAt time.Time       `json:"completed_at"`
+	Conclusion  string          `json:"conclusion"`
+	HTMLURL     string          `json:"html_url"`
+	HeadSha     string          `json:"head_sha"`
+	ID          int             `json:"id"`
+	Name        string          `json:"name"`
+	NodeID      string          `json:"node_id"`
+	RunID       int             `json:"run_id"`
+	RunURL      string          `json:"run_url"`
+	StartedAt   time.Time       `json:"started_at"`
+	Status      JobStatus       `json:"status"`
+	Steps       *[]JobStepsItem `json:"steps"`
+	URL         string          `json:"url"`
 }
 
+type JobStatus string
+
+const (
+	JobStatusQueued     JobStatus = "queued"
+	JobStatusInProgress JobStatus = "in_progress"
+	JobStatusCompleted  JobStatus = "completed"
+)
+
 type JobStepsItem struct {
-	CompletedAt time.Time `json:"completed_at"`
-	Conclusion  string    `json:"conclusion"`
-	Name        string    `json:"name"`
-	Number      int       `json:"number"`
-	StartedAt   time.Time `json:"started_at"`
-	Status      string    `json:"status"`
+	CompletedAt *time.Time         `json:"completed_at"`
+	Conclusion  string             `json:"conclusion"`
+	Name        string             `json:"name"`
+	Number      int                `json:"number"`
+	StartedAt   *time.Time         `json:"started_at"`
+	Status      JobStepsItemStatus `json:"status"`
 }
+
+type JobStepsItemStatus string
+
+const (
+	JobStepsItemStatusQueued     JobStepsItemStatus = "queued"
+	JobStepsItemStatusInProgress JobStepsItemStatus = "in_progress"
+	JobStepsItemStatusCompleted  JobStepsItemStatus = "completed"
+)
 
 type Key struct {
 	CreatedAt time.Time `json:"created_at"`
@@ -3509,8 +3798,7 @@ type Key struct {
 	Verified  bool      `json:"verified"`
 }
 
-func (*Key) usersCreatePublicSSHKeyForAuthenticatedResponse() {}
-func (*Key) usersGetPublicSSHKeyForAuthenticatedResponse()    {}
+func (*Key) usersGetPublicSSHKeyForAuthenticatedResponse() {}
 
 type KeySimple struct {
 	ID  int    `json:"id"`
@@ -3527,20 +3815,9 @@ type Label struct {
 	URL         string `json:"url"`
 }
 
-func (*Label) issuesCreateLabelResponse() {}
-func (*Label) issuesGetLabelResponse()    {}
+func (*Label) issuesGetLabelResponse() {}
 
-type LabelSearchResultItem struct {
-	Color       string                        `json:"color"`
-	Default     bool                          `json:"default"`
-	Description string                        `json:"description"`
-	ID          int                           `json:"id"`
-	Name        string                        `json:"name"`
-	NodeID      string                        `json:"node_id"`
-	Score       float                         `json:"score"`
-	TextMatches []SearchResultTextMatchesItem `json:"text_matches"`
-	URL         string                        `json:"url"`
-}
+type Language struct{}
 
 type License struct {
 	Body           string   `json:"body"`
@@ -3583,17 +3860,25 @@ type LicenseContentLinks struct {
 }
 
 type LicenseSimple struct {
-	HTMLURL string `json:"html_url"`
-	Key     string `json:"key"`
-	Name    string `json:"name"`
-	NodeID  string `json:"node_id"`
-	SpdxID  string `json:"spdx_id"`
-	URL     string `json:"url"`
+	HTMLURL *string `json:"html_url"`
+	Key     string  `json:"key"`
+	Name    string  `json:"name"`
+	NodeID  string  `json:"node_id"`
+	SpdxID  string  `json:"spdx_id"`
+	URL     string  `json:"url"`
 }
 
 type LicensesGetAllCommonlyUsedOK []LicenseSimple
 
 func (*LicensesGetAllCommonlyUsedOK) licensesGetAllCommonlyUsedResponse() {}
+
+type LicensesGetApplicationJSONForbidden BasicError
+
+func (*LicensesGetApplicationJSONForbidden) licensesGetResponse() {}
+
+type LicensesGetApplicationJSONNotFound BasicError
+
+func (*LicensesGetApplicationJSONNotFound) licensesGetResponse() {}
 
 type Link struct {
 	Href string `json:"href"`
@@ -3605,10 +3890,17 @@ type LinkWithType struct {
 }
 
 type MarkdownRenderApplicationJSONRequest struct {
-	Context string `json:"context"`
-	Mode    string `json:"mode"`
-	Text    string `json:"text"`
+	Context *string                                   `json:"context"`
+	Mode    *MarkdownRenderApplicationJSONRequestMode `json:"mode"`
+	Text    string                                    `json:"text"`
 }
+
+type MarkdownRenderApplicationJSONRequestMode string
+
+const (
+	MarkdownRenderApplicationJSONRequestModeMarkdown MarkdownRenderApplicationJSONRequestMode = "markdown"
+	MarkdownRenderApplicationJSONRequestModeGfm      MarkdownRenderApplicationJSONRequestMode = "gfm"
+)
 
 type MarkdownRenderOK string
 
@@ -3627,13 +3919,13 @@ type MarkdownRenderRawTextXMarkdownRequest string
 func (*MarkdownRenderRawTextXMarkdownRequest) markdownRenderRawRequest() {}
 
 type MarketplaceAccount struct {
-	Email                    string `json:"email"`
-	ID                       int    `json:"id"`
-	Login                    string `json:"login"`
-	NodeID                   string `json:"node_id"`
-	OrganizationBillingEmail string `json:"organization_billing_email"`
-	Type                     string `json:"type"`
-	URL                      string `json:"url"`
+	Email                    *string `json:"email"`
+	ID                       int     `json:"id"`
+	Login                    string  `json:"login"`
+	NodeID                   *string `json:"node_id"`
+	OrganizationBillingEmail *string `json:"organization_billing_email"`
+	Type                     string  `json:"type"`
+	URL                      string  `json:"url"`
 }
 
 type MarketplaceListingPlan struct {
@@ -3653,97 +3945,128 @@ type MarketplaceListingPlan struct {
 }
 
 type MarketplacePurchase struct {
-	Email                    string                                      `json:"email"`
-	ID                       int                                         `json:"id"`
-	Login                    string                                      `json:"login"`
-	MarketplacePendingChange MarketplacePurchaseMarketplacePendingChange `json:"marketplace_pending_change"`
-	MarketplacePurchase      MarketplacePurchaseMarketplacePurchase      `json:"marketplace_purchase"`
-	OrganizationBillingEmail string                                      `json:"organization_billing_email"`
-	Type                     string                                      `json:"type"`
-	URL                      string                                      `json:"url"`
+	Email                    *string                                      `json:"email"`
+	ID                       int                                          `json:"id"`
+	Login                    string                                       `json:"login"`
+	MarketplacePendingChange *MarketplacePurchaseMarketplacePendingChange `json:"marketplace_pending_change"`
+	MarketplacePurchase      MarketplacePurchaseMarketplacePurchase       `json:"marketplace_purchase"`
+	OrganizationBillingEmail *string                                      `json:"organization_billing_email"`
+	Type                     string                                       `json:"type"`
+	URL                      string                                       `json:"url"`
 }
 
 func (*MarketplacePurchase) appsGetSubscriptionPlanForAccountResponse()        {}
 func (*MarketplacePurchase) appsGetSubscriptionPlanForAccountStubbedResponse() {}
 
 type MarketplacePurchaseMarketplacePendingChange struct {
-	EffectiveDate string                 `json:"effective_date"`
-	ID            int                    `json:"id"`
-	IsInstalled   bool                   `json:"is_installed"`
-	Plan          MarketplaceListingPlan `json:"plan"`
-	UnitCount     int                    `json:"unit_count"`
+	EffectiveDate *string                 `json:"effective_date"`
+	ID            *int                    `json:"id"`
+	IsInstalled   *bool                   `json:"is_installed"`
+	Plan          *MarketplaceListingPlan `json:"plan"`
+	UnitCount     *int                    `json:"unit_count"`
 }
 
 type MarketplacePurchaseMarketplacePurchase struct {
-	BillingCycle    string                 `json:"billing_cycle"`
-	FreeTrialEndsOn string                 `json:"free_trial_ends_on"`
-	IsInstalled     bool                   `json:"is_installed"`
-	NextBillingDate string                 `json:"next_billing_date"`
-	OnFreeTrial     bool                   `json:"on_free_trial"`
-	Plan            MarketplaceListingPlan `json:"plan"`
-	UnitCount       int                    `json:"unit_count"`
-	UpdatedAt       string                 `json:"updated_at"`
+	BillingCycle    *string                 `json:"billing_cycle"`
+	FreeTrialEndsOn *string                 `json:"free_trial_ends_on"`
+	IsInstalled     *bool                   `json:"is_installed"`
+	NextBillingDate *string                 `json:"next_billing_date"`
+	OnFreeTrial     *bool                   `json:"on_free_trial"`
+	Plan            *MarketplaceListingPlan `json:"plan"`
+	UnitCount       *int                    `json:"unit_count"`
+	UpdatedAt       *string                 `json:"updated_at"`
 }
 
 type MergedUpstream struct {
-	BaseBranch string `json:"base_branch"`
-	MergeType  string `json:"merge_type"`
-	Message    string `json:"message"`
+	BaseBranch *string                  `json:"base_branch"`
+	MergeType  *MergedUpstreamMergeType `json:"merge_type"`
+	Message    *string                  `json:"message"`
 }
 
 func (*MergedUpstream) reposMergeUpstreamResponse() {}
 
+type MergedUpstreamMergeType string
+
+const (
+	MergedUpstreamMergeTypeMerge            MergedUpstreamMergeType = "merge"
+	MergedUpstreamMergeTypeFastMinusForward MergedUpstreamMergeType = "fast-forward"
+	MergedUpstreamMergeTypeNone             MergedUpstreamMergeType = "none"
+)
+
 type MetaRoot struct {
-	AuthorizationsURL                string `json:"authorizations_url"`
-	CodeSearchURL                    string `json:"code_search_url"`
-	CommitSearchURL                  string `json:"commit_search_url"`
-	CurrentUserAuthorizationsHTMLURL string `json:"current_user_authorizations_html_url"`
-	CurrentUserRepositoriesURL       string `json:"current_user_repositories_url"`
-	CurrentUserURL                   string `json:"current_user_url"`
-	EmailsURL                        string `json:"emails_url"`
-	EmojisURL                        string `json:"emojis_url"`
-	EventsURL                        string `json:"events_url"`
-	FeedsURL                         string `json:"feeds_url"`
-	FollowersURL                     string `json:"followers_url"`
-	FollowingURL                     string `json:"following_url"`
-	GistsURL                         string `json:"gists_url"`
-	HubURL                           string `json:"hub_url"`
-	IssueSearchURL                   string `json:"issue_search_url"`
-	IssuesURL                        string `json:"issues_url"`
-	KeysURL                          string `json:"keys_url"`
-	LabelSearchURL                   string `json:"label_search_url"`
-	NotificationsURL                 string `json:"notifications_url"`
-	OrganizationRepositoriesURL      string `json:"organization_repositories_url"`
-	OrganizationTeamsURL             string `json:"organization_teams_url"`
-	OrganizationURL                  string `json:"organization_url"`
-	PublicGistsURL                   string `json:"public_gists_url"`
-	RateLimitURL                     string `json:"rate_limit_url"`
-	RepositorySearchURL              string `json:"repository_search_url"`
-	RepositoryURL                    string `json:"repository_url"`
-	StarredGistsURL                  string `json:"starred_gists_url"`
-	StarredURL                       string `json:"starred_url"`
-	TopicSearchURL                   string `json:"topic_search_url"`
-	UserOrganizationsURL             string `json:"user_organizations_url"`
-	UserRepositoriesURL              string `json:"user_repositories_url"`
-	UserSearchURL                    string `json:"user_search_url"`
-	UserURL                          string `json:"user_url"`
+	AuthorizationsURL                string  `json:"authorizations_url"`
+	CodeSearchURL                    string  `json:"code_search_url"`
+	CommitSearchURL                  string  `json:"commit_search_url"`
+	CurrentUserAuthorizationsHTMLURL string  `json:"current_user_authorizations_html_url"`
+	CurrentUserRepositoriesURL       string  `json:"current_user_repositories_url"`
+	CurrentUserURL                   string  `json:"current_user_url"`
+	EmailsURL                        string  `json:"emails_url"`
+	EmojisURL                        string  `json:"emojis_url"`
+	EventsURL                        string  `json:"events_url"`
+	FeedsURL                         string  `json:"feeds_url"`
+	FollowersURL                     string  `json:"followers_url"`
+	FollowingURL                     string  `json:"following_url"`
+	GistsURL                         string  `json:"gists_url"`
+	HubURL                           string  `json:"hub_url"`
+	IssueSearchURL                   string  `json:"issue_search_url"`
+	IssuesURL                        string  `json:"issues_url"`
+	KeysURL                          string  `json:"keys_url"`
+	LabelSearchURL                   string  `json:"label_search_url"`
+	NotificationsURL                 string  `json:"notifications_url"`
+	OrganizationRepositoriesURL      string  `json:"organization_repositories_url"`
+	OrganizationTeamsURL             string  `json:"organization_teams_url"`
+	OrganizationURL                  string  `json:"organization_url"`
+	PublicGistsURL                   string  `json:"public_gists_url"`
+	RateLimitURL                     string  `json:"rate_limit_url"`
+	RepositorySearchURL              string  `json:"repository_search_url"`
+	RepositoryURL                    string  `json:"repository_url"`
+	StarredGistsURL                  string  `json:"starred_gists_url"`
+	StarredURL                       string  `json:"starred_url"`
+	TopicSearchURL                   *string `json:"topic_search_url"`
+	UserOrganizationsURL             string  `json:"user_organizations_url"`
+	UserRepositoriesURL              string  `json:"user_repositories_url"`
+	UserSearchURL                    string  `json:"user_search_url"`
+	UserURL                          string  `json:"user_url"`
 }
 
 type Migration struct {
-	ID                   int       `json:"id"`
-	ExcludeGitData       bool      `json:"exclude_git_data"`
-	ExcludeReleases      bool      `json:"exclude_releases"`
-	ExcludeOwnerProjects bool      `json:"exclude_owner_projects"`
-	CreatedAt            time.Time `json:"created_at"`
-	State                string    `json:"state"`
-	ExcludeMetadata      bool      `json:"exclude_metadata"`
+	ArchiveURL           *string            `json:"archive_url"`
+	CreatedAt            time.Time          `json:"created_at"`
+	Exclude              *[]string          `json:"exclude"`
+	ExcludeAttachments   bool               `json:"exclude_attachments"`
+	ExcludeGitData       bool               `json:"exclude_git_data"`
+	ExcludeMetadata      bool               `json:"exclude_metadata"`
+	ExcludeOwnerProjects bool               `json:"exclude_owner_projects"`
+	ExcludeReleases      bool               `json:"exclude_releases"`
+	GUID                 string             `json:"guid"`
+	ID                   int                `json:"id"`
+	LockRepositories     bool               `json:"lock_repositories"`
+	NodeID               string             `json:"node_id"`
+	Owner                NullableSimpleUser `json:"owner"`
+	Repositories         []Repository       `json:"repositories"`
+	State                string             `json:"state"`
+	URL                  string             `json:"url"`
+	UpdatedAt            time.Time          `json:"updated_at"`
 }
 
 func (*Migration) migrationsGetStatusForAuthenticatedUserResponse() {}
-func (*Migration) migrationsStartForAuthenticatedUserResponse()     {}
-func (*Migration) migrationsStartForOrgResponse()                   {}
 
 type MigrationsCancelImport struct{}
+
+type MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden) migrationsDeleteArchiveForAuthenticatedUserResponse() {
+}
+
+type MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound BasicError
+
+func (*MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound) migrationsDeleteArchiveForAuthenticatedUserResponse() {
+}
+
+type MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized) migrationsDeleteArchiveForAuthenticatedUserResponse() {
+}
 
 type MigrationsDeleteArchiveForAuthenticatedUserNoContent struct{}
 
@@ -3758,6 +4081,16 @@ type MigrationsDownloadArchiveForOrgFound struct{}
 
 func (*MigrationsDownloadArchiveForOrgFound) migrationsDownloadArchiveForOrgResponse() {}
 
+type MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) migrationsGetArchiveForAuthenticatedUserResponse() {
+}
+
+type MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) migrationsGetArchiveForAuthenticatedUserResponse() {
+}
+
 type MigrationsGetArchiveForAuthenticatedUserFound struct{}
 
 func (*MigrationsGetArchiveForAuthenticatedUserFound) migrationsGetArchiveForAuthenticatedUserResponse() {
@@ -3767,9 +4100,46 @@ type MigrationsGetCommitAuthorsOK []PorterAuthor
 
 func (*MigrationsGetCommitAuthorsOK) migrationsGetCommitAuthorsResponse() {}
 
+type MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) migrationsGetStatusForAuthenticatedUserResponse() {
+}
+
+type MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound BasicError
+
+func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) migrationsGetStatusForAuthenticatedUserResponse() {
+}
+
+type MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) migrationsGetStatusForAuthenticatedUserResponse() {
+}
+
+type MigrationsGetStatusForOrgExcludeItem string
+
+const (
+	MigrationsGetStatusForOrgExcludeItemRepositories MigrationsGetStatusForOrgExcludeItem = "repositories"
+)
+
+type MigrationsListForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*MigrationsListForAuthenticatedUserApplicationJSONForbidden) migrationsListForAuthenticatedUserResponse() {
+}
+
+type MigrationsListForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) migrationsListForAuthenticatedUserResponse() {
+}
+
 type MigrationsListForAuthenticatedUserOK []Migration
 
 func (*MigrationsListForAuthenticatedUserOK) migrationsListForAuthenticatedUserResponse() {}
+
+type MigrationsListForOrgExcludeItem string
+
+const (
+	MigrationsListForOrgExcludeItemRepositories MigrationsListForOrgExcludeItem = "repositories"
+)
 
 type MigrationsListReposForOrgOK []MinimalRepository
 
@@ -3780,38 +4150,92 @@ type MigrationsListReposForUserOK []MinimalRepository
 func (*MigrationsListReposForUserOK) migrationsListReposForUserResponse() {}
 
 type MigrationsMapCommitAuthorApplicationJSONRequest struct {
-	Email string `json:"email"`
-	Name  string `json:"name"`
+	Email *string `json:"email"`
+	Name  *string `json:"name"`
 }
+
+func (*MigrationsMapCommitAuthorApplicationJSONRequest) migrationsMapCommitAuthorRequest() {}
 
 type MigrationsSetLfsPreferenceApplicationJSONRequest struct {
-	UseLfs string `json:"use_lfs"`
+	UseLfs MigrationsSetLfsPreferenceApplicationJSONRequestUseLfs `json:"use_lfs"`
 }
+
+func (*MigrationsSetLfsPreferenceApplicationJSONRequest) migrationsSetLfsPreferenceRequest() {}
+
+type MigrationsSetLfsPreferenceApplicationJSONRequestUseLfs string
+
+const (
+	MigrationsSetLfsPreferenceApplicationJSONRequestUseLfsOptIn  MigrationsSetLfsPreferenceApplicationJSONRequestUseLfs = "opt_in"
+	MigrationsSetLfsPreferenceApplicationJSONRequestUseLfsOptOut MigrationsSetLfsPreferenceApplicationJSONRequestUseLfs = "opt_out"
+)
 
 type MigrationsStartForAuthenticatedUserApplicationJSONRequest struct {
-	Exclude              []string `json:"exclude"`
-	ExcludeAttachments   bool     `json:"exclude_attachments"`
-	ExcludeOwnerProjects bool     `json:"exclude_owner_projects"`
-	ExcludeReleases      bool     `json:"exclude_releases"`
-	LockRepositories     bool     `json:"lock_repositories"`
-	Repositories         []string `json:"repositories"`
+	Exclude              *[]MigrationsStartForAuthenticatedUserApplicationJSONRequestExcludeItem `json:"exclude"`
+	ExcludeAttachments   *bool                                                                   `json:"exclude_attachments"`
+	ExcludeOwnerProjects *bool                                                                   `json:"exclude_owner_projects"`
+	ExcludeReleases      *bool                                                                   `json:"exclude_releases"`
+	LockRepositories     *bool                                                                   `json:"lock_repositories"`
+	Repositories         []string                                                                `json:"repositories"`
 }
+
+func (*MigrationsStartForAuthenticatedUserApplicationJSONRequest) migrationsStartForAuthenticatedUserRequest() {
+}
+
+type MigrationsStartForAuthenticatedUserApplicationJSONRequestExcludeItem string
+
+const (
+	MigrationsStartForAuthenticatedUserApplicationJSONRequestExcludeItemRepositories MigrationsStartForAuthenticatedUserApplicationJSONRequestExcludeItem = "repositories"
+)
 
 type MigrationsStartForOrgApplicationJSONRequest struct {
-	Exclude              []string `json:"exclude"`
-	ExcludeAttachments   bool     `json:"exclude_attachments"`
-	ExcludeOwnerProjects bool     `json:"exclude_owner_projects"`
-	ExcludeReleases      bool     `json:"exclude_releases"`
-	LockRepositories     bool     `json:"lock_repositories"`
-	Repositories         []string `json:"repositories"`
+	Exclude              *[]MigrationsStartForOrgApplicationJSONRequestExcludeItem `json:"exclude"`
+	ExcludeAttachments   *bool                                                     `json:"exclude_attachments"`
+	ExcludeOwnerProjects *bool                                                     `json:"exclude_owner_projects"`
+	ExcludeReleases      *bool                                                     `json:"exclude_releases"`
+	LockRepositories     *bool                                                     `json:"lock_repositories"`
+	Repositories         []string                                                  `json:"repositories"`
 }
 
+func (*MigrationsStartForOrgApplicationJSONRequest) migrationsStartForOrgRequest() {}
+
+type MigrationsStartForOrgApplicationJSONRequestExcludeItem string
+
+const (
+	MigrationsStartForOrgApplicationJSONRequestExcludeItemRepositories MigrationsStartForOrgApplicationJSONRequestExcludeItem = "repositories"
+)
+
 type MigrationsStartImportApplicationJSONRequest struct {
-	TfvcProject string `json:"tfvc_project"`
-	Vcs         string `json:"vcs"`
-	VcsPassword string `json:"vcs_password"`
-	VcsURL      string `json:"vcs_url"`
-	VcsUsername string `json:"vcs_username"`
+	TfvcProject *string                                         `json:"tfvc_project"`
+	Vcs         *MigrationsStartImportApplicationJSONRequestVcs `json:"vcs"`
+	VcsPassword *string                                         `json:"vcs_password"`
+	VcsURL      string                                          `json:"vcs_url"`
+	VcsUsername *string                                         `json:"vcs_username"`
+}
+
+func (*MigrationsStartImportApplicationJSONRequest) migrationsStartImportRequest() {}
+
+type MigrationsStartImportApplicationJSONRequestVcs string
+
+const (
+	MigrationsStartImportApplicationJSONRequestVcsSubversion MigrationsStartImportApplicationJSONRequestVcs = "subversion"
+	MigrationsStartImportApplicationJSONRequestVcsGit        MigrationsStartImportApplicationJSONRequestVcs = "git"
+	MigrationsStartImportApplicationJSONRequestVcsMercurial  MigrationsStartImportApplicationJSONRequestVcs = "mercurial"
+	MigrationsStartImportApplicationJSONRequestVcsTfvc       MigrationsStartImportApplicationJSONRequestVcs = "tfvc"
+)
+
+type MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden) migrationsUnlockRepoForAuthenticatedUserResponse() {
+}
+
+type MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound BasicError
+
+func (*MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound) migrationsUnlockRepoForAuthenticatedUserResponse() {
+}
+
+type MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) migrationsUnlockRepoForAuthenticatedUserResponse() {
 }
 
 type MigrationsUnlockRepoForAuthenticatedUserNoContent struct{}
@@ -3824,10 +4248,10 @@ type MigrationsUnlockRepoForOrgNoContent struct{}
 func (*MigrationsUnlockRepoForOrgNoContent) migrationsUnlockRepoForOrgResponse() {}
 
 type MigrationsUpdateImportApplicationJSONRequest struct {
-	TfvcProject string `json:"tfvc_project"`
-	Vcs         string `json:"vcs"`
-	VcsPassword string `json:"vcs_password"`
-	VcsUsername string `json:"vcs_username"`
+	TfvcProject *string `json:"tfvc_project"`
+	Vcs         *string `json:"vcs"`
+	VcsPassword *string `json:"vcs_password"`
+	VcsUsername *string `json:"vcs_username"`
 }
 
 type Milestone struct {
@@ -3843,117 +4267,225 @@ type Milestone struct {
 	NodeID       string             `json:"node_id"`
 	Number       int                `json:"number"`
 	OpenIssues   int                `json:"open_issues"`
-	State        string             `json:"state"`
+	State        MilestoneState     `json:"state"`
 	Title        string             `json:"title"`
 	URL          string             `json:"url"`
 	UpdatedAt    time.Time          `json:"updated_at"`
 }
 
-func (*Milestone) issuesCreateMilestoneResponse() {}
-func (*Milestone) issuesGetMilestoneResponse()    {}
+func (*Milestone) issuesGetMilestoneResponse() {}
+
+type MilestoneState string
+
+const (
+	MilestoneStateOpen   MilestoneState = "open"
+	MilestoneStateClosed MilestoneState = "closed"
+)
 
 type MinimalRepository struct {
-	AllowForking        bool                         `json:"allow_forking"`
-	ArchiveURL          string                       `json:"archive_url"`
-	Archived            bool                         `json:"archived"`
-	AssigneesURL        string                       `json:"assignees_url"`
-	BlobsURL            string                       `json:"blobs_url"`
-	BranchesURL         string                       `json:"branches_url"`
-	CloneURL            string                       `json:"clone_url"`
-	CodeOfConduct       CodeOfConduct                `json:"code_of_conduct"`
-	CollaboratorsURL    string                       `json:"collaborators_url"`
-	CommentsURL         string                       `json:"comments_url"`
-	CommitsURL          string                       `json:"commits_url"`
-	CompareURL          string                       `json:"compare_url"`
-	ContentsURL         string                       `json:"contents_url"`
-	ContributorsURL     string                       `json:"contributors_url"`
-	CreatedAt           time.Time                    `json:"created_at"`
-	DefaultBranch       string                       `json:"default_branch"`
-	DeleteBranchOnMerge bool                         `json:"delete_branch_on_merge"`
-	DeploymentsURL      string                       `json:"deployments_url"`
-	Description         string                       `json:"description"`
-	Disabled            bool                         `json:"disabled"`
-	DownloadsURL        string                       `json:"downloads_url"`
-	EventsURL           string                       `json:"events_url"`
-	Fork                bool                         `json:"fork"`
-	Forks               int                          `json:"forks"`
-	ForksCount          int                          `json:"forks_count"`
-	ForksURL            string                       `json:"forks_url"`
-	FullName            string                       `json:"full_name"`
-	GitCommitsURL       string                       `json:"git_commits_url"`
-	GitRefsURL          string                       `json:"git_refs_url"`
-	GitTagsURL          string                       `json:"git_tags_url"`
-	GitURL              string                       `json:"git_url"`
-	HTMLURL             string                       `json:"html_url"`
-	HasDownloads        bool                         `json:"has_downloads"`
-	HasIssues           bool                         `json:"has_issues"`
-	HasPages            bool                         `json:"has_pages"`
-	HasProjects         bool                         `json:"has_projects"`
-	HasWiki             bool                         `json:"has_wiki"`
-	Homepage            string                       `json:"homepage"`
-	HooksURL            string                       `json:"hooks_url"`
-	ID                  int                          `json:"id"`
-	IsTemplate          bool                         `json:"is_template"`
-	IssueCommentURL     string                       `json:"issue_comment_url"`
-	IssueEventsURL      string                       `json:"issue_events_url"`
-	IssuesURL           string                       `json:"issues_url"`
-	KeysURL             string                       `json:"keys_url"`
-	LabelsURL           string                       `json:"labels_url"`
-	Language            string                       `json:"language"`
-	LanguagesURL        string                       `json:"languages_url"`
-	License             MinimalRepositoryLicense     `json:"license"`
-	MergesURL           string                       `json:"merges_url"`
-	MilestonesURL       string                       `json:"milestones_url"`
-	MirrorURL           string                       `json:"mirror_url"`
-	Name                string                       `json:"name"`
-	NetworkCount        int                          `json:"network_count"`
-	NodeID              string                       `json:"node_id"`
-	NotificationsURL    string                       `json:"notifications_url"`
-	OpenIssues          int                          `json:"open_issues"`
-	OpenIssuesCount     int                          `json:"open_issues_count"`
-	Owner               SimpleUser                   `json:"owner"`
-	Permissions         MinimalRepositoryPermissions `json:"permissions"`
-	Private             bool                         `json:"private"`
-	PullsURL            string                       `json:"pulls_url"`
-	PushedAt            time.Time                    `json:"pushed_at"`
-	ReleasesURL         string                       `json:"releases_url"`
-	SSHURL              string                       `json:"ssh_url"`
-	Size                int                          `json:"size"`
-	StargazersCount     int                          `json:"stargazers_count"`
-	StargazersURL       string                       `json:"stargazers_url"`
-	StatusesURL         string                       `json:"statuses_url"`
-	SubscribersCount    int                          `json:"subscribers_count"`
-	SubscribersURL      string                       `json:"subscribers_url"`
-	SubscriptionURL     string                       `json:"subscription_url"`
-	SvnURL              string                       `json:"svn_url"`
-	TagsURL             string                       `json:"tags_url"`
-	TeamsURL            string                       `json:"teams_url"`
-	TempCloneToken      string                       `json:"temp_clone_token"`
-	TemplateRepository  NullableRepository           `json:"template_repository"`
-	Topics              []string                     `json:"topics"`
-	TreesURL            string                       `json:"trees_url"`
-	URL                 string                       `json:"url"`
-	UpdatedAt           time.Time                    `json:"updated_at"`
-	Visibility          string                       `json:"visibility"`
-	Watchers            int                          `json:"watchers"`
-	WatchersCount       int                          `json:"watchers_count"`
+	AllowForking        *bool                         `json:"allow_forking"`
+	ArchiveURL          string                        `json:"archive_url"`
+	Archived            *bool                         `json:"archived"`
+	AssigneesURL        string                        `json:"assignees_url"`
+	BlobsURL            string                        `json:"blobs_url"`
+	BranchesURL         string                        `json:"branches_url"`
+	CloneURL            *string                       `json:"clone_url"`
+	CodeOfConduct       *CodeOfConduct                `json:"code_of_conduct"`
+	CollaboratorsURL    string                        `json:"collaborators_url"`
+	CommentsURL         string                        `json:"comments_url"`
+	CommitsURL          string                        `json:"commits_url"`
+	CompareURL          string                        `json:"compare_url"`
+	ContentsURL         string                        `json:"contents_url"`
+	ContributorsURL     string                        `json:"contributors_url"`
+	CreatedAt           *time.Time                    `json:"created_at"`
+	DefaultBranch       *string                       `json:"default_branch"`
+	DeleteBranchOnMerge *bool                         `json:"delete_branch_on_merge"`
+	DeploymentsURL      string                        `json:"deployments_url"`
+	Description         string                        `json:"description"`
+	Disabled            *bool                         `json:"disabled"`
+	DownloadsURL        string                        `json:"downloads_url"`
+	EventsURL           string                        `json:"events_url"`
+	Fork                bool                          `json:"fork"`
+	Forks               *int                          `json:"forks"`
+	ForksCount          *int                          `json:"forks_count"`
+	ForksURL            string                        `json:"forks_url"`
+	FullName            string                        `json:"full_name"`
+	GitCommitsURL       string                        `json:"git_commits_url"`
+	GitRefsURL          string                        `json:"git_refs_url"`
+	GitTagsURL          string                        `json:"git_tags_url"`
+	GitURL              *string                       `json:"git_url"`
+	HTMLURL             string                        `json:"html_url"`
+	HasDownloads        *bool                         `json:"has_downloads"`
+	HasIssues           *bool                         `json:"has_issues"`
+	HasPages            *bool                         `json:"has_pages"`
+	HasProjects         *bool                         `json:"has_projects"`
+	HasWiki             *bool                         `json:"has_wiki"`
+	Homepage            *string                       `json:"homepage"`
+	HooksURL            string                        `json:"hooks_url"`
+	ID                  int                           `json:"id"`
+	IsTemplate          *bool                         `json:"is_template"`
+	IssueCommentURL     string                        `json:"issue_comment_url"`
+	IssueEventsURL      string                        `json:"issue_events_url"`
+	IssuesURL           string                        `json:"issues_url"`
+	KeysURL             string                        `json:"keys_url"`
+	LabelsURL           string                        `json:"labels_url"`
+	Language            *string                       `json:"language"`
+	LanguagesURL        string                        `json:"languages_url"`
+	License             *MinimalRepositoryLicense     `json:"license"`
+	MergesURL           string                        `json:"merges_url"`
+	MilestonesURL       string                        `json:"milestones_url"`
+	MirrorURL           *string                       `json:"mirror_url"`
+	Name                string                        `json:"name"`
+	NetworkCount        *int                          `json:"network_count"`
+	NodeID              string                        `json:"node_id"`
+	NotificationsURL    string                        `json:"notifications_url"`
+	OpenIssues          *int                          `json:"open_issues"`
+	OpenIssuesCount     *int                          `json:"open_issues_count"`
+	Owner               SimpleUser                    `json:"owner"`
+	Permissions         *MinimalRepositoryPermissions `json:"permissions"`
+	Private             bool                          `json:"private"`
+	PullsURL            string                        `json:"pulls_url"`
+	PushedAt            *time.Time                    `json:"pushed_at"`
+	ReleasesURL         string                        `json:"releases_url"`
+	SSHURL              *string                       `json:"ssh_url"`
+	Size                *int                          `json:"size"`
+	StargazersCount     *int                          `json:"stargazers_count"`
+	StargazersURL       string                        `json:"stargazers_url"`
+	StatusesURL         string                        `json:"statuses_url"`
+	SubscribersCount    *int                          `json:"subscribers_count"`
+	SubscribersURL      string                        `json:"subscribers_url"`
+	SubscriptionURL     string                        `json:"subscription_url"`
+	SvnURL              *string                       `json:"svn_url"`
+	TagsURL             string                        `json:"tags_url"`
+	TeamsURL            string                        `json:"teams_url"`
+	TempCloneToken      *string                       `json:"temp_clone_token"`
+	TemplateRepository  *NullableRepository           `json:"template_repository"`
+	Topics              *[]string                     `json:"topics"`
+	TreesURL            string                        `json:"trees_url"`
+	URL                 string                        `json:"url"`
+	UpdatedAt           *time.Time                    `json:"updated_at"`
+	Visibility          *string                       `json:"visibility"`
+	Watchers            *int                          `json:"watchers"`
+	WatchersCount       *int                          `json:"watchers_count"`
 }
 
 type MinimalRepositoryLicense struct {
-	Key    string `json:"key"`
-	Name   string `json:"name"`
-	NodeID string `json:"node_id"`
-	SpdxID string `json:"spdx_id"`
-	URL    string `json:"url"`
+	Key    *string `json:"key"`
+	Name   *string `json:"name"`
+	NodeID *string `json:"node_id"`
+	SpdxID *string `json:"spdx_id"`
+	URL    *string `json:"url"`
 }
 
 type MinimalRepositoryPermissions struct {
-	Admin    bool `json:"admin"`
-	Maintain bool `json:"maintain"`
-	Pull     bool `json:"pull"`
-	Push     bool `json:"push"`
-	Triage   bool `json:"triage"`
+	Admin    *bool `json:"admin"`
+	Maintain *bool `json:"maintain"`
+	Pull     *bool `json:"pull"`
+	Push     *bool `json:"push"`
+	Triage   *bool `json:"triage"`
 }
+
+type NoContent struct{}
+
+func (*NoContent) reposGetCodeFrequencyStatsResponse()  {}
+func (*NoContent) reposGetCommitActivityStatsResponse() {}
+func (*NoContent) reposGetContributorsStatsResponse()   {}
+func (*NoContent) reposGetPunchCardStatsResponse()      {}
+
+type NotModified struct{}
+
+func (*NotModified) activityCheckRepoIsStarredByAuthenticatedUserResponse()     {}
+func (*NotModified) activityDeleteThreadSubscriptionResponse()                  {}
+func (*NotModified) activityGetThreadResponse()                                 {}
+func (*NotModified) activityGetThreadSubscriptionForAuthenticatedUserResponse() {}
+func (*NotModified) activityListPublicEventsForRepoNetworkResponse()            {}
+func (*NotModified) activityListPublicEventsResponse()                          {}
+func (*NotModified) activityListWatchedReposForAuthenticatedUserResponse()      {}
+func (*NotModified) activityMarkNotificationsAsReadResponse()                   {}
+func (*NotModified) activityMarkThreadAsReadResponse()                          {}
+func (*NotModified) activitySetThreadSubscriptionResponse()                     {}
+func (*NotModified) activityStarRepoForAuthenticatedUserResponse()              {}
+func (*NotModified) activityUnstarRepoForAuthenticatedUserResponse()            {}
+func (*NotModified) appsAddRepoToInstallationResponse()                         {}
+func (*NotModified) appsListInstallationReposForAuthenticatedUserResponse()     {}
+func (*NotModified) appsListReposAccessibleToInstallationResponse()             {}
+func (*NotModified) appsListSubscriptionsForAuthenticatedUserResponse()         {}
+func (*NotModified) appsListSubscriptionsForAuthenticatedUserStubbedResponse()  {}
+func (*NotModified) appsRemoveRepoFromInstallationResponse()                    {}
+func (*NotModified) codesOfConductGetAllCodesOfConductResponse()                {}
+func (*NotModified) codesOfConductGetConductCodeResponse()                      {}
+func (*NotModified) emojisGetResponse()                                         {}
+func (*NotModified) gistsCheckIsStarredResponse()                               {}
+func (*NotModified) gistsCreateCommentResponse()                                {}
+func (*NotModified) gistsDeleteCommentResponse()                                {}
+func (*NotModified) gistsDeleteResponse()                                       {}
+func (*NotModified) gistsGetCommentResponse()                                   {}
+func (*NotModified) gistsGetResponse()                                          {}
+func (*NotModified) gistsListCommentsResponse()                                 {}
+func (*NotModified) gistsListCommitsResponse()                                  {}
+func (*NotModified) gistsListForksResponse()                                    {}
+func (*NotModified) gistsListResponse()                                         {}
+func (*NotModified) gistsListStarredResponse()                                  {}
+func (*NotModified) gistsStarResponse()                                         {}
+func (*NotModified) gistsUnstarResponse()                                       {}
+func (*NotModified) gitignoreGetAllTemplatesResponse()                          {}
+func (*NotModified) gitignoreGetTemplateResponse()                              {}
+func (*NotModified) licensesGetAllCommonlyUsedResponse()                        {}
+func (*NotModified) licensesGetResponse()                                       {}
+func (*NotModified) markdownRenderRawResponse()                                 {}
+func (*NotModified) markdownRenderResponse()                                    {}
+func (*NotModified) metaGetResponse()                                           {}
+func (*NotModified) migrationsDeleteArchiveForAuthenticatedUserResponse()       {}
+func (*NotModified) migrationsGetArchiveForAuthenticatedUserResponse()          {}
+func (*NotModified) migrationsGetStatusForAuthenticatedUserResponse()           {}
+func (*NotModified) migrationsListForAuthenticatedUserResponse()                {}
+func (*NotModified) migrationsUnlockRepoForAuthenticatedUserResponse()          {}
+func (*NotModified) oAuthAuthorizationsDeleteAuthorizationResponse()            {}
+func (*NotModified) oAuthAuthorizationsDeleteGrantResponse()                    {}
+func (*NotModified) oAuthAuthorizationsGetAuthorizationResponse()               {}
+func (*NotModified) oAuthAuthorizationsGetGrantResponse()                       {}
+func (*NotModified) oAuthAuthorizationsListAuthorizationsResponse()             {}
+func (*NotModified) oAuthAuthorizationsListGrantsResponse()                     {}
+func (*NotModified) orgsListForAuthenticatedUserResponse()                      {}
+func (*NotModified) orgsListResponse()                                          {}
+func (*NotModified) projectsCreateColumnResponse()                              {}
+func (*NotModified) projectsCreateForAuthenticatedUserResponse()                {}
+func (*NotModified) projectsDeleteCardResponse()                                {}
+func (*NotModified) projectsDeleteColumnResponse()                              {}
+func (*NotModified) projectsDeleteResponse()                                    {}
+func (*NotModified) projectsGetCardResponse()                                   {}
+func (*NotModified) projectsGetColumnResponse()                                 {}
+func (*NotModified) projectsGetResponse()                                       {}
+func (*NotModified) projectsListColumnsResponse()                               {}
+func (*NotModified) projectsMoveColumnResponse()                                {}
+func (*NotModified) projectsUpdateCardResponse()                                {}
+func (*NotModified) projectsUpdateColumnResponse()                              {}
+func (*NotModified) projectsUpdateResponse()                                    {}
+func (*NotModified) pullsGetResponse()                                          {}
+func (*NotModified) rateLimitGetResponse()                                      {}
+func (*NotModified) reactionsDeleteLegacyResponse()                             {}
+func (*NotModified) reposAcceptInvitationResponse()                             {}
+func (*NotModified) reposDeclineInvitationResponse()                            {}
+func (*NotModified) reposListInvitationsForAuthenticatedUserResponse()          {}
+func (*NotModified) scimDeleteUserFromOrgResponse()                             {}
+func (*NotModified) searchTopicsResponse()                                      {}
+func (*NotModified) teamsListForAuthenticatedUserResponse()                     {}
+func (*NotModified) usersCheckBlockedResponse()                                 {}
+func (*NotModified) usersCheckPersonIsFollowedByAuthenticatedResponse()         {}
+func (*NotModified) usersDeletePublicSSHKeyForAuthenticatedResponse()           {}
+func (*NotModified) usersFollowResponse()                                       {}
+func (*NotModified) usersGetGpgKeyForAuthenticatedResponse()                    {}
+func (*NotModified) usersGetPublicSSHKeyForAuthenticatedResponse()              {}
+func (*NotModified) usersListBlockedByAuthenticatedResponse()                   {}
+func (*NotModified) usersListEmailsForAuthenticatedResponse()                   {}
+func (*NotModified) usersListFollowedByAuthenticatedResponse()                  {}
+func (*NotModified) usersListFollowersForAuthenticatedUserResponse()            {}
+func (*NotModified) usersListGpgKeysForAuthenticatedResponse()                  {}
+func (*NotModified) usersListPublicEmailsForAuthenticatedResponse()             {}
+func (*NotModified) usersListPublicSSHKeysForAuthenticatedResponse()            {}
+func (*NotModified) usersListResponse()                                         {}
+func (*NotModified) usersUnblockResponse()                                      {}
+func (*NotModified) usersUnfollowResponse()                                     {}
 
 type NullableCodeOfConductSimple struct {
 	HTMLURL string `json:"html_url"`
@@ -3968,393 +4500,304 @@ type NullableCommunityHealthFile struct {
 }
 
 type NullableGitUser struct {
-	Date  string `json:"date"`
-	Email string `json:"email"`
-	Name  string `json:"name"`
+	Date  *string `json:"date"`
+	Email *string `json:"email"`
+	Name  *string `json:"name"`
 }
 
 type NullableIntegration struct {
-	ClientID           string                         `json:"client_id"`
-	ClientSecret       string                         `json:"client_secret"`
+	ClientID           *string                        `json:"client_id"`
+	ClientSecret       *string                        `json:"client_secret"`
 	CreatedAt          time.Time                      `json:"created_at"`
 	Description        string                         `json:"description"`
 	Events             []string                       `json:"events"`
 	ExternalURL        string                         `json:"external_url"`
 	HTMLURL            string                         `json:"html_url"`
 	ID                 int                            `json:"id"`
-	InstallationsCount int                            `json:"installations_count"`
+	InstallationsCount *int                           `json:"installations_count"`
 	Name               string                         `json:"name"`
 	NodeID             string                         `json:"node_id"`
 	Owner              NullableSimpleUser             `json:"owner"`
-	Pem                string                         `json:"pem"`
+	Pem                *string                        `json:"pem"`
 	Permissions        NullableIntegrationPermissions `json:"permissions"`
-	Slug               string                         `json:"slug"`
+	Slug               *string                        `json:"slug"`
 	UpdatedAt          time.Time                      `json:"updated_at"`
-	WebhookSecret      string                         `json:"webhook_secret"`
+	WebhookSecret      *string                        `json:"webhook_secret"`
 }
 
 type NullableIntegrationPermissions struct {
-	Checks      string `json:"checks"`
-	Contents    string `json:"contents"`
-	Deployments string `json:"deployments"`
-	Issues      string `json:"issues"`
-	Metadata    string `json:"metadata"`
+	Checks      *string `json:"checks"`
+	Contents    *string `json:"contents"`
+	Deployments *string `json:"deployments"`
+	Issues      *string `json:"issues"`
+	Metadata    *string `json:"metadata"`
 }
 
 type NullableLicenseSimple struct {
-	HTMLURL string `json:"html_url"`
-	Key     string `json:"key"`
-	Name    string `json:"name"`
-	NodeID  string `json:"node_id"`
-	SpdxID  string `json:"spdx_id"`
-	URL     string `json:"url"`
+	HTMLURL *string `json:"html_url"`
+	Key     string  `json:"key"`
+	Name    string  `json:"name"`
+	NodeID  string  `json:"node_id"`
+	SpdxID  string  `json:"spdx_id"`
+	URL     string  `json:"url"`
 }
 
 type NullableMilestone struct {
-	ClosedAt     time.Time          `json:"closed_at"`
-	ClosedIssues int                `json:"closed_issues"`
-	CreatedAt    time.Time          `json:"created_at"`
-	Creator      NullableSimpleUser `json:"creator"`
-	Description  string             `json:"description"`
-	DueOn        time.Time          `json:"due_on"`
-	HTMLURL      string             `json:"html_url"`
-	ID           int                `json:"id"`
-	LabelsURL    string             `json:"labels_url"`
-	NodeID       string             `json:"node_id"`
-	Number       int                `json:"number"`
-	OpenIssues   int                `json:"open_issues"`
-	State        string             `json:"state"`
-	Title        string             `json:"title"`
-	URL          string             `json:"url"`
-	UpdatedAt    time.Time          `json:"updated_at"`
+	ClosedAt     time.Time              `json:"closed_at"`
+	ClosedIssues int                    `json:"closed_issues"`
+	CreatedAt    time.Time              `json:"created_at"`
+	Creator      NullableSimpleUser     `json:"creator"`
+	Description  string                 `json:"description"`
+	DueOn        time.Time              `json:"due_on"`
+	HTMLURL      string                 `json:"html_url"`
+	ID           int                    `json:"id"`
+	LabelsURL    string                 `json:"labels_url"`
+	NodeID       string                 `json:"node_id"`
+	Number       int                    `json:"number"`
+	OpenIssues   int                    `json:"open_issues"`
+	State        NullableMilestoneState `json:"state"`
+	Title        string                 `json:"title"`
+	URL          string                 `json:"url"`
+	UpdatedAt    time.Time              `json:"updated_at"`
 }
 
-type NullableMinimalRepository struct {
-	AllowForking        bool                                 `json:"allow_forking"`
-	ArchiveURL          string                               `json:"archive_url"`
-	Archived            bool                                 `json:"archived"`
-	AssigneesURL        string                               `json:"assignees_url"`
-	BlobsURL            string                               `json:"blobs_url"`
-	BranchesURL         string                               `json:"branches_url"`
-	CloneURL            string                               `json:"clone_url"`
-	CodeOfConduct       CodeOfConduct                        `json:"code_of_conduct"`
-	CollaboratorsURL    string                               `json:"collaborators_url"`
-	CommentsURL         string                               `json:"comments_url"`
-	CommitsURL          string                               `json:"commits_url"`
-	CompareURL          string                               `json:"compare_url"`
-	ContentsURL         string                               `json:"contents_url"`
-	ContributorsURL     string                               `json:"contributors_url"`
-	CreatedAt           time.Time                            `json:"created_at"`
-	DefaultBranch       string                               `json:"default_branch"`
-	DeleteBranchOnMerge bool                                 `json:"delete_branch_on_merge"`
-	DeploymentsURL      string                               `json:"deployments_url"`
-	Description         string                               `json:"description"`
-	Disabled            bool                                 `json:"disabled"`
-	DownloadsURL        string                               `json:"downloads_url"`
-	EventsURL           string                               `json:"events_url"`
-	Fork                bool                                 `json:"fork"`
-	Forks               int                                  `json:"forks"`
-	ForksCount          int                                  `json:"forks_count"`
-	ForksURL            string                               `json:"forks_url"`
-	FullName            string                               `json:"full_name"`
-	GitCommitsURL       string                               `json:"git_commits_url"`
-	GitRefsURL          string                               `json:"git_refs_url"`
-	GitTagsURL          string                               `json:"git_tags_url"`
-	GitURL              string                               `json:"git_url"`
-	HTMLURL             string                               `json:"html_url"`
-	HasDownloads        bool                                 `json:"has_downloads"`
-	HasIssues           bool                                 `json:"has_issues"`
-	HasPages            bool                                 `json:"has_pages"`
-	HasProjects         bool                                 `json:"has_projects"`
-	HasWiki             bool                                 `json:"has_wiki"`
-	Homepage            string                               `json:"homepage"`
-	HooksURL            string                               `json:"hooks_url"`
-	ID                  int                                  `json:"id"`
-	IsTemplate          bool                                 `json:"is_template"`
-	IssueCommentURL     string                               `json:"issue_comment_url"`
-	IssueEventsURL      string                               `json:"issue_events_url"`
-	IssuesURL           string                               `json:"issues_url"`
-	KeysURL             string                               `json:"keys_url"`
-	LabelsURL           string                               `json:"labels_url"`
-	Language            string                               `json:"language"`
-	LanguagesURL        string                               `json:"languages_url"`
-	License             NullableMinimalRepositoryLicense     `json:"license"`
-	MergesURL           string                               `json:"merges_url"`
-	MilestonesURL       string                               `json:"milestones_url"`
-	MirrorURL           string                               `json:"mirror_url"`
-	Name                string                               `json:"name"`
-	NetworkCount        int                                  `json:"network_count"`
-	NodeID              string                               `json:"node_id"`
-	NotificationsURL    string                               `json:"notifications_url"`
-	OpenIssues          int                                  `json:"open_issues"`
-	OpenIssuesCount     int                                  `json:"open_issues_count"`
-	Owner               SimpleUser                           `json:"owner"`
-	Permissions         NullableMinimalRepositoryPermissions `json:"permissions"`
-	Private             bool                                 `json:"private"`
-	PullsURL            string                               `json:"pulls_url"`
-	PushedAt            time.Time                            `json:"pushed_at"`
-	ReleasesURL         string                               `json:"releases_url"`
-	SSHURL              string                               `json:"ssh_url"`
-	Size                int                                  `json:"size"`
-	StargazersCount     int                                  `json:"stargazers_count"`
-	StargazersURL       string                               `json:"stargazers_url"`
-	StatusesURL         string                               `json:"statuses_url"`
-	SubscribersCount    int                                  `json:"subscribers_count"`
-	SubscribersURL      string                               `json:"subscribers_url"`
-	SubscriptionURL     string                               `json:"subscription_url"`
-	SvnURL              string                               `json:"svn_url"`
-	TagsURL             string                               `json:"tags_url"`
-	TeamsURL            string                               `json:"teams_url"`
-	TempCloneToken      string                               `json:"temp_clone_token"`
-	TemplateRepository  NullableRepository                   `json:"template_repository"`
-	Topics              []string                             `json:"topics"`
-	TreesURL            string                               `json:"trees_url"`
-	URL                 string                               `json:"url"`
-	UpdatedAt           time.Time                            `json:"updated_at"`
-	Visibility          string                               `json:"visibility"`
-	Watchers            int                                  `json:"watchers"`
-	WatchersCount       int                                  `json:"watchers_count"`
-}
+type NullableMilestoneState string
 
-type NullableMinimalRepositoryLicense struct {
-	Key    string `json:"key"`
-	Name   string `json:"name"`
-	NodeID string `json:"node_id"`
-	SpdxID string `json:"spdx_id"`
-	URL    string `json:"url"`
-}
-
-type NullableMinimalRepositoryPermissions struct {
-	Admin    bool `json:"admin"`
-	Maintain bool `json:"maintain"`
-	Pull     bool `json:"pull"`
-	Push     bool `json:"push"`
-	Triage   bool `json:"triage"`
-}
+const (
+	NullableMilestoneStateOpen   NullableMilestoneState = "open"
+	NullableMilestoneStateClosed NullableMilestoneState = "closed"
+)
 
 type NullableRepository struct {
-	AllowAutoMerge      bool                                 `json:"allow_auto_merge"`
-	AllowForking        bool                                 `json:"allow_forking"`
-	AllowMergeCommit    bool                                 `json:"allow_merge_commit"`
-	AllowRebaseMerge    bool                                 `json:"allow_rebase_merge"`
-	AllowSquashMerge    bool                                 `json:"allow_squash_merge"`
-	ArchiveURL          string                               `json:"archive_url"`
-	Archived            bool                                 `json:"archived"`
-	AssigneesURL        string                               `json:"assignees_url"`
-	BlobsURL            string                               `json:"blobs_url"`
-	BranchesURL         string                               `json:"branches_url"`
-	CloneURL            string                               `json:"clone_url"`
-	CollaboratorsURL    string                               `json:"collaborators_url"`
-	CommentsURL         string                               `json:"comments_url"`
-	CommitsURL          string                               `json:"commits_url"`
-	CompareURL          string                               `json:"compare_url"`
-	ContentsURL         string                               `json:"contents_url"`
-	ContributorsURL     string                               `json:"contributors_url"`
-	CreatedAt           time.Time                            `json:"created_at"`
-	DefaultBranch       string                               `json:"default_branch"`
-	DeleteBranchOnMerge bool                                 `json:"delete_branch_on_merge"`
-	DeploymentsURL      string                               `json:"deployments_url"`
-	Description         string                               `json:"description"`
-	Disabled            bool                                 `json:"disabled"`
-	DownloadsURL        string                               `json:"downloads_url"`
-	EventsURL           string                               `json:"events_url"`
-	Fork                bool                                 `json:"fork"`
-	Forks               int                                  `json:"forks"`
-	ForksCount          int                                  `json:"forks_count"`
-	ForksURL            string                               `json:"forks_url"`
-	FullName            string                               `json:"full_name"`
-	GitCommitsURL       string                               `json:"git_commits_url"`
-	GitRefsURL          string                               `json:"git_refs_url"`
-	GitTagsURL          string                               `json:"git_tags_url"`
-	GitURL              string                               `json:"git_url"`
-	HTMLURL             string                               `json:"html_url"`
-	HasDownloads        bool                                 `json:"has_downloads"`
-	HasIssues           bool                                 `json:"has_issues"`
-	HasPages            bool                                 `json:"has_pages"`
-	HasProjects         bool                                 `json:"has_projects"`
-	HasWiki             bool                                 `json:"has_wiki"`
-	Homepage            string                               `json:"homepage"`
-	HooksURL            string                               `json:"hooks_url"`
-	ID                  int                                  `json:"id"`
-	IsTemplate          bool                                 `json:"is_template"`
-	IssueCommentURL     string                               `json:"issue_comment_url"`
-	IssueEventsURL      string                               `json:"issue_events_url"`
-	IssuesURL           string                               `json:"issues_url"`
-	KeysURL             string                               `json:"keys_url"`
-	LabelsURL           string                               `json:"labels_url"`
-	Language            string                               `json:"language"`
-	LanguagesURL        string                               `json:"languages_url"`
-	License             NullableLicenseSimple                `json:"license"`
-	MasterBranch        string                               `json:"master_branch"`
-	MergesURL           string                               `json:"merges_url"`
-	MilestonesURL       string                               `json:"milestones_url"`
-	MirrorURL           string                               `json:"mirror_url"`
-	Name                string                               `json:"name"`
-	NetworkCount        int                                  `json:"network_count"`
-	NodeID              string                               `json:"node_id"`
-	NotificationsURL    string                               `json:"notifications_url"`
-	OpenIssues          int                                  `json:"open_issues"`
-	OpenIssuesCount     int                                  `json:"open_issues_count"`
-	Organization        NullableSimpleUser                   `json:"organization"`
-	Owner               SimpleUser                           `json:"owner"`
-	Permissions         NullableRepositoryPermissions        `json:"permissions"`
-	Private             bool                                 `json:"private"`
-	PullsURL            string                               `json:"pulls_url"`
-	PushedAt            time.Time                            `json:"pushed_at"`
-	ReleasesURL         string                               `json:"releases_url"`
-	SSHURL              string                               `json:"ssh_url"`
-	Size                int                                  `json:"size"`
-	StargazersCount     int                                  `json:"stargazers_count"`
-	StargazersURL       string                               `json:"stargazers_url"`
-	StarredAt           string                               `json:"starred_at"`
-	StatusesURL         string                               `json:"statuses_url"`
-	SubscribersCount    int                                  `json:"subscribers_count"`
-	SubscribersURL      string                               `json:"subscribers_url"`
-	SubscriptionURL     string                               `json:"subscription_url"`
-	SvnURL              string                               `json:"svn_url"`
-	TagsURL             string                               `json:"tags_url"`
-	TeamsURL            string                               `json:"teams_url"`
-	TempCloneToken      string                               `json:"temp_clone_token"`
-	TemplateRepository  NullableRepositoryTemplateRepository `json:"template_repository"`
-	Topics              []string                             `json:"topics"`
-	TreesURL            string                               `json:"trees_url"`
-	URL                 string                               `json:"url"`
-	UpdatedAt           time.Time                            `json:"updated_at"`
-	Visibility          string                               `json:"visibility"`
-	Watchers            int                                  `json:"watchers"`
-	WatchersCount       int                                  `json:"watchers_count"`
+	AllowAutoMerge      *bool                                 `json:"allow_auto_merge"`
+	AllowForking        *bool                                 `json:"allow_forking"`
+	AllowMergeCommit    *bool                                 `json:"allow_merge_commit"`
+	AllowRebaseMerge    *bool                                 `json:"allow_rebase_merge"`
+	AllowSquashMerge    *bool                                 `json:"allow_squash_merge"`
+	ArchiveURL          string                                `json:"archive_url"`
+	Archived            bool                                  `json:"archived"`
+	AssigneesURL        string                                `json:"assignees_url"`
+	BlobsURL            string                                `json:"blobs_url"`
+	BranchesURL         string                                `json:"branches_url"`
+	CloneURL            string                                `json:"clone_url"`
+	CollaboratorsURL    string                                `json:"collaborators_url"`
+	CommentsURL         string                                `json:"comments_url"`
+	CommitsURL          string                                `json:"commits_url"`
+	CompareURL          string                                `json:"compare_url"`
+	ContentsURL         string                                `json:"contents_url"`
+	ContributorsURL     string                                `json:"contributors_url"`
+	CreatedAt           time.Time                             `json:"created_at"`
+	DefaultBranch       string                                `json:"default_branch"`
+	DeleteBranchOnMerge *bool                                 `json:"delete_branch_on_merge"`
+	DeploymentsURL      string                                `json:"deployments_url"`
+	Description         string                                `json:"description"`
+	Disabled            bool                                  `json:"disabled"`
+	DownloadsURL        string                                `json:"downloads_url"`
+	EventsURL           string                                `json:"events_url"`
+	Fork                bool                                  `json:"fork"`
+	Forks               int                                   `json:"forks"`
+	ForksCount          int                                   `json:"forks_count"`
+	ForksURL            string                                `json:"forks_url"`
+	FullName            string                                `json:"full_name"`
+	GitCommitsURL       string                                `json:"git_commits_url"`
+	GitRefsURL          string                                `json:"git_refs_url"`
+	GitTagsURL          string                                `json:"git_tags_url"`
+	GitURL              string                                `json:"git_url"`
+	HTMLURL             string                                `json:"html_url"`
+	HasDownloads        bool                                  `json:"has_downloads"`
+	HasIssues           bool                                  `json:"has_issues"`
+	HasPages            bool                                  `json:"has_pages"`
+	HasProjects         bool                                  `json:"has_projects"`
+	HasWiki             bool                                  `json:"has_wiki"`
+	Homepage            string                                `json:"homepage"`
+	HooksURL            string                                `json:"hooks_url"`
+	ID                  int                                   `json:"id"`
+	IsTemplate          *bool                                 `json:"is_template"`
+	IssueCommentURL     string                                `json:"issue_comment_url"`
+	IssueEventsURL      string                                `json:"issue_events_url"`
+	IssuesURL           string                                `json:"issues_url"`
+	KeysURL             string                                `json:"keys_url"`
+	LabelsURL           string                                `json:"labels_url"`
+	Language            string                                `json:"language"`
+	LanguagesURL        string                                `json:"languages_url"`
+	License             NullableLicenseSimple                 `json:"license"`
+	MasterBranch        *string                               `json:"master_branch"`
+	MergesURL           string                                `json:"merges_url"`
+	MilestonesURL       string                                `json:"milestones_url"`
+	MirrorURL           string                                `json:"mirror_url"`
+	Name                string                                `json:"name"`
+	NetworkCount        *int                                  `json:"network_count"`
+	NodeID              string                                `json:"node_id"`
+	NotificationsURL    string                                `json:"notifications_url"`
+	OpenIssues          int                                   `json:"open_issues"`
+	OpenIssuesCount     int                                   `json:"open_issues_count"`
+	Organization        *NullableSimpleUser                   `json:"organization"`
+	Owner               SimpleUser                            `json:"owner"`
+	Permissions         *NullableRepositoryPermissions        `json:"permissions"`
+	Private             bool                                  `json:"private"`
+	PullsURL            string                                `json:"pulls_url"`
+	PushedAt            time.Time                             `json:"pushed_at"`
+	ReleasesURL         string                                `json:"releases_url"`
+	SSHURL              string                                `json:"ssh_url"`
+	Size                int                                   `json:"size"`
+	StargazersCount     int                                   `json:"stargazers_count"`
+	StargazersURL       string                                `json:"stargazers_url"`
+	StarredAt           *string                               `json:"starred_at"`
+	StatusesURL         string                                `json:"statuses_url"`
+	SubscribersCount    *int                                  `json:"subscribers_count"`
+	SubscribersURL      string                                `json:"subscribers_url"`
+	SubscriptionURL     string                                `json:"subscription_url"`
+	SvnURL              string                                `json:"svn_url"`
+	TagsURL             string                                `json:"tags_url"`
+	TeamsURL            string                                `json:"teams_url"`
+	TempCloneToken      *string                               `json:"temp_clone_token"`
+	TemplateRepository  *NullableRepositoryTemplateRepository `json:"template_repository"`
+	Topics              *[]string                             `json:"topics"`
+	TreesURL            string                                `json:"trees_url"`
+	URL                 string                                `json:"url"`
+	UpdatedAt           time.Time                             `json:"updated_at"`
+	Visibility          *string                               `json:"visibility"`
+	Watchers            int                                   `json:"watchers"`
+	WatchersCount       int                                   `json:"watchers_count"`
 }
 
 type NullableRepositoryPermissions struct {
-	Admin    bool `json:"admin"`
-	Maintain bool `json:"maintain"`
-	Pull     bool `json:"pull"`
-	Push     bool `json:"push"`
-	Triage   bool `json:"triage"`
+	Admin    bool  `json:"admin"`
+	Maintain *bool `json:"maintain"`
+	Pull     bool  `json:"pull"`
+	Push     bool  `json:"push"`
+	Triage   *bool `json:"triage"`
 }
 
 type NullableRepositoryTemplateRepository struct {
-	AllowAutoMerge      bool                                            `json:"allow_auto_merge"`
-	AllowMergeCommit    bool                                            `json:"allow_merge_commit"`
-	AllowRebaseMerge    bool                                            `json:"allow_rebase_merge"`
-	AllowSquashMerge    bool                                            `json:"allow_squash_merge"`
-	ArchiveURL          string                                          `json:"archive_url"`
-	Archived            bool                                            `json:"archived"`
-	AssigneesURL        string                                          `json:"assignees_url"`
-	BlobsURL            string                                          `json:"blobs_url"`
-	BranchesURL         string                                          `json:"branches_url"`
-	CloneURL            string                                          `json:"clone_url"`
-	CollaboratorsURL    string                                          `json:"collaborators_url"`
-	CommentsURL         string                                          `json:"comments_url"`
-	CommitsURL          string                                          `json:"commits_url"`
-	CompareURL          string                                          `json:"compare_url"`
-	ContentsURL         string                                          `json:"contents_url"`
-	ContributorsURL     string                                          `json:"contributors_url"`
-	CreatedAt           string                                          `json:"created_at"`
-	DefaultBranch       string                                          `json:"default_branch"`
-	DeleteBranchOnMerge bool                                            `json:"delete_branch_on_merge"`
-	DeploymentsURL      string                                          `json:"deployments_url"`
-	Description         string                                          `json:"description"`
-	Disabled            bool                                            `json:"disabled"`
-	DownloadsURL        string                                          `json:"downloads_url"`
-	EventsURL           string                                          `json:"events_url"`
-	Fork                bool                                            `json:"fork"`
-	ForksCount          int                                             `json:"forks_count"`
-	ForksURL            string                                          `json:"forks_url"`
-	FullName            string                                          `json:"full_name"`
-	GitCommitsURL       string                                          `json:"git_commits_url"`
-	GitRefsURL          string                                          `json:"git_refs_url"`
-	GitTagsURL          string                                          `json:"git_tags_url"`
-	GitURL              string                                          `json:"git_url"`
-	HTMLURL             string                                          `json:"html_url"`
-	HasDownloads        bool                                            `json:"has_downloads"`
-	HasIssues           bool                                            `json:"has_issues"`
-	HasPages            bool                                            `json:"has_pages"`
-	HasProjects         bool                                            `json:"has_projects"`
-	HasWiki             bool                                            `json:"has_wiki"`
-	Homepage            string                                          `json:"homepage"`
-	HooksURL            string                                          `json:"hooks_url"`
-	ID                  int                                             `json:"id"`
-	IsTemplate          bool                                            `json:"is_template"`
-	IssueCommentURL     string                                          `json:"issue_comment_url"`
-	IssueEventsURL      string                                          `json:"issue_events_url"`
-	IssuesURL           string                                          `json:"issues_url"`
-	KeysURL             string                                          `json:"keys_url"`
-	LabelsURL           string                                          `json:"labels_url"`
-	Language            string                                          `json:"language"`
-	LanguagesURL        string                                          `json:"languages_url"`
-	MergesURL           string                                          `json:"merges_url"`
-	MilestonesURL       string                                          `json:"milestones_url"`
-	MirrorURL           string                                          `json:"mirror_url"`
-	Name                string                                          `json:"name"`
-	NetworkCount        int                                             `json:"network_count"`
-	NodeID              string                                          `json:"node_id"`
-	NotificationsURL    string                                          `json:"notifications_url"`
-	OpenIssuesCount     int                                             `json:"open_issues_count"`
-	Owner               NullableRepositoryTemplateRepositoryOwner       `json:"owner"`
-	Permissions         NullableRepositoryTemplateRepositoryPermissions `json:"permissions"`
-	Private             bool                                            `json:"private"`
-	PullsURL            string                                          `json:"pulls_url"`
-	PushedAt            string                                          `json:"pushed_at"`
-	ReleasesURL         string                                          `json:"releases_url"`
-	SSHURL              string                                          `json:"ssh_url"`
-	Size                int                                             `json:"size"`
-	StargazersCount     int                                             `json:"stargazers_count"`
-	StargazersURL       string                                          `json:"stargazers_url"`
-	StatusesURL         string                                          `json:"statuses_url"`
-	SubscribersCount    int                                             `json:"subscribers_count"`
-	SubscribersURL      string                                          `json:"subscribers_url"`
-	SubscriptionURL     string                                          `json:"subscription_url"`
-	SvnURL              string                                          `json:"svn_url"`
-	TagsURL             string                                          `json:"tags_url"`
-	TeamsURL            string                                          `json:"teams_url"`
-	TempCloneToken      string                                          `json:"temp_clone_token"`
-	Topics              []string                                        `json:"topics"`
-	TreesURL            string                                          `json:"trees_url"`
-	URL                 string                                          `json:"url"`
-	UpdatedAt           string                                          `json:"updated_at"`
-	Visibility          string                                          `json:"visibility"`
-	WatchersCount       int                                             `json:"watchers_count"`
+	AllowAutoMerge      *bool                                            `json:"allow_auto_merge"`
+	AllowMergeCommit    *bool                                            `json:"allow_merge_commit"`
+	AllowRebaseMerge    *bool                                            `json:"allow_rebase_merge"`
+	AllowSquashMerge    *bool                                            `json:"allow_squash_merge"`
+	ArchiveURL          *string                                          `json:"archive_url"`
+	Archived            *bool                                            `json:"archived"`
+	AssigneesURL        *string                                          `json:"assignees_url"`
+	BlobsURL            *string                                          `json:"blobs_url"`
+	BranchesURL         *string                                          `json:"branches_url"`
+	CloneURL            *string                                          `json:"clone_url"`
+	CollaboratorsURL    *string                                          `json:"collaborators_url"`
+	CommentsURL         *string                                          `json:"comments_url"`
+	CommitsURL          *string                                          `json:"commits_url"`
+	CompareURL          *string                                          `json:"compare_url"`
+	ContentsURL         *string                                          `json:"contents_url"`
+	ContributorsURL     *string                                          `json:"contributors_url"`
+	CreatedAt           *string                                          `json:"created_at"`
+	DefaultBranch       *string                                          `json:"default_branch"`
+	DeleteBranchOnMerge *bool                                            `json:"delete_branch_on_merge"`
+	DeploymentsURL      *string                                          `json:"deployments_url"`
+	Description         *string                                          `json:"description"`
+	Disabled            *bool                                            `json:"disabled"`
+	DownloadsURL        *string                                          `json:"downloads_url"`
+	EventsURL           *string                                          `json:"events_url"`
+	Fork                *bool                                            `json:"fork"`
+	ForksCount          *int                                             `json:"forks_count"`
+	ForksURL            *string                                          `json:"forks_url"`
+	FullName            *string                                          `json:"full_name"`
+	GitCommitsURL       *string                                          `json:"git_commits_url"`
+	GitRefsURL          *string                                          `json:"git_refs_url"`
+	GitTagsURL          *string                                          `json:"git_tags_url"`
+	GitURL              *string                                          `json:"git_url"`
+	HTMLURL             *string                                          `json:"html_url"`
+	HasDownloads        *bool                                            `json:"has_downloads"`
+	HasIssues           *bool                                            `json:"has_issues"`
+	HasPages            *bool                                            `json:"has_pages"`
+	HasProjects         *bool                                            `json:"has_projects"`
+	HasWiki             *bool                                            `json:"has_wiki"`
+	Homepage            *string                                          `json:"homepage"`
+	HooksURL            *string                                          `json:"hooks_url"`
+	ID                  *int                                             `json:"id"`
+	IsTemplate          *bool                                            `json:"is_template"`
+	IssueCommentURL     *string                                          `json:"issue_comment_url"`
+	IssueEventsURL      *string                                          `json:"issue_events_url"`
+	IssuesURL           *string                                          `json:"issues_url"`
+	KeysURL             *string                                          `json:"keys_url"`
+	LabelsURL           *string                                          `json:"labels_url"`
+	Language            *string                                          `json:"language"`
+	LanguagesURL        *string                                          `json:"languages_url"`
+	MergesURL           *string                                          `json:"merges_url"`
+	MilestonesURL       *string                                          `json:"milestones_url"`
+	MirrorURL           *string                                          `json:"mirror_url"`
+	Name                *string                                          `json:"name"`
+	NetworkCount        *int                                             `json:"network_count"`
+	NodeID              *string                                          `json:"node_id"`
+	NotificationsURL    *string                                          `json:"notifications_url"`
+	OpenIssuesCount     *int                                             `json:"open_issues_count"`
+	Owner               *NullableRepositoryTemplateRepositoryOwner       `json:"owner"`
+	Permissions         *NullableRepositoryTemplateRepositoryPermissions `json:"permissions"`
+	Private             *bool                                            `json:"private"`
+	PullsURL            *string                                          `json:"pulls_url"`
+	PushedAt            *string                                          `json:"pushed_at"`
+	ReleasesURL         *string                                          `json:"releases_url"`
+	SSHURL              *string                                          `json:"ssh_url"`
+	Size                *int                                             `json:"size"`
+	StargazersCount     *int                                             `json:"stargazers_count"`
+	StargazersURL       *string                                          `json:"stargazers_url"`
+	StatusesURL         *string                                          `json:"statuses_url"`
+	SubscribersCount    *int                                             `json:"subscribers_count"`
+	SubscribersURL      *string                                          `json:"subscribers_url"`
+	SubscriptionURL     *string                                          `json:"subscription_url"`
+	SvnURL              *string                                          `json:"svn_url"`
+	TagsURL             *string                                          `json:"tags_url"`
+	TeamsURL            *string                                          `json:"teams_url"`
+	TempCloneToken      *string                                          `json:"temp_clone_token"`
+	Topics              *[]string                                        `json:"topics"`
+	TreesURL            *string                                          `json:"trees_url"`
+	URL                 *string                                          `json:"url"`
+	UpdatedAt           *string                                          `json:"updated_at"`
+	Visibility          *string                                          `json:"visibility"`
+	WatchersCount       *int                                             `json:"watchers_count"`
 }
 
 type NullableRepositoryTemplateRepositoryOwner struct {
-	AvatarURL         string `json:"avatar_url"`
-	EventsURL         string `json:"events_url"`
-	FollowersURL      string `json:"followers_url"`
-	FollowingURL      string `json:"following_url"`
-	GistsURL          string `json:"gists_url"`
-	GravatarID        string `json:"gravatar_id"`
-	HTMLURL           string `json:"html_url"`
-	ID                int    `json:"id"`
-	Login             string `json:"login"`
-	NodeID            string `json:"node_id"`
-	OrganizationsURL  string `json:"organizations_url"`
-	ReceivedEventsURL string `json:"received_events_url"`
-	ReposURL          string `json:"repos_url"`
-	SiteAdmin         bool   `json:"site_admin"`
-	StarredURL        string `json:"starred_url"`
-	SubscriptionsURL  string `json:"subscriptions_url"`
-	Type              string `json:"type"`
-	URL               string `json:"url"`
+	AvatarURL         *string `json:"avatar_url"`
+	EventsURL         *string `json:"events_url"`
+	FollowersURL      *string `json:"followers_url"`
+	FollowingURL      *string `json:"following_url"`
+	GistsURL          *string `json:"gists_url"`
+	GravatarID        *string `json:"gravatar_id"`
+	HTMLURL           *string `json:"html_url"`
+	ID                *int    `json:"id"`
+	Login             *string `json:"login"`
+	NodeID            *string `json:"node_id"`
+	OrganizationsURL  *string `json:"organizations_url"`
+	ReceivedEventsURL *string `json:"received_events_url"`
+	ReposURL          *string `json:"repos_url"`
+	SiteAdmin         *bool   `json:"site_admin"`
+	StarredURL        *string `json:"starred_url"`
+	SubscriptionsURL  *string `json:"subscriptions_url"`
+	Type              *string `json:"type"`
+	URL               *string `json:"url"`
 }
 
 type NullableRepositoryTemplateRepositoryPermissions struct {
-	Admin    bool `json:"admin"`
-	Maintain bool `json:"maintain"`
-	Pull     bool `json:"pull"`
-	Push     bool `json:"push"`
-	Triage   bool `json:"triage"`
+	Admin    *bool `json:"admin"`
+	Maintain *bool `json:"maintain"`
+	Pull     *bool `json:"pull"`
+	Push     *bool `json:"push"`
+	Triage   *bool `json:"triage"`
 }
 
 type NullableScopedInstallation struct {
-	Account                SimpleUser     `json:"account"`
-	HasMultipleSingleFiles bool           `json:"has_multiple_single_files"`
-	Permissions            AppPermissions `json:"permissions"`
-	RepositoriesURL        string         `json:"repositories_url"`
-	RepositorySelection    string         `json:"repository_selection"`
-	SingleFileName         string         `json:"single_file_name"`
-	SingleFilePaths        []string       `json:"single_file_paths"`
+	Account                SimpleUser                                    `json:"account"`
+	HasMultipleSingleFiles *bool                                         `json:"has_multiple_single_files"`
+	Permissions            AppPermissions                                `json:"permissions"`
+	RepositoriesURL        string                                        `json:"repositories_url"`
+	RepositorySelection    NullableScopedInstallationRepositorySelection `json:"repository_selection"`
+	SingleFileName         string                                        `json:"single_file_name"`
+	SingleFilePaths        *[]string                                     `json:"single_file_paths"`
 }
+
+type NullableScopedInstallationRepositorySelection string
+
+const (
+	NullableScopedInstallationRepositorySelectionAll      NullableScopedInstallationRepositorySelection = "all"
+	NullableScopedInstallationRepositorySelectionSelected NullableScopedInstallationRepositorySelection = "selected"
+)
 
 type NullableSimpleCommit struct {
 	Author    NullableSimpleCommitAuthor    `json:"author"`
@@ -4376,51 +4819,64 @@ type NullableSimpleCommitCommitter struct {
 }
 
 type NullableSimpleUser struct {
-	AvatarURL         string `json:"avatar_url"`
-	Email             string `json:"email"`
-	EventsURL         string `json:"events_url"`
-	FollowersURL      string `json:"followers_url"`
-	FollowingURL      string `json:"following_url"`
-	GistsURL          string `json:"gists_url"`
-	GravatarID        string `json:"gravatar_id"`
-	HTMLURL           string `json:"html_url"`
-	ID                int    `json:"id"`
-	Login             string `json:"login"`
-	Name              string `json:"name"`
-	NodeID            string `json:"node_id"`
-	OrganizationsURL  string `json:"organizations_url"`
-	ReceivedEventsURL string `json:"received_events_url"`
-	ReposURL          string `json:"repos_url"`
-	SiteAdmin         bool   `json:"site_admin"`
-	StarredAt         string `json:"starred_at"`
-	StarredURL        string `json:"starred_url"`
-	SubscriptionsURL  string `json:"subscriptions_url"`
-	Type              string `json:"type"`
-	URL               string `json:"url"`
+	AvatarURL         string  `json:"avatar_url"`
+	Email             *string `json:"email"`
+	EventsURL         string  `json:"events_url"`
+	FollowersURL      string  `json:"followers_url"`
+	FollowingURL      string  `json:"following_url"`
+	GistsURL          string  `json:"gists_url"`
+	GravatarID        string  `json:"gravatar_id"`
+	HTMLURL           string  `json:"html_url"`
+	ID                int     `json:"id"`
+	Login             string  `json:"login"`
+	Name              *string `json:"name"`
+	NodeID            string  `json:"node_id"`
+	OrganizationsURL  string  `json:"organizations_url"`
+	ReceivedEventsURL string  `json:"received_events_url"`
+	ReposURL          string  `json:"repos_url"`
+	SiteAdmin         bool    `json:"site_admin"`
+	StarredAt         *string `json:"starred_at"`
+	StarredURL        string  `json:"starred_url"`
+	SubscriptionsURL  string  `json:"subscriptions_url"`
+	Type              string  `json:"type"`
+	URL               string  `json:"url"`
 }
 
 type NullableTeamSimple struct {
-	Description     string `json:"description"`
-	HTMLURL         string `json:"html_url"`
-	ID              int    `json:"id"`
-	LdapDn          string `json:"ldap_dn"`
-	MembersURL      string `json:"members_url"`
-	Name            string `json:"name"`
-	NodeID          string `json:"node_id"`
-	Permission      string `json:"permission"`
-	Privacy         string `json:"privacy"`
-	RepositoriesURL string `json:"repositories_url"`
-	Slug            string `json:"slug"`
-	URL             string `json:"url"`
+	Description     string  `json:"description"`
+	HTMLURL         string  `json:"html_url"`
+	ID              int     `json:"id"`
+	LdapDn          *string `json:"ldap_dn"`
+	MembersURL      string  `json:"members_url"`
+	Name            string  `json:"name"`
+	NodeID          string  `json:"node_id"`
+	Permission      string  `json:"permission"`
+	Privacy         *string `json:"privacy"`
+	RepositoriesURL string  `json:"repositories_url"`
+	Slug            string  `json:"slug"`
+	URL             string  `json:"url"`
 }
 
 type OAuthAuthorizationsCreateAuthorizationApplicationJSONRequest struct {
-	ClientID     string   `json:"client_id"`
-	ClientSecret string   `json:"client_secret"`
-	Fingerprint  string   `json:"fingerprint"`
-	Note         string   `json:"note"`
-	NoteURL      string   `json:"note_url"`
-	Scopes       []string `json:"scopes"`
+	ClientID     *string   `json:"client_id"`
+	ClientSecret *string   `json:"client_secret"`
+	Fingerprint  *string   `json:"fingerprint"`
+	Note         *string   `json:"note"`
+	NoteURL      *string   `json:"note_url"`
+	Scopes       *[]string `json:"scopes"`
+}
+
+func (*OAuthAuthorizationsCreateAuthorizationApplicationJSONRequest) oAuthAuthorizationsCreateAuthorizationRequest() {
+}
+
+type OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden BasicError
+
+func (*OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) oAuthAuthorizationsDeleteAuthorizationResponse() {
+}
+
+type OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized BasicError
+
+func (*OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) oAuthAuthorizationsDeleteAuthorizationResponse() {
 }
 
 type OAuthAuthorizationsDeleteAuthorizationNoContent struct{}
@@ -4428,47 +4884,115 @@ type OAuthAuthorizationsDeleteAuthorizationNoContent struct{}
 func (*OAuthAuthorizationsDeleteAuthorizationNoContent) oAuthAuthorizationsDeleteAuthorizationResponse() {
 }
 
+type OAuthAuthorizationsDeleteGrantApplicationJSONForbidden BasicError
+
+func (*OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) oAuthAuthorizationsDeleteGrantResponse() {
+}
+
+type OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized BasicError
+
+func (*OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) oAuthAuthorizationsDeleteGrantResponse() {
+}
+
 type OAuthAuthorizationsDeleteGrantNoContent struct{}
 
 func (*OAuthAuthorizationsDeleteGrantNoContent) oAuthAuthorizationsDeleteGrantResponse() {}
 
+type OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden BasicError
+
+func (*OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden) oAuthAuthorizationsGetAuthorizationResponse() {
+}
+
+type OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized BasicError
+
+func (*OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized) oAuthAuthorizationsGetAuthorizationResponse() {
+}
+
+type OAuthAuthorizationsGetGrantApplicationJSONForbidden BasicError
+
+func (*OAuthAuthorizationsGetGrantApplicationJSONForbidden) oAuthAuthorizationsGetGrantResponse() {}
+
+type OAuthAuthorizationsGetGrantApplicationJSONUnauthorized BasicError
+
+func (*OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) oAuthAuthorizationsGetGrantResponse() {
+}
+
 type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONRequest struct {
-	ClientSecret string   `json:"client_secret"`
-	Note         string   `json:"note"`
-	NoteURL      string   `json:"note_url"`
-	Scopes       []string `json:"scopes"`
+	ClientSecret string    `json:"client_secret"`
+	Note         *string   `json:"note"`
+	NoteURL      *string   `json:"note_url"`
+	Scopes       *[]string `json:"scopes"`
+}
+
+func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONRequest) oAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest() {
 }
 
 type OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONRequest struct {
-	ClientSecret string   `json:"client_secret"`
-	Fingerprint  string   `json:"fingerprint"`
-	Note         string   `json:"note"`
-	NoteURL      string   `json:"note_url"`
-	Scopes       []string `json:"scopes"`
+	ClientSecret string    `json:"client_secret"`
+	Fingerprint  *string   `json:"fingerprint"`
+	Note         *string   `json:"note"`
+	NoteURL      *string   `json:"note_url"`
+	Scopes       *[]string `json:"scopes"`
+}
+
+func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONRequest) oAuthAuthorizationsGetOrCreateAuthorizationForAppRequest() {
+}
+
+type OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden BasicError
+
+func (*OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) oAuthAuthorizationsListAuthorizationsResponse() {
+}
+
+type OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound BasicError
+
+func (*OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound) oAuthAuthorizationsListAuthorizationsResponse() {
+}
+
+type OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized BasicError
+
+func (*OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) oAuthAuthorizationsListAuthorizationsResponse() {
 }
 
 type OAuthAuthorizationsListAuthorizationsOK []Authorization
 
 func (*OAuthAuthorizationsListAuthorizationsOK) oAuthAuthorizationsListAuthorizationsResponse() {}
 
+type OAuthAuthorizationsListGrantsApplicationJSONForbidden BasicError
+
+func (*OAuthAuthorizationsListGrantsApplicationJSONForbidden) oAuthAuthorizationsListGrantsResponse() {
+}
+
+type OAuthAuthorizationsListGrantsApplicationJSONNotFound BasicError
+
+func (*OAuthAuthorizationsListGrantsApplicationJSONNotFound) oAuthAuthorizationsListGrantsResponse() {
+}
+
+type OAuthAuthorizationsListGrantsApplicationJSONUnauthorized BasicError
+
+func (*OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) oAuthAuthorizationsListGrantsResponse() {
+}
+
 type OAuthAuthorizationsListGrantsOK []ApplicationGrant
 
 func (*OAuthAuthorizationsListGrantsOK) oAuthAuthorizationsListGrantsResponse() {}
 
 type OAuthAuthorizationsUpdateAuthorizationApplicationJSONRequest struct {
-	AddScopes    []string `json:"add_scopes"`
-	Fingerprint  string   `json:"fingerprint"`
-	Note         string   `json:"note"`
-	NoteURL      string   `json:"note_url"`
-	RemoveScopes []string `json:"remove_scopes"`
-	Scopes       []string `json:"scopes"`
+	AddScopes    *[]string `json:"add_scopes"`
+	Fingerprint  *string   `json:"fingerprint"`
+	Note         *string   `json:"note"`
+	NoteURL      *string   `json:"note_url"`
+	RemoveScopes *[]string `json:"remove_scopes"`
+	Scopes       *[]string `json:"scopes"`
+}
+
+func (*OAuthAuthorizationsUpdateAuthorizationApplicationJSONRequest) oAuthAuthorizationsUpdateAuthorizationRequest() {
 }
 
 type OrgHook struct {
 	Active        bool          `json:"active"`
 	Config        OrgHookConfig `json:"config"`
 	CreatedAt     time.Time     `json:"created_at"`
-	DeliveriesURL string        `json:"deliveries_url"`
+	DeliveriesURL *string       `json:"deliveries_url"`
 	Events        []string      `json:"events"`
 	ID            int           `json:"id"`
 	Name          string        `json:"name"`
@@ -4478,109 +5002,127 @@ type OrgHook struct {
 	UpdatedAt     time.Time     `json:"updated_at"`
 }
 
-func (*OrgHook) orgsCreateWebhookResponse() {}
-func (*OrgHook) orgsGetWebhookResponse()    {}
-func (*OrgHook) orgsUpdateWebhookResponse() {}
+func (*OrgHook) orgsGetWebhookResponse() {}
 
 type OrgHookConfig struct {
-	ContentType string `json:"content_type"`
-	InsecureSsl string `json:"insecure_ssl"`
-	Secret      string `json:"secret"`
-	URL         string `json:"url"`
+	ContentType *string `json:"content_type"`
+	InsecureSsl *string `json:"insecure_ssl"`
+	Secret      *string `json:"secret"`
+	URL         *string `json:"url"`
 }
 
 type OrgMembership struct {
-	Organization    OrganizationSimple       `json:"organization"`
-	OrganizationURL string                   `json:"organization_url"`
-	Permissions     OrgMembershipPermissions `json:"permissions"`
-	Role            string                   `json:"role"`
-	State           string                   `json:"state"`
-	URL             string                   `json:"url"`
-	User            NullableSimpleUser       `json:"user"`
+	Organization    OrganizationSimple        `json:"organization"`
+	OrganizationURL string                    `json:"organization_url"`
+	Permissions     *OrgMembershipPermissions `json:"permissions"`
+	Role            OrgMembershipRole         `json:"role"`
+	State           OrgMembershipState        `json:"state"`
+	URL             string                    `json:"url"`
+	User            NullableSimpleUser        `json:"user"`
 }
 
-func (*OrgMembership) orgsGetMembershipForAuthenticatedUserResponse()    {}
-func (*OrgMembership) orgsGetMembershipForUserResponse()                 {}
-func (*OrgMembership) orgsSetMembershipForUserResponse()                 {}
-func (*OrgMembership) orgsUpdateMembershipForAuthenticatedUserResponse() {}
+func (*OrgMembership) orgsGetMembershipForAuthenticatedUserResponse() {}
+func (*OrgMembership) orgsGetMembershipForUserResponse()              {}
 
 type OrgMembershipPermissions struct {
 	CanCreateRepository bool `json:"can_create_repository"`
 }
 
+type OrgMembershipRole string
+
+const (
+	OrgMembershipRoleAdmin          OrgMembershipRole = "admin"
+	OrgMembershipRoleMember         OrgMembershipRole = "member"
+	OrgMembershipRoleBillingManager OrgMembershipRole = "billing_manager"
+)
+
+type OrgMembershipState string
+
+const (
+	OrgMembershipStateActive  OrgMembershipState = "active"
+	OrgMembershipStatePending OrgMembershipState = "pending"
+)
+
 type OrganizationActionsSecret struct {
-	CreatedAt               time.Time `json:"created_at"`
-	Name                    string    `json:"name"`
-	SelectedRepositoriesURL string    `json:"selected_repositories_url"`
-	UpdatedAt               time.Time `json:"updated_at"`
-	Visibility              string    `json:"visibility"`
+	CreatedAt               time.Time                           `json:"created_at"`
+	Name                    string                              `json:"name"`
+	SelectedRepositoriesURL *string                             `json:"selected_repositories_url"`
+	UpdatedAt               time.Time                           `json:"updated_at"`
+	Visibility              OrganizationActionsSecretVisibility `json:"visibility"`
 }
+
+type OrganizationActionsSecretVisibility string
+
+const (
+	OrganizationActionsSecretVisibilityAll      OrganizationActionsSecretVisibility = "all"
+	OrganizationActionsSecretVisibilityPrivate  OrganizationActionsSecretVisibility = "private"
+	OrganizationActionsSecretVisibilitySelected OrganizationActionsSecretVisibility = "selected"
+)
 
 type OrganizationFull struct {
-	AvatarURL                            string               `json:"avatar_url"`
-	BillingEmail                         string               `json:"billing_email"`
-	Blog                                 string               `json:"blog"`
-	Collaborators                        int                  `json:"collaborators"`
-	Company                              string               `json:"company"`
-	CreatedAt                            time.Time            `json:"created_at"`
-	DefaultRepositoryPermission          string               `json:"default_repository_permission"`
-	Description                          string               `json:"description"`
-	DiskUsage                            int                  `json:"disk_usage"`
-	Email                                string               `json:"email"`
-	EventsURL                            string               `json:"events_url"`
-	Followers                            int                  `json:"followers"`
-	Following                            int                  `json:"following"`
-	HTMLURL                              string               `json:"html_url"`
-	HasOrganizationProjects              bool                 `json:"has_organization_projects"`
-	HasRepositoryProjects                bool                 `json:"has_repository_projects"`
-	HooksURL                             string               `json:"hooks_url"`
-	ID                                   int                  `json:"id"`
-	IsVerified                           bool                 `json:"is_verified"`
-	IssuesURL                            string               `json:"issues_url"`
-	Location                             string               `json:"location"`
-	Login                                string               `json:"login"`
-	MembersAllowedRepositoryCreationType string               `json:"members_allowed_repository_creation_type"`
-	MembersCanCreateInternalRepositories bool                 `json:"members_can_create_internal_repositories"`
-	MembersCanCreatePages                bool                 `json:"members_can_create_pages"`
-	MembersCanCreatePrivatePages         bool                 `json:"members_can_create_private_pages"`
-	MembersCanCreatePrivateRepositories  bool                 `json:"members_can_create_private_repositories"`
-	MembersCanCreatePublicPages          bool                 `json:"members_can_create_public_pages"`
-	MembersCanCreatePublicRepositories   bool                 `json:"members_can_create_public_repositories"`
-	MembersCanCreateRepositories         bool                 `json:"members_can_create_repositories"`
-	MembersURL                           string               `json:"members_url"`
-	Name                                 string               `json:"name"`
-	NodeID                               string               `json:"node_id"`
-	OwnedPrivateRepos                    int                  `json:"owned_private_repos"`
-	Plan                                 OrganizationFullPlan `json:"plan"`
-	PrivateGists                         int                  `json:"private_gists"`
-	PublicGists                          int                  `json:"public_gists"`
-	PublicMembersURL                     string               `json:"public_members_url"`
-	PublicRepos                          int                  `json:"public_repos"`
-	ReposURL                             string               `json:"repos_url"`
-	TotalPrivateRepos                    int                  `json:"total_private_repos"`
-	TwitterUsername                      string               `json:"twitter_username"`
-	TwoFactorRequirementEnabled          bool                 `json:"two_factor_requirement_enabled"`
-	Type                                 string               `json:"type"`
-	URL                                  string               `json:"url"`
-	UpdatedAt                            time.Time            `json:"updated_at"`
+	AvatarURL                            string                `json:"avatar_url"`
+	BillingEmail                         *string               `json:"billing_email"`
+	Blog                                 *string               `json:"blog"`
+	Collaborators                        *int                  `json:"collaborators"`
+	Company                              *string               `json:"company"`
+	CreatedAt                            time.Time             `json:"created_at"`
+	DefaultRepositoryPermission          *string               `json:"default_repository_permission"`
+	Description                          string                `json:"description"`
+	DiskUsage                            *int                  `json:"disk_usage"`
+	Email                                *string               `json:"email"`
+	EventsURL                            string                `json:"events_url"`
+	Followers                            int                   `json:"followers"`
+	Following                            int                   `json:"following"`
+	HTMLURL                              string                `json:"html_url"`
+	HasOrganizationProjects              bool                  `json:"has_organization_projects"`
+	HasRepositoryProjects                bool                  `json:"has_repository_projects"`
+	HooksURL                             string                `json:"hooks_url"`
+	ID                                   int                   `json:"id"`
+	IsVerified                           *bool                 `json:"is_verified"`
+	IssuesURL                            string                `json:"issues_url"`
+	Location                             *string               `json:"location"`
+	Login                                string                `json:"login"`
+	MembersAllowedRepositoryCreationType *string               `json:"members_allowed_repository_creation_type"`
+	MembersCanCreateInternalRepositories *bool                 `json:"members_can_create_internal_repositories"`
+	MembersCanCreatePages                *bool                 `json:"members_can_create_pages"`
+	MembersCanCreatePrivatePages         *bool                 `json:"members_can_create_private_pages"`
+	MembersCanCreatePrivateRepositories  *bool                 `json:"members_can_create_private_repositories"`
+	MembersCanCreatePublicPages          *bool                 `json:"members_can_create_public_pages"`
+	MembersCanCreatePublicRepositories   *bool                 `json:"members_can_create_public_repositories"`
+	MembersCanCreateRepositories         *bool                 `json:"members_can_create_repositories"`
+	MembersURL                           string                `json:"members_url"`
+	Name                                 *string               `json:"name"`
+	NodeID                               string                `json:"node_id"`
+	OwnedPrivateRepos                    *int                  `json:"owned_private_repos"`
+	Plan                                 *OrganizationFullPlan `json:"plan"`
+	PrivateGists                         *int                  `json:"private_gists"`
+	PublicGists                          int                   `json:"public_gists"`
+	PublicMembersURL                     string                `json:"public_members_url"`
+	PublicRepos                          int                   `json:"public_repos"`
+	ReposURL                             string                `json:"repos_url"`
+	TotalPrivateRepos                    *int                  `json:"total_private_repos"`
+	TwitterUsername                      *string               `json:"twitter_username"`
+	TwoFactorRequirementEnabled          *bool                 `json:"two_factor_requirement_enabled"`
+	Type                                 string                `json:"type"`
+	URL                                  string                `json:"url"`
+	UpdatedAt                            time.Time             `json:"updated_at"`
 }
 
-func (*OrganizationFull) orgsGetResponse()    {}
-func (*OrganizationFull) orgsUpdateResponse() {}
+func (*OrganizationFull) orgsGetResponse() {}
 
 type OrganizationFullPlan struct {
-	FilledSeats  int    `json:"filled_seats"`
+	FilledSeats  *int   `json:"filled_seats"`
 	Name         string `json:"name"`
 	PrivateRepos int    `json:"private_repos"`
-	Seats        int    `json:"seats"`
+	Seats        *int   `json:"seats"`
 	Space        int    `json:"space"`
 }
 
 type OrganizationInvitation struct {
 	CreatedAt          string     `json:"created_at"`
 	Email              string     `json:"email"`
-	FailedAt           string     `json:"failed_at"`
-	FailedReason       string     `json:"failed_reason"`
+	FailedAt           *string    `json:"failed_at"`
+	FailedReason       *string    `json:"failed_reason"`
 	ID                 int        `json:"id"`
 	InvitationTeamsURL string     `json:"invitation_teams_url"`
 	Inviter            SimpleUser `json:"inviter"`
@@ -4588,23 +5130,6 @@ type OrganizationInvitation struct {
 	NodeID             string     `json:"node_id"`
 	Role               string     `json:"role"`
 	TeamCount          int        `json:"team_count"`
-}
-
-func (*OrganizationInvitation) orgsCreateInvitationResponse() {}
-
-type OrganizationSecretScanningAlert struct {
-	CreatedAt    time.Time          `json:"created_at"`
-	HTMLURL      string             `json:"html_url"`
-	LocationsURL string             `json:"locations_url"`
-	Number       int                `json:"number"`
-	Repository   MinimalRepository  `json:"repository"`
-	Resolution   string             `json:"resolution"`
-	ResolvedAt   time.Time          `json:"resolved_at"`
-	ResolvedBy   NullableSimpleUser `json:"resolved_by"`
-	Secret       string             `json:"secret"`
-	SecretType   string             `json:"secret_type"`
-	State        string             `json:"state"`
-	URL          string             `json:"url"`
 }
 
 type OrganizationSimple struct {
@@ -4624,11 +5149,7 @@ type OrganizationSimple struct {
 
 type OrgsBlockUserNoContent struct{}
 
-func (*OrgsBlockUserNoContent) orgsBlockUserResponse() {}
-
 type OrgsCancelInvitationNoContent struct{}
-
-func (*OrgsCancelInvitationNoContent) orgsCancelInvitationResponse() {}
 
 type OrgsCheckBlockedUserNoContent struct{}
 
@@ -4670,27 +5191,43 @@ func (*OrgsConvertMemberToOutsideCollaboratorNoContent) orgsConvertMemberToOutsi
 }
 
 type OrgsCreateInvitationApplicationJSONRequest struct {
-	Email     string `json:"email"`
-	InviteeID int    `json:"invitee_id"`
-	Role      string `json:"role"`
-	TeamIds   []int  `json:"team_ids"`
+	Email     *string                                         `json:"email"`
+	InviteeID *int                                            `json:"invitee_id"`
+	Role      *OrgsCreateInvitationApplicationJSONRequestRole `json:"role"`
+	TeamIds   *[]int                                          `json:"team_ids"`
 }
 
-type OrgsCreateWebhookApplicationJSONRequest struct {
-	Name string `json:"name"`
-}
+func (*OrgsCreateInvitationApplicationJSONRequest) orgsCreateInvitationRequest() {}
 
-type OrgsCreateWebhookApplicationJSONRequestConfig struct {
-}
+type OrgsCreateInvitationApplicationJSONRequestRole string
+
+const (
+	OrgsCreateInvitationApplicationJSONRequestRoleAdmin          OrgsCreateInvitationApplicationJSONRequestRole = "admin"
+	OrgsCreateInvitationApplicationJSONRequestRoleDirectMember   OrgsCreateInvitationApplicationJSONRequestRole = "direct_member"
+	OrgsCreateInvitationApplicationJSONRequestRoleBillingManager OrgsCreateInvitationApplicationJSONRequestRole = "billing_manager"
+)
 
 type OrgsDeleteWebhookNoContent struct{}
 
 func (*OrgsDeleteWebhookNoContent) orgsDeleteWebhookResponse() {}
 
-type OrgsListAppInstallations struct {
-	Installations []Installation `json:"installations"`
-	TotalCount    int            `json:"total_count"`
+type OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) orgsGetMembershipForAuthenticatedUserResponse() {
 }
+
+type OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound BasicError
+
+func (*OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound) orgsGetMembershipForAuthenticatedUserResponse() {
+}
+
+type OrgsGetMembershipForUserApplicationJSONForbidden BasicError
+
+func (*OrgsGetMembershipForUserApplicationJSONForbidden) orgsGetMembershipForUserResponse() {}
+
+type OrgsGetMembershipForUserApplicationJSONNotFound BasicError
+
+func (*OrgsGetMembershipForUserApplicationJSONNotFound) orgsGetMembershipForUserResponse() {}
 
 type OrgsListBlockedUsersOK []SimpleUser
 
@@ -4700,6 +5237,15 @@ type OrgsListFailedInvitationsOK []OrganizationInvitation
 
 func (*OrgsListFailedInvitationsOK) orgsListFailedInvitationsResponse() {}
 
+type OrgsListForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*OrgsListForAuthenticatedUserApplicationJSONForbidden) orgsListForAuthenticatedUserResponse() {}
+
+type OrgsListForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*OrgsListForAuthenticatedUserApplicationJSONUnauthorized) orgsListForAuthenticatedUserResponse() {
+}
+
 type OrgsListForAuthenticatedUserOK []OrganizationSimple
 
 func (*OrgsListForAuthenticatedUserOK) orgsListForAuthenticatedUserResponse() {}
@@ -4707,18 +5253,6 @@ func (*OrgsListForAuthenticatedUserOK) orgsListForAuthenticatedUserResponse() {}
 type OrgsListInvitationTeamsOK []Team
 
 func (*OrgsListInvitationTeamsOK) orgsListInvitationTeamsResponse() {}
-
-type OrgsListMembersFound struct{}
-
-func (*OrgsListMembersFound) orgsListMembersResponse() {}
-
-type OrgsListMembersOK []SimpleUser
-
-func (*OrgsListMembersOK) orgsListMembersResponse() {}
-
-type OrgsListMembershipsForAuthenticatedUserOK []OrgMembership
-
-func (*OrgsListMembershipsForAuthenticatedUserOK) orgsListMembershipsForAuthenticatedUserResponse() {}
 
 type OrgsListOK []OrganizationSimple
 
@@ -4729,8 +5263,6 @@ type OrgsListPendingInvitationsOK []OrganizationInvitation
 func (*OrgsListPendingInvitationsOK) orgsListPendingInvitationsResponse() {}
 
 type OrgsListWebhookDeliveriesOK []HookDeliveryItem
-
-func (*OrgsListWebhookDeliveriesOK) orgsListWebhookDeliveriesResponse() {}
 
 type OrgsListWebhooksOK []OrgHook
 
@@ -4744,6 +5276,14 @@ type OrgsRemoveMemberNoContent struct{}
 
 func (*OrgsRemoveMemberNoContent) orgsRemoveMemberResponse() {}
 
+type OrgsRemoveMembershipForUserApplicationJSONForbidden BasicError
+
+func (*OrgsRemoveMembershipForUserApplicationJSONForbidden) orgsRemoveMembershipForUserResponse() {}
+
+type OrgsRemoveMembershipForUserApplicationJSONNotFound BasicError
+
+func (*OrgsRemoveMembershipForUserApplicationJSONNotFound) orgsRemoveMembershipForUserResponse() {}
+
 type OrgsRemoveMembershipForUserNoContent struct{}
 
 func (*OrgsRemoveMembershipForUserNoContent) orgsRemoveMembershipForUserResponse() {}
@@ -4753,8 +5293,8 @@ type OrgsRemoveOutsideCollaboratorNoContent struct{}
 func (*OrgsRemoveOutsideCollaboratorNoContent) orgsRemoveOutsideCollaboratorResponse() {}
 
 type OrgsRemoveOutsideCollaboratorUnprocessableEntity struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
+	DocumentationURL *string `json:"documentation_url"`
+	Message          *string `json:"message"`
 }
 
 func (*OrgsRemoveOutsideCollaboratorUnprocessableEntity) orgsRemoveOutsideCollaboratorResponse() {}
@@ -4766,8 +5306,17 @@ type OrgsRemoveSamlSSOAuthorizationNoContent struct{}
 func (*OrgsRemoveSamlSSOAuthorizationNoContent) orgsRemoveSamlSSOAuthorizationResponse() {}
 
 type OrgsSetMembershipForUserApplicationJSONRequest struct {
-	Role string `json:"role"`
+	Role *OrgsSetMembershipForUserApplicationJSONRequestRole `json:"role"`
 }
+
+func (*OrgsSetMembershipForUserApplicationJSONRequest) orgsSetMembershipForUserRequest() {}
+
+type OrgsSetMembershipForUserApplicationJSONRequestRole string
+
+const (
+	OrgsSetMembershipForUserApplicationJSONRequestRoleAdmin  OrgsSetMembershipForUserApplicationJSONRequestRole = "admin"
+	OrgsSetMembershipForUserApplicationJSONRequestRoleMember OrgsSetMembershipForUserApplicationJSONRequestRole = "member"
+)
 
 type OrgsSetPublicMembershipForAuthenticatedUserNoContent struct{}
 
@@ -4777,78 +5326,58 @@ func (*OrgsSetPublicMembershipForAuthenticatedUserNoContent) orgsSetPublicMember
 type OrgsUnblockUser struct{}
 
 type OrgsUpdateApplicationJSONRequest struct {
-	BillingEmail                         string `json:"billing_email"`
-	Blog                                 string `json:"blog"`
-	Company                              string `json:"company"`
-	DefaultRepositoryPermission          string `json:"default_repository_permission"`
-	Description                          string `json:"description"`
-	Email                                string `json:"email"`
-	HasOrganizationProjects              bool   `json:"has_organization_projects"`
-	HasRepositoryProjects                bool   `json:"has_repository_projects"`
-	Location                             string `json:"location"`
-	MembersAllowedRepositoryCreationType string `json:"members_allowed_repository_creation_type"`
-	MembersCanCreateInternalRepositories bool   `json:"members_can_create_internal_repositories"`
-	MembersCanCreatePages                bool   `json:"members_can_create_pages"`
-	MembersCanCreatePrivatePages         bool   `json:"members_can_create_private_pages"`
-	MembersCanCreatePrivateRepositories  bool   `json:"members_can_create_private_repositories"`
-	MembersCanCreatePublicPages          bool   `json:"members_can_create_public_pages"`
-	MembersCanCreatePublicRepositories   bool   `json:"members_can_create_public_repositories"`
-	MembersCanCreateRepositories         bool   `json:"members_can_create_repositories"`
-	Name                                 string `json:"name"`
-	TwitterUsername                      string `json:"twitter_username"`
+	BillingEmail                         *string                                                               `json:"billing_email"`
+	Blog                                 *string                                                               `json:"blog"`
+	Company                              *string                                                               `json:"company"`
+	DefaultRepositoryPermission          *OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission          `json:"default_repository_permission"`
+	Description                          *string                                                               `json:"description"`
+	Email                                *string                                                               `json:"email"`
+	HasOrganizationProjects              *bool                                                                 `json:"has_organization_projects"`
+	HasRepositoryProjects                *bool                                                                 `json:"has_repository_projects"`
+	Location                             *string                                                               `json:"location"`
+	MembersAllowedRepositoryCreationType *OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType `json:"members_allowed_repository_creation_type"`
+	MembersCanCreateInternalRepositories *bool                                                                 `json:"members_can_create_internal_repositories"`
+	MembersCanCreatePages                *bool                                                                 `json:"members_can_create_pages"`
+	MembersCanCreatePrivatePages         *bool                                                                 `json:"members_can_create_private_pages"`
+	MembersCanCreatePrivateRepositories  *bool                                                                 `json:"members_can_create_private_repositories"`
+	MembersCanCreatePublicPages          *bool                                                                 `json:"members_can_create_public_pages"`
+	MembersCanCreatePublicRepositories   *bool                                                                 `json:"members_can_create_public_repositories"`
+	MembersCanCreateRepositories         *bool                                                                 `json:"members_can_create_repositories"`
+	Name                                 *string                                                               `json:"name"`
+	TwitterUsername                      *string                                                               `json:"twitter_username"`
 }
+
+func (*OrgsUpdateApplicationJSONRequest) orgsUpdateRequest() {}
+
+type OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission string
+
+const (
+	OrgsUpdateApplicationJSONRequestDefaultRepositoryPermissionRead  OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission = "read"
+	OrgsUpdateApplicationJSONRequestDefaultRepositoryPermissionWrite OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission = "write"
+	OrgsUpdateApplicationJSONRequestDefaultRepositoryPermissionAdmin OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission = "admin"
+	OrgsUpdateApplicationJSONRequestDefaultRepositoryPermissionNone  OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission = "none"
+)
+
+type OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType string
+
+const (
+	OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationTypeAll     OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType = "all"
+	OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationTypePrivate OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType = "private"
+	OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationTypeNone    OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType = "none"
+)
 
 type OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest struct {
-	State string `json:"state"`
+	State OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequestState `json:"state"`
 }
 
-type OrgsUpdateWebhookApplicationJSONRequest struct {
+func (*OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest) orgsUpdateMembershipForAuthenticatedUserRequest() {
 }
 
-type OrgsUpdateWebhookApplicationJSONRequestConfig struct {
-	URL         string `json:"url"`
-	ContentType string `json:"content_type"`
-	Secret      string `json:"secret"`
-}
+type OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequestState string
 
-type OrgsUpdateWebhookConfigForOrgApplicationJSONRequest struct {
-	URL         string `json:"url"`
-	ContentType string `json:"content_type"`
-	Secret      string `json:"secret"`
-}
-
-type Package struct {
-	CreatedAt    time.Time                 `json:"created_at"`
-	HTMLURL      string                    `json:"html_url"`
-	ID           int                       `json:"id"`
-	Name         string                    `json:"name"`
-	Owner        NullableSimpleUser        `json:"owner"`
-	PackageType  string                    `json:"package_type"`
-	Repository   NullableMinimalRepository `json:"repository"`
-	URL          string                    `json:"url"`
-	UpdatedAt    time.Time                 `json:"updated_at"`
-	VersionCount int                       `json:"version_count"`
-	Visibility   string                    `json:"visibility"`
-}
-
-type PackageVersion struct {
-	HTMLURL        string    `json:"html_url"`
-	License        string    `json:"license"`
-	CreatedAt      time.Time `json:"created_at"`
-	UpdatedAt      time.Time `json:"updated_at"`
-	DeletedAt      time.Time `json:"deleted_at"`
-	Name           string    `json:"name"`
-	URL            string    `json:"url"`
-	PackageHTMLURL string    `json:"package_html_url"`
-	ID             int       `json:"id"`
-	Description    string    `json:"description"`
-}
-
-type PackageVersionMetadata struct {
-}
-
-type PackageVersionMetadataContainer struct {
-}
+const (
+	OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequestStateActive OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequestState = "active"
+)
 
 type PackagesBillingUsage struct {
 	IncludedGigabytesBandwidth      int `json:"included_gigabytes_bandwidth"`
@@ -4856,93 +5385,21 @@ type PackagesBillingUsage struct {
 	TotalPaidGigabytesBandwidthUsed int `json:"total_paid_gigabytes_bandwidth_used"`
 }
 
-type PackagesDeletePackageForAuthenticatedUserNoContent struct{}
-
-func (*PackagesDeletePackageForAuthenticatedUserNoContent) packagesDeletePackageForAuthenticatedUserResponse() {
-}
-
-type PackagesDeletePackageForOrgNoContent struct{}
-
-func (*PackagesDeletePackageForOrgNoContent) packagesDeletePackageForOrgResponse() {}
-
-type PackagesDeletePackageForUserNoContent struct{}
-
-func (*PackagesDeletePackageForUserNoContent) packagesDeletePackageForUserResponse() {}
-
-type PackagesDeletePackageVersionForAuthenticatedUserNoContent struct{}
-
-func (*PackagesDeletePackageVersionForAuthenticatedUserNoContent) packagesDeletePackageVersionForAuthenticatedUserResponse() {
-}
-
-type PackagesDeletePackageVersionForOrgNoContent struct{}
-
-func (*PackagesDeletePackageVersionForOrgNoContent) packagesDeletePackageVersionForOrgResponse() {}
-
-type PackagesDeletePackageVersionForUserNoContent struct{}
-
-func (*PackagesDeletePackageVersionForUserNoContent) packagesDeletePackageVersionForUserResponse() {}
-
-type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOK []PackageVersion
-
-func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOK) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse() {
-}
-
-type PackagesGetAllPackageVersionsForPackageOwnedByOrgOK []PackageVersion
-
-func (*PackagesGetAllPackageVersionsForPackageOwnedByOrgOK) packagesGetAllPackageVersionsForPackageOwnedByOrgResponse() {
-}
-
-type PackagesGetAllPackageVersionsForPackageOwnedByUserOK []PackageVersion
-
-func (*PackagesGetAllPackageVersionsForPackageOwnedByUserOK) packagesGetAllPackageVersionsForPackageOwnedByUserResponse() {
-}
-
-type PackagesListPackagesForOrganizationOK []Package
-
-func (*PackagesListPackagesForOrganizationOK) packagesListPackagesForOrganizationResponse() {}
-
-type PackagesListPackagesForUserOK []Package
-
-func (*PackagesListPackagesForUserOK) packagesListPackagesForUserResponse() {}
-
-type PackagesRestorePackageForAuthenticatedUserNoContent struct{}
-
-func (*PackagesRestorePackageForAuthenticatedUserNoContent) packagesRestorePackageForAuthenticatedUserResponse() {
-}
-
-type PackagesRestorePackageForOrgNoContent struct{}
-
-func (*PackagesRestorePackageForOrgNoContent) packagesRestorePackageForOrgResponse() {}
-
-type PackagesRestorePackageForUserNoContent struct{}
-
-func (*PackagesRestorePackageForUserNoContent) packagesRestorePackageForUserResponse() {}
-
-type PackagesRestorePackageVersionForAuthenticatedUserNoContent struct{}
-
-func (*PackagesRestorePackageVersionForAuthenticatedUserNoContent) packagesRestorePackageVersionForAuthenticatedUserResponse() {
-}
-
-type PackagesRestorePackageVersionForOrgNoContent struct{}
-
-func (*PackagesRestorePackageVersionForOrgNoContent) packagesRestorePackageVersionForOrgResponse() {}
-
-type PackagesRestorePackageVersionForUserNoContent struct{}
-
-func (*PackagesRestorePackageVersionForUserNoContent) packagesRestorePackageVersionForUserResponse() {
-}
-
 type Page struct {
-	Status                    string          `json:"status"`
-	Cname                     string          `json:"cname"`
-	PendingDomainUnverifiedAt time.Time       `json:"pending_domain_unverified_at"`
-	Custom404                 bool            `json:"custom_404"`
-	HTMLURL                   string          `json:"html_url"`
-	Source                    PagesSourceHash `json:"source"`
-	Public                    bool            `json:"public"`
+	Cname                     string                    `json:"cname"`
+	Custom404                 bool                      `json:"custom_404"`
+	HTMLURL                   *string                   `json:"html_url"`
+	HTTPSCertificate          *PagesHTTPSCertificate    `json:"https_certificate"`
+	HTTPSEnforced             *bool                     `json:"https_enforced"`
+	PendingDomainUnverifiedAt *time.Time                `json:"pending_domain_unverified_at"`
+	ProtectedDomainState      *PageProtectedDomainState `json:"protected_domain_state"`
+	Public                    bool                      `json:"public"`
+	Source                    *PagesSourceHash          `json:"source"`
+	Status                    PageStatus                `json:"status"`
+	URL                       string                    `json:"url"`
 }
 
-func (*Page) reposCreatePagesSiteResponse() {}
+func (*Page) reposGetPagesResponse() {}
 
 type PageBuild struct {
 	Commit    string             `json:"commit"`
@@ -4964,76 +5421,113 @@ type PageBuildStatus struct {
 	URL    string `json:"url"`
 }
 
+type PageProtectedDomainState string
+
+const (
+	PageProtectedDomainStatePending    PageProtectedDomainState = "pending"
+	PageProtectedDomainStateVerified   PageProtectedDomainState = "verified"
+	PageProtectedDomainStateUnverified PageProtectedDomainState = "unverified"
+)
+
+type PageStatus string
+
+const (
+	PageStatusBuilt    PageStatus = "built"
+	PageStatusBuilding PageStatus = "building"
+	PageStatusErrored  PageStatus = "errored"
+)
+
 type PagesHTTPSCertificate struct {
+	Description string                     `json:"description"`
+	Domains     []string                   `json:"domains"`
+	ExpiresAt   *time.Time                 `json:"expires_at"`
+	State       PagesHTTPSCertificateState `json:"state"`
 }
 
+type PagesHTTPSCertificateState string
+
+const (
+	PagesHTTPSCertificateStateNew                  PagesHTTPSCertificateState = "new"
+	PagesHTTPSCertificateStateAuthorizationCreated PagesHTTPSCertificateState = "authorization_created"
+	PagesHTTPSCertificateStateAuthorizationPending PagesHTTPSCertificateState = "authorization_pending"
+	PagesHTTPSCertificateStateAuthorized           PagesHTTPSCertificateState = "authorized"
+	PagesHTTPSCertificateStateAuthorizationRevoked PagesHTTPSCertificateState = "authorization_revoked"
+	PagesHTTPSCertificateStateIssued               PagesHTTPSCertificateState = "issued"
+	PagesHTTPSCertificateStateUploaded             PagesHTTPSCertificateState = "uploaded"
+	PagesHTTPSCertificateStateApproved             PagesHTTPSCertificateState = "approved"
+	PagesHTTPSCertificateStateErrored              PagesHTTPSCertificateState = "errored"
+	PagesHTTPSCertificateStateBadAuthz             PagesHTTPSCertificateState = "bad_authz"
+	PagesHTTPSCertificateStateDestroyPending       PagesHTTPSCertificateState = "destroy_pending"
+	PagesHTTPSCertificateStateDNSChanged           PagesHTTPSCertificateState = "dns_changed"
+)
+
 type PagesHealthCheck struct {
-	AltDomain PagesHealthCheckAltDomain `json:"alt_domain"`
-	Domain    PagesHealthCheckDomain    `json:"domain"`
+	AltDomain *PagesHealthCheckAltDomain `json:"alt_domain"`
+	Domain    *PagesHealthCheckDomain    `json:"domain"`
 }
 
 func (*PagesHealthCheck) reposGetPagesHealthCheckResponse() {}
 
 type PagesHealthCheckAltDomain struct {
-	CaaError                      string `json:"caa_error"`
-	DNSResolves                   bool   `json:"dns_resolves"`
-	EnforcesHTTPS                 bool   `json:"enforces_https"`
-	HTTPSError                    string `json:"https_error"`
-	HasCnameRecord                bool   `json:"has_cname_record"`
-	HasMxRecordsPresent           bool   `json:"has_mx_records_present"`
-	Host                          string `json:"host"`
-	IsARecord                     bool   `json:"is_a_record"`
-	IsApexDomain                  bool   `json:"is_apex_domain"`
-	IsCloudflareIP                bool   `json:"is_cloudflare_ip"`
-	IsCnameToFastly               bool   `json:"is_cname_to_fastly"`
-	IsCnameToGithubUserDomain     bool   `json:"is_cname_to_github_user_domain"`
-	IsCnameToPagesDotGithubDotCom bool   `json:"is_cname_to_pages_dot_github_dot_com"`
-	IsFastlyIP                    bool   `json:"is_fastly_ip"`
-	IsHTTPSEligible               bool   `json:"is_https_eligible"`
-	IsNonGithubPagesIPPresent     bool   `json:"is_non_github_pages_ip_present"`
-	IsOldIPAddress                bool   `json:"is_old_ip_address"`
-	IsPagesDomain                 bool   `json:"is_pages_domain"`
-	IsPointedToGithubPagesIP      bool   `json:"is_pointed_to_github_pages_ip"`
-	IsProxied                     bool   `json:"is_proxied"`
-	IsServedByPages               bool   `json:"is_served_by_pages"`
-	IsValid                       bool   `json:"is_valid"`
-	IsValidDomain                 bool   `json:"is_valid_domain"`
-	Nameservers                   string `json:"nameservers"`
-	Reason                        string `json:"reason"`
-	RespondsToHTTPS               bool   `json:"responds_to_https"`
-	ShouldBeARecord               bool   `json:"should_be_a_record"`
-	URI                           string `json:"uri"`
+	CaaError                      *string `json:"caa_error"`
+	DNSResolves                   *bool   `json:"dns_resolves"`
+	EnforcesHTTPS                 *bool   `json:"enforces_https"`
+	HTTPSError                    *string `json:"https_error"`
+	HasCnameRecord                *bool   `json:"has_cname_record"`
+	HasMxRecordsPresent           *bool   `json:"has_mx_records_present"`
+	Host                          *string `json:"host"`
+	IsARecord                     *bool   `json:"is_a_record"`
+	IsApexDomain                  *bool   `json:"is_apex_domain"`
+	IsCloudflareIP                *bool   `json:"is_cloudflare_ip"`
+	IsCnameToFastly               *bool   `json:"is_cname_to_fastly"`
+	IsCnameToGithubUserDomain     *bool   `json:"is_cname_to_github_user_domain"`
+	IsCnameToPagesDotGithubDotCom *bool   `json:"is_cname_to_pages_dot_github_dot_com"`
+	IsFastlyIP                    *bool   `json:"is_fastly_ip"`
+	IsHTTPSEligible               *bool   `json:"is_https_eligible"`
+	IsNonGithubPagesIPPresent     *bool   `json:"is_non_github_pages_ip_present"`
+	IsOldIPAddress                *bool   `json:"is_old_ip_address"`
+	IsPagesDomain                 *bool   `json:"is_pages_domain"`
+	IsPointedToGithubPagesIP      *bool   `json:"is_pointed_to_github_pages_ip"`
+	IsProxied                     *bool   `json:"is_proxied"`
+	IsServedByPages               *bool   `json:"is_served_by_pages"`
+	IsValid                       *bool   `json:"is_valid"`
+	IsValidDomain                 *bool   `json:"is_valid_domain"`
+	Nameservers                   *string `json:"nameservers"`
+	Reason                        *string `json:"reason"`
+	RespondsToHTTPS               *bool   `json:"responds_to_https"`
+	ShouldBeARecord               *bool   `json:"should_be_a_record"`
+	URI                           *string `json:"uri"`
 }
 
 type PagesHealthCheckDomain struct {
-	CaaError                      string `json:"caa_error"`
-	DNSResolves                   bool   `json:"dns_resolves"`
-	EnforcesHTTPS                 bool   `json:"enforces_https"`
-	HTTPSError                    string `json:"https_error"`
-	HasCnameRecord                bool   `json:"has_cname_record"`
-	HasMxRecordsPresent           bool   `json:"has_mx_records_present"`
-	Host                          string `json:"host"`
-	IsARecord                     bool   `json:"is_a_record"`
-	IsApexDomain                  bool   `json:"is_apex_domain"`
-	IsCloudflareIP                bool   `json:"is_cloudflare_ip"`
-	IsCnameToFastly               bool   `json:"is_cname_to_fastly"`
-	IsCnameToGithubUserDomain     bool   `json:"is_cname_to_github_user_domain"`
-	IsCnameToPagesDotGithubDotCom bool   `json:"is_cname_to_pages_dot_github_dot_com"`
-	IsFastlyIP                    bool   `json:"is_fastly_ip"`
-	IsHTTPSEligible               bool   `json:"is_https_eligible"`
-	IsNonGithubPagesIPPresent     bool   `json:"is_non_github_pages_ip_present"`
-	IsOldIPAddress                bool   `json:"is_old_ip_address"`
-	IsPagesDomain                 bool   `json:"is_pages_domain"`
-	IsPointedToGithubPagesIP      bool   `json:"is_pointed_to_github_pages_ip"`
-	IsProxied                     bool   `json:"is_proxied"`
-	IsServedByPages               bool   `json:"is_served_by_pages"`
-	IsValid                       bool   `json:"is_valid"`
-	IsValidDomain                 bool   `json:"is_valid_domain"`
-	Nameservers                   string `json:"nameservers"`
-	Reason                        string `json:"reason"`
-	RespondsToHTTPS               bool   `json:"responds_to_https"`
-	ShouldBeARecord               bool   `json:"should_be_a_record"`
-	URI                           string `json:"uri"`
+	CaaError                      *string `json:"caa_error"`
+	DNSResolves                   *bool   `json:"dns_resolves"`
+	EnforcesHTTPS                 *bool   `json:"enforces_https"`
+	HTTPSError                    *string `json:"https_error"`
+	HasCnameRecord                *bool   `json:"has_cname_record"`
+	HasMxRecordsPresent           *bool   `json:"has_mx_records_present"`
+	Host                          *string `json:"host"`
+	IsARecord                     *bool   `json:"is_a_record"`
+	IsApexDomain                  *bool   `json:"is_apex_domain"`
+	IsCloudflareIP                *bool   `json:"is_cloudflare_ip"`
+	IsCnameToFastly               *bool   `json:"is_cname_to_fastly"`
+	IsCnameToGithubUserDomain     *bool   `json:"is_cname_to_github_user_domain"`
+	IsCnameToPagesDotGithubDotCom *bool   `json:"is_cname_to_pages_dot_github_dot_com"`
+	IsFastlyIP                    *bool   `json:"is_fastly_ip"`
+	IsHTTPSEligible               *bool   `json:"is_https_eligible"`
+	IsNonGithubPagesIPPresent     *bool   `json:"is_non_github_pages_ip_present"`
+	IsOldIPAddress                *bool   `json:"is_old_ip_address"`
+	IsPagesDomain                 *bool   `json:"is_pages_domain"`
+	IsPointedToGithubPagesIP      *bool   `json:"is_pointed_to_github_pages_ip"`
+	IsProxied                     *bool   `json:"is_proxied"`
+	IsServedByPages               *bool   `json:"is_served_by_pages"`
+	IsValid                       *bool   `json:"is_valid"`
+	IsValidDomain                 *bool   `json:"is_valid_domain"`
+	Nameservers                   *string `json:"nameservers"`
+	Reason                        *string `json:"reason"`
+	RespondsToHTTPS               *bool   `json:"responds_to_https"`
+	ShouldBeARecord               *bool   `json:"should_be_a_record"`
+	URI                           *string `json:"uri"`
 }
 
 type PagesSourceHash struct {
@@ -5048,14 +5542,6 @@ type ParticipationStats struct {
 
 func (*ParticipationStats) reposGetParticipationStatsResponse() {}
 
-type PendingDeployment struct {
-	CurrentUserCanApprove bool `json:"current_user_can_approve"`
-}
-
-type PendingDeploymentReviewersItem struct {
-	Type string `json:"type"`
-}
-
 type PorterAuthor struct {
 	Email      string `json:"email"`
 	ID         int    `json:"id"`
@@ -5066,8 +5552,6 @@ type PorterAuthor struct {
 	URL        string `json:"url"`
 }
 
-func (*PorterAuthor) migrationsMapCommitAuthorResponse() {}
-
 type PorterLargeFile struct {
 	Oid     string `json:"oid"`
 	Path    string `json:"path"`
@@ -5075,52 +5559,67 @@ type PorterLargeFile struct {
 	Size    int    `json:"size"`
 }
 
-type PrivateUser struct {
-	AvatarURL               string          `json:"avatar_url"`
-	Bio                     string          `json:"bio"`
-	Blog                    string          `json:"blog"`
-	BusinessPlus            bool            `json:"business_plus"`
-	Collaborators           int             `json:"collaborators"`
-	Company                 string          `json:"company"`
-	CreatedAt               time.Time       `json:"created_at"`
-	DiskUsage               int             `json:"disk_usage"`
-	Email                   string          `json:"email"`
-	EventsURL               string          `json:"events_url"`
-	Followers               int             `json:"followers"`
-	FollowersURL            string          `json:"followers_url"`
-	Following               int             `json:"following"`
-	FollowingURL            string          `json:"following_url"`
-	GistsURL                string          `json:"gists_url"`
-	GravatarID              string          `json:"gravatar_id"`
-	HTMLURL                 string          `json:"html_url"`
-	Hireable                bool            `json:"hireable"`
-	ID                      int             `json:"id"`
-	LdapDn                  string          `json:"ldap_dn"`
-	Location                string          `json:"location"`
-	Login                   string          `json:"login"`
-	Name                    string          `json:"name"`
-	NodeID                  string          `json:"node_id"`
-	OrganizationsURL        string          `json:"organizations_url"`
-	OwnedPrivateRepos       int             `json:"owned_private_repos"`
-	Plan                    PrivateUserPlan `json:"plan"`
-	PrivateGists            int             `json:"private_gists"`
-	PublicGists             int             `json:"public_gists"`
-	PublicRepos             int             `json:"public_repos"`
-	ReceivedEventsURL       string          `json:"received_events_url"`
-	ReposURL                string          `json:"repos_url"`
-	SiteAdmin               bool            `json:"site_admin"`
-	StarredURL              string          `json:"starred_url"`
-	SubscriptionsURL        string          `json:"subscriptions_url"`
-	SuspendedAt             time.Time       `json:"suspended_at"`
-	TotalPrivateRepos       int             `json:"total_private_repos"`
-	TwitterUsername         string          `json:"twitter_username"`
-	TwoFactorAuthentication bool            `json:"two_factor_authentication"`
-	Type                    string          `json:"type"`
-	URL                     string          `json:"url"`
-	UpdatedAt               time.Time       `json:"updated_at"`
+type PreviewHeaderMissing struct {
+	DocumentationURL string `json:"documentation_url"`
+	Message          string `json:"message"`
 }
 
-func (*PrivateUser) usersUpdateAuthenticatedResponse() {}
+func (*PreviewHeaderMissing) appsGetBySlugResponse()                      {}
+func (*PreviewHeaderMissing) orgsListBlockedUsersResponse()               {}
+func (*PreviewHeaderMissing) projectsCreateForAuthenticatedUserResponse() {}
+func (*PreviewHeaderMissing) reactionsDeleteLegacyResponse()              {}
+func (*PreviewHeaderMissing) reposGetAllTopicsResponse()                  {}
+func (*PreviewHeaderMissing) reposGetBranchResponse()                     {}
+func (*PreviewHeaderMissing) reposGetDeploymentStatusResponse()           {}
+func (*PreviewHeaderMissing) reposGetReleaseAssetResponse()               {}
+func (*PreviewHeaderMissing) reposReplaceAllTopicsResponse()              {}
+func (*PreviewHeaderMissing) searchTopicsResponse()                       {}
+func (*PreviewHeaderMissing) usersListBlockedByAuthenticatedResponse()    {}
+
+type PrivateUser struct {
+	AvatarURL               string           `json:"avatar_url"`
+	Bio                     string           `json:"bio"`
+	Blog                    string           `json:"blog"`
+	BusinessPlus            *bool            `json:"business_plus"`
+	Collaborators           int              `json:"collaborators"`
+	Company                 string           `json:"company"`
+	CreatedAt               time.Time        `json:"created_at"`
+	DiskUsage               int              `json:"disk_usage"`
+	Email                   string           `json:"email"`
+	EventsURL               string           `json:"events_url"`
+	Followers               int              `json:"followers"`
+	FollowersURL            string           `json:"followers_url"`
+	Following               int              `json:"following"`
+	FollowingURL            string           `json:"following_url"`
+	GistsURL                string           `json:"gists_url"`
+	GravatarID              string           `json:"gravatar_id"`
+	HTMLURL                 string           `json:"html_url"`
+	Hireable                bool             `json:"hireable"`
+	ID                      int              `json:"id"`
+	LdapDn                  *string          `json:"ldap_dn"`
+	Location                string           `json:"location"`
+	Login                   string           `json:"login"`
+	Name                    string           `json:"name"`
+	NodeID                  string           `json:"node_id"`
+	OrganizationsURL        string           `json:"organizations_url"`
+	OwnedPrivateRepos       int              `json:"owned_private_repos"`
+	Plan                    *PrivateUserPlan `json:"plan"`
+	PrivateGists            int              `json:"private_gists"`
+	PublicGists             int              `json:"public_gists"`
+	PublicRepos             int              `json:"public_repos"`
+	ReceivedEventsURL       string           `json:"received_events_url"`
+	ReposURL                string           `json:"repos_url"`
+	SiteAdmin               bool             `json:"site_admin"`
+	StarredURL              string           `json:"starred_url"`
+	SubscriptionsURL        string           `json:"subscriptions_url"`
+	SuspendedAt             *time.Time       `json:"suspended_at"`
+	TotalPrivateRepos       int              `json:"total_private_repos"`
+	TwitterUsername         *string          `json:"twitter_username"`
+	TwoFactorAuthentication bool             `json:"two_factor_authentication"`
+	Type                    string           `json:"type"`
+	URL                     string           `json:"url"`
+	UpdatedAt               time.Time        `json:"updated_at"`
+}
 
 type PrivateUserPlan struct {
 	Collaborators int    `json:"collaborators"`
@@ -5130,21 +5629,21 @@ type PrivateUserPlan struct {
 }
 
 type Project struct {
-	Body                   string             `json:"body"`
-	ColumnsURL             string             `json:"columns_url"`
-	CreatedAt              time.Time          `json:"created_at"`
-	Creator                NullableSimpleUser `json:"creator"`
-	HTMLURL                string             `json:"html_url"`
-	ID                     int                `json:"id"`
-	Name                   string             `json:"name"`
-	NodeID                 string             `json:"node_id"`
-	Number                 int                `json:"number"`
-	OrganizationPermission string             `json:"organization_permission"`
-	OwnerURL               string             `json:"owner_url"`
-	Private                bool               `json:"private"`
-	State                  string             `json:"state"`
-	URL                    string             `json:"url"`
-	UpdatedAt              time.Time          `json:"updated_at"`
+	Body                   string                         `json:"body"`
+	ColumnsURL             string                         `json:"columns_url"`
+	CreatedAt              time.Time                      `json:"created_at"`
+	Creator                NullableSimpleUser             `json:"creator"`
+	HTMLURL                string                         `json:"html_url"`
+	ID                     int                            `json:"id"`
+	Name                   string                         `json:"name"`
+	NodeID                 string                         `json:"node_id"`
+	Number                 int                            `json:"number"`
+	OrganizationPermission *ProjectOrganizationPermission `json:"organization_permission"`
+	OwnerURL               string                         `json:"owner_url"`
+	Private                *bool                          `json:"private"`
+	State                  string                         `json:"state"`
+	URL                    string                         `json:"url"`
+	UpdatedAt              time.Time                      `json:"updated_at"`
 }
 
 func (*Project) projectsCreateForAuthenticatedUserResponse() {}
@@ -5154,22 +5653,21 @@ func (*Project) projectsGetResponse()                        {}
 func (*Project) projectsUpdateResponse()                     {}
 
 type ProjectCard struct {
-	Archived   bool               `json:"archived"`
-	ColumnName string             `json:"column_name"`
+	Archived   *bool              `json:"archived"`
+	ColumnName *string            `json:"column_name"`
 	ColumnURL  string             `json:"column_url"`
-	ContentURL string             `json:"content_url"`
+	ContentURL *string            `json:"content_url"`
 	CreatedAt  time.Time          `json:"created_at"`
 	Creator    NullableSimpleUser `json:"creator"`
 	ID         int                `json:"id"`
 	NodeID     string             `json:"node_id"`
 	Note       string             `json:"note"`
-	ProjectID  string             `json:"project_id"`
+	ProjectID  *string            `json:"project_id"`
 	ProjectURL string             `json:"project_url"`
 	URL        string             `json:"url"`
 	UpdatedAt  time.Time          `json:"updated_at"`
 }
 
-func (*ProjectCard) projectsCreateCardResponse() {}
 func (*ProjectCard) projectsGetCardResponse()    {}
 func (*ProjectCard) projectsUpdateCardResponse() {}
 
@@ -5188,51 +5686,124 @@ func (*ProjectColumn) projectsCreateColumnResponse() {}
 func (*ProjectColumn) projectsGetColumnResponse()    {}
 func (*ProjectColumn) projectsUpdateColumnResponse() {}
 
+type ProjectOrganizationPermission string
+
+const (
+	ProjectOrganizationPermissionRead  ProjectOrganizationPermission = "read"
+	ProjectOrganizationPermissionWrite ProjectOrganizationPermission = "write"
+	ProjectOrganizationPermissionAdmin ProjectOrganizationPermission = "admin"
+	ProjectOrganizationPermissionNone  ProjectOrganizationPermission = "none"
+)
+
 type ProjectsAddCollaboratorApplicationJSONRequest struct {
-	Permission string `json:"permission"`
+	Permission *ProjectsAddCollaboratorApplicationJSONRequestPermission `json:"permission"`
 }
+
+func (*ProjectsAddCollaboratorApplicationJSONRequest) projectsAddCollaboratorRequest() {}
+
+type ProjectsAddCollaboratorApplicationJSONRequestPermission string
+
+const (
+	ProjectsAddCollaboratorApplicationJSONRequestPermissionRead  ProjectsAddCollaboratorApplicationJSONRequestPermission = "read"
+	ProjectsAddCollaboratorApplicationJSONRequestPermissionWrite ProjectsAddCollaboratorApplicationJSONRequestPermission = "write"
+	ProjectsAddCollaboratorApplicationJSONRequestPermissionAdmin ProjectsAddCollaboratorApplicationJSONRequestPermission = "admin"
+)
 
 type ProjectsAddCollaboratorNoContent struct{}
 
-func (*ProjectsAddCollaboratorNoContent) projectsAddCollaboratorResponse() {}
+type ProjectsCreateColumnApplicationJSONForbidden BasicError
 
-type ProjectsCreateCardServiceUnavailable struct {
-	Code             string                                           `json:"code"`
-	DocumentationURL string                                           `json:"documentation_url"`
-	Errors           []ProjectsCreateCardServiceUnavailableErrorsItem `json:"errors"`
-	Message          string                                           `json:"message"`
-}
-
-func (*ProjectsCreateCardServiceUnavailable) projectsCreateCardResponse() {}
-
-type ProjectsCreateCardServiceUnavailableErrorsItem struct {
-	Code    string `json:"code"`
-	Message string `json:"message"`
-}
+func (*ProjectsCreateColumnApplicationJSONForbidden) projectsCreateColumnResponse() {}
 
 type ProjectsCreateColumnApplicationJSONRequest struct {
 	Name string `json:"name"`
 }
 
-type ProjectsCreateForAuthenticatedUserApplicationJSONRequest struct {
-	Body string `json:"body"`
-	Name string `json:"name"`
+type ProjectsCreateColumnApplicationJSONUnauthorized BasicError
+
+func (*ProjectsCreateColumnApplicationJSONUnauthorized) projectsCreateColumnResponse() {}
+
+type ProjectsCreateForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*ProjectsCreateForAuthenticatedUserApplicationJSONForbidden) projectsCreateForAuthenticatedUserResponse() {
 }
+
+type ProjectsCreateForAuthenticatedUserApplicationJSONRequest struct {
+	Body *string `json:"body"`
+	Name string  `json:"name"`
+}
+
+type ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) projectsCreateForAuthenticatedUserResponse() {
+}
+
+type ProjectsCreateForOrgApplicationJSONForbidden BasicError
+
+func (*ProjectsCreateForOrgApplicationJSONForbidden) projectsCreateForOrgResponse() {}
+
+type ProjectsCreateForOrgApplicationJSONGone BasicError
+
+func (*ProjectsCreateForOrgApplicationJSONGone) projectsCreateForOrgResponse() {}
+
+type ProjectsCreateForOrgApplicationJSONNotFound BasicError
+
+func (*ProjectsCreateForOrgApplicationJSONNotFound) projectsCreateForOrgResponse() {}
 
 type ProjectsCreateForOrgApplicationJSONRequest struct {
-	Body string `json:"body"`
-	Name string `json:"name"`
+	Body *string `json:"body"`
+	Name string  `json:"name"`
 }
+
+type ProjectsCreateForOrgApplicationJSONUnauthorized BasicError
+
+func (*ProjectsCreateForOrgApplicationJSONUnauthorized) projectsCreateForOrgResponse() {}
+
+type ProjectsCreateForRepoApplicationJSONForbidden BasicError
+
+func (*ProjectsCreateForRepoApplicationJSONForbidden) projectsCreateForRepoResponse() {}
+
+type ProjectsCreateForRepoApplicationJSONGone BasicError
+
+func (*ProjectsCreateForRepoApplicationJSONGone) projectsCreateForRepoResponse() {}
+
+type ProjectsCreateForRepoApplicationJSONNotFound BasicError
+
+func (*ProjectsCreateForRepoApplicationJSONNotFound) projectsCreateForRepoResponse() {}
 
 type ProjectsCreateForRepoApplicationJSONRequest struct {
-	Body string `json:"body"`
-	Name string `json:"name"`
+	Body *string `json:"body"`
+	Name string  `json:"name"`
 }
 
+type ProjectsCreateForRepoApplicationJSONUnauthorized BasicError
+
+func (*ProjectsCreateForRepoApplicationJSONUnauthorized) projectsCreateForRepoResponse() {}
+
+type ProjectsDeleteApplicationJSONGone BasicError
+
+func (*ProjectsDeleteApplicationJSONGone) projectsDeleteResponse() {}
+
+type ProjectsDeleteApplicationJSONNotFound BasicError
+
+func (*ProjectsDeleteApplicationJSONNotFound) projectsDeleteResponse() {}
+
+type ProjectsDeleteApplicationJSONUnauthorized BasicError
+
+func (*ProjectsDeleteApplicationJSONUnauthorized) projectsDeleteResponse() {}
+
+type ProjectsDeleteCardApplicationJSONNotFound BasicError
+
+func (*ProjectsDeleteCardApplicationJSONNotFound) projectsDeleteCardResponse() {}
+
+type ProjectsDeleteCardApplicationJSONUnauthorized BasicError
+
+func (*ProjectsDeleteCardApplicationJSONUnauthorized) projectsDeleteCardResponse() {}
+
 type ProjectsDeleteCardForbidden struct {
-	DocumentationURL string   `json:"documentation_url"`
-	Errors           []string `json:"errors"`
-	Message          string   `json:"message"`
+	DocumentationURL *string   `json:"documentation_url"`
+	Errors           *[]string `json:"errors"`
+	Message          *string   `json:"message"`
 }
 
 func (*ProjectsDeleteCardForbidden) projectsDeleteCardResponse() {}
@@ -5241,14 +5812,22 @@ type ProjectsDeleteCardNoContent struct{}
 
 func (*ProjectsDeleteCardNoContent) projectsDeleteCardResponse() {}
 
+type ProjectsDeleteColumnApplicationJSONForbidden BasicError
+
+func (*ProjectsDeleteColumnApplicationJSONForbidden) projectsDeleteColumnResponse() {}
+
+type ProjectsDeleteColumnApplicationJSONUnauthorized BasicError
+
+func (*ProjectsDeleteColumnApplicationJSONUnauthorized) projectsDeleteColumnResponse() {}
+
 type ProjectsDeleteColumnNoContent struct{}
 
 func (*ProjectsDeleteColumnNoContent) projectsDeleteColumnResponse() {}
 
 type ProjectsDeleteForbidden struct {
-	DocumentationURL string   `json:"documentation_url"`
-	Errors           []string `json:"errors"`
-	Message          string   `json:"message"`
+	DocumentationURL *string   `json:"documentation_url"`
+	Errors           *[]string `json:"errors"`
+	Message          *string   `json:"message"`
 }
 
 func (*ProjectsDeleteForbidden) projectsDeleteResponse() {}
@@ -5257,71 +5836,83 @@ type ProjectsDeleteNoContent struct{}
 
 func (*ProjectsDeleteNoContent) projectsDeleteResponse() {}
 
-type ProjectsListCardsOK []ProjectCard
+type ProjectsGetApplicationJSONForbidden BasicError
 
-func (*ProjectsListCardsOK) projectsListCardsResponse() {}
+func (*ProjectsGetApplicationJSONForbidden) projectsGetResponse() {}
 
-type ProjectsListCollaboratorsOK []SimpleUser
+type ProjectsGetApplicationJSONUnauthorized BasicError
 
-func (*ProjectsListCollaboratorsOK) projectsListCollaboratorsResponse() {}
+func (*ProjectsGetApplicationJSONUnauthorized) projectsGetResponse() {}
+
+type ProjectsGetCardApplicationJSONForbidden BasicError
+
+func (*ProjectsGetCardApplicationJSONForbidden) projectsGetCardResponse() {}
+
+type ProjectsGetCardApplicationJSONNotFound BasicError
+
+func (*ProjectsGetCardApplicationJSONNotFound) projectsGetCardResponse() {}
+
+type ProjectsGetCardApplicationJSONUnauthorized BasicError
+
+func (*ProjectsGetCardApplicationJSONUnauthorized) projectsGetCardResponse() {}
+
+type ProjectsGetColumnApplicationJSONForbidden BasicError
+
+func (*ProjectsGetColumnApplicationJSONForbidden) projectsGetColumnResponse() {}
+
+type ProjectsGetColumnApplicationJSONNotFound BasicError
+
+func (*ProjectsGetColumnApplicationJSONNotFound) projectsGetColumnResponse() {}
+
+type ProjectsGetColumnApplicationJSONUnauthorized BasicError
+
+func (*ProjectsGetColumnApplicationJSONUnauthorized) projectsGetColumnResponse() {}
+
+type ProjectsListColumnsApplicationJSONForbidden BasicError
+
+func (*ProjectsListColumnsApplicationJSONForbidden) projectsListColumnsResponse() {}
+
+type ProjectsListColumnsApplicationJSONUnauthorized BasicError
+
+func (*ProjectsListColumnsApplicationJSONUnauthorized) projectsListColumnsResponse() {}
 
 type ProjectsListColumnsOK []ProjectColumn
 
 func (*ProjectsListColumnsOK) projectsListColumnsResponse() {}
 
-type ProjectsListForOrgOK []Project
-
-func (*ProjectsListForOrgOK) projectsListForOrgResponse() {}
-
-type ProjectsListForRepoOK []Project
-
-func (*ProjectsListForRepoOK) projectsListForRepoResponse() {}
-
-type ProjectsListForUserOK []Project
-
-func (*ProjectsListForUserOK) projectsListForUserResponse() {}
-
 type ProjectsMoveCardApplicationJSONRequest struct {
-	ColumnID int    `json:"column_id"`
+	ColumnID *int   `json:"column_id"`
 	Position string `json:"position"`
 }
 
+func (*ProjectsMoveCardApplicationJSONRequest) projectsMoveCardRequest() {}
+
 type ProjectsMoveCardCreated struct{}
 
-func (*ProjectsMoveCardCreated) projectsMoveCardResponse() {}
-
 type ProjectsMoveCardForbidden struct {
-	DocumentationURL string                                `json:"documentation_url"`
-	Errors           []ProjectsMoveCardForbiddenErrorsItem `json:"errors"`
-	Message          string                                `json:"message"`
+	DocumentationURL *string                                `json:"documentation_url"`
+	Errors           *[]ProjectsMoveCardForbiddenErrorsItem `json:"errors"`
+	Message          *string                                `json:"message"`
 }
-
-func (*ProjectsMoveCardForbidden) projectsMoveCardResponse() {}
 
 type ProjectsMoveCardForbiddenErrorsItem struct {
-	Code     string `json:"code"`
-	Field    string `json:"field"`
-	Message  string `json:"message"`
-	Resource string `json:"resource"`
+	Code     *string `json:"code"`
+	Field    *string `json:"field"`
+	Message  *string `json:"message"`
+	Resource *string `json:"resource"`
 }
 
-type ProjectsMoveCardServiceUnavailable struct {
-	Code             string                                         `json:"code"`
-	DocumentationURL string                                         `json:"documentation_url"`
-	Errors           []ProjectsMoveCardServiceUnavailableErrorsItem `json:"errors"`
-	Message          string                                         `json:"message"`
-}
+type ProjectsMoveColumnApplicationJSONForbidden BasicError
 
-func (*ProjectsMoveCardServiceUnavailable) projectsMoveCardResponse() {}
-
-type ProjectsMoveCardServiceUnavailableErrorsItem struct {
-	Code    string `json:"code"`
-	Message string `json:"message"`
-}
+func (*ProjectsMoveColumnApplicationJSONForbidden) projectsMoveColumnResponse() {}
 
 type ProjectsMoveColumnApplicationJSONRequest struct {
 	Position string `json:"position"`
 }
+
+type ProjectsMoveColumnApplicationJSONUnauthorized BasicError
+
+func (*ProjectsMoveColumnApplicationJSONUnauthorized) projectsMoveColumnResponse() {}
 
 type ProjectsMoveColumnCreated struct{}
 
@@ -5329,29 +5920,64 @@ func (*ProjectsMoveColumnCreated) projectsMoveColumnResponse() {}
 
 type ProjectsRemoveCollaboratorNoContent struct{}
 
-func (*ProjectsRemoveCollaboratorNoContent) projectsRemoveCollaboratorResponse() {}
+type ProjectsUpdateApplicationJSONGone BasicError
+
+func (*ProjectsUpdateApplicationJSONGone) projectsUpdateResponse() {}
 
 type ProjectsUpdateApplicationJSONRequest struct {
-	Body                   string `json:"body"`
-	Name                   string `json:"name"`
-	OrganizationPermission string `json:"organization_permission"`
-	Private                bool   `json:"private"`
-	State                  string `json:"state"`
+	Body                   *string                                                     `json:"body"`
+	Name                   *string                                                     `json:"name"`
+	OrganizationPermission *ProjectsUpdateApplicationJSONRequestOrganizationPermission `json:"organization_permission"`
+	Private                *bool                                                       `json:"private"`
+	State                  *string                                                     `json:"state"`
 }
 
+type ProjectsUpdateApplicationJSONRequestOrganizationPermission string
+
+const (
+	ProjectsUpdateApplicationJSONRequestOrganizationPermissionRead  ProjectsUpdateApplicationJSONRequestOrganizationPermission = "read"
+	ProjectsUpdateApplicationJSONRequestOrganizationPermissionWrite ProjectsUpdateApplicationJSONRequestOrganizationPermission = "write"
+	ProjectsUpdateApplicationJSONRequestOrganizationPermissionAdmin ProjectsUpdateApplicationJSONRequestOrganizationPermission = "admin"
+	ProjectsUpdateApplicationJSONRequestOrganizationPermissionNone  ProjectsUpdateApplicationJSONRequestOrganizationPermission = "none"
+)
+
+type ProjectsUpdateApplicationJSONUnauthorized BasicError
+
+func (*ProjectsUpdateApplicationJSONUnauthorized) projectsUpdateResponse() {}
+
+type ProjectsUpdateCardApplicationJSONForbidden BasicError
+
+func (*ProjectsUpdateCardApplicationJSONForbidden) projectsUpdateCardResponse() {}
+
+type ProjectsUpdateCardApplicationJSONNotFound BasicError
+
+func (*ProjectsUpdateCardApplicationJSONNotFound) projectsUpdateCardResponse() {}
+
 type ProjectsUpdateCardApplicationJSONRequest struct {
-	Archived bool   `json:"archived"`
-	Note     string `json:"note"`
+	Archived *bool   `json:"archived"`
+	Note     *string `json:"note"`
 }
+
+type ProjectsUpdateCardApplicationJSONUnauthorized BasicError
+
+func (*ProjectsUpdateCardApplicationJSONUnauthorized) projectsUpdateCardResponse() {}
+
+type ProjectsUpdateColumnApplicationJSONForbidden BasicError
+
+func (*ProjectsUpdateColumnApplicationJSONForbidden) projectsUpdateColumnResponse() {}
 
 type ProjectsUpdateColumnApplicationJSONRequest struct {
 	Name string `json:"name"`
 }
 
+type ProjectsUpdateColumnApplicationJSONUnauthorized BasicError
+
+func (*ProjectsUpdateColumnApplicationJSONUnauthorized) projectsUpdateColumnResponse() {}
+
 type ProjectsUpdateForbidden struct {
-	DocumentationURL string   `json:"documentation_url"`
-	Errors           []string `json:"errors"`
-	Message          string   `json:"message"`
+	DocumentationURL *string   `json:"documentation_url"`
+	Errors           *[]string `json:"errors"`
+	Message          *string   `json:"message"`
 }
 
 func (*ProjectsUpdateForbidden) projectsUpdateResponse() {}
@@ -5361,16 +5987,16 @@ type ProjectsUpdateNotFound struct{}
 func (*ProjectsUpdateNotFound) projectsUpdateResponse() {}
 
 type ProtectedBranch struct {
-	AllowDeletions                 ProtectedBranchAllowDeletions                 `json:"allow_deletions"`
-	AllowForcePushes               ProtectedBranchAllowForcePushes               `json:"allow_force_pushes"`
-	EnforceAdmins                  ProtectedBranchEnforceAdmins                  `json:"enforce_admins"`
-	RequiredConversationResolution ProtectedBranchRequiredConversationResolution `json:"required_conversation_resolution"`
-	RequiredLinearHistory          ProtectedBranchRequiredLinearHistory          `json:"required_linear_history"`
-	RequiredPullRequestReviews     ProtectedBranchRequiredPullRequestReviews     `json:"required_pull_request_reviews"`
-	RequiredSignatures             ProtectedBranchRequiredSignatures             `json:"required_signatures"`
-	RequiredStatusChecks           StatusCheckPolicy                             `json:"required_status_checks"`
-	Restrictions                   BranchRestrictionPolicy                       `json:"restrictions"`
-	URL                            string                                        `json:"url"`
+	AllowDeletions                 *ProtectedBranchAllowDeletions                 `json:"allow_deletions"`
+	AllowForcePushes               *ProtectedBranchAllowForcePushes               `json:"allow_force_pushes"`
+	EnforceAdmins                  *ProtectedBranchEnforceAdmins                  `json:"enforce_admins"`
+	RequiredConversationResolution *ProtectedBranchRequiredConversationResolution `json:"required_conversation_resolution"`
+	RequiredLinearHistory          *ProtectedBranchRequiredLinearHistory          `json:"required_linear_history"`
+	RequiredPullRequestReviews     *ProtectedBranchRequiredPullRequestReviews     `json:"required_pull_request_reviews"`
+	RequiredSignatures             *ProtectedBranchRequiredSignatures             `json:"required_signatures"`
+	RequiredStatusChecks           *StatusCheckPolicy                             `json:"required_status_checks"`
+	Restrictions                   *BranchRestrictionPolicy                       `json:"restrictions"`
+	URL                            string                                         `json:"url"`
 }
 
 func (*ProtectedBranch) reposUpdateBranchProtectionResponse() {}
@@ -5397,25 +6023,23 @@ type ProtectedBranchEnforceAdmins struct {
 }
 
 type ProtectedBranchPullRequestReview struct {
-	DismissStaleReviews          bool                                                  `json:"dismiss_stale_reviews"`
-	DismissalRestrictions        ProtectedBranchPullRequestReviewDismissalRestrictions `json:"dismissal_restrictions"`
-	RequireCodeOwnerReviews      bool                                                  `json:"require_code_owner_reviews"`
-	RequiredApprovingReviewCount int                                                   `json:"required_approving_review_count"`
-	URL                          string                                                `json:"url"`
+	DismissStaleReviews          bool                                                   `json:"dismiss_stale_reviews"`
+	DismissalRestrictions        *ProtectedBranchPullRequestReviewDismissalRestrictions `json:"dismissal_restrictions"`
+	RequireCodeOwnerReviews      bool                                                   `json:"require_code_owner_reviews"`
+	RequiredApprovingReviewCount *int                                                   `json:"required_approving_review_count"`
+	URL                          *string                                                `json:"url"`
 }
 
-func (*ProtectedBranchPullRequestReview) reposUpdatePullRequestReviewProtectionResponse() {}
-
 type ProtectedBranchPullRequestReviewDismissalRestrictions struct {
-	Teams    []Team       `json:"teams"`
-	TeamsURL string       `json:"teams_url"`
-	URL      string       `json:"url"`
-	Users    []SimpleUser `json:"users"`
-	UsersURL string       `json:"users_url"`
+	Teams    *[]Team       `json:"teams"`
+	TeamsURL *string       `json:"teams_url"`
+	URL      *string       `json:"url"`
+	Users    *[]SimpleUser `json:"users"`
+	UsersURL *string       `json:"users_url"`
 }
 
 type ProtectedBranchRequiredConversationResolution struct {
-	Enabled bool `json:"enabled"`
+	Enabled *bool `json:"enabled"`
 }
 
 type ProtectedBranchRequiredLinearHistory struct {
@@ -5423,11 +6047,11 @@ type ProtectedBranchRequiredLinearHistory struct {
 }
 
 type ProtectedBranchRequiredPullRequestReviews struct {
-	DismissStaleReviews          bool                                                           `json:"dismiss_stale_reviews"`
-	DismissalRestrictions        ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions `json:"dismissal_restrictions"`
-	RequireCodeOwnerReviews      bool                                                           `json:"require_code_owner_reviews"`
-	RequiredApprovingReviewCount int                                                            `json:"required_approving_review_count"`
-	URL                          string                                                         `json:"url"`
+	DismissStaleReviews          *bool                                                           `json:"dismiss_stale_reviews"`
+	DismissalRestrictions        *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions `json:"dismissal_restrictions"`
+	RequireCodeOwnerReviews      *bool                                                           `json:"require_code_owner_reviews"`
+	RequiredApprovingReviewCount *int                                                            `json:"required_approving_review_count"`
+	URL                          string                                                          `json:"url"`
 }
 
 type ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions struct {
@@ -5443,12 +6067,61 @@ type ProtectedBranchRequiredSignatures struct {
 	URL     string `json:"url"`
 }
 
+type PublicUser struct {
+	AvatarURL         string          `json:"avatar_url"`
+	Bio               string          `json:"bio"`
+	Blog              string          `json:"blog"`
+	Collaborators     *int            `json:"collaborators"`
+	Company           string          `json:"company"`
+	CreatedAt         time.Time       `json:"created_at"`
+	DiskUsage         *int            `json:"disk_usage"`
+	Email             string          `json:"email"`
+	EventsURL         string          `json:"events_url"`
+	Followers         int             `json:"followers"`
+	FollowersURL      string          `json:"followers_url"`
+	Following         int             `json:"following"`
+	FollowingURL      string          `json:"following_url"`
+	GistsURL          string          `json:"gists_url"`
+	GravatarID        string          `json:"gravatar_id"`
+	HTMLURL           string          `json:"html_url"`
+	Hireable          bool            `json:"hireable"`
+	ID                int             `json:"id"`
+	Location          string          `json:"location"`
+	Login             string          `json:"login"`
+	Name              string          `json:"name"`
+	NodeID            string          `json:"node_id"`
+	OrganizationsURL  string          `json:"organizations_url"`
+	OwnedPrivateRepos *int            `json:"owned_private_repos"`
+	Plan              *PublicUserPlan `json:"plan"`
+	PrivateGists      *int            `json:"private_gists"`
+	PublicGists       int             `json:"public_gists"`
+	PublicRepos       int             `json:"public_repos"`
+	ReceivedEventsURL string          `json:"received_events_url"`
+	ReposURL          string          `json:"repos_url"`
+	SiteAdmin         bool            `json:"site_admin"`
+	StarredURL        string          `json:"starred_url"`
+	SubscriptionsURL  string          `json:"subscriptions_url"`
+	SuspendedAt       *time.Time      `json:"suspended_at"`
+	TotalPrivateRepos *int            `json:"total_private_repos"`
+	TwitterUsername   *string         `json:"twitter_username"`
+	Type              string          `json:"type"`
+	URL               string          `json:"url"`
+	UpdatedAt         time.Time       `json:"updated_at"`
+}
+
+type PublicUserPlan struct {
+	Collaborators int    `json:"collaborators"`
+	Name          string `json:"name"`
+	PrivateRepos  int    `json:"private_repos"`
+	Space         int    `json:"space"`
+}
+
 type PullRequest struct {
-	ActiveLockReason    string                  `json:"active_lock_reason"`
+	ActiveLockReason    *string                 `json:"active_lock_reason"`
 	Additions           int                     `json:"additions"`
 	Assignee            NullableSimpleUser      `json:"assignee"`
-	Assignees           []SimpleUser            `json:"assignees"`
-	AuthorAssociation   string                  `json:"author_association"`
+	Assignees           *[]SimpleUser           `json:"assignees"`
+	AuthorAssociation   AuthorAssociation       `json:"author_association"`
 	AutoMerge           AutoMerge               `json:"auto_merge"`
 	Base                PullRequestBase         `json:"base"`
 	Body                string                  `json:"body"`
@@ -5461,7 +6134,7 @@ type PullRequest struct {
 	CreatedAt           time.Time               `json:"created_at"`
 	Deletions           int                     `json:"deletions"`
 	DiffURL             string                  `json:"diff_url"`
-	Draft               bool                    `json:"draft"`
+	Draft               *bool                   `json:"draft"`
 	HTMLURL             string                  `json:"html_url"`
 	Head                PullRequestHead         `json:"head"`
 	ID                  int                     `json:"id"`
@@ -5480,13 +6153,13 @@ type PullRequest struct {
 	NodeID              string                  `json:"node_id"`
 	Number              int                     `json:"number"`
 	PatchURL            string                  `json:"patch_url"`
-	Rebaseable          bool                    `json:"rebaseable"`
-	RequestedReviewers  []SimpleUser            `json:"requested_reviewers"`
-	RequestedTeams      []TeamSimple            `json:"requested_teams"`
+	Rebaseable          *bool                   `json:"rebaseable"`
+	RequestedReviewers  *[]SimpleUser           `json:"requested_reviewers"`
+	RequestedTeams      *[]TeamSimple           `json:"requested_teams"`
 	ReviewCommentURL    string                  `json:"review_comment_url"`
 	ReviewComments      int                     `json:"review_comments"`
 	ReviewCommentsURL   string                  `json:"review_comments_url"`
-	State               string                  `json:"state"`
+	State               PullRequestState        `json:"state"`
 	StatusesURL         string                  `json:"statuses_url"`
 	Title               string                  `json:"title"`
 	URL                 string                  `json:"url"`
@@ -5494,9 +6167,7 @@ type PullRequest struct {
 	User                NullableSimpleUser      `json:"user"`
 }
 
-func (*PullRequest) pullsCreateResponse() {}
-func (*PullRequest) pullsGetResponse()    {}
-func (*PullRequest) pullsUpdateResponse() {}
+func (*PullRequest) pullsGetResponse() {}
 
 type PullRequestBase struct {
 	Label string              `json:"label"`
@@ -5507,87 +6178,87 @@ type PullRequestBase struct {
 }
 
 type PullRequestBaseRepo struct {
-	AllowForking     bool                           `json:"allow_forking"`
-	AllowMergeCommit bool                           `json:"allow_merge_commit"`
-	AllowRebaseMerge bool                           `json:"allow_rebase_merge"`
-	AllowSquashMerge bool                           `json:"allow_squash_merge"`
-	ArchiveURL       string                         `json:"archive_url"`
-	Archived         bool                           `json:"archived"`
-	AssigneesURL     string                         `json:"assignees_url"`
-	BlobsURL         string                         `json:"blobs_url"`
-	BranchesURL      string                         `json:"branches_url"`
-	CloneURL         string                         `json:"clone_url"`
-	CollaboratorsURL string                         `json:"collaborators_url"`
-	CommentsURL      string                         `json:"comments_url"`
-	CommitsURL       string                         `json:"commits_url"`
-	CompareURL       string                         `json:"compare_url"`
-	ContentsURL      string                         `json:"contents_url"`
-	ContributorsURL  string                         `json:"contributors_url"`
-	CreatedAt        time.Time                      `json:"created_at"`
-	DefaultBranch    string                         `json:"default_branch"`
-	DeploymentsURL   string                         `json:"deployments_url"`
-	Description      string                         `json:"description"`
-	Disabled         bool                           `json:"disabled"`
-	DownloadsURL     string                         `json:"downloads_url"`
-	EventsURL        string                         `json:"events_url"`
-	Fork             bool                           `json:"fork"`
-	Forks            int                            `json:"forks"`
-	ForksCount       int                            `json:"forks_count"`
-	ForksURL         string                         `json:"forks_url"`
-	FullName         string                         `json:"full_name"`
-	GitCommitsURL    string                         `json:"git_commits_url"`
-	GitRefsURL       string                         `json:"git_refs_url"`
-	GitTagsURL       string                         `json:"git_tags_url"`
-	GitURL           string                         `json:"git_url"`
-	HTMLURL          string                         `json:"html_url"`
-	HasDownloads     bool                           `json:"has_downloads"`
-	HasIssues        bool                           `json:"has_issues"`
-	HasPages         bool                           `json:"has_pages"`
-	HasProjects      bool                           `json:"has_projects"`
-	HasWiki          bool                           `json:"has_wiki"`
-	Homepage         string                         `json:"homepage"`
-	HooksURL         string                         `json:"hooks_url"`
-	ID               int                            `json:"id"`
-	IssueCommentURL  string                         `json:"issue_comment_url"`
-	IssueEventsURL   string                         `json:"issue_events_url"`
-	IssuesURL        string                         `json:"issues_url"`
-	KeysURL          string                         `json:"keys_url"`
-	LabelsURL        string                         `json:"labels_url"`
-	Language         string                         `json:"language"`
-	LanguagesURL     string                         `json:"languages_url"`
-	License          NullableLicenseSimple          `json:"license"`
-	MasterBranch     string                         `json:"master_branch"`
-	MergesURL        string                         `json:"merges_url"`
-	MilestonesURL    string                         `json:"milestones_url"`
-	MirrorURL        string                         `json:"mirror_url"`
-	Name             string                         `json:"name"`
-	NodeID           string                         `json:"node_id"`
-	NotificationsURL string                         `json:"notifications_url"`
-	OpenIssues       int                            `json:"open_issues"`
-	OpenIssuesCount  int                            `json:"open_issues_count"`
-	Owner            PullRequestBaseRepoOwner       `json:"owner"`
-	Permissions      PullRequestBaseRepoPermissions `json:"permissions"`
-	Private          bool                           `json:"private"`
-	PullsURL         string                         `json:"pulls_url"`
-	PushedAt         time.Time                      `json:"pushed_at"`
-	ReleasesURL      string                         `json:"releases_url"`
-	SSHURL           string                         `json:"ssh_url"`
-	Size             int                            `json:"size"`
-	StargazersCount  int                            `json:"stargazers_count"`
-	StargazersURL    string                         `json:"stargazers_url"`
-	StatusesURL      string                         `json:"statuses_url"`
-	SubscribersURL   string                         `json:"subscribers_url"`
-	SubscriptionURL  string                         `json:"subscription_url"`
-	SvnURL           string                         `json:"svn_url"`
-	TagsURL          string                         `json:"tags_url"`
-	TeamsURL         string                         `json:"teams_url"`
-	TempCloneToken   string                         `json:"temp_clone_token"`
-	Topics           []string                       `json:"topics"`
-	TreesURL         string                         `json:"trees_url"`
-	URL              string                         `json:"url"`
-	UpdatedAt        time.Time                      `json:"updated_at"`
-	Watchers         int                            `json:"watchers"`
-	WatchersCount    int                            `json:"watchers_count"`
+	AllowForking     *bool                           `json:"allow_forking"`
+	AllowMergeCommit *bool                           `json:"allow_merge_commit"`
+	AllowRebaseMerge *bool                           `json:"allow_rebase_merge"`
+	AllowSquashMerge *bool                           `json:"allow_squash_merge"`
+	ArchiveURL       string                          `json:"archive_url"`
+	Archived         bool                            `json:"archived"`
+	AssigneesURL     string                          `json:"assignees_url"`
+	BlobsURL         string                          `json:"blobs_url"`
+	BranchesURL      string                          `json:"branches_url"`
+	CloneURL         string                          `json:"clone_url"`
+	CollaboratorsURL string                          `json:"collaborators_url"`
+	CommentsURL      string                          `json:"comments_url"`
+	CommitsURL       string                          `json:"commits_url"`
+	CompareURL       string                          `json:"compare_url"`
+	ContentsURL      string                          `json:"contents_url"`
+	ContributorsURL  string                          `json:"contributors_url"`
+	CreatedAt        time.Time                       `json:"created_at"`
+	DefaultBranch    string                          `json:"default_branch"`
+	DeploymentsURL   string                          `json:"deployments_url"`
+	Description      string                          `json:"description"`
+	Disabled         bool                            `json:"disabled"`
+	DownloadsURL     string                          `json:"downloads_url"`
+	EventsURL        string                          `json:"events_url"`
+	Fork             bool                            `json:"fork"`
+	Forks            int                             `json:"forks"`
+	ForksCount       int                             `json:"forks_count"`
+	ForksURL         string                          `json:"forks_url"`
+	FullName         string                          `json:"full_name"`
+	GitCommitsURL    string                          `json:"git_commits_url"`
+	GitRefsURL       string                          `json:"git_refs_url"`
+	GitTagsURL       string                          `json:"git_tags_url"`
+	GitURL           string                          `json:"git_url"`
+	HTMLURL          string                          `json:"html_url"`
+	HasDownloads     bool                            `json:"has_downloads"`
+	HasIssues        bool                            `json:"has_issues"`
+	HasPages         bool                            `json:"has_pages"`
+	HasProjects      bool                            `json:"has_projects"`
+	HasWiki          bool                            `json:"has_wiki"`
+	Homepage         string                          `json:"homepage"`
+	HooksURL         string                          `json:"hooks_url"`
+	ID               int                             `json:"id"`
+	IssueCommentURL  string                          `json:"issue_comment_url"`
+	IssueEventsURL   string                          `json:"issue_events_url"`
+	IssuesURL        string                          `json:"issues_url"`
+	KeysURL          string                          `json:"keys_url"`
+	LabelsURL        string                          `json:"labels_url"`
+	Language         string                          `json:"language"`
+	LanguagesURL     string                          `json:"languages_url"`
+	License          NullableLicenseSimple           `json:"license"`
+	MasterBranch     *string                         `json:"master_branch"`
+	MergesURL        string                          `json:"merges_url"`
+	MilestonesURL    string                          `json:"milestones_url"`
+	MirrorURL        string                          `json:"mirror_url"`
+	Name             string                          `json:"name"`
+	NodeID           string                          `json:"node_id"`
+	NotificationsURL string                          `json:"notifications_url"`
+	OpenIssues       int                             `json:"open_issues"`
+	OpenIssuesCount  int                             `json:"open_issues_count"`
+	Owner            PullRequestBaseRepoOwner        `json:"owner"`
+	Permissions      *PullRequestBaseRepoPermissions `json:"permissions"`
+	Private          bool                            `json:"private"`
+	PullsURL         string                          `json:"pulls_url"`
+	PushedAt         time.Time                       `json:"pushed_at"`
+	ReleasesURL      string                          `json:"releases_url"`
+	SSHURL           string                          `json:"ssh_url"`
+	Size             int                             `json:"size"`
+	StargazersCount  int                             `json:"stargazers_count"`
+	StargazersURL    string                          `json:"stargazers_url"`
+	StatusesURL      string                          `json:"statuses_url"`
+	SubscribersURL   string                          `json:"subscribers_url"`
+	SubscriptionURL  string                          `json:"subscription_url"`
+	SvnURL           string                          `json:"svn_url"`
+	TagsURL          string                          `json:"tags_url"`
+	TeamsURL         string                          `json:"teams_url"`
+	TempCloneToken   *string                         `json:"temp_clone_token"`
+	Topics           *[]string                       `json:"topics"`
+	TreesURL         string                          `json:"trees_url"`
+	URL              string                          `json:"url"`
+	UpdatedAt        time.Time                       `json:"updated_at"`
+	Watchers         int                             `json:"watchers"`
+	WatchersCount    int                             `json:"watchers_count"`
 }
 
 type PullRequestBaseRepoOwner struct {
@@ -5612,11 +6283,11 @@ type PullRequestBaseRepoOwner struct {
 }
 
 type PullRequestBaseRepoPermissions struct {
-	Admin    bool `json:"admin"`
-	Maintain bool `json:"maintain"`
-	Pull     bool `json:"pull"`
-	Push     bool `json:"push"`
-	Triage   bool `json:"triage"`
+	Admin    bool  `json:"admin"`
+	Maintain *bool `json:"maintain"`
+	Pull     bool  `json:"pull"`
+	Push     bool  `json:"push"`
+	Triage   *bool `json:"triage"`
 }
 
 type PullRequestBaseUser struct {
@@ -5649,87 +6320,87 @@ type PullRequestHead struct {
 }
 
 type PullRequestHeadRepo struct {
-	AllowForking     bool                           `json:"allow_forking"`
-	AllowMergeCommit bool                           `json:"allow_merge_commit"`
-	AllowRebaseMerge bool                           `json:"allow_rebase_merge"`
-	AllowSquashMerge bool                           `json:"allow_squash_merge"`
-	ArchiveURL       string                         `json:"archive_url"`
-	Archived         bool                           `json:"archived"`
-	AssigneesURL     string                         `json:"assignees_url"`
-	BlobsURL         string                         `json:"blobs_url"`
-	BranchesURL      string                         `json:"branches_url"`
-	CloneURL         string                         `json:"clone_url"`
-	CollaboratorsURL string                         `json:"collaborators_url"`
-	CommentsURL      string                         `json:"comments_url"`
-	CommitsURL       string                         `json:"commits_url"`
-	CompareURL       string                         `json:"compare_url"`
-	ContentsURL      string                         `json:"contents_url"`
-	ContributorsURL  string                         `json:"contributors_url"`
-	CreatedAt        time.Time                      `json:"created_at"`
-	DefaultBranch    string                         `json:"default_branch"`
-	DeploymentsURL   string                         `json:"deployments_url"`
-	Description      string                         `json:"description"`
-	Disabled         bool                           `json:"disabled"`
-	DownloadsURL     string                         `json:"downloads_url"`
-	EventsURL        string                         `json:"events_url"`
-	Fork             bool                           `json:"fork"`
-	Forks            int                            `json:"forks"`
-	ForksCount       int                            `json:"forks_count"`
-	ForksURL         string                         `json:"forks_url"`
-	FullName         string                         `json:"full_name"`
-	GitCommitsURL    string                         `json:"git_commits_url"`
-	GitRefsURL       string                         `json:"git_refs_url"`
-	GitTagsURL       string                         `json:"git_tags_url"`
-	GitURL           string                         `json:"git_url"`
-	HTMLURL          string                         `json:"html_url"`
-	HasDownloads     bool                           `json:"has_downloads"`
-	HasIssues        bool                           `json:"has_issues"`
-	HasPages         bool                           `json:"has_pages"`
-	HasProjects      bool                           `json:"has_projects"`
-	HasWiki          bool                           `json:"has_wiki"`
-	Homepage         string                         `json:"homepage"`
-	HooksURL         string                         `json:"hooks_url"`
-	ID               int                            `json:"id"`
-	IssueCommentURL  string                         `json:"issue_comment_url"`
-	IssueEventsURL   string                         `json:"issue_events_url"`
-	IssuesURL        string                         `json:"issues_url"`
-	KeysURL          string                         `json:"keys_url"`
-	LabelsURL        string                         `json:"labels_url"`
-	Language         string                         `json:"language"`
-	LanguagesURL     string                         `json:"languages_url"`
-	License          PullRequestHeadRepoLicense     `json:"license"`
-	MasterBranch     string                         `json:"master_branch"`
-	MergesURL        string                         `json:"merges_url"`
-	MilestonesURL    string                         `json:"milestones_url"`
-	MirrorURL        string                         `json:"mirror_url"`
-	Name             string                         `json:"name"`
-	NodeID           string                         `json:"node_id"`
-	NotificationsURL string                         `json:"notifications_url"`
-	OpenIssues       int                            `json:"open_issues"`
-	OpenIssuesCount  int                            `json:"open_issues_count"`
-	Owner            PullRequestHeadRepoOwner       `json:"owner"`
-	Permissions      PullRequestHeadRepoPermissions `json:"permissions"`
-	Private          bool                           `json:"private"`
-	PullsURL         string                         `json:"pulls_url"`
-	PushedAt         time.Time                      `json:"pushed_at"`
-	ReleasesURL      string                         `json:"releases_url"`
-	SSHURL           string                         `json:"ssh_url"`
-	Size             int                            `json:"size"`
-	StargazersCount  int                            `json:"stargazers_count"`
-	StargazersURL    string                         `json:"stargazers_url"`
-	StatusesURL      string                         `json:"statuses_url"`
-	SubscribersURL   string                         `json:"subscribers_url"`
-	SubscriptionURL  string                         `json:"subscription_url"`
-	SvnURL           string                         `json:"svn_url"`
-	TagsURL          string                         `json:"tags_url"`
-	TeamsURL         string                         `json:"teams_url"`
-	TempCloneToken   string                         `json:"temp_clone_token"`
-	Topics           []string                       `json:"topics"`
-	TreesURL         string                         `json:"trees_url"`
-	URL              string                         `json:"url"`
-	UpdatedAt        time.Time                      `json:"updated_at"`
-	Watchers         int                            `json:"watchers"`
-	WatchersCount    int                            `json:"watchers_count"`
+	AllowForking     *bool                           `json:"allow_forking"`
+	AllowMergeCommit *bool                           `json:"allow_merge_commit"`
+	AllowRebaseMerge *bool                           `json:"allow_rebase_merge"`
+	AllowSquashMerge *bool                           `json:"allow_squash_merge"`
+	ArchiveURL       string                          `json:"archive_url"`
+	Archived         bool                            `json:"archived"`
+	AssigneesURL     string                          `json:"assignees_url"`
+	BlobsURL         string                          `json:"blobs_url"`
+	BranchesURL      string                          `json:"branches_url"`
+	CloneURL         string                          `json:"clone_url"`
+	CollaboratorsURL string                          `json:"collaborators_url"`
+	CommentsURL      string                          `json:"comments_url"`
+	CommitsURL       string                          `json:"commits_url"`
+	CompareURL       string                          `json:"compare_url"`
+	ContentsURL      string                          `json:"contents_url"`
+	ContributorsURL  string                          `json:"contributors_url"`
+	CreatedAt        time.Time                       `json:"created_at"`
+	DefaultBranch    string                          `json:"default_branch"`
+	DeploymentsURL   string                          `json:"deployments_url"`
+	Description      string                          `json:"description"`
+	Disabled         bool                            `json:"disabled"`
+	DownloadsURL     string                          `json:"downloads_url"`
+	EventsURL        string                          `json:"events_url"`
+	Fork             bool                            `json:"fork"`
+	Forks            int                             `json:"forks"`
+	ForksCount       int                             `json:"forks_count"`
+	ForksURL         string                          `json:"forks_url"`
+	FullName         string                          `json:"full_name"`
+	GitCommitsURL    string                          `json:"git_commits_url"`
+	GitRefsURL       string                          `json:"git_refs_url"`
+	GitTagsURL       string                          `json:"git_tags_url"`
+	GitURL           string                          `json:"git_url"`
+	HTMLURL          string                          `json:"html_url"`
+	HasDownloads     bool                            `json:"has_downloads"`
+	HasIssues        bool                            `json:"has_issues"`
+	HasPages         bool                            `json:"has_pages"`
+	HasProjects      bool                            `json:"has_projects"`
+	HasWiki          bool                            `json:"has_wiki"`
+	Homepage         string                          `json:"homepage"`
+	HooksURL         string                          `json:"hooks_url"`
+	ID               int                             `json:"id"`
+	IssueCommentURL  string                          `json:"issue_comment_url"`
+	IssueEventsURL   string                          `json:"issue_events_url"`
+	IssuesURL        string                          `json:"issues_url"`
+	KeysURL          string                          `json:"keys_url"`
+	LabelsURL        string                          `json:"labels_url"`
+	Language         string                          `json:"language"`
+	LanguagesURL     string                          `json:"languages_url"`
+	License          PullRequestHeadRepoLicense      `json:"license"`
+	MasterBranch     *string                         `json:"master_branch"`
+	MergesURL        string                          `json:"merges_url"`
+	MilestonesURL    string                          `json:"milestones_url"`
+	MirrorURL        string                          `json:"mirror_url"`
+	Name             string                          `json:"name"`
+	NodeID           string                          `json:"node_id"`
+	NotificationsURL string                          `json:"notifications_url"`
+	OpenIssues       int                             `json:"open_issues"`
+	OpenIssuesCount  int                             `json:"open_issues_count"`
+	Owner            PullRequestHeadRepoOwner        `json:"owner"`
+	Permissions      *PullRequestHeadRepoPermissions `json:"permissions"`
+	Private          bool                            `json:"private"`
+	PullsURL         string                          `json:"pulls_url"`
+	PushedAt         time.Time                       `json:"pushed_at"`
+	ReleasesURL      string                          `json:"releases_url"`
+	SSHURL           string                          `json:"ssh_url"`
+	Size             int                             `json:"size"`
+	StargazersCount  int                             `json:"stargazers_count"`
+	StargazersURL    string                          `json:"stargazers_url"`
+	StatusesURL      string                          `json:"statuses_url"`
+	SubscribersURL   string                          `json:"subscribers_url"`
+	SubscriptionURL  string                          `json:"subscription_url"`
+	SvnURL           string                          `json:"svn_url"`
+	TagsURL          string                          `json:"tags_url"`
+	TeamsURL         string                          `json:"teams_url"`
+	TempCloneToken   *string                         `json:"temp_clone_token"`
+	Topics           *[]string                       `json:"topics"`
+	TreesURL         string                          `json:"trees_url"`
+	URL              string                          `json:"url"`
+	UpdatedAt        time.Time                       `json:"updated_at"`
+	Watchers         int                             `json:"watchers"`
+	WatchersCount    int                             `json:"watchers_count"`
 }
 
 type PullRequestHeadRepoLicense struct {
@@ -5762,11 +6433,11 @@ type PullRequestHeadRepoOwner struct {
 }
 
 type PullRequestHeadRepoPermissions struct {
-	Admin    bool `json:"admin"`
-	Maintain bool `json:"maintain"`
-	Pull     bool `json:"pull"`
-	Push     bool `json:"push"`
-	Triage   bool `json:"triage"`
+	Admin    bool  `json:"admin"`
+	Maintain *bool `json:"maintain"`
+	Pull     bool  `json:"pull"`
+	Push     bool  `json:"push"`
+	Triage   *bool `json:"triage"`
 }
 
 type PullRequestHeadUser struct {
@@ -5791,13 +6462,13 @@ type PullRequestHeadUser struct {
 }
 
 type PullRequestLabelsItem struct {
-	Color       string `json:"color"`
-	Default     bool   `json:"default"`
-	Description string `json:"description"`
-	ID          int64  `json:"id"`
-	Name        string `json:"name"`
-	NodeID      string `json:"node_id"`
-	URL         string `json:"url"`
+	Color       *string `json:"color"`
+	Default     *bool   `json:"default"`
+	Description *string `json:"description"`
+	ID          *int64  `json:"id"`
+	Name        *string `json:"name"`
+	NodeID      *string `json:"node_id"`
+	URL         *string `json:"url"`
 }
 
 type PullRequestLinks struct {
@@ -5816,8 +6487,6 @@ type PullRequestMergeResult struct {
 	Message string `json:"message"`
 	Sha     string `json:"sha"`
 }
-
-func (*PullRequestMergeResult) pullsMergeResponse() {}
 
 type PullRequestMinimal struct {
 	Base   PullRequestMinimalBase `json:"base"`
@@ -5852,10 +6521,10 @@ type PullRequestMinimalHeadRepo struct {
 }
 
 type PullRequestReview struct {
-	AuthorAssociation string                 `json:"author_association"`
+	AuthorAssociation AuthorAssociation      `json:"author_association"`
 	Body              string                 `json:"body"`
-	BodyHTML          string                 `json:"body_html"`
-	BodyText          string                 `json:"body_text"`
+	BodyHTML          *string                `json:"body_html"`
+	BodyText          *string                `json:"body_text"`
 	CommitID          string                 `json:"commit_id"`
 	HTMLURL           string                 `json:"html_url"`
 	ID                int                    `json:"id"`
@@ -5863,7 +6532,7 @@ type PullRequestReview struct {
 	NodeID            string                 `json:"node_id"`
 	PullRequestURL    string                 `json:"pull_request_url"`
 	State             string                 `json:"state"`
-	SubmittedAt       time.Time              `json:"submitted_at"`
+	SubmittedAt       *time.Time             `json:"submitted_at"`
 	User              NullableSimpleUser     `json:"user"`
 }
 
@@ -5875,38 +6544,37 @@ func (*PullRequestReview) pullsSubmitReviewResponse()        {}
 func (*PullRequestReview) pullsUpdateReviewResponse()        {}
 
 type PullRequestReviewComment struct {
-	AuthorAssociation   string                        `json:"author_association"`
-	Body                string                        `json:"body"`
-	BodyHTML            string                        `json:"body_html"`
-	BodyText            string                        `json:"body_text"`
-	CommitID            string                        `json:"commit_id"`
-	CreatedAt           time.Time                     `json:"created_at"`
-	DiffHunk            string                        `json:"diff_hunk"`
-	HTMLURL             string                        `json:"html_url"`
-	ID                  int                           `json:"id"`
-	InReplyToID         int                           `json:"in_reply_to_id"`
-	Line                int                           `json:"line"`
-	Links               PullRequestReviewCommentLinks `json:"_links"`
-	NodeID              string                        `json:"node_id"`
-	OriginalCommitID    string                        `json:"original_commit_id"`
-	OriginalLine        int                           `json:"original_line"`
-	OriginalPosition    int                           `json:"original_position"`
-	OriginalStartLine   int                           `json:"original_start_line"`
-	Path                string                        `json:"path"`
-	Position            int                           `json:"position"`
-	PullRequestReviewID int                           `json:"pull_request_review_id"`
-	PullRequestURL      string                        `json:"pull_request_url"`
-	Reactions           ReactionRollup                `json:"reactions"`
-	Side                string                        `json:"side"`
-	StartLine           int                           `json:"start_line"`
-	StartSide           string                        `json:"start_side"`
-	URL                 string                        `json:"url"`
-	UpdatedAt           time.Time                     `json:"updated_at"`
-	User                SimpleUser                    `json:"user"`
+	AuthorAssociation   AuthorAssociation                  `json:"author_association"`
+	Body                string                             `json:"body"`
+	BodyHTML            *string                            `json:"body_html"`
+	BodyText            *string                            `json:"body_text"`
+	CommitID            string                             `json:"commit_id"`
+	CreatedAt           time.Time                          `json:"created_at"`
+	DiffHunk            string                             `json:"diff_hunk"`
+	HTMLURL             string                             `json:"html_url"`
+	ID                  int                                `json:"id"`
+	InReplyToID         *int                               `json:"in_reply_to_id"`
+	Line                *int                               `json:"line"`
+	Links               PullRequestReviewCommentLinks      `json:"_links"`
+	NodeID              string                             `json:"node_id"`
+	OriginalCommitID    string                             `json:"original_commit_id"`
+	OriginalLine        *int                               `json:"original_line"`
+	OriginalPosition    int                                `json:"original_position"`
+	OriginalStartLine   *int                               `json:"original_start_line"`
+	Path                string                             `json:"path"`
+	Position            int                                `json:"position"`
+	PullRequestReviewID int                                `json:"pull_request_review_id"`
+	PullRequestURL      string                             `json:"pull_request_url"`
+	Reactions           *ReactionRollup                    `json:"reactions"`
+	Side                *PullRequestReviewCommentSide      `json:"side"`
+	StartLine           *int                               `json:"start_line"`
+	StartSide           *PullRequestReviewCommentStartSide `json:"start_side"`
+	URL                 string                             `json:"url"`
+	UpdatedAt           time.Time                          `json:"updated_at"`
+	User                SimpleUser                         `json:"user"`
 }
 
 func (*PullRequestReviewComment) pullsCreateReplyForReviewCommentResponse() {}
-func (*PullRequestReviewComment) pullsCreateReviewCommentResponse()         {}
 func (*PullRequestReviewComment) pullsGetReviewCommentResponse()            {}
 
 type PullRequestReviewCommentLinks struct {
@@ -5927,6 +6595,20 @@ type PullRequestReviewCommentLinksSelf struct {
 	Href string `json:"href"`
 }
 
+type PullRequestReviewCommentSide string
+
+const (
+	PullRequestReviewCommentSideLEFT  PullRequestReviewCommentSide = "LEFT"
+	PullRequestReviewCommentSideRIGHT PullRequestReviewCommentSide = "RIGHT"
+)
+
+type PullRequestReviewCommentStartSide string
+
+const (
+	PullRequestReviewCommentStartSideLEFT  PullRequestReviewCommentStartSide = "LEFT"
+	PullRequestReviewCommentStartSideRIGHT PullRequestReviewCommentStartSide = "RIGHT"
+)
+
 type PullRequestReviewLinks struct {
 	HTML        PullRequestReviewLinksHTML        `json:"html"`
 	PullRequest PullRequestReviewLinksPullRequest `json:"pull_request"`
@@ -5946,10 +6628,10 @@ type PullRequestReviewRequest struct {
 }
 
 type PullRequestSimple struct {
-	ActiveLockReason   string                        `json:"active_lock_reason"`
+	ActiveLockReason   *string                       `json:"active_lock_reason"`
 	Assignee           NullableSimpleUser            `json:"assignee"`
-	Assignees          []SimpleUser                  `json:"assignees"`
-	AuthorAssociation  string                        `json:"author_association"`
+	Assignees          *[]SimpleUser                 `json:"assignees"`
+	AuthorAssociation  AuthorAssociation             `json:"author_association"`
 	AutoMerge          AutoMerge                     `json:"auto_merge"`
 	Base               PullRequestSimpleBase         `json:"base"`
 	Body               string                        `json:"body"`
@@ -5958,7 +6640,7 @@ type PullRequestSimple struct {
 	CommitsURL         string                        `json:"commits_url"`
 	CreatedAt          time.Time                     `json:"created_at"`
 	DiffURL            string                        `json:"diff_url"`
-	Draft              bool                          `json:"draft"`
+	Draft              *bool                         `json:"draft"`
 	HTMLURL            string                        `json:"html_url"`
 	Head               PullRequestSimpleHead         `json:"head"`
 	ID                 int                           `json:"id"`
@@ -5972,8 +6654,8 @@ type PullRequestSimple struct {
 	NodeID             string                        `json:"node_id"`
 	Number             int                           `json:"number"`
 	PatchURL           string                        `json:"patch_url"`
-	RequestedReviewers []SimpleUser                  `json:"requested_reviewers"`
-	RequestedTeams     []Team                        `json:"requested_teams"`
+	RequestedReviewers *[]SimpleUser                 `json:"requested_reviewers"`
+	RequestedTeams     *[]Team                       `json:"requested_teams"`
 	ReviewCommentURL   string                        `json:"review_comment_url"`
 	ReviewCommentsURL  string                        `json:"review_comments_url"`
 	State              string                        `json:"state"`
@@ -5983,9 +6665,6 @@ type PullRequestSimple struct {
 	UpdatedAt          time.Time                     `json:"updated_at"`
 	User               NullableSimpleUser            `json:"user"`
 }
-
-func (*PullRequestSimple) pullsRemoveRequestedReviewersResponse() {}
-func (*PullRequestSimple) pullsRequestReviewersResponse()         {}
 
 type PullRequestSimpleBase struct {
 	Label string             `json:"label"`
@@ -6004,13 +6683,13 @@ type PullRequestSimpleHead struct {
 }
 
 type PullRequestSimpleLabelsItem struct {
-	Color       string `json:"color"`
-	Default     bool   `json:"default"`
-	Description string `json:"description"`
-	ID          int64  `json:"id"`
-	Name        string `json:"name"`
-	NodeID      string `json:"node_id"`
-	URL         string `json:"url"`
+	Color       *string `json:"color"`
+	Default     *bool   `json:"default"`
+	Description *string `json:"description"`
+	ID          *int64  `json:"id"`
+	Name        *string `json:"name"`
+	NodeID      *string `json:"node_id"`
+	URL         *string `json:"url"`
 }
 
 type PullRequestSimpleLinks struct {
@@ -6024,6 +6703,13 @@ type PullRequestSimpleLinks struct {
 	Statuses       Link `json:"statuses"`
 }
 
+type PullRequestState string
+
+const (
+	PullRequestStateOpen   PullRequestState = "open"
+	PullRequestStateClosed PullRequestState = "closed"
+)
+
 type PullsCheckIfMergedNoContent struct{}
 
 func (*PullsCheckIfMergedNoContent) pullsCheckIfMergedResponse() {}
@@ -6033,56 +6719,91 @@ type PullsCheckIfMergedNotFound struct{}
 func (*PullsCheckIfMergedNotFound) pullsCheckIfMergedResponse() {}
 
 type PullsCreateApplicationJSONRequest struct {
-	Base                string `json:"base"`
-	Body                string `json:"body"`
-	Draft               bool   `json:"draft"`
-	Head                string `json:"head"`
-	Issue               int    `json:"issue"`
-	MaintainerCanModify bool   `json:"maintainer_can_modify"`
-	Title               string `json:"title"`
+	Base                string  `json:"base"`
+	Body                *string `json:"body"`
+	Draft               *bool   `json:"draft"`
+	Head                string  `json:"head"`
+	Issue               *int    `json:"issue"`
+	MaintainerCanModify *bool   `json:"maintainer_can_modify"`
+	Title               *string `json:"title"`
 }
+
+func (*PullsCreateApplicationJSONRequest) pullsCreateRequest() {}
 
 type PullsCreateReplyForReviewCommentApplicationJSONRequest struct {
 	Body string `json:"body"`
 }
 
 type PullsCreateReviewApplicationJSONRequest struct {
-	Body     string                                                `json:"body"`
-	Comments []PullsCreateReviewApplicationJSONRequestCommentsItem `json:"comments"`
-	CommitID string                                                `json:"commit_id"`
-	Event    string                                                `json:"event"`
+	Body     *string                                                `json:"body"`
+	Comments *[]PullsCreateReviewApplicationJSONRequestCommentsItem `json:"comments"`
+	CommitID *string                                                `json:"commit_id"`
+	Event    *PullsCreateReviewApplicationJSONRequestEvent          `json:"event"`
 }
 
 type PullsCreateReviewApplicationJSONRequestCommentsItem struct {
-	Body      string `json:"body"`
-	Line      int    `json:"line"`
-	Path      string `json:"path"`
-	Position  int    `json:"position"`
-	Side      string `json:"side"`
-	StartLine int    `json:"start_line"`
-	StartSide string `json:"start_side"`
+	Body      string  `json:"body"`
+	Line      *int    `json:"line"`
+	Path      string  `json:"path"`
+	Position  *int    `json:"position"`
+	Side      *string `json:"side"`
+	StartLine *int    `json:"start_line"`
+	StartSide *string `json:"start_side"`
 }
 
+type PullsCreateReviewApplicationJSONRequestEvent string
+
+const (
+	PullsCreateReviewApplicationJSONRequestEventAPPROVE        PullsCreateReviewApplicationJSONRequestEvent = "APPROVE"
+	PullsCreateReviewApplicationJSONRequestEventREQUESTCHANGES PullsCreateReviewApplicationJSONRequestEvent = "REQUEST_CHANGES"
+	PullsCreateReviewApplicationJSONRequestEventCOMMENT        PullsCreateReviewApplicationJSONRequestEvent = "COMMENT"
+)
+
 type PullsCreateReviewCommentApplicationJSONRequest struct {
-	Body      string `json:"body"`
-	CommitID  string `json:"commit_id"`
-	InReplyTo int    `json:"in_reply_to"`
-	Line      int    `json:"line"`
-	Path      string `json:"path"`
-	Position  int    `json:"position"`
-	Side      string `json:"side"`
-	StartLine int    `json:"start_line"`
-	StartSide string `json:"start_side"`
+	Body      string                                                   `json:"body"`
+	CommitID  *string                                                  `json:"commit_id"`
+	InReplyTo *int                                                     `json:"in_reply_to"`
+	Line      *int                                                     `json:"line"`
+	Path      *string                                                  `json:"path"`
+	Position  *int                                                     `json:"position"`
+	Side      *PullsCreateReviewCommentApplicationJSONRequestSide      `json:"side"`
+	StartLine *int                                                     `json:"start_line"`
+	StartSide *PullsCreateReviewCommentApplicationJSONRequestStartSide `json:"start_side"`
 }
+
+func (*PullsCreateReviewCommentApplicationJSONRequest) pullsCreateReviewCommentRequest() {}
+
+type PullsCreateReviewCommentApplicationJSONRequestSide string
+
+const (
+	PullsCreateReviewCommentApplicationJSONRequestSideLEFT  PullsCreateReviewCommentApplicationJSONRequestSide = "LEFT"
+	PullsCreateReviewCommentApplicationJSONRequestSideRIGHT PullsCreateReviewCommentApplicationJSONRequestSide = "RIGHT"
+)
+
+type PullsCreateReviewCommentApplicationJSONRequestStartSide string
+
+const (
+	PullsCreateReviewCommentApplicationJSONRequestStartSideLEFT  PullsCreateReviewCommentApplicationJSONRequestStartSide = "LEFT"
+	PullsCreateReviewCommentApplicationJSONRequestStartSideRIGHT PullsCreateReviewCommentApplicationJSONRequestStartSide = "RIGHT"
+	PullsCreateReviewCommentApplicationJSONRequestStartSideSide  PullsCreateReviewCommentApplicationJSONRequestStartSide = "side"
+)
 
 type PullsDeleteReviewCommentNoContent struct{}
 
 func (*PullsDeleteReviewCommentNoContent) pullsDeleteReviewCommentResponse() {}
 
 type PullsDismissReviewApplicationJSONRequest struct {
-	Event   string `json:"event"`
-	Message string `json:"message"`
+	Event   *string `json:"event"`
+	Message string  `json:"message"`
 }
+
+type PullsGetApplicationJSONInternalServerError BasicError
+
+func (*PullsGetApplicationJSONInternalServerError) pullsGetResponse() {}
+
+type PullsGetApplicationJSONNotFound BasicError
+
+func (*PullsGetApplicationJSONNotFound) pullsGetResponse() {}
 
 type PullsListCommentsForReviewOK []ReviewComment
 
@@ -6090,70 +6811,88 @@ func (*PullsListCommentsForReviewOK) pullsListCommentsForReviewResponse() {}
 
 type PullsListFilesOK []DiffEntry
 
-func (*PullsListFilesOK) pullsListFilesResponse() {}
-
-type PullsListOK []PullRequestSimple
-
-func (*PullsListOK) pullsListResponse() {}
-
 type PullsMergeApplicationJSONRequest struct {
-	CommitMessage string `json:"commit_message"`
-	CommitTitle   string `json:"commit_title"`
-	MergeMethod   string `json:"merge_method"`
-	Sha           string `json:"sha"`
+	CommitMessage *string                                      `json:"commit_message"`
+	CommitTitle   *string                                      `json:"commit_title"`
+	MergeMethod   *PullsMergeApplicationJSONRequestMergeMethod `json:"merge_method"`
+	Sha           *string                                      `json:"sha"`
 }
+
+func (*PullsMergeApplicationJSONRequest) pullsMergeRequest() {}
+
+type PullsMergeApplicationJSONRequestMergeMethod string
+
+const (
+	PullsMergeApplicationJSONRequestMergeMethodMerge  PullsMergeApplicationJSONRequestMergeMethod = "merge"
+	PullsMergeApplicationJSONRequestMergeMethodSquash PullsMergeApplicationJSONRequestMergeMethod = "squash"
+	PullsMergeApplicationJSONRequestMergeMethodRebase PullsMergeApplicationJSONRequestMergeMethod = "rebase"
+)
 
 type PullsMergeConflict struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
+	DocumentationURL *string `json:"documentation_url"`
+	Message          *string `json:"message"`
 }
-
-func (*PullsMergeConflict) pullsMergeResponse() {}
 
 type PullsMergeMethodNotAllowed struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
+	DocumentationURL *string `json:"documentation_url"`
+	Message          *string `json:"message"`
 }
-
-func (*PullsMergeMethodNotAllowed) pullsMergeResponse() {}
 
 type PullsRemoveRequestedReviewersApplicationJSONRequest struct {
-	Reviewers     []string `json:"reviewers"`
-	TeamReviewers []string `json:"team_reviewers"`
+	Reviewers     []string  `json:"reviewers"`
+	TeamReviewers *[]string `json:"team_reviewers"`
 }
 
-type PullsRequestReviewersApplicationJSONRequest struct {
-	Reviewers     []string `json:"reviewers"`
-	TeamReviewers []string `json:"team_reviewers"`
-}
+func (*PullsRemoveRequestedReviewersApplicationJSONRequest) pullsRemoveRequestedReviewersRequest() {}
 
-type PullsRequestReviewersUnprocessableEntity struct{}
+type PullsSubmitReviewApplicationJSONForbidden BasicError
 
-func (*PullsRequestReviewersUnprocessableEntity) pullsRequestReviewersResponse() {}
+func (*PullsSubmitReviewApplicationJSONForbidden) pullsSubmitReviewResponse() {}
+
+type PullsSubmitReviewApplicationJSONNotFound BasicError
+
+func (*PullsSubmitReviewApplicationJSONNotFound) pullsSubmitReviewResponse() {}
 
 type PullsSubmitReviewApplicationJSONRequest struct {
-	Body  string `json:"body"`
-	Event string `json:"event"`
+	Body  *string                                      `json:"body"`
+	Event PullsSubmitReviewApplicationJSONRequestEvent `json:"event"`
 }
+
+type PullsSubmitReviewApplicationJSONRequestEvent string
+
+const (
+	PullsSubmitReviewApplicationJSONRequestEventAPPROVE        PullsSubmitReviewApplicationJSONRequestEvent = "APPROVE"
+	PullsSubmitReviewApplicationJSONRequestEventREQUESTCHANGES PullsSubmitReviewApplicationJSONRequestEvent = "REQUEST_CHANGES"
+	PullsSubmitReviewApplicationJSONRequestEventCOMMENT        PullsSubmitReviewApplicationJSONRequestEvent = "COMMENT"
+)
 
 type PullsUpdateApplicationJSONRequest struct {
-	Base                string `json:"base"`
-	Body                string `json:"body"`
-	MaintainerCanModify bool   `json:"maintainer_can_modify"`
-	State               string `json:"state"`
-	Title               string `json:"title"`
+	Base                *string                                 `json:"base"`
+	Body                *string                                 `json:"body"`
+	MaintainerCanModify *bool                                   `json:"maintainer_can_modify"`
+	State               *PullsUpdateApplicationJSONRequestState `json:"state"`
+	Title               *string                                 `json:"title"`
 }
+
+func (*PullsUpdateApplicationJSONRequest) pullsUpdateRequest() {}
+
+type PullsUpdateApplicationJSONRequestState string
+
+const (
+	PullsUpdateApplicationJSONRequestStateOpen   PullsUpdateApplicationJSONRequestState = "open"
+	PullsUpdateApplicationJSONRequestStateClosed PullsUpdateApplicationJSONRequestState = "closed"
+)
 
 type PullsUpdateBranchAccepted struct {
-	Message string `json:"message"`
-	URL     string `json:"url"`
+	Message *string `json:"message"`
+	URL     *string `json:"url"`
 }
-
-func (*PullsUpdateBranchAccepted) pullsUpdateBranchResponse() {}
 
 type PullsUpdateBranchApplicationJSONRequest struct {
-	ExpectedHeadSha string `json:"expected_head_sha"`
+	ExpectedHeadSha *string `json:"expected_head_sha"`
 }
+
+func (*PullsUpdateBranchApplicationJSONRequest) pullsUpdateBranchRequest() {}
 
 type PullsUpdateReviewApplicationJSONRequest struct {
 	Body string `json:"body"`
@@ -6178,30 +6917,35 @@ type RateLimitOverview struct {
 func (*RateLimitOverview) rateLimitGetResponse() {}
 
 type RateLimitOverviewResources struct {
-	ActionsRunnerRegistration RateLimit `json:"actions_runner_registration"`
-	CodeScanningUpload        RateLimit `json:"code_scanning_upload"`
-	Core                      RateLimit `json:"core"`
-	Graphql                   RateLimit `json:"graphql"`
-	IntegrationManifest       RateLimit `json:"integration_manifest"`
-	Search                    RateLimit `json:"search"`
-	SourceImport              RateLimit `json:"source_import"`
+	ActionsRunnerRegistration *RateLimit `json:"actions_runner_registration"`
+	CodeScanningUpload        *RateLimit `json:"code_scanning_upload"`
+	Core                      RateLimit  `json:"core"`
+	Graphql                   *RateLimit `json:"graphql"`
+	IntegrationManifest       *RateLimit `json:"integration_manifest"`
+	Search                    RateLimit  `json:"search"`
+	SourceImport              *RateLimit `json:"source_import"`
 }
 
 type Reaction struct {
-	Content   string             `json:"content"`
+	Content   ReactionContent    `json:"content"`
 	CreatedAt time.Time          `json:"created_at"`
 	ID        int                `json:"id"`
 	NodeID    string             `json:"node_id"`
 	User      NullableSimpleUser `json:"user"`
 }
 
-func (*Reaction) reactionsCreateForCommitCommentResponse()              {}
-func (*Reaction) reactionsCreateForIssueCommentResponse()               {}
-func (*Reaction) reactionsCreateForIssueResponse()                      {}
-func (*Reaction) reactionsCreateForPullRequestReviewCommentResponse()   {}
-func (*Reaction) reactionsCreateForReleaseResponse()                    {}
-func (*Reaction) reactionsCreateForTeamDiscussionCommentInOrgResponse() {}
-func (*Reaction) reactionsCreateForTeamDiscussionInOrgResponse()        {}
+type ReactionContent string
+
+const (
+	ReactionContentPlus1    ReactionContent = "+1"
+	ReactionContentMinus1   ReactionContent = "-1"
+	ReactionContentLaugh    ReactionContent = "laugh"
+	ReactionContentConfused ReactionContent = "confused"
+	ReactionContentHeart    ReactionContent = "heart"
+	ReactionContentHooray   ReactionContent = "hooray"
+	ReactionContentRocket   ReactionContent = "rocket"
+	ReactionContentEyes     ReactionContent = "eyes"
+)
 
 type ReactionRollup struct {
 	Confused   int    `json:"confused"`
@@ -6217,40 +6961,188 @@ type ReactionRollup struct {
 }
 
 type ReactionsCreateForCommitCommentApplicationJSONRequest struct {
-	Content string `json:"content"`
+	Content ReactionsCreateForCommitCommentApplicationJSONRequestContent `json:"content"`
 }
+
+func (*ReactionsCreateForCommitCommentApplicationJSONRequest) reactionsCreateForCommitCommentRequest() {
+}
+
+type ReactionsCreateForCommitCommentApplicationJSONRequestContent string
+
+const (
+	ReactionsCreateForCommitCommentApplicationJSONRequestContentPlus1    ReactionsCreateForCommitCommentApplicationJSONRequestContent = "+1"
+	ReactionsCreateForCommitCommentApplicationJSONRequestContentMinus1   ReactionsCreateForCommitCommentApplicationJSONRequestContent = "-1"
+	ReactionsCreateForCommitCommentApplicationJSONRequestContentLaugh    ReactionsCreateForCommitCommentApplicationJSONRequestContent = "laugh"
+	ReactionsCreateForCommitCommentApplicationJSONRequestContentConfused ReactionsCreateForCommitCommentApplicationJSONRequestContent = "confused"
+	ReactionsCreateForCommitCommentApplicationJSONRequestContentHeart    ReactionsCreateForCommitCommentApplicationJSONRequestContent = "heart"
+	ReactionsCreateForCommitCommentApplicationJSONRequestContentHooray   ReactionsCreateForCommitCommentApplicationJSONRequestContent = "hooray"
+	ReactionsCreateForCommitCommentApplicationJSONRequestContentRocket   ReactionsCreateForCommitCommentApplicationJSONRequestContent = "rocket"
+	ReactionsCreateForCommitCommentApplicationJSONRequestContentEyes     ReactionsCreateForCommitCommentApplicationJSONRequestContent = "eyes"
+)
 
 type ReactionsCreateForIssueApplicationJSONRequest struct {
-	Content string `json:"content"`
+	Content ReactionsCreateForIssueApplicationJSONRequestContent `json:"content"`
 }
+
+func (*ReactionsCreateForIssueApplicationJSONRequest) reactionsCreateForIssueRequest() {}
+
+type ReactionsCreateForIssueApplicationJSONRequestContent string
+
+const (
+	ReactionsCreateForIssueApplicationJSONRequestContentPlus1    ReactionsCreateForIssueApplicationJSONRequestContent = "+1"
+	ReactionsCreateForIssueApplicationJSONRequestContentMinus1   ReactionsCreateForIssueApplicationJSONRequestContent = "-1"
+	ReactionsCreateForIssueApplicationJSONRequestContentLaugh    ReactionsCreateForIssueApplicationJSONRequestContent = "laugh"
+	ReactionsCreateForIssueApplicationJSONRequestContentConfused ReactionsCreateForIssueApplicationJSONRequestContent = "confused"
+	ReactionsCreateForIssueApplicationJSONRequestContentHeart    ReactionsCreateForIssueApplicationJSONRequestContent = "heart"
+	ReactionsCreateForIssueApplicationJSONRequestContentHooray   ReactionsCreateForIssueApplicationJSONRequestContent = "hooray"
+	ReactionsCreateForIssueApplicationJSONRequestContentRocket   ReactionsCreateForIssueApplicationJSONRequestContent = "rocket"
+	ReactionsCreateForIssueApplicationJSONRequestContentEyes     ReactionsCreateForIssueApplicationJSONRequestContent = "eyes"
+)
 
 type ReactionsCreateForIssueCommentApplicationJSONRequest struct {
-	Content string `json:"content"`
+	Content ReactionsCreateForIssueCommentApplicationJSONRequestContent `json:"content"`
 }
+
+func (*ReactionsCreateForIssueCommentApplicationJSONRequest) reactionsCreateForIssueCommentRequest() {
+}
+
+type ReactionsCreateForIssueCommentApplicationJSONRequestContent string
+
+const (
+	ReactionsCreateForIssueCommentApplicationJSONRequestContentPlus1    ReactionsCreateForIssueCommentApplicationJSONRequestContent = "+1"
+	ReactionsCreateForIssueCommentApplicationJSONRequestContentMinus1   ReactionsCreateForIssueCommentApplicationJSONRequestContent = "-1"
+	ReactionsCreateForIssueCommentApplicationJSONRequestContentLaugh    ReactionsCreateForIssueCommentApplicationJSONRequestContent = "laugh"
+	ReactionsCreateForIssueCommentApplicationJSONRequestContentConfused ReactionsCreateForIssueCommentApplicationJSONRequestContent = "confused"
+	ReactionsCreateForIssueCommentApplicationJSONRequestContentHeart    ReactionsCreateForIssueCommentApplicationJSONRequestContent = "heart"
+	ReactionsCreateForIssueCommentApplicationJSONRequestContentHooray   ReactionsCreateForIssueCommentApplicationJSONRequestContent = "hooray"
+	ReactionsCreateForIssueCommentApplicationJSONRequestContentRocket   ReactionsCreateForIssueCommentApplicationJSONRequestContent = "rocket"
+	ReactionsCreateForIssueCommentApplicationJSONRequestContentEyes     ReactionsCreateForIssueCommentApplicationJSONRequestContent = "eyes"
+)
 
 type ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest struct {
-	Content string `json:"content"`
+	Content ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent `json:"content"`
 }
 
+func (*ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest) reactionsCreateForPullRequestReviewCommentRequest() {
+}
+
+type ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent string
+
+const (
+	ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContentPlus1    ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent = "+1"
+	ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContentMinus1   ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent = "-1"
+	ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContentLaugh    ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent = "laugh"
+	ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContentConfused ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent = "confused"
+	ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContentHeart    ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent = "heart"
+	ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContentHooray   ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent = "hooray"
+	ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContentRocket   ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent = "rocket"
+	ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContentEyes     ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent = "eyes"
+)
+
 type ReactionsCreateForReleaseApplicationJSONRequest struct {
-	Content string `json:"content"`
+	Content ReactionsCreateForReleaseApplicationJSONRequestContent `json:"content"`
+}
+
+func (*ReactionsCreateForReleaseApplicationJSONRequest) reactionsCreateForReleaseRequest() {}
+
+type ReactionsCreateForReleaseApplicationJSONRequestContent string
+
+const (
+	ReactionsCreateForReleaseApplicationJSONRequestContentPlus1  ReactionsCreateForReleaseApplicationJSONRequestContent = "+1"
+	ReactionsCreateForReleaseApplicationJSONRequestContentLaugh  ReactionsCreateForReleaseApplicationJSONRequestContent = "laugh"
+	ReactionsCreateForReleaseApplicationJSONRequestContentHeart  ReactionsCreateForReleaseApplicationJSONRequestContent = "heart"
+	ReactionsCreateForReleaseApplicationJSONRequestContentHooray ReactionsCreateForReleaseApplicationJSONRequestContent = "hooray"
+	ReactionsCreateForReleaseApplicationJSONRequestContentRocket ReactionsCreateForReleaseApplicationJSONRequestContent = "rocket"
+	ReactionsCreateForReleaseApplicationJSONRequestContentEyes   ReactionsCreateForReleaseApplicationJSONRequestContent = "eyes"
+)
+
+type ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated Reaction
+
+func (*ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) reactionsCreateForTeamDiscussionCommentInOrgResponse() {
+}
+
+type ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK Reaction
+
+func (*ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) reactionsCreateForTeamDiscussionCommentInOrgResponse() {
 }
 
 type ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest struct {
-	Content string `json:"content"`
+	Content ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent `json:"content"`
 }
 
+type ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent string
+
+const (
+	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContentPlus1    ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent = "+1"
+	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContentMinus1   ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent = "-1"
+	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContentLaugh    ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent = "laugh"
+	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContentConfused ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent = "confused"
+	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContentHeart    ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent = "heart"
+	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContentHooray   ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent = "hooray"
+	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContentRocket   ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent = "rocket"
+	ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContentEyes     ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent = "eyes"
+)
+
 type ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest struct {
-	Content string `json:"content"`
+	Content ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent `json:"content"`
+}
+
+type ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent string
+
+const (
+	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContentPlus1    ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent = "+1"
+	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContentMinus1   ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent = "-1"
+	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContentLaugh    ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent = "laugh"
+	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContentConfused ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent = "confused"
+	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContentHeart    ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent = "heart"
+	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContentHooray   ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent = "hooray"
+	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContentRocket   ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent = "rocket"
+	ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContentEyes     ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent = "eyes"
+)
+
+type ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated Reaction
+
+func (*ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) reactionsCreateForTeamDiscussionInOrgResponse() {
+}
+
+type ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK Reaction
+
+func (*ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) reactionsCreateForTeamDiscussionInOrgResponse() {
 }
 
 type ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest struct {
-	Content string `json:"content"`
+	Content ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent `json:"content"`
 }
 
+type ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent string
+
+const (
+	ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContentPlus1    ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent = "+1"
+	ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContentMinus1   ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent = "-1"
+	ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContentLaugh    ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent = "laugh"
+	ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContentConfused ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent = "confused"
+	ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContentHeart    ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent = "heart"
+	ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContentHooray   ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent = "hooray"
+	ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContentRocket   ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent = "rocket"
+	ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContentEyes     ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent = "eyes"
+)
+
 type ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest struct {
-	Content string `json:"content"`
+	Content ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent `json:"content"`
 }
+
+type ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent string
+
+const (
+	ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContentPlus1    ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent = "+1"
+	ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContentMinus1   ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent = "-1"
+	ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContentLaugh    ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent = "laugh"
+	ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContentConfused ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent = "confused"
+	ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContentHeart    ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent = "heart"
+	ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContentHooray   ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent = "hooray"
+	ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContentRocket   ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent = "rocket"
+	ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContentEyes     ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent = "eyes"
+)
 
 type ReactionsDeleteForCommitComment struct{}
 
@@ -6264,26 +7156,21 @@ type ReactionsDeleteForTeamDiscussion struct{}
 
 type ReactionsDeleteForTeamDiscussionComment struct{}
 
+type ReactionsDeleteLegacyApplicationJSONForbidden BasicError
+
+func (*ReactionsDeleteLegacyApplicationJSONForbidden) reactionsDeleteLegacyResponse() {}
+
+type ReactionsDeleteLegacyApplicationJSONGone BasicError
+
+func (*ReactionsDeleteLegacyApplicationJSONGone) reactionsDeleteLegacyResponse() {}
+
+type ReactionsDeleteLegacyApplicationJSONUnauthorized BasicError
+
+func (*ReactionsDeleteLegacyApplicationJSONUnauthorized) reactionsDeleteLegacyResponse() {}
+
 type ReactionsDeleteLegacyNoContent struct{}
 
 func (*ReactionsDeleteLegacyNoContent) reactionsDeleteLegacyResponse() {}
-
-type ReactionsListForCommitCommentOK []Reaction
-
-func (*ReactionsListForCommitCommentOK) reactionsListForCommitCommentResponse() {}
-
-type ReactionsListForIssueCommentOK []Reaction
-
-func (*ReactionsListForIssueCommentOK) reactionsListForIssueCommentResponse() {}
-
-type ReactionsListForIssueOK []Reaction
-
-func (*ReactionsListForIssueOK) reactionsListForIssueResponse() {}
-
-type ReactionsListForPullRequestReviewCommentOK []Reaction
-
-func (*ReactionsListForPullRequestReviewCommentOK) reactionsListForPullRequestReviewCommentResponse() {
-}
 
 type ReferrerTraffic struct {
 	Count    int    `json:"count"`
@@ -6292,32 +7179,31 @@ type ReferrerTraffic struct {
 }
 
 type Release struct {
-	Assets          []ReleaseAsset `json:"assets"`
-	AssetsURL       string         `json:"assets_url"`
-	Author          SimpleUser     `json:"author"`
-	Body            string         `json:"body"`
-	BodyHTML        string         `json:"body_html"`
-	BodyText        string         `json:"body_text"`
-	CreatedAt       time.Time      `json:"created_at"`
-	DiscussionURL   string         `json:"discussion_url"`
-	Draft           bool           `json:"draft"`
-	HTMLURL         string         `json:"html_url"`
-	ID              int            `json:"id"`
-	MentionsCount   int            `json:"mentions_count"`
-	Name            string         `json:"name"`
-	NodeID          string         `json:"node_id"`
-	Prerelease      bool           `json:"prerelease"`
-	PublishedAt     time.Time      `json:"published_at"`
-	Reactions       ReactionRollup `json:"reactions"`
-	TagName         string         `json:"tag_name"`
-	TarballURL      string         `json:"tarball_url"`
-	TargetCommitish string         `json:"target_commitish"`
-	URL             string         `json:"url"`
-	UploadURL       string         `json:"upload_url"`
-	ZipballURL      string         `json:"zipball_url"`
+	Assets          []ReleaseAsset  `json:"assets"`
+	AssetsURL       string          `json:"assets_url"`
+	Author          SimpleUser      `json:"author"`
+	Body            *string         `json:"body"`
+	BodyHTML        *string         `json:"body_html"`
+	BodyText        *string         `json:"body_text"`
+	CreatedAt       time.Time       `json:"created_at"`
+	DiscussionURL   *string         `json:"discussion_url"`
+	Draft           bool            `json:"draft"`
+	HTMLURL         string          `json:"html_url"`
+	ID              int             `json:"id"`
+	MentionsCount   *int            `json:"mentions_count"`
+	Name            string          `json:"name"`
+	NodeID          string          `json:"node_id"`
+	Prerelease      bool            `json:"prerelease"`
+	PublishedAt     time.Time       `json:"published_at"`
+	Reactions       *ReactionRollup `json:"reactions"`
+	TagName         string          `json:"tag_name"`
+	TarballURL      string          `json:"tarball_url"`
+	TargetCommitish string          `json:"target_commitish"`
+	URL             string          `json:"url"`
+	UploadURL       string          `json:"upload_url"`
+	ZipballURL      string          `json:"zipball_url"`
 }
 
-func (*Release) reposCreateReleaseResponse()   {}
 func (*Release) reposGetReleaseByTagResponse() {}
 func (*Release) reposGetReleaseResponse()      {}
 func (*Release) reposUpdateReleaseResponse()   {}
@@ -6332,7 +7218,7 @@ type ReleaseAsset struct {
 	Name               string             `json:"name"`
 	NodeID             string             `json:"node_id"`
 	Size               int                `json:"size"`
-	State              string             `json:"state"`
+	State              ReleaseAssetState  `json:"state"`
 	URL                string             `json:"url"`
 	UpdatedAt          time.Time          `json:"updated_at"`
 	Uploader           NullableSimpleUser `json:"uploader"`
@@ -6340,130 +7226,47 @@ type ReleaseAsset struct {
 
 func (*ReleaseAsset) reposGetReleaseAssetResponse() {}
 
-type RepoSearchResultItem struct {
-	AllowAutoMerge      bool                            `json:"allow_auto_merge"`
-	AllowForking        bool                            `json:"allow_forking"`
-	AllowMergeCommit    bool                            `json:"allow_merge_commit"`
-	AllowRebaseMerge    bool                            `json:"allow_rebase_merge"`
-	AllowSquashMerge    bool                            `json:"allow_squash_merge"`
-	ArchiveURL          string                          `json:"archive_url"`
-	Archived            bool                            `json:"archived"`
-	AssigneesURL        string                          `json:"assignees_url"`
-	BlobsURL            string                          `json:"blobs_url"`
-	BranchesURL         string                          `json:"branches_url"`
-	CloneURL            string                          `json:"clone_url"`
-	CollaboratorsURL    string                          `json:"collaborators_url"`
-	CommentsURL         string                          `json:"comments_url"`
-	CommitsURL          string                          `json:"commits_url"`
-	CompareURL          string                          `json:"compare_url"`
-	ContentsURL         string                          `json:"contents_url"`
-	ContributorsURL     string                          `json:"contributors_url"`
-	CreatedAt           time.Time                       `json:"created_at"`
-	DefaultBranch       string                          `json:"default_branch"`
-	DeleteBranchOnMerge bool                            `json:"delete_branch_on_merge"`
-	DeploymentsURL      string                          `json:"deployments_url"`
-	Description         string                          `json:"description"`
-	Disabled            bool                            `json:"disabled"`
-	DownloadsURL        string                          `json:"downloads_url"`
-	EventsURL           string                          `json:"events_url"`
-	Fork                bool                            `json:"fork"`
-	Forks               int                             `json:"forks"`
-	ForksCount          int                             `json:"forks_count"`
-	ForksURL            string                          `json:"forks_url"`
-	FullName            string                          `json:"full_name"`
-	GitCommitsURL       string                          `json:"git_commits_url"`
-	GitRefsURL          string                          `json:"git_refs_url"`
-	GitTagsURL          string                          `json:"git_tags_url"`
-	GitURL              string                          `json:"git_url"`
-	HTMLURL             string                          `json:"html_url"`
-	HasDownloads        bool                            `json:"has_downloads"`
-	HasIssues           bool                            `json:"has_issues"`
-	HasPages            bool                            `json:"has_pages"`
-	HasProjects         bool                            `json:"has_projects"`
-	HasWiki             bool                            `json:"has_wiki"`
-	Homepage            string                          `json:"homepage"`
-	HooksURL            string                          `json:"hooks_url"`
-	ID                  int                             `json:"id"`
-	IssueCommentURL     string                          `json:"issue_comment_url"`
-	IssueEventsURL      string                          `json:"issue_events_url"`
-	IssuesURL           string                          `json:"issues_url"`
-	KeysURL             string                          `json:"keys_url"`
-	LabelsURL           string                          `json:"labels_url"`
-	Language            string                          `json:"language"`
-	LanguagesURL        string                          `json:"languages_url"`
-	License             NullableLicenseSimple           `json:"license"`
-	MasterBranch        string                          `json:"master_branch"`
-	MergesURL           string                          `json:"merges_url"`
-	MilestonesURL       string                          `json:"milestones_url"`
-	MirrorURL           string                          `json:"mirror_url"`
-	Name                string                          `json:"name"`
-	NodeID              string                          `json:"node_id"`
-	NotificationsURL    string                          `json:"notifications_url"`
-	OpenIssues          int                             `json:"open_issues"`
-	OpenIssuesCount     int                             `json:"open_issues_count"`
-	Owner               NullableSimpleUser              `json:"owner"`
-	Permissions         RepoSearchResultItemPermissions `json:"permissions"`
-	Private             bool                            `json:"private"`
-	PullsURL            string                          `json:"pulls_url"`
-	PushedAt            time.Time                       `json:"pushed_at"`
-	ReleasesURL         string                          `json:"releases_url"`
-	SSHURL              string                          `json:"ssh_url"`
-	Score               float                           `json:"score"`
-	Size                int                             `json:"size"`
-	StargazersCount     int                             `json:"stargazers_count"`
-	StargazersURL       string                          `json:"stargazers_url"`
-	StatusesURL         string                          `json:"statuses_url"`
-	SubscribersURL      string                          `json:"subscribers_url"`
-	SubscriptionURL     string                          `json:"subscription_url"`
-	SvnURL              string                          `json:"svn_url"`
-	TagsURL             string                          `json:"tags_url"`
-	TeamsURL            string                          `json:"teams_url"`
-	TempCloneToken      string                          `json:"temp_clone_token"`
-	TextMatches         []SearchResultTextMatchesItem   `json:"text_matches"`
-	Topics              []string                        `json:"topics"`
-	TreesURL            string                          `json:"trees_url"`
-	URL                 string                          `json:"url"`
-	UpdatedAt           time.Time                       `json:"updated_at"`
-	Watchers            int                             `json:"watchers"`
-	WatchersCount       int                             `json:"watchers_count"`
-}
+type ReleaseAssetState string
 
-type RepoSearchResultItemPermissions struct {
-	Admin    bool `json:"admin"`
-	Maintain bool `json:"maintain"`
-	Pull     bool `json:"pull"`
-	Push     bool `json:"push"`
-	Triage   bool `json:"triage"`
-}
+const (
+	ReleaseAssetStateUploaded ReleaseAssetState = "uploaded"
+	ReleaseAssetStateOpen     ReleaseAssetState = "open"
+)
+
+type ReposAcceptInvitationApplicationJSONConflict BasicError
+
+func (*ReposAcceptInvitationApplicationJSONConflict) reposAcceptInvitationResponse() {}
+
+type ReposAcceptInvitationApplicationJSONForbidden BasicError
+
+func (*ReposAcceptInvitationApplicationJSONForbidden) reposAcceptInvitationResponse() {}
+
+type ReposAcceptInvitationApplicationJSONNotFound BasicError
+
+func (*ReposAcceptInvitationApplicationJSONNotFound) reposAcceptInvitationResponse() {}
 
 type ReposAcceptInvitationNoContent struct{}
 
 func (*ReposAcceptInvitationNoContent) reposAcceptInvitationResponse() {}
 
-type ReposAddAppAccessRestrictionsOK []Integration
-
-func (*ReposAddAppAccessRestrictionsOK) reposAddAppAccessRestrictionsResponse() {}
-
 type ReposAddCollaboratorApplicationJSONRequest struct {
-	Permission  string `json:"permission"`
-	Permissions string `json:"permissions"`
+	Permission  *ReposAddCollaboratorApplicationJSONRequestPermission `json:"permission"`
+	Permissions *string                                               `json:"permissions"`
 }
 
+func (*ReposAddCollaboratorApplicationJSONRequest) reposAddCollaboratorRequest() {}
+
+type ReposAddCollaboratorApplicationJSONRequestPermission string
+
+const (
+	ReposAddCollaboratorApplicationJSONRequestPermissionPull     ReposAddCollaboratorApplicationJSONRequestPermission = "pull"
+	ReposAddCollaboratorApplicationJSONRequestPermissionPush     ReposAddCollaboratorApplicationJSONRequestPermission = "push"
+	ReposAddCollaboratorApplicationJSONRequestPermissionAdmin    ReposAddCollaboratorApplicationJSONRequestPermission = "admin"
+	ReposAddCollaboratorApplicationJSONRequestPermissionMaintain ReposAddCollaboratorApplicationJSONRequestPermission = "maintain"
+	ReposAddCollaboratorApplicationJSONRequestPermissionTriage   ReposAddCollaboratorApplicationJSONRequestPermission = "triage"
+)
+
 type ReposAddCollaboratorNoContent struct{}
-
-func (*ReposAddCollaboratorNoContent) reposAddCollaboratorResponse() {}
-
-type ReposAddStatusCheckContextsOK []string
-
-func (*ReposAddStatusCheckContextsOK) reposAddStatusCheckContextsResponse() {}
-
-type ReposAddTeamAccessRestrictionsOK []Team
-
-func (*ReposAddTeamAccessRestrictionsOK) reposAddTeamAccessRestrictionsResponse() {}
-
-type ReposAddUserAccessRestrictionsOK []SimpleUser
-
-func (*ReposAddUserAccessRestrictionsOK) reposAddUserAccessRestrictionsResponse() {}
 
 type ReposCheckCollaboratorNoContent struct{}
 
@@ -6481,183 +7284,244 @@ type ReposCheckVulnerabilityAlertsNotFound struct{}
 
 func (*ReposCheckVulnerabilityAlertsNotFound) reposCheckVulnerabilityAlertsResponse() {}
 
+type ReposCompareCommitsApplicationJSONInternalServerError BasicError
+
+func (*ReposCompareCommitsApplicationJSONInternalServerError) reposCompareCommitsResponse() {}
+
+type ReposCompareCommitsApplicationJSONNotFound BasicError
+
+func (*ReposCompareCommitsApplicationJSONNotFound) reposCompareCommitsResponse() {}
+
 type ReposCreateAutolinkApplicationJSONRequest struct {
 	KeyPrefix   string `json:"key_prefix"`
 	URLTemplate string `json:"url_template"`
 }
 
+func (*ReposCreateAutolinkApplicationJSONRequest) reposCreateAutolinkRequest() {}
+
 type ReposCreateCommitCommentApplicationJSONRequest struct {
-	Body     string `json:"body"`
-	Line     int    `json:"line"`
-	Path     string `json:"path"`
-	Position int    `json:"position"`
+	Body     string  `json:"body"`
+	Line     *int    `json:"line"`
+	Path     *string `json:"path"`
+	Position *int    `json:"position"`
 }
+
+func (*ReposCreateCommitCommentApplicationJSONRequest) reposCreateCommitCommentRequest() {}
 
 type ReposCreateCommitStatusApplicationJSONRequest struct {
-	Context     string `json:"context"`
-	Description string `json:"description"`
-	State       string `json:"state"`
-	TargetURL   string `json:"target_url"`
+	Context     *string                                            `json:"context"`
+	Description *string                                            `json:"description"`
+	State       ReposCreateCommitStatusApplicationJSONRequestState `json:"state"`
+	TargetURL   *string                                            `json:"target_url"`
 }
+
+type ReposCreateCommitStatusApplicationJSONRequestState string
+
+const (
+	ReposCreateCommitStatusApplicationJSONRequestStateError   ReposCreateCommitStatusApplicationJSONRequestState = "error"
+	ReposCreateCommitStatusApplicationJSONRequestStateFailure ReposCreateCommitStatusApplicationJSONRequestState = "failure"
+	ReposCreateCommitStatusApplicationJSONRequestStatePending ReposCreateCommitStatusApplicationJSONRequestState = "pending"
+	ReposCreateCommitStatusApplicationJSONRequestStateSuccess ReposCreateCommitStatusApplicationJSONRequestState = "success"
+)
 
 type ReposCreateDeployKeyApplicationJSONRequest struct {
-	Key      string `json:"key"`
-	ReadOnly bool   `json:"read_only"`
-	Title    string `json:"title"`
+	Key      string  `json:"key"`
+	ReadOnly *bool   `json:"read_only"`
+	Title    *string `json:"title"`
 }
 
-type ReposCreateDeploymentAccepted struct {
-	Message string `json:"message"`
-}
-
-func (*ReposCreateDeploymentAccepted) reposCreateDeploymentResponse() {}
-
-type ReposCreateDeploymentApplicationJSONRequest struct {
-	AutoMerge            bool     `json:"auto_merge"`
-	RequiredContexts     []string `json:"required_contexts"`
-	Description          string   `json:"description"`
-	TransientEnvironment bool     `json:"transient_environment"`
-	Ref                  string   `json:"ref"`
-	Task                 string   `json:"task"`
-}
-
-type ReposCreateDeploymentConflict struct{}
-
-func (*ReposCreateDeploymentConflict) reposCreateDeploymentResponse() {}
+func (*ReposCreateDeployKeyApplicationJSONRequest) reposCreateDeployKeyRequest() {}
 
 type ReposCreateDeploymentStatusApplicationJSONRequest struct {
-	AutoInactive   bool   `json:"auto_inactive"`
-	Description    string `json:"description"`
-	Environment    string `json:"environment"`
-	EnvironmentURL string `json:"environment_url"`
-	LogURL         string `json:"log_url"`
-	State          string `json:"state"`
-	TargetURL      string `json:"target_url"`
+	AutoInactive   *bool                                                         `json:"auto_inactive"`
+	Description    *string                                                       `json:"description"`
+	Environment    *ReposCreateDeploymentStatusApplicationJSONRequestEnvironment `json:"environment"`
+	EnvironmentURL *string                                                       `json:"environment_url"`
+	LogURL         *string                                                       `json:"log_url"`
+	State          ReposCreateDeploymentStatusApplicationJSONRequestState        `json:"state"`
+	TargetURL      *string                                                       `json:"target_url"`
 }
 
+func (*ReposCreateDeploymentStatusApplicationJSONRequest) reposCreateDeploymentStatusRequest() {}
+
+type ReposCreateDeploymentStatusApplicationJSONRequestEnvironment string
+
+const (
+	ReposCreateDeploymentStatusApplicationJSONRequestEnvironmentProduction ReposCreateDeploymentStatusApplicationJSONRequestEnvironment = "production"
+	ReposCreateDeploymentStatusApplicationJSONRequestEnvironmentStaging    ReposCreateDeploymentStatusApplicationJSONRequestEnvironment = "staging"
+	ReposCreateDeploymentStatusApplicationJSONRequestEnvironmentQa         ReposCreateDeploymentStatusApplicationJSONRequestEnvironment = "qa"
+)
+
+type ReposCreateDeploymentStatusApplicationJSONRequestState string
+
+const (
+	ReposCreateDeploymentStatusApplicationJSONRequestStateError      ReposCreateDeploymentStatusApplicationJSONRequestState = "error"
+	ReposCreateDeploymentStatusApplicationJSONRequestStateFailure    ReposCreateDeploymentStatusApplicationJSONRequestState = "failure"
+	ReposCreateDeploymentStatusApplicationJSONRequestStateInactive   ReposCreateDeploymentStatusApplicationJSONRequestState = "inactive"
+	ReposCreateDeploymentStatusApplicationJSONRequestStateInProgress ReposCreateDeploymentStatusApplicationJSONRequestState = "in_progress"
+	ReposCreateDeploymentStatusApplicationJSONRequestStateQueued     ReposCreateDeploymentStatusApplicationJSONRequestState = "queued"
+	ReposCreateDeploymentStatusApplicationJSONRequestStatePending    ReposCreateDeploymentStatusApplicationJSONRequestState = "pending"
+	ReposCreateDeploymentStatusApplicationJSONRequestStateSuccess    ReposCreateDeploymentStatusApplicationJSONRequestState = "success"
+)
+
 type ReposCreateDispatchEventApplicationJSONRequest struct {
-	ClientPayload struct{} `json:"client_payload"`
-	EventType     string   `json:"event_type"`
+	ClientPayload *struct{} `json:"client_payload"`
+	EventType     string    `json:"event_type"`
 }
+
+func (*ReposCreateDispatchEventApplicationJSONRequest) reposCreateDispatchEventRequest() {}
 
 type ReposCreateDispatchEventNoContent struct{}
 
-func (*ReposCreateDispatchEventNoContent) reposCreateDispatchEventResponse() {}
-
 type ReposCreateForAuthenticatedUserApplicationJSONRequest struct {
-	AllowAutoMerge      bool   `json:"allow_auto_merge"`
-	AllowMergeCommit    bool   `json:"allow_merge_commit"`
-	AllowRebaseMerge    bool   `json:"allow_rebase_merge"`
-	AllowSquashMerge    bool   `json:"allow_squash_merge"`
-	AutoInit            bool   `json:"auto_init"`
-	DeleteBranchOnMerge bool   `json:"delete_branch_on_merge"`
-	Description         string `json:"description"`
-	GitignoreTemplate   string `json:"gitignore_template"`
-	HasDownloads        bool   `json:"has_downloads"`
-	HasIssues           bool   `json:"has_issues"`
-	HasProjects         bool   `json:"has_projects"`
-	HasWiki             bool   `json:"has_wiki"`
-	Homepage            string `json:"homepage"`
-	IsTemplate          bool   `json:"is_template"`
-	LicenseTemplate     string `json:"license_template"`
-	Name                string `json:"name"`
-	Private             bool   `json:"private"`
-	TeamID              int    `json:"team_id"`
+	AllowAutoMerge      *bool   `json:"allow_auto_merge"`
+	AllowMergeCommit    *bool   `json:"allow_merge_commit"`
+	AllowRebaseMerge    *bool   `json:"allow_rebase_merge"`
+	AllowSquashMerge    *bool   `json:"allow_squash_merge"`
+	AutoInit            *bool   `json:"auto_init"`
+	DeleteBranchOnMerge *bool   `json:"delete_branch_on_merge"`
+	Description         *string `json:"description"`
+	GitignoreTemplate   *string `json:"gitignore_template"`
+	HasDownloads        *bool   `json:"has_downloads"`
+	HasIssues           *bool   `json:"has_issues"`
+	HasProjects         *bool   `json:"has_projects"`
+	HasWiki             *bool   `json:"has_wiki"`
+	Homepage            *string `json:"homepage"`
+	IsTemplate          *bool   `json:"is_template"`
+	LicenseTemplate     *string `json:"license_template"`
+	Name                string  `json:"name"`
+	Private             *bool   `json:"private"`
+	TeamID              *int    `json:"team_id"`
+}
+
+func (*ReposCreateForAuthenticatedUserApplicationJSONRequest) reposCreateForAuthenticatedUserRequest() {
 }
 
 type ReposCreateForkApplicationJSONRequest struct {
-	Organization string `json:"organization"`
+	Organization *string `json:"organization"`
 }
+
+func (*ReposCreateForkApplicationJSONRequest) reposCreateForkRequest() {}
 
 type ReposCreateInOrgApplicationJSONRequest struct {
-	AllowAutoMerge      bool   `json:"allow_auto_merge"`
-	AllowMergeCommit    bool   `json:"allow_merge_commit"`
-	AllowRebaseMerge    bool   `json:"allow_rebase_merge"`
-	AllowSquashMerge    bool   `json:"allow_squash_merge"`
-	AutoInit            bool   `json:"auto_init"`
-	DeleteBranchOnMerge bool   `json:"delete_branch_on_merge"`
-	Description         string `json:"description"`
-	GitignoreTemplate   string `json:"gitignore_template"`
-	HasIssues           bool   `json:"has_issues"`
-	HasProjects         bool   `json:"has_projects"`
-	HasWiki             bool   `json:"has_wiki"`
-	Homepage            string `json:"homepage"`
-	IsTemplate          bool   `json:"is_template"`
-	LicenseTemplate     string `json:"license_template"`
-	Name                string `json:"name"`
-	Private             bool   `json:"private"`
-	TeamID              int    `json:"team_id"`
-	Visibility          string `json:"visibility"`
+	AllowAutoMerge      *bool                                             `json:"allow_auto_merge"`
+	AllowMergeCommit    *bool                                             `json:"allow_merge_commit"`
+	AllowRebaseMerge    *bool                                             `json:"allow_rebase_merge"`
+	AllowSquashMerge    *bool                                             `json:"allow_squash_merge"`
+	AutoInit            *bool                                             `json:"auto_init"`
+	DeleteBranchOnMerge *bool                                             `json:"delete_branch_on_merge"`
+	Description         *string                                           `json:"description"`
+	GitignoreTemplate   *string                                           `json:"gitignore_template"`
+	HasIssues           *bool                                             `json:"has_issues"`
+	HasProjects         *bool                                             `json:"has_projects"`
+	HasWiki             *bool                                             `json:"has_wiki"`
+	Homepage            *string                                           `json:"homepage"`
+	IsTemplate          *bool                                             `json:"is_template"`
+	LicenseTemplate     *string                                           `json:"license_template"`
+	Name                string                                            `json:"name"`
+	Private             *bool                                             `json:"private"`
+	TeamID              *int                                              `json:"team_id"`
+	Visibility          *ReposCreateInOrgApplicationJSONRequestVisibility `json:"visibility"`
 }
 
+func (*ReposCreateInOrgApplicationJSONRequest) reposCreateInOrgRequest() {}
+
+type ReposCreateInOrgApplicationJSONRequestVisibility string
+
+const (
+	ReposCreateInOrgApplicationJSONRequestVisibilityPublic     ReposCreateInOrgApplicationJSONRequestVisibility = "public"
+	ReposCreateInOrgApplicationJSONRequestVisibilityPrivate    ReposCreateInOrgApplicationJSONRequestVisibility = "private"
+	ReposCreateInOrgApplicationJSONRequestVisibilityVisibility ReposCreateInOrgApplicationJSONRequestVisibility = "visibility"
+	ReposCreateInOrgApplicationJSONRequestVisibilityInternal   ReposCreateInOrgApplicationJSONRequestVisibility = "internal"
+)
+
 type ReposCreateOrUpdateEnvironmentApplicationJSONRequest struct {
-	DeploymentBranchPolicy DeploymentBranchPolicy                                              `json:"deployment_branch_policy"`
-	Reviewers              []ReposCreateOrUpdateEnvironmentApplicationJSONRequestReviewersItem `json:"reviewers"`
-	WaitTimer              int                                                                 `json:"wait_timer"`
+	DeploymentBranchPolicy *DeploymentBranchPolicy                                              `json:"deployment_branch_policy"`
+	Reviewers              *[]ReposCreateOrUpdateEnvironmentApplicationJSONRequestReviewersItem `json:"reviewers"`
+	WaitTimer              *WaitTimer                                                           `json:"wait_timer"`
+}
+
+func (*ReposCreateOrUpdateEnvironmentApplicationJSONRequest) reposCreateOrUpdateEnvironmentRequest() {
 }
 
 type ReposCreateOrUpdateEnvironmentApplicationJSONRequestReviewersItem struct {
-	ID   int    `json:"id"`
-	Type string `json:"type"`
+	ID   *int                    `json:"id"`
+	Type *DeploymentReviewerType `json:"type"`
 }
 
 type ReposCreateOrUpdateFileContentsApplicationJSONRequest struct {
-	Author    ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor    `json:"author"`
-	Branch    string                                                         `json:"branch"`
-	Committer ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter `json:"committer"`
-	Content   string                                                         `json:"content"`
-	Message   string                                                         `json:"message"`
-	Sha       string                                                         `json:"sha"`
+	Author    *ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor    `json:"author"`
+	Branch    *string                                                         `json:"branch"`
+	Committer *ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter `json:"committer"`
+	Content   string                                                          `json:"content"`
+	Message   string                                                          `json:"message"`
+	Sha       *string                                                         `json:"sha"`
+}
+
+func (*ReposCreateOrUpdateFileContentsApplicationJSONRequest) reposCreateOrUpdateFileContentsRequest() {
 }
 
 type ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor struct {
-	Date  string `json:"date"`
-	Email string `json:"email"`
-	Name  string `json:"name"`
+	Date  *string `json:"date"`
+	Email string  `json:"email"`
+	Name  string  `json:"name"`
 }
 
 type ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter struct {
-	Date  string `json:"date"`
-	Email string `json:"email"`
-	Name  string `json:"name"`
+	Date  *string `json:"date"`
+	Email string  `json:"email"`
+	Name  string  `json:"name"`
 }
 
 type ReposCreatePagesSiteApplicationJSONRequest struct {
 	Source ReposCreatePagesSiteApplicationJSONRequestSource `json:"source"`
 }
 
+func (*ReposCreatePagesSiteApplicationJSONRequest) reposCreatePagesSiteRequest() {}
+
 type ReposCreatePagesSiteApplicationJSONRequestSource struct {
-	Branch string `json:"branch"`
-	Path   string `json:"path"`
+	Branch string                                                `json:"branch"`
+	Path   *ReposCreatePagesSiteApplicationJSONRequestSourcePath `json:"path"`
 }
+
+type ReposCreatePagesSiteApplicationJSONRequestSourcePath string
+
+const (
+	ReposCreatePagesSiteApplicationJSONRequestSourcePathSlash     ReposCreatePagesSiteApplicationJSONRequestSourcePath = "/"
+	ReposCreatePagesSiteApplicationJSONRequestSourcePathSlashDocs ReposCreatePagesSiteApplicationJSONRequestSourcePath = "/docs"
+)
 
 type ReposCreateReleaseApplicationJSONRequest struct {
-	Body                   string `json:"body"`
-	DiscussionCategoryName string `json:"discussion_category_name"`
-	Draft                  bool   `json:"draft"`
-	Name                   string `json:"name"`
-	Prerelease             bool   `json:"prerelease"`
-	TagName                string `json:"tag_name"`
-	TargetCommitish        string `json:"target_commitish"`
+	Body                   *string `json:"body"`
+	DiscussionCategoryName *string `json:"discussion_category_name"`
+	Draft                  *bool   `json:"draft"`
+	Name                   *string `json:"name"`
+	Prerelease             *bool   `json:"prerelease"`
+	TagName                string  `json:"tag_name"`
+	TargetCommitish        *string `json:"target_commitish"`
 }
+
+func (*ReposCreateReleaseApplicationJSONRequest) reposCreateReleaseRequest() {}
 
 type ReposCreateUsingTemplateApplicationJSONRequest struct {
-	Description        string `json:"description"`
-	IncludeAllBranches bool   `json:"include_all_branches"`
-	Name               string `json:"name"`
-	Owner              string `json:"owner"`
-	Private            bool   `json:"private"`
+	Description        *string `json:"description"`
+	IncludeAllBranches *bool   `json:"include_all_branches"`
+	Name               string  `json:"name"`
+	Owner              *string `json:"owner"`
+	Private            *bool   `json:"private"`
 }
 
-type ReposCreateWebhookApplicationJSONRequest struct {
-	Name string `json:"name"`
-}
+type ReposDeclineInvitationApplicationJSONConflict BasicError
 
-type ReposCreateWebhookApplicationJSONRequestConfig struct {
-	URL         string `json:"url"`
-	ContentType string `json:"content_type"`
-	Secret      string `json:"secret"`
-}
+func (*ReposDeclineInvitationApplicationJSONConflict) reposDeclineInvitationResponse() {}
+
+type ReposDeclineInvitationApplicationJSONForbidden BasicError
+
+func (*ReposDeclineInvitationApplicationJSONForbidden) reposDeclineInvitationResponse() {}
+
+type ReposDeclineInvitationApplicationJSONNotFound BasicError
+
+func (*ReposDeclineInvitationApplicationJSONNotFound) reposDeclineInvitationResponse() {}
 
 type ReposDeclineInvitationNoContent struct{}
 
@@ -6670,6 +7534,14 @@ type ReposDeleteAdminBranchProtectionNoContent struct{}
 func (*ReposDeleteAdminBranchProtectionNoContent) reposDeleteAdminBranchProtectionResponse() {}
 
 type ReposDeleteAnEnvironment struct{}
+
+type ReposDeleteApplicationJSONNotFound BasicError
+
+func (*ReposDeleteApplicationJSONNotFound) reposDeleteResponse() {}
+
+type ReposDeleteApplicationJSONTemporaryRedirect BasicError
+
+func (*ReposDeleteApplicationJSONTemporaryRedirect) reposDeleteResponse() {}
 
 type ReposDeleteAutolinkNoContent struct{}
 
@@ -6695,26 +7567,28 @@ type ReposDeleteDeploymentNoContent struct{}
 func (*ReposDeleteDeploymentNoContent) reposDeleteDeploymentResponse() {}
 
 type ReposDeleteFileApplicationJSONRequest struct {
-	Author    ReposDeleteFileApplicationJSONRequestAuthor    `json:"author"`
-	Branch    string                                         `json:"branch"`
-	Committer ReposDeleteFileApplicationJSONRequestCommitter `json:"committer"`
-	Message   string                                         `json:"message"`
-	Sha       string                                         `json:"sha"`
+	Author    *ReposDeleteFileApplicationJSONRequestAuthor    `json:"author"`
+	Branch    *string                                         `json:"branch"`
+	Committer *ReposDeleteFileApplicationJSONRequestCommitter `json:"committer"`
+	Message   string                                          `json:"message"`
+	Sha       string                                          `json:"sha"`
 }
 
+func (*ReposDeleteFileApplicationJSONRequest) reposDeleteFileRequest() {}
+
 type ReposDeleteFileApplicationJSONRequestAuthor struct {
-	Email string `json:"email"`
-	Name  string `json:"name"`
+	Email *string `json:"email"`
+	Name  *string `json:"name"`
 }
 
 type ReposDeleteFileApplicationJSONRequestCommitter struct {
-	Email string `json:"email"`
-	Name  string `json:"name"`
+	Email *string `json:"email"`
+	Name  *string `json:"name"`
 }
 
 type ReposDeleteForbidden struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
+	DocumentationURL *string `json:"documentation_url"`
+	Message          *string `json:"message"`
 }
 
 func (*ReposDeleteForbidden) reposDeleteResponse() {}
@@ -6726,8 +7600,6 @@ type ReposDeleteNoContent struct{}
 func (*ReposDeleteNoContent) reposDeleteResponse() {}
 
 type ReposDeletePagesSiteNoContent struct{}
-
-func (*ReposDeletePagesSiteNoContent) reposDeletePagesSiteResponse() {}
 
 type ReposDeletePullRequestReviewProtectionNoContent struct{}
 
@@ -6760,19 +7632,35 @@ func (*ReposEnableLfsForRepoForbidden) reposEnableLfsForRepoResponse() {}
 
 type ReposEnableVulnerabilityAlerts struct{}
 
-type ReposGetAllEnvironments struct {
-	TotalCount int `json:"total_count"`
-}
-
 type ReposGetAllStatusCheckContextsOK []string
 
 func (*ReposGetAllStatusCheckContextsOK) reposGetAllStatusCheckContextsResponse() {}
+
+type ReposGetApplicationJSONForbidden BasicError
+
+func (*ReposGetApplicationJSONForbidden) reposGetResponse() {}
+
+type ReposGetApplicationJSONMovedPermanently BasicError
+
+func (*ReposGetApplicationJSONMovedPermanently) reposGetResponse() {}
+
+type ReposGetApplicationJSONNotFound BasicError
+
+func (*ReposGetApplicationJSONNotFound) reposGetResponse() {}
 
 type ReposGetAppsWithAccessToProtectedBranchOK []Integration
 
 func (*ReposGetAppsWithAccessToProtectedBranchOK) reposGetAppsWithAccessToProtectedBranchResponse() {}
 
-type ReposGetCodeFrequencyStatsOK [][]int
+type ReposGetBranchApplicationJSONMovedPermanently BasicError
+
+func (*ReposGetBranchApplicationJSONMovedPermanently) reposGetBranchResponse() {}
+
+type ReposGetBranchApplicationJSONNotFound BasicError
+
+func (*ReposGetBranchApplicationJSONNotFound) reposGetBranchResponse() {}
+
+type ReposGetCodeFrequencyStatsOK []CodeFrequencyStat
 
 func (*ReposGetCodeFrequencyStatsOK) reposGetCodeFrequencyStatsResponse() {}
 
@@ -6784,10 +7672,6 @@ type ReposGetContributorsStatsOK []ContributorActivity
 
 func (*ReposGetContributorsStatsOK) reposGetContributorsStatsResponse() {}
 
-type ReposGetPagesHealthCheckAccepted struct{}
-
-func (*ReposGetPagesHealthCheckAccepted) reposGetPagesHealthCheckResponse() {}
-
 type ReposGetPagesHealthCheckBadRequest struct{}
 
 func (*ReposGetPagesHealthCheckBadRequest) reposGetPagesHealthCheckResponse() {}
@@ -6796,7 +7680,7 @@ type ReposGetPagesHealthCheckUnprocessableEntity struct{}
 
 func (*ReposGetPagesHealthCheckUnprocessableEntity) reposGetPagesHealthCheckResponse() {}
 
-type ReposGetPunchCardStatsOK [][]int
+type ReposGetPunchCardStatsOK []CodeFrequencyStat
 
 func (*ReposGetPunchCardStatsOK) reposGetPunchCardStatsResponse() {}
 
@@ -6820,23 +7704,41 @@ func (*ReposGetUsersWithAccessToProtectedBranchOK) reposGetUsersWithAccessToProt
 
 type ReposListBranchesForHeadCommitOK []BranchShort
 
-func (*ReposListBranchesForHeadCommitOK) reposListBranchesForHeadCommitResponse() {}
-
 type ReposListBranchesOK []ShortBranch
 
 func (*ReposListBranchesOK) reposListBranchesResponse() {}
-
-type ReposListCollaboratorsOK []Collaborator
-
-func (*ReposListCollaboratorsOK) reposListCollaboratorsResponse() {}
 
 type ReposListCommitStatusesForRefOK []Status
 
 func (*ReposListCommitStatusesForRefOK) reposListCommitStatusesForRefResponse() {}
 
+type ReposListCommitsApplicationJSONBadRequest BasicError
+
+func (*ReposListCommitsApplicationJSONBadRequest) reposListCommitsResponse() {}
+
+type ReposListCommitsApplicationJSONConflict BasicError
+
+func (*ReposListCommitsApplicationJSONConflict) reposListCommitsResponse() {}
+
+type ReposListCommitsApplicationJSONInternalServerError BasicError
+
+func (*ReposListCommitsApplicationJSONInternalServerError) reposListCommitsResponse() {}
+
+type ReposListCommitsApplicationJSONNotFound BasicError
+
+func (*ReposListCommitsApplicationJSONNotFound) reposListCommitsResponse() {}
+
 type ReposListCommitsOK []Commit
 
 func (*ReposListCommitsOK) reposListCommitsResponse() {}
+
+type ReposListContributorsApplicationJSONForbidden BasicError
+
+func (*ReposListContributorsApplicationJSONForbidden) reposListContributorsResponse() {}
+
+type ReposListContributorsApplicationJSONNotFound BasicError
+
+func (*ReposListContributorsApplicationJSONNotFound) reposListContributorsResponse() {}
 
 type ReposListContributorsNoContent struct{}
 
@@ -6850,24 +7752,27 @@ type ReposListDeploymentStatusesOK []DeploymentStatus
 
 func (*ReposListDeploymentStatusesOK) reposListDeploymentStatusesResponse() {}
 
-type ReposListForAuthenticatedUserOK []Repository
+type ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden BasicError
 
-func (*ReposListForAuthenticatedUserOK) reposListForAuthenticatedUserResponse() {}
+func (*ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) reposListInvitationsForAuthenticatedUserResponse() {
+}
 
-type ReposListForksOK []MinimalRepository
+type ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound BasicError
 
-func (*ReposListForksOK) reposListForksResponse() {}
+func (*ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound) reposListInvitationsForAuthenticatedUserResponse() {
+}
+
+type ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) reposListInvitationsForAuthenticatedUserResponse() {
+}
 
 type ReposListInvitationsForAuthenticatedUserOK []RepositoryInvitation
 
 func (*ReposListInvitationsForAuthenticatedUserOK) reposListInvitationsForAuthenticatedUserResponse() {
 }
 
-type ReposListLanguages struct{}
-
 type ReposListPublicOK []MinimalRepository
-
-func (*ReposListPublicOK) reposListPublicResponse() {}
 
 type ReposListReleasesOK []Release
 
@@ -6875,25 +7780,19 @@ func (*ReposListReleasesOK) reposListReleasesResponse() {}
 
 type ReposListWebhookDeliveriesOK []HookDeliveryItem
 
-func (*ReposListWebhookDeliveriesOK) reposListWebhookDeliveriesResponse() {}
-
 type ReposMergeApplicationJSONRequest struct {
-	Base          string `json:"base"`
-	CommitMessage string `json:"commit_message"`
-	Head          string `json:"head"`
+	Base          string  `json:"base"`
+	CommitMessage *string `json:"commit_message"`
+	Head          string  `json:"head"`
 }
+
+func (*ReposMergeApplicationJSONRequest) reposMergeRequest() {}
 
 type ReposMergeConflict struct{}
 
-func (*ReposMergeConflict) reposMergeResponse() {}
-
 type ReposMergeNoContent struct{}
 
-func (*ReposMergeNoContent) reposMergeResponse() {}
-
 type ReposMergeNotFound struct{}
-
-func (*ReposMergeNotFound) reposMergeResponse() {}
 
 type ReposMergeUpstreamApplicationJSONRequest struct {
 	Branch string `json:"branch"`
@@ -6911,49 +7810,19 @@ type ReposPingWebhookNoContent struct{}
 
 func (*ReposPingWebhookNoContent) reposPingWebhookResponse() {}
 
-type ReposRemoveAppAccessRestrictionsOK []Integration
-
-func (*ReposRemoveAppAccessRestrictionsOK) reposRemoveAppAccessRestrictionsResponse() {}
-
 type ReposRemoveCollaborator struct{}
 
-type ReposRemoveStatusCheckContextsOK []string
-
-func (*ReposRemoveStatusCheckContextsOK) reposRemoveStatusCheckContextsResponse() {}
-
 type ReposRemoveStatusCheckProtection struct{}
-
-type ReposRemoveTeamAccessRestrictionsOK []Team
-
-func (*ReposRemoveTeamAccessRestrictionsOK) reposRemoveTeamAccessRestrictionsResponse() {}
-
-type ReposRemoveUserAccessRestrictionsOK []SimpleUser
-
-func (*ReposRemoveUserAccessRestrictionsOK) reposRemoveUserAccessRestrictionsResponse() {}
 
 type ReposRenameBranchApplicationJSONRequest struct {
 	NewName string `json:"new_name"`
 }
 
+func (*ReposRenameBranchApplicationJSONRequest) reposRenameBranchRequest() {}
+
 type ReposReplaceAllTopicsApplicationJSONRequest struct {
 	Names []string `json:"names"`
 }
-
-type ReposSetAppAccessRestrictionsOK []Integration
-
-func (*ReposSetAppAccessRestrictionsOK) reposSetAppAccessRestrictionsResponse() {}
-
-type ReposSetStatusCheckContextsOK []string
-
-func (*ReposSetStatusCheckContextsOK) reposSetStatusCheckContextsResponse() {}
-
-type ReposSetTeamAccessRestrictionsOK []Team
-
-func (*ReposSetTeamAccessRestrictionsOK) reposSetTeamAccessRestrictionsResponse() {}
-
-type ReposSetUserAccessRestrictionsOK []SimpleUser
-
-func (*ReposSetUserAccessRestrictionsOK) reposSetUserAccessRestrictionsResponse() {}
 
 type ReposTestPushWebhookNoContent struct{}
 
@@ -6961,64 +7830,83 @@ func (*ReposTestPushWebhookNoContent) reposTestPushWebhookResponse() {}
 
 type ReposTransferApplicationJSONRequest struct {
 	NewOwner string `json:"new_owner"`
-	TeamIds  []int  `json:"team_ids"`
+	TeamIds  *[]int `json:"team_ids"`
 }
 
 type ReposUpdateApplicationJSONRequest struct {
-	AllowAutoMerge      bool                                                 `json:"allow_auto_merge"`
-	AllowForking        bool                                                 `json:"allow_forking"`
-	AllowMergeCommit    bool                                                 `json:"allow_merge_commit"`
-	AllowRebaseMerge    bool                                                 `json:"allow_rebase_merge"`
-	AllowSquashMerge    bool                                                 `json:"allow_squash_merge"`
-	Archived            bool                                                 `json:"archived"`
-	DefaultBranch       string                                               `json:"default_branch"`
-	DeleteBranchOnMerge bool                                                 `json:"delete_branch_on_merge"`
-	Description         string                                               `json:"description"`
-	HasIssues           bool                                                 `json:"has_issues"`
-	HasProjects         bool                                                 `json:"has_projects"`
-	HasWiki             bool                                                 `json:"has_wiki"`
-	Homepage            string                                               `json:"homepage"`
-	IsTemplate          bool                                                 `json:"is_template"`
-	Name                string                                               `json:"name"`
-	Private             bool                                                 `json:"private"`
-	SecurityAndAnalysis ReposUpdateApplicationJSONRequestSecurityAndAnalysis `json:"security_and_analysis"`
-	Visibility          string                                               `json:"visibility"`
+	AllowAutoMerge      *bool                                                 `json:"allow_auto_merge"`
+	AllowForking        *bool                                                 `json:"allow_forking"`
+	AllowMergeCommit    *bool                                                 `json:"allow_merge_commit"`
+	AllowRebaseMerge    *bool                                                 `json:"allow_rebase_merge"`
+	AllowSquashMerge    *bool                                                 `json:"allow_squash_merge"`
+	Archived            *bool                                                 `json:"archived"`
+	DefaultBranch       *string                                               `json:"default_branch"`
+	DeleteBranchOnMerge *bool                                                 `json:"delete_branch_on_merge"`
+	Description         *string                                               `json:"description"`
+	HasIssues           *bool                                                 `json:"has_issues"`
+	HasProjects         *bool                                                 `json:"has_projects"`
+	HasWiki             *bool                                                 `json:"has_wiki"`
+	Homepage            *string                                               `json:"homepage"`
+	IsTemplate          *bool                                                 `json:"is_template"`
+	Name                *string                                               `json:"name"`
+	Private             *bool                                                 `json:"private"`
+	SecurityAndAnalysis *ReposUpdateApplicationJSONRequestSecurityAndAnalysis `json:"security_and_analysis"`
+	Visibility          *ReposUpdateApplicationJSONRequestVisibility          `json:"visibility"`
 }
 
+func (*ReposUpdateApplicationJSONRequest) reposUpdateRequest() {}
+
 type ReposUpdateApplicationJSONRequestSecurityAndAnalysis struct {
-	AdvancedSecurity ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity `json:"advanced_security"`
-	SecretScanning   ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning   `json:"secret_scanning"`
+	AdvancedSecurity *ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity `json:"advanced_security"`
+	SecretScanning   *ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning   `json:"secret_scanning"`
 }
 
 type ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity struct {
-	Status string `json:"status"`
+	Status *string `json:"status"`
 }
 
 type ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning struct {
-	Status string `json:"status"`
+	Status *string `json:"status"`
 }
 
+type ReposUpdateApplicationJSONRequestVisibility string
+
+const (
+	ReposUpdateApplicationJSONRequestVisibilityPublic     ReposUpdateApplicationJSONRequestVisibility = "public"
+	ReposUpdateApplicationJSONRequestVisibilityPrivate    ReposUpdateApplicationJSONRequestVisibility = "private"
+	ReposUpdateApplicationJSONRequestVisibilityVisibility ReposUpdateApplicationJSONRequestVisibility = "visibility"
+	ReposUpdateApplicationJSONRequestVisibilityInternal   ReposUpdateApplicationJSONRequestVisibility = "internal"
+)
+
+type ReposUpdateBranchProtectionApplicationJSONForbidden BasicError
+
+func (*ReposUpdateBranchProtectionApplicationJSONForbidden) reposUpdateBranchProtectionResponse() {}
+
+type ReposUpdateBranchProtectionApplicationJSONNotFound BasicError
+
+func (*ReposUpdateBranchProtectionApplicationJSONNotFound) reposUpdateBranchProtectionResponse() {}
+
 type ReposUpdateBranchProtectionApplicationJSONRequest struct {
-	AllowDeletions                 bool                                                                        `json:"allow_deletions"`
-	AllowForcePushes               bool                                                                        `json:"allow_force_pushes"`
+	AllowDeletions                 *bool                                                                       `json:"allow_deletions"`
+	AllowForcePushes               *bool                                                                       `json:"allow_force_pushes"`
 	EnforceAdmins                  bool                                                                        `json:"enforce_admins"`
-	RequiredConversationResolution bool                                                                        `json:"required_conversation_resolution"`
-	RequiredLinearHistory          bool                                                                        `json:"required_linear_history"`
+	RequiredConversationResolution *bool                                                                       `json:"required_conversation_resolution"`
+	RequiredLinearHistory          *bool                                                                       `json:"required_linear_history"`
 	RequiredPullRequestReviews     ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews `json:"required_pull_request_reviews"`
 	RequiredStatusChecks           ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks       `json:"required_status_checks"`
 	Restrictions                   ReposUpdateBranchProtectionApplicationJSONRequestRestrictions               `json:"restrictions"`
 }
 
 type ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews struct {
-	DismissStaleReviews          bool                                                                                             `json:"dismiss_stale_reviews"`
-	DismissalRestrictions        ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions `json:"dismissal_restrictions"`
-	RequireCodeOwnerReviews      bool                                                                                             `json:"require_code_owner_reviews"`
-	RequiredApprovingReviewCount int                                                                                              `json:"required_approving_review_count"`
+	DismissStaleReviews          *bool                                                                                             `json:"dismiss_stale_reviews"`
+	DismissalRestrictions        *ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions `json:"dismissal_restrictions"`
+	RequireCodeOwnerReviews      *bool                                                                                             `json:"require_code_owner_reviews"`
+	RequiredApprovingReviewCount *int                                                                                              `json:"required_approving_review_count"`
 }
 
 type ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions struct {
-	Teams []string `json:"teams"`
-	Users []string `json:"users"`
+	Teams *[]string `json:"teams"`
+	Users *[]string `json:"users"`
 }
 
 type ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks struct {
@@ -7027,206 +7915,197 @@ type ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks struc
 }
 
 type ReposUpdateBranchProtectionApplicationJSONRequestRestrictions struct {
-	Apps  []string `json:"apps"`
-	Teams []string `json:"teams"`
-	Users []string `json:"users"`
+	Apps  *[]string `json:"apps"`
+	Teams []string  `json:"teams"`
+	Users []string  `json:"users"`
 }
 
 type ReposUpdateCommitCommentApplicationJSONRequest struct {
 	Body string `json:"body"`
 }
 
-type ReposUpdateInformationAboutPagesSiteApplicationJSONRequest struct {
-	Cname         string `json:"cname"`
-	HTTPSEnforced bool   `json:"https_enforced"`
-	Public        bool   `json:"public"`
-}
-
-type ReposUpdateInformationAboutPagesSiteNoContent struct{}
-
-func (*ReposUpdateInformationAboutPagesSiteNoContent) reposUpdateInformationAboutPagesSiteResponse() {
-}
-
 type ReposUpdateInvitationApplicationJSONRequest struct {
-	Permissions string `json:"permissions"`
+	Permissions *ReposUpdateInvitationApplicationJSONRequestPermissions `json:"permissions"`
 }
+
+type ReposUpdateInvitationApplicationJSONRequestPermissions string
+
+const (
+	ReposUpdateInvitationApplicationJSONRequestPermissionsRead     ReposUpdateInvitationApplicationJSONRequestPermissions = "read"
+	ReposUpdateInvitationApplicationJSONRequestPermissionsWrite    ReposUpdateInvitationApplicationJSONRequestPermissions = "write"
+	ReposUpdateInvitationApplicationJSONRequestPermissionsMaintain ReposUpdateInvitationApplicationJSONRequestPermissions = "maintain"
+	ReposUpdateInvitationApplicationJSONRequestPermissionsTriage   ReposUpdateInvitationApplicationJSONRequestPermissions = "triage"
+	ReposUpdateInvitationApplicationJSONRequestPermissionsAdmin    ReposUpdateInvitationApplicationJSONRequestPermissions = "admin"
+)
 
 type ReposUpdatePullRequestReviewProtectionApplicationJSONRequest struct {
-	DismissStaleReviews          bool                                                                              `json:"dismiss_stale_reviews"`
-	DismissalRestrictions        ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions `json:"dismissal_restrictions"`
-	RequireCodeOwnerReviews      bool                                                                              `json:"require_code_owner_reviews"`
-	RequiredApprovingReviewCount int                                                                               `json:"required_approving_review_count"`
+	DismissStaleReviews          *bool                                                                              `json:"dismiss_stale_reviews"`
+	DismissalRestrictions        *ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions `json:"dismissal_restrictions"`
+	RequireCodeOwnerReviews      *bool                                                                              `json:"require_code_owner_reviews"`
+	RequiredApprovingReviewCount *int                                                                               `json:"required_approving_review_count"`
+}
+
+func (*ReposUpdatePullRequestReviewProtectionApplicationJSONRequest) reposUpdatePullRequestReviewProtectionRequest() {
 }
 
 type ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions struct {
-	Teams []string `json:"teams"`
-	Users []string `json:"users"`
+	Teams *[]string `json:"teams"`
+	Users *[]string `json:"users"`
 }
 
 type ReposUpdateReleaseApplicationJSONRequest struct {
-	Body                   string `json:"body"`
-	DiscussionCategoryName string `json:"discussion_category_name"`
-	Draft                  bool   `json:"draft"`
-	Name                   string `json:"name"`
-	Prerelease             bool   `json:"prerelease"`
-	TagName                string `json:"tag_name"`
-	TargetCommitish        string `json:"target_commitish"`
+	Body                   *string `json:"body"`
+	DiscussionCategoryName *string `json:"discussion_category_name"`
+	Draft                  *bool   `json:"draft"`
+	Name                   *string `json:"name"`
+	Prerelease             *bool   `json:"prerelease"`
+	TagName                *string `json:"tag_name"`
+	TargetCommitish        *string `json:"target_commitish"`
 }
 
 type ReposUpdateReleaseAssetApplicationJSONRequest struct {
-	Label string `json:"label"`
-	Name  string `json:"name"`
-	State string `json:"state"`
+	Label *string `json:"label"`
+	Name  *string `json:"name"`
+	State *string `json:"state"`
 }
 
 type ReposUpdateStatusCheckProtectionApplicationJSONRequest struct {
-	Contexts []string `json:"contexts"`
-	Strict   bool     `json:"strict"`
+	Contexts *[]string `json:"contexts"`
+	Strict   *bool     `json:"strict"`
 }
 
-type ReposUpdateWebhookApplicationJSONRequest struct {
-	Events       []string `json:"events"`
-	AddEvents    []string `json:"add_events"`
-	RemoveEvents []string `json:"remove_events"`
-	Active       bool     `json:"active"`
-}
-
-type ReposUpdateWebhookApplicationJSONRequestConfig struct {
-	ContentType string `json:"content_type"`
-	Secret      string `json:"secret"`
-}
-
-type ReposUpdateWebhookConfigForRepoApplicationJSONRequest struct {
-	URL         string `json:"url"`
-	ContentType string `json:"content_type"`
-	Secret      string `json:"secret"`
+func (*ReposUpdateStatusCheckProtectionApplicationJSONRequest) reposUpdateStatusCheckProtectionRequest() {
 }
 
 type Repository struct {
-	AllowAutoMerge      bool                         `json:"allow_auto_merge"`
-	AllowForking        bool                         `json:"allow_forking"`
-	AllowMergeCommit    bool                         `json:"allow_merge_commit"`
-	AllowRebaseMerge    bool                         `json:"allow_rebase_merge"`
-	AllowSquashMerge    bool                         `json:"allow_squash_merge"`
-	ArchiveURL          string                       `json:"archive_url"`
-	Archived            bool                         `json:"archived"`
-	AssigneesURL        string                       `json:"assignees_url"`
-	BlobsURL            string                       `json:"blobs_url"`
-	BranchesURL         string                       `json:"branches_url"`
-	CloneURL            string                       `json:"clone_url"`
-	CollaboratorsURL    string                       `json:"collaborators_url"`
-	CommentsURL         string                       `json:"comments_url"`
-	CommitsURL          string                       `json:"commits_url"`
-	CompareURL          string                       `json:"compare_url"`
-	ContentsURL         string                       `json:"contents_url"`
-	ContributorsURL     string                       `json:"contributors_url"`
-	CreatedAt           time.Time                    `json:"created_at"`
-	DefaultBranch       string                       `json:"default_branch"`
-	DeleteBranchOnMerge bool                         `json:"delete_branch_on_merge"`
-	DeploymentsURL      string                       `json:"deployments_url"`
-	Description         string                       `json:"description"`
-	Disabled            bool                         `json:"disabled"`
-	DownloadsURL        string                       `json:"downloads_url"`
-	EventsURL           string                       `json:"events_url"`
-	Fork                bool                         `json:"fork"`
-	Forks               int                          `json:"forks"`
-	ForksCount          int                          `json:"forks_count"`
-	ForksURL            string                       `json:"forks_url"`
-	FullName            string                       `json:"full_name"`
-	GitCommitsURL       string                       `json:"git_commits_url"`
-	GitRefsURL          string                       `json:"git_refs_url"`
-	GitTagsURL          string                       `json:"git_tags_url"`
-	GitURL              string                       `json:"git_url"`
-	HTMLURL             string                       `json:"html_url"`
-	HasDownloads        bool                         `json:"has_downloads"`
-	HasIssues           bool                         `json:"has_issues"`
-	HasPages            bool                         `json:"has_pages"`
-	HasProjects         bool                         `json:"has_projects"`
-	HasWiki             bool                         `json:"has_wiki"`
-	Homepage            string                       `json:"homepage"`
-	HooksURL            string                       `json:"hooks_url"`
-	ID                  int                          `json:"id"`
-	IsTemplate          bool                         `json:"is_template"`
-	IssueCommentURL     string                       `json:"issue_comment_url"`
-	IssueEventsURL      string                       `json:"issue_events_url"`
-	IssuesURL           string                       `json:"issues_url"`
-	KeysURL             string                       `json:"keys_url"`
-	LabelsURL           string                       `json:"labels_url"`
-	Language            string                       `json:"language"`
-	LanguagesURL        string                       `json:"languages_url"`
-	License             NullableLicenseSimple        `json:"license"`
-	MasterBranch        string                       `json:"master_branch"`
-	MergesURL           string                       `json:"merges_url"`
-	MilestonesURL       string                       `json:"milestones_url"`
-	MirrorURL           string                       `json:"mirror_url"`
-	Name                string                       `json:"name"`
-	NetworkCount        int                          `json:"network_count"`
-	NodeID              string                       `json:"node_id"`
-	NotificationsURL    string                       `json:"notifications_url"`
-	OpenIssues          int                          `json:"open_issues"`
-	OpenIssuesCount     int                          `json:"open_issues_count"`
-	Organization        NullableSimpleUser           `json:"organization"`
-	Owner               SimpleUser                   `json:"owner"`
-	Permissions         RepositoryPermissions        `json:"permissions"`
-	Private             bool                         `json:"private"`
-	PullsURL            string                       `json:"pulls_url"`
-	PushedAt            time.Time                    `json:"pushed_at"`
-	ReleasesURL         string                       `json:"releases_url"`
-	SSHURL              string                       `json:"ssh_url"`
-	Size                int                          `json:"size"`
-	StargazersCount     int                          `json:"stargazers_count"`
-	StargazersURL       string                       `json:"stargazers_url"`
-	StarredAt           string                       `json:"starred_at"`
-	StatusesURL         string                       `json:"statuses_url"`
-	SubscribersCount    int                          `json:"subscribers_count"`
-	SubscribersURL      string                       `json:"subscribers_url"`
-	SubscriptionURL     string                       `json:"subscription_url"`
-	SvnURL              string                       `json:"svn_url"`
-	TagsURL             string                       `json:"tags_url"`
-	TeamsURL            string                       `json:"teams_url"`
-	TempCloneToken      string                       `json:"temp_clone_token"`
-	TemplateRepository  RepositoryTemplateRepository `json:"template_repository"`
-	Topics              []string                     `json:"topics"`
-	TreesURL            string                       `json:"trees_url"`
-	URL                 string                       `json:"url"`
-	UpdatedAt           time.Time                    `json:"updated_at"`
-	Visibility          string                       `json:"visibility"`
-	Watchers            int                          `json:"watchers"`
-	WatchersCount       int                          `json:"watchers_count"`
+	AllowAutoMerge      *bool                         `json:"allow_auto_merge"`
+	AllowForking        *bool                         `json:"allow_forking"`
+	AllowMergeCommit    *bool                         `json:"allow_merge_commit"`
+	AllowRebaseMerge    *bool                         `json:"allow_rebase_merge"`
+	AllowSquashMerge    *bool                         `json:"allow_squash_merge"`
+	ArchiveURL          string                        `json:"archive_url"`
+	Archived            bool                          `json:"archived"`
+	AssigneesURL        string                        `json:"assignees_url"`
+	BlobsURL            string                        `json:"blobs_url"`
+	BranchesURL         string                        `json:"branches_url"`
+	CloneURL            string                        `json:"clone_url"`
+	CollaboratorsURL    string                        `json:"collaborators_url"`
+	CommentsURL         string                        `json:"comments_url"`
+	CommitsURL          string                        `json:"commits_url"`
+	CompareURL          string                        `json:"compare_url"`
+	ContentsURL         string                        `json:"contents_url"`
+	ContributorsURL     string                        `json:"contributors_url"`
+	CreatedAt           time.Time                     `json:"created_at"`
+	DefaultBranch       string                        `json:"default_branch"`
+	DeleteBranchOnMerge *bool                         `json:"delete_branch_on_merge"`
+	DeploymentsURL      string                        `json:"deployments_url"`
+	Description         string                        `json:"description"`
+	Disabled            bool                          `json:"disabled"`
+	DownloadsURL        string                        `json:"downloads_url"`
+	EventsURL           string                        `json:"events_url"`
+	Fork                bool                          `json:"fork"`
+	Forks               int                           `json:"forks"`
+	ForksCount          int                           `json:"forks_count"`
+	ForksURL            string                        `json:"forks_url"`
+	FullName            string                        `json:"full_name"`
+	GitCommitsURL       string                        `json:"git_commits_url"`
+	GitRefsURL          string                        `json:"git_refs_url"`
+	GitTagsURL          string                        `json:"git_tags_url"`
+	GitURL              string                        `json:"git_url"`
+	HTMLURL             string                        `json:"html_url"`
+	HasDownloads        bool                          `json:"has_downloads"`
+	HasIssues           bool                          `json:"has_issues"`
+	HasPages            bool                          `json:"has_pages"`
+	HasProjects         bool                          `json:"has_projects"`
+	HasWiki             bool                          `json:"has_wiki"`
+	Homepage            string                        `json:"homepage"`
+	HooksURL            string                        `json:"hooks_url"`
+	ID                  int                           `json:"id"`
+	IsTemplate          *bool                         `json:"is_template"`
+	IssueCommentURL     string                        `json:"issue_comment_url"`
+	IssueEventsURL      string                        `json:"issue_events_url"`
+	IssuesURL           string                        `json:"issues_url"`
+	KeysURL             string                        `json:"keys_url"`
+	LabelsURL           string                        `json:"labels_url"`
+	Language            string                        `json:"language"`
+	LanguagesURL        string                        `json:"languages_url"`
+	License             NullableLicenseSimple         `json:"license"`
+	MasterBranch        *string                       `json:"master_branch"`
+	MergesURL           string                        `json:"merges_url"`
+	MilestonesURL       string                        `json:"milestones_url"`
+	MirrorURL           string                        `json:"mirror_url"`
+	Name                string                        `json:"name"`
+	NetworkCount        *int                          `json:"network_count"`
+	NodeID              string                        `json:"node_id"`
+	NotificationsURL    string                        `json:"notifications_url"`
+	OpenIssues          int                           `json:"open_issues"`
+	OpenIssuesCount     int                           `json:"open_issues_count"`
+	Organization        *NullableSimpleUser           `json:"organization"`
+	Owner               SimpleUser                    `json:"owner"`
+	Permissions         *RepositoryPermissions        `json:"permissions"`
+	Private             bool                          `json:"private"`
+	PullsURL            string                        `json:"pulls_url"`
+	PushedAt            time.Time                     `json:"pushed_at"`
+	ReleasesURL         string                        `json:"releases_url"`
+	SSHURL              string                        `json:"ssh_url"`
+	Size                int                           `json:"size"`
+	StargazersCount     int                           `json:"stargazers_count"`
+	StargazersURL       string                        `json:"stargazers_url"`
+	StarredAt           *string                       `json:"starred_at"`
+	StatusesURL         string                        `json:"statuses_url"`
+	SubscribersCount    *int                          `json:"subscribers_count"`
+	SubscribersURL      string                        `json:"subscribers_url"`
+	SubscriptionURL     string                        `json:"subscription_url"`
+	SvnURL              string                        `json:"svn_url"`
+	TagsURL             string                        `json:"tags_url"`
+	TeamsURL            string                        `json:"teams_url"`
+	TempCloneToken      *string                       `json:"temp_clone_token"`
+	TemplateRepository  *RepositoryTemplateRepository `json:"template_repository"`
+	Topics              *[]string                     `json:"topics"`
+	TreesURL            string                        `json:"trees_url"`
+	URL                 string                        `json:"url"`
+	UpdatedAt           time.Time                     `json:"updated_at"`
+	Visibility          *string                       `json:"visibility"`
+	Watchers            int                           `json:"watchers"`
+	WatchersCount       int                           `json:"watchers_count"`
 }
-
-func (*Repository) reposCreateForAuthenticatedUserResponse() {}
-func (*Repository) reposCreateInOrgResponse()                {}
 
 type RepositoryCollaboratorPermission struct {
 	Permission string             `json:"permission"`
 	User       NullableSimpleUser `json:"user"`
 }
 
-func (*RepositoryCollaboratorPermission) projectsGetPermissionForUserResponse()        {}
 func (*RepositoryCollaboratorPermission) reposGetCollaboratorPermissionLevelResponse() {}
 
 type RepositoryInvitation struct {
-	CreatedAt   time.Time          `json:"created_at"`
-	Expired     bool               `json:"expired"`
-	HTMLURL     string             `json:"html_url"`
-	ID          int                `json:"id"`
-	Invitee     NullableSimpleUser `json:"invitee"`
-	Inviter     NullableSimpleUser `json:"inviter"`
-	NodeID      string             `json:"node_id"`
-	Permissions string             `json:"permissions"`
-	Repository  MinimalRepository  `json:"repository"`
-	URL         string             `json:"url"`
+	CreatedAt   time.Time                       `json:"created_at"`
+	Expired     *bool                           `json:"expired"`
+	HTMLURL     string                          `json:"html_url"`
+	ID          int                             `json:"id"`
+	Invitee     NullableSimpleUser              `json:"invitee"`
+	Inviter     NullableSimpleUser              `json:"inviter"`
+	NodeID      string                          `json:"node_id"`
+	Permissions RepositoryInvitationPermissions `json:"permissions"`
+	Repository  MinimalRepository               `json:"repository"`
+	URL         string                          `json:"url"`
 }
 
-func (*RepositoryInvitation) reposAddCollaboratorResponse() {}
+type RepositoryInvitationPermissions string
+
+const (
+	RepositoryInvitationPermissionsRead     RepositoryInvitationPermissions = "read"
+	RepositoryInvitationPermissionsWrite    RepositoryInvitationPermissions = "write"
+	RepositoryInvitationPermissionsAdmin    RepositoryInvitationPermissions = "admin"
+	RepositoryInvitationPermissionsTriage   RepositoryInvitationPermissions = "triage"
+	RepositoryInvitationPermissionsMaintain RepositoryInvitationPermissions = "maintain"
+)
 
 type RepositoryPermissions struct {
-	Admin    bool `json:"admin"`
-	Maintain bool `json:"maintain"`
-	Pull     bool `json:"pull"`
-	Push     bool `json:"push"`
-	Triage   bool `json:"triage"`
+	Admin    bool  `json:"admin"`
+	Maintain *bool `json:"maintain"`
+	Pull     bool  `json:"pull"`
+	Push     bool  `json:"push"`
+	Triage   *bool `json:"triage"`
 }
 
 type RepositorySubscription struct {
@@ -7241,147 +8120,147 @@ type RepositorySubscription struct {
 func (*RepositorySubscription) activityGetRepoSubscriptionResponse() {}
 
 type RepositoryTemplateRepository struct {
-	AllowAutoMerge      bool                                    `json:"allow_auto_merge"`
-	AllowMergeCommit    bool                                    `json:"allow_merge_commit"`
-	AllowRebaseMerge    bool                                    `json:"allow_rebase_merge"`
-	AllowSquashMerge    bool                                    `json:"allow_squash_merge"`
-	ArchiveURL          string                                  `json:"archive_url"`
-	Archived            bool                                    `json:"archived"`
-	AssigneesURL        string                                  `json:"assignees_url"`
-	BlobsURL            string                                  `json:"blobs_url"`
-	BranchesURL         string                                  `json:"branches_url"`
-	CloneURL            string                                  `json:"clone_url"`
-	CollaboratorsURL    string                                  `json:"collaborators_url"`
-	CommentsURL         string                                  `json:"comments_url"`
-	CommitsURL          string                                  `json:"commits_url"`
-	CompareURL          string                                  `json:"compare_url"`
-	ContentsURL         string                                  `json:"contents_url"`
-	ContributorsURL     string                                  `json:"contributors_url"`
-	CreatedAt           string                                  `json:"created_at"`
-	DefaultBranch       string                                  `json:"default_branch"`
-	DeleteBranchOnMerge bool                                    `json:"delete_branch_on_merge"`
-	DeploymentsURL      string                                  `json:"deployments_url"`
-	Description         string                                  `json:"description"`
-	Disabled            bool                                    `json:"disabled"`
-	DownloadsURL        string                                  `json:"downloads_url"`
-	EventsURL           string                                  `json:"events_url"`
-	Fork                bool                                    `json:"fork"`
-	ForksCount          int                                     `json:"forks_count"`
-	ForksURL            string                                  `json:"forks_url"`
-	FullName            string                                  `json:"full_name"`
-	GitCommitsURL       string                                  `json:"git_commits_url"`
-	GitRefsURL          string                                  `json:"git_refs_url"`
-	GitTagsURL          string                                  `json:"git_tags_url"`
-	GitURL              string                                  `json:"git_url"`
-	HTMLURL             string                                  `json:"html_url"`
-	HasDownloads        bool                                    `json:"has_downloads"`
-	HasIssues           bool                                    `json:"has_issues"`
-	HasPages            bool                                    `json:"has_pages"`
-	HasProjects         bool                                    `json:"has_projects"`
-	HasWiki             bool                                    `json:"has_wiki"`
-	Homepage            string                                  `json:"homepage"`
-	HooksURL            string                                  `json:"hooks_url"`
-	ID                  int                                     `json:"id"`
-	IsTemplate          bool                                    `json:"is_template"`
-	IssueCommentURL     string                                  `json:"issue_comment_url"`
-	IssueEventsURL      string                                  `json:"issue_events_url"`
-	IssuesURL           string                                  `json:"issues_url"`
-	KeysURL             string                                  `json:"keys_url"`
-	LabelsURL           string                                  `json:"labels_url"`
-	Language            string                                  `json:"language"`
-	LanguagesURL        string                                  `json:"languages_url"`
-	MergesURL           string                                  `json:"merges_url"`
-	MilestonesURL       string                                  `json:"milestones_url"`
-	MirrorURL           string                                  `json:"mirror_url"`
-	Name                string                                  `json:"name"`
-	NetworkCount        int                                     `json:"network_count"`
-	NodeID              string                                  `json:"node_id"`
-	NotificationsURL    string                                  `json:"notifications_url"`
-	OpenIssuesCount     int                                     `json:"open_issues_count"`
-	Owner               RepositoryTemplateRepositoryOwner       `json:"owner"`
-	Permissions         RepositoryTemplateRepositoryPermissions `json:"permissions"`
-	Private             bool                                    `json:"private"`
-	PullsURL            string                                  `json:"pulls_url"`
-	PushedAt            string                                  `json:"pushed_at"`
-	ReleasesURL         string                                  `json:"releases_url"`
-	SSHURL              string                                  `json:"ssh_url"`
-	Size                int                                     `json:"size"`
-	StargazersCount     int                                     `json:"stargazers_count"`
-	StargazersURL       string                                  `json:"stargazers_url"`
-	StatusesURL         string                                  `json:"statuses_url"`
-	SubscribersCount    int                                     `json:"subscribers_count"`
-	SubscribersURL      string                                  `json:"subscribers_url"`
-	SubscriptionURL     string                                  `json:"subscription_url"`
-	SvnURL              string                                  `json:"svn_url"`
-	TagsURL             string                                  `json:"tags_url"`
-	TeamsURL            string                                  `json:"teams_url"`
-	TempCloneToken      string                                  `json:"temp_clone_token"`
-	Topics              []string                                `json:"topics"`
-	TreesURL            string                                  `json:"trees_url"`
-	URL                 string                                  `json:"url"`
-	UpdatedAt           string                                  `json:"updated_at"`
-	Visibility          string                                  `json:"visibility"`
-	WatchersCount       int                                     `json:"watchers_count"`
+	AllowAutoMerge      *bool                                    `json:"allow_auto_merge"`
+	AllowMergeCommit    *bool                                    `json:"allow_merge_commit"`
+	AllowRebaseMerge    *bool                                    `json:"allow_rebase_merge"`
+	AllowSquashMerge    *bool                                    `json:"allow_squash_merge"`
+	ArchiveURL          *string                                  `json:"archive_url"`
+	Archived            *bool                                    `json:"archived"`
+	AssigneesURL        *string                                  `json:"assignees_url"`
+	BlobsURL            *string                                  `json:"blobs_url"`
+	BranchesURL         *string                                  `json:"branches_url"`
+	CloneURL            *string                                  `json:"clone_url"`
+	CollaboratorsURL    *string                                  `json:"collaborators_url"`
+	CommentsURL         *string                                  `json:"comments_url"`
+	CommitsURL          *string                                  `json:"commits_url"`
+	CompareURL          *string                                  `json:"compare_url"`
+	ContentsURL         *string                                  `json:"contents_url"`
+	ContributorsURL     *string                                  `json:"contributors_url"`
+	CreatedAt           *string                                  `json:"created_at"`
+	DefaultBranch       *string                                  `json:"default_branch"`
+	DeleteBranchOnMerge *bool                                    `json:"delete_branch_on_merge"`
+	DeploymentsURL      *string                                  `json:"deployments_url"`
+	Description         *string                                  `json:"description"`
+	Disabled            *bool                                    `json:"disabled"`
+	DownloadsURL        *string                                  `json:"downloads_url"`
+	EventsURL           *string                                  `json:"events_url"`
+	Fork                *bool                                    `json:"fork"`
+	ForksCount          *int                                     `json:"forks_count"`
+	ForksURL            *string                                  `json:"forks_url"`
+	FullName            *string                                  `json:"full_name"`
+	GitCommitsURL       *string                                  `json:"git_commits_url"`
+	GitRefsURL          *string                                  `json:"git_refs_url"`
+	GitTagsURL          *string                                  `json:"git_tags_url"`
+	GitURL              *string                                  `json:"git_url"`
+	HTMLURL             *string                                  `json:"html_url"`
+	HasDownloads        *bool                                    `json:"has_downloads"`
+	HasIssues           *bool                                    `json:"has_issues"`
+	HasPages            *bool                                    `json:"has_pages"`
+	HasProjects         *bool                                    `json:"has_projects"`
+	HasWiki             *bool                                    `json:"has_wiki"`
+	Homepage            *string                                  `json:"homepage"`
+	HooksURL            *string                                  `json:"hooks_url"`
+	ID                  *int                                     `json:"id"`
+	IsTemplate          *bool                                    `json:"is_template"`
+	IssueCommentURL     *string                                  `json:"issue_comment_url"`
+	IssueEventsURL      *string                                  `json:"issue_events_url"`
+	IssuesURL           *string                                  `json:"issues_url"`
+	KeysURL             *string                                  `json:"keys_url"`
+	LabelsURL           *string                                  `json:"labels_url"`
+	Language            *string                                  `json:"language"`
+	LanguagesURL        *string                                  `json:"languages_url"`
+	MergesURL           *string                                  `json:"merges_url"`
+	MilestonesURL       *string                                  `json:"milestones_url"`
+	MirrorURL           *string                                  `json:"mirror_url"`
+	Name                *string                                  `json:"name"`
+	NetworkCount        *int                                     `json:"network_count"`
+	NodeID              *string                                  `json:"node_id"`
+	NotificationsURL    *string                                  `json:"notifications_url"`
+	OpenIssuesCount     *int                                     `json:"open_issues_count"`
+	Owner               *RepositoryTemplateRepositoryOwner       `json:"owner"`
+	Permissions         *RepositoryTemplateRepositoryPermissions `json:"permissions"`
+	Private             *bool                                    `json:"private"`
+	PullsURL            *string                                  `json:"pulls_url"`
+	PushedAt            *string                                  `json:"pushed_at"`
+	ReleasesURL         *string                                  `json:"releases_url"`
+	SSHURL              *string                                  `json:"ssh_url"`
+	Size                *int                                     `json:"size"`
+	StargazersCount     *int                                     `json:"stargazers_count"`
+	StargazersURL       *string                                  `json:"stargazers_url"`
+	StatusesURL         *string                                  `json:"statuses_url"`
+	SubscribersCount    *int                                     `json:"subscribers_count"`
+	SubscribersURL      *string                                  `json:"subscribers_url"`
+	SubscriptionURL     *string                                  `json:"subscription_url"`
+	SvnURL              *string                                  `json:"svn_url"`
+	TagsURL             *string                                  `json:"tags_url"`
+	TeamsURL            *string                                  `json:"teams_url"`
+	TempCloneToken      *string                                  `json:"temp_clone_token"`
+	Topics              *[]string                                `json:"topics"`
+	TreesURL            *string                                  `json:"trees_url"`
+	URL                 *string                                  `json:"url"`
+	UpdatedAt           *string                                  `json:"updated_at"`
+	Visibility          *string                                  `json:"visibility"`
+	WatchersCount       *int                                     `json:"watchers_count"`
 }
 
 type RepositoryTemplateRepositoryOwner struct {
-	AvatarURL         string `json:"avatar_url"`
-	EventsURL         string `json:"events_url"`
-	FollowersURL      string `json:"followers_url"`
-	FollowingURL      string `json:"following_url"`
-	GistsURL          string `json:"gists_url"`
-	GravatarID        string `json:"gravatar_id"`
-	HTMLURL           string `json:"html_url"`
-	ID                int    `json:"id"`
-	Login             string `json:"login"`
-	NodeID            string `json:"node_id"`
-	OrganizationsURL  string `json:"organizations_url"`
-	ReceivedEventsURL string `json:"received_events_url"`
-	ReposURL          string `json:"repos_url"`
-	SiteAdmin         bool   `json:"site_admin"`
-	StarredURL        string `json:"starred_url"`
-	SubscriptionsURL  string `json:"subscriptions_url"`
-	Type              string `json:"type"`
-	URL               string `json:"url"`
+	AvatarURL         *string `json:"avatar_url"`
+	EventsURL         *string `json:"events_url"`
+	FollowersURL      *string `json:"followers_url"`
+	FollowingURL      *string `json:"following_url"`
+	GistsURL          *string `json:"gists_url"`
+	GravatarID        *string `json:"gravatar_id"`
+	HTMLURL           *string `json:"html_url"`
+	ID                *int    `json:"id"`
+	Login             *string `json:"login"`
+	NodeID            *string `json:"node_id"`
+	OrganizationsURL  *string `json:"organizations_url"`
+	ReceivedEventsURL *string `json:"received_events_url"`
+	ReposURL          *string `json:"repos_url"`
+	SiteAdmin         *bool   `json:"site_admin"`
+	StarredURL        *string `json:"starred_url"`
+	SubscriptionsURL  *string `json:"subscriptions_url"`
+	Type              *string `json:"type"`
+	URL               *string `json:"url"`
 }
 
 type RepositoryTemplateRepositoryPermissions struct {
-	Admin    bool `json:"admin"`
-	Maintain bool `json:"maintain"`
-	Pull     bool `json:"pull"`
-	Push     bool `json:"push"`
-	Triage   bool `json:"triage"`
+	Admin    *bool `json:"admin"`
+	Maintain *bool `json:"maintain"`
+	Pull     *bool `json:"pull"`
+	Push     *bool `json:"push"`
+	Triage   *bool `json:"triage"`
 }
 
 type ReviewComment struct {
-	AuthorAssociation   string             `json:"author_association"`
-	Body                string             `json:"body"`
-	BodyHTML            string             `json:"body_html"`
-	BodyText            string             `json:"body_text"`
-	CommitID            string             `json:"commit_id"`
-	CreatedAt           time.Time          `json:"created_at"`
-	DiffHunk            string             `json:"diff_hunk"`
-	HTMLURL             string             `json:"html_url"`
-	ID                  int                `json:"id"`
-	InReplyToID         int                `json:"in_reply_to_id"`
-	Line                int                `json:"line"`
-	Links               ReviewCommentLinks `json:"_links"`
-	NodeID              string             `json:"node_id"`
-	OriginalCommitID    string             `json:"original_commit_id"`
-	OriginalLine        int                `json:"original_line"`
-	OriginalPosition    int                `json:"original_position"`
-	OriginalStartLine   int                `json:"original_start_line"`
-	Path                string             `json:"path"`
-	Position            int                `json:"position"`
-	PullRequestReviewID int                `json:"pull_request_review_id"`
-	PullRequestURL      string             `json:"pull_request_url"`
-	Reactions           ReactionRollup     `json:"reactions"`
-	Side                string             `json:"side"`
-	StartLine           int                `json:"start_line"`
-	StartSide           string             `json:"start_side"`
-	URL                 string             `json:"url"`
-	UpdatedAt           time.Time          `json:"updated_at"`
-	User                NullableSimpleUser `json:"user"`
+	AuthorAssociation   AuthorAssociation       `json:"author_association"`
+	Body                string                  `json:"body"`
+	BodyHTML            *string                 `json:"body_html"`
+	BodyText            *string                 `json:"body_text"`
+	CommitID            string                  `json:"commit_id"`
+	CreatedAt           time.Time               `json:"created_at"`
+	DiffHunk            string                  `json:"diff_hunk"`
+	HTMLURL             string                  `json:"html_url"`
+	ID                  int                     `json:"id"`
+	InReplyToID         *int                    `json:"in_reply_to_id"`
+	Line                *int                    `json:"line"`
+	Links               ReviewCommentLinks      `json:"_links"`
+	NodeID              string                  `json:"node_id"`
+	OriginalCommitID    string                  `json:"original_commit_id"`
+	OriginalLine        *int                    `json:"original_line"`
+	OriginalPosition    int                     `json:"original_position"`
+	OriginalStartLine   *int                    `json:"original_start_line"`
+	Path                string                  `json:"path"`
+	Position            int                     `json:"position"`
+	PullRequestReviewID int                     `json:"pull_request_review_id"`
+	PullRequestURL      string                  `json:"pull_request_url"`
+	Reactions           *ReactionRollup         `json:"reactions"`
+	Side                *ReviewCommentSide      `json:"side"`
+	StartLine           *int                    `json:"start_line"`
+	StartSide           *ReviewCommentStartSide `json:"start_side"`
+	URL                 string                  `json:"url"`
+	UpdatedAt           time.Time               `json:"updated_at"`
+	User                NullableSimpleUser      `json:"user"`
 }
 
 type ReviewCommentLinks struct {
@@ -7389,6 +8268,20 @@ type ReviewCommentLinks struct {
 	PullRequest Link `json:"pull_request"`
 	Self        Link `json:"self"`
 }
+
+type ReviewCommentSide string
+
+const (
+	ReviewCommentSideLEFT  ReviewCommentSide = "LEFT"
+	ReviewCommentSideRIGHT ReviewCommentSide = "RIGHT"
+)
+
+type ReviewCommentStartSide string
+
+const (
+	ReviewCommentStartSideLEFT  ReviewCommentStartSide = "LEFT"
+	ReviewCommentStartSideRIGHT ReviewCommentStartSide = "RIGHT"
+)
 
 type Runner struct {
 	Busy   bool               `json:"busy"`
@@ -7400,341 +8293,273 @@ type Runner struct {
 }
 
 type RunnerApplication struct {
-	Architecture      string `json:"architecture"`
-	DownloadURL       string `json:"download_url"`
-	Filename          string `json:"filename"`
-	Os                string `json:"os"`
-	SHA256Checksum    string `json:"sha256_checksum"`
-	TempDownloadToken string `json:"temp_download_token"`
+	Architecture      string  `json:"architecture"`
+	DownloadURL       string  `json:"download_url"`
+	Filename          string  `json:"filename"`
+	Os                string  `json:"os"`
+	SHA256Checksum    *string `json:"sha256_checksum"`
+	TempDownloadToken *string `json:"temp_download_token"`
 }
 
 type RunnerGroupsEnterprise struct {
-	AllowsPublicRepositories bool   `json:"allows_public_repositories"`
-	Default                  bool   `json:"default"`
-	ID                       float  `json:"id"`
-	Name                     string `json:"name"`
-	RunnersURL               string `json:"runners_url"`
-	SelectedOrganizationsURL string `json:"selected_organizations_url"`
-	Visibility               string `json:"visibility"`
+	AllowsPublicRepositories bool    `json:"allows_public_repositories"`
+	Default                  bool    `json:"default"`
+	ID                       float64 `json:"id"`
+	Name                     string  `json:"name"`
+	RunnersURL               string  `json:"runners_url"`
+	SelectedOrganizationsURL *string `json:"selected_organizations_url"`
+	Visibility               string  `json:"visibility"`
 }
 
 type RunnerGroupsOrg struct {
-	AllowsPublicRepositories          bool   `json:"allows_public_repositories"`
-	Default                           bool   `json:"default"`
-	ID                                float  `json:"id"`
-	Inherited                         bool   `json:"inherited"`
-	InheritedAllowsPublicRepositories bool   `json:"inherited_allows_public_repositories"`
-	Name                              string `json:"name"`
-	RunnersURL                        string `json:"runners_url"`
-	SelectedRepositoriesURL           string `json:"selected_repositories_url"`
-	Visibility                        string `json:"visibility"`
+	AllowsPublicRepositories          bool    `json:"allows_public_repositories"`
+	Default                           bool    `json:"default"`
+	ID                                float64 `json:"id"`
+	Inherited                         bool    `json:"inherited"`
+	InheritedAllowsPublicRepositories *bool   `json:"inherited_allows_public_repositories"`
+	Name                              string  `json:"name"`
+	RunnersURL                        string  `json:"runners_url"`
+	SelectedRepositoriesURL           *string `json:"selected_repositories_url"`
+	Visibility                        string  `json:"visibility"`
 }
 
 type RunnerLabelsItem struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
-	Type string `json:"type"`
+	ID   *int                  `json:"id"`
+	Name *string               `json:"name"`
+	Type *RunnerLabelsItemType `json:"type"`
 }
+
+type RunnerLabelsItemType string
+
+const (
+	RunnerLabelsItemTypeReadMinusOnly RunnerLabelsItemType = "read-only"
+	RunnerLabelsItemTypeCustom        RunnerLabelsItemType = "custom"
+)
+
+type ScimDeleteUserFromOrgApplicationJSONForbidden ScimError
+
+func (*ScimDeleteUserFromOrgApplicationJSONForbidden) scimDeleteUserFromOrgResponse() {}
+
+type ScimDeleteUserFromOrgApplicationJSONNotFound ScimError
+
+func (*ScimDeleteUserFromOrgApplicationJSONNotFound) scimDeleteUserFromOrgResponse() {}
+
+type ScimDeleteUserFromOrgApplicationScimJSONForbidden ScimError
+
+func (*ScimDeleteUserFromOrgApplicationScimJSONForbidden) scimDeleteUserFromOrgResponse() {}
+
+type ScimDeleteUserFromOrgApplicationScimJSONNotFound ScimError
+
+func (*ScimDeleteUserFromOrgApplicationScimJSONNotFound) scimDeleteUserFromOrgResponse() {}
 
 type ScimDeleteUserFromOrgNoContent struct{}
 
 func (*ScimDeleteUserFromOrgNoContent) scimDeleteUserFromOrgResponse() {}
 
 type ScimEnterpriseGroup struct {
-	DisplayName string                           `json:"displayName"`
-	ExternalId  string                           `json:"externalId"`
-	ID          string                           `json:"id"`
-	Members     []ScimEnterpriseGroupMembersItem `json:"members"`
-	Meta        ScimEnterpriseGroupMeta          `json:"meta"`
-	Schemas     []string                         `json:"schemas"`
+	DisplayName *string                           `json:"displayName"`
+	ExternalId  *string                           `json:"externalId"`
+	ID          string                            `json:"id"`
+	Members     *[]ScimEnterpriseGroupMembersItem `json:"members"`
+	Meta        *ScimEnterpriseGroupMeta          `json:"meta"`
+	Schemas     []string                          `json:"schemas"`
 }
 
 type ScimEnterpriseGroupMembersItem struct {
-	Display string `json:"display"`
-	Ref     string `json:"$ref"`
-	Value   string `json:"value"`
+	Display *string `json:"display"`
+	Ref     *string `json:"$ref"`
+	Value   *string `json:"value"`
 }
 
 type ScimEnterpriseGroupMeta struct {
-	Created      string `json:"created"`
-	LastModified string `json:"lastModified"`
-	Location     string `json:"location"`
-	ResourceType string `json:"resourceType"`
+	Created      *string `json:"created"`
+	LastModified *string `json:"lastModified"`
+	Location     *string `json:"location"`
+	ResourceType *string `json:"resourceType"`
 }
 
 type ScimEnterpriseUser struct {
-	Active     bool                           `json:"active"`
-	Emails     []ScimEnterpriseUserEmailsItem `json:"emails"`
-	ExternalId string                         `json:"externalId"`
-	Groups     []ScimEnterpriseUserGroupsItem `json:"groups"`
-	ID         string                         `json:"id"`
-	Meta       ScimEnterpriseUserMeta         `json:"meta"`
-	Name       ScimEnterpriseUserName         `json:"name"`
-	Schemas    []string                       `json:"schemas"`
-	UserName   string                         `json:"userName"`
+	Active     *bool                           `json:"active"`
+	Emails     *[]ScimEnterpriseUserEmailsItem `json:"emails"`
+	ExternalId *string                         `json:"externalId"`
+	Groups     *[]ScimEnterpriseUserGroupsItem `json:"groups"`
+	ID         string                          `json:"id"`
+	Meta       *ScimEnterpriseUserMeta         `json:"meta"`
+	Name       *ScimEnterpriseUserName         `json:"name"`
+	Schemas    []string                        `json:"schemas"`
+	UserName   *string                         `json:"userName"`
 }
 
 type ScimEnterpriseUserEmailsItem struct {
-	Primary bool   `json:"primary"`
-	Type    string `json:"type"`
-	Value   string `json:"value"`
+	Primary *bool   `json:"primary"`
+	Type    *string `json:"type"`
+	Value   *string `json:"value"`
 }
 
 type ScimEnterpriseUserGroupsItem struct {
-	Value string `json:"value"`
+	Value *string `json:"value"`
 }
 
 type ScimEnterpriseUserMeta struct {
-	Created      string `json:"created"`
-	LastModified string `json:"lastModified"`
-	Location     string `json:"location"`
-	ResourceType string `json:"resourceType"`
+	Created      *string `json:"created"`
+	LastModified *string `json:"lastModified"`
+	Location     *string `json:"location"`
+	ResourceType *string `json:"resourceType"`
 }
 
 type ScimEnterpriseUserName struct {
-	FamilyName string `json:"familyName"`
-	GivenName  string `json:"givenName"`
+	FamilyName *string `json:"familyName"`
+	GivenName  *string `json:"givenName"`
 }
 
 type ScimError struct {
-	Detail           string   `json:"detail"`
-	DocumentationURL string   `json:"documentation_url"`
-	Message          string   `json:"message"`
-	Schemas          []string `json:"schemas"`
-	ScimType         string   `json:"scimType"`
-	Status           int      `json:"status"`
+	Detail           *string   `json:"detail"`
+	DocumentationURL *string   `json:"documentation_url"`
+	Message          *string   `json:"message"`
+	Schemas          *[]string `json:"schemas"`
+	ScimType         *string   `json:"scimType"`
+	Status           *int      `json:"status"`
 }
 
-func (*ScimError) appsGetWebhookDeliveryResponse()                {}
-func (*ScimError) appsListWebhookDeliveriesResponse()             {}
-func (*ScimError) appsRedeliverWebhookDeliveryResponse()          {}
-func (*ScimError) codeScanningDeleteAnalysisResponse()            {}
-func (*ScimError) orgsGetWebhookDeliveryResponse()                {}
-func (*ScimError) orgsListWebhookDeliveriesResponse()             {}
-func (*ScimError) orgsRedeliverWebhookDeliveryResponse()          {}
-func (*ScimError) reposCreateForAuthenticatedUserResponse()       {}
-func (*ScimError) reposCreateForkResponse()                       {}
-func (*ScimError) reposGetWebhookDeliveryResponse()               {}
-func (*ScimError) reposListCommitsResponse()                      {}
-func (*ScimError) reposListForksResponse()                        {}
-func (*ScimError) reposListWebhookDeliveriesResponse()            {}
-func (*ScimError) reposRedeliverWebhookDeliveryResponse()         {}
-func (*ScimError) reposUpdateInformationAboutPagesSiteResponse()  {}
-func (*ScimError) scimDeleteUserFromOrgResponse()                 {}
-func (*ScimError) scimGetProvisioningInformationForUserResponse() {}
-func (*ScimError) scimListProvisionedIdentitiesResponse()         {}
-func (*ScimError) scimProvisionAndInviteUserResponse()            {}
-func (*ScimError) scimSetInformationForProvisionedUserResponse()  {}
-func (*ScimError) scimUpdateAttributeForUserResponse()            {}
+func (*ScimError) codeScanningDeleteAnalysisResponse() {}
+func (*ScimError) reposListCommitsResponse()           {}
 
 type ScimGroupListEnterprise struct {
-	ItemsPerPage float                                  `json:"itemsPerPage"`
+	ItemsPerPage float64                                `json:"itemsPerPage"`
 	Resources    []ScimGroupListEnterpriseResourcesItem `json:"Resources"`
 	Schemas      []string                               `json:"schemas"`
-	StartIndex   float                                  `json:"startIndex"`
-	TotalResults float                                  `json:"totalResults"`
+	StartIndex   float64                                `json:"startIndex"`
+	TotalResults float64                                `json:"totalResults"`
 }
 
 type ScimGroupListEnterpriseResourcesItem struct {
-	DisplayName string                                            `json:"displayName"`
-	ExternalId  string                                            `json:"externalId"`
-	ID          string                                            `json:"id"`
-	Members     []ScimGroupListEnterpriseResourcesItemMembersItem `json:"members"`
-	Meta        ScimGroupListEnterpriseResourcesItemMeta          `json:"meta"`
-	Schemas     []string                                          `json:"schemas"`
+	DisplayName *string                                            `json:"displayName"`
+	ExternalId  *string                                            `json:"externalId"`
+	ID          string                                             `json:"id"`
+	Members     *[]ScimGroupListEnterpriseResourcesItemMembersItem `json:"members"`
+	Meta        *ScimGroupListEnterpriseResourcesItemMeta          `json:"meta"`
+	Schemas     []string                                           `json:"schemas"`
 }
 
 type ScimGroupListEnterpriseResourcesItemMembersItem struct {
-	Display string `json:"display"`
-	Ref     string `json:"$ref"`
-	Value   string `json:"value"`
+	Display *string `json:"display"`
+	Ref     *string `json:"$ref"`
+	Value   *string `json:"value"`
 }
 
 type ScimGroupListEnterpriseResourcesItemMeta struct {
-	Created      string `json:"created"`
-	LastModified string `json:"lastModified"`
-	Location     string `json:"location"`
-	ResourceType string `json:"resourceType"`
+	Created      *string `json:"created"`
+	LastModified *string `json:"lastModified"`
+	Location     *string `json:"location"`
+	ResourceType *string `json:"resourceType"`
 }
 
 type ScimProvisionAndInviteUserApplicationJSONRequest struct {
-	Active      bool                                                         `json:"active"`
-	DisplayName string                                                       `json:"displayName"`
+	Active      *bool                                                        `json:"active"`
+	DisplayName *string                                                      `json:"displayName"`
 	Emails      []ScimProvisionAndInviteUserApplicationJSONRequestEmailsItem `json:"emails"`
-	ExternalId  string                                                       `json:"externalId"`
-	Groups      []string                                                     `json:"groups"`
+	ExternalId  *string                                                      `json:"externalId"`
+	Groups      *[]string                                                    `json:"groups"`
 	Name        ScimProvisionAndInviteUserApplicationJSONRequestName         `json:"name"`
-	Schemas     []string                                                     `json:"schemas"`
+	Schemas     *[]string                                                    `json:"schemas"`
 	UserName    string                                                       `json:"userName"`
 }
 
+func (*ScimProvisionAndInviteUserApplicationJSONRequest) scimProvisionAndInviteUserRequest() {}
+
 type ScimProvisionAndInviteUserApplicationJSONRequestEmailsItem struct {
-	Primary bool   `json:"primary"`
-	Type    string `json:"type"`
-	Value   string `json:"value"`
+	Primary *bool   `json:"primary"`
+	Type    *string `json:"type"`
+	Value   string  `json:"value"`
 }
 
 type ScimProvisionAndInviteUserApplicationJSONRequestName struct {
-	FamilyName string `json:"familyName"`
-	Formatted  string `json:"formatted"`
-	GivenName  string `json:"givenName"`
+	FamilyName string  `json:"familyName"`
+	Formatted  *string `json:"formatted"`
+	GivenName  string  `json:"givenName"`
 }
 
 type ScimSetInformationForProvisionedUserApplicationJSONRequest struct {
-	Active      bool                                                                   `json:"active"`
-	DisplayName string                                                                 `json:"displayName"`
+	Active      *bool                                                                  `json:"active"`
+	DisplayName *string                                                                `json:"displayName"`
 	Emails      []ScimSetInformationForProvisionedUserApplicationJSONRequestEmailsItem `json:"emails"`
-	ExternalId  string                                                                 `json:"externalId"`
-	Groups      []string                                                               `json:"groups"`
+	ExternalId  *string                                                                `json:"externalId"`
+	Groups      *[]string                                                              `json:"groups"`
 	Name        ScimSetInformationForProvisionedUserApplicationJSONRequestName         `json:"name"`
-	Schemas     []string                                                               `json:"schemas"`
+	Schemas     *[]string                                                              `json:"schemas"`
 	UserName    string                                                                 `json:"userName"`
 }
 
+func (*ScimSetInformationForProvisionedUserApplicationJSONRequest) scimSetInformationForProvisionedUserRequest() {
+}
+
 type ScimSetInformationForProvisionedUserApplicationJSONRequestEmailsItem struct {
-	Primary bool   `json:"primary"`
-	Type    string `json:"type"`
-	Value   string `json:"value"`
+	Primary *bool   `json:"primary"`
+	Type    *string `json:"type"`
+	Value   string  `json:"value"`
 }
 
 type ScimSetInformationForProvisionedUserApplicationJSONRequestName struct {
-	FamilyName string `json:"familyName"`
-	Formatted  string `json:"formatted"`
-	GivenName  string `json:"givenName"`
+	FamilyName string  `json:"familyName"`
+	Formatted  *string `json:"formatted"`
+	GivenName  string  `json:"givenName"`
 }
-
-type ScimUpdateAttributeForUserApplicationJSONRequest struct {
-	Schemas []string `json:"schemas"`
-}
-
-type ScimUpdateAttributeForUserApplicationJSONRequestOperationsItem struct {
-	Op   string `json:"op"`
-	Path string `json:"path"`
-}
-
-type ScimUser struct {
-	Meta ScimUserMeta `json:"meta"`
-}
-
-func (*ScimUser) scimProvisionAndInviteUserResponse()           {}
-func (*ScimUser) scimSetInformationForProvisionedUserResponse() {}
-func (*ScimUser) scimUpdateAttributeForUserResponse()           {}
-
-type ScimUserList struct {
-	ItemsPerPage int        `json:"itemsPerPage"`
-	Resources    []ScimUser `json:"Resources"`
-	Schemas      []string   `json:"schemas"`
-	StartIndex   int        `json:"startIndex"`
-	TotalResults int        `json:"totalResults"`
-}
-
-func (*ScimUserList) scimListProvisionedIdentitiesResponse() {}
 
 type ScimUserListEnterprise struct {
-	ItemsPerPage float                                 `json:"itemsPerPage"`
+	ItemsPerPage float64                               `json:"itemsPerPage"`
 	Resources    []ScimUserListEnterpriseResourcesItem `json:"Resources"`
 	Schemas      []string                              `json:"schemas"`
-	StartIndex   float                                 `json:"startIndex"`
-	TotalResults float                                 `json:"totalResults"`
+	StartIndex   float64                               `json:"startIndex"`
+	TotalResults float64                               `json:"totalResults"`
 }
 
 type ScimUserListEnterpriseResourcesItem struct {
-	Active     bool                                            `json:"active"`
-	Emails     []ScimUserListEnterpriseResourcesItemEmailsItem `json:"emails"`
-	ExternalId string                                          `json:"externalId"`
-	Groups     []ScimUserListEnterpriseResourcesItemGroupsItem `json:"groups"`
-	ID         string                                          `json:"id"`
-	Meta       ScimUserListEnterpriseResourcesItemMeta         `json:"meta"`
-	Name       ScimUserListEnterpriseResourcesItemName         `json:"name"`
-	Schemas    []string                                        `json:"schemas"`
-	UserName   string                                          `json:"userName"`
+	Active     *bool                                            `json:"active"`
+	Emails     *[]ScimUserListEnterpriseResourcesItemEmailsItem `json:"emails"`
+	ExternalId *string                                          `json:"externalId"`
+	Groups     *[]ScimUserListEnterpriseResourcesItemGroupsItem `json:"groups"`
+	ID         string                                           `json:"id"`
+	Meta       *ScimUserListEnterpriseResourcesItemMeta         `json:"meta"`
+	Name       *ScimUserListEnterpriseResourcesItemName         `json:"name"`
+	Schemas    []string                                         `json:"schemas"`
+	UserName   *string                                          `json:"userName"`
 }
 
 type ScimUserListEnterpriseResourcesItemEmailsItem struct {
-	Primary bool   `json:"primary"`
-	Type    string `json:"type"`
-	Value   string `json:"value"`
+	Primary *bool   `json:"primary"`
+	Type    *string `json:"type"`
+	Value   *string `json:"value"`
 }
 
 type ScimUserListEnterpriseResourcesItemGroupsItem struct {
-	Value string `json:"value"`
+	Value *string `json:"value"`
 }
 
 type ScimUserListEnterpriseResourcesItemMeta struct {
-	Created      string `json:"created"`
-	LastModified string `json:"lastModified"`
-	Location     string `json:"location"`
-	ResourceType string `json:"resourceType"`
+	Created      *string `json:"created"`
+	LastModified *string `json:"lastModified"`
+	Location     *string `json:"location"`
+	ResourceType *string `json:"resourceType"`
 }
 
 type ScimUserListEnterpriseResourcesItemName struct {
-	FamilyName string `json:"familyName"`
-	GivenName  string `json:"givenName"`
+	FamilyName *string `json:"familyName"`
+	GivenName  *string `json:"givenName"`
 }
 
-type ScimUserMeta struct {
-	Created      time.Time `json:"created"`
-	LastModified time.Time `json:"lastModified"`
-	Location     string    `json:"location"`
-	ResourceType string    `json:"resourceType"`
-}
-
-type ScimUserOperationsItem struct {
-	Op   string `json:"op"`
-	Path string `json:"path"`
-}
-
-type SearchCodeOK struct {
-	IncompleteResults bool                   `json:"incomplete_results"`
-	Items             []CodeSearchResultItem `json:"items"`
-	TotalCount        int                    `json:"total_count"`
-}
-
-func (*SearchCodeOK) searchCodeResponse() {}
-
-type SearchCommitsOK struct {
-	IncompleteResults bool                     `json:"incomplete_results"`
-	Items             []CommitSearchResultItem `json:"items"`
-	TotalCount        int                      `json:"total_count"`
-}
-
-func (*SearchCommitsOK) searchCommitsResponse() {}
-
-type SearchIssuesAndPullRequestsOK struct {
-	IncompleteResults bool                    `json:"incomplete_results"`
-	Items             []IssueSearchResultItem `json:"items"`
-	TotalCount        int                     `json:"total_count"`
-}
-
-func (*SearchIssuesAndPullRequestsOK) searchIssuesAndPullRequestsResponse() {}
-
-type SearchLabelsOK struct {
-	IncompleteResults bool                    `json:"incomplete_results"`
-	Items             []LabelSearchResultItem `json:"items"`
-	TotalCount        int                     `json:"total_count"`
-}
-
-func (*SearchLabelsOK) searchLabelsResponse() {}
-
-type SearchReposOK struct {
-	IncompleteResults bool                   `json:"incomplete_results"`
-	Items             []RepoSearchResultItem `json:"items"`
-	TotalCount        int                    `json:"total_count"`
-}
-
-func (*SearchReposOK) searchReposResponse() {}
+type SearchResultTextMatches []SearchResultTextMatchesItem
 
 type SearchResultTextMatchesItem struct {
-	Fragment   string                                   `json:"fragment"`
-	Matches    []SearchResultTextMatchesItemMatchesItem `json:"matches"`
-	ObjectType string                                   `json:"object_type"`
-	ObjectURL  string                                   `json:"object_url"`
-	Property   string                                   `json:"property"`
+	Fragment   *string                                   `json:"fragment"`
+	Matches    *[]SearchResultTextMatchesItemMatchesItem `json:"matches"`
+	ObjectType *string                                   `json:"object_type"`
+	ObjectURL  *string                                   `json:"object_url"`
+	Property   *string                                   `json:"property"`
 }
 
 type SearchResultTextMatchesItemMatchesItem struct {
-	Indices []int  `json:"indices"`
-	Text    string `json:"text"`
+	Indices *[]int  `json:"indices"`
+	Text    *string `json:"text"`
 }
 
 type SearchTopicsOK struct {
@@ -7745,50 +8570,46 @@ type SearchTopicsOK struct {
 
 func (*SearchTopicsOK) searchTopicsResponse() {}
 
-type SearchUsersOK struct {
-	IncompleteResults bool                   `json:"incomplete_results"`
-	Items             []UserSearchResultItem `json:"items"`
-	TotalCount        int                    `json:"total_count"`
-}
-
-func (*SearchUsersOK) searchUsersResponse() {}
-
 type SecretScanningAlert struct {
-	CreatedAt    time.Time          `json:"created_at"`
-	HTMLURL      string             `json:"html_url"`
-	LocationsURL string             `json:"locations_url"`
-	Number       int                `json:"number"`
-	Resolution   string             `json:"resolution"`
-	ResolvedAt   time.Time          `json:"resolved_at"`
-	ResolvedBy   NullableSimpleUser `json:"resolved_by"`
-	Secret       string             `json:"secret"`
-	SecretType   string             `json:"secret_type"`
-	State        string             `json:"state"`
-	URL          string             `json:"url"`
+	CreatedAt    *AlertCreatedAt                `json:"created_at"`
+	HTMLURL      *AlertHTMLURL                  `json:"html_url"`
+	LocationsURL *string                        `json:"locations_url"`
+	Number       *AlertNumber                   `json:"number"`
+	Resolution   *SecretScanningAlertResolution `json:"resolution"`
+	ResolvedAt   *time.Time                     `json:"resolved_at"`
+	ResolvedBy   *NullableSimpleUser            `json:"resolved_by"`
+	Secret       *string                        `json:"secret"`
+	SecretType   *string                        `json:"secret_type"`
+	State        *SecretScanningAlertState      `json:"state"`
+	URL          *AlertURL                      `json:"url"`
 }
 
 func (*SecretScanningAlert) secretScanningGetAlertResponse()    {}
 func (*SecretScanningAlert) secretScanningUpdateAlertResponse() {}
 
+type SecretScanningAlertResolution string
+
+const (
+	SecretScanningAlertResolutionFalsePositive SecretScanningAlertResolution = "false_positive"
+	SecretScanningAlertResolutionWontFix       SecretScanningAlertResolution = "wont_fix"
+	SecretScanningAlertResolutionRevoked       SecretScanningAlertResolution = "revoked"
+	SecretScanningAlertResolutionUsedInTests   SecretScanningAlertResolution = "used_in_tests"
+)
+
+type SecretScanningAlertState string
+
+const (
+	SecretScanningAlertStateOpen     SecretScanningAlertState = "open"
+	SecretScanningAlertStateResolved SecretScanningAlertState = "resolved"
+)
+
 type SecretScanningGetAlertNotFound struct{}
 
 func (*SecretScanningGetAlertNotFound) secretScanningGetAlertResponse() {}
 
-type SecretScanningListAlertsForOrgOK []OrganizationSecretScanningAlert
-
-func (*SecretScanningListAlertsForOrgOK) secretScanningListAlertsForOrgResponse() {}
-
-type SecretScanningListAlertsForRepoNotFound struct{}
-
-func (*SecretScanningListAlertsForRepoNotFound) secretScanningListAlertsForRepoResponse() {}
-
-type SecretScanningListAlertsForRepoOK []SecretScanningAlert
-
-func (*SecretScanningListAlertsForRepoOK) secretScanningListAlertsForRepoResponse() {}
-
 type SecretScanningUpdateAlertApplicationJSONRequest struct {
-	Resolution string `json:"resolution"`
-	State      string `json:"state"`
+	Resolution *SecretScanningAlertResolution `json:"resolution"`
+	State      SecretScanningAlertState       `json:"state"`
 }
 
 type SecretScanningUpdateAlertNotFound struct{}
@@ -7800,24 +8621,42 @@ type SecretScanningUpdateAlertUnprocessableEntity struct{}
 func (*SecretScanningUpdateAlertUnprocessableEntity) secretScanningUpdateAlertResponse() {}
 
 type SelectedActions struct {
-	GithubOwnedAllowed bool     `json:"github_owned_allowed"`
-	PatternsAllowed    []string `json:"patterns_allowed"`
-	VerifiedAllowed    bool     `json:"verified_allowed"`
+	GithubOwnedAllowed *bool     `json:"github_owned_allowed"`
+	PatternsAllowed    *[]string `json:"patterns_allowed"`
+	VerifiedAllowed    *bool     `json:"verified_allowed"`
 }
+
+type SelectedActionsURL string
+
+type ServiceUnavailable struct {
+	Code             *string `json:"code"`
+	DocumentationURL *string `json:"documentation_url"`
+	Message          *string `json:"message"`
+}
+
+func (*ServiceUnavailable) activityListPublicEventsResponse()       {}
+func (*ServiceUnavailable) codeScanningDeleteAnalysisResponse()     {}
+func (*ServiceUnavailable) codeScanningGetAlertResponse()           {}
+func (*ServiceUnavailable) codeScanningGetAnalysisResponse()        {}
+func (*ServiceUnavailable) codeScanningGetSarifResponse()           {}
+func (*ServiceUnavailable) codeScanningListAlertInstancesResponse() {}
+func (*ServiceUnavailable) codeScanningListRecentAnalysesResponse() {}
+func (*ServiceUnavailable) codeScanningUpdateAlertResponse()        {}
+func (*ServiceUnavailable) codeScanningUploadSarifResponse()        {}
+func (*ServiceUnavailable) secretScanningGetAlertResponse()         {}
+func (*ServiceUnavailable) secretScanningUpdateAlertResponse()      {}
 
 type ShortBlob struct {
 	Sha string `json:"sha"`
 	URL string `json:"url"`
 }
 
-func (*ShortBlob) gitCreateBlobResponse() {}
-
 type ShortBranch struct {
 	Commit        ShortBranchCommit `json:"commit"`
 	Name          string            `json:"name"`
 	Protected     bool              `json:"protected"`
-	Protection    BranchProtection  `json:"protection"`
-	ProtectionURL string            `json:"protection_url"`
+	Protection    *BranchProtection `json:"protection"`
+	ProtectionURL *string           `json:"protection_url"`
 }
 
 type ShortBranchCommit struct {
@@ -7851,7 +8690,7 @@ type SimpleCommitStatus struct {
 	Description string    `json:"description"`
 	ID          int       `json:"id"`
 	NodeID      string    `json:"node_id"`
-	Required    bool      `json:"required"`
+	Required    *bool     `json:"required"`
 	State       string    `json:"state"`
 	TargetURL   string    `json:"target_url"`
 	URL         string    `json:"url"`
@@ -7859,32 +8698,27 @@ type SimpleCommitStatus struct {
 }
 
 type SimpleUser struct {
-	AvatarURL         string `json:"avatar_url"`
-	Email             string `json:"email"`
-	EventsURL         string `json:"events_url"`
-	FollowersURL      string `json:"followers_url"`
-	FollowingURL      string `json:"following_url"`
-	GistsURL          string `json:"gists_url"`
-	GravatarID        string `json:"gravatar_id"`
-	HTMLURL           string `json:"html_url"`
-	ID                int    `json:"id"`
-	Login             string `json:"login"`
-	Name              string `json:"name"`
-	NodeID            string `json:"node_id"`
-	OrganizationsURL  string `json:"organizations_url"`
-	ReceivedEventsURL string `json:"received_events_url"`
-	ReposURL          string `json:"repos_url"`
-	SiteAdmin         bool   `json:"site_admin"`
-	StarredAt         string `json:"starred_at"`
-	StarredURL        string `json:"starred_url"`
-	SubscriptionsURL  string `json:"subscriptions_url"`
-	Type              string `json:"type"`
-	URL               string `json:"url"`
-}
-
-type StarredRepository struct {
-	Repo      Repository `json:"repo"`
-	StarredAt time.Time  `json:"starred_at"`
+	AvatarURL         string  `json:"avatar_url"`
+	Email             *string `json:"email"`
+	EventsURL         string  `json:"events_url"`
+	FollowersURL      string  `json:"followers_url"`
+	FollowingURL      string  `json:"following_url"`
+	GistsURL          string  `json:"gists_url"`
+	GravatarID        string  `json:"gravatar_id"`
+	HTMLURL           string  `json:"html_url"`
+	ID                int     `json:"id"`
+	Login             string  `json:"login"`
+	Name              *string `json:"name"`
+	NodeID            string  `json:"node_id"`
+	OrganizationsURL  string  `json:"organizations_url"`
+	ReceivedEventsURL string  `json:"received_events_url"`
+	ReposURL          string  `json:"repos_url"`
+	SiteAdmin         bool    `json:"site_admin"`
+	StarredAt         *string `json:"starred_at"`
+	StarredURL        string  `json:"starred_url"`
+	SubscriptionsURL  string  `json:"subscriptions_url"`
+	Type              string  `json:"type"`
+	URL               string  `json:"url"`
 }
 
 type Status struct {
@@ -7908,8 +8742,7 @@ type StatusCheckPolicy struct {
 	URL         string   `json:"url"`
 }
 
-func (*StatusCheckPolicy) reposGetStatusChecksProtectionResponse()   {}
-func (*StatusCheckPolicy) reposUpdateStatusCheckProtectionResponse() {}
+func (*StatusCheckPolicy) reposGetStatusChecksProtectionResponse() {}
 
 type Tag struct {
 	Commit     TagCommit `json:"commit"`
@@ -7933,8 +8766,8 @@ type Team struct {
 	NodeID          string             `json:"node_id"`
 	Parent          NullableTeamSimple `json:"parent"`
 	Permission      string             `json:"permission"`
-	Permissions     TeamPermissions    `json:"permissions"`
-	Privacy         string             `json:"privacy"`
+	Permissions     *TeamPermissions   `json:"permissions"`
+	Privacy         *string            `json:"privacy"`
 	RepositoriesURL string             `json:"repositories_url"`
 	Slug            string             `json:"slug"`
 	URL             string             `json:"url"`
@@ -7954,7 +8787,7 @@ type TeamDiscussion struct {
 	Number        int                `json:"number"`
 	Pinned        bool               `json:"pinned"`
 	Private       bool               `json:"private"`
-	Reactions     ReactionRollup     `json:"reactions"`
+	Reactions     *ReactionRollup    `json:"reactions"`
 	TeamURL       string             `json:"team_url"`
 	Title         string             `json:"title"`
 	URL           string             `json:"url"`
@@ -7972,47 +8805,66 @@ type TeamDiscussionComment struct {
 	LastEditedAt  time.Time          `json:"last_edited_at"`
 	NodeID        string             `json:"node_id"`
 	Number        int                `json:"number"`
-	Reactions     ReactionRollup     `json:"reactions"`
+	Reactions     *ReactionRollup    `json:"reactions"`
 	URL           string             `json:"url"`
 	UpdatedAt     time.Time          `json:"updated_at"`
 }
 
 type TeamFull struct {
-	CreatedAt       time.Time          `json:"created_at"`
-	Description     string             `json:"description"`
-	HTMLURL         string             `json:"html_url"`
-	ID              int                `json:"id"`
-	LdapDn          string             `json:"ldap_dn"`
-	MembersCount    int                `json:"members_count"`
-	MembersURL      string             `json:"members_url"`
-	Name            string             `json:"name"`
-	NodeID          string             `json:"node_id"`
-	Organization    OrganizationFull   `json:"organization"`
-	Parent          NullableTeamSimple `json:"parent"`
-	Permission      string             `json:"permission"`
-	Privacy         string             `json:"privacy"`
-	ReposCount      int                `json:"repos_count"`
-	RepositoriesURL string             `json:"repositories_url"`
-	Slug            string             `json:"slug"`
-	URL             string             `json:"url"`
-	UpdatedAt       time.Time          `json:"updated_at"`
+	CreatedAt       time.Time           `json:"created_at"`
+	Description     string              `json:"description"`
+	HTMLURL         string              `json:"html_url"`
+	ID              int                 `json:"id"`
+	LdapDn          *string             `json:"ldap_dn"`
+	MembersCount    int                 `json:"members_count"`
+	MembersURL      string              `json:"members_url"`
+	Name            string              `json:"name"`
+	NodeID          string              `json:"node_id"`
+	Organization    OrganizationFull    `json:"organization"`
+	Parent          *NullableTeamSimple `json:"parent"`
+	Permission      string              `json:"permission"`
+	Privacy         *TeamFullPrivacy    `json:"privacy"`
+	ReposCount      int                 `json:"repos_count"`
+	RepositoriesURL string              `json:"repositories_url"`
+	Slug            string              `json:"slug"`
+	URL             string              `json:"url"`
+	UpdatedAt       time.Time           `json:"updated_at"`
 }
 
-func (*TeamFull) teamsCreateResponse()       {}
-func (*TeamFull) teamsGetByNameResponse()    {}
-func (*TeamFull) teamsGetLegacyResponse()    {}
-func (*TeamFull) teamsUpdateLegacyResponse() {}
+func (*TeamFull) teamsGetByNameResponse() {}
+func (*TeamFull) teamsGetLegacyResponse() {}
+
+type TeamFullPrivacy string
+
+const (
+	TeamFullPrivacyClosed TeamFullPrivacy = "closed"
+	TeamFullPrivacySecret TeamFullPrivacy = "secret"
+)
 
 type TeamMembership struct {
-	Role  string `json:"role"`
-	State string `json:"state"`
-	URL   string `json:"url"`
+	Role  TeamMembershipRole  `json:"role"`
+	State TeamMembershipState `json:"state"`
+	URL   string              `json:"url"`
 }
 
 func (*TeamMembership) teamsAddOrUpdateMembershipForUserInOrgResponse()  {}
 func (*TeamMembership) teamsAddOrUpdateMembershipForUserLegacyResponse() {}
 func (*TeamMembership) teamsGetMembershipForUserInOrgResponse()          {}
 func (*TeamMembership) teamsGetMembershipForUserLegacyResponse()         {}
+
+type TeamMembershipRole string
+
+const (
+	TeamMembershipRoleMember     TeamMembershipRole = "member"
+	TeamMembershipRoleMaintainer TeamMembershipRole = "maintainer"
+)
+
+type TeamMembershipState string
+
+const (
+	TeamMembershipStateActive  TeamMembershipState = "active"
+	TeamMembershipStatePending TeamMembershipState = "pending"
+)
 
 type TeamPermissions struct {
 	Admin    bool `json:"admin"`
@@ -8032,10 +8884,10 @@ type TeamProject struct {
 	Name                   string                 `json:"name"`
 	NodeID                 string                 `json:"node_id"`
 	Number                 int                    `json:"number"`
-	OrganizationPermission string                 `json:"organization_permission"`
+	OrganizationPermission *string                `json:"organization_permission"`
 	OwnerURL               string                 `json:"owner_url"`
 	Permissions            TeamProjectPermissions `json:"permissions"`
-	Private                bool                   `json:"private"`
+	Private                *bool                  `json:"private"`
 	State                  string                 `json:"state"`
 	URL                    string                 `json:"url"`
 	UpdatedAt              string                 `json:"updated_at"`
@@ -8051,120 +8903,120 @@ type TeamProjectPermissions struct {
 }
 
 type TeamRepository struct {
-	AllowAutoMerge      bool                      `json:"allow_auto_merge"`
-	AllowForking        bool                      `json:"allow_forking"`
-	AllowMergeCommit    bool                      `json:"allow_merge_commit"`
-	AllowRebaseMerge    bool                      `json:"allow_rebase_merge"`
-	AllowSquashMerge    bool                      `json:"allow_squash_merge"`
-	ArchiveURL          string                    `json:"archive_url"`
-	Archived            bool                      `json:"archived"`
-	AssigneesURL        string                    `json:"assignees_url"`
-	BlobsURL            string                    `json:"blobs_url"`
-	BranchesURL         string                    `json:"branches_url"`
-	CloneURL            string                    `json:"clone_url"`
-	CollaboratorsURL    string                    `json:"collaborators_url"`
-	CommentsURL         string                    `json:"comments_url"`
-	CommitsURL          string                    `json:"commits_url"`
-	CompareURL          string                    `json:"compare_url"`
-	ContentsURL         string                    `json:"contents_url"`
-	ContributorsURL     string                    `json:"contributors_url"`
-	CreatedAt           time.Time                 `json:"created_at"`
-	DefaultBranch       string                    `json:"default_branch"`
-	DeleteBranchOnMerge bool                      `json:"delete_branch_on_merge"`
-	DeploymentsURL      string                    `json:"deployments_url"`
-	Description         string                    `json:"description"`
-	Disabled            bool                      `json:"disabled"`
-	DownloadsURL        string                    `json:"downloads_url"`
-	EventsURL           string                    `json:"events_url"`
-	Fork                bool                      `json:"fork"`
-	Forks               int                       `json:"forks"`
-	ForksCount          int                       `json:"forks_count"`
-	ForksURL            string                    `json:"forks_url"`
-	FullName            string                    `json:"full_name"`
-	GitCommitsURL       string                    `json:"git_commits_url"`
-	GitRefsURL          string                    `json:"git_refs_url"`
-	GitTagsURL          string                    `json:"git_tags_url"`
-	GitURL              string                    `json:"git_url"`
-	HTMLURL             string                    `json:"html_url"`
-	HasDownloads        bool                      `json:"has_downloads"`
-	HasIssues           bool                      `json:"has_issues"`
-	HasPages            bool                      `json:"has_pages"`
-	HasProjects         bool                      `json:"has_projects"`
-	HasWiki             bool                      `json:"has_wiki"`
-	Homepage            string                    `json:"homepage"`
-	HooksURL            string                    `json:"hooks_url"`
-	ID                  int                       `json:"id"`
-	IsTemplate          bool                      `json:"is_template"`
-	IssueCommentURL     string                    `json:"issue_comment_url"`
-	IssueEventsURL      string                    `json:"issue_events_url"`
-	IssuesURL           string                    `json:"issues_url"`
-	KeysURL             string                    `json:"keys_url"`
-	LabelsURL           string                    `json:"labels_url"`
-	Language            string                    `json:"language"`
-	LanguagesURL        string                    `json:"languages_url"`
-	License             NullableLicenseSimple     `json:"license"`
-	MasterBranch        string                    `json:"master_branch"`
-	MergesURL           string                    `json:"merges_url"`
-	MilestonesURL       string                    `json:"milestones_url"`
-	MirrorURL           string                    `json:"mirror_url"`
-	Name                string                    `json:"name"`
-	NetworkCount        int                       `json:"network_count"`
-	NodeID              string                    `json:"node_id"`
-	NotificationsURL    string                    `json:"notifications_url"`
-	OpenIssues          int                       `json:"open_issues"`
-	OpenIssuesCount     int                       `json:"open_issues_count"`
-	Owner               NullableSimpleUser        `json:"owner"`
-	Permissions         TeamRepositoryPermissions `json:"permissions"`
-	Private             bool                      `json:"private"`
-	PullsURL            string                    `json:"pulls_url"`
-	PushedAt            time.Time                 `json:"pushed_at"`
-	ReleasesURL         string                    `json:"releases_url"`
-	SSHURL              string                    `json:"ssh_url"`
-	Size                int                       `json:"size"`
-	StargazersCount     int                       `json:"stargazers_count"`
-	StargazersURL       string                    `json:"stargazers_url"`
-	StatusesURL         string                    `json:"statuses_url"`
-	SubscribersCount    int                       `json:"subscribers_count"`
-	SubscribersURL      string                    `json:"subscribers_url"`
-	SubscriptionURL     string                    `json:"subscription_url"`
-	SvnURL              string                    `json:"svn_url"`
-	TagsURL             string                    `json:"tags_url"`
-	TeamsURL            string                    `json:"teams_url"`
-	TempCloneToken      string                    `json:"temp_clone_token"`
-	TemplateRepository  NullableRepository        `json:"template_repository"`
-	Topics              []string                  `json:"topics"`
-	TreesURL            string                    `json:"trees_url"`
-	URL                 string                    `json:"url"`
-	UpdatedAt           time.Time                 `json:"updated_at"`
-	Visibility          string                    `json:"visibility"`
-	Watchers            int                       `json:"watchers"`
-	WatchersCount       int                       `json:"watchers_count"`
+	AllowAutoMerge      *bool                      `json:"allow_auto_merge"`
+	AllowForking        *bool                      `json:"allow_forking"`
+	AllowMergeCommit    *bool                      `json:"allow_merge_commit"`
+	AllowRebaseMerge    *bool                      `json:"allow_rebase_merge"`
+	AllowSquashMerge    *bool                      `json:"allow_squash_merge"`
+	ArchiveURL          string                     `json:"archive_url"`
+	Archived            bool                       `json:"archived"`
+	AssigneesURL        string                     `json:"assignees_url"`
+	BlobsURL            string                     `json:"blobs_url"`
+	BranchesURL         string                     `json:"branches_url"`
+	CloneURL            string                     `json:"clone_url"`
+	CollaboratorsURL    string                     `json:"collaborators_url"`
+	CommentsURL         string                     `json:"comments_url"`
+	CommitsURL          string                     `json:"commits_url"`
+	CompareURL          string                     `json:"compare_url"`
+	ContentsURL         string                     `json:"contents_url"`
+	ContributorsURL     string                     `json:"contributors_url"`
+	CreatedAt           time.Time                  `json:"created_at"`
+	DefaultBranch       string                     `json:"default_branch"`
+	DeleteBranchOnMerge *bool                      `json:"delete_branch_on_merge"`
+	DeploymentsURL      string                     `json:"deployments_url"`
+	Description         string                     `json:"description"`
+	Disabled            bool                       `json:"disabled"`
+	DownloadsURL        string                     `json:"downloads_url"`
+	EventsURL           string                     `json:"events_url"`
+	Fork                bool                       `json:"fork"`
+	Forks               int                        `json:"forks"`
+	ForksCount          int                        `json:"forks_count"`
+	ForksURL            string                     `json:"forks_url"`
+	FullName            string                     `json:"full_name"`
+	GitCommitsURL       string                     `json:"git_commits_url"`
+	GitRefsURL          string                     `json:"git_refs_url"`
+	GitTagsURL          string                     `json:"git_tags_url"`
+	GitURL              string                     `json:"git_url"`
+	HTMLURL             string                     `json:"html_url"`
+	HasDownloads        bool                       `json:"has_downloads"`
+	HasIssues           bool                       `json:"has_issues"`
+	HasPages            bool                       `json:"has_pages"`
+	HasProjects         bool                       `json:"has_projects"`
+	HasWiki             bool                       `json:"has_wiki"`
+	Homepage            string                     `json:"homepage"`
+	HooksURL            string                     `json:"hooks_url"`
+	ID                  int                        `json:"id"`
+	IsTemplate          *bool                      `json:"is_template"`
+	IssueCommentURL     string                     `json:"issue_comment_url"`
+	IssueEventsURL      string                     `json:"issue_events_url"`
+	IssuesURL           string                     `json:"issues_url"`
+	KeysURL             string                     `json:"keys_url"`
+	LabelsURL           string                     `json:"labels_url"`
+	Language            string                     `json:"language"`
+	LanguagesURL        string                     `json:"languages_url"`
+	License             NullableLicenseSimple      `json:"license"`
+	MasterBranch        *string                    `json:"master_branch"`
+	MergesURL           string                     `json:"merges_url"`
+	MilestonesURL       string                     `json:"milestones_url"`
+	MirrorURL           string                     `json:"mirror_url"`
+	Name                string                     `json:"name"`
+	NetworkCount        *int                       `json:"network_count"`
+	NodeID              string                     `json:"node_id"`
+	NotificationsURL    string                     `json:"notifications_url"`
+	OpenIssues          int                        `json:"open_issues"`
+	OpenIssuesCount     int                        `json:"open_issues_count"`
+	Owner               NullableSimpleUser         `json:"owner"`
+	Permissions         *TeamRepositoryPermissions `json:"permissions"`
+	Private             bool                       `json:"private"`
+	PullsURL            string                     `json:"pulls_url"`
+	PushedAt            time.Time                  `json:"pushed_at"`
+	ReleasesURL         string                     `json:"releases_url"`
+	SSHURL              string                     `json:"ssh_url"`
+	Size                int                        `json:"size"`
+	StargazersCount     int                        `json:"stargazers_count"`
+	StargazersURL       string                     `json:"stargazers_url"`
+	StatusesURL         string                     `json:"statuses_url"`
+	SubscribersCount    *int                       `json:"subscribers_count"`
+	SubscribersURL      string                     `json:"subscribers_url"`
+	SubscriptionURL     string                     `json:"subscription_url"`
+	SvnURL              string                     `json:"svn_url"`
+	TagsURL             string                     `json:"tags_url"`
+	TeamsURL            string                     `json:"teams_url"`
+	TempCloneToken      *string                    `json:"temp_clone_token"`
+	TemplateRepository  *NullableRepository        `json:"template_repository"`
+	Topics              *[]string                  `json:"topics"`
+	TreesURL            string                     `json:"trees_url"`
+	URL                 string                     `json:"url"`
+	UpdatedAt           time.Time                  `json:"updated_at"`
+	Visibility          *string                    `json:"visibility"`
+	Watchers            int                        `json:"watchers"`
+	WatchersCount       int                        `json:"watchers_count"`
 }
 
 func (*TeamRepository) teamsCheckPermissionsForRepoInOrgResponse()  {}
 func (*TeamRepository) teamsCheckPermissionsForRepoLegacyResponse() {}
 
 type TeamRepositoryPermissions struct {
-	Admin    bool `json:"admin"`
-	Maintain bool `json:"maintain"`
-	Pull     bool `json:"pull"`
-	Push     bool `json:"push"`
-	Triage   bool `json:"triage"`
+	Admin    bool  `json:"admin"`
+	Maintain *bool `json:"maintain"`
+	Pull     bool  `json:"pull"`
+	Push     bool  `json:"push"`
+	Triage   *bool `json:"triage"`
 }
 
 type TeamSimple struct {
-	Description     string `json:"description"`
-	HTMLURL         string `json:"html_url"`
-	ID              int    `json:"id"`
-	LdapDn          string `json:"ldap_dn"`
-	MembersURL      string `json:"members_url"`
-	Name            string `json:"name"`
-	NodeID          string `json:"node_id"`
-	Permission      string `json:"permission"`
-	Privacy         string `json:"privacy"`
-	RepositoriesURL string `json:"repositories_url"`
-	Slug            string `json:"slug"`
-	URL             string `json:"url"`
+	Description     string  `json:"description"`
+	HTMLURL         string  `json:"html_url"`
+	ID              int     `json:"id"`
+	LdapDn          *string `json:"ldap_dn"`
+	MembersURL      string  `json:"members_url"`
+	Name            string  `json:"name"`
+	NodeID          string  `json:"node_id"`
+	Permission      string  `json:"permission"`
+	Privacy         *string `json:"privacy"`
+	RepositoriesURL string  `json:"repositories_url"`
+	Slug            string  `json:"slug"`
+	URL             string  `json:"url"`
 }
 
 type TeamsAddMemberLegacyNoContent struct{}
@@ -8180,8 +9032,15 @@ type TeamsAddMemberLegacyUnprocessableEntity struct{}
 func (*TeamsAddMemberLegacyUnprocessableEntity) teamsAddMemberLegacyResponse() {}
 
 type TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest struct {
-	Role string `json:"role"`
+	Role *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole `json:"role"`
 }
+
+type TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole string
+
+const (
+	TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRoleMember     TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole = "member"
+	TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRoleMaintainer TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole = "maintainer"
+)
 
 type TeamsAddOrUpdateMembershipForUserInOrgForbidden struct{}
 
@@ -8194,8 +9053,15 @@ func (*TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) teamsAddOrUpda
 }
 
 type TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest struct {
-	Role string `json:"role"`
+	Role *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole `json:"role"`
 }
+
+type TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole string
+
+const (
+	TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRoleMember     TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole = "member"
+	TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRoleMaintainer TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole = "maintainer"
+)
 
 type TeamsAddOrUpdateMembershipForUserLegacyForbidden struct{}
 
@@ -8208,12 +9074,20 @@ func (*TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) teamsAddOrUpd
 }
 
 type TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest struct {
-	Permission string `json:"permission"`
+	Permission *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission `json:"permission"`
 }
 
+type TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission string
+
+const (
+	TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermissionRead  TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission = "read"
+	TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermissionWrite TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission = "write"
+	TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermissionAdmin TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission = "admin"
+)
+
 type TeamsAddOrUpdateProjectPermissionsInOrgForbidden struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
+	DocumentationURL *string `json:"documentation_url"`
+	Message          *string `json:"message"`
 }
 
 func (*TeamsAddOrUpdateProjectPermissionsInOrgForbidden) teamsAddOrUpdateProjectPermissionsInOrgResponse() {
@@ -8225,36 +9099,59 @@ func (*TeamsAddOrUpdateProjectPermissionsInOrgNoContent) teamsAddOrUpdateProject
 }
 
 type TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest struct {
-	Permission string `json:"permission"`
+	Permission *TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission `json:"permission"`
 }
+
+func (*TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest) teamsAddOrUpdateProjectPermissionsLegacyRequest() {
+}
+
+type TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission string
+
+const (
+	TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermissionRead  TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission = "read"
+	TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermissionWrite TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission = "write"
+	TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermissionAdmin TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission = "admin"
+)
 
 type TeamsAddOrUpdateProjectPermissionsLegacyForbidden struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-func (*TeamsAddOrUpdateProjectPermissionsLegacyForbidden) teamsAddOrUpdateProjectPermissionsLegacyResponse() {
+	DocumentationURL *string `json:"documentation_url"`
+	Message          *string `json:"message"`
 }
 
 type TeamsAddOrUpdateProjectPermissionsLegacyNoContent struct{}
 
-func (*TeamsAddOrUpdateProjectPermissionsLegacyNoContent) teamsAddOrUpdateProjectPermissionsLegacyResponse() {
-}
-
 type TeamsAddOrUpdateRepoPermissionsInOrg struct{}
 
 type TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest struct {
-	Permission string `json:"permission"`
+	Permission *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission `json:"permission"`
 }
+
+type TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission string
+
+const (
+	TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermissionPull     TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission = "pull"
+	TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermissionPush     TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission = "push"
+	TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermissionAdmin    TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission = "admin"
+	TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermissionMaintain TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission = "maintain"
+	TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermissionTriage   TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission = "triage"
+)
 
 type TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest struct {
-	Permission string `json:"permission"`
+	Permission *TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission `json:"permission"`
 }
+
+func (*TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest) teamsAddOrUpdateRepoPermissionsLegacyRequest() {
+}
+
+type TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission string
+
+const (
+	TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermissionPull  TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission = "pull"
+	TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermissionPush  TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission = "push"
+	TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermissionAdmin TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission = "admin"
+)
 
 type TeamsAddOrUpdateRepoPermissionsLegacyNoContent struct{}
-
-func (*TeamsAddOrUpdateRepoPermissionsLegacyNoContent) teamsAddOrUpdateRepoPermissionsLegacyResponse() {
-}
 
 type TeamsCheckPermissionsForProjectInOrgNotFound struct{}
 
@@ -8282,14 +9179,31 @@ type TeamsCheckPermissionsForRepoLegacyNotFound struct{}
 func (*TeamsCheckPermissionsForRepoLegacyNotFound) teamsCheckPermissionsForRepoLegacyResponse() {}
 
 type TeamsCreateApplicationJSONRequest struct {
-	Description  string   `json:"description"`
-	Maintainers  []string `json:"maintainers"`
-	Name         string   `json:"name"`
-	ParentTeamID int      `json:"parent_team_id"`
-	Permission   string   `json:"permission"`
-	Privacy      string   `json:"privacy"`
-	RepoNames    []string `json:"repo_names"`
+	Description  *string                                      `json:"description"`
+	Maintainers  *[]string                                    `json:"maintainers"`
+	Name         string                                       `json:"name"`
+	ParentTeamID *int                                         `json:"parent_team_id"`
+	Permission   *TeamsCreateApplicationJSONRequestPermission `json:"permission"`
+	Privacy      *TeamsCreateApplicationJSONRequestPrivacy    `json:"privacy"`
+	RepoNames    *[]string                                    `json:"repo_names"`
 }
+
+func (*TeamsCreateApplicationJSONRequest) teamsCreateRequest() {}
+
+type TeamsCreateApplicationJSONRequestPermission string
+
+const (
+	TeamsCreateApplicationJSONRequestPermissionPull  TeamsCreateApplicationJSONRequestPermission = "pull"
+	TeamsCreateApplicationJSONRequestPermissionPush  TeamsCreateApplicationJSONRequestPermission = "push"
+	TeamsCreateApplicationJSONRequestPermissionAdmin TeamsCreateApplicationJSONRequestPermission = "admin"
+)
+
+type TeamsCreateApplicationJSONRequestPrivacy string
+
+const (
+	TeamsCreateApplicationJSONRequestPrivacySecret TeamsCreateApplicationJSONRequestPrivacy = "secret"
+	TeamsCreateApplicationJSONRequestPrivacyClosed TeamsCreateApplicationJSONRequestPrivacy = "closed"
+)
 
 type TeamsCreateDiscussionCommentInOrgApplicationJSONRequest struct {
 	Body string `json:"body"`
@@ -8301,18 +9215,18 @@ type TeamsCreateDiscussionCommentLegacyApplicationJSONRequest struct {
 
 type TeamsCreateDiscussionInOrgApplicationJSONRequest struct {
 	Body    string `json:"body"`
-	Private bool   `json:"private"`
+	Private *bool  `json:"private"`
 	Title   string `json:"title"`
 }
 
 type TeamsCreateDiscussionLegacyApplicationJSONRequest struct {
 	Body    string `json:"body"`
-	Private bool   `json:"private"`
+	Private *bool  `json:"private"`
 	Title   string `json:"title"`
 }
 
 type TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequest struct {
-	Groups []TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequestGroupsItem `json:"groups"`
+	Groups *[]TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequestGroupsItem `json:"groups"`
 }
 
 type TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequestGroupsItem struct {
@@ -8323,16 +9237,19 @@ type TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequestGroupsItem
 
 type TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequest struct {
 	Groups   []TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequestGroupsItem `json:"groups"`
-	SyncedAt string                                                                         `json:"synced_at"`
+	SyncedAt *string                                                                        `json:"synced_at"`
+}
+
+func (*TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequest) teamsCreateOrUpdateIdpGroupConnectionsLegacyRequest() {
 }
 
 type TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequestGroupsItem struct {
-	Description      string `json:"description"`
-	GroupDescription string `json:"group_description"`
-	GroupID          string `json:"group_id"`
-	GroupName        string `json:"group_name"`
-	ID               string `json:"id"`
-	Name             string `json:"name"`
+	Description      *string `json:"description"`
+	GroupDescription string  `json:"group_description"`
+	GroupID          string  `json:"group_id"`
+	GroupName        string  `json:"group_name"`
+	ID               *string `json:"id"`
+	Name             *string `json:"name"`
 }
 
 type TeamsDeleteDiscussionCommentInOrg struct{}
@@ -8346,8 +9263,6 @@ type TeamsDeleteDiscussionLegacy struct{}
 type TeamsDeleteInOrg struct{}
 
 type TeamsDeleteLegacyNoContent struct{}
-
-func (*TeamsDeleteLegacyNoContent) teamsDeleteLegacyResponse() {}
 
 type TeamsGetMemberLegacyNoContent struct{}
 
@@ -8363,15 +9278,27 @@ func (*TeamsGetMembershipForUserInOrgNotFound) teamsGetMembershipForUserInOrgRes
 
 type TeamsListChildLegacyOK []Team
 
-func (*TeamsListChildLegacyOK) teamsListChildLegacyResponse() {}
+type TeamsListForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*TeamsListForAuthenticatedUserApplicationJSONForbidden) teamsListForAuthenticatedUserResponse() {
+}
+
+type TeamsListForAuthenticatedUserApplicationJSONNotFound BasicError
+
+func (*TeamsListForAuthenticatedUserApplicationJSONNotFound) teamsListForAuthenticatedUserResponse() {
+}
 
 type TeamsListForAuthenticatedUserOK []TeamFull
 
 func (*TeamsListForAuthenticatedUserOK) teamsListForAuthenticatedUserResponse() {}
 
-type TeamsListMembersLegacyOK []SimpleUser
+type TeamsListIdpGroupsForLegacyApplicationJSONForbidden BasicError
 
-func (*TeamsListMembersLegacyOK) teamsListMembersLegacyResponse() {}
+func (*TeamsListIdpGroupsForLegacyApplicationJSONForbidden) teamsListIdpGroupsForLegacyResponse() {}
+
+type TeamsListIdpGroupsForLegacyApplicationJSONNotFound BasicError
+
+func (*TeamsListIdpGroupsForLegacyApplicationJSONNotFound) teamsListIdpGroupsForLegacyResponse() {}
 
 type TeamsListOK []Team
 
@@ -8413,8 +9340,6 @@ type TeamsRemoveProjectInOrg struct{}
 
 type TeamsRemoveProjectLegacyNoContent struct{}
 
-func (*TeamsRemoveProjectLegacyNoContent) teamsRemoveProjectLegacyResponse() {}
-
 type TeamsRemoveRepoInOrg struct{}
 
 type TeamsRemoveRepoLegacy struct{}
@@ -8428,30 +9353,62 @@ type TeamsUpdateDiscussionCommentLegacyApplicationJSONRequest struct {
 }
 
 type TeamsUpdateDiscussionInOrgApplicationJSONRequest struct {
-	Body  string `json:"body"`
-	Title string `json:"title"`
+	Body  *string `json:"body"`
+	Title *string `json:"title"`
 }
 
 type TeamsUpdateDiscussionLegacyApplicationJSONRequest struct {
-	Body  string `json:"body"`
-	Title string `json:"title"`
+	Body  *string `json:"body"`
+	Title *string `json:"title"`
 }
 
 type TeamsUpdateInOrgApplicationJSONRequest struct {
-	Description  string `json:"description"`
-	Name         string `json:"name"`
-	ParentTeamID int    `json:"parent_team_id"`
-	Permission   string `json:"permission"`
-	Privacy      string `json:"privacy"`
+	Description  *string                                           `json:"description"`
+	Name         *string                                           `json:"name"`
+	ParentTeamID *int                                              `json:"parent_team_id"`
+	Permission   *TeamsUpdateInOrgApplicationJSONRequestPermission `json:"permission"`
+	Privacy      *TeamsUpdateInOrgApplicationJSONRequestPrivacy    `json:"privacy"`
 }
 
+type TeamsUpdateInOrgApplicationJSONRequestPermission string
+
+const (
+	TeamsUpdateInOrgApplicationJSONRequestPermissionPull  TeamsUpdateInOrgApplicationJSONRequestPermission = "pull"
+	TeamsUpdateInOrgApplicationJSONRequestPermissionPush  TeamsUpdateInOrgApplicationJSONRequestPermission = "push"
+	TeamsUpdateInOrgApplicationJSONRequestPermissionAdmin TeamsUpdateInOrgApplicationJSONRequestPermission = "admin"
+)
+
+type TeamsUpdateInOrgApplicationJSONRequestPrivacy string
+
+const (
+	TeamsUpdateInOrgApplicationJSONRequestPrivacySecret TeamsUpdateInOrgApplicationJSONRequestPrivacy = "secret"
+	TeamsUpdateInOrgApplicationJSONRequestPrivacyClosed TeamsUpdateInOrgApplicationJSONRequestPrivacy = "closed"
+)
+
 type TeamsUpdateLegacyApplicationJSONRequest struct {
-	Description  string `json:"description"`
-	Name         string `json:"name"`
-	ParentTeamID int    `json:"parent_team_id"`
-	Permission   string `json:"permission"`
-	Privacy      string `json:"privacy"`
+	Description  *string                                            `json:"description"`
+	Name         string                                             `json:"name"`
+	ParentTeamID *int                                               `json:"parent_team_id"`
+	Permission   *TeamsUpdateLegacyApplicationJSONRequestPermission `json:"permission"`
+	Privacy      *TeamsUpdateLegacyApplicationJSONRequestPrivacy    `json:"privacy"`
 }
+
+func (*TeamsUpdateLegacyApplicationJSONRequest) teamsUpdateLegacyRequest() {}
+
+type TeamsUpdateLegacyApplicationJSONRequestPermission string
+
+const (
+	TeamsUpdateLegacyApplicationJSONRequestPermissionPull  TeamsUpdateLegacyApplicationJSONRequestPermission = "pull"
+	TeamsUpdateLegacyApplicationJSONRequestPermissionPush  TeamsUpdateLegacyApplicationJSONRequestPermission = "push"
+	TeamsUpdateLegacyApplicationJSONRequestPermissionAdmin TeamsUpdateLegacyApplicationJSONRequestPermission = "admin"
+)
+
+type TeamsUpdateLegacyApplicationJSONRequestPrivacy string
+
+const (
+	TeamsUpdateLegacyApplicationJSONRequestPrivacySecret TeamsUpdateLegacyApplicationJSONRequestPrivacy = "secret"
+	TeamsUpdateLegacyApplicationJSONRequestPrivacyClosed TeamsUpdateLegacyApplicationJSONRequestPrivacy = "closed"
+)
 
 type Thread struct {
 	ID              string            `json:"id"`
@@ -8478,9 +9435,9 @@ type ThreadSubscription struct {
 	CreatedAt     time.Time `json:"created_at"`
 	Ignored       bool      `json:"ignored"`
 	Reason        string    `json:"reason"`
-	RepositoryURL string    `json:"repository_url"`
+	RepositoryURL *string   `json:"repository_url"`
 	Subscribed    bool      `json:"subscribed"`
-	ThreadURL     string    `json:"thread_url"`
+	ThreadURL     *string   `json:"thread_url"`
 	URL           string    `json:"url"`
 }
 
@@ -8495,50 +9452,44 @@ func (*Topic) reposGetAllTopicsResponse()     {}
 func (*Topic) reposReplaceAllTopicsResponse() {}
 
 type TopicSearchResultItem struct {
-	Aliases          []TopicSearchResultItemAliasesItem `json:"aliases"`
-	CreatedAt        time.Time                          `json:"created_at"`
-	CreatedBy        string                             `json:"created_by"`
-	Curated          bool                               `json:"curated"`
-	Description      string                             `json:"description"`
-	DisplayName      string                             `json:"display_name"`
-	Featured         bool                               `json:"featured"`
-	LogoURL          string                             `json:"logo_url"`
-	Name             string                             `json:"name"`
-	Related          []TopicSearchResultItemRelatedItem `json:"related"`
-	Released         string                             `json:"released"`
-	RepositoryCount  int                                `json:"repository_count"`
-	Score            float                              `json:"score"`
-	ShortDescription string                             `json:"short_description"`
-	TextMatches      []SearchResultTextMatchesItem      `json:"text_matches"`
-	UpdatedAt        time.Time                          `json:"updated_at"`
+	Aliases          *[]TopicSearchResultItemAliasesItem `json:"aliases"`
+	CreatedAt        time.Time                           `json:"created_at"`
+	CreatedBy        string                              `json:"created_by"`
+	Curated          bool                                `json:"curated"`
+	Description      string                              `json:"description"`
+	DisplayName      string                              `json:"display_name"`
+	Featured         bool                                `json:"featured"`
+	LogoURL          *string                             `json:"logo_url"`
+	Name             string                              `json:"name"`
+	Related          *[]TopicSearchResultItemRelatedItem `json:"related"`
+	Released         string                              `json:"released"`
+	RepositoryCount  *int                                `json:"repository_count"`
+	Score            float64                             `json:"score"`
+	ShortDescription string                              `json:"short_description"`
+	TextMatches      *SearchResultTextMatches            `json:"text_matches"`
+	UpdatedAt        time.Time                           `json:"updated_at"`
 }
 
 type TopicSearchResultItemAliasesItem struct {
-	TopicRelation TopicSearchResultItemAliasesItemTopicRelation `json:"topic_relation"`
+	TopicRelation *TopicSearchResultItemAliasesItemTopicRelation `json:"topic_relation"`
 }
 
 type TopicSearchResultItemAliasesItemTopicRelation struct {
-	ID           int    `json:"id"`
-	Name         string `json:"name"`
-	RelationType string `json:"relation_type"`
-	TopicID      int    `json:"topic_id"`
+	ID           *int    `json:"id"`
+	Name         *string `json:"name"`
+	RelationType *string `json:"relation_type"`
+	TopicID      *int    `json:"topic_id"`
 }
 
 type TopicSearchResultItemRelatedItem struct {
-	TopicRelation TopicSearchResultItemRelatedItemTopicRelation `json:"topic_relation"`
+	TopicRelation *TopicSearchResultItemRelatedItemTopicRelation `json:"topic_relation"`
 }
 
 type TopicSearchResultItemRelatedItemTopicRelation struct {
-	ID           int    `json:"id"`
-	Name         string `json:"name"`
-	RelationType string `json:"relation_type"`
-	TopicID      int    `json:"topic_id"`
-}
-
-type Traffic struct {
-	Count     int       `json:"count"`
-	Timestamp time.Time `json:"timestamp"`
-	Uniques   int       `json:"uniques"`
+	ID           *int    `json:"id"`
+	Name         *string `json:"name"`
+	RelationType *string `json:"relation_type"`
+	TopicID      *int    `json:"topic_id"`
 }
 
 type UserMarketplacePurchase struct {
@@ -8552,50 +9503,19 @@ type UserMarketplacePurchase struct {
 	UpdatedAt       time.Time              `json:"updated_at"`
 }
 
-type UserSearchResultItem struct {
-	AvatarURL         string                        `json:"avatar_url"`
-	Bio               string                        `json:"bio"`
-	Blog              string                        `json:"blog"`
-	Company           string                        `json:"company"`
-	CreatedAt         time.Time                     `json:"created_at"`
-	Email             string                        `json:"email"`
-	EventsURL         string                        `json:"events_url"`
-	Followers         int                           `json:"followers"`
-	FollowersURL      string                        `json:"followers_url"`
-	Following         int                           `json:"following"`
-	FollowingURL      string                        `json:"following_url"`
-	GistsURL          string                        `json:"gists_url"`
-	GravatarID        string                        `json:"gravatar_id"`
-	HTMLURL           string                        `json:"html_url"`
-	Hireable          bool                          `json:"hireable"`
-	ID                int                           `json:"id"`
-	Location          string                        `json:"location"`
-	Login             string                        `json:"login"`
-	Name              string                        `json:"name"`
-	NodeID            string                        `json:"node_id"`
-	OrganizationsURL  string                        `json:"organizations_url"`
-	PublicGists       int                           `json:"public_gists"`
-	PublicRepos       int                           `json:"public_repos"`
-	ReceivedEventsURL string                        `json:"received_events_url"`
-	ReposURL          string                        `json:"repos_url"`
-	Score             float                         `json:"score"`
-	SiteAdmin         bool                          `json:"site_admin"`
-	StarredURL        string                        `json:"starred_url"`
-	SubscriptionsURL  string                        `json:"subscriptions_url"`
-	SuspendedAt       time.Time                     `json:"suspended_at"`
-	TextMatches       []SearchResultTextMatchesItem `json:"text_matches"`
-	Type              string                        `json:"type"`
-	URL               string                        `json:"url"`
-	UpdatedAt         time.Time                     `json:"updated_at"`
-}
-
-type UsersAddEmailForAuthenticatedCreated []Email
-
-func (*UsersAddEmailForAuthenticatedCreated) usersAddEmailForAuthenticatedResponse() {}
-
 type UsersBlockNoContent struct{}
 
-func (*UsersBlockNoContent) usersBlockResponse() {}
+type UsersCheckBlockedApplicationJSONForbidden BasicError
+
+func (*UsersCheckBlockedApplicationJSONForbidden) usersCheckBlockedResponse() {}
+
+type UsersCheckBlockedApplicationJSONNotFound BasicError
+
+func (*UsersCheckBlockedApplicationJSONNotFound) usersCheckBlockedResponse() {}
+
+type UsersCheckBlockedApplicationJSONUnauthorized BasicError
+
+func (*UsersCheckBlockedApplicationJSONUnauthorized) usersCheckBlockedResponse() {}
 
 type UsersCheckBlockedNoContent struct{}
 
@@ -8609,6 +9529,21 @@ type UsersCheckFollowingForUserNotFound struct{}
 
 func (*UsersCheckFollowingForUserNotFound) usersCheckFollowingForUserResponse() {}
 
+type UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden BasicError
+
+func (*UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) usersCheckPersonIsFollowedByAuthenticatedResponse() {
+}
+
+type UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound BasicError
+
+func (*UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound) usersCheckPersonIsFollowedByAuthenticatedResponse() {
+}
+
+type UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (*UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) usersCheckPersonIsFollowedByAuthenticatedResponse() {
+}
+
 type UsersCheckPersonIsFollowedByAuthenticatedNoContent struct{}
 
 func (*UsersCheckPersonIsFollowedByAuthenticatedNoContent) usersCheckPersonIsFollowedByAuthenticatedResponse() {
@@ -8618,43 +9553,165 @@ type UsersCreateGpgKeyForAuthenticatedApplicationJSONRequest struct {
 	ArmoredPublicKey string `json:"armored_public_key"`
 }
 
-type UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONRequest struct {
-	Key   string `json:"key"`
-	Title string `json:"title"`
+func (*UsersCreateGpgKeyForAuthenticatedApplicationJSONRequest) usersCreateGpgKeyForAuthenticatedRequest() {
 }
 
-type UsersDeleteEmailForAuthenticatedNoContent struct{}
+type UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONRequest struct {
+	Key   string  `json:"key"`
+	Title *string `json:"title"`
+}
 
-func (*UsersDeleteEmailForAuthenticatedNoContent) usersDeleteEmailForAuthenticatedResponse() {}
+func (*UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONRequest) usersCreatePublicSSHKeyForAuthenticatedRequest() {
+}
 
 type UsersDeleteGpgKeyForAuthenticatedNoContent struct{}
 
-func (*UsersDeleteGpgKeyForAuthenticatedNoContent) usersDeleteGpgKeyForAuthenticatedResponse() {}
+type UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden BasicError
+
+func (*UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) usersDeletePublicSSHKeyForAuthenticatedResponse() {
+}
+
+type UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound BasicError
+
+func (*UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound) usersDeletePublicSSHKeyForAuthenticatedResponse() {
+}
+
+type UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (*UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) usersDeletePublicSSHKeyForAuthenticatedResponse() {
+}
 
 type UsersDeletePublicSSHKeyForAuthenticatedNoContent struct{}
 
 func (*UsersDeletePublicSSHKeyForAuthenticatedNoContent) usersDeletePublicSSHKeyForAuthenticatedResponse() {
 }
 
+type UsersFollowApplicationJSONForbidden BasicError
+
+func (*UsersFollowApplicationJSONForbidden) usersFollowResponse() {}
+
+type UsersFollowApplicationJSONNotFound BasicError
+
+func (*UsersFollowApplicationJSONNotFound) usersFollowResponse() {}
+
+type UsersFollowApplicationJSONUnauthorized BasicError
+
+func (*UsersFollowApplicationJSONUnauthorized) usersFollowResponse() {}
+
 type UsersFollowNoContent struct{}
 
 func (*UsersFollowNoContent) usersFollowResponse() {}
+
+type UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden BasicError
+
+func (*UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) usersGetGpgKeyForAuthenticatedResponse() {
+}
+
+type UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound BasicError
+
+func (*UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) usersGetGpgKeyForAuthenticatedResponse() {
+}
+
+type UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (*UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) usersGetGpgKeyForAuthenticatedResponse() {
+}
+
+type UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden BasicError
+
+func (*UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) usersGetPublicSSHKeyForAuthenticatedResponse() {
+}
+
+type UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound BasicError
+
+func (*UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound) usersGetPublicSSHKeyForAuthenticatedResponse() {
+}
+
+type UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (*UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) usersGetPublicSSHKeyForAuthenticatedResponse() {
+}
+
+type UsersListBlockedByAuthenticatedApplicationJSONForbidden BasicError
+
+func (*UsersListBlockedByAuthenticatedApplicationJSONForbidden) usersListBlockedByAuthenticatedResponse() {
+}
+
+type UsersListBlockedByAuthenticatedApplicationJSONNotFound BasicError
+
+func (*UsersListBlockedByAuthenticatedApplicationJSONNotFound) usersListBlockedByAuthenticatedResponse() {
+}
+
+type UsersListBlockedByAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (*UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) usersListBlockedByAuthenticatedResponse() {
+}
 
 type UsersListBlockedByAuthenticatedOK []SimpleUser
 
 func (*UsersListBlockedByAuthenticatedOK) usersListBlockedByAuthenticatedResponse() {}
 
+type UsersListEmailsForAuthenticatedApplicationJSONForbidden BasicError
+
+func (*UsersListEmailsForAuthenticatedApplicationJSONForbidden) usersListEmailsForAuthenticatedResponse() {
+}
+
+type UsersListEmailsForAuthenticatedApplicationJSONNotFound BasicError
+
+func (*UsersListEmailsForAuthenticatedApplicationJSONNotFound) usersListEmailsForAuthenticatedResponse() {
+}
+
+type UsersListEmailsForAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (*UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) usersListEmailsForAuthenticatedResponse() {
+}
+
 type UsersListEmailsForAuthenticatedOK []Email
 
 func (*UsersListEmailsForAuthenticatedOK) usersListEmailsForAuthenticatedResponse() {}
+
+type UsersListFollowedByAuthenticatedApplicationJSONForbidden BasicError
+
+func (*UsersListFollowedByAuthenticatedApplicationJSONForbidden) usersListFollowedByAuthenticatedResponse() {
+}
+
+type UsersListFollowedByAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (*UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) usersListFollowedByAuthenticatedResponse() {
+}
 
 type UsersListFollowedByAuthenticatedOK []SimpleUser
 
 func (*UsersListFollowedByAuthenticatedOK) usersListFollowedByAuthenticatedResponse() {}
 
+type UsersListFollowersForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) usersListFollowersForAuthenticatedUserResponse() {
+}
+
+type UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) usersListFollowersForAuthenticatedUserResponse() {
+}
+
 type UsersListFollowersForAuthenticatedUserOK []SimpleUser
 
 func (*UsersListFollowersForAuthenticatedUserOK) usersListFollowersForAuthenticatedUserResponse() {}
+
+type UsersListGpgKeysForAuthenticatedApplicationJSONForbidden BasicError
+
+func (*UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) usersListGpgKeysForAuthenticatedResponse() {
+}
+
+type UsersListGpgKeysForAuthenticatedApplicationJSONNotFound BasicError
+
+func (*UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) usersListGpgKeysForAuthenticatedResponse() {
+}
+
+type UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (*UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) usersListGpgKeysForAuthenticatedResponse() {
+}
 
 type UsersListGpgKeysForAuthenticatedOK []GpgKey
 
@@ -8664,66 +9721,115 @@ type UsersListOK []SimpleUser
 
 func (*UsersListOK) usersListResponse() {}
 
+type UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden BasicError
+
+func (*UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden) usersListPublicEmailsForAuthenticatedResponse() {
+}
+
+type UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound BasicError
+
+func (*UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound) usersListPublicEmailsForAuthenticatedResponse() {
+}
+
+type UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (*UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) usersListPublicEmailsForAuthenticatedResponse() {
+}
+
 type UsersListPublicEmailsForAuthenticatedOK []Email
 
 func (*UsersListPublicEmailsForAuthenticatedOK) usersListPublicEmailsForAuthenticatedResponse() {}
+
+type UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden BasicError
+
+func (*UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden) usersListPublicSSHKeysForAuthenticatedResponse() {
+}
+
+type UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound BasicError
+
+func (*UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound) usersListPublicSSHKeysForAuthenticatedResponse() {
+}
+
+type UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (*UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) usersListPublicSSHKeysForAuthenticatedResponse() {
+}
 
 type UsersListPublicSSHKeysForAuthenticatedOK []Key
 
 func (*UsersListPublicSSHKeysForAuthenticatedOK) usersListPublicSSHKeysForAuthenticatedResponse() {}
 
 type UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest struct {
-	Visibility string `json:"visibility"`
+	Visibility UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequestVisibility `json:"visibility"`
 }
+
+func (*UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest) usersSetPrimaryEmailVisibilityForAuthenticatedRequest() {
+}
+
+type UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequestVisibility string
+
+const (
+	UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequestVisibilityPublic  UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequestVisibility = "public"
+	UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequestVisibilityPrivate UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequestVisibility = "private"
+)
 
 type UsersSetPrimaryEmailVisibilityForAuthenticatedOK []Email
 
-func (*UsersSetPrimaryEmailVisibilityForAuthenticatedOK) usersSetPrimaryEmailVisibilityForAuthenticatedResponse() {
-}
+type UsersUnblockApplicationJSONForbidden BasicError
+
+func (*UsersUnblockApplicationJSONForbidden) usersUnblockResponse() {}
+
+type UsersUnblockApplicationJSONNotFound BasicError
+
+func (*UsersUnblockApplicationJSONNotFound) usersUnblockResponse() {}
+
+type UsersUnblockApplicationJSONUnauthorized BasicError
+
+func (*UsersUnblockApplicationJSONUnauthorized) usersUnblockResponse() {}
 
 type UsersUnblockNoContent struct{}
 
 func (*UsersUnblockNoContent) usersUnblockResponse() {}
+
+type UsersUnfollowApplicationJSONForbidden BasicError
+
+func (*UsersUnfollowApplicationJSONForbidden) usersUnfollowResponse() {}
+
+type UsersUnfollowApplicationJSONNotFound BasicError
+
+func (*UsersUnfollowApplicationJSONNotFound) usersUnfollowResponse() {}
+
+type UsersUnfollowApplicationJSONUnauthorized BasicError
+
+func (*UsersUnfollowApplicationJSONUnauthorized) usersUnfollowResponse() {}
 
 type UsersUnfollowNoContent struct{}
 
 func (*UsersUnfollowNoContent) usersUnfollowResponse() {}
 
 type UsersUpdateAuthenticatedApplicationJSONRequest struct {
-	Bio             string `json:"bio"`
-	Blog            string `json:"blog"`
-	Company         string `json:"company"`
-	Email           string `json:"email"`
-	Hireable        bool   `json:"hireable"`
-	Location        string `json:"location"`
-	Name            string `json:"name"`
-	TwitterUsername string `json:"twitter_username"`
+	Bio             *string `json:"bio"`
+	Blog            *string `json:"blog"`
+	Company         *string `json:"company"`
+	Email           *string `json:"email"`
+	Hireable        *bool   `json:"hireable"`
+	Location        *string `json:"location"`
+	Name            *string `json:"name"`
+	TwitterUsername *string `json:"twitter_username"`
 }
 
-type ValidationError struct {
-}
-
-type ValidationErrorErrorsItem struct {
-	Resource string `json:"resource"`
-	Field    string `json:"field"`
-	Message  string `json:"message"`
-	Code     string `json:"code"`
-	Index    int    `json:"index"`
-}
+func (*UsersUpdateAuthenticatedApplicationJSONRequest) usersUpdateAuthenticatedRequest() {}
 
 type ValidationErrorSimple struct {
-	DocumentationURL string   `json:"documentation_url"`
-	Errors           []string `json:"errors"`
-	Message          string   `json:"message"`
+	DocumentationURL string    `json:"documentation_url"`
+	Errors           *[]string `json:"errors"`
+	Message          string    `json:"message"`
 }
 
-func (*ValidationErrorSimple) appsCreateFromManifestResponse()             {}
 func (*ValidationErrorSimple) projectsCreateColumnResponse()               {}
 func (*ValidationErrorSimple) projectsCreateForAuthenticatedUserResponse() {}
 func (*ValidationErrorSimple) projectsCreateForOrgResponse()               {}
 func (*ValidationErrorSimple) projectsCreateForRepoResponse()              {}
-func (*ValidationErrorSimple) projectsListForOrgResponse()                 {}
-func (*ValidationErrorSimple) projectsListForRepoResponse()                {}
 func (*ValidationErrorSimple) projectsMoveColumnResponse()                 {}
 func (*ValidationErrorSimple) projectsUpdateCardResponse()                 {}
 func (*ValidationErrorSimple) projectsUpdateResponse()                     {}
@@ -8743,39 +9849,27 @@ type Verification struct {
 	Verified  bool   `json:"verified"`
 }
 
-type ViewTraffic struct {
-	Count   int       `json:"count"`
-	Uniques int       `json:"uniques"`
-	Views   []Traffic `json:"views"`
-}
-
-func (*ViewTraffic) reposGetViewsResponse() {}
-
-type WebhookConfig struct {
-	URL         string `json:"url"`
-	ContentType string `json:"content_type"`
-	Secret      string `json:"secret"`
-}
+type WaitTimer int
 
 type Workflow struct {
-	BadgeURL  string    `json:"badge_url"`
-	CreatedAt time.Time `json:"created_at"`
-	DeletedAt time.Time `json:"deleted_at"`
-	HTMLURL   string    `json:"html_url"`
-	ID        int       `json:"id"`
-	Name      string    `json:"name"`
-	NodeID    string    `json:"node_id"`
-	Path      string    `json:"path"`
-	State     string    `json:"state"`
-	URL       string    `json:"url"`
-	UpdatedAt time.Time `json:"updated_at"`
+	BadgeURL  string        `json:"badge_url"`
+	CreatedAt time.Time     `json:"created_at"`
+	DeletedAt *time.Time    `json:"deleted_at"`
+	HTMLURL   string        `json:"html_url"`
+	ID        int           `json:"id"`
+	Name      string        `json:"name"`
+	NodeID    string        `json:"node_id"`
+	Path      string        `json:"path"`
+	State     WorkflowState `json:"state"`
+	URL       string        `json:"url"`
+	UpdatedAt time.Time     `json:"updated_at"`
 }
 
 type WorkflowRun struct {
 	ArtifactsURL       string               `json:"artifacts_url"`
 	CancelURL          string               `json:"cancel_url"`
-	CheckSuiteID       int                  `json:"check_suite_id"`
-	CheckSuiteNodeID   string               `json:"check_suite_node_id"`
+	CheckSuiteID       *int                 `json:"check_suite_id"`
+	CheckSuiteNodeID   *string              `json:"check_suite_node_id"`
 	CheckSuiteURL      string               `json:"check_suite_url"`
 	Conclusion         string               `json:"conclusion"`
 	CreatedAt          time.Time            `json:"created_at"`
@@ -8784,18 +9878,18 @@ type WorkflowRun struct {
 	HeadBranch         string               `json:"head_branch"`
 	HeadCommit         NullableSimpleCommit `json:"head_commit"`
 	HeadRepository     MinimalRepository    `json:"head_repository"`
-	HeadRepositoryID   int                  `json:"head_repository_id"`
+	HeadRepositoryID   *int                 `json:"head_repository_id"`
 	HeadSha            string               `json:"head_sha"`
 	ID                 int                  `json:"id"`
 	JobsURL            string               `json:"jobs_url"`
 	LogsURL            string               `json:"logs_url"`
-	Name               string               `json:"name"`
+	Name               *string              `json:"name"`
 	NodeID             string               `json:"node_id"`
-	PreviousAttemptURL string               `json:"previous_attempt_url"`
+	PreviousAttemptURL *string              `json:"previous_attempt_url"`
 	PullRequests       []PullRequestMinimal `json:"pull_requests"`
 	Repository         MinimalRepository    `json:"repository"`
 	RerunURL           string               `json:"rerun_url"`
-	RunAttempt         int                  `json:"run_attempt"`
+	RunAttempt         *int                 `json:"run_attempt"`
 	RunNumber          int                  `json:"run_number"`
 	Status             string               `json:"status"`
 	URL                string               `json:"url"`
@@ -8806,13 +9900,13 @@ type WorkflowRun struct {
 
 type WorkflowRunUsage struct {
 	Billable      WorkflowRunUsageBillable `json:"billable"`
-	RunDurationMs int                      `json:"run_duration_ms"`
+	RunDurationMs *int                     `json:"run_duration_ms"`
 }
 
 type WorkflowRunUsageBillable struct {
-	MACOS   WorkflowRunUsageBillableMACOS   `json:"MACOS"`
-	UBUNTU  WorkflowRunUsageBillableUBUNTU  `json:"UBUNTU"`
-	WINDOWS WorkflowRunUsageBillableWINDOWS `json:"WINDOWS"`
+	MACOS   *WorkflowRunUsageBillableMACOS   `json:"MACOS"`
+	UBUNTU  *WorkflowRunUsageBillableUBUNTU  `json:"UBUNTU"`
+	WINDOWS *WorkflowRunUsageBillableWINDOWS `json:"WINDOWS"`
 }
 
 type WorkflowRunUsageBillableMACOS struct {
@@ -8830,243 +9924,12 @@ type WorkflowRunUsageBillableWINDOWS struct {
 	TotalMs int `json:"total_ms"`
 }
 
-type accepted struct{}
+type WorkflowState string
 
-func (*accepted) appsRedeliverWebhookDeliveryResponse()  {}
-func (*accepted) orgsRedeliverWebhookDeliveryResponse()  {}
-func (*accepted) reposEnableLfsForRepoResponse()         {}
-func (*accepted) reposGetCodeFrequencyStatsResponse()    {}
-func (*accepted) reposGetCommitActivityStatsResponse()   {}
-func (*accepted) reposGetContributorsStatsResponse()     {}
-func (*accepted) reposRedeliverWebhookDeliveryResponse() {}
-func (*accepted) usersGetByUsernameResponse()            {}
-
-type forbidden_gist struct {
-	Block            forbidden_gistBlock `json:"block"`
-	DocumentationURL string              `json:"documentation_url"`
-	Message          string              `json:"message"`
-}
-
-func (*forbidden_gist) gistsGetCommentResponse() {}
-func (*forbidden_gist) gistsGetResponse()        {}
-
-type forbidden_gistBlock struct {
-	CreatedAt string `json:"created_at"`
-	HTMLURL   string `json:"html_url"`
-	Reason    string `json:"reason"`
-}
-
-type found struct{}
-
-func (*found) reposGetContentResponse()      {}
-func (*found) reposGetReleaseAssetResponse() {}
-
-type no_content struct{}
-
-func (*no_content) reposGetCodeFrequencyStatsResponse()  {}
-func (*no_content) reposGetCommitActivityStatsResponse() {}
-func (*no_content) reposGetContributorsStatsResponse()   {}
-func (*no_content) reposGetPunchCardStatsResponse()      {}
-
-type not_modified struct{}
-
-func (*not_modified) activityCheckRepoIsStarredByAuthenticatedUserResponse()     {}
-func (*not_modified) activityDeleteThreadSubscriptionResponse()                  {}
-func (*not_modified) activityGetThreadResponse()                                 {}
-func (*not_modified) activityGetThreadSubscriptionForAuthenticatedUserResponse() {}
-func (*not_modified) activityListNotificationsForAuthenticatedUserResponse()     {}
-func (*not_modified) activityListPublicEventsForRepoNetworkResponse()            {}
-func (*not_modified) activityListPublicEventsResponse()                          {}
-func (*not_modified) activityListReposStarredByAuthenticatedUserResponse()       {}
-func (*not_modified) activityListWatchedReposForAuthenticatedUserResponse()      {}
-func (*not_modified) activityMarkNotificationsAsReadResponse()                   {}
-func (*not_modified) activityMarkThreadAsReadResponse()                          {}
-func (*not_modified) activitySetThreadSubscriptionResponse()                     {}
-func (*not_modified) activityStarRepoForAuthenticatedUserResponse()              {}
-func (*not_modified) activityUnstarRepoForAuthenticatedUserResponse()            {}
-func (*not_modified) appsAddRepoToInstallationResponse()                         {}
-func (*not_modified) appsCreateContentAttachmentResponse()                       {}
-func (*not_modified) appsListInstallationReposForAuthenticatedUserResponse()     {}
-func (*not_modified) appsListInstallationsForAuthenticatedUserResponse()         {}
-func (*not_modified) appsListReposAccessibleToInstallationResponse()             {}
-func (*not_modified) appsListSubscriptionsForAuthenticatedUserResponse()         {}
-func (*not_modified) appsListSubscriptionsForAuthenticatedUserStubbedResponse()  {}
-func (*not_modified) appsRemoveRepoFromInstallationResponse()                    {}
-func (*not_modified) codesOfConductGetAllCodesOfConductResponse()                {}
-func (*not_modified) codesOfConductGetConductCodeResponse()                      {}
-func (*not_modified) emojisGetResponse()                                         {}
-func (*not_modified) gistsCheckIsStarredResponse()                               {}
-func (*not_modified) gistsCreateCommentResponse()                                {}
-func (*not_modified) gistsCreateResponse()                                       {}
-func (*not_modified) gistsDeleteCommentResponse()                                {}
-func (*not_modified) gistsDeleteResponse()                                       {}
-func (*not_modified) gistsForkResponse()                                         {}
-func (*not_modified) gistsGetCommentResponse()                                   {}
-func (*not_modified) gistsGetResponse()                                          {}
-func (*not_modified) gistsListCommentsResponse()                                 {}
-func (*not_modified) gistsListCommitsResponse()                                  {}
-func (*not_modified) gistsListForksResponse()                                    {}
-func (*not_modified) gistsListPublicResponse()                                   {}
-func (*not_modified) gistsListResponse()                                         {}
-func (*not_modified) gistsListStarredResponse()                                  {}
-func (*not_modified) gistsStarResponse()                                         {}
-func (*not_modified) gistsUnstarResponse()                                       {}
-func (*not_modified) gitignoreGetAllTemplatesResponse()                          {}
-func (*not_modified) gitignoreGetTemplateResponse()                              {}
-func (*not_modified) issuesGetResponse()                                         {}
-func (*not_modified) issuesListForAuthenticatedUserResponse()                    {}
-func (*not_modified) issuesListResponse()                                        {}
-func (*not_modified) licensesGetAllCommonlyUsedResponse()                        {}
-func (*not_modified) licensesGetResponse()                                       {}
-func (*not_modified) markdownRenderRawResponse()                                 {}
-func (*not_modified) markdownRenderResponse()                                    {}
-func (*not_modified) metaGetResponse()                                           {}
-func (*not_modified) migrationsDeleteArchiveForAuthenticatedUserResponse()       {}
-func (*not_modified) migrationsGetArchiveForAuthenticatedUserResponse()          {}
-func (*not_modified) migrationsGetStatusForAuthenticatedUserResponse()           {}
-func (*not_modified) migrationsListForAuthenticatedUserResponse()                {}
-func (*not_modified) migrationsStartForAuthenticatedUserResponse()               {}
-func (*not_modified) migrationsUnlockRepoForAuthenticatedUserResponse()          {}
-func (*not_modified) oAuthAuthorizationsCreateAuthorizationResponse()            {}
-func (*not_modified) oAuthAuthorizationsDeleteAuthorizationResponse()            {}
-func (*not_modified) oAuthAuthorizationsDeleteGrantResponse()                    {}
-func (*not_modified) oAuthAuthorizationsGetAuthorizationResponse()               {}
-func (*not_modified) oAuthAuthorizationsGetGrantResponse()                       {}
-func (*not_modified) oAuthAuthorizationsGetOrCreateAuthorizationForAppResponse() {}
-func (*not_modified) oAuthAuthorizationsListAuthorizationsResponse()             {}
-func (*not_modified) oAuthAuthorizationsListGrantsResponse()                     {}
-func (*not_modified) orgsListForAuthenticatedUserResponse()                      {}
-func (*not_modified) orgsListMembershipsForAuthenticatedUserResponse()           {}
-func (*not_modified) orgsListResponse()                                          {}
-func (*not_modified) projectsAddCollaboratorResponse()                           {}
-func (*not_modified) projectsCreateCardResponse()                                {}
-func (*not_modified) projectsCreateColumnResponse()                              {}
-func (*not_modified) projectsCreateForAuthenticatedUserResponse()                {}
-func (*not_modified) projectsDeleteCardResponse()                                {}
-func (*not_modified) projectsDeleteColumnResponse()                              {}
-func (*not_modified) projectsDeleteResponse()                                    {}
-func (*not_modified) projectsGetCardResponse()                                   {}
-func (*not_modified) projectsGetColumnResponse()                                 {}
-func (*not_modified) projectsGetPermissionForUserResponse()                      {}
-func (*not_modified) projectsGetResponse()                                       {}
-func (*not_modified) projectsListCardsResponse()                                 {}
-func (*not_modified) projectsListCollaboratorsResponse()                         {}
-func (*not_modified) projectsListColumnsResponse()                               {}
-func (*not_modified) projectsMoveCardResponse()                                  {}
-func (*not_modified) projectsMoveColumnResponse()                                {}
-func (*not_modified) projectsRemoveCollaboratorResponse()                        {}
-func (*not_modified) projectsUpdateCardResponse()                                {}
-func (*not_modified) projectsUpdateColumnResponse()                              {}
-func (*not_modified) projectsUpdateResponse()                                    {}
-func (*not_modified) pullsGetResponse()                                          {}
-func (*not_modified) pullsListResponse()                                         {}
-func (*not_modified) rateLimitGetResponse()                                      {}
-func (*not_modified) reactionsDeleteLegacyResponse()                             {}
-func (*not_modified) reposAcceptInvitationResponse()                             {}
-func (*not_modified) reposCreateForAuthenticatedUserResponse()                   {}
-func (*not_modified) reposDeclineInvitationResponse()                            {}
-func (*not_modified) reposListForAuthenticatedUserResponse()                     {}
-func (*not_modified) reposListInvitationsForAuthenticatedUserResponse()          {}
-func (*not_modified) reposListPublicResponse()                                   {}
-func (*not_modified) scimDeleteUserFromOrgResponse()                             {}
-func (*not_modified) scimGetProvisioningInformationForUserResponse()             {}
-func (*not_modified) scimListProvisionedIdentitiesResponse()                     {}
-func (*not_modified) scimProvisionAndInviteUserResponse()                        {}
-func (*not_modified) scimSetInformationForProvisionedUserResponse()              {}
-func (*not_modified) scimUpdateAttributeForUserResponse()                        {}
-func (*not_modified) searchCodeResponse()                                        {}
-func (*not_modified) searchCommitsResponse()                                     {}
-func (*not_modified) searchIssuesAndPullRequestsResponse()                       {}
-func (*not_modified) searchLabelsResponse()                                      {}
-func (*not_modified) searchReposResponse()                                       {}
-func (*not_modified) searchTopicsResponse()                                      {}
-func (*not_modified) searchUsersResponse()                                       {}
-func (*not_modified) teamsListForAuthenticatedUserResponse()                     {}
-func (*not_modified) usersAddEmailForAuthenticatedResponse()                     {}
-func (*not_modified) usersBlockResponse()                                        {}
-func (*not_modified) usersCheckBlockedResponse()                                 {}
-func (*not_modified) usersCheckPersonIsFollowedByAuthenticatedResponse()         {}
-func (*not_modified) usersCreateGpgKeyForAuthenticatedResponse()                 {}
-func (*not_modified) usersCreatePublicSSHKeyForAuthenticatedResponse()           {}
-func (*not_modified) usersDeleteEmailForAuthenticatedResponse()                  {}
-func (*not_modified) usersDeleteGpgKeyForAuthenticatedResponse()                 {}
-func (*not_modified) usersDeletePublicSSHKeyForAuthenticatedResponse()           {}
-func (*not_modified) usersFollowResponse()                                       {}
-func (*not_modified) usersGetAuthenticatedResponse()                             {}
-func (*not_modified) usersGetGpgKeyForAuthenticatedResponse()                    {}
-func (*not_modified) usersGetPublicSSHKeyForAuthenticatedResponse()              {}
-func (*not_modified) usersListBlockedByAuthenticatedResponse()                   {}
-func (*not_modified) usersListEmailsForAuthenticatedResponse()                   {}
-func (*not_modified) usersListFollowedByAuthenticatedResponse()                  {}
-func (*not_modified) usersListFollowersForAuthenticatedUserResponse()            {}
-func (*not_modified) usersListGpgKeysForAuthenticatedResponse()                  {}
-func (*not_modified) usersListPublicEmailsForAuthenticatedResponse()             {}
-func (*not_modified) usersListPublicSSHKeysForAuthenticatedResponse()            {}
-func (*not_modified) usersListResponse()                                         {}
-func (*not_modified) usersSetPrimaryEmailVisibilityForAuthenticatedResponse()    {}
-func (*not_modified) usersUnblockResponse()                                      {}
-func (*not_modified) usersUnfollowResponse()                                     {}
-func (*not_modified) usersUpdateAuthenticatedResponse()                          {}
-
-type preview_header_missing struct {
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-func (*preview_header_missing) appsCreateContentAttachmentResponse()                {}
-func (*preview_header_missing) appsCreateInstallationAccessTokenResponse()          {}
-func (*preview_header_missing) appsGetBySlugResponse()                              {}
-func (*preview_header_missing) appsGetInstallationResponse()                        {}
-func (*preview_header_missing) appsListInstallationsForAuthenticatedUserResponse()  {}
-func (*preview_header_missing) orgsListBlockedUsersResponse()                       {}
-func (*preview_header_missing) orgsUpdateResponse()                                 {}
-func (*preview_header_missing) projectsCreateForAuthenticatedUserResponse()         {}
-func (*preview_header_missing) reactionsCreateForCommitCommentResponse()            {}
-func (*preview_header_missing) reactionsCreateForIssueCommentResponse()             {}
-func (*preview_header_missing) reactionsCreateForIssueResponse()                    {}
-func (*preview_header_missing) reactionsCreateForPullRequestReviewCommentResponse() {}
-func (*preview_header_missing) reactionsCreateForReleaseResponse()                  {}
-func (*preview_header_missing) reactionsDeleteLegacyResponse()                      {}
-func (*preview_header_missing) reactionsListForCommitCommentResponse()              {}
-func (*preview_header_missing) reactionsListForIssueCommentResponse()               {}
-func (*preview_header_missing) reactionsListForIssueResponse()                      {}
-func (*preview_header_missing) reactionsListForPullRequestReviewCommentResponse()   {}
-func (*preview_header_missing) reposCreatePagesSiteResponse()                       {}
-func (*preview_header_missing) reposDeletePagesSiteResponse()                       {}
-func (*preview_header_missing) reposGetAllTopicsResponse()                          {}
-func (*preview_header_missing) reposGetBranchResponse()                             {}
-func (*preview_header_missing) reposGetDeploymentStatusResponse()                   {}
-func (*preview_header_missing) reposGetReleaseAssetResponse()                       {}
-func (*preview_header_missing) reposReplaceAllTopicsResponse()                      {}
-func (*preview_header_missing) searchCommitsResponse()                              {}
-func (*preview_header_missing) searchTopicsResponse()                               {}
-func (*preview_header_missing) teamsRemoveProjectLegacyResponse()                   {}
-func (*preview_header_missing) usersListBlockedByAuthenticatedResponse()            {}
-
-type service_unavailable struct {
-	Code             string `json:"code"`
-	DocumentationURL string `json:"documentation_url"`
-	Message          string `json:"message"`
-}
-
-func (*service_unavailable) activityListPublicEventsResponse()        {}
-func (*service_unavailable) codeScanningDeleteAnalysisResponse()      {}
-func (*service_unavailable) codeScanningGetAlertResponse()            {}
-func (*service_unavailable) codeScanningGetAnalysisResponse()         {}
-func (*service_unavailable) codeScanningGetSarifResponse()            {}
-func (*service_unavailable) codeScanningListAlertInstancesResponse()  {}
-func (*service_unavailable) codeScanningListAlertsForRepoResponse()   {}
-func (*service_unavailable) codeScanningListRecentAnalysesResponse()  {}
-func (*service_unavailable) codeScanningUpdateAlertResponse()         {}
-func (*service_unavailable) codeScanningUploadSarifResponse()         {}
-func (*service_unavailable) issuesCreateResponse()                    {}
-func (*service_unavailable) issuesUpdateResponse()                    {}
-func (*service_unavailable) reposDeleteFileResponse()                 {}
-func (*service_unavailable) searchCodeResponse()                      {}
-func (*service_unavailable) searchIssuesAndPullRequestsResponse()     {}
-func (*service_unavailable) searchReposResponse()                     {}
-func (*service_unavailable) searchUsersResponse()                     {}
-func (*service_unavailable) secretScanningGetAlertResponse()          {}
-func (*service_unavailable) secretScanningListAlertsForOrgResponse()  {}
-func (*service_unavailable) secretScanningListAlertsForRepoResponse() {}
-func (*service_unavailable) secretScanningUpdateAlertResponse()       {}
+const (
+	WorkflowStateActive             WorkflowState = "active"
+	WorkflowStateDeleted            WorkflowState = "deleted"
+	WorkflowStateDisabledFork       WorkflowState = "disabled_fork"
+	WorkflowStateDisabledInactivity WorkflowState = "disabled_inactivity"
+	WorkflowStateDisabledManually   WorkflowState = "disabled_manually"
+)

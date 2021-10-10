@@ -70,7 +70,7 @@ func decodeGetCoreAPIVersionsResponse(resp *http.Response) (_ GetCoreAPIVersions
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIVersions
+			var response GetCoreAPIVersionsApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -105,7 +105,7 @@ func decodeGetCoreV1APIResourcesResponse(resp *http.Response) (_ GetCoreV1APIRes
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetCoreV1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -140,7 +140,7 @@ func decodeListCoreV1ComponentStatusResponse(resp *http.Response) (_ ListCoreV1C
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1ComponentStatusList
+			var response ListCoreV1ComponentStatusApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -181,7 +181,7 @@ func decodeListCoreV1ConfigMapForAllNamespacesResponse(resp *http.Response) (_ L
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1ConfigMapList
+			var response ListCoreV1ConfigMapForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -222,7 +222,7 @@ func decodeListCoreV1EndpointsForAllNamespacesResponse(resp *http.Response) (_ L
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1EndpointsList
+			var response ListCoreV1EndpointsForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -263,7 +263,7 @@ func decodeListCoreV1EventForAllNamespacesResponse(resp *http.Response) (_ ListC
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1EventList
+			var response ListCoreV1EventForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -304,7 +304,7 @@ func decodeListCoreV1LimitRangeForAllNamespacesResponse(resp *http.Response) (_ 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1LimitRangeList
+			var response ListCoreV1LimitRangeForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -345,7 +345,7 @@ func decodeListCoreV1NamespaceResponse(resp *http.Response) (_ ListCoreV1Namespa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1NamespaceList
+			var response ListCoreV1NamespaceApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -386,7 +386,7 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response) (_ CreateCoreV1Nam
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1Namespace
+			var response CreateCoreV1NamespaceApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -411,7 +411,7 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response) (_ CreateCoreV1Nam
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1Namespace
+			var response CreateCoreV1NamespaceApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -436,7 +436,7 @@ func decodeCreateCoreV1NamespaceResponse(resp *http.Response) (_ CreateCoreV1Nam
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1Namespace
+			var response CreateCoreV1NamespaceApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -471,7 +471,7 @@ func decodeListCoreV1NodeResponse(resp *http.Response) (_ ListCoreV1NodeResponse
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1NodeList
+			var response ListCoreV1NodeApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -512,7 +512,7 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response) (_ CreateCoreV1NodeResp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1Node
+			var response CreateCoreV1NodeApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -537,7 +537,7 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response) (_ CreateCoreV1NodeResp
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1Node
+			var response CreateCoreV1NodeApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -562,7 +562,7 @@ func decodeCreateCoreV1NodeResponse(resp *http.Response) (_ CreateCoreV1NodeResp
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1Node
+			var response CreateCoreV1NodeApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -597,7 +597,7 @@ func decodeDeleteCoreV1CollectionNodeResponse(resp *http.Response) (_ DeleteCore
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteCoreV1CollectionNodeApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -632,7 +632,7 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp *http.Re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1PersistentVolumeClaimList
+			var response ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -673,7 +673,7 @@ func decodeListCoreV1PersistentVolumeResponse(resp *http.Response) (_ ListCoreV1
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1PersistentVolumeList
+			var response ListCoreV1PersistentVolumeApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -714,7 +714,7 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response) (_ CreateCo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1PersistentVolume
+			var response CreateCoreV1PersistentVolumeApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -739,7 +739,7 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response) (_ CreateCo
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1PersistentVolume
+			var response CreateCoreV1PersistentVolumeApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -764,7 +764,7 @@ func decodeCreateCoreV1PersistentVolumeResponse(resp *http.Response) (_ CreateCo
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1PersistentVolume
+			var response CreateCoreV1PersistentVolumeApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -799,7 +799,7 @@ func decodeDeleteCoreV1CollectionPersistentVolumeResponse(resp *http.Response) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteCoreV1CollectionPersistentVolumeApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -834,7 +834,7 @@ func decodeListCoreV1PodForAllNamespacesResponse(resp *http.Response) (_ ListCor
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1PodList
+			var response ListCoreV1PodForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -875,7 +875,7 @@ func decodeListCoreV1PodTemplateForAllNamespacesResponse(resp *http.Response) (_
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1PodTemplateList
+			var response ListCoreV1PodTemplateForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -916,7 +916,7 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp *http.Re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1ReplicationControllerList
+			var response ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -957,7 +957,7 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp *http.Response) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1ResourceQuotaList
+			var response ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -998,7 +998,7 @@ func decodeListCoreV1SecretForAllNamespacesResponse(resp *http.Response) (_ List
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1SecretList
+			var response ListCoreV1SecretForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1039,7 +1039,7 @@ func decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp *http.Response)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1ServiceAccountList
+			var response ListCoreV1ServiceAccountForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1080,7 +1080,7 @@ func decodeListCoreV1ServiceForAllNamespacesResponse(resp *http.Response) (_ Lis
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoreV1ServiceList
+			var response ListCoreV1ServiceForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1121,7 +1121,7 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp *http.Response)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1162,7 +1162,7 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp *http.Response)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchCoreV1EndpointsListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1203,7 +1203,7 @@ func decodeWatchCoreV1EventListForAllNamespacesResponse(resp *http.Response) (_ 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchCoreV1EventListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1244,7 +1244,7 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1285,7 +1285,7 @@ func decodeWatchCoreV1NamespaceListResponse(resp *http.Response) (_ WatchCoreV1N
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchCoreV1NamespaceListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1326,7 +1326,7 @@ func decodeWatchCoreV1NodeListResponse(resp *http.Response) (_ WatchCoreV1NodeLi
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchCoreV1NodeListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1367,7 +1367,7 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp *ht
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1408,7 +1408,7 @@ func decodeWatchCoreV1PersistentVolumeListResponse(resp *http.Response) (_ Watch
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchCoreV1PersistentVolumeListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1449,7 +1449,7 @@ func decodeWatchCoreV1PodListForAllNamespacesResponse(resp *http.Response) (_ Wa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchCoreV1PodListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1490,7 +1490,7 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp *http.Respons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1531,7 +1531,7 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp *ht
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1572,7 +1572,7 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1613,7 +1613,7 @@ func decodeWatchCoreV1SecretListForAllNamespacesResponse(resp *http.Response) (_
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchCoreV1SecretListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1654,7 +1654,7 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp *http.Resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1695,7 +1695,7 @@ func decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp *http.Response) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchCoreV1ServiceListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1736,7 +1736,7 @@ func decodeGetAPIVersionsResponse(resp *http.Response) (_ GetAPIVersionsResponse
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroupList
+			var response GetAPIVersionsApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1771,7 +1771,7 @@ func decodeGetAdmissionregistrationAPIGroupResponse(resp *http.Response) (_ GetA
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroup
+			var response GetAdmissionregistrationAPIGroupApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1806,7 +1806,7 @@ func decodeGetAdmissionregistrationV1APIResourcesResponse(resp *http.Response) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetAdmissionregistrationV1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1841,7 +1841,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList
+			var response ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1882,7 +1882,7 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration
+			var response CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1907,7 +1907,7 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration
+			var response CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1932,7 +1932,7 @@ func decodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration
+			var response CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -1967,7 +1967,7 @@ func decodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRe
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2002,7 +2002,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList
+			var response ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2043,7 +2043,7 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration
+			var response CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2068,7 +2068,7 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration
+			var response CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2093,7 +2093,7 @@ func decodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration
+			var response CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2128,7 +2128,7 @@ func decodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2163,7 +2163,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2204,7 +2204,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2245,7 +2245,7 @@ func decodeGetApiextensionsAPIGroupResponse(resp *http.Response) (_ GetApiextens
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroup
+			var response GetApiextensionsAPIGroupApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2280,7 +2280,7 @@ func decodeGetApiextensionsV1APIResourcesResponse(resp *http.Response) (_ GetApi
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetApiextensionsV1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2315,7 +2315,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList
+			var response ListApiextensionsV1CustomResourceDefinitionApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2356,7 +2356,7 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition
+			var response CreateApiextensionsV1CustomResourceDefinitionApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2381,7 +2381,7 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition
+			var response CreateApiextensionsV1CustomResourceDefinitionApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2406,7 +2406,7 @@ func decodeCreateApiextensionsV1CustomResourceDefinitionResponse(resp *http.Resp
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition
+			var response CreateApiextensionsV1CustomResourceDefinitionApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2441,7 +2441,7 @@ func decodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(resp 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2476,7 +2476,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp *http.R
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2517,7 +2517,7 @@ func decodeGetApiregistrationAPIGroupResponse(resp *http.Response) (_ GetApiregi
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroup
+			var response GetApiregistrationAPIGroupApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2552,7 +2552,7 @@ func decodeGetApiregistrationV1APIResourcesResponse(resp *http.Response) (_ GetA
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetApiregistrationV1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2587,7 +2587,7 @@ func decodeListApiregistrationV1APIServiceResponse(resp *http.Response) (_ ListA
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList
+			var response ListApiregistrationV1APIServiceApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2628,7 +2628,7 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response) (_ Cre
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
+			var response CreateApiregistrationV1APIServiceApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2653,7 +2653,7 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response) (_ Cre
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
+			var response CreateApiregistrationV1APIServiceApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2678,7 +2678,7 @@ func decodeCreateApiregistrationV1APIServiceResponse(resp *http.Response) (_ Cre
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
+			var response CreateApiregistrationV1APIServiceApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2713,7 +2713,7 @@ func decodeDeleteApiregistrationV1CollectionAPIServiceResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteApiregistrationV1CollectionAPIServiceApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2748,7 +2748,7 @@ func decodeWatchApiregistrationV1APIServiceListResponse(resp *http.Response) (_ 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchApiregistrationV1APIServiceListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2789,7 +2789,7 @@ func decodeGetAppsAPIGroupResponse(resp *http.Response) (_ GetAppsAPIGroupRespon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroup
+			var response GetAppsAPIGroupApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2824,7 +2824,7 @@ func decodeGetAppsV1APIResourcesResponse(resp *http.Response) (_ GetAppsV1APIRes
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetAppsV1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2859,7 +2859,7 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAppsV1ControllerRevisionList
+			var response ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2900,7 +2900,7 @@ func decodeListAppsV1DaemonSetForAllNamespacesResponse(resp *http.Response) (_ L
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAppsV1DaemonSetList
+			var response ListAppsV1DaemonSetForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2941,7 +2941,7 @@ func decodeListAppsV1DeploymentForAllNamespacesResponse(resp *http.Response) (_ 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAppsV1DeploymentList
+			var response ListAppsV1DeploymentForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -2982,7 +2982,7 @@ func decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp *http.Response) (_ 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAppsV1ReplicaSetList
+			var response ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3023,7 +3023,7 @@ func decodeListAppsV1StatefulSetForAllNamespacesResponse(resp *http.Response) (_
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAppsV1StatefulSetList
+			var response ListAppsV1StatefulSetForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3064,7 +3064,7 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp *http.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3105,7 +3105,7 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp *http.Response)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3146,7 +3146,7 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchAppsV1DeploymentListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3187,7 +3187,7 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3228,7 +3228,7 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp *http.Respons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3269,7 +3269,7 @@ func decodeGetAuthenticationAPIGroupResponse(resp *http.Response) (_ GetAuthenti
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroup
+			var response GetAuthenticationAPIGroupApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3304,7 +3304,7 @@ func decodeGetAuthenticationV1APIResourcesResponse(resp *http.Response) (_ GetAu
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetAuthenticationV1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3339,7 +3339,7 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response) (_ Cre
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAuthenticationV1TokenReview
+			var response CreateAuthenticationV1TokenReviewApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3364,7 +3364,7 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response) (_ Cre
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAuthenticationV1TokenReview
+			var response CreateAuthenticationV1TokenReviewApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3389,7 +3389,7 @@ func decodeCreateAuthenticationV1TokenReviewResponse(resp *http.Response) (_ Cre
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAuthenticationV1TokenReview
+			var response CreateAuthenticationV1TokenReviewApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3424,7 +3424,7 @@ func decodeGetAuthorizationAPIGroupResponse(resp *http.Response) (_ GetAuthoriza
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroup
+			var response GetAuthorizationAPIGroupApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3459,7 +3459,7 @@ func decodeGetAuthorizationV1APIResourcesResponse(resp *http.Response) (_ GetAut
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetAuthorizationV1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3494,7 +3494,7 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAuthorizationV1SelfSubjectAccessReview
+			var response CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3519,7 +3519,7 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAuthorizationV1SelfSubjectAccessReview
+			var response CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3544,7 +3544,7 @@ func decodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(resp *http.Respo
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAuthorizationV1SelfSubjectAccessReview
+			var response CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3579,7 +3579,7 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAuthorizationV1SelfSubjectRulesReview
+			var response CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3604,7 +3604,7 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAuthorizationV1SelfSubjectRulesReview
+			var response CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3629,7 +3629,7 @@ func decodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(resp *http.Respon
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAuthorizationV1SelfSubjectRulesReview
+			var response CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3664,7 +3664,7 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAuthorizationV1SubjectAccessReview
+			var response CreateAuthorizationV1SubjectAccessReviewApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3689,7 +3689,7 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response)
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAuthorizationV1SubjectAccessReview
+			var response CreateAuthorizationV1SubjectAccessReviewApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3714,7 +3714,7 @@ func decodeCreateAuthorizationV1SubjectAccessReviewResponse(resp *http.Response)
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAuthorizationV1SubjectAccessReview
+			var response CreateAuthorizationV1SubjectAccessReviewApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3749,7 +3749,7 @@ func decodeGetAutoscalingAPIGroupResponse(resp *http.Response) (_ GetAutoscaling
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroup
+			var response GetAutoscalingAPIGroupApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3784,7 +3784,7 @@ func decodeGetAutoscalingV1APIResourcesResponse(resp *http.Response) (_ GetAutos
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetAutoscalingV1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3819,7 +3819,7 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList
+			var response ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3860,7 +3860,7 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3901,7 +3901,7 @@ func decodeGetAutoscalingV2beta1APIResourcesResponse(resp *http.Response) (_ Get
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetAutoscalingV2beta1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3936,7 +3936,7 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList
+			var response ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -3977,7 +3977,7 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4018,7 +4018,7 @@ func decodeGetAutoscalingV2beta2APIResourcesResponse(resp *http.Response) (_ Get
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetAutoscalingV2beta2APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4053,7 +4053,7 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList
+			var response ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4094,7 +4094,7 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4135,7 +4135,7 @@ func decodeGetBatchAPIGroupResponse(resp *http.Response) (_ GetBatchAPIGroupResp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroup
+			var response GetBatchAPIGroupApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4170,7 +4170,7 @@ func decodeGetBatchV1APIResourcesResponse(resp *http.Response) (_ GetBatchV1APIR
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetBatchV1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4205,7 +4205,7 @@ func decodeListBatchV1CronJobForAllNamespacesResponse(resp *http.Response) (_ Li
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIBatchV1CronJobList
+			var response ListBatchV1CronJobForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4246,7 +4246,7 @@ func decodeListBatchV1JobForAllNamespacesResponse(resp *http.Response) (_ ListBa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIBatchV1JobList
+			var response ListBatchV1JobForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4287,7 +4287,7 @@ func decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp *http.Response) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchBatchV1CronJobListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4328,7 +4328,7 @@ func decodeWatchBatchV1JobListForAllNamespacesResponse(resp *http.Response) (_ W
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchBatchV1JobListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4369,7 +4369,7 @@ func decodeGetBatchV1beta1APIResourcesResponse(resp *http.Response) (_ GetBatchV
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetBatchV1beta1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4404,7 +4404,7 @@ func decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp *http.Response) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIBatchV1beta1CronJobList
+			var response ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4445,7 +4445,7 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4486,7 +4486,7 @@ func decodeGetCertificatesAPIGroupResponse(resp *http.Response) (_ GetCertificat
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroup
+			var response GetCertificatesAPIGroupApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4521,7 +4521,7 @@ func decodeGetCertificatesV1APIResourcesResponse(resp *http.Response) (_ GetCert
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetCertificatesV1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4556,7 +4556,7 @@ func decodeListCertificatesV1CertificateSigningRequestResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICertificatesV1CertificateSigningRequestList
+			var response ListCertificatesV1CertificateSigningRequestApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4597,7 +4597,7 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICertificatesV1CertificateSigningRequest
+			var response CreateCertificatesV1CertificateSigningRequestApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4622,7 +4622,7 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICertificatesV1CertificateSigningRequest
+			var response CreateCertificatesV1CertificateSigningRequestApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4647,7 +4647,7 @@ func decodeCreateCertificatesV1CertificateSigningRequestResponse(resp *http.Resp
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICertificatesV1CertificateSigningRequest
+			var response CreateCertificatesV1CertificateSigningRequestApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4682,7 +4682,7 @@ func decodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(resp 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteCertificatesV1CollectionCertificateSigningRequestApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4717,7 +4717,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp *http.R
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchCertificatesV1CertificateSigningRequestListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4758,7 +4758,7 @@ func decodeGetCoordinationAPIGroupResponse(resp *http.Response) (_ GetCoordinati
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroup
+			var response GetCoordinationAPIGroupApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4793,7 +4793,7 @@ func decodeGetCoordinationV1APIResourcesResponse(resp *http.Response) (_ GetCoor
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetCoordinationV1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4828,7 +4828,7 @@ func decodeListCoordinationV1LeaseForAllNamespacesResponse(resp *http.Response) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPICoordinationV1LeaseList
+			var response ListCoordinationV1LeaseForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4869,7 +4869,7 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4910,7 +4910,7 @@ func decodeGetDiscoveryAPIGroupResponse(resp *http.Response) (_ GetDiscoveryAPIG
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroup
+			var response GetDiscoveryAPIGroupApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4945,7 +4945,7 @@ func decodeGetDiscoveryV1APIResourcesResponse(resp *http.Response) (_ GetDiscove
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetDiscoveryV1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -4980,7 +4980,7 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIDiscoveryV1EndpointSliceList
+			var response ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5021,7 +5021,7 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp *http.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5062,7 +5062,7 @@ func decodeGetDiscoveryV1beta1APIResourcesResponse(resp *http.Response) (_ GetDi
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetDiscoveryV1beta1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5097,7 +5097,7 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp *http.
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIDiscoveryV1beta1EndpointSliceList
+			var response ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5138,7 +5138,7 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp *
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5179,7 +5179,7 @@ func decodeGetEventsAPIGroupResponse(resp *http.Response) (_ GetEventsAPIGroupRe
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroup
+			var response GetEventsAPIGroupApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5214,7 +5214,7 @@ func decodeGetEventsV1APIResourcesResponse(resp *http.Response) (_ GetEventsV1AP
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetEventsV1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5249,7 +5249,7 @@ func decodeListEventsV1EventForAllNamespacesResponse(resp *http.Response) (_ Lis
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIEventsV1EventList
+			var response ListEventsV1EventForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5290,7 +5290,7 @@ func decodeWatchEventsV1EventListForAllNamespacesResponse(resp *http.Response) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchEventsV1EventListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5331,7 +5331,7 @@ func decodeGetEventsV1beta1APIResourcesResponse(resp *http.Response) (_ GetEvent
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetEventsV1beta1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5366,7 +5366,7 @@ func decodeListEventsV1beta1EventForAllNamespacesResponse(resp *http.Response) (
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIEventsV1beta1EventList
+			var response ListEventsV1beta1EventForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5407,7 +5407,7 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchEventsV1beta1EventListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5448,7 +5448,7 @@ func decodeGetFlowcontrolApiserverAPIGroupResponse(resp *http.Response) (_ GetFl
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroup
+			var response GetFlowcontrolApiserverAPIGroupApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5483,7 +5483,7 @@ func decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp *http.Respons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetFlowcontrolApiserverV1beta1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5518,7 +5518,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIFlowcontrolV1beta1FlowSchemaList
+			var response ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5559,7 +5559,7 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIFlowcontrolV1beta1FlowSchema
+			var response CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5584,7 +5584,7 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIFlowcontrolV1beta1FlowSchema
+			var response CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5609,7 +5609,7 @@ func decodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respon
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIFlowcontrolV1beta1FlowSchema
+			var response CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5644,7 +5644,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(resp *h
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5679,7 +5679,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList
+			var response ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5720,7 +5720,7 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration
+			var response CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5745,7 +5745,7 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration
+			var response CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5770,7 +5770,7 @@ func decodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration
+			var response CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5805,7 +5805,7 @@ func decodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5840,7 +5840,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp *http.Res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5881,7 +5881,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5922,7 +5922,7 @@ func decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp *http.Respons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetFlowcontrolApiserverV1beta2APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5957,7 +5957,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIFlowcontrolV1beta2FlowSchemaList
+			var response ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -5998,7 +5998,7 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIFlowcontrolV1beta2FlowSchema
+			var response CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6023,7 +6023,7 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIFlowcontrolV1beta2FlowSchema
+			var response CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6048,7 +6048,7 @@ func decodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respon
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIFlowcontrolV1beta2FlowSchema
+			var response CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6083,7 +6083,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(resp *h
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6118,7 +6118,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList
+			var response ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6159,7 +6159,7 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration
+			var response CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6184,7 +6184,7 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration
+			var response CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6209,7 +6209,7 @@ func decodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration
+			var response CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6244,7 +6244,7 @@ func decodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6279,7 +6279,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp *http.Res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6320,7 +6320,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6361,7 +6361,7 @@ func decodeGetInternalApiserverAPIGroupResponse(resp *http.Response) (_ GetInter
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroup
+			var response GetInternalApiserverAPIGroupApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6396,7 +6396,7 @@ func decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp *http.Response)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetInternalApiserverV1alpha1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6431,7 +6431,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIApiserverinternalV1alpha1StorageVersionList
+			var response ListInternalApiserverV1alpha1StorageVersionApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6472,7 +6472,7 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIApiserverinternalV1alpha1StorageVersion
+			var response CreateInternalApiserverV1alpha1StorageVersionApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6497,7 +6497,7 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIApiserverinternalV1alpha1StorageVersion
+			var response CreateInternalApiserverV1alpha1StorageVersionApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6522,7 +6522,7 @@ func decodeCreateInternalApiserverV1alpha1StorageVersionResponse(resp *http.Resp
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIApiserverinternalV1alpha1StorageVersion
+			var response CreateInternalApiserverV1alpha1StorageVersionApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6557,7 +6557,7 @@ func decodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(resp 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6592,7 +6592,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp *http.R
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6633,7 +6633,7 @@ func decodeGetNetworkingAPIGroupResponse(resp *http.Response) (_ GetNetworkingAP
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroup
+			var response GetNetworkingAPIGroupApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6668,7 +6668,7 @@ func decodeGetNetworkingV1APIResourcesResponse(resp *http.Response) (_ GetNetwor
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetNetworkingV1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6703,7 +6703,7 @@ func decodeListNetworkingV1IngressClassResponse(resp *http.Response) (_ ListNetw
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPINetworkingV1IngressClassList
+			var response ListNetworkingV1IngressClassApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6744,7 +6744,7 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response) (_ Create
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPINetworkingV1IngressClass
+			var response CreateNetworkingV1IngressClassApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6769,7 +6769,7 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response) (_ Create
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPINetworkingV1IngressClass
+			var response CreateNetworkingV1IngressClassApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6794,7 +6794,7 @@ func decodeCreateNetworkingV1IngressClassResponse(resp *http.Response) (_ Create
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPINetworkingV1IngressClass
+			var response CreateNetworkingV1IngressClassApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6829,7 +6829,7 @@ func decodeDeleteNetworkingV1CollectionIngressClassResponse(resp *http.Response)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteNetworkingV1CollectionIngressClassApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6864,7 +6864,7 @@ func decodeListNetworkingV1IngressForAllNamespacesResponse(resp *http.Response) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPINetworkingV1IngressList
+			var response ListNetworkingV1IngressForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6905,7 +6905,7 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp *http.Resp
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPINetworkingV1NetworkPolicyList
+			var response ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6946,7 +6946,7 @@ func decodeWatchNetworkingV1IngressClassListResponse(resp *http.Response) (_ Wat
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchNetworkingV1IngressClassListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -6987,7 +6987,7 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp *http.Respo
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchNetworkingV1IngressListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7028,7 +7028,7 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp *http
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7069,7 +7069,7 @@ func decodeGetNodeAPIGroupResponse(resp *http.Response) (_ GetNodeAPIGroupRespon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroup
+			var response GetNodeAPIGroupApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7104,7 +7104,7 @@ func decodeGetNodeV1APIResourcesResponse(resp *http.Response) (_ GetNodeV1APIRes
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetNodeV1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7139,7 +7139,7 @@ func decodeListNodeV1RuntimeClassResponse(resp *http.Response) (_ ListNodeV1Runt
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPINodeV1RuntimeClassList
+			var response ListNodeV1RuntimeClassApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7180,7 +7180,7 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response) (_ CreateNodeV1
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPINodeV1RuntimeClass
+			var response CreateNodeV1RuntimeClassApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7205,7 +7205,7 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response) (_ CreateNodeV1
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPINodeV1RuntimeClass
+			var response CreateNodeV1RuntimeClassApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7230,7 +7230,7 @@ func decodeCreateNodeV1RuntimeClassResponse(resp *http.Response) (_ CreateNodeV1
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPINodeV1RuntimeClass
+			var response CreateNodeV1RuntimeClassApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7265,7 +7265,7 @@ func decodeDeleteNodeV1CollectionRuntimeClassResponse(resp *http.Response) (_ De
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteNodeV1CollectionRuntimeClassApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7300,7 +7300,7 @@ func decodeWatchNodeV1RuntimeClassListResponse(resp *http.Response) (_ WatchNode
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchNodeV1RuntimeClassListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7341,7 +7341,7 @@ func decodeGetNodeV1alpha1APIResourcesResponse(resp *http.Response) (_ GetNodeV1
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetNodeV1alpha1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7376,7 +7376,7 @@ func decodeListNodeV1alpha1RuntimeClassResponse(resp *http.Response) (_ ListNode
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPINodeV1alpha1RuntimeClassList
+			var response ListNodeV1alpha1RuntimeClassApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7417,7 +7417,7 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response) (_ Create
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPINodeV1alpha1RuntimeClass
+			var response CreateNodeV1alpha1RuntimeClassApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7442,7 +7442,7 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response) (_ Create
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPINodeV1alpha1RuntimeClass
+			var response CreateNodeV1alpha1RuntimeClassApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7467,7 +7467,7 @@ func decodeCreateNodeV1alpha1RuntimeClassResponse(resp *http.Response) (_ Create
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPINodeV1alpha1RuntimeClass
+			var response CreateNodeV1alpha1RuntimeClassApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7502,7 +7502,7 @@ func decodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(resp *http.Response)
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteNodeV1alpha1CollectionRuntimeClassApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7537,7 +7537,7 @@ func decodeWatchNodeV1alpha1RuntimeClassListResponse(resp *http.Response) (_ Wat
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchNodeV1alpha1RuntimeClassListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7578,7 +7578,7 @@ func decodeGetNodeV1beta1APIResourcesResponse(resp *http.Response) (_ GetNodeV1b
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetNodeV1beta1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7613,7 +7613,7 @@ func decodeListNodeV1beta1RuntimeClassResponse(resp *http.Response) (_ ListNodeV
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPINodeV1beta1RuntimeClassList
+			var response ListNodeV1beta1RuntimeClassApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7654,7 +7654,7 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response) (_ CreateN
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPINodeV1beta1RuntimeClass
+			var response CreateNodeV1beta1RuntimeClassApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7679,7 +7679,7 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response) (_ CreateN
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPINodeV1beta1RuntimeClass
+			var response CreateNodeV1beta1RuntimeClassApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7704,7 +7704,7 @@ func decodeCreateNodeV1beta1RuntimeClassResponse(resp *http.Response) (_ CreateN
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPINodeV1beta1RuntimeClass
+			var response CreateNodeV1beta1RuntimeClassApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7739,7 +7739,7 @@ func decodeDeleteNodeV1beta1CollectionRuntimeClassResponse(resp *http.Response) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteNodeV1beta1CollectionRuntimeClassApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7774,7 +7774,7 @@ func decodeWatchNodeV1beta1RuntimeClassListResponse(resp *http.Response) (_ Watc
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchNodeV1beta1RuntimeClassListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7815,7 +7815,7 @@ func decodeGetPolicyAPIGroupResponse(resp *http.Response) (_ GetPolicyAPIGroupRe
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroup
+			var response GetPolicyAPIGroupApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7850,7 +7850,7 @@ func decodeGetPolicyV1APIResourcesResponse(resp *http.Response) (_ GetPolicyV1AP
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetPolicyV1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7885,7 +7885,7 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIPolicyV1PodDisruptionBudgetList
+			var response ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7926,7 +7926,7 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp *ht
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -7967,7 +7967,7 @@ func decodeGetPolicyV1beta1APIResourcesResponse(resp *http.Response) (_ GetPolic
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetPolicyV1beta1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8002,7 +8002,7 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp *ht
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIPolicyV1beta1PodDisruptionBudgetList
+			var response ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8043,7 +8043,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (_ Li
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIPolicyV1beta1PodSecurityPolicyList
+			var response ListPolicyV1beta1PodSecurityPolicyApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8084,7 +8084,7 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (_ 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIPolicyV1beta1PodSecurityPolicy
+			var response CreatePolicyV1beta1PodSecurityPolicyApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8109,7 +8109,7 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (_ 
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIPolicyV1beta1PodSecurityPolicy
+			var response CreatePolicyV1beta1PodSecurityPolicyApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8134,7 +8134,7 @@ func decodeCreatePolicyV1beta1PodSecurityPolicyResponse(resp *http.Response) (_ 
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIPolicyV1beta1PodSecurityPolicy
+			var response CreatePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8169,7 +8169,7 @@ func decodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(resp *http.Res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8204,7 +8204,7 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8245,7 +8245,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp *http.Response) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8286,7 +8286,7 @@ func decodeGetRbacAuthorizationAPIGroupResponse(resp *http.Response) (_ GetRbacA
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroup
+			var response GetRbacAuthorizationAPIGroupApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8321,7 +8321,7 @@ func decodeGetRbacAuthorizationV1APIResourcesResponse(resp *http.Response) (_ Ge
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetRbacAuthorizationV1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8356,7 +8356,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIRbacV1ClusterRoleBindingList
+			var response ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8397,7 +8397,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIRbacV1ClusterRoleBinding
+			var response CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8422,7 +8422,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIRbacV1ClusterRoleBinding
+			var response CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8447,7 +8447,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respon
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIRbacV1ClusterRoleBinding
+			var response CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8482,7 +8482,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(resp *h
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8517,7 +8517,7 @@ func decodeListRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (_ Li
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIRbacV1ClusterRoleList
+			var response ListRbacAuthorizationV1ClusterRoleApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8558,7 +8558,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (_ 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIRbacV1ClusterRole
+			var response CreateRbacAuthorizationV1ClusterRoleApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8583,7 +8583,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (_ 
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIRbacV1ClusterRole
+			var response CreateRbacAuthorizationV1ClusterRoleApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8608,7 +8608,7 @@ func decodeCreateRbacAuthorizationV1ClusterRoleResponse(resp *http.Response) (_ 
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIRbacV1ClusterRole
+			var response CreateRbacAuthorizationV1ClusterRoleApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8643,7 +8643,7 @@ func decodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(resp *http.Res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteRbacAuthorizationV1CollectionClusterRoleApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8678,7 +8678,7 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp *http
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIRbacV1RoleBindingList
+			var response ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8719,7 +8719,7 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp *http.Respon
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIRbacV1RoleList
+			var response ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8760,7 +8760,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp *http.Res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8801,7 +8801,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp *http.Response) 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchRbacAuthorizationV1ClusterRoleListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8842,7 +8842,7 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp 
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8883,7 +8883,7 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp *http.R
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8924,7 +8924,7 @@ func decodeGetSchedulingAPIGroupResponse(resp *http.Response) (_ GetSchedulingAP
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroup
+			var response GetSchedulingAPIGroupApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8959,7 +8959,7 @@ func decodeGetSchedulingV1APIResourcesResponse(resp *http.Response) (_ GetSchedu
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetSchedulingV1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -8994,7 +8994,7 @@ func decodeListSchedulingV1PriorityClassResponse(resp *http.Response) (_ ListSch
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPISchedulingV1PriorityClassList
+			var response ListSchedulingV1PriorityClassApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9035,7 +9035,7 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response) (_ Creat
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPISchedulingV1PriorityClass
+			var response CreateSchedulingV1PriorityClassApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9060,7 +9060,7 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response) (_ Creat
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPISchedulingV1PriorityClass
+			var response CreateSchedulingV1PriorityClassApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9085,7 +9085,7 @@ func decodeCreateSchedulingV1PriorityClassResponse(resp *http.Response) (_ Creat
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPISchedulingV1PriorityClass
+			var response CreateSchedulingV1PriorityClassApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9120,7 +9120,7 @@ func decodeDeleteSchedulingV1CollectionPriorityClassResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteSchedulingV1CollectionPriorityClassApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9155,7 +9155,7 @@ func decodeWatchSchedulingV1PriorityClassListResponse(resp *http.Response) (_ Wa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchSchedulingV1PriorityClassListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9196,7 +9196,7 @@ func decodeGetStorageAPIGroupResponse(resp *http.Response) (_ GetStorageAPIGroup
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIGroup
+			var response GetStorageAPIGroupApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9231,7 +9231,7 @@ func decodeGetStorageV1APIResourcesResponse(resp *http.Response) (_ GetStorageV1
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetStorageV1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9266,7 +9266,7 @@ func decodeListStorageV1CSIDriverResponse(resp *http.Response) (_ ListStorageV1C
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIStorageV1CSIDriverList
+			var response ListStorageV1CSIDriverApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9307,7 +9307,7 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response) (_ CreateStorag
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIStorageV1CSIDriver
+			var response CreateStorageV1CSIDriverApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9332,7 +9332,7 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response) (_ CreateStorag
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIStorageV1CSIDriver
+			var response CreateStorageV1CSIDriverApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9357,7 +9357,7 @@ func decodeCreateStorageV1CSIDriverResponse(resp *http.Response) (_ CreateStorag
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIStorageV1CSIDriver
+			var response CreateStorageV1CSIDriverApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9392,7 +9392,7 @@ func decodeDeleteStorageV1CollectionCSIDriverResponse(resp *http.Response) (_ De
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteStorageV1CollectionCSIDriverApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9427,7 +9427,7 @@ func decodeListStorageV1CSINodeResponse(resp *http.Response) (_ ListStorageV1CSI
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIStorageV1CSINodeList
+			var response ListStorageV1CSINodeApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9468,7 +9468,7 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response) (_ CreateStorageV
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIStorageV1CSINode
+			var response CreateStorageV1CSINodeApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9493,7 +9493,7 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response) (_ CreateStorageV
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIStorageV1CSINode
+			var response CreateStorageV1CSINodeApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9518,7 +9518,7 @@ func decodeCreateStorageV1CSINodeResponse(resp *http.Response) (_ CreateStorageV
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIStorageV1CSINode
+			var response CreateStorageV1CSINodeApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9553,7 +9553,7 @@ func decodeDeleteStorageV1CollectionCSINodeResponse(resp *http.Response) (_ Dele
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteStorageV1CollectionCSINodeApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9588,7 +9588,7 @@ func decodeListStorageV1StorageClassResponse(resp *http.Response) (_ ListStorage
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIStorageV1StorageClassList
+			var response ListStorageV1StorageClassApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9629,7 +9629,7 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response) (_ CreateSto
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIStorageV1StorageClass
+			var response CreateStorageV1StorageClassApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9654,7 +9654,7 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response) (_ CreateSto
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIStorageV1StorageClass
+			var response CreateStorageV1StorageClassApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9679,7 +9679,7 @@ func decodeCreateStorageV1StorageClassResponse(resp *http.Response) (_ CreateSto
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIStorageV1StorageClass
+			var response CreateStorageV1StorageClassApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9714,7 +9714,7 @@ func decodeDeleteStorageV1CollectionStorageClassResponse(resp *http.Response) (_
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteStorageV1CollectionStorageClassApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9749,7 +9749,7 @@ func decodeListStorageV1VolumeAttachmentResponse(resp *http.Response) (_ ListSto
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIStorageV1VolumeAttachmentList
+			var response ListStorageV1VolumeAttachmentApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9790,7 +9790,7 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response) (_ Creat
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIStorageV1VolumeAttachment
+			var response CreateStorageV1VolumeAttachmentApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9815,7 +9815,7 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response) (_ Creat
 	case 201:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIStorageV1VolumeAttachment
+			var response CreateStorageV1VolumeAttachmentApplicationJSONCreated
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9840,7 +9840,7 @@ func decodeCreateStorageV1VolumeAttachmentResponse(resp *http.Response) (_ Creat
 	case 202:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIStorageV1VolumeAttachment
+			var response CreateStorageV1VolumeAttachmentApplicationJSONAccepted
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9875,7 +9875,7 @@ func decodeDeleteStorageV1CollectionVolumeAttachmentResponse(resp *http.Response
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1Status
+			var response DeleteStorageV1CollectionVolumeAttachmentApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9910,7 +9910,7 @@ func decodeWatchStorageV1CSIDriverListResponse(resp *http.Response) (_ WatchStor
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchStorageV1CSIDriverListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9951,7 +9951,7 @@ func decodeWatchStorageV1CSINodeListResponse(resp *http.Response) (_ WatchStorag
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchStorageV1CSINodeListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -9992,7 +9992,7 @@ func decodeWatchStorageV1StorageClassListResponse(resp *http.Response) (_ WatchS
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchStorageV1StorageClassListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10033,7 +10033,7 @@ func decodeWatchStorageV1VolumeAttachmentListResponse(resp *http.Response) (_ Wa
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchStorageV1VolumeAttachmentListApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10074,7 +10074,7 @@ func decodeGetStorageV1alpha1APIResourcesResponse(resp *http.Response) (_ GetSto
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetStorageV1alpha1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10109,7 +10109,7 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp *h
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIStorageV1alpha1CSIStorageCapacityList
+			var response ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10150,7 +10150,7 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10191,7 +10191,7 @@ func decodeGetStorageV1beta1APIResourcesResponse(resp *http.Response) (_ GetStor
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1APIResourceList
+			var response GetStorageV1beta1APIResourcesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10226,7 +10226,7 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp *ht
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sAPIStorageV1beta1CSIStorageCapacityList
+			var response ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err
@@ -10267,7 +10267,7 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response IoK8sApimachineryPkgApisMetaV1WatchEvent
+			var response WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONOK
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
 				rerr = err

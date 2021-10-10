@@ -59,7 +59,7 @@ func encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response GetServic
 
 func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIVersions:
+	case *GetCoreAPIVersionsApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -70,14 +70,14 @@ func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsResponse, w htt
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIVersions:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIVersions:
+	case *GetCoreAPIVersionsApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetCoreAPIVersionsApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetCoreAPIVersionsUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -88,15 +88,7 @@ func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsResponse, w htt
 
 func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetCoreV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -107,6 +99,14 @@ func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesResponse,
 			return err
 		}
 		return nil
+	case *GetCoreV1APIResourcesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetCoreV1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetCoreV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -117,7 +117,7 @@ func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesResponse,
 
 func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICoreV1ComponentStatusList:
+	case *ListCoreV1ComponentStatusApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -128,22 +128,22 @@ func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusR
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1ComponentStatusList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICoreV1ComponentStatusList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoreV1ComponentStatusList:
+	case *ListCoreV1ComponentStatusApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1ComponentStatusList:
+	case *ListCoreV1ComponentStatusApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListCoreV1ComponentStatusApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListCoreV1ComponentStatusApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1ComponentStatusUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -154,23 +154,7 @@ func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusR
 
 func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1ConfigMapForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICoreV1ConfigMapList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICoreV1ConfigMapList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoreV1ConfigMapList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1ConfigMapList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1ConfigMapList:
+	case *ListCoreV1ConfigMapForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -181,6 +165,22 @@ func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1Config
 			return err
 		}
 		return nil
+	case *ListCoreV1ConfigMapForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListCoreV1ConfigMapForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListCoreV1ConfigMapForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListCoreV1ConfigMapForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1ConfigMapForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -191,11 +191,7 @@ func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1Config
 
 func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1EndpointsForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICoreV1EndpointsList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1EndpointsList:
+	case *ListCoreV1EndpointsForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -206,18 +202,22 @@ func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1Endpoi
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1EndpointsList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICoreV1EndpointsList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoreV1EndpointsList:
+	case *ListCoreV1EndpointsForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListCoreV1EndpointsForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListCoreV1EndpointsForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListCoreV1EndpointsForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1EndpointsForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -228,19 +228,7 @@ func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1Endpoi
 
 func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICoreV1EventList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoreV1EventList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1EventList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1EventList:
+	case *ListCoreV1EventForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -251,7 +239,19 @@ func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAl
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1EventList:
+	case *ListCoreV1EventForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListCoreV1EventForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListCoreV1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListCoreV1EventForAllNamespacesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -265,11 +265,7 @@ func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAl
 
 func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1LimitRangeForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICoreV1LimitRangeList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1LimitRangeList:
+	case *ListCoreV1LimitRangeForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -280,18 +276,22 @@ func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1Limit
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1LimitRangeList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICoreV1LimitRangeList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoreV1LimitRangeList:
+	case *ListCoreV1LimitRangeForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListCoreV1LimitRangeForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListCoreV1LimitRangeForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListCoreV1LimitRangeForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1LimitRangeForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -302,7 +302,7 @@ func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1Limit
 
 func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICoreV1NamespaceList:
+	case *ListCoreV1NamespaceApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -313,22 +313,22 @@ func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceResponse, w h
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1NamespaceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICoreV1NamespaceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoreV1NamespaceList:
+	case *ListCoreV1NamespaceApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1NamespaceList:
+	case *ListCoreV1NamespaceApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListCoreV1NamespaceApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListCoreV1NamespaceApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1NamespaceUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -339,7 +339,7 @@ func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceResponse, w h
 
 func encodeCreateCoreV1NamespaceResponse(response CreateCoreV1NamespaceResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICoreV1Namespace:
+	case *CreateCoreV1NamespaceApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -350,15 +350,15 @@ func encodeCreateCoreV1NamespaceResponse(response CreateCoreV1NamespaceResponse,
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1Namespace:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICoreV1Namespace:
+	case *CreateCoreV1NamespaceApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoreV1Namespace:
+	case *CreateCoreV1NamespaceApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateCoreV1NamespaceApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -369,15 +369,15 @@ func encodeCreateCoreV1NamespaceResponse(response CreateCoreV1NamespaceResponse,
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1Namespace:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICoreV1Namespace:
+	case *CreateCoreV1NamespaceApplicationVndKubernetesProtobufCreated:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoreV1Namespace:
+	case *CreateCoreV1NamespaceApplicationYamlCreated:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateCoreV1NamespaceApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -388,14 +388,14 @@ func encodeCreateCoreV1NamespaceResponse(response CreateCoreV1NamespaceResponse,
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1Namespace:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICoreV1Namespace:
+	case *CreateCoreV1NamespaceApplicationVndKubernetesProtobufAccepted:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateCoreV1NamespaceApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateCoreV1NamespaceUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -406,23 +406,7 @@ func encodeCreateCoreV1NamespaceResponse(response CreateCoreV1NamespaceResponse,
 
 func encodeListCoreV1NodeResponse(response ListCoreV1NodeResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICoreV1NodeList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICoreV1NodeList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoreV1NodeList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1NodeList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1NodeList:
+	case *ListCoreV1NodeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -433,6 +417,22 @@ func encodeListCoreV1NodeResponse(response ListCoreV1NodeResponse, w http.Respon
 			return err
 		}
 		return nil
+	case *ListCoreV1NodeApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListCoreV1NodeApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListCoreV1NodeApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListCoreV1NodeApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1NodeUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -443,11 +443,7 @@ func encodeListCoreV1NodeResponse(response ListCoreV1NodeResponse, w http.Respon
 
 func encodeCreateCoreV1NodeResponse(response CreateCoreV1NodeResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICoreV1Node:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoreV1Node:
+	case *CreateCoreV1NodeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -458,19 +454,15 @@ func encodeCreateCoreV1NodeResponse(response CreateCoreV1NodeResponse, w http.Re
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1Node:
+	case *CreateCoreV1NodeApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateCoreV1NodeApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICoreV1Node:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICoreV1Node:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoreV1Node:
+	case *CreateCoreV1NodeApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -481,7 +473,15 @@ func encodeCreateCoreV1NodeResponse(response CreateCoreV1NodeResponse, w http.Re
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1Node:
+	case *CreateCoreV1NodeApplicationVndKubernetesProtobufCreated:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateCoreV1NodeApplicationYamlCreated:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateCoreV1NodeApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -492,14 +492,14 @@ func encodeCreateCoreV1NodeResponse(response CreateCoreV1NodeResponse, w http.Re
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1Node:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICoreV1Node:
+	case *CreateCoreV1NodeApplicationVndKubernetesProtobufAccepted:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateCoreV1NodeApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateCoreV1NodeUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -510,11 +510,7 @@ func encodeCreateCoreV1NodeResponse(response CreateCoreV1NodeResponse, w http.Re
 
 func encodeDeleteCoreV1CollectionNodeResponse(response DeleteCoreV1CollectionNodeResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteCoreV1CollectionNodeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -525,7 +521,11 @@ func encodeDeleteCoreV1CollectionNodeResponse(response DeleteCoreV1CollectionNod
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteCoreV1CollectionNodeApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteCoreV1CollectionNodeApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -539,15 +539,7 @@ func encodeDeleteCoreV1CollectionNodeResponse(response DeleteCoreV1CollectionNod
 
 func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response ListCoreV1PersistentVolumeClaimForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICoreV1PersistentVolumeClaimList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1PersistentVolumeClaimList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1PersistentVolumeClaimList:
+	case *ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -558,14 +550,22 @@ func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response List
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1PersistentVolumeClaimList:
-		w.Header().Set("Content-Type", "application/yaml")
+	case *ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICoreV1PersistentVolumeClaimList:
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -576,15 +576,7 @@ func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response List
 
 func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolumeResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICoreV1PersistentVolumeList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1PersistentVolumeList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1PersistentVolumeList:
+	case *ListCoreV1PersistentVolumeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -595,14 +587,22 @@ func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolum
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1PersistentVolumeList:
-		w.Header().Set("Content-Type", "application/yaml")
+	case *ListCoreV1PersistentVolumeApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICoreV1PersistentVolumeList:
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListCoreV1PersistentVolumeApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListCoreV1PersistentVolumeApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListCoreV1PersistentVolumeApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1PersistentVolumeUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -613,11 +613,7 @@ func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolum
 
 func encodeCreateCoreV1PersistentVolumeResponse(response CreateCoreV1PersistentVolumeResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICoreV1PersistentVolume:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoreV1PersistentVolume:
+	case *CreateCoreV1PersistentVolumeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -628,11 +624,15 @@ func encodeCreateCoreV1PersistentVolumeResponse(response CreateCoreV1PersistentV
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1PersistentVolume:
+	case *CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateCoreV1PersistentVolumeApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICoreV1PersistentVolume:
+	case *CreateCoreV1PersistentVolumeApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -643,19 +643,15 @@ func encodeCreateCoreV1PersistentVolumeResponse(response CreateCoreV1PersistentV
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1PersistentVolume:
+	case *CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufCreated:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateCoreV1PersistentVolumeApplicationYamlCreated:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICoreV1PersistentVolume:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoreV1PersistentVolume:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoreV1PersistentVolume:
+	case *CreateCoreV1PersistentVolumeApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -666,7 +662,11 @@ func encodeCreateCoreV1PersistentVolumeResponse(response CreateCoreV1PersistentV
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1PersistentVolume:
+	case *CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufAccepted:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateCoreV1PersistentVolumeApplicationYamlAccepted:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -680,7 +680,7 @@ func encodeCreateCoreV1PersistentVolumeResponse(response CreateCoreV1PersistentV
 
 func encodeDeleteCoreV1CollectionPersistentVolumeResponse(response DeleteCoreV1CollectionPersistentVolumeResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteCoreV1CollectionPersistentVolumeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -691,14 +691,14 @@ func encodeDeleteCoreV1CollectionPersistentVolumeResponse(response DeleteCoreV1C
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteCoreV1CollectionPersistentVolumeApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteCoreV1CollectionPersistentVolumeApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteCoreV1CollectionPersistentVolumeUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -709,7 +709,7 @@ func encodeDeleteCoreV1CollectionPersistentVolumeResponse(response DeleteCoreV1C
 
 func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICoreV1PodList:
+	case *ListCoreV1PodForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -720,22 +720,22 @@ func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNam
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1PodList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICoreV1PodList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoreV1PodList:
+	case *ListCoreV1PodForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1PodList:
+	case *ListCoreV1PodForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListCoreV1PodForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListCoreV1PodForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1PodForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -746,19 +746,7 @@ func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNam
 
 func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodTemplateForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICoreV1PodTemplateList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoreV1PodTemplateList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1PodTemplateList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1PodTemplateList:
+	case *ListCoreV1PodTemplateForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -769,7 +757,19 @@ func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodT
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1PodTemplateList:
+	case *ListCoreV1PodTemplateForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListCoreV1PodTemplateForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListCoreV1PodTemplateForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListCoreV1PodTemplateForAllNamespacesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -783,15 +783,7 @@ func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodT
 
 func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response ListCoreV1ReplicationControllerForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICoreV1ReplicationControllerList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1ReplicationControllerList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1ReplicationControllerList:
+	case *ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -802,14 +794,22 @@ func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response List
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1ReplicationControllerList:
-		w.Header().Set("Content-Type", "application/yaml")
+	case *ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICoreV1ReplicationControllerList:
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListCoreV1ReplicationControllerForAllNamespacesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListCoreV1ReplicationControllerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListCoreV1ReplicationControllerForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1ReplicationControllerForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -820,7 +820,7 @@ func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response List
 
 func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1ResourceQuotaForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICoreV1ResourceQuotaList:
+	case *ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -831,22 +831,22 @@ func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1Re
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1ResourceQuotaList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICoreV1ResourceQuotaList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoreV1ResourceQuotaList:
+	case *ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1ResourceQuotaList:
+	case *ListCoreV1ResourceQuotaForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListCoreV1ResourceQuotaForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListCoreV1ResourceQuotaForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoreV1ResourceQuotaForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -857,19 +857,7 @@ func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1Re
 
 func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICoreV1SecretList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoreV1SecretList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1SecretList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1SecretList:
+	case *ListCoreV1SecretForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -880,7 +868,19 @@ func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretFor
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1SecretList:
+	case *ListCoreV1SecretForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListCoreV1SecretForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListCoreV1SecretForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListCoreV1SecretForAllNamespacesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -894,19 +894,7 @@ func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretFor
 
 func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1ServiceAccountForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICoreV1ServiceAccountList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoreV1ServiceAccountList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1ServiceAccountList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1ServiceAccountList:
+	case *ListCoreV1ServiceAccountForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -917,7 +905,19 @@ func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1S
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1ServiceAccountList:
+	case *ListCoreV1ServiceAccountForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListCoreV1ServiceAccountForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListCoreV1ServiceAccountForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListCoreV1ServiceAccountForAllNamespacesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -931,19 +931,7 @@ func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1S
 
 func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICoreV1ServiceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoreV1ServiceList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1ServiceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPICoreV1ServiceList:
+	case *ListCoreV1ServiceForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -954,7 +942,19 @@ func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceF
 			return err
 		}
 		return nil
-	case *IoK8sAPICoreV1ServiceList:
+	case *ListCoreV1ServiceForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListCoreV1ServiceForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListCoreV1ServiceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListCoreV1ServiceForAllNamespacesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -968,7 +968,7 @@ func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceF
 
 func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1ConfigMapListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -979,22 +979,22 @@ func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1ConfigMapListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchCoreV1ConfigMapListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchCoreV1ConfigMapListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1ConfigMapListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1005,7 +1005,7 @@ func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1
 
 func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1EndpointsListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1EndpointsListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1016,22 +1016,22 @@ func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1EndpointsListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1EndpointsListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchCoreV1EndpointsListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchCoreV1EndpointsListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1EndpointsListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1042,7 +1042,7 @@ func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1
 
 func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1EventListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1EventListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1053,22 +1053,22 @@ func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1Even
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1EventListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1EventListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchCoreV1EventListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchCoreV1EventListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1EventListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1079,15 +1079,7 @@ func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1Even
 
 func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV1LimitRangeListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1098,14 +1090,22 @@ func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
+	case *WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchCoreV1LimitRangeListForAllNamespacesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchCoreV1LimitRangeListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchCoreV1LimitRangeListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1LimitRangeListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1116,11 +1116,7 @@ func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV
 
 func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1NamespaceListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1131,18 +1127,22 @@ func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListRes
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1NamespaceListApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchCoreV1NamespaceListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchCoreV1NamespaceListApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchCoreV1NamespaceListApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1NamespaceListUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1153,23 +1153,7 @@ func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListRes
 
 func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1NodeListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1180,6 +1164,22 @@ func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListResponse, w h
 			return err
 		}
 		return nil
+	case *WatchCoreV1NodeListApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchCoreV1NodeListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchCoreV1NodeListApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchCoreV1NodeListApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1NodeListUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1190,7 +1190,7 @@ func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListResponse, w h
 
 func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response WatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1201,22 +1201,22 @@ func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1227,19 +1227,7 @@ func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response
 
 func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1PersistentVolumeListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1PersistentVolumeListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1250,7 +1238,19 @@ func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1Persisten
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1PersistentVolumeListApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchCoreV1PersistentVolumeListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchCoreV1PersistentVolumeListApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchCoreV1PersistentVolumeListApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -1264,7 +1264,7 @@ func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1Persisten
 
 func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1PodListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1275,22 +1275,22 @@ func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodLis
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1PodListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1PodListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchCoreV1PodListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchCoreV1PodListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1PodListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1301,23 +1301,7 @@ func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodLis
 
 func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCoreV1PodTemplateListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1328,6 +1312,22 @@ func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCore
 			return err
 		}
 		return nil
+	case *WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchCoreV1PodTemplateListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchCoreV1PodTemplateListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchCoreV1PodTemplateListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1PodTemplateListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1338,23 +1338,7 @@ func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCore
 
 func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response WatchCoreV1ReplicationControllerListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1365,6 +1349,22 @@ func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response
 			return err
 		}
 		return nil
+	case *WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchCoreV1ReplicationControllerListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchCoreV1ReplicationControllerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchCoreV1ReplicationControllerListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1375,7 +1375,7 @@ func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response
 
 func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCoreV1ResourceQuotaListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1386,22 +1386,22 @@ func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCo
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1ResourceQuotaListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchCoreV1ResourceQuotaListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchCoreV1ResourceQuotaListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1412,15 +1412,7 @@ func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCo
 
 func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1SecretListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1SecretListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1431,14 +1423,22 @@ func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1Sec
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
+	case *WatchCoreV1SecretListForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchCoreV1SecretListForAllNamespacesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchCoreV1SecretListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchCoreV1SecretListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1SecretListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1449,7 +1449,7 @@ func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1Sec
 
 func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchCoreV1ServiceAccountListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1460,22 +1460,22 @@ func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchC
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1ServiceAccountListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchCoreV1ServiceAccountListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchCoreV1ServiceAccountListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1486,7 +1486,7 @@ func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchC
 
 func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1ServiceListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1ServiceListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1497,22 +1497,22 @@ func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1Se
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1ServiceListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoreV1ServiceListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchCoreV1ServiceListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchCoreV1ServiceListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoreV1ServiceListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1523,15 +1523,7 @@ func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1Se
 
 func encodeGetAPIVersionsResponse(response GetAPIVersionsResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroupList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroupList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroupList:
+	case *GetAPIVersionsApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1542,6 +1534,14 @@ func encodeGetAPIVersionsResponse(response GetAPIVersionsResponse, w http.Respon
 			return err
 		}
 		return nil
+	case *GetAPIVersionsApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetAPIVersionsApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAPIVersionsUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1552,11 +1552,7 @@ func encodeGetAPIVersionsResponse(response GetAPIVersionsResponse, w http.Respon
 
 func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistrationAPIGroupResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetAdmissionregistrationAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1567,7 +1563,11 @@ func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistr
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetAdmissionregistrationAPIGroupApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetAdmissionregistrationAPIGroupApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -1581,11 +1581,7 @@ func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistr
 
 func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionregistrationV1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetAdmissionregistrationV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1596,7 +1592,11 @@ func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionr
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetAdmissionregistrationV1APIResourcesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetAdmissionregistrationV1APIResourcesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -1610,23 +1610,7 @@ func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionr
 
 func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(response ListAdmissionregistrationV1MutatingWebhookConfigurationResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList:
+	case *ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1637,6 +1621,22 @@ func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 			return err
 		}
 		return nil
+	case *ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1647,7 +1647,7 @@ func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 
 func encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(response CreateAdmissionregistrationV1MutatingWebhookConfigurationResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration:
+	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1658,19 +1658,15 @@ func encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 			return err
 		}
 		return nil
-	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration:
+	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration:
+	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -1681,15 +1677,15 @@ func encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 			return err
 		}
 		return nil
-	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration:
+	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufCreated:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlCreated:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration:
+	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -1700,7 +1696,11 @@ func encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 			return err
 		}
 		return nil
-	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration:
+	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufAccepted:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlAccepted:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -1714,7 +1714,7 @@ func encodeCreateAdmissionregistrationV1MutatingWebhookConfigurationResponse(res
 
 func encodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResponse(response DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1725,14 +1725,14 @@ func encodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRe
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1743,7 +1743,7 @@ func encodeDeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRe
 
 func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response ListAdmissionregistrationV1ValidatingWebhookConfigurationResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList:
+	case *ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1754,22 +1754,22 @@ func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 			return err
 		}
 		return nil
-	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList:
+	case *ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList:
+	case *ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1780,7 +1780,7 @@ func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 
 func encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response CreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration:
+	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1791,15 +1791,15 @@ func encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 			return err
 		}
 		return nil
-	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration:
+	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration:
+	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -1810,19 +1810,15 @@ func encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 			return err
 		}
 		return nil
-	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration:
+	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufCreated:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlCreated:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration:
+	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -1833,7 +1829,11 @@ func encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 			return err
 		}
 		return nil
-	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration:
+	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufAccepted:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlAccepted:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -1847,7 +1847,7 @@ func encodeCreateAdmissionregistrationV1ValidatingWebhookConfigurationResponse(r
 
 func encodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResponse(response DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1858,14 +1858,14 @@ func encodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1876,7 +1876,7 @@ func encodeDeleteAdmissionregistrationV1CollectionValidatingWebhookConfiguration
 
 func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(response WatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1887,22 +1887,22 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1913,7 +1913,7 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 
 func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(response WatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1924,22 +1924,22 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1950,7 +1950,7 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 
 func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetApiextensionsAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1961,14 +1961,14 @@ func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupRes
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetApiextensionsAPIGroupApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetApiextensionsAPIGroupApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetApiextensionsAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -1979,11 +1979,7 @@ func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupRes
 
 func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetApiextensionsV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -1994,7 +1990,11 @@ func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1API
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetApiextensionsV1APIResourcesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetApiextensionsV1APIResourcesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -2008,7 +2008,7 @@ func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1API
 
 func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApiextensionsV1CustomResourceDefinitionResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList:
+	case *ListApiextensionsV1CustomResourceDefinitionApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2019,22 +2019,22 @@ func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApie
 			return err
 		}
 		return nil
-	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList:
+	case *ListApiextensionsV1CustomResourceDefinitionApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList:
+	case *ListApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListApiextensionsV1CustomResourceDefinitionApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListApiextensionsV1CustomResourceDefinitionUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2045,11 +2045,7 @@ func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApie
 
 func encodeCreateApiextensionsV1CustomResourceDefinitionResponse(response CreateApiextensionsV1CustomResourceDefinitionResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition:
+	case *CreateApiextensionsV1CustomResourceDefinitionApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2060,19 +2056,15 @@ func encodeCreateApiextensionsV1CustomResourceDefinitionResponse(response Create
 			return err
 		}
 		return nil
-	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition:
+	case *CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateApiextensionsV1CustomResourceDefinitionApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition:
+	case *CreateApiextensionsV1CustomResourceDefinitionApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -2083,7 +2075,15 @@ func encodeCreateApiextensionsV1CustomResourceDefinitionResponse(response Create
 			return err
 		}
 		return nil
-	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition:
+	case *CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufCreated:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateApiextensionsV1CustomResourceDefinitionApplicationYamlCreated:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateApiextensionsV1CustomResourceDefinitionApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -2094,14 +2094,14 @@ func encodeCreateApiextensionsV1CustomResourceDefinitionResponse(response Create
 			return err
 		}
 		return nil
-	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition:
+	case *CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufAccepted:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateApiextensionsV1CustomResourceDefinitionApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateApiextensionsV1CustomResourceDefinitionUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2112,11 +2112,7 @@ func encodeCreateApiextensionsV1CustomResourceDefinitionResponse(response Create
 
 func encodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(response DeleteApiextensionsV1CollectionCustomResourceDefinitionResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2127,7 +2123,11 @@ func encodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(respo
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -2141,11 +2141,7 @@ func encodeDeleteApiextensionsV1CollectionCustomResourceDefinitionResponse(respo
 
 func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response WatchApiextensionsV1CustomResourceDefinitionListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2156,18 +2152,22 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response Wat
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchApiextensionsV1CustomResourceDefinitionListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchApiextensionsV1CustomResourceDefinitionListApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchApiextensionsV1CustomResourceDefinitionListApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchApiextensionsV1CustomResourceDefinitionListUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2178,7 +2178,7 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response Wat
 
 func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGroupResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetApiregistrationAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2189,14 +2189,14 @@ func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGrou
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetApiregistrationAPIGroupApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetApiregistrationAPIGroupApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetApiregistrationAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2207,15 +2207,7 @@ func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGrou
 
 func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetApiregistrationV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2226,6 +2218,14 @@ func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV
 			return err
 		}
 		return nil
+	case *GetApiregistrationV1APIResourcesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetApiregistrationV1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetApiregistrationV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2236,19 +2236,7 @@ func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV
 
 func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV1APIServiceResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList:
+	case *ListApiregistrationV1APIServiceApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2259,7 +2247,19 @@ func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV
 			return err
 		}
 		return nil
-	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList:
+	case *ListApiregistrationV1APIServiceApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListApiregistrationV1APIServiceApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListApiregistrationV1APIServiceApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListApiregistrationV1APIServiceApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -2273,15 +2273,7 @@ func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV
 
 func encodeCreateApiregistrationV1APIServiceResponse(response CreateApiregistrationV1APIServiceResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService:
+	case *CreateApiregistrationV1APIServiceApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2292,7 +2284,15 @@ func encodeCreateApiregistrationV1APIServiceResponse(response CreateApiregistrat
 			return err
 		}
 		return nil
-	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService:
+	case *CreateApiregistrationV1APIServiceApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateApiregistrationV1APIServiceApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateApiregistrationV1APIServiceApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -2303,15 +2303,15 @@ func encodeCreateApiregistrationV1APIServiceResponse(response CreateApiregistrat
 			return err
 		}
 		return nil
-	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService:
+	case *CreateApiregistrationV1APIServiceApplicationVndKubernetesProtobufCreated:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService:
+	case *CreateApiregistrationV1APIServiceApplicationYamlCreated:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateApiregistrationV1APIServiceApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -2322,14 +2322,14 @@ func encodeCreateApiregistrationV1APIServiceResponse(response CreateApiregistrat
 			return err
 		}
 		return nil
-	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService:
+	case *CreateApiregistrationV1APIServiceApplicationVndKubernetesProtobufAccepted:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateApiregistrationV1APIServiceApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateApiregistrationV1APIServiceUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2340,7 +2340,7 @@ func encodeCreateApiregistrationV1APIServiceResponse(response CreateApiregistrat
 
 func encodeDeleteApiregistrationV1CollectionAPIServiceResponse(response DeleteApiregistrationV1CollectionAPIServiceResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteApiregistrationV1CollectionAPIServiceApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2351,14 +2351,14 @@ func encodeDeleteApiregistrationV1CollectionAPIServiceResponse(response DeleteAp
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteApiregistrationV1CollectionAPIServiceApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteApiregistrationV1CollectionAPIServiceApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteApiregistrationV1CollectionAPIServiceUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2369,23 +2369,7 @@ func encodeDeleteApiregistrationV1CollectionAPIServiceResponse(response DeleteAp
 
 func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistrationV1APIServiceListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchApiregistrationV1APIServiceListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2396,6 +2380,22 @@ func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistr
 			return err
 		}
 		return nil
+	case *WatchApiregistrationV1APIServiceListApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchApiregistrationV1APIServiceListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchApiregistrationV1APIServiceListApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchApiregistrationV1APIServiceListApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchApiregistrationV1APIServiceListUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2406,11 +2406,7 @@ func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistr
 
 func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetAppsAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2421,7 +2417,11 @@ func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupResponse, w http.Resp
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetAppsAPIGroupApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetAppsAPIGroupApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -2435,7 +2435,7 @@ func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupResponse, w http.Resp
 
 func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetAppsV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2446,14 +2446,14 @@ func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesResponse,
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetAppsV1APIResourcesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetAppsV1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAppsV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2464,23 +2464,7 @@ func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesResponse,
 
 func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListAppsV1ControllerRevisionForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIAppsV1ControllerRevisionList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAppsV1ControllerRevisionList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAppsV1ControllerRevisionList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIAppsV1ControllerRevisionList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIAppsV1ControllerRevisionList:
+	case *ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2491,6 +2475,22 @@ func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListApp
 			return err
 		}
 		return nil
+	case *ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListAppsV1ControllerRevisionForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListAppsV1ControllerRevisionForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListAppsV1ControllerRevisionForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListAppsV1ControllerRevisionForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2501,19 +2501,7 @@ func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListApp
 
 func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1DaemonSetForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIAppsV1DaemonSetList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAppsV1DaemonSetList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIAppsV1DaemonSetList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIAppsV1DaemonSetList:
+	case *ListAppsV1DaemonSetForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2524,7 +2512,19 @@ func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1Daemon
 			return err
 		}
 		return nil
-	case *IoK8sAPIAppsV1DaemonSetList:
+	case *ListAppsV1DaemonSetForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListAppsV1DaemonSetForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListAppsV1DaemonSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListAppsV1DaemonSetForAllNamespacesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -2538,23 +2538,7 @@ func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1Daemon
 
 func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1DeploymentForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIAppsV1DeploymentList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAppsV1DeploymentList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAppsV1DeploymentList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIAppsV1DeploymentList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIAppsV1DeploymentList:
+	case *ListAppsV1DeploymentForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2565,6 +2549,22 @@ func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1Deplo
 			return err
 		}
 		return nil
+	case *ListAppsV1DeploymentForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListAppsV1DeploymentForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListAppsV1DeploymentForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListAppsV1DeploymentForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListAppsV1DeploymentForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2575,7 +2575,7 @@ func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1Deplo
 
 func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1ReplicaSetForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIAppsV1ReplicaSetList:
+	case *ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2586,22 +2586,22 @@ func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1Repli
 			return err
 		}
 		return nil
-	case *IoK8sAPIAppsV1ReplicaSetList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAppsV1ReplicaSetList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAppsV1ReplicaSetList:
+	case *ListAppsV1ReplicaSetForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIAppsV1ReplicaSetList:
+	case *ListAppsV1ReplicaSetForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListAppsV1ReplicaSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListAppsV1ReplicaSetForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListAppsV1ReplicaSetForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2612,23 +2612,7 @@ func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1Repli
 
 func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1StatefulSetForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIAppsV1StatefulSetList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAppsV1StatefulSetList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAppsV1StatefulSetList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIAppsV1StatefulSetList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIAppsV1StatefulSetList:
+	case *ListAppsV1StatefulSetForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2639,6 +2623,22 @@ func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1Stat
 			return err
 		}
 		return nil
+	case *ListAppsV1StatefulSetForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListAppsV1StatefulSetForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListAppsV1StatefulSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListAppsV1StatefulSetForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListAppsV1StatefulSetForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2649,11 +2649,7 @@ func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1Stat
 
 func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response WatchAppsV1ControllerRevisionListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2664,18 +2660,22 @@ func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response Wa
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchAppsV1ControllerRevisionListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchAppsV1ControllerRevisionListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchAppsV1ControllerRevisionListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2686,7 +2686,7 @@ func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response Wa
 
 func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1DaemonSetListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2697,22 +2697,22 @@ func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAppsV1DaemonSetListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchAppsV1DaemonSetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchAppsV1DaemonSetListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchAppsV1DaemonSetListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2723,15 +2723,7 @@ func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1
 
 func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV1DeploymentListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAppsV1DeploymentListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2742,14 +2734,22 @@ func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
+	case *WatchAppsV1DeploymentListForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchAppsV1DeploymentListForAllNamespacesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchAppsV1DeploymentListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchAppsV1DeploymentListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchAppsV1DeploymentListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2760,7 +2760,7 @@ func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV
 
 func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV1ReplicaSetListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2771,22 +2771,22 @@ func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAppsV1ReplicaSetListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchAppsV1ReplicaSetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchAppsV1ReplicaSetListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2797,7 +2797,7 @@ func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV
 
 func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchAppsV1StatefulSetListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2808,22 +2808,22 @@ func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchApps
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAppsV1StatefulSetListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchAppsV1StatefulSetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchAppsV1StatefulSetListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchAppsV1StatefulSetListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2834,7 +2834,7 @@ func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchApps
 
 func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetAuthenticationAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2845,14 +2845,14 @@ func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupR
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetAuthenticationAPIGroupApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetAuthenticationAPIGroupApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAuthenticationAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2863,7 +2863,7 @@ func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupR
 
 func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetAuthenticationV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2874,14 +2874,14 @@ func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1A
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetAuthenticationV1APIResourcesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetAuthenticationV1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAuthenticationV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2892,11 +2892,7 @@ func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1A
 
 func encodeCreateAuthenticationV1TokenReviewResponse(response CreateAuthenticationV1TokenReviewResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIAuthenticationV1TokenReview:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAuthenticationV1TokenReview:
+	case *CreateAuthenticationV1TokenReviewApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2907,11 +2903,15 @@ func encodeCreateAuthenticationV1TokenReviewResponse(response CreateAuthenticati
 			return err
 		}
 		return nil
-	case *IoK8sAPIAuthenticationV1TokenReview:
+	case *CreateAuthenticationV1TokenReviewApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateAuthenticationV1TokenReviewApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAuthenticationV1TokenReview:
+	case *CreateAuthenticationV1TokenReviewApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -2922,15 +2922,15 @@ func encodeCreateAuthenticationV1TokenReviewResponse(response CreateAuthenticati
 			return err
 		}
 		return nil
-	case *IoK8sAPIAuthenticationV1TokenReview:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAuthenticationV1TokenReview:
+	case *CreateAuthenticationV1TokenReviewApplicationVndKubernetesProtobufCreated:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAuthenticationV1TokenReview:
+	case *CreateAuthenticationV1TokenReviewApplicationYamlCreated:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateAuthenticationV1TokenReviewApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -2941,14 +2941,14 @@ func encodeCreateAuthenticationV1TokenReviewResponse(response CreateAuthenticati
 			return err
 		}
 		return nil
-	case *IoK8sAPIAuthenticationV1TokenReview:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAuthenticationV1TokenReview:
+	case *CreateAuthenticationV1TokenReviewApplicationVndKubernetesProtobufAccepted:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateAuthenticationV1TokenReviewApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAuthenticationV1TokenReviewUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2959,7 +2959,7 @@ func encodeCreateAuthenticationV1TokenReviewResponse(response CreateAuthenticati
 
 func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetAuthorizationAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2970,14 +2970,14 @@ func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupRes
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetAuthorizationAPIGroupApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetAuthorizationAPIGroupApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAuthorizationAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -2988,7 +2988,7 @@ func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupRes
 
 func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetAuthorizationV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -2999,14 +2999,14 @@ func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1API
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetAuthorizationV1APIResourcesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetAuthorizationV1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAuthorizationV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -3017,7 +3017,7 @@ func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1API
 
 func encodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(response CreateAuthorizationV1SelfSubjectAccessReviewResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIAuthorizationV1SelfSubjectAccessReview:
+	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3028,15 +3028,15 @@ func encodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(response CreateA
 			return err
 		}
 		return nil
-	case *IoK8sAPIAuthorizationV1SelfSubjectAccessReview:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAuthorizationV1SelfSubjectAccessReview:
+	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAuthorizationV1SelfSubjectAccessReview:
+	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -3047,15 +3047,15 @@ func encodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(response CreateA
 			return err
 		}
 		return nil
-	case *IoK8sAPIAuthorizationV1SelfSubjectAccessReview:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAuthorizationV1SelfSubjectAccessReview:
+	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationVndKubernetesProtobufCreated:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAuthorizationV1SelfSubjectAccessReview:
+	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlCreated:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -3066,14 +3066,14 @@ func encodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(response CreateA
 			return err
 		}
 		return nil
-	case *IoK8sAPIAuthorizationV1SelfSubjectAccessReview:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAuthorizationV1SelfSubjectAccessReview:
+	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationVndKubernetesProtobufAccepted:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -3084,11 +3084,7 @@ func encodeCreateAuthorizationV1SelfSubjectAccessReviewResponse(response CreateA
 
 func encodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(response CreateAuthorizationV1SelfSubjectRulesReviewResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIAuthorizationV1SelfSubjectRulesReview:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAuthorizationV1SelfSubjectRulesReview:
+	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3099,19 +3095,15 @@ func encodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(response CreateAu
 			return err
 		}
 		return nil
-	case *IoK8sAPIAuthorizationV1SelfSubjectRulesReview:
+	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAuthorizationV1SelfSubjectRulesReview:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAuthorizationV1SelfSubjectRulesReview:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAuthorizationV1SelfSubjectRulesReview:
+	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -3122,7 +3114,15 @@ func encodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(response CreateAu
 			return err
 		}
 		return nil
-	case *IoK8sAPIAuthorizationV1SelfSubjectRulesReview:
+	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufCreated:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlCreated:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -3133,14 +3133,14 @@ func encodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(response CreateAu
 			return err
 		}
 		return nil
-	case *IoK8sAPIAuthorizationV1SelfSubjectRulesReview:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAuthorizationV1SelfSubjectRulesReview:
+	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufAccepted:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -3151,7 +3151,7 @@ func encodeCreateAuthorizationV1SelfSubjectRulesReviewResponse(response CreateAu
 
 func encodeCreateAuthorizationV1SubjectAccessReviewResponse(response CreateAuthorizationV1SubjectAccessReviewResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIAuthorizationV1SubjectAccessReview:
+	case *CreateAuthorizationV1SubjectAccessReviewApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3162,15 +3162,15 @@ func encodeCreateAuthorizationV1SubjectAccessReviewResponse(response CreateAutho
 			return err
 		}
 		return nil
-	case *IoK8sAPIAuthorizationV1SubjectAccessReview:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAuthorizationV1SubjectAccessReview:
+	case *CreateAuthorizationV1SubjectAccessReviewApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAuthorizationV1SubjectAccessReview:
+	case *CreateAuthorizationV1SubjectAccessReviewApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateAuthorizationV1SubjectAccessReviewApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -3181,15 +3181,15 @@ func encodeCreateAuthorizationV1SubjectAccessReviewResponse(response CreateAutho
 			return err
 		}
 		return nil
-	case *IoK8sAPIAuthorizationV1SubjectAccessReview:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAuthorizationV1SubjectAccessReview:
+	case *CreateAuthorizationV1SubjectAccessReviewApplicationVndKubernetesProtobufCreated:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAuthorizationV1SubjectAccessReview:
+	case *CreateAuthorizationV1SubjectAccessReviewApplicationYamlCreated:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateAuthorizationV1SubjectAccessReviewApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -3200,14 +3200,14 @@ func encodeCreateAuthorizationV1SubjectAccessReviewResponse(response CreateAutho
 			return err
 		}
 		return nil
-	case *IoK8sAPIAuthorizationV1SubjectAccessReview:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAuthorizationV1SubjectAccessReview:
+	case *CreateAuthorizationV1SubjectAccessReviewApplicationVndKubernetesProtobufAccepted:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateAuthorizationV1SubjectAccessReviewApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateAuthorizationV1SubjectAccessReviewUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -3218,11 +3218,7 @@ func encodeCreateAuthorizationV1SubjectAccessReviewResponse(response CreateAutho
 
 func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetAutoscalingAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3233,7 +3229,11 @@ func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupRespons
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetAutoscalingAPIGroupApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetAutoscalingAPIGroupApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -3247,7 +3247,7 @@ func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupRespons
 
 func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetAutoscalingV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3258,14 +3258,14 @@ func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIReso
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetAutoscalingV1APIResourcesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetAutoscalingV1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAutoscalingV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -3276,7 +3276,7 @@ func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIReso
 
 func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList:
+	case *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3287,22 +3287,22 @@ func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 			return err
 		}
 		return nil
-	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList:
+	case *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList:
+	case *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -3313,7 +3313,7 @@ func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 
 func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3324,22 +3324,22 @@ func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -3350,7 +3350,7 @@ func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 
 func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2beta1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetAutoscalingV2beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3361,14 +3361,14 @@ func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2be
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetAutoscalingV2beta1APIResourcesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetAutoscalingV2beta1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetAutoscalingV2beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -3379,7 +3379,7 @@ func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2be
 
 func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList:
+	case *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3390,22 +3390,22 @@ func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 			return err
 		}
 		return nil
-	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList:
+	case *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList:
+	case *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -3416,19 +3416,7 @@ func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 
 func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3439,7 +3427,19 @@ func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -3453,11 +3453,7 @@ func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 
 func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2beta2APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetAutoscalingV2beta2APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3468,7 +3464,11 @@ func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2be
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetAutoscalingV2beta2APIResourcesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetAutoscalingV2beta2APIResourcesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -3482,7 +3482,7 @@ func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2be
 
 func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList:
+	case *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3493,22 +3493,22 @@ func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 			return err
 		}
 		return nil
-	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList:
+	case *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList:
+	case *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -3519,7 +3519,7 @@ func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 
 func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3530,22 +3530,22 @@ func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -3556,7 +3556,7 @@ func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 
 func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetBatchAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3567,14 +3567,14 @@ func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupResponse, w http.Re
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetBatchAPIGroupApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetBatchAPIGroupApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetBatchAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -3585,7 +3585,7 @@ func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupResponse, w http.Re
 
 func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetBatchV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3596,14 +3596,14 @@ func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesRespons
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetBatchV1APIResourcesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetBatchV1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetBatchV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -3614,7 +3614,7 @@ func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesRespons
 
 func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJobForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIBatchV1CronJobList:
+	case *ListBatchV1CronJobForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3625,22 +3625,22 @@ func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJo
 			return err
 		}
 		return nil
-	case *IoK8sAPIBatchV1CronJobList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIBatchV1CronJobList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIBatchV1CronJobList:
+	case *ListBatchV1CronJobForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIBatchV1CronJobList:
+	case *ListBatchV1CronJobForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListBatchV1CronJobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListBatchV1CronJobForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListBatchV1CronJobForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -3651,23 +3651,7 @@ func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJo
 
 func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIBatchV1JobList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIBatchV1JobList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIBatchV1JobList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIBatchV1JobList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIBatchV1JobList:
+	case *ListBatchV1JobForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3678,6 +3662,22 @@ func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllN
 			return err
 		}
 		return nil
+	case *ListBatchV1JobForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListBatchV1JobForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListBatchV1JobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListBatchV1JobForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListBatchV1JobForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -3688,7 +3688,7 @@ func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllN
 
 func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1CronJobListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchBatchV1CronJobListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3699,22 +3699,22 @@ func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchBatchV1CronJobListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchBatchV1CronJobListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchBatchV1CronJobListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchBatchV1CronJobListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchBatchV1CronJobListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -3725,19 +3725,7 @@ func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1
 
 func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchBatchV1JobListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3748,7 +3736,19 @@ func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobL
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchBatchV1JobListForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchBatchV1JobListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchBatchV1JobListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchBatchV1JobListForAllNamespacesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -3762,15 +3762,7 @@ func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobL
 
 func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetBatchV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3781,6 +3773,14 @@ func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResour
 			return err
 		}
 		return nil
+	case *GetBatchV1beta1APIResourcesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetBatchV1beta1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetBatchV1beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -3791,19 +3791,7 @@ func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResour
 
 func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1beta1CronJobForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIBatchV1beta1CronJobList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIBatchV1beta1CronJobList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIBatchV1beta1CronJobList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIBatchV1beta1CronJobList:
+	case *ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3814,7 +3802,19 @@ func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1b
 			return err
 		}
 		return nil
-	case *IoK8sAPIBatchV1beta1CronJobList:
+	case *ListBatchV1beta1CronJobForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListBatchV1beta1CronJobForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListBatchV1beta1CronJobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListBatchV1beta1CronJobForAllNamespacesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -3828,23 +3828,7 @@ func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1b
 
 func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBatchV1beta1CronJobListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3855,6 +3839,22 @@ func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBa
 			return err
 		}
 		return nil
+	case *WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchBatchV1beta1CronJobListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchBatchV1beta1CronJobListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchBatchV1beta1CronJobListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -3865,7 +3865,7 @@ func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBa
 
 func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetCertificatesAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3876,14 +3876,14 @@ func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupRespo
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetCertificatesAPIGroupApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetCertificatesAPIGroupApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetCertificatesAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -3894,11 +3894,7 @@ func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupRespo
 
 func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetCertificatesV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3909,7 +3905,11 @@ func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIRe
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetCertificatesV1APIResourcesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetCertificatesV1APIResourcesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -3923,11 +3923,7 @@ func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIRe
 
 func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCertificatesV1CertificateSigningRequestResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICertificatesV1CertificateSigningRequestList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPICertificatesV1CertificateSigningRequestList:
+	case *ListCertificatesV1CertificateSigningRequestApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3938,18 +3934,22 @@ func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCert
 			return err
 		}
 		return nil
-	case *IoK8sAPICertificatesV1CertificateSigningRequestList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICertificatesV1CertificateSigningRequestList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICertificatesV1CertificateSigningRequestList:
+	case *ListCertificatesV1CertificateSigningRequestApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListCertificatesV1CertificateSigningRequestApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCertificatesV1CertificateSigningRequestUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -3960,15 +3960,7 @@ func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCert
 
 func encodeCreateCertificatesV1CertificateSigningRequestResponse(response CreateCertificatesV1CertificateSigningRequestResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICertificatesV1CertificateSigningRequest:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICertificatesV1CertificateSigningRequest:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICertificatesV1CertificateSigningRequest:
+	case *CreateCertificatesV1CertificateSigningRequestApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -3979,7 +3971,15 @@ func encodeCreateCertificatesV1CertificateSigningRequestResponse(response Create
 			return err
 		}
 		return nil
-	case *IoK8sAPICertificatesV1CertificateSigningRequest:
+	case *CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateCertificatesV1CertificateSigningRequestApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateCertificatesV1CertificateSigningRequestApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -3990,15 +3990,15 @@ func encodeCreateCertificatesV1CertificateSigningRequestResponse(response Create
 			return err
 		}
 		return nil
-	case *IoK8sAPICertificatesV1CertificateSigningRequest:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICertificatesV1CertificateSigningRequest:
+	case *CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufCreated:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICertificatesV1CertificateSigningRequest:
+	case *CreateCertificatesV1CertificateSigningRequestApplicationYamlCreated:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateCertificatesV1CertificateSigningRequestApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -4009,14 +4009,14 @@ func encodeCreateCertificatesV1CertificateSigningRequestResponse(response Create
 			return err
 		}
 		return nil
-	case *IoK8sAPICertificatesV1CertificateSigningRequest:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICertificatesV1CertificateSigningRequest:
+	case *CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufAccepted:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateCertificatesV1CertificateSigningRequestApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateCertificatesV1CertificateSigningRequestUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4027,7 +4027,7 @@ func encodeCreateCertificatesV1CertificateSigningRequestResponse(response Create
 
 func encodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(response DeleteCertificatesV1CollectionCertificateSigningRequestResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteCertificatesV1CollectionCertificateSigningRequestApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4038,14 +4038,14 @@ func encodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(respo
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteCertificatesV1CollectionCertificateSigningRequestApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteCertificatesV1CollectionCertificateSigningRequestApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4056,11 +4056,7 @@ func encodeDeleteCertificatesV1CollectionCertificateSigningRequestResponse(respo
 
 func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response WatchCertificatesV1CertificateSigningRequestListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCertificatesV1CertificateSigningRequestListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4071,18 +4067,22 @@ func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response Wat
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCertificatesV1CertificateSigningRequestListApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchCertificatesV1CertificateSigningRequestListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchCertificatesV1CertificateSigningRequestListApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchCertificatesV1CertificateSigningRequestListApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCertificatesV1CertificateSigningRequestListUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4093,15 +4093,7 @@ func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response Wat
 
 func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetCoordinationAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4112,6 +4104,14 @@ func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupRespo
 			return err
 		}
 		return nil
+	case *GetCoordinationAPIGroupApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetCoordinationAPIGroupApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetCoordinationAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4122,7 +4122,7 @@ func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupRespo
 
 func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetCoordinationV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4133,14 +4133,14 @@ func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIRe
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetCoordinationV1APIResourcesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetCoordinationV1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetCoordinationV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4151,7 +4151,7 @@ func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIRe
 
 func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordinationV1LeaseForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPICoordinationV1LeaseList:
+	case *ListCoordinationV1LeaseForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4162,22 +4162,22 @@ func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordina
 			return err
 		}
 		return nil
-	case *IoK8sAPICoordinationV1LeaseList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPICoordinationV1LeaseList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPICoordinationV1LeaseList:
+	case *ListCoordinationV1LeaseForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPICoordinationV1LeaseList:
+	case *ListCoordinationV1LeaseForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListCoordinationV1LeaseForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListCoordinationV1LeaseForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListCoordinationV1LeaseForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4188,15 +4188,7 @@ func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordina
 
 func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCoordinationV1LeaseListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4207,14 +4199,22 @@ func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCo
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
+	case *WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchCoordinationV1LeaseListForAllNamespacesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchCoordinationV1LeaseListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchCoordinationV1LeaseListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchCoordinationV1LeaseListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4225,7 +4225,7 @@ func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCo
 
 func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetDiscoveryAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4236,14 +4236,14 @@ func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupResponse, w
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetDiscoveryAPIGroupApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetDiscoveryAPIGroupApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetDiscoveryAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4254,11 +4254,7 @@ func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupResponse, w
 
 func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetDiscoveryV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4269,7 +4265,11 @@ func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResource
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetDiscoveryV1APIResourcesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetDiscoveryV1APIResourcesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -4283,19 +4283,7 @@ func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResource
 
 func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDiscoveryV1EndpointSliceForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIDiscoveryV1EndpointSliceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIDiscoveryV1EndpointSliceList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIDiscoveryV1EndpointSliceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIDiscoveryV1EndpointSliceList:
+	case *ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4306,7 +4294,19 @@ func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDis
 			return err
 		}
 		return nil
-	case *IoK8sAPIDiscoveryV1EndpointSliceList:
+	case *ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListDiscoveryV1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListDiscoveryV1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListDiscoveryV1EndpointSliceForAllNamespacesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -4320,11 +4320,7 @@ func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDis
 
 func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response WatchDiscoveryV1EndpointSliceListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4335,18 +4331,22 @@ func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response Wa
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4357,7 +4357,7 @@ func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response Wa
 
 func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetDiscoveryV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4368,14 +4368,14 @@ func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1A
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetDiscoveryV1beta1APIResourcesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetDiscoveryV1beta1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetDiscoveryV1beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4386,19 +4386,7 @@ func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1A
 
 func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response ListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIDiscoveryV1beta1EndpointSliceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIDiscoveryV1beta1EndpointSliceList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIDiscoveryV1beta1EndpointSliceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIDiscoveryV1beta1EndpointSliceList:
+	case *ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4409,7 +4397,19 @@ func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response Li
 			return err
 		}
 		return nil
-	case *IoK8sAPIDiscoveryV1beta1EndpointSliceList:
+	case *ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -4423,7 +4423,7 @@ func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response Li
 
 func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(response WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4434,22 +4434,22 @@ func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(respon
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4460,7 +4460,7 @@ func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(respon
 
 func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetEventsAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4471,14 +4471,14 @@ func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupResponse, w http.
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetEventsAPIGroupApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetEventsAPIGroupApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetEventsAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4489,15 +4489,7 @@ func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupResponse, w http.
 
 func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetEventsV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4508,6 +4500,14 @@ func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesRespo
 			return err
 		}
 		return nil
+	case *GetEventsV1APIResourcesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetEventsV1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetEventsV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4518,15 +4518,7 @@ func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesRespo
 
 func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIEventsV1EventList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIEventsV1EventList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIEventsV1EventList:
+	case *ListEventsV1EventForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4537,14 +4529,22 @@ func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventF
 			return err
 		}
 		return nil
-	case *IoK8sAPIEventsV1EventList:
-		w.Header().Set("Content-Type", "application/yaml")
+	case *ListEventsV1EventForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIEventsV1EventList:
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListEventsV1EventForAllNamespacesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListEventsV1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListEventsV1EventForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListEventsV1EventForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4555,19 +4555,7 @@ func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventF
 
 func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1EventListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchEventsV1EventListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4578,7 +4566,19 @@ func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchEventsV1EventListForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchEventsV1EventListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchEventsV1EventListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchEventsV1EventListForAllNamespacesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -4592,7 +4592,7 @@ func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1
 
 func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetEventsV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4603,14 +4603,14 @@ func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIReso
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetEventsV1beta1APIResourcesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetEventsV1beta1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetEventsV1beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4621,23 +4621,7 @@ func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIReso
 
 func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1beta1EventForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIEventsV1beta1EventList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIEventsV1beta1EventList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIEventsV1beta1EventList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIEventsV1beta1EventList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIEventsV1beta1EventList:
+	case *ListEventsV1beta1EventForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4648,6 +4632,22 @@ func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1b
 			return err
 		}
 		return nil
+	case *ListEventsV1beta1EventForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListEventsV1beta1EventForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListEventsV1beta1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListEventsV1beta1EventForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListEventsV1beta1EventForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4658,11 +4658,7 @@ func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1b
 
 func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEventsV1beta1EventListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchEventsV1beta1EventListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4673,18 +4669,22 @@ func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEve
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchEventsV1beta1EventListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchEventsV1beta1EventListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchEventsV1beta1EventListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchEventsV1beta1EventListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchEventsV1beta1EventListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4695,15 +4695,7 @@ func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEve
 
 func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiserverAPIGroupResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetFlowcontrolApiserverAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4714,6 +4706,14 @@ func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiser
 			return err
 		}
 		return nil
+	case *GetFlowcontrolApiserverAPIGroupApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetFlowcontrolApiserverAPIGroupApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetFlowcontrolApiserverAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4724,7 +4724,7 @@ func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiser
 
 func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowcontrolApiserverV1beta1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetFlowcontrolApiserverV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4735,14 +4735,14 @@ func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowco
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetFlowcontrolApiserverV1beta1APIResourcesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetFlowcontrolApiserverV1beta1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4753,11 +4753,7 @@ func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowco
 
 func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowcontrolApiserverV1beta1FlowSchemaResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIFlowcontrolV1beta1FlowSchemaList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta1FlowSchemaList:
+	case *ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4768,18 +4764,22 @@ func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowco
 			return err
 		}
 		return nil
-	case *IoK8sAPIFlowcontrolV1beta1FlowSchemaList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta1FlowSchemaList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta1FlowSchemaList:
+	case *ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4790,7 +4790,7 @@ func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowco
 
 func encodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(response CreateFlowcontrolApiserverV1beta1FlowSchemaResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIFlowcontrolV1beta1FlowSchema:
+	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4801,19 +4801,15 @@ func encodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(response CreateFl
 			return err
 		}
 		return nil
-	case *IoK8sAPIFlowcontrolV1beta1FlowSchema:
+	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta1FlowSchema:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta1FlowSchema:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta1FlowSchema:
+	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -4824,11 +4820,15 @@ func encodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(response CreateFl
 			return err
 		}
 		return nil
-	case *IoK8sAPIFlowcontrolV1beta1FlowSchema:
+	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufCreated:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlCreated:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta1FlowSchema:
+	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -4839,14 +4839,14 @@ func encodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(response CreateFl
 			return err
 		}
 		return nil
-	case *IoK8sAPIFlowcontrolV1beta1FlowSchema:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta1FlowSchema:
+	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufAccepted:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4857,7 +4857,7 @@ func encodeCreateFlowcontrolApiserverV1beta1FlowSchemaResponse(response CreateFl
 
 func encodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(response DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4868,14 +4868,14 @@ func encodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(respons
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4886,7 +4886,7 @@ func encodeDeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaResponse(respons
 
 func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList:
+	case *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4897,22 +4897,22 @@ func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 			return err
 		}
 		return nil
-	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList:
+	case *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList:
+	case *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4923,7 +4923,7 @@ func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 
 func encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration:
+	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -4934,23 +4934,15 @@ func encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 			return err
 		}
 		return nil
-	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration:
+	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration:
+	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(201)
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration:
+	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -4961,15 +4953,15 @@ func encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 			return err
 		}
 		return nil
-	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration:
+	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufCreated:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(202)
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration:
+	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlCreated:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -4980,6 +4972,14 @@ func encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 			return err
 		}
 		return nil
+	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufAccepted:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -4990,7 +4990,7 @@ func encodeCreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(r
 
 func encodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResponse(response DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5001,14 +5001,14 @@ func encodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -5019,15 +5019,7 @@ func encodeDeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfiguration
 
 func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response WatchFlowcontrolApiserverV1beta1FlowSchemaListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5038,14 +5030,22 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response Watch
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
+	case *WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -5056,19 +5056,7 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response Watch
 
 func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5079,7 +5067,19 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -5093,11 +5093,7 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 
 func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowcontrolApiserverV1beta2APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetFlowcontrolApiserverV1beta2APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5108,7 +5104,11 @@ func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowco
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetFlowcontrolApiserverV1beta2APIResourcesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetFlowcontrolApiserverV1beta2APIResourcesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -5122,19 +5122,7 @@ func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowco
 
 func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowcontrolApiserverV1beta2FlowSchemaResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIFlowcontrolV1beta2FlowSchemaList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta2FlowSchemaList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta2FlowSchemaList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta2FlowSchemaList:
+	case *ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5145,7 +5133,19 @@ func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowco
 			return err
 		}
 		return nil
-	case *IoK8sAPIFlowcontrolV1beta2FlowSchemaList:
+	case *ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -5159,11 +5159,7 @@ func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowco
 
 func encodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(response CreateFlowcontrolApiserverV1beta2FlowSchemaResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIFlowcontrolV1beta2FlowSchema:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta2FlowSchema:
+	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5174,11 +5170,15 @@ func encodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(response CreateFl
 			return err
 		}
 		return nil
-	case *IoK8sAPIFlowcontrolV1beta2FlowSchema:
+	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta2FlowSchema:
+	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -5189,15 +5189,15 @@ func encodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(response CreateFl
 			return err
 		}
 		return nil
-	case *IoK8sAPIFlowcontrolV1beta2FlowSchema:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta2FlowSchema:
+	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufCreated:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta2FlowSchema:
+	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlCreated:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -5208,14 +5208,14 @@ func encodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(response CreateFl
 			return err
 		}
 		return nil
-	case *IoK8sAPIFlowcontrolV1beta2FlowSchema:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta2FlowSchema:
+	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufAccepted:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -5226,7 +5226,7 @@ func encodeCreateFlowcontrolApiserverV1beta2FlowSchemaResponse(response CreateFl
 
 func encodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(response DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5237,14 +5237,14 @@ func encodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(respons
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -5255,11 +5255,7 @@ func encodeDeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaResponse(respons
 
 func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList:
+	case *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5270,18 +5266,22 @@ func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 			return err
 		}
 		return nil
-	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList:
+	case *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -5292,7 +5292,7 @@ func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 
 func encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration:
+	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5303,15 +5303,15 @@ func encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 			return err
 		}
 		return nil
-	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration:
+	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration:
+	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -5322,15 +5322,15 @@ func encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 			return err
 		}
 		return nil
-	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration:
+	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufCreated:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration:
+	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlCreated:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -5341,14 +5341,14 @@ func encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 			return err
 		}
 		return nil
-	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration:
+	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufAccepted:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -5359,15 +5359,7 @@ func encodeCreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(r
 
 func encodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResponse(response DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5378,6 +5370,14 @@ func encodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 			return err
 		}
 		return nil
+	case *DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -5388,15 +5388,7 @@ func encodeDeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfiguration
 
 func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response WatchFlowcontrolApiserverV1beta2FlowSchemaListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5407,14 +5399,22 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response Watch
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
+	case *WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -5425,7 +5425,7 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response Watch
 
 func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5436,22 +5436,22 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -5462,15 +5462,7 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 
 func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPIGroupResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetInternalApiserverAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5481,6 +5473,14 @@ func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPI
 			return err
 		}
 		return nil
+	case *GetInternalApiserverAPIGroupApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetInternalApiserverAPIGroupApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetInternalApiserverAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -5491,7 +5491,7 @@ func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPI
 
 func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternalApiserverV1alpha1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetInternalApiserverV1alpha1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5502,14 +5502,14 @@ func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternal
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetInternalApiserverV1alpha1APIResourcesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetInternalApiserverV1alpha1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetInternalApiserverV1alpha1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -5520,15 +5520,7 @@ func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternal
 
 func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInternalApiserverV1alpha1StorageVersionResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIApiserverinternalV1alpha1StorageVersionList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIApiserverinternalV1alpha1StorageVersionList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIApiserverinternalV1alpha1StorageVersionList:
+	case *ListInternalApiserverV1alpha1StorageVersionApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5539,14 +5531,22 @@ func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInte
 			return err
 		}
 		return nil
-	case *IoK8sAPIApiserverinternalV1alpha1StorageVersionList:
-		w.Header().Set("Content-Type", "application/yaml")
+	case *ListInternalApiserverV1alpha1StorageVersionApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIApiserverinternalV1alpha1StorageVersionList:
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListInternalApiserverV1alpha1StorageVersionApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListInternalApiserverV1alpha1StorageVersionUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -5557,7 +5557,7 @@ func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInte
 
 func encodeCreateInternalApiserverV1alpha1StorageVersionResponse(response CreateInternalApiserverV1alpha1StorageVersionResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIApiserverinternalV1alpha1StorageVersion:
+	case *CreateInternalApiserverV1alpha1StorageVersionApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5568,15 +5568,15 @@ func encodeCreateInternalApiserverV1alpha1StorageVersionResponse(response Create
 			return err
 		}
 		return nil
-	case *IoK8sAPIApiserverinternalV1alpha1StorageVersion:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIApiserverinternalV1alpha1StorageVersion:
+	case *CreateInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIApiserverinternalV1alpha1StorageVersion:
+	case *CreateInternalApiserverV1alpha1StorageVersionApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateInternalApiserverV1alpha1StorageVersionApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -5587,19 +5587,15 @@ func encodeCreateInternalApiserverV1alpha1StorageVersionResponse(response Create
 			return err
 		}
 		return nil
-	case *IoK8sAPIApiserverinternalV1alpha1StorageVersion:
+	case *CreateInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufCreated:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateInternalApiserverV1alpha1StorageVersionApplicationYamlCreated:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIApiserverinternalV1alpha1StorageVersion:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIApiserverinternalV1alpha1StorageVersion:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIApiserverinternalV1alpha1StorageVersion:
+	case *CreateInternalApiserverV1alpha1StorageVersionApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -5610,7 +5606,11 @@ func encodeCreateInternalApiserverV1alpha1StorageVersionResponse(response Create
 			return err
 		}
 		return nil
-	case *IoK8sAPIApiserverinternalV1alpha1StorageVersion:
+	case *CreateInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufAccepted:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateInternalApiserverV1alpha1StorageVersionApplicationYamlAccepted:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -5624,11 +5624,7 @@ func encodeCreateInternalApiserverV1alpha1StorageVersionResponse(response Create
 
 func encodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(response DeleteInternalApiserverV1alpha1CollectionStorageVersionResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5639,7 +5635,11 @@ func encodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(respo
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -5653,19 +5653,7 @@ func encodeDeleteInternalApiserverV1alpha1CollectionStorageVersionResponse(respo
 
 func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response WatchInternalApiserverV1alpha1StorageVersionListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5676,7 +5664,19 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response Wat
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchInternalApiserverV1alpha1StorageVersionListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchInternalApiserverV1alpha1StorageVersionListApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchInternalApiserverV1alpha1StorageVersionListApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -5690,11 +5690,7 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response Wat
 
 func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetNetworkingAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5705,7 +5701,11 @@ func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupResponse,
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetNetworkingAPIGroupApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetNetworkingAPIGroupApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -5719,15 +5719,7 @@ func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupResponse,
 
 func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetNetworkingV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5738,6 +5730,14 @@ func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResour
 			return err
 		}
 		return nil
+	case *GetNetworkingV1APIResourcesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetNetworkingV1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetNetworkingV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -5748,15 +5748,7 @@ func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResour
 
 func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1IngressClassResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPINetworkingV1IngressClassList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPINetworkingV1IngressClassList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPINetworkingV1IngressClassList:
+	case *ListNetworkingV1IngressClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5767,14 +5759,22 @@ func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1Ingress
 			return err
 		}
 		return nil
-	case *IoK8sAPINetworkingV1IngressClassList:
-		w.Header().Set("Content-Type", "application/yaml")
+	case *ListNetworkingV1IngressClassApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPINetworkingV1IngressClassList:
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListNetworkingV1IngressClassApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListNetworkingV1IngressClassApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListNetworkingV1IngressClassApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListNetworkingV1IngressClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -5785,11 +5785,7 @@ func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1Ingress
 
 func encodeCreateNetworkingV1IngressClassResponse(response CreateNetworkingV1IngressClassResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPINetworkingV1IngressClass:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPINetworkingV1IngressClass:
+	case *CreateNetworkingV1IngressClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5800,11 +5796,15 @@ func encodeCreateNetworkingV1IngressClassResponse(response CreateNetworkingV1Ing
 			return err
 		}
 		return nil
-	case *IoK8sAPINetworkingV1IngressClass:
+	case *CreateNetworkingV1IngressClassApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateNetworkingV1IngressClassApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPINetworkingV1IngressClass:
+	case *CreateNetworkingV1IngressClassApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -5815,23 +5815,15 @@ func encodeCreateNetworkingV1IngressClassResponse(response CreateNetworkingV1Ing
 			return err
 		}
 		return nil
-	case *IoK8sAPINetworkingV1IngressClass:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPINetworkingV1IngressClass:
+	case *CreateNetworkingV1IngressClassApplicationVndKubernetesProtobufCreated:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPINetworkingV1IngressClass:
+	case *CreateNetworkingV1IngressClassApplicationYamlCreated:
 		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
+		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPINetworkingV1IngressClass:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPINetworkingV1IngressClass:
+	case *CreateNetworkingV1IngressClassApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -5842,6 +5834,14 @@ func encodeCreateNetworkingV1IngressClassResponse(response CreateNetworkingV1Ing
 			return err
 		}
 		return nil
+	case *CreateNetworkingV1IngressClassApplicationVndKubernetesProtobufAccepted:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateNetworkingV1IngressClassApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateNetworkingV1IngressClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -5852,7 +5852,7 @@ func encodeCreateNetworkingV1IngressClassResponse(response CreateNetworkingV1Ing
 
 func encodeDeleteNetworkingV1CollectionIngressClassResponse(response DeleteNetworkingV1CollectionIngressClassResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteNetworkingV1CollectionIngressClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5863,14 +5863,14 @@ func encodeDeleteNetworkingV1CollectionIngressClassResponse(response DeleteNetwo
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteNetworkingV1CollectionIngressClassApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteNetworkingV1CollectionIngressClassApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteNetworkingV1CollectionIngressClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -5881,7 +5881,7 @@ func encodeDeleteNetworkingV1CollectionIngressClassResponse(response DeleteNetwo
 
 func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworkingV1IngressForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPINetworkingV1IngressList:
+	case *ListNetworkingV1IngressForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5892,22 +5892,22 @@ func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworki
 			return err
 		}
 		return nil
-	case *IoK8sAPINetworkingV1IngressList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPINetworkingV1IngressList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPINetworkingV1IngressList:
+	case *ListNetworkingV1IngressForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPINetworkingV1IngressList:
+	case *ListNetworkingV1IngressForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListNetworkingV1IngressForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListNetworkingV1IngressForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListNetworkingV1IngressForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -5918,15 +5918,7 @@ func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworki
 
 func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNetworkingV1NetworkPolicyForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPINetworkingV1NetworkPolicyList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPINetworkingV1NetworkPolicyList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPINetworkingV1NetworkPolicyList:
+	case *ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5937,14 +5929,22 @@ func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNe
 			return err
 		}
 		return nil
-	case *IoK8sAPINetworkingV1NetworkPolicyList:
-		w.Header().Set("Content-Type", "application/yaml")
+	case *ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPINetworkingV1NetworkPolicyList:
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListNetworkingV1NetworkPolicyForAllNamespacesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListNetworkingV1NetworkPolicyForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListNetworkingV1NetworkPolicyForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -5955,7 +5955,7 @@ func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNe
 
 func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1IngressClassListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchNetworkingV1IngressClassListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5966,22 +5966,22 @@ func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1I
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchNetworkingV1IngressClassListApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchNetworkingV1IngressClassListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchNetworkingV1IngressClassListApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchNetworkingV1IngressClassListApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchNetworkingV1IngressClassListUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -5992,7 +5992,7 @@ func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1I
 
 func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNetworkingV1IngressListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchNetworkingV1IngressListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6003,22 +6003,22 @@ func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNe
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchNetworkingV1IngressListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchNetworkingV1IngressListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchNetworkingV1IngressListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchNetworkingV1IngressListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchNetworkingV1IngressListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6029,23 +6029,7 @@ func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNe
 
 func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response WatchNetworkingV1NetworkPolicyListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6056,6 +6040,22 @@ func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response W
 			return err
 		}
 		return nil
+	case *WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6066,7 +6066,7 @@ func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response W
 
 func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetNodeAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6077,14 +6077,14 @@ func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupResponse, w http.Resp
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetNodeAPIGroupApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetNodeAPIGroupApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetNodeAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6095,7 +6095,7 @@ func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupResponse, w http.Resp
 
 func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetNodeV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6106,14 +6106,14 @@ func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesResponse,
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetNodeV1APIResourcesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetNodeV1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetNodeV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6124,11 +6124,7 @@ func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesResponse,
 
 func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPINodeV1RuntimeClassList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPINodeV1RuntimeClassList:
+	case *ListNodeV1RuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6139,18 +6135,22 @@ func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassRespons
 			return err
 		}
 		return nil
-	case *IoK8sAPINodeV1RuntimeClassList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPINodeV1RuntimeClassList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPINodeV1RuntimeClassList:
+	case *ListNodeV1RuntimeClassApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListNodeV1RuntimeClassApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListNodeV1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListNodeV1RuntimeClassApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListNodeV1RuntimeClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6161,15 +6161,7 @@ func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassRespons
 
 func encodeCreateNodeV1RuntimeClassResponse(response CreateNodeV1RuntimeClassResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPINodeV1RuntimeClass:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPINodeV1RuntimeClass:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPINodeV1RuntimeClass:
+	case *CreateNodeV1RuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6180,7 +6172,15 @@ func encodeCreateNodeV1RuntimeClassResponse(response CreateNodeV1RuntimeClassRes
 			return err
 		}
 		return nil
-	case *IoK8sAPINodeV1RuntimeClass:
+	case *CreateNodeV1RuntimeClassApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateNodeV1RuntimeClassApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateNodeV1RuntimeClassApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -6191,15 +6191,15 @@ func encodeCreateNodeV1RuntimeClassResponse(response CreateNodeV1RuntimeClassRes
 			return err
 		}
 		return nil
-	case *IoK8sAPINodeV1RuntimeClass:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPINodeV1RuntimeClass:
+	case *CreateNodeV1RuntimeClassApplicationVndKubernetesProtobufCreated:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPINodeV1RuntimeClass:
+	case *CreateNodeV1RuntimeClassApplicationYamlCreated:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateNodeV1RuntimeClassApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -6210,14 +6210,14 @@ func encodeCreateNodeV1RuntimeClassResponse(response CreateNodeV1RuntimeClassRes
 			return err
 		}
 		return nil
-	case *IoK8sAPINodeV1RuntimeClass:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPINodeV1RuntimeClass:
+	case *CreateNodeV1RuntimeClassApplicationVndKubernetesProtobufAccepted:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateNodeV1RuntimeClassApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateNodeV1RuntimeClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6228,7 +6228,7 @@ func encodeCreateNodeV1RuntimeClassResponse(response CreateNodeV1RuntimeClassRes
 
 func encodeDeleteNodeV1CollectionRuntimeClassResponse(response DeleteNodeV1CollectionRuntimeClassResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteNodeV1CollectionRuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6239,14 +6239,14 @@ func encodeDeleteNodeV1CollectionRuntimeClassResponse(response DeleteNodeV1Colle
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteNodeV1CollectionRuntimeClassApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteNodeV1CollectionRuntimeClassApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteNodeV1CollectionRuntimeClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6257,23 +6257,7 @@ func encodeDeleteNodeV1CollectionRuntimeClassResponse(response DeleteNodeV1Colle
 
 func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchNodeV1RuntimeClassListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6284,6 +6268,22 @@ func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassL
 			return err
 		}
 		return nil
+	case *WatchNodeV1RuntimeClassListApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchNodeV1RuntimeClassListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchNodeV1RuntimeClassListApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchNodeV1RuntimeClassListApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchNodeV1RuntimeClassListUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6294,15 +6294,7 @@ func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassL
 
 func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetNodeV1alpha1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6313,6 +6305,14 @@ func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResour
 			return err
 		}
 		return nil
+	case *GetNodeV1alpha1APIResourcesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetNodeV1alpha1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetNodeV1alpha1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6323,15 +6323,7 @@ func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResour
 
 func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1RuntimeClassResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPINodeV1alpha1RuntimeClassList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPINodeV1alpha1RuntimeClassList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPINodeV1alpha1RuntimeClassList:
+	case *ListNodeV1alpha1RuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6342,14 +6334,22 @@ func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1Runtime
 			return err
 		}
 		return nil
-	case *IoK8sAPINodeV1alpha1RuntimeClassList:
-		w.Header().Set("Content-Type", "application/yaml")
+	case *ListNodeV1alpha1RuntimeClassApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPINodeV1alpha1RuntimeClassList:
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListNodeV1alpha1RuntimeClassApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListNodeV1alpha1RuntimeClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6360,7 +6360,7 @@ func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1Runtime
 
 func encodeCreateNodeV1alpha1RuntimeClassResponse(response CreateNodeV1alpha1RuntimeClassResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPINodeV1alpha1RuntimeClass:
+	case *CreateNodeV1alpha1RuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6371,19 +6371,15 @@ func encodeCreateNodeV1alpha1RuntimeClassResponse(response CreateNodeV1alpha1Run
 			return err
 		}
 		return nil
-	case *IoK8sAPINodeV1alpha1RuntimeClass:
+	case *CreateNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateNodeV1alpha1RuntimeClassApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPINodeV1alpha1RuntimeClass:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPINodeV1alpha1RuntimeClass:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPINodeV1alpha1RuntimeClass:
+	case *CreateNodeV1alpha1RuntimeClassApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -6394,15 +6390,15 @@ func encodeCreateNodeV1alpha1RuntimeClassResponse(response CreateNodeV1alpha1Run
 			return err
 		}
 		return nil
-	case *IoK8sAPINodeV1alpha1RuntimeClass:
+	case *CreateNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufCreated:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateNodeV1alpha1RuntimeClassApplicationYamlCreated:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPINodeV1alpha1RuntimeClass:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPINodeV1alpha1RuntimeClass:
+	case *CreateNodeV1alpha1RuntimeClassApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -6413,7 +6409,11 @@ func encodeCreateNodeV1alpha1RuntimeClassResponse(response CreateNodeV1alpha1Run
 			return err
 		}
 		return nil
-	case *IoK8sAPINodeV1alpha1RuntimeClass:
+	case *CreateNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufAccepted:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateNodeV1alpha1RuntimeClassApplicationYamlAccepted:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -6427,15 +6427,7 @@ func encodeCreateNodeV1alpha1RuntimeClassResponse(response CreateNodeV1alpha1Run
 
 func encodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(response DeleteNodeV1alpha1CollectionRuntimeClassResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteNodeV1alpha1CollectionRuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6446,6 +6438,14 @@ func encodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(response DeleteNodeV
 			return err
 		}
 		return nil
+	case *DeleteNodeV1alpha1CollectionRuntimeClassApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteNodeV1alpha1CollectionRuntimeClassApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6456,7 +6456,7 @@ func encodeDeleteNodeV1alpha1CollectionRuntimeClassResponse(response DeleteNodeV
 
 func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1RuntimeClassListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchNodeV1alpha1RuntimeClassListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6467,22 +6467,22 @@ func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1R
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchNodeV1alpha1RuntimeClassListApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchNodeV1alpha1RuntimeClassListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchNodeV1alpha1RuntimeClassListApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchNodeV1alpha1RuntimeClassListApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchNodeV1alpha1RuntimeClassListUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6493,11 +6493,7 @@ func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1R
 
 func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetNodeV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6508,7 +6504,11 @@ func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResource
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetNodeV1beta1APIResourcesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetNodeV1beta1APIResourcesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -6522,7 +6522,7 @@ func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResource
 
 func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeClassResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPINodeV1beta1RuntimeClassList:
+	case *ListNodeV1beta1RuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6533,22 +6533,22 @@ func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeCl
 			return err
 		}
 		return nil
-	case *IoK8sAPINodeV1beta1RuntimeClassList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPINodeV1beta1RuntimeClassList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPINodeV1beta1RuntimeClassList:
+	case *ListNodeV1beta1RuntimeClassApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPINodeV1beta1RuntimeClassList:
+	case *ListNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListNodeV1beta1RuntimeClassApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListNodeV1beta1RuntimeClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6559,15 +6559,7 @@ func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeCl
 
 func encodeCreateNodeV1beta1RuntimeClassResponse(response CreateNodeV1beta1RuntimeClassResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPINodeV1beta1RuntimeClass:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPINodeV1beta1RuntimeClass:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPINodeV1beta1RuntimeClass:
+	case *CreateNodeV1beta1RuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6578,7 +6570,15 @@ func encodeCreateNodeV1beta1RuntimeClassResponse(response CreateNodeV1beta1Runti
 			return err
 		}
 		return nil
-	case *IoK8sAPINodeV1beta1RuntimeClass:
+	case *CreateNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateNodeV1beta1RuntimeClassApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateNodeV1beta1RuntimeClassApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -6589,15 +6589,15 @@ func encodeCreateNodeV1beta1RuntimeClassResponse(response CreateNodeV1beta1Runti
 			return err
 		}
 		return nil
-	case *IoK8sAPINodeV1beta1RuntimeClass:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPINodeV1beta1RuntimeClass:
+	case *CreateNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufCreated:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPINodeV1beta1RuntimeClass:
+	case *CreateNodeV1beta1RuntimeClassApplicationYamlCreated:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateNodeV1beta1RuntimeClassApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -6608,14 +6608,14 @@ func encodeCreateNodeV1beta1RuntimeClassResponse(response CreateNodeV1beta1Runti
 			return err
 		}
 		return nil
-	case *IoK8sAPINodeV1beta1RuntimeClass:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPINodeV1beta1RuntimeClass:
+	case *CreateNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufAccepted:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateNodeV1beta1RuntimeClassApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateNodeV1beta1RuntimeClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6626,7 +6626,7 @@ func encodeCreateNodeV1beta1RuntimeClassResponse(response CreateNodeV1beta1Runti
 
 func encodeDeleteNodeV1beta1CollectionRuntimeClassResponse(response DeleteNodeV1beta1CollectionRuntimeClassResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteNodeV1beta1CollectionRuntimeClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6637,14 +6637,14 @@ func encodeDeleteNodeV1beta1CollectionRuntimeClassResponse(response DeleteNodeV1
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteNodeV1beta1CollectionRuntimeClassApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteNodeV1beta1CollectionRuntimeClassApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteNodeV1beta1CollectionRuntimeClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6655,23 +6655,7 @@ func encodeDeleteNodeV1beta1CollectionRuntimeClassResponse(response DeleteNodeV1
 
 func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1RuntimeClassListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchNodeV1beta1RuntimeClassListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6682,6 +6666,22 @@ func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1Run
 			return err
 		}
 		return nil
+	case *WatchNodeV1beta1RuntimeClassListApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchNodeV1beta1RuntimeClassListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchNodeV1beta1RuntimeClassListApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchNodeV1beta1RuntimeClassListApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchNodeV1beta1RuntimeClassListUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6692,7 +6692,7 @@ func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1Run
 
 func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetPolicyAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6703,14 +6703,14 @@ func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupResponse, w http.
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetPolicyAPIGroupApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetPolicyAPIGroupApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetPolicyAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6721,15 +6721,7 @@ func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupResponse, w http.
 
 func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetPolicyV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6740,6 +6732,14 @@ func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesRespo
 			return err
 		}
 		return nil
+	case *GetPolicyV1APIResourcesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetPolicyV1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetPolicyV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6750,23 +6750,7 @@ func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesRespo
 
 func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response ListPolicyV1PodDisruptionBudgetForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIPolicyV1PodDisruptionBudgetList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIPolicyV1PodDisruptionBudgetList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIPolicyV1PodDisruptionBudgetList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIPolicyV1PodDisruptionBudgetList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIPolicyV1PodDisruptionBudgetList:
+	case *ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6777,6 +6761,22 @@ func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response List
 			return err
 		}
 		return nil
+	case *ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6787,7 +6787,7 @@ func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response List
 
 func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response WatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6798,22 +6798,22 @@ func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6824,7 +6824,7 @@ func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response
 
 func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetPolicyV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6835,14 +6835,14 @@ func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIReso
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetPolicyV1beta1APIResourcesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetPolicyV1beta1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetPolicyV1beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6853,23 +6853,7 @@ func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIReso
 
 func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList:
+	case *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6880,6 +6864,22 @@ func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response
 			return err
 		}
 		return nil
+	case *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6890,11 +6890,7 @@ func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response
 
 func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1PodSecurityPolicyResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIPolicyV1beta1PodSecurityPolicyList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIPolicyV1beta1PodSecurityPolicyList:
+	case *ListPolicyV1beta1PodSecurityPolicyApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6905,18 +6901,22 @@ func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1
 			return err
 		}
 		return nil
-	case *IoK8sAPIPolicyV1beta1PodSecurityPolicyList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIPolicyV1beta1PodSecurityPolicyList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIPolicyV1beta1PodSecurityPolicyList:
+	case *ListPolicyV1beta1PodSecurityPolicyApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListPolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListPolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListPolicyV1beta1PodSecurityPolicyApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListPolicyV1beta1PodSecurityPolicyUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6927,11 +6927,7 @@ func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1
 
 func encodeCreatePolicyV1beta1PodSecurityPolicyResponse(response CreatePolicyV1beta1PodSecurityPolicyResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIPolicyV1beta1PodSecurityPolicy:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIPolicyV1beta1PodSecurityPolicy:
+	case *CreatePolicyV1beta1PodSecurityPolicyApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -6942,19 +6938,15 @@ func encodeCreatePolicyV1beta1PodSecurityPolicyResponse(response CreatePolicyV1b
 			return err
 		}
 		return nil
-	case *IoK8sAPIPolicyV1beta1PodSecurityPolicy:
+	case *CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreatePolicyV1beta1PodSecurityPolicyApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIPolicyV1beta1PodSecurityPolicy:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIPolicyV1beta1PodSecurityPolicy:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIPolicyV1beta1PodSecurityPolicy:
+	case *CreatePolicyV1beta1PodSecurityPolicyApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -6965,7 +6957,15 @@ func encodeCreatePolicyV1beta1PodSecurityPolicyResponse(response CreatePolicyV1b
 			return err
 		}
 		return nil
-	case *IoK8sAPIPolicyV1beta1PodSecurityPolicy:
+	case *CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufCreated:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreatePolicyV1beta1PodSecurityPolicyApplicationYamlCreated:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreatePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -6976,14 +6976,14 @@ func encodeCreatePolicyV1beta1PodSecurityPolicyResponse(response CreatePolicyV1b
 			return err
 		}
 		return nil
-	case *IoK8sAPIPolicyV1beta1PodSecurityPolicy:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIPolicyV1beta1PodSecurityPolicy:
+	case *CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufAccepted:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreatePolicyV1beta1PodSecurityPolicyApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreatePolicyV1beta1PodSecurityPolicyUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -6994,7 +6994,7 @@ func encodeCreatePolicyV1beta1PodSecurityPolicyResponse(response CreatePolicyV1b
 
 func encodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(response DeletePolicyV1beta1CollectionPodSecurityPolicyResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7005,14 +7005,14 @@ func encodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(response Delet
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -7023,19 +7023,7 @@ func encodeDeletePolicyV1beta1CollectionPodSecurityPolicyResponse(response Delet
 
 func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(response WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7046,7 +7034,19 @@ func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -7060,19 +7060,7 @@ func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 
 func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV1beta1PodSecurityPolicyListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7083,7 +7071,19 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchPolicyV1beta1PodSecurityPolicyListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchPolicyV1beta1PodSecurityPolicyListApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchPolicyV1beta1PodSecurityPolicyListApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -7097,11 +7097,7 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV
 
 func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPIGroupResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetRbacAuthorizationAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7112,7 +7108,11 @@ func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPI
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetRbacAuthorizationAPIGroupApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetRbacAuthorizationAPIGroupApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -7126,7 +7126,7 @@ func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPI
 
 func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizationV1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetRbacAuthorizationV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7137,14 +7137,14 @@ func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizat
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetRbacAuthorizationV1APIResourcesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetRbacAuthorizationV1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetRbacAuthorizationV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -7155,11 +7155,7 @@ func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizat
 
 func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAuthorizationV1ClusterRoleBindingResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIRbacV1ClusterRoleBindingList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIRbacV1ClusterRoleBindingList:
+	case *ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7170,18 +7166,22 @@ func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAu
 			return err
 		}
 		return nil
-	case *IoK8sAPIRbacV1ClusterRoleBindingList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIRbacV1ClusterRoleBindingList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIRbacV1ClusterRoleBindingList:
+	case *ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListRbacAuthorizationV1ClusterRoleBindingUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -7192,7 +7192,7 @@ func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAu
 
 func encodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(response CreateRbacAuthorizationV1ClusterRoleBindingResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIRbacV1ClusterRoleBinding:
+	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7203,15 +7203,15 @@ func encodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(response CreateRb
 			return err
 		}
 		return nil
-	case *IoK8sAPIRbacV1ClusterRoleBinding:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIRbacV1ClusterRoleBinding:
+	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIRbacV1ClusterRoleBinding:
+	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -7222,15 +7222,15 @@ func encodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(response CreateRb
 			return err
 		}
 		return nil
-	case *IoK8sAPIRbacV1ClusterRoleBinding:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIRbacV1ClusterRoleBinding:
+	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufCreated:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIRbacV1ClusterRoleBinding:
+	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlCreated:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -7241,14 +7241,14 @@ func encodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(response CreateRb
 			return err
 		}
 		return nil
-	case *IoK8sAPIRbacV1ClusterRoleBinding:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIRbacV1ClusterRoleBinding:
+	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufAccepted:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -7259,7 +7259,7 @@ func encodeCreateRbacAuthorizationV1ClusterRoleBindingResponse(response CreateRb
 
 func encodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(response DeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7270,14 +7270,14 @@ func encodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(respons
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -7288,7 +7288,7 @@ func encodeDeleteRbacAuthorizationV1CollectionClusterRoleBindingResponse(respons
 
 func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthorizationV1ClusterRoleResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIRbacV1ClusterRoleList:
+	case *ListRbacAuthorizationV1ClusterRoleApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7299,22 +7299,22 @@ func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthoriza
 			return err
 		}
 		return nil
-	case *IoK8sAPIRbacV1ClusterRoleList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIRbacV1ClusterRoleList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIRbacV1ClusterRoleList:
+	case *ListRbacAuthorizationV1ClusterRoleApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIRbacV1ClusterRoleList:
+	case *ListRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListRbacAuthorizationV1ClusterRoleApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListRbacAuthorizationV1ClusterRoleUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -7325,7 +7325,7 @@ func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthoriza
 
 func encodeCreateRbacAuthorizationV1ClusterRoleResponse(response CreateRbacAuthorizationV1ClusterRoleResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIRbacV1ClusterRole:
+	case *CreateRbacAuthorizationV1ClusterRoleApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7336,19 +7336,15 @@ func encodeCreateRbacAuthorizationV1ClusterRoleResponse(response CreateRbacAutho
 			return err
 		}
 		return nil
-	case *IoK8sAPIRbacV1ClusterRole:
+	case *CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateRbacAuthorizationV1ClusterRoleApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIRbacV1ClusterRole:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIRbacV1ClusterRole:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIRbacV1ClusterRole:
+	case *CreateRbacAuthorizationV1ClusterRoleApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -7359,19 +7355,15 @@ func encodeCreateRbacAuthorizationV1ClusterRoleResponse(response CreateRbacAutho
 			return err
 		}
 		return nil
-	case *IoK8sAPIRbacV1ClusterRole:
+	case *CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufCreated:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateRbacAuthorizationV1ClusterRoleApplicationYamlCreated:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIRbacV1ClusterRole:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIRbacV1ClusterRole:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIRbacV1ClusterRole:
+	case *CreateRbacAuthorizationV1ClusterRoleApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -7382,6 +7374,14 @@ func encodeCreateRbacAuthorizationV1ClusterRoleResponse(response CreateRbacAutho
 			return err
 		}
 		return nil
+	case *CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufAccepted:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateRbacAuthorizationV1ClusterRoleApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateRbacAuthorizationV1ClusterRoleUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -7392,11 +7392,7 @@ func encodeCreateRbacAuthorizationV1ClusterRoleResponse(response CreateRbacAutho
 
 func encodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(response DeleteRbacAuthorizationV1CollectionClusterRoleResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteRbacAuthorizationV1CollectionClusterRoleApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7407,7 +7403,11 @@ func encodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(response Delet
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteRbacAuthorizationV1CollectionClusterRoleApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteRbacAuthorizationV1CollectionClusterRoleApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -7421,7 +7421,7 @@ func encodeDeleteRbacAuthorizationV1CollectionClusterRoleResponse(response Delet
 
 func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response ListRbacAuthorizationV1RoleBindingForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIRbacV1RoleBindingList:
+	case *ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7432,22 +7432,22 @@ func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response L
 			return err
 		}
 		return nil
-	case *IoK8sAPIRbacV1RoleBindingList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIRbacV1RoleBindingList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIRbacV1RoleBindingList:
+	case *ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIRbacV1RoleBindingList:
+	case *ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -7458,23 +7458,7 @@ func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response L
 
 func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbacAuthorizationV1RoleForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIRbacV1RoleList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIRbacV1RoleList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIRbacV1RoleList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIRbacV1RoleList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIRbacV1RoleList:
+	case *ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7485,6 +7469,22 @@ func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbac
 			return err
 		}
 		return nil
+	case *ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListRbacAuthorizationV1RoleForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListRbacAuthorizationV1RoleForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListRbacAuthorizationV1RoleForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -7495,23 +7495,7 @@ func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbac
 
 func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response WatchRbacAuthorizationV1ClusterRoleBindingListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7522,6 +7506,22 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response Watch
 			return err
 		}
 		return nil
+	case *WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchRbacAuthorizationV1ClusterRoleBindingListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchRbacAuthorizationV1ClusterRoleBindingListApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchRbacAuthorizationV1ClusterRoleBindingListApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -7532,19 +7532,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response Watch
 
 func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAuthorizationV1ClusterRoleListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchRbacAuthorizationV1ClusterRoleListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7555,7 +7543,19 @@ func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAut
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchRbacAuthorizationV1ClusterRoleListApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchRbacAuthorizationV1ClusterRoleListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchRbacAuthorizationV1ClusterRoleListApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchRbacAuthorizationV1ClusterRoleListApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -7569,15 +7569,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAut
 
 func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(response WatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7588,14 +7580,22 @@ func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(respo
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
+	case *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -7606,7 +7606,7 @@ func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(respo
 
 func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response WatchRbacAuthorizationV1RoleListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7617,22 +7617,22 @@ func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response Wat
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -7643,7 +7643,7 @@ func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response Wat
 
 func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetSchedulingAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7654,14 +7654,14 @@ func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupResponse,
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetSchedulingAPIGroupApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetSchedulingAPIGroupApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetSchedulingAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -7672,7 +7672,7 @@ func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupResponse,
 
 func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetSchedulingV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7683,14 +7683,14 @@ func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResour
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetSchedulingV1APIResourcesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetSchedulingV1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetSchedulingV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -7701,19 +7701,7 @@ func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResour
 
 func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1PriorityClassResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPISchedulingV1PriorityClassList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPISchedulingV1PriorityClassList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPISchedulingV1PriorityClassList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPISchedulingV1PriorityClassList:
+	case *ListSchedulingV1PriorityClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7724,7 +7712,19 @@ func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1Priori
 			return err
 		}
 		return nil
-	case *IoK8sAPISchedulingV1PriorityClassList:
+	case *ListSchedulingV1PriorityClassApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListSchedulingV1PriorityClassApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListSchedulingV1PriorityClassApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListSchedulingV1PriorityClassApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -7738,7 +7738,7 @@ func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1Priori
 
 func encodeCreateSchedulingV1PriorityClassResponse(response CreateSchedulingV1PriorityClassResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPISchedulingV1PriorityClass:
+	case *CreateSchedulingV1PriorityClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7749,19 +7749,15 @@ func encodeCreateSchedulingV1PriorityClassResponse(response CreateSchedulingV1Pr
 			return err
 		}
 		return nil
-	case *IoK8sAPISchedulingV1PriorityClass:
+	case *CreateSchedulingV1PriorityClassApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateSchedulingV1PriorityClassApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPISchedulingV1PriorityClass:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPISchedulingV1PriorityClass:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPISchedulingV1PriorityClass:
+	case *CreateSchedulingV1PriorityClassApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -7772,11 +7768,15 @@ func encodeCreateSchedulingV1PriorityClassResponse(response CreateSchedulingV1Pr
 			return err
 		}
 		return nil
-	case *IoK8sAPISchedulingV1PriorityClass:
+	case *CreateSchedulingV1PriorityClassApplicationVndKubernetesProtobufCreated:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateSchedulingV1PriorityClassApplicationYamlCreated:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPISchedulingV1PriorityClass:
+	case *CreateSchedulingV1PriorityClassApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -7787,14 +7787,14 @@ func encodeCreateSchedulingV1PriorityClassResponse(response CreateSchedulingV1Pr
 			return err
 		}
 		return nil
-	case *IoK8sAPISchedulingV1PriorityClass:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPISchedulingV1PriorityClass:
+	case *CreateSchedulingV1PriorityClassApplicationVndKubernetesProtobufAccepted:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateSchedulingV1PriorityClassApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateSchedulingV1PriorityClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -7805,15 +7805,7 @@ func encodeCreateSchedulingV1PriorityClassResponse(response CreateSchedulingV1Pr
 
 func encodeDeleteSchedulingV1CollectionPriorityClassResponse(response DeleteSchedulingV1CollectionPriorityClassResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteSchedulingV1CollectionPriorityClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7824,6 +7816,14 @@ func encodeDeleteSchedulingV1CollectionPriorityClassResponse(response DeleteSche
 			return err
 		}
 		return nil
+	case *DeleteSchedulingV1CollectionPriorityClassApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteSchedulingV1CollectionPriorityClassApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteSchedulingV1CollectionPriorityClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -7834,19 +7834,7 @@ func encodeDeleteSchedulingV1CollectionPriorityClassResponse(response DeleteSche
 
 func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1PriorityClassListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchSchedulingV1PriorityClassListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7857,7 +7845,19 @@ func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchSchedulingV1PriorityClassListApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchSchedulingV1PriorityClassListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchSchedulingV1PriorityClassListApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchSchedulingV1PriorityClassListApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -7871,15 +7871,7 @@ func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1
 
 func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
+	case *GetStorageAPIGroupApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7890,6 +7882,14 @@ func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupResponse, w htt
 			return err
 		}
 		return nil
+	case *GetStorageAPIGroupApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetStorageAPIGroupApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetStorageAPIGroupUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -7900,7 +7900,7 @@ func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupResponse, w htt
 
 func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetStorageV1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7911,14 +7911,14 @@ func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesRes
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetStorageV1APIResourcesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetStorageV1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetStorageV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -7929,15 +7929,7 @@ func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesRes
 
 func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIStorageV1CSIDriverList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIStorageV1CSIDriverList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIStorageV1CSIDriverList:
+	case *ListStorageV1CSIDriverApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7948,14 +7940,22 @@ func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverRespons
 			return err
 		}
 		return nil
-	case *IoK8sAPIStorageV1CSIDriverList:
-		w.Header().Set("Content-Type", "application/yaml")
+	case *ListStorageV1CSIDriverApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIStorageV1CSIDriverList:
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListStorageV1CSIDriverApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListStorageV1CSIDriverApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListStorageV1CSIDriverApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListStorageV1CSIDriverUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -7966,7 +7966,7 @@ func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverRespons
 
 func encodeCreateStorageV1CSIDriverResponse(response CreateStorageV1CSIDriverResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIStorageV1CSIDriver:
+	case *CreateStorageV1CSIDriverApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7977,15 +7977,15 @@ func encodeCreateStorageV1CSIDriverResponse(response CreateStorageV1CSIDriverRes
 			return err
 		}
 		return nil
-	case *IoK8sAPIStorageV1CSIDriver:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIStorageV1CSIDriver:
+	case *CreateStorageV1CSIDriverApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIStorageV1CSIDriver:
+	case *CreateStorageV1CSIDriverApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateStorageV1CSIDriverApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -7996,19 +7996,15 @@ func encodeCreateStorageV1CSIDriverResponse(response CreateStorageV1CSIDriverRes
 			return err
 		}
 		return nil
-	case *IoK8sAPIStorageV1CSIDriver:
+	case *CreateStorageV1CSIDriverApplicationVndKubernetesProtobufCreated:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateStorageV1CSIDriverApplicationYamlCreated:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIStorageV1CSIDriver:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIStorageV1CSIDriver:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIStorageV1CSIDriver:
+	case *CreateStorageV1CSIDriverApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -8019,7 +8015,11 @@ func encodeCreateStorageV1CSIDriverResponse(response CreateStorageV1CSIDriverRes
 			return err
 		}
 		return nil
-	case *IoK8sAPIStorageV1CSIDriver:
+	case *CreateStorageV1CSIDriverApplicationVndKubernetesProtobufAccepted:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateStorageV1CSIDriverApplicationYamlAccepted:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -8033,15 +8033,7 @@ func encodeCreateStorageV1CSIDriverResponse(response CreateStorageV1CSIDriverRes
 
 func encodeDeleteStorageV1CollectionCSIDriverResponse(response DeleteStorageV1CollectionCSIDriverResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteStorageV1CollectionCSIDriverApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8052,6 +8044,14 @@ func encodeDeleteStorageV1CollectionCSIDriverResponse(response DeleteStorageV1Co
 			return err
 		}
 		return nil
+	case *DeleteStorageV1CollectionCSIDriverApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteStorageV1CollectionCSIDriverApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteStorageV1CollectionCSIDriverUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -8062,7 +8062,7 @@ func encodeDeleteStorageV1CollectionCSIDriverResponse(response DeleteStorageV1Co
 
 func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIStorageV1CSINodeList:
+	case *ListStorageV1CSINodeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8073,22 +8073,22 @@ func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeResponse, w
 			return err
 		}
 		return nil
-	case *IoK8sAPIStorageV1CSINodeList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIStorageV1CSINodeList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIStorageV1CSINodeList:
+	case *ListStorageV1CSINodeApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIStorageV1CSINodeList:
+	case *ListStorageV1CSINodeApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListStorageV1CSINodeApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListStorageV1CSINodeApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListStorageV1CSINodeUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -8099,7 +8099,7 @@ func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeResponse, w
 
 func encodeCreateStorageV1CSINodeResponse(response CreateStorageV1CSINodeResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIStorageV1CSINode:
+	case *CreateStorageV1CSINodeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8110,15 +8110,15 @@ func encodeCreateStorageV1CSINodeResponse(response CreateStorageV1CSINodeRespons
 			return err
 		}
 		return nil
-	case *IoK8sAPIStorageV1CSINode:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIStorageV1CSINode:
+	case *CreateStorageV1CSINodeApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIStorageV1CSINode:
+	case *CreateStorageV1CSINodeApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateStorageV1CSINodeApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -8129,15 +8129,15 @@ func encodeCreateStorageV1CSINodeResponse(response CreateStorageV1CSINodeRespons
 			return err
 		}
 		return nil
-	case *IoK8sAPIStorageV1CSINode:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIStorageV1CSINode:
+	case *CreateStorageV1CSINodeApplicationVndKubernetesProtobufCreated:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIStorageV1CSINode:
+	case *CreateStorageV1CSINodeApplicationYamlCreated:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateStorageV1CSINodeApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -8148,14 +8148,14 @@ func encodeCreateStorageV1CSINodeResponse(response CreateStorageV1CSINodeRespons
 			return err
 		}
 		return nil
-	case *IoK8sAPIStorageV1CSINode:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIStorageV1CSINode:
+	case *CreateStorageV1CSINodeApplicationVndKubernetesProtobufAccepted:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateStorageV1CSINodeApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateStorageV1CSINodeUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -8166,7 +8166,7 @@ func encodeCreateStorageV1CSINodeResponse(response CreateStorageV1CSINodeRespons
 
 func encodeDeleteStorageV1CollectionCSINodeResponse(response DeleteStorageV1CollectionCSINodeResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteStorageV1CollectionCSINodeApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8177,14 +8177,14 @@ func encodeDeleteStorageV1CollectionCSINodeResponse(response DeleteStorageV1Coll
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteStorageV1CollectionCSINodeApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteStorageV1CollectionCSINodeApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteStorageV1CollectionCSINodeUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -8195,15 +8195,7 @@ func encodeDeleteStorageV1CollectionCSINodeResponse(response DeleteStorageV1Coll
 
 func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIStorageV1StorageClassList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIStorageV1StorageClassList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIStorageV1StorageClassList:
+	case *ListStorageV1StorageClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8214,14 +8206,22 @@ func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassR
 			return err
 		}
 		return nil
-	case *IoK8sAPIStorageV1StorageClassList:
-		w.Header().Set("Content-Type", "application/yaml")
+	case *ListStorageV1StorageClassApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIStorageV1StorageClassList:
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListStorageV1StorageClassApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListStorageV1StorageClassApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListStorageV1StorageClassApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListStorageV1StorageClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -8232,11 +8232,7 @@ func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassR
 
 func encodeCreateStorageV1StorageClassResponse(response CreateStorageV1StorageClassResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIStorageV1StorageClass:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIStorageV1StorageClass:
+	case *CreateStorageV1StorageClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8247,11 +8243,15 @@ func encodeCreateStorageV1StorageClassResponse(response CreateStorageV1StorageCl
 			return err
 		}
 		return nil
-	case *IoK8sAPIStorageV1StorageClass:
+	case *CreateStorageV1StorageClassApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateStorageV1StorageClassApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIStorageV1StorageClass:
+	case *CreateStorageV1StorageClassApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -8262,15 +8262,15 @@ func encodeCreateStorageV1StorageClassResponse(response CreateStorageV1StorageCl
 			return err
 		}
 		return nil
-	case *IoK8sAPIStorageV1StorageClass:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIStorageV1StorageClass:
+	case *CreateStorageV1StorageClassApplicationVndKubernetesProtobufCreated:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIStorageV1StorageClass:
+	case *CreateStorageV1StorageClassApplicationYamlCreated:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateStorageV1StorageClassApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -8281,14 +8281,14 @@ func encodeCreateStorageV1StorageClassResponse(response CreateStorageV1StorageCl
 			return err
 		}
 		return nil
-	case *IoK8sAPIStorageV1StorageClass:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIStorageV1StorageClass:
+	case *CreateStorageV1StorageClassApplicationVndKubernetesProtobufAccepted:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(202)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateStorageV1StorageClassApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateStorageV1StorageClassUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -8299,11 +8299,7 @@ func encodeCreateStorageV1StorageClassResponse(response CreateStorageV1StorageCl
 
 func encodeDeleteStorageV1CollectionStorageClassResponse(response DeleteStorageV1CollectionStorageClassResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteStorageV1CollectionStorageClassApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8314,7 +8310,11 @@ func encodeDeleteStorageV1CollectionStorageClassResponse(response DeleteStorageV
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteStorageV1CollectionStorageClassApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteStorageV1CollectionStorageClassApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -8328,15 +8328,7 @@ func encodeDeleteStorageV1CollectionStorageClassResponse(response DeleteStorageV
 
 func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAttachmentResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIStorageV1VolumeAttachmentList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIStorageV1VolumeAttachmentList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIStorageV1VolumeAttachmentList:
+	case *ListStorageV1VolumeAttachmentApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8347,14 +8339,22 @@ func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAtt
 			return err
 		}
 		return nil
-	case *IoK8sAPIStorageV1VolumeAttachmentList:
-		w.Header().Set("Content-Type", "application/yaml")
+	case *ListStorageV1VolumeAttachmentApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIStorageV1VolumeAttachmentList:
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListStorageV1VolumeAttachmentApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListStorageV1VolumeAttachmentApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListStorageV1VolumeAttachmentApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListStorageV1VolumeAttachmentUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -8365,7 +8365,7 @@ func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAtt
 
 func encodeCreateStorageV1VolumeAttachmentResponse(response CreateStorageV1VolumeAttachmentResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIStorageV1VolumeAttachment:
+	case *CreateStorageV1VolumeAttachmentApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8376,23 +8376,15 @@ func encodeCreateStorageV1VolumeAttachmentResponse(response CreateStorageV1Volum
 			return err
 		}
 		return nil
-	case *IoK8sAPIStorageV1VolumeAttachment:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIStorageV1VolumeAttachment:
+	case *CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIStorageV1VolumeAttachment:
+	case *CreateStorageV1VolumeAttachmentApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(201)
+		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIStorageV1VolumeAttachment:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIStorageV1VolumeAttachment:
+	case *CreateStorageV1VolumeAttachmentApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -8403,15 +8395,15 @@ func encodeCreateStorageV1VolumeAttachmentResponse(response CreateStorageV1Volum
 			return err
 		}
 		return nil
-	case *IoK8sAPIStorageV1VolumeAttachment:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(202)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIStorageV1VolumeAttachment:
+	case *CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufCreated:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(202)
+		w.WriteHeader(201)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIStorageV1VolumeAttachment:
+	case *CreateStorageV1VolumeAttachmentApplicationYamlCreated:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(201)
+		return fmt.Errorf("application/yaml encoder not implemented")
+	case *CreateStorageV1VolumeAttachmentApplicationJSONAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -8422,6 +8414,14 @@ func encodeCreateStorageV1VolumeAttachmentResponse(response CreateStorageV1Volum
 			return err
 		}
 		return nil
+	case *CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufAccepted:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *CreateStorageV1VolumeAttachmentApplicationYamlAccepted:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(202)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *CreateStorageV1VolumeAttachmentUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -8432,15 +8432,7 @@ func encodeCreateStorageV1VolumeAttachmentResponse(response CreateStorageV1Volum
 
 func encodeDeleteStorageV1CollectionVolumeAttachmentResponse(response DeleteStorageV1CollectionVolumeAttachmentResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1Status:
+	case *DeleteStorageV1CollectionVolumeAttachmentApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8451,6 +8443,14 @@ func encodeDeleteStorageV1CollectionVolumeAttachmentResponse(response DeleteStor
 			return err
 		}
 		return nil
+	case *DeleteStorageV1CollectionVolumeAttachmentApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *DeleteStorageV1CollectionVolumeAttachmentApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *DeleteStorageV1CollectionVolumeAttachmentUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -8461,23 +8461,7 @@ func encodeDeleteStorageV1CollectionVolumeAttachmentResponse(response DeleteStor
 
 func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchStorageV1CSIDriverListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8488,6 +8472,22 @@ func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverL
 			return err
 		}
 		return nil
+	case *WatchStorageV1CSIDriverListApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchStorageV1CSIDriverListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchStorageV1CSIDriverListApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchStorageV1CSIDriverListApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchStorageV1CSIDriverListUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -8498,11 +8498,7 @@ func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverL
 
 func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchStorageV1CSINodeListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8513,18 +8509,22 @@ func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListR
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchStorageV1CSINodeListApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchStorageV1CSINodeListApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchStorageV1CSINodeListApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchStorageV1CSINodeListApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchStorageV1CSINodeListUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -8535,15 +8535,7 @@ func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListR
 
 func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1StorageClassListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchStorageV1StorageClassListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8554,14 +8546,22 @@ func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1Storage
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
+	case *WatchStorageV1StorageClassListApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchStorageV1StorageClassListApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchStorageV1StorageClassListApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchStorageV1StorageClassListApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchStorageV1StorageClassListUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -8572,15 +8572,7 @@ func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1Storage
 
 func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1VolumeAttachmentListResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchStorageV1VolumeAttachmentListApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8591,14 +8583,22 @@ func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1Vol
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
+	case *WatchStorageV1VolumeAttachmentListApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchStorageV1VolumeAttachmentListApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchStorageV1VolumeAttachmentListApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchStorageV1VolumeAttachmentListApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchStorageV1VolumeAttachmentListUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -8609,15 +8609,7 @@ func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1Vol
 
 func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetStorageV1alpha1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8628,6 +8620,14 @@ func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1API
 			return err
 		}
 		return nil
+	case *GetStorageV1alpha1APIResourcesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetStorageV1alpha1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetStorageV1alpha1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -8638,19 +8638,7 @@ func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1API
 
 func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(response ListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIStorageV1alpha1CSIStorageCapacityList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIStorageV1alpha1CSIStorageCapacityList:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIStorageV1alpha1CSIStorageCapacityList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sAPIStorageV1alpha1CSIStorageCapacityList:
+	case *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8661,7 +8649,19 @@ func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(respons
 			return err
 		}
 		return nil
-	case *IoK8sAPIStorageV1alpha1CSIStorageCapacityList:
+	case *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -8675,19 +8675,7 @@ func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(respons
 
 func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(response WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8698,7 +8686,19 @@ func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationYamlOK:
 		w.Header().Set("Content-Type", "application/yaml")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/yaml encoder not implemented")
@@ -8712,7 +8712,7 @@ func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 
 func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIResourcesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetStorageV1beta1APIResourcesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8723,14 +8723,14 @@ func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIRe
 			return err
 		}
 		return nil
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
+	case *GetStorageV1beta1APIResourcesApplicationVndKubernetesProtobufOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *GetStorageV1beta1APIResourcesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *GetStorageV1beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -8741,7 +8741,7 @@ func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIRe
 
 func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response ListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sAPIStorageV1beta1CSIStorageCapacityList:
+	case *ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8752,22 +8752,22 @@ func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response
 			return err
 		}
 		return nil
-	case *IoK8sAPIStorageV1beta1CSIStorageCapacityList:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sAPIStorageV1beta1CSIStorageCapacityList:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sAPIStorageV1beta1CSIStorageCapacityList:
+	case *ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONStreamWatchOK:
 		w.Header().Set("Content-Type", "application/json;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sAPIStorageV1beta1CSIStorageCapacityList:
+	case *ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
 		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
 		w.WriteHeader(200)
 		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil
@@ -8778,23 +8778,7 @@ func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response
 
 func encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(response WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/yaml")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/yaml encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/json;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
-		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
-	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
+	case *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8805,6 +8789,22 @@ func encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 			return err
 		}
 		return nil
+	case *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONStreamWatchOK:
+		w.Header().Set("Content-Type", "application/json;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json;stream=watch encoder not implemented")
+	case *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf encoder not implemented")
+	case *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK:
+		w.Header().Set("Content-Type", "application/vnd.kubernetes.protobuf;stream=watch")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/vnd.kubernetes.protobuf;stream=watch encoder not implemented")
+	case *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationYamlOK:
+		w.Header().Set("Content-Type", "application/yaml")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/yaml encoder not implemented")
 	case *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
 		return nil

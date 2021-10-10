@@ -62,201 +62,6 @@ func encodeAppsGetAuthenticatedResponse(response Integration, w http.ResponseWri
 	return nil
 }
 
-func encodeAppsCreateFromManifestResponse(response AppsCreateFromManifestResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/app-manifests/{code}/conversions: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeAppsGetWebhookConfigForAppResponse(response AppsGetWebhookConfigForAppResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	default:
-		return fmt.Errorf("/app/hook/config: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeAppsUpdateWebhookConfigForAppResponse(response WebhookConfig, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeAppsListWebhookDeliveriesResponse(response AppsListWebhookDeliveriesResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *AppsListWebhookDeliveriesOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(400)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	default:
-		return fmt.Errorf("/app/hook/deliveries: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeAppsGetWebhookDeliveryResponse(response AppsGetWebhookDeliveryResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *HookDelivery:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(400)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	default:
-		return fmt.Errorf("/app/hook/deliveries/{delivery_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeAppsRedeliverWebhookDeliveryResponse(response AppsRedeliverWebhookDeliveryResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *accepted:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(202)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(400)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	default:
-		return fmt.Errorf("/app/hook/deliveries/{delivery_id}/attempts: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeAppsListInstallationsResponse(response AppsListInstallationsResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	default:
-		return fmt.Errorf("/app/installations: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeAppsGetInstallationResponse(response AppsGetInstallationResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Installation:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *preview_header_missing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/app/installations/{installation_id}: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *AppsDeleteInstallationNoContent:
@@ -275,68 +80,6 @@ func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationRespons
 		return nil
 	default:
 		return fmt.Errorf("/app/installations/{installation_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstallationAccessTokenResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *InstallationToken:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *preview_header_missing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/app/installations/{installation_id}/access_tokens: unexpected response type for method: %T", response)
 	}
 }
 
@@ -395,10 +138,10 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *OAuthAuthorizationsListGrantsApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -409,7 +152,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *OAuthAuthorizationsListGrantsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -420,7 +163,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *OAuthAuthorizationsListGrantsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -449,10 +192,10 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *OAuthAuthorizationsGetGrantApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -463,7 +206,7 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *OAuthAuthorizationsGetGrantApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -484,10 +227,10 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 	case *OAuthAuthorizationsDeleteGrantNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -498,7 +241,7 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *OAuthAuthorizationsDeleteGrantApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -511,109 +254,6 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 		return nil
 	default:
 		return fmt.Errorf("/applications/grants/{grant_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeAppsDeleteAuthorizationResponse(response AppsDeleteAuthorizationResponse, w http.ResponseWriter) error {
-	w.WriteHeader(204)
-	return nil
-}
-
-func encodeAppsCheckTokenResponse(response AppsCheckTokenResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Authorization:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/applications/{client_id}/token: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeAppsDeleteTokenResponse(response AppsDeleteTokenResponse, w http.ResponseWriter) error {
-	w.WriteHeader(204)
-	return nil
-}
-
-func encodeAppsResetTokenResponse(response AppsResetTokenResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeAppsScopeTokenResponse(response AppsScopeTokenResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Authorization:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/applications/{client_id}/token/scoped: unexpected response type for method: %T", response)
 	}
 }
 
@@ -630,7 +270,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugResponse, w http.Response
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *AppsGetBySlugApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -641,7 +281,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugResponse, w http.Response
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *AppsGetBySlugApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -652,7 +292,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugResponse, w http.Response
 			return err
 		}
 		return nil
-	case *preview_header_missing:
+	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		data, err := json.Marshal(response)
@@ -681,10 +321,10 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -695,7 +335,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -706,7 +346,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -719,143 +359,6 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		return nil
 	default:
 		return fmt.Errorf("/authorizations: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthorizationsCreateAuthorizationResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Authorization:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/authorizations: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OAuthAuthorizationsGetOrCreateAuthorizationForAppResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Authorization:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *Authorization:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/authorizations/clients/{client_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse(response OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Authorization:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *Authorization:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/authorizations/clients/{client_id}/{fingerprint}: unexpected response type for method: %T", response)
 	}
 }
 
@@ -872,10 +375,10 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -886,7 +389,7 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -907,10 +410,10 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 	case *OAuthAuthorizationsDeleteAuthorizationNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -921,7 +424,7 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -937,19 +440,6 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 	}
 }
 
-func encodeOAuthAuthorizationsUpdateAuthorizationResponse(response OAuthAuthorizationsUpdateAuthorizationResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGetAllCodesOfConductResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *CodesOfConductGetAllCodesOfConductOK:
@@ -963,7 +453,7 @@ func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGet
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
@@ -984,7 +474,7 @@ func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConduc
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
 	case *BasicError:
@@ -1016,7 +506,7 @@ func encodeEmojisGetResponse(response EmojisGetResponse, w http.ResponseWriter) 
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
@@ -1271,19 +761,6 @@ func encodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(response 
 	return nil
 }
 
-func encodeEnterpriseAdminGetAuditLogResponse(response []AuditLogEvent, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeBillingGetGithubActionsBillingGheResponse(response ActionsBillingUsage, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -1336,7 +813,7 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
 	case *BasicError:
@@ -1350,7 +827,7 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 			return err
 		}
 		return nil
-	case *service_unavailable:
+	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		data, err := json.Marshal(response)
@@ -1392,7 +869,7 @@ func encodeGistsListResponse(response GistsListResponse, w http.ResponseWriter) 
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
 	case *BasicError:
@@ -1408,81 +885,6 @@ func encodeGistsListResponse(response GistsListResponse, w http.ResponseWriter) 
 		return nil
 	default:
 		return fmt.Errorf("/gists: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeGistsCreateResponse(response GistsCreateResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *GistSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/gists: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeGistsListPublicResponse(response GistsListPublicResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *GistsListPublicOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/gists/public: unexpected response type for method: %T", response)
 	}
 }
 
@@ -1499,10 +901,10 @@ func encodeGistsListStarredResponse(response GistsListStarredResponse, w http.Re
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *GistsListStarredApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -1513,7 +915,7 @@ func encodeGistsListStarredResponse(response GistsListStarredResponse, w http.Re
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *GistsListStarredApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -1542,10 +944,10 @@ func encodeGistsGetResponse(response GistsGetResponse, w http.ResponseWriter) er
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *forbidden_gist:
+	case *ForbiddenGist:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -1577,10 +979,10 @@ func encodeGistsDeleteResponse(response GistsDeleteResponse, w http.ResponseWrit
 	case *GistsDeleteNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *GistsDeleteApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -1591,36 +993,7 @@ func encodeGistsDeleteResponse(response GistsDeleteResponse, w http.ResponseWrit
 			return err
 		}
 		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/gists/{gist_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeGistsUpdateResponse(response GistsUpdateResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *GistSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
+	case *GistsDeleteApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -1649,10 +1022,10 @@ func encodeGistsListCommentsResponse(response GistsListCommentsResponse, w http.
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *GistsListCommentsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -1663,7 +1036,7 @@ func encodeGistsListCommentsResponse(response GistsListCommentsResponse, w http.
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *GistsListCommentsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -1692,10 +1065,10 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentResponse, w htt
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *GistsCreateCommentApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -1706,7 +1079,7 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentResponse, w htt
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *GistsCreateCommentApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -1735,10 +1108,10 @@ func encodeGistsGetCommentResponse(response GistsGetCommentResponse, w http.Resp
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *forbidden_gist:
+	case *ForbiddenGist:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -1770,10 +1143,10 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentResponse, w htt
 	case *GistsDeleteCommentNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *GistsDeleteCommentApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -1784,7 +1157,7 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentResponse, w htt
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *GistsDeleteCommentApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -1842,10 +1215,10 @@ func encodeGistsListCommitsResponse(response GistsListCommitsResponse, w http.Re
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *GistsListCommitsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -1856,7 +1229,7 @@ func encodeGistsListCommitsResponse(response GistsListCommitsResponse, w http.Re
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *GistsListCommitsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -1874,10 +1247,21 @@ func encodeGistsListCommitsResponse(response GistsListCommitsResponse, w http.Re
 
 func encodeGistsListForksResponse(response GistsListForksResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *not_modified:
+	case *GistsListForksOK:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		data, err := json.Marshal(response)
+		if err != nil {
+			return err
+		}
+		if _, err := w.Write(data); err != nil {
+			return err
+		}
+		return nil
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *GistsListForksApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -1888,39 +1272,7 @@ func encodeGistsListForksResponse(response GistsListForksResponse, w http.Respon
 			return err
 		}
 		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/gists/{gist_id}/forks: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeGistsForkResponse(response GistsForkResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
+	case *GistsListForksApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -1941,7 +1293,7 @@ func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredResponse, w h
 	case *GistsCheckIsStarredNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
 	case *BasicError:
@@ -1976,10 +1328,10 @@ func encodeGistsStarResponse(response GistsStarResponse, w http.ResponseWriter) 
 	case *GistsStarNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *GistsStarApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -1990,7 +1342,7 @@ func encodeGistsStarResponse(response GistsStarResponse, w http.ResponseWriter) 
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *GistsStarApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -2011,10 +1363,10 @@ func encodeGistsUnstarResponse(response GistsUnstarResponse, w http.ResponseWrit
 	case *GistsUnstarNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *GistsUnstarApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -2025,7 +1377,7 @@ func encodeGistsUnstarResponse(response GistsUnstarResponse, w http.ResponseWrit
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *GistsUnstarApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -2038,46 +1390,6 @@ func encodeGistsUnstarResponse(response GistsUnstarResponse, w http.ResponseWrit
 		return nil
 	default:
 		return fmt.Errorf("/gists/{gist_id}/star: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeGistsGetRevisionResponse(response GistsGetRevisionResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *GistSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/gists/{gist_id}/{sha}: unexpected response type for method: %T", response)
 	}
 }
 
@@ -2094,7 +1406,7 @@ func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
@@ -2115,7 +1427,7 @@ func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateResponse, w
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
@@ -2136,10 +1448,10 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *AppsListReposAccessibleToInstallationApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -2150,7 +1462,7 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *AppsListReposAccessibleToInstallationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -2171,27 +1483,6 @@ func encodeAppsRevokeInstallationAccessTokenResponse(response AppsRevokeInstalla
 	return nil
 }
 
-func encodeIssuesListResponse(response IssuesListResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/issues: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUsedResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *LicensesGetAllCommonlyUsedOK:
@@ -2205,7 +1496,7 @@ func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUse
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
@@ -2226,10 +1517,10 @@ func encodeLicensesGetResponse(response LicensesGetResponse, w http.ResponseWrit
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *LicensesGetApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -2240,7 +1531,7 @@ func encodeLicensesGetResponse(response LicensesGetResponse, w http.ResponseWrit
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *LicensesGetApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -2262,7 +1553,7 @@ func encodeMarkdownRenderResponse(response MarkdownRenderResponse, w http.Respon
 		w.Header().Set("Content-Type", "text/html")
 		w.WriteHeader(200)
 		return fmt.Errorf("text/html encoder not implemented")
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
@@ -2276,7 +1567,7 @@ func encodeMarkdownRenderRawResponse(response MarkdownRenderRawResponse, w http.
 		w.Header().Set("Content-Type", "text/html")
 		w.WriteHeader(200)
 		return fmt.Errorf("text/html encoder not implemented")
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
@@ -2297,7 +1588,7 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -2308,7 +1599,7 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *AppsGetSubscriptionPlanForAccountApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -2337,7 +1628,7 @@ func encodeAppsListPlansResponse(response AppsListPlansResponse, w http.Response
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *AppsListPlansApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -2348,7 +1639,7 @@ func encodeAppsListPlansResponse(response AppsListPlansResponse, w http.Response
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *AppsListPlansApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -2361,46 +1652,6 @@ func encodeAppsListPlansResponse(response AppsListPlansResponse, w http.Response
 		return nil
 	default:
 		return fmt.Errorf("/marketplace_listing/plans: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *AppsListAccountsForPlanOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/marketplace_listing/plans/{plan_id}/accounts: unexpected response type for method: %T", response)
 	}
 }
 
@@ -2465,35 +1716,6 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedResponse, w
 	}
 }
 
-func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPlanStubbedResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *AppsListAccountsForPlanStubbedOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/marketplace_listing/stubbed/plans/{plan_id}/accounts: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeMetaGetResponse(response MetaGetResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *APIOverview:
@@ -2507,7 +1729,7 @@ func encodeMetaGetResponse(response MetaGetResponse, w http.ResponseWriter) erro
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
@@ -2528,7 +1750,7 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
 		data, err := json.Marshal(response)
@@ -2539,10 +1761,10 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -2553,7 +1775,7 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -2566,49 +1788,6 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		return nil
 	default:
 		return fmt.Errorf("/networks/{owner}/{repo}/events: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeActivityListNotificationsForAuthenticatedUserResponse(response ActivityListNotificationsForAuthenticatedUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ActivityListNotificationsForAuthenticatedUserOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/notifications: unexpected response type for method: %T", response)
 	}
 }
 
@@ -2628,10 +1807,10 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 	case *ActivityMarkNotificationsAsReadResetContent:
 		w.WriteHeader(205)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ActivityMarkNotificationsAsReadApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -2642,7 +1821,7 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ActivityMarkNotificationsAsReadApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -2671,10 +1850,10 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadResponse, w http.
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ActivityGetThreadApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -2685,7 +1864,7 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadResponse, w http.
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ActivityGetThreadApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -2706,7 +1885,7 @@ func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes
 	case *ActivityMarkThreadAsReadResetContent:
 		w.WriteHeader(205)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
 	case *BasicError:
@@ -2738,10 +1917,10 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -2752,7 +1931,7 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -2781,10 +1960,10 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ActivitySetThreadSubscriptionApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -2795,7 +1974,7 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ActivitySetThreadSubscriptionApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -2816,10 +1995,10 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 	case *ActivityDeleteThreadSubscriptionNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -2830,7 +2009,7 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ActivityDeleteThreadSubscriptionApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -2865,7 +2044,7 @@ func encodeOrgsListResponse(response OrgsListResponse, w http.ResponseWriter) er
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
@@ -2889,46 +2068,6 @@ func encodeOrgsGetResponse(response OrgsGetResponse, w http.ResponseWriter) erro
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/orgs/{org}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeOrgsUpdateResponse(response OrgsUpdateResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *OrganizationFull:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(409)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *preview_header_missing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
 		data, err := json.Marshal(response)
 		if err != nil {
 			return err
@@ -3230,7 +2369,7 @@ func encodeActionsGetOrgSecretResponse(response OrganizationActionsSecret, w htt
 
 func encodeActionsCreateOrUpdateOrgSecretResponse(response ActionsCreateOrUpdateOrgSecretResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *ActionsCreateOrUpdateOrgSecretCreated:
+	case *EmptyObject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -3298,13 +2437,6 @@ func encodeActionsRemoveSelectedRepoFromOrgSecretResponse(response ActionsRemove
 	}
 }
 
-func encodeOrgsGetAuditLogResponse(response OrgsGetAuditLogResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	default:
-		return fmt.Errorf("/orgs/{org}/audit-log: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsListBlockedUsersOK:
@@ -3318,7 +2450,7 @@ func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersResponse, w
 			return err
 		}
 		return nil
-	case *preview_header_missing:
+	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		data, err := json.Marshal(response)
@@ -3353,11 +2485,6 @@ func encodeOrgsCheckBlockedUserResponse(response OrgsCheckBlockedUserResponse, w
 	default:
 		return fmt.Errorf("/orgs/{org}/blocks/{username}: unexpected response type for method: %T", response)
 	}
-}
-
-func encodeOrgsBlockUserResponse(response OrgsBlockUserResponse, w http.ResponseWriter) error {
-	w.WriteHeader(204)
-	return nil
 }
 
 func encodeOrgsUnblockUserResponse(response OrgsUnblockUser, w http.ResponseWriter) error {
@@ -3470,35 +2597,6 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksResponse, w http.Re
 	}
 }
 
-func encodeOrgsCreateWebhookResponse(response OrgsCreateWebhookResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *OrgHook:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/orgs/{org}/hooks: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeOrgsGetWebhookResponse(response OrgsGetWebhookResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgHook:
@@ -3549,160 +2647,6 @@ func encodeOrgsDeleteWebhookResponse(response OrgsDeleteWebhookResponse, w http.
 	}
 }
 
-func encodeOrgsUpdateWebhookResponse(response OrgsUpdateWebhookResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *OrgHook:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/orgs/{org}/hooks/{hook_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeOrgsGetWebhookConfigForOrgResponse(response WebhookConfig, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeOrgsUpdateWebhookConfigForOrgResponse(response WebhookConfig, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeOrgsListWebhookDeliveriesResponse(response OrgsListWebhookDeliveriesResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *OrgsListWebhookDeliveriesOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(400)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	default:
-		return fmt.Errorf("/orgs/{org}/hooks/{hook_id}/deliveries: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeOrgsGetWebhookDeliveryResponse(response OrgsGetWebhookDeliveryResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *HookDelivery:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(400)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	default:
-		return fmt.Errorf("/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeOrgsRedeliverWebhookDeliveryResponse(response OrgsRedeliverWebhookDeliveryResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *accepted:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(202)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(400)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	default:
-		return fmt.Errorf("/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeOrgsPingWebhookResponse(response OrgsPingWebhookResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsPingWebhookNoContent:
@@ -3722,52 +2666,6 @@ func encodeOrgsPingWebhookResponse(response OrgsPingWebhookResponse, w http.Resp
 	default:
 		return fmt.Errorf("/orgs/{org}/hooks/{hook_id}/pings: unexpected response type for method: %T", response)
 	}
-}
-
-func encodeAppsGetOrgInstallationResponse(response Installation, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeOrgsListAppInstallationsResponse(response OrgsListAppInstallations, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeInteractionsGetRestrictionsForOrgResponse(response InteractionsGetRestrictionsForOrgResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	default:
-		return fmt.Errorf("/orgs/{org}/interaction-limits: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeInteractionsSetRestrictionsForOrgResponse(response InteractionsSetRestrictionsForOrgResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
 }
 
 func encodeInteractionsRemoveRestrictionsForOrgResponse(response InteractionsRemoveRestrictionsForOrg, w http.ResponseWriter) error {
@@ -3804,56 +2702,6 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 	}
 }
 
-func encodeOrgsCreateInvitationResponse(response OrgsCreateInvitationResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *OrganizationInvitation:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/orgs/{org}/invitations: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeOrgsCancelInvitationResponse(response OrgsCancelInvitationResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *OrgsCancelInvitationNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/orgs/{org}/invitations/{invitation_id}: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsListInvitationTeamsOK:
@@ -3880,56 +2728,6 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRespo
 		return nil
 	default:
 		return fmt.Errorf("/orgs/{org}/invitations/{invitation_id}/teams: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeIssuesListForOrgResponse(response IssuesListForOrgResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *IssuesListForOrgOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/orgs/{org}/issues: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeOrgsListMembersResponse(response OrgsListMembersResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *OrgsListMembersOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *OrgsListMembersFound:
-		w.WriteHeader(302)
-		return nil
-	default:
-		return fmt.Errorf("/orgs/{org}/members: unexpected response type for method: %T", response)
 	}
 }
 
@@ -3983,7 +2781,7 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *OrgsGetMembershipForUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -3994,38 +2792,9 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *OrgsGetMembershipForUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/orgs/{org}/memberships/{username}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeOrgsSetMembershipForUserResponse(response OrgsSetMembershipForUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *OrgMembership:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
 		data, err := json.Marshal(response)
 		if err != nil {
 			return err
@@ -4044,7 +2813,7 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 	case *OrgsRemoveMembershipForUserNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *BasicError:
+	case *OrgsRemoveMembershipForUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -4055,7 +2824,7 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *OrgsRemoveMembershipForUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -4069,61 +2838,6 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 	default:
 		return fmt.Errorf("/orgs/{org}/memberships/{username}: unexpected response type for method: %T", response)
 	}
-}
-
-func encodeMigrationsListForOrgResponse(response []Migration, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeMigrationsStartForOrgResponse(response MigrationsStartForOrgResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Migration:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/orgs/{org}/migrations: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeMigrationsGetStatusForOrgResponse(response MigrationsGetStatusForOrgResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(404)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
 }
 
 func encodeMigrationsDownloadArchiveForOrgResponse(response MigrationsDownloadArchiveForOrgResponse, w http.ResponseWriter) error {
@@ -4218,19 +2932,6 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 	}
 }
 
-func encodeOrgsListOutsideCollaboratorsResponse(response []SimpleUser, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMemberToOutsideCollaboratorResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgsConvertMemberToOutsideCollaboratorAccepted:
@@ -4287,324 +2988,6 @@ func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideColla
 	}
 }
 
-func encodePackagesListPackagesForOrganizationResponse(response PackagesListPackagesForOrganizationResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PackagesListPackagesForOrganizationOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/orgs/{org}/packages: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePackagesGetPackageForOrganizationResponse(response Package, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageForOrgResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PackagesDeletePackageForOrgNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/orgs/{org}/packages/{package_type}/{package_name}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageForOrgResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PackagesRestorePackageForOrgNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/orgs/{org}/packages/{package_type}/{package_name}/restore: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response PackagesGetAllPackageVersionsForPackageOwnedByOrgResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/orgs/{org}/packages/{package_type}/{package_name}/versions: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePackagesGetPackageVersionForOrganizationResponse(response PackageVersion, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePackageVersionForOrgResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PackagesDeletePackageVersionForOrgNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestorePackageVersionForOrgResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PackagesRestorePackageVersionForOrgNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeProjectsListForOrgResponse(response ProjectsListForOrgResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ProjectsListForOrgOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/orgs/{org}/projects: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Project:
@@ -4618,7 +3001,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgResponse, w
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsCreateForOrgApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -4629,7 +3012,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgResponse, w
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsCreateForOrgApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -4640,7 +3023,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgResponse, w
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsCreateForOrgApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -4651,7 +3034,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgResponse, w
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsCreateForOrgApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		data, err := json.Marshal(response)
@@ -4728,88 +3111,6 @@ func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetP
 func encodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(response OrgsRemovePublicMembershipForAuthenticatedUser, w http.ResponseWriter) error {
 	w.WriteHeader(204)
 	return nil
-}
-
-func encodeReposListForOrgResponse(response []MinimalRepository, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeReposCreateInOrgResponse(response ReposCreateInOrgResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Repository:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/orgs/{org}/repos: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAlertsForOrgResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *SecretScanningListAlertsForOrgOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *service_unavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/orgs/{org}/secret-scanning/alerts: unexpected response type for method: %T", response)
-	}
 }
 
 func encodeBillingGetGithubActionsBillingOrgResponse(response ActionsBillingUsage, w http.ResponseWriter) error {
@@ -4893,35 +3194,6 @@ func encodeTeamsListResponse(response TeamsListResponse, w http.ResponseWriter) 
 	}
 }
 
-func encodeTeamsCreateResponse(response TeamsCreateResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *TeamFull:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/orgs/{org}/teams: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeTeamsGetByNameResponse(response TeamsGetByNameResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamFull:
@@ -4969,19 +3241,6 @@ func encodeTeamsUpdateInOrgResponse(response TeamFull, w http.ResponseWriter) er
 	return nil
 }
 
-func encodeTeamsListDiscussionsInOrgResponse(response []TeamDiscussion, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeTeamsCreateDiscussionInOrgResponse(response TeamDiscussion, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -5014,19 +3273,6 @@ func encodeTeamsDeleteDiscussionInOrgResponse(response TeamsDeleteDiscussionInOr
 }
 
 func encodeTeamsUpdateDiscussionInOrgResponse(response TeamDiscussion, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeTeamsListDiscussionCommentsInOrgResponse(response []TeamDiscussionComment, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	data, err := json.Marshal(response)
@@ -5083,22 +3329,9 @@ func encodeTeamsUpdateDiscussionCommentInOrgResponse(response TeamDiscussionComm
 	return nil
 }
 
-func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response []Reaction, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response ReactionsCreateForTeamDiscussionCommentInOrgResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *Reaction:
+	case *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5109,7 +3342,7 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 			return err
 		}
 		return nil
-	case *Reaction:
+	case *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -5130,22 +3363,9 @@ func encodeReactionsDeleteForTeamDiscussionCommentResponse(response ReactionsDel
 	return nil
 }
 
-func encodeReactionsListForTeamDiscussionInOrgResponse(response []Reaction, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreateForTeamDiscussionInOrgResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *Reaction:
+	case *ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -5156,7 +3376,7 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 			return err
 		}
 		return nil
-	case *Reaction:
+	case *ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -5178,19 +3398,6 @@ func encodeReactionsDeleteForTeamDiscussionResponse(response ReactionsDeleteForT
 }
 
 func encodeTeamsListPendingInvitationsInOrgResponse(response []OrganizationInvitation, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeTeamsListMembersInOrgResponse(response []SimpleUser, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	data, err := json.Marshal(response)
@@ -5420,10 +3627,10 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardResponse, w http.Resp
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ProjectsGetCardApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -5434,7 +3641,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardResponse, w http.Resp
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsGetCardApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -5445,7 +3652,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardResponse, w http.Resp
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsGetCardApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -5466,10 +3673,10 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardResponse, w htt
 	case *ProjectsDeleteCardNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ProjectsDeleteCardApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -5491,7 +3698,7 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardResponse, w htt
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsDeleteCardApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -5520,10 +3727,10 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardResponse, w htt
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ProjectsUpdateCardApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -5534,7 +3741,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardResponse, w htt
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsUpdateCardApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -5545,7 +3752,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardResponse, w htt
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsUpdateCardApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -5572,60 +3779,6 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardResponse, w htt
 	}
 }
 
-func encodeProjectsMoveCardResponse(response ProjectsMoveCardResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ProjectsMoveCardCreated:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ProjectsMoveCardForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ProjectsMoveCardServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/projects/columns/cards/{card_id}/moves: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeProjectsGetColumnResponse(response ProjectsGetColumnResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ProjectColumn:
@@ -5639,10 +3792,10 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnResponse, w http.
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ProjectsGetColumnApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -5653,7 +3806,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnResponse, w http.
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsGetColumnApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -5664,7 +3817,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnResponse, w http.
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsGetColumnApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -5685,10 +3838,10 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnResponse, w
 	case *ProjectsDeleteColumnNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ProjectsDeleteColumnApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -5699,7 +3852,7 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnResponse, w
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsDeleteColumnApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -5728,10 +3881,10 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnResponse, w
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ProjectsUpdateColumnApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -5742,7 +3895,7 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnResponse, w
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsUpdateColumnApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -5755,103 +3908,6 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnResponse, w
 		return nil
 	default:
 		return fmt.Errorf("/projects/columns/{column_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeProjectsListCardsResponse(response ProjectsListCardsResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ProjectsListCardsOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/projects/columns/{column_id}/cards: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeProjectsCreateCardResponse(response ProjectsCreateCardResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ProjectCard:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ProjectsCreateCardServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/projects/columns/{column_id}/cards: unexpected response type for method: %T", response)
 	}
 }
 
@@ -5868,10 +3924,10 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnResponse, w htt
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ProjectsMoveColumnApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -5882,7 +3938,7 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnResponse, w htt
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsMoveColumnApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -5922,10 +3978,10 @@ func encodeProjectsGetResponse(response ProjectsGetResponse, w http.ResponseWrit
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ProjectsGetApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -5936,7 +3992,7 @@ func encodeProjectsGetResponse(response ProjectsGetResponse, w http.ResponseWrit
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsGetApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -5957,10 +4013,10 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteResponse, w http.Respon
 	case *ProjectsDeleteNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ProjectsDeleteApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -5982,7 +4038,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteResponse, w http.Respon
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsDeleteApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -5993,7 +4049,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteResponse, w http.Respon
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsDeleteApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		data, err := json.Marshal(response)
@@ -6022,10 +4078,10 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateResponse, w http.Respon
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ProjectsUpdateApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -6050,7 +4106,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateResponse, w http.Respon
 	case *ProjectsUpdateNotFound:
 		w.WriteHeader(404)
 		return nil
-	case *BasicError:
+	case *ProjectsUpdateApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		data, err := json.Marshal(response)
@@ -6077,206 +4133,6 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateResponse, w http.Respon
 	}
 }
 
-func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ProjectsListCollaboratorsOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/projects/{project_id}/collaborators: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeProjectsAddCollaboratorResponse(response ProjectsAddCollaboratorResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ProjectsAddCollaboratorNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/projects/{project_id}/collaborators/{username}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeProjectsRemoveCollaboratorResponse(response ProjectsRemoveCollaboratorResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ProjectsRemoveCollaboratorNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/projects/{project_id}/collaborators/{username}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionForUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *RepositoryCollaboratorPermission:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/projects/{project_id}/collaborators/{username}/permission: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeProjectsListColumnsResponse(response ProjectsListColumnsResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ProjectsListColumnsOK:
@@ -6290,10 +4146,10 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsResponse, w h
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ProjectsListColumnsApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -6304,7 +4160,7 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsResponse, w h
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsListColumnsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -6333,10 +4189,10 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnResponse, w
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ProjectsCreateColumnApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -6347,7 +4203,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnResponse, w
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsCreateColumnApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -6387,7 +4243,7 @@ func encodeRateLimitGetResponse(response RateLimitGetResponse, w http.ResponseWr
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
 	case *BasicError:
@@ -6411,10 +4267,10 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyResponse,
 	case *ReactionsDeleteLegacyNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ReactionsDeleteLegacyApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -6425,7 +4281,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyResponse,
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReactionsDeleteLegacyApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -6436,7 +4292,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyResponse,
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReactionsDeleteLegacyApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		data, err := json.Marshal(response)
@@ -6447,7 +4303,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyResponse,
 			return err
 		}
 		return nil
-	case *preview_header_missing:
+	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		data, err := json.Marshal(response)
@@ -6476,7 +4332,7 @@ func encodeReposGetResponse(response ReposGetResponse, w http.ResponseWriter) er
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReposGetApplicationJSONMovedPermanently:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
 		data, err := json.Marshal(response)
@@ -6487,7 +4343,7 @@ func encodeReposGetResponse(response ReposGetResponse, w http.ResponseWriter) er
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReposGetApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -6498,7 +4354,7 @@ func encodeReposGetResponse(response ReposGetResponse, w http.ResponseWriter) er
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReposGetApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -6519,7 +4375,7 @@ func encodeReposDeleteResponse(response ReposDeleteResponse, w http.ResponseWrit
 	case *ReposDeleteNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *BasicError:
+	case *ReposDeleteApplicationJSONTemporaryRedirect:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(307)
 		data, err := json.Marshal(response)
@@ -6541,58 +4397,7 @@ func encodeReposDeleteResponse(response ReposDeleteResponse, w http.ResponseWrit
 			return err
 		}
 		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposUpdateResponse(response ReposUpdateResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *FullRepository:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(307)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
+	case *ReposDeleteApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -6768,19 +4573,6 @@ func encodeActionsDeleteSelfHostedRunnerFromRepoResponse(response ActionsDeleteS
 	return nil
 }
 
-func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRunsForRepo, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeActionsGetWorkflowRunResponse(response WorkflowRun, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -6814,7 +4606,7 @@ func encodeActionsGetReviewsForRunResponse(response []EnvironmentApprovals, w ht
 
 func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *ActionsApproveWorkflowRunCreated:
+	case *EmptyObject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -6825,7 +4617,7 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ActionsApproveWorkflowRunApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -6836,7 +4628,7 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ActionsApproveWorkflowRunApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -6878,19 +4670,6 @@ func encodeActionsCancelWorkflowRunResponse(response ActionsCancelWorkflowRun, w
 	return nil
 }
 
-func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWorkflowRun, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeActionsDownloadWorkflowRunLogsResponse(response ActionsDownloadWorkflowRunLogs, w http.ResponseWriter) error {
 	w.WriteHeader(302)
 	return nil
@@ -6898,26 +4677,6 @@ func encodeActionsDownloadWorkflowRunLogsResponse(response ActionsDownloadWorkfl
 
 func encodeActionsDeleteWorkflowRunLogsResponse(response ActionsDeleteWorkflowRunLogs, w http.ResponseWriter) error {
 	w.WriteHeader(204)
-	return nil
-}
-
-func encodeActionsGetPendingDeploymentsForRunResponse(response ActionsGetPendingDeploymentsForRunResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeActionsReviewPendingDeploymentsForRunResponse(response []Deployment, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
 	return nil
 }
 
@@ -7101,19 +4860,6 @@ func encodeReposListAutolinksResponse(response []Autolink, w http.ResponseWriter
 	return nil
 }
 
-func encodeReposCreateAutolinkResponse(response ReposCreateAutolinkResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeReposGetAutolinkResponse(response ReposGetAutolinkResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Autolink:
@@ -7216,7 +4962,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchResponse, w http.Respon
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReposGetBranchApplicationJSONMovedPermanently:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
 		data, err := json.Marshal(response)
@@ -7227,7 +4973,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchResponse, w http.Respon
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReposGetBranchApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -7238,7 +4984,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchResponse, w http.Respon
 			return err
 		}
 		return nil
-	case *preview_header_missing:
+	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		data, err := json.Marshal(response)
@@ -7296,7 +5042,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReposUpdateBranchProtectionApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -7307,7 +5053,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReposUpdateBranchProtectionApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -7436,19 +5182,6 @@ func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePu
 	}
 }
 
-func encodeReposUpdatePullRequestReviewProtectionResponse(response ReposUpdatePullRequestReviewProtectionResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSignatureProtectionResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ProtectedBranchAdminEnforced:
@@ -7562,136 +5295,9 @@ func encodeReposRemoveStatusCheckProtectionResponse(response ReposRemoveStatusCh
 	return nil
 }
 
-func encodeReposUpdateStatusCheckProtectionResponse(response ReposUpdateStatusCheckProtectionResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *StatusCheckPolicy:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusCheckContextsResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposGetAllStatusCheckContextsOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposSetStatusCheckContextsResponse(response ReposSetStatusCheckContextsResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ReposSetStatusCheckContextsOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposAddStatusCheckContextsResponse(response ReposAddStatusCheckContextsResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ReposAddStatusCheckContextsOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposRemoveStatusCheckContextsResponse(response ReposRemoveStatusCheckContextsResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ReposRemoveStatusCheckContextsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -7781,45 +5387,6 @@ func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetApps
 	}
 }
 
-func encodeReposSetAppAccessRestrictionsResponse(response ReposSetAppAccessRestrictionsResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeReposAddAppAccessRestrictionsResponse(response ReposAddAppAccessRestrictionsResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeReposRemoveAppAccessRestrictionsResponse(response ReposRemoveAppAccessRestrictionsResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTeamsWithAccessToProtectedBranchResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposGetTeamsWithAccessToProtectedBranchOK:
@@ -7847,45 +5414,6 @@ func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTea
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams: unexpected response type for method: %T", response)
 	}
-}
-
-func encodeReposSetTeamAccessRestrictionsResponse(response ReposSetTeamAccessRestrictionsResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeReposAddTeamAccessRestrictionsResponse(response ReposAddTeamAccessRestrictionsResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeReposRemoveTeamAccessRestrictionsResponse(response ReposRemoveTeamAccessRestrictionsResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
 }
 
 func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUsersWithAccessToProtectedBranchResponse, w http.ResponseWriter) error {
@@ -7917,112 +5445,7 @@ func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUse
 	}
 }
 
-func encodeReposSetUserAccessRestrictionsResponse(response ReposSetUserAccessRestrictionsResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeReposAddUserAccessRestrictionsResponse(response ReposAddUserAccessRestrictionsResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeReposRemoveUserAccessRestrictionsResponse(response ReposRemoveUserAccessRestrictionsResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeReposRenameBranchResponse(response ReposRenameBranchResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *BranchWithProtection:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/branches/{branch}/rename: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeChecksCreateResponse(response CheckRun, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeChecksGetResponse(response CheckRun, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeChecksUpdateResponse(response CheckRun, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	data, err := json.Marshal(response)
@@ -8050,7 +5473,7 @@ func encodeChecksListAnnotationsResponse(response []CheckAnnotation, w http.Resp
 
 func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *CheckSuite:
+	case *ChecksCreateSuiteApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8061,7 +5484,7 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteResponse, w http.
 			return err
 		}
 		return nil
-	case *CheckSuite:
+	case *ChecksCreateSuiteApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -8103,19 +5526,6 @@ func encodeChecksGetSuiteResponse(response CheckSuite, w http.ResponseWriter) er
 	return nil
 }
 
-func encodeChecksListForSuiteResponse(response ChecksListForSuite, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeChecksRerequestSuiteResponse(response ChecksRerequestSuite, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -8129,9 +5539,9 @@ func encodeChecksRerequestSuiteResponse(response ChecksRerequestSuite, w http.Re
 	return nil
 }
 
-func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlertsForRepoResponse, w http.ResponseWriter) error {
+func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *CodeScanningListAlertsForRepoOK:
+	case *CodeScanningAlert:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -8142,7 +5552,7 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *CodeScanningGetAlertApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -8153,7 +5563,7 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *CodeScanningGetAlertApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -8164,47 +5574,7 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 			return err
 		}
 		return nil
-	case *service_unavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/code-scanning/alerts: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *service_unavailable:
+	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		data, err := json.Marshal(response)
@@ -8233,7 +5603,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRespo
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *CodeScanningUpdateAlertApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -8244,7 +5614,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRespo
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *CodeScanningUpdateAlertApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -8255,7 +5625,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRespo
 			return err
 		}
 		return nil
-	case *service_unavailable:
+	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		data, err := json.Marshal(response)
@@ -8284,7 +5654,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *CodeScanningListAlertInstancesApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -8295,7 +5665,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *CodeScanningListAlertInstancesApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -8306,7 +5676,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 			return err
 		}
 		return nil
-	case *service_unavailable:
+	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		data, err := json.Marshal(response)
@@ -8335,7 +5705,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *CodeScanningListRecentAnalysesApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -8346,7 +5716,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *CodeScanningListRecentAnalysesApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -8357,7 +5727,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 			return err
 		}
 		return nil
-	case *service_unavailable:
+	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		data, err := json.Marshal(response)
@@ -8375,10 +5745,6 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 
 func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *CodeScanningGetAnalysisOKApplicationJSONSarif:
-		w.Header().Set("Content-Type", "application/json+sarif")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/json+sarif encoder not implemented")
 	case *CodeScanningAnalysis:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
@@ -8390,7 +5756,11 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRespo
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *CodeScanningGetAnalysisOKApplicationJSONSarif:
+		w.Header().Set("Content-Type", "application/json+sarif")
+		w.WriteHeader(200)
+		return fmt.Errorf("application/json+sarif encoder not implemented")
+	case *CodeScanningGetAnalysisApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -8401,7 +5771,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRespo
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *CodeScanningGetAnalysisApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -8412,7 +5782,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRespo
 			return err
 		}
 		return nil
-	case *service_unavailable:
+	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		data, err := json.Marshal(response)
@@ -8441,7 +5811,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *CodeScanningDeleteAnalysisApplicationJSONBadRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		data, err := json.Marshal(response)
@@ -8456,7 +5826,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		w.Header().Set("Content-Type", "application/scim+json")
 		w.WriteHeader(400)
 		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *BasicError:
+	case *CodeScanningDeleteAnalysisApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -8467,7 +5837,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *CodeScanningDeleteAnalysisApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -8478,7 +5848,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 			return err
 		}
 		return nil
-	case *service_unavailable:
+	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		data, err := json.Marshal(response)
@@ -8510,7 +5880,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRespo
 	case *CodeScanningUploadSarifBadRequest:
 		w.WriteHeader(400)
 		return nil
-	case *BasicError:
+	case *CodeScanningUploadSarifApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -8521,7 +5891,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRespo
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *CodeScanningUploadSarifApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -8535,7 +5905,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRespo
 	case *CodeScanningUploadSarifRequestEntityTooLarge:
 		w.WriteHeader(413)
 		return nil
-	case *service_unavailable:
+	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		data, err := json.Marshal(response)
@@ -8578,7 +5948,7 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifResponse, w
 	case *CodeScanningGetSarifNotFound:
 		w.WriteHeader(404)
 		return nil
-	case *service_unavailable:
+	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		data, err := json.Marshal(response)
@@ -8594,35 +5964,6 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifResponse, w
 	}
 }
 
-func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ReposListCollaboratorsOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/collaborators: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeReposCheckCollaboratorResponse(response ReposCheckCollaboratorResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposCheckCollaboratorNoContent:
@@ -8630,38 +5971,6 @@ func encodeReposCheckCollaboratorResponse(response ReposCheckCollaboratorRespons
 		return nil
 	case *ReposCheckCollaboratorNotFound:
 		w.WriteHeader(404)
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/collaborators/{username}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposAddCollaboratorResponse(response ReposAddCollaboratorResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *RepositoryInvitation:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ReposAddCollaboratorNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/collaborators/{username}: unexpected response type for method: %T", response)
@@ -8794,86 +6103,6 @@ func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes
 	}
 }
 
-func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommitCommentResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ReactionsListForCommitCommentOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *preview_header_missing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/comments/{comment_id}/reactions: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReactionsCreateForCommitCommentResponse(response ReactionsCreateForCommitCommentResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Reaction:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *Reaction:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *preview_header_missing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/comments/{comment_id}/reactions: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeReactionsDeleteForCommitCommentResponse(response ReactionsDeleteForCommitComment, w http.ResponseWriter) error {
 	w.WriteHeader(204)
 	return nil
@@ -8892,7 +6121,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsResponse, w http.Re
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReposListCommitsApplicationJSONBadRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		data, err := json.Marshal(response)
@@ -8907,7 +6136,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsResponse, w http.Re
 		w.Header().Set("Content-Type", "application/scim+json")
 		w.WriteHeader(400)
 		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *BasicError:
+	case *ReposListCommitsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -8918,7 +6147,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsResponse, w http.Re
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReposListCommitsApplicationJSONConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
 		data, err := json.Marshal(response)
@@ -8929,7 +6158,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsResponse, w http.Re
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReposListCommitsApplicationJSONInternalServerError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		data, err := json.Marshal(response)
@@ -8945,19 +6174,6 @@ func encodeReposListCommitsResponse(response ReposListCommitsResponse, w http.Re
 	}
 }
 
-func encodeReposListBranchesForHeadCommitResponse(response ReposListBranchesForHeadCommitResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeReposListCommentsForCommitResponse(response []CommitComment, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -8971,35 +6187,6 @@ func encodeReposListCommentsForCommitResponse(response []CommitComment, w http.R
 	return nil
 }
 
-func encodeReposCreateCommitCommentResponse(response ReposCreateCommitCommentResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *CommitComment:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/commits/{commit_sha}/comments: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeReposListPullRequestsAssociatedWithCommitResponse(response []PullRequestSimple, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -9011,53 +6198,6 @@ func encodeReposListPullRequestsAssociatedWithCommitResponse(response []PullRequ
 		return err
 	}
 	return nil
-}
-
-func encodeReposGetCommitResponse(response ReposGetCommitResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Commit:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(500)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/commits/{ref}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeChecksListForRefResponse(response ChecksListForRefResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/commits/{ref}/check-runs: unexpected response type for method: %T", response)
-	}
 }
 
 func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRef, w http.ResponseWriter) error {
@@ -9157,7 +6297,7 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsResponse, w h
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReposCompareCommitsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -9168,7 +6308,7 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsResponse, w h
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReposCompareCommitsApplicationJSONInternalServerError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		data, err := json.Marshal(response)
@@ -9181,209 +6321,6 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsResponse, w h
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/compare/{basehead}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachmentResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ContentReferenceAttachment:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *preview_header_missing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/content_references/{content_reference_id}/attachments: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposGetContentResponse(response ReposGetContentResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ContentTree:
-		w.Header().Set("Content-Type", "application/vnd.github.v3.object")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.github.v3.object encoder not implemented")
-	case *found:
-		w.WriteHeader(302)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/contents/{path}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateFileContentsResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *FileCommit:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *FileCommit:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(409)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/contents/{path}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposDeleteFileResponse(response ReposDeleteFileResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *FileCommit:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(409)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *service_unavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/contents/{path}: unexpected response type for method: %T", response)
 	}
 }
 
@@ -9403,7 +6340,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsResponse,
 	case *ReposListContributorsNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *BasicError:
+	case *ReposListContributorsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -9414,7 +6351,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsResponse,
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReposListContributorsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -9428,64 +6365,6 @@ func encodeReposListContributorsResponse(response ReposListContributorsResponse,
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/contributors: unexpected response type for method: %T", response)
 	}
-}
-
-func encodeReposListDeploymentsResponse(response []Deployment, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeReposCreateDeploymentResponse(response ReposCreateDeploymentResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Deployment:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ReposCreateDeploymentAccepted:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(202)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ReposCreateDeploymentConflict:
-		w.WriteHeader(409)
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/deployments: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposGetDeploymentResponse(response ReposGetDeploymentResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(404)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
 }
 
 func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentResponse, w http.ResponseWriter) error {
@@ -9549,19 +6428,6 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 	}
 }
 
-func encodeReposCreateDeploymentStatusResponse(response ReposCreateDeploymentStatusResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *DeploymentStatus:
@@ -9586,7 +6452,7 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 			return err
 		}
 		return nil
-	case *preview_header_missing:
+	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		data, err := json.Marshal(response)
@@ -9599,60 +6465,6 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposCreateDispatchEventResponse(response ReposCreateDispatchEventResponse, w http.ResponseWriter) error {
-	w.WriteHeader(204)
-	return nil
-}
-
-func encodeReposGetAllEnvironmentsResponse(response ReposGetAllEnvironmentsResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/environments: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposGetEnvironmentResponse(response Environment, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeReposCreateOrUpdateEnvironmentResponse(response ReposCreateOrUpdateEnvironmentResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Environment:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/environments/{environment_name}: unexpected response type for method: %T", response)
 	}
 }
 
@@ -9672,214 +6484,6 @@ func encodeActivityListRepoEventsResponse(response []Event, w http.ResponseWrite
 		return err
 	}
 	return nil
-}
-
-func encodeReposListForksResponse(response ReposListForksResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ReposListForksOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(400)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/forks: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposCreateForkResponse(response ReposCreateForkResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *FullRepository:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(202)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(400)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/forks: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeGitCreateBlobResponse(response GitCreateBlobResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ShortBlob:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(409)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/git/blobs: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeGitGetBlobResponse(response GitGetBlobResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Blob:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/git/blobs/{file_sha}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeGitCreateCommitResponse(response GitCreateCommitResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *GitCommit:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/git/commits: unexpected response type for method: %T", response)
-	}
 }
 
 func encodeGitGetCommitResponse(response GitGetCommitResponse, w http.ResponseWriter) error {
@@ -9953,50 +6557,6 @@ func encodeGitGetRefResponse(response GitGetRefResponse, w http.ResponseWriter) 
 	}
 }
 
-func encodeGitCreateRefResponse(response GitCreateRefResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeGitDeleteRefResponse(response GitDeleteRefResponse, w http.ResponseWriter) error {
-	w.WriteHeader(204)
-	return nil
-}
-
-func encodeGitUpdateRefResponse(response GitUpdateRefResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeGitCreateTagResponse(response GitCreateTagResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeGitGetTagResponse(response GitGetTagResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *GitTag:
@@ -10026,157 +6586,6 @@ func encodeGitGetTagResponse(response GitGetTagResponse, w http.ResponseWriter) 
 	}
 }
 
-func encodeGitCreateTreeResponse(response GitCreateTreeResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *GitTree:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/git/trees: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeGitGetTreeResponse(response GitGetTreeResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *GitTree:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/git/trees/{tree_sha}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposListWebhooksResponse(response ReposListWebhooksResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(404)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeReposCreateWebhookResponse(response ReposCreateWebhookResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Hook:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/hooks: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposGetWebhookResponse(response ReposGetWebhookResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Hook:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/hooks/{hook_id}: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposDeleteWebhookNoContent:
@@ -10195,160 +6604,6 @@ func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookResponse, w htt
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/hooks/{hook_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposUpdateWebhookResponse(response ReposUpdateWebhookResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Hook:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/hooks/{hook_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposGetWebhookConfigForRepoResponse(response WebhookConfig, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeReposUpdateWebhookConfigForRepoResponse(response WebhookConfig, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeReposListWebhookDeliveriesResponse(response ReposListWebhookDeliveriesResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ReposListWebhookDeliveriesOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(400)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposGetWebhookDeliveryResponse(response ReposGetWebhookDeliveryResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *HookDelivery:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(400)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposRedeliverWebhookDeliveryResponse(response ReposRedeliverWebhookDeliveryResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *accepted:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(202)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(400)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts: unexpected response type for method: %T", response)
 	}
 }
 
@@ -10423,35 +6678,6 @@ func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusR
 	}
 }
 
-func encodeMigrationsStartImportResponse(response MigrationsStartImportResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Import:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/import: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeMigrationsCancelImportResponse(response MigrationsCancelImport, w http.ResponseWriter) error {
 	w.WriteHeader(204)
 	return nil
@@ -10499,35 +6725,6 @@ func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthor
 	}
 }
 
-func encodeMigrationsMapCommitAuthorResponse(response MigrationsMapCommitAuthorResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PorterAuthor:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/import/authors/{author_id}: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeMigrationsGetLargeFilesResponse(response []PorterLargeFile, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -10539,66 +6736,6 @@ func encodeMigrationsGetLargeFilesResponse(response []PorterLargeFile, w http.Re
 		return err
 	}
 	return nil
-}
-
-func encodeMigrationsSetLfsPreferenceResponse(response MigrationsSetLfsPreferenceResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeAppsGetRepoInstallationResponse(response AppsGetRepoInstallationResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Installation:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(301)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/installation: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeInteractionsGetRestrictionsForRepoResponse(response InteractionsGetRestrictionsForRepoResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/interaction-limits: unexpected response type for method: %T", response)
-	}
 }
 
 func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRestrictionsForRepoResponse, w http.ResponseWriter) error {
@@ -10666,137 +6803,6 @@ func encodeReposUpdateInvitationResponse(response RepositoryInvitation, w http.R
 	return nil
 }
 
-func encodeIssuesListForRepoResponse(response IssuesListForRepoResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *IssuesListForRepoOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(301)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeIssuesCreateResponse(response IssuesCreateResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Issue:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *service_unavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeIssuesListCommentsForRepoResponse(response IssuesListCommentsForRepoResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *IssuesListCommentsForRepoOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/comments: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeIssuesGetCommentResponse(response IssuesGetCommentResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *IssueComment:
@@ -10831,114 +6837,8 @@ func encodeIssuesDeleteCommentResponse(response IssuesDeleteComment, w http.Resp
 	return nil
 }
 
-func encodeIssuesUpdateCommentResponse(response IssuesUpdateCommentResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCommentResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ReactionsListForIssueCommentOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *preview_header_missing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReactionsCreateForIssueCommentResponse(response ReactionsCreateForIssueCommentResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Reaction:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *Reaction:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *preview_header_missing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeReactionsDeleteForIssueCommentResponse(response ReactionsDeleteForIssueComment, w http.ResponseWriter) error {
 	w.WriteHeader(204)
-	return nil
-}
-
-func encodeIssuesListEventsForRepoResponse(response IssuesListEventsForRepoResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
 	return nil
 }
 
@@ -10955,7 +6855,7 @@ func encodeIssuesGetEventResponse(response IssuesGetEventResponse, w http.Respon
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *IssuesGetEventApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -10966,7 +6866,7 @@ func encodeIssuesGetEventResponse(response IssuesGetEventResponse, w http.Respon
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *IssuesGetEventApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -10977,7 +6877,7 @@ func encodeIssuesGetEventResponse(response IssuesGetEventResponse, w http.Respon
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *IssuesGetEventApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		data, err := json.Marshal(response)
@@ -10990,133 +6890,6 @@ func encodeIssuesGetEventResponse(response IssuesGetEventResponse, w http.Respon
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/issues/events/{event_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeIssuesGetResponse(response IssuesGetResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Issue:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(301)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/{issue_number}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeIssuesUpdateResponse(response IssuesUpdateResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Issue:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(301)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *service_unavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/{issue_number}: unexpected response type for method: %T", response)
 	}
 }
 
@@ -11159,7 +6932,7 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsResponse, w htt
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *IssuesListCommentsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -11170,7 +6943,7 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsResponse, w htt
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *IssuesListCommentsApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		data, err := json.Marshal(response)
@@ -11184,133 +6957,11 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsResponse, w htt
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/comments: unexpected response type for method: %T", response)
 	}
-}
-
-func encodeIssuesCreateCommentResponse(response IssuesCreateCommentResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *IssueComment:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/comments: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeIssuesListEventsResponse(response IssuesListEventsResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(410)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
 }
 
 func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *IssuesListLabelsOnIssueOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/labels: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeIssuesSetLabelsResponse(response IssuesSetLabelsResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *IssuesSetLabelsOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/labels: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeIssuesAddLabelsResponse(response IssuesAddLabelsResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *IssuesAddLabelsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		data, err := json.Marshal(response)
@@ -11371,7 +7022,7 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelResponse, w http.
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *IssuesRemoveLabelApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -11382,7 +7033,7 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelResponse, w http.
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *IssuesRemoveLabelApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		data, err := json.Marshal(response)
@@ -11398,55 +7049,12 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelResponse, w http.
 	}
 }
 
-func encodeIssuesLockResponse(response IssuesLockResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *IssuesLockNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/lock: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeIssuesUnlockResponse(response IssuesUnlockResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *IssuesUnlockNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *BasicError:
+	case *IssuesUnlockApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -11457,7 +7065,7 @@ func encodeIssuesUnlockResponse(response IssuesUnlockResponse, w http.ResponseWr
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *IssuesUnlockApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -11470,97 +7078,6 @@ func encodeIssuesUnlockResponse(response IssuesUnlockResponse, w http.ResponseWr
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/lock: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReactionsListForIssueResponse(response ReactionsListForIssueResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ReactionsListForIssueOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *preview_header_missing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/reactions: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReactionsCreateForIssueResponse(response ReactionsCreateForIssueResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Reaction:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *Reaction:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *preview_header_missing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/reactions: unexpected response type for method: %T", response)
 	}
 }
 
@@ -11569,62 +7086,9 @@ func encodeReactionsDeleteForIssueResponse(response ReactionsDeleteForIssue, w h
 	return nil
 }
 
-func encodeIssuesListEventsForTimelineResponse(response IssuesListEventsForTimelineResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *IssuesListEventsForTimelineOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/timeline: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeReposListDeployKeysResponse(response []DeployKey, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeReposCreateDeployKeyResponse(response ReposCreateDeployKeyResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
 	data, err := json.Marshal(response)
 	if err != nil {
 		return err
@@ -11698,35 +7162,6 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRespo
 	}
 }
 
-func encodeIssuesCreateLabelResponse(response IssuesCreateLabelResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Label:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/labels: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeIssuesGetLabelResponse(response IssuesGetLabelResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Label:
@@ -11774,7 +7209,7 @@ func encodeIssuesUpdateLabelResponse(response Label, w http.ResponseWriter) erro
 	return nil
 }
 
-func encodeReposListLanguagesResponse(response ReposListLanguages, w http.ResponseWriter) error {
+func encodeReposListLanguagesResponse(response Language, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	data, err := json.Marshal(response)
@@ -11789,7 +7224,7 @@ func encodeReposListLanguagesResponse(response ReposListLanguages, w http.Respon
 
 func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *accepted:
+	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -11847,102 +7282,6 @@ func encodeReposMergeUpstreamResponse(response ReposMergeUpstreamResponse, w htt
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/merge-upstream: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposMergeResponse(response ReposMergeResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Commit:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ReposMergeNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ReposMergeNotFound:
-		w.WriteHeader(404)
-		return nil
-	case *ReposMergeConflict:
-		w.WriteHeader(409)
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/merges: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeIssuesListMilestonesResponse(response IssuesListMilestonesResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *IssuesListMilestonesOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/milestones: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeIssuesCreateMilestoneResponse(response IssuesCreateMilestoneResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Milestone:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/milestones: unexpected response type for method: %T", response)
 	}
 }
 
@@ -12057,48 +7396,10 @@ func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepo
 }
 
 func encodeReposGetPagesResponse(response ReposGetPagesResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(404)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeReposUpdateInformationAboutPagesSiteResponse(response ReposUpdateInformationAboutPagesSiteResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ReposUpdateInformationAboutPagesSiteNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(400)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pages: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposCreatePagesSiteResponse(response ReposCreatePagesSiteResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Page:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
+		w.WriteHeader(200)
 		data, err := json.Marshal(response)
 		if err != nil {
 			return err
@@ -12106,53 +7407,10 @@ func encodeReposCreatePagesSiteResponse(response ReposCreatePagesSiteResponse, w
 		if _, err := w.Write(data); err != nil {
 			return err
 		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(409)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *preview_header_missing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pages: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposDeletePagesSiteResponse(response ReposDeletePagesSiteResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ReposDeletePagesSiteNoContent:
-		w.WriteHeader(204)
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *preview_header_missing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
 		data, err := json.Marshal(response)
 		if err != nil {
 			return err
@@ -12231,7 +7489,7 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 			return err
 		}
 		return nil
-	case *ReposGetPagesHealthCheckAccepted:
+	case *EmptyObject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -12264,79 +7522,6 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 	}
 }
 
-func encodeProjectsListForRepoResponse(response ProjectsListForRepoResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ProjectsListForRepoOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ValidationErrorSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(422)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/projects: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *Project:
@@ -12350,7 +7535,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoResponse,
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsCreateForRepoApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -12361,7 +7546,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoResponse,
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsCreateForRepoApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -12372,7 +7557,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoResponse,
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsCreateForRepoApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -12383,7 +7568,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoResponse,
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsCreateForRepoApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
 		data, err := json.Marshal(response)
@@ -12408,69 +7593,6 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoResponse,
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/projects: unexpected response type for method: %T", response)
 	}
-}
-
-func encodePullsListResponse(response PullsListResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PullsListOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePullsCreateResponse(response PullsCreateResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PullRequest:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePullsListReviewCommentsForRepoResponse(response []PullRequestReviewComment, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
 }
 
 func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentResponse, w http.ResponseWriter) error {
@@ -12536,86 +7658,6 @@ func encodePullsUpdateReviewCommentResponse(response PullRequestReviewComment, w
 	return nil
 }
 
-func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsListForPullRequestReviewCommentResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ReactionsListForPullRequestReviewCommentOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *preview_header_missing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReactionsCreateForPullRequestReviewCommentResponse(response ReactionsCreateForPullRequestReviewCommentResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Reaction:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *Reaction:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *preview_header_missing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeReactionsDeleteForPullRequestCommentResponse(response ReactionsDeleteForPullRequestComment, w http.ResponseWriter) error {
 	w.WriteHeader(204)
 	return nil
@@ -12634,10 +7676,10 @@ func encodePullsGetResponse(response PullsGetResponse, w http.ResponseWriter) er
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *PullsGetApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -12648,7 +7690,7 @@ func encodePullsGetResponse(response PullsGetResponse, w http.ResponseWriter) er
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *PullsGetApplicationJSONInternalServerError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		data, err := json.Marshal(response)
@@ -12661,77 +7703,6 @@ func encodePullsGetResponse(response PullsGetResponse, w http.ResponseWriter) er
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePullsUpdateResponse(response PullsUpdateResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PullRequest:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePullsListReviewCommentsResponse(response []PullRequestReviewComment, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodePullsCreateReviewCommentResponse(response PullsCreateReviewCommentResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PullRequestReviewComment:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/comments: unexpected response type for method: %T", response)
 	}
 }
 
@@ -12777,35 +7748,6 @@ func encodePullsListCommitsResponse(response []Commit, w http.ResponseWriter) er
 	return nil
 }
 
-func encodePullsListFilesResponse(response PullsListFilesResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PullsListFilesOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(500)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/files: unexpected response type for method: %T", response)
-	}
-}
-
 func encodePullsCheckIfMergedResponse(response PullsCheckIfMergedResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *PullsCheckIfMergedNoContent:
@@ -12819,114 +7761,7 @@ func encodePullsCheckIfMergedResponse(response PullsCheckIfMergedResponse, w htt
 	}
 }
 
-func encodePullsMergeResponse(response PullsMergeResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PullRequestMergeResult:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *PullsMergeMethodNotAllowed:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(405)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *PullsMergeConflict:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(409)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/merge: unexpected response type for method: %T", response)
-	}
-}
-
 func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequest, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodePullsRequestReviewersResponse(response PullsRequestReviewersResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PullRequestSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *PullsRequestReviewersUnprocessableEntity:
-		w.WriteHeader(422)
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePullsRemoveRequestedReviewersResponse(response PullsRemoveRequestedReviewersResponse, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	data, err := json.Marshal(response)
@@ -13172,7 +8007,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewResponse, w http.
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *PullsSubmitReviewApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -13183,7 +8018,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewResponse, w http.
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *PullsSubmitReviewApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -13210,127 +8045,11 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewResponse, w http.
 	}
 }
 
-func encodePullsUpdateBranchResponse(response PullsUpdateBranchResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PullsUpdateBranchAccepted:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(202)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/update-branch: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposGetReadmeResponse(response ReposGetReadmeResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ContentFile:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/readme: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposGetReadmeInDirectoryResponse(response ReposGetReadmeInDirectoryResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ContentFile:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/readme/{dir}: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeReposListReleasesResponse(response ReposListReleasesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ReposListReleasesOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/releases: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposCreateReleaseResponse(response ReposCreateReleaseResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Release:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
 		data, err := json.Marshal(response)
 		if err != nil {
 			return err
@@ -13368,7 +8087,7 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetResponse, w
 			return err
 		}
 		return nil
-	case *found:
+	case *Found:
 		w.WriteHeader(302)
 		return nil
 	case *BasicError:
@@ -13382,7 +8101,7 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetResponse, w
 			return err
 		}
 		return nil
-	case *preview_header_missing:
+	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		data, err := json.Marshal(response)
@@ -13547,78 +8266,6 @@ func encodeReposUploadReleaseAssetResponse(response ReleaseAsset, w http.Respons
 	return nil
 }
 
-func encodeReactionsCreateForReleaseResponse(response ReactionsCreateForReleaseResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Reaction:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *Reaction:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *preview_header_missing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/releases/{release_id}/reactions: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAlertsForRepoResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *SecretScanningListAlertsForRepoOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *SecretScanningListAlertsForRepoNotFound:
-		w.WriteHeader(404)
-		return nil
-	case *service_unavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/secret-scanning/alerts: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *SecretScanningAlert:
@@ -13635,7 +8282,7 @@ func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRespons
 	case *SecretScanningGetAlertNotFound:
 		w.WriteHeader(404)
 		return nil
-	case *service_unavailable:
+	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		data, err := json.Marshal(response)
@@ -13670,7 +8317,7 @@ func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertR
 	case *SecretScanningUpdateAlertUnprocessableEntity:
 		w.WriteHeader(422)
 		return nil
-	case *service_unavailable:
+	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
 		data, err := json.Marshal(response)
@@ -13683,13 +8330,6 @@ func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertR
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeActivityListStargazersForRepoResponse(response ActivityListStargazersForRepoResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/stargazers: unexpected response type for method: %T", response)
 	}
 }
 
@@ -13706,7 +8346,7 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 			return err
 		}
 		return nil
-	case *accepted:
+	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -13717,7 +8357,7 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 			return err
 		}
 		return nil
-	case *no_content:
+	case *NoContent:
 		w.WriteHeader(204)
 		return nil
 	default:
@@ -13738,7 +8378,7 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 			return err
 		}
 		return nil
-	case *accepted:
+	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -13749,7 +8389,7 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 			return err
 		}
 		return nil
-	case *no_content:
+	case *NoContent:
 		w.WriteHeader(204)
 		return nil
 	default:
@@ -13770,7 +8410,7 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 			return err
 		}
 		return nil
-	case *accepted:
+	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		data, err := json.Marshal(response)
@@ -13781,7 +8421,7 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 			return err
 		}
 		return nil
-	case *no_content:
+	case *NoContent:
 		w.WriteHeader(204)
 		return nil
 	default:
@@ -13831,7 +8471,7 @@ func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRespons
 			return err
 		}
 		return nil
-	case *no_content:
+	case *NoContent:
 		w.WriteHeader(204)
 		return nil
 	default:
@@ -13970,7 +8610,7 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsResponse, w http.
 			return err
 		}
 		return nil
-	case *preview_header_missing:
+	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		data, err := json.Marshal(response)
@@ -14010,7 +8650,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsResponse,
 			return err
 		}
 		return nil
-	case *preview_header_missing:
+	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		data, err := json.Marshal(response)
@@ -14034,35 +8674,6 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsResponse,
 		return nil
 	default:
 		return fmt.Errorf("/repos/{owner}/{repo}/topics: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposGetClonesResponse(response ReposGetClonesResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *CloneTraffic:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/traffic/clones: unexpected response type for method: %T", response)
 	}
 }
 
@@ -14124,35 +8735,6 @@ func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersResponse, w
 	}
 }
 
-func encodeReposGetViewsResponse(response ReposGetViewsResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ViewTraffic:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/traffic/views: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeReposTransferResponse(response MinimalRepository, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(202)
@@ -14207,27 +8789,6 @@ func encodeReposCreateUsingTemplateResponse(response Repository, w http.Response
 	return nil
 }
 
-func encodeReposListPublicResponse(response ReposListPublicResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ReposListPublicOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	default:
-		return fmt.Errorf("/repositories: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironmentSecrets, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -14269,7 +8830,7 @@ func encodeActionsGetEnvironmentSecretResponse(response ActionsSecret, w http.Re
 
 func encodeActionsCreateOrUpdateEnvironmentSecretResponse(response ActionsCreateOrUpdateEnvironmentSecretResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
-	case *ActionsCreateOrUpdateEnvironmentSecretCreated:
+	case *EmptyObject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		data, err := json.Marshal(response)
@@ -14350,19 +8911,6 @@ func encodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(response Enterpr
 	return nil
 }
 
-func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(response ScimUserListEnterprise, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -14433,251 +8981,15 @@ func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response Scim
 	return nil
 }
 
-func encodeScimListProvisionedIdentitiesResponse(response ScimListProvisionedIdentitiesResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ScimUserList:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(400)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(403)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(404)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	default:
-		return fmt.Errorf("/scim/v2/organizations/{org}/Users: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeScimProvisionAndInviteUserResponse(response ScimProvisionAndInviteUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ScimUser:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(201)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(400)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(403)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(404)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(409)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(409)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(500)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(500)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	default:
-		return fmt.Errorf("/scim/v2/organizations/{org}/Users: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeScimGetProvisioningInformationForUserResponse(response ScimGetProvisioningInformationForUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(403)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(404)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	default:
-		return fmt.Errorf("/scim/v2/organizations/{org}/Users/{scim_user_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeScimSetInformationForProvisionedUserResponse(response ScimSetInformationForProvisionedUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ScimUser:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(403)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(404)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	default:
-		return fmt.Errorf("/scim/v2/organizations/{org}/Users/{scim_user_id}: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ScimDeleteUserFromOrgNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(403)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *ScimError:
+	case *ScimDeleteUserFromOrgApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -14688,7 +9000,11 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgResponse,
 			return err
 		}
 		return nil
-	case *ScimError:
+	case *ScimDeleteUserFromOrgApplicationScimJSONForbidden:
+		w.Header().Set("Content-Type", "application/scim+json")
+		w.WriteHeader(403)
+		return fmt.Errorf("application/scim+json encoder not implemented")
+	case *ScimDeleteUserFromOrgApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -14699,275 +9015,12 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgResponse,
 			return err
 		}
 		return nil
-	case *ScimError:
+	case *ScimDeleteUserFromOrgApplicationScimJSONNotFound:
 		w.Header().Set("Content-Type", "application/scim+json")
 		w.WriteHeader(404)
 		return fmt.Errorf("application/scim+json encoder not implemented")
 	default:
 		return fmt.Errorf("/scim/v2/organizations/{org}/Users/{scim_user_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeScimUpdateAttributeForUserResponse(response ScimUpdateAttributeForUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ScimUser:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(400)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(403)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(404)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(429)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/scim/v2/organizations/{org}/Users/{scim_user_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeSearchCodeResponse(response SearchCodeResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *SearchCodeOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *service_unavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/search/code: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeSearchCommitsResponse(response SearchCommitsResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *SearchCommitsOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *preview_header_missing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/search/commits: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeSearchIssuesAndPullRequestsResponse(response SearchIssuesAndPullRequestsResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *SearchIssuesAndPullRequestsOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *service_unavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/search/issues: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeSearchLabelsResponse(response SearchLabelsResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *SearchLabelsOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/search/labels: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeSearchReposResponse(response SearchReposResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *SearchReposOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *service_unavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/search/repositories: unexpected response type for method: %T", response)
 	}
 }
 
@@ -14984,10 +9037,10 @@ func encodeSearchTopicsResponse(response SearchTopicsResponse, w http.ResponseWr
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *preview_header_missing:
+	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		data, err := json.Marshal(response)
@@ -15000,38 +9053,6 @@ func encodeSearchTopicsResponse(response SearchTopicsResponse, w http.ResponseWr
 		return nil
 	default:
 		return fmt.Errorf("/search/topics: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeSearchUsersResponse(response SearchUsersResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *SearchUsersOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *service_unavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/search/users: unexpected response type for method: %T", response)
 	}
 }
 
@@ -15062,91 +9083,6 @@ func encodeTeamsGetLegacyResponse(response TeamsGetLegacyResponse, w http.Respon
 	default:
 		return fmt.Errorf("/teams/{team_id}: unexpected response type for method: %T", response)
 	}
-}
-
-func encodeTeamsDeleteLegacyResponse(response TeamsDeleteLegacyResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *TeamsDeleteLegacyNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/teams/{team_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeTeamsUpdateLegacyResponse(response TeamsUpdateLegacyResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *TeamFull:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *TeamFull:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/teams/{team_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeTeamsListDiscussionsLegacyResponse(response []TeamDiscussion, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
 }
 
 func encodeTeamsCreateDiscussionLegacyResponse(response TeamDiscussion, w http.ResponseWriter) error {
@@ -15181,19 +9117,6 @@ func encodeTeamsDeleteDiscussionLegacyResponse(response TeamsDeleteDiscussionLeg
 }
 
 func encodeTeamsUpdateDiscussionLegacyResponse(response TeamDiscussion, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeTeamsListDiscussionCommentsLegacyResponse(response []TeamDiscussionComment, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	data, err := json.Marshal(response)
@@ -15250,35 +9173,9 @@ func encodeTeamsUpdateDiscussionCommentLegacyResponse(response TeamDiscussionCom
 	return nil
 }
 
-func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response []Reaction, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeReactionsCreateForTeamDiscussionCommentLegacyResponse(response Reaction, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeReactionsListForTeamDiscussionLegacyResponse(response []Reaction, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
 	data, err := json.Marshal(response)
 	if err != nil {
 		return err
@@ -15313,35 +9210,6 @@ func encodeTeamsListPendingInvitationsLegacyResponse(response []OrganizationInvi
 		return err
 	}
 	return nil
-}
-
-func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *TeamsListMembersLegacyOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/teams/{team_id}/members: unexpected response type for method: %T", response)
-	}
 }
 
 func encodeTeamsGetMemberLegacyResponse(response TeamsGetMemberLegacyResponse, w http.ResponseWriter) error {
@@ -15524,70 +9392,6 @@ func encodeTeamsCheckPermissionsForProjectLegacyResponse(response TeamsCheckPerm
 	}
 }
 
-func encodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(response TeamsAddOrUpdateProjectPermissionsLegacyResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *TeamsAddOrUpdateProjectPermissionsLegacyNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *TeamsAddOrUpdateProjectPermissionsLegacyForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/teams/{team_id}/projects/{project_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeTeamsRemoveProjectLegacyResponse(response TeamsRemoveProjectLegacyResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *TeamsRemoveProjectLegacyNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *preview_header_missing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/teams/{team_id}/projects/{project_id}: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *TeamsListReposLegacyOK:
@@ -15641,27 +9445,6 @@ func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermiss
 	}
 }
 
-func encodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(response TeamsAddOrUpdateRepoPermissionsLegacyResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *TeamsAddOrUpdateRepoPermissionsLegacyNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/teams/{team_id}/repos/{owner}/{repo}: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeTeamsRemoveRepoLegacyResponse(response TeamsRemoveRepoLegacy, w http.ResponseWriter) error {
 	w.WriteHeader(204)
 	return nil
@@ -15680,7 +9463,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *TeamsListIdpGroupsForLegacyApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -15691,7 +9474,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *TeamsListIdpGroupsForLegacyApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -15704,161 +9487,6 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 		return nil
 	default:
 		return fmt.Errorf("/teams/{team_id}/team-sync/group-mappings: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(response TeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *GroupMapping:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/teams/{team_id}/team-sync/group-mappings: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *TeamsListChildLegacyOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/teams/{team_id}/teams: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeUsersUpdateAuthenticatedResponse(response UsersUpdateAuthenticatedResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PrivateUser:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user: unexpected response type for method: %T", response)
 	}
 }
 
@@ -15875,10 +9503,10 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *UsersListBlockedByAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -15889,7 +9517,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersListBlockedByAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -15900,7 +9528,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersListBlockedByAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -15911,7 +9539,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 			return err
 		}
 		return nil
-	case *preview_header_missing:
+	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		data, err := json.Marshal(response)
@@ -15932,10 +9560,10 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedResponse, w http.
 	case *UsersCheckBlockedNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *UsersCheckBlockedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -15946,7 +9574,7 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedResponse, w http.
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersCheckBlockedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -15957,53 +9585,7 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedResponse, w http.
 			return err
 		}
 		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user/blocks/{username}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeUsersBlockResponse(response UsersBlockResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *UsersBlockNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
+	case *UsersCheckBlockedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -16024,10 +9606,10 @@ func encodeUsersUnblockResponse(response UsersUnblockResponse, w http.ResponseWr
 	case *UsersUnblockNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *UsersUnblockApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -16038,7 +9620,7 @@ func encodeUsersUnblockResponse(response UsersUnblockResponse, w http.ResponseWr
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersUnblockApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -16049,7 +9631,7 @@ func encodeUsersUnblockResponse(response UsersUnblockResponse, w http.ResponseWr
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersUnblockApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -16062,60 +9644,6 @@ func encodeUsersUnblockResponse(response UsersUnblockResponse, w http.ResponseWr
 		return nil
 	default:
 		return fmt.Errorf("/user/blocks/{username}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response UsersSetPrimaryEmailVisibilityForAuthenticatedResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *UsersSetPrimaryEmailVisibilityForAuthenticatedOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user/email/visibility: unexpected response type for method: %T", response)
 	}
 }
 
@@ -16132,10 +9660,10 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *UsersListEmailsForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -16146,7 +9674,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersListEmailsForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -16157,107 +9685,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 			return err
 		}
 		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user/emails: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeUsersAddEmailForAuthenticatedResponse(response UsersAddEmailForAuthenticatedResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *UsersAddEmailForAuthenticatedCreated:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user/emails: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeUsersDeleteEmailForAuthenticatedResponse(response UsersDeleteEmailForAuthenticatedResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *UsersDeleteEmailForAuthenticatedNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
+	case *UsersListEmailsForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -16286,10 +9714,10 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -16300,7 +9728,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersListFollowersForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -16329,10 +9757,10 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *UsersListFollowedByAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -16343,7 +9771,7 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersListFollowedByAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -16364,10 +9792,10 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 	case *UsersCheckPersonIsFollowedByAuthenticatedNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -16378,7 +9806,7 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -16389,7 +9817,7 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -16410,10 +9838,10 @@ func encodeUsersFollowResponse(response UsersFollowResponse, w http.ResponseWrit
 	case *UsersFollowNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *UsersFollowApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -16424,7 +9852,7 @@ func encodeUsersFollowResponse(response UsersFollowResponse, w http.ResponseWrit
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersFollowApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -16435,7 +9863,7 @@ func encodeUsersFollowResponse(response UsersFollowResponse, w http.ResponseWrit
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersFollowApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -16456,10 +9884,10 @@ func encodeUsersUnfollowResponse(response UsersUnfollowResponse, w http.Response
 	case *UsersUnfollowNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *UsersUnfollowApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -16470,7 +9898,7 @@ func encodeUsersUnfollowResponse(response UsersUnfollowResponse, w http.Response
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersUnfollowApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -16481,7 +9909,7 @@ func encodeUsersUnfollowResponse(response UsersUnfollowResponse, w http.Response
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersUnfollowApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -16510,10 +9938,10 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -16524,7 +9952,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersListGpgKeysForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -16535,61 +9963,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 			return err
 		}
 		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user/gpg_keys: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeUsersCreateGpgKeyForAuthenticatedResponse(response UsersCreateGpgKeyForAuthenticatedResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *GpgKey:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
+	case *UsersListGpgKeysForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -16618,10 +9992,10 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -16632,7 +10006,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -16643,7 +10017,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -16656,106 +10030,6 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		return nil
 	default:
 		return fmt.Errorf("/user/gpg_keys/{gpg_key_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeUsersDeleteGpgKeyForAuthenticatedResponse(response UsersDeleteGpgKeyForAuthenticatedResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *UsersDeleteGpgKeyForAuthenticatedNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user/gpg_keys/{gpg_key_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeAppsListInstallationsForAuthenticatedUserResponse(response AppsListInstallationsForAuthenticatedUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *AppsListInstallationsForAuthenticatedUserOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *preview_header_missing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user/installations: unexpected response type for method: %T", response)
 	}
 }
 
@@ -16772,10 +10046,10 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -16786,7 +10060,7 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -16807,10 +10081,10 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 	case *AppsAddRepoToInstallationNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *AppsAddRepoToInstallationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -16821,7 +10095,7 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *AppsAddRepoToInstallationApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -16842,10 +10116,10 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 	case *AppsRemoveRepoFromInstallationNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *AppsRemoveRepoFromInstallationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -16856,7 +10130,7 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *AppsRemoveRepoFromInstallationApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -16872,59 +10146,9 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 	}
 }
 
-func encodeInteractionsGetRestrictionsForAuthenticatedUserResponse(response InteractionsGetRestrictionsForAuthenticatedUserResponse, w http.ResponseWriter) error {
-	w.WriteHeader(204)
-	return nil
-}
-
-func encodeInteractionsSetRestrictionsForAuthenticatedUserResponse(response InteractionsSetRestrictionsForAuthenticatedUserResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(response InteractionsRemoveRestrictionsForAuthenticatedUser, w http.ResponseWriter) error {
 	w.WriteHeader(204)
 	return nil
-}
-
-func encodeIssuesListForAuthenticatedUserResponse(response IssuesListForAuthenticatedUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *IssuesListForAuthenticatedUserOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user/issues: unexpected response type for method: %T", response)
-	}
 }
 
 func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPublicSSHKeysForAuthenticatedResponse, w http.ResponseWriter) error {
@@ -16940,10 +10164,10 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -16954,7 +10178,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -16965,61 +10189,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 			return err
 		}
 		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user/keys: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response UsersCreatePublicSSHKeyForAuthenticatedResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Key:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
+	case *UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -17048,10 +10218,10 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -17062,7 +10232,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -17073,7 +10243,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -17094,10 +10264,10 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 	case *UsersDeletePublicSSHKeyForAuthenticatedNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -17108,7 +10278,7 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -17119,7 +10289,7 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -17148,10 +10318,10 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -17162,7 +10332,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -17191,7 +10361,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
 	case *BasicError:
@@ -17210,49 +10380,6 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 	}
 }
 
-func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMembershipsForAuthenticatedUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *OrgsListMembershipsForAuthenticatedUserOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user/memberships/orgs: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembershipForAuthenticatedUserResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *OrgMembership:
@@ -17266,7 +10393,7 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -17277,47 +10404,7 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 			return err
 		}
 		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user/memberships/orgs/{org}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeOrgsUpdateMembershipForAuthenticatedUserResponse(response OrgsUpdateMembershipForAuthenticatedUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *OrgMembership:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
+	case *OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -17346,10 +10433,10 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *MigrationsListForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -17360,50 +10447,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 			return err
 		}
 		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user/migrations: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeMigrationsStartForAuthenticatedUserResponse(response MigrationsStartForAuthenticatedUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Migration:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
+	case *MigrationsListForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -17432,10 +10476,10 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -17446,7 +10490,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -17457,7 +10501,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -17478,10 +10522,10 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 	case *MigrationsGetArchiveForAuthenticatedUserFound:
 		w.WriteHeader(302)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -17492,7 +10536,7 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -17513,10 +10557,10 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 	case *MigrationsDeleteArchiveForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -17527,7 +10571,7 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -17538,7 +10582,7 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -17559,10 +10603,10 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 	case *MigrationsUnlockRepoForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -17573,7 +10617,7 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -17584,7 +10628,7 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -17642,10 +10686,10 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *OrgsListForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -17656,7 +10700,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *OrgsListForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -17669,268 +10713,6 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		return nil
 	default:
 		return fmt.Errorf("/user/orgs: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePackagesListPackagesForAuthenticatedUserResponse(response []Package, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodePackagesGetPackageForAuthenticatedUserResponse(response Package, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDeletePackageForAuthenticatedUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PackagesDeletePackageForAuthenticatedUserNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user/packages/{package_type}/{package_name}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesRestorePackageForAuthenticatedUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PackagesRestorePackageForAuthenticatedUserNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user/packages/{package_type}/{package_name}/restore: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse(response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user/packages/{package_type}/{package_name}/versions: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePackagesGetPackageVersionForAuthenticatedUserResponse(response PackageVersion, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response PackagesDeletePackageVersionForAuthenticatedUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PackagesDeletePackageVersionForAuthenticatedUserNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user/packages/{package_type}/{package_name}/versions/{package_version_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response PackagesRestorePackageVersionForAuthenticatedUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PackagesRestorePackageVersionForAuthenticatedUserNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore: unexpected response type for method: %T", response)
 	}
 }
 
@@ -17947,10 +10729,10 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -17961,7 +10743,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ProjectsCreateForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -17972,7 +10754,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 			return err
 		}
 		return nil
-	case *preview_header_missing:
+	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
 		data, err := json.Marshal(response)
@@ -18012,10 +10794,10 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -18026,7 +10808,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -18037,7 +10819,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -18050,118 +10832,6 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		return nil
 	default:
 		return fmt.Errorf("/user/public_emails: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthenticatedUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ReposListForAuthenticatedUserOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user/repos: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthenticatedUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Repository:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(201)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(400)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ScimError:
-		w.Header().Set("Content-Type", "application/scim+json")
-		w.WriteHeader(400)
-		return fmt.Errorf("application/scim+json encoder not implemented")
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user/repos: unexpected response type for method: %T", response)
 	}
 }
 
@@ -18178,10 +10848,10 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -18192,7 +10862,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -18203,7 +10873,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -18224,10 +10894,10 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRespons
 	case *ReposDeclineInvitationNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ReposDeclineInvitationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -18238,7 +10908,7 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRespons
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReposDeclineInvitationApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -18249,7 +10919,7 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRespons
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReposDeclineInvitationApplicationJSONConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
 		data, err := json.Marshal(response)
@@ -18270,10 +10940,10 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationResponse,
 	case *ReposAcceptInvitationNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ReposAcceptInvitationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -18284,7 +10954,7 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationResponse,
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReposAcceptInvitationApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -18295,7 +10965,7 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationResponse,
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ReposAcceptInvitationApplicationJSONConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
 		data, err := json.Marshal(response)
@@ -18311,62 +10981,15 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationResponse,
 	}
 }
 
-func encodeActivityListReposStarredByAuthenticatedUserResponse(response ActivityListReposStarredByAuthenticatedUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ActivityListReposStarredByAuthenticatedUserOKApplicationJSON:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSON:
-		w.Header().Set("Content-Type", "application/vnd.github.v3.star+json")
-		w.WriteHeader(200)
-		return fmt.Errorf("application/vnd.github.v3.star+json encoder not implemented")
-	case *not_modified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/user/starred: unexpected response type for method: %T", response)
-	}
-}
-
 func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response ActivityCheckRepoIsStarredByAuthenticatedUserResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -18377,7 +11000,7 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -18388,7 +11011,7 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -18409,10 +11032,10 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 	case *ActivityStarRepoForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -18423,7 +11046,7 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -18434,7 +11057,7 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -18455,10 +11078,10 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 	case *ActivityUnstarRepoForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -18469,7 +11092,7 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -18480,7 +11103,7 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -18509,10 +11132,10 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		data, err := json.Marshal(response)
@@ -18523,7 +11146,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -18552,10 +11175,10 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
-	case *BasicError:
+	case *TeamsListForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
 		data, err := json.Marshal(response)
@@ -18566,7 +11189,7 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 			return err
 		}
 		return nil
-	case *BasicError:
+	case *TeamsListForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		data, err := json.Marshal(response)
@@ -18595,40 +11218,11 @@ func encodeUsersListResponse(response UsersListResponse, w http.ResponseWriter) 
 			return err
 		}
 		return nil
-	case *not_modified:
+	case *NotModified:
 		w.WriteHeader(304)
 		return nil
 	default:
 		return fmt.Errorf("/users: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeUsersGetByUsernameResponse(response UsersGetByUsernameResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *accepted:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(202)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/users/{username}: unexpected response type for method: %T", response)
 	}
 }
 
@@ -18710,56 +11304,7 @@ func encodeUsersCheckFollowingForUserResponse(response UsersCheckFollowingForUse
 	}
 }
 
-func encodeGistsListForUserResponse(response GistsListForUserResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeUsersListGpgKeysForUserResponse(response UsersListGpgKeysForUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	default:
-		return fmt.Errorf("/users/{username}/gpg_keys: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeUsersGetContextForUserResponse(response UsersGetContextForUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *Hovercard:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/users/{username}/hovercard: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeAppsGetUserInstallationResponse(response Installation, w http.ResponseWriter) error {
+func encodeUsersListGpgKeysForUserResponse(response []GpgKey, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	data, err := json.Marshal(response)
@@ -18798,302 +11343,6 @@ func encodeOrgsListForUserResponse(response []OrganizationSimple, w http.Respons
 	return nil
 }
 
-func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PackagesListPackagesForUserOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/users/{username}/packages: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePackagesGetPackageForUserResponse(response Package, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageForUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PackagesDeletePackageForUserNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/users/{username}/packages/{package_type}/{package_name}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackageForUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PackagesRestorePackageForUserNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/users/{username}/packages/{package_type}/{package_name}/restore: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response PackagesGetAllPackageVersionsForPackageOwnedByUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PackagesGetAllPackageVersionsForPackageOwnedByUserOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/users/{username}/packages/{package_type}/{package_name}/versions: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePackagesGetPackageVersionForUserResponse(response PackagesGetPackageVersionForUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	default:
-		return fmt.Errorf("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePackageVersionForUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PackagesDeletePackageVersionForUserNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}: unexpected response type for method: %T", response)
-	}
-}
-
-func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestorePackageVersionForUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PackagesRestorePackageVersionForUserNoContent:
-		w.WriteHeader(204)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
-		if _, err := w.Write(data); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore: unexpected response type for method: %T", response)
-	}
-}
-
-func encodeProjectsListForUserResponse(response ProjectsListForUserResponse, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeActivityListReceivedEventsForUserResponse(response []Event, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -19108,19 +11357,6 @@ func encodeActivityListReceivedEventsForUserResponse(response []Event, w http.Re
 }
 
 func encodeActivityListReceivedPublicEventsForUserResponse(response []Event, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
-	if _, err := w.Write(data); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeReposListForUserResponse(response []MinimalRepository, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	data, err := json.Marshal(response)
@@ -19170,13 +11406,6 @@ func encodeBillingGetSharedStorageBillingUserResponse(response CombinedBillingUs
 		return err
 	}
 	return nil
-}
-
-func encodeActivityListReposStarredByUserResponse(response ActivityListReposStarredByUserResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	default:
-		return fmt.Errorf("/users/{username}/starred: unexpected response type for method: %T", response)
-	}
 }
 
 func encodeActivityListReposWatchedByUserResponse(response []MinimalRepository, w http.ResponseWriter) error {

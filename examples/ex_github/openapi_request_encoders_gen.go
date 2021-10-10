@@ -36,112 +36,6 @@ var (
 	_ = conv.ToInt32
 )
 
-func encodeAppsCreateFromManifestRequest(req *AppsCreateFromManifestApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeAppsUpdateWebhookConfigForAppRequest(req AppsUpdateWebhookConfigForAppRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeAppsCreateInstallationAccessTokenRequest(req *AppsCreateInstallationAccessTokenApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeAppsDeleteAuthorizationRequest(req AppsDeleteAuthorizationApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeAppsCheckTokenRequest(req AppsCheckTokenApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeAppsDeleteTokenRequest(req AppsDeleteTokenApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeAppsResetTokenRequest(req AppsResetTokenApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeAppsScopeTokenRequest(req AppsScopeTokenApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeOAuthAuthorizationsCreateAuthorizationRequest(req *OAuthAuthorizationsCreateAuthorizationApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(req OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(req OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeOAuthAuthorizationsUpdateAuthorizationRequest(req *OAuthAuthorizationsUpdateAuthorizationApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
 func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(req EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequest) ([]byte, string, error) {
 	b, err := json.Marshal(req)
 	if err != nil {
@@ -205,22 +99,6 @@ func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(req En
 	return b, "application/json", nil
 }
 
-func encodeGistsCreateRequest(req GistsCreateRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeGistsUpdateRequest(req GistsUpdateApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
 func encodeGistsCreateCommentRequest(req GistsCreateCommentApplicationJSONRequest) ([]byte, string, error) {
 	b, err := json.Marshal(req)
 	if err != nil {
@@ -269,15 +147,6 @@ func encodeActivityMarkNotificationsAsReadRequest(req *ActivityMarkNotifications
 }
 
 func encodeActivitySetThreadSubscriptionRequest(req *ActivitySetThreadSubscriptionApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeOrgsUpdateRequest(req *OrgsUpdateApplicationJSONRequest) ([]byte, string, error) {
 	b, err := json.Marshal(req)
 	if err != nil {
 		return nil, "", err
@@ -367,82 +236,7 @@ func encodeActionsSetSelectedReposForOrgSecretRequest(req ActionsSetSelectedRepo
 	return b, "application/json", nil
 }
 
-func encodeOrgsCreateWebhookRequest(req OrgsCreateWebhookRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeOrgsUpdateWebhookRequest(req OrgsUpdateWebhookRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeOrgsUpdateWebhookConfigForOrgRequest(req OrgsUpdateWebhookConfigForOrgRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeInteractionsSetRestrictionsForOrgRequest(req InteractionLimit) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeOrgsCreateInvitationRequest(req *OrgsCreateInvitationApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeOrgsSetMembershipForUserRequest(req *OrgsSetMembershipForUserApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeMigrationsStartForOrgRequest(req MigrationsStartForOrgApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
 func encodeProjectsCreateForOrgRequest(req ProjectsCreateForOrgApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeReposCreateInOrgRequest(req ReposCreateInOrgApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeTeamsCreateRequest(req TeamsCreateApplicationJSONRequest) ([]byte, string, error) {
 	b, err := json.Marshal(req)
 	if err != nil {
 		return nil, "", err
@@ -559,15 +353,6 @@ func encodeProjectsUpdateCardRequest(req *ProjectsUpdateCardApplicationJSONReque
 	return b, "application/json", nil
 }
 
-func encodeProjectsMoveCardRequest(req ProjectsMoveCardApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
 func encodeProjectsUpdateColumnRequest(req ProjectsUpdateColumnApplicationJSONRequest) ([]byte, string, error) {
 	b, err := json.Marshal(req)
 	if err != nil {
@@ -575,13 +360,6 @@ func encodeProjectsUpdateColumnRequest(req ProjectsUpdateColumnApplicationJSONRe
 	}
 
 	return b, "application/json", nil
-}
-
-func encodeProjectsCreateCardRequest(req ProjectsCreateCardRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
 }
 
 func encodeProjectsMoveColumnRequest(req ProjectsMoveColumnApplicationJSONRequest) ([]byte, string, error) {
@@ -602,25 +380,7 @@ func encodeProjectsUpdateRequest(req *ProjectsUpdateApplicationJSONRequest) ([]b
 	return b, "application/json", nil
 }
 
-func encodeProjectsAddCollaboratorRequest(req *ProjectsAddCollaboratorApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
 func encodeProjectsCreateColumnRequest(req ProjectsCreateColumnApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeReposUpdateRequest(req *ReposUpdateApplicationJSONRequest) ([]byte, string, error) {
 	b, err := json.Marshal(req)
 	if err != nil {
 		return nil, "", err
@@ -647,15 +407,6 @@ func encodeActionsSetAllowedActionsRepositoryRequest(req *SelectedActions) ([]by
 	return b, "application/json", nil
 }
 
-func encodeActionsReviewPendingDeploymentsForRunRequest(req ActionsReviewPendingDeploymentsForRunApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
 func encodeActionsCreateOrUpdateRepoSecretRequest(req ActionsCreateOrUpdateRepoSecretApplicationJSONRequest) ([]byte, string, error) {
 	b, err := json.Marshal(req)
 	if err != nil {
@@ -665,145 +416,7 @@ func encodeActionsCreateOrUpdateRepoSecretRequest(req ActionsCreateOrUpdateRepoS
 	return b, "application/json", nil
 }
 
-func encodeReposCreateAutolinkRequest(req ReposCreateAutolinkApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
 func encodeReposUpdateBranchProtectionRequest(req ReposUpdateBranchProtectionApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeReposUpdatePullRequestReviewProtectionRequest(req *ReposUpdatePullRequestReviewProtectionApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeReposUpdateStatusCheckProtectionRequest(req *ReposUpdateStatusCheckProtectionApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeReposSetStatusCheckContextsRequest(req ReposSetStatusCheckContextsRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeReposAddStatusCheckContextsRequest(req ReposAddStatusCheckContextsRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeReposRemoveStatusCheckContextsRequest(req ReposRemoveStatusCheckContextsRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeReposSetAppAccessRestrictionsRequest(req ReposSetAppAccessRestrictionsRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeReposAddAppAccessRestrictionsRequest(req ReposAddAppAccessRestrictionsRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeReposRemoveAppAccessRestrictionsRequest(req ReposRemoveAppAccessRestrictionsRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeReposSetTeamAccessRestrictionsRequest(req ReposSetTeamAccessRestrictionsRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeReposAddTeamAccessRestrictionsRequest(req ReposAddTeamAccessRestrictionsRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeReposRemoveTeamAccessRestrictionsRequest(req ReposRemoveTeamAccessRestrictionsRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeReposSetUserAccessRestrictionsRequest(req ReposSetUserAccessRestrictionsRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeReposAddUserAccessRestrictionsRequest(req ReposAddUserAccessRestrictionsRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeReposRemoveUserAccessRestrictionsRequest(req ReposRemoveUserAccessRestrictionsRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeReposRenameBranchRequest(req *ReposRenameBranchApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeChecksCreateRequest(req ChecksCreateApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeChecksUpdateRequest(req *ChecksUpdateApplicationJSONRequest) ([]byte, string, error) {
 	b, err := json.Marshal(req)
 	if err != nil {
 		return nil, "", err
@@ -848,15 +461,6 @@ func encodeCodeScanningUploadSarifRequest(req CodeScanningUploadSarifApplication
 	return b, "application/json", nil
 }
 
-func encodeReposAddCollaboratorRequest(req *ReposAddCollaboratorApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
 func encodeReposUpdateCommitCommentRequest(req ReposUpdateCommitCommentApplicationJSONRequest) ([]byte, string, error) {
 	b, err := json.Marshal(req)
 	if err != nil {
@@ -866,197 +470,7 @@ func encodeReposUpdateCommitCommentRequest(req ReposUpdateCommitCommentApplicati
 	return b, "application/json", nil
 }
 
-func encodeReactionsCreateForCommitCommentRequest(req ReactionsCreateForCommitCommentApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeReposCreateCommitCommentRequest(req ReposCreateCommitCommentApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeAppsCreateContentAttachmentRequest(req AppsCreateContentAttachmentApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeReposCreateOrUpdateFileContentsRequest(req ReposCreateOrUpdateFileContentsApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeReposDeleteFileRequest(req ReposDeleteFileApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeReposCreateDeploymentRequest(req ReposCreateDeploymentRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeReposCreateDeploymentStatusRequest(req ReposCreateDeploymentStatusApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeReposCreateDispatchEventRequest(req ReposCreateDispatchEventApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeReposCreateOrUpdateEnvironmentRequest(req *ReposCreateOrUpdateEnvironmentApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeReposCreateForkRequest(req *ReposCreateForkApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeGitCreateBlobRequest(req GitCreateBlobApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeGitCreateCommitRequest(req GitCreateCommitApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeGitCreateRefRequest(req GitCreateRefApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeGitUpdateRefRequest(req GitUpdateRefApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeGitCreateTagRequest(req GitCreateTagApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeGitCreateTreeRequest(req GitCreateTreeApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeReposCreateWebhookRequest(req ReposCreateWebhookRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeReposUpdateWebhookRequest(req ReposUpdateWebhookRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeReposUpdateWebhookConfigForRepoRequest(req ReposUpdateWebhookConfigForRepoRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeMigrationsStartImportRequest(req MigrationsStartImportApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
 func encodeMigrationsUpdateImportRequest(req *MigrationsUpdateImportApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeMigrationsMapCommitAuthorRequest(req *MigrationsMapCommitAuthorApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeMigrationsSetLfsPreferenceRequest(req MigrationsSetLfsPreferenceApplicationJSONRequest) ([]byte, string, error) {
 	b, err := json.Marshal(req)
 	if err != nil {
 		return nil, "", err
@@ -1083,38 +497,6 @@ func encodeReposUpdateInvitationRequest(req *ReposUpdateInvitationApplicationJSO
 	return b, "application/json", nil
 }
 
-func encodeIssuesCreateRequest(req IssuesCreateRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeIssuesUpdateCommentRequest(req IssuesUpdateCommentApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeReactionsCreateForIssueCommentRequest(req ReactionsCreateForIssueCommentApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeIssuesUpdateRequest(req IssuesUpdateRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
 func encodeIssuesAddAssigneesRequest(req *IssuesAddAssigneesApplicationJSONRequest) ([]byte, string, error) {
 	b, err := json.Marshal(req)
 	if err != nil {
@@ -1125,65 +507,6 @@ func encodeIssuesAddAssigneesRequest(req *IssuesAddAssigneesApplicationJSONReque
 }
 
 func encodeIssuesRemoveAssigneesRequest(req *IssuesRemoveAssigneesApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeIssuesCreateCommentRequest(req IssuesCreateCommentApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeIssuesSetLabelsRequest(req IssuesSetLabelsRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeIssuesAddLabelsRequest(req IssuesAddLabelsRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeIssuesLockRequest(req *IssuesLockApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeReactionsCreateForIssueRequest(req ReactionsCreateForIssueApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeReposCreateDeployKeyRequest(req ReposCreateDeployKeyApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeIssuesCreateLabelRequest(req IssuesCreateLabelApplicationJSONRequest) ([]byte, string, error) {
 	b, err := json.Marshal(req)
 	if err != nil {
 		return nil, "", err
@@ -1210,24 +533,6 @@ func encodeReposMergeUpstreamRequest(req ReposMergeUpstreamApplicationJSONReques
 	return b, "application/json", nil
 }
 
-func encodeReposMergeRequest(req ReposMergeApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeIssuesCreateMilestoneRequest(req IssuesCreateMilestoneApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
 func encodeIssuesUpdateMilestoneRequest(req *IssuesUpdateMilestoneApplicationJSONRequest) ([]byte, string, error) {
 	b, err := json.Marshal(req)
 	if err != nil {
@@ -1246,32 +551,7 @@ func encodeActivityMarkRepoNotificationsAsReadRequest(req *ActivityMarkRepoNotif
 	return b, "application/json", nil
 }
 
-func encodeReposUpdateInformationAboutPagesSiteRequest(req ReposUpdateInformationAboutPagesSiteRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeReposCreatePagesSiteRequest(req ReposCreatePagesSiteApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
 func encodeProjectsCreateForRepoRequest(req ProjectsCreateForRepoApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodePullsCreateRequest(req PullsCreateApplicationJSONRequest) ([]byte, string, error) {
 	b, err := json.Marshal(req)
 	if err != nil {
 		return nil, "", err
@@ -1289,61 +569,7 @@ func encodePullsUpdateReviewCommentRequest(req PullsUpdateReviewCommentApplicati
 	return b, "application/json", nil
 }
 
-func encodeReactionsCreateForPullRequestReviewCommentRequest(req ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodePullsUpdateRequest(req *PullsUpdateApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodePullsCreateReviewCommentRequest(req PullsCreateReviewCommentApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
 func encodePullsCreateReplyForReviewCommentRequest(req PullsCreateReplyForReviewCommentApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodePullsMergeRequest(req *PullsMergeApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodePullsRequestReviewersRequest(req *PullsRequestReviewersApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodePullsRemoveRequestedReviewersRequest(req PullsRemoveRequestedReviewersApplicationJSONRequest) ([]byte, string, error) {
 	b, err := json.Marshal(req)
 	if err != nil {
 		return nil, "", err
@@ -1388,24 +614,6 @@ func encodePullsSubmitReviewRequest(req PullsSubmitReviewApplicationJSONRequest)
 	return b, "application/json", nil
 }
 
-func encodePullsUpdateBranchRequest(req *PullsUpdateBranchApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeReposCreateReleaseRequest(req ReposCreateReleaseApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
 func encodeReposUpdateReleaseAssetRequest(req *ReposUpdateReleaseAssetApplicationJSONRequest) ([]byte, string, error) {
 	b, err := json.Marshal(req)
 	if err != nil {
@@ -1426,15 +634,6 @@ func encodeReposUpdateReleaseRequest(req *ReposUpdateReleaseApplicationJSONReque
 
 func encodeReposUploadReleaseAssetRequest(req *string) ([]byte, string, error) {
 	return nil, "", fmt.Errorf("*/* encoder not implemented")
-}
-
-func encodeReactionsCreateForReleaseRequest(req ReactionsCreateForReleaseApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
 }
 
 func encodeSecretScanningUpdateAlertRequest(req SecretScanningUpdateAlertApplicationJSONRequest) ([]byte, string, error) {
@@ -1518,13 +717,6 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(req
 	return b, "application/json", nil
 }
 
-func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(req EnterpriseAdminUpdateAttributeForEnterpriseGroupRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
 func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(req EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest) ([]byte, string, error) {
 	b, err := json.Marshal(req)
 	if err != nil {
@@ -1544,40 +736,6 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(req 
 }
 
 func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(req EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeScimProvisionAndInviteUserRequest(req ScimProvisionAndInviteUserApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeScimSetInformationForProvisionedUserRequest(req ScimSetInformationForProvisionedUserApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeScimUpdateAttributeForUserRequest(req ScimUpdateAttributeForUserRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeTeamsUpdateLegacyRequest(req TeamsUpdateLegacyApplicationJSONRequest) ([]byte, string, error) {
 	b, err := json.Marshal(req)
 	if err != nil {
 		return nil, "", err
@@ -1649,120 +807,7 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyRequest(req *TeamsAddOrUpdateM
 	return b, "application/json", nil
 }
 
-func encodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(req *TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(req *TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(req TeamsCreateOrUpdateIdpGroupConnectionsLegacyApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeUsersUpdateAuthenticatedRequest(req *UsersUpdateAuthenticatedApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(req UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeUsersAddEmailForAuthenticatedRequest(req UsersAddEmailForAuthenticatedRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeUsersDeleteEmailForAuthenticatedRequest(req UsersDeleteEmailForAuthenticatedRequest) ([]byte, string, error) {
-	switch req := req.(type) {
-	default:
-		return nil, "", fmt.Errorf("unexpected request type: %T", req)
-	}
-}
-
-func encodeUsersCreateGpgKeyForAuthenticatedRequest(req UsersCreateGpgKeyForAuthenticatedApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeInteractionsSetRestrictionsForAuthenticatedUserRequest(req InteractionLimit) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeUsersCreatePublicSSHKeyForAuthenticatedRequest(req UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeOrgsUpdateMembershipForAuthenticatedUserRequest(req OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeMigrationsStartForAuthenticatedUserRequest(req MigrationsStartForAuthenticatedUserApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
 func encodeProjectsCreateForAuthenticatedUserRequest(req ProjectsCreateForAuthenticatedUserApplicationJSONRequest) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
-}
-
-func encodeReposCreateForAuthenticatedUserRequest(req ReposCreateForAuthenticatedUserApplicationJSONRequest) ([]byte, string, error) {
 	b, err := json.Marshal(req)
 	if err != nil {
 		return nil, "", err

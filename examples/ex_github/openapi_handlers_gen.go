@@ -68,174 +68,6 @@ func NewAppsGetAuthenticatedHandler(s Server) func(w http.ResponseWriter, r *htt
 	}
 }
 
-func NewAppsCreateFromManifestHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeAppsCreateFromManifestParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeAppsCreateFromManifestRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.AppsCreateFromManifest(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsCreateFromManifestResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewAppsGetWebhookConfigForAppHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-
-		response, err := s.AppsGetWebhookConfigForApp(r.Context())
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsGetWebhookConfigForAppResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewAppsUpdateWebhookConfigForAppHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodeAppsUpdateWebhookConfigForAppRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.AppsUpdateWebhookConfigForApp(r.Context(), request)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsUpdateWebhookConfigForAppResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewAppsListWebhookDeliveriesHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeAppsListWebhookDeliveriesParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.AppsListWebhookDeliveries(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsListWebhookDeliveriesResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewAppsGetWebhookDeliveryHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeAppsGetWebhookDeliveryParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.AppsGetWebhookDelivery(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsGetWebhookDeliveryResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewAppsRedeliverWebhookDeliveryHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeAppsRedeliverWebhookDeliveryParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.AppsRedeliverWebhookDelivery(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsRedeliverWebhookDeliveryResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewAppsListInstallationsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeAppsListInstallationsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.AppsListInstallations(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsListInstallationsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewAppsGetInstallationHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeAppsGetInstallationParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.AppsGetInstallation(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsGetInstallationResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewAppsDeleteInstallationHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeAppsDeleteInstallationParams(r)
@@ -251,32 +83,6 @@ func NewAppsDeleteInstallationHandler(s Server) func(w http.ResponseWriter, r *h
 		}
 
 		if err := encodeAppsDeleteInstallationResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewAppsCreateInstallationAccessTokenHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeAppsCreateInstallationAccessTokenParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeAppsCreateInstallationAccessTokenRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.AppsCreateInstallationAccessToken(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsCreateInstallationAccessTokenResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -388,136 +194,6 @@ func NewOAuthAuthorizationsDeleteGrantHandler(s Server) func(w http.ResponseWrit
 	}
 }
 
-func NewAppsDeleteAuthorizationHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeAppsDeleteAuthorizationParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeAppsDeleteAuthorizationRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.AppsDeleteAuthorization(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsDeleteAuthorizationResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewAppsCheckTokenHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeAppsCheckTokenParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeAppsCheckTokenRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.AppsCheckToken(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsCheckTokenResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewAppsDeleteTokenHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeAppsDeleteTokenParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeAppsDeleteTokenRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.AppsDeleteToken(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsDeleteTokenResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewAppsResetTokenHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeAppsResetTokenParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeAppsResetTokenRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.AppsResetToken(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsResetTokenResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewAppsScopeTokenHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeAppsScopeTokenParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeAppsScopeTokenRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.AppsScopeToken(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsScopeTokenResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewAppsGetBySlugHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeAppsGetBySlugParams(r)
@@ -560,79 +236,6 @@ func NewOAuthAuthorizationsListAuthorizationsHandler(s Server) func(w http.Respo
 	}
 }
 
-func NewOAuthAuthorizationsCreateAuthorizationHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodeOAuthAuthorizationsCreateAuthorizationRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OAuthAuthorizationsCreateAuthorization(r.Context(), request)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOAuthAuthorizationsCreateAuthorizationResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewOAuthAuthorizationsGetOrCreateAuthorizationForAppHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OAuthAuthorizationsGetOrCreateAuthorizationForApp(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewOAuthAuthorizationsGetAuthorizationHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeOAuthAuthorizationsGetAuthorizationParams(r)
@@ -669,32 +272,6 @@ func NewOAuthAuthorizationsDeleteAuthorizationHandler(s Server) func(w http.Resp
 		}
 
 		if err := encodeOAuthAuthorizationsDeleteAuthorizationResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewOAuthAuthorizationsUpdateAuthorizationHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOAuthAuthorizationsUpdateAuthorizationParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeOAuthAuthorizationsUpdateAuthorizationRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OAuthAuthorizationsUpdateAuthorization(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOAuthAuthorizationsUpdateAuthorizationResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -1356,27 +933,6 @@ func NewEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseHandler(s Server) fun
 	}
 }
 
-func NewEnterpriseAdminGetAuditLogHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeEnterpriseAdminGetAuditLogParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.EnterpriseAdminGetAuditLog(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeEnterpriseAdminGetAuditLogResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewBillingGetGithubActionsBillingGheHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeBillingGetGithubActionsBillingGheParams(r)
@@ -1498,48 +1054,6 @@ func NewGistsListHandler(s Server) func(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
-func NewGistsCreateHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodeGistsCreateRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.GistsCreate(r.Context(), request)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeGistsCreateResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewGistsListPublicHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeGistsListPublicParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.GistsListPublic(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeGistsListPublicResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewGistsListStarredHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeGistsListStarredParams(r)
@@ -1597,32 +1111,6 @@ func NewGistsDeleteHandler(s Server) func(w http.ResponseWriter, r *http.Request
 		}
 
 		if err := encodeGistsDeleteResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewGistsUpdateHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeGistsUpdateParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeGistsUpdateRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.GistsUpdate(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeGistsUpdateResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -1786,27 +1274,6 @@ func NewGistsListForksHandler(s Server) func(w http.ResponseWriter, r *http.Requ
 	}
 }
 
-func NewGistsForkHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeGistsForkParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.GistsFork(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeGistsForkResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewGistsCheckIsStarredHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeGistsCheckIsStarredParams(r)
@@ -1864,27 +1331,6 @@ func NewGistsUnstarHandler(s Server) func(w http.ResponseWriter, r *http.Request
 		}
 
 		if err := encodeGistsUnstarResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewGistsGetRevisionHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeGistsGetRevisionParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.GistsGetRevision(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeGistsGetRevisionResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -1959,27 +1405,6 @@ func NewAppsRevokeInstallationAccessTokenHandler(s Server) func(w http.ResponseW
 		}
 
 		if err := encodeAppsRevokeInstallationAccessTokenResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewIssuesListHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeIssuesListParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.IssuesList(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeIssuesListResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -2112,27 +1537,6 @@ func NewAppsListPlansHandler(s Server) func(w http.ResponseWriter, r *http.Reque
 	}
 }
 
-func NewAppsListAccountsForPlanHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeAppsListAccountsForPlanParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.AppsListAccountsForPlan(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsListAccountsForPlanResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewAppsGetSubscriptionPlanForAccountStubbedHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeAppsGetSubscriptionPlanForAccountStubbedParams(r)
@@ -2175,27 +1579,6 @@ func NewAppsListPlansStubbedHandler(s Server) func(w http.ResponseWriter, r *htt
 	}
 }
 
-func NewAppsListAccountsForPlanStubbedHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeAppsListAccountsForPlanStubbedParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.AppsListAccountsForPlanStubbed(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsListAccountsForPlanStubbedResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewMetaGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 
@@ -2227,27 +1610,6 @@ func NewActivityListPublicEventsForRepoNetworkHandler(s Server) func(w http.Resp
 		}
 
 		if err := encodeActivityListPublicEventsForRepoNetworkResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewActivityListNotificationsForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeActivityListNotificationsForAuthenticatedUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ActivityListNotificationsForAuthenticatedUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeActivityListNotificationsForAuthenticatedUserResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -2442,32 +1804,6 @@ func NewOrgsGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 		}
 
 		if err := encodeOrgsGetResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewOrgsUpdateHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOrgsUpdateParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeOrgsUpdateRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OrgsUpdate(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOrgsUpdateResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -3275,27 +2611,6 @@ func NewActionsRemoveSelectedRepoFromOrgSecretHandler(s Server) func(w http.Resp
 	}
 }
 
-func NewOrgsGetAuditLogHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOrgsGetAuditLogParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OrgsGetAuditLog(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOrgsGetAuditLogResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewOrgsListBlockedUsersHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeOrgsListBlockedUsersParams(r)
@@ -3332,27 +2647,6 @@ func NewOrgsCheckBlockedUserHandler(s Server) func(w http.ResponseWriter, r *htt
 		}
 
 		if err := encodeOrgsCheckBlockedUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewOrgsBlockUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOrgsBlockUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OrgsBlockUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOrgsBlockUserResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -3485,32 +2779,6 @@ func NewOrgsListWebhooksHandler(s Server) func(w http.ResponseWriter, r *http.Re
 	}
 }
 
-func NewOrgsCreateWebhookHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOrgsCreateWebhookParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeOrgsCreateWebhookRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OrgsCreateWebhook(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOrgsCreateWebhookResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewOrgsGetWebhookHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeOrgsGetWebhookParams(r)
@@ -3553,142 +2821,6 @@ func NewOrgsDeleteWebhookHandler(s Server) func(w http.ResponseWriter, r *http.R
 	}
 }
 
-func NewOrgsUpdateWebhookHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOrgsUpdateWebhookParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeOrgsUpdateWebhookRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OrgsUpdateWebhook(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOrgsUpdateWebhookResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewOrgsGetWebhookConfigForOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOrgsGetWebhookConfigForOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OrgsGetWebhookConfigForOrg(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOrgsGetWebhookConfigForOrgResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewOrgsUpdateWebhookConfigForOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOrgsUpdateWebhookConfigForOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeOrgsUpdateWebhookConfigForOrgRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OrgsUpdateWebhookConfigForOrg(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOrgsUpdateWebhookConfigForOrgResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewOrgsListWebhookDeliveriesHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOrgsListWebhookDeliveriesParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OrgsListWebhookDeliveries(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOrgsListWebhookDeliveriesResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewOrgsGetWebhookDeliveryHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOrgsGetWebhookDeliveryParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OrgsGetWebhookDelivery(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOrgsGetWebhookDeliveryResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewOrgsRedeliverWebhookDeliveryHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOrgsRedeliverWebhookDeliveryParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OrgsRedeliverWebhookDelivery(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOrgsRedeliverWebhookDeliveryResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewOrgsPingWebhookHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeOrgsPingWebhookParams(r)
@@ -3704,95 +2836,6 @@ func NewOrgsPingWebhookHandler(s Server) func(w http.ResponseWriter, r *http.Req
 		}
 
 		if err := encodeOrgsPingWebhookResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewAppsGetOrgInstallationHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeAppsGetOrgInstallationParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.AppsGetOrgInstallation(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsGetOrgInstallationResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewOrgsListAppInstallationsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOrgsListAppInstallationsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OrgsListAppInstallations(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOrgsListAppInstallationsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewInteractionsGetRestrictionsForOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeInteractionsGetRestrictionsForOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.InteractionsGetRestrictionsForOrg(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeInteractionsGetRestrictionsForOrgResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewInteractionsSetRestrictionsForOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeInteractionsSetRestrictionsForOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeInteractionsSetRestrictionsForOrgRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.InteractionsSetRestrictionsForOrg(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeInteractionsSetRestrictionsForOrgResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -3841,53 +2884,6 @@ func NewOrgsListPendingInvitationsHandler(s Server) func(w http.ResponseWriter, 
 	}
 }
 
-func NewOrgsCreateInvitationHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOrgsCreateInvitationParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeOrgsCreateInvitationRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OrgsCreateInvitation(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOrgsCreateInvitationResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewOrgsCancelInvitationHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOrgsCancelInvitationParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OrgsCancelInvitation(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOrgsCancelInvitationResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewOrgsListInvitationTeamsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeOrgsListInvitationTeamsParams(r)
@@ -3903,48 +2899,6 @@ func NewOrgsListInvitationTeamsHandler(s Server) func(w http.ResponseWriter, r *
 		}
 
 		if err := encodeOrgsListInvitationTeamsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewIssuesListForOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeIssuesListForOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.IssuesListForOrg(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeIssuesListForOrgResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewOrgsListMembersHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOrgsListMembersParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OrgsListMembers(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOrgsListMembersResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -4014,32 +2968,6 @@ func NewOrgsGetMembershipForUserHandler(s Server) func(w http.ResponseWriter, r 
 	}
 }
 
-func NewOrgsSetMembershipForUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOrgsSetMembershipForUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeOrgsSetMembershipForUserRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OrgsSetMembershipForUser(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOrgsSetMembershipForUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewOrgsRemoveMembershipForUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeOrgsRemoveMembershipForUserParams(r)
@@ -4055,74 +2983,6 @@ func NewOrgsRemoveMembershipForUserHandler(s Server) func(w http.ResponseWriter,
 		}
 
 		if err := encodeOrgsRemoveMembershipForUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewMigrationsListForOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeMigrationsListForOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.MigrationsListForOrg(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeMigrationsListForOrgResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewMigrationsStartForOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeMigrationsStartForOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeMigrationsStartForOrgRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.MigrationsStartForOrg(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeMigrationsStartForOrgResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewMigrationsGetStatusForOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeMigrationsGetStatusForOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.MigrationsGetStatusForOrg(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeMigrationsGetStatusForOrgResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -4213,27 +3073,6 @@ func NewMigrationsListReposForOrgHandler(s Server) func(w http.ResponseWriter, r
 	}
 }
 
-func NewOrgsListOutsideCollaboratorsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOrgsListOutsideCollaboratorsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OrgsListOutsideCollaborators(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOrgsListOutsideCollaboratorsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewOrgsConvertMemberToOutsideCollaboratorHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeOrgsConvertMemberToOutsideCollaboratorParams(r)
@@ -4270,195 +3109,6 @@ func NewOrgsRemoveOutsideCollaboratorHandler(s Server) func(w http.ResponseWrite
 		}
 
 		if err := encodeOrgsRemoveOutsideCollaboratorResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesListPackagesForOrganizationHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesListPackagesForOrganizationParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesListPackagesForOrganization(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesListPackagesForOrganizationResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesGetPackageForOrganizationHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesGetPackageForOrganizationParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesGetPackageForOrganization(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesGetPackageForOrganizationResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesDeletePackageForOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesDeletePackageForOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesDeletePackageForOrg(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesDeletePackageForOrgResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesRestorePackageForOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesRestorePackageForOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesRestorePackageForOrg(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesRestorePackageForOrgResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesGetAllPackageVersionsForPackageOwnedByOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesGetAllPackageVersionsForPackageOwnedByOrg(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesGetPackageVersionForOrganizationHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesGetPackageVersionForOrganizationParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesGetPackageVersionForOrganization(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesGetPackageVersionForOrganizationResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesDeletePackageVersionForOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesDeletePackageVersionForOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesDeletePackageVersionForOrg(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesDeletePackageVersionForOrgResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesRestorePackageVersionForOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesRestorePackageVersionForOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesRestorePackageVersionForOrg(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesRestorePackageVersionForOrgResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewProjectsListForOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeProjectsListForOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ProjectsListForOrg(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeProjectsListForOrgResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -4575,74 +3225,6 @@ func NewOrgsRemovePublicMembershipForAuthenticatedUserHandler(s Server) func(w h
 	}
 }
 
-func NewReposListForOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposListForOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposListForOrg(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposListForOrgResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposCreateInOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposCreateInOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposCreateInOrgRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposCreateInOrg(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposCreateInOrgResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewSecretScanningListAlertsForOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeSecretScanningListAlertsForOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.SecretScanningListAlertsForOrg(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeSecretScanningListAlertsForOrgResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewBillingGetGithubActionsBillingOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeBillingGetGithubActionsBillingOrgParams(r)
@@ -4748,32 +3330,6 @@ func NewTeamsListHandler(s Server) func(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
-func NewTeamsCreateHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeTeamsCreateParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeTeamsCreateRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.TeamsCreate(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeTeamsCreateResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewTeamsGetByNameHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeTeamsGetByNameParams(r)
@@ -4836,27 +3392,6 @@ func NewTeamsUpdateInOrgHandler(s Server) func(w http.ResponseWriter, r *http.Re
 		}
 
 		if err := encodeTeamsUpdateInOrgResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewTeamsListDiscussionsInOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeTeamsListDiscussionsInOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.TeamsListDiscussionsInOrg(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeTeamsListDiscussionsInOrgResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -4957,27 +3492,6 @@ func NewTeamsUpdateDiscussionInOrgHandler(s Server) func(w http.ResponseWriter, 
 	}
 }
 
-func NewTeamsListDiscussionCommentsInOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeTeamsListDiscussionCommentsInOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.TeamsListDiscussionCommentsInOrg(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeTeamsListDiscussionCommentsInOrgResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewTeamsCreateDiscussionCommentInOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeTeamsCreateDiscussionCommentInOrgParams(r)
@@ -5072,27 +3586,6 @@ func NewTeamsUpdateDiscussionCommentInOrgHandler(s Server) func(w http.ResponseW
 	}
 }
 
-func NewReactionsListForTeamDiscussionCommentInOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReactionsListForTeamDiscussionCommentInOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReactionsListForTeamDiscussionCommentInOrg(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReactionsListForTeamDiscussionCommentInOrgResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewReactionsCreateForTeamDiscussionCommentInOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeReactionsCreateForTeamDiscussionCommentInOrgParams(r)
@@ -5134,27 +3627,6 @@ func NewReactionsDeleteForTeamDiscussionCommentHandler(s Server) func(w http.Res
 		}
 
 		if err := encodeReactionsDeleteForTeamDiscussionCommentResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReactionsListForTeamDiscussionInOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReactionsListForTeamDiscussionInOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReactionsListForTeamDiscussionInOrg(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReactionsListForTeamDiscussionInOrgResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -5223,27 +3695,6 @@ func NewTeamsListPendingInvitationsInOrgHandler(s Server) func(w http.ResponseWr
 		}
 
 		if err := encodeTeamsListPendingInvitationsInOrgResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewTeamsListMembersInOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeTeamsListMembersInOrgParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.TeamsListMembersInOrg(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeTeamsListMembersInOrgResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -5632,32 +4083,6 @@ func NewProjectsUpdateCardHandler(s Server) func(w http.ResponseWriter, r *http.
 	}
 }
 
-func NewProjectsMoveCardHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeProjectsMoveCardParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeProjectsMoveCardRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ProjectsMoveCard(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeProjectsMoveCardResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewProjectsGetColumnHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeProjectsGetColumnParams(r)
@@ -5720,53 +4145,6 @@ func NewProjectsUpdateColumnHandler(s Server) func(w http.ResponseWriter, r *htt
 		}
 
 		if err := encodeProjectsUpdateColumnResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewProjectsListCardsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeProjectsListCardsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ProjectsListCards(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeProjectsListCardsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewProjectsCreateCardHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeProjectsCreateCardParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeProjectsCreateCardRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ProjectsCreateCard(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeProjectsCreateCardResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -5861,95 +4239,6 @@ func NewProjectsUpdateHandler(s Server) func(w http.ResponseWriter, r *http.Requ
 		}
 
 		if err := encodeProjectsUpdateResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewProjectsListCollaboratorsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeProjectsListCollaboratorsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ProjectsListCollaborators(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeProjectsListCollaboratorsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewProjectsAddCollaboratorHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeProjectsAddCollaboratorParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeProjectsAddCollaboratorRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ProjectsAddCollaborator(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeProjectsAddCollaboratorResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewProjectsRemoveCollaboratorHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeProjectsRemoveCollaboratorParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ProjectsRemoveCollaborator(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeProjectsRemoveCollaboratorResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewProjectsGetPermissionForUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeProjectsGetPermissionForUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ProjectsGetPermissionForUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeProjectsGetPermissionForUserResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -6076,32 +4365,6 @@ func NewReposDeleteHandler(s Server) func(w http.ResponseWriter, r *http.Request
 		}
 
 		if err := encodeReposDeleteResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposUpdateHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposUpdateParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposUpdateRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposUpdate(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposUpdateResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -6454,27 +4717,6 @@ func NewActionsDeleteSelfHostedRunnerFromRepoHandler(s Server) func(w http.Respo
 	}
 }
 
-func NewActionsListWorkflowRunsForRepoHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeActionsListWorkflowRunsForRepoParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ActionsListWorkflowRunsForRepo(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeActionsListWorkflowRunsForRepoResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewActionsGetWorkflowRunHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeActionsGetWorkflowRunParams(r)
@@ -6601,27 +4843,6 @@ func NewActionsCancelWorkflowRunHandler(s Server) func(w http.ResponseWriter, r 
 	}
 }
 
-func NewActionsListJobsForWorkflowRunHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeActionsListJobsForWorkflowRunParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ActionsListJobsForWorkflowRun(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeActionsListJobsForWorkflowRunResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewActionsDownloadWorkflowRunLogsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeActionsDownloadWorkflowRunLogsParams(r)
@@ -6658,53 +4879,6 @@ func NewActionsDeleteWorkflowRunLogsHandler(s Server) func(w http.ResponseWriter
 		}
 
 		if err := encodeActionsDeleteWorkflowRunLogsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewActionsGetPendingDeploymentsForRunHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeActionsGetPendingDeploymentsForRunParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ActionsGetPendingDeploymentsForRun(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeActionsGetPendingDeploymentsForRunResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewActionsReviewPendingDeploymentsForRunHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeActionsReviewPendingDeploymentsForRunParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeActionsReviewPendingDeploymentsForRunRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ActionsReviewPendingDeploymentsForRun(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeActionsReviewPendingDeploymentsForRunResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -6962,32 +5136,6 @@ func NewReposListAutolinksHandler(s Server) func(w http.ResponseWriter, r *http.
 		}
 
 		if err := encodeReposListAutolinksResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposCreateAutolinkHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposCreateAutolinkParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposCreateAutolinkRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposCreateAutolink(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposCreateAutolinkResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -7293,32 +5441,6 @@ func NewReposDeletePullRequestReviewProtectionHandler(s Server) func(w http.Resp
 	}
 }
 
-func NewReposUpdatePullRequestReviewProtectionHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposUpdatePullRequestReviewProtectionParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposUpdatePullRequestReviewProtectionRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposUpdatePullRequestReviewProtection(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposUpdatePullRequestReviewProtectionResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewReposGetCommitSignatureProtectionHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeReposGetCommitSignatureProtectionParams(r)
@@ -7424,32 +5546,6 @@ func NewReposRemoveStatusCheckProtectionHandler(s Server) func(w http.ResponseWr
 	}
 }
 
-func NewReposUpdateStatusCheckProtectionHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposUpdateStatusCheckProtectionParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposUpdateStatusCheckProtectionRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposUpdateStatusCheckProtection(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposUpdateStatusCheckProtectionResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewReposGetAllStatusCheckContextsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeReposGetAllStatusCheckContextsParams(r)
@@ -7465,84 +5561,6 @@ func NewReposGetAllStatusCheckContextsHandler(s Server) func(w http.ResponseWrit
 		}
 
 		if err := encodeReposGetAllStatusCheckContextsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposSetStatusCheckContextsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposSetStatusCheckContextsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposSetStatusCheckContextsRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposSetStatusCheckContexts(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposSetStatusCheckContextsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposAddStatusCheckContextsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposAddStatusCheckContextsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposAddStatusCheckContextsRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposAddStatusCheckContexts(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposAddStatusCheckContextsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposRemoveStatusCheckContextsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposRemoveStatusCheckContextsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposRemoveStatusCheckContextsRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposRemoveStatusCheckContexts(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposRemoveStatusCheckContextsResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -7612,84 +5630,6 @@ func NewReposGetAppsWithAccessToProtectedBranchHandler(s Server) func(w http.Res
 	}
 }
 
-func NewReposSetAppAccessRestrictionsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposSetAppAccessRestrictionsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposSetAppAccessRestrictionsRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposSetAppAccessRestrictions(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposSetAppAccessRestrictionsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposAddAppAccessRestrictionsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposAddAppAccessRestrictionsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposAddAppAccessRestrictionsRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposAddAppAccessRestrictions(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposAddAppAccessRestrictionsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposRemoveAppAccessRestrictionsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposRemoveAppAccessRestrictionsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposRemoveAppAccessRestrictionsRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposRemoveAppAccessRestrictions(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposRemoveAppAccessRestrictionsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewReposGetTeamsWithAccessToProtectedBranchHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeReposGetTeamsWithAccessToProtectedBranchParams(r)
@@ -7705,84 +5645,6 @@ func NewReposGetTeamsWithAccessToProtectedBranchHandler(s Server) func(w http.Re
 		}
 
 		if err := encodeReposGetTeamsWithAccessToProtectedBranchResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposSetTeamAccessRestrictionsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposSetTeamAccessRestrictionsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposSetTeamAccessRestrictionsRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposSetTeamAccessRestrictions(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposSetTeamAccessRestrictionsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposAddTeamAccessRestrictionsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposAddTeamAccessRestrictionsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposAddTeamAccessRestrictionsRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposAddTeamAccessRestrictions(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposAddTeamAccessRestrictionsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposRemoveTeamAccessRestrictionsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposRemoveTeamAccessRestrictionsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposRemoveTeamAccessRestrictionsRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposRemoveTeamAccessRestrictions(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposRemoveTeamAccessRestrictionsResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -7810,136 +5672,6 @@ func NewReposGetUsersWithAccessToProtectedBranchHandler(s Server) func(w http.Re
 	}
 }
 
-func NewReposSetUserAccessRestrictionsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposSetUserAccessRestrictionsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposSetUserAccessRestrictionsRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposSetUserAccessRestrictions(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposSetUserAccessRestrictionsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposAddUserAccessRestrictionsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposAddUserAccessRestrictionsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposAddUserAccessRestrictionsRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposAddUserAccessRestrictions(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposAddUserAccessRestrictionsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposRemoveUserAccessRestrictionsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposRemoveUserAccessRestrictionsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposRemoveUserAccessRestrictionsRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposRemoveUserAccessRestrictions(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposRemoveUserAccessRestrictionsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposRenameBranchHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposRenameBranchParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposRenameBranchRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposRenameBranch(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposRenameBranchResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewChecksCreateHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeChecksCreateParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeChecksCreateRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ChecksCreate(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeChecksCreateResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewChecksGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeChecksGetParams(r)
@@ -7955,32 +5687,6 @@ func NewChecksGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) 
 		}
 
 		if err := encodeChecksGetResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewChecksUpdateHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeChecksUpdateParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeChecksUpdateRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ChecksUpdate(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeChecksUpdateResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -8081,27 +5787,6 @@ func NewChecksGetSuiteHandler(s Server) func(w http.ResponseWriter, r *http.Requ
 	}
 }
 
-func NewChecksListForSuiteHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeChecksListForSuiteParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ChecksListForSuite(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeChecksListForSuiteResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewChecksRerequestSuiteHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeChecksRerequestSuiteParams(r)
@@ -8117,27 +5802,6 @@ func NewChecksRerequestSuiteHandler(s Server) func(w http.ResponseWriter, r *htt
 		}
 
 		if err := encodeChecksRerequestSuiteResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewCodeScanningListAlertsForRepoHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeCodeScanningListAlertsForRepoParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.CodeScanningListAlertsForRepo(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeCodeScanningListAlertsForRepoResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -8322,27 +5986,6 @@ func NewCodeScanningGetSarifHandler(s Server) func(w http.ResponseWriter, r *htt
 	}
 }
 
-func NewReposListCollaboratorsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposListCollaboratorsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposListCollaborators(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposListCollaboratorsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewReposCheckCollaboratorHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeReposCheckCollaboratorParams(r)
@@ -8358,32 +6001,6 @@ func NewReposCheckCollaboratorHandler(s Server) func(w http.ResponseWriter, r *h
 		}
 
 		if err := encodeReposCheckCollaboratorResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposAddCollaboratorHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposAddCollaboratorParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposAddCollaboratorRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposAddCollaborator(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposAddCollaboratorResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -8521,53 +6138,6 @@ func NewReposUpdateCommitCommentHandler(s Server) func(w http.ResponseWriter, r 
 	}
 }
 
-func NewReactionsListForCommitCommentHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReactionsListForCommitCommentParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReactionsListForCommitComment(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReactionsListForCommitCommentResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReactionsCreateForCommitCommentHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReactionsCreateForCommitCommentParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReactionsCreateForCommitCommentRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReactionsCreateForCommitComment(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReactionsCreateForCommitCommentResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewReactionsDeleteForCommitCommentHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeReactionsDeleteForCommitCommentParams(r)
@@ -8610,27 +6180,6 @@ func NewReposListCommitsHandler(s Server) func(w http.ResponseWriter, r *http.Re
 	}
 }
 
-func NewReposListBranchesForHeadCommitHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposListBranchesForHeadCommitParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposListBranchesForHeadCommit(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposListBranchesForHeadCommitResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewReposListCommentsForCommitHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeReposListCommentsForCommitParams(r)
@@ -8652,32 +6201,6 @@ func NewReposListCommentsForCommitHandler(s Server) func(w http.ResponseWriter, 
 	}
 }
 
-func NewReposCreateCommitCommentHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposCreateCommitCommentParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposCreateCommitCommentRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposCreateCommitComment(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposCreateCommitCommentResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewReposListPullRequestsAssociatedWithCommitHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeReposListPullRequestsAssociatedWithCommitParams(r)
@@ -8693,48 +6216,6 @@ func NewReposListPullRequestsAssociatedWithCommitHandler(s Server) func(w http.R
 		}
 
 		if err := encodeReposListPullRequestsAssociatedWithCommitResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposGetCommitHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposGetCommitParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposGetCommit(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposGetCommitResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewChecksListForRefHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeChecksListForRefParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ChecksListForRef(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeChecksListForRefResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -8846,105 +6327,6 @@ func NewReposCompareCommitsHandler(s Server) func(w http.ResponseWriter, r *http
 	}
 }
 
-func NewAppsCreateContentAttachmentHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeAppsCreateContentAttachmentParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeAppsCreateContentAttachmentRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.AppsCreateContentAttachment(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsCreateContentAttachmentResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposGetContentHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposGetContentParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposGetContent(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposGetContentResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposCreateOrUpdateFileContentsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposCreateOrUpdateFileContentsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposCreateOrUpdateFileContentsRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposCreateOrUpdateFileContents(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposCreateOrUpdateFileContentsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposDeleteFileHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposDeleteFileParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposDeleteFileRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposDeleteFile(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposDeleteFileResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewReposListContributorsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeReposListContributorsParams(r)
@@ -8960,74 +6342,6 @@ func NewReposListContributorsHandler(s Server) func(w http.ResponseWriter, r *ht
 		}
 
 		if err := encodeReposListContributorsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposListDeploymentsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposListDeploymentsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposListDeployments(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposListDeploymentsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposCreateDeploymentHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposCreateDeploymentParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposCreateDeploymentRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposCreateDeployment(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposCreateDeploymentResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposGetDeploymentHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposGetDeploymentParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposGetDeployment(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposGetDeploymentResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -9076,32 +6390,6 @@ func NewReposListDeploymentStatusesHandler(s Server) func(w http.ResponseWriter,
 	}
 }
 
-func NewReposCreateDeploymentStatusHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposCreateDeploymentStatusParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposCreateDeploymentStatusRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposCreateDeploymentStatus(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposCreateDeploymentStatusResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewReposGetDeploymentStatusHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeReposGetDeploymentStatusParams(r)
@@ -9117,100 +6405,6 @@ func NewReposGetDeploymentStatusHandler(s Server) func(w http.ResponseWriter, r 
 		}
 
 		if err := encodeReposGetDeploymentStatusResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposCreateDispatchEventHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposCreateDispatchEventParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposCreateDispatchEventRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposCreateDispatchEvent(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposCreateDispatchEventResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposGetAllEnvironmentsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposGetAllEnvironmentsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposGetAllEnvironments(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposGetAllEnvironmentsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposGetEnvironmentHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposGetEnvironmentParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposGetEnvironment(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposGetEnvironmentResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposCreateOrUpdateEnvironmentHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposCreateOrUpdateEnvironmentParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposCreateOrUpdateEnvironmentRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposCreateOrUpdateEnvironment(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposCreateOrUpdateEnvironmentResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -9253,126 +6447,6 @@ func NewActivityListRepoEventsHandler(s Server) func(w http.ResponseWriter, r *h
 		}
 
 		if err := encodeActivityListRepoEventsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposListForksHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposListForksParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposListForks(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposListForksResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposCreateForkHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposCreateForkParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposCreateForkRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposCreateFork(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposCreateForkResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewGitCreateBlobHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeGitCreateBlobParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeGitCreateBlobRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.GitCreateBlob(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeGitCreateBlobResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewGitGetBlobHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeGitGetBlobParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.GitGetBlob(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeGitGetBlobResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewGitCreateCommitHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeGitCreateCommitParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeGitCreateCommitRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.GitCreateCommit(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeGitCreateCommitResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -9442,105 +6516,6 @@ func NewGitGetRefHandler(s Server) func(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
-func NewGitCreateRefHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeGitCreateRefParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeGitCreateRefRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.GitCreateRef(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeGitCreateRefResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewGitDeleteRefHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeGitDeleteRefParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.GitDeleteRef(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeGitDeleteRefResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewGitUpdateRefHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeGitUpdateRefParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeGitUpdateRefRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.GitUpdateRef(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeGitUpdateRefResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewGitCreateTagHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeGitCreateTagParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeGitCreateTagRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.GitCreateTag(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeGitCreateTagResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewGitGetTagHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeGitGetTagParams(r)
@@ -9562,121 +6537,6 @@ func NewGitGetTagHandler(s Server) func(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
-func NewGitCreateTreeHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeGitCreateTreeParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeGitCreateTreeRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.GitCreateTree(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeGitCreateTreeResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewGitGetTreeHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeGitGetTreeParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.GitGetTree(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeGitGetTreeResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposListWebhooksHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposListWebhooksParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposListWebhooks(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposListWebhooksResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposCreateWebhookHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposCreateWebhookParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposCreateWebhookRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposCreateWebhook(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposCreateWebhookResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposGetWebhookHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposGetWebhookParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposGetWebhook(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposGetWebhookResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewReposDeleteWebhookHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeReposDeleteWebhookParams(r)
@@ -9692,142 +6552,6 @@ func NewReposDeleteWebhookHandler(s Server) func(w http.ResponseWriter, r *http.
 		}
 
 		if err := encodeReposDeleteWebhookResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposUpdateWebhookHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposUpdateWebhookParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposUpdateWebhookRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposUpdateWebhook(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposUpdateWebhookResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposGetWebhookConfigForRepoHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposGetWebhookConfigForRepoParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposGetWebhookConfigForRepo(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposGetWebhookConfigForRepoResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposUpdateWebhookConfigForRepoHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposUpdateWebhookConfigForRepoParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposUpdateWebhookConfigForRepoRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposUpdateWebhookConfigForRepo(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposUpdateWebhookConfigForRepoResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposListWebhookDeliveriesHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposListWebhookDeliveriesParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposListWebhookDeliveries(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposListWebhookDeliveriesResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposGetWebhookDeliveryHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposGetWebhookDeliveryParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposGetWebhookDelivery(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposGetWebhookDeliveryResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposRedeliverWebhookDeliveryHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposRedeliverWebhookDeliveryParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposRedeliverWebhookDelivery(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposRedeliverWebhookDeliveryResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -9891,32 +6615,6 @@ func NewMigrationsGetImportStatusHandler(s Server) func(w http.ResponseWriter, r
 		}
 
 		if err := encodeMigrationsGetImportStatusResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewMigrationsStartImportHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeMigrationsStartImportParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeMigrationsStartImportRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.MigrationsStartImport(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeMigrationsStartImportResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -9991,32 +6689,6 @@ func NewMigrationsGetCommitAuthorsHandler(s Server) func(w http.ResponseWriter, 
 	}
 }
 
-func NewMigrationsMapCommitAuthorHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeMigrationsMapCommitAuthorParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeMigrationsMapCommitAuthorRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.MigrationsMapCommitAuthor(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeMigrationsMapCommitAuthorResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewMigrationsGetLargeFilesHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeMigrationsGetLargeFilesParams(r)
@@ -10032,74 +6704,6 @@ func NewMigrationsGetLargeFilesHandler(s Server) func(w http.ResponseWriter, r *
 		}
 
 		if err := encodeMigrationsGetLargeFilesResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewMigrationsSetLfsPreferenceHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeMigrationsSetLfsPreferenceParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeMigrationsSetLfsPreferenceRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.MigrationsSetLfsPreference(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeMigrationsSetLfsPreferenceResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewAppsGetRepoInstallationHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeAppsGetRepoInstallationParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.AppsGetRepoInstallation(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsGetRepoInstallationResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewInteractionsGetRestrictionsForRepoHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeInteractionsGetRestrictionsForRepoParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.InteractionsGetRestrictionsForRepo(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeInteractionsGetRestrictionsForRepoResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -10221,74 +6825,6 @@ func NewReposUpdateInvitationHandler(s Server) func(w http.ResponseWriter, r *ht
 	}
 }
 
-func NewIssuesListForRepoHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeIssuesListForRepoParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.IssuesListForRepo(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeIssuesListForRepoResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewIssuesCreateHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeIssuesCreateParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeIssuesCreateRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.IssuesCreate(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeIssuesCreateResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewIssuesListCommentsForRepoHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeIssuesListCommentsForRepoParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.IssuesListCommentsForRepo(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeIssuesListCommentsForRepoResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewIssuesGetCommentHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeIssuesGetCommentParams(r)
@@ -10331,79 +6867,6 @@ func NewIssuesDeleteCommentHandler(s Server) func(w http.ResponseWriter, r *http
 	}
 }
 
-func NewIssuesUpdateCommentHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeIssuesUpdateCommentParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeIssuesUpdateCommentRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.IssuesUpdateComment(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeIssuesUpdateCommentResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReactionsListForIssueCommentHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReactionsListForIssueCommentParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReactionsListForIssueComment(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReactionsListForIssueCommentResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReactionsCreateForIssueCommentHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReactionsCreateForIssueCommentParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReactionsCreateForIssueCommentRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReactionsCreateForIssueComment(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReactionsCreateForIssueCommentResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewReactionsDeleteForIssueCommentHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeReactionsDeleteForIssueCommentParams(r)
@@ -10425,27 +6888,6 @@ func NewReactionsDeleteForIssueCommentHandler(s Server) func(w http.ResponseWrit
 	}
 }
 
-func NewIssuesListEventsForRepoHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeIssuesListEventsForRepoParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.IssuesListEventsForRepo(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeIssuesListEventsForRepoResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewIssuesGetEventHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeIssuesGetEventParams(r)
@@ -10461,53 +6903,6 @@ func NewIssuesGetEventHandler(s Server) func(w http.ResponseWriter, r *http.Requ
 		}
 
 		if err := encodeIssuesGetEventResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewIssuesGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeIssuesGetParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.IssuesGet(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeIssuesGetResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewIssuesUpdateHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeIssuesUpdateParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeIssuesUpdateRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.IssuesUpdate(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeIssuesUpdateResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -10587,53 +6982,6 @@ func NewIssuesListCommentsHandler(s Server) func(w http.ResponseWriter, r *http.
 	}
 }
 
-func NewIssuesCreateCommentHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeIssuesCreateCommentParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeIssuesCreateCommentRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.IssuesCreateComment(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeIssuesCreateCommentResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewIssuesListEventsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeIssuesListEventsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.IssuesListEvents(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeIssuesListEventsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewIssuesListLabelsOnIssueHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeIssuesListLabelsOnIssueParams(r)
@@ -10649,58 +6997,6 @@ func NewIssuesListLabelsOnIssueHandler(s Server) func(w http.ResponseWriter, r *
 		}
 
 		if err := encodeIssuesListLabelsOnIssueResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewIssuesSetLabelsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeIssuesSetLabelsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeIssuesSetLabelsRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.IssuesSetLabels(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeIssuesSetLabelsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewIssuesAddLabelsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeIssuesAddLabelsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeIssuesAddLabelsRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.IssuesAddLabels(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeIssuesAddLabelsResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -10749,32 +7045,6 @@ func NewIssuesRemoveLabelHandler(s Server) func(w http.ResponseWriter, r *http.R
 	}
 }
 
-func NewIssuesLockHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeIssuesLockParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeIssuesLockRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.IssuesLock(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeIssuesLockResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewIssuesUnlockHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeIssuesUnlockParams(r)
@@ -10790,53 +7060,6 @@ func NewIssuesUnlockHandler(s Server) func(w http.ResponseWriter, r *http.Reques
 		}
 
 		if err := encodeIssuesUnlockResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReactionsListForIssueHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReactionsListForIssueParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReactionsListForIssue(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReactionsListForIssueResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReactionsCreateForIssueHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReactionsCreateForIssueParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReactionsCreateForIssueRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReactionsCreateForIssue(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReactionsCreateForIssueResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -10864,27 +7087,6 @@ func NewReactionsDeleteForIssueHandler(s Server) func(w http.ResponseWriter, r *
 	}
 }
 
-func NewIssuesListEventsForTimelineHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeIssuesListEventsForTimelineParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.IssuesListEventsForTimeline(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeIssuesListEventsForTimelineResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewReposListDeployKeysHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeReposListDeployKeysParams(r)
@@ -10900,32 +7102,6 @@ func NewReposListDeployKeysHandler(s Server) func(w http.ResponseWriter, r *http
 		}
 
 		if err := encodeReposListDeployKeysResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposCreateDeployKeyHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposCreateDeployKeyParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposCreateDeployKeyRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposCreateDeployKey(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposCreateDeployKeyResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -10989,32 +7165,6 @@ func NewIssuesListLabelsForRepoHandler(s Server) func(w http.ResponseWriter, r *
 		}
 
 		if err := encodeIssuesListLabelsForRepoResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewIssuesCreateLabelHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeIssuesCreateLabelParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeIssuesCreateLabelRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.IssuesCreateLabel(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeIssuesCreateLabelResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -11199,79 +7349,6 @@ func NewReposMergeUpstreamHandler(s Server) func(w http.ResponseWriter, r *http.
 	}
 }
 
-func NewReposMergeHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposMergeParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposMergeRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposMerge(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposMergeResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewIssuesListMilestonesHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeIssuesListMilestonesParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.IssuesListMilestones(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeIssuesListMilestonesResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewIssuesCreateMilestoneHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeIssuesCreateMilestoneParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeIssuesCreateMilestoneRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.IssuesCreateMilestone(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeIssuesCreateMilestoneResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewIssuesGetMilestoneHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeIssuesGetMilestoneParams(r)
@@ -11429,79 +7506,6 @@ func NewReposGetPagesHandler(s Server) func(w http.ResponseWriter, r *http.Reque
 	}
 }
 
-func NewReposUpdateInformationAboutPagesSiteHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposUpdateInformationAboutPagesSiteParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposUpdateInformationAboutPagesSiteRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposUpdateInformationAboutPagesSite(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposUpdateInformationAboutPagesSiteResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposCreatePagesSiteHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposCreatePagesSiteParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposCreatePagesSiteRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposCreatePagesSite(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposCreatePagesSiteResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposDeletePagesSiteHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposDeletePagesSiteParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposDeletePagesSite(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposDeletePagesSiteResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewReposListPagesBuildsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeReposListPagesBuildsParams(r)
@@ -11607,27 +7611,6 @@ func NewReposGetPagesHealthCheckHandler(s Server) func(w http.ResponseWriter, r 
 	}
 }
 
-func NewProjectsListForRepoHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeProjectsListForRepoParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ProjectsListForRepo(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeProjectsListForRepoResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewProjectsCreateForRepoHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeProjectsCreateForRepoParams(r)
@@ -11648,74 +7631,6 @@ func NewProjectsCreateForRepoHandler(s Server) func(w http.ResponseWriter, r *ht
 		}
 
 		if err := encodeProjectsCreateForRepoResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPullsListHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePullsListParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PullsList(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePullsListResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPullsCreateHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePullsCreateParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodePullsCreateRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PullsCreate(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePullsCreateResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPullsListReviewCommentsForRepoHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePullsListReviewCommentsForRepoParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PullsListReviewCommentsForRepo(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePullsListReviewCommentsForRepoResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -11790,53 +7705,6 @@ func NewPullsUpdateReviewCommentHandler(s Server) func(w http.ResponseWriter, r 
 	}
 }
 
-func NewReactionsListForPullRequestReviewCommentHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReactionsListForPullRequestReviewCommentParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReactionsListForPullRequestReviewComment(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReactionsListForPullRequestReviewCommentResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReactionsCreateForPullRequestReviewCommentHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReactionsCreateForPullRequestReviewCommentParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReactionsCreateForPullRequestReviewCommentRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReactionsCreateForPullRequestReviewComment(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReactionsCreateForPullRequestReviewCommentResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewReactionsDeleteForPullRequestCommentHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeReactionsDeleteForPullRequestCommentParams(r)
@@ -11873,79 +7741,6 @@ func NewPullsGetHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 		}
 
 		if err := encodePullsGetResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPullsUpdateHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePullsUpdateParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodePullsUpdateRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PullsUpdate(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePullsUpdateResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPullsListReviewCommentsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePullsListReviewCommentsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PullsListReviewComments(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePullsListReviewCommentsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPullsCreateReviewCommentHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePullsCreateReviewCommentParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodePullsCreateReviewCommentRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PullsCreateReviewComment(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePullsCreateReviewCommentResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -11999,27 +7794,6 @@ func NewPullsListCommitsHandler(s Server) func(w http.ResponseWriter, r *http.Re
 	}
 }
 
-func NewPullsListFilesHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePullsListFilesParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PullsListFiles(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePullsListFilesResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewPullsCheckIfMergedHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodePullsCheckIfMergedParams(r)
@@ -12041,32 +7815,6 @@ func NewPullsCheckIfMergedHandler(s Server) func(w http.ResponseWriter, r *http.
 	}
 }
 
-func NewPullsMergeHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePullsMergeParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodePullsMergeRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PullsMerge(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePullsMergeResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewPullsListRequestedReviewersHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodePullsListRequestedReviewersParams(r)
@@ -12082,58 +7830,6 @@ func NewPullsListRequestedReviewersHandler(s Server) func(w http.ResponseWriter,
 		}
 
 		if err := encodePullsListRequestedReviewersResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPullsRequestReviewersHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePullsRequestReviewersParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodePullsRequestReviewersRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PullsRequestReviewers(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePullsRequestReviewersResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPullsRemoveRequestedReviewersHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePullsRemoveRequestedReviewersParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodePullsRemoveRequestedReviewersRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PullsRemoveRequestedReviewers(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePullsRemoveRequestedReviewersResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -12328,74 +8024,6 @@ func NewPullsSubmitReviewHandler(s Server) func(w http.ResponseWriter, r *http.R
 	}
 }
 
-func NewPullsUpdateBranchHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePullsUpdateBranchParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodePullsUpdateBranchRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PullsUpdateBranch(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePullsUpdateBranchResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposGetReadmeHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposGetReadmeParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposGetReadme(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposGetReadmeResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposGetReadmeInDirectoryHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposGetReadmeInDirectoryParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposGetReadmeInDirectory(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposGetReadmeInDirectoryResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewReposListReleasesHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeReposListReleasesParams(r)
@@ -12411,32 +8039,6 @@ func NewReposListReleasesHandler(s Server) func(w http.ResponseWriter, r *http.R
 		}
 
 		if err := encodeReposListReleasesResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposCreateReleaseHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposCreateReleaseParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReposCreateReleaseRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposCreateRelease(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposCreateReleaseResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -12668,53 +8270,6 @@ func NewReposUploadReleaseAssetHandler(s Server) func(w http.ResponseWriter, r *
 	}
 }
 
-func NewReactionsCreateForReleaseHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReactionsCreateForReleaseParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeReactionsCreateForReleaseRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReactionsCreateForRelease(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReactionsCreateForReleaseResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewSecretScanningListAlertsForRepoHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeSecretScanningListAlertsForRepoParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.SecretScanningListAlertsForRepo(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeSecretScanningListAlertsForRepoResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewSecretScanningGetAlertHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeSecretScanningGetAlertParams(r)
@@ -12756,27 +8311,6 @@ func NewSecretScanningUpdateAlertHandler(s Server) func(w http.ResponseWriter, r
 		}
 
 		if err := encodeSecretScanningUpdateAlertResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewActivityListStargazersForRepoHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeActivityListStargazersForRepoParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ActivityListStargazersForRepo(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeActivityListStargazersForRepoResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -13113,27 +8647,6 @@ func NewReposReplaceAllTopicsHandler(s Server) func(w http.ResponseWriter, r *ht
 	}
 }
 
-func NewReposGetClonesHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposGetClonesParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposGetClones(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposGetClonesResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewReposGetTopPathsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeReposGetTopPathsParams(r)
@@ -13170,27 +8683,6 @@ func NewReposGetTopReferrersHandler(s Server) func(w http.ResponseWriter, r *htt
 		}
 
 		if err := encodeReposGetTopReferrersResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposGetViewsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposGetViewsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposGetViews(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposGetViewsResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -13327,27 +8819,6 @@ func NewReposCreateUsingTemplateHandler(s Server) func(w http.ResponseWriter, r 
 		}
 
 		if err := encodeReposCreateUsingTemplateResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposListPublicHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposListPublicParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposListPublic(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposListPublicResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -13579,32 +9050,6 @@ func NewEnterpriseAdminDeleteScimGroupFromEnterpriseHandler(s Server) func(w htt
 	}
 }
 
-func NewEnterpriseAdminUpdateAttributeForEnterpriseGroupHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.EnterpriseAdminUpdateAttributeForEnterpriseGroup(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewEnterpriseAdminListProvisionedIdentitiesEnterpriseHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(r)
@@ -13746,100 +9191,6 @@ func NewEnterpriseAdminUpdateAttributeForEnterpriseUserHandler(s Server) func(w 
 	}
 }
 
-func NewScimListProvisionedIdentitiesHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeScimListProvisionedIdentitiesParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ScimListProvisionedIdentities(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeScimListProvisionedIdentitiesResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewScimProvisionAndInviteUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeScimProvisionAndInviteUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeScimProvisionAndInviteUserRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ScimProvisionAndInviteUser(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeScimProvisionAndInviteUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewScimGetProvisioningInformationForUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeScimGetProvisioningInformationForUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ScimGetProvisioningInformationForUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeScimGetProvisioningInformationForUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewScimSetInformationForProvisionedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeScimSetInformationForProvisionedUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeScimSetInformationForProvisionedUserRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ScimSetInformationForProvisionedUser(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeScimSetInformationForProvisionedUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewScimDeleteUserFromOrgHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeScimDeleteUserFromOrgParams(r)
@@ -13855,137 +9206,6 @@ func NewScimDeleteUserFromOrgHandler(s Server) func(w http.ResponseWriter, r *ht
 		}
 
 		if err := encodeScimDeleteUserFromOrgResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewScimUpdateAttributeForUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeScimUpdateAttributeForUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeScimUpdateAttributeForUserRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ScimUpdateAttributeForUser(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeScimUpdateAttributeForUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewSearchCodeHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeSearchCodeParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.SearchCode(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeSearchCodeResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewSearchCommitsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeSearchCommitsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.SearchCommits(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeSearchCommitsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewSearchIssuesAndPullRequestsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeSearchIssuesAndPullRequestsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.SearchIssuesAndPullRequests(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeSearchIssuesAndPullRequestsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewSearchLabelsHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeSearchLabelsParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.SearchLabels(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeSearchLabelsResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewSearchReposHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeSearchReposParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.SearchRepos(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeSearchReposResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -14013,27 +9233,6 @@ func NewSearchTopicsHandler(s Server) func(w http.ResponseWriter, r *http.Reques
 	}
 }
 
-func NewSearchUsersHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeSearchUsersParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.SearchUsers(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeSearchUsersResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewTeamsGetLegacyHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeTeamsGetLegacyParams(r)
@@ -14049,74 +9248,6 @@ func NewTeamsGetLegacyHandler(s Server) func(w http.ResponseWriter, r *http.Requ
 		}
 
 		if err := encodeTeamsGetLegacyResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewTeamsDeleteLegacyHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeTeamsDeleteLegacyParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.TeamsDeleteLegacy(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeTeamsDeleteLegacyResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewTeamsUpdateLegacyHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeTeamsUpdateLegacyParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeTeamsUpdateLegacyRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.TeamsUpdateLegacy(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeTeamsUpdateLegacyResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewTeamsListDiscussionsLegacyHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeTeamsListDiscussionsLegacyParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.TeamsListDiscussionsLegacy(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeTeamsListDiscussionsLegacyResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -14217,27 +9348,6 @@ func NewTeamsUpdateDiscussionLegacyHandler(s Server) func(w http.ResponseWriter,
 	}
 }
 
-func NewTeamsListDiscussionCommentsLegacyHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeTeamsListDiscussionCommentsLegacyParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.TeamsListDiscussionCommentsLegacy(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeTeamsListDiscussionCommentsLegacyResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewTeamsCreateDiscussionCommentLegacyHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeTeamsCreateDiscussionCommentLegacyParams(r)
@@ -14332,27 +9442,6 @@ func NewTeamsUpdateDiscussionCommentLegacyHandler(s Server) func(w http.Response
 	}
 }
 
-func NewReactionsListForTeamDiscussionCommentLegacyHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReactionsListForTeamDiscussionCommentLegacyParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReactionsListForTeamDiscussionCommentLegacy(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReactionsListForTeamDiscussionCommentLegacyResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewReactionsCreateForTeamDiscussionCommentLegacyHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeReactionsCreateForTeamDiscussionCommentLegacyParams(r)
@@ -14373,27 +9462,6 @@ func NewReactionsCreateForTeamDiscussionCommentLegacyHandler(s Server) func(w ht
 		}
 
 		if err := encodeReactionsCreateForTeamDiscussionCommentLegacyResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReactionsListForTeamDiscussionLegacyHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReactionsListForTeamDiscussionLegacyParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReactionsListForTeamDiscussionLegacy(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReactionsListForTeamDiscussionLegacyResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -14441,27 +9509,6 @@ func NewTeamsListPendingInvitationsLegacyHandler(s Server) func(w http.ResponseW
 		}
 
 		if err := encodeTeamsListPendingInvitationsLegacyResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewTeamsListMembersLegacyHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeTeamsListMembersLegacyParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.TeamsListMembersLegacy(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeTeamsListMembersLegacyResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -14641,53 +9688,6 @@ func NewTeamsCheckPermissionsForProjectLegacyHandler(s Server) func(w http.Respo
 	}
 }
 
-func NewTeamsAddOrUpdateProjectPermissionsLegacyHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.TeamsAddOrUpdateProjectPermissionsLegacy(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewTeamsRemoveProjectLegacyHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeTeamsRemoveProjectLegacyParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.TeamsRemoveProjectLegacy(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeTeamsRemoveProjectLegacyResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewTeamsListReposLegacyHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeTeamsListReposLegacyParams(r)
@@ -14724,32 +9724,6 @@ func NewTeamsCheckPermissionsForRepoLegacyHandler(s Server) func(w http.Response
 		}
 
 		if err := encodeTeamsCheckPermissionsForRepoLegacyResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewTeamsAddOrUpdateRepoPermissionsLegacyHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.TeamsAddOrUpdateRepoPermissionsLegacy(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -14798,90 +9772,6 @@ func NewTeamsListIdpGroupsForLegacyHandler(s Server) func(w http.ResponseWriter,
 	}
 }
 
-func NewTeamsCreateOrUpdateIdpGroupConnectionsLegacyHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.TeamsCreateOrUpdateIdpGroupConnectionsLegacy(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewTeamsListChildLegacyHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeTeamsListChildLegacyParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.TeamsListChildLegacy(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeTeamsListChildLegacyResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewUsersGetAuthenticatedHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-
-		response, err := s.UsersGetAuthenticated(r.Context())
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeUsersGetAuthenticatedResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewUsersUpdateAuthenticatedHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodeUsersUpdateAuthenticatedRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.UsersUpdateAuthenticated(r.Context(), request)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeUsersUpdateAuthenticatedResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewUsersListBlockedByAuthenticatedHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 
@@ -14919,27 +9809,6 @@ func NewUsersCheckBlockedHandler(s Server) func(w http.ResponseWriter, r *http.R
 	}
 }
 
-func NewUsersBlockHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeUsersBlockParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.UsersBlock(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeUsersBlockResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewUsersUnblockHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeUsersUnblockParams(r)
@@ -14961,27 +9830,6 @@ func NewUsersUnblockHandler(s Server) func(w http.ResponseWriter, r *http.Reques
 	}
 }
 
-func NewUsersSetPrimaryEmailVisibilityForAuthenticatedHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.UsersSetPrimaryEmailVisibilityForAuthenticated(r.Context(), request)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewUsersListEmailsForAuthenticatedHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeUsersListEmailsForAuthenticatedParams(r)
@@ -14997,48 +9845,6 @@ func NewUsersListEmailsForAuthenticatedHandler(s Server) func(w http.ResponseWri
 		}
 
 		if err := encodeUsersListEmailsForAuthenticatedResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewUsersAddEmailForAuthenticatedHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodeUsersAddEmailForAuthenticatedRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.UsersAddEmailForAuthenticated(r.Context(), request)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeUsersAddEmailForAuthenticatedResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewUsersDeleteEmailForAuthenticatedHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodeUsersDeleteEmailForAuthenticatedRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.UsersDeleteEmailForAuthenticated(r.Context(), request)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeUsersDeleteEmailForAuthenticatedResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -15171,27 +9977,6 @@ func NewUsersListGpgKeysForAuthenticatedHandler(s Server) func(w http.ResponseWr
 	}
 }
 
-func NewUsersCreateGpgKeyForAuthenticatedHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodeUsersCreateGpgKeyForAuthenticatedRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.UsersCreateGpgKeyForAuthenticated(r.Context(), request)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeUsersCreateGpgKeyForAuthenticatedResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewUsersGetGpgKeyForAuthenticatedHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeUsersGetGpgKeyForAuthenticatedParams(r)
@@ -15207,48 +9992,6 @@ func NewUsersGetGpgKeyForAuthenticatedHandler(s Server) func(w http.ResponseWrit
 		}
 
 		if err := encodeUsersGetGpgKeyForAuthenticatedResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewUsersDeleteGpgKeyForAuthenticatedHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeUsersDeleteGpgKeyForAuthenticatedParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.UsersDeleteGpgKeyForAuthenticated(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeUsersDeleteGpgKeyForAuthenticatedResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewAppsListInstallationsForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeAppsListInstallationsForAuthenticatedUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.AppsListInstallationsForAuthenticatedUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsListInstallationsForAuthenticatedUserResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -15318,43 +10061,6 @@ func NewAppsRemoveRepoFromInstallationHandler(s Server) func(w http.ResponseWrit
 	}
 }
 
-func NewInteractionsGetRestrictionsForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-
-		response, err := s.InteractionsGetRestrictionsForAuthenticatedUser(r.Context())
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeInteractionsGetRestrictionsForAuthenticatedUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewInteractionsSetRestrictionsForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.InteractionsSetRestrictionsForAuthenticatedUser(r.Context(), request)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeInteractionsSetRestrictionsForAuthenticatedUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewInteractionsRemoveRestrictionsForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 
@@ -15365,27 +10071,6 @@ func NewInteractionsRemoveRestrictionsForAuthenticatedUserHandler(s Server) func
 		}
 
 		if err := encodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewIssuesListForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeIssuesListForAuthenticatedUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.IssuesListForAuthenticatedUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeIssuesListForAuthenticatedUserResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -15407,27 +10092,6 @@ func NewUsersListPublicSSHKeysForAuthenticatedHandler(s Server) func(w http.Resp
 		}
 
 		if err := encodeUsersListPublicSSHKeysForAuthenticatedResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewUsersCreatePublicSSHKeyForAuthenticatedHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.UsersCreatePublicSSHKeyForAuthenticated(r.Context(), request)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -15518,27 +10182,6 @@ func NewAppsListSubscriptionsForAuthenticatedUserStubbedHandler(s Server) func(w
 	}
 }
 
-func NewOrgsListMembershipsForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOrgsListMembershipsForAuthenticatedUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OrgsListMembershipsForAuthenticatedUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOrgsListMembershipsForAuthenticatedUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewOrgsGetMembershipForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeOrgsGetMembershipForAuthenticatedUserParams(r)
@@ -15560,32 +10203,6 @@ func NewOrgsGetMembershipForAuthenticatedUserHandler(s Server) func(w http.Respo
 	}
 }
 
-func NewOrgsUpdateMembershipForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeOrgsUpdateMembershipForAuthenticatedUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-		request, err := decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.OrgsUpdateMembershipForAuthenticatedUser(r.Context(), request, params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeOrgsUpdateMembershipForAuthenticatedUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewMigrationsListForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeMigrationsListForAuthenticatedUserParams(r)
@@ -15601,27 +10218,6 @@ func NewMigrationsListForAuthenticatedUserHandler(s Server) func(w http.Response
 		}
 
 		if err := encodeMigrationsListForAuthenticatedUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewMigrationsStartForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodeMigrationsStartForAuthenticatedUserRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.MigrationsStartForAuthenticatedUser(r.Context(), request)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeMigrationsStartForAuthenticatedUserResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -15754,174 +10350,6 @@ func NewOrgsListForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter
 	}
 }
 
-func NewPackagesListPackagesForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesListPackagesForAuthenticatedUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesListPackagesForAuthenticatedUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesListPackagesForAuthenticatedUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesGetPackageForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesGetPackageForAuthenticatedUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesGetPackageForAuthenticatedUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesGetPackageForAuthenticatedUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesDeletePackageForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesDeletePackageForAuthenticatedUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesDeletePackageForAuthenticatedUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesDeletePackageForAuthenticatedUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesRestorePackageForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesRestorePackageForAuthenticatedUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesRestorePackageForAuthenticatedUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesRestorePackageForAuthenticatedUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesGetPackageVersionForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesGetPackageVersionForAuthenticatedUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesGetPackageVersionForAuthenticatedUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesGetPackageVersionForAuthenticatedUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesDeletePackageVersionForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesDeletePackageVersionForAuthenticatedUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesDeletePackageVersionForAuthenticatedUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesRestorePackageVersionForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesRestorePackageVersionForAuthenticatedUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesRestorePackageVersionForAuthenticatedUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewProjectsCreateForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		request, err := decodeProjectsCreateForAuthenticatedUserRequest(r)
@@ -15958,48 +10386,6 @@ func NewUsersListPublicEmailsForAuthenticatedHandler(s Server) func(w http.Respo
 		}
 
 		if err := encodeUsersListPublicEmailsForAuthenticatedResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposListForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposListForAuthenticatedUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposListForAuthenticatedUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposListForAuthenticatedUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposCreateForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		request, err := decodeReposCreateForAuthenticatedUserRequest(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposCreateForAuthenticatedUser(r.Context(), request)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposCreateForAuthenticatedUserResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -16063,27 +10449,6 @@ func NewReposAcceptInvitationHandler(s Server) func(w http.ResponseWriter, r *ht
 		}
 
 		if err := encodeReposAcceptInvitationResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewActivityListReposStarredByAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeActivityListReposStarredByAuthenticatedUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ActivityListReposStarredByAuthenticatedUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeActivityListReposStarredByAuthenticatedUserResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -16216,27 +10581,6 @@ func NewUsersListHandler(s Server) func(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
-func NewUsersGetByUsernameHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeUsersGetByUsernameParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.UsersGetByUsername(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeUsersGetByUsernameResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewActivityListEventsForAuthenticatedUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeActivityListEventsForAuthenticatedUserParams(r)
@@ -16363,27 +10707,6 @@ func NewUsersCheckFollowingForUserHandler(s Server) func(w http.ResponseWriter, 
 	}
 }
 
-func NewGistsListForUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeGistsListForUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.GistsListForUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeGistsListForUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewUsersListGpgKeysForUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeUsersListGpgKeysForUserParams(r)
@@ -16399,48 +10722,6 @@ func NewUsersListGpgKeysForUserHandler(s Server) func(w http.ResponseWriter, r *
 		}
 
 		if err := encodeUsersListGpgKeysForUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewUsersGetContextForUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeUsersGetContextForUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.UsersGetContextForUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeUsersGetContextForUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewAppsGetUserInstallationHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeAppsGetUserInstallationParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.AppsGetUserInstallation(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeAppsGetUserInstallationResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -16489,195 +10770,6 @@ func NewOrgsListForUserHandler(s Server) func(w http.ResponseWriter, r *http.Req
 	}
 }
 
-func NewPackagesListPackagesForUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesListPackagesForUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesListPackagesForUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesListPackagesForUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesGetPackageForUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesGetPackageForUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesGetPackageForUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesGetPackageForUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesDeletePackageForUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesDeletePackageForUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesDeletePackageForUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesDeletePackageForUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesRestorePackageForUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesRestorePackageForUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesRestorePackageForUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesRestorePackageForUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesGetAllPackageVersionsForPackageOwnedByUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesGetAllPackageVersionsForPackageOwnedByUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesGetPackageVersionForUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesGetPackageVersionForUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesGetPackageVersionForUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesGetPackageVersionForUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesDeletePackageVersionForUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesDeletePackageVersionForUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesDeletePackageVersionForUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesDeletePackageVersionForUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewPackagesRestorePackageVersionForUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodePackagesRestorePackageVersionForUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.PackagesRestorePackageVersionForUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodePackagesRestorePackageVersionForUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewProjectsListForUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeProjectsListForUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ProjectsListForUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeProjectsListForUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
 func NewActivityListReceivedEventsForUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeActivityListReceivedEventsForUserParams(r)
@@ -16714,27 +10806,6 @@ func NewActivityListReceivedPublicEventsForUserHandler(s Server) func(w http.Res
 		}
 
 		if err := encodeActivityListReceivedPublicEventsForUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewReposListForUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeReposListForUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ReposListForUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeReposListForUserResponse(response, w); err != nil {
 			_ = err
 			return
 		}
@@ -16798,27 +10869,6 @@ func NewBillingGetSharedStorageBillingUserHandler(s Server) func(w http.Response
 		}
 
 		if err := encodeBillingGetSharedStorageBillingUserResponse(response, w); err != nil {
-			_ = err
-			return
-		}
-	}
-}
-
-func NewActivityListReposStarredByUserHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params, err := decodeActivityListReposStarredByUserParams(r)
-		if err != nil {
-			respondError(w, err)
-			return
-		}
-
-		response, err := s.ActivityListReposStarredByUser(r.Context(), params)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		if err := encodeActivityListReposStarredByUserResponse(response, w); err != nil {
 			_ = err
 			return
 		}
