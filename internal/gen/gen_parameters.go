@@ -86,20 +86,23 @@ func (g *Generator) parseParameter(param ogen.Parameter, path string) (*ast.Para
 		return nil, xerrors.Errorf("schema: %w", err)
 	}
 
-	switch schema.Kind {
-	case ast.KindStruct:
-		return nil, xerrors.Errorf("object types not supported")
-	case ast.KindAlias:
-		return nil, xerrors.Errorf("debug: alias types not supported")
-	case ast.KindArray:
-		switch schema.Item.Kind {
-		case ast.KindStruct:
-			return nil, xerrors.Errorf("arrays of objects not supported")
-		case ast.KindAlias:
-			return nil, xerrors.Errorf("debug: array of aliases not supported")
-		case ast.KindArray:
-			return nil, xerrors.Errorf("nested arrays not supported")
+	// Complex types not supported.
+	if schema.Is(ast.KindStruct) {
+		return nil, ErrUnsupportedParameter
+	}
+
+	// Arrays with complex types not supported.
+	if schema.Is(ast.KindArray) && !schema.Item.Is(ast.KindPrimitive) {
+		return nil, ErrUnsupportedParameter
+	}
+
+	if schema.Is(ast.KindAlias) {
+		// Unwrap alias and use scalar type directly.
+		if !schema.AliasTo.Is(ast.KindPrimitive) {
+			return nil, ErrUnsupportedParameter
 		}
+
+		schema = schema.AliasTo
 	}
 
 	style, err := paramStyle(locatedIn, param.Style)

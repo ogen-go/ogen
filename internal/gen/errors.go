@@ -7,10 +7,11 @@ import (
 )
 
 var (
-	ErrEnumsNotImplemented = xerrors.New("enums not implemented")
-	ErrOneOfNotImplemented = xerrors.New("oneOf not implemented")
-	ErrAnyOfNotImplemented = xerrors.New("anyOf not implemented")
-	ErrAllOfNotImplemented = xerrors.New("allOf not implemented")
+	ErrEnumsNotImplemented  = xerrors.New("enums not implemented")
+	ErrOneOfNotImplemented  = xerrors.New("oneOf not implemented")
+	ErrAnyOfNotImplemented  = xerrors.New("anyOf not implemented")
+	ErrAllOfNotImplemented  = xerrors.New("allOf not implemented")
+	ErrUnsupportedParameter = xerrors.New("parameter type not supported")
 )
 
 type PathParameterNotSpecified struct {
@@ -39,6 +40,11 @@ func (g *Generator) checkErr(err error) error {
 	}
 	if xerrors.Is(err, ErrAllOfNotImplemented) {
 		if g.opt.IgnoreAllOf {
+			return nil
+		}
+	}
+	if xerrors.Is(err, ErrUnsupportedParameter) {
+		if g.opt.IgnoreUnsupportedParams {
 			return nil
 		}
 	}
