@@ -11,7 +11,7 @@ import (
 	"github.com/ogen-go/ogen/internal/ast"
 )
 
-func (g *Generator) generateParams(methodPath string, methodParams []ogen.Parameter) ([]*ast.Parameter, error) {
+func (g *Generator) generateParams(method *ast.Method, methodParams []ogen.Parameter) ([]*ast.Parameter, error) {
 	var result []*ast.Parameter
 	for _, p := range methodParams {
 		if p.Ref != "" {
@@ -23,7 +23,7 @@ func (g *Generator) generateParams(methodPath string, methodParams []ogen.Parame
 			p = componentParam
 		}
 
-		param, err := g.parseParameter(p, methodPath)
+		param, err := g.parseParameter(method, p)
 		if err != nil {
 			return nil, xerrors.Errorf("parse parameter '%s': %w", p.Name, err)
 		}
@@ -52,7 +52,7 @@ func (g *Generator) generateParams(methodPath string, methodParams []ogen.Parame
 	return result, nil
 }
 
-func (g *Generator) parseParameter(param ogen.Parameter, path string) (*ast.Parameter, error) {
+func (g *Generator) parseParameter(method *ast.Method, param ogen.Parameter) (*ast.Parameter, error) {
 	types := map[string]ast.ParameterLocation{
 		"query":  ast.LocationQuery,
 		"header": ast.LocationHeader,
@@ -70,39 +70,42 @@ func (g *Generator) parseParameter(param ogen.Parameter, path string) (*ast.Para
 			return nil, xerrors.Errorf("parameters located in 'path' must be required")
 		}
 
-		exists, err := regexp.MatchString(fmt.Sprintf("{%s}", param.Name), path)
+		exists, err := regexp.MatchString(fmt.Sprintf("{%s}", param.Name), method.RawPath)
 		if err != nil {
 			return nil, xerrors.Errorf("match path param '%s': %w", param.Name, err)
 		}
 
 		if !exists {
-			return nil, xerrors.Errorf("param '%s' not found in path '%s'", param.Name, path)
+			return nil, xerrors.Errorf("param '%s' not found in path '%s'", param.Name, method.RawPath)
 		}
 	}
 
-	name := pascal(param.Name)
+	name := pascal(method.Name, param.Name)
 	schema, err := g.generateSchema(name, param.Schema)
 	if err != nil {
 		return nil, xerrors.Errorf("schema: %w", err)
 	}
 
-	// Complex types not supported.
-	if schema.Is(ast.KindStruct) {
+	switch schema.Kind {
+	case ast.KindStruct, ast.KindEnum:
 		return nil, ErrUnsupportedParameter
-	}
+	case ast.KindArray:
+		if !schema.Item.Is(ast.KindPrimitive) {
+			return nil, ErrUnsupportedParameter
+		}
 
-	// Arrays with complex types not supported.
-	if schema.Is(ast.KindArray) && !schema.Item.Is(ast.KindPrimitive) {
-		return nil, ErrUnsupportedParameter
-	}
-
-	if schema.Is(ast.KindAlias) {
-		// Unwrap alias and use scalar type directly.
+		name = pascal(param.Name)
+	case ast.KindAlias:
 		if !schema.AliasTo.Is(ast.KindPrimitive) {
 			return nil, ErrUnsupportedParameter
 		}
 
+		name = pascal(param.Name)
 		schema = schema.AliasTo
+	case ast.KindPrimitive:
+		name = pascal(param.Name)
+	default:
+		panic("unreachable")
 	}
 
 	style, err := paramStyle(locatedIn, param.Style)

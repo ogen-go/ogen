@@ -51,10 +51,11 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 
 	m := &ast.Method{
 		Name:       methodName,
+		RawPath:    path,
 		HTTPMethod: method,
 	}
 
-	m.Parameters, err = g.generateParams(path, op.Parameters)
+	m.Parameters, err = g.generateParams(m, op.Parameters)
 	if err != nil {
 		return xerrors.Errorf("parameters: %w", err)
 	}
