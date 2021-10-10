@@ -39,11 +39,13 @@ func main() {
 		specificMethod = flag.String("specific-method", "", "Generate specific method by its path")
 		clean          = flag.Bool("clean", false, "Clean generated files before generation")
 
-		debugSkipUnspecifiedParams = flag.Bool("debug.skipUnspecifiedParams", false, "Ignore methods where path params are not specified")
-		debugIgnoreEnums           = flag.Bool("debug.ignoreEnums", false, "Ignore methods with enums")
-		debugIgnoreOneOf           = flag.Bool("debug.ignoreOneOf", false, "Ignore methods with oneOf")
-		debugIgnoreAnyOf           = flag.Bool("debug.ignoreAnyOf", false, "Ignore methods with anyOf")
-		debugIgnoreAllOf           = flag.Bool("debug.ignoreAllOf", false, "Ignore methods with allOf")
+		debugSkipUnspecifiedParams   = flag.Bool("debug.skipUnspecifiedParams", false, "Ignore methods where path params are not specified")
+		debugIgnoreEnums             = flag.Bool("debug.ignoreEnums", false, "Ignore methods with enums")
+		debugIgnoreOneOf             = flag.Bool("debug.ignoreOneOf", false, "Ignore methods with oneOf")
+		debugIgnoreAnyOf             = flag.Bool("debug.ignoreAnyOf", false, "Ignore methods with anyOf")
+		debugIgnoreAllOf             = flag.Bool("debug.ignoreAllOf", false, "Ignore methods with allOf")
+		debugIgnoreUnsupportedParams = flag.Bool("debug.ignoreUnsupportedParams", false, "Ignore methods where path param types not supported")
+		debugNoerr                   = flag.Bool("debug.noerr", false, "Ignore all errors")
 	)
 
 	flag.Parse()
@@ -92,14 +94,26 @@ func main() {
 		Format: *performFormat,
 	}
 
-	g, err := gen.NewGenerator(spec, gen.Options{
+	opts := gen.Options{
 		SpecificMethodPath:      *specificMethod,
 		IgnoreUnspecifiedParams: *debugSkipUnspecifiedParams,
+		IgnoreUnsupportedParams: *debugIgnoreUnsupportedParams,
 		IgnoreEnums:             *debugIgnoreEnums,
 		IgnoreOneOf:             *debugIgnoreOneOf,
 		IgnoreAnyOf:             *debugIgnoreAnyOf,
 		IgnoreAllOf:             *debugIgnoreAllOf,
-	})
+	}
+
+	if *debugNoerr {
+		opts.IgnoreUnspecifiedParams = true
+		opts.IgnoreUnsupportedParams = true
+		opts.IgnoreEnums = true
+		opts.IgnoreOneOf = true
+		opts.IgnoreAnyOf = true
+		opts.IgnoreAllOf = true
+	}
+
+	g, err := gen.NewGenerator(spec, opts)
 	if err != nil {
 		panic(fmt.Sprintf("%+v", err))
 	}
