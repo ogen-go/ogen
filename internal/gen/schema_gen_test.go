@@ -17,6 +17,7 @@ func TestSchemaGen(t *testing.T) {
 		Expect    *ast.Schema
 		Err       error
 		InputRefs map[string]*ast.Schema
+		LocalRefs map[string]*ast.Schema
 		Side      []*ast.Schema
 	}{
 		{
@@ -74,6 +75,29 @@ func TestSchemaGen(t *testing.T) {
 				Ref: "#/components/schemas/Pet",
 			},
 			InputRefs: make(map[string]*ast.Schema),
+			LocalRefs: map[string]*ast.Schema{
+				"#/components/schemas/Pet": {
+					Name: "Pet",
+					Kind: ast.KindStruct,
+					Fields: []ast.SchemaField{
+						{
+							Name: "Friends",
+							Type: "[]Pet",
+							Tag:  "friends",
+						},
+						{
+							Name: "ID",
+							Type: "int",
+							Tag:  "id",
+						},
+						{
+							Name: "Name",
+							Type: "string",
+							Tag:  "name",
+						},
+					},
+				},
+			},
 			Expect: &ast.Schema{
 				Name: "Pet",
 				Kind: ast.KindStruct,
@@ -179,14 +203,26 @@ func TestSchemaGen(t *testing.T) {
 				},
 				Required: []string{"pets"},
 			},
+			LocalRefs: map[string]*ast.Schema{
+				"#/components/schemas/Pets": {
+					Kind: ast.KindAlias,
+					Name: "Pets",
+					AliasTo: &ast.Schema{
+						Kind: ast.KindArray,
+						Item: &ast.Schema{
+							Kind: ast.KindPrimitive,
+							Primitive: "string",
+						},
+					},
+				},
+			},
 			Expect: &ast.Schema{
 				Kind: ast.KindStruct,
 				Name: "TestObj",
 				Fields: []ast.SchemaField{
 					{
 						Name: "Pets",
-						// TODO: type Pets []string?
-						Type: "[]string",
+						Type: "Pets",
 						Tag:  "pets",
 					},
 				},
@@ -211,6 +247,11 @@ func TestSchemaGen(t *testing.T) {
 
 			require.Equal(t, test.Expect, out, "schema check")
 			require.Equal(t, test.Side, gen.side, "sideEffects check")
+			if test.LocalRefs != nil {
+				require.Equal(t, test.LocalRefs, gen.localRefs, "refs check")
+			} else {
+				require.Empty(t, gen.localRefs)
+			}
 		})
 	}
 }

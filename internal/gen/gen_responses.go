@@ -160,11 +160,21 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*ast.Res
 			return nil, xerrors.Errorf("content: %s: schema: %w", contentType, err)
 		}
 
-		if schema.Is(ast.KindPrimitive, ast.KindArray) {
-			schema = ast.Alias(name, schema)
+		if inlined := media.Schema.Ref == ""; inlined {
+			// Wrap scalar type with an alias.
+			// It is necessary because schema should satisfy
+			// <methodName>Response interface.
+			//
+			// Alias can be removed later in the simplification stage
+			// if there's no other responses.
+			if schema.Is(ast.KindPrimitive, ast.KindArray) {
+				schema = ast.Alias(name, schema)
+			}
+
+			// Register schema.
+			g.schemas[schema.Name] = schema
 		}
 
-		g.schemas[schema.Name] = schema
 		response.Contents[contentType] = schema
 	}
 

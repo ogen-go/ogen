@@ -19,6 +19,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 		return nil, err
 	}
 
+	// Merge nested objects.
 	for _, side := range gen.side {
 		if side.Is(ast.KindPrimitive, ast.KindArray) {
 			panic("unreachable")
@@ -31,8 +32,20 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 		g.schemas[side.Name] = side
 	}
 
+	// Merge references.
 	for ref, schema := range gen.localRefs {
+		if schema.Is(ast.KindPrimitive, ast.KindArray) {
+			panic("unreachable")
+		}
+		if _, found := g.schemaRefs[ref]; found {
+			panic(fmt.Sprintf("schema reference conflict: %s", ref))
+		}
+		if _, found := g.schemas[schema.Name]; found {
+			panic(fmt.Sprintf("schema reference name conflict: %s", ref))
+		}
+
 		g.schemaRefs[ref] = schema
+		g.schemas[schema.Name] = schema
 	}
 
 	return s, nil

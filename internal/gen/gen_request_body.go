@@ -23,11 +23,21 @@ func (g *Generator) generateRequestBody(name string, body *ogen.RequestBody) (*a
 			return nil, xerrors.Errorf("content: %s: parse schema: %w", contentType, err)
 		}
 
-		if schema.Is(ast.KindPrimitive, ast.KindArray) {
-			schema = ast.Alias(schemaName, schema)
+		if inlined := media.Schema.Ref == ""; inlined {
+			// Wrap scalar type with an alias.
+			// It is necessary because schema should satisfy
+			// <methodName>Request interface.
+			//
+			// Alias can be removed later in the simplification stage
+			// if there's no other requests.
+			if schema.Is(ast.KindPrimitive, ast.KindArray) {
+				schema = ast.Alias(schemaName, schema)
+			}
+
+			// Register schema.
+			g.schemas[schema.Name] = schema
 		}
 
-		g.schemas[schema.Name] = schema
 		rbody.Contents[contentType] = schema
 	}
 

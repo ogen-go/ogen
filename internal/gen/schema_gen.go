@@ -29,7 +29,7 @@ type schemaGen struct {
 // Generate converts ogen.Schema into *ast.Schema.
 //
 // If ogen.Schema contains references to schema components,
-// these referenced schemas will be saved in g.refs.
+// these referenced schemas will be saved in g.localRefs.
 //
 // If ogen.Schema contains nested objects, they will be
 // collected in g.side slice.
@@ -37,9 +37,30 @@ func (g *schemaGen) Generate(name string, schema ogen.Schema) (*ast.Schema, erro
 	return g.generate(pascal(name), schema, true, "")
 }
 
-func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref string) (s *ast.Schema, err error) {
+func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref string) (*ast.Schema, error) {
 	if ref := schema.Ref; ref != "" {
 		return g.ref(ref)
+	}
+
+	// sideEffect stores schema in g.localRefs or g.side if needed.
+	sideEffect := func(s *ast.Schema) *ast.Schema {
+		// Referenced component, store it in g.localRefs.
+		if ref != "" {
+			// Reference pointed to a scalar type.
+			// Wrap it with an alias using component name.
+			if s.Is(ast.KindPrimitive, ast.KindArray) {
+				s = ast.Alias(name, s)
+			}
+			g.localRefs[ref] = s
+			return s
+		}
+
+		// If schema it's a nested object (non-root)
+		// and has a complex type (struct or alias) save it in g.side.
+		if !root && !s.Is(ast.KindPrimitive, ast.KindArray) {
+			g.side = append(g.side, s)
+		}
+		return s
 	}
 
 	switch {
@@ -56,7 +77,7 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 	switch schema.Type {
 	case "object":
 		if len(schema.Properties) == 0 {
-			return ast.Primitive("struct{}"), nil
+			return sideEffect(ast.Primitive("struct{}")), nil
 		}
 
 		if schema.Items != nil {
@@ -72,15 +93,8 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 			return false
 		}
 
-		s := ast.Struct(name)
+		s := sideEffect(ast.Struct(name))
 		s.Description = schema.Description
-		if ref != "" {
-			g.localRefs[ref] = s
-		} else if !root {
-			// Nested struct.
-			g.side = append(g.side, s)
-		}
-
 		for propName, propSchema := range schema.Properties {
 			prop, err := g.generate(pascalMP(name, propName), propSchema, false, "")
 			if err != nil {
@@ -106,7 +120,7 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 	case "array":
 		if schema.Items == nil {
 			// Fallback to string.
-			return ast.Array(ast.Primitive("string")), nil
+			return sideEffect(ast.Array(ast.Primitive("string"))), nil
 		}
 		if len(schema.Properties) > 0 {
 			return nil, xerrors.New("array cannot contain properties")
@@ -117,10 +131,10 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 			return nil, err
 		}
 
-		return ast.Array(item), nil
+		return sideEffect(ast.Array(item)), nil
 
 	case "":
-		return ast.Primitive("string"), nil
+		return sideEffect(ast.Primitive("string")), nil
 
 	default:
 		simpleType, err := g.parseSimple(
@@ -131,7 +145,7 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 			return nil, xerrors.Errorf("parse: %w", err)
 		}
 
-		return ast.Primitive(simpleType), nil
+		return sideEffect(ast.Primitive(simpleType)), nil
 	}
 }
 
