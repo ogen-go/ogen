@@ -1,8 +1,11 @@
 package ast
 
 import (
+	"encoding/json"
 	"fmt"
 	"sort"
+
+	"golang.org/x/xerrors"
 )
 
 type SchemaKind = string
@@ -12,6 +15,7 @@ const (
 	KindAlias     SchemaKind = "alias"
 	KindPrimitive SchemaKind = "primitive"
 	KindArray     SchemaKind = "array"
+	KindEnum      SchemaKind = "enum"
 )
 
 type Schema struct {
@@ -19,10 +23,11 @@ type Schema struct {
 	Name        string
 	Description string
 
-	AliasTo   *Schema
-	Primitive string
-	Item      *Schema
-	Fields    []SchemaField
+	AliasTo    *Schema
+	Primitive  string
+	Item       *Schema
+	EnumValues []interface{}
+	Fields     []SchemaField
 
 	Implements map[*Interface]struct{}
 }
@@ -37,6 +42,8 @@ func (s Schema) Type() string {
 		return s.Primitive
 	case KindArray:
 		return "[]" + s.Item.Type()
+	case KindEnum:
+		return s.Name
 	default:
 		panic(fmt.Errorf("unexpected SchemaKind: %s", s.Kind))
 	}
@@ -159,6 +166,36 @@ func Array(item *Schema) *Schema {
 		Kind: KindArray,
 		Item: item,
 	}
+}
+
+func Enum(name, typ string, rawValues []json.RawMessage) (*Schema, error) {
+	var (
+		values []interface{}
+		uniq   = map[interface{}]struct{}{}
+	)
+	for _, raw := range rawValues {
+		val, err := parseJsonValue(typ, raw)
+		if err != nil {
+			if xerrors.Is(err, errNullValue) {
+				continue
+			}
+			return nil, xerrors.Errorf("parse value '%s': %w", raw, err)
+		}
+
+		if _, found := uniq[val]; found {
+			return nil, xerrors.Errorf("duplicate enum value: '%v'", val)
+		}
+
+		uniq[val] = struct{}{}
+		values = append(values, val)
+	}
+
+	return &Schema{
+		Kind:       KindEnum,
+		Name:       name,
+		Primitive:  typ,
+		EnumValues: values,
+	}, nil
 }
 
 func Iface(name string) *Interface {

@@ -23,6 +23,18 @@ type {{ $.Name }} struct {
 {{- else if eq $.Kind "alias" }}
 type {{ $.Name }} {{ $.AliasTo.Type }}
 {{/* Define alias */}}
+
+{{/* Define enum */}}
+{{- else if eq $.Kind "enum" }}
+type {{ $.Name }} {{ $.Primitive }}
+
+const (
+{{- range $value := $.EnumValues }}
+{{- $valueStr := toString $value }}
+{{ $.Name }}{{ pascalMP $valueStr }} {{ $.Name }} = {{ enumString $value }}
+{{- end }}
+)
+{{/* Define enum */}}
 {{- end }}
 
 {{/* Define methods */}}

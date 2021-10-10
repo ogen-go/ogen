@@ -2,6 +2,7 @@ package gen
 
 import (
 	"embed"
+	"fmt"
 	"strings"
 	"text/template"
 )
@@ -15,11 +16,19 @@ func templateFuncs() template.FuncMap {
 		"trimSuffix": strings.TrimSuffix,
 		"hasPrefix":  strings.HasPrefix,
 		"hasSuffix":  strings.HasSuffix,
-		"concat": func(args ...interface{}) []interface{} {
-			return args
-		},
-		"add": func(x, y int) int {
-			return x + y
+		"pascalMP":   pascalMP,
+		"toString":   func(v interface{}) string { return fmt.Sprintf("%v", v) },
+		"enumString": func(v interface{}) string {
+			switch v := v.(type) {
+			case string:
+				return `"` + v + `"`
+			case int, int8, int16, int32, int64, float32, float64, bool:
+				return fmt.Sprintf("%v", v)
+			case nil:
+				return "nil"
+			default:
+				panic(fmt.Sprintf("unexpected type: %T", v))
+			}
 		},
 	}
 }

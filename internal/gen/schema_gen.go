@@ -65,7 +65,17 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 
 	switch {
 	case len(schema.Enum) > 0:
-		return nil, ErrEnumsNotImplemented
+		typ, err := g.parseSimple(schema.Type, schema.Format)
+		if err != nil {
+			return nil, err
+		}
+
+		enum, err := ast.Enum(name, typ, schema.Enum)
+		if err != nil {
+			return nil, err
+		}
+
+		return sideEffect(enum), nil
 	case len(schema.OneOf) > 0:
 		return nil, ErrOneOfNotImplemented
 	case len(schema.AnyOf) > 0:

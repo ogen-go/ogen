@@ -1,5 +1,7 @@
 package ogen
 
+import "encoding/json"
+
 // This is the root document object of the OpenAPI document.
 type Spec struct {
 	// This string MUST be the semantic version number
@@ -223,5 +225,5 @@ type Schema struct {
 	// The value of this keyword MUST be an array.
 	// This array SHOULD have at least one element.
 	// Elements in the array SHOULD be unique.
-	Enum []interface{} `json:"enum"` // TODO: implement.
+	Enum []json.RawMessage `json:"enum"` // TODO: Nullable.
 }

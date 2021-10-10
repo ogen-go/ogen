@@ -57,6 +57,9 @@ func (g *nameGen) generate() string {
 			case '-':
 				pushPart()
 				part = []rune("Minus")
+			case '/':
+				pushPart()
+				part = []rune("Slash")
 			}
 		}
 
