@@ -18,6 +18,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/encoding/json"
+	"github.com/ogen-go/ogen/uri"
 )
 
 // No-op definition for keeping imports.
@@ -36,55 +37,86 @@ var (
 	_ = time.Time{}
 	_ = conv.ToInt32
 	_ = uuid.UUID{}
+	_ = uri.PathEncoder{}
 )
 
 func decodeCachingParams(r *http.Request) (CachingParams, error) {
 	var params CachingParams
-	{
-		param := r.URL.Query().Get("count")
-		if len(param) > 0 {
-			v, err := conv.ToInt64(param)
-			if err != nil {
-				return params, fmt.Errorf("parse query param 'count': %w", err)
-			}
-
-			params.Count = v
+	// Decode param 'count' located in 'Query'.
+	if err := func() error {
+		values, ok := r.URL.Query()["count"]
+		if !ok {
+			return nil
 		}
-	}
 
+		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+			Values:  values,
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+
+		v, err := d.DecodeInt64()
+		if err != nil {
+			return err
+		}
+		params.Count = int64(v)
+		return nil
+	}(); err != nil {
+		return params, err
+	}
 	return params, nil
 }
 
 func decodeQueriesParams(r *http.Request) (QueriesParams, error) {
 	var params QueriesParams
-	{
-		param := r.URL.Query().Get("queries")
-		if len(param) > 0 {
-			v, err := conv.ToInt64(param)
-			if err != nil {
-				return params, fmt.Errorf("parse query param 'queries': %w", err)
-			}
-
-			params.Queries = v
+	// Decode param 'queries' located in 'Query'.
+	if err := func() error {
+		values, ok := r.URL.Query()["queries"]
+		if !ok {
+			return nil
 		}
-	}
 
+		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+			Values:  values,
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+
+		v, err := d.DecodeInt64()
+		if err != nil {
+			return err
+		}
+		params.Queries = int64(v)
+		return nil
+	}(); err != nil {
+		return params, err
+	}
 	return params, nil
 }
 
 func decodeUpdatesParams(r *http.Request) (UpdatesParams, error) {
 	var params UpdatesParams
-	{
-		param := r.URL.Query().Get("queries")
-		if len(param) > 0 {
-			v, err := conv.ToInt64(param)
-			if err != nil {
-				return params, fmt.Errorf("parse query param 'queries': %w", err)
-			}
-
-			params.Queries = v
+	// Decode param 'queries' located in 'Query'.
+	if err := func() error {
+		values, ok := r.URL.Query()["queries"]
+		if !ok {
+			return nil
 		}
-	}
 
+		d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+			Values:  values,
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+
+		v, err := d.DecodeInt64()
+		if err != nil {
+			return err
+		}
+		params.Queries = int64(v)
+		return nil
+	}(); err != nil {
+		return params, err
+	}
 	return params, nil
 }

@@ -18,6 +18,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/encoding/json"
+	"github.com/ogen-go/ogen/uri"
 )
 
 // No-op definition for keeping imports.
@@ -36,6 +37,7 @@ var (
 	_ = time.Time{}
 	_ = conv.ToInt32
 	_ = uuid.UUID{}
+	_ = uri.PathEncoder{}
 )
 
 type Error struct {
