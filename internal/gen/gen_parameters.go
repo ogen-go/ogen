@@ -145,10 +145,11 @@ func paramStyle(locatedIn ast.ParameterLocation, style string) (string, error) {
 			"matrix": struct{}{},
 		},
 		ast.LocationQuery: {
-			"form":           struct{}{},
-			"spaceDelimited": struct{}{},
-			"pipeDelimited":  struct{}{},
-			"deepObject":     struct{}{},
+			"form": struct{}{},
+			// Not supported.
+			// "spaceDelimited": struct{}{},
+			"pipeDelimited": struct{}{},
+			"deepObject":    struct{}{},
 		},
 		ast.LocationHeader: {
 			"simple": struct{}{},
