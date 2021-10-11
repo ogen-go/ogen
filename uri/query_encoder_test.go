@@ -30,11 +30,10 @@ func TestQueryEncoder(t *testing.T) {
 		}
 
 		for i, test := range tests {
-			result, err := NewQueryEncoder(QueryEncoderConfig{
+			result := NewQueryEncoder(QueryEncoderConfig{
 				Style:   test.Style,
 				Explode: test.Explode,
 			}).EncodeString(test.Input)
-			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
 			require.Equal(t, test.Expect, result, fmt.Sprintf("Test %d", i+1))
 		}
 	})
@@ -85,11 +84,10 @@ func TestQueryEncoder(t *testing.T) {
 		}
 
 		for i, test := range tests {
-			result, err := NewQueryEncoder(QueryEncoderConfig{
+			result := NewQueryEncoder(QueryEncoderConfig{
 				Style:   test.Style,
 				Explode: test.Explode,
 			}).EncodeStringArray(test.Input)
-			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
 			require.Equal(t, test.Expect, result, fmt.Sprintf("Test %d", i+1))
 		}
 	})

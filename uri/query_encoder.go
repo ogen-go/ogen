@@ -23,77 +23,77 @@ func NewQueryEncoder(cfg QueryEncoderConfig) *QueryEncoder {
 	}
 }
 
-func (e *QueryEncoder) EncodeString(v string) (string, error) {
+func (e *QueryEncoder) EncodeString(v string) string {
 	switch e.style {
 	case QueryStyleForm:
-		return v, nil
+		return v
 	case QueryStyleSpaceDelimited,
 		QueryStylePipeDelimited,
 		QueryStyleDeepObject:
-		return "", fmt.Errorf("style '%s' cannot be used for primitive values", e.style)
+		panic(fmt.Sprintf("style '%s' cannot be used for primitive values", e.style))
 	default:
 		panic("unreachable")
 	}
 }
 
-func (e *QueryEncoder) EncodeStringArray(vs []string) ([]string, error) {
+func (e *QueryEncoder) EncodeStringArray(vs []string) []string {
 	switch e.style {
 	case QueryStyleForm:
 		if e.explode {
-			return vs, nil
+			return vs
 		}
 
-		return []string{strings.Join(vs, ",")}, nil
+		return []string{strings.Join(vs, ",")}
 
 	case QueryStyleSpaceDelimited:
 		if e.explode {
-			return vs, nil
+			return vs
 		}
 
-		return nil, fmt.Errorf("spaceDelimited with explode: false not supported")
+		panic("spaceDelimited with explode: false not supported")
 
 	case QueryStylePipeDelimited:
 		if e.explode {
-			return vs, nil
+			return vs
 		}
 
-		return []string{strings.Join(vs, "|")}, nil
+		return []string{strings.Join(vs, "|")}
 
 	case QueryStyleDeepObject:
-		return nil, fmt.Errorf("style '%s' cannot be used for arrays", e.style)
+		panic(fmt.Sprintf("style '%s' cannot be used for arrays", e.style))
 
 	default:
 		panic("unreachable")
 	}
 }
 
-func (e *QueryEncoder) EncodeBool(v bool) (string, error) {
+func (e *QueryEncoder) EncodeBool(v bool) string {
 	switch e.style {
 	case QueryStyleForm:
-		return strconv.FormatBool(v), nil
+		return strconv.FormatBool(v)
 	case QueryStyleSpaceDelimited,
 		QueryStylePipeDelimited,
 		QueryStyleDeepObject:
-		return "", fmt.Errorf("style '%s' cannot be used for primitive values", e.style)
+		panic(fmt.Sprintf("style '%s' cannot be used for primitive values", e.style))
 	default:
 		panic("unreachable")
 	}
 }
 
-func (e *QueryEncoder) EncodeInt64(v int64) (string, error) {
+func (e *QueryEncoder) EncodeInt64(v int64) string {
 	switch e.style {
 	case QueryStyleForm:
-		return strconv.FormatInt(v, 10), nil
+		return strconv.FormatInt(v, 10)
 	case QueryStyleSpaceDelimited,
 		QueryStylePipeDelimited,
 		QueryStyleDeepObject:
-		return "", fmt.Errorf("style '%s' cannot be used for primitive values", e.style)
+		panic(fmt.Sprintf("style '%s' cannot be used for primitive values", e.style))
 	default:
 		panic("unreachable")
 	}
 }
 
-func (e *QueryEncoder) EncodeBoolArray(vs []bool) ([]string, error) {
+func (e *QueryEncoder) EncodeBoolArray(vs []bool) []string {
 	strs := make([]string, 0, len(vs))
 	for _, v := range vs {
 		strs = append(strs, strconv.FormatBool(v))
@@ -101,7 +101,7 @@ func (e *QueryEncoder) EncodeBoolArray(vs []bool) ([]string, error) {
 	return e.EncodeStringArray(strs)
 }
 
-func (e *QueryEncoder) EncodeInt64Array(vs []int64) ([]string, error) {
+func (e *QueryEncoder) EncodeInt64Array(vs []int64) []string {
 	strs := make([]string, 0, len(vs))
 	for _, v := range vs {
 		strs = append(strs, strconv.FormatInt(v, 10))
