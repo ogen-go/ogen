@@ -70,8 +70,14 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (_ []WorldOb
 
 	q := r.URL.Query()
 	{
-		s := conv.Int64ToString(params.Count)
-		q.Set("count", s)
+		// Encode 'count' parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		v := params.Count
+		param := e.EncodeInt64(v)
+		q.Set("count", param)
 	}
 	r.URL.RawQuery = q.Encode()
 
@@ -155,8 +161,14 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (_ []WorldOb
 
 	q := r.URL.Query()
 	{
-		s := conv.Int64ToString(params.Queries)
-		q.Set("queries", s)
+		// Encode 'queries' parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		v := params.Queries
+		param := e.EncodeInt64(v)
+		q.Set("queries", param)
 	}
 	r.URL.RawQuery = q.Encode()
 
@@ -188,8 +200,14 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (_ []WorldOb
 
 	q := r.URL.Query()
 	{
-		s := conv.Int64ToString(params.Queries)
-		q.Set("queries", s)
+		// Encode 'queries' parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		v := params.Queries
+		param := e.EncodeInt64(v)
+		q.Set("queries", param)
 	}
 	r.URL.RawQuery = q.Encode()
 

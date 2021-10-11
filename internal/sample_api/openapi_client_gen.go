@@ -70,12 +70,24 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (_ Fooba
 
 	q := r.URL.Query()
 	{
-		s := conv.Int64ToString(params.InlinedParam)
-		q.Set("inlinedParam", s)
+		// Encode 'inlinedParam' parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		v := params.InlinedParam
+		param := e.EncodeInt64(v)
+		q.Set("inlinedParam", param)
 	}
 	{
-		s := conv.Int32ToString(params.Skip)
-		q.Set("skip", s)
+		// Encode 'skip' parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		v := params.Skip
+		param := e.EncodeInt32(v)
+		q.Set("skip", param)
 	}
 	r.URL.RawQuery = q.Encode()
 
@@ -165,6 +177,18 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (_ PetGetRespo
 		return
 	}
 
+	q := r.URL.Query()
+	{
+		// Encode 'petID' parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		v := params.PetID
+		param := e.EncodeInt64(v)
+		q.Set("petID", param)
+	}
+	r.URL.RawQuery = q.Encode()
 	{
 		value := conv.UUIDArrayToString(params.XTags)
 		for _, v := range value {
@@ -177,13 +201,6 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (_ PetGetRespo
 			r.Header.Add("x-scope", v)
 		}
 	}
-
-	q := r.URL.Query()
-	{
-		s := conv.Int64ToString(params.PetID)
-		q.Set("petID", s)
-	}
-	r.URL.RawQuery = q.Encode()
 
 	{
 		value := conv.StringToString(params.Token)
@@ -248,8 +265,15 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (_
 	path := c.serverURL
 	path += "/pet"
 	{
-		value := conv.StringToString(params.Name)
-		path += "/" + value
+		// Encode 'name' parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "name",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		v := params.Name
+		param := e.EncodeString(v)
+		path += "/" + param
 	}
 
 	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
