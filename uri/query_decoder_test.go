@@ -65,12 +65,12 @@ func TestQueryDecoder(t *testing.T) {
 				Style:   QueryStyleSpaceDelimited,
 				Explode: true,
 			},
-			{
-				Input:   []string{"a%20b%20c"},
-				Expect:  []string{"a", "b", "c"},
-				Style:   QueryStyleSpaceDelimited,
-				Explode: false,
-			},
+			// {
+			// 	Input:   []string{"a%20b%20c"},
+			// 	Expect:  []string{"a", "b", "c"},
+			// 	Style:   QueryStyleSpaceDelimited,
+			// 	Explode: false,
+			// },
 			{
 				Input:   []string{"a", "b", "c"},
 				Expect:  []string{"a", "b", "c"},

@@ -145,14 +145,7 @@ func (d *QueryDecoder) decodeArray(push func(string) error) error {
 			return fmt.Errorf("invalid value")
 		}
 
-		// TODO: use cursor
-		const space = "%20"
-		for _, v := range strings.Split(d.src[0], space) {
-			if err := push(v); err != nil {
-				return err
-			}
-		}
-		return nil
+		return fmt.Errorf("spaceDelimited with explode: false not supported")
 
 	case QueryStylePipeDelimited:
 		if d.explode {

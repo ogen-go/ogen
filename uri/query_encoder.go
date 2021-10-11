@@ -50,8 +50,7 @@ func (e *QueryEncoder) EncodeStringArray(vs []string) ([]string, error) {
 			return vs, nil
 		}
 
-		const space = "%20"
-		return []string{strings.Join(vs, space)}, nil
+		return nil, fmt.Errorf("spaceDelimited with explode: false not supported")
 
 	case QueryStylePipeDelimited:
 		if e.explode {
