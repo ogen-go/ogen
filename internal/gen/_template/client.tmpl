@@ -32,7 +32,7 @@ func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req 
     }
     {{ end }}
 
-    {{- template "encode_path" $m }}
+    {{- template "params_encode_path_v2" $m }}
     
     r, err := http.NewRequestWithContext(ctx, "{{ $m.HTTPMethod }}", path, {{ if $m.RequestBody }}bytes.NewReader(body){{ else }}nil{{ end }})
     if err != nil {
@@ -42,8 +42,8 @@ func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req 
 
     {{ if $m.RequestBody }}r.Header.Set("Content-Type", contentType){{ end }}
 
+    {{- template "params_encode_query_v2" $m }}
     {{- template "encode_header_params" $m }}
-    {{- template "encode_query_params" $m }}
     {{- template "encode_cookie_params" $m }}
 
     resp, err := c.http.Do(r)
@@ -62,44 +62,6 @@ func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req 
     return result, nil
 }
 {{ end }}
-{{ end }}
-
-{{ define "encode_path" }}
-path := c.serverURL
-{{- range $part := $.PathParts }}{{/* Range over path parts */}}
-    {{- if $part.Raw }}
-    path += "/{{ $part.Raw }}"
-    {{- else }}
-    {
-        value := {{ template "convert_to_string" $part.Param.Schema.Type }}(params.{{ $part.Param.Name }})
-        {{- if eq $part.Param.Schema.Kind "array" }}
-        path += "/" + strings.Join(value, ",")
-        {{- else }}
-        path += "/" + value
-        {{- end }}
-    }
-    {{- end }}
-{{- end }}{{/* Range over path parts */}}
-{{ end }}
-
-
-{{ define "encode_query_params" }}
-{{ $pcount := len $.QueryParams }}{{ if ne $pcount 0 }}{{/* Check params existence */}}
-q := r.URL.Query()
-{{- range $param := $.QueryParams }}{{/* Range over params */}}
-    {
-    s := {{ template "convert_to_string" $param.Schema.Type }}(params.{{ $param.Name }})
-    {{- if eq $param.Schema.Kind "array" }}
-    for _, v := range s {
-        q.Add("{{ $param.SourceName }}", v)
-    }
-    {{- else }}
-    q.Set("{{ $param.SourceName }}", s)
-    {{- end }}
-    }
-{{- end }}{{/* Range over params */}}
-r.URL.RawQuery = q.Encode()
-{{ end }}{{/* Check params existence */}}
 {{ end }}
 
 
