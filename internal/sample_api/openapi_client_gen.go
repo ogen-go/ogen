@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/encoding/json"
 )
@@ -34,6 +35,7 @@ var (
 	_ = strconv.ParseInt
 	_ = time.Time{}
 	_ = conv.ToInt32
+	_ = uuid.UUID{}
 )
 
 type HTTPClient interface {
@@ -161,6 +163,12 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (_ PetGetRespo
 		return
 	}
 
+	{
+		value := conv.UUIDArrayToString(params.XTags)
+		for _, v := range value {
+			r.Header.Add("x-tags", v)
+		}
+	}
 	{
 		value := conv.StringArrayToString(params.XScope)
 		for _, v := range value {

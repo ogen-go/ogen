@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/encoding/json"
 )
@@ -34,6 +35,7 @@ var (
 	_ = strconv.ParseInt
 	_ = time.Time{}
 	_ = conv.ToInt32
+	_ = uuid.UUID{}
 )
 
 func encodeCachingResponse(response []WorldObject, w http.ResponseWriter) error {

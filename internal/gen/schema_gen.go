@@ -200,6 +200,7 @@ func (g *schemaGen) parseSimple(typ, format string) (string, error) {
 			"date":      "time.Time",
 			"date-time": "time.Time",
 			"password":  "string",
+			"uuid":      "uuid.UUID",
 			// TODO: support binary format
 		},
 		"boolean": {

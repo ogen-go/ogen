@@ -5,6 +5,7 @@ go 1.17
 require (
 	github.com/bytedance/sonic v1.0.0-beta.0.20210924085059-00716d86349c
 	github.com/go-chi/chi/v5 v5.0.4
+	github.com/google/uuid v1.3.0
 	github.com/json-iterator/go v1.1.12
 	github.com/minio/simdjson-go v0.2.2
 	github.com/stretchr/testify v1.7.0
