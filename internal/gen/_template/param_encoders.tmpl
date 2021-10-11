@@ -5,14 +5,15 @@ path := c.serverURL
 path += "/{{ $part.Raw }}"
 {{- else }}
 {
-    // Encode '{{ $part.Param.SourceName }}' parameter.
+	{{- $param := $part.Param }}
+    // Encode '{{ $param.SourceName }}' parameter.
     e := uri.NewPathEncoder(uri.PathEncoderConfig{
-        Param: "{{ $part.Param.SourceName }}",
-        Style: uri.PathStyle{{ pascalMP $part.Param.Style }},
-        Explode: {{ if $part.Param.Explode }}true{{ else }}false{{ end }},
+        Param: "{{ $param.SourceName }}",
+        Style: uri.PathStyle{{ pascalMP $param.Style }},
+        Explode: {{ if $param.Explode }}true{{ else }}false{{ end }},
     })
-    v := params.{{ $part.Param.Name }}
-    {{ template "encode_param" $part.Param.Schema }}
+    v := params.{{ $param.Name }}
+    {{ template "encode_param" $param.Schema }}
     path += "/" + param
 }
 {{- end }}
