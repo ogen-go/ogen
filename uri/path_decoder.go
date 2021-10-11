@@ -2,7 +2,6 @@ package uri
 
 import (
 	"fmt"
-	"io"
 	"strconv"
 )
 
@@ -17,8 +16,7 @@ const (
 func (s PathStyle) String() string { return string(s) }
 
 type PathDecoder struct {
-	src []rune
-	pos int
+	cur *cursor
 
 	param   string    // immutable
 	style   PathStyle // immutable
@@ -34,7 +32,7 @@ type PathDecoderConfig struct {
 
 func NewPathDecoder(cfg PathDecoderConfig) *PathDecoder {
 	return &PathDecoder{
-		src:     []rune(cfg.Value),
+		cur:     &cursor{src: []rune(cfg.Value)},
 		param:   cfg.Param,
 		style:   cfg.Style,
 		explode: cfg.Explode,
@@ -44,20 +42,20 @@ func NewPathDecoder(cfg PathDecoderConfig) *PathDecoder {
 func (d *PathDecoder) DecodeString() (string, error) {
 	switch d.style {
 	case PathStyleSimple:
-		return d.readAll()
+		return d.cur.readAll()
 
 	case PathStyleLabel:
-		if !d.eat('.') {
+		if !d.cur.eat('.') {
 			return "", fmt.Errorf("label style value must begin with '.'")
 		}
-		return d.readAll()
+		return d.cur.readAll()
 
 	case PathStyleMatrix:
-		if !d.eat(';') {
+		if !d.cur.eat(';') {
 			return "", fmt.Errorf("label style value must begin with ';'")
 		}
 
-		param, err := d.readAt('=')
+		param, err := d.cur.readAt('=')
 		if err != nil {
 			return "", err
 		}
@@ -66,7 +64,7 @@ func (d *PathDecoder) DecodeString() (string, error) {
 			return "", fmt.Errorf("invalid param name '%s'", param)
 		}
 
-		return d.readAll()
+		return d.cur.readAll()
 
 	default:
 		panic("unreachable")
@@ -245,7 +243,7 @@ func (d *PathDecoder) decodeArray(push func(string) error) error {
 	switch d.style {
 	case PathStyleSimple:
 		for {
-			v, hasNext, err := d.readValue(',')
+			v, hasNext, err := d.cur.readValue(',')
 			if err != nil {
 				return err
 			}
@@ -259,7 +257,7 @@ func (d *PathDecoder) decodeArray(push func(string) error) error {
 		}
 
 	case PathStyleLabel:
-		if !d.eat('.') {
+		if !d.cur.eat('.') {
 			return fmt.Errorf("value must begin with '.'")
 		}
 
@@ -269,7 +267,7 @@ func (d *PathDecoder) decodeArray(push func(string) error) error {
 		}
 
 		for {
-			v, hasNext, err := d.readValue(delim)
+			v, hasNext, err := d.cur.readValue(delim)
 			if err != nil {
 				return err
 			}
@@ -283,12 +281,12 @@ func (d *PathDecoder) decodeArray(push func(string) error) error {
 		}
 
 	case PathStyleMatrix:
-		if !d.eat(';') {
+		if !d.cur.eat(';') {
 			return fmt.Errorf("value must begin with ';'")
 		}
 
 		if !d.explode {
-			param, err := d.readAt('=')
+			param, err := d.cur.readAt('=')
 			if err != nil {
 				return err
 			}
@@ -298,7 +296,7 @@ func (d *PathDecoder) decodeArray(push func(string) error) error {
 			}
 
 			for {
-				v, hasNext, err := d.readValue(',')
+				v, hasNext, err := d.cur.readValue(',')
 				if err != nil {
 					return err
 				}
@@ -313,7 +311,7 @@ func (d *PathDecoder) decodeArray(push func(string) error) error {
 		}
 
 		for {
-			param, err := d.readAt('=')
+			param, err := d.cur.readAt('=')
 			if err != nil {
 				return err
 			}
@@ -322,7 +320,7 @@ func (d *PathDecoder) decodeArray(push func(string) error) error {
 				return fmt.Errorf("invalid param name '%s'", param)
 			}
 
-			v, hasNext, err := d.readValue(';')
+			v, hasNext, err := d.cur.readValue(';')
 			if err != nil {
 				return err
 			}
@@ -338,71 +336,4 @@ func (d *PathDecoder) decodeArray(push func(string) error) error {
 	default:
 		panic("unreachable")
 	}
-}
-
-func (d *PathDecoder) readAt(at rune) (string, error) {
-	var data []rune
-	for {
-		r, ok := d.read()
-		if !ok {
-			return "", io.EOF
-		}
-
-		if r == at {
-			return string(data), nil
-		}
-
-		data = append(data, r)
-	}
-}
-
-func (d *PathDecoder) readValue(delim rune) (v string, hasNext bool, err error) {
-	var data []rune
-	for {
-		r, ok := d.read()
-		if !ok {
-			if len(data) == 0 {
-				return "", false, io.EOF
-			}
-			return string(data), false, nil
-		}
-
-		if r == delim {
-			return string(data), len(d.src) != d.pos, nil
-		}
-
-		data = append(data, r)
-	}
-}
-
-func (d *PathDecoder) read() (rune, bool) {
-	if len(d.src) == d.pos {
-		return rune(0), false
-	}
-
-	defer func() { d.pos++ }()
-	return d.src[d.pos], true
-}
-
-func (d *PathDecoder) eat(r rune) bool {
-	rr, ok := d.read()
-	if !ok {
-		return false
-	}
-
-	if r != rr {
-		d.pos--
-		return false
-	}
-
-	return true
-}
-
-func (d *PathDecoder) readAll() (string, error) {
-	if d.pos == len(d.src) {
-		return "", io.EOF
-	}
-
-	defer func() { d.pos = len(d.src) }()
-	return string(d.src[d.pos:]), nil
 }
