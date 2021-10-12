@@ -219,7 +219,8 @@ func BenchmarkIntegration(b *testing.B) {
 		// https://github.com/TechEmpower/FrameworkBenchmarks/wiki/Project-Information-Framework-Tests-Overview#test-types
 
 		mux := chi.NewRouter()
-		techempower.Register(mux, techEmpowerServer{})
+		srv := techEmpowerServer{}
+		techempower.Register(mux, srv)
 		s := httptest.NewServer(mux)
 		defer s.Close()
 
@@ -232,6 +233,22 @@ func BenchmarkIntegration(b *testing.B) {
 			b.RunParallel(func(pb *testing.PB) {
 				for pb.Next() {
 					hw, err := client.JSON(ctx)
+					if err != nil {
+						b.Error(err)
+						return
+					}
+					if hw.Message != "Hello, world!" {
+						b.Error("mismatch")
+					}
+				}
+			})
+		})
+		b.Run("OnlyHandler", func(b *testing.B) {
+			b.ReportAllocs()
+			b.ResetTimer()
+			b.RunParallel(func(pb *testing.PB) {
+				for pb.Next() {
+					hw, err := srv.JSON(ctx)
 					if err != nil {
 						b.Error(err)
 						return
