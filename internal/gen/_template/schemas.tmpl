@@ -14,7 +14,7 @@
 {{- if eq $.Kind "struct" }}
 type {{ $.Name }} struct {
 {{- range $f := $.Fields }}
-    {{ $f.Name }} {{ $f.Type }} `json:"{{ $f.Tag }}"`
+    {{ $f.Name }} {{ $f.Type.Type }} `json:"{{ $f.Tag }}"`
 {{- end }}
 }
 {{/* Define struct */}}

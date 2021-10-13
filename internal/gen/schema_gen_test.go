@@ -8,250 +8,248 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestSchemaGen(t *testing.T) {
-	tests := []struct {
-		TestName  string
-		Spec      *ogen.Spec
-		Name      string
-		Input     ogen.Schema
-		Expect    *ast.Schema
-		Err       error
-		InputRefs map[string]*ast.Schema
-		LocalRefs map[string]*ast.Schema
-		Side      []*ast.Schema
-	}{
-		{
-			TestName: "Simple",
-			Name:     "pet",
-			Input: ogen.Schema{
-				Type: "object",
-				Properties: map[string]ogen.Schema{
-					"id":   {Type: "integer"},
-					"name": {Type: "string"},
-				},
-				Required: []string{"id", "name"},
+func TestSchemaSimple(t *testing.T) {
+	gen := &schemaGen{
+		localRefs: make(map[string]*ast.Schema),
+	}
+
+	out, err := gen.Generate("Pet", ogen.Schema{
+		Type: "object",
+		Properties: map[string]ogen.Schema{
+			"id":   {Type: "integer"},
+			"name": {Type: "string"},
+		},
+		Required: []string{"id", "name"},
+	})
+	require.NoError(t, err)
+
+	expect := &ast.Schema{
+		Name: "Pet",
+		Kind: ast.KindStruct,
+		Fields: []ast.SchemaField{
+			{
+				Name: "ID",
+				Type: ast.Primitive("int"),
+				Tag:  "id",
 			},
-			Expect: &ast.Schema{
-				Name: "Pet",
-				Kind: ast.KindStruct,
-				Fields: []ast.SchemaField{
-					{
-						Name: "ID",
-						Type: "int",
-						Tag:  "id",
-					},
-					{
-						Name: "Name",
-						Type: "string",
-						Tag:  "name",
-					},
-				},
+			{
+				Name: "Name",
+				Type: ast.Primitive("string"),
+				Tag:  "name",
 			},
 		},
-		{
-			TestName: "Recursive",
-			Spec: &ogen.Spec{
-				Components: &ogen.Components{
-					Schemas: map[string]ogen.Schema{
-						"Pet": {
-							Type: "object",
-							Properties: map[string]ogen.Schema{
-								"id":   {Type: "integer"},
-								"name": {Type: "string"},
-								"friends": {
-									Type: "array",
-									Items: &ogen.Schema{
-										Ref: "#/components/schemas/Pet",
-									},
-								},
-							},
-							Required: []string{"id", "name", "friends"},
-						},
-					},
-				},
-			},
-			Name: "",
-			Input: ogen.Schema{
-				Ref: "#/components/schemas/Pet",
-			},
-			InputRefs: make(map[string]*ast.Schema),
-			LocalRefs: map[string]*ast.Schema{
-				"#/components/schemas/Pet": {
-					Name: "Pet",
-					Kind: ast.KindStruct,
-					Fields: []ast.SchemaField{
-						{
-							Name: "Friends",
-							Type: "[]Pet",
-							Tag:  "friends",
-						},
-						{
-							Name: "ID",
-							Type: "int",
-							Tag:  "id",
-						},
-						{
-							Name: "Name",
-							Type: "string",
-							Tag:  "name",
-						},
-					},
-				},
-			},
-			Expect: &ast.Schema{
-				Name: "Pet",
-				Kind: ast.KindStruct,
-				Fields: []ast.SchemaField{
-					{
-						Name: "Friends",
-						Type: "[]Pet",
-						Tag:  "friends",
-					},
-					{
-						Name: "ID",
-						Type: "int",
-						Tag:  "id",
-					},
-					{
-						Name: "Name",
-						Type: "string",
-						Tag:  "name",
-					},
-				},
-			},
-		},
-		{
-			TestName: "TestSideEffects",
-			Name:     "pet",
-			Input: ogen.Schema{
-				Type: "object",
-				Properties: map[string]ogen.Schema{
-					"name": {Type: "string"},
-					"owner": {
-						Type: "object",
-						Properties: map[string]ogen.Schema{
-							"name": {Type: "string"},
-							"id":   {Type: "integer"},
-							"age":  {Type: "integer"},
-						},
-						Required: []string{"name", "id", "age"},
-					},
-				},
-				Required: []string{"id", "name", "owner"},
-			},
-			Expect: &ast.Schema{
-				Name: "Pet",
-				Kind: ast.KindStruct,
-				Fields: []ast.SchemaField{
-					{
-						Name: "Name",
-						Type: "string",
-						Tag:  "name",
-					},
-					{
-						Name: "Owner",
-						Type: "PetOwner",
-						Tag:  "owner",
-					},
-				},
-			},
-			Side: []*ast.Schema{
-				{
-					Kind: ast.KindStruct,
-					Name: "PetOwner",
-					Fields: []ast.SchemaField{
-						{
-							Name: "Age",
-							Type: "int",
-							Tag:  "age",
-						},
-						{
-							Name: "ID",
-							Type: "int",
-							Tag:  "id",
-						},
-						{
-							Name: "Name",
-							Type: "string",
-							Tag:  "name",
-						},
-					},
-				},
-			},
-		},
-		{
-			TestName: "ReferencedArray",
-			Spec: &ogen.Spec{
-				Components: &ogen.Components{
-					Schemas: map[string]ogen.Schema{
-						"Pets": {
+	}
+
+	require.Equal(t, expect, out)
+}
+
+func TestSchemaRecursive(t *testing.T) {
+	spec := &ogen.Spec{
+		Components: &ogen.Components{
+			Schemas: map[string]ogen.Schema{
+				"Pet": {
+					Type: "object",
+					Properties: map[string]ogen.Schema{
+						"id":   {Type: "integer"},
+						"name": {Type: "string"},
+						"friends": {
 							Type: "array",
 							Items: &ogen.Schema{
-								Type: "string",
+								Ref: "#/components/schemas/Pet",
 							},
 						},
 					},
+					Required: []string{"id", "name", "friends"},
 				},
 			},
-			Name: "TestObj",
-			Input: ogen.Schema{
+		},
+	}
+
+	pet := &ast.Schema{
+		Name: "Pet",
+		Kind: ast.KindStruct,
+	}
+	pet.Fields = []ast.SchemaField{
+		{
+			Name: "Friends",
+			Type: ast.Array(pet),
+			Tag:  "friends",
+		},
+		{
+			Name: "ID",
+			Type: ast.Primitive("int"),
+			Tag:  "id",
+		},
+		{
+			Name: "Name",
+			Type: ast.Primitive("string"),
+			Tag:  "name",
+		},
+	}
+
+	expectLocalRefs := map[string]*ast.Schema{
+		"#/components/schemas/Pet": {
+			Name: "Pet",
+			Kind: ast.KindStruct,
+			Fields: []ast.SchemaField{
+				{
+					Name: "Friends",
+					Type: ast.Array(pet),
+					Tag:  "friends",
+				},
+				{
+					Name: "ID",
+					Type: ast.Primitive("int"),
+					Tag:  "id",
+				},
+				{
+					Name: "Name",
+					Type: ast.Primitive("string"),
+					Tag:  "name",
+				},
+			},
+		},
+	}
+
+	gen := &schemaGen{
+		spec:      spec,
+		localRefs: make(map[string]*ast.Schema),
+	}
+
+	out, err := gen.Generate("", ogen.Schema{
+		Ref: "#/components/schemas/Pet",
+	})
+	require.NoError(t, err)
+	require.Equal(t, expectLocalRefs, gen.localRefs)
+	require.Equal(t, pet, out)
+}
+
+func TestSchemaSideEffects(t *testing.T) {
+	expectSide := []*ast.Schema{
+		{
+			Kind: ast.KindStruct,
+			Name: "PetOwner",
+			Fields: []ast.SchemaField{
+				{
+					Name: "Age",
+					Type: ast.Primitive("int"),
+					Tag:  "age",
+				},
+				{
+					Name: "ID",
+					Type: ast.Primitive("int"),
+					Tag:  "id",
+				},
+				{
+					Name: "Name",
+					Type: ast.Primitive("string"),
+					Tag:  "name",
+				},
+			},
+		},
+	}
+
+	expect := &ast.Schema{
+		Name: "Pet",
+		Kind: ast.KindStruct,
+		Fields: []ast.SchemaField{
+			{
+				Name: "Name",
+				Type: ast.Primitive("string"),
+				Tag:  "name",
+			},
+			{
+				Name: "Owner",
+				Type: expectSide[0],
+				Tag:  "owner",
+			},
+		},
+	}
+
+	gen := &schemaGen{
+		localRefs: make(map[string]*ast.Schema),
+	}
+
+	out, err := gen.Generate("pet", ogen.Schema{
+		Type: "object",
+		Properties: map[string]ogen.Schema{
+			"name": {Type: "string"},
+			"owner": {
 				Type: "object",
 				Properties: map[string]ogen.Schema{
-					"pets": {
-						Ref: "#/components/schemas/Pets",
-					},
+					"name": {Type: "string"},
+					"id":   {Type: "integer"},
+					"age":  {Type: "integer"},
 				},
-				Required: []string{"pets"},
+				Required: []string{"name", "id", "age"},
 			},
-			LocalRefs: map[string]*ast.Schema{
-				"#/components/schemas/Pets": {
-					Kind: ast.KindAlias,
-					Name: "Pets",
-					AliasTo: &ast.Schema{
-						Kind: ast.KindArray,
-						Item: &ast.Schema{
-							Kind: ast.KindPrimitive,
-							Primitive: "string",
-						},
-					},
-				},
-			},
-			Expect: &ast.Schema{
-				Kind: ast.KindStruct,
-				Name: "TestObj",
-				Fields: []ast.SchemaField{
-					{
-						Name: "Pets",
-						Type: "Pets",
-						Tag:  "pets",
+		},
+		Required: []string{"id", "name", "owner"},
+	})
+
+	require.NoError(t, err)
+	require.Equal(t, expect, out)
+	require.Equal(t, expectSide, gen.side)
+}
+
+func TestSchemaReferencedArray(t *testing.T) {
+	spec := &ogen.Spec{
+		Components: &ogen.Components{
+			Schemas: map[string]ogen.Schema{
+				"Pets": {
+					Type: "array",
+					Items: &ogen.Schema{
+						Type: "string",
 					},
 				},
 			},
 		},
 	}
 
-	for _, test := range tests {
-		t.Run(test.TestName, func(t *testing.T) {
-			gen := &schemaGen{
-				spec:       test.Spec,
-				globalRefs: test.InputRefs,
-				localRefs:  make(map[string]*ast.Schema),
-			}
-
-			out, err := gen.Generate(test.Name, test.Input)
-			if test.Err == nil {
-				require.NoError(t, err)
-			} else {
-				require.EqualError(t, err, test.Err.Error())
-			}
-
-			require.Equal(t, test.Expect, out, "schema check")
-			require.Equal(t, test.Side, gen.side, "sideEffects check")
-			if test.LocalRefs != nil {
-				require.Equal(t, test.LocalRefs, gen.localRefs, "refs check")
-			} else {
-				require.Empty(t, gen.localRefs)
-			}
-		})
+	pets := &ast.Schema{
+		Kind: ast.KindAlias,
+		Name: "Pets",
+		AliasTo: &ast.Schema{
+			Kind: ast.KindArray,
+			Item: &ast.Schema{
+				Kind:      ast.KindPrimitive,
+				Primitive: "string",
+			},
+		},
 	}
+
+	expectLocalRefs := map[string]*ast.Schema{
+		"#/components/schemas/Pets": pets,
+	}
+
+	expect := &ast.Schema{
+		Kind: ast.KindStruct,
+		Name: "TestObj",
+		Fields: []ast.SchemaField{
+			{
+				Name: "Pets",
+				Type: pets,
+				Tag:  "pets",
+			},
+		},
+	}
+
+	gen := &schemaGen{
+		spec:      spec,
+		localRefs: make(map[string]*ast.Schema),
+	}
+
+	out, err := gen.Generate("testObj", ogen.Schema{
+		Type: "object",
+		Properties: map[string]ogen.Schema{
+			"pets": {
+				Ref: "#/components/schemas/Pets",
+			},
+		},
+		Required: []string{"pets"},
+	})
+
+	require.NoError(t, err)
+	require.Equal(t, expectLocalRefs, gen.localRefs)
+	require.Equal(t, expect, out)
 }

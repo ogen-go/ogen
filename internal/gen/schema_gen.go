@@ -111,15 +111,15 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 				return nil, xerrors.Errorf("%s: %w", propName, err)
 			}
 
-			typ := prop.Type()
+			var typ ast.Type = prop
 			if !required(propName) {
-				typ = "*" + typ
+				typ = &ast.Pointer{To: prop}
 			}
 
 			s.Fields = append(s.Fields, ast.SchemaField{
 				Name: pascalMP(propName),
-				Tag:  propName,
 				Type: typ,
+				Tag:  propName,
 			})
 		}
 		sort.SliceStable(s.Fields, func(i, j int) bool {

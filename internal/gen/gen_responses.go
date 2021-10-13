@@ -96,7 +96,7 @@ func (g *Generator) createDefaultResponse(methodName string, r ogen.Response) (*
 		statusCode := ast.Struct(methodName + "Default")
 		statusCode.Fields = append(statusCode.Fields, ast.SchemaField{
 			Name: "StatusCode",
-			Type: "int",
+			Type: ast.Primitive("int"),
 			Tag:  "-",
 		})
 		g.schemas[methodName+"Default"] = statusCode
@@ -222,13 +222,13 @@ func (g *Generator) wrapStatusCode(schema *ast.Schema) *ast.Schema {
 	newSchema.Fields = []ast.SchemaField{
 		{
 			Name: "StatusCode",
+			Type: ast.Primitive("int"),
 			Tag:  "-",
-			Type: "int",
 		},
 		{
 			Name: "Response",
+			Type: schema,
 			Tag:  "-",
-			Type: schema.Type(),
 		},
 	}
 	g.schemas[newSchema.Name] = newSchema

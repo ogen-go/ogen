@@ -32,6 +32,12 @@ type Schema struct {
 	Implements map[*Interface]struct{}
 }
 
+type SchemaField struct {
+	Name string
+	Type Type
+	Tag  string
+}
+
 func (s Schema) Type() string {
 	switch s.Kind {
 	case KindStruct:
@@ -131,12 +137,6 @@ func (s *Schema) Equal(ss *Schema) bool {
 	default:
 		panic("unreachable")
 	}
-}
-
-type SchemaField struct {
-	Name string
-	Tag  string
-	Type string
 }
 
 func Struct(name string) *Schema {
