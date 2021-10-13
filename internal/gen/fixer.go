@@ -2,6 +2,7 @@ package gen
 
 import (
 	"net/http"
+	"reflect"
 	"sort"
 
 	"github.com/ogen-go/ogen/internal/ast"
@@ -41,7 +42,7 @@ func (g *Generator) fixEqualResponses(m *ast.Method) {
 			rcode := statusCodes[j]
 			lresp, rresp := m.Responses.StatusCode[lcode], m.Responses.StatusCode[rcode]
 			if (lresp.NoContent != nil && rresp.NoContent != nil) && lcode != rcode {
-				if lresp.NoContent.Equal(rresp.NoContent) {
+				if reflect.DeepEqual(lresp.NoContent, rresp.NoContent) {
 					candidates = append(candidates, candidate{
 						renameTo:   pascal(m.Name, http.StatusText(lcode)),
 						schema:     lresp.NoContent,
@@ -76,7 +77,7 @@ func (g *Generator) fixEqualResponses(m *ast.Method) {
 						continue
 					}
 					lschema, rschema := lresp.Contents[lct], rresp.Contents[rct]
-					if lschema.Equal(rschema) {
+					if reflect.DeepEqual(lschema, rschema) {
 						candidates = append(candidates, candidate{
 							renameTo:     pascal(m.Name, lct, http.StatusText(lcode)),
 							schema:       lschema,

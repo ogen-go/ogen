@@ -102,43 +102,6 @@ func (s *Schema) Methods() []string {
 	return result
 }
 
-func (s *Schema) Equal(ss *Schema) bool {
-	if s.Kind != ss.Kind {
-		return false
-	}
-
-	switch s.Kind {
-	case KindPrimitive:
-		return s.Primitive == ss.Primitive
-	case KindAlias:
-		if s.Name != ss.Name {
-			return false
-		}
-		return s.AliasTo.Equal(ss.AliasTo)
-	case KindArray:
-		return s.Item.Equal(ss.Item)
-	case KindStruct:
-		if s.Name != ss.Name {
-			return false
-		}
-
-		if len(s.Fields) != len(ss.Fields) {
-			return false
-		}
-
-		for i := 0; i < len(s.Fields); i++ {
-			l, r := s.Fields[i], ss.Fields[i]
-			if l.Name != r.Name || l.Type != r.Type || l.Tag != r.Tag {
-				return false
-			}
-		}
-
-		return true
-	default:
-		panic("unreachable")
-	}
-}
-
 func Struct(name string) *Schema {
 	return &Schema{
 		Kind: KindStruct,
