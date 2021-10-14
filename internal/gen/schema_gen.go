@@ -106,7 +106,9 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 
 		s := sideEffect(ast.Struct(name))
 		s.Description = schema.Description
-		s.Doc = fmt.Sprintf("%s describes %s.", s.Name, ref)
+		if ref != "" {
+			s.Doc = fmt.Sprintf("%s describes %s.", s.Name, ref)
+		}
 		for propName, propSchema := range schema.Properties {
 			prop, err := g.generate(pascalMP(name, propName), propSchema, false, "")
 			if err != nil {

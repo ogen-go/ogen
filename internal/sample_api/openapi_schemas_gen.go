@@ -40,13 +40,11 @@ var (
 	_ = uri.PathEncoder{}
 )
 
-// Error describes .
 type Error struct {
 	Code    int64  `json:"code"`
 	Message string `json:"message"`
 }
 
-//
 type ErrorStatusCode struct {
 	StatusCode int   `json:"-"`
 	Response   Error `json:"-"`
@@ -54,7 +52,6 @@ type ErrorStatusCode struct {
 
 func (*ErrorStatusCode) foobarPostResponse() {}
 
-//
 type FoobarPutDefault struct {
 	StatusCode int `json:"-"`
 }
@@ -82,12 +79,10 @@ type PetCreateTextPlainRequest string
 
 func (*PetCreateTextPlainRequest) petCreateRequest() {}
 
-// PetGetDefault describes .
 type PetGetDefault struct {
 	Message string `json:"message"`
 }
 
-//
 type PetGetDefaultStatusCode struct {
 	StatusCode int           `json:"-"`
 	Response   PetGetDefault `json:"-"`
