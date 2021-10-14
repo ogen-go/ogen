@@ -18,4 +18,18 @@ if len({{ $varname }}) > {{ $schema.MaxItems }} {
 }
 {{- end }}{{/*MaxItems*/}}
 {{- end }}
+
+{{- if $schema.Item.NeedValidation }}
+for i, item := range {{ $varname }} {
+    if err := func() error {
+        {{- template "validate_schema" dict
+            "schema" $schema.Item
+            "varname" "item"
+        }}
+        return nil
+    }(); err != nil {
+        return fmt.Errorf("{{ $errorPrefix }}item %d: %w", i, err)
+    }
+}
+{{- end }}
 {{- end }}

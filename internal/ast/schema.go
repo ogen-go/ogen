@@ -92,7 +92,14 @@ func (s *Schema) NeedValidation() bool {
 	case KindAlias:
 		return s.AliasTo.NeedValidation()
 	case KindArray:
-		return s.MinItems != nil || s.MaxItems != nil
+		if s.MinItems != nil || s.MaxItems != nil {
+			return true
+		}
+		// Prevent infinite recursion.
+		if s.Item == s {
+			return false
+		}
+		return s.Item.NeedValidation()
 	case KindStruct:
 		for _, f := range s.Fields {
 			switch f := f.Type.(type) {
