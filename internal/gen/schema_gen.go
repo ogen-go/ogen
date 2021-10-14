@@ -5,9 +5,10 @@ import (
 	"sort"
 	"strings"
 
+	"golang.org/x/xerrors"
+
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/ast"
-	"golang.org/x/xerrors"
 )
 
 // schemaGen is used to convert openapi schemas into ast representation.
@@ -105,6 +106,7 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 
 		s := sideEffect(ast.Struct(name))
 		s.Description = schema.Description
+		s.Doc = fmt.Sprintf("%s describes %s.", s.Name, ref)
 		for propName, propSchema := range schema.Properties {
 			prop, err := g.generate(pascalMP(name, propName), propSchema, false, "")
 			if err != nil {

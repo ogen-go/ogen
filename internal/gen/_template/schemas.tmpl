@@ -10,8 +10,10 @@
 {{- end }}
 
 {{- define "define_schema" }}
-{{/* Define struct */}}
+{{- /*gotype: github.com/ogen-go/ogen/internal/ast.Schema*/ -}}
+{{- /* Define struct */ -}}
 {{- if eq $.Kind "struct" }}
+// {{ $.Doc }}
 type {{ $.Name }} struct {
 {{- range $f := $.Fields }}
     {{ $f.Name }} {{ $f.Type.Type }} `json:"{{ $f.Tag }}"`

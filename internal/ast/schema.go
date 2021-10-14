@@ -22,6 +22,7 @@ type Schema struct {
 	Kind        SchemaKind
 	Name        string
 	Description string
+	Doc         string
 
 	AliasTo    *Schema
 	Primitive  string

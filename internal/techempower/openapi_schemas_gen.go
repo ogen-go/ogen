@@ -40,10 +40,12 @@ var (
 	_ = uri.PathEncoder{}
 )
 
+// HelloWorld describes #/components/schemas/HelloWorld.
 type HelloWorld struct {
 	Message string `json:"message"`
 }
 
+// WorldObject describes #/components/schemas/WorldObject.
 type WorldObject struct {
 	ID           int64 `json:"id"`
 	RandomNumber int64 `json:"randomNumber"`
