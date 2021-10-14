@@ -44,6 +44,15 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 
 	// sideEffect stores schema in g.localRefs or g.side if needed.
 	sideEffect := func(s *ast.Schema) *ast.Schema {
+		// Set validation fields.
+		s.MultipleOf = schema.MultipleOf
+		s.Minimum, s.Maximum = schema.Minimum, schema.Maximum
+		s.MinItems, s.MaxItems = schema.MinItems, schema.MaxItems
+		s.MinLength, s.MaxLength = schema.MinLength, schema.MaxLength
+		s.ExclusiveMinimum = schema.ExclusiveMinimum
+		s.ExclusiveMaximum = schema.ExclusiveMaximum
+		// s.Pattern = schema.Pattern
+
 		// Referenced component, store it in g.localRefs.
 		if ref != "" {
 			// Reference pointed to a scalar type.

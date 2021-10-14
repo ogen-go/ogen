@@ -1,0 +1,21 @@
+{{ define "validate_array" }}
+{{- /*Variables*/}}
+{{- $schema := index . "schema" }}
+{{- $varname := index . "varname" }}
+{{- $errorPrefix := index . "errorPrefix" }}
+{{- if not $errorPrefix }}{{ $errorPrefix = "" }}{{ end }}
+{{- /*Variables*/}}
+
+{{- if eq $schema.Kind "array" }}
+{{- if $schema.MinItems }}{{/*MinItems*/}}
+if len({{ $varname }}) < {{ $schema.MinItems }} {
+    return fmt.Errorf("{{ $errorPrefix }}array must contain at least {{ $schema.MinItems }} items")
+}
+{{- end }}{{/*MinItems*/}}
+{{- if $schema.MaxItems }}{{/*MaxItems*/}}
+if len({{ $varname }}) > {{ $schema.MaxItems }} {
+    return fmt.Errorf("{{ $errorPrefix }}array must contain at most {{ $schema.MaxItems }} items")
+}
+{{- end }}{{/*MaxItems*/}}
+{{- end }}
+{{- end }}

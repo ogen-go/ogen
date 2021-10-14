@@ -1,0 +1,28 @@
+{{ define "validate_schema" }}
+{{- $schema := index . "schema" }}
+{{- if $schema.NeedValidation }}
+    {{- if eq $schema.Kind "primitive" }}
+        {{- if $schema.IsNumeric }}
+            {{- template "validate_numeric" . }}
+        {{- else if eq $schema.Primitive "string" }}
+            {{- template "validate_string" . }}
+        {{- else }}
+            unsupported primitive: {{ $schema.Kind }}
+        {{- end }}
+    {{- else if eq $schema.Kind "enum" }}
+        {{- template "validate_enum" . }}
+    {{- else if eq $schema.Kind "array" }}
+        {{- template "validate_array" . }}
+    {{- else if eq $schema.Kind "struct" }}
+        {{- template "validate_struct" . }}
+    {{- else if eq $schema.Kind "alias" }}
+        {{- template "validate_schema" dict
+            "schema" $schema.AliasTo
+            "varname" . index "varname"
+            "errorPrefix" . index "errorPrefix"
+        }}
+    {{- else }}
+        unsupported schema kind: {{ $schema.Kind }}
+    {{- end }}
+{{- end }}
+{{- end }}

@@ -30,12 +30,117 @@ type Schema struct {
 	Fields     []SchemaField
 
 	Implements map[*Interface]struct{}
+
+	// Numeric validation.
+	MultipleOf       *uint64
+	Minimum          *int64
+	Maximum          *int64
+	ExclusiveMinimum bool
+	ExclusiveMaximum bool
+
+	// String validation.
+	// Pattern   string
+	MaxLength *uint64
+	MinLength *int64
+
+	// Array validation.
+	MaxItems *uint64
+	MinItems *uint64
+	// UniqueItems bool
+
+	// Struct validation.
+	// MaxProperties *uint64
+	// MinProperties *uint64
+}
+
+func (s *Schema) IsInteger() bool {
+	switch s.Primitive {
+	case "int", "int8", "int16", "int32", "int64",
+		"uint", "uint8", "uint16", "uint32", "uint64":
+		return true
+	default:
+		return false
+	}
+}
+
+func (s *Schema) IsFloat() bool {
+	switch s.Primitive {
+	case "float32", "float64":
+		return true
+	default:
+		return false
+	}
+}
+
+func (s *Schema) IsNumeric() bool { return s.IsInteger() || s.IsFloat() }
+
+func (s *Schema) NeedValidation() bool {
+	if s == nil {
+		return false
+	}
+	switch s.Kind {
+	case KindPrimitive:
+		if s.IsNumeric() && (s.Minimum != nil || s.Maximum != nil || s.MultipleOf != nil) {
+			return true
+		}
+		if s.Primitive == "string" && (s.MinLength != nil || s.MaxLength != nil) {
+			return true
+		}
+		return false
+	case KindEnum:
+		return true
+	case KindAlias:
+		return s.AliasTo.NeedValidation()
+	case KindArray:
+		return s.MinItems != nil || s.MaxItems != nil
+	case KindStruct:
+		for _, f := range s.Fields {
+			switch f := f.Type.(type) {
+			case *Schema:
+				if f.NeedValidation() {
+					return true
+				}
+			case *Pointer:
+				if f.NeedValidation() {
+					return true
+				}
+			default:
+				panic("unreachable")
+			}
+		}
+		return false
+	default:
+		panic("unreachable")
+	}
 }
 
 type SchemaField struct {
 	Name string
 	Type Type
 	Tag  string
+}
+
+func (f *SchemaField) Schema() *Schema {
+	switch t := f.Type.(type) {
+	case *Schema:
+		return t
+	case *Pointer:
+		switch tt := t.To.(type) {
+		case *Schema:
+			return tt
+		default:
+			panic(fmt.Sprintf("unexpected pointer.To type: %T", tt))
+		}
+	default:
+		panic(fmt.Sprintf("unexpected field type: %T", t))
+	}
+}
+
+func (f *SchemaField) IsPtr() bool {
+	if _, ok := f.Type.(*Pointer); ok {
+		return true
+	}
+	return false
 }
 
 func (s Schema) Type() string {
