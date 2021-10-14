@@ -2,8 +2,13 @@ package ast
 
 type Interface struct {
 	Name            string
+	Doc             string
 	Methods         map[string]struct{}
 	Implementations map[*Schema]struct{}
+}
+
+func (i *Interface) SetDoc(v string) {
+	i.Doc = v
 }
 
 func (i *Interface) AddMethod(method string) {

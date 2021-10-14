@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"fmt"
 	"sort"
 	"strings"
 
@@ -69,6 +70,7 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 	if op.RequestBody != nil {
 		iface := ast.Iface(methodName + "Request")
 		iface.AddMethod(camel(methodName + "Request"))
+		iface.SetDoc(fmt.Sprintf("%s represents %s request.", iface.Name, op.OperationID))
 		g.interfaces[iface.Name] = iface
 
 		rbody, err := g.generateRequestBody(methodName, op.RequestBody)
@@ -86,6 +88,7 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 
 	if len(op.Responses) > 0 {
 		iface := ast.Iface(methodName + "Response")
+		iface.SetDoc(fmt.Sprintf("%s represents %s response.", iface.Name, op.OperationID))
 		iface.AddMethod(camel(methodName + "Response"))
 		g.interfaces[iface.Name] = iface
 
