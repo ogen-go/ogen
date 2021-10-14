@@ -30,14 +30,10 @@ func TestGenerate(t *testing.T) {
 	}{
 		{
 			Name: "firecracker.json",
-			Options: gen.Options{
-				IgnoreEnums: true,
-			},
 		},
 		{
 			Name: "api.github.com.json",
 			Options: gen.Options{
-				IgnoreEnums:             true,
 				IgnoreOneOf:             true,
 				IgnoreAnyOf:             true,
 				IgnoreAllOf:             true,
@@ -53,7 +49,6 @@ func TestGenerate(t *testing.T) {
 		{
 			Name: "telegram_bot_api.json",
 			Options: gen.Options{
-				IgnoreEnums: true,
 				IgnoreAnyOf: true,
 			},
 		},
