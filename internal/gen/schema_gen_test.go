@@ -3,9 +3,10 @@ package gen
 import (
 	"testing"
 
+	"github.com/stretchr/testify/require"
+
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/ast"
-	"github.com/stretchr/testify/require"
 )
 
 func TestSchemaSimple(t *testing.T) {
@@ -68,6 +69,7 @@ func TestSchemaRecursive(t *testing.T) {
 	pet := &ast.Schema{
 		Name: "Pet",
 		Kind: ast.KindStruct,
+		Doc:  "Pet describes #/components/schemas/Pet.",
 	}
 	pet.Fields = []ast.SchemaField{
 		{
@@ -91,6 +93,7 @@ func TestSchemaRecursive(t *testing.T) {
 		"#/components/schemas/Pet": {
 			Name: "Pet",
 			Kind: ast.KindStruct,
+			Doc:  "Pet describes #/components/schemas/Pet.",
 			Fields: []ast.SchemaField{
 				{
 					Name: "Friends",
