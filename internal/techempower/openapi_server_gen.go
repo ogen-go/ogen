@@ -40,10 +40,16 @@ var (
 	_ = uri.PathEncoder{}
 )
 
+// Server handles operations described by OpenAPI v3 specification.
 type Server interface {
+	// Caching implements Caching operation.
 	Caching(ctx context.Context, params CachingParams) ([]WorldObject, error)
+	// DB implements DB operation.
 	DB(ctx context.Context) (WorldObject, error)
+	// JSON implements json operation.
 	JSON(ctx context.Context) (HelloWorld, error)
+	// Queries implements Queries operation.
 	Queries(ctx context.Context, params QueriesParams) ([]WorldObject, error)
+	// Updates implements Updates operation.
 	Updates(ctx context.Context, params UpdatesParams) ([]WorldObject, error)
 }

@@ -6,11 +6,12 @@ type Type interface {
 }
 
 type Method struct {
-	Name       string
-	PathParts  []PathPart
-	RawPath    string
-	HTTPMethod string
-	Parameters []*Parameter
+	Name        string
+	OperationID string
+	PathParts   []PathPart
+	RawPath     string
+	HTTPMethod  string
+	Parameters  []*Parameter
 
 	RequestType Type
 	RequestBody *RequestBody

@@ -40,11 +40,18 @@ var (
 	_ = uri.PathEncoder{}
 )
 
+// Server handles operations described by OpenAPI v3 specification.
 type Server interface {
+	// FoobarGet implements foobarGet operation.
 	FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetResponse, error)
+	// FoobarPut implements  operation.
 	FoobarPut(ctx context.Context) (FoobarPutDefault, error)
+	// FoobarPost implements foobarPost operation.
 	FoobarPost(ctx context.Context, req *Pet) (FoobarPostResponse, error)
+	// PetGet implements petGet operation.
 	PetGet(ctx context.Context, params PetGetParams) (PetGetResponse, error)
+	// PetCreate implements petCreate operation.
 	PetCreate(ctx context.Context, req PetCreateRequest) (Pet, error)
+	// PetGetByName implements petGetByName operation.
 	PetGetByName(ctx context.Context, params PetGetByNameParams) (Pet, error)
 }

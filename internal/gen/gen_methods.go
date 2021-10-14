@@ -50,9 +50,10 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 	}
 
 	m := &ast.Method{
-		Name:       methodName,
-		RawPath:    path,
-		HTTPMethod: method,
+		OperationID: op.OperationID,
+		Name:        methodName,
+		RawPath:     path,
+		HTTPMethod:  method,
 	}
 
 	m.Parameters, err = g.generateParams(m, op.Parameters)
