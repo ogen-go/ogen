@@ -28,7 +28,8 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int64"
+              "format": "int64",
+              "minimum": 1337
             }
           },
           {
@@ -228,10 +229,18 @@
         "properties": {
           "id": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "minimum": 0,
+            "maximum": 100000
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "minLength": 4,
+            "maxLength": 24
+          },
+          "type": {
+            "type": "string",
+            "enum": ["fifa", "fofa"]
           },
           "tag": {
             "type": "string",
@@ -245,6 +254,27 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Pet"
+            },
+            "maxItems": 255
+          },
+          "testInteger1": {
+            "type": "integer",
+            "multipleOf": 10
+          },
+          "testFloat1": {
+            "type": "number",
+            "multipleOf": 10,
+            "minimum": 15
+          },
+          "testArray1": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "maxItems": 16,
+              "items": {
+                "type": "string",
+                "maxLength": 255
+              }
             }
           }
         },
