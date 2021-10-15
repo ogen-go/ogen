@@ -15,6 +15,11 @@ type Method struct {
 	Responses    *MethodResponse
 }
 
+type PathPart struct {
+	Raw   string
+	Param *Parameter
+}
+
 func (m *Method) PathParams() []*Parameter   { return m.getParams(LocationPath) }
 func (m *Method) QueryParams() []*Parameter  { return m.getParams(LocationQuery) }
 func (m *Method) CookieParams() []*Parameter { return m.getParams(LocationCookie) }

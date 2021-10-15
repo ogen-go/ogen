@@ -2,7 +2,7 @@
 path := c.serverURL
 {{- range $part := $.PathParts }}{{/* Range over path parts */}}
 {{- if $part.Raw }}
-path += "/{{ $part.Raw }}"
+path += "{{ $part.Raw }}"
 {{- else }}
 {
 	{{- $param := $part.Param }}
@@ -14,7 +14,7 @@ path += "/{{ $part.Raw }}"
     })
     v := params.{{ $param.Name }}
     {{ template "encode_param" $param.Schema }}
-    path += "/" + param
+    path += param
 }
 {{- end }}
 {{- end }}

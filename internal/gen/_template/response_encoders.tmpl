@@ -21,7 +21,7 @@ func encode{{ $m.Name }}Response(response {{ $m.ResponseType.Type }}, w http.Res
         {{- template "respond" $info }}
     {{- end }}
     default:
-        return fmt.Errorf("{{ $m.Path}}: unexpected response type for method: %T", response)
+        return fmt.Errorf("{{ $m.RawPath}}: unexpected response type: %T", response)
     }
     {{- end }}
 }

@@ -36,7 +36,7 @@ func (g *Generator) generateMethods() error {
 	}
 
 	sort.SliceStable(g.methods, func(i, j int) bool {
-		return strings.Compare(g.methods[i].Path(), g.methods[j].Path()) < 0
+		return strings.Compare(g.methods[i].RawPath, g.methods[j].RawPath) < 0
 	})
 
 	return nil
@@ -123,24 +123,61 @@ func (g *Generator) parsePath(path string, params []*ast.Parameter) (parts []ast
 		return nil, false
 	}
 
-	for _, s := range strings.Split(path, "/") {
-		if len(s) == 0 {
-			continue
-		}
-		if len(s) > 2 && s[0] == '{' && s[len(s)-1] == '}' {
-			name := s[1 : len(s)-1]
-			param, found := lookup(name)
-			if !found {
-				return nil, &PathParameterNotSpecified{
-					ParamName: name,
+	var (
+		part     []rune
+		param    bool
+		pushPart = func() error {
+			if len(part) == 0 {
+				return nil
+			}
+			defer func() { part = nil }()
+
+			if param {
+				p, found := lookup(string(part))
+				if !found {
+					return &PathParameterNotSpecified{
+						ParamName: string(part),
+					}
 				}
+				parts = append(parts, ast.PathPart{Param: p})
+				return nil
 			}
 
-			parts = append(parts, ast.PathPart{Param: param})
-			continue
+			parts = append(parts, ast.PathPart{Raw: string(part)})
+			return nil
 		}
+	)
 
-		parts = append(parts, ast.PathPart{Raw: s})
+	for _, r := range path {
+		switch r {
+		case '/':
+			if param {
+				return nil, xerrors.Errorf("invalid path: %s", path)
+			}
+			part = append(part, r)
+		case '{':
+			if param {
+				return nil, xerrors.Errorf("invalid path: %s", path)
+			}
+			if err := pushPart(); err != nil {
+				return nil, err
+			}
+			param = true
+		case '}':
+			if !param {
+				return nil, xerrors.Errorf("invalid path: %s", path)
+			}
+			if err := pushPart(); err != nil {
+				return nil, err
+			}
+			param = false
+		default:
+			part = append(part, r)
+		}
+	}
+
+	if err := pushPart(); err != nil {
+		return nil, err
 	}
 	return
 }
