@@ -59,7 +59,7 @@ func encodeFoobarGetResponse(response FoobarGetResponse, w http.ResponseWriter) 
 		w.WriteHeader(404)
 		return nil
 	default:
-		return fmt.Errorf("/foobar: unexpected response type for method: %T", response)
+		return fmt.Errorf("/foobar: unexpected response type: %T", response)
 	}
 }
 
@@ -96,7 +96,7 @@ func encodeFoobarPostResponse(response FoobarPostResponse, w http.ResponseWriter
 		}
 		return nil
 	default:
-		return fmt.Errorf("/foobar: unexpected response type for method: %T", response)
+		return fmt.Errorf("/foobar: unexpected response type: %T", response)
 	}
 }
 
@@ -125,7 +125,7 @@ func encodePetGetResponse(response PetGetResponse, w http.ResponseWriter) error 
 		}
 		return nil
 	default:
-		return fmt.Errorf("/pet: unexpected response type for method: %T", response)
+		return fmt.Errorf("/pet: unexpected response type: %T", response)
 	}
 }
 

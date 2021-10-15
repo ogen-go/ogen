@@ -265,7 +265,7 @@ func (c *Client) PetCreate(ctx context.Context, req PetCreateRequest) (_ Pet, re
 
 func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (_ Pet, rerr error) {
 	path := c.serverURL
-	path += "/pet"
+	path += "/pet/"
 	{
 		// Encode 'name' parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -275,7 +275,7 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (_
 		})
 		v := params.Name
 		param := e.EncodeString(v)
-		path += "/" + param
+		path += param
 	}
 
 	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
