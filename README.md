@@ -22,6 +22,7 @@ go get github.com/ogen-go/ogen
 
 # Draft Roadmap
 
+* Fix templates in paths
 * Optionals
 * Convenient global errors schema (e.g. 500, 404)
 * End-to-end tests
@@ -71,8 +72,7 @@ go get github.com/ogen-go/ogen
   * Reduce generated code via generics
 * Full validation support
 * Extreme optimizations
-  * [simd](https://github.com/minio/simdjson-go) for json
-    * Better for streaming multi-megabyte jsons
+  * Code generation for [regex](https://github.com/CAFxX/regexp2go)
   * Streaming/iterator API support
     * Enable via x-ogen-streaming extension
     * Iteration over array or map elements of object
@@ -92,6 +92,8 @@ go get github.com/ogen-go/ogen
       * MessagePack
       * ProtoBuff
   * String interning
+  * [simd](https://github.com/minio/simdjson-go) for json
+    * Better for streaming multi-megabyte jsons
 * Websocket support via extension?
 * Async support (Websocket, other protocols)
   * [asyncapi](https://github.com/asyncapi/spec/blob/v2.2.0/spec/asyncapi.md)
