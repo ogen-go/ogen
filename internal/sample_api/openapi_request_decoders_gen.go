@@ -8,6 +8,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"math"
 	"net/http"
 	"sort"
 	"strconv"
@@ -38,6 +39,7 @@ var (
 	_ = conv.ToInt32
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
+	_ = math.Mod
 )
 
 func decodeFoobarPostRequest(r *http.Request) (_ *Pet, rerr error) {
@@ -53,6 +55,15 @@ func decodeFoobarPostRequest(r *http.Request) (_ *Pet, rerr error) {
 			if errors.Is(err, io.EOF) {
 				return
 			}
+			rerr = err
+			return
+		}
+		if err := func() error {
+			if err := request.validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			rerr = err
 			return
 		}
@@ -77,6 +88,15 @@ func decodePetCreateRequest(r *http.Request) (_ PetCreateRequest, rerr error) {
 			if errors.Is(err, io.EOF) {
 				return
 			}
+			rerr = err
+			return
+		}
+		if err := func() error {
+			if err := request.validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
 			rerr = err
 			return
 		}

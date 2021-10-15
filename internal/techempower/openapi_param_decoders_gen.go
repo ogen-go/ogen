@@ -8,6 +8,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"math"
 	"net/http"
 	"sort"
 	"strconv"
@@ -38,6 +39,7 @@ var (
 	_ = conv.ToInt32
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
+	_ = math.Mod
 )
 
 func decodeCachingParams(r *http.Request) (CachingParams, error) {
@@ -59,6 +61,7 @@ func decodeCachingParams(r *http.Request) (CachingParams, error) {
 		if err != nil {
 			return err
 		}
+
 		params.Count = int64(v)
 		return nil
 	}(); err != nil {
@@ -86,6 +89,7 @@ func decodeQueriesParams(r *http.Request) (QueriesParams, error) {
 		if err != nil {
 			return err
 		}
+
 		params.Queries = int64(v)
 		return nil
 	}(); err != nil {
@@ -113,6 +117,7 @@ func decodeUpdatesParams(r *http.Request) (UpdatesParams, error) {
 		if err != nil {
 			return err
 		}
+
 		params.Queries = int64(v)
 		return nil
 	}(); err != nil {

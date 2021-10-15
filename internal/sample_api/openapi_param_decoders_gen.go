@@ -8,6 +8,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"math"
 	"net/http"
 	"sort"
 	"strconv"
@@ -38,6 +39,7 @@ var (
 	_ = conv.ToInt32
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
+	_ = math.Mod
 )
 
 func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
@@ -59,6 +61,7 @@ func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 		if err != nil {
 			return err
 		}
+
 		params.InlinedParam = int64(v)
 		return nil
 	}(); err != nil {
@@ -81,6 +84,7 @@ func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
 		if err != nil {
 			return err
 		}
+
 		params.Skip = int32(v)
 		return nil
 	}(); err != nil {
@@ -108,6 +112,15 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 		if err != nil {
 			return err
 		}
+		if err := func() error {
+			if v < 1337 {
+				return fmt.Errorf("value must be greater than or equal to 1337")
+			}
+			return nil
+		}(); err != nil {
+			return fmt.Errorf("validate Query petID: %w", err)
+		}
+
 		params.PetID = int64(v)
 		return nil
 	}(); err != nil {
@@ -194,6 +207,7 @@ func decodePetGetByNameParams(r *http.Request) (PetGetByNameParams, error) {
 		if err != nil {
 			return err
 		}
+
 		params.Name = string(v)
 		return nil
 	}(); err != nil {

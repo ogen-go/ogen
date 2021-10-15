@@ -8,6 +8,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"math"
 	"net/http"
 	"sort"
 	"strconv"
@@ -38,6 +39,7 @@ var (
 	_ = conv.ToInt32
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
+	_ = math.Mod
 )
 
 type Error struct {
@@ -63,11 +65,15 @@ func (*NotFound) foobarPostResponse() {}
 
 // Pet describes #/components/schemas/Pet.
 type Pet struct {
-	Birthday time.Time  `json:"birthday"`
-	Friends  *[]Pet     `json:"friends"`
-	ID       int64      `json:"id"`
-	Name     string     `json:"name"`
-	Tag      *uuid.UUID `json:"tag"`
+	Birthday     time.Time   `json:"birthday"`
+	Friends      *[]Pet      `json:"friends"`
+	ID           int64       `json:"id"`
+	Name         string      `json:"name"`
+	Tag          *uuid.UUID  `json:"tag"`
+	TestArray1   *[][]string `json:"testArray1"`
+	TestFloat1   *float64    `json:"testFloat1"`
+	TestInteger1 *int        `json:"testInteger1"`
+	Type         *PetType    `json:"type"`
 }
 
 func (*Pet) foobarGetResponse()  {}
@@ -89,3 +95,10 @@ type PetGetDefaultStatusCode struct {
 }
 
 func (*PetGetDefaultStatusCode) petGetResponse() {}
+
+type PetType string
+
+const (
+	PetTypeFifa PetType = "fifa"
+	PetTypeFofa PetType = "fofa"
+)
