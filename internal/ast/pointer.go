@@ -8,10 +8,10 @@ func (p *Pointer) Type() string {
 	return "*" + p.To.Type()
 }
 
-func (p *Pointer) NeedValidation() bool {
+func (p *Pointer) needValidation(visited map[*Schema]struct{}) bool {
 	switch to := p.To.(type) {
 	case *Schema:
-		return to.NeedValidation()
+		return to.needValidation(visited)
 	default:
 		panic("unreachable")
 	}

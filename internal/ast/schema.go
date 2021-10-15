@@ -75,9 +75,20 @@ func (s *Schema) IsFloat() bool {
 func (s *Schema) IsNumeric() bool { return s.IsInteger() || s.IsFloat() }
 
 func (s *Schema) NeedValidation() bool {
+	return s.needValidation(map[*Schema]struct{}{})
+}
+
+func (s *Schema) needValidation(visited map[*Schema]struct{}) (result bool) {
 	if s == nil {
 		return false
 	}
+
+	if _, ok := visited[s]; ok {
+		return false
+	}
+
+	visited[s] = struct{}{}
+
 	switch s.Kind {
 	case KindPrimitive:
 		if s.IsNumeric() && (s.Minimum != nil || s.Maximum != nil || s.MultipleOf != nil) {
@@ -90,7 +101,7 @@ func (s *Schema) NeedValidation() bool {
 	case KindEnum:
 		return true
 	case KindAlias:
-		return s.AliasTo.NeedValidation()
+		return s.AliasTo.needValidation(visited)
 	case KindArray:
 		if s.MinItems != nil || s.MaxItems != nil {
 			return true
@@ -99,16 +110,16 @@ func (s *Schema) NeedValidation() bool {
 		if s.Item == s {
 			return false
 		}
-		return s.Item.NeedValidation()
+		return s.Item.needValidation(visited)
 	case KindStruct:
 		for _, f := range s.Fields {
 			switch f := f.Type.(type) {
 			case *Schema:
-				if f.NeedValidation() {
+				if f.needValidation(visited) {
 					return true
 				}
 			case *Pointer:
-				if f.NeedValidation() {
+				if f.needValidation(visited) {
 					return true
 				}
 			default:
