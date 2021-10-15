@@ -1,0 +1,33 @@
+{{ define "validate_numeric" }}
+{{- /*Variables*/}}
+{{- $schema := index . "schema" }}
+{{- $varname := index . "varname" }}
+{{- if index . "ptr" }}{{ $varname = sprintf "*%s" $varname }}{{ end }}
+{{- $errorPrefix := index . "errorPrefix" }}
+{{- if not $errorPrefix }}{{ $errorPrefix = "" }}{{ end }}
+{{- /*Variables*/}}
+{{- if $schema.Minimum }}{{/*Minimum*/}}
+if {{ $varname }} <{{ if $schema.ExclusiveMinimum }}={{ end }} {{ $schema.Minimum }} {
+    return fmt.Errorf("{{ $errorPrefix }}value must be greater than {{ if not $schema.ExclusiveMinimum }}or equal to {{ end }}{{ $schema.Minimum }}")
+}
+{{- end }}{{/*Minimum*/}}
+
+{{- if $schema.Maximum }}{{/*Maximum*/}}
+if {{ $varname }} >{{ if $schema.ExclusiveMaximum }}={{ end }} {{ $schema.Maximum }} {
+    return fmt.Errorf("{{ $errorPrefix }}value must be less than {{ if not $schema.ExclusiveMaximum }}or equal to {{ end }}{{ $schema.Maximum }}")
+}
+{{- end }}{{/*Maximum*/}}
+
+{{- if $schema.MultipleOf }}{{/*MultipleOf*/}}
+{{- if $schema.IsInteger }}
+if {{ $varname }} % {{ $schema.MultipleOf }} != 0 {
+    return fmt.Errorf("{{ $errorPrefix }}value must be multiple of {{ $schema.MultipleOf }}")
+}
+{{- else if $schema.IsFloat }}
+if math.Mod(float64({{ $varname }}), {{ $schema.MultipleOf }}) != 0 {
+    return fmt.Errorf("{{ $errorPrefix }}value must be multiple of {{ $schema.MultipleOf }}")
+}
+{{- else }}unsupported primitive {{ $schema.Primitive }}
+{{- end }}
+{{- end }}{{/*MultipleOf*/}}
+{{- end }}

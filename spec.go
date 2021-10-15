@@ -226,4 +226,127 @@ type Schema struct {
 	// This array SHOULD have at least one element.
 	// Elements in the array SHOULD be unique.
 	Enum []json.RawMessage `json:"enum"` // TODO: Nullable.
+
+	// The value of "multipleOf" MUST be a number, strictly greater than 0.
+	//
+	// A numeric instance is only valid if division by this keyword's value
+	// results in an integer.
+	MultipleOf *uint64 `json:"multipleOf"`
+
+	// The value of "maximum" MUST be a number, representing an upper limit
+	// for a numeric instance.
+	//
+	// If the instance is a number, then this keyword validates if
+	// "exclusiveMaximum" is true and instance is less than the provided
+	// value, or else if the instance is less than or exactly equal to the
+	// provided value.
+	Maximum *int64 `json:"maximum"`
+
+	// The value of "exclusiveMaximum" MUST be a boolean, representing
+	// whether the limit in "maximum" is exclusive or not.  An undefined
+	// value is the same as false.
+	//
+	// If "exclusiveMaximum" is true, then a numeric instance SHOULD NOT be
+	// equal to the value specified in "maximum".  If "exclusiveMaximum" is
+	// false (or not specified), then a numeric instance MAY be equal to the
+	// value of "maximum".
+	ExclusiveMaximum bool `json:"exclusiveMaximum"`
+
+	// The value of "minimum" MUST be a number, representing a lower limit
+	// for a numeric instance.
+	//
+	// If the instance is a number, then this keyword validates if
+	// "exclusiveMinimum" is true and instance is greater than the provided
+	// value, or else if the instance is greater than or exactly equal to
+	// the provided value.
+	Minimum *int64 `json:"minimum"`
+
+	// The value of "exclusiveMinimum" MUST be a boolean, representing
+	// whether the limit in "minimum" is exclusive or not.  An undefined
+	// value is the same as false.
+	//
+	// If "exclusiveMinimum" is true, then a numeric instance SHOULD NOT be
+	// equal to the value specified in "minimum".  If "exclusiveMinimum" is
+	// false (or not specified), then a numeric instance MAY be equal to the
+	// value of "minimum".
+	ExclusiveMinimum bool `json:"exclusiveMinimum"`
+
+	// The value of this keyword MUST be a non-negative integer.
+	//
+	// The value of this keyword MUST be an integer.  This integer MUST be
+	// greater than, or equal to, 0.
+	//
+	// A string instance is valid against this keyword if its length is less
+	// than, or equal to, the value of this keyword.
+	//
+	// The length of a string instance is defined as the number of its
+	// characters as defined by RFC 7159 [RFC7159].
+	MaxLength *uint64 `json:"maxLength"`
+
+	// A string instance is valid against this keyword if its length is
+	// greater than, or equal to, the value of this keyword.
+	//
+	// The length of a string instance is defined as the number of its
+	// characters as defined by RFC 7159 [RFC7159].
+	//
+	// The value of this keyword MUST be an integer.  This integer MUST be
+	// greater than, or equal to, 0.
+	//
+	// "minLength", if absent, may be considered as being present with
+	// integer value 0.
+	MinLength *int64 `json:"minLength"`
+
+	// The value of this keyword MUST be a string.  This string SHOULD be a
+	// valid regular expression, according to the ECMA 262 regular
+	// expression dialect.
+	//
+	// A string instance is considered valid if the regular expression
+	// matches the instance successfully.  Recall: regular expressions are
+	// not implicitly anchored.
+	// TODO: implement.
+	Pattern string `json:"pattern"`
+
+	// The value of this keyword MUST be an integer.  This integer MUST be
+	// greater than, or equal to, 0.
+	//
+	// An array instance is valid against "maxItems" if its size is less
+	// than, or equal to, the value of this keyword.
+	MaxItems *uint64 `json:"maxItems"`
+
+	// The value of this keyword MUST be an integer.  This integer MUST be
+	// greater than, or equal to, 0.
+	//
+	// An array instance is valid against "minItems" if its size is greater
+	// than, or equal to, the value of this keyword.
+	//
+	// If this keyword is not present, it may be considered present with a
+	// value of 0.
+	MinItems *uint64 `json:"minItems"`
+
+	// The value of this keyword MUST be a boolean.
+	//
+	// If this keyword has boolean value false, the instance validates
+	// successfully.  If it has boolean value true, the instance validates
+	// successfully if all of its elements are unique.
+	//
+	// If not present, this keyword may be considered present with boolean
+	// value false.
+	UniqueItems bool `json:"uniqueItems"`
+
+	// The value of this keyword MUST be an integer.  This integer MUST be
+	// greater than, or equal to, 0.
+	//
+	// An object instance is valid against "maxProperties" if its number of
+	// properties is less than, or equal to, the value of this keyword.
+	MaxProperties *uint64 `json:"maxProperties"`
+
+	// The value of this keyword MUST be an integer.  This integer MUST be
+	// greater than, or equal to, 0.
+	//
+	// An object instance is valid against "minProperties" if its number of
+	// properties is greater than, or equal to, the value of this keyword.
+	//
+	// If this keyword is not present, it may be considered present with a
+	// value of 0.
+	MinProperties *uint64 `json:"minProperties"`
 }

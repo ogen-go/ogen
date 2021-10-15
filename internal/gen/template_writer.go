@@ -95,6 +95,9 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 			return err
 		}
 	}
+	if err := w.Generate("validators", "openapi_validators_gen.go", cfg); err != nil {
+		return err
+	}
 	if err := w.Generate("server", "openapi_server_gen.go", cfg); err != nil {
 		return err
 	}

@@ -1,0 +1,34 @@
+{{ define "validators" }}
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+{{- range $s := $.Schemas }}{{/*Range schemas*/}}
+{{- if $s.NeedValidation }}{{/*Need validation*/}}
+{{- if eq $s.Kind "struct" }}{{/*If struct*/}}
+func (s *{{ $s.Name }}) validate() error {
+    {{- range $f := $s.Fields }}{{/*Range fields*/}}
+
+    {{- $schema := $f.Schema }}
+    {{- if $schema.NeedValidation }}
+        // Validate '{{ $f.Name }}' field.
+        {{- if $f.IsPtr }}
+            if s.{{ $f.Name }} != nil {
+        {{- end }}
+        {{- template "validate_schema" dict
+            "schema" $schema
+            "varname" (sprintf "s.%s" $f.Name)
+            "ptr" $f.IsPtr
+            "errorPrefix" (sprintf "field '%s': " $f.Name)
+        }}
+        {{- if $f.IsPtr }}
+            }
+        {{- end }}
+    {{ end }}
+
+    {{- end }}{{/*Range fields*/}}
+    return nil
+}
+{{- end }}{{/*If struct*/}}
+{{- end }}{{/*Need validation*/}}
+{{- end }}{{/*Range schemas*/}}
+{{ end }}

@@ -29,6 +29,19 @@ func decode{{ $m.Name }}Request(r *http.Request) (_ {{ $m.RequestType.Type }}, r
             return
         }
 
+        {{- if $schema.NeedValidation }}
+        if err := func() error {
+            {{- template "validate_schema" dict
+                "schema" $schema
+                "varname" "request"
+            }}
+            return nil
+        }(); err != nil {
+            rerr = err
+            return
+        }
+        {{- end }}
+
         return {{ if or (not $m.RequestBody.Required) ($m.IsRequestIface) }}&{{ end }}request, nil
         {{- /* Decode json */ -}}
         {{- else }}

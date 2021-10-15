@@ -224,6 +224,7 @@ func (g *Generator) wrapStatusCode(schema *ast.Schema) *ast.Schema {
 			Name: "StatusCode",
 			Type: ast.Primitive("int"),
 			Tag:  "-",
+			
 		},
 		{
 			Name: "Response",

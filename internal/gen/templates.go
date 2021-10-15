@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"strings"
 	"text/template"
+
+	"golang.org/x/xerrors"
 )
 
 // templateFuncs returns functions which used in templates.
@@ -30,6 +32,21 @@ func templateFuncs() template.FuncMap {
 				panic(fmt.Sprintf("unexpected type: %T", v))
 			}
 		},
+		"dict": func(values ...interface{}) (map[string]interface{}, error) {
+			if len(values)%2 != 0 {
+				return nil, xerrors.New("invalid dict call")
+			}
+			dict := make(map[string]interface{}, len(values)/2)
+			for i := 0; i < len(values); i += 2 {
+				key, ok := values[i].(string)
+				if !ok {
+					return nil, xerrors.New("dict keys must be strings")
+				}
+				dict[key] = values[i+1]
+			}
+			return dict, nil
+		},
+		"sprintf": fmt.Sprintf,
 	}
 }
 

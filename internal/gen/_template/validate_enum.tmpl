@@ -1,0 +1,21 @@
+{{ define "validate_enum" }}
+{{- /*Variables*/}}
+{{- $schema := index . "schema" }}
+{{- $varname := index . "varname" }}
+{{- if index . "ptr" }}{{ $varname = sprintf "*%s" $varname }}{{ end }}
+{{- $errorPrefix := index . "errorPrefix" }}
+{{- if not $errorPrefix }}{{ $errorPrefix = "" }}{{ end }}
+{{- /*Variables*/}}
+
+{{- if eq $schema.Kind "enum" }}
+switch {{ $varname }} {
+{{- range $value := $schema.EnumValues }}
+{{- $str := sprintf "%v" $value }}
+{{- if eq $schema.Primitive "string"}}{{ $str = sprintf "\"%s\"" $str }}{{ end }}
+case {{ $str }}:
+{{- end }}
+default:
+    return fmt.Errorf("{{ $errorPrefix }}invalid enum value: %v", {{ $varname }})
+}
+{{- end }}
+{{- end }}
