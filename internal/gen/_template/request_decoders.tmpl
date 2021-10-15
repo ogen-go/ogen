@@ -31,7 +31,7 @@ func decode{{ $m.Name }}Request(r *http.Request) (_ {{ $m.RequestType.Type }}, r
 
         {{- if $schema.NeedValidation }}
         if err := func() error {
-            {{ template "validate_schema" dict
+            {{- template "validate_schema" dict
                 "schema" $schema
                 "varname" "request"
             }}

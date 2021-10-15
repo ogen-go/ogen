@@ -18,8 +18,8 @@
     {{- else if eq $schema.Kind "alias" }}
         {{- template "validate_schema" dict
             "schema" $schema.AliasTo
-            "varname" . index "varname"
-            "errorPrefix" . index "errorPrefix"
+            "varname" (index . "varname")
+            "errorPrefix" (index . "errorPrefix")
         }}
     {{- else }}
         unsupported schema kind: {{ $schema.Kind }}
