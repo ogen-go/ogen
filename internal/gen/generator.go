@@ -23,7 +23,6 @@ type Options struct {
 	SpecificMethodPath      string
 	IgnoreUnspecifiedParams bool
 	IgnoreUnsupportedParams bool
-	IgnoreEnums             bool
 	IgnoreOneOf             bool
 	IgnoreAnyOf             bool
 	IgnoreAllOf             bool

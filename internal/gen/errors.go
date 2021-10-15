@@ -7,7 +7,6 @@ import (
 )
 
 var (
-	ErrEnumsNotImplemented  = xerrors.New("enums not implemented")
 	ErrOneOfNotImplemented  = xerrors.New("oneOf not implemented")
 	ErrAnyOfNotImplemented  = xerrors.New("anyOf not implemented")
 	ErrAllOfNotImplemented  = xerrors.New("allOf not implemented")
@@ -23,11 +22,6 @@ func (p PathParameterNotSpecified) Error() string {
 }
 
 func (g *Generator) checkErr(err error) error {
-	if xerrors.Is(err, ErrEnumsNotImplemented) {
-		if g.opt.IgnoreEnums {
-			return nil
-		}
-	}
 	if xerrors.Is(err, ErrOneOfNotImplemented) {
 		if g.opt.IgnoreOneOf {
 			return nil
