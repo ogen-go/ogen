@@ -13,12 +13,12 @@ var (
 	ErrUnsupportedParameter = xerrors.New("parameter type not supported")
 )
 
-type PathParameterNotSpecified struct {
+type ErrPathParameterNotSpecified struct {
 	ParamName string
 }
 
-func (p PathParameterNotSpecified) Error() string {
-	return fmt.Sprintf("path parameter '%s' not found in parameters", p.ParamName)
+func (e ErrPathParameterNotSpecified) Error() string {
+	return fmt.Sprintf("path parameter '%s' not found in parameters", e.ParamName)
 }
 
 func (g *Generator) checkErr(err error) error {
@@ -43,7 +43,7 @@ func (g *Generator) checkErr(err error) error {
 		}
 	}
 	{
-		var paramErr *PathParameterNotSpecified
+		var paramErr *ErrPathParameterNotSpecified
 		if xerrors.As(err, &paramErr) {
 			if g.opt.IgnoreUnspecifiedParams {
 				return nil

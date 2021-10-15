@@ -62,7 +62,7 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 		return xerrors.Errorf("parameters: %w", err)
 	}
 
-	m.PathParts, err = g.parsePath(path, m.PathParams())
+	m.PathParts, err = parsePath(path, m.PathParams())
 	if err != nil {
 		return xerrors.Errorf("parse path: %w", err)
 	}
@@ -111,73 +111,4 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 
 	g.methods = append(g.methods, m)
 	return nil
-}
-
-func (g *Generator) parsePath(path string, params []*ast.Parameter) (parts []ast.PathPart, err error) {
-	lookup := func(name string) (*ast.Parameter, bool) {
-		for _, p := range params {
-			if p.SourceName == name {
-				return p, true
-			}
-		}
-		return nil, false
-	}
-
-	var (
-		part     []rune
-		param    bool
-		pushPart = func() error {
-			if len(part) == 0 {
-				return nil
-			}
-			defer func() { part = nil }()
-
-			if param {
-				p, found := lookup(string(part))
-				if !found {
-					return &PathParameterNotSpecified{
-						ParamName: string(part),
-					}
-				}
-				parts = append(parts, ast.PathPart{Param: p})
-				return nil
-			}
-
-			parts = append(parts, ast.PathPart{Raw: string(part)})
-			return nil
-		}
-	)
-
-	for _, r := range path {
-		switch r {
-		case '/':
-			if param {
-				return nil, xerrors.Errorf("invalid path: %s", path)
-			}
-			part = append(part, r)
-		case '{':
-			if param {
-				return nil, xerrors.Errorf("invalid path: %s", path)
-			}
-			if err := pushPart(); err != nil {
-				return nil, err
-			}
-			param = true
-		case '}':
-			if !param {
-				return nil, xerrors.Errorf("invalid path: %s", path)
-			}
-			if err := pushPart(); err != nil {
-				return nil, err
-			}
-			param = false
-		default:
-			part = append(part, r)
-		}
-	}
-
-	if err := pushPart(); err != nil {
-		return nil, err
-	}
-	return
 }
