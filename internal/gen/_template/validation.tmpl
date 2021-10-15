@@ -11,14 +11,13 @@ func (s *{{ $s.Name }}) validate() error {
     {{- $schema := $f.Schema }}
     {{- if $schema.NeedValidation }}
         // Validate '{{ $f.Name }}' field.
-        {{- $varname := sprintf "s.%s" $f.Name }}
         {{- if $f.IsPtr }}
-            {{- $varname = sprintf "*%s" $varname }}
             if s.{{ $f.Name }} != nil {
         {{- end }}
         {{- template "validate_schema" dict
             "schema" $schema
-            "varname" $varname
+            "varname" (sprintf "s.%s" $f.Name)
+            "ptr" $f.IsPtr
             "errorPrefix" (sprintf "field '%s': " $f.Name)
         }}
         {{- if $f.IsPtr }}

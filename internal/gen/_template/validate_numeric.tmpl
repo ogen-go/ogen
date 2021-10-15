@@ -2,6 +2,7 @@
 {{- /*Variables*/}}
 {{- $schema := index . "schema" }}
 {{- $varname := index . "varname" }}
+{{- if index . "ptr" }}{{ $varname = sprintf "*%s" $varname }}{{ end }}
 {{- $errorPrefix := index . "errorPrefix" }}
 {{- if not $errorPrefix }}{{ $errorPrefix = "" }}{{ end }}
 {{- /*Variables*/}}
