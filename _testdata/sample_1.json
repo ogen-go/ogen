@@ -276,6 +276,22 @@
                 "maxLength": 255
               }
             }
+          },
+          "testDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "testDuration": {
+            "type": "string",
+            "format": "duration"
+          },
+          "testTime": {
+            "type": "string",
+            "format": "time"
+          },
+          "testDateTime": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "required": [
