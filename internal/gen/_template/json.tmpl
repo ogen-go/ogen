@@ -138,12 +138,14 @@ func (s {{ $s.Name }}) WriteJSON(js *jsoniter.Stream) {
         {{- if ne $f.Type.JSONWrite "" }}
             js.{{ $f.Type.JSONWrite }}(s.{{ $f.Name }})
         {{- else }}
-        // Unsupported primitive "{{ $f.Type.Primitive  }}" for field "{{ $f.Name }}".
+            // Unsupported primitive "{{ $f.Type.Primitive  }}" for field "{{ $f.Name }}".
+            js.WriteNil()
         {{- end }}
     {{- else if eq $f.Type.Kind "struct" }}
         s.{{ $f.Name }}.WriteJSON("{{ $f.Tag }}", js)
     {{- else }}
         // Unsupported kind "{{ $f.Type.Kind  }}" for field "{{ $f.Name }}".
+        js.WriteNil()
     {{- end }}
     {{- end }}
     {{- end }}{{/*Range fields*/}}

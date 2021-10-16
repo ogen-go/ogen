@@ -1500,22 +1500,29 @@ func (s Pet) WriteJSON(js *jsoniter.Stream) {
 	_ = fw
 	fw.Write(js, "birthday")
 	// Unsupported primitive "types.Date" for field "Birthday".
+	js.WriteNil()
 	fw.Write(js, "friends")
 	// Unsupported kind "pointer" for field "Friends".
+	js.WriteNil()
 	fw.Write(js, "id")
 	js.WriteInt64(s.ID)
 	fw.Write(js, "name")
 	js.WriteString(s.Name)
 	fw.Write(js, "tag")
 	// Unsupported kind "pointer" for field "Tag".
+	js.WriteNil()
 	fw.Write(js, "testArray1")
 	// Unsupported kind "pointer" for field "TestArray1".
+	js.WriteNil()
 	fw.Write(js, "testDate")
 	// Unsupported kind "pointer" for field "TestDate".
+	js.WriteNil()
 	fw.Write(js, "testDateTime")
 	// Unsupported kind "pointer" for field "TestDateTime".
+	js.WriteNil()
 	fw.Write(js, "testDuration")
 	// Unsupported kind "pointer" for field "TestDuration".
+	js.WriteNil()
 	fw.Write(js, "testFloat1")
 	if s.TestFloat1.Set {
 		s.TestFloat1.WriteJSON(js)
@@ -1526,8 +1533,10 @@ func (s Pet) WriteJSON(js *jsoniter.Stream) {
 	}
 	fw.Write(js, "testTime")
 	// Unsupported kind "pointer" for field "TestTime".
+	js.WriteNil()
 	fw.Write(js, "type")
 	// Unsupported kind "pointer" for field "Type".
+	js.WriteNil()
 	js.WriteObjectEnd()
 }
 
