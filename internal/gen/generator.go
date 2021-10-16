@@ -56,6 +56,9 @@ func (g *Generator) generatePrimitives() {
 		{Primitive: "int", JSON: "Int"},
 		{Primitive: "int32", JSON: "Int32"},
 		{Primitive: "int64", JSON: "Int64"},
+		{Primitive: "float32", JSON: "Float32"},
+		{Primitive: "float64", JSON: "Float64"},
+		{Primitive: "bool", JSON: "Bool"},
 	} {
 		for _, v := range []struct {
 			Optional bool

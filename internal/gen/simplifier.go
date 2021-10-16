@@ -15,6 +15,7 @@ func (g *Generator) simplify() {
 	}
 
 	g.removeUnusedIfaces()
+	// TODO(ernado): Remove unused generics
 }
 
 // devirtSingleRequest removes interface in case
