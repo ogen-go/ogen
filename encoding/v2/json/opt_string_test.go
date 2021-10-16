@@ -17,7 +17,10 @@ type Helper struct {
 
 func writeSimpleObject(s *json.Stream, v Marshaler) error {
 	s.WriteObjectStart()
-	v.WriteFieldJSON("key", s)
+	if st, ok := v.(Settable); ok && st.IsSet() {
+		s.WriteObjectField("key")
+		v.WriteJSON(s)
+	}
 	s.WriteObjectEnd()
 	return s.Error
 }
