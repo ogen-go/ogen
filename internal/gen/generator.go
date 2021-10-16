@@ -11,7 +11,7 @@ type Generator struct {
 	opt           Options
 	spec          *ogen.Spec
 	methods       []*ast.Method
-	generics      []*ast.Generic
+	generics      []*ast.Schema
 	schemas       map[string]*ast.Schema
 	schemaRefs    map[string]*ast.Schema
 	requestBodies map[string]*ast.RequestBody
@@ -51,14 +51,15 @@ func (g *Generator) generatePrimitives() {
 	for _, t := range []struct {
 		Primitive string
 		JSON      string
+		ValueType string
 	}{
-		{Primitive: "string", JSON: "String"},
-		{Primitive: "int", JSON: "Int"},
-		{Primitive: "int32", JSON: "Int32"},
-		{Primitive: "int64", JSON: "Int64"},
-		{Primitive: "float32", JSON: "Float32"},
-		{Primitive: "float64", JSON: "Float64"},
-		{Primitive: "bool", JSON: "Bool"},
+		{Primitive: "string", JSON: "String", ValueType: "StringValue"},
+		{Primitive: "int", JSON: "Int", ValueType: "NumberValue"},
+		{Primitive: "int32", JSON: "Int32", ValueType: "NumberValue"},
+		{Primitive: "int64", JSON: "Int64", ValueType: "NumberValue"},
+		{Primitive: "float32", JSON: "Float32", ValueType: "NumberValue"},
+		{Primitive: "float64", JSON: "Float64", ValueType: "NumberValue"},
+		{Primitive: "bool", JSON: "Bool", ValueType: "BoolValue"},
 	} {
 		for _, v := range []struct {
 			Optional bool
@@ -68,17 +69,16 @@ func (g *Generator) generatePrimitives() {
 			{Optional: false, Nil: true},
 			{Optional: true, Nil: true},
 		} {
-			gt := &ast.Generic{
+			gt := &ast.Schema{
 				Optional: v.Optional,
 				Nil:      v.Nil,
 
-				Schema: ast.Schema{
-					Kind:      ast.KindPrimitive,
-					Primitive: t.Primitive,
-					JSON: &ast.JSON{
-						Read:  "Read" + t.JSON,
-						Write: "Write" + t.JSON,
-					},
+				Kind:      ast.KindPrimitive,
+				Primitive: t.Primitive,
+				JSON: &ast.JSON{
+					Read:      "Read" + t.JSON,
+					Write:     "Write" + t.JSON,
+					ValueType: t.ValueType,
 				},
 			}
 			gt.Name = gt.GenericKind() + pascal(t.Primitive)

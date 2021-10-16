@@ -14,7 +14,7 @@ type TemplateConfig struct {
 	Methods    []*ast.Method
 	Schemas    map[string]*ast.Schema
 	Interfaces map[string]*ast.Interface
-	Generics   []*ast.Generic
+	Generics   []*ast.Schema
 }
 
 // FileSystem represents a directory of generated package.

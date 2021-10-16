@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"sort"
+	"strings"
 
 	"golang.org/x/xerrors"
 )
@@ -20,8 +21,9 @@ const (
 )
 
 type JSON struct {
-	Write string
-	Read  string
+	Write     string
+	Read      string
+	ValueType string
 }
 
 type Schema struct {
@@ -60,7 +62,21 @@ type Schema struct {
 	// MaxProperties *uint64
 	// MinProperties *uint64
 
+	Optional bool
+	Nil      bool
+
 	JSON *JSON
+}
+
+func (s Schema) GenericKind() string {
+	var b strings.Builder
+	if s.Optional {
+		b.WriteString("Optional")
+	}
+	if s.Nil {
+		b.WriteString("Nil")
+	}
+	return b.String()
 }
 
 func (s *Schema) IsInteger() bool {

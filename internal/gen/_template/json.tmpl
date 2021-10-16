@@ -83,6 +83,36 @@ func (o {{ $s.Name }}) WriteJSON(js *jsoniter.Stream) {
 {{- end }}
     js.{{ $s.JSON.Write }}(o.Value)
 }
+
+// ReadJSON writes json value of {{ $s.Primitive }} from json iterator.
+func (o *{{ $s.Name }}) ReadJSON(i *jsoniter.Iterator) error {
+    switch i.WhatIsNext() {
+    case jsoniter.{{ $s.JSON.ValueType }}:
+        {{- if $s.Optional }}
+        o.Set = true
+        {{- end }}
+        {{- if $s.Nil }}
+        o.Nil = false
+        {{- end }}
+        o.Value = i.{{ $s.JSON.Read }}()
+        return i.Error
+{{- if $s.Nil }}
+    case jsoniter.NilValue:
+        var v {{ $s.Primitive }}
+        o.Value = v
+        {{- if $s.Optional }}
+        o.Set = true
+        {{- end }}
+        o.Nil = true
+        i.Skip()
+        return i.Error
+{{- end }}
+    default:
+        return fmt.Errorf("unexpected type %d while reading {{ $s.Name }}", i.WhatIsNext())
+    }
+    return nil
+}
+
 {{- end }}
 
 {{- range $s := $.Schemas }}{{/*Range schemas*/}}

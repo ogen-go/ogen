@@ -89,6 +89,19 @@ func (o OptionalString) WriteJSON(js *jsoniter.Stream) {
 	js.WriteString(o.Value)
 }
 
+// ReadJSON writes json value of string from json iterator.
+func (o *OptionalString) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.StringValue:
+		o.Set = true
+		o.Value = i.ReadString()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalString", i.WhatIsNext())
+	}
+	return nil
+}
+
 // New returns new NilString with value set to v.
 func NewNilString(v string) NilString {
 	return NilString{
@@ -126,6 +139,25 @@ func (o NilString) WriteJSON(js *jsoniter.Stream) {
 		return
 	}
 	js.WriteString(o.Value)
+}
+
+// ReadJSON writes json value of string from json iterator.
+func (o *NilString) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.StringValue:
+		o.Nil = false
+		o.Value = i.ReadString()
+		return i.Error
+	case jsoniter.NilValue:
+		var v string
+		o.Value = v
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilString", i.WhatIsNext())
+	}
+	return nil
 }
 
 // New returns new OptionalNilString with value set to v.
@@ -184,6 +216,27 @@ func (o OptionalNilString) WriteJSON(js *jsoniter.Stream) {
 	js.WriteString(o.Value)
 }
 
+// ReadJSON writes json value of string from json iterator.
+func (o *OptionalNilString) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.StringValue:
+		o.Set = true
+		o.Nil = false
+		o.Value = i.ReadString()
+		return i.Error
+	case jsoniter.NilValue:
+		var v string
+		o.Value = v
+		o.Set = true
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilString", i.WhatIsNext())
+	}
+	return nil
+}
+
 // New returns new OptionalInt with value set to v.
 func NewOptionalInt(v int) OptionalInt {
 	return OptionalInt{
@@ -227,6 +280,19 @@ func (o OptionalInt) WriteJSON(js *jsoniter.Stream) {
 	js.WriteInt(o.Value)
 }
 
+// ReadJSON writes json value of int from json iterator.
+func (o *OptionalInt) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.NumberValue:
+		o.Set = true
+		o.Value = i.ReadInt()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalInt", i.WhatIsNext())
+	}
+	return nil
+}
+
 // New returns new NilInt with value set to v.
 func NewNilInt(v int) NilInt {
 	return NilInt{
@@ -264,6 +330,25 @@ func (o NilInt) WriteJSON(js *jsoniter.Stream) {
 		return
 	}
 	js.WriteInt(o.Value)
+}
+
+// ReadJSON writes json value of int from json iterator.
+func (o *NilInt) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.NumberValue:
+		o.Nil = false
+		o.Value = i.ReadInt()
+		return i.Error
+	case jsoniter.NilValue:
+		var v int
+		o.Value = v
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilInt", i.WhatIsNext())
+	}
+	return nil
 }
 
 // New returns new OptionalNilInt with value set to v.
@@ -322,6 +407,27 @@ func (o OptionalNilInt) WriteJSON(js *jsoniter.Stream) {
 	js.WriteInt(o.Value)
 }
 
+// ReadJSON writes json value of int from json iterator.
+func (o *OptionalNilInt) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.NumberValue:
+		o.Set = true
+		o.Nil = false
+		o.Value = i.ReadInt()
+		return i.Error
+	case jsoniter.NilValue:
+		var v int
+		o.Value = v
+		o.Set = true
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilInt", i.WhatIsNext())
+	}
+	return nil
+}
+
 // New returns new OptionalInt32 with value set to v.
 func NewOptionalInt32(v int32) OptionalInt32 {
 	return OptionalInt32{
@@ -365,6 +471,19 @@ func (o OptionalInt32) WriteJSON(js *jsoniter.Stream) {
 	js.WriteInt32(o.Value)
 }
 
+// ReadJSON writes json value of int32 from json iterator.
+func (o *OptionalInt32) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.NumberValue:
+		o.Set = true
+		o.Value = i.ReadInt32()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalInt32", i.WhatIsNext())
+	}
+	return nil
+}
+
 // New returns new NilInt32 with value set to v.
 func NewNilInt32(v int32) NilInt32 {
 	return NilInt32{
@@ -402,6 +521,25 @@ func (o NilInt32) WriteJSON(js *jsoniter.Stream) {
 		return
 	}
 	js.WriteInt32(o.Value)
+}
+
+// ReadJSON writes json value of int32 from json iterator.
+func (o *NilInt32) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.NumberValue:
+		o.Nil = false
+		o.Value = i.ReadInt32()
+		return i.Error
+	case jsoniter.NilValue:
+		var v int32
+		o.Value = v
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilInt32", i.WhatIsNext())
+	}
+	return nil
 }
 
 // New returns new OptionalNilInt32 with value set to v.
@@ -460,6 +598,27 @@ func (o OptionalNilInt32) WriteJSON(js *jsoniter.Stream) {
 	js.WriteInt32(o.Value)
 }
 
+// ReadJSON writes json value of int32 from json iterator.
+func (o *OptionalNilInt32) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.NumberValue:
+		o.Set = true
+		o.Nil = false
+		o.Value = i.ReadInt32()
+		return i.Error
+	case jsoniter.NilValue:
+		var v int32
+		o.Value = v
+		o.Set = true
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilInt32", i.WhatIsNext())
+	}
+	return nil
+}
+
 // New returns new OptionalInt64 with value set to v.
 func NewOptionalInt64(v int64) OptionalInt64 {
 	return OptionalInt64{
@@ -503,6 +662,19 @@ func (o OptionalInt64) WriteJSON(js *jsoniter.Stream) {
 	js.WriteInt64(o.Value)
 }
 
+// ReadJSON writes json value of int64 from json iterator.
+func (o *OptionalInt64) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.NumberValue:
+		o.Set = true
+		o.Value = i.ReadInt64()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalInt64", i.WhatIsNext())
+	}
+	return nil
+}
+
 // New returns new NilInt64 with value set to v.
 func NewNilInt64(v int64) NilInt64 {
 	return NilInt64{
@@ -540,6 +712,25 @@ func (o NilInt64) WriteJSON(js *jsoniter.Stream) {
 		return
 	}
 	js.WriteInt64(o.Value)
+}
+
+// ReadJSON writes json value of int64 from json iterator.
+func (o *NilInt64) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.NumberValue:
+		o.Nil = false
+		o.Value = i.ReadInt64()
+		return i.Error
+	case jsoniter.NilValue:
+		var v int64
+		o.Value = v
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilInt64", i.WhatIsNext())
+	}
+	return nil
 }
 
 // New returns new OptionalNilInt64 with value set to v.
@@ -598,6 +789,27 @@ func (o OptionalNilInt64) WriteJSON(js *jsoniter.Stream) {
 	js.WriteInt64(o.Value)
 }
 
+// ReadJSON writes json value of int64 from json iterator.
+func (o *OptionalNilInt64) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.NumberValue:
+		o.Set = true
+		o.Nil = false
+		o.Value = i.ReadInt64()
+		return i.Error
+	case jsoniter.NilValue:
+		var v int64
+		o.Value = v
+		o.Set = true
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilInt64", i.WhatIsNext())
+	}
+	return nil
+}
+
 // New returns new OptionalFloat32 with value set to v.
 func NewOptionalFloat32(v float32) OptionalFloat32 {
 	return OptionalFloat32{
@@ -641,6 +853,19 @@ func (o OptionalFloat32) WriteJSON(js *jsoniter.Stream) {
 	js.WriteFloat32(o.Value)
 }
 
+// ReadJSON writes json value of float32 from json iterator.
+func (o *OptionalFloat32) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.NumberValue:
+		o.Set = true
+		o.Value = i.ReadFloat32()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalFloat32", i.WhatIsNext())
+	}
+	return nil
+}
+
 // New returns new NilFloat32 with value set to v.
 func NewNilFloat32(v float32) NilFloat32 {
 	return NilFloat32{
@@ -678,6 +903,25 @@ func (o NilFloat32) WriteJSON(js *jsoniter.Stream) {
 		return
 	}
 	js.WriteFloat32(o.Value)
+}
+
+// ReadJSON writes json value of float32 from json iterator.
+func (o *NilFloat32) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.NumberValue:
+		o.Nil = false
+		o.Value = i.ReadFloat32()
+		return i.Error
+	case jsoniter.NilValue:
+		var v float32
+		o.Value = v
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilFloat32", i.WhatIsNext())
+	}
+	return nil
 }
 
 // New returns new OptionalNilFloat32 with value set to v.
@@ -736,6 +980,27 @@ func (o OptionalNilFloat32) WriteJSON(js *jsoniter.Stream) {
 	js.WriteFloat32(o.Value)
 }
 
+// ReadJSON writes json value of float32 from json iterator.
+func (o *OptionalNilFloat32) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.NumberValue:
+		o.Set = true
+		o.Nil = false
+		o.Value = i.ReadFloat32()
+		return i.Error
+	case jsoniter.NilValue:
+		var v float32
+		o.Value = v
+		o.Set = true
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilFloat32", i.WhatIsNext())
+	}
+	return nil
+}
+
 // New returns new OptionalFloat64 with value set to v.
 func NewOptionalFloat64(v float64) OptionalFloat64 {
 	return OptionalFloat64{
@@ -779,6 +1044,19 @@ func (o OptionalFloat64) WriteJSON(js *jsoniter.Stream) {
 	js.WriteFloat64(o.Value)
 }
 
+// ReadJSON writes json value of float64 from json iterator.
+func (o *OptionalFloat64) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.NumberValue:
+		o.Set = true
+		o.Value = i.ReadFloat64()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalFloat64", i.WhatIsNext())
+	}
+	return nil
+}
+
 // New returns new NilFloat64 with value set to v.
 func NewNilFloat64(v float64) NilFloat64 {
 	return NilFloat64{
@@ -816,6 +1094,25 @@ func (o NilFloat64) WriteJSON(js *jsoniter.Stream) {
 		return
 	}
 	js.WriteFloat64(o.Value)
+}
+
+// ReadJSON writes json value of float64 from json iterator.
+func (o *NilFloat64) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.NumberValue:
+		o.Nil = false
+		o.Value = i.ReadFloat64()
+		return i.Error
+	case jsoniter.NilValue:
+		var v float64
+		o.Value = v
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilFloat64", i.WhatIsNext())
+	}
+	return nil
 }
 
 // New returns new OptionalNilFloat64 with value set to v.
@@ -874,6 +1171,27 @@ func (o OptionalNilFloat64) WriteJSON(js *jsoniter.Stream) {
 	js.WriteFloat64(o.Value)
 }
 
+// ReadJSON writes json value of float64 from json iterator.
+func (o *OptionalNilFloat64) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.NumberValue:
+		o.Set = true
+		o.Nil = false
+		o.Value = i.ReadFloat64()
+		return i.Error
+	case jsoniter.NilValue:
+		var v float64
+		o.Value = v
+		o.Set = true
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilFloat64", i.WhatIsNext())
+	}
+	return nil
+}
+
 // New returns new OptionalBool with value set to v.
 func NewOptionalBool(v bool) OptionalBool {
 	return OptionalBool{
@@ -917,6 +1235,19 @@ func (o OptionalBool) WriteJSON(js *jsoniter.Stream) {
 	js.WriteBool(o.Value)
 }
 
+// ReadJSON writes json value of bool from json iterator.
+func (o *OptionalBool) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.BoolValue:
+		o.Set = true
+		o.Value = i.ReadBool()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalBool", i.WhatIsNext())
+	}
+	return nil
+}
+
 // New returns new NilBool with value set to v.
 func NewNilBool(v bool) NilBool {
 	return NilBool{
@@ -954,6 +1285,25 @@ func (o NilBool) WriteJSON(js *jsoniter.Stream) {
 		return
 	}
 	js.WriteBool(o.Value)
+}
+
+// ReadJSON writes json value of bool from json iterator.
+func (o *NilBool) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.BoolValue:
+		o.Nil = false
+		o.Value = i.ReadBool()
+		return i.Error
+	case jsoniter.NilValue:
+		var v bool
+		o.Value = v
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilBool", i.WhatIsNext())
+	}
+	return nil
 }
 
 // New returns new OptionalNilBool with value set to v.
@@ -1010,6 +1360,27 @@ func (o OptionalNilBool) WriteJSON(js *jsoniter.Stream) {
 		return
 	}
 	js.WriteBool(o.Value)
+}
+
+// ReadJSON writes json value of bool from json iterator.
+func (o *OptionalNilBool) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.BoolValue:
+		o.Set = true
+		o.Nil = false
+		o.Value = i.ReadBool()
+		return i.Error
+	case jsoniter.NilValue:
+		var v bool
+		o.Value = v
+		o.Set = true
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilBool", i.WhatIsNext())
+	}
+	return nil
 }
 
 func (s HelloWorld) WriteJSON(js *jsoniter.Stream) {
