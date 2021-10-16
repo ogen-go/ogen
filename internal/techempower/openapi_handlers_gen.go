@@ -46,13 +46,13 @@ func NewCachingHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeCachingParams(r)
 		if err != nil {
-			respondError(w, err)
+			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
 		response, err := s.Caching(r.Context(), params)
 		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
+			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
@@ -68,7 +68,7 @@ func NewDBHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 
 		response, err := s.DB(r.Context())
 		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
+			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
@@ -84,7 +84,7 @@ func NewJSONHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 
 		response, err := s.JSON(r.Context())
 		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
+			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
@@ -99,13 +99,13 @@ func NewQueriesHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeQueriesParams(r)
 		if err != nil {
-			respondError(w, err)
+			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
 		response, err := s.Queries(r.Context(), params)
 		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
+			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
@@ -120,13 +120,13 @@ func NewUpdatesHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params, err := decodeUpdatesParams(r)
 		if err != nil {
-			respondError(w, err)
+			respondError(w, http.StatusBadRequest, err)
 			return
 		}
 
 		response, err := s.Updates(r.Context(), params)
 		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
+			respondError(w, http.StatusInternalServerError, err)
 			return
 		}
 
@@ -137,9 +137,9 @@ func NewUpdatesHandler(s Server) func(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func respondError(w http.ResponseWriter, err error) {
+func respondError(w http.ResponseWriter, code int, err error) {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusBadRequest)
+	w.WriteHeader(code)
 	data, writeErr := json.Marshal(struct {
 		ErrorMessage string `json:"error_message"`
 	}{

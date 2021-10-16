@@ -10,7 +10,7 @@ func New{{ $m.Name }}Handler(s Server) func(w http.ResponseWriter, r *http.Reque
 		{{- if $m.Parameters }}
         params, err := decode{{ $m.Name }}Params(r)
         if err != nil {
-            respondError(w, err)
+            respondError(w, http.StatusBadRequest, err)
             return
         }
         {{- end }}
@@ -18,14 +18,16 @@ func New{{ $m.Name }}Handler(s Server) func(w http.ResponseWriter, r *http.Reque
         {{- if $m.RequestType }}
         request, err := decode{{ $m.Name }}Request(r)
         if err != nil {
-            respondError(w, err)
+            respondError(w, http.StatusBadRequest, err)
             return
         }
         {{- end }}
 
         response, err := s.{{$m.Name}}(r.Context(){{ if $m.RequestType }}, request{{ end }}{{if $m.Parameters}}, params {{ end }})
         if err != nil {
-            w.WriteHeader(http.StatusInternalServerError)
+            {{- /* It is not secure to expose internal error to client, but better than nothing. */ -}}
+            {{- /* TODO: Replace with logging when appropriate */ -}}
+            respondError(w, http.StatusInternalServerError, err)
             return
         }
 
@@ -37,9 +39,9 @@ func New{{ $m.Name }}Handler(s Server) func(w http.ResponseWriter, r *http.Reque
 }
 {{ end }}
 
-func respondError(w http.ResponseWriter, err error) {
+func respondError(w http.ResponseWriter, code int, err error) {
     w.Header().Set("Content-Type", "application/json")
-    w.WriteHeader(http.StatusBadRequest)
+    w.WriteHeader(code)
     data, writeErr := json.Marshal(struct{
         ErrorMessage string `json:"error_message"`
     }{
