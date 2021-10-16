@@ -43,10 +43,6 @@ go get github.com/ogen-go/ogen
 * OneOf/AnyOf
 * Format
   * [String format](https://json-schema.org/understanding-json-schema/reference/string.html)
-    * Date
-    * DateTime
-    * Time
-    * Duration
     * IPv4/IPv6
     * Email
     * UUID
@@ -106,8 +102,6 @@ go get github.com/ogen-go/ogen
   * Header selects specific response variant
   * Code-generated tests with full coverage
 * TechEmpower benchmark implementation
-* Logo
-  * OpenAPI-like logo with Go colours
 * Integrations
   * Tests with [autorest](https://github.com/Azure/autorest)
   * Use testdata from [autorest](https://github.com/Azure/autorest.typescript/tree/main/test/integration/swaggers)
