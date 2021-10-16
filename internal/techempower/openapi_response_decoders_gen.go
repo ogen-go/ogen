@@ -58,7 +58,18 @@ func decodeCachingResponse(resp *http.Response) (res []WorldObject, err error) {
 			if err != nil {
 				return res, err
 			}
-			if err := response.decodeJSON(data); err != nil {
+			i := jsoniter.NewIterator(jsoniter.ConfigDefault)
+			i.ResetBytes(data)
+			i.ReadArrayCB(func(i *jsoniter.Iterator) bool {
+				var elem WorldObject
+				if err := elem.ReadJSON(i); err != nil {
+					i.ReportError("ReadArray", err.Error())
+					return false
+				}
+				response = append(response, elem)
+				return true
+			})
+			if err := i.Error; err != nil {
 				return res, err
 			}
 
@@ -127,7 +138,18 @@ func decodeQueriesResponse(resp *http.Response) (res []WorldObject, err error) {
 			if err != nil {
 				return res, err
 			}
-			if err := response.decodeJSON(data); err != nil {
+			i := jsoniter.NewIterator(jsoniter.ConfigDefault)
+			i.ResetBytes(data)
+			i.ReadArrayCB(func(i *jsoniter.Iterator) bool {
+				var elem WorldObject
+				if err := elem.ReadJSON(i); err != nil {
+					i.ReportError("ReadArray", err.Error())
+					return false
+				}
+				response = append(response, elem)
+				return true
+			})
+			if err := i.Error; err != nil {
 				return res, err
 			}
 
@@ -150,7 +172,18 @@ func decodeUpdatesResponse(resp *http.Response) (res []WorldObject, err error) {
 			if err != nil {
 				return res, err
 			}
-			if err := response.decodeJSON(data); err != nil {
+			i := jsoniter.NewIterator(jsoniter.ConfigDefault)
+			i.ResetBytes(data)
+			i.ReadArrayCB(func(i *jsoniter.Iterator) bool {
+				var elem WorldObject
+				if err := elem.ReadJSON(i); err != nil {
+					i.ReportError("ReadArray", err.Error())
+					return false
+				}
+				response = append(response, elem)
+				return true
+			})
+			if err := i.Error; err != nil {
 				return res, err
 			}
 

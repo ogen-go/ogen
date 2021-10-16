@@ -1387,7 +1387,9 @@ func (o *OptionalNilBool) ReadJSON(i *jsoniter.Iterator) error {
 
 func (s HelloWorld) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectStart()
-	js.WriteObjectField("message")
+	var fw json.FieldWriter
+	_ = fw
+	fw.Write(js, "message")
 	js.WriteString(s.Message)
 	js.WriteObjectEnd()
 }
@@ -1408,14 +1410,26 @@ func (s *HelloWorld) decodeJSON(data []byte) error {
 
 // ReadJSON reads HelloWorld from json stream.
 func (s *HelloWorld) ReadJSON(i *jsoniter.Iterator) error {
-	return nil
+	i.ReadObjectCB(func(i *jsoniter.Iterator, k string) bool {
+		switch k {
+		case "message":
+			s.Message = i.ReadString()
+			return i.Error == nil
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (s WorldObject) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectStart()
-	js.WriteObjectField("id")
+	var fw json.FieldWriter
+	_ = fw
+	fw.Write(js, "id")
 	js.WriteInt64(s.ID)
-	js.WriteObjectField("randomNumber")
+	fw.Write(js, "randomNumber")
 	js.WriteInt64(s.RandomNumber)
 	js.WriteObjectEnd()
 }
@@ -1436,5 +1450,18 @@ func (s *WorldObject) decodeJSON(data []byte) error {
 
 // ReadJSON reads WorldObject from json stream.
 func (s *WorldObject) ReadJSON(i *jsoniter.Iterator) error {
-	return nil
+	i.ReadObjectCB(func(i *jsoniter.Iterator, k string) bool {
+		switch k {
+		case "id":
+			s.ID = i.ReadInt64()
+			return i.Error == nil
+		case "randomNumber":
+			s.RandomNumber = i.ReadInt64()
+			return i.Error == nil
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }

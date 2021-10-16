@@ -115,31 +115,33 @@ func (o *{{ $s.Name }}) ReadJSON(i *jsoniter.Iterator) error {
 
 {{- end }}
 
+
+
 {{- range $s := $.Schemas }}{{/*Range schemas*/}}
 {{ if eq $s.Kind "struct" }}{{/*If struct*/}}
 func (s {{ $s.Name }}) WriteJSON(js *jsoniter.Stream) {
     js.WriteObjectStart()
+    var fw json.FieldWriter
+    _ = fw
     {{- range $f := $s.Fields }}{{/*Range fields*/}}
     {{- if ne $f.Tag "-" }}
+        fw.Write(js, "{{ $f.Tag }}")
     {{- if $f.Type.Generic }}
         {{- if $f.Type.Optional }}
         if s.{{ $f.Name }}.Set {
-            js.WriteObjectField("{{ $f.Tag }}")
             s.{{ $f.Name }}.WriteJSON(js)
         }
         {{- else }}
-            js.WriteObjectField("{{ $f.Tag }}")``
             s.{{ $f.Name }}.WriteJSON(js)
         {{- end }}
     {{- else if eq $f.Type.Kind "primitive" }}
         {{- if ne $f.Type.JSONWrite "" }}
-            js.WriteObjectField("{{ $f.Tag }}")
             js.{{ $f.Type.JSONWrite }}(s.{{ $f.Name }})
         {{- else }}
         // Unsupported primitive "{{ $f.Type.Primitive  }}" for field "{{ $f.Name }}".
         {{- end }}
     {{- else if eq $f.Type.Kind "struct" }}
-        s.{{ $f.Name }}.WriteFieldJSON("{{ $f.Tag }}", js)
+        s.{{ $f.Name }}.WriteJSON("{{ $f.Tag }}", js)
     {{- else }}
         // Unsupported kind "{{ $f.Type.Kind  }}" for field "{{ $f.Name }}".
     {{- end }}
@@ -164,7 +166,48 @@ func (s *{{ $s.Name }}) decodeJSON(data []byte) error {
 
 // ReadJSON reads {{ $s.Name }} from json stream.
 func (s *{{ $s.Name }}) ReadJSON(i *jsoniter.Iterator) error {
-    return nil
+    i.ReadObjectCB(func(i *jsoniter.Iterator, k string) bool {
+        switch k {
+{{- range $f := $s.Fields }}{{/*Range fields*/}}
+{{- if ne $f.Tag "-" }}
+    case "{{ $f.Tag }}":
+    {{- if $f.Type.Generic }}
+        {{- if $f.Type.Optional }}
+            s.{{ $f.Name }}.Reset()
+        {{- end }}
+        if err := s.{{ $f.Name }}.ReadJSON(i); err != nil {
+            i.ReportError("Field {{ $f.Name }}", err.Error())
+            return false
+        }
+        return true
+    {{- else if eq $f.Type.Kind "primitive" }}
+        {{- if ne $f.Type.JSONRead "" }}
+            s.{{ $f.Name }} = i.{{ $f.Type.JSONRead }}()
+            return i.Error == nil
+        {{- else }}
+            // Unsupported primitive "{{ $f.Type.Primitive  }}" for field "{{ $f.Name }}".
+            i.Skip()
+            return true
+        {{- end }}
+    {{- else if eq $f.Type.Kind "struct" }}
+        if err := s.{{ $f.Name }}.ReadJSON(i); err != nil {
+            i.ReportError("Field {{ $f.Name }}", err.Error())
+            return false
+        }
+        return true
+    {{- else }}
+        // Unsupported kind "{{ $f.Type.Kind  }}" for field "{{ $f.Name }}".
+        i.Skip()
+        return true
+    {{- end }}
+{{- end }}
+{{- end }}{{/*Range fields*/}}
+        default:
+            i.Skip()
+            return true
+        }
+    })
+    return i.Error
 }
 {{- end }}{{/*If struct*/}}
 {{- end }}{{/*Range schemas*/}}

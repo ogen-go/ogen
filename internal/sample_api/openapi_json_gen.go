@@ -1387,9 +1387,11 @@ func (o *OptionalNilBool) ReadJSON(i *jsoniter.Iterator) error {
 
 func (s Error) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectStart()
-	js.WriteObjectField("code")
+	var fw json.FieldWriter
+	_ = fw
+	fw.Write(js, "code")
 	js.WriteInt64(s.Code)
-	js.WriteObjectField("message")
+	fw.Write(js, "message")
 	js.WriteString(s.Message)
 	js.WriteObjectEnd()
 }
@@ -1410,11 +1412,26 @@ func (s *Error) decodeJSON(data []byte) error {
 
 // ReadJSON reads Error from json stream.
 func (s *Error) ReadJSON(i *jsoniter.Iterator) error {
-	return nil
+	i.ReadObjectCB(func(i *jsoniter.Iterator, k string) bool {
+		switch k {
+		case "code":
+			s.Code = i.ReadInt64()
+			return i.Error == nil
+		case "message":
+			s.Message = i.ReadString()
+			return i.Error == nil
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (s ErrorStatusCode) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectStart()
+	var fw json.FieldWriter
+	_ = fw
 	js.WriteObjectEnd()
 }
 
@@ -1434,11 +1451,20 @@ func (s *ErrorStatusCode) decodeJSON(data []byte) error {
 
 // ReadJSON reads ErrorStatusCode from json stream.
 func (s *ErrorStatusCode) ReadJSON(i *jsoniter.Iterator) error {
-	return nil
+	i.ReadObjectCB(func(i *jsoniter.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (s FoobarPutDefault) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectStart()
+	var fw json.FieldWriter
+	_ = fw
 	js.WriteObjectEnd()
 }
 
@@ -1458,31 +1484,49 @@ func (s *FoobarPutDefault) decodeJSON(data []byte) error {
 
 // ReadJSON reads FoobarPutDefault from json stream.
 func (s *FoobarPutDefault) ReadJSON(i *jsoniter.Iterator) error {
-	return nil
+	i.ReadObjectCB(func(i *jsoniter.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (s Pet) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectStart()
+	var fw json.FieldWriter
+	_ = fw
+	fw.Write(js, "birthday")
 	// Unsupported primitive "types.Date" for field "Birthday".
+	fw.Write(js, "friends")
 	// Unsupported kind "pointer" for field "Friends".
-	js.WriteObjectField("id")
+	fw.Write(js, "id")
 	js.WriteInt64(s.ID)
-	js.WriteObjectField("name")
+	fw.Write(js, "name")
 	js.WriteString(s.Name)
+	fw.Write(js, "tag")
 	// Unsupported kind "pointer" for field "Tag".
+	fw.Write(js, "testArray1")
 	// Unsupported kind "pointer" for field "TestArray1".
+	fw.Write(js, "testDate")
 	// Unsupported kind "pointer" for field "TestDate".
+	fw.Write(js, "testDateTime")
 	// Unsupported kind "pointer" for field "TestDateTime".
+	fw.Write(js, "testDuration")
 	// Unsupported kind "pointer" for field "TestDuration".
+	fw.Write(js, "testFloat1")
 	if s.TestFloat1.Set {
-		js.WriteObjectField("testFloat1")
 		s.TestFloat1.WriteJSON(js)
 	}
+	fw.Write(js, "testInteger1")
 	if s.TestInteger1.Set {
-		js.WriteObjectField("testInteger1")
 		s.TestInteger1.WriteJSON(js)
 	}
+	fw.Write(js, "testTime")
 	// Unsupported kind "pointer" for field "TestTime".
+	fw.Write(js, "type")
 	// Unsupported kind "pointer" for field "Type".
 	js.WriteObjectEnd()
 }
@@ -1503,12 +1547,77 @@ func (s *Pet) decodeJSON(data []byte) error {
 
 // ReadJSON reads Pet from json stream.
 func (s *Pet) ReadJSON(i *jsoniter.Iterator) error {
-	return nil
+	i.ReadObjectCB(func(i *jsoniter.Iterator, k string) bool {
+		switch k {
+		case "birthday":
+			// Unsupported primitive "types.Date" for field "Birthday".
+			i.Skip()
+			return true
+		case "friends":
+			// Unsupported kind "pointer" for field "Friends".
+			i.Skip()
+			return true
+		case "id":
+			s.ID = i.ReadInt64()
+			return i.Error == nil
+		case "name":
+			s.Name = i.ReadString()
+			return i.Error == nil
+		case "tag":
+			// Unsupported kind "pointer" for field "Tag".
+			i.Skip()
+			return true
+		case "testArray1":
+			// Unsupported kind "pointer" for field "TestArray1".
+			i.Skip()
+			return true
+		case "testDate":
+			// Unsupported kind "pointer" for field "TestDate".
+			i.Skip()
+			return true
+		case "testDateTime":
+			// Unsupported kind "pointer" for field "TestDateTime".
+			i.Skip()
+			return true
+		case "testDuration":
+			// Unsupported kind "pointer" for field "TestDuration".
+			i.Skip()
+			return true
+		case "testFloat1":
+			s.TestFloat1.Reset()
+			if err := s.TestFloat1.ReadJSON(i); err != nil {
+				i.ReportError("Field TestFloat1", err.Error())
+				return false
+			}
+			return true
+		case "testInteger1":
+			s.TestInteger1.Reset()
+			if err := s.TestInteger1.ReadJSON(i); err != nil {
+				i.ReportError("Field TestInteger1", err.Error())
+				return false
+			}
+			return true
+		case "testTime":
+			// Unsupported kind "pointer" for field "TestTime".
+			i.Skip()
+			return true
+		case "type":
+			// Unsupported kind "pointer" for field "Type".
+			i.Skip()
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (s PetGetDefault) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectStart()
-	js.WriteObjectField("message")
+	var fw json.FieldWriter
+	_ = fw
+	fw.Write(js, "message")
 	js.WriteString(s.Message)
 	js.WriteObjectEnd()
 }
@@ -1529,11 +1638,23 @@ func (s *PetGetDefault) decodeJSON(data []byte) error {
 
 // ReadJSON reads PetGetDefault from json stream.
 func (s *PetGetDefault) ReadJSON(i *jsoniter.Iterator) error {
-	return nil
+	i.ReadObjectCB(func(i *jsoniter.Iterator, k string) bool {
+		switch k {
+		case "message":
+			s.Message = i.ReadString()
+			return i.Error == nil
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }
 
 func (s PetGetDefaultStatusCode) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectStart()
+	var fw json.FieldWriter
+	_ = fw
 	js.WriteObjectEnd()
 }
 
@@ -1553,5 +1674,12 @@ func (s *PetGetDefaultStatusCode) decodeJSON(data []byte) error {
 
 // ReadJSON reads PetGetDefaultStatusCode from json stream.
 func (s *PetGetDefaultStatusCode) ReadJSON(i *jsoniter.Iterator) error {
-	return nil
+	i.ReadObjectCB(func(i *jsoniter.Iterator, k string) bool {
+		switch k {
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
 }

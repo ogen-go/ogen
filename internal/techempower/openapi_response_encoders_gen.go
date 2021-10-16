@@ -51,8 +51,16 @@ var (
 func encodeCachingResponse(response []WorldObject, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	data := response.encodeJSON()
-	if _, err := w.Write(data); err != nil {
+	js := jsoniter.NewStream(jsoniter.ConfigDefault, w, 1024)
+	js.WriteArrayStart()
+	for i, elem := range response {
+		elem.WriteJSON(js)
+		if i != len(response)-1 {
+			js.WriteMore()
+		}
+	}
+	js.WriteArrayEnd()
+	if err := js.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -81,8 +89,16 @@ func encodeJSONResponse(response HelloWorld, w http.ResponseWriter) error {
 func encodeQueriesResponse(response []WorldObject, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	data := response.encodeJSON()
-	if _, err := w.Write(data); err != nil {
+	js := jsoniter.NewStream(jsoniter.ConfigDefault, w, 1024)
+	js.WriteArrayStart()
+	for i, elem := range response {
+		elem.WriteJSON(js)
+		if i != len(response)-1 {
+			js.WriteMore()
+		}
+	}
+	js.WriteArrayEnd()
+	if err := js.Flush(); err != nil {
 		return err
 	}
 	return nil
@@ -91,8 +107,16 @@ func encodeQueriesResponse(response []WorldObject, w http.ResponseWriter) error 
 func encodeUpdatesResponse(response []WorldObject, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	data := response.encodeJSON()
-	if _, err := w.Write(data); err != nil {
+	js := jsoniter.NewStream(jsoniter.ConfigDefault, w, 1024)
+	js.WriteArrayStart()
+	for i, elem := range response {
+		elem.WriteJSON(js)
+		if i != len(response)-1 {
+			js.WriteMore()
+		}
+	}
+	js.WriteArrayEnd()
+	if err := js.Flush(); err != nil {
 		return err
 	}
 	return nil

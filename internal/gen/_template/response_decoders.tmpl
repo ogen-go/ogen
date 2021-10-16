@@ -22,9 +22,26 @@ func decode{{ $m.Name }}Response(resp *http.Response) (res {{ $m.ResponseType.Ty
             if err != nil {
                 return res, err
             }
-            if err := response.decodeJSON(data); err != nil {
-                return res, err
-            }
+            {{- if eq $schema.Kind "array" }}
+                i := jsoniter.NewIterator(jsoniter.ConfigDefault)
+                i.ResetBytes(data)
+                i.ReadArrayCB(func(i *jsoniter.Iterator) bool {
+                    var elem {{ $schema.Item.Type }}
+                    if err := elem.ReadJSON(i); err != nil {
+                        i.ReportError("ReadArray", err.Error())
+                        return false
+                    }
+                    response = append(response, elem)
+                    return true
+                })
+                if err := i.Error; err != nil {
+                    return res, err
+                }
+            {{- else }}
+                if err := response.decodeJSON(data); err != nil {
+                    return res, err
+                }
+            {{ end }}
 
             return {{ if $m.IsResponseIface }}&{{ end }}response, nil
             {{- else }}
@@ -51,9 +68,26 @@ func decode{{ $m.Name }}Response(resp *http.Response) (res {{ $m.ResponseType.Ty
             if err != nil {
                 return res, err
             }
+            {{- if eq $schema.Kind "array" }}
+                i := jsoniter.NewIterator(jsoniter.ConfigDefault)
+                i.ResetBytes(data)
+                i.ReadArrayCB(func(i *jsoniter.Iterator) bool {
+                    var elem {{ $schema.Item.Type }}
+                    if err := elem.ReadJSON(i); err != nil {
+                        i.ReportError("ReadArray", err.Error())
+                        return false
+                    }
+                    response = append(response, elem)
+                    return true
+                })
+                if err := i.Error; err != nil {
+                    return res, err
+                }
+            {{- else }}
             if err := response.decodeJSON(data); err != nil {
                 return res, err
             }
+            {{ end }}
 
             response.StatusCode = resp.StatusCode
             return {{ if $m.IsResponseIface }}&{{ end }}response, nil
