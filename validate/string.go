@@ -22,10 +22,5 @@ func (t String) Set() bool {
 }
 
 func (t String) Validate(v string) error {
-	return Array{
-		MinLength:    t.MinLength,
-		MinLengthSet: t.MinLengthSet,
-		MaxLength:    t.MaxLength,
-		MaxLengthSet: t.MaxLengthSet,
-	}.ValidateLength(len([]rune(v)))
+	return Array(t).ValidateLength(len([]rune(v)))
 }
