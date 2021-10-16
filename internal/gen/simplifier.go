@@ -38,9 +38,7 @@ func (g *Generator) devirtSingleRequest(m *ast.Method) {
 
 		m.RequestType = schema
 		if !m.RequestBody.Required {
-			m.RequestType = &ast.Pointer{
-				To: schema,
-			}
+			m.RequestType = ast.Pointer(schema)
 		}
 	}
 }

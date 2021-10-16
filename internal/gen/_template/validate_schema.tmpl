@@ -5,13 +5,18 @@
         {{- template "validate_schema" dict
             "schema" $schema.AliasTo
             "varname" (index . "varname")
-            "ptr" (index . "ptr")
             "errorPrefix" (index . "errorPrefix")
         }}
-    {{- else }}
-        {{- if index . "ptr" }}
+    {{- else if eq $schema.Kind "pointer" }}
         if {{ index . "varname" }} != nil {
-        {{- end }}
+            {{- template "validate_schema" dict
+                "schema" $schema.PointerTo
+                "varname" (index . "varname")
+                "ptr" true
+                "errorPrefix" (index . "errorPrefix")
+            }}
+        }
+    {{- else }}
         {{- if eq $schema.Kind "primitive" }}
             {{- if $schema.IsNumeric }}
                 {{- template "validate_numeric" . }}
@@ -28,9 +33,6 @@
             {{- template "validate_struct" . }}
         {{- else }}
             unsupported schema kind: {{ $schema.Kind }}
-        {{- end }}
-        {{- if index . "ptr" }}
-        }
         {{- end }}
     {{- end }}
 {{- end }}

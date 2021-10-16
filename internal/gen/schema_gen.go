@@ -58,7 +58,7 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 		if ref != "" {
 			// Reference pointed to a scalar type.
 			// Wrap it with an alias using component name.
-			if s.Is(ast.KindPrimitive, ast.KindArray) {
+			if s.Is(ast.KindPrimitive, ast.KindArray, ast.KindPointer) {
 				s = ast.Alias(name, s)
 			}
 			g.localRefs[ref] = s
@@ -67,7 +67,7 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 
 		// If schema it's a nested object (non-root)
 		// and has a complex type (struct or alias) save it in g.side.
-		if !root && !s.Is(ast.KindPrimitive, ast.KindArray) {
+		if !root && !s.Is(ast.KindPrimitive, ast.KindArray, ast.KindPointer) {
 			g.side = append(g.side, s)
 		}
 		return s
@@ -124,14 +124,13 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 				return nil, xerrors.Errorf("%s: %w", propName, err)
 			}
 
-			var typ ast.Type = prop
 			if !required(propName) {
-				typ = &ast.Pointer{To: prop}
+				prop = ast.Pointer(prop)
 			}
 
 			s.Fields = append(s.Fields, ast.SchemaField{
 				Name: pascalMP(propName),
-				Type: typ,
+				Type: prop,
 				Tag:  propName,
 			})
 		}

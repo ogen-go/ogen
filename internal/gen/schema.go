@@ -21,7 +21,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 
 	// Merge nested objects.
 	for _, side := range gen.side {
-		if side.Is(ast.KindPrimitive, ast.KindArray) {
+		if side.Is(ast.KindPrimitive, ast.KindArray, ast.KindPointer) {
 			panic("unreachable")
 		}
 
@@ -34,7 +34,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 
 	// Merge references.
 	for ref, schema := range gen.localRefs {
-		if schema.Is(ast.KindPrimitive, ast.KindArray) {
+		if schema.Is(ast.KindPrimitive, ast.KindArray, ast.KindPointer) {
 			panic("unreachable")
 		}
 		if _, found := g.schemaRefs[ref]; found {

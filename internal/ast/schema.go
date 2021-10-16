@@ -16,6 +16,7 @@ const (
 	KindPrimitive SchemaKind = "primitive"
 	KindArray     SchemaKind = "array"
 	KindEnum      SchemaKind = "enum"
+	KindPointer   SchemaKind = "pointer"
 )
 
 type Schema struct {
@@ -25,6 +26,7 @@ type Schema struct {
 	Doc         string
 
 	AliasTo    *Schema
+	PointerTo  *Schema
 	Primitive  string
 	Item       *Schema
 	EnumValues []interface{}
@@ -103,6 +105,8 @@ func (s *Schema) needValidation(visited map[*Schema]struct{}) (result bool) {
 		return true
 	case KindAlias:
 		return s.AliasTo.needValidation(visited)
+	case KindPointer:
+		return s.PointerTo.needValidation(visited)
 	case KindArray:
 		if s.MinItems != nil || s.MaxItems != nil {
 			return true
@@ -114,17 +118,8 @@ func (s *Schema) needValidation(visited map[*Schema]struct{}) (result bool) {
 		return s.Item.needValidation(visited)
 	case KindStruct:
 		for _, f := range s.Fields {
-			switch f := f.Type.(type) {
-			case *Schema:
-				if f.needValidation(visited) {
-					return true
-				}
-			case *Pointer:
-				if f.needValidation(visited) {
-					return true
-				}
-			default:
-				panic("unreachable")
+			if f.Type.needValidation(visited) {
+				return true
 			}
 		}
 		return false
@@ -135,31 +130,8 @@ func (s *Schema) needValidation(visited map[*Schema]struct{}) (result bool) {
 
 type SchemaField struct {
 	Name string
-	Type Type
+	Type *Schema
 	Tag  string
-}
-
-func (f *SchemaField) Schema() *Schema {
-	switch t := f.Type.(type) {
-	case *Schema:
-		return t
-	case *Pointer:
-		switch tt := t.To.(type) {
-		case *Schema:
-			return tt
-		default:
-			panic(fmt.Sprintf("unexpected pointer.To type: %T", tt))
-		}
-	default:
-		panic(fmt.Sprintf("unexpected field type: %T", t))
-	}
-}
-
-func (f *SchemaField) IsPtr() bool {
-	if _, ok := f.Type.(*Pointer); ok {
-		return true
-	}
-	return false
 }
 
 func (s Schema) Type() string {
@@ -174,6 +146,8 @@ func (s Schema) Type() string {
 		return "[]" + s.Item.Type()
 	case KindEnum:
 		return s.Name
+	case KindPointer:
+		return "*" + s.PointerTo.Type()
 	default:
 		panic(fmt.Errorf("unexpected SchemaKind: %s", s.Kind))
 	}
@@ -190,7 +164,7 @@ func (s Schema) Is(vs ...SchemaKind) bool {
 }
 
 func (s *Schema) Implement(iface *Interface) {
-	if s.Is(KindPrimitive, KindArray) {
+	if s.Is(KindPrimitive, KindArray, KindPointer) {
 		panic("unreachable")
 	}
 
@@ -245,6 +219,13 @@ func Alias(name string, typ *Schema) *Schema {
 		Kind:    KindAlias,
 		Name:    name,
 		AliasTo: typ,
+	}
+}
+
+func Pointer(to *Schema) *Schema {
+	return &Schema{
+		Kind:      KindPointer,
+		PointerTo: to,
 	}
 }
 

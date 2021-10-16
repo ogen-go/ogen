@@ -167,7 +167,7 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*ast.Res
 			//
 			// Alias can be removed later in the simplification stage
 			// if there's no other responses.
-			if schema.Is(ast.KindPrimitive, ast.KindArray) {
+			if schema.Is(ast.KindPrimitive, ast.KindArray, ast.KindPointer) {
 				schema = ast.Alias(name, schema)
 			}
 
@@ -208,7 +208,7 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*ast.Res
 //
 // TODO: Remove unused schema (Example 2).
 func (g *Generator) wrapStatusCode(schema *ast.Schema) *ast.Schema {
-	if !schema.Is(ast.KindStruct, ast.KindAlias) {
+	if !schema.Is(ast.KindStruct, ast.KindAlias, ast.KindPointer) {
 		panic("unreachable")
 	}
 

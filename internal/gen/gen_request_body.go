@@ -30,7 +30,7 @@ func (g *Generator) generateRequestBody(name string, body *ogen.RequestBody) (*a
 			//
 			// Alias can be removed later in the simplification stage
 			// if there's no other requests.
-			if schema.Is(ast.KindPrimitive, ast.KindArray) {
+			if schema.Is(ast.KindPrimitive, ast.KindArray, ast.KindPointer) {
 				schema = ast.Alias(schemaName, schema)
 			}
 

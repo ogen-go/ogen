@@ -8,13 +8,11 @@
 func (s *{{ $s.Name }}) validate() error {
     {{- range $f := $s.Fields }}{{/*Range fields*/}}
 
-    {{- $schema := $f.Schema }}
-    {{- if $schema.NeedValidation }}
+    {{- if $f.Type.NeedValidation }}
         // Validate '{{ $f.Name }}' field.
         {{- template "validate_schema" dict
-            "schema" $schema
+            "schema" $f.Type
             "varname" (sprintf "s.%s" $f.Name)
-            "ptr" $f.IsPtr
             "errorPrefix" (sprintf "field '%s': " $f.Name)
         }}
     {{ end }}
