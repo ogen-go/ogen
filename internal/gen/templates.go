@@ -3,15 +3,19 @@ package gen
 import (
 	"embed"
 	"fmt"
+	"io/fs"
+	"reflect"
 	"strings"
-	"text/template"
 
+	"github.com/ogen-go/ogen/internal/ast"
+	"github.com/open2b/scriggo"
+	"github.com/open2b/scriggo/native"
 	"golang.org/x/xerrors"
 )
 
 // templateFuncs returns functions which used in templates.
-func templateFuncs() template.FuncMap {
-	return template.FuncMap{
+func templateFuncs() native.Declarations {
+	return native.Declarations{
 		"trim":       strings.TrimSpace,
 		"lower":      strings.ToLower,
 		"trimPrefix": strings.TrimPrefix,
@@ -53,9 +57,38 @@ func templateFuncs() template.FuncMap {
 //go:embed _template/*.tmpl
 var templates embed.FS
 
-// vendoredTemplates parses and returns vendored code generation templates.
-func vendoredTemplates() *template.Template {
-	tmpl := template.New("templates").Funcs(templateFuncs())
-	tmpl = template.Must(tmpl.ParseFS(templates, "_template/*.tmpl"))
-	return tmpl
+func vendoredTemplates() *scriggo.Files {
+	matches, err := fs.Glob(templates, "_template/*.tmpl")
+	if err != nil {
+		panic(err)
+	}
+
+	files := make(scriggo.Files)
+	for _, fileName := range matches {
+		b, err := fs.ReadFile(templates, fileName)
+		if err != nil {
+			panic(err)
+		}
+
+		files[strings.TrimPrefix(fileName, "_template/")] = b
+	}
+	return &files
+}
+
+func astPkg() native.Package {
+	decs := make(native.Declarations)
+	decs["Method"] = reflect.TypeOf((*ast.Method)(nil)).Elem()
+	decs["Parameter"] = reflect.TypeOf((*ast.Parameter)(nil)).Elem()
+	decs["ParameterLocation"] = reflect.TypeOf((*ast.ParameterLocation)(nil)).Elem()
+	decs["RequestBody"] = reflect.TypeOf((*ast.RequestBody)(nil)).Elem()
+	decs["MethodResponse"] = reflect.TypeOf((*ast.MethodResponse)(nil)).Elem()
+	decs["Response"] = reflect.TypeOf((*ast.Response)(nil)).Elem()
+	decs["Schema"] = reflect.TypeOf((*ast.Schema)(nil)).Elem()
+	decs["PathPart"] = reflect.TypeOf((*ast.PathPart)(nil)).Elem()
+	decs["Interface"] = reflect.TypeOf((*ast.Interface)(nil)).Elem()
+
+	return native.Package{
+		Name:         "ast",
+		Declarations: decs,
+	}
 }

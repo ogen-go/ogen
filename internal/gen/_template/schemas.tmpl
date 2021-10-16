@@ -1,50 +1,31 @@
-{{- /*gotype: github.com/ogen-go/ogen/internal/gen.TemplateConfig*/ -}}
+{% import "ast" %}
+{% import "header.tmpl" for Header %}
+{{ Header() }}
 
-{{ define "schemas" }}
-{{ $pkg := $.Package }}
-{{ template "header" $ }}
+{% for _, schema := range Schemas %}
+{% switch schema.Kind %}
+{% case "struct" %}
+    type {{ schema.Name }} struct {
+        {% for field in schema.Fields %}
+        {{ field.Name }} {{ field.Type.Type() }} `json:"{{ field.Tag }}"`
+        {% end %}
+    }
+{% case "alias" %}
+    type {{ schema.Name }} {{ schema.AliasTo.Type() }}
+{% case "enum" %}
+    type {{ schema.Name }} {{ schema.Primitive }}
+    
+    const (
+        {% for value in schema.EnumValues %}
+        {{ schema.Name+pascalMP(toString(value)) }} {{ schema.Name }} = {{ enumString(value) }}
+        {% end %}
+    )
+{% default %}
+    unsupported kind {{ schema.Kind }}
+{% end %}
 
-{{- range $_, $s := $.Schemas }}
-{{- template "define_schema" $s }}
-{{- end }}
-{{- end }}
+{% for method in schema.Methods() %}
+func (*{{ schema.Name }}) {{ method }}() {}
+{% end %}
 
-{{- define "define_schema" }}
-{{- /*gotype: github.com/ogen-go/ogen/internal/ast.Schema*/ -}}
-{{- /* Define struct */ -}}
-{{- if eq $.Kind "struct" }}
-{{- if $.Doc -}}
-// {{ $.Doc }}
-{{- end }}
-type {{ $.Name }} struct {
-{{- range $f := $.Fields }}
-    {{ $f.Name }} {{ $f.Type.Type }} `json:"{{ $f.Tag }}"`
-{{- end }}
-}
-{{/* Define struct */}}
-
-{{/* Define alias */}}
-{{- else if eq $.Kind "alias" }}
-type {{ $.Name }} {{ $.AliasTo.Type }}
-{{/* Define alias */}}
-
-{{/* Define enum */}}
-{{- else if eq $.Kind "enum" }}
-type {{ $.Name }} {{ $.Primitive }}
-
-const (
-{{- range $value := $.EnumValues }}
-{{- $valueStr := toString $value }}
-{{ $.Name }}{{ pascalMP $valueStr }} {{ $.Name }} = {{ enumString $value }}
-{{- end }}
-)
-{{/* Define enum */}}
-{{- end }}
-
-{{/* Define methods */}}
-{{- range $method := $.Methods }}
-func (*{{ $.Name }}) {{ $method }}() {}
-{{- end }}
-{{/* Define methods */}}
-
-{{- end }}
+{% end %}

@@ -44,28 +44,13 @@ var (
 	_ = types.Date{}
 )
 
-type Error struct {
-	Code    int64  `json:"code"`
-	Message string `json:"message"`
-}
+type PetType string
 
-type ErrorStatusCode struct {
-	StatusCode int   `json:"-"`
-	Response   Error `json:"-"`
-}
+const (
+	PetTypeFifa PetType = "fifa"
+	PetTypeFofa PetType = "fofa"
+)
 
-func (*ErrorStatusCode) foobarPostResponse() {}
-
-type FoobarPutDefault struct {
-	StatusCode int `json:"-"`
-}
-
-type NotFound struct{}
-
-func (*NotFound) foobarGetResponse()  {}
-func (*NotFound) foobarPostResponse() {}
-
-// Pet describes #/components/schemas/Pet.
 type Pet struct {
 	Birthday     types.Date      `json:"birthday"`
 	Friends      *[]Pet          `json:"friends"`
@@ -87,14 +72,6 @@ func (*Pet) foobarPostResponse() {}
 func (*Pet) petCreateRequest()   {}
 func (*Pet) petGetResponse()     {}
 
-type PetCreateTextPlainRequest string
-
-func (*PetCreateTextPlainRequest) petCreateRequest() {}
-
-type PetGetDefault struct {
-	Message string `json:"message"`
-}
-
 type PetGetDefaultStatusCode struct {
 	StatusCode int           `json:"-"`
 	Response   PetGetDefault `json:"-"`
@@ -102,9 +79,31 @@ type PetGetDefaultStatusCode struct {
 
 func (*PetGetDefaultStatusCode) petGetResponse() {}
 
-type PetType string
+type PetCreateTextPlainRequest string
 
-const (
-	PetTypeFifa PetType = "fifa"
-	PetTypeFofa PetType = "fofa"
-)
+func (*PetCreateTextPlainRequest) petCreateRequest() {}
+
+type FoobarPutDefault struct {
+	StatusCode int `json:"-"`
+}
+
+type Error struct {
+	Code    int64  `json:"code"`
+	Message string `json:"message"`
+}
+
+type ErrorStatusCode struct {
+	StatusCode int   `json:"-"`
+	Response   Error `json:"-"`
+}
+
+func (*ErrorStatusCode) foobarPostResponse() {}
+
+type PetGetDefault struct {
+	Message string `json:"message"`
+}
+
+type NotFound struct{}
+
+func (*NotFound) foobarGetResponse()  {}
+func (*NotFound) foobarPostResponse() {}
