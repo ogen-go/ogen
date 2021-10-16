@@ -22,10 +22,7 @@ type Generator struct {
 type Options struct {
 	SpecificMethodPath      string
 	IgnoreUnspecifiedParams bool
-	IgnoreUnsupportedParams bool
-	IgnoreOneOf             bool
-	IgnoreAnyOf             bool
-	IgnoreAllOf             bool
+	IgnoreNotImplemented    bool
 }
 
 func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {

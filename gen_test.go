@@ -34,10 +34,7 @@ func TestGenerate(t *testing.T) {
 		{
 			Name: "api.github.com.json",
 			Options: gen.Options{
-				IgnoreOneOf:             true,
-				IgnoreAnyOf:             true,
-				IgnoreAllOf:             true,
-				IgnoreUnsupportedParams: true,
+				IgnoreNotImplemented: true,
 			},
 		},
 		{
@@ -49,7 +46,7 @@ func TestGenerate(t *testing.T) {
 		{
 			Name: "telegram_bot_api.json",
 			Options: gen.Options{
-				IgnoreAnyOf: true,
+				IgnoreNotImplemented: true,
 			},
 		},
 		{

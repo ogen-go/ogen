@@ -88,16 +88,16 @@ func (g *Generator) parseParameter(method *ast.Method, param ogen.Parameter) (*a
 
 	switch schema.Kind {
 	case ast.KindStruct, ast.KindEnum:
-		return nil, ErrUnsupportedParameter
+		return nil, &ErrNotImplemented{"complex parameter types"}
 	case ast.KindArray:
 		if !schema.Item.Is(ast.KindPrimitive) {
-			return nil, ErrUnsupportedParameter
+			return nil, &ErrNotImplemented{"array parameter with complex type"}
 		}
 
 		name = pascal(param.Name)
 	case ast.KindAlias:
 		if !schema.AliasTo.Is(ast.KindPrimitive) {
-			return nil, ErrUnsupportedParameter
+			return nil, &ErrNotImplemented{"complex parameter types",}
 		}
 
 		name = pascal(param.Name)

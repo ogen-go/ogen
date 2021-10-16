@@ -87,11 +87,11 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 
 		return sideEffect(enum), nil
 	case len(schema.OneOf) > 0:
-		return nil, ErrOneOfNotImplemented
+		return nil, &ErrNotImplemented{"oneOf"}
 	case len(schema.AnyOf) > 0:
-		return nil, ErrAnyOfNotImplemented
+		return nil, &ErrNotImplemented{"anyOf"}
 	case len(schema.AllOf) > 0:
-		return nil, ErrAllOfNotImplemented
+		return nil, &ErrNotImplemented{"allOf"}
 	}
 
 	switch schema.Type {

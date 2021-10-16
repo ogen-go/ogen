@@ -39,12 +39,9 @@ func main() {
 		specificMethod = flag.String("specific-method", "", "Generate specific method by its path")
 		clean          = flag.Bool("clean", false, "Clean generated files before generation")
 
-		debugSkipUnspecifiedParams   = flag.Bool("debug.skipUnspecifiedParams", false, "Ignore methods where path params are not specified")
-		debugIgnoreOneOf             = flag.Bool("debug.ignoreOneOf", false, "Ignore methods with oneOf")
-		debugIgnoreAnyOf             = flag.Bool("debug.ignoreAnyOf", false, "Ignore methods with anyOf")
-		debugIgnoreAllOf             = flag.Bool("debug.ignoreAllOf", false, "Ignore methods with allOf")
-		debugIgnoreUnsupportedParams = flag.Bool("debug.ignoreUnsupportedParams", false, "Ignore methods where path param types not supported")
-		debugNoerr                   = flag.Bool("debug.noerr", false, "Ignore all errors")
+		debugSkipUnspecifiedParams = flag.Bool("debug.skipUnspecifiedParams", false, "Ignore methods where path params are not specified")
+		debugIgnoreNotImplemented  = flag.Bool("debug.ignoreNotImplemented", false, "Ignore methods having functionality which is not implemented (oneOf, anyOf, allOf, complex parameter types)")
+		debugNoerr                 = flag.Bool("debug.noerr", false, "Ignore all errors")
 	)
 
 	flag.Parse()
@@ -96,18 +93,12 @@ func main() {
 	opts := gen.Options{
 		SpecificMethodPath:      *specificMethod,
 		IgnoreUnspecifiedParams: *debugSkipUnspecifiedParams,
-		IgnoreUnsupportedParams: *debugIgnoreUnsupportedParams,
-		IgnoreOneOf:             *debugIgnoreOneOf,
-		IgnoreAnyOf:             *debugIgnoreAnyOf,
-		IgnoreAllOf:             *debugIgnoreAllOf,
+		IgnoreNotImplemented:    *debugIgnoreNotImplemented,
 	}
 
 	if *debugNoerr {
 		opts.IgnoreUnspecifiedParams = true
-		opts.IgnoreUnsupportedParams = true
-		opts.IgnoreOneOf = true
-		opts.IgnoreAnyOf = true
-		opts.IgnoreAllOf = true
+		opts.IgnoreNotImplemented = true
 	}
 
 	g, err := gen.NewGenerator(spec, opts)
