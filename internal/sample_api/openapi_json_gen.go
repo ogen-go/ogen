@@ -89,15 +89,6 @@ func (o OptionalString) WriteJSON(js *jsoniter.Stream) {
 	js.WriteString(o.Value)
 }
 
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o OptionalString) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	if !o.Set {
-		return
-	}
-	js.WriteObjectField(k)
-	o.WriteJSON(js)
-}
-
 // New returns new NilString with value set to v.
 func NewNilString(v string) NilString {
 	return NilString{
@@ -130,17 +121,11 @@ func (o NilString) Get() (v string, ok bool) {
 
 // WriteJSON writes json value of string to json stream.
 func (o NilString) WriteJSON(js *jsoniter.Stream) {
-	js.WriteString(o.Value)
-}
-
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o NilString) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	js.WriteObjectField(k)
 	if o.Nil {
 		js.WriteNil()
 		return
 	}
-	o.WriteJSON(js)
+	js.WriteString(o.Value)
 }
 
 // New returns new OptionalNilString with value set to v.
@@ -192,20 +177,11 @@ func (o OptionalNilString) Get() (v string, ok bool) {
 
 // WriteJSON writes json value of string to json stream.
 func (o OptionalNilString) WriteJSON(js *jsoniter.Stream) {
-	js.WriteString(o.Value)
-}
-
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o OptionalNilString) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	if !o.Set {
-		return
-	}
-	js.WriteObjectField(k)
 	if o.Nil {
 		js.WriteNil()
 		return
 	}
-	o.WriteJSON(js)
+	js.WriteString(o.Value)
 }
 
 // New returns new OptionalInt with value set to v.
@@ -251,15 +227,6 @@ func (o OptionalInt) WriteJSON(js *jsoniter.Stream) {
 	js.WriteInt(o.Value)
 }
 
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o OptionalInt) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	if !o.Set {
-		return
-	}
-	js.WriteObjectField(k)
-	o.WriteJSON(js)
-}
-
 // New returns new NilInt with value set to v.
 func NewNilInt(v int) NilInt {
 	return NilInt{
@@ -292,17 +259,11 @@ func (o NilInt) Get() (v int, ok bool) {
 
 // WriteJSON writes json value of int to json stream.
 func (o NilInt) WriteJSON(js *jsoniter.Stream) {
-	js.WriteInt(o.Value)
-}
-
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o NilInt) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	js.WriteObjectField(k)
 	if o.Nil {
 		js.WriteNil()
 		return
 	}
-	o.WriteJSON(js)
+	js.WriteInt(o.Value)
 }
 
 // New returns new OptionalNilInt with value set to v.
@@ -354,20 +315,11 @@ func (o OptionalNilInt) Get() (v int, ok bool) {
 
 // WriteJSON writes json value of int to json stream.
 func (o OptionalNilInt) WriteJSON(js *jsoniter.Stream) {
-	js.WriteInt(o.Value)
-}
-
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o OptionalNilInt) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	if !o.Set {
-		return
-	}
-	js.WriteObjectField(k)
 	if o.Nil {
 		js.WriteNil()
 		return
 	}
-	o.WriteJSON(js)
+	js.WriteInt(o.Value)
 }
 
 // New returns new OptionalInt32 with value set to v.
@@ -413,15 +365,6 @@ func (o OptionalInt32) WriteJSON(js *jsoniter.Stream) {
 	js.WriteInt32(o.Value)
 }
 
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o OptionalInt32) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	if !o.Set {
-		return
-	}
-	js.WriteObjectField(k)
-	o.WriteJSON(js)
-}
-
 // New returns new NilInt32 with value set to v.
 func NewNilInt32(v int32) NilInt32 {
 	return NilInt32{
@@ -454,17 +397,11 @@ func (o NilInt32) Get() (v int32, ok bool) {
 
 // WriteJSON writes json value of int32 to json stream.
 func (o NilInt32) WriteJSON(js *jsoniter.Stream) {
-	js.WriteInt32(o.Value)
-}
-
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o NilInt32) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	js.WriteObjectField(k)
 	if o.Nil {
 		js.WriteNil()
 		return
 	}
-	o.WriteJSON(js)
+	js.WriteInt32(o.Value)
 }
 
 // New returns new OptionalNilInt32 with value set to v.
@@ -516,20 +453,11 @@ func (o OptionalNilInt32) Get() (v int32, ok bool) {
 
 // WriteJSON writes json value of int32 to json stream.
 func (o OptionalNilInt32) WriteJSON(js *jsoniter.Stream) {
-	js.WriteInt32(o.Value)
-}
-
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o OptionalNilInt32) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	if !o.Set {
-		return
-	}
-	js.WriteObjectField(k)
 	if o.Nil {
 		js.WriteNil()
 		return
 	}
-	o.WriteJSON(js)
+	js.WriteInt32(o.Value)
 }
 
 // New returns new OptionalInt64 with value set to v.
@@ -575,15 +503,6 @@ func (o OptionalInt64) WriteJSON(js *jsoniter.Stream) {
 	js.WriteInt64(o.Value)
 }
 
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o OptionalInt64) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	if !o.Set {
-		return
-	}
-	js.WriteObjectField(k)
-	o.WriteJSON(js)
-}
-
 // New returns new NilInt64 with value set to v.
 func NewNilInt64(v int64) NilInt64 {
 	return NilInt64{
@@ -616,17 +535,11 @@ func (o NilInt64) Get() (v int64, ok bool) {
 
 // WriteJSON writes json value of int64 to json stream.
 func (o NilInt64) WriteJSON(js *jsoniter.Stream) {
-	js.WriteInt64(o.Value)
-}
-
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o NilInt64) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	js.WriteObjectField(k)
 	if o.Nil {
 		js.WriteNil()
 		return
 	}
-	o.WriteJSON(js)
+	js.WriteInt64(o.Value)
 }
 
 // New returns new OptionalNilInt64 with value set to v.
@@ -678,20 +591,11 @@ func (o OptionalNilInt64) Get() (v int64, ok bool) {
 
 // WriteJSON writes json value of int64 to json stream.
 func (o OptionalNilInt64) WriteJSON(js *jsoniter.Stream) {
-	js.WriteInt64(o.Value)
-}
-
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o OptionalNilInt64) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	if !o.Set {
-		return
-	}
-	js.WriteObjectField(k)
 	if o.Nil {
 		js.WriteNil()
 		return
 	}
-	o.WriteJSON(js)
+	js.WriteInt64(o.Value)
 }
 
 // New returns new OptionalFloat32 with value set to v.
@@ -737,15 +641,6 @@ func (o OptionalFloat32) WriteJSON(js *jsoniter.Stream) {
 	js.WriteFloat32(o.Value)
 }
 
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o OptionalFloat32) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	if !o.Set {
-		return
-	}
-	js.WriteObjectField(k)
-	o.WriteJSON(js)
-}
-
 // New returns new NilFloat32 with value set to v.
 func NewNilFloat32(v float32) NilFloat32 {
 	return NilFloat32{
@@ -778,17 +673,11 @@ func (o NilFloat32) Get() (v float32, ok bool) {
 
 // WriteJSON writes json value of float32 to json stream.
 func (o NilFloat32) WriteJSON(js *jsoniter.Stream) {
-	js.WriteFloat32(o.Value)
-}
-
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o NilFloat32) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	js.WriteObjectField(k)
 	if o.Nil {
 		js.WriteNil()
 		return
 	}
-	o.WriteJSON(js)
+	js.WriteFloat32(o.Value)
 }
 
 // New returns new OptionalNilFloat32 with value set to v.
@@ -840,20 +729,11 @@ func (o OptionalNilFloat32) Get() (v float32, ok bool) {
 
 // WriteJSON writes json value of float32 to json stream.
 func (o OptionalNilFloat32) WriteJSON(js *jsoniter.Stream) {
-	js.WriteFloat32(o.Value)
-}
-
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o OptionalNilFloat32) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	if !o.Set {
-		return
-	}
-	js.WriteObjectField(k)
 	if o.Nil {
 		js.WriteNil()
 		return
 	}
-	o.WriteJSON(js)
+	js.WriteFloat32(o.Value)
 }
 
 // New returns new OptionalFloat64 with value set to v.
@@ -899,15 +779,6 @@ func (o OptionalFloat64) WriteJSON(js *jsoniter.Stream) {
 	js.WriteFloat64(o.Value)
 }
 
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o OptionalFloat64) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	if !o.Set {
-		return
-	}
-	js.WriteObjectField(k)
-	o.WriteJSON(js)
-}
-
 // New returns new NilFloat64 with value set to v.
 func NewNilFloat64(v float64) NilFloat64 {
 	return NilFloat64{
@@ -940,17 +811,11 @@ func (o NilFloat64) Get() (v float64, ok bool) {
 
 // WriteJSON writes json value of float64 to json stream.
 func (o NilFloat64) WriteJSON(js *jsoniter.Stream) {
-	js.WriteFloat64(o.Value)
-}
-
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o NilFloat64) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	js.WriteObjectField(k)
 	if o.Nil {
 		js.WriteNil()
 		return
 	}
-	o.WriteJSON(js)
+	js.WriteFloat64(o.Value)
 }
 
 // New returns new OptionalNilFloat64 with value set to v.
@@ -1002,20 +867,11 @@ func (o OptionalNilFloat64) Get() (v float64, ok bool) {
 
 // WriteJSON writes json value of float64 to json stream.
 func (o OptionalNilFloat64) WriteJSON(js *jsoniter.Stream) {
-	js.WriteFloat64(o.Value)
-}
-
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o OptionalNilFloat64) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	if !o.Set {
-		return
-	}
-	js.WriteObjectField(k)
 	if o.Nil {
 		js.WriteNil()
 		return
 	}
-	o.WriteJSON(js)
+	js.WriteFloat64(o.Value)
 }
 
 // New returns new OptionalBool with value set to v.
@@ -1061,15 +917,6 @@ func (o OptionalBool) WriteJSON(js *jsoniter.Stream) {
 	js.WriteBool(o.Value)
 }
 
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o OptionalBool) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	if !o.Set {
-		return
-	}
-	js.WriteObjectField(k)
-	o.WriteJSON(js)
-}
-
 // New returns new NilBool with value set to v.
 func NewNilBool(v bool) NilBool {
 	return NilBool{
@@ -1102,17 +949,11 @@ func (o NilBool) Get() (v bool, ok bool) {
 
 // WriteJSON writes json value of bool to json stream.
 func (o NilBool) WriteJSON(js *jsoniter.Stream) {
-	js.WriteBool(o.Value)
-}
-
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o NilBool) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	js.WriteObjectField(k)
 	if o.Nil {
 		js.WriteNil()
 		return
 	}
-	o.WriteJSON(js)
+	js.WriteBool(o.Value)
 }
 
 // New returns new OptionalNilBool with value set to v.
@@ -1164,20 +1005,11 @@ func (o OptionalNilBool) Get() (v bool, ok bool) {
 
 // WriteJSON writes json value of bool to json stream.
 func (o OptionalNilBool) WriteJSON(js *jsoniter.Stream) {
-	js.WriteBool(o.Value)
-}
-
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o OptionalNilBool) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	if !o.Set {
-		return
-	}
-	js.WriteObjectField(k)
 	if o.Nil {
 		js.WriteNil()
 		return
 	}
-	o.WriteJSON(js)
+	js.WriteBool(o.Value)
 }
 
 func (s Error) WriteJSON(js *jsoniter.Stream) {
@@ -1189,29 +1021,14 @@ func (s Error) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectEnd()
 }
 
-func (s Error) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	js.WriteObjectField(k)
-	s.WriteJSON(js)
-}
-
 func (s ErrorStatusCode) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectStart()
 	js.WriteObjectEnd()
 }
 
-func (s ErrorStatusCode) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	js.WriteObjectField(k)
-	s.WriteJSON(js)
-}
-
 func (s FoobarPutDefault) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectStart()
 	js.WriteObjectEnd()
-}
-
-func (s FoobarPutDefault) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	js.WriteObjectField(k)
-	s.WriteJSON(js)
 }
 
 func (s Pet) WriteJSON(js *jsoniter.Stream) {
@@ -1235,11 +1052,6 @@ func (s Pet) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectEnd()
 }
 
-func (s Pet) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	js.WriteObjectField(k)
-	s.WriteJSON(js)
-}
-
 func (s PetGetDefault) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectStart()
 	js.WriteObjectField("message")
@@ -1247,17 +1059,7 @@ func (s PetGetDefault) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectEnd()
 }
 
-func (s PetGetDefault) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	js.WriteObjectField(k)
-	s.WriteJSON(js)
-}
-
 func (s PetGetDefaultStatusCode) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectStart()
 	js.WriteObjectEnd()
-}
-
-func (s PetGetDefaultStatusCode) WriteFieldJSON(k string, js *jsoniter.Stream) {
-	js.WriteObjectField(k)
-	s.WriteJSON(js)
 }

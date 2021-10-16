@@ -75,26 +75,14 @@ func (o {{ $s.Name }}) Get() (v {{ $s.Primitive }}, ok bool) {
 
 // WriteJSON writes json value of {{ $s.Primitive }} to json stream.
 func (o {{ $s.Name }}) WriteJSON(js *jsoniter.Stream) {
-    js.{{ $s.JSON.Write }}(o.Value)
-}
-
-// WriteFieldJSON writes object field to json stream if value is set.
-func (o {{ $s.Name }}) WriteFieldJSON(k string, js *jsoniter.Stream) {
-    {{- if $s.Optional }}
-    if !o.Set {
-        return
-    }
-    {{- end }}
-    js.WriteObjectField(k)
-    {{- if $s.Nil }}
+{{- if $s.Nil }}
     if o.Nil {
         js.WriteNil()
         return
     }
-    {{- end }}
-    o.WriteJSON(js)
+{{- end }}
+    js.{{ $s.JSON.Write }}(o.Value)
 }
-
 {{- end }}
 
 {{- range $s := $.Schemas }}{{/*Range schemas*/}}
@@ -124,11 +112,6 @@ func (s {{ $s.Name }}) WriteJSON(js *jsoniter.Stream) {
     {{- end }}
     {{- end }}{{/*Range fields*/}}
     js.WriteObjectEnd()
-}
-
-func (s {{ $s.Name }}) WriteFieldJSON(k string, js *jsoniter.Stream) {
-    js.WriteObjectField(k)
-    s.WriteJSON(js)
 }
 {{- end }}{{/*If struct*/}}
 {{- end }}{{/*Range schemas*/}}
