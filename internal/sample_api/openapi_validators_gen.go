@@ -63,5 +63,17 @@ func (s *Pet) validate() error {
 			return fmt.Errorf("field ID: %w", err)
 		}
 	}
+	{
+		// Validate 'Name' field.
+		validator := validate.String{
+			MinLength:    4,
+			MinLengthSet: true,
+			MaxLength:    24,
+			MaxLengthSet: true,
+		}
+		if err := validator.Validate(s.Name); err != nil {
+			return err
+		}
+	}
 	return nil
 }
