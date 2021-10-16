@@ -6,22 +6,17 @@
 {{/* Range over all methods */}}
 {{- range $m := $.Methods }}
 {{- if $m.RequestType }}
-func encode{{ $m.Name }}Request(req {{ $m.RequestType.Type }}) ([]byte, string, error) {
+func encode{{ $m.Name }}Request(req {{ $m.RequestType.Type }}) (data []byte, contentType string, err error) {
     {{- $requestsLength := len $m.RequestBody.Contents }}
     {{- if eq $requestsLength 1 }}
     {{- range $ctype, $schema := $m.RequestBody.Contents }}
-    
-    {{- if eq $ctype "application/json" }}
-    b, err := json.Marshal(req)
-    if err != nil {
-        return nil, "", err
-    }
 
-    return b, "{{ $ctype }}", nil
+    {{- if eq $ctype "application/json" }}
+    return req.encodeJSON(), "{{ $ctype }}", nil
     {{- else }}
     return nil, "", fmt.Errorf("{{ $ctype }} encoder not implemented")
     {{- end }}
-    
+
     {{- end }}
     {{- else }}
     {{- /* Multiple requests */}}
@@ -29,12 +24,7 @@ func encode{{ $m.Name }}Request(req {{ $m.RequestType.Type }}) ([]byte, string, 
     {{- range $ctype, $schema := $m.RequestBody.Contents }}
     case *{{ $schema.Type }}:
         {{- if eq $ctype "application/json" }}
-        b, err := json.Marshal(req)
-        if err != nil {
-            return nil, "", err
-        }
-
-        return b, "{{ $ctype }}", nil
+        return req.encodeJSON(), "{{ $ctype }}", nil
         {{- else }}
         return nil, "", fmt.Errorf("{{ $ctype }} encoder not implemented")
         {{- end }}

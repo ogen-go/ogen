@@ -147,6 +147,26 @@ func (s {{ $s.Name }}) WriteJSON(js *jsoniter.Stream) {
     {{- end }}{{/*Range fields*/}}
     js.WriteObjectEnd()
 }
+
+func (s {{ $s.Name }}) encodeJSON() []byte {
+    buf := new(bytes.Buffer)
+    js := jsoniter.NewStream(jsoniter.ConfigDefault, buf, 1024)
+    s.WriteJSON(js)
+    _ = js.Flush()
+    return buf.Bytes()
+}
+
+func (s *{{ $s.Name }}) decodeJSON(data []byte) error {
+    i := jsoniter.NewIterator(jsoniter.ConfigDefault)
+    i.ResetBytes(data)
+    return s.ReadJSON(i)
+}
+
+// ReadJSON reads {{ $s.Name }} from json stream.
+func (s *{{ $s.Name }}) ReadJSON(i *jsoniter.Iterator) error {
+    return nil
+}
 {{- end }}{{/*If struct*/}}
 {{- end }}{{/*Range schemas*/}}
+
 {{ end }}

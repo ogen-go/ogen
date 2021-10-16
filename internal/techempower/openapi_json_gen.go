@@ -22,6 +22,7 @@ import (
 	"github.com/ogen-go/ogen/encoding/json"
 	"github.com/ogen-go/ogen/types"
 	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // No-op definition for keeping imports.
@@ -44,6 +45,7 @@ var (
 	_ = math.Mod
 	_ = types.Date{}
 	_ = jsoniter.Config{}
+	_ = validate.Int{}
 )
 
 // New returns new OptionalString with value set to v.
@@ -1390,6 +1392,25 @@ func (s HelloWorld) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectEnd()
 }
 
+func (s HelloWorld) encodeJSON() []byte {
+	buf := new(bytes.Buffer)
+	js := jsoniter.NewStream(jsoniter.ConfigDefault, buf, 1024)
+	s.WriteJSON(js)
+	_ = js.Flush()
+	return buf.Bytes()
+}
+
+func (s *HelloWorld) decodeJSON(data []byte) error {
+	i := jsoniter.NewIterator(jsoniter.ConfigDefault)
+	i.ResetBytes(data)
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads HelloWorld from json stream.
+func (s *HelloWorld) ReadJSON(i *jsoniter.Iterator) error {
+	return nil
+}
+
 func (s WorldObject) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectStart()
 	js.WriteObjectField("id")
@@ -1397,4 +1418,23 @@ func (s WorldObject) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectField("randomNumber")
 	js.WriteInt64(s.RandomNumber)
 	js.WriteObjectEnd()
+}
+
+func (s WorldObject) encodeJSON() []byte {
+	buf := new(bytes.Buffer)
+	js := jsoniter.NewStream(jsoniter.ConfigDefault, buf, 1024)
+	s.WriteJSON(js)
+	_ = js.Flush()
+	return buf.Bytes()
+}
+
+func (s *WorldObject) decodeJSON(data []byte) error {
+	i := jsoniter.NewIterator(jsoniter.ConfigDefault)
+	i.ResetBytes(data)
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads WorldObject from json stream.
+func (s *WorldObject) ReadJSON(i *jsoniter.Iterator) error {
+	return nil
 }

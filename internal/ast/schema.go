@@ -8,6 +8,8 @@ import (
 	"unicode"
 
 	"golang.org/x/xerrors"
+
+	"github.com/ogen-go/ogen/validate"
 )
 
 type SchemaKind = string
@@ -20,6 +22,12 @@ const (
 	KindEnum      SchemaKind = "enum"
 	KindPointer   SchemaKind = "pointer"
 )
+
+type Validators struct {
+	String validate.String
+	Int    validate.Int
+	Array  validate.Array
+}
 
 type Schema struct {
 	Kind        SchemaKind
@@ -37,20 +45,12 @@ type Schema struct {
 	Implements map[*Interface]struct{}
 
 	// Numeric validation.
-	MultipleOf       *uint64
-	Minimum          *int64
-	Maximum          *int64
-	ExclusiveMinimum bool
-	ExclusiveMaximum bool
+	Validators Validators
 
 	// String validation.
 	// Pattern   string
-	MaxLength *uint64
-	MinLength *int64
 
 	// Array validation.
-	MaxItems *uint64
-	MinItems *uint64
 	// UniqueItems bool
 
 	// Struct validation.
@@ -182,10 +182,10 @@ func (s *Schema) needValidation(visited map[*Schema]struct{}) (result bool) {
 			// TODO(ernado): fix
 			return false
 		}
-		if s.IsNumeric() && (s.Minimum != nil || s.Maximum != nil || s.MultipleOf != nil) {
+		if s.IsNumeric() && s.Validators.Int.Set() {
 			return true
 		}
-		if s.Primitive == "string" && (s.MinLength != nil || s.MaxLength != nil) {
+		if s.Validators.String.Set() {
 			return true
 		}
 		return false
@@ -196,7 +196,7 @@ func (s *Schema) needValidation(visited map[*Schema]struct{}) (result bool) {
 	case KindPointer:
 		return s.PointerTo.needValidation(visited)
 	case KindArray:
-		if s.MinItems != nil || s.MaxItems != nil {
+		if s.Validators.Array.Set() {
 			return true
 		}
 		// Prevent infinite recursion.

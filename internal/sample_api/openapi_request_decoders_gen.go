@@ -22,6 +22,7 @@ import (
 	"github.com/ogen-go/ogen/encoding/json"
 	"github.com/ogen-go/ogen/types"
 	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // No-op definition for keeping imports.
@@ -44,75 +45,57 @@ var (
 	_ = math.Mod
 	_ = types.Date{}
 	_ = jsoniter.Config{}
+	_ = validate.Int{}
 )
 
-func decodeFoobarPostRequest(r *http.Request) (_ *Pet, rerr error) {
+func decodeFoobarPostRequest(r *http.Request) (req *Pet, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Pet
 		data, err := io.ReadAll(r.Body)
 		if err != nil {
-			rerr = err
-			return
+			return req, err
 		}
-		if err := json.Unmarshal(data, &request); err != nil {
-			if errors.Is(err, io.EOF) {
-				return
-			}
-			rerr = err
-			return
+
+		i := jsoniter.NewIterator(jsoniter.ConfigDefault)
+		i.ResetBytes(data)
+		if err := request.ReadJSON(i); err != nil {
+			return req, err
 		}
-		if err := func() error {
-			if err := request.validate(); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			rerr = err
-			return
+		if err := request.validate(); err != nil {
+			return req, err
 		}
 
 		return &request, nil
 	default:
-		rerr = fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-		return
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }
 
-func decodePetCreateRequest(r *http.Request) (_ PetCreateRequest, rerr error) {
+func decodePetCreateRequest(r *http.Request) (req PetCreateRequest, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Pet
 		data, err := io.ReadAll(r.Body)
 		if err != nil {
-			rerr = err
-			return
+			return req, err
 		}
-		if err := json.Unmarshal(data, &request); err != nil {
-			if errors.Is(err, io.EOF) {
-				return
-			}
-			rerr = err
-			return
+
+		i := jsoniter.NewIterator(jsoniter.ConfigDefault)
+		i.ResetBytes(data)
+		if err := request.ReadJSON(i); err != nil {
+			return req, err
 		}
-		if err := func() error {
-			if err := request.validate(); err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			rerr = err
-			return
+		if err := request.validate(); err != nil {
+			return req, err
 		}
 
 		return &request, nil
 	case "text/plain":
 		var request PetCreateTextPlainRequest
 		_ = request
-		rerr = fmt.Errorf("text/plain decoder not implemented")
-		return
+		return req, fmt.Errorf("text/plain decoder not implemented")
 	default:
-		rerr = fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-		return
+		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}
 }

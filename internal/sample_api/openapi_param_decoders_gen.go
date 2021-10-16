@@ -22,6 +22,7 @@ import (
 	"github.com/ogen-go/ogen/encoding/json"
 	"github.com/ogen-go/ogen/types"
 	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // No-op definition for keeping imports.
@@ -44,6 +45,7 @@ var (
 	_ = math.Mod
 	_ = types.Date{}
 	_ = jsoniter.Config{}
+	_ = validate.Int{}
 )
 
 func decodeFoobarGetParams(r *http.Request) (FoobarGetParams, error) {
@@ -117,9 +119,6 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 			return err
 		}
 		if err := func() error {
-			if v < 1337 {
-				return fmt.Errorf("value must be greater than or equal to 1337")
-			}
 			return nil
 		}(); err != nil {
 			return fmt.Errorf("validate Query petID: %w", err)

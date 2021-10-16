@@ -22,6 +22,7 @@ import (
 	"github.com/ogen-go/ogen/encoding/json"
 	"github.com/ogen-go/ogen/types"
 	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // No-op definition for keeping imports.
@@ -44,26 +45,17 @@ var (
 	_ = math.Mod
 	_ = types.Date{}
 	_ = jsoniter.Config{}
+	_ = validate.Int{}
 )
 
-func encodeFoobarPostRequest(req *Pet) ([]byte, string, error) {
-	b, err := json.Marshal(req)
-	if err != nil {
-		return nil, "", err
-	}
-
-	return b, "application/json", nil
+func encodeFoobarPostRequest(req *Pet) (data []byte, contentType string, err error) {
+	return req.encodeJSON(), "application/json", nil
 }
 
-func encodePetCreateRequest(req PetCreateRequest) ([]byte, string, error) {
+func encodePetCreateRequest(req PetCreateRequest) (data []byte, contentType string, err error) {
 	switch req := req.(type) {
 	case *Pet:
-		b, err := json.Marshal(req)
-		if err != nil {
-			return nil, "", err
-		}
-
-		return b, "application/json", nil
+		return req.encodeJSON(), "application/json", nil
 	case *PetCreateTextPlainRequest:
 		return nil, "", fmt.Errorf("text/plain encoder not implemented")
 	default:

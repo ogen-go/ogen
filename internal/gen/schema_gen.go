@@ -50,12 +50,35 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 	// sideEffect stores schema in g.localRefs or g.side if needed.
 	sideEffect := func(s *ast.Schema) *ast.Schema {
 		// Set validation fields.
-		s.MultipleOf = schema.MultipleOf
-		s.Minimum, s.Maximum = schema.Minimum, schema.Maximum
-		s.MinItems, s.MaxItems = schema.MinItems, schema.MaxItems
-		s.MinLength, s.MaxLength = schema.MinLength, schema.MaxLength
-		s.ExclusiveMinimum = schema.ExclusiveMinimum
-		s.ExclusiveMaximum = schema.ExclusiveMaximum
+		if schema.MultipleOf != nil {
+			s.Validators.Int.MultipleOf = *schema.MultipleOf
+			s.Validators.Int.MultipleOfSet = true
+		}
+		if schema.Maximum != nil {
+			s.Validators.Int.Maximum = *schema.Maximum
+			s.Validators.Int.MaximumSet = true
+		}
+		if schema.Minimum != nil {
+			s.Validators.Int.Minimum = *schema.Minimum
+			s.Validators.Int.MinimumSet = true
+		}
+		s.Validators.Int.ExclusiveMaximum = schema.ExclusiveMaximum
+		s.Validators.Int.ExclusiveMinimum = schema.ExclusiveMinimum
+
+		if schema.MaxItems != nil {
+			s.Validators.Array.SetMaxLength(int(*schema.MaxItems))
+		}
+		if schema.MinItems != nil {
+			s.Validators.Array.SetMinLength(int(*schema.MinItems))
+		}
+
+		if schema.MaxLength != nil {
+			s.Validators.String.SetMaxLength(int(*schema.MaxLength))
+		}
+		if schema.MinLength != nil {
+			s.Validators.String.SetMinLength(int(*schema.MinLength))
+		}
+
 		// s.Pattern = schema.Pattern
 
 		// Referenced component, store it in g.localRefs.

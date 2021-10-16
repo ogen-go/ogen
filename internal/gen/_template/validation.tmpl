@@ -1,4 +1,6 @@
 {{ define "validators" }}
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.TemplateConfig*/ -}}
+
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
@@ -7,16 +9,40 @@
 {{- if eq $s.Kind "struct" }}{{/*If struct*/}}
 func (s *{{ $s.Name }}) validate() error {
     {{- range $f := $s.Fields }}{{/*Range fields*/}}
-
     {{- if $f.Type.NeedValidation }}
-        // Validate '{{ $f.Name }}' field.
-        {{- template "validate_schema" dict
-            "schema" $f.Type
-            "varname" (sprintf "s.%s" $f.Name)
-            "errorPrefix" (sprintf "field '%s': " $f.Name)
-        }}
-    {{ end }}
-
+        {{- $fieldName := $f.Name }}
+        {{- if $f.Type.Generic }}{{ $fieldName = sprintf "%s.Value" $fieldName }}{{ end }}
+        {{- if $f.Type.Validators.String.Set }}
+        {
+            // Validate '{{ $f.Name }}' field.
+            validator := validate.String{
+                MinLength:    {{ $f.Type.Validators.String.MinLength }},
+                MinLengthSet: {{ $f.Type.Validators.String.MinLengthSet }},
+                MaxLength:    {{ $f.Type.Validators.String.MaxLength }},
+                MaxLengthSet: {{ $f.Type.Validators.String.MaxLengthSet }},
+            }
+            if err := validator.Validate(s.{{ $fieldName }}); err != nil {
+                return err
+            }
+        }
+        {{- end }}
+        {{- if $f.Type.Validators.Int.Set }}
+        {
+            // Validate '{{ $f.Name }}' field.
+            validator := validate.Int{
+                MinimumSet:         {{ $f.Type.Validators.Int.MinimumSet }},
+                Minimum:            {{ $f.Type.Validators.Int.Minimum }},
+                MaximumSet:         {{ $f.Type.Validators.Int.MaximumSet }},
+                Maximum:            {{ $f.Type.Validators.Int.Maximum }},
+                ExclusiveMinimum:   {{ $f.Type.Validators.Int.ExclusiveMinimum }},
+                ExclusiveMaximum:   {{ $f.Type.Validators.Int.ExclusiveMaximum }},
+            }
+            if err := validator.Validate(s.{{ $fieldName }}); err != nil {
+                return fmt.Errorf("field {{ $fieldName }}: %w", err)
+            }
+        }
+        {{- end }}
+    {{- end }}
     {{- end }}{{/*Range fields*/}}
     return nil
 }

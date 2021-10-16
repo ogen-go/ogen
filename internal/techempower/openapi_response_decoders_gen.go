@@ -22,6 +22,7 @@ import (
 	"github.com/ogen-go/ogen/encoding/json"
 	"github.com/ogen-go/ogen/types"
 	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // No-op definition for keeping imports.
@@ -44,9 +45,10 @@ var (
 	_ = math.Mod
 	_ = types.Date{}
 	_ = jsoniter.Config{}
+	_ = validate.Int{}
 )
 
-func decodeCachingResponse(resp *http.Response) (_ []WorldObject, rerr error) {
+func decodeCachingResponse(resp *http.Response) (res []WorldObject, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -54,26 +56,22 @@ func decodeCachingResponse(resp *http.Response) (_ []WorldObject, rerr error) {
 			var response []WorldObject
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
-				rerr = err
-				return
+				return res, err
 			}
 			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
+				return res, err
 			}
 
 			return response, nil
 		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
+			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
+		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeDBResponse(resp *http.Response) (_ WorldObject, rerr error) {
+func decodeDBResponse(resp *http.Response) (res WorldObject, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -81,26 +79,22 @@ func decodeDBResponse(resp *http.Response) (_ WorldObject, rerr error) {
 			var response WorldObject
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
-				rerr = err
-				return
+				return res, err
 			}
 			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
+				return res, err
 			}
 
 			return response, nil
 		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
+			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
+		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeJSONResponse(resp *http.Response) (_ HelloWorld, rerr error) {
+func decodeJSONResponse(resp *http.Response) (res HelloWorld, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -108,26 +102,22 @@ func decodeJSONResponse(resp *http.Response) (_ HelloWorld, rerr error) {
 			var response HelloWorld
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
-				rerr = err
-				return
+				return res, err
 			}
 			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
+				return res, err
 			}
 
 			return response, nil
 		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
+			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
+		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeQueriesResponse(resp *http.Response) (_ []WorldObject, rerr error) {
+func decodeQueriesResponse(resp *http.Response) (res []WorldObject, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -135,26 +125,22 @@ func decodeQueriesResponse(resp *http.Response) (_ []WorldObject, rerr error) {
 			var response []WorldObject
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
-				rerr = err
-				return
+				return res, err
 			}
 			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
+				return res, err
 			}
 
 			return response, nil
 		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
+			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
+		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }
 
-func decodeUpdatesResponse(resp *http.Response) (_ []WorldObject, rerr error) {
+func decodeUpdatesResponse(resp *http.Response) (res []WorldObject, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
@@ -162,21 +148,17 @@ func decodeUpdatesResponse(resp *http.Response) (_ []WorldObject, rerr error) {
 			var response []WorldObject
 			data, err := io.ReadAll(resp.Body)
 			if err != nil {
-				rerr = err
-				return
+				return res, err
 			}
 			if err := json.Unmarshal(data, &response); err != nil {
-				rerr = err
-				return
+				return res, err
 			}
 
 			return response, nil
 		default:
-			rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-			return
+			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
 	default:
-		rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-		return
+		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
 }

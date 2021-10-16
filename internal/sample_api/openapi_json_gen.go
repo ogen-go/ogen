@@ -22,6 +22,7 @@ import (
 	"github.com/ogen-go/ogen/encoding/json"
 	"github.com/ogen-go/ogen/types"
 	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // No-op definition for keeping imports.
@@ -44,6 +45,7 @@ var (
 	_ = math.Mod
 	_ = types.Date{}
 	_ = jsoniter.Config{}
+	_ = validate.Int{}
 )
 
 // New returns new OptionalString with value set to v.
@@ -1392,14 +1394,71 @@ func (s Error) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectEnd()
 }
 
+func (s Error) encodeJSON() []byte {
+	buf := new(bytes.Buffer)
+	js := jsoniter.NewStream(jsoniter.ConfigDefault, buf, 1024)
+	s.WriteJSON(js)
+	_ = js.Flush()
+	return buf.Bytes()
+}
+
+func (s *Error) decodeJSON(data []byte) error {
+	i := jsoniter.NewIterator(jsoniter.ConfigDefault)
+	i.ResetBytes(data)
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads Error from json stream.
+func (s *Error) ReadJSON(i *jsoniter.Iterator) error {
+	return nil
+}
+
 func (s ErrorStatusCode) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectStart()
 	js.WriteObjectEnd()
 }
 
+func (s ErrorStatusCode) encodeJSON() []byte {
+	buf := new(bytes.Buffer)
+	js := jsoniter.NewStream(jsoniter.ConfigDefault, buf, 1024)
+	s.WriteJSON(js)
+	_ = js.Flush()
+	return buf.Bytes()
+}
+
+func (s *ErrorStatusCode) decodeJSON(data []byte) error {
+	i := jsoniter.NewIterator(jsoniter.ConfigDefault)
+	i.ResetBytes(data)
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads ErrorStatusCode from json stream.
+func (s *ErrorStatusCode) ReadJSON(i *jsoniter.Iterator) error {
+	return nil
+}
+
 func (s FoobarPutDefault) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectStart()
 	js.WriteObjectEnd()
+}
+
+func (s FoobarPutDefault) encodeJSON() []byte {
+	buf := new(bytes.Buffer)
+	js := jsoniter.NewStream(jsoniter.ConfigDefault, buf, 1024)
+	s.WriteJSON(js)
+	_ = js.Flush()
+	return buf.Bytes()
+}
+
+func (s *FoobarPutDefault) decodeJSON(data []byte) error {
+	i := jsoniter.NewIterator(jsoniter.ConfigDefault)
+	i.ResetBytes(data)
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads FoobarPutDefault from json stream.
+func (s *FoobarPutDefault) ReadJSON(i *jsoniter.Iterator) error {
+	return nil
 }
 
 func (s Pet) WriteJSON(js *jsoniter.Stream) {
@@ -1428,6 +1487,25 @@ func (s Pet) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectEnd()
 }
 
+func (s Pet) encodeJSON() []byte {
+	buf := new(bytes.Buffer)
+	js := jsoniter.NewStream(jsoniter.ConfigDefault, buf, 1024)
+	s.WriteJSON(js)
+	_ = js.Flush()
+	return buf.Bytes()
+}
+
+func (s *Pet) decodeJSON(data []byte) error {
+	i := jsoniter.NewIterator(jsoniter.ConfigDefault)
+	i.ResetBytes(data)
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads Pet from json stream.
+func (s *Pet) ReadJSON(i *jsoniter.Iterator) error {
+	return nil
+}
+
 func (s PetGetDefault) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectStart()
 	js.WriteObjectField("message")
@@ -1435,7 +1513,45 @@ func (s PetGetDefault) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectEnd()
 }
 
+func (s PetGetDefault) encodeJSON() []byte {
+	buf := new(bytes.Buffer)
+	js := jsoniter.NewStream(jsoniter.ConfigDefault, buf, 1024)
+	s.WriteJSON(js)
+	_ = js.Flush()
+	return buf.Bytes()
+}
+
+func (s *PetGetDefault) decodeJSON(data []byte) error {
+	i := jsoniter.NewIterator(jsoniter.ConfigDefault)
+	i.ResetBytes(data)
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PetGetDefault from json stream.
+func (s *PetGetDefault) ReadJSON(i *jsoniter.Iterator) error {
+	return nil
+}
+
 func (s PetGetDefaultStatusCode) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectStart()
 	js.WriteObjectEnd()
+}
+
+func (s PetGetDefaultStatusCode) encodeJSON() []byte {
+	buf := new(bytes.Buffer)
+	js := jsoniter.NewStream(jsoniter.ConfigDefault, buf, 1024)
+	s.WriteJSON(js)
+	_ = js.Flush()
+	return buf.Bytes()
+}
+
+func (s *PetGetDefaultStatusCode) decodeJSON(data []byte) error {
+	i := jsoniter.NewIterator(jsoniter.ConfigDefault)
+	i.ResetBytes(data)
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads PetGetDefaultStatusCode from json stream.
+func (s *PetGetDefaultStatusCode) ReadJSON(i *jsoniter.Iterator) error {
+	return nil
 }

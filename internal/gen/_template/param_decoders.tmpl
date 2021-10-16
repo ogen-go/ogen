@@ -68,7 +68,7 @@ func decode{{ $m.Name }}Params(r *http.Request) ({{ $m.Name }}Params, error) {
 			return nil
 			{{- end }}
 		}
-		
+
 		v, err := {{ template "parse_from_string" $p.Schema.Type }}(param)
 		if err != nil {
 			return fmt.Errorf("parse {{ $p.In.Lower }} param '{{ $p.SourceName }}': %w", err)
@@ -99,10 +99,6 @@ func decode{{ $m.Name }}Params(r *http.Request) ({{ $m.Name }}Params, error) {
 		{{- /*Validation*/}}
 		{{- if $p.Schema.NeedValidation }}
         if err := func() error {
-            {{- template "validate_schema" dict
-                "schema" $p.Schema
-                "varname" "v"
-            }}
             return nil
         }(); err != nil {
             return fmt.Errorf("validate {{ $p.In }} {{ $p.SourceName }}: %w", err)
@@ -133,7 +129,7 @@ func decode{{ $m.Name }}Params(r *http.Request) ({{ $m.Name }}Params, error) {
 	{{- else if eq $.Primitive "float32" }}v, err := d.DecodeFloat32()
 	{{- else if eq $.Primitive "bool" }}v, err := d.DecodeBool()
 	{{- else if eq $.Primitive "time.Time" }}
-	vv, err := d.DecodeString(); 
+	vv, err := d.DecodeString();
 	if err != nil {
 		return err
 	}
@@ -155,7 +151,7 @@ func decode{{ $m.Name }}Params(r *http.Request) ({{ $m.Name }}Params, error) {
 		{{- else if eq $primitive "float32" }}v, err := d.DecodeFloat32Array()
 		{{- else if eq $primitive "bool" }}v, err := d.DecodeBoolArray()
 		{{- else if eq $primitive "time.Time" }}
-		vv, err := d.DecodeString(); 
+		vv, err := d.DecodeString();
 		if err != nil {
 			return err
 		}
