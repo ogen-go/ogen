@@ -19,6 +19,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/encoding/json"
+	"github.com/ogen-go/ogen/types"
 	"github.com/ogen-go/ogen/uri"
 )
 
@@ -40,6 +41,7 @@ var (
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
 	_ = math.Mod
+	_ = types.Date{}
 )
 
 type HTTPClient interface {
