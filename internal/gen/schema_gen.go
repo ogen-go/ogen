@@ -43,6 +43,10 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 		return g.ref(ref)
 	}
 
+	if schema.Nullable {
+		return nil, &ErrNotImplemented{"nullable type"}
+	}
+
 	// sideEffect stores schema in g.localRefs or g.side if needed.
 	sideEffect := func(s *ast.Schema) *ast.Schema {
 		// Set validation fields.

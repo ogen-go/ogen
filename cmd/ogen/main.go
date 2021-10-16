@@ -40,7 +40,7 @@ func main() {
 		clean          = flag.Bool("clean", false, "Clean generated files before generation")
 
 		debugSkipUnspecifiedParams = flag.Bool("debug.skipUnspecifiedParams", false, "Ignore methods where path params are not specified")
-		debugIgnoreNotImplemented  = flag.Bool("debug.ignoreNotImplemented", false, "Ignore methods having functionality which is not implemented (oneOf, anyOf, allOf, complex parameter types)")
+		debugIgnoreNotImplemented  = flag.Bool("debug.ignoreNotImplemented", false, "Ignore methods having functionality which is not implemented (oneOf, anyOf, allOf, nullable types, complex parameter types)")
 		debugNoerr                 = flag.Bool("debug.noerr", false, "Ignore all errors")
 	)
 

@@ -210,6 +210,14 @@ type Schema struct {
 	// Inline or referenced schema MUST be of a Schema Object and not a standard
 	Items *Schema `json:"items"`
 
+	// A true value adds "null" to the allowed type specified by the type keyword,
+	// only if type is explicitly defined within the same Schema Object.
+	// Other Schema Object constraints retain their defined behavior,
+	// and therefore may disallow the use of null as a value.
+	// A false value leaves the specified or default type unmodified.
+	// The default value is false.
+	Nullable bool `json:"nullable"`
+
 	// AllOf takes an array of object definitions that are used
 	// for independent validation but together compose a single object.
 	// Still, it does not imply a hierarchy between the models.
