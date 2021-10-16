@@ -4,6 +4,99 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
+{{- range $s := $.Generics }}
+
+// New returns new {{ $s.Name }} with value set to v.
+func New{{ $s.Name }}(v {{ $s.Primitive }}) {{ $s.Name }} {
+    return {{ $s.Name }} {
+        Value: v,
+{{- if $s.Optional }}
+        Set: true,
+{{- end }}
+    }
+}
+
+// {{ $s.Name }} is{{ if $s.Optional }} optional{{ end }}{{ if $s.Nil }} nillable{{ end }} {{ $s.Primitive }}.
+type {{ $s.Name }} struct {
+    Value {{ $s.Primitive }}
+{{- if $s.Optional }}
+    Set   bool
+{{- end }}
+{{- if $s.Nil }}
+    Nil   bool
+{{- end }}
+}
+
+{{- if $s.Optional }}
+// IsSet returns true if {{ $s.Primitive }} was set.
+func (o {{ $s.Name }}) IsSet() bool { return o.Set }
+
+// Unset unsets value.
+func (o *{{ $s.Name }}) Unset() {
+    var v {{ $s.Primitive }}
+    o.Value = v
+    o.Set = false
+{{- if $s.Nil }}
+    o.Nil = false
+{{- end }}
+}
+{{- end }}
+
+// SetTo sets value to v.
+func (o *{{ $s.Name }}) SetTo(v {{ $s.Primitive }}) {
+{{- if $s.Optional }}
+    o.Set = true
+{{- end }}
+{{- if $s.Nil }}
+    o.Nil = false
+{{- end }}
+    o.Value = v
+}
+
+{{- if $s.Nil }}
+// IsSet returns true if value is nil.
+func (o {{ $s.Name }}) IsNil() bool { return o.Nil }
+{{ end }}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o {{ $s.Name }}) Get() (v {{ $s.Primitive }}, ok bool) {
+    {{- if $s.Nil }}
+    if o.Nil {
+        return v, false
+    }
+    {{- end }}
+    {{- if $s.Optional }}
+    if !o.Set {
+        return v, false
+    }
+    {{- end }}
+    return o.Value, true
+}
+
+// WriteJSON writes json value of {{ $s.Primitive }} to json stream.
+func (o {{ $s.Name }}) WriteJSON(js *jsoniter.Stream) {
+    js.{{ $s.JSON.Write }}(o.Value)
+}
+
+// WriteFieldJSON writes object field to json stream if value is set.
+func (o {{ $s.Name }}) WriteFieldJSON(k string, js *jsoniter.Stream) {
+    {{- if $s.Optional }}
+    if !o.Set {
+        return
+    }
+    {{- end }}
+    js.WriteObjectField(k)
+    {{- if $s.Nil }}
+    if o.Nil {
+        js.WriteNil()
+        return
+    }
+    {{- end }}
+    o.WriteJSON(js)
+}
+
+{{- end }}
+
 {{- range $s := $.Schemas }}{{/*Range schemas*/}}
 {{ if eq $s.Kind "struct" }}{{/*If struct*/}}
 func (s {{ $s.Name }}) WriteJSON(js *jsoniter.Stream) {

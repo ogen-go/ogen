@@ -8,10 +8,10 @@ import (
 )
 
 type Generator struct {
-	opt     Options
-	spec    *ogen.Spec
-	methods []*ast.Method
-
+	opt           Options
+	spec          *ogen.Spec
+	methods       []*ast.Method
+	generics      []*ast.Generic
 	schemas       map[string]*ast.Schema
 	schemaRefs    map[string]*ast.Schema
 	requestBodies map[string]*ast.RequestBody
@@ -26,7 +26,7 @@ type Options struct {
 }
 
 func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
-	initComponents(spec)
+	spec.Init()
 	g := &Generator{
 		opt:           opts,
 		spec:          spec,
@@ -41,27 +41,45 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 		return nil, xerrors.Errorf("methods: %w", err)
 	}
 
+	g.generatePrimitives()
 	g.simplify()
 	g.fix()
 	return g, nil
 }
 
-func initComponents(spec *ogen.Spec) {
-	if spec.Components == nil {
-		spec.Components = &ogen.Components{}
-	}
+func (g *Generator) generatePrimitives() {
+	for _, t := range []struct {
+		Primitive string
+		JSON      string
+	}{
+		{Primitive: "string", JSON: "String"},
+		{Primitive: "int", JSON: "Int"},
+		{Primitive: "int32", JSON: "Int32"},
+		{Primitive: "int64", JSON: "Int64"},
+	} {
+		for _, v := range []struct {
+			Optional bool
+			Nil      bool
+		}{
+			{Optional: true, Nil: false},
+			{Optional: false, Nil: true},
+			{Optional: true, Nil: true},
+		} {
+			gt := &ast.Generic{
+				Optional: v.Optional,
+				Nil:      v.Nil,
 
-	c := spec.Components
-	if c.Schemas == nil {
-		c.Schemas = make(map[string]ogen.Schema)
-	}
-	if c.Responses == nil {
-		c.Responses = make(map[string]ogen.Response)
-	}
-	if c.Parameters == nil {
-		c.Parameters = make(map[string]ogen.Parameter)
-	}
-	if c.RequestBodies == nil {
-		c.RequestBodies = make(map[string]ogen.RequestBody)
+				Schema: ast.Schema{
+					Kind:      ast.KindPrimitive,
+					Primitive: t.Primitive,
+					JSON: &ast.JSON{
+						Read:  "Read" + t.JSON,
+						Write: "Write" + t.JSON,
+					},
+				},
+			}
+			gt.Name = gt.GenericKind() + pascal(t.Primitive)
+			g.generics = append(g.generics, gt)
+		}
 	}
 }

@@ -14,6 +14,7 @@ type TemplateConfig struct {
 	Methods    []*ast.Method
 	Schemas    map[string]*ast.Schema
 	Interfaces map[string]*ast.Interface
+	Generics   []*ast.Generic
 }
 
 // FileSystem represents a directory of generated package.
@@ -61,6 +62,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		Schemas:    g.schemas,
 		Methods:    g.methods,
 		Interfaces: g.interfaces,
+		Generics:   g.generics,
 	}
 
 	if err := w.Generate("params", "openapi_params_gen.go", cfg); err != nil {

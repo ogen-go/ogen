@@ -2,7 +2,7 @@ package ogen
 
 import "encoding/json"
 
-// This is the root document object of the OpenAPI document.
+// Spec is the root document object of the OpenAPI document.
 type Spec struct {
 	// This string MUST be the semantic version number
 	// of the OpenAPI Specification version that the OpenAPI document uses.
@@ -13,7 +13,29 @@ type Spec struct {
 	Components *Components `json:"components"`
 }
 
-// The object provides metadata about the API.
+// Init components of schema.
+func (s *Spec) Init() {
+	if s.Components == nil {
+		s.Components = &Components{}
+	}
+
+	c := s.Components
+	if c.Schemas == nil {
+		c.Schemas = make(map[string]Schema)
+	}
+	if c.Responses == nil {
+		c.Responses = make(map[string]Response)
+	}
+	if c.Parameters == nil {
+		c.Parameters = make(map[string]Parameter)
+	}
+	if c.RequestBodies == nil {
+		c.RequestBodies = make(map[string]RequestBody)
+	}
+}
+
+// Info provides metadata about the API.
+//
 // The metadata MAY be used by the clients if needed,
 // and MAY be presented in editing or documentation generation tools for convenience.
 type Info struct {
@@ -45,13 +67,13 @@ type License struct {
 	URL  string `json:"url"`
 }
 
-// An object representing a Server.
+// Server represents a Server.
 type Server struct {
 	Name string `json:"name"`
 	URL  string `json:"url"`
 }
 
-// Holds a set of reusable objects for different aspects of the OAS.
+// Components hold a set of reusable objects for different aspects of the OAS.
 // All objects defined within the components object will have no effect on the API
 // unless they are explicitly referenced from properties outside the components object.
 type Components struct {
@@ -73,7 +95,7 @@ type Paths map[string]PathItem
 
 // PathItem describes the operations available on a single path.
 // A Path Item MAY be empty, due to ACL constraints.
-// The path itself is still exposed to the documentation viewer
+// The path itself is still exposed to the documentation viewer,
 // but they will not know which operations and parameters are available.
 type PathItem struct {
 	// Allows for an external definition of this path item.
@@ -106,7 +128,7 @@ type Operation struct {
 	Responses   Responses    `json:"responses"`
 }
 
-// Describes a single operation parameter.
+// Parameter describes a single operation parameter.
 // A unique parameter is defined by a combination of a name and location.
 type Parameter struct {
 	Ref  string `json:"$ref"`
@@ -163,11 +185,11 @@ type RequestBody struct {
 	Required bool `json:"required"`
 }
 
-// Responses - a container for the expected responses of an operation.
-// The container maps a HTTP response code to the expected response
+// Responses is a container for the expected responses of an operation.
+// The container maps the HTTP response code to the expected response
 type Responses map[string]Response
 
-// Describes a single response from an API Operation,
+// Response describes a single response from an API Operation,
 // including design-time, static links to operations based on the response.
 type Response struct {
 	Ref         string                 `json:"$ref"`

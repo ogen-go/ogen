@@ -46,6 +46,654 @@ var (
 	_ = jsoniter.Config{}
 )
 
+// New returns new OptionalString with value set to v.
+func NewOptionalString(v string) OptionalString {
+	return OptionalString{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalString is optional string.
+type OptionalString struct {
+	Value string
+	Set   bool
+}
+
+// IsSet returns true if string was set.
+func (o OptionalString) IsSet() bool { return o.Set }
+
+// Unset unsets value.
+func (o *OptionalString) Unset() {
+	var v string
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalString) SetTo(v string) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalString) Get() (v string, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of string to json stream.
+func (o OptionalString) WriteJSON(js *jsoniter.Stream) {
+	js.WriteString(o.Value)
+}
+
+// WriteFieldJSON writes object field to json stream if value is set.
+func (o OptionalString) WriteFieldJSON(k string, js *jsoniter.Stream) {
+	if !o.Set {
+		return
+	}
+	js.WriteObjectField(k)
+	o.WriteJSON(js)
+}
+
+// New returns new NilString with value set to v.
+func NewNilString(v string) NilString {
+	return NilString{
+		Value: v,
+	}
+}
+
+// NilString is nillable string.
+type NilString struct {
+	Value string
+	Nil   bool
+}
+
+// SetTo sets value to v.
+func (o *NilString) SetTo(v string) {
+	o.Nil = false
+	o.Value = v
+}
+
+// IsSet returns true if value is nil.
+func (o NilString) IsNil() bool { return o.Nil }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilString) Get() (v string, ok bool) {
+	if o.Nil {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of string to json stream.
+func (o NilString) WriteJSON(js *jsoniter.Stream) {
+	js.WriteString(o.Value)
+}
+
+// WriteFieldJSON writes object field to json stream if value is set.
+func (o NilString) WriteFieldJSON(k string, js *jsoniter.Stream) {
+	js.WriteObjectField(k)
+	if o.Nil {
+		js.WriteNil()
+		return
+	}
+	o.WriteJSON(js)
+}
+
+// New returns new OptionalNilString with value set to v.
+func NewOptionalNilString(v string) OptionalNilString {
+	return OptionalNilString{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilString is optional nillable string.
+type OptionalNilString struct {
+	Value string
+	Set   bool
+	Nil   bool
+}
+
+// IsSet returns true if string was set.
+func (o OptionalNilString) IsSet() bool { return o.Set }
+
+// Unset unsets value.
+func (o *OptionalNilString) Unset() {
+	var v string
+	o.Value = v
+	o.Set = false
+	o.Nil = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilString) SetTo(v string) {
+	o.Set = true
+	o.Nil = false
+	o.Value = v
+}
+
+// IsSet returns true if value is nil.
+func (o OptionalNilString) IsNil() bool { return o.Nil }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilString) Get() (v string, ok bool) {
+	if o.Nil {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of string to json stream.
+func (o OptionalNilString) WriteJSON(js *jsoniter.Stream) {
+	js.WriteString(o.Value)
+}
+
+// WriteFieldJSON writes object field to json stream if value is set.
+func (o OptionalNilString) WriteFieldJSON(k string, js *jsoniter.Stream) {
+	if !o.Set {
+		return
+	}
+	js.WriteObjectField(k)
+	if o.Nil {
+		js.WriteNil()
+		return
+	}
+	o.WriteJSON(js)
+}
+
+// New returns new OptionalInt with value set to v.
+func NewOptionalInt(v int) OptionalInt {
+	return OptionalInt{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalInt is optional int.
+type OptionalInt struct {
+	Value int
+	Set   bool
+}
+
+// IsSet returns true if int was set.
+func (o OptionalInt) IsSet() bool { return o.Set }
+
+// Unset unsets value.
+func (o *OptionalInt) Unset() {
+	var v int
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalInt) SetTo(v int) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalInt) Get() (v int, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of int to json stream.
+func (o OptionalInt) WriteJSON(js *jsoniter.Stream) {
+	js.WriteInt(o.Value)
+}
+
+// WriteFieldJSON writes object field to json stream if value is set.
+func (o OptionalInt) WriteFieldJSON(k string, js *jsoniter.Stream) {
+	if !o.Set {
+		return
+	}
+	js.WriteObjectField(k)
+	o.WriteJSON(js)
+}
+
+// New returns new NilInt with value set to v.
+func NewNilInt(v int) NilInt {
+	return NilInt{
+		Value: v,
+	}
+}
+
+// NilInt is nillable int.
+type NilInt struct {
+	Value int
+	Nil   bool
+}
+
+// SetTo sets value to v.
+func (o *NilInt) SetTo(v int) {
+	o.Nil = false
+	o.Value = v
+}
+
+// IsSet returns true if value is nil.
+func (o NilInt) IsNil() bool { return o.Nil }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilInt) Get() (v int, ok bool) {
+	if o.Nil {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of int to json stream.
+func (o NilInt) WriteJSON(js *jsoniter.Stream) {
+	js.WriteInt(o.Value)
+}
+
+// WriteFieldJSON writes object field to json stream if value is set.
+func (o NilInt) WriteFieldJSON(k string, js *jsoniter.Stream) {
+	js.WriteObjectField(k)
+	if o.Nil {
+		js.WriteNil()
+		return
+	}
+	o.WriteJSON(js)
+}
+
+// New returns new OptionalNilInt with value set to v.
+func NewOptionalNilInt(v int) OptionalNilInt {
+	return OptionalNilInt{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilInt is optional nillable int.
+type OptionalNilInt struct {
+	Value int
+	Set   bool
+	Nil   bool
+}
+
+// IsSet returns true if int was set.
+func (o OptionalNilInt) IsSet() bool { return o.Set }
+
+// Unset unsets value.
+func (o *OptionalNilInt) Unset() {
+	var v int
+	o.Value = v
+	o.Set = false
+	o.Nil = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilInt) SetTo(v int) {
+	o.Set = true
+	o.Nil = false
+	o.Value = v
+}
+
+// IsSet returns true if value is nil.
+func (o OptionalNilInt) IsNil() bool { return o.Nil }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilInt) Get() (v int, ok bool) {
+	if o.Nil {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of int to json stream.
+func (o OptionalNilInt) WriteJSON(js *jsoniter.Stream) {
+	js.WriteInt(o.Value)
+}
+
+// WriteFieldJSON writes object field to json stream if value is set.
+func (o OptionalNilInt) WriteFieldJSON(k string, js *jsoniter.Stream) {
+	if !o.Set {
+		return
+	}
+	js.WriteObjectField(k)
+	if o.Nil {
+		js.WriteNil()
+		return
+	}
+	o.WriteJSON(js)
+}
+
+// New returns new OptionalInt32 with value set to v.
+func NewOptionalInt32(v int32) OptionalInt32 {
+	return OptionalInt32{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalInt32 is optional int32.
+type OptionalInt32 struct {
+	Value int32
+	Set   bool
+}
+
+// IsSet returns true if int32 was set.
+func (o OptionalInt32) IsSet() bool { return o.Set }
+
+// Unset unsets value.
+func (o *OptionalInt32) Unset() {
+	var v int32
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalInt32) SetTo(v int32) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalInt32) Get() (v int32, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of int32 to json stream.
+func (o OptionalInt32) WriteJSON(js *jsoniter.Stream) {
+	js.WriteInt32(o.Value)
+}
+
+// WriteFieldJSON writes object field to json stream if value is set.
+func (o OptionalInt32) WriteFieldJSON(k string, js *jsoniter.Stream) {
+	if !o.Set {
+		return
+	}
+	js.WriteObjectField(k)
+	o.WriteJSON(js)
+}
+
+// New returns new NilInt32 with value set to v.
+func NewNilInt32(v int32) NilInt32 {
+	return NilInt32{
+		Value: v,
+	}
+}
+
+// NilInt32 is nillable int32.
+type NilInt32 struct {
+	Value int32
+	Nil   bool
+}
+
+// SetTo sets value to v.
+func (o *NilInt32) SetTo(v int32) {
+	o.Nil = false
+	o.Value = v
+}
+
+// IsSet returns true if value is nil.
+func (o NilInt32) IsNil() bool { return o.Nil }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilInt32) Get() (v int32, ok bool) {
+	if o.Nil {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of int32 to json stream.
+func (o NilInt32) WriteJSON(js *jsoniter.Stream) {
+	js.WriteInt32(o.Value)
+}
+
+// WriteFieldJSON writes object field to json stream if value is set.
+func (o NilInt32) WriteFieldJSON(k string, js *jsoniter.Stream) {
+	js.WriteObjectField(k)
+	if o.Nil {
+		js.WriteNil()
+		return
+	}
+	o.WriteJSON(js)
+}
+
+// New returns new OptionalNilInt32 with value set to v.
+func NewOptionalNilInt32(v int32) OptionalNilInt32 {
+	return OptionalNilInt32{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilInt32 is optional nillable int32.
+type OptionalNilInt32 struct {
+	Value int32
+	Set   bool
+	Nil   bool
+}
+
+// IsSet returns true if int32 was set.
+func (o OptionalNilInt32) IsSet() bool { return o.Set }
+
+// Unset unsets value.
+func (o *OptionalNilInt32) Unset() {
+	var v int32
+	o.Value = v
+	o.Set = false
+	o.Nil = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilInt32) SetTo(v int32) {
+	o.Set = true
+	o.Nil = false
+	o.Value = v
+}
+
+// IsSet returns true if value is nil.
+func (o OptionalNilInt32) IsNil() bool { return o.Nil }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilInt32) Get() (v int32, ok bool) {
+	if o.Nil {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of int32 to json stream.
+func (o OptionalNilInt32) WriteJSON(js *jsoniter.Stream) {
+	js.WriteInt32(o.Value)
+}
+
+// WriteFieldJSON writes object field to json stream if value is set.
+func (o OptionalNilInt32) WriteFieldJSON(k string, js *jsoniter.Stream) {
+	if !o.Set {
+		return
+	}
+	js.WriteObjectField(k)
+	if o.Nil {
+		js.WriteNil()
+		return
+	}
+	o.WriteJSON(js)
+}
+
+// New returns new OptionalInt64 with value set to v.
+func NewOptionalInt64(v int64) OptionalInt64 {
+	return OptionalInt64{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalInt64 is optional int64.
+type OptionalInt64 struct {
+	Value int64
+	Set   bool
+}
+
+// IsSet returns true if int64 was set.
+func (o OptionalInt64) IsSet() bool { return o.Set }
+
+// Unset unsets value.
+func (o *OptionalInt64) Unset() {
+	var v int64
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalInt64) SetTo(v int64) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalInt64) Get() (v int64, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of int64 to json stream.
+func (o OptionalInt64) WriteJSON(js *jsoniter.Stream) {
+	js.WriteInt64(o.Value)
+}
+
+// WriteFieldJSON writes object field to json stream if value is set.
+func (o OptionalInt64) WriteFieldJSON(k string, js *jsoniter.Stream) {
+	if !o.Set {
+		return
+	}
+	js.WriteObjectField(k)
+	o.WriteJSON(js)
+}
+
+// New returns new NilInt64 with value set to v.
+func NewNilInt64(v int64) NilInt64 {
+	return NilInt64{
+		Value: v,
+	}
+}
+
+// NilInt64 is nillable int64.
+type NilInt64 struct {
+	Value int64
+	Nil   bool
+}
+
+// SetTo sets value to v.
+func (o *NilInt64) SetTo(v int64) {
+	o.Nil = false
+	o.Value = v
+}
+
+// IsSet returns true if value is nil.
+func (o NilInt64) IsNil() bool { return o.Nil }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilInt64) Get() (v int64, ok bool) {
+	if o.Nil {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of int64 to json stream.
+func (o NilInt64) WriteJSON(js *jsoniter.Stream) {
+	js.WriteInt64(o.Value)
+}
+
+// WriteFieldJSON writes object field to json stream if value is set.
+func (o NilInt64) WriteFieldJSON(k string, js *jsoniter.Stream) {
+	js.WriteObjectField(k)
+	if o.Nil {
+		js.WriteNil()
+		return
+	}
+	o.WriteJSON(js)
+}
+
+// New returns new OptionalNilInt64 with value set to v.
+func NewOptionalNilInt64(v int64) OptionalNilInt64 {
+	return OptionalNilInt64{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilInt64 is optional nillable int64.
+type OptionalNilInt64 struct {
+	Value int64
+	Set   bool
+	Nil   bool
+}
+
+// IsSet returns true if int64 was set.
+func (o OptionalNilInt64) IsSet() bool { return o.Set }
+
+// Unset unsets value.
+func (o *OptionalNilInt64) Unset() {
+	var v int64
+	o.Value = v
+	o.Set = false
+	o.Nil = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilInt64) SetTo(v int64) {
+	o.Set = true
+	o.Nil = false
+	o.Value = v
+}
+
+// IsSet returns true if value is nil.
+func (o OptionalNilInt64) IsNil() bool { return o.Nil }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilInt64) Get() (v int64, ok bool) {
+	if o.Nil {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of int64 to json stream.
+func (o OptionalNilInt64) WriteJSON(js *jsoniter.Stream) {
+	js.WriteInt64(o.Value)
+}
+
+// WriteFieldJSON writes object field to json stream if value is set.
+func (o OptionalNilInt64) WriteFieldJSON(k string, js *jsoniter.Stream) {
+	if !o.Set {
+		return
+	}
+	js.WriteObjectField(k)
+	if o.Nil {
+		js.WriteNil()
+		return
+	}
+	o.WriteJSON(js)
+}
+
 func (s Error) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectStart()
 	js.WriteObjectField("code")

@@ -19,6 +19,11 @@ const (
 	KindPointer   SchemaKind = "pointer"
 )
 
+type JSON struct {
+	Write string
+	Read  string
+}
+
 type Schema struct {
 	Kind        SchemaKind
 	Name        string
@@ -54,6 +59,8 @@ type Schema struct {
 	// Struct validation.
 	// MaxProperties *uint64
 	// MinProperties *uint64
+
+	JSON *JSON
 }
 
 func (s *Schema) IsInteger() bool {
