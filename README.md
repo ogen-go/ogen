@@ -38,7 +38,6 @@ go get github.com/ogen-go/ogen
 * Tracing for client and server
 * Basic validation
   * String
-    * Length
     * Regex
 * OneOf/AnyOf
 * Format
