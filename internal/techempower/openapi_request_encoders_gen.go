@@ -17,6 +17,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	jsoniter "github.com/json-iterator/go"
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/encoding/json"
 	"github.com/ogen-go/ogen/types"
@@ -42,4 +43,5 @@ var (
 	_ = uri.PathEncoder{}
 	_ = math.Mod
 	_ = types.Date{}
+	_ = jsoniter.Config{}
 )

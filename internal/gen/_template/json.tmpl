@@ -1,0 +1,15 @@
+{{ define "json" }}
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.TemplateConfig*/ -}}
+
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+{{- range $s := $.Schemas }}{{/*Range schemas*/}}
+{{- if eq $s.Kind "struct" }}{{/*If struct*/}}
+func (s *{{ $s.Name }}) WriteJSON(js *jsoniter.Stream) {
+    {{- range $f := $s.Fields }}{{/*Range fields*/}}
+    {{- end }}{{/*Range fields*/}}
+}
+{{- end }}{{/*If struct*/}}
+{{- end }}{{/*Range schemas*/}}
+{{ end }}
