@@ -81,20 +81,20 @@ func (o {{ $s.Name }}) WriteJSON(js *jsoniter.Stream) {
         return
     }
 {{- end }}
-    js.{{ $s.JSON.Write }}(o.Value)
+    js.{{ $s.JSONWrite }}(o.Value)
 }
 
 // ReadJSON writes json value of {{ $s.Primitive }} from json iterator.
 func (o *{{ $s.Name }}) ReadJSON(i *jsoniter.Iterator) error {
     switch i.WhatIsNext() {
-    case jsoniter.{{ $s.JSON.ValueType }}:
+    case jsoniter.{{ $s.JSONType }}:
         {{- if $s.Optional }}
         o.Set = true
         {{- end }}
         {{- if $s.Nil }}
         o.Nil = false
         {{- end }}
-        o.Value = i.{{ $s.JSON.Read }}()
+        o.Value = i.{{ $s.JSONRead }}()
         return i.Error
 {{- if $s.Nil }}
     case jsoniter.NilValue:
@@ -121,16 +121,20 @@ func (s {{ $s.Name }}) WriteJSON(js *jsoniter.Stream) {
     js.WriteObjectStart()
     {{- range $f := $s.Fields }}{{/*Range fields*/}}
     {{- if ne $f.Tag "-" }}
-    {{- if eq $f.Type.Kind "primitive" }}
-    js.WriteObjectField("{{ $f.Tag }}")
-        {{- if eq $f.Type.Primitive "string" }}
-        js.WriteString(s.{{ $f.Name }})
-        {{- else if eq $f.Type.Primitive "int" }}
-        js.WriteInt(s.{{ $f.Name }})
-        {{- else if eq $f.Type.Primitive "int64" }}
-        js.WriteInt64(s.{{ $f.Name }})
-        {{- else if eq $f.Type.Primitive "int32" }}
-        js.WriteInt32(s.{{ $f.Name }})
+    {{- if $f.Type.Generic }}
+        {{- if $f.Type.Optional }}
+        if s.{{ $f.Name }}.Set {
+            js.WriteObjectField("{{ $f.Tag }}")
+            s.{{ $f.Name }}.WriteJSON(js)
+        }
+        {{- else }}
+            js.WriteObjectField("{{ $f.Tag }}")``
+            s.{{ $f.Name }}.WriteJSON(js)
+        {{- end }}
+    {{- else if eq $f.Type.Kind "primitive" }}
+        {{- if ne $f.Type.JSONWrite "" }}
+            js.WriteObjectField("{{ $f.Tag }}")
+            js.{{ $f.Type.JSONWrite }}(s.{{ $f.Name }})
         {{- else }}
         // Unsupported primitive "{{ $f.Type.Primitive  }}" for field "{{ $f.Name }}".
         {{- end }}

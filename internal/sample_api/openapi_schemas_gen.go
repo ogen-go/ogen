@@ -78,8 +78,8 @@ type Pet struct {
 	TestDate     *types.Date     `json:"testDate"`
 	TestDateTime *time.Time      `json:"testDateTime"`
 	TestDuration *types.Duration `json:"testDuration"`
-	TestFloat1   *float64        `json:"testFloat1"`
-	TestInteger1 *int            `json:"testInteger1"`
+	TestFloat1   OptionalFloat64 `json:"testFloat1"`
+	TestInteger1 OptionalInt     `json:"testInteger1"`
 	TestTime     *types.Time     `json:"testTime"`
 	Type         *PetType        `json:"type"`
 }

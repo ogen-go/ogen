@@ -1404,7 +1404,6 @@ func (s FoobarPutDefault) WriteJSON(js *jsoniter.Stream) {
 
 func (s Pet) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectStart()
-	js.WriteObjectField("birthday")
 	// Unsupported primitive "types.Date" for field "Birthday".
 	// Unsupported kind "pointer" for field "Friends".
 	js.WriteObjectField("id")
@@ -1416,8 +1415,14 @@ func (s Pet) WriteJSON(js *jsoniter.Stream) {
 	// Unsupported kind "pointer" for field "TestDate".
 	// Unsupported kind "pointer" for field "TestDateTime".
 	// Unsupported kind "pointer" for field "TestDuration".
-	// Unsupported kind "pointer" for field "TestFloat1".
-	// Unsupported kind "pointer" for field "TestInteger1".
+	if s.TestFloat1.Set {
+		js.WriteObjectField("testFloat1")
+		s.TestFloat1.WriteJSON(js)
+	}
+	if s.TestInteger1.Set {
+		js.WriteObjectField("testInteger1")
+		s.TestInteger1.WriteJSON(js)
+	}
 	// Unsupported kind "pointer" for field "TestTime".
 	// Unsupported kind "pointer" for field "Type".
 	js.WriteObjectEnd()

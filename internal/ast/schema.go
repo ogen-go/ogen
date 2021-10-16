@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"sort"
 	"strings"
+	"unicode"
 
 	"golang.org/x/xerrors"
 )
@@ -19,12 +20,6 @@ const (
 	KindEnum      SchemaKind = "enum"
 	KindPointer   SchemaKind = "pointer"
 )
-
-type JSON struct {
-	Write     string
-	Read      string
-	ValueType string
-}
 
 type Schema struct {
 	Kind        SchemaKind
@@ -62,10 +57,76 @@ type Schema struct {
 	// MaxProperties *uint64
 	// MinProperties *uint64
 
-	Optional bool
-	Nil      bool
+	Optional    bool
+	Nil         bool
+	GenericType string
+}
 
-	JSON *JSON
+func (s Schema) canRawJSON() bool {
+	if s.IsNumeric() {
+		return true
+	}
+	switch s.Primitive {
+	case "bool", "string":
+		return true
+	default:
+		return false
+	}
+}
+
+func (s Schema) JSONType() string {
+	if !s.canRawJSON() {
+		return ""
+	}
+	if s.IsNumeric() {
+		return "NumberValue"
+	}
+	switch s.Primitive {
+	case "bool":
+		return "BoolValue"
+	case "string":
+		return "StringValue"
+	default:
+		return ""
+	}
+}
+
+func (s Schema) JSONFn() string {
+	if !s.canRawJSON() {
+		return ""
+	}
+	var v []rune
+	for i, c := range s.Primitive {
+		if i == 0 {
+			c = unicode.ToUpper(c)
+		}
+		v = append(v, c)
+	}
+	return string(v)
+}
+
+func (s Schema) JSONWrite() string {
+	if s.JSONFn() == "" {
+		return ""
+	}
+	return "Write" + s.JSONFn()
+}
+
+func (s Schema) JSONRead() string {
+	if s.JSONFn() == "" {
+		return ""
+	}
+	return "Read" + s.JSONFn()
+}
+
+func (s Schema) Generic() bool {
+	if s.Optional {
+		return true
+	}
+	if s.Nil {
+		return true
+	}
+	return false
 }
 
 func (s Schema) GenericKind() string {
@@ -117,6 +178,10 @@ func (s *Schema) needValidation(visited map[*Schema]struct{}) (result bool) {
 
 	switch s.Kind {
 	case KindPrimitive:
+		if s.Generic() {
+			// TODO(ernado): fix
+			return false
+		}
 		if s.IsNumeric() && (s.Minimum != nil || s.Maximum != nil || s.MultipleOf != nil) {
 			return true
 		}
@@ -164,6 +229,9 @@ func (s Schema) Type() string {
 	case KindAlias:
 		return s.Name
 	case KindPrimitive:
+		if s.Generic() {
+			return s.GenericType
+		}
 		return s.Primitive
 	case KindArray:
 		return "[]" + s.Item.Type()

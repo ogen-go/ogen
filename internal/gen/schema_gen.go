@@ -129,7 +129,13 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 			}
 
 			if !required(propName) {
-				prop = ast.Pointer(prop)
+				canGeneric := prop.IsNumeric() || prop.Primitive == "bool" || prop.Primitive == "string"
+				if canGeneric && prop.Kind == ast.KindPrimitive {
+					prop.Optional = true
+					prop.GenericType = prop.GenericKind() + pascal(prop.Primitive)
+				} else {
+					prop = ast.Pointer(prop)
+				}
 			}
 
 			s.Fields = append(s.Fields, ast.SchemaField{

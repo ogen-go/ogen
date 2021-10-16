@@ -104,23 +104,6 @@ func (s *Pet) validate() error {
 		}
 	}
 
-	// Validate 'TestFloat1' field.
-	if s.TestFloat1 != nil {
-		if *s.TestFloat1 < 15 {
-			return fmt.Errorf("field 'TestFloat1': value must be greater than or equal to 15")
-		}
-		if math.Mod(float64(*s.TestFloat1), 10) != 0 {
-			return fmt.Errorf("field 'TestFloat1': value must be multiple of 10")
-		}
-	}
-
-	// Validate 'TestInteger1' field.
-	if s.TestInteger1 != nil {
-		if *s.TestInteger1%10 != 0 {
-			return fmt.Errorf("field 'TestInteger1': value must be multiple of 10")
-		}
-	}
-
 	// Validate 'Type' field.
 	if s.Type != nil {
 		switch *s.Type {
