@@ -71,19 +71,21 @@ func (*NotFound) foobarPostResponse() {}
 
 // Pet describes #/components/schemas/Pet.
 type Pet struct {
-	Birthday     types.Date      `json:"birthday"`
-	Friends      *[]Pet          `json:"friends"`
-	ID           int64           `json:"id"`
-	Name         string          `json:"name"`
-	Tag          *uuid.UUID      `json:"tag"`
-	TestArray1   *[][]string     `json:"testArray1"`
-	TestDate     *types.Date     `json:"testDate"`
-	TestDateTime *time.Time      `json:"testDateTime"`
-	TestDuration *types.Duration `json:"testDuration"`
-	TestFloat1   OptionalFloat64 `json:"testFloat1"`
-	TestInteger1 OptionalInt     `json:"testInteger1"`
-	TestTime     *types.Time     `json:"testTime"`
-	Type         *PetType        `json:"type"`
+	Birthday     time.Time         `json:"birthday"`
+	Friends      *[]Pet            `json:"friends"`
+	ID           int64             `json:"id"`
+	Name         string            `json:"name"`
+	Nickname     NilString         `json:"nickname"`
+	NullStr      OptionalNilString `json:"nullStr"`
+	Tag          OptionalUUID      `json:"tag"`
+	TestArray1   *[][]string       `json:"testArray1"`
+	TestDate     OptionalTime      `json:"testDate"`
+	TestDateTime OptionalTime      `json:"testDateTime"`
+	TestDuration OptionalDuration  `json:"testDuration"`
+	TestFloat1   OptionalFloat64   `json:"testFloat1"`
+	TestInteger1 OptionalInt       `json:"testInteger1"`
+	TestTime     OptionalTime      `json:"testTime"`
+	Type         *PetType          `json:"type"`
 }
 
 func (*Pet) foobarGetResponse()  {}

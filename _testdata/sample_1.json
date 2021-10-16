@@ -250,6 +250,14 @@
             "type": "string",
             "format": "date"
           },
+          "nickname": {
+            "type": "string",
+            "nullable": true
+          },
+          "nullStr": {
+            "type": "string",
+            "nullable": true
+          },
           "friends": {
             "type": "array",
             "items": {
@@ -297,7 +305,8 @@
         "required": [
           "id",
           "name",
-          "birthday"
+          "birthday",
+          "nickname"
         ]
       }
     },

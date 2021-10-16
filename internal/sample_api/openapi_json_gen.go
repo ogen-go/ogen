@@ -1385,6 +1385,615 @@ func (o *OptionalNilBool) ReadJSON(i *jsoniter.Iterator) error {
 	return nil
 }
 
+// New returns new OptionalUUID with value set to v.
+func NewOptionalUUID(v uuid.UUID) OptionalUUID {
+	return OptionalUUID{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalUUID is optional uuid.UUID.
+type OptionalUUID struct {
+	Value uuid.UUID
+	Set   bool
+}
+
+// IsSet returns true if uuid.UUID was set.
+func (o OptionalUUID) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalUUID) Reset() {
+	var v uuid.UUID
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalUUID) SetTo(v uuid.UUID) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalUUID) Get() (v uuid.UUID, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of uuid.UUID to json stream.
+func (o OptionalUUID) WriteJSON(js *jsoniter.Stream) {
+	types.WriteUUID(js, o.Value)
+}
+
+// ReadJSON writes json value of uuid.UUID from json iterator.
+func (o *OptionalUUID) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.StringValue:
+		o.Set = true
+		v, err := types.ReadUUID(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalUUID", i.WhatIsNext())
+	}
+	return nil
+}
+
+// New returns new NilUUID with value set to v.
+func NewNilUUID(v uuid.UUID) NilUUID {
+	return NilUUID{
+		Value: v,
+	}
+}
+
+// NilUUID is nillable uuid.UUID.
+type NilUUID struct {
+	Value uuid.UUID
+	Nil   bool
+}
+
+// SetTo sets value to v.
+func (o *NilUUID) SetTo(v uuid.UUID) {
+	o.Nil = false
+	o.Value = v
+}
+
+// IsSet returns true if value is nil.
+func (o NilUUID) IsNil() bool { return o.Nil }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilUUID) Get() (v uuid.UUID, ok bool) {
+	if o.Nil {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of uuid.UUID to json stream.
+func (o NilUUID) WriteJSON(js *jsoniter.Stream) {
+	if o.Nil {
+		js.WriteNil()
+		return
+	}
+	types.WriteUUID(js, o.Value)
+}
+
+// ReadJSON writes json value of uuid.UUID from json iterator.
+func (o *NilUUID) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.StringValue:
+		o.Nil = false
+		v, err := types.ReadUUID(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	case jsoniter.NilValue:
+		var v uuid.UUID
+		o.Value = v
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilUUID", i.WhatIsNext())
+	}
+	return nil
+}
+
+// New returns new OptionalNilUUID with value set to v.
+func NewOptionalNilUUID(v uuid.UUID) OptionalNilUUID {
+	return OptionalNilUUID{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilUUID is optional nillable uuid.UUID.
+type OptionalNilUUID struct {
+	Value uuid.UUID
+	Set   bool
+	Nil   bool
+}
+
+// IsSet returns true if uuid.UUID was set.
+func (o OptionalNilUUID) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilUUID) Reset() {
+	var v uuid.UUID
+	o.Value = v
+	o.Set = false
+	o.Nil = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilUUID) SetTo(v uuid.UUID) {
+	o.Set = true
+	o.Nil = false
+	o.Value = v
+}
+
+// IsSet returns true if value is nil.
+func (o OptionalNilUUID) IsNil() bool { return o.Nil }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilUUID) Get() (v uuid.UUID, ok bool) {
+	if o.Nil {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of uuid.UUID to json stream.
+func (o OptionalNilUUID) WriteJSON(js *jsoniter.Stream) {
+	if o.Nil {
+		js.WriteNil()
+		return
+	}
+	types.WriteUUID(js, o.Value)
+}
+
+// ReadJSON writes json value of uuid.UUID from json iterator.
+func (o *OptionalNilUUID) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.StringValue:
+		o.Set = true
+		o.Nil = false
+		v, err := types.ReadUUID(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	case jsoniter.NilValue:
+		var v uuid.UUID
+		o.Value = v
+		o.Set = true
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilUUID", i.WhatIsNext())
+	}
+	return nil
+}
+
+// New returns new OptionalTime with value set to v.
+func NewOptionalTime(v time.Time) OptionalTime {
+	return OptionalTime{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTime is optional time.Time.
+type OptionalTime struct {
+	Value time.Time
+	Set   bool
+}
+
+// IsSet returns true if time.Time was set.
+func (o OptionalTime) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalTime) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTime) SetTo(v time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTime) Get() (v time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of time.Time to json stream.
+func (o OptionalTime) WriteJSON(js *jsoniter.Stream, format func(*jsoniter.Stream, time.Time)) {
+	format(js, o.Value)
+}
+
+// ReadJSON writes json value of time.Time from json iterator.
+func (o *OptionalTime) ReadJSON(i *jsoniter.Iterator, format func(*jsoniter.Iterator) (time.Time, error)) error {
+	switch i.WhatIsNext() {
+	case jsoniter.StringValue:
+		o.Set = true
+		v, err := format(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTime", i.WhatIsNext())
+	}
+	return nil
+}
+
+// New returns new NilTime with value set to v.
+func NewNilTime(v time.Time) NilTime {
+	return NilTime{
+		Value: v,
+	}
+}
+
+// NilTime is nillable time.Time.
+type NilTime struct {
+	Value time.Time
+	Nil   bool
+}
+
+// SetTo sets value to v.
+func (o *NilTime) SetTo(v time.Time) {
+	o.Nil = false
+	o.Value = v
+}
+
+// IsSet returns true if value is nil.
+func (o NilTime) IsNil() bool { return o.Nil }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilTime) Get() (v time.Time, ok bool) {
+	if o.Nil {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of time.Time to json stream.
+func (o NilTime) WriteJSON(js *jsoniter.Stream, format func(*jsoniter.Stream, time.Time)) {
+	if o.Nil {
+		js.WriteNil()
+		return
+	}
+	format(js, o.Value)
+}
+
+// ReadJSON writes json value of time.Time from json iterator.
+func (o *NilTime) ReadJSON(i *jsoniter.Iterator, format func(*jsoniter.Iterator) (time.Time, error)) error {
+	switch i.WhatIsNext() {
+	case jsoniter.StringValue:
+		o.Nil = false
+		v, err := format(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	case jsoniter.NilValue:
+		var v time.Time
+		o.Value = v
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilTime", i.WhatIsNext())
+	}
+	return nil
+}
+
+// New returns new OptionalNilTime with value set to v.
+func NewOptionalNilTime(v time.Time) OptionalNilTime {
+	return OptionalNilTime{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilTime is optional nillable time.Time.
+type OptionalNilTime struct {
+	Value time.Time
+	Set   bool
+	Nil   bool
+}
+
+// IsSet returns true if time.Time was set.
+func (o OptionalNilTime) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilTime) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+	o.Nil = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilTime) SetTo(v time.Time) {
+	o.Set = true
+	o.Nil = false
+	o.Value = v
+}
+
+// IsSet returns true if value is nil.
+func (o OptionalNilTime) IsNil() bool { return o.Nil }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilTime) Get() (v time.Time, ok bool) {
+	if o.Nil {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of time.Time to json stream.
+func (o OptionalNilTime) WriteJSON(js *jsoniter.Stream, format func(*jsoniter.Stream, time.Time)) {
+	if o.Nil {
+		js.WriteNil()
+		return
+	}
+	format(js, o.Value)
+}
+
+// ReadJSON writes json value of time.Time from json iterator.
+func (o *OptionalNilTime) ReadJSON(i *jsoniter.Iterator, format func(*jsoniter.Iterator) (time.Time, error)) error {
+	switch i.WhatIsNext() {
+	case jsoniter.StringValue:
+		o.Set = true
+		o.Nil = false
+		v, err := format(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	case jsoniter.NilValue:
+		var v time.Time
+		o.Value = v
+		o.Set = true
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilTime", i.WhatIsNext())
+	}
+	return nil
+}
+
+// New returns new OptionalDuration with value set to v.
+func NewOptionalDuration(v time.Duration) OptionalDuration {
+	return OptionalDuration{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalDuration is optional time.Duration.
+type OptionalDuration struct {
+	Value time.Duration
+	Set   bool
+}
+
+// IsSet returns true if time.Duration was set.
+func (o OptionalDuration) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalDuration) Reset() {
+	var v time.Duration
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalDuration) SetTo(v time.Duration) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalDuration) Get() (v time.Duration, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of time.Duration to json stream.
+func (o OptionalDuration) WriteJSON(js *jsoniter.Stream) {
+	types.WriteDuration(js, o.Value)
+}
+
+// ReadJSON writes json value of time.Duration from json iterator.
+func (o *OptionalDuration) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.StringValue:
+		o.Set = true
+		v, err := types.ReadDuration(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalDuration", i.WhatIsNext())
+	}
+	return nil
+}
+
+// New returns new NilDuration with value set to v.
+func NewNilDuration(v time.Duration) NilDuration {
+	return NilDuration{
+		Value: v,
+	}
+}
+
+// NilDuration is nillable time.Duration.
+type NilDuration struct {
+	Value time.Duration
+	Nil   bool
+}
+
+// SetTo sets value to v.
+func (o *NilDuration) SetTo(v time.Duration) {
+	o.Nil = false
+	o.Value = v
+}
+
+// IsSet returns true if value is nil.
+func (o NilDuration) IsNil() bool { return o.Nil }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilDuration) Get() (v time.Duration, ok bool) {
+	if o.Nil {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of time.Duration to json stream.
+func (o NilDuration) WriteJSON(js *jsoniter.Stream) {
+	if o.Nil {
+		js.WriteNil()
+		return
+	}
+	types.WriteDuration(js, o.Value)
+}
+
+// ReadJSON writes json value of time.Duration from json iterator.
+func (o *NilDuration) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.StringValue:
+		o.Nil = false
+		v, err := types.ReadDuration(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	case jsoniter.NilValue:
+		var v time.Duration
+		o.Value = v
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilDuration", i.WhatIsNext())
+	}
+	return nil
+}
+
+// New returns new OptionalNilDuration with value set to v.
+func NewOptionalNilDuration(v time.Duration) OptionalNilDuration {
+	return OptionalNilDuration{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilDuration is optional nillable time.Duration.
+type OptionalNilDuration struct {
+	Value time.Duration
+	Set   bool
+	Nil   bool
+}
+
+// IsSet returns true if time.Duration was set.
+func (o OptionalNilDuration) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilDuration) Reset() {
+	var v time.Duration
+	o.Value = v
+	o.Set = false
+	o.Nil = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilDuration) SetTo(v time.Duration) {
+	o.Set = true
+	o.Nil = false
+	o.Value = v
+}
+
+// IsSet returns true if value is nil.
+func (o OptionalNilDuration) IsNil() bool { return o.Nil }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilDuration) Get() (v time.Duration, ok bool) {
+	if o.Nil {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of time.Duration to json stream.
+func (o OptionalNilDuration) WriteJSON(js *jsoniter.Stream) {
+	if o.Nil {
+		js.WriteNil()
+		return
+	}
+	types.WriteDuration(js, o.Value)
+}
+
+// ReadJSON writes json value of time.Duration from json iterator.
+func (o *OptionalNilDuration) ReadJSON(i *jsoniter.Iterator) error {
+	switch i.WhatIsNext() {
+	case jsoniter.StringValue:
+		o.Set = true
+		o.Nil = false
+		v, err := types.ReadDuration(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	case jsoniter.NilValue:
+		var v time.Duration
+		o.Value = v
+		o.Set = true
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilDuration", i.WhatIsNext())
+	}
+	return nil
+}
+
 func (s Error) WriteJSON(js *jsoniter.Stream) {
 	js.WriteObjectStart()
 	var fw json.FieldWriter
@@ -1415,9 +2024,11 @@ func (s *Error) ReadJSON(i *jsoniter.Iterator) error {
 	i.ReadObjectCB(func(i *jsoniter.Iterator, k string) bool {
 		switch k {
 		case "code":
+			// READER int64
 			s.Code = i.ReadInt64()
 			return i.Error == nil
 		case "message":
+			// READER
 			s.Message = i.ReadString()
 			return i.Error == nil
 		default:
@@ -1499,44 +2110,48 @@ func (s Pet) WriteJSON(js *jsoniter.Stream) {
 	var fw json.FieldWriter
 	_ = fw
 	fw.Write(js, "birthday")
-	// Unsupported primitive "types.Date" for field "Birthday".
-	js.WriteNil()
-	fw.Write(js, "friends")
+	types.WriteDate(js, s.Birthday)
 	// Unsupported kind "pointer" for field "Friends".
-	js.WriteNil()
 	fw.Write(js, "id")
 	js.WriteInt64(s.ID)
 	fw.Write(js, "name")
 	js.WriteString(s.Name)
-	fw.Write(js, "tag")
-	// Unsupported kind "pointer" for field "Tag".
-	js.WriteNil()
-	fw.Write(js, "testArray1")
+	fw.Write(js, "nickname")
+	s.Nickname.WriteJSON(js)
+	if s.NullStr.Set {
+		fw.Write(js, "nullStr")
+		s.NullStr.WriteJSON(js)
+	}
+	if s.Tag.Set {
+		fw.Write(js, "tag")
+		s.Tag.WriteJSON(js)
+	}
 	// Unsupported kind "pointer" for field "TestArray1".
-	js.WriteNil()
-	fw.Write(js, "testDate")
-	// Unsupported kind "pointer" for field "TestDate".
-	js.WriteNil()
-	fw.Write(js, "testDateTime")
-	// Unsupported kind "pointer" for field "TestDateTime".
-	js.WriteNil()
-	fw.Write(js, "testDuration")
-	// Unsupported kind "pointer" for field "TestDuration".
-	js.WriteNil()
-	fw.Write(js, "testFloat1")
+	if s.TestDate.Set {
+		fw.Write(js, "testDate")
+		s.TestDate.WriteJSON(js, types.WriteDate)
+	}
+	if s.TestDateTime.Set {
+		fw.Write(js, "testDateTime")
+		s.TestDateTime.WriteJSON(js, types.WriteDateTime)
+	}
+	if s.TestDuration.Set {
+		fw.Write(js, "testDuration")
+		s.TestDuration.WriteJSON(js)
+	}
 	if s.TestFloat1.Set {
+		fw.Write(js, "testFloat1")
 		s.TestFloat1.WriteJSON(js)
 	}
-	fw.Write(js, "testInteger1")
 	if s.TestInteger1.Set {
+		fw.Write(js, "testInteger1")
 		s.TestInteger1.WriteJSON(js)
 	}
-	fw.Write(js, "testTime")
-	// Unsupported kind "pointer" for field "TestTime".
-	js.WriteNil()
-	fw.Write(js, "type")
+	if s.TestTime.Set {
+		fw.Write(js, "testTime")
+		s.TestTime.WriteJSON(js, types.WriteTime)
+	}
 	// Unsupported kind "pointer" for field "Type".
-	js.WriteNil()
 	js.WriteObjectEnd()
 }
 
@@ -1559,38 +2174,69 @@ func (s *Pet) ReadJSON(i *jsoniter.Iterator) error {
 	i.ReadObjectCB(func(i *jsoniter.Iterator, k string) bool {
 		switch k {
 		case "birthday":
-			// Unsupported kind "primitive" for field "Birthday".
-			i.Skip()
+			v, err := types.ReadDate(i)
+			if err != nil {
+				i.ReportError("Field Birthday", err.Error())
+				return false
+			}
+			s.Birthday = v
 			return true
 		case "friends":
 			// Unsupported kind "pointer" for field "Friends".
 			i.Skip()
 			return true
 		case "id":
+			// READER int64
 			s.ID = i.ReadInt64()
 			return i.Error == nil
 		case "name":
+			// READER
 			s.Name = i.ReadString()
 			return i.Error == nil
+		case "nickname":
+			if err := s.Nickname.ReadJSON(i); err != nil {
+				i.ReportError("Field Nickname", err.Error())
+				return false
+			}
+			return true
+		case "nullStr":
+			s.NullStr.Reset()
+			if err := s.NullStr.ReadJSON(i); err != nil {
+				i.ReportError("Field NullStr", err.Error())
+				return false
+			}
+			return true
 		case "tag":
-			// Unsupported kind "pointer" for field "Tag".
-			i.Skip()
+			s.Tag.Reset()
+			if err := s.Tag.ReadJSON(i); err != nil {
+				i.ReportError("Field Tag", err.Error())
+				return false
+			}
 			return true
 		case "testArray1":
 			// Unsupported kind "pointer" for field "TestArray1".
 			i.Skip()
 			return true
 		case "testDate":
-			// Unsupported kind "pointer" for field "TestDate".
-			i.Skip()
+			s.TestDate.Reset()
+			if err := s.TestDate.ReadJSON(i, types.ReadDate); err != nil {
+				i.ReportError("Field TestDate", err.Error())
+				return false
+			}
 			return true
 		case "testDateTime":
-			// Unsupported kind "pointer" for field "TestDateTime".
-			i.Skip()
+			s.TestDateTime.Reset()
+			if err := s.TestDateTime.ReadJSON(i, types.ReadDateTime); err != nil {
+				i.ReportError("Field TestDateTime", err.Error())
+				return false
+			}
 			return true
 		case "testDuration":
-			// Unsupported kind "pointer" for field "TestDuration".
-			i.Skip()
+			s.TestDuration.Reset()
+			if err := s.TestDuration.ReadJSON(i); err != nil {
+				i.ReportError("Field TestDuration", err.Error())
+				return false
+			}
 			return true
 		case "testFloat1":
 			s.TestFloat1.Reset()
@@ -1607,8 +2253,11 @@ func (s *Pet) ReadJSON(i *jsoniter.Iterator) error {
 			}
 			return true
 		case "testTime":
-			// Unsupported kind "pointer" for field "TestTime".
-			i.Skip()
+			s.TestTime.Reset()
+			if err := s.TestTime.ReadJSON(i, types.ReadTime); err != nil {
+				i.ReportError("Field TestTime", err.Error())
+				return false
+			}
 			return true
 		case "type":
 			// Unsupported kind "pointer" for field "Type".
@@ -1650,6 +2299,7 @@ func (s *PetGetDefault) ReadJSON(i *jsoniter.Iterator) error {
 	i.ReadObjectCB(func(i *jsoniter.Iterator, k string) bool {
 		switch k {
 		case "message":
+			// READER
 			s.Message = i.ReadString()
 			return i.Error == nil
 		default:

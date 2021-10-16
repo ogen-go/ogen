@@ -35,16 +35,23 @@ type schemaGen struct {
 // If ogen.Schema contains nested objects, they will be
 // collected in g.side slice.
 func (g *schemaGen) Generate(name string, schema ogen.Schema) (*ast.Schema, error) {
-	return g.generate(pascal(name), schema, true, "")
+	s, err := g.generate(pascal(name), schema, true, "")
+	if err != nil {
+		return nil, xerrors.Errorf("gen: %w", err)
+	}
+	return s, nil
+}
+
+func genericPostfix(name string) string {
+	if idx := strings.Index(name, "."); idx > 0 {
+		name = name[idx+1:]
+	}
+	return pascal(name)
 }
 
 func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref string) (*ast.Schema, error) {
 	if ref := schema.Ref; ref != "" {
 		return g.ref(ref)
-	}
-
-	if schema.Nullable {
-		return nil, &ErrNotImplemented{"nullable type"}
 	}
 
 	// sideEffect stores schema in g.localRefs or g.side if needed.
@@ -151,14 +158,32 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 				return nil, xerrors.Errorf("%s: %w", propName, err)
 			}
 
+			prop.Format = propSchema.Format
+
+			canGeneric := prop.IsNumeric()
+			switch prop.Primitive {
+			case "bool", "string", "time.Time", "time.Duration", "uuid.UUID": // ok
+				canGeneric = true
+			}
+			canGeneric = canGeneric && prop.Kind == ast.KindPrimitive
 			if !required(propName) {
-				canGeneric := prop.IsNumeric() || prop.Primitive == "bool" || prop.Primitive == "string"
-				if canGeneric && prop.Kind == ast.KindPrimitive {
+				if canGeneric {
 					prop.Optional = true
-					prop.GenericType = prop.GenericKind() + pascal(prop.Primitive)
+					prop.GenericType = prop.GenericKind() + genericPostfix(prop.Primitive)
 				} else {
 					prop = ast.Pointer(prop)
 				}
+			}
+			if propSchema.Nullable {
+				if !canGeneric {
+					return nil, xerrors.Errorf("not implemented: %w", &ErrNotImplemented{Name: "nullable"})
+				}
+				prop.Nil = true
+				prop.GenericType = prop.GenericKind() + genericPostfix(prop.Primitive)
+			}
+			switch prop.Format {
+			case "duration", "uuid":
+				prop.Format = ""
 			}
 
 			s.Fields = append(s.Fields, ast.SchemaField{
@@ -243,9 +268,9 @@ func (g *schemaGen) parseSimple(typ, format string) (string, error) {
 			"":          "string",
 			"byte":      "[]byte",
 			"date-time": "time.Time",
-			"time":      "types.Time",
-			"date":      "types.Date",
-			"duration":  "types.Duration",
+			"time":      "time.Time",
+			"date":      "time.Time",
+			"duration":  "time.Duration",
 			"password":  "string",
 			"uuid":      "uuid.UUID",
 			// TODO: support binary format

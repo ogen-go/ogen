@@ -1,6 +1,8 @@
 package gen
 
 import (
+	"strings"
+
 	"github.com/ogen-go/ogen/internal/ast"
 )
 
@@ -13,6 +15,9 @@ func (g *Generator) generatePrimitives() {
 		"float32",
 		"float64",
 		"bool",
+		"uuid.UUID",
+		"time.Time",
+		"time.Duration",
 	} {
 		for _, v := range []struct {
 			Optional bool
@@ -28,7 +33,16 @@ func (g *Generator) generatePrimitives() {
 				Kind:      ast.KindPrimitive,
 				Primitive: name,
 			}
-			gt.Name = gt.GenericKind() + pascal(name)
+			switch name {
+			case "uuid.UUID":
+				gt.Format = "uuid"
+			case "time.Duration":
+				gt.Format = "duration"
+			}
+			if strings.Contains(name, "time.Time") {
+				gt.Format = "custom"
+			}
+			gt.Name = gt.GenericKind() + genericPostfix(name)
 			g.generics = append(g.generics, gt)
 		}
 	}

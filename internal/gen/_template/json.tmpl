@@ -74,18 +74,24 @@ func (o {{ $s.Name }}) Get() (v {{ $s.Primitive }}, ok bool) {
 }
 
 // WriteJSON writes json value of {{ $s.Primitive }} to json stream.
-func (o {{ $s.Name }}) WriteJSON(js *jsoniter.Stream) {
+func (o {{ $s.Name }}) WriteJSON(js *jsoniter.Stream{{ if eq $s.Format "custom" }}, format func(*jsoniter.Stream, {{ $s.Primitive }}){{ end }}) {
 {{- if $s.Nil }}
     if o.Nil {
         js.WriteNil()
         return
     }
 {{- end }}
+    {{- if eq $s.Format "custom" }}
+    format(js, o.Value)
+    {{- else if $s.JSONHelper }}
+    types.Write{{ $s.JSONHelper }}(js, o.Value)
+    {{- else if $s.JSONWrite }}
     js.{{ $s.JSONWrite }}(o.Value)
+    {{- end }}
 }
 
 // ReadJSON writes json value of {{ $s.Primitive }} from json iterator.
-func (o *{{ $s.Name }}) ReadJSON(i *jsoniter.Iterator) error {
+func (o *{{ $s.Name }}) ReadJSON(i *jsoniter.Iterator{{ if eq $s.Format "custom" }}, format func(*jsoniter.Iterator) ({{ $s.Primitive }}, error){{ end }}) error {
     switch i.WhatIsNext() {
     case jsoniter.{{ $s.JSONType }}:
         {{- if $s.Optional }}
@@ -94,7 +100,21 @@ func (o *{{ $s.Name }}) ReadJSON(i *jsoniter.Iterator) error {
         {{- if $s.Nil }}
         o.Nil = false
         {{- end }}
+        {{- if eq $s.Format "custom" }}
+        v, err := format(i)
+        if err != nil {
+            return err
+        }
+        o.Value = v
+        {{- else if $s.JSONHelper  }}
+        v, err := types.Read{{ $s.JSONHelper }}(i)
+        if err != nil {
+            return err
+        }
+        o.Value = v
+        {{- else if $s.JSONRead }}
         o.Value = i.{{ $s.JSONRead }}()
+        {{- end }}
         return i.Error
 {{- if $s.Nil }}
     case jsoniter.NilValue:
@@ -125,27 +145,32 @@ func (s {{ $s.Name }}) WriteJSON(js *jsoniter.Stream) {
     _ = fw
     {{- range $f := $s.Fields }}{{/*Range fields*/}}
     {{- if ne $f.Tag "-" }}
-        fw.Write(js, "{{ $f.Tag }}")
     {{- if $f.Type.Generic }}
         {{- if $f.Type.Optional }}
         if s.{{ $f.Name }}.Set {
-            s.{{ $f.Name }}.WriteJSON(js)
+            fw.Write(js, "{{ $f.Tag }}")
+            s.{{ $f.Name }}.WriteJSON(js{{ if $f.Type.JSONHelper }}, types.Write{{ $f.Type.JSONHelper }}{{ end }})
         }
         {{- else }}
-            s.{{ $f.Name }}.WriteJSON(js)
+            fw.Write(js, "{{ $f.Tag }}")
+            s.{{ $f.Name }}.WriteJSON(js{{ if $f.Type.JSONHelper }}, types.Write{{ $f.Type.JSONHelper }}{{ end }})
         {{- end }}
+    {{- else if $f.Type.JSONHelper }}
+        fw.Write(js, "{{ $f.Tag }}")
+        types.Write{{ $f.Type.JSONHelper }}(js, s.{{ $f.Name }})
     {{- else if eq $f.Type.Kind "primitive" }}
-        {{- if ne $f.Type.JSONWrite "" }}
+        fw.Write(js, "{{ $f.Tag }}")
+        {{- if $f.Type.JSONWrite }}
             js.{{ $f.Type.JSONWrite }}(s.{{ $f.Name }})
         {{- else }}
             // Unsupported primitive "{{ $f.Type.Primitive  }}" for field "{{ $f.Name }}".
             js.WriteNil()
         {{- end }}
     {{- else if eq $f.Type.Kind "struct" }}
+        fw.Write(js, "{{ $f.Tag }}")
         s.{{ $f.Name }}.WriteJSON("{{ $f.Tag }}", js)
     {{- else }}
         // Unsupported kind "{{ $f.Type.Kind  }}" for field "{{ $f.Name }}".
-        js.WriteNil()
     {{- end }}
     {{- end }}
     {{- end }}{{/*Range fields*/}}
@@ -177,12 +202,29 @@ func (s *{{ $s.Name }}) ReadJSON(i *jsoniter.Iterator) error {
         s.{{ $f.Name }}.Reset()
     {{- end }}
     {{- if or ($f.Type.Generic) (eq $f.Type.Kind "struct") }}
+        {{- if $f.Type.JSONHelper }}
+            if err := s.{{ $f.Name }}.ReadJSON(i, types.Read{{ $f.Type.JSONHelper }}); err != nil {
+                i.ReportError("Field {{ $f.Name }}", err.Error())
+                return false
+            }
+            return true
+        {{- else }}
         if err := s.{{ $f.Name }}.ReadJSON(i); err != nil {
             i.ReportError("Field {{ $f.Name }}", err.Error())
             return false
         }
         return true
-    {{- else if ne $f.Type.JSONRead "" }}
+        {{- end }}
+    {{- else if $f.Type.JSONHelper }}
+            v, err := types.Read{{ $f.Type.JSONHelper }}(i)
+            if err != nil {
+            i.ReportError("Field {{ $f.Name }}", err.Error())
+            return false
+            }
+            s.{{ $f.Name }} = v
+            return true
+    {{- else if $f.Type.JSONRead }}
+        // READER {{ $f.Type.Format  }} {{ $f.Type.JSONHelper }}
         s.{{ $f.Name }} = i.{{ $f.Type.JSONRead }}()
         return i.Error == nil
     {{- else }}

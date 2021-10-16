@@ -34,6 +34,7 @@ type Schema struct {
 	Name        string
 	Description string
 	Doc         string
+	Format      string
 
 	AliasTo    *Schema
 	PointerTo  *Schema
@@ -67,7 +68,7 @@ func (s Schema) canRawJSON() bool {
 		return true
 	}
 	switch s.Primitive {
-	case "bool", "string":
+	case "bool", "string", "time.Time", "time.Duration", "uuid.UUID":
 		return true
 	default:
 		return false
@@ -75,17 +76,31 @@ func (s Schema) canRawJSON() bool {
 }
 
 func (s Schema) JSONType() string {
-	if !s.canRawJSON() {
-		return ""
-	}
 	if s.IsNumeric() {
 		return "NumberValue"
 	}
 	switch s.Primitive {
 	case "bool":
 		return "BoolValue"
-	case "string":
+	case "string", "time.Time", "time.Duration", "uuid.UUID":
 		return "StringValue"
+	default:
+		return ""
+	}
+}
+
+func (s Schema) JSONHelper() string {
+	switch s.Format {
+	case "uuid":
+		return "UUID"
+	case "date":
+		return "Date"
+	case "time":
+		return "Time"
+	case "date-time":
+		return "DateTime"
+	case "duration":
+		return "Duration"
 	default:
 		return ""
 	}
