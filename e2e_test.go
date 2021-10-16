@@ -1,76 +1,66 @@
-package ogen_test
+package ogen
 
 import (
-	"embed"
-	"go/format"
-	"path"
+	"context"
+	"net/http/httptest"
 	"testing"
 
+	"github.com/go-chi/chi/v5"
 	"github.com/stretchr/testify/require"
 
-	"github.com/ogen-go/ogen"
-	"github.com/ogen-go/ogen/internal/gen"
+	"github.com/ogen-go/ogen/internal/techempower"
 )
 
-//go:embed _testdata
-var testdata embed.FS
+type techEmpowerServer struct{}
 
-// TODO: Create validationFs.
-type fmtFs struct{}
-
-func (n fmtFs) WriteFile(baseName string, source []byte) error {
-	_, err := format.Source(source)
-	return err
+func (t techEmpowerServer) Caching(ctx context.Context, params techempower.CachingParams) ([]techempower.WorldObject, error) {
+	panic("implement me")
 }
 
-func TestGenerate(t *testing.T) {
-	for _, tc := range []struct {
-		Name    string
-		Options gen.Options
-	}{
-		{
-			Name: "firecracker.json",
-		},
-		{
-			Name: "api.github.com.json",
-			Options: gen.Options{
-				IgnoreOneOf:             true,
-				IgnoreAnyOf:             true,
-				IgnoreAllOf:             true,
-				IgnoreUnsupportedParams: true,
-			},
-		},
-		{
-			Name: "sample_1.json",
-		},
-		{
-			Name: "techempower.json",
-		},
-		{
-			Name: "telegram_bot_api.json",
-			Options: gen.Options{
-				IgnoreAnyOf: true,
-			},
-		},
-		{
-			// https://github.com/kubernetes/kubernetes/tree/master/api/openapi-spec
-			// Generated from OpenAPI v2 (swagger) spec.
-			Name: "k8s.json",
-			Options: gen.Options{
-				IgnoreUnspecifiedParams: true,
-			},
-		},
-	} {
-		t.Run(tc.Name, func(t *testing.T) {
-			f, err := testdata.Open(path.Join("_testdata", tc.Name))
-			require.NoError(t, err)
-			defer require.NoError(t, f.Close())
-			spec, err := ogen.Parse(f)
-			require.NoError(t, err)
-			g, err := gen.NewGenerator(spec, tc.Options)
-			require.NoError(t, err)
+func (t techEmpowerServer) Updates(ctx context.Context, params techempower.UpdatesParams) ([]techempower.WorldObject, error) {
+	panic("implement me")
+}
 
-			require.NoError(t, g.WriteSource(fmtFs{}, "api"))
+func (t techEmpowerServer) Queries(ctx context.Context, params techempower.QueriesParams) ([]techempower.WorldObject, error) {
+	return nil, nil
+}
+
+func (t techEmpowerServer) DB(ctx context.Context) (techempower.WorldObject, error) {
+	return techempower.WorldObject{
+		ID:           1,
+		RandomNumber: 10,
+	}, nil
+}
+
+func (t techEmpowerServer) JSON(ctx context.Context) (techempower.HelloWorld, error) {
+	return techempower.HelloWorld{
+		Message: "Hello, world!",
+	}, nil
+}
+
+func TestIntegration(t *testing.T) {
+	t.Run("TechEmpower", func(t *testing.T) {
+		// Using TechEmpower as most popular general purpose framework benchmark.
+		// https://github.com/TechEmpower/FrameworkBenchmarks/wiki/Project-Information-Framework-Tests-Overview#test-types
+
+		mux := chi.NewRouter()
+		techempower.Register(mux, techEmpowerServer{})
+		s := httptest.NewServer(mux)
+		defer s.Close()
+
+		client := techempower.NewClient(s.URL)
+		ctx := context.Background()
+
+		t.Run("JSON", func(t *testing.T) {
+			res, err := client.JSON(ctx)
+			require.NoError(t, err)
+			require.Equal(t, "Hello, world!", res.Message)
 		})
-	}
+		t.Run("DB", func(t *testing.T) {
+			res, err := client.DB(ctx)
+			require.NoError(t, err)
+			require.Equal(t, int64(1), res.ID)
+			require.Equal(t, int64(10), res.RandomNumber)
+		})
+	})
 }
