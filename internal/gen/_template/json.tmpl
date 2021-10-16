@@ -173,30 +173,18 @@ func (s *{{ $s.Name }}) ReadJSON(i *jsoniter.Iterator) error {
 {{- range $f := $s.Fields }}{{/*Range fields*/}}
 {{- if ne $f.Tag "-" }}
     case "{{ $f.Tag }}":
-    {{- if $f.Type.Generic }}
-        {{- if $f.Type.Optional }}
-            s.{{ $f.Name }}.Reset()
-        {{- end }}
+    {{- if $f.Type.Optional }}
+        s.{{ $f.Name }}.Reset()
+    {{- end }}
+    {{- if or ($f.Type.Generic) (eq $f.Type.Kind "struct") }}
         if err := s.{{ $f.Name }}.ReadJSON(i); err != nil {
             i.ReportError("Field {{ $f.Name }}", err.Error())
             return false
         }
         return true
-    {{- else if eq $f.Type.Kind "primitive" }}
-        {{- if ne $f.Type.JSONRead "" }}
-            s.{{ $f.Name }} = i.{{ $f.Type.JSONRead }}()
-            return i.Error == nil
-        {{- else }}
-            // Unsupported primitive "{{ $f.Type.Primitive  }}" for field "{{ $f.Name }}".
-            i.Skip()
-            return true
-        {{- end }}
-    {{- else if eq $f.Type.Kind "struct" }}
-        if err := s.{{ $f.Name }}.ReadJSON(i); err != nil {
-            i.ReportError("Field {{ $f.Name }}", err.Error())
-            return false
-        }
-        return true
+    {{- else if ne $f.Type.JSONRead "" }}
+        s.{{ $f.Name }} = i.{{ $f.Type.JSONRead }}()
+        return i.Error == nil
     {{- else }}
         // Unsupported kind "{{ $f.Type.Kind  }}" for field "{{ $f.Name }}".
         i.Skip()

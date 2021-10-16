@@ -1559,7 +1559,7 @@ func (s *Pet) ReadJSON(i *jsoniter.Iterator) error {
 	i.ReadObjectCB(func(i *jsoniter.Iterator, k string) bool {
 		switch k {
 		case "birthday":
-			// Unsupported primitive "types.Date" for field "Birthday".
+			// Unsupported kind "primitive" for field "Birthday".
 			i.Skip()
 			return true
 		case "friends":
