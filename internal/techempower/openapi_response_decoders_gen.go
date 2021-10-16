@@ -58,7 +58,7 @@ func decodeCachingResponse(resp *http.Response) (res []WorldObject, err error) {
 			if err != nil {
 				return res, err
 			}
-			if err := json.Unmarshal(data, &response); err != nil {
+			if err := response.decodeJSON(data); err != nil {
 				return res, err
 			}
 
@@ -81,7 +81,7 @@ func decodeDBResponse(resp *http.Response) (res WorldObject, err error) {
 			if err != nil {
 				return res, err
 			}
-			if err := json.Unmarshal(data, &response); err != nil {
+			if err := response.decodeJSON(data); err != nil {
 				return res, err
 			}
 
@@ -104,7 +104,7 @@ func decodeJSONResponse(resp *http.Response) (res HelloWorld, err error) {
 			if err != nil {
 				return res, err
 			}
-			if err := json.Unmarshal(data, &response); err != nil {
+			if err := response.decodeJSON(data); err != nil {
 				return res, err
 			}
 
@@ -127,7 +127,7 @@ func decodeQueriesResponse(resp *http.Response) (res []WorldObject, err error) {
 			if err != nil {
 				return res, err
 			}
-			if err := json.Unmarshal(data, &response); err != nil {
+			if err := response.decodeJSON(data); err != nil {
 				return res, err
 			}
 
@@ -150,7 +150,7 @@ func decodeUpdatesResponse(resp *http.Response) (res []WorldObject, err error) {
 			if err != nil {
 				return res, err
 			}
-			if err := json.Unmarshal(data, &response); err != nil {
+			if err := response.decodeJSON(data); err != nil {
 				return res, err
 			}
 

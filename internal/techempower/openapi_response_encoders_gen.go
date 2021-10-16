@@ -51,10 +51,7 @@ var (
 func encodeCachingResponse(response []WorldObject, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
+	data := response.encodeJSON()
 	if _, err := w.Write(data); err != nil {
 		return err
 	}
@@ -64,10 +61,7 @@ func encodeCachingResponse(response []WorldObject, w http.ResponseWriter) error 
 func encodeDBResponse(response WorldObject, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
+	data := response.encodeJSON()
 	if _, err := w.Write(data); err != nil {
 		return err
 	}
@@ -77,10 +71,7 @@ func encodeDBResponse(response WorldObject, w http.ResponseWriter) error {
 func encodeJSONResponse(response HelloWorld, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
+	data := response.encodeJSON()
 	if _, err := w.Write(data); err != nil {
 		return err
 	}
@@ -90,10 +81,7 @@ func encodeJSONResponse(response HelloWorld, w http.ResponseWriter) error {
 func encodeQueriesResponse(response []WorldObject, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
+	data := response.encodeJSON()
 	if _, err := w.Write(data); err != nil {
 		return err
 	}
@@ -103,10 +91,7 @@ func encodeQueriesResponse(response []WorldObject, w http.ResponseWriter) error 
 func encodeUpdatesResponse(response []WorldObject, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
+	data := response.encodeJSON()
 	if _, err := w.Write(data); err != nil {
 		return err
 	}

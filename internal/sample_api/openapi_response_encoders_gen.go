@@ -53,10 +53,7 @@ func encodeFoobarGetResponse(response FoobarGetResponse, w http.ResponseWriter) 
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
+		data := response.encodeJSON()
 		if _, err := w.Write(data); err != nil {
 			return err
 		}
@@ -79,10 +76,7 @@ func encodeFoobarPostResponse(response FoobarPostResponse, w http.ResponseWriter
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
+		data := response.encodeJSON()
 		if _, err := w.Write(data); err != nil {
 			return err
 		}
@@ -93,10 +87,7 @@ func encodeFoobarPostResponse(response FoobarPostResponse, w http.ResponseWriter
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		data, err := json.Marshal(response.Response)
-		if err != nil {
-			return err
-		}
+		data := response.Response.encodeJSON()
 		if _, err := w.Write(data); err != nil {
 			return err
 		}
@@ -111,10 +102,7 @@ func encodePetGetResponse(response PetGetResponse, w http.ResponseWriter) error 
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		data, err := json.Marshal(response)
-		if err != nil {
-			return err
-		}
+		data := response.encodeJSON()
 		if _, err := w.Write(data); err != nil {
 			return err
 		}
@@ -122,10 +110,7 @@ func encodePetGetResponse(response PetGetResponse, w http.ResponseWriter) error 
 	case *PetGetDefaultStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		data, err := json.Marshal(response.Response)
-		if err != nil {
-			return err
-		}
+		data := response.Response.encodeJSON()
 		if _, err := w.Write(data); err != nil {
 			return err
 		}
@@ -138,10 +123,7 @@ func encodePetGetResponse(response PetGetResponse, w http.ResponseWriter) error 
 func encodePetCreateResponse(response Pet, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
+	data := response.encodeJSON()
 	if _, err := w.Write(data); err != nil {
 		return err
 	}
@@ -151,10 +133,7 @@ func encodePetCreateResponse(response Pet, w http.ResponseWriter) error {
 func encodePetGetByNameResponse(response Pet, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	data, err := json.Marshal(response)
-	if err != nil {
-		return err
-	}
+	data := response.encodeJSON()
 	if _, err := w.Write(data); err != nil {
 		return err
 	}

@@ -44,10 +44,7 @@ w.WriteHeader({{ $.StatusCode }})
 {{- if $.NoContent }}{{- /* Encode content */}}
 return nil
 {{- else if eq $.ContentType "application/json" }}
-data, err := json.Marshal({{ if $.Default }}response.Response{{ else }}response{{ end }})
-if err != nil {
-    return err
-}
+data := response{{ if $.Default }}.Response{{ end }}.encodeJSON()
 if _, err := w.Write(data); err != nil {
     return err
 }

@@ -58,7 +58,7 @@ func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetResponse, err er
 			if err != nil {
 				return res, err
 			}
-			if err := json.Unmarshal(data, &response); err != nil {
+			if err := response.decodeJSON(data); err != nil {
 				return res, err
 			}
 
@@ -90,7 +90,7 @@ func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostResponse, err 
 			if err != nil {
 				return res, err
 			}
-			if err := json.Unmarshal(data, &response); err != nil {
+			if err := response.decodeJSON(data); err != nil {
 				return res, err
 			}
 
@@ -108,7 +108,7 @@ func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostResponse, err 
 			if err != nil {
 				return res, err
 			}
-			if err := json.Unmarshal(data, &response.Response); err != nil {
+			if err := response.decodeJSON(data); err != nil {
 				return res, err
 			}
 
@@ -130,7 +130,7 @@ func decodePetGetResponse(resp *http.Response) (res PetGetResponse, err error) {
 			if err != nil {
 				return res, err
 			}
-			if err := json.Unmarshal(data, &response); err != nil {
+			if err := response.decodeJSON(data); err != nil {
 				return res, err
 			}
 
@@ -146,7 +146,7 @@ func decodePetGetResponse(resp *http.Response) (res PetGetResponse, err error) {
 			if err != nil {
 				return res, err
 			}
-			if err := json.Unmarshal(data, &response.Response); err != nil {
+			if err := response.decodeJSON(data); err != nil {
 				return res, err
 			}
 
@@ -168,7 +168,7 @@ func decodePetCreateResponse(resp *http.Response) (res Pet, err error) {
 			if err != nil {
 				return res, err
 			}
-			if err := json.Unmarshal(data, &response); err != nil {
+			if err := response.decodeJSON(data); err != nil {
 				return res, err
 			}
 
@@ -191,7 +191,7 @@ func decodePetGetByNameResponse(resp *http.Response) (res Pet, err error) {
 			if err != nil {
 				return res, err
 			}
-			if err := json.Unmarshal(data, &response); err != nil {
+			if err := response.decodeJSON(data); err != nil {
 				return res, err
 			}
 

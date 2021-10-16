@@ -22,7 +22,7 @@ func decode{{ $m.Name }}Response(resp *http.Response) (res {{ $m.ResponseType.Ty
             if err != nil {
                 return res, err
             }
-            if err := json.Unmarshal(data, &response); err != nil {
+            if err := response.decodeJSON(data); err != nil {
                 return res, err
             }
 
@@ -51,7 +51,7 @@ func decode{{ $m.Name }}Response(resp *http.Response) (res {{ $m.ResponseType.Ty
             if err != nil {
                 return res, err
             }
-            if err := json.Unmarshal(data, &response.Response); err != nil {
+            if err := response.decodeJSON(data); err != nil {
                 return res, err
             }
 

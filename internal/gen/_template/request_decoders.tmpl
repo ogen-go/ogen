@@ -16,18 +16,14 @@ func decode{{ $m.Name }}Request(r *http.Request) (req {{ $m.RequestType.Type }},
         {{- if eq $ctype "application/json" }}
         data, err := io.ReadAll(r.Body)
         if err != nil {
-            return req, err
+            return req, fmt.Errorf("read body: %w", err)
         }
-
-        i := jsoniter.NewIterator(jsoniter.ConfigDefault)
-        i.ResetBytes(data)
-        if err := request.ReadJSON(i); err != nil {
-            return req, err
+        if err := request.decodeJSON(data); err != nil {
+            return req, fmt.Errorf("json: %w", err)
         }
-
         {{- if $schema.NeedValidation }}
         if err := request.validate(); err != nil {
-            return req, err
+            return req, fmt.Errorf("validate: %w", err)
         }
         {{- end }}
 

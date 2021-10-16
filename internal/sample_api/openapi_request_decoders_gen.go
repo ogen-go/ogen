@@ -54,16 +54,13 @@ func decodeFoobarPostRequest(r *http.Request) (req *Pet, err error) {
 		var request Pet
 		data, err := io.ReadAll(r.Body)
 		if err != nil {
-			return req, err
+			return req, fmt.Errorf("read body: %w", err)
 		}
-
-		i := jsoniter.NewIterator(jsoniter.ConfigDefault)
-		i.ResetBytes(data)
-		if err := request.ReadJSON(i); err != nil {
-			return req, err
+		if err := request.decodeJSON(data); err != nil {
+			return req, fmt.Errorf("json: %w", err)
 		}
 		if err := request.validate(); err != nil {
-			return req, err
+			return req, fmt.Errorf("validate: %w", err)
 		}
 
 		return &request, nil
@@ -78,16 +75,13 @@ func decodePetCreateRequest(r *http.Request) (req PetCreateRequest, err error) {
 		var request Pet
 		data, err := io.ReadAll(r.Body)
 		if err != nil {
-			return req, err
+			return req, fmt.Errorf("read body: %w", err)
 		}
-
-		i := jsoniter.NewIterator(jsoniter.ConfigDefault)
-		i.ResetBytes(data)
-		if err := request.ReadJSON(i); err != nil {
-			return req, err
+		if err := request.decodeJSON(data); err != nil {
+			return req, fmt.Errorf("json: %w", err)
 		}
 		if err := request.validate(); err != nil {
-			return req, err
+			return req, fmt.Errorf("validate: %w", err)
 		}
 
 		return &request, nil
