@@ -31,8 +31,8 @@ type {{ $s.Name }} struct {
 // IsSet returns true if {{ $s.Primitive }} was set.
 func (o {{ $s.Name }}) IsSet() bool { return o.Set }
 
-// Unset unsets value.
-func (o *{{ $s.Name }}) Unset() {
+// Reset unsets value.
+func (o *{{ $s.Name }}) Reset() {
     var v {{ $s.Primitive }}
     o.Value = v
     o.Set = false

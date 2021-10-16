@@ -63,8 +63,8 @@ type OptionalString struct {
 // IsSet returns true if string was set.
 func (o OptionalString) IsSet() bool { return o.Set }
 
-// Unset unsets value.
-func (o *OptionalString) Unset() {
+// Reset unsets value.
+func (o *OptionalString) Reset() {
 	var v string
 	o.Value = v
 	o.Set = false
@@ -178,8 +178,8 @@ type OptionalNilString struct {
 // IsSet returns true if string was set.
 func (o OptionalNilString) IsSet() bool { return o.Set }
 
-// Unset unsets value.
-func (o *OptionalNilString) Unset() {
+// Reset unsets value.
+func (o *OptionalNilString) Reset() {
 	var v string
 	o.Value = v
 	o.Set = false
@@ -254,8 +254,8 @@ type OptionalInt struct {
 // IsSet returns true if int was set.
 func (o OptionalInt) IsSet() bool { return o.Set }
 
-// Unset unsets value.
-func (o *OptionalInt) Unset() {
+// Reset unsets value.
+func (o *OptionalInt) Reset() {
 	var v int
 	o.Value = v
 	o.Set = false
@@ -369,8 +369,8 @@ type OptionalNilInt struct {
 // IsSet returns true if int was set.
 func (o OptionalNilInt) IsSet() bool { return o.Set }
 
-// Unset unsets value.
-func (o *OptionalNilInt) Unset() {
+// Reset unsets value.
+func (o *OptionalNilInt) Reset() {
 	var v int
 	o.Value = v
 	o.Set = false
@@ -445,8 +445,8 @@ type OptionalInt32 struct {
 // IsSet returns true if int32 was set.
 func (o OptionalInt32) IsSet() bool { return o.Set }
 
-// Unset unsets value.
-func (o *OptionalInt32) Unset() {
+// Reset unsets value.
+func (o *OptionalInt32) Reset() {
 	var v int32
 	o.Value = v
 	o.Set = false
@@ -560,8 +560,8 @@ type OptionalNilInt32 struct {
 // IsSet returns true if int32 was set.
 func (o OptionalNilInt32) IsSet() bool { return o.Set }
 
-// Unset unsets value.
-func (o *OptionalNilInt32) Unset() {
+// Reset unsets value.
+func (o *OptionalNilInt32) Reset() {
 	var v int32
 	o.Value = v
 	o.Set = false
@@ -636,8 +636,8 @@ type OptionalInt64 struct {
 // IsSet returns true if int64 was set.
 func (o OptionalInt64) IsSet() bool { return o.Set }
 
-// Unset unsets value.
-func (o *OptionalInt64) Unset() {
+// Reset unsets value.
+func (o *OptionalInt64) Reset() {
 	var v int64
 	o.Value = v
 	o.Set = false
@@ -751,8 +751,8 @@ type OptionalNilInt64 struct {
 // IsSet returns true if int64 was set.
 func (o OptionalNilInt64) IsSet() bool { return o.Set }
 
-// Unset unsets value.
-func (o *OptionalNilInt64) Unset() {
+// Reset unsets value.
+func (o *OptionalNilInt64) Reset() {
 	var v int64
 	o.Value = v
 	o.Set = false
@@ -827,8 +827,8 @@ type OptionalFloat32 struct {
 // IsSet returns true if float32 was set.
 func (o OptionalFloat32) IsSet() bool { return o.Set }
 
-// Unset unsets value.
-func (o *OptionalFloat32) Unset() {
+// Reset unsets value.
+func (o *OptionalFloat32) Reset() {
 	var v float32
 	o.Value = v
 	o.Set = false
@@ -942,8 +942,8 @@ type OptionalNilFloat32 struct {
 // IsSet returns true if float32 was set.
 func (o OptionalNilFloat32) IsSet() bool { return o.Set }
 
-// Unset unsets value.
-func (o *OptionalNilFloat32) Unset() {
+// Reset unsets value.
+func (o *OptionalNilFloat32) Reset() {
 	var v float32
 	o.Value = v
 	o.Set = false
@@ -1018,8 +1018,8 @@ type OptionalFloat64 struct {
 // IsSet returns true if float64 was set.
 func (o OptionalFloat64) IsSet() bool { return o.Set }
 
-// Unset unsets value.
-func (o *OptionalFloat64) Unset() {
+// Reset unsets value.
+func (o *OptionalFloat64) Reset() {
 	var v float64
 	o.Value = v
 	o.Set = false
@@ -1133,8 +1133,8 @@ type OptionalNilFloat64 struct {
 // IsSet returns true if float64 was set.
 func (o OptionalNilFloat64) IsSet() bool { return o.Set }
 
-// Unset unsets value.
-func (o *OptionalNilFloat64) Unset() {
+// Reset unsets value.
+func (o *OptionalNilFloat64) Reset() {
 	var v float64
 	o.Value = v
 	o.Set = false
@@ -1209,8 +1209,8 @@ type OptionalBool struct {
 // IsSet returns true if bool was set.
 func (o OptionalBool) IsSet() bool { return o.Set }
 
-// Unset unsets value.
-func (o *OptionalBool) Unset() {
+// Reset unsets value.
+func (o *OptionalBool) Reset() {
 	var v bool
 	o.Value = v
 	o.Set = false
@@ -1324,8 +1324,8 @@ type OptionalNilBool struct {
 // IsSet returns true if bool was set.
 func (o OptionalNilBool) IsSet() bool { return o.Set }
 
-// Unset unsets value.
-func (o *OptionalNilBool) Unset() {
+// Reset unsets value.
+func (o *OptionalNilBool) Reset() {
 	var v bool
 	o.Value = v
 	o.Set = false

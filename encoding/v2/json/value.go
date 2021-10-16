@@ -9,7 +9,6 @@ type Unmarshaler interface {
 
 // Marshaler implements json writing.
 type Marshaler interface {
-	WriteFieldJSON(k string, s *json.Stream)
 	WriteJSON(s *json.Stream)
 }
 
@@ -23,6 +22,11 @@ type Value interface {
 // (i.e. not provided or undefined).
 type Settable interface {
 	IsSet() bool
+}
+
+// Resettable value can be unset.
+type Resettable interface {
+	Reset()
 }
 
 // Nullable can be nil (but defined) or not.
