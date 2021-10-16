@@ -9,12 +9,12 @@ type Array struct {
 	MaxLengthSet bool
 }
 
-func (t Array) SetMaxLength(v int) {
+func (t *Array) SetMaxLength(v int) {
 	t.MaxLengthSet = true
 	t.MaxLength = v
 }
 
-func (t Array) SetMinLength(v int) {
+func (t *Array) SetMinLength(v int) {
 	t.MinLengthSet = true
 	t.MinLength = v
 }

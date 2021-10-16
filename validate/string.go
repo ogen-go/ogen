@@ -7,12 +7,12 @@ type String struct {
 	MaxLengthSet bool
 }
 
-func (t String) SetMaxLength(v int) {
+func (t *String) SetMaxLength(v int) {
 	t.MaxLengthSet = true
 	t.MaxLength = v
 }
 
-func (t String) SetMinLength(v int) {
+func (t *String) SetMinLength(v int) {
 	t.MinLengthSet = true
 	t.MinLength = v
 }
