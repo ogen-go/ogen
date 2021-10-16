@@ -46,15 +46,84 @@ var (
 	_ = jsoniter.Config{}
 )
 
-func (s *Error) WriteJSON(js *jsoniter.Stream) {
+func (s Error) WriteJSON(js *jsoniter.Stream) {
+	js.WriteObjectStart()
+	js.WriteObjectField("code")
+	js.WriteInt64(s.Code)
+	js.WriteObjectField("message")
+	js.WriteString(s.Message)
+	js.WriteObjectEnd()
 }
-func (s *ErrorStatusCode) WriteJSON(js *jsoniter.Stream) {
+
+func (s Error) WriteFieldJSON(k string, js *jsoniter.Stream) {
+	js.WriteObjectField(k)
+	s.WriteJSON(js)
 }
-func (s *FoobarPutDefault) WriteJSON(js *jsoniter.Stream) {
+
+func (s ErrorStatusCode) WriteJSON(js *jsoniter.Stream) {
+	js.WriteObjectStart()
+	js.WriteObjectEnd()
 }
-func (s *Pet) WriteJSON(js *jsoniter.Stream) {
+
+func (s ErrorStatusCode) WriteFieldJSON(k string, js *jsoniter.Stream) {
+	js.WriteObjectField(k)
+	s.WriteJSON(js)
 }
-func (s *PetGetDefault) WriteJSON(js *jsoniter.Stream) {
+
+func (s FoobarPutDefault) WriteJSON(js *jsoniter.Stream) {
+	js.WriteObjectStart()
+	js.WriteObjectEnd()
 }
-func (s *PetGetDefaultStatusCode) WriteJSON(js *jsoniter.Stream) {
+
+func (s FoobarPutDefault) WriteFieldJSON(k string, js *jsoniter.Stream) {
+	js.WriteObjectField(k)
+	s.WriteJSON(js)
+}
+
+func (s Pet) WriteJSON(js *jsoniter.Stream) {
+	js.WriteObjectStart()
+	js.WriteObjectField("birthday")
+	// Unsupported primitive "types.Date" for field "Birthday".
+	// Unsupported kind "pointer" for field "Friends".
+	js.WriteObjectField("id")
+	js.WriteInt64(s.ID)
+	js.WriteObjectField("name")
+	js.WriteString(s.Name)
+	// Unsupported kind "pointer" for field "Tag".
+	// Unsupported kind "pointer" for field "TestArray1".
+	// Unsupported kind "pointer" for field "TestDate".
+	// Unsupported kind "pointer" for field "TestDateTime".
+	// Unsupported kind "pointer" for field "TestDuration".
+	// Unsupported kind "pointer" for field "TestFloat1".
+	// Unsupported kind "pointer" for field "TestInteger1".
+	// Unsupported kind "pointer" for field "TestTime".
+	// Unsupported kind "pointer" for field "Type".
+	js.WriteObjectEnd()
+}
+
+func (s Pet) WriteFieldJSON(k string, js *jsoniter.Stream) {
+	js.WriteObjectField(k)
+	s.WriteJSON(js)
+}
+
+func (s PetGetDefault) WriteJSON(js *jsoniter.Stream) {
+	js.WriteObjectStart()
+	js.WriteObjectField("message")
+	js.WriteString(s.Message)
+	js.WriteObjectEnd()
+}
+
+func (s PetGetDefault) WriteFieldJSON(k string, js *jsoniter.Stream) {
+	js.WriteObjectField(k)
+	s.WriteJSON(js)
+}
+
+func (s PetGetDefaultStatusCode) WriteJSON(js *jsoniter.Stream) {
+	js.WriteObjectStart()
+	js.WriteObjectEnd()
+}
+
+func (s PetGetDefaultStatusCode) WriteFieldJSON(k string, js *jsoniter.Stream) {
+	js.WriteObjectField(k)
+	s.WriteJSON(js)
 }

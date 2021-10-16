@@ -46,7 +46,28 @@ var (
 	_ = jsoniter.Config{}
 )
 
-func (s *HelloWorld) WriteJSON(js *jsoniter.Stream) {
+func (s HelloWorld) WriteJSON(js *jsoniter.Stream) {
+	js.WriteObjectStart()
+	js.WriteObjectField("message")
+	js.WriteString(s.Message)
+	js.WriteObjectEnd()
 }
-func (s *WorldObject) WriteJSON(js *jsoniter.Stream) {
+
+func (s HelloWorld) WriteFieldJSON(k string, js *jsoniter.Stream) {
+	js.WriteObjectField(k)
+	s.WriteJSON(js)
+}
+
+func (s WorldObject) WriteJSON(js *jsoniter.Stream) {
+	js.WriteObjectStart()
+	js.WriteObjectField("id")
+	js.WriteInt64(s.ID)
+	js.WriteObjectField("randomNumber")
+	js.WriteInt64(s.RandomNumber)
+	js.WriteObjectEnd()
+}
+
+func (s WorldObject) WriteFieldJSON(k string, js *jsoniter.Stream) {
+	js.WriteObjectField(k)
+	s.WriteJSON(js)
 }

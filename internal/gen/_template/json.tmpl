@@ -5,10 +5,37 @@
 {{ template "header" $ }}
 
 {{- range $s := $.Schemas }}{{/*Range schemas*/}}
-{{- if eq $s.Kind "struct" }}{{/*If struct*/}}
-func (s *{{ $s.Name }}) WriteJSON(js *jsoniter.Stream) {
+{{ if eq $s.Kind "struct" }}{{/*If struct*/}}
+func (s {{ $s.Name }}) WriteJSON(js *jsoniter.Stream) {
+    js.WriteObjectStart()
     {{- range $f := $s.Fields }}{{/*Range fields*/}}
+    {{- if ne $f.Tag "-" }}
+    {{- if eq $f.Type.Kind "primitive" }}
+    js.WriteObjectField("{{ $f.Tag }}")
+        {{- if eq $f.Type.Primitive "string" }}
+        js.WriteString(s.{{ $f.Name }})
+        {{- else if eq $f.Type.Primitive "int" }}
+        js.WriteInt(s.{{ $f.Name }})
+        {{- else if eq $f.Type.Primitive "int64" }}
+        js.WriteInt64(s.{{ $f.Name }})
+        {{- else if eq $f.Type.Primitive "int32" }}
+        js.WriteInt32(s.{{ $f.Name }})
+        {{- else }}
+        // Unsupported primitive "{{ $f.Type.Primitive  }}" for field "{{ $f.Name }}".
+        {{- end }}
+    {{- else if eq $f.Type.Kind "struct" }}
+        s.{{ $f.Name }}.WriteFieldJSON("{{ $f.Tag }}", js)
+    {{- else }}
+        // Unsupported kind "{{ $f.Type.Kind  }}" for field "{{ $f.Name }}".
+    {{- end }}
+    {{- end }}
     {{- end }}{{/*Range fields*/}}
+    js.WriteObjectEnd()
+}
+
+func (s {{ $s.Name }}) WriteFieldJSON(k string, js *jsoniter.Stream) {
+    js.WriteObjectField(k)
+    s.WriteJSON(js)
 }
 {{- end }}{{/*If struct*/}}
 {{- end }}{{/*Range schemas*/}}
