@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"time"
 )
 
 type QueryEncoder struct {
@@ -137,4 +138,8 @@ func (e *QueryEncoder) EncodeFloat32Array(vs []float32) []string {
 		strs = append(strs, strconv.FormatFloat(float64(v), 'f', 10, 64))
 	}
 	return e.EncodeStringArray(strs)
+}
+
+func (e *QueryEncoder) EncodeTime(v time.Time) string {
+	return e.EncodeString(v.Format(time.RFC3339))
 }
