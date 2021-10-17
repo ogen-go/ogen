@@ -100,7 +100,10 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 	if err := w.Generate("validators", "openapi_validators_gen.go", cfg); err != nil {
 		return err
 	}
-	if err := w.Generate("json", "openapi_json_gen.go", cfg); err != nil {
+	if err := w.Generate("schemas_json", "openapi_schemas_json_gen.go", cfg); err != nil {
+		return err
+	}
+	if err := w.Generate("generic_json", "openapi_generic_json_gen.go", cfg); err != nil {
 		return err
 	}
 	if err := w.Generate("server", "openapi_server_gen.go", cfg); err != nil {
