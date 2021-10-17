@@ -1993,9 +1993,9 @@ func (o *OptionalNilDuration) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s HelloWorld) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	var field json.FieldWriter
-	_ = field
-	field.Write(j, "message")
+	field := json.NewFieldWriter(j)
+	defer field.Reset()
+	field.Write("message")
 	j.WriteString(s.Message)
 	j.WriteObjectEnd()
 }
@@ -2036,11 +2036,11 @@ func (s *HelloWorld) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s WorldObject) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	var field json.FieldWriter
-	_ = field
-	field.Write(j, "id")
+	field := json.NewFieldWriter(j)
+	defer field.Reset()
+	field.Write("id")
 	j.WriteInt64(s.ID)
-	field.Write(j, "randomNumber")
+	field.Write("randomNumber")
 	j.WriteInt64(s.RandomNumber)
 	j.WriteObjectEnd()
 }

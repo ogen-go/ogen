@@ -1,21 +1,29 @@
 package json
 
-import (
-	json "github.com/json-iterator/go"
-)
-
 // FieldWriter is helper for writing fields with ",".
 type FieldWriter struct {
+	s          *Stream
 	shouldMore bool
 }
 
+func NewFieldWriter(s *Stream) FieldWriter {
+	return FieldWriter{
+		s: s,
+	}
+}
+
+func (f *FieldWriter) Reset() {
+	f.s = nil
+	f.shouldMore = false
+}
+
 // Write "," (if needed) and new field.
-func (f *FieldWriter) Write(s *json.Stream, k string) {
+func (f *FieldWriter) Write(k string) {
 	if f.shouldMore {
-		s.WriteMore()
+		f.s.WriteMore()
 		f.shouldMore = false
 	}
 
-	s.WriteObjectField(k)
+	f.s.WriteObjectField(k)
 	f.shouldMore = true
 }

@@ -1993,11 +1993,11 @@ func (o *OptionalNilDuration) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s Error) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	var field json.FieldWriter
-	_ = field
-	field.Write(j, "code")
+	field := json.NewFieldWriter(j)
+	defer field.Reset()
+	field.Write("code")
 	j.WriteInt64(s.Code)
-	field.Write(j, "message")
+	field.Write("message")
 	j.WriteString(s.Message)
 	j.WriteObjectEnd()
 }
@@ -2041,8 +2041,8 @@ func (s *Error) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s ErrorStatusCode) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	var field json.FieldWriter
-	_ = field
+	field := json.NewFieldWriter(j)
+	defer field.Reset()
 	j.WriteObjectEnd()
 }
 
@@ -2079,8 +2079,8 @@ func (s *ErrorStatusCode) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s FoobarPutDefault) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	var field json.FieldWriter
-	_ = field
+	field := json.NewFieldWriter(j)
+	defer field.Reset()
 	j.WriteObjectEnd()
 }
 
@@ -2117,49 +2117,49 @@ func (s *FoobarPutDefault) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s Pet) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	var field json.FieldWriter
-	_ = field
-	field.Write(j, "birthday")
+	field := json.NewFieldWriter(j)
+	defer field.Reset()
+	field.Write("birthday")
 	json.WriteDate(j, s.Birthday)
 	// Unsupported kind "pointer" for field "Friends".
-	field.Write(j, "id")
+	field.Write("id")
 	j.WriteInt64(s.ID)
-	field.Write(j, "name")
+	field.Write("name")
 	j.WriteString(s.Name)
-	field.Write(j, "nickname")
-	s.Nickname.WriteJSON(js)
+	field.Write("nickname")
+	s.Nickname.WriteJSON(j)
 	if s.NullStr.Set {
-		field.Write(j, "nullStr")
-		s.NullStr.WriteJSON(js)
+		field.Write("nullStr")
+		s.NullStr.WriteJSON(j)
 	}
 	if s.Tag.Set {
-		field.Write(j, "tag")
-		s.Tag.WriteJSON(js)
+		field.Write("tag")
+		s.Tag.WriteJSON(j)
 	}
 	// Unsupported kind "pointer" for field "TestArray1".
 	if s.TestDate.Set {
-		field.Write(j, "testDate")
-		s.TestDate.WriteJSON(js, json.WriteDate)
+		field.Write("testDate")
+		s.TestDate.WriteJSON(j, json.WriteDate)
 	}
 	if s.TestDateTime.Set {
-		field.Write(j, "testDateTime")
-		s.TestDateTime.WriteJSON(js, json.WriteDateTime)
+		field.Write("testDateTime")
+		s.TestDateTime.WriteJSON(j, json.WriteDateTime)
 	}
 	if s.TestDuration.Set {
-		field.Write(j, "testDuration")
-		s.TestDuration.WriteJSON(js)
+		field.Write("testDuration")
+		s.TestDuration.WriteJSON(j)
 	}
 	if s.TestFloat1.Set {
-		field.Write(j, "testFloat1")
-		s.TestFloat1.WriteJSON(js)
+		field.Write("testFloat1")
+		s.TestFloat1.WriteJSON(j)
 	}
 	if s.TestInteger1.Set {
-		field.Write(j, "testInteger1")
-		s.TestInteger1.WriteJSON(js)
+		field.Write("testInteger1")
+		s.TestInteger1.WriteJSON(j)
 	}
 	if s.TestTime.Set {
-		field.Write(j, "testTime")
-		s.TestTime.WriteJSON(js, json.WriteTime)
+		field.Write("testTime")
+		s.TestTime.WriteJSON(j, json.WriteTime)
 	}
 	// Unsupported kind "pointer" for field "Type".
 	j.WriteObjectEnd()
@@ -2286,9 +2286,9 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s PetGetDefault) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	var field json.FieldWriter
-	_ = field
-	field.Write(j, "message")
+	field := json.NewFieldWriter(j)
+	defer field.Reset()
+	field.Write("message")
 	j.WriteString(s.Message)
 	j.WriteObjectEnd()
 }
@@ -2329,8 +2329,8 @@ func (s *PetGetDefault) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s PetGetDefaultStatusCode) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	var field json.FieldWriter
-	_ = field
+	field := json.NewFieldWriter(j)
+	defer field.Reset()
 	j.WriteObjectEnd()
 }
 

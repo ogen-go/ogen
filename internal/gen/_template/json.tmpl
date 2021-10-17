@@ -142,25 +142,25 @@ func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if eq $s.Format "custom" }},
 // WriteJSON implements json.Marshaler.
 func (s {{ $s.Name }}) WriteJSON(j *json.Stream) {
     j.WriteObjectStart()
-    var field json.FieldWriter
-    _ = field
+    field := json.NewFieldWriter(j)
+    defer field.Reset()
     {{- range $f := $s.Fields }}{{/*Range fields*/}}
     {{- if ne $f.Tag "-" }}
     {{- if $f.Type.Generic }}
         {{- if $f.Type.Optional }}
         if s.{{ $f.Name }}.Set {
-            field.Write(j, "{{ $f.Tag }}")
-            s.{{ $f.Name }}.WriteJSON(js{{ if $f.Type.JSONHelper }}, json.Write{{ $f.Type.JSONHelper }}{{ end }})
+            field.Write("{{ $f.Tag }}")
+            s.{{ $f.Name }}.WriteJSON(j{{ if $f.Type.JSONHelper }}, json.Write{{ $f.Type.JSONHelper }}{{ end }})
         }
         {{- else }}
-            field.Write(j, "{{ $f.Tag }}")
-            s.{{ $f.Name }}.WriteJSON(js{{ if $f.Type.JSONHelper }}, json.Write{{ $f.Type.JSONHelper }}{{ end }})
+            field.Write("{{ $f.Tag }}")
+            s.{{ $f.Name }}.WriteJSON(j{{ if $f.Type.JSONHelper }}, json.Write{{ $f.Type.JSONHelper }}{{ end }})
         {{- end }}
     {{- else if $f.Type.JSONHelper }}
-        field.Write(j, "{{ $f.Tag }}")
+        field.Write("{{ $f.Tag }}")
         json.Write{{ $f.Type.JSONHelper }}(j, s.{{ $f.Name }})
     {{- else if eq $f.Type.Kind "primitive" }}
-        field.Write(j, "{{ $f.Tag }}")
+        field.Write("{{ $f.Tag }}")
         {{- if $f.Type.JSONWrite }}
             j.{{ $f.Type.JSONWrite }}(s.{{ $f.Name }})
         {{- else }}
@@ -168,8 +168,8 @@ func (s {{ $s.Name }}) WriteJSON(j *json.Stream) {
             j.WriteNil()
         {{- end }}
     {{- else if eq $f.Type.Kind "struct" }}
-        field.Write(j, "{{ $f.Tag }}")
-        s.{{ $f.Name }}.WriteJSON("{{ $f.Tag }}", js)
+        field.Write("{{ $f.Tag }}")
+        s.{{ $f.Name }}.WriteJSON("{{ $f.Tag }}", j)
     {{- else }}
         // Unsupported kind "{{ $f.Type.Kind  }}" for field "{{ $f.Name }}".
     {{- end }}
