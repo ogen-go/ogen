@@ -15,8 +15,9 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+
 	"github.com/ogen-go/ogen/conv"
-	"github.com/ogen-go/ogen/encoding/json"
+	"github.com/ogen-go/ogen/json"
 )
 
 // No-op definition for keeping imports.

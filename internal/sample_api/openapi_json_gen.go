@@ -17,10 +17,8 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
-	jsoniter "github.com/json-iterator/go"
 	"github.com/ogen-go/ogen/conv"
-	"github.com/ogen-go/ogen/encoding/json"
-	"github.com/ogen-go/ogen/types"
+	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -43,8 +41,6 @@ var (
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
 	_ = math.Mod
-	_ = types.Date{}
-	_ = jsoniter.Config{}
 	_ = validate.Int{}
 )
 
@@ -87,14 +83,14 @@ func (o OptionalString) Get() (v string, ok bool) {
 }
 
 // WriteJSON writes json value of string to json stream.
-func (o OptionalString) WriteJSON(js *jsoniter.Stream) {
+func (o OptionalString) WriteJSON(js *json.Stream) {
 	js.WriteString(o.Value)
 }
 
 // ReadJSON writes json value of string from json iterator.
-func (o *OptionalString) ReadJSON(i *jsoniter.Iterator) error {
+func (o *OptionalString) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.StringValue:
+	case json.StringValue:
 		o.Set = true
 		o.Value = i.ReadString()
 		return i.Error
@@ -135,7 +131,7 @@ func (o NilString) Get() (v string, ok bool) {
 }
 
 // WriteJSON writes json value of string to json stream.
-func (o NilString) WriteJSON(js *jsoniter.Stream) {
+func (o NilString) WriteJSON(js *json.Stream) {
 	if o.Nil {
 		js.WriteNil()
 		return
@@ -144,13 +140,13 @@ func (o NilString) WriteJSON(js *jsoniter.Stream) {
 }
 
 // ReadJSON writes json value of string from json iterator.
-func (o *NilString) ReadJSON(i *jsoniter.Iterator) error {
+func (o *NilString) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.StringValue:
+	case json.StringValue:
 		o.Nil = false
 		o.Value = i.ReadString()
 		return i.Error
-	case jsoniter.NilValue:
+	case json.NilValue:
 		var v string
 		o.Value = v
 		o.Nil = true
@@ -210,7 +206,7 @@ func (o OptionalNilString) Get() (v string, ok bool) {
 }
 
 // WriteJSON writes json value of string to json stream.
-func (o OptionalNilString) WriteJSON(js *jsoniter.Stream) {
+func (o OptionalNilString) WriteJSON(js *json.Stream) {
 	if o.Nil {
 		js.WriteNil()
 		return
@@ -219,14 +215,14 @@ func (o OptionalNilString) WriteJSON(js *jsoniter.Stream) {
 }
 
 // ReadJSON writes json value of string from json iterator.
-func (o *OptionalNilString) ReadJSON(i *jsoniter.Iterator) error {
+func (o *OptionalNilString) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.StringValue:
+	case json.StringValue:
 		o.Set = true
 		o.Nil = false
 		o.Value = i.ReadString()
 		return i.Error
-	case jsoniter.NilValue:
+	case json.NilValue:
 		var v string
 		o.Value = v
 		o.Set = true
@@ -278,14 +274,14 @@ func (o OptionalInt) Get() (v int, ok bool) {
 }
 
 // WriteJSON writes json value of int to json stream.
-func (o OptionalInt) WriteJSON(js *jsoniter.Stream) {
+func (o OptionalInt) WriteJSON(js *json.Stream) {
 	js.WriteInt(o.Value)
 }
 
 // ReadJSON writes json value of int from json iterator.
-func (o *OptionalInt) ReadJSON(i *jsoniter.Iterator) error {
+func (o *OptionalInt) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.NumberValue:
+	case json.NumberValue:
 		o.Set = true
 		o.Value = i.ReadInt()
 		return i.Error
@@ -326,7 +322,7 @@ func (o NilInt) Get() (v int, ok bool) {
 }
 
 // WriteJSON writes json value of int to json stream.
-func (o NilInt) WriteJSON(js *jsoniter.Stream) {
+func (o NilInt) WriteJSON(js *json.Stream) {
 	if o.Nil {
 		js.WriteNil()
 		return
@@ -335,13 +331,13 @@ func (o NilInt) WriteJSON(js *jsoniter.Stream) {
 }
 
 // ReadJSON writes json value of int from json iterator.
-func (o *NilInt) ReadJSON(i *jsoniter.Iterator) error {
+func (o *NilInt) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.NumberValue:
+	case json.NumberValue:
 		o.Nil = false
 		o.Value = i.ReadInt()
 		return i.Error
-	case jsoniter.NilValue:
+	case json.NilValue:
 		var v int
 		o.Value = v
 		o.Nil = true
@@ -401,7 +397,7 @@ func (o OptionalNilInt) Get() (v int, ok bool) {
 }
 
 // WriteJSON writes json value of int to json stream.
-func (o OptionalNilInt) WriteJSON(js *jsoniter.Stream) {
+func (o OptionalNilInt) WriteJSON(js *json.Stream) {
 	if o.Nil {
 		js.WriteNil()
 		return
@@ -410,14 +406,14 @@ func (o OptionalNilInt) WriteJSON(js *jsoniter.Stream) {
 }
 
 // ReadJSON writes json value of int from json iterator.
-func (o *OptionalNilInt) ReadJSON(i *jsoniter.Iterator) error {
+func (o *OptionalNilInt) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.NumberValue:
+	case json.NumberValue:
 		o.Set = true
 		o.Nil = false
 		o.Value = i.ReadInt()
 		return i.Error
-	case jsoniter.NilValue:
+	case json.NilValue:
 		var v int
 		o.Value = v
 		o.Set = true
@@ -469,14 +465,14 @@ func (o OptionalInt32) Get() (v int32, ok bool) {
 }
 
 // WriteJSON writes json value of int32 to json stream.
-func (o OptionalInt32) WriteJSON(js *jsoniter.Stream) {
+func (o OptionalInt32) WriteJSON(js *json.Stream) {
 	js.WriteInt32(o.Value)
 }
 
 // ReadJSON writes json value of int32 from json iterator.
-func (o *OptionalInt32) ReadJSON(i *jsoniter.Iterator) error {
+func (o *OptionalInt32) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.NumberValue:
+	case json.NumberValue:
 		o.Set = true
 		o.Value = i.ReadInt32()
 		return i.Error
@@ -517,7 +513,7 @@ func (o NilInt32) Get() (v int32, ok bool) {
 }
 
 // WriteJSON writes json value of int32 to json stream.
-func (o NilInt32) WriteJSON(js *jsoniter.Stream) {
+func (o NilInt32) WriteJSON(js *json.Stream) {
 	if o.Nil {
 		js.WriteNil()
 		return
@@ -526,13 +522,13 @@ func (o NilInt32) WriteJSON(js *jsoniter.Stream) {
 }
 
 // ReadJSON writes json value of int32 from json iterator.
-func (o *NilInt32) ReadJSON(i *jsoniter.Iterator) error {
+func (o *NilInt32) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.NumberValue:
+	case json.NumberValue:
 		o.Nil = false
 		o.Value = i.ReadInt32()
 		return i.Error
-	case jsoniter.NilValue:
+	case json.NilValue:
 		var v int32
 		o.Value = v
 		o.Nil = true
@@ -592,7 +588,7 @@ func (o OptionalNilInt32) Get() (v int32, ok bool) {
 }
 
 // WriteJSON writes json value of int32 to json stream.
-func (o OptionalNilInt32) WriteJSON(js *jsoniter.Stream) {
+func (o OptionalNilInt32) WriteJSON(js *json.Stream) {
 	if o.Nil {
 		js.WriteNil()
 		return
@@ -601,14 +597,14 @@ func (o OptionalNilInt32) WriteJSON(js *jsoniter.Stream) {
 }
 
 // ReadJSON writes json value of int32 from json iterator.
-func (o *OptionalNilInt32) ReadJSON(i *jsoniter.Iterator) error {
+func (o *OptionalNilInt32) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.NumberValue:
+	case json.NumberValue:
 		o.Set = true
 		o.Nil = false
 		o.Value = i.ReadInt32()
 		return i.Error
-	case jsoniter.NilValue:
+	case json.NilValue:
 		var v int32
 		o.Value = v
 		o.Set = true
@@ -660,14 +656,14 @@ func (o OptionalInt64) Get() (v int64, ok bool) {
 }
 
 // WriteJSON writes json value of int64 to json stream.
-func (o OptionalInt64) WriteJSON(js *jsoniter.Stream) {
+func (o OptionalInt64) WriteJSON(js *json.Stream) {
 	js.WriteInt64(o.Value)
 }
 
 // ReadJSON writes json value of int64 from json iterator.
-func (o *OptionalInt64) ReadJSON(i *jsoniter.Iterator) error {
+func (o *OptionalInt64) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.NumberValue:
+	case json.NumberValue:
 		o.Set = true
 		o.Value = i.ReadInt64()
 		return i.Error
@@ -708,7 +704,7 @@ func (o NilInt64) Get() (v int64, ok bool) {
 }
 
 // WriteJSON writes json value of int64 to json stream.
-func (o NilInt64) WriteJSON(js *jsoniter.Stream) {
+func (o NilInt64) WriteJSON(js *json.Stream) {
 	if o.Nil {
 		js.WriteNil()
 		return
@@ -717,13 +713,13 @@ func (o NilInt64) WriteJSON(js *jsoniter.Stream) {
 }
 
 // ReadJSON writes json value of int64 from json iterator.
-func (o *NilInt64) ReadJSON(i *jsoniter.Iterator) error {
+func (o *NilInt64) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.NumberValue:
+	case json.NumberValue:
 		o.Nil = false
 		o.Value = i.ReadInt64()
 		return i.Error
-	case jsoniter.NilValue:
+	case json.NilValue:
 		var v int64
 		o.Value = v
 		o.Nil = true
@@ -783,7 +779,7 @@ func (o OptionalNilInt64) Get() (v int64, ok bool) {
 }
 
 // WriteJSON writes json value of int64 to json stream.
-func (o OptionalNilInt64) WriteJSON(js *jsoniter.Stream) {
+func (o OptionalNilInt64) WriteJSON(js *json.Stream) {
 	if o.Nil {
 		js.WriteNil()
 		return
@@ -792,14 +788,14 @@ func (o OptionalNilInt64) WriteJSON(js *jsoniter.Stream) {
 }
 
 // ReadJSON writes json value of int64 from json iterator.
-func (o *OptionalNilInt64) ReadJSON(i *jsoniter.Iterator) error {
+func (o *OptionalNilInt64) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.NumberValue:
+	case json.NumberValue:
 		o.Set = true
 		o.Nil = false
 		o.Value = i.ReadInt64()
 		return i.Error
-	case jsoniter.NilValue:
+	case json.NilValue:
 		var v int64
 		o.Value = v
 		o.Set = true
@@ -851,14 +847,14 @@ func (o OptionalFloat32) Get() (v float32, ok bool) {
 }
 
 // WriteJSON writes json value of float32 to json stream.
-func (o OptionalFloat32) WriteJSON(js *jsoniter.Stream) {
+func (o OptionalFloat32) WriteJSON(js *json.Stream) {
 	js.WriteFloat32(o.Value)
 }
 
 // ReadJSON writes json value of float32 from json iterator.
-func (o *OptionalFloat32) ReadJSON(i *jsoniter.Iterator) error {
+func (o *OptionalFloat32) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.NumberValue:
+	case json.NumberValue:
 		o.Set = true
 		o.Value = i.ReadFloat32()
 		return i.Error
@@ -899,7 +895,7 @@ func (o NilFloat32) Get() (v float32, ok bool) {
 }
 
 // WriteJSON writes json value of float32 to json stream.
-func (o NilFloat32) WriteJSON(js *jsoniter.Stream) {
+func (o NilFloat32) WriteJSON(js *json.Stream) {
 	if o.Nil {
 		js.WriteNil()
 		return
@@ -908,13 +904,13 @@ func (o NilFloat32) WriteJSON(js *jsoniter.Stream) {
 }
 
 // ReadJSON writes json value of float32 from json iterator.
-func (o *NilFloat32) ReadJSON(i *jsoniter.Iterator) error {
+func (o *NilFloat32) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.NumberValue:
+	case json.NumberValue:
 		o.Nil = false
 		o.Value = i.ReadFloat32()
 		return i.Error
-	case jsoniter.NilValue:
+	case json.NilValue:
 		var v float32
 		o.Value = v
 		o.Nil = true
@@ -974,7 +970,7 @@ func (o OptionalNilFloat32) Get() (v float32, ok bool) {
 }
 
 // WriteJSON writes json value of float32 to json stream.
-func (o OptionalNilFloat32) WriteJSON(js *jsoniter.Stream) {
+func (o OptionalNilFloat32) WriteJSON(js *json.Stream) {
 	if o.Nil {
 		js.WriteNil()
 		return
@@ -983,14 +979,14 @@ func (o OptionalNilFloat32) WriteJSON(js *jsoniter.Stream) {
 }
 
 // ReadJSON writes json value of float32 from json iterator.
-func (o *OptionalNilFloat32) ReadJSON(i *jsoniter.Iterator) error {
+func (o *OptionalNilFloat32) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.NumberValue:
+	case json.NumberValue:
 		o.Set = true
 		o.Nil = false
 		o.Value = i.ReadFloat32()
 		return i.Error
-	case jsoniter.NilValue:
+	case json.NilValue:
 		var v float32
 		o.Value = v
 		o.Set = true
@@ -1042,14 +1038,14 @@ func (o OptionalFloat64) Get() (v float64, ok bool) {
 }
 
 // WriteJSON writes json value of float64 to json stream.
-func (o OptionalFloat64) WriteJSON(js *jsoniter.Stream) {
+func (o OptionalFloat64) WriteJSON(js *json.Stream) {
 	js.WriteFloat64(o.Value)
 }
 
 // ReadJSON writes json value of float64 from json iterator.
-func (o *OptionalFloat64) ReadJSON(i *jsoniter.Iterator) error {
+func (o *OptionalFloat64) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.NumberValue:
+	case json.NumberValue:
 		o.Set = true
 		o.Value = i.ReadFloat64()
 		return i.Error
@@ -1090,7 +1086,7 @@ func (o NilFloat64) Get() (v float64, ok bool) {
 }
 
 // WriteJSON writes json value of float64 to json stream.
-func (o NilFloat64) WriteJSON(js *jsoniter.Stream) {
+func (o NilFloat64) WriteJSON(js *json.Stream) {
 	if o.Nil {
 		js.WriteNil()
 		return
@@ -1099,13 +1095,13 @@ func (o NilFloat64) WriteJSON(js *jsoniter.Stream) {
 }
 
 // ReadJSON writes json value of float64 from json iterator.
-func (o *NilFloat64) ReadJSON(i *jsoniter.Iterator) error {
+func (o *NilFloat64) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.NumberValue:
+	case json.NumberValue:
 		o.Nil = false
 		o.Value = i.ReadFloat64()
 		return i.Error
-	case jsoniter.NilValue:
+	case json.NilValue:
 		var v float64
 		o.Value = v
 		o.Nil = true
@@ -1165,7 +1161,7 @@ func (o OptionalNilFloat64) Get() (v float64, ok bool) {
 }
 
 // WriteJSON writes json value of float64 to json stream.
-func (o OptionalNilFloat64) WriteJSON(js *jsoniter.Stream) {
+func (o OptionalNilFloat64) WriteJSON(js *json.Stream) {
 	if o.Nil {
 		js.WriteNil()
 		return
@@ -1174,14 +1170,14 @@ func (o OptionalNilFloat64) WriteJSON(js *jsoniter.Stream) {
 }
 
 // ReadJSON writes json value of float64 from json iterator.
-func (o *OptionalNilFloat64) ReadJSON(i *jsoniter.Iterator) error {
+func (o *OptionalNilFloat64) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.NumberValue:
+	case json.NumberValue:
 		o.Set = true
 		o.Nil = false
 		o.Value = i.ReadFloat64()
 		return i.Error
-	case jsoniter.NilValue:
+	case json.NilValue:
 		var v float64
 		o.Value = v
 		o.Set = true
@@ -1233,14 +1229,14 @@ func (o OptionalBool) Get() (v bool, ok bool) {
 }
 
 // WriteJSON writes json value of bool to json stream.
-func (o OptionalBool) WriteJSON(js *jsoniter.Stream) {
+func (o OptionalBool) WriteJSON(js *json.Stream) {
 	js.WriteBool(o.Value)
 }
 
 // ReadJSON writes json value of bool from json iterator.
-func (o *OptionalBool) ReadJSON(i *jsoniter.Iterator) error {
+func (o *OptionalBool) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.BoolValue:
+	case json.BoolValue:
 		o.Set = true
 		o.Value = i.ReadBool()
 		return i.Error
@@ -1281,7 +1277,7 @@ func (o NilBool) Get() (v bool, ok bool) {
 }
 
 // WriteJSON writes json value of bool to json stream.
-func (o NilBool) WriteJSON(js *jsoniter.Stream) {
+func (o NilBool) WriteJSON(js *json.Stream) {
 	if o.Nil {
 		js.WriteNil()
 		return
@@ -1290,13 +1286,13 @@ func (o NilBool) WriteJSON(js *jsoniter.Stream) {
 }
 
 // ReadJSON writes json value of bool from json iterator.
-func (o *NilBool) ReadJSON(i *jsoniter.Iterator) error {
+func (o *NilBool) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.BoolValue:
+	case json.BoolValue:
 		o.Nil = false
 		o.Value = i.ReadBool()
 		return i.Error
-	case jsoniter.NilValue:
+	case json.NilValue:
 		var v bool
 		o.Value = v
 		o.Nil = true
@@ -1356,7 +1352,7 @@ func (o OptionalNilBool) Get() (v bool, ok bool) {
 }
 
 // WriteJSON writes json value of bool to json stream.
-func (o OptionalNilBool) WriteJSON(js *jsoniter.Stream) {
+func (o OptionalNilBool) WriteJSON(js *json.Stream) {
 	if o.Nil {
 		js.WriteNil()
 		return
@@ -1365,14 +1361,14 @@ func (o OptionalNilBool) WriteJSON(js *jsoniter.Stream) {
 }
 
 // ReadJSON writes json value of bool from json iterator.
-func (o *OptionalNilBool) ReadJSON(i *jsoniter.Iterator) error {
+func (o *OptionalNilBool) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.BoolValue:
+	case json.BoolValue:
 		o.Set = true
 		o.Nil = false
 		o.Value = i.ReadBool()
 		return i.Error
-	case jsoniter.NilValue:
+	case json.NilValue:
 		var v bool
 		o.Value = v
 		o.Set = true
@@ -1424,16 +1420,16 @@ func (o OptionalUUID) Get() (v uuid.UUID, ok bool) {
 }
 
 // WriteJSON writes json value of uuid.UUID to json stream.
-func (o OptionalUUID) WriteJSON(js *jsoniter.Stream) {
-	types.WriteUUID(js, o.Value)
+func (o OptionalUUID) WriteJSON(js *json.Stream) {
+	json.WriteUUID(js, o.Value)
 }
 
 // ReadJSON writes json value of uuid.UUID from json iterator.
-func (o *OptionalUUID) ReadJSON(i *jsoniter.Iterator) error {
+func (o *OptionalUUID) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.StringValue:
+	case json.StringValue:
 		o.Set = true
-		v, err := types.ReadUUID(i)
+		v, err := json.ReadUUID(i)
 		if err != nil {
 			return err
 		}
@@ -1476,26 +1472,26 @@ func (o NilUUID) Get() (v uuid.UUID, ok bool) {
 }
 
 // WriteJSON writes json value of uuid.UUID to json stream.
-func (o NilUUID) WriteJSON(js *jsoniter.Stream) {
+func (o NilUUID) WriteJSON(js *json.Stream) {
 	if o.Nil {
 		js.WriteNil()
 		return
 	}
-	types.WriteUUID(js, o.Value)
+	json.WriteUUID(js, o.Value)
 }
 
 // ReadJSON writes json value of uuid.UUID from json iterator.
-func (o *NilUUID) ReadJSON(i *jsoniter.Iterator) error {
+func (o *NilUUID) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.StringValue:
+	case json.StringValue:
 		o.Nil = false
-		v, err := types.ReadUUID(i)
+		v, err := json.ReadUUID(i)
 		if err != nil {
 			return err
 		}
 		o.Value = v
 		return i.Error
-	case jsoniter.NilValue:
+	case json.NilValue:
 		var v uuid.UUID
 		o.Value = v
 		o.Nil = true
@@ -1555,27 +1551,27 @@ func (o OptionalNilUUID) Get() (v uuid.UUID, ok bool) {
 }
 
 // WriteJSON writes json value of uuid.UUID to json stream.
-func (o OptionalNilUUID) WriteJSON(js *jsoniter.Stream) {
+func (o OptionalNilUUID) WriteJSON(js *json.Stream) {
 	if o.Nil {
 		js.WriteNil()
 		return
 	}
-	types.WriteUUID(js, o.Value)
+	json.WriteUUID(js, o.Value)
 }
 
 // ReadJSON writes json value of uuid.UUID from json iterator.
-func (o *OptionalNilUUID) ReadJSON(i *jsoniter.Iterator) error {
+func (o *OptionalNilUUID) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.StringValue:
+	case json.StringValue:
 		o.Set = true
 		o.Nil = false
-		v, err := types.ReadUUID(i)
+		v, err := json.ReadUUID(i)
 		if err != nil {
 			return err
 		}
 		o.Value = v
 		return i.Error
-	case jsoniter.NilValue:
+	case json.NilValue:
 		var v uuid.UUID
 		o.Value = v
 		o.Set = true
@@ -1627,14 +1623,14 @@ func (o OptionalTime) Get() (v time.Time, ok bool) {
 }
 
 // WriteJSON writes json value of time.Time to json stream.
-func (o OptionalTime) WriteJSON(js *jsoniter.Stream, format func(*jsoniter.Stream, time.Time)) {
+func (o OptionalTime) WriteJSON(js *json.Stream, format func(*json.Stream, time.Time)) {
 	format(js, o.Value)
 }
 
 // ReadJSON writes json value of time.Time from json iterator.
-func (o *OptionalTime) ReadJSON(i *jsoniter.Iterator, format func(*jsoniter.Iterator) (time.Time, error)) error {
+func (o *OptionalTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (time.Time, error)) error {
 	switch i.WhatIsNext() {
-	case jsoniter.StringValue:
+	case json.StringValue:
 		o.Set = true
 		v, err := format(i)
 		if err != nil {
@@ -1679,7 +1675,7 @@ func (o NilTime) Get() (v time.Time, ok bool) {
 }
 
 // WriteJSON writes json value of time.Time to json stream.
-func (o NilTime) WriteJSON(js *jsoniter.Stream, format func(*jsoniter.Stream, time.Time)) {
+func (o NilTime) WriteJSON(js *json.Stream, format func(*json.Stream, time.Time)) {
 	if o.Nil {
 		js.WriteNil()
 		return
@@ -1688,9 +1684,9 @@ func (o NilTime) WriteJSON(js *jsoniter.Stream, format func(*jsoniter.Stream, ti
 }
 
 // ReadJSON writes json value of time.Time from json iterator.
-func (o *NilTime) ReadJSON(i *jsoniter.Iterator, format func(*jsoniter.Iterator) (time.Time, error)) error {
+func (o *NilTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (time.Time, error)) error {
 	switch i.WhatIsNext() {
-	case jsoniter.StringValue:
+	case json.StringValue:
 		o.Nil = false
 		v, err := format(i)
 		if err != nil {
@@ -1698,7 +1694,7 @@ func (o *NilTime) ReadJSON(i *jsoniter.Iterator, format func(*jsoniter.Iterator)
 		}
 		o.Value = v
 		return i.Error
-	case jsoniter.NilValue:
+	case json.NilValue:
 		var v time.Time
 		o.Value = v
 		o.Nil = true
@@ -1758,7 +1754,7 @@ func (o OptionalNilTime) Get() (v time.Time, ok bool) {
 }
 
 // WriteJSON writes json value of time.Time to json stream.
-func (o OptionalNilTime) WriteJSON(js *jsoniter.Stream, format func(*jsoniter.Stream, time.Time)) {
+func (o OptionalNilTime) WriteJSON(js *json.Stream, format func(*json.Stream, time.Time)) {
 	if o.Nil {
 		js.WriteNil()
 		return
@@ -1767,9 +1763,9 @@ func (o OptionalNilTime) WriteJSON(js *jsoniter.Stream, format func(*jsoniter.St
 }
 
 // ReadJSON writes json value of time.Time from json iterator.
-func (o *OptionalNilTime) ReadJSON(i *jsoniter.Iterator, format func(*jsoniter.Iterator) (time.Time, error)) error {
+func (o *OptionalNilTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (time.Time, error)) error {
 	switch i.WhatIsNext() {
-	case jsoniter.StringValue:
+	case json.StringValue:
 		o.Set = true
 		o.Nil = false
 		v, err := format(i)
@@ -1778,7 +1774,7 @@ func (o *OptionalNilTime) ReadJSON(i *jsoniter.Iterator, format func(*jsoniter.I
 		}
 		o.Value = v
 		return i.Error
-	case jsoniter.NilValue:
+	case json.NilValue:
 		var v time.Time
 		o.Value = v
 		o.Set = true
@@ -1830,16 +1826,16 @@ func (o OptionalDuration) Get() (v time.Duration, ok bool) {
 }
 
 // WriteJSON writes json value of time.Duration to json stream.
-func (o OptionalDuration) WriteJSON(js *jsoniter.Stream) {
-	types.WriteDuration(js, o.Value)
+func (o OptionalDuration) WriteJSON(js *json.Stream) {
+	json.WriteDuration(js, o.Value)
 }
 
 // ReadJSON writes json value of time.Duration from json iterator.
-func (o *OptionalDuration) ReadJSON(i *jsoniter.Iterator) error {
+func (o *OptionalDuration) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.StringValue:
+	case json.StringValue:
 		o.Set = true
-		v, err := types.ReadDuration(i)
+		v, err := json.ReadDuration(i)
 		if err != nil {
 			return err
 		}
@@ -1882,26 +1878,26 @@ func (o NilDuration) Get() (v time.Duration, ok bool) {
 }
 
 // WriteJSON writes json value of time.Duration to json stream.
-func (o NilDuration) WriteJSON(js *jsoniter.Stream) {
+func (o NilDuration) WriteJSON(js *json.Stream) {
 	if o.Nil {
 		js.WriteNil()
 		return
 	}
-	types.WriteDuration(js, o.Value)
+	json.WriteDuration(js, o.Value)
 }
 
 // ReadJSON writes json value of time.Duration from json iterator.
-func (o *NilDuration) ReadJSON(i *jsoniter.Iterator) error {
+func (o *NilDuration) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.StringValue:
+	case json.StringValue:
 		o.Nil = false
-		v, err := types.ReadDuration(i)
+		v, err := json.ReadDuration(i)
 		if err != nil {
 			return err
 		}
 		o.Value = v
 		return i.Error
-	case jsoniter.NilValue:
+	case json.NilValue:
 		var v time.Duration
 		o.Value = v
 		o.Nil = true
@@ -1961,27 +1957,27 @@ func (o OptionalNilDuration) Get() (v time.Duration, ok bool) {
 }
 
 // WriteJSON writes json value of time.Duration to json stream.
-func (o OptionalNilDuration) WriteJSON(js *jsoniter.Stream) {
+func (o OptionalNilDuration) WriteJSON(js *json.Stream) {
 	if o.Nil {
 		js.WriteNil()
 		return
 	}
-	types.WriteDuration(js, o.Value)
+	json.WriteDuration(js, o.Value)
 }
 
 // ReadJSON writes json value of time.Duration from json iterator.
-func (o *OptionalNilDuration) ReadJSON(i *jsoniter.Iterator) error {
+func (o *OptionalNilDuration) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
-	case jsoniter.StringValue:
+	case json.StringValue:
 		o.Set = true
 		o.Nil = false
-		v, err := types.ReadDuration(i)
+		v, err := json.ReadDuration(i)
 		if err != nil {
 			return err
 		}
 		o.Value = v
 		return i.Error
-	case jsoniter.NilValue:
+	case json.NilValue:
 		var v time.Duration
 		o.Value = v
 		o.Set = true
@@ -1994,34 +1990,34 @@ func (o *OptionalNilDuration) ReadJSON(i *jsoniter.Iterator) error {
 	return nil
 }
 
-func (s Error) WriteJSON(js *jsoniter.Stream) {
+func (s Error) WriteJSON(js *json.Stream) {
 	js.WriteObjectStart()
-	var fw json.FieldWriter
-	_ = fw
-	fw.Write(js, "code")
+	var field json.FieldWriter
+	_ = field
+	field.Write(js, "code")
 	js.WriteInt64(s.Code)
-	fw.Write(js, "message")
+	field.Write(js, "message")
 	js.WriteString(s.Message)
 	js.WriteObjectEnd()
 }
 
-func (s Error) encodeJSON() []byte {
-	buf := new(bytes.Buffer)
-	js := jsoniter.NewStream(jsoniter.ConfigDefault, buf, 1024)
+// WriteJSONTo writes Error json value to io.Writer.
+func (s Error) WriteJSONTo(w io.Writer) error {
+	js := json.NewStream(w)
 	s.WriteJSON(js)
-	_ = js.Flush()
-	return buf.Bytes()
+	return js.Flush()
 }
 
-func (s *Error) decodeJSON(data []byte) error {
-	i := jsoniter.NewIterator(jsoniter.ConfigDefault)
-	i.ResetBytes(data)
+// ReadJSONFrom reads Error json value from io.Reader.
+func (s *Error) ReadJSONFrom(r io.Reader) error {
+	i := json.NewIterator(json.ConfigDefault)
+	i.Reset(r)
 	return s.ReadJSON(i)
 }
 
 // ReadJSON reads Error from json stream.
-func (s *Error) ReadJSON(i *jsoniter.Iterator) error {
-	i.ReadObjectCB(func(i *jsoniter.Iterator, k string) bool {
+func (s *Error) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "code":
 			// READER int64
@@ -2039,30 +2035,30 @@ func (s *Error) ReadJSON(i *jsoniter.Iterator) error {
 	return i.Error
 }
 
-func (s ErrorStatusCode) WriteJSON(js *jsoniter.Stream) {
+func (s ErrorStatusCode) WriteJSON(js *json.Stream) {
 	js.WriteObjectStart()
-	var fw json.FieldWriter
-	_ = fw
+	var field json.FieldWriter
+	_ = field
 	js.WriteObjectEnd()
 }
 
-func (s ErrorStatusCode) encodeJSON() []byte {
-	buf := new(bytes.Buffer)
-	js := jsoniter.NewStream(jsoniter.ConfigDefault, buf, 1024)
+// WriteJSONTo writes ErrorStatusCode json value to io.Writer.
+func (s ErrorStatusCode) WriteJSONTo(w io.Writer) error {
+	js := json.NewStream(w)
 	s.WriteJSON(js)
-	_ = js.Flush()
-	return buf.Bytes()
+	return js.Flush()
 }
 
-func (s *ErrorStatusCode) decodeJSON(data []byte) error {
-	i := jsoniter.NewIterator(jsoniter.ConfigDefault)
-	i.ResetBytes(data)
+// ReadJSONFrom reads ErrorStatusCode json value from io.Reader.
+func (s *ErrorStatusCode) ReadJSONFrom(r io.Reader) error {
+	i := json.NewIterator(json.ConfigDefault)
+	i.Reset(r)
 	return s.ReadJSON(i)
 }
 
 // ReadJSON reads ErrorStatusCode from json stream.
-func (s *ErrorStatusCode) ReadJSON(i *jsoniter.Iterator) error {
-	i.ReadObjectCB(func(i *jsoniter.Iterator, k string) bool {
+func (s *ErrorStatusCode) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
 			i.Skip()
@@ -2072,30 +2068,30 @@ func (s *ErrorStatusCode) ReadJSON(i *jsoniter.Iterator) error {
 	return i.Error
 }
 
-func (s FoobarPutDefault) WriteJSON(js *jsoniter.Stream) {
+func (s FoobarPutDefault) WriteJSON(js *json.Stream) {
 	js.WriteObjectStart()
-	var fw json.FieldWriter
-	_ = fw
+	var field json.FieldWriter
+	_ = field
 	js.WriteObjectEnd()
 }
 
-func (s FoobarPutDefault) encodeJSON() []byte {
-	buf := new(bytes.Buffer)
-	js := jsoniter.NewStream(jsoniter.ConfigDefault, buf, 1024)
+// WriteJSONTo writes FoobarPutDefault json value to io.Writer.
+func (s FoobarPutDefault) WriteJSONTo(w io.Writer) error {
+	js := json.NewStream(w)
 	s.WriteJSON(js)
-	_ = js.Flush()
-	return buf.Bytes()
+	return js.Flush()
 }
 
-func (s *FoobarPutDefault) decodeJSON(data []byte) error {
-	i := jsoniter.NewIterator(jsoniter.ConfigDefault)
-	i.ResetBytes(data)
+// ReadJSONFrom reads FoobarPutDefault json value from io.Reader.
+func (s *FoobarPutDefault) ReadJSONFrom(r io.Reader) error {
+	i := json.NewIterator(json.ConfigDefault)
+	i.Reset(r)
 	return s.ReadJSON(i)
 }
 
 // ReadJSON reads FoobarPutDefault from json stream.
-func (s *FoobarPutDefault) ReadJSON(i *jsoniter.Iterator) error {
-	i.ReadObjectCB(func(i *jsoniter.Iterator, k string) bool {
+func (s *FoobarPutDefault) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
 			i.Skip()
@@ -2105,76 +2101,76 @@ func (s *FoobarPutDefault) ReadJSON(i *jsoniter.Iterator) error {
 	return i.Error
 }
 
-func (s Pet) WriteJSON(js *jsoniter.Stream) {
+func (s Pet) WriteJSON(js *json.Stream) {
 	js.WriteObjectStart()
-	var fw json.FieldWriter
-	_ = fw
-	fw.Write(js, "birthday")
-	types.WriteDate(js, s.Birthday)
+	var field json.FieldWriter
+	_ = field
+	field.Write(js, "birthday")
+	json.WriteDate(js, s.Birthday)
 	// Unsupported kind "pointer" for field "Friends".
-	fw.Write(js, "id")
+	field.Write(js, "id")
 	js.WriteInt64(s.ID)
-	fw.Write(js, "name")
+	field.Write(js, "name")
 	js.WriteString(s.Name)
-	fw.Write(js, "nickname")
+	field.Write(js, "nickname")
 	s.Nickname.WriteJSON(js)
 	if s.NullStr.Set {
-		fw.Write(js, "nullStr")
+		field.Write(js, "nullStr")
 		s.NullStr.WriteJSON(js)
 	}
 	if s.Tag.Set {
-		fw.Write(js, "tag")
+		field.Write(js, "tag")
 		s.Tag.WriteJSON(js)
 	}
 	// Unsupported kind "pointer" for field "TestArray1".
 	if s.TestDate.Set {
-		fw.Write(js, "testDate")
-		s.TestDate.WriteJSON(js, types.WriteDate)
+		field.Write(js, "testDate")
+		s.TestDate.WriteJSON(js, json.WriteDate)
 	}
 	if s.TestDateTime.Set {
-		fw.Write(js, "testDateTime")
-		s.TestDateTime.WriteJSON(js, types.WriteDateTime)
+		field.Write(js, "testDateTime")
+		s.TestDateTime.WriteJSON(js, json.WriteDateTime)
 	}
 	if s.TestDuration.Set {
-		fw.Write(js, "testDuration")
+		field.Write(js, "testDuration")
 		s.TestDuration.WriteJSON(js)
 	}
 	if s.TestFloat1.Set {
-		fw.Write(js, "testFloat1")
+		field.Write(js, "testFloat1")
 		s.TestFloat1.WriteJSON(js)
 	}
 	if s.TestInteger1.Set {
-		fw.Write(js, "testInteger1")
+		field.Write(js, "testInteger1")
 		s.TestInteger1.WriteJSON(js)
 	}
 	if s.TestTime.Set {
-		fw.Write(js, "testTime")
-		s.TestTime.WriteJSON(js, types.WriteTime)
+		field.Write(js, "testTime")
+		s.TestTime.WriteJSON(js, json.WriteTime)
 	}
 	// Unsupported kind "pointer" for field "Type".
 	js.WriteObjectEnd()
 }
 
-func (s Pet) encodeJSON() []byte {
-	buf := new(bytes.Buffer)
-	js := jsoniter.NewStream(jsoniter.ConfigDefault, buf, 1024)
+// WriteJSONTo writes Pet json value to io.Writer.
+func (s Pet) WriteJSONTo(w io.Writer) error {
+	js := json.NewStream(w)
 	s.WriteJSON(js)
-	_ = js.Flush()
-	return buf.Bytes()
+	return js.Flush()
 }
 
-func (s *Pet) decodeJSON(data []byte) error {
-	i := jsoniter.NewIterator(jsoniter.ConfigDefault)
-	i.ResetBytes(data)
+// ReadJSONFrom reads Pet json value from io.Reader.
+func (s *Pet) ReadJSONFrom(r io.Reader) error {
+	i := json.NewIterator(json.ConfigDefault)
+	i.Reset(r)
 	return s.ReadJSON(i)
 }
 
 // ReadJSON reads Pet from json stream.
-func (s *Pet) ReadJSON(i *jsoniter.Iterator) error {
-	i.ReadObjectCB(func(i *jsoniter.Iterator, k string) bool {
+func (s *Pet) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "birthday":
-			v, err := types.ReadDate(i)
+			v, err := json.ReadDate(i)
 			if err != nil {
 				i.ReportError("Field Birthday", err.Error())
 				return false
@@ -2219,14 +2215,14 @@ func (s *Pet) ReadJSON(i *jsoniter.Iterator) error {
 			return true
 		case "testDate":
 			s.TestDate.Reset()
-			if err := s.TestDate.ReadJSON(i, types.ReadDate); err != nil {
+			if err := s.TestDate.ReadJSON(i, json.ReadDate); err != nil {
 				i.ReportError("Field TestDate", err.Error())
 				return false
 			}
 			return true
 		case "testDateTime":
 			s.TestDateTime.Reset()
-			if err := s.TestDateTime.ReadJSON(i, types.ReadDateTime); err != nil {
+			if err := s.TestDateTime.ReadJSON(i, json.ReadDateTime); err != nil {
 				i.ReportError("Field TestDateTime", err.Error())
 				return false
 			}
@@ -2254,7 +2250,7 @@ func (s *Pet) ReadJSON(i *jsoniter.Iterator) error {
 			return true
 		case "testTime":
 			s.TestTime.Reset()
-			if err := s.TestTime.ReadJSON(i, types.ReadTime); err != nil {
+			if err := s.TestTime.ReadJSON(i, json.ReadTime); err != nil {
 				i.ReportError("Field TestTime", err.Error())
 				return false
 			}
@@ -2271,32 +2267,32 @@ func (s *Pet) ReadJSON(i *jsoniter.Iterator) error {
 	return i.Error
 }
 
-func (s PetGetDefault) WriteJSON(js *jsoniter.Stream) {
+func (s PetGetDefault) WriteJSON(js *json.Stream) {
 	js.WriteObjectStart()
-	var fw json.FieldWriter
-	_ = fw
-	fw.Write(js, "message")
+	var field json.FieldWriter
+	_ = field
+	field.Write(js, "message")
 	js.WriteString(s.Message)
 	js.WriteObjectEnd()
 }
 
-func (s PetGetDefault) encodeJSON() []byte {
-	buf := new(bytes.Buffer)
-	js := jsoniter.NewStream(jsoniter.ConfigDefault, buf, 1024)
+// WriteJSONTo writes PetGetDefault json value to io.Writer.
+func (s PetGetDefault) WriteJSONTo(w io.Writer) error {
+	js := json.NewStream(w)
 	s.WriteJSON(js)
-	_ = js.Flush()
-	return buf.Bytes()
+	return js.Flush()
 }
 
-func (s *PetGetDefault) decodeJSON(data []byte) error {
-	i := jsoniter.NewIterator(jsoniter.ConfigDefault)
-	i.ResetBytes(data)
+// ReadJSONFrom reads PetGetDefault json value from io.Reader.
+func (s *PetGetDefault) ReadJSONFrom(r io.Reader) error {
+	i := json.NewIterator(json.ConfigDefault)
+	i.Reset(r)
 	return s.ReadJSON(i)
 }
 
 // ReadJSON reads PetGetDefault from json stream.
-func (s *PetGetDefault) ReadJSON(i *jsoniter.Iterator) error {
-	i.ReadObjectCB(func(i *jsoniter.Iterator, k string) bool {
+func (s *PetGetDefault) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "message":
 			// READER
@@ -2310,30 +2306,30 @@ func (s *PetGetDefault) ReadJSON(i *jsoniter.Iterator) error {
 	return i.Error
 }
 
-func (s PetGetDefaultStatusCode) WriteJSON(js *jsoniter.Stream) {
+func (s PetGetDefaultStatusCode) WriteJSON(js *json.Stream) {
 	js.WriteObjectStart()
-	var fw json.FieldWriter
-	_ = fw
+	var field json.FieldWriter
+	_ = field
 	js.WriteObjectEnd()
 }
 
-func (s PetGetDefaultStatusCode) encodeJSON() []byte {
-	buf := new(bytes.Buffer)
-	js := jsoniter.NewStream(jsoniter.ConfigDefault, buf, 1024)
+// WriteJSONTo writes PetGetDefaultStatusCode json value to io.Writer.
+func (s PetGetDefaultStatusCode) WriteJSONTo(w io.Writer) error {
+	js := json.NewStream(w)
 	s.WriteJSON(js)
-	_ = js.Flush()
-	return buf.Bytes()
+	return js.Flush()
 }
 
-func (s *PetGetDefaultStatusCode) decodeJSON(data []byte) error {
-	i := jsoniter.NewIterator(jsoniter.ConfigDefault)
-	i.ResetBytes(data)
+// ReadJSONFrom reads PetGetDefaultStatusCode json value from io.Reader.
+func (s *PetGetDefaultStatusCode) ReadJSONFrom(r io.Reader) error {
+	i := json.NewIterator(json.ConfigDefault)
+	i.Reset(r)
 	return s.ReadJSON(i)
 }
 
 // ReadJSON reads PetGetDefaultStatusCode from json stream.
-func (s *PetGetDefaultStatusCode) ReadJSON(i *jsoniter.Iterator) error {
-	i.ReadObjectCB(func(i *jsoniter.Iterator, k string) bool {
+func (s *PetGetDefaultStatusCode) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		default:
 			i.Skip()

@@ -46,7 +46,7 @@ w.WriteHeader({{ $.StatusCode }})
 return nil
 {{- else if eq $.ContentType "application/json" }}
 {{- if eq $.Schema.Kind "array" }}
-    js := jsoniter.NewStream(jsoniter.ConfigDefault, w, 1024)
+    js := json.NewStream(w)
     js.WriteArrayStart()
     for i, elem := range response {
         elem.WriteJSON(js)
@@ -59,8 +59,7 @@ return nil
         return err
     }
 {{- else }}
-data := response{{ if $.Default }}.Response{{ end }}.encodeJSON()
-if _, err := w.Write(data); err != nil {
+if err := response{{ if $.Default }}.Response{{ end }}.WriteJSONTo(w); err != nil {
     return err
 }
 {{- end }}

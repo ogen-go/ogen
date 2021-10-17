@@ -17,10 +17,8 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
-	jsoniter "github.com/json-iterator/go"
 	"github.com/ogen-go/ogen/conv"
-	"github.com/ogen-go/ogen/encoding/json"
-	"github.com/ogen-go/ogen/types"
+	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -43,15 +41,13 @@ var (
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
 	_ = math.Mod
-	_ = types.Date{}
-	_ = jsoniter.Config{}
 	_ = validate.Int{}
 )
 
 func encodeCachingResponse(response []WorldObject, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := jsoniter.NewStream(jsoniter.ConfigDefault, w, 1024)
+	js := json.NewStream(w)
 	js.WriteArrayStart()
 	for i, elem := range response {
 		elem.WriteJSON(js)
@@ -69,8 +65,7 @@ func encodeCachingResponse(response []WorldObject, w http.ResponseWriter) error 
 func encodeDBResponse(response WorldObject, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	data := response.encodeJSON()
-	if _, err := w.Write(data); err != nil {
+	if err := response.WriteJSONTo(w); err != nil {
 		return err
 	}
 	return nil
@@ -79,8 +74,7 @@ func encodeDBResponse(response WorldObject, w http.ResponseWriter) error {
 func encodeJSONResponse(response HelloWorld, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	data := response.encodeJSON()
-	if _, err := w.Write(data); err != nil {
+	if err := response.WriteJSONTo(w); err != nil {
 		return err
 	}
 	return nil
@@ -89,7 +83,7 @@ func encodeJSONResponse(response HelloWorld, w http.ResponseWriter) error {
 func encodeQueriesResponse(response []WorldObject, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := jsoniter.NewStream(jsoniter.ConfigDefault, w, 1024)
+	js := json.NewStream(w)
 	js.WriteArrayStart()
 	for i, elem := range response {
 		elem.WriteJSON(js)
@@ -107,7 +101,7 @@ func encodeQueriesResponse(response []WorldObject, w http.ResponseWriter) error 
 func encodeUpdatesResponse(response []WorldObject, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	js := jsoniter.NewStream(jsoniter.ConfigDefault, w, 1024)
+	js := json.NewStream(w)
 	js.WriteArrayStart()
 	for i, elem := range response {
 		elem.WriteJSON(js)

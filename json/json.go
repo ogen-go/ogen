@@ -1,6 +1,20 @@
 package json
 
-import json "github.com/json-iterator/go"
+import (
+	"bytes"
+
+	json "github.com/json-iterator/go"
+)
+
+// Marshal value to json.
+func Marshal(val interface{}) ([]byte, error) {
+	return json.Marshal(val)
+}
+
+// Unmarshal value from json.
+func Unmarshal(data []byte, val interface{}) error {
+	return json.Unmarshal(data, val)
+}
 
 // Unmarshaler implements json reading.
 type Unmarshaler interface {
@@ -32,4 +46,13 @@ type Resettable interface {
 // Nullable can be nil (but defined) or not.
 type Nullable interface {
 	IsNil() bool
+}
+
+// Encode Marshaler to byte slice.
+func Encode(m Marshaler) []byte {
+	buf := new(bytes.Buffer)
+	s := NewStream(buf)
+	m.WriteJSON(s)
+	_ = s.Flush()
+	return buf.Bytes()
 }

@@ -16,7 +16,7 @@ import (
 	"github.com/valyala/fasthttp"
 	"golang.org/x/xerrors"
 
-	httpv2 "github.com/ogen-go/ogen/encoding/v2/http"
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/internal/techempower"
 )
 
@@ -142,9 +142,9 @@ func BenchmarkIntegration(b *testing.B) {
 
 			b.RunParallel(func(pb *testing.PB) {
 				for pb.Next() {
-					req := httpv2.NewRequest(ctx, http.MethodGet, u, nil)
+					req := ht.NewRequest(ctx, http.MethodGet, u, nil)
 					res, err := client.Do(req)
-					httpv2.PutRequest(req)
+					ht.PutRequest(req)
 					if err != nil {
 						b.Error(err)
 						break

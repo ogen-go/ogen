@@ -17,10 +17,8 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
-	jsoniter "github.com/json-iterator/go"
 	"github.com/ogen-go/ogen/conv"
-	"github.com/ogen-go/ogen/encoding/json"
-	"github.com/ogen-go/ogen/types"
+	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -43,8 +41,6 @@ var (
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
 	_ = math.Mod
-	_ = types.Date{}
-	_ = jsoniter.Config{}
 	_ = validate.Int{}
 )
 
@@ -52,11 +48,7 @@ func decodeFoobarPostRequest(r *http.Request) (req *Pet, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Pet
-		data, err := io.ReadAll(r.Body)
-		if err != nil {
-			return req, fmt.Errorf("read body: %w", err)
-		}
-		if err := request.decodeJSON(data); err != nil {
+		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
 		if err := request.validate(); err != nil {
@@ -73,11 +65,7 @@ func decodePetCreateRequest(r *http.Request) (req PetCreateRequest, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
 		var request Pet
-		data, err := io.ReadAll(r.Body)
-		if err != nil {
-			return req, fmt.Errorf("read body: %w", err)
-		}
-		if err := request.decodeJSON(data); err != nil {
+		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
 		if err := request.validate(); err != nil {

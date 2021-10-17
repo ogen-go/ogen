@@ -17,10 +17,8 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
-	jsoniter "github.com/json-iterator/go"
 	"github.com/ogen-go/ogen/conv"
-	"github.com/ogen-go/ogen/encoding/json"
-	"github.com/ogen-go/ogen/types"
+	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -43,8 +41,6 @@ var (
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
 	_ = math.Mod
-	_ = types.Date{}
-	_ = jsoniter.Config{}
 	_ = validate.Int{}
 )
 
@@ -54,11 +50,7 @@ func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetResponse, err er
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response Pet
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
-			if err := response.decodeJSON(data); err != nil {
+			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
 
@@ -86,11 +78,7 @@ func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostResponse, err 
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response Pet
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
-			if err := response.decodeJSON(data); err != nil {
+			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
 
@@ -104,11 +92,7 @@ func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostResponse, err 
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response ErrorStatusCode
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
-			if err := response.decodeJSON(data); err != nil {
+			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
 
@@ -126,11 +110,7 @@ func decodePetGetResponse(resp *http.Response) (res PetGetResponse, err error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response Pet
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
-			if err := response.decodeJSON(data); err != nil {
+			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
 
@@ -142,11 +122,7 @@ func decodePetGetResponse(resp *http.Response) (res PetGetResponse, err error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response PetGetDefaultStatusCode
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
-			if err := response.decodeJSON(data); err != nil {
+			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
 
@@ -164,11 +140,7 @@ func decodePetCreateResponse(resp *http.Response) (res Pet, err error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response Pet
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
-			if err := response.decodeJSON(data); err != nil {
+			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
 
@@ -187,11 +159,7 @@ func decodePetGetByNameResponse(resp *http.Response) (res Pet, err error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response Pet
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
-			if err := response.decodeJSON(data); err != nil {
+			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
 

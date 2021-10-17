@@ -11,11 +11,12 @@ var urlPool = sync.Pool{
 	},
 }
 
+// AcquireURL acquires new url.URL from pool.
 func AcquireURL() *url.URL {
 	return urlPool.Get().(*url.URL)
 }
 
-// PutURL
+// PutURL puts url.URL to pool.
 func PutURL(u *url.URL) {
 	urlPool.Put(u)
 }

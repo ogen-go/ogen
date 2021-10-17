@@ -17,10 +17,8 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
-	jsoniter "github.com/json-iterator/go"
 	"github.com/ogen-go/ogen/conv"
-	"github.com/ogen-go/ogen/encoding/json"
-	"github.com/ogen-go/ogen/types"
+	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -43,8 +41,6 @@ var (
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
 	_ = math.Mod
-	_ = types.Date{}
-	_ = jsoniter.Config{}
 	_ = validate.Int{}
 )
 
@@ -53,8 +49,7 @@ func encodeFoobarGetResponse(response FoobarGetResponse, w http.ResponseWriter) 
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		data := response.encodeJSON()
-		if _, err := w.Write(data); err != nil {
+		if err := response.WriteJSONTo(w); err != nil {
 			return err
 		}
 		return nil
@@ -76,8 +71,7 @@ func encodeFoobarPostResponse(response FoobarPostResponse, w http.ResponseWriter
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		data := response.encodeJSON()
-		if _, err := w.Write(data); err != nil {
+		if err := response.WriteJSONTo(w); err != nil {
 			return err
 		}
 		return nil
@@ -87,8 +81,7 @@ func encodeFoobarPostResponse(response FoobarPostResponse, w http.ResponseWriter
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		data := response.Response.encodeJSON()
-		if _, err := w.Write(data); err != nil {
+		if err := response.Response.WriteJSONTo(w); err != nil {
 			return err
 		}
 		return nil
@@ -102,16 +95,14 @@ func encodePetGetResponse(response PetGetResponse, w http.ResponseWriter) error 
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		data := response.encodeJSON()
-		if _, err := w.Write(data); err != nil {
+		if err := response.WriteJSONTo(w); err != nil {
 			return err
 		}
 		return nil
 	case *PetGetDefaultStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		data := response.Response.encodeJSON()
-		if _, err := w.Write(data); err != nil {
+		if err := response.Response.WriteJSONTo(w); err != nil {
 			return err
 		}
 		return nil
@@ -123,8 +114,7 @@ func encodePetGetResponse(response PetGetResponse, w http.ResponseWriter) error 
 func encodePetCreateResponse(response Pet, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	data := response.encodeJSON()
-	if _, err := w.Write(data); err != nil {
+	if err := response.WriteJSONTo(w); err != nil {
 		return err
 	}
 	return nil
@@ -133,8 +123,7 @@ func encodePetCreateResponse(response Pet, w http.ResponseWriter) error {
 func encodePetGetByNameResponse(response Pet, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	data := response.encodeJSON()
-	if _, err := w.Write(data); err != nil {
+	if err := response.WriteJSONTo(w); err != nil {
 		return err
 	}
 	return nil

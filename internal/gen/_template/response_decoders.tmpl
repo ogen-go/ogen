@@ -18,14 +18,10 @@ func decode{{ $m.Name }}Response(resp *http.Response) (res {{ $m.ResponseType.Ty
         case "{{ $ctype }}":
             {{- if eq $ctype "application/json" }}{{/* Decode */}}
             var response {{ $schema.Type }}
-            data, err := io.ReadAll(resp.Body)
-            if err != nil {
-                return res, err
-            }
             {{- if eq $schema.Kind "array" }}
-                i := jsoniter.NewIterator(jsoniter.ConfigDefault)
-                i.ResetBytes(data)
-                i.ReadArrayCB(func(i *jsoniter.Iterator) bool {
+                i := json.NewIterator(json.ConfigDefault)
+                i.Reset(resp.Body)
+                i.ReadArrayCB(func(i *json.Iterator) bool {
                     var elem {{ $schema.Item.Type }}
                     if err := elem.ReadJSON(i); err != nil {
                         i.ReportError("ReadArray", err.Error())
@@ -38,7 +34,7 @@ func decode{{ $m.Name }}Response(resp *http.Response) (res {{ $m.ResponseType.Ty
                     return res, err
                 }
             {{- else }}
-                if err := response.decodeJSON(data); err != nil {
+                if err := response.ReadJSONFrom(resp.Body); err != nil {
                     return res, err
                 }
             {{ end }}
@@ -64,14 +60,10 @@ func decode{{ $m.Name }}Response(resp *http.Response) (res {{ $m.ResponseType.Ty
         case "{{ $ctype }}":
             {{- if eq $ctype "application/json" }}{{/* Decode */}}
             var response {{ $schema.Type }}
-            data, err := io.ReadAll(resp.Body)
-            if err != nil {
-                return res, err
-            }
             {{- if eq $schema.Kind "array" }}
-                i := jsoniter.NewIterator(jsoniter.ConfigDefault)
-                i.ResetBytes(data)
-                i.ReadArrayCB(func(i *jsoniter.Iterator) bool {
+                i := json.NewIterator(json.ConfigDefault)
+                i.Reset(resp.Body)
+                i.ReadArrayCB(func(i *json.Iterator) bool {
                     var elem {{ $schema.Item.Type }}
                     if err := elem.ReadJSON(i); err != nil {
                         i.ReportError("ReadArray", err.Error())
@@ -84,7 +76,7 @@ func decode{{ $m.Name }}Response(resp *http.Response) (res {{ $m.ResponseType.Ty
                     return res, err
                 }
             {{- else }}
-            if err := response.decodeJSON(data); err != nil {
+            if err := response.ReadJSONFrom(resp.Body); err != nil {
                 return res, err
             }
             {{ end }}

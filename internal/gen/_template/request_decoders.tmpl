@@ -14,11 +14,7 @@ func decode{{ $m.Name }}Request(r *http.Request) (req {{ $m.RequestType.Type }},
         var request {{ $schema.Type }}
         {{- /* Decode json */ -}}
         {{- if eq $ctype "application/json" }}
-        data, err := io.ReadAll(r.Body)
-        if err != nil {
-            return req, fmt.Errorf("read body: %w", err)
-        }
-        if err := request.decodeJSON(data); err != nil {
+        if err := request.ReadJSONFrom(r.Body); err != nil {
             return req, fmt.Errorf("json: %w", err)
         }
         {{- if $schema.NeedValidation }}

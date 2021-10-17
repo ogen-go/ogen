@@ -4,20 +4,19 @@ import (
 	"bytes"
 	"testing"
 
-	jsoniter "github.com/json-iterator/go"
 	"github.com/stretchr/testify/require"
 
-	"github.com/ogen-go/ogen/encoding/v2/json"
 	api "github.com/ogen-go/ogen/internal/sample_api"
+	"github.com/ogen-go/ogen/json"
 )
 
 func decodeObject(t testing.TB, data []byte, v json.Unmarshaler) {
-	i := jsoniter.NewIterator(jsoniter.ConfigDefault)
+	i := json.NewIterator(json.ConfigDefault)
 	i.ResetBytes(data)
 	if rs, ok := v.(json.Resettable); ok {
 		rs.Reset()
 	}
-	i.ReadMapCB(func(iterator *jsoniter.Iterator, s string) bool {
+	i.ReadMapCB(func(iterator *json.Iterator, s string) bool {
 		require.NoError(t, v.ReadJSON(i))
 		return true
 	})
@@ -26,7 +25,7 @@ func decodeObject(t testing.TB, data []byte, v json.Unmarshaler) {
 
 func encodeObject(v json.Marshaler) []byte {
 	buf := new(bytes.Buffer)
-	s := jsoniter.NewStream(jsoniter.ConfigDefault, buf, 1024)
+	s := json.NewStream(buf)
 	s.WriteObjectStart()
 	if settable, ok := v.(json.Settable); ok && !settable.IsSet() {
 		s.WriteObjectEnd()

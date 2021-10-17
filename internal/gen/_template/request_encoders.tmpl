@@ -12,7 +12,7 @@ func encode{{ $m.Name }}Request(req {{ $m.RequestType.Type }}) (data []byte, con
     {{- range $ctype, $schema := $m.RequestBody.Contents }}
 
     {{- if eq $ctype "application/json" }}
-    return req.encodeJSON(), "{{ $ctype }}", nil
+    return json.Encode(req), "{{ $ctype }}", nil
     {{- else }}
     return nil, "", fmt.Errorf("{{ $ctype }} encoder not implemented")
     {{- end }}
@@ -24,7 +24,7 @@ func encode{{ $m.Name }}Request(req {{ $m.RequestType.Type }}) (data []byte, con
     {{- range $ctype, $schema := $m.RequestBody.Contents }}
     case *{{ $schema.Type }}:
         {{- if eq $ctype "application/json" }}
-        return req.encodeJSON(), "{{ $ctype }}", nil
+        return json.Encode(req), "{{ $ctype }}", nil
         {{- else }}
         return nil, "", fmt.Errorf("{{ $ctype }} encoder not implemented")
         {{- end }}

@@ -17,10 +17,8 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
-	jsoniter "github.com/json-iterator/go"
 	"github.com/ogen-go/ogen/conv"
-	"github.com/ogen-go/ogen/encoding/json"
-	"github.com/ogen-go/ogen/types"
+	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -43,19 +41,17 @@ var (
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
 	_ = math.Mod
-	_ = types.Date{}
-	_ = jsoniter.Config{}
 	_ = validate.Int{}
 )
 
 func encodeFoobarPostRequest(req *Pet) (data []byte, contentType string, err error) {
-	return req.encodeJSON(), "application/json", nil
+	return json.Encode(req), "application/json", nil
 }
 
 func encodePetCreateRequest(req PetCreateRequest) (data []byte, contentType string, err error) {
 	switch req := req.(type) {
 	case *Pet:
-		return req.encodeJSON(), "application/json", nil
+		return json.Encode(req), "application/json", nil
 	case *PetCreateTextPlainRequest:
 		return nil, "", fmt.Errorf("text/plain encoder not implemented")
 	default:

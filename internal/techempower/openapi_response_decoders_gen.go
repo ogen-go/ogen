@@ -17,10 +17,8 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
-	jsoniter "github.com/json-iterator/go"
 	"github.com/ogen-go/ogen/conv"
-	"github.com/ogen-go/ogen/encoding/json"
-	"github.com/ogen-go/ogen/types"
+	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -43,8 +41,6 @@ var (
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
 	_ = math.Mod
-	_ = types.Date{}
-	_ = jsoniter.Config{}
 	_ = validate.Int{}
 )
 
@@ -54,13 +50,9 @@ func decodeCachingResponse(resp *http.Response) (res []WorldObject, err error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response []WorldObject
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
-			i := jsoniter.NewIterator(jsoniter.ConfigDefault)
-			i.ResetBytes(data)
-			i.ReadArrayCB(func(i *jsoniter.Iterator) bool {
+			i := json.NewIterator(json.ConfigDefault)
+			i.Reset(resp.Body)
+			i.ReadArrayCB(func(i *json.Iterator) bool {
 				var elem WorldObject
 				if err := elem.ReadJSON(i); err != nil {
 					i.ReportError("ReadArray", err.Error())
@@ -88,11 +80,7 @@ func decodeDBResponse(resp *http.Response) (res WorldObject, err error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response WorldObject
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
-			if err := response.decodeJSON(data); err != nil {
+			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
 
@@ -111,11 +99,7 @@ func decodeJSONResponse(resp *http.Response) (res HelloWorld, err error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response HelloWorld
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
-			if err := response.decodeJSON(data); err != nil {
+			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
 
@@ -134,13 +118,9 @@ func decodeQueriesResponse(resp *http.Response) (res []WorldObject, err error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response []WorldObject
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
-			i := jsoniter.NewIterator(jsoniter.ConfigDefault)
-			i.ResetBytes(data)
-			i.ReadArrayCB(func(i *jsoniter.Iterator) bool {
+			i := json.NewIterator(json.ConfigDefault)
+			i.Reset(resp.Body)
+			i.ReadArrayCB(func(i *json.Iterator) bool {
 				var elem WorldObject
 				if err := elem.ReadJSON(i); err != nil {
 					i.ReportError("ReadArray", err.Error())
@@ -168,13 +148,9 @@ func decodeUpdatesResponse(resp *http.Response) (res []WorldObject, err error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response []WorldObject
-			data, err := io.ReadAll(resp.Body)
-			if err != nil {
-				return res, err
-			}
-			i := jsoniter.NewIterator(jsoniter.ConfigDefault)
-			i.ResetBytes(data)
-			i.ReadArrayCB(func(i *jsoniter.Iterator) bool {
+			i := json.NewIterator(json.ConfigDefault)
+			i.Reset(resp.Body)
+			i.ReadArrayCB(func(i *json.Iterator) bool {
 				var elem WorldObject
 				if err := elem.ReadJSON(i); err != nil {
 					i.ReportError("ReadArray", err.Error())
