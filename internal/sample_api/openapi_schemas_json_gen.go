@@ -186,6 +186,8 @@ func (s Pet) WriteJSON(j *json.Stream) {
 		field.Write("nullStr")
 		s.NullStr.WriteJSON(j)
 	}
+	field.Write("rate")
+	json.WriteDuration(j, s.Rate)
 	if s.Tag.Set {
 		field.Write("tag")
 		s.Tag.WriteJSON(j)
@@ -216,6 +218,8 @@ func (s Pet) WriteJSON(j *json.Stream) {
 		s.TestTime.WriteJSON(j, json.WriteTime)
 	}
 	// Unsupported kind "pointer" for field "Type".
+	field.Write("unique_id")
+	json.WriteUUID(j, s.UniqueID)
 	j.WriteObjectEnd()
 }
 
@@ -271,6 +275,14 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 				i.ReportError("Field NullStr", err.Error())
 				return false
 			}
+			return true
+		case "rate":
+			v, err := json.ReadDuration(i)
+			if err != nil {
+				i.ReportError("Field Rate", err.Error())
+				return false
+			}
+			s.Rate = v
 			return true
 		case "tag":
 			s.Tag.Reset()
@@ -328,6 +340,14 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 		case "type":
 			// Unsupported kind "pointer" for field "Type".
 			i.Skip()
+			return true
+		case "unique_id":
+			v, err := json.ReadUUID(i)
+			if err != nil {
+				i.ReportError("Field UniqueID", err.Error())
+				return false
+			}
+			s.UniqueID = v
 			return true
 		default:
 			i.Skip()

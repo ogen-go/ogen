@@ -34,7 +34,14 @@ func TestGenerate(t *testing.T) {
 		{
 			Name: "api.github.com.json",
 			Options: gen.Options{
-				IgnoreNotImplemented: true,
+				IgnoreNotImplemented: []string{
+					"complex parameter types",
+					"oneOf",
+					"anyOf",
+					"allOf",
+					"nullable",
+					"array parameter with complex type",
+				},
 			},
 		},
 		{
@@ -46,7 +53,7 @@ func TestGenerate(t *testing.T) {
 		{
 			Name: "telegram_bot_api.json",
 			Options: gen.Options{
-				IgnoreNotImplemented: true,
+				IgnoreNotImplemented: []string{"anyOf"},
 			},
 		},
 		{

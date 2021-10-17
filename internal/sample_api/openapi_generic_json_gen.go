@@ -87,7 +87,7 @@ func (o OptionalString) WriteJSON(j *json.Stream) {
 	j.WriteString(o.Value)
 }
 
-// ReadJSON writes json value of string from json iterator.
+// ReadJSON reads json value of string from json iterator.
 func (o *OptionalString) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
@@ -139,7 +139,7 @@ func (o NilString) WriteJSON(j *json.Stream) {
 	j.WriteString(o.Value)
 }
 
-// ReadJSON writes json value of string from json iterator.
+// ReadJSON reads json value of string from json iterator.
 func (o *NilString) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
@@ -214,7 +214,7 @@ func (o OptionalNilString) WriteJSON(j *json.Stream) {
 	j.WriteString(o.Value)
 }
 
-// ReadJSON writes json value of string from json iterator.
+// ReadJSON reads json value of string from json iterator.
 func (o *OptionalNilString) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
@@ -278,7 +278,7 @@ func (o OptionalInt) WriteJSON(j *json.Stream) {
 	j.WriteInt(o.Value)
 }
 
-// ReadJSON writes json value of int from json iterator.
+// ReadJSON reads json value of int from json iterator.
 func (o *OptionalInt) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
@@ -330,7 +330,7 @@ func (o NilInt) WriteJSON(j *json.Stream) {
 	j.WriteInt(o.Value)
 }
 
-// ReadJSON writes json value of int from json iterator.
+// ReadJSON reads json value of int from json iterator.
 func (o *NilInt) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
@@ -405,7 +405,7 @@ func (o OptionalNilInt) WriteJSON(j *json.Stream) {
 	j.WriteInt(o.Value)
 }
 
-// ReadJSON writes json value of int from json iterator.
+// ReadJSON reads json value of int from json iterator.
 func (o *OptionalNilInt) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
@@ -469,7 +469,7 @@ func (o OptionalInt32) WriteJSON(j *json.Stream) {
 	j.WriteInt32(o.Value)
 }
 
-// ReadJSON writes json value of int32 from json iterator.
+// ReadJSON reads json value of int32 from json iterator.
 func (o *OptionalInt32) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
@@ -521,7 +521,7 @@ func (o NilInt32) WriteJSON(j *json.Stream) {
 	j.WriteInt32(o.Value)
 }
 
-// ReadJSON writes json value of int32 from json iterator.
+// ReadJSON reads json value of int32 from json iterator.
 func (o *NilInt32) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
@@ -596,7 +596,7 @@ func (o OptionalNilInt32) WriteJSON(j *json.Stream) {
 	j.WriteInt32(o.Value)
 }
 
-// ReadJSON writes json value of int32 from json iterator.
+// ReadJSON reads json value of int32 from json iterator.
 func (o *OptionalNilInt32) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
@@ -660,7 +660,7 @@ func (o OptionalInt64) WriteJSON(j *json.Stream) {
 	j.WriteInt64(o.Value)
 }
 
-// ReadJSON writes json value of int64 from json iterator.
+// ReadJSON reads json value of int64 from json iterator.
 func (o *OptionalInt64) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
@@ -712,7 +712,7 @@ func (o NilInt64) WriteJSON(j *json.Stream) {
 	j.WriteInt64(o.Value)
 }
 
-// ReadJSON writes json value of int64 from json iterator.
+// ReadJSON reads json value of int64 from json iterator.
 func (o *NilInt64) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
@@ -787,7 +787,7 @@ func (o OptionalNilInt64) WriteJSON(j *json.Stream) {
 	j.WriteInt64(o.Value)
 }
 
-// ReadJSON writes json value of int64 from json iterator.
+// ReadJSON reads json value of int64 from json iterator.
 func (o *OptionalNilInt64) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
@@ -851,7 +851,7 @@ func (o OptionalFloat32) WriteJSON(j *json.Stream) {
 	j.WriteFloat32(o.Value)
 }
 
-// ReadJSON writes json value of float32 from json iterator.
+// ReadJSON reads json value of float32 from json iterator.
 func (o *OptionalFloat32) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
@@ -903,7 +903,7 @@ func (o NilFloat32) WriteJSON(j *json.Stream) {
 	j.WriteFloat32(o.Value)
 }
 
-// ReadJSON writes json value of float32 from json iterator.
+// ReadJSON reads json value of float32 from json iterator.
 func (o *NilFloat32) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
@@ -978,7 +978,7 @@ func (o OptionalNilFloat32) WriteJSON(j *json.Stream) {
 	j.WriteFloat32(o.Value)
 }
 
-// ReadJSON writes json value of float32 from json iterator.
+// ReadJSON reads json value of float32 from json iterator.
 func (o *OptionalNilFloat32) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
@@ -1042,7 +1042,7 @@ func (o OptionalFloat64) WriteJSON(j *json.Stream) {
 	j.WriteFloat64(o.Value)
 }
 
-// ReadJSON writes json value of float64 from json iterator.
+// ReadJSON reads json value of float64 from json iterator.
 func (o *OptionalFloat64) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
@@ -1094,7 +1094,7 @@ func (o NilFloat64) WriteJSON(j *json.Stream) {
 	j.WriteFloat64(o.Value)
 }
 
-// ReadJSON writes json value of float64 from json iterator.
+// ReadJSON reads json value of float64 from json iterator.
 func (o *NilFloat64) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
@@ -1169,7 +1169,7 @@ func (o OptionalNilFloat64) WriteJSON(j *json.Stream) {
 	j.WriteFloat64(o.Value)
 }
 
-// ReadJSON writes json value of float64 from json iterator.
+// ReadJSON reads json value of float64 from json iterator.
 func (o *OptionalNilFloat64) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
@@ -1233,7 +1233,7 @@ func (o OptionalBool) WriteJSON(j *json.Stream) {
 	j.WriteBool(o.Value)
 }
 
-// ReadJSON writes json value of bool from json iterator.
+// ReadJSON reads json value of bool from json iterator.
 func (o *OptionalBool) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.BoolValue:
@@ -1285,7 +1285,7 @@ func (o NilBool) WriteJSON(j *json.Stream) {
 	j.WriteBool(o.Value)
 }
 
-// ReadJSON writes json value of bool from json iterator.
+// ReadJSON reads json value of bool from json iterator.
 func (o *NilBool) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.BoolValue:
@@ -1360,7 +1360,7 @@ func (o OptionalNilBool) WriteJSON(j *json.Stream) {
 	j.WriteBool(o.Value)
 }
 
-// ReadJSON writes json value of bool from json iterator.
+// ReadJSON reads json value of bool from json iterator.
 func (o *OptionalNilBool) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.BoolValue:
@@ -1424,7 +1424,7 @@ func (o OptionalUUID) WriteJSON(j *json.Stream) {
 	json.WriteUUID(j, o.Value)
 }
 
-// ReadJSON writes json value of uuid.UUID from json iterator.
+// ReadJSON reads json value of uuid.UUID from json iterator.
 func (o *OptionalUUID) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
@@ -1480,7 +1480,7 @@ func (o NilUUID) WriteJSON(j *json.Stream) {
 	json.WriteUUID(j, o.Value)
 }
 
-// ReadJSON writes json value of uuid.UUID from json iterator.
+// ReadJSON reads json value of uuid.UUID from json iterator.
 func (o *NilUUID) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
@@ -1559,7 +1559,7 @@ func (o OptionalNilUUID) WriteJSON(j *json.Stream) {
 	json.WriteUUID(j, o.Value)
 }
 
-// ReadJSON writes json value of uuid.UUID from json iterator.
+// ReadJSON reads json value of uuid.UUID from json iterator.
 func (o *OptionalNilUUID) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
@@ -1627,7 +1627,7 @@ func (o OptionalTime) WriteJSON(j *json.Stream, format func(*json.Stream, time.T
 	format(j, o.Value)
 }
 
-// ReadJSON writes json value of time.Time from json iterator.
+// ReadJSON reads json value of time.Time from json iterator.
 func (o *OptionalTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (time.Time, error)) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
@@ -1683,7 +1683,7 @@ func (o NilTime) WriteJSON(j *json.Stream, format func(*json.Stream, time.Time))
 	format(j, o.Value)
 }
 
-// ReadJSON writes json value of time.Time from json iterator.
+// ReadJSON reads json value of time.Time from json iterator.
 func (o *NilTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (time.Time, error)) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
@@ -1762,7 +1762,7 @@ func (o OptionalNilTime) WriteJSON(j *json.Stream, format func(*json.Stream, tim
 	format(j, o.Value)
 }
 
-// ReadJSON writes json value of time.Time from json iterator.
+// ReadJSON reads json value of time.Time from json iterator.
 func (o *OptionalNilTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (time.Time, error)) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
@@ -1830,7 +1830,7 @@ func (o OptionalDuration) WriteJSON(j *json.Stream) {
 	json.WriteDuration(j, o.Value)
 }
 
-// ReadJSON writes json value of time.Duration from json iterator.
+// ReadJSON reads json value of time.Duration from json iterator.
 func (o *OptionalDuration) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
@@ -1886,7 +1886,7 @@ func (o NilDuration) WriteJSON(j *json.Stream) {
 	json.WriteDuration(j, o.Value)
 }
 
-// ReadJSON writes json value of time.Duration from json iterator.
+// ReadJSON reads json value of time.Duration from json iterator.
 func (o *NilDuration) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
@@ -1965,7 +1965,7 @@ func (o OptionalNilDuration) WriteJSON(j *json.Stream) {
 	json.WriteDuration(j, o.Value)
 }
 
-// ReadJSON writes json value of time.Duration from json iterator.
+// ReadJSON reads json value of time.Duration from json iterator.
 func (o *OptionalNilDuration) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:

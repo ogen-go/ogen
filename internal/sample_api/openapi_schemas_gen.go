@@ -73,6 +73,7 @@ type Pet struct {
 	Name         string            `json:"name"`
 	Nickname     NilString         `json:"nickname"`
 	NullStr      OptionalNilString `json:"nullStr"`
+	Rate         time.Duration     `json:"rate"`
 	Tag          OptionalUUID      `json:"tag"`
 	TestArray1   *[][]string       `json:"testArray1"`
 	TestDate     OptionalTime      `json:"testDate"`
@@ -82,6 +83,7 @@ type Pet struct {
 	TestInteger1 OptionalInt       `json:"testInteger1"`
 	TestTime     OptionalTime      `json:"testTime"`
 	Type         *PetType          `json:"type"`
+	UniqueID     uuid.UUID         `json:"unique_id"`
 }
 
 func (*Pet) foobarGetResponse()  {}

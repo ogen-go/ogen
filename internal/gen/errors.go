@@ -2,6 +2,7 @@ package gen
 
 import (
 	"fmt"
+	"strings"
 
 	"golang.org/x/xerrors"
 )
@@ -18,7 +19,7 @@ type ErrNotImplemented struct {
 	Name string
 }
 
-func (e ErrNotImplemented) Error() string {
+func (e *ErrNotImplemented) Error() string {
 	return e.Name + " not implemented"
 }
 
@@ -26,8 +27,14 @@ func (g *Generator) checkErr(err error) error {
 	{
 		var notImplementedErr *ErrNotImplemented
 		if xerrors.As(err, &notImplementedErr) {
-			if g.opt.IgnoreNotImplemented {
-				return nil
+			for _, s := range g.opt.IgnoreNotImplemented {
+				s = strings.TrimSpace(s)
+				if s == "all" {
+					return nil
+				}
+				if s == notImplementedErr.Name {
+					return nil
+				}
 			}
 		}
 	}

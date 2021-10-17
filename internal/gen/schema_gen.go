@@ -181,9 +181,11 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 				prop.Nil = true
 				prop.GenericType = prop.GenericKind() + genericPostfix(prop.Primitive)
 			}
-			switch prop.Format {
-			case "duration", "uuid":
-				prop.Format = ""
+			if prop.Generic() {
+				switch prop.Format {
+				case "uuid", "duration":
+					prop.Format = ""
+				}
 			}
 
 			s.Fields = append(s.Fields, ast.SchemaField{

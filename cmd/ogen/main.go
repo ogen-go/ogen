@@ -40,7 +40,7 @@ func main() {
 		clean          = flag.Bool("clean", false, "Clean generated files before generation")
 
 		debugSkipUnspecifiedParams = flag.Bool("debug.skipUnspecifiedParams", false, "Ignore methods where path params are not specified")
-		debugIgnoreNotImplemented  = flag.Bool("debug.ignoreNotImplemented", false, "Ignore methods having functionality which is not implemented (oneOf, anyOf, allOf, nullable types, complex parameter types)")
+		debugIgnoreNotImplemented  = flag.String("debug.ignoreNotImplemented", "", "Ignore methods having functionality which is not implemented (all, oneOf, anyOf, allOf, nullable types, complex parameter types)")
 		debugNoerr                 = flag.Bool("debug.noerr", false, "Ignore all errors")
 	)
 
@@ -93,12 +93,12 @@ func main() {
 	opts := gen.Options{
 		SpecificMethodPath:      *specificMethod,
 		IgnoreUnspecifiedParams: *debugSkipUnspecifiedParams,
-		IgnoreNotImplemented:    *debugIgnoreNotImplemented,
+		IgnoreNotImplemented:    strings.Split(*debugIgnoreNotImplemented, ","),
 	}
 
 	if *debugNoerr {
 		opts.IgnoreUnspecifiedParams = true
-		opts.IgnoreNotImplemented = true
+		opts.IgnoreNotImplemented = []string{"all"}
 	}
 
 	g, err := gen.NewGenerator(spec, opts)

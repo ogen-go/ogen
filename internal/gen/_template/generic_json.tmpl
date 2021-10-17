@@ -90,7 +90,7 @@ func (o {{ $s.Name }}) WriteJSON(j *json.Stream{{ if eq $s.Format "custom" }}, f
     {{- end }}
 }
 
-// ReadJSON writes json value of {{ $s.Primitive }} from json iterator.
+// ReadJSON reads json value of {{ $s.Primitive }} from json iterator.
 func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if eq $s.Format "custom" }}, format func(*json.Iterator) ({{ $s.Primitive }}, error){{ end }}) error {
     switch i.WhatIsNext() {
     case json.{{ $s.JSONType }}:
