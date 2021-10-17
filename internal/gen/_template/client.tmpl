@@ -23,21 +23,19 @@ func NewClient(serverURL string) *Client {
 }
 
 {{ range $m := $.Methods }}
-func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req {{ $m.RequestType.Type }}{{ end }}{{ if $m.Parameters}}, params {{ $m.Name }}Params {{ end }}) (_ {{ $m.ResponseType.Type }}, rerr error) {
+func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req {{ $m.RequestType.Type }}{{ end }}{{ if $m.Parameters}}, params {{ $m.Name }}Params {{ end }}) (res {{ $m.ResponseType.Type }}, err error) {
     {{- if $m.RequestBody }}
     body, contentType, err := encode{{ $m.Name }}Request(req)
     if err != nil {
-        rerr = err
-        return
+        return res, err
     }
     {{ end }}
 
     {{- template "params_encode_path_v2" $m }}
-    
+
     r, err := http.NewRequestWithContext(ctx, "{{ $m.HTTPMethod }}", path, {{ if $m.RequestBody }}bytes.NewReader(body){{ else }}nil{{ end }})
     if err != nil {
-        rerr = fmt.Errorf("create request: %w", err)
-        return
+        return res, fmt.Errorf("create request: %w", err)
     }
 
     {{ if $m.RequestBody }}r.Header.Set("Content-Type", contentType){{ end }}
@@ -48,15 +46,13 @@ func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req 
 
     resp, err := c.http.Do(r)
     if err != nil {
-        rerr = fmt.Errorf("do request: %w", err)
-        return
+        return res, fmt.Errorf("do request: %w", err)
     }
     defer resp.Body.Close()
 
     result, err := decode{{ $m.Name }}Response(resp)
     if err != nil {
-        rerr = fmt.Errorf("decode response: %w", err)
-        return
+        return res, fmt.Errorf("decode response: %w", err)
     }
 
     return result, nil

@@ -62,14 +62,13 @@ func NewClient(serverURL string) *Client {
 	}
 }
 
-func (c *Client) Caching(ctx context.Context, params CachingParams) (_ []WorldObject, rerr error) {
+func (c *Client) Caching(ctx context.Context, params CachingParams) (res []WorldObject, err error) {
 	path := c.serverURL
 	path += "/cached-worlds"
 
 	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
 	if err != nil {
-		rerr = fmt.Errorf("create request: %w", err)
-		return
+		return res, fmt.Errorf("create request: %w", err)
 	}
 
 	q := r.URL.Query()
@@ -87,80 +86,71 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (_ []WorldOb
 
 	resp, err := c.http.Do(r)
 	if err != nil {
-		rerr = fmt.Errorf("do request: %w", err)
-		return
+		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeCachingResponse(resp)
 	if err != nil {
-		rerr = fmt.Errorf("decode response: %w", err)
-		return
+		return res, fmt.Errorf("decode response: %w", err)
 	}
 
 	return result, nil
 }
 
-func (c *Client) DB(ctx context.Context) (_ WorldObject, rerr error) {
+func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
 	path := c.serverURL
 	path += "/db"
 
 	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
 	if err != nil {
-		rerr = fmt.Errorf("create request: %w", err)
-		return
+		return res, fmt.Errorf("create request: %w", err)
 	}
 
 	resp, err := c.http.Do(r)
 	if err != nil {
-		rerr = fmt.Errorf("do request: %w", err)
-		return
+		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeDBResponse(resp)
 	if err != nil {
-		rerr = fmt.Errorf("decode response: %w", err)
-		return
+		return res, fmt.Errorf("decode response: %w", err)
 	}
 
 	return result, nil
 }
 
-func (c *Client) JSON(ctx context.Context) (_ HelloWorld, rerr error) {
+func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
 	path := c.serverURL
 	path += "/json"
 
 	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
 	if err != nil {
-		rerr = fmt.Errorf("create request: %w", err)
-		return
+		return res, fmt.Errorf("create request: %w", err)
 	}
 
 	resp, err := c.http.Do(r)
 	if err != nil {
-		rerr = fmt.Errorf("do request: %w", err)
-		return
+		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeJSONResponse(resp)
 	if err != nil {
-		rerr = fmt.Errorf("decode response: %w", err)
-		return
+		return res, fmt.Errorf("decode response: %w", err)
 	}
 
 	return result, nil
 }
 
-func (c *Client) Queries(ctx context.Context, params QueriesParams) (_ []WorldObject, rerr error) {
+func (c *Client) Queries(ctx context.Context, params QueriesParams) (res []WorldObject, err error) {
 	path := c.serverURL
 	path += "/queries"
 
 	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
 	if err != nil {
-		rerr = fmt.Errorf("create request: %w", err)
-		return
+		return res, fmt.Errorf("create request: %w", err)
 	}
 
 	q := r.URL.Query()
@@ -178,28 +168,25 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (_ []WorldOb
 
 	resp, err := c.http.Do(r)
 	if err != nil {
-		rerr = fmt.Errorf("do request: %w", err)
-		return
+		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeQueriesResponse(resp)
 	if err != nil {
-		rerr = fmt.Errorf("decode response: %w", err)
-		return
+		return res, fmt.Errorf("decode response: %w", err)
 	}
 
 	return result, nil
 }
 
-func (c *Client) Updates(ctx context.Context, params UpdatesParams) (_ []WorldObject, rerr error) {
+func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res []WorldObject, err error) {
 	path := c.serverURL
 	path += "/updates"
 
 	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
 	if err != nil {
-		rerr = fmt.Errorf("create request: %w", err)
-		return
+		return res, fmt.Errorf("create request: %w", err)
 	}
 
 	q := r.URL.Query()
@@ -217,15 +204,13 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (_ []WorldOb
 
 	resp, err := c.http.Do(r)
 	if err != nil {
-		rerr = fmt.Errorf("do request: %w", err)
-		return
+		return res, fmt.Errorf("do request: %w", err)
 	}
 	defer resp.Body.Close()
 
 	result, err := decodeUpdatesResponse(resp)
 	if err != nil {
-		rerr = fmt.Errorf("decode response: %w", err)
-		return
+		return res, fmt.Errorf("decode response: %w", err)
 	}
 
 	return result, nil
