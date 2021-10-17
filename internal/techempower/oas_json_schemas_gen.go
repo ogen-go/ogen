@@ -63,12 +63,16 @@ func (s HelloWorld) WriteJSONTo(w io.Writer) error {
 
 // ReadJSONFrom reads HelloWorld json value from io.Reader.
 func (s *HelloWorld) ReadJSONFrom(r io.Reader) error {
-	data, err := io.ReadAll(r)
-	if err != nil {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
 		return err
 	}
-	i := json.NewIterator()
-	i.ResetBytes(data)
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
 	return s.ReadJSON(i)
 }
 
@@ -108,12 +112,16 @@ func (s WorldObject) WriteJSONTo(w io.Writer) error {
 
 // ReadJSONFrom reads WorldObject json value from io.Reader.
 func (s *WorldObject) ReadJSONFrom(r io.Reader) error {
-	data, err := io.ReadAll(r)
-	if err != nil {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
 		return err
 	}
-	i := json.NewIterator()
-	i.ResetBytes(data)
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
 	return s.ReadJSON(i)
 }
 
