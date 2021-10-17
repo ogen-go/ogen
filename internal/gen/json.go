@@ -29,7 +29,7 @@ func (g *Generator) generatePrimitives() {
 		} {
 			gt := &ast.Schema{
 				Optional:  v.Optional,
-				Nil:       v.Nil,
+				Nullable:  v.Nil,
 				Kind:      ast.KindPrimitive,
 				Primitive: name,
 			}

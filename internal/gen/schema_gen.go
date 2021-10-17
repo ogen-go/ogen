@@ -56,6 +56,8 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 
 	// sideEffect stores schema in g.localRefs or g.side if needed.
 	sideEffect := func(s *ast.Schema) *ast.Schema {
+		s.Format = schema.Format
+
 		// Set validation fields.
 		if schema.MultipleOf != nil {
 			s.Validators.Int.MultipleOf = *schema.MultipleOf
@@ -157,33 +159,23 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 			if err != nil {
 				return nil, xerrors.Errorf("%s: %w", propName, err)
 			}
-
-			prop.Format = propSchema.Format
-
-			canGeneric := prop.IsNumeric()
-			switch prop.Primitive {
-			case "bool", "string", "time.Time", "time.Duration", "uuid.UUID": // ok
-				canGeneric = true
-			}
-			canGeneric = canGeneric && prop.Kind == ast.KindPrimitive
-			if !required(propName) {
-				if canGeneric {
+			if prop.CanGeneric() {
+				if !required(propName) {
 					prop.Optional = true
-					prop.GenericType = prop.GenericKind() + genericPostfix(prop.Primitive)
-				} else {
-					prop = ast.Pointer(prop)
 				}
-			}
-			if propSchema.Nullable {
-				if !canGeneric {
-					return nil, xerrors.Errorf("not implemented: %w", &ErrNotImplemented{Name: "nullable"})
+				if propSchema.Nullable {
+					prop.Nullable = true
 				}
-				prop.Nil = true
-				prop.GenericType = prop.GenericKind() + genericPostfix(prop.Primitive)
+			} else if !required(propName) {
+				// Fallback to non-generic.
+				// TODO(ernado): Support non-primitive generics.
+				prop = ast.Pointer(prop)
 			}
 			if prop.Generic() {
+				prop.GenericType = prop.GenericKind() + genericPostfix(prop.Primitive)
 				switch prop.Format {
 				case "uuid", "duration":
+					// Direct handling for UUID and duration.
 					prop.Format = ""
 				}
 			}

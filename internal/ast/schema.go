@@ -53,6 +53,21 @@ func (s Schema) IsStruct() bool {
 	return s.Is(KindStruct)
 }
 
+func (s Schema) CanGeneric() bool {
+	if !s.Is(KindPrimitive) {
+		return false
+	}
+	if s.IsNumeric() {
+		return true
+	}
+	switch s.Primitive {
+	case "bool", "string", "time.Time", "time.Duration", "uuid.UUID":
+		return true
+	default:
+		return false
+	}
+}
+
 type Schema struct {
 	Kind        SchemaKind
 	Name        string
@@ -83,7 +98,7 @@ type Schema struct {
 	// MinProperties *uint64
 
 	Optional    bool
-	Nil         bool
+	Nullable    bool
 	GenericType string
 }
 
@@ -173,7 +188,7 @@ func (s Schema) Generic() bool {
 	if s.Optional {
 		return true
 	}
-	if s.Nil {
+	if s.Nullable {
 		return true
 	}
 	return false
@@ -186,7 +201,7 @@ func (s Schema) GenericKind() string {
 	if s.Optional {
 		b.WriteString("Optional")
 	}
-	if s.Nil {
+	if s.Nullable {
 		b.WriteString("Nil")
 	}
 	return b.String()

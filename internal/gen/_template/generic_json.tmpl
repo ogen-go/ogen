@@ -16,13 +16,13 @@ func New{{ $s.Name }}(v {{ $s.Primitive }}) {{ $s.Name }} {
     }
 }
 
-// {{ $s.Name }} is{{ if $s.Optional }} optional{{ end }}{{ if $s.Nil }} nillable{{ end }} {{ $s.Primitive }}.
+// {{ $s.Name }} is{{ if $s.Optional }} optional{{ end }}{{ if $s.Nullable }} nillable{{ end }} {{ $s.Primitive }}.
 type {{ $s.Name }} struct {
     Value {{ $s.Primitive }}
 {{- if $s.Optional }}
     Set   bool
 {{- end }}
-{{- if $s.Nil }}
+{{- if $s.Nullable }}
     Nil   bool
 {{- end }}
 }
@@ -36,7 +36,7 @@ func (o *{{ $s.Name }}) Reset() {
     var v {{ $s.Primitive }}
     o.Value = v
     o.Set = false
-{{- if $s.Nil }}
+{{- if $s.Nullable }}
     o.Nil = false
 {{- end }}
 }
@@ -47,20 +47,20 @@ func (o *{{ $s.Name }}) SetTo(v {{ $s.Primitive }}) {
 {{- if $s.Optional }}
     o.Set = true
 {{- end }}
-{{- if $s.Nil }}
+{{- if $s.Nullable }}
     o.Nil = false
 {{- end }}
     o.Value = v
 }
 
-{{- if $s.Nil }}
+{{- if $s.Nullable }}
 // IsSet returns true if value is nil.
 func (o {{ $s.Name }}) IsNil() bool { return o.Nil }
 {{ end }}
 
 // Get returns value and boolean that denotes whether value was set.
 func (o {{ $s.Name }}) Get() (v {{ $s.Primitive }}, ok bool) {
-    {{- if $s.Nil }}
+    {{- if $s.Nullable }}
     if o.Nil {
         return v, false
     }
@@ -75,7 +75,7 @@ func (o {{ $s.Name }}) Get() (v {{ $s.Primitive }}, ok bool) {
 
 // WriteJSON writes json value of {{ $s.Primitive }} to json stream.
 func (o {{ $s.Name }}) WriteJSON(j *json.Stream{{ if $s.FormatCustom }}, format func(*json.Stream, {{ $s.Primitive }}){{ end }}) {
-{{- if $s.Nil }}
+{{- if $s.Nullable }}
     if o.Nil {
         j.WriteNil()
         return
@@ -97,7 +97,7 @@ func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if $s.FormatCustom }}, forma
         {{- if $s.Optional }}
         o.Set = true
         {{- end }}
-        {{- if $s.Nil }}
+        {{- if $s.Nullable }}
         o.Nil = false
         {{- end }}
         {{- if $s.FormatCustom }}
@@ -116,7 +116,7 @@ func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if $s.FormatCustom }}, forma
         o.Value = i.{{ $s.JSONRead }}()
         {{- end }}
         return i.Error
-{{- if $s.Nil }}
+{{- if $s.Nullable }}
     case json.NilValue:
         var v {{ $s.Primitive }}
         o.Value = v
