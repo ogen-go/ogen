@@ -12,8 +12,8 @@ func (g *Generator) generateRequestBody(name string, body *ogen.RequestBody) (*a
 		return g.resolveRequestBody(ref)
 	}
 
-	rbody := ast.CreateRequestBody()
-	rbody.Required = body.Required
+	reqBody := ast.CreateRequestBody()
+	reqBody.Required = body.Required
 
 	// Iterate through request body contents...
 	for contentType, media := range body.Content {
@@ -38,8 +38,8 @@ func (g *Generator) generateRequestBody(name string, body *ogen.RequestBody) (*a
 			g.schemas[schema.Name] = schema
 		}
 
-		rbody.Contents[contentType] = schema
+		reqBody.Contents[contentType] = schema
 	}
 
-	return rbody, nil
+	return reqBody, nil
 }
