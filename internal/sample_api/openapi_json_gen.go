@@ -2024,11 +2024,9 @@ func (s *Error) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "code":
-			// READER int64
 			s.Code = i.ReadInt64()
 			return i.Error == nil
 		case "message":
-			// READER
 			s.Message = i.ReadString()
 			return i.Error == nil
 		default:
@@ -2198,11 +2196,9 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "id":
-			// READER int64
 			s.ID = i.ReadInt64()
 			return i.Error == nil
 		case "name":
-			// READER
 			s.Name = i.ReadString()
 			return i.Error == nil
 		case "nickname":
@@ -2315,7 +2311,6 @@ func (s *PetGetDefault) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "message":
-			// READER
 			s.Message = i.ReadString()
 			return i.Error == nil
 		default:

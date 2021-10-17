@@ -228,7 +228,6 @@ func (s *{{ $s.Name }}) ReadJSON(i *json.Iterator) error {
             s.{{ $f.Name }} = v
             return true
     {{- else if $f.Type.JSONRead }}
-        // READER {{ $f.Type.Format  }} {{ $f.Type.JSONHelper }}
         s.{{ $f.Name }} = i.{{ $f.Type.JSONRead }}()
         return i.Error == nil
     {{- else }}

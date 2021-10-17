@@ -2022,7 +2022,6 @@ func (s *HelloWorld) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "message":
-			// READER
 			s.Message = i.ReadString()
 			return i.Error == nil
 		default:
@@ -2067,11 +2066,9 @@ func (s *WorldObject) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "id":
-			// READER int64
 			s.ID = i.ReadInt64()
 			return i.Error == nil
 		case "randomNumber":
-			// READER int64
 			s.RandomNumber = i.ReadInt64()
 			return i.Error == nil
 		default:
