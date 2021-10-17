@@ -8,4 +8,7 @@ type Config = json.Config
 
 type API = json.API
 
-var ConfigDefault = json.ConfigDefault
+var (
+	ConfigDefault = json.ConfigDefault
+	ConfigFastest = json.ConfigFastest
+)

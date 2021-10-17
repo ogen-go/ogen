@@ -69,7 +69,7 @@ func (s *Error) ReadJSONFrom(r io.Reader) error {
 	if err != nil {
 		return err
 	}
-	i := json.NewIterator(json.ConfigDefault)
+	i := json.NewIterator()
 	i.ResetBytes(data)
 	return s.ReadJSON(i)
 }
@@ -113,7 +113,7 @@ func (s *ErrorStatusCode) ReadJSONFrom(r io.Reader) error {
 	if err != nil {
 		return err
 	}
-	i := json.NewIterator(json.ConfigDefault)
+	i := json.NewIterator()
 	i.ResetBytes(data)
 	return s.ReadJSON(i)
 }
@@ -151,7 +151,7 @@ func (s *FoobarPutDefault) ReadJSONFrom(r io.Reader) error {
 	if err != nil {
 		return err
 	}
-	i := json.NewIterator(json.ConfigDefault)
+	i := json.NewIterator()
 	i.ResetBytes(data)
 	return s.ReadJSON(i)
 }
@@ -236,7 +236,7 @@ func (s *Pet) ReadJSONFrom(r io.Reader) error {
 	if err != nil {
 		return err
 	}
-	i := json.NewIterator(json.ConfigDefault)
+	i := json.NewIterator()
 	i.ResetBytes(data)
 	return s.ReadJSON(i)
 }
@@ -380,7 +380,7 @@ func (s *PetGetDefault) ReadJSONFrom(r io.Reader) error {
 	if err != nil {
 		return err
 	}
-	i := json.NewIterator(json.ConfigDefault)
+	i := json.NewIterator()
 	i.ResetBytes(data)
 	return s.ReadJSON(i)
 }
@@ -421,7 +421,7 @@ func (s *PetGetDefaultStatusCode) ReadJSONFrom(r io.Reader) error {
 	if err != nil {
 		return err
 	}
-	i := json.NewIterator(json.ConfigDefault)
+	i := json.NewIterator()
 	i.ResetBytes(data)
 	return s.ReadJSON(i)
 }

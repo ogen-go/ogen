@@ -11,7 +11,7 @@ import (
 )
 
 func decodeObject(t testing.TB, data []byte, v json.Unmarshaler) {
-	i := json.NewIterator(json.ConfigDefault)
+	i := json.NewIterator()
 	i.ResetBytes(data)
 	if rs, ok := v.(json.Resettable); ok {
 		rs.Reset()

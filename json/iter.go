@@ -6,6 +6,6 @@ import (
 
 type Iterator = json.Iterator
 
-func NewIterator(cfg API) *Iterator {
-	return json.NewIterator(cfg)
+func NewIterator() *Iterator {
+	return json.NewIterator(ConfigDefault)
 }

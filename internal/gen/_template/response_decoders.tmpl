@@ -19,7 +19,7 @@ func decode{{ $m.Name }}Response(resp *http.Response) (res {{ $m.ResponseType.Ty
             {{- if eq $ctype "application/json" }}{{/* Decode */}}
             var response {{ $schema.Type }}
             {{- if eq $schema.Kind "array" }}
-                i := json.NewIterator(json.ConfigDefault)
+                i := json.NewIterator()
                 i.Reset(resp.Body)
                 i.ReadArrayCB(func(i *json.Iterator) bool {
                     var elem {{ $schema.Item.Type }}
@@ -61,7 +61,7 @@ func decode{{ $m.Name }}Response(resp *http.Response) (res {{ $m.ResponseType.Ty
             {{- if eq $ctype "application/json" }}{{/* Decode */}}
             var response {{ $schema.Type }}
             {{- if eq $schema.Kind "array" }}
-                i := json.NewIterator(json.ConfigDefault)
+                i := json.NewIterator()
                 i.Reset(resp.Body)
                 i.ReadArrayCB(func(i *json.Iterator) bool {
                     var elem {{ $schema.Item.Type }}

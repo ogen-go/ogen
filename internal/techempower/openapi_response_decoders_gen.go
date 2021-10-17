@@ -50,7 +50,7 @@ func decodeCachingResponse(resp *http.Response) (res []WorldObject, err error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response []WorldObject
-			i := json.NewIterator(json.ConfigDefault)
+			i := json.NewIterator()
 			i.Reset(resp.Body)
 			i.ReadArrayCB(func(i *json.Iterator) bool {
 				var elem WorldObject
@@ -118,7 +118,7 @@ func decodeQueriesResponse(resp *http.Response) (res []WorldObject, err error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response []WorldObject
-			i := json.NewIterator(json.ConfigDefault)
+			i := json.NewIterator()
 			i.Reset(resp.Body)
 			i.ReadArrayCB(func(i *json.Iterator) bool {
 				var elem WorldObject
@@ -148,7 +148,7 @@ func decodeUpdatesResponse(resp *http.Response) (res []WorldObject, err error) {
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response []WorldObject
-			i := json.NewIterator(json.ConfigDefault)
+			i := json.NewIterator()
 			i.Reset(resp.Body)
 			i.ReadArrayCB(func(i *json.Iterator) bool {
 				var elem WorldObject

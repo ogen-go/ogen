@@ -67,7 +67,7 @@ func (s *HelloWorld) ReadJSONFrom(r io.Reader) error {
 	if err != nil {
 		return err
 	}
-	i := json.NewIterator(json.ConfigDefault)
+	i := json.NewIterator()
 	i.ResetBytes(data)
 	return s.ReadJSON(i)
 }
@@ -112,7 +112,7 @@ func (s *WorldObject) ReadJSONFrom(r io.Reader) error {
 	if err != nil {
 		return err
 	}
-	i := json.NewIterator(json.ConfigDefault)
+	i := json.NewIterator()
 	i.ResetBytes(data)
 	return s.ReadJSON(i)
 }

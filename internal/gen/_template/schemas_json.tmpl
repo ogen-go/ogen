@@ -58,7 +58,7 @@ func (s *{{ $s.Name }}) ReadJSONFrom(r io.Reader) error {
     if err != nil {
         return err
     }
-    i := json.NewIterator(json.ConfigDefault)
+    i := json.NewIterator()
     i.ResetBytes(data)
     return s.ReadJSON(i)
 }
