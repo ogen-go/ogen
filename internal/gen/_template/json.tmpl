@@ -74,19 +74,19 @@ func (o {{ $s.Name }}) Get() (v {{ $s.Primitive }}, ok bool) {
 }
 
 // WriteJSON writes json value of {{ $s.Primitive }} to json stream.
-func (o {{ $s.Name }}) WriteJSON(js *json.Stream{{ if eq $s.Format "custom" }}, format func(*json.Stream, {{ $s.Primitive }}){{ end }}) {
+func (o {{ $s.Name }}) WriteJSON(j *json.Stream{{ if eq $s.Format "custom" }}, format func(*json.Stream, {{ $s.Primitive }}){{ end }}) {
 {{- if $s.Nil }}
     if o.Nil {
-        js.WriteNil()
+        j.WriteNil()
         return
     }
 {{- end }}
     {{- if eq $s.Format "custom" }}
-    format(js, o.Value)
+    format(j, o.Value)
     {{- else if $s.JSONHelper }}
-    json.Write{{ $s.JSONHelper }}(js, o.Value)
+    json.Write{{ $s.JSONHelper }}(j, o.Value)
     {{- else if $s.JSONWrite }}
-    js.{{ $s.JSONWrite }}(o.Value)
+    j.{{ $s.JSONWrite }}(o.Value)
     {{- end }}
 }
 
@@ -139,8 +139,9 @@ func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if eq $s.Format "custom" }},
 
 {{- range $s := $.Schemas }}{{/*Range schemas*/}}
 {{ if eq $s.Kind "struct" }}{{/*If struct*/}}
-func (s {{ $s.Name }}) WriteJSON(js *json.Stream) {
-    js.WriteObjectStart()
+// WriteJSON implements json.Marshaler.
+func (s {{ $s.Name }}) WriteJSON(j *json.Stream) {
+    j.WriteObjectStart()
     var field json.FieldWriter
     _ = field
     {{- range $f := $s.Fields }}{{/*Range fields*/}}
@@ -148,40 +149,40 @@ func (s {{ $s.Name }}) WriteJSON(js *json.Stream) {
     {{- if $f.Type.Generic }}
         {{- if $f.Type.Optional }}
         if s.{{ $f.Name }}.Set {
-            field.Write(js, "{{ $f.Tag }}")
+            field.Write(j, "{{ $f.Tag }}")
             s.{{ $f.Name }}.WriteJSON(js{{ if $f.Type.JSONHelper }}, json.Write{{ $f.Type.JSONHelper }}{{ end }})
         }
         {{- else }}
-            field.Write(js, "{{ $f.Tag }}")
+            field.Write(j, "{{ $f.Tag }}")
             s.{{ $f.Name }}.WriteJSON(js{{ if $f.Type.JSONHelper }}, json.Write{{ $f.Type.JSONHelper }}{{ end }})
         {{- end }}
     {{- else if $f.Type.JSONHelper }}
-        field.Write(js, "{{ $f.Tag }}")
-        json.Write{{ $f.Type.JSONHelper }}(js, s.{{ $f.Name }})
+        field.Write(j, "{{ $f.Tag }}")
+        json.Write{{ $f.Type.JSONHelper }}(j, s.{{ $f.Name }})
     {{- else if eq $f.Type.Kind "primitive" }}
-        field.Write(js, "{{ $f.Tag }}")
+        field.Write(j, "{{ $f.Tag }}")
         {{- if $f.Type.JSONWrite }}
-            js.{{ $f.Type.JSONWrite }}(s.{{ $f.Name }})
+            j.{{ $f.Type.JSONWrite }}(s.{{ $f.Name }})
         {{- else }}
             // Unsupported primitive "{{ $f.Type.Primitive  }}" for field "{{ $f.Name }}".
-            js.WriteNil()
+            j.WriteNil()
         {{- end }}
     {{- else if eq $f.Type.Kind "struct" }}
-        field.Write(js, "{{ $f.Tag }}")
+        field.Write(j, "{{ $f.Tag }}")
         s.{{ $f.Name }}.WriteJSON("{{ $f.Tag }}", js)
     {{- else }}
         // Unsupported kind "{{ $f.Type.Kind  }}" for field "{{ $f.Name }}".
     {{- end }}
     {{- end }}
     {{- end }}{{/*Range fields*/}}
-    js.WriteObjectEnd()
+    j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes {{ $s.Name }} json value to io.Writer.
 func (s {{ $s.Name }}) WriteJSONTo(w io.Writer) error {
-    js := json.NewStream(w)
-    s.WriteJSON(js)
-    return js.Flush()
+    j := json.NewStream(w)
+    s.WriteJSON(j)
+    return j.Flush()
 }
 
 // ReadJSONFrom reads {{ $s.Name }} json value from io.Reader.

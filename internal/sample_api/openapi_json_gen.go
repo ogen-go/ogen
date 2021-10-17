@@ -83,8 +83,8 @@ func (o OptionalString) Get() (v string, ok bool) {
 }
 
 // WriteJSON writes json value of string to json stream.
-func (o OptionalString) WriteJSON(js *json.Stream) {
-	js.WriteString(o.Value)
+func (o OptionalString) WriteJSON(j *json.Stream) {
+	j.WriteString(o.Value)
 }
 
 // ReadJSON writes json value of string from json iterator.
@@ -131,12 +131,12 @@ func (o NilString) Get() (v string, ok bool) {
 }
 
 // WriteJSON writes json value of string to json stream.
-func (o NilString) WriteJSON(js *json.Stream) {
+func (o NilString) WriteJSON(j *json.Stream) {
 	if o.Nil {
-		js.WriteNil()
+		j.WriteNil()
 		return
 	}
-	js.WriteString(o.Value)
+	j.WriteString(o.Value)
 }
 
 // ReadJSON writes json value of string from json iterator.
@@ -206,12 +206,12 @@ func (o OptionalNilString) Get() (v string, ok bool) {
 }
 
 // WriteJSON writes json value of string to json stream.
-func (o OptionalNilString) WriteJSON(js *json.Stream) {
+func (o OptionalNilString) WriteJSON(j *json.Stream) {
 	if o.Nil {
-		js.WriteNil()
+		j.WriteNil()
 		return
 	}
-	js.WriteString(o.Value)
+	j.WriteString(o.Value)
 }
 
 // ReadJSON writes json value of string from json iterator.
@@ -274,8 +274,8 @@ func (o OptionalInt) Get() (v int, ok bool) {
 }
 
 // WriteJSON writes json value of int to json stream.
-func (o OptionalInt) WriteJSON(js *json.Stream) {
-	js.WriteInt(o.Value)
+func (o OptionalInt) WriteJSON(j *json.Stream) {
+	j.WriteInt(o.Value)
 }
 
 // ReadJSON writes json value of int from json iterator.
@@ -322,12 +322,12 @@ func (o NilInt) Get() (v int, ok bool) {
 }
 
 // WriteJSON writes json value of int to json stream.
-func (o NilInt) WriteJSON(js *json.Stream) {
+func (o NilInt) WriteJSON(j *json.Stream) {
 	if o.Nil {
-		js.WriteNil()
+		j.WriteNil()
 		return
 	}
-	js.WriteInt(o.Value)
+	j.WriteInt(o.Value)
 }
 
 // ReadJSON writes json value of int from json iterator.
@@ -397,12 +397,12 @@ func (o OptionalNilInt) Get() (v int, ok bool) {
 }
 
 // WriteJSON writes json value of int to json stream.
-func (o OptionalNilInt) WriteJSON(js *json.Stream) {
+func (o OptionalNilInt) WriteJSON(j *json.Stream) {
 	if o.Nil {
-		js.WriteNil()
+		j.WriteNil()
 		return
 	}
-	js.WriteInt(o.Value)
+	j.WriteInt(o.Value)
 }
 
 // ReadJSON writes json value of int from json iterator.
@@ -465,8 +465,8 @@ func (o OptionalInt32) Get() (v int32, ok bool) {
 }
 
 // WriteJSON writes json value of int32 to json stream.
-func (o OptionalInt32) WriteJSON(js *json.Stream) {
-	js.WriteInt32(o.Value)
+func (o OptionalInt32) WriteJSON(j *json.Stream) {
+	j.WriteInt32(o.Value)
 }
 
 // ReadJSON writes json value of int32 from json iterator.
@@ -513,12 +513,12 @@ func (o NilInt32) Get() (v int32, ok bool) {
 }
 
 // WriteJSON writes json value of int32 to json stream.
-func (o NilInt32) WriteJSON(js *json.Stream) {
+func (o NilInt32) WriteJSON(j *json.Stream) {
 	if o.Nil {
-		js.WriteNil()
+		j.WriteNil()
 		return
 	}
-	js.WriteInt32(o.Value)
+	j.WriteInt32(o.Value)
 }
 
 // ReadJSON writes json value of int32 from json iterator.
@@ -588,12 +588,12 @@ func (o OptionalNilInt32) Get() (v int32, ok bool) {
 }
 
 // WriteJSON writes json value of int32 to json stream.
-func (o OptionalNilInt32) WriteJSON(js *json.Stream) {
+func (o OptionalNilInt32) WriteJSON(j *json.Stream) {
 	if o.Nil {
-		js.WriteNil()
+		j.WriteNil()
 		return
 	}
-	js.WriteInt32(o.Value)
+	j.WriteInt32(o.Value)
 }
 
 // ReadJSON writes json value of int32 from json iterator.
@@ -656,8 +656,8 @@ func (o OptionalInt64) Get() (v int64, ok bool) {
 }
 
 // WriteJSON writes json value of int64 to json stream.
-func (o OptionalInt64) WriteJSON(js *json.Stream) {
-	js.WriteInt64(o.Value)
+func (o OptionalInt64) WriteJSON(j *json.Stream) {
+	j.WriteInt64(o.Value)
 }
 
 // ReadJSON writes json value of int64 from json iterator.
@@ -704,12 +704,12 @@ func (o NilInt64) Get() (v int64, ok bool) {
 }
 
 // WriteJSON writes json value of int64 to json stream.
-func (o NilInt64) WriteJSON(js *json.Stream) {
+func (o NilInt64) WriteJSON(j *json.Stream) {
 	if o.Nil {
-		js.WriteNil()
+		j.WriteNil()
 		return
 	}
-	js.WriteInt64(o.Value)
+	j.WriteInt64(o.Value)
 }
 
 // ReadJSON writes json value of int64 from json iterator.
@@ -779,12 +779,12 @@ func (o OptionalNilInt64) Get() (v int64, ok bool) {
 }
 
 // WriteJSON writes json value of int64 to json stream.
-func (o OptionalNilInt64) WriteJSON(js *json.Stream) {
+func (o OptionalNilInt64) WriteJSON(j *json.Stream) {
 	if o.Nil {
-		js.WriteNil()
+		j.WriteNil()
 		return
 	}
-	js.WriteInt64(o.Value)
+	j.WriteInt64(o.Value)
 }
 
 // ReadJSON writes json value of int64 from json iterator.
@@ -847,8 +847,8 @@ func (o OptionalFloat32) Get() (v float32, ok bool) {
 }
 
 // WriteJSON writes json value of float32 to json stream.
-func (o OptionalFloat32) WriteJSON(js *json.Stream) {
-	js.WriteFloat32(o.Value)
+func (o OptionalFloat32) WriteJSON(j *json.Stream) {
+	j.WriteFloat32(o.Value)
 }
 
 // ReadJSON writes json value of float32 from json iterator.
@@ -895,12 +895,12 @@ func (o NilFloat32) Get() (v float32, ok bool) {
 }
 
 // WriteJSON writes json value of float32 to json stream.
-func (o NilFloat32) WriteJSON(js *json.Stream) {
+func (o NilFloat32) WriteJSON(j *json.Stream) {
 	if o.Nil {
-		js.WriteNil()
+		j.WriteNil()
 		return
 	}
-	js.WriteFloat32(o.Value)
+	j.WriteFloat32(o.Value)
 }
 
 // ReadJSON writes json value of float32 from json iterator.
@@ -970,12 +970,12 @@ func (o OptionalNilFloat32) Get() (v float32, ok bool) {
 }
 
 // WriteJSON writes json value of float32 to json stream.
-func (o OptionalNilFloat32) WriteJSON(js *json.Stream) {
+func (o OptionalNilFloat32) WriteJSON(j *json.Stream) {
 	if o.Nil {
-		js.WriteNil()
+		j.WriteNil()
 		return
 	}
-	js.WriteFloat32(o.Value)
+	j.WriteFloat32(o.Value)
 }
 
 // ReadJSON writes json value of float32 from json iterator.
@@ -1038,8 +1038,8 @@ func (o OptionalFloat64) Get() (v float64, ok bool) {
 }
 
 // WriteJSON writes json value of float64 to json stream.
-func (o OptionalFloat64) WriteJSON(js *json.Stream) {
-	js.WriteFloat64(o.Value)
+func (o OptionalFloat64) WriteJSON(j *json.Stream) {
+	j.WriteFloat64(o.Value)
 }
 
 // ReadJSON writes json value of float64 from json iterator.
@@ -1086,12 +1086,12 @@ func (o NilFloat64) Get() (v float64, ok bool) {
 }
 
 // WriteJSON writes json value of float64 to json stream.
-func (o NilFloat64) WriteJSON(js *json.Stream) {
+func (o NilFloat64) WriteJSON(j *json.Stream) {
 	if o.Nil {
-		js.WriteNil()
+		j.WriteNil()
 		return
 	}
-	js.WriteFloat64(o.Value)
+	j.WriteFloat64(o.Value)
 }
 
 // ReadJSON writes json value of float64 from json iterator.
@@ -1161,12 +1161,12 @@ func (o OptionalNilFloat64) Get() (v float64, ok bool) {
 }
 
 // WriteJSON writes json value of float64 to json stream.
-func (o OptionalNilFloat64) WriteJSON(js *json.Stream) {
+func (o OptionalNilFloat64) WriteJSON(j *json.Stream) {
 	if o.Nil {
-		js.WriteNil()
+		j.WriteNil()
 		return
 	}
-	js.WriteFloat64(o.Value)
+	j.WriteFloat64(o.Value)
 }
 
 // ReadJSON writes json value of float64 from json iterator.
@@ -1229,8 +1229,8 @@ func (o OptionalBool) Get() (v bool, ok bool) {
 }
 
 // WriteJSON writes json value of bool to json stream.
-func (o OptionalBool) WriteJSON(js *json.Stream) {
-	js.WriteBool(o.Value)
+func (o OptionalBool) WriteJSON(j *json.Stream) {
+	j.WriteBool(o.Value)
 }
 
 // ReadJSON writes json value of bool from json iterator.
@@ -1277,12 +1277,12 @@ func (o NilBool) Get() (v bool, ok bool) {
 }
 
 // WriteJSON writes json value of bool to json stream.
-func (o NilBool) WriteJSON(js *json.Stream) {
+func (o NilBool) WriteJSON(j *json.Stream) {
 	if o.Nil {
-		js.WriteNil()
+		j.WriteNil()
 		return
 	}
-	js.WriteBool(o.Value)
+	j.WriteBool(o.Value)
 }
 
 // ReadJSON writes json value of bool from json iterator.
@@ -1352,12 +1352,12 @@ func (o OptionalNilBool) Get() (v bool, ok bool) {
 }
 
 // WriteJSON writes json value of bool to json stream.
-func (o OptionalNilBool) WriteJSON(js *json.Stream) {
+func (o OptionalNilBool) WriteJSON(j *json.Stream) {
 	if o.Nil {
-		js.WriteNil()
+		j.WriteNil()
 		return
 	}
-	js.WriteBool(o.Value)
+	j.WriteBool(o.Value)
 }
 
 // ReadJSON writes json value of bool from json iterator.
@@ -1420,8 +1420,8 @@ func (o OptionalUUID) Get() (v uuid.UUID, ok bool) {
 }
 
 // WriteJSON writes json value of uuid.UUID to json stream.
-func (o OptionalUUID) WriteJSON(js *json.Stream) {
-	json.WriteUUID(js, o.Value)
+func (o OptionalUUID) WriteJSON(j *json.Stream) {
+	json.WriteUUID(j, o.Value)
 }
 
 // ReadJSON writes json value of uuid.UUID from json iterator.
@@ -1472,12 +1472,12 @@ func (o NilUUID) Get() (v uuid.UUID, ok bool) {
 }
 
 // WriteJSON writes json value of uuid.UUID to json stream.
-func (o NilUUID) WriteJSON(js *json.Stream) {
+func (o NilUUID) WriteJSON(j *json.Stream) {
 	if o.Nil {
-		js.WriteNil()
+		j.WriteNil()
 		return
 	}
-	json.WriteUUID(js, o.Value)
+	json.WriteUUID(j, o.Value)
 }
 
 // ReadJSON writes json value of uuid.UUID from json iterator.
@@ -1551,12 +1551,12 @@ func (o OptionalNilUUID) Get() (v uuid.UUID, ok bool) {
 }
 
 // WriteJSON writes json value of uuid.UUID to json stream.
-func (o OptionalNilUUID) WriteJSON(js *json.Stream) {
+func (o OptionalNilUUID) WriteJSON(j *json.Stream) {
 	if o.Nil {
-		js.WriteNil()
+		j.WriteNil()
 		return
 	}
-	json.WriteUUID(js, o.Value)
+	json.WriteUUID(j, o.Value)
 }
 
 // ReadJSON writes json value of uuid.UUID from json iterator.
@@ -1623,8 +1623,8 @@ func (o OptionalTime) Get() (v time.Time, ok bool) {
 }
 
 // WriteJSON writes json value of time.Time to json stream.
-func (o OptionalTime) WriteJSON(js *json.Stream, format func(*json.Stream, time.Time)) {
-	format(js, o.Value)
+func (o OptionalTime) WriteJSON(j *json.Stream, format func(*json.Stream, time.Time)) {
+	format(j, o.Value)
 }
 
 // ReadJSON writes json value of time.Time from json iterator.
@@ -1675,12 +1675,12 @@ func (o NilTime) Get() (v time.Time, ok bool) {
 }
 
 // WriteJSON writes json value of time.Time to json stream.
-func (o NilTime) WriteJSON(js *json.Stream, format func(*json.Stream, time.Time)) {
+func (o NilTime) WriteJSON(j *json.Stream, format func(*json.Stream, time.Time)) {
 	if o.Nil {
-		js.WriteNil()
+		j.WriteNil()
 		return
 	}
-	format(js, o.Value)
+	format(j, o.Value)
 }
 
 // ReadJSON writes json value of time.Time from json iterator.
@@ -1754,12 +1754,12 @@ func (o OptionalNilTime) Get() (v time.Time, ok bool) {
 }
 
 // WriteJSON writes json value of time.Time to json stream.
-func (o OptionalNilTime) WriteJSON(js *json.Stream, format func(*json.Stream, time.Time)) {
+func (o OptionalNilTime) WriteJSON(j *json.Stream, format func(*json.Stream, time.Time)) {
 	if o.Nil {
-		js.WriteNil()
+		j.WriteNil()
 		return
 	}
-	format(js, o.Value)
+	format(j, o.Value)
 }
 
 // ReadJSON writes json value of time.Time from json iterator.
@@ -1826,8 +1826,8 @@ func (o OptionalDuration) Get() (v time.Duration, ok bool) {
 }
 
 // WriteJSON writes json value of time.Duration to json stream.
-func (o OptionalDuration) WriteJSON(js *json.Stream) {
-	json.WriteDuration(js, o.Value)
+func (o OptionalDuration) WriteJSON(j *json.Stream) {
+	json.WriteDuration(j, o.Value)
 }
 
 // ReadJSON writes json value of time.Duration from json iterator.
@@ -1878,12 +1878,12 @@ func (o NilDuration) Get() (v time.Duration, ok bool) {
 }
 
 // WriteJSON writes json value of time.Duration to json stream.
-func (o NilDuration) WriteJSON(js *json.Stream) {
+func (o NilDuration) WriteJSON(j *json.Stream) {
 	if o.Nil {
-		js.WriteNil()
+		j.WriteNil()
 		return
 	}
-	json.WriteDuration(js, o.Value)
+	json.WriteDuration(j, o.Value)
 }
 
 // ReadJSON writes json value of time.Duration from json iterator.
@@ -1957,12 +1957,12 @@ func (o OptionalNilDuration) Get() (v time.Duration, ok bool) {
 }
 
 // WriteJSON writes json value of time.Duration to json stream.
-func (o OptionalNilDuration) WriteJSON(js *json.Stream) {
+func (o OptionalNilDuration) WriteJSON(j *json.Stream) {
 	if o.Nil {
-		js.WriteNil()
+		j.WriteNil()
 		return
 	}
-	json.WriteDuration(js, o.Value)
+	json.WriteDuration(j, o.Value)
 }
 
 // ReadJSON writes json value of time.Duration from json iterator.
@@ -1990,22 +1990,23 @@ func (o *OptionalNilDuration) ReadJSON(i *json.Iterator) error {
 	return nil
 }
 
-func (s Error) WriteJSON(js *json.Stream) {
-	js.WriteObjectStart()
+// WriteJSON implements json.Marshaler.
+func (s Error) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
 	var field json.FieldWriter
 	_ = field
-	field.Write(js, "code")
-	js.WriteInt64(s.Code)
-	field.Write(js, "message")
-	js.WriteString(s.Message)
-	js.WriteObjectEnd()
+	field.Write(j, "code")
+	j.WriteInt64(s.Code)
+	field.Write(j, "message")
+	j.WriteString(s.Message)
+	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes Error json value to io.Writer.
 func (s Error) WriteJSONTo(w io.Writer) error {
-	js := json.NewStream(w)
-	s.WriteJSON(js)
-	return js.Flush()
+	j := json.NewStream(w)
+	s.WriteJSON(j)
+	return j.Flush()
 }
 
 // ReadJSONFrom reads Error json value from io.Reader.
@@ -2037,18 +2038,19 @@ func (s *Error) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (s ErrorStatusCode) WriteJSON(js *json.Stream) {
-	js.WriteObjectStart()
+// WriteJSON implements json.Marshaler.
+func (s ErrorStatusCode) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
 	var field json.FieldWriter
 	_ = field
-	js.WriteObjectEnd()
+	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes ErrorStatusCode json value to io.Writer.
 func (s ErrorStatusCode) WriteJSONTo(w io.Writer) error {
-	js := json.NewStream(w)
-	s.WriteJSON(js)
-	return js.Flush()
+	j := json.NewStream(w)
+	s.WriteJSON(j)
+	return j.Flush()
 }
 
 // ReadJSONFrom reads ErrorStatusCode json value from io.Reader.
@@ -2074,18 +2076,19 @@ func (s *ErrorStatusCode) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (s FoobarPutDefault) WriteJSON(js *json.Stream) {
-	js.WriteObjectStart()
+// WriteJSON implements json.Marshaler.
+func (s FoobarPutDefault) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
 	var field json.FieldWriter
 	_ = field
-	js.WriteObjectEnd()
+	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes FoobarPutDefault json value to io.Writer.
 func (s FoobarPutDefault) WriteJSONTo(w io.Writer) error {
-	js := json.NewStream(w)
-	s.WriteJSON(js)
-	return js.Flush()
+	j := json.NewStream(w)
+	s.WriteJSON(j)
+	return j.Flush()
 }
 
 // ReadJSONFrom reads FoobarPutDefault json value from io.Reader.
@@ -2111,61 +2114,62 @@ func (s *FoobarPutDefault) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (s Pet) WriteJSON(js *json.Stream) {
-	js.WriteObjectStart()
+// WriteJSON implements json.Marshaler.
+func (s Pet) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
 	var field json.FieldWriter
 	_ = field
-	field.Write(js, "birthday")
-	json.WriteDate(js, s.Birthday)
+	field.Write(j, "birthday")
+	json.WriteDate(j, s.Birthday)
 	// Unsupported kind "pointer" for field "Friends".
-	field.Write(js, "id")
-	js.WriteInt64(s.ID)
-	field.Write(js, "name")
-	js.WriteString(s.Name)
-	field.Write(js, "nickname")
+	field.Write(j, "id")
+	j.WriteInt64(s.ID)
+	field.Write(j, "name")
+	j.WriteString(s.Name)
+	field.Write(j, "nickname")
 	s.Nickname.WriteJSON(js)
 	if s.NullStr.Set {
-		field.Write(js, "nullStr")
+		field.Write(j, "nullStr")
 		s.NullStr.WriteJSON(js)
 	}
 	if s.Tag.Set {
-		field.Write(js, "tag")
+		field.Write(j, "tag")
 		s.Tag.WriteJSON(js)
 	}
 	// Unsupported kind "pointer" for field "TestArray1".
 	if s.TestDate.Set {
-		field.Write(js, "testDate")
+		field.Write(j, "testDate")
 		s.TestDate.WriteJSON(js, json.WriteDate)
 	}
 	if s.TestDateTime.Set {
-		field.Write(js, "testDateTime")
+		field.Write(j, "testDateTime")
 		s.TestDateTime.WriteJSON(js, json.WriteDateTime)
 	}
 	if s.TestDuration.Set {
-		field.Write(js, "testDuration")
+		field.Write(j, "testDuration")
 		s.TestDuration.WriteJSON(js)
 	}
 	if s.TestFloat1.Set {
-		field.Write(js, "testFloat1")
+		field.Write(j, "testFloat1")
 		s.TestFloat1.WriteJSON(js)
 	}
 	if s.TestInteger1.Set {
-		field.Write(js, "testInteger1")
+		field.Write(j, "testInteger1")
 		s.TestInteger1.WriteJSON(js)
 	}
 	if s.TestTime.Set {
-		field.Write(js, "testTime")
+		field.Write(j, "testTime")
 		s.TestTime.WriteJSON(js, json.WriteTime)
 	}
 	// Unsupported kind "pointer" for field "Type".
-	js.WriteObjectEnd()
+	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes Pet json value to io.Writer.
 func (s Pet) WriteJSONTo(w io.Writer) error {
-	js := json.NewStream(w)
-	s.WriteJSON(js)
-	return js.Flush()
+	j := json.NewStream(w)
+	s.WriteJSON(j)
+	return j.Flush()
 }
 
 // ReadJSONFrom reads Pet json value from io.Reader.
@@ -2279,20 +2283,21 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (s PetGetDefault) WriteJSON(js *json.Stream) {
-	js.WriteObjectStart()
+// WriteJSON implements json.Marshaler.
+func (s PetGetDefault) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
 	var field json.FieldWriter
 	_ = field
-	field.Write(js, "message")
-	js.WriteString(s.Message)
-	js.WriteObjectEnd()
+	field.Write(j, "message")
+	j.WriteString(s.Message)
+	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes PetGetDefault json value to io.Writer.
 func (s PetGetDefault) WriteJSONTo(w io.Writer) error {
-	js := json.NewStream(w)
-	s.WriteJSON(js)
-	return js.Flush()
+	j := json.NewStream(w)
+	s.WriteJSON(j)
+	return j.Flush()
 }
 
 // ReadJSONFrom reads PetGetDefault json value from io.Reader.
@@ -2321,18 +2326,19 @@ func (s *PetGetDefault) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
-func (s PetGetDefaultStatusCode) WriteJSON(js *json.Stream) {
-	js.WriteObjectStart()
+// WriteJSON implements json.Marshaler.
+func (s PetGetDefaultStatusCode) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
 	var field json.FieldWriter
 	_ = field
-	js.WriteObjectEnd()
+	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes PetGetDefaultStatusCode json value to io.Writer.
 func (s PetGetDefaultStatusCode) WriteJSONTo(w io.Writer) error {
-	js := json.NewStream(w)
-	s.WriteJSON(js)
-	return js.Flush()
+	j := json.NewStream(w)
+	s.WriteJSON(j)
+	return j.Flush()
 }
 
 // ReadJSONFrom reads PetGetDefaultStatusCode json value from io.Reader.
