@@ -106,18 +106,22 @@ func (s Schema) JSONHelper() string {
 	}
 }
 
-func (s Schema) JSONFn() string {
-	if !s.canRawJSON() {
-		return ""
-	}
+func capitalize(s string) string {
 	var v []rune
-	for i, c := range s.Primitive {
+	for i, c := range s {
 		if i == 0 {
 			c = unicode.ToUpper(c)
 		}
 		v = append(v, c)
 	}
 	return string(v)
+}
+
+func (s Schema) JSONFn() string {
+	if !s.canRawJSON() {
+		return ""
+	}
+	return capitalize(s.Primitive)
 }
 
 func (s Schema) JSONWrite() string {
@@ -153,6 +157,10 @@ func (s Schema) GenericKind() string {
 		b.WriteString("Nil")
 	}
 	return b.String()
+}
+
+func (s *Schema) IsArray() bool {
+	return s.Is(KindArray)
 }
 
 func (s *Schema) IsInteger() bool {
@@ -235,6 +243,44 @@ type SchemaField struct {
 	Name string
 	Type *Schema
 	Tag  string
+}
+
+func afterDot(v string) string {
+	idx := strings.Index(v, ".")
+	if idx > 0 {
+		return v[idx+1:]
+	}
+	return v
+}
+
+func (s Schema) EncodeFn() string {
+	if s.IsArray() && s.Item.EncodeFn() != "" {
+		return s.Item.EncodeFn() + "Array"
+	}
+	switch s.Primitive {
+	case "interface{}":
+		return "Interface"
+	case "int", "int64", "int32", "string", "bool", "float32", "float64":
+		return capitalize(s.Primitive)
+	case "uuid.UUID", "time.Time":
+		return afterDot(s.Primitive)
+	default:
+		return ""
+	}
+}
+
+func (s Schema) ToString() string {
+	if s.EncodeFn() == "" {
+		return ""
+	}
+	return s.EncodeFn() + "ToString"
+}
+
+func (s Schema) FromString() string {
+	if s.EncodeFn() == "" {
+		return ""
+	}
+	return "To" + s.EncodeFn()
 }
 
 func (s Schema) Type() string {

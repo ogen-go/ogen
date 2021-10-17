@@ -258,9 +258,7 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		v := params.Name
-		param := e.EncodeString(v)
-		path += param
+		path += e.EncodeString(params.Name)
 	}
 
 	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
