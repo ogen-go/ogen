@@ -10,6 +10,7 @@ import (
 	"io"
 	"math"
 	"net/http"
+	"net/url"
 	"sort"
 	"strconv"
 	"strings"
@@ -18,6 +19,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -40,8 +42,10 @@ var (
 	_ = conv.ToInt32
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
+	_ = url.URL{}
 	_ = math.Mod
 	_ = validate.Int{}
+	_ = ht.NewRequest
 )
 
 type HTTPClient interface {
@@ -49,13 +53,17 @@ type HTTPClient interface {
 }
 
 type Client struct {
-	serverURL string
+	serverURL *url.URL
 	http      HTTPClient
 }
 
 func NewClient(serverURL string) *Client {
+	u, err := url.Parse(serverURL)
+	if err != nil {
+		panic(err) // TODO: fix
+	}
 	return &Client{
-		serverURL: serverURL,
+		serverURL: u,
 		http: &http.Client{
 			Timeout: time.Second * 15,
 		},
@@ -63,15 +71,10 @@ func NewClient(serverURL string) *Client {
 }
 
 func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res FoobarGetResponse, err error) {
-	path := c.serverURL
-	path += "/foobar"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/foobar"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'inlinedParam' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -92,7 +95,10 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 		param := e.EncodeInt32(v)
 		q.Set("skip", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -109,13 +115,11 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 }
 
 func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefault, err error) {
-	path := c.serverURL
-	path += "/foobar"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/foobar"
 
-	r, err := http.NewRequestWithContext(ctx, "PUT", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PUT", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -137,13 +141,11 @@ func (c *Client) FoobarPost(ctx context.Context, req *Pet) (res FoobarPostRespon
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/foobar"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/foobar"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -162,15 +164,10 @@ func (c *Client) FoobarPost(ctx context.Context, req *Pet) (res FoobarPostRespon
 }
 
 func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetResponse, err error) {
-	path := c.serverURL
-	path += "/pet"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/pet"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'petID' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -181,7 +178,11 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 		param := e.EncodeInt64(v)
 		q.Set("petID", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
 	{
 		value := conv.UUIDArrayToString(params.XTags)
 		for _, v := range value {
@@ -224,13 +225,11 @@ func (c *Client) PetCreate(ctx context.Context, req PetCreateRequest) (res Pet, 
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/pet"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/pet"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -249,8 +248,8 @@ func (c *Client) PetCreate(ctx context.Context, req PetCreateRequest) (res Pet, 
 }
 
 func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (res Pet, err error) {
-	path := c.serverURL
-	path += "/pet/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/pet/"
 	{
 		// Encode 'name' parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -258,13 +257,11 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		path += e.EncodeString(params.Name)
+		u.Path += e.EncodeString(params.Name)
 	}
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {

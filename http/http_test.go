@@ -7,6 +7,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
+
+	"github.com/ogen-go/ogen/uri"
 )
 
 func newReq() *http.Request {
@@ -64,7 +66,7 @@ func BenchmarkNewRequest(b *testing.B) {
 	b.Run("Optimized", func(b *testing.B) {
 		b.ReportAllocs()
 		for i := 0; i < b.N; i++ {
-			req := NewRequest(ctx, http.MethodGet, CloneURL(u), nil)
+			req := NewRequest(ctx, http.MethodGet, uri.Clone(u), nil)
 			PutRequest(req)
 		}
 	})

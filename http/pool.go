@@ -3,6 +3,8 @@ package http
 import (
 	"net/http"
 	"sync"
+
+	"github.com/ogen-go/ogen/uri"
 )
 
 var reqPool = sync.Pool{
@@ -28,7 +30,7 @@ func PutRequest(r *http.Request) {
 	// Reset URL with pool.
 	if u := r.URL; u != nil {
 		r.URL = nil
-		PutURL(u)
+		uri.Put(u)
 	}
 
 	r.RequestURI = ""

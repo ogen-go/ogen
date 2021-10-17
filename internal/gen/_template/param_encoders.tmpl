@@ -1,8 +1,9 @@
 {{ define "params_encode_path" }}
-path := c.serverURL
+u := uri.Clone(c.serverURL)
 {{- range $part := $.PathParts }}{{/* Range over path parts */}}
 {{- if $part.Raw }}
-path += "{{ $part.Raw }}"
+u.Path += "{{ $part.Raw }}"
+
 {{- else }}
 {
 	{{- $param := $part.Param }}
@@ -12,7 +13,7 @@ path += "{{ $part.Raw }}"
         Style: uri.PathStyle{{ pascalMP $param.Style }},
         Explode: {{ if $param.Explode }}true{{ else }}false{{ end }},
     })
-    path += e.Encode{{ $param.Schema.EncodeFn }}(params.{{ $param.Name }})
+    u.Path += e.Encode{{ $param.Schema.EncodeFn }}(params.{{ $param.Name }})
 }
 {{- end }}
 {{- end }}
@@ -21,7 +22,7 @@ path += "{{ $part.Raw }}"
 {{ define "params_encode_query" }}
 {{ $pcount := len $.QueryParams }}
 {{ if ne $pcount 0 }}{{/* Check params existence */}}
-q := r.URL.Query()
+q := u.Query()
 {{- range $param := $.QueryParams }}{{/* Range over params */}}
 {
     // Encode '{{ $param.SourceName }}' parameter.
@@ -38,7 +39,7 @@ q := r.URL.Query()
     {{- end }}
 }
 {{- end }}{{/* Range over params */}}
-r.URL.RawQuery = q.Encode()
+u.RawQuery = q.Encode()
 {{- end }}{{/* Check params existence */}}
 {{- end }}
 

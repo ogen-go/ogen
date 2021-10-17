@@ -1,4 +1,4 @@
-package http
+package uri
 
 import (
 	"net/url"
@@ -13,7 +13,7 @@ func BenchmarkCloneURL(b *testing.B) {
 
 	b.ReportAllocs()
 	for i := 0; i < b.N; i++ {
-		uCloned := CloneURL(u)
-		PutURL(uCloned)
+		uCloned := Clone(u)
+		Put(uCloned)
 	}
 }

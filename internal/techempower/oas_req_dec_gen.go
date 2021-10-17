@@ -10,6 +10,7 @@ import (
 	"io"
 	"math"
 	"net/http"
+	"net/url"
 	"sort"
 	"strconv"
 	"strings"
@@ -18,6 +19,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -40,6 +42,8 @@ var (
 	_ = conv.ToInt32
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
+	_ = url.URL{}
 	_ = math.Mod
 	_ = validate.Int{}
+	_ = ht.NewRequest
 )

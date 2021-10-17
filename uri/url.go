@@ -1,4 +1,4 @@
-package http
+package uri
 
 import (
 	"net/url"
@@ -11,21 +11,21 @@ var urlPool = sync.Pool{
 	},
 }
 
-// AcquireURL acquires new url.URL from pool.
-func AcquireURL() *url.URL {
+// Acquire acquires new url.URL from pool.
+func Acquire() *url.URL {
 	return urlPool.Get().(*url.URL)
 }
 
-// PutURL puts url.URL to pool.
-func PutURL(u *url.URL) {
+// Put puts url.URL to pool.
+func Put(u *url.URL) {
 	urlPool.Put(u)
 }
 
-// CloneURL clones u and returns cloned url that you can modify.
+// Clone clones u and returns cloned url that you can modify.
 //
 // Cal PutURL for performance.
-func CloneURL(u *url.URL) *url.URL {
-	target := AcquireURL()
+func Clone(u *url.URL) *url.URL {
+	target := Acquire()
 
 	target.Path = u.Path
 	target.RawFragment = u.RawFragment
