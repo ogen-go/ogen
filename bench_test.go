@@ -211,38 +211,76 @@ func BenchmarkIntegration(b *testing.B) {
 
 func BenchmarkJSON(b *testing.B) {
 	b.Run("TechEmpower", func(b *testing.B) {
-		h := techempower.HelloWorld{
-			Message: "Hello, world!",
-		}
-		data := json.Encode(h)
-		dataBytes := int64(len(data))
-
-		b.Run("Encode", func(b *testing.B) {
-			buf := new(bytes.Buffer)
-			s := json.NewStream(buf)
-			b.ReportAllocs()
-			b.SetBytes(dataBytes)
-
-			for i := 0; i < b.N; i++ {
-				buf.Reset()
-				h.WriteJSON(s)
-				if err := s.Flush(); err != nil {
-					b.Fatal(err)
-				}
+		b.Run("HelloWorld", func(b *testing.B) {
+			h := techempower.HelloWorld{
+				Message: "Hello, world!",
 			}
+			data := json.Encode(h)
+			dataBytes := int64(len(data))
+
+			b.Run("Encode", func(b *testing.B) {
+				buf := new(bytes.Buffer)
+				s := json.NewStream(buf)
+				b.ReportAllocs()
+				b.SetBytes(dataBytes)
+
+				for i := 0; i < b.N; i++ {
+					buf.Reset()
+					h.WriteJSON(s)
+					if err := s.Flush(); err != nil {
+						b.Fatal(err)
+					}
+				}
+			})
+			b.Run("Decode", func(b *testing.B) {
+				var v techempower.HelloWorld
+				b.ReportAllocs()
+				b.SetBytes(dataBytes)
+				j := json.NewIterator()
+
+				for i := 0; i < b.N; i++ {
+					j.ResetBytes(data)
+					if err := v.ReadJSON(j); err != nil {
+						b.Fatal(err)
+					}
+				}
+			})
 		})
-		b.Run("Decode", func(b *testing.B) {
-			var v techempower.HelloWorld
-			b.ReportAllocs()
-			b.SetBytes(dataBytes)
-			j := json.NewIterator()
-
-			for i := 0; i < b.N; i++ {
-				j.ResetBytes(data)
-				if err := v.ReadJSON(j); err != nil {
-					b.Fatal(err)
-				}
+		b.Run("WorldObject", func(b *testing.B) {
+			h := techempower.WorldObject{
+				ID:           367297,
+				RandomNumber: 4761696123,
 			}
+			data := json.Encode(h)
+			dataBytes := int64(len(data))
+
+			b.Run("Encode", func(b *testing.B) {
+				buf := new(bytes.Buffer)
+				s := json.NewStream(buf)
+				b.ReportAllocs()
+				b.SetBytes(dataBytes)
+
+				for i := 0; i < b.N; i++ {
+					buf.Reset()
+					h.WriteJSON(s)
+					if err := s.Flush(); err != nil {
+						b.Fatal(err)
+					}
+				}
+			})
+			b.Run("Decode", func(b *testing.B) {
+				var v techempower.WorldObject
+				b.ReportAllocs()
+				b.SetBytes(dataBytes)
+				j := json.NewIterator()
+
+				for i := 0; i < b.N; i++ {
+					j.ResetBytes(data)
+					if err := v.ReadJSON(j); err != nil {
+						b.Fatal(err)
+					}
+				}
+			})
 		})
 	})
 }
