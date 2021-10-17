@@ -81,7 +81,7 @@ func (g *Generator) devirtSingleResponse(m *ast.Method) {
 }
 
 func (g *Generator) devirtDefaultResponse(m *ast.Method) {
-	if ok := (m.Responses.Default != nil && len(m.Responses.StatusCode) == 0); !ok {
+	if !(m.Responses.Default != nil && len(m.Responses.StatusCode) == 0) {
 		return
 	}
 
