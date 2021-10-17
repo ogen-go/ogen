@@ -40,7 +40,9 @@ func (g *Generator) generatePrimitives() {
 				gt.Format = "duration"
 			}
 			if strings.Contains(name, "time.Time") {
-				gt.Format = "custom"
+				// The time.Time requires custom format, so setting special
+				// value for this case.
+				gt.Format = ast.FormatCustom
 			}
 			gt.Name = gt.GenericKind() + genericPostfix(name)
 			g.generics = append(g.generics, gt)

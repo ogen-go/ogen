@@ -74,24 +74,24 @@ func (o {{ $s.Name }}) Get() (v {{ $s.Primitive }}, ok bool) {
 }
 
 // WriteJSON writes json value of {{ $s.Primitive }} to json stream.
-func (o {{ $s.Name }}) WriteJSON(j *json.Stream{{ if eq $s.Format "custom" }}, format func(*json.Stream, {{ $s.Primitive }}){{ end }}) {
+func (o {{ $s.Name }}) WriteJSON(j *json.Stream{{ if $s.FormatCustom }}, format func(*json.Stream, {{ $s.Primitive }}){{ end }}) {
 {{- if $s.Nil }}
     if o.Nil {
         j.WriteNil()
         return
     }
 {{- end }}
-    {{- if eq $s.Format "custom" }}
+    {{- if $s.FormatCustom }}
     format(j, o.Value)
-    {{- else if $s.JSONHelper }}
-    json.Write{{ $s.JSONHelper }}(j, o.Value)
+    {{- else if $s.JSONFormat }}
+    json.Write{{ $s.JSONFormat }}(j, o.Value)
     {{- else if $s.JSONWrite }}
     j.{{ $s.JSONWrite }}(o.Value)
     {{- end }}
 }
 
 // ReadJSON reads json value of {{ $s.Primitive }} from json iterator.
-func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if eq $s.Format "custom" }}, format func(*json.Iterator) ({{ $s.Primitive }}, error){{ end }}) error {
+func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if $s.FormatCustom }}, format func(*json.Iterator) ({{ $s.Primitive }}, error){{ end }}) error {
     switch i.WhatIsNext() {
     case json.{{ $s.JSONType }}:
         {{- if $s.Optional }}
@@ -100,14 +100,14 @@ func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if eq $s.Format "custom" }},
         {{- if $s.Nil }}
         o.Nil = false
         {{- end }}
-        {{- if eq $s.Format "custom" }}
+        {{- if $s.FormatCustom }}
         v, err := format(i)
         if err != nil {
             return err
         }
         o.Value = v
-        {{- else if $s.JSONHelper  }}
-        v, err := json.Read{{ $s.JSONHelper }}(i)
+        {{- else if $s.JSONFormat  }}
+        v, err := json.Read{{ $s.JSONFormat }}(i)
         if err != nil {
             return err
         }

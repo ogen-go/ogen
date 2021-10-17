@@ -29,6 +29,30 @@ type Validators struct {
 	Array  validate.Array
 }
 
+// FormatCustom denotes that value type requires custom format handling
+// for encoding and decoding.
+const FormatCustom = "custom"
+
+func (s Schema) FormatCustom() bool {
+	return s.Format == FormatCustom
+}
+
+// JSONFields returns set of fields that should be encoded or decoded in json.
+func (s Schema) JSONFields() []SchemaField {
+	var fields []SchemaField
+	for _, f := range s.Fields {
+		if f.Tag == "-" {
+			continue
+		}
+		fields = append(fields, f)
+	}
+	return fields
+}
+
+func (s Schema) IsStruct() bool {
+	return s.Is(KindStruct)
+}
+
 type Schema struct {
 	Kind        SchemaKind
 	Name        string
@@ -89,7 +113,11 @@ func (s Schema) JSONType() string {
 	}
 }
 
-func (s Schema) JSONHelper() string {
+// JSONFormat returns format name for handling json encoding or decoding.
+//
+// Mostly used for encoding or decoding of generics, like "json.WriteUUID",
+// where UUID is JSONFormat.
+func (s Schema) JSONFormat() string {
 	switch s.Format {
 	case "uuid":
 		return "UUID"
@@ -117,27 +145,30 @@ func capitalize(s string) string {
 	return string(v)
 }
 
-func (s Schema) JSONFn() string {
+func (s Schema) jsonFn() string {
 	if !s.canRawJSON() {
 		return ""
 	}
 	return capitalize(s.Primitive)
 }
 
+// JSONWrite returns function name from json package that writes value.
 func (s Schema) JSONWrite() string {
-	if s.JSONFn() == "" {
+	if s.jsonFn() == "" {
 		return ""
 	}
-	return "Write" + s.JSONFn()
+	return "Write" + s.jsonFn()
 }
 
+// JSONRead returns function name from json package that reads value.
 func (s Schema) JSONRead() string {
-	if s.JSONFn() == "" {
+	if s.jsonFn() == "" {
 		return ""
 	}
-	return "Read" + s.JSONFn()
+	return "Read" + s.jsonFn()
 }
 
+// Generic returns true if value is generic type, e.g. nullable or optional.
 func (s Schema) Generic() bool {
 	if s.Optional {
 		return true
@@ -148,6 +179,8 @@ func (s Schema) Generic() bool {
 	return false
 }
 
+// GenericKind returns name of generic kind.
+// Used in generic type names.
 func (s Schema) GenericKind() string {
 	var b strings.Builder
 	if s.Optional {
