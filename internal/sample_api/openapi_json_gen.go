@@ -2010,8 +2010,12 @@ func (s Error) WriteJSONTo(w io.Writer) error {
 
 // ReadJSONFrom reads Error json value from io.Reader.
 func (s *Error) ReadJSONFrom(r io.Reader) error {
+	data, err := io.ReadAll(r)
+	if err != nil {
+		return err
+	}
 	i := json.NewIterator(json.ConfigDefault)
-	i.Reset(r)
+	i.ResetBytes(data)
 	return s.ReadJSON(i)
 }
 
@@ -2051,8 +2055,12 @@ func (s ErrorStatusCode) WriteJSONTo(w io.Writer) error {
 
 // ReadJSONFrom reads ErrorStatusCode json value from io.Reader.
 func (s *ErrorStatusCode) ReadJSONFrom(r io.Reader) error {
+	data, err := io.ReadAll(r)
+	if err != nil {
+		return err
+	}
 	i := json.NewIterator(json.ConfigDefault)
-	i.Reset(r)
+	i.ResetBytes(data)
 	return s.ReadJSON(i)
 }
 
@@ -2084,8 +2092,12 @@ func (s FoobarPutDefault) WriteJSONTo(w io.Writer) error {
 
 // ReadJSONFrom reads FoobarPutDefault json value from io.Reader.
 func (s *FoobarPutDefault) ReadJSONFrom(r io.Reader) error {
+	data, err := io.ReadAll(r)
+	if err != nil {
+		return err
+	}
 	i := json.NewIterator(json.ConfigDefault)
-	i.Reset(r)
+	i.ResetBytes(data)
 	return s.ReadJSON(i)
 }
 
@@ -2160,8 +2172,12 @@ func (s Pet) WriteJSONTo(w io.Writer) error {
 
 // ReadJSONFrom reads Pet json value from io.Reader.
 func (s *Pet) ReadJSONFrom(r io.Reader) error {
+	data, err := io.ReadAll(r)
+	if err != nil {
+		return err
+	}
 	i := json.NewIterator(json.ConfigDefault)
-	i.Reset(r)
+	i.ResetBytes(data)
 	return s.ReadJSON(i)
 }
 
@@ -2285,8 +2301,12 @@ func (s PetGetDefault) WriteJSONTo(w io.Writer) error {
 
 // ReadJSONFrom reads PetGetDefault json value from io.Reader.
 func (s *PetGetDefault) ReadJSONFrom(r io.Reader) error {
+	data, err := io.ReadAll(r)
+	if err != nil {
+		return err
+	}
 	i := json.NewIterator(json.ConfigDefault)
-	i.Reset(r)
+	i.ResetBytes(data)
 	return s.ReadJSON(i)
 }
 
@@ -2322,8 +2342,12 @@ func (s PetGetDefaultStatusCode) WriteJSONTo(w io.Writer) error {
 
 // ReadJSONFrom reads PetGetDefaultStatusCode json value from io.Reader.
 func (s *PetGetDefaultStatusCode) ReadJSONFrom(r io.Reader) error {
+	data, err := io.ReadAll(r)
+	if err != nil {
+		return err
+	}
 	i := json.NewIterator(json.ConfigDefault)
-	i.Reset(r)
+	i.ResetBytes(data)
 	return s.ReadJSON(i)
 }
 

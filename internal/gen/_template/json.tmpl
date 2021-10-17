@@ -186,8 +186,12 @@ func (s {{ $s.Name }}) WriteJSONTo(w io.Writer) error {
 
 // ReadJSONFrom reads {{ $s.Name }} json value from io.Reader.
 func (s *{{ $s.Name }}) ReadJSONFrom(r io.Reader) error {
+    data, err := io.ReadAll(r)
+    if err != nil {
+        return err
+    }
     i := json.NewIterator(json.ConfigDefault)
-    i.Reset(r)
+    i.ResetBytes(data)
     return s.ReadJSON(i)
 }
 
