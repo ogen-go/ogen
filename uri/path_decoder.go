@@ -30,8 +30,8 @@ type PathDecoderConfig struct {
 	Explode bool
 }
 
-func NewPathDecoder(cfg PathDecoderConfig) *PathDecoder {
-	return &PathDecoder{
+func NewPathDecoder(cfg PathDecoderConfig) PathDecoder {
+	return PathDecoder{
 		cur:     &cursor{src: []rune(cfg.Value)},
 		param:   cfg.Param,
 		style:   cfg.Style,
@@ -39,7 +39,7 @@ func NewPathDecoder(cfg PathDecoderConfig) *PathDecoder {
 	}
 }
 
-func (d *PathDecoder) DecodeString() (string, error) {
+func (d PathDecoder) DecodeString() (string, error) {
 	switch d.style {
 	case PathStyleSimple:
 		return d.cur.readAll()
@@ -71,7 +71,7 @@ func (d *PathDecoder) DecodeString() (string, error) {
 	}
 }
 
-func (d *PathDecoder) DecodeInt64() (int64, error) {
+func (d PathDecoder) DecodeInt64() (int64, error) {
 	str, err := d.DecodeString()
 	if err != nil {
 		return 0, err
@@ -80,7 +80,7 @@ func (d *PathDecoder) DecodeInt64() (int64, error) {
 	return strconv.ParseInt(str, 10, 64)
 }
 
-func (d *PathDecoder) DecodeInt32() (int32, error) {
+func (d PathDecoder) DecodeInt32() (int32, error) {
 	v, err := d.DecodeInt64()
 	if err != nil {
 		return 0, err
@@ -89,7 +89,7 @@ func (d *PathDecoder) DecodeInt32() (int32, error) {
 	return int32(v), nil
 }
 
-func (d *PathDecoder) DecodeInt() (int, error) {
+func (d PathDecoder) DecodeInt() (int, error) {
 	v, err := d.DecodeInt64()
 	if err != nil {
 		return 0, err
@@ -98,7 +98,7 @@ func (d *PathDecoder) DecodeInt() (int, error) {
 	return int(v), nil
 }
 
-func (d *PathDecoder) DecodeFloat64() (float64, error) {
+func (d PathDecoder) DecodeFloat64() (float64, error) {
 	str, err := d.DecodeString()
 	if err != nil {
 		return 0, err
@@ -107,7 +107,7 @@ func (d *PathDecoder) DecodeFloat64() (float64, error) {
 	return strconv.ParseFloat(str, 64)
 }
 
-func (d *PathDecoder) DecodeFloat32() (float32, error) {
+func (d PathDecoder) DecodeFloat32() (float32, error) {
 	v, err := d.DecodeFloat64()
 	if err != nil {
 		return 0, err
@@ -116,7 +116,7 @@ func (d *PathDecoder) DecodeFloat32() (float32, error) {
 	return float32(v), nil
 }
 
-func (d *PathDecoder) DecodeBool() (bool, error) {
+func (d PathDecoder) DecodeBool() (bool, error) {
 	str, err := d.DecodeString()
 	if err != nil {
 		return false, err
@@ -125,7 +125,7 @@ func (d *PathDecoder) DecodeBool() (bool, error) {
 	return strconv.ParseBool(str)
 }
 
-func (d *PathDecoder) DecodeStringArray() ([]string, error) {
+func (d PathDecoder) DecodeStringArray() ([]string, error) {
 	var values []string
 	if err := d.decodeArray(func(s string) error {
 		values = append(values, s)
@@ -137,7 +137,7 @@ func (d *PathDecoder) DecodeStringArray() ([]string, error) {
 	return values, nil
 }
 
-func (d *PathDecoder) DecodeBoolArray() ([]bool, error) {
+func (d PathDecoder) DecodeBoolArray() ([]bool, error) {
 	var values []bool
 	if err := d.decodeArray(func(s string) error {
 		b, err := strconv.ParseBool(s)
@@ -154,7 +154,7 @@ func (d *PathDecoder) DecodeBoolArray() ([]bool, error) {
 	return values, nil
 }
 
-func (d *PathDecoder) DecodeInt64Array() ([]int64, error) {
+func (d PathDecoder) DecodeInt64Array() ([]int64, error) {
 	var values []int64
 	if err := d.decodeArray(func(s string) error {
 		b, err := strconv.ParseInt(s, 10, 64)
@@ -171,7 +171,7 @@ func (d *PathDecoder) DecodeInt64Array() ([]int64, error) {
 	return values, nil
 }
 
-func (d *PathDecoder) DecodeInt32Array() ([]int32, error) {
+func (d PathDecoder) DecodeInt32Array() ([]int32, error) {
 	var values []int32
 	if err := d.decodeArray(func(s string) error {
 		v, err := strconv.ParseInt(s, 10, 64)
@@ -188,7 +188,7 @@ func (d *PathDecoder) DecodeInt32Array() ([]int32, error) {
 	return values, nil
 }
 
-func (d *PathDecoder) DecodeIntArray() ([]int, error) {
+func (d PathDecoder) DecodeIntArray() ([]int, error) {
 	var values []int
 	if err := d.decodeArray(func(s string) error {
 		v, err := strconv.ParseInt(s, 10, 64)
@@ -205,7 +205,7 @@ func (d *PathDecoder) DecodeIntArray() ([]int, error) {
 	return values, nil
 }
 
-func (d *PathDecoder) DecodeFloat64Array() ([]float64, error) {
+func (d PathDecoder) DecodeFloat64Array() ([]float64, error) {
 	var values []float64
 	if err := d.decodeArray(func(s string) error {
 		v, err := strconv.ParseFloat(s, 64)
@@ -222,7 +222,7 @@ func (d *PathDecoder) DecodeFloat64Array() ([]float64, error) {
 	return values, nil
 }
 
-func (d *PathDecoder) DecodeFloat32Array() ([]float32, error) {
+func (d PathDecoder) DecodeFloat32Array() ([]float32, error) {
 	var values []float32
 	if err := d.decodeArray(func(s string) error {
 		v, err := strconv.ParseFloat(s, 64)
@@ -239,7 +239,7 @@ func (d *PathDecoder) DecodeFloat32Array() ([]float32, error) {
 	return values, nil
 }
 
-func (d *PathDecoder) decodeArray(push func(string) error) error {
+func (d PathDecoder) decodeArray(push func(string) error) error {
 	switch d.style {
 	case PathStyleSimple:
 		for {
