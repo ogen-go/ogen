@@ -35,7 +35,18 @@ type schemaGen struct {
 // If ogen.Schema contains nested objects, they will be
 // collected in g.side slice.
 func (g *schemaGen) Generate(name string, schema ogen.Schema) (*ast.Schema, error) {
-	return g.generate(pascal(name), schema, true, "")
+	s, err := g.generate(pascal(name), schema, true, "")
+	if err != nil {
+		return nil, xerrors.Errorf("gen: %w", err)
+	}
+	return s, nil
+}
+
+func genericPostfix(name string) string {
+	if idx := strings.Index(name, "."); idx > 0 {
+		name = name[idx+1:]
+	}
+	return pascal(name)
 }
 
 func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref string) (*ast.Schema, error) {
@@ -43,19 +54,40 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 		return g.ref(ref)
 	}
 
-	if schema.Nullable {
-		return nil, &ErrNotImplemented{"nullable type"}
-	}
-
 	// sideEffect stores schema in g.localRefs or g.side if needed.
 	sideEffect := func(s *ast.Schema) *ast.Schema {
+		s.Format = schema.Format
+
 		// Set validation fields.
-		s.MultipleOf = schema.MultipleOf
-		s.Minimum, s.Maximum = schema.Minimum, schema.Maximum
-		s.MinItems, s.MaxItems = schema.MinItems, schema.MaxItems
-		s.MinLength, s.MaxLength = schema.MinLength, schema.MaxLength
-		s.ExclusiveMinimum = schema.ExclusiveMinimum
-		s.ExclusiveMaximum = schema.ExclusiveMaximum
+		if schema.MultipleOf != nil {
+			s.Validators.Int.MultipleOf = *schema.MultipleOf
+			s.Validators.Int.MultipleOfSet = true
+		}
+		if schema.Maximum != nil {
+			s.Validators.Int.Maximum = *schema.Maximum
+			s.Validators.Int.MaximumSet = true
+		}
+		if schema.Minimum != nil {
+			s.Validators.Int.Minimum = *schema.Minimum
+			s.Validators.Int.MinimumSet = true
+		}
+		s.Validators.Int.ExclusiveMaximum = schema.ExclusiveMaximum
+		s.Validators.Int.ExclusiveMinimum = schema.ExclusiveMinimum
+
+		if schema.MaxItems != nil {
+			s.Validators.Array.SetMaxLength(int(*schema.MaxItems))
+		}
+		if schema.MinItems != nil {
+			s.Validators.Array.SetMinLength(int(*schema.MinItems))
+		}
+
+		if schema.MaxLength != nil {
+			s.Validators.String.SetMaxLength(int(*schema.MaxLength))
+		}
+		if schema.MinLength != nil {
+			s.Validators.String.SetMinLength(int(*schema.MinLength))
+		}
+
 		// s.Pattern = schema.Pattern
 
 		// Referenced component, store it in g.localRefs.
@@ -127,9 +159,25 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 			if err != nil {
 				return nil, xerrors.Errorf("%s: %w", propName, err)
 			}
-
-			if !required(propName) {
+			if prop.CanGeneric() {
+				if !required(propName) {
+					prop.Optional = true
+				}
+				if propSchema.Nullable {
+					prop.Nullable = true
+				}
+			} else if !required(propName) {
+				// Fallback to non-generic.
+				// TODO(ernado): Support non-primitive generics.
 				prop = ast.Pointer(prop)
+			}
+			if prop.Generic() {
+				prop.GenericType = prop.GenericKind() + genericPostfix(prop.Primitive)
+				switch prop.Format {
+				case "uuid", "duration":
+					// Direct handling for UUID and duration.
+					prop.Format = ""
+				}
 			}
 
 			s.Fields = append(s.Fields, ast.SchemaField{
@@ -214,9 +262,9 @@ func (g *schemaGen) parseSimple(typ, format string) (string, error) {
 			"":          "string",
 			"byte":      "[]byte",
 			"date-time": "time.Time",
-			"time":      "types.Time",
-			"date":      "types.Date",
-			"duration":  "types.Duration",
+			"time":      "time.Time",
+			"date":      "time.Time",
+			"duration":  "time.Duration",
 			"password":  "string",
 			"uuid":      "uuid.UUID",
 			// TODO: support binary format

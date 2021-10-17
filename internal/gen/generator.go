@@ -8,10 +8,10 @@ import (
 )
 
 type Generator struct {
-	opt     Options
-	spec    *ogen.Spec
-	methods []*ast.Method
-
+	opt           Options
+	spec          *ogen.Spec
+	methods       []*ast.Method
+	generics      []*ast.Schema
 	schemas       map[string]*ast.Schema
 	schemaRefs    map[string]*ast.Schema
 	requestBodies map[string]*ast.RequestBody
@@ -22,11 +22,11 @@ type Generator struct {
 type Options struct {
 	SpecificMethodPath      string
 	IgnoreUnspecifiedParams bool
-	IgnoreNotImplemented    bool
+	IgnoreNotImplemented    []string
 }
 
 func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
-	initComponents(spec)
+	spec.Init()
 	g := &Generator{
 		opt:           opts,
 		spec:          spec,
@@ -41,27 +41,8 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 		return nil, xerrors.Errorf("methods: %w", err)
 	}
 
+	g.generatePrimitives()
 	g.simplify()
 	g.fix()
 	return g, nil
-}
-
-func initComponents(spec *ogen.Spec) {
-	if spec.Components == nil {
-		spec.Components = &ogen.Components{}
-	}
-
-	c := spec.Components
-	if c.Schemas == nil {
-		c.Schemas = make(map[string]ogen.Schema)
-	}
-	if c.Responses == nil {
-		c.Responses = make(map[string]ogen.Response)
-	}
-	if c.Parameters == nil {
-		c.Parameters = make(map[string]ogen.Parameter)
-	}
-	if c.RequestBodies == nil {
-		c.RequestBodies = make(map[string]ogen.RequestBody)
-	}
 }

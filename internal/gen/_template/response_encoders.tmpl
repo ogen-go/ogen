@@ -31,6 +31,7 @@ func encode{{ $m.Name }}Response(response {{ $m.ResponseType.Type }}, w http.Res
 {{ end }}
 
 {{ define "respond" }}
+{{- /*gotype: github.com/ogen-go/ogen/internal/ast.ResponseInfo*/ -}}
 {{- if not $.NoContent }}{{- /* Set content-type */}}
 w.Header().Set("Content-Type", "{{ $.ContentType }}")
 {{- end }}{{- /* Set content-type */}}
@@ -44,13 +45,24 @@ w.WriteHeader({{ $.StatusCode }})
 {{- if $.NoContent }}{{- /* Encode content */}}
 return nil
 {{- else if eq $.ContentType "application/json" }}
-data, err := json.Marshal({{ if $.Default }}response.Response{{ else }}response{{ end }})
-if err != nil {
+{{- if eq $.Schema.Kind "array" }}
+    js := json.NewStream(w)
+    js.WriteArrayStart()
+    for i, elem := range response {
+        elem.WriteJSON(js)
+        if i != len(response) - 1 {
+            js.WriteMore()
+        }
+    }
+    js.WriteArrayEnd()
+    if err := js.Flush(); err != nil {
+        return err
+    }
+{{- else }}
+if err := response{{ if $.Default }}.Response{{ end }}.WriteJSONTo(w); err != nil {
     return err
 }
-if _, err := w.Write(data); err != nil {
-    return err
-}
+{{- end }}
 return nil
 {{- else }}
 return fmt.Errorf("{{ $.ContentType }} encoder not implemented")

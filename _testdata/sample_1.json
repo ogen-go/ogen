@@ -233,6 +233,10 @@
             "minimum": 0,
             "maximum": 100000
           },
+          "unique_id": {
+            "type": "string",
+            "format": "uuid"
+          },
           "name": {
             "type": "string",
             "minLength": 4,
@@ -249,6 +253,18 @@
           "birthday": {
             "type": "string",
             "format": "date"
+          },
+          "rate": {
+            "type": "string",
+            "format": "duration"
+          },
+          "nickname": {
+            "type": "string",
+            "nullable": true
+          },
+          "nullStr": {
+            "type": "string",
+            "nullable": true
           },
           "friends": {
             "type": "array",
@@ -296,8 +312,11 @@
         },
         "required": [
           "id",
+          "unique_id",
           "name",
-          "birthday"
+          "birthday",
+          "nickname",
+          "rate"
         ]
       }
     },

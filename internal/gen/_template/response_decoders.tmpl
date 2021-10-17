@@ -6,7 +6,7 @@
 
 {{- range $m := $.Methods }}{{/* Range over all methods */}}
 
-func decode{{ $m.Name }}Response(resp *http.Response) (_ {{ $m.ResponseType.Type }}, rerr error) {
+func decode{{ $m.Name }}Response(resp *http.Response) (res {{ $m.ResponseType.Type }}, err error) {
     switch resp.StatusCode {
     {{- range $statusCode, $response := $m.Responses.StatusCode }}{{/* Range over responses */}}
     case {{ $statusCode }}:
@@ -18,25 +18,34 @@ func decode{{ $m.Name }}Response(resp *http.Response) (_ {{ $m.ResponseType.Type
         case "{{ $ctype }}":
             {{- if eq $ctype "application/json" }}{{/* Decode */}}
             var response {{ $schema.Type }}
-            data, err := io.ReadAll(resp.Body)
-            if err != nil {
-                rerr = err
-                return
-            }
-            if err := json.Unmarshal(data, &response); err != nil {
-                rerr = err
-                return
-            }
+            {{- if eq $schema.Kind "array" }}
+                i := json.NewIterator()
+                i.Reset(resp.Body)
+                i.ReadArrayCB(func(i *json.Iterator) bool {
+                    var elem {{ $schema.Item.Type }}
+                    if err := elem.ReadJSON(i); err != nil {
+                        i.ReportError("ReadArray", err.Error())
+                        return false
+                    }
+                    response = append(response, elem)
+                    return true
+                })
+                if err := i.Error; err != nil {
+                    return res, err
+                }
+            {{- else }}
+                if err := response.ReadJSONFrom(resp.Body); err != nil {
+                    return res, err
+                }
+            {{ end }}
 
             return {{ if $m.IsResponseIface }}&{{ end }}response, nil
             {{- else }}
-            rerr = fmt.Errorf("{{ $ctype }} decoder not implemented")
-            return
+            return res, fmt.Errorf("{{ $ctype }} decoder not implemented")
             {{- end }}{{/* Decode */}}
         {{- end }}{{/* Range over contents */}}
         default:
-            rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-            return
+            return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
         }
         {{- end }}{{/* Decode content response */}}
     {{- end }}{{/* Range over responses */}}
@@ -51,31 +60,39 @@ func decode{{ $m.Name }}Response(resp *http.Response) (_ {{ $m.ResponseType.Type
         case "{{ $ctype }}":
             {{- if eq $ctype "application/json" }}{{/* Decode */}}
             var response {{ $schema.Type }}
-            data, err := io.ReadAll(resp.Body)
-            if err != nil {
-                rerr = err
-                return
+            {{- if eq $schema.Kind "array" }}
+                i := json.NewIterator()
+                i.Reset(resp.Body)
+                i.ReadArrayCB(func(i *json.Iterator) bool {
+                    var elem {{ $schema.Item.Type }}
+                    if err := elem.ReadJSON(i); err != nil {
+                        i.ReportError("ReadArray", err.Error())
+                        return false
+                    }
+                    response = append(response, elem)
+                    return true
+                })
+                if err := i.Error; err != nil {
+                    return res, err
+                }
+            {{- else }}
+            if err := response.ReadJSONFrom(resp.Body); err != nil {
+                return res, err
             }
-            if err := json.Unmarshal(data, &response.Response); err != nil {
-                rerr = err
-                return
-            }
+            {{ end }}
 
             response.StatusCode = resp.StatusCode
             return {{ if $m.IsResponseIface }}&{{ end }}response, nil
             {{- else }}
-            rerr = fmt.Errorf("{{ $ctype }} decoder not implemented")
-            return
+            return res, fmt.Errorf("{{ $ctype }} decoder not implemented")
             {{- end }}{{/* Decode */}}
         {{- end }}{{/* Range over contents */}}
         default:
-            rerr = fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-            return
+            return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
         }
         {{- end }}{{/* Decode content response */}}
         {{- else }}
-        rerr = fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-        return
+        return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
         {{- end }}{{- /* Decode default response */}}
     }
 }

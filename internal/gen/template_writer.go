@@ -14,6 +14,7 @@ type TemplateConfig struct {
 	Methods    []*ast.Method
 	Schemas    map[string]*ast.Schema
 	Interfaces map[string]*ast.Interface
+	Generics   []*ast.Schema
 }
 
 // FileSystem represents a directory of generated package.
@@ -61,47 +62,54 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		Schemas:    g.schemas,
 		Methods:    g.methods,
 		Interfaces: g.interfaces,
+		Generics:   g.generics,
 	}
 
-	if err := w.Generate("params", "openapi_params_gen.go", cfg); err != nil {
+	if err := w.Generate("params", "oas_params_gen.go", cfg); err != nil {
 		return err
 	}
-	if err := w.Generate("param_decoders", "openapi_param_decoders_gen.go", cfg); err != nil {
+	if err := w.Generate("param_decoders", "oas_param_dec_gen.go", cfg); err != nil {
 		return err
 	}
-	if err := w.Generate("handlers", "openapi_handlers_gen.go", cfg); err != nil {
+	if err := w.Generate("handlers", "oas_handlers_gen.go", cfg); err != nil {
 		return err
 	}
-	if err := w.Generate("router", "openapi_router_gen.go", cfg); err != nil {
+	if err := w.Generate("router", "oas_router_gen.go", cfg); err != nil {
 		return err
 	}
-	if err := w.Generate("schemas", "openapi_schemas_gen.go", cfg); err != nil {
+	if err := w.Generate("schemas", "oas_schemas_gen.go", cfg); err != nil {
 		return err
 	}
-	if err := w.Generate("request_decoders", "openapi_request_decoders_gen.go", cfg); err != nil {
+	if err := w.Generate("request_decoders", "oas_req_dec_gen.go", cfg); err != nil {
 		return err
 	}
-	if err := w.Generate("request_encoders", "openapi_request_encoders_gen.go", cfg); err != nil {
+	if err := w.Generate("request_encoders", "oas_req_enc_gen.go", cfg); err != nil {
 		return err
 	}
-	if err := w.Generate("response_encoders", "openapi_response_encoders_gen.go", cfg); err != nil {
+	if err := w.Generate("response_encoders", "oas_res_enc_gen.go", cfg); err != nil {
 		return err
 	}
-	if err := w.Generate("response_decoders", "openapi_response_decoders_gen.go", cfg); err != nil {
+	if err := w.Generate("response_decoders", "oas_res_dec_gen.go", cfg); err != nil {
 		return err
 	}
 	if len(cfg.Interfaces) > 0 {
-		if err := w.Generate("interfaces", "openapi_interfaces_gen.go", cfg); err != nil {
+		if err := w.Generate("interfaces", "oas_iface_gen.go", cfg); err != nil {
 			return err
 		}
 	}
-	if err := w.Generate("validators", "openapi_validators_gen.go", cfg); err != nil {
+	if err := w.Generate("validators", "oas_validators_gen.go", cfg); err != nil {
 		return err
 	}
-	if err := w.Generate("server", "openapi_server_gen.go", cfg); err != nil {
+	if err := w.Generate("schemas_json", "oas_json_schemas_gen.go", cfg); err != nil {
 		return err
 	}
-	if err := w.Generate("client", "openapi_client_gen.go", cfg); err != nil {
+	if err := w.Generate("generic_json", "oas_json_generic_gen.go", cfg); err != nil {
+		return err
+	}
+	if err := w.Generate("server", "oas_server_gen.go", cfg); err != nil {
+		return err
+	}
+	if err := w.Generate("client", "oas_client_gen.go", cfg); err != nil {
 		return err
 	}
 

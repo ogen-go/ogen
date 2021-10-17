@@ -68,8 +68,8 @@ func decode{{ $m.Name }}Params(r *http.Request) ({{ $m.Name }}Params, error) {
 			return nil
 			{{- end }}
 		}
-		
-		v, err := {{ template "parse_from_string" $p.Schema.Type }}(param)
+
+		v, err := conv.{{ $p.Schema.FromString }}(param)
 		if err != nil {
 			return fmt.Errorf("parse {{ $p.In.Lower }} param '{{ $p.SourceName }}': %w", err)
 		}
@@ -88,7 +88,7 @@ func decode{{ $m.Name }}Params(r *http.Request) ({{ $m.Name }}Params, error) {
 			{{- end }}
 		}
 
-		v, err := {{ template "parse_from_string" $p.Schema.Type }}(param)
+		v, err := conv.{{ $p.Schema.FromString }}(param)
 		if err != nil {
 			return fmt.Errorf("parse {{ $p.In.Lower }} param '{{ $p.SourceName }}': %w", err)
 		}
@@ -99,10 +99,6 @@ func decode{{ $m.Name }}Params(r *http.Request) ({{ $m.Name }}Params, error) {
 		{{- /*Validation*/}}
 		{{- if $p.Schema.NeedValidation }}
         if err := func() error {
-            {{- template "validate_schema" dict
-                "schema" $p.Schema
-                "varname" "v"
-            }}
             return nil
         }(); err != nil {
             return fmt.Errorf("validate {{ $p.In }} {{ $p.SourceName }}: %w", err)
@@ -124,52 +120,9 @@ func decode{{ $m.Name }}Params(r *http.Request) ({{ $m.Name }}Params, error) {
 {{ end }}
 
 {{ define "decode_param" }}
-{{- if or (eq $.Kind "primitive") (eq $.Kind "enum") }}
-	{{- if eq $.Primitive "string" }}v, err := d.DecodeString()
-	{{- else if eq $.Primitive "int64" }}v, err := d.DecodeInt64()
-	{{- else if eq $.Primitive "int32" }}v, err := d.DecodeInt32()
-	{{- else if eq $.Primitive "int" }}v, err := d.DecodeInt()
-	{{- else if eq $.Primitive "float64" }}v, err := d.DecodeFloat64()
-	{{- else if eq $.Primitive "float32" }}v, err := d.DecodeFloat32()
-	{{- else if eq $.Primitive "bool" }}v, err := d.DecodeBool()
-	{{- else if eq $.Primitive "time.Time" }}
-	vv, err := d.DecodeString(); 
+	{{- /*gotype: github.com/ogen-go/ogen/internal/ast.Schema*/ -}}
+	v, err := d.Decode{{ .EncodeFn }}()
 	if err != nil {
 		return err
 	}
-
-	v, err := time.Parse(vv, time.RFC3339)
-	{{- else }} unsupported primitive {{ $.Primitive }}
-	{{- end }}
-	if err != nil {
-		return err
-	}
-{{- else if eq $.Kind "array" }}
-	{{- if eq $.Item.Kind "primitive" }}
-		{{- $primitive := $.Item.Primitive }}
-		{{- if eq $primitive "string" }}v, err := d.DecodeStringArray()
-		{{- else if eq $primitive "int64" }}v, err := d.DecodeInt64Array()
-		{{- else if eq $primitive "int32" }}v, err := d.DecodeInt32Array()
-		{{- else if eq $primitive "int" }}v, err := d.DecodeIntArray()
-		{{- else if eq $primitive "float64" }}v, err := d.DecodeFloat64Array()
-		{{- else if eq $primitive "float32" }}v, err := d.DecodeFloat32Array()
-		{{- else if eq $primitive "bool" }}v, err := d.DecodeBoolArray()
-		{{- else if eq $primitive "time.Time" }}
-		vv, err := d.DecodeString(); 
-		if err != nil {
-			return err
-		}
-
-		v, err := time.Parse(vv, time.RFC3339)
-		{{- else }}unsupported array item primitive {{ $.Item.Primitive }}
-		{{- end }}
-		if err != nil {
-			return err
-		}
-	{{- else }}
-	unsupported array item kind {{ $.Item.Kind }}
-	{{- end }}
-{{- else }}
-unsupported kind {{ $.Kind }}
-{{- end }}
 {{- end }}

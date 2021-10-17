@@ -4,8 +4,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"sort"
+	"strings"
+	"unicode"
 
 	"golang.org/x/xerrors"
+
+	"github.com/ogen-go/ogen/validate"
 )
 
 type SchemaKind = string
@@ -19,11 +23,57 @@ const (
 	KindPointer   SchemaKind = "pointer"
 )
 
+type Validators struct {
+	String validate.String
+	Int    validate.Int
+	Array  validate.Array
+}
+
+// FormatCustom denotes that value type requires custom format handling
+// for encoding and decoding.
+const FormatCustom = "custom"
+
+func (s Schema) FormatCustom() bool {
+	return s.Format == FormatCustom
+}
+
+// JSONFields returns set of fields that should be encoded or decoded in json.
+func (s Schema) JSONFields() []SchemaField {
+	var fields []SchemaField
+	for _, f := range s.Fields {
+		if f.Tag == "-" {
+			continue
+		}
+		fields = append(fields, f)
+	}
+	return fields
+}
+
+func (s Schema) IsStruct() bool {
+	return s.Is(KindStruct)
+}
+
+func (s Schema) CanGeneric() bool {
+	if !s.Is(KindPrimitive) {
+		return false
+	}
+	if s.IsNumeric() {
+		return true
+	}
+	switch s.Primitive {
+	case "bool", "string", "time.Time", "time.Duration", "uuid.UUID":
+		return true
+	default:
+		return false
+	}
+}
+
 type Schema struct {
 	Kind        SchemaKind
 	Name        string
 	Description string
 	Doc         string
+	Format      string
 
 	AliasTo    *Schema
 	PointerTo  *Schema
@@ -35,25 +85,130 @@ type Schema struct {
 	Implements map[*Interface]struct{}
 
 	// Numeric validation.
-	MultipleOf       *uint64
-	Minimum          *int64
-	Maximum          *int64
-	ExclusiveMinimum bool
-	ExclusiveMaximum bool
+	Validators Validators
 
 	// String validation.
 	// Pattern   string
-	MaxLength *uint64
-	MinLength *int64
 
 	// Array validation.
-	MaxItems *uint64
-	MinItems *uint64
 	// UniqueItems bool
 
 	// Struct validation.
 	// MaxProperties *uint64
 	// MinProperties *uint64
+
+	Optional    bool
+	Nullable    bool
+	GenericType string
+}
+
+func (s Schema) canRawJSON() bool {
+	if s.IsNumeric() {
+		return true
+	}
+	switch s.Primitive {
+	case "bool", "string", "time.Time", "time.Duration", "uuid.UUID":
+		return true
+	default:
+		return false
+	}
+}
+
+func (s Schema) JSONType() string {
+	if s.IsNumeric() {
+		return "NumberValue"
+	}
+	switch s.Primitive {
+	case "bool":
+		return "BoolValue"
+	case "string", "time.Time", "time.Duration", "uuid.UUID":
+		return "StringValue"
+	default:
+		return ""
+	}
+}
+
+// JSONFormat returns format name for handling json encoding or decoding.
+//
+// Mostly used for encoding or decoding of generics, like "json.WriteUUID",
+// where UUID is JSONFormat.
+func (s Schema) JSONFormat() string {
+	switch s.Format {
+	case "uuid":
+		return "UUID"
+	case "date":
+		return "Date"
+	case "time":
+		return "Time"
+	case "date-time":
+		return "DateTime"
+	case "duration":
+		return "Duration"
+	default:
+		return ""
+	}
+}
+
+func capitalize(s string) string {
+	var v []rune
+	for i, c := range s {
+		if i == 0 {
+			c = unicode.ToUpper(c)
+		}
+		v = append(v, c)
+	}
+	return string(v)
+}
+
+func (s Schema) jsonFn() string {
+	if !s.canRawJSON() {
+		return ""
+	}
+	return capitalize(s.Primitive)
+}
+
+// JSONWrite returns function name from json package that writes value.
+func (s Schema) JSONWrite() string {
+	if s.jsonFn() == "" {
+		return ""
+	}
+	return "Write" + s.jsonFn()
+}
+
+// JSONRead returns function name from json package that reads value.
+func (s Schema) JSONRead() string {
+	if s.jsonFn() == "" {
+		return ""
+	}
+	return "Read" + s.jsonFn()
+}
+
+// Generic returns true if value is generic type, e.g. nullable or optional.
+func (s Schema) Generic() bool {
+	if s.Optional {
+		return true
+	}
+	if s.Nullable {
+		return true
+	}
+	return false
+}
+
+// GenericKind returns name of generic kind.
+// Used in generic type names.
+func (s Schema) GenericKind() string {
+	var b strings.Builder
+	if s.Optional {
+		b.WriteString("Optional")
+	}
+	if s.Nullable {
+		b.WriteString("Nil")
+	}
+	return b.String()
+}
+
+func (s *Schema) IsArray() bool {
+	return s.Is(KindArray)
 }
 
 func (s *Schema) IsInteger() bool {
@@ -94,10 +249,14 @@ func (s *Schema) needValidation(visited map[*Schema]struct{}) (result bool) {
 
 	switch s.Kind {
 	case KindPrimitive:
-		if s.IsNumeric() && (s.Minimum != nil || s.Maximum != nil || s.MultipleOf != nil) {
+		if s.Generic() {
+			// TODO(ernado): fix
+			return false
+		}
+		if s.IsNumeric() && s.Validators.Int.Set() {
 			return true
 		}
-		if s.Primitive == "string" && (s.MinLength != nil || s.MaxLength != nil) {
+		if s.Validators.String.Set() {
 			return true
 		}
 		return false
@@ -108,7 +267,7 @@ func (s *Schema) needValidation(visited map[*Schema]struct{}) (result bool) {
 	case KindPointer:
 		return s.PointerTo.needValidation(visited)
 	case KindArray:
-		if s.MinItems != nil || s.MaxItems != nil {
+		if s.Validators.Array.Set() {
 			return true
 		}
 		// Prevent infinite recursion.
@@ -134,6 +293,44 @@ type SchemaField struct {
 	Tag  string
 }
 
+func afterDot(v string) string {
+	idx := strings.Index(v, ".")
+	if idx > 0 {
+		return v[idx+1:]
+	}
+	return v
+}
+
+func (s Schema) EncodeFn() string {
+	if s.IsArray() && s.Item.EncodeFn() != "" {
+		return s.Item.EncodeFn() + "Array"
+	}
+	switch s.Primitive {
+	case "interface{}":
+		return "Interface"
+	case "int", "int64", "int32", "string", "bool", "float32", "float64":
+		return capitalize(s.Primitive)
+	case "uuid.UUID", "time.Time":
+		return afterDot(s.Primitive)
+	default:
+		return ""
+	}
+}
+
+func (s Schema) ToString() string {
+	if s.EncodeFn() == "" {
+		return ""
+	}
+	return s.EncodeFn() + "ToString"
+}
+
+func (s Schema) FromString() string {
+	if s.EncodeFn() == "" {
+		return ""
+	}
+	return "To" + s.EncodeFn()
+}
+
 func (s Schema) Type() string {
 	switch s.Kind {
 	case KindStruct:
@@ -141,6 +338,9 @@ func (s Schema) Type() string {
 	case KindAlias:
 		return s.Name
 	case KindPrimitive:
+		if s.Generic() {
+			return s.GenericType
+		}
 		return s.Primitive
 	case KindArray:
 		return "[]" + s.Item.Type()

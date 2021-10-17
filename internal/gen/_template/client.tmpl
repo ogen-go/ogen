@@ -9,13 +9,17 @@ type HTTPClient interface {
 }
 
 type Client struct {
-    serverURL string
+    serverURL *url.URL
     http      HTTPClient
 }
 
 func NewClient(serverURL string) *Client {
+    u, err := url.Parse(serverURL)
+    if err != nil {
+        panic(err) // TODO: fix
+    }
     return &Client{
-        serverURL: serverURL,
+        serverURL: u,
         http: &http.Client{
             Timeout: time.Second * 15,
         },
@@ -23,40 +27,34 @@ func NewClient(serverURL string) *Client {
 }
 
 {{ range $m := $.Methods }}
-func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req {{ $m.RequestType.Type }}{{ end }}{{ if $m.Parameters}}, params {{ $m.Name }}Params {{ end }}) (_ {{ $m.ResponseType.Type }}, rerr error) {
+func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req {{ $m.RequestType.Type }}{{ end }}{{ if $m.Parameters}}, params {{ $m.Name }}Params {{ end }}) (res {{ $m.ResponseType.Type }}, err error) {
     {{- if $m.RequestBody }}
     body, contentType, err := encode{{ $m.Name }}Request(req)
     if err != nil {
-        rerr = err
-        return
+        return res, err
     }
     {{ end }}
 
-    {{- template "params_encode_path_v2" $m }}
-    
-    r, err := http.NewRequestWithContext(ctx, "{{ $m.HTTPMethod }}", path, {{ if $m.RequestBody }}bytes.NewReader(body){{ else }}nil{{ end }})
-    if err != nil {
-        rerr = fmt.Errorf("create request: %w", err)
-        return
-    }
+    {{- template "params_encode_path" $m }}
+    {{- template "params_encode_query" $m }}
+
+    r := ht.NewRequest(ctx, "{{ $m.HTTPMethod }}", u, {{ if $m.RequestBody }}bytes.NewReader(body){{ else }}nil{{ end }})
+    defer ht.PutRequest(r)
 
     {{ if $m.RequestBody }}r.Header.Set("Content-Type", contentType){{ end }}
 
-    {{- template "params_encode_query_v2" $m }}
     {{- template "encode_header_params" $m }}
     {{- template "encode_cookie_params" $m }}
 
     resp, err := c.http.Do(r)
     if err != nil {
-        rerr = fmt.Errorf("do request: %w", err)
-        return
+        return res, fmt.Errorf("do request: %w", err)
     }
     defer resp.Body.Close()
 
     result, err := decode{{ $m.Name }}Response(resp)
     if err != nil {
-        rerr = fmt.Errorf("decode response: %w", err)
-        return
+        return res, fmt.Errorf("decode response: %w", err)
     }
 
     return result, nil
@@ -68,7 +66,7 @@ func (c *Client) {{ $m.Name }}(ctx context.Context {{ if $m.RequestBody }}, req 
 {{ define "encode_cookie_params" }}
 {{- range $param := $.CookieParams }}{{/* Range over params */}}
 {
-value := {{ template "convert_to_string" $param.Schema.Type }}(params.{{ $param.Name }})
+value := conv.{{ $param.Schema.ToString }}(params.{{ $param.Name }})
 {{- if eq $param.Schema.Kind "array" }}
 r.AddCookie(&http.Cookie{
     Name: "{{ $param.SourceName }}",
@@ -90,7 +88,7 @@ r.AddCookie(&http.Cookie{
 {{ define "encode_header_params" }}
 {{- range $param := $.HeaderParams }}{{/* Range over params */}}
 {
-value := {{ template "convert_to_string" $param.Schema.Type }}(params.{{ $param.Name }})
+value := conv.{{ $param.Schema.ToString }}(params.{{ $param.Name }})
 {{- if eq $param.Schema.Kind "array" }}
 for _, v := range value {
     r.Header.Add("{{ $param.SourceName }}", v)

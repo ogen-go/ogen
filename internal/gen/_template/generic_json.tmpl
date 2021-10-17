@@ -1,0 +1,138 @@
+{{ define "generic_json" }}
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.TemplateConfig*/ -}}
+
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+{{- range $s := $.Generics }}
+
+// New returns new {{ $s.Name }} with value set to v.
+func New{{ $s.Name }}(v {{ $s.Primitive }}) {{ $s.Name }} {
+    return {{ $s.Name }} {
+        Value: v,
+{{- if $s.Optional }}
+        Set: true,
+{{- end }}
+    }
+}
+
+// {{ $s.Name }} is{{ if $s.Optional }} optional{{ end }}{{ if $s.Nullable }} nillable{{ end }} {{ $s.Primitive }}.
+type {{ $s.Name }} struct {
+    Value {{ $s.Primitive }}
+{{- if $s.Optional }}
+    Set   bool
+{{- end }}
+{{- if $s.Nullable }}
+    Nil   bool
+{{- end }}
+}
+
+{{- if $s.Optional }}
+// IsSet returns true if {{ $s.Primitive }} was set.
+func (o {{ $s.Name }}) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *{{ $s.Name }}) Reset() {
+    var v {{ $s.Primitive }}
+    o.Value = v
+    o.Set = false
+{{- if $s.Nullable }}
+    o.Nil = false
+{{- end }}
+}
+{{- end }}
+
+// SetTo sets value to v.
+func (o *{{ $s.Name }}) SetTo(v {{ $s.Primitive }}) {
+{{- if $s.Optional }}
+    o.Set = true
+{{- end }}
+{{- if $s.Nullable }}
+    o.Nil = false
+{{- end }}
+    o.Value = v
+}
+
+{{- if $s.Nullable }}
+// IsSet returns true if value is nil.
+func (o {{ $s.Name }}) IsNil() bool { return o.Nil }
+{{ end }}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o {{ $s.Name }}) Get() (v {{ $s.Primitive }}, ok bool) {
+    {{- if $s.Nullable }}
+    if o.Nil {
+        return v, false
+    }
+    {{- end }}
+    {{- if $s.Optional }}
+    if !o.Set {
+        return v, false
+    }
+    {{- end }}
+    return o.Value, true
+}
+
+// WriteJSON writes json value of {{ $s.Primitive }} to json stream.
+func (o {{ $s.Name }}) WriteJSON(j *json.Stream{{ if $s.FormatCustom }}, format func(*json.Stream, {{ $s.Primitive }}){{ end }}) {
+{{- if $s.Nullable }}
+    if o.Nil {
+        j.WriteNil()
+        return
+    }
+{{- end }}
+    {{- if $s.FormatCustom }}
+    format(j, o.Value)
+    {{- else if $s.JSONFormat }}
+    json.Write{{ $s.JSONFormat }}(j, o.Value)
+    {{- else if $s.JSONWrite }}
+    j.{{ $s.JSONWrite }}(o.Value)
+    {{- end }}
+}
+
+// ReadJSON reads json value of {{ $s.Primitive }} from json iterator.
+func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if $s.FormatCustom }}, format func(*json.Iterator) ({{ $s.Primitive }}, error){{ end }}) error {
+    switch i.WhatIsNext() {
+    case json.{{ $s.JSONType }}:
+        {{- if $s.Optional }}
+        o.Set = true
+        {{- end }}
+        {{- if $s.Nullable }}
+        o.Nil = false
+        {{- end }}
+        {{- if $s.FormatCustom }}
+        v, err := format(i)
+        if err != nil {
+            return err
+        }
+        o.Value = v
+        {{- else if $s.JSONFormat  }}
+        v, err := json.Read{{ $s.JSONFormat }}(i)
+        if err != nil {
+            return err
+        }
+        o.Value = v
+        {{- else if $s.JSONRead }}
+        o.Value = i.{{ $s.JSONRead }}()
+        {{- end }}
+        return i.Error
+{{- if $s.Nullable }}
+    case json.NilValue:
+        var v {{ $s.Primitive }}
+        o.Value = v
+        {{- if $s.Optional }}
+        o.Set = true
+        {{- end }}
+        o.Nil = true
+        i.Skip()
+        return i.Error
+{{- end }}
+    default:
+        return fmt.Errorf("unexpected type %d while reading {{ $s.Name }}", i.WhatIsNext())
+    }
+    return nil
+}
+
+{{- end }}
+
+{{ end }}

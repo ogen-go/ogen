@@ -1,6 +1,7 @@
 package ogen
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io"
@@ -11,13 +12,13 @@ import (
 	"testing"
 
 	"github.com/go-chi/chi/v5"
-	json "github.com/json-iterator/go"
 	"github.com/stretchr/testify/require"
 	"github.com/valyala/fasthttp"
 	"golang.org/x/xerrors"
 
-	httpv2 "github.com/ogen-go/ogen/encoding/v2/http"
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/internal/techempower"
+	"github.com/ogen-go/ogen/json"
 )
 
 func newLocalListener() net.Listener {
@@ -117,7 +118,7 @@ func BenchmarkIntegration(b *testing.B) {
 	b.Run("Manual", func(b *testing.B) {
 		// Test with some manual optimizations.
 		s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			js := json.NewStream(json.ConfigFastest, w, 1024)
+			js := json.NewCustomStream(json.ConfigFastest, w, 1024)
 			js.WriteObjectStart()
 			js.WriteObjectField("message")
 			js.WriteString("Hello, world!")
@@ -142,9 +143,9 @@ func BenchmarkIntegration(b *testing.B) {
 
 			b.RunParallel(func(pb *testing.PB) {
 				for pb.Next() {
-					req := httpv2.NewRequest(ctx, http.MethodGet, u, nil)
+					req := ht.NewRequest(ctx, http.MethodGet, u, nil)
 					res, err := client.Do(req)
-					httpv2.PutRequest(req)
+					ht.PutRequest(req)
 					if err != nil {
 						b.Error(err)
 						break
@@ -201,6 +202,82 @@ func BenchmarkIntegration(b *testing.B) {
 					}
 					if hw.Message != "Hello, world!" {
 						b.Error("mismatch")
+					}
+				}
+			})
+		})
+	})
+}
+
+func BenchmarkJSON(b *testing.B) {
+	b.Run("TechEmpower", func(b *testing.B) {
+		b.Run("HelloWorld", func(b *testing.B) {
+			h := techempower.HelloWorld{
+				Message: "Hello, world!",
+			}
+			data := json.Encode(h)
+			dataBytes := int64(len(data))
+
+			b.Run("Encode", func(b *testing.B) {
+				buf := new(bytes.Buffer)
+				s := json.NewStream(buf)
+				b.ReportAllocs()
+				b.SetBytes(dataBytes)
+
+				for i := 0; i < b.N; i++ {
+					buf.Reset()
+					h.WriteJSON(s)
+					if err := s.Flush(); err != nil {
+						b.Fatal(err)
+					}
+				}
+			})
+			b.Run("Decode", func(b *testing.B) {
+				var v techempower.HelloWorld
+				b.ReportAllocs()
+				b.SetBytes(dataBytes)
+				j := json.NewIterator()
+
+				for i := 0; i < b.N; i++ {
+					j.ResetBytes(data)
+					if err := v.ReadJSON(j); err != nil {
+						b.Fatal(err)
+					}
+				}
+			})
+		})
+		b.Run("WorldObject", func(b *testing.B) {
+			h := techempower.WorldObject{
+				ID:           367297,
+				RandomNumber: 4761696123,
+			}
+			data := json.Encode(h)
+			dataBytes := int64(len(data))
+
+			b.Run("Encode", func(b *testing.B) {
+				buf := new(bytes.Buffer)
+				s := json.NewStream(buf)
+				b.ReportAllocs()
+				b.SetBytes(dataBytes)
+
+				for i := 0; i < b.N; i++ {
+					buf.Reset()
+					h.WriteJSON(s)
+					if err := s.Flush(); err != nil {
+						b.Fatal(err)
+					}
+				}
+			})
+			b.Run("Decode", func(b *testing.B) {
+				var v techempower.WorldObject
+				b.ReportAllocs()
+				b.SetBytes(dataBytes)
+				j := json.NewIterator()
+
+				for i := 0; i < b.N; i++ {
+					j.ResetBytes(data)
+					if err := v.ReadJSON(j); err != nil {
+						b.Fatal(err)
 					}
 				}
 			})

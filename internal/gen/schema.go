@@ -3,6 +3,8 @@ package gen
 import (
 	"fmt"
 
+	"golang.org/x/xerrors"
+
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/ast"
 )
@@ -16,7 +18,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 
 	s, err := gen.Generate(name, schema)
 	if err != nil {
-		return nil, err
+		return nil, xerrors.Errorf("generate: %w", err)
 	}
 
 	// Merge nested objects.

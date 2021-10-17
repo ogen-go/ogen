@@ -6,7 +6,7 @@
 {{/* Range over all methods */}}
 {{- range $m := $.Methods }}
 {{- if $m.RequestType }}
-func decode{{ $m.Name }}Request(r *http.Request) (_ {{ $m.RequestType.Type }}, rerr error) {
+func decode{{ $m.Name }}Request(r *http.Request) (req {{ $m.RequestType.Type }}, err error) {
     switch r.Header.Get("Content-Type") {
     {{- /* Range over all request types */ -}}
     {{- range $ctype, $schema := $m.RequestBody.Contents }}
@@ -14,31 +14,12 @@ func decode{{ $m.Name }}Request(r *http.Request) (_ {{ $m.RequestType.Type }}, r
         var request {{ $schema.Type }}
         {{- /* Decode json */ -}}
         {{- if eq $ctype "application/json" }}
-        data, err := io.ReadAll(r.Body)
-        if err != nil {
-            rerr = err
-            return
+        if err := request.ReadJSONFrom(r.Body); err != nil {
+            return req, fmt.Errorf("json: %w", err)
         }
-        if err := json.Unmarshal(data, &request); err != nil {
-            {{- if not $m.RequestBody.Required }}
-            if errors.Is(err, io.EOF) {
-                return
-            }
-            {{- end }}
-            rerr = err
-            return
-        }
-
         {{- if $schema.NeedValidation }}
-        if err := func() error {
-            {{- template "validate_schema" dict
-                "schema" $schema
-                "varname" "request"
-            }}
-            return nil
-        }(); err != nil {
-            rerr = err
-            return
+        if err := request.validate(); err != nil {
+            return req, fmt.Errorf("validate: %w", err)
         }
         {{- end }}
 
@@ -46,14 +27,12 @@ func decode{{ $m.Name }}Request(r *http.Request) (_ {{ $m.RequestType.Type }}, r
         {{- /* Decode json */ -}}
         {{- else }}
         _ = request
-        rerr = fmt.Errorf("{{ $ctype }} decoder not implemented")
-        return
+        return req, fmt.Errorf("{{ $ctype }} decoder not implemented")
         {{- end }}
     {{- end }}
     {{- /* Range over all request types */}}
     default:
-        rerr = fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-        return
+        return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
     }
 }
 {{- end }}
