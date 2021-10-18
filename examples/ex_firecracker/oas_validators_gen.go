@@ -63,14 +63,14 @@ func (s *MachineConfiguration) validate() error {
 	{
 		// Validate 'VcpuCount' field.
 		validator := validate.Int{
-			MinimumSet:       true,
-			Minimum:          1,
-			MaximumSet:       true,
-			Maximum:          32,
-			ExclusiveMinimum: false,
-			ExclusiveMaximum: false,
+			MinSet:       true,
+			Min:          1,
+			MaxSet:       true,
+			Max:          32,
+			MinExclusive: false,
+			MaxExclusive: false,
 		}
-		if err := validator.Validate(s.VcpuCount); err != nil {
+		if err := validator.Validate(int64(s.VcpuCount)); err != nil {
 			return fmt.Errorf("field VcpuCount: %w", err)
 		}
 	}
@@ -95,12 +95,12 @@ func (s *TokenBucket) validate() error {
 	{
 		// Validate 'RefillTime' field.
 		validator := validate.Int{
-			MinimumSet:       true,
-			Minimum:          0,
-			MaximumSet:       false,
-			Maximum:          0,
-			ExclusiveMinimum: false,
-			ExclusiveMaximum: false,
+			MinSet:       true,
+			Min:          0,
+			MaxSet:       false,
+			Max:          0,
+			MinExclusive: false,
+			MaxExclusive: false,
 		}
 		if err := validator.Validate(s.RefillTime); err != nil {
 			return fmt.Errorf("field RefillTime: %w", err)
@@ -109,12 +109,12 @@ func (s *TokenBucket) validate() error {
 	{
 		// Validate 'Size' field.
 		validator := validate.Int{
-			MinimumSet:       true,
-			Minimum:          0,
-			MaximumSet:       false,
-			Maximum:          0,
-			ExclusiveMinimum: false,
-			ExclusiveMaximum: false,
+			MinSet:       true,
+			Min:          0,
+			MaxSet:       false,
+			Max:          0,
+			MinExclusive: false,
+			MaxExclusive: false,
 		}
 		if err := validator.Validate(s.Size); err != nil {
 			return fmt.Errorf("field Size: %w", err)
@@ -129,14 +129,14 @@ func (s *Vsock) validate() error {
 	{
 		// Validate 'GuestCid' field.
 		validator := validate.Int{
-			MinimumSet:       true,
-			Minimum:          3,
-			MaximumSet:       false,
-			Maximum:          0,
-			ExclusiveMinimum: false,
-			ExclusiveMaximum: false,
+			MinSet:       true,
+			Min:          3,
+			MaxSet:       false,
+			Max:          0,
+			MinExclusive: false,
+			MaxExclusive: false,
 		}
-		if err := validator.Validate(s.GuestCid); err != nil {
+		if err := validator.Validate(int64(s.GuestCid)); err != nil {
 			return fmt.Errorf("field GuestCid: %w", err)
 		}
 	}

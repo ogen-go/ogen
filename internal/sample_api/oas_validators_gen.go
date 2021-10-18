@@ -52,12 +52,12 @@ func (s *Pet) validate() error {
 	{
 		// Validate 'ID' field.
 		validator := validate.Int{
-			MinimumSet:       true,
-			Minimum:          0,
-			MaximumSet:       true,
-			Maximum:          100000,
-			ExclusiveMinimum: false,
-			ExclusiveMaximum: false,
+			MinSet:       true,
+			Min:          0,
+			MaxSet:       true,
+			Max:          100000,
+			MinExclusive: false,
+			MaxExclusive: false,
 		}
 		if err := validator.Validate(s.ID); err != nil {
 			return fmt.Errorf("field ID: %w", err)

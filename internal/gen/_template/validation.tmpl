@@ -30,12 +30,12 @@ func (s *{{ $s.Name }}) validate() error {
         {
             // Validate '{{ $f.Name }}' field.
             validator := validate.Int{
-                MinimumSet:         {{ $f.Type.Validators.Int.MinimumSet }},
-                Minimum:            {{ $f.Type.Validators.Int.Minimum }},
-                MaximumSet:         {{ $f.Type.Validators.Int.MaximumSet }},
-                Maximum:            {{ $f.Type.Validators.Int.Maximum }},
-                ExclusiveMinimum:   {{ $f.Type.Validators.Int.ExclusiveMinimum }},
-                ExclusiveMaximum:   {{ $f.Type.Validators.Int.ExclusiveMaximum }},
+                MinSet:         {{ $f.Type.Validators.Int.MinSet }},
+                Min:            {{ $f.Type.Validators.Int.Min }},
+                MaxSet:         {{ $f.Type.Validators.Int.MaxSet }},
+                Max:            {{ $f.Type.Validators.Int.Max }},
+                MinExclusive:   {{ $f.Type.Validators.Int.MinExclusive }},
+                MaxExclusive:   {{ $f.Type.Validators.Int.MaxExclusive }},
             }
             if err := validator.Validate(s.{{ $fieldName }}); err != nil {
                 return fmt.Errorf("field {{ $fieldName }}: %w", err)

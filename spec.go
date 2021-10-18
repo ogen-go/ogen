@@ -261,7 +261,7 @@ type Schema struct {
 	//
 	// A numeric instance is only valid if division by this keyword's value
 	// results in an integer.
-	MultipleOf *uint64 `json:"multipleOf"`
+	MultipleOf *int `json:"multipleOf"`
 
 	// The value of "maximum" MUST be a number, representing an upper limit
 	// for a numeric instance.

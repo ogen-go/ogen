@@ -64,15 +64,15 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 			s.Validators.Int.MultipleOfSet = true
 		}
 		if schema.Maximum != nil {
-			s.Validators.Int.Maximum = *schema.Maximum
-			s.Validators.Int.MaximumSet = true
+			s.Validators.Int.Max = *schema.Maximum
+			s.Validators.Int.MaxSet = true
 		}
 		if schema.Minimum != nil {
-			s.Validators.Int.Minimum = *schema.Minimum
-			s.Validators.Int.MinimumSet = true
+			s.Validators.Int.Min = *schema.Minimum
+			s.Validators.Int.MinSet = true
 		}
-		s.Validators.Int.ExclusiveMaximum = schema.ExclusiveMaximum
-		s.Validators.Int.ExclusiveMinimum = schema.ExclusiveMinimum
+		s.Validators.Int.MaxExclusive = schema.ExclusiveMaximum
+		s.Validators.Int.MinExclusive = schema.ExclusiveMinimum
 
 		if schema.MaxItems != nil {
 			s.Validators.Array.SetMaxLength(int(*schema.MaxItems))
