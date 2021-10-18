@@ -22,10 +22,8 @@ go get github.com/ogen-go/ogen
 
 # Draft Roadmap
 
-* Optionals
 * Handle unexpected json keys
 * Convenient global errors schema (e.g. 500, 404)
-* End-to-end tests
 * Security (e.g. Bearer token)
 * Separate JSON Schema generator
 * Framework/Router support
