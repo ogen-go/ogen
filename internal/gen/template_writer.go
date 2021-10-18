@@ -98,7 +98,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 	if err := w.Generate("validators", "oas_validators_gen.go", cfg); err != nil {
 		return err
 	}
-	if err := w.Generate("schemas_json", "oas_json_schemas_gen.go", cfg); err != nil {
+	if err := w.Generate("schemas_json", "oas_schemas_json_gen.go", cfg); err != nil {
 		return err
 	}
 	if err := w.Generate("server", "oas_server_gen.go", cfg); err != nil {
