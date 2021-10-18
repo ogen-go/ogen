@@ -32,12 +32,13 @@ type Validators struct {
 	Array  validate.Array
 }
 
-// FormatCustom denotes that value type requires custom format handling
-// for encoding and decoding.
-const FormatCustom = "custom"
-
 func (s Schema) FormatCustom() bool {
-	return s.Format == FormatCustom
+	switch s.Primitive {
+	case "time.Time":
+		return true
+	default:
+		return false
+	}
 }
 
 // JSONFields returns set of fields that should be encoded or decoded in json.
@@ -82,11 +83,13 @@ type Schema struct {
 	Doc         string
 	Format      string
 
+	GenericOf      *Schema
+	GenericVariant GenericVariant
+
 	AliasTo    *Schema
 	PointerTo  *Schema
 	Primitive  string
 	Item       *Schema
-	GenericOf  *Schema
 	EnumValues []interface{}
 	Fields     []SchemaField
 
@@ -104,11 +107,6 @@ type Schema struct {
 	// Struct validation.
 	// MaxProperties *uint64
 	// MinProperties *uint64
-
-	Optional       bool
-	Nullable       bool
-	GenericType    string
-	GenericVariant GenericVariant
 }
 
 func (s Schema) canRawJSON() bool {
@@ -116,7 +114,7 @@ func (s Schema) canRawJSON() bool {
 		return true
 	}
 	switch s.Primitive {
-	case "bool", "string", "time.Time", "time.Duration", "uuid.UUID", "net.IP", "url.URL":
+	case "bool", "string":
 		return true
 	default:
 		return false
@@ -143,11 +141,11 @@ func (s Schema) JSONType() string {
 	}
 }
 
-// JSONFormat returns format name for handling json encoding or decoding.
+// JSONHelper returns format name for handling json encoding or decoding.
 //
 // Mostly used for encoding or decoding of generics, like "json.WriteUUID",
-// where UUID is JSONFormat.
-func (s Schema) JSONFormat() string {
+// where UUID is JSONHelper.
+func (s Schema) JSONHelper() string {
 	switch s.Format {
 	case "uuid":
 		return "UUID"
@@ -202,30 +200,6 @@ func (s Schema) JSONRead() string {
 	return "Read" + s.jsonFn()
 }
 
-// Generic returns true if value is generic type, e.g. nullable or optional.
-func (s Schema) Generic() bool {
-	if s.Optional {
-		return true
-	}
-	if s.Nullable {
-		return true
-	}
-	return false
-}
-
-// GenericKind returns name of generic kind.
-// Used in generic type names.
-func (s Schema) GenericKind() string {
-	var b strings.Builder
-	if s.Optional {
-		b.WriteString("Optional")
-	}
-	if s.Nullable {
-		b.WriteString("Nil")
-	}
-	return b.String()
-}
-
 func (s *Schema) IsArray() bool {
 	return s.Is(KindArray)
 }
@@ -268,10 +242,6 @@ func (s *Schema) needValidation(visited map[*Schema]struct{}) (result bool) {
 
 	switch s.Kind {
 	case KindPrimitive:
-		if s.Generic() {
-			// TODO(ernado): fix
-			return false
-		}
 		if s.IsNumeric() && s.Validators.Int.Set() {
 			return true
 		}
@@ -359,9 +329,6 @@ func (s Schema) Type() string {
 	case KindAlias:
 		return s.Name
 	case KindPrimitive:
-		if s.Generic() {
-			return s.GenericType
-		}
 		return s.Primitive
 	case KindGeneric:
 		return s.Name

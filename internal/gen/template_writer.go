@@ -14,7 +14,6 @@ type TemplateConfig struct {
 	Methods    []*ast.Method
 	Schemas    map[string]*ast.Schema
 	Interfaces map[string]*ast.Interface
-	Generics   []*ast.Schema
 }
 
 // FileSystem represents a directory of generated package.
@@ -62,7 +61,6 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		Schemas:    g.schemas,
 		Methods:    g.methods,
 		Interfaces: g.interfaces,
-		Generics:   g.generics,
 	}
 
 	if err := w.Generate("params", "oas_params_gen.go", cfg); err != nil {
@@ -101,9 +99,6 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		return err
 	}
 	if err := w.Generate("schemas_json", "oas_json_schemas_gen.go", cfg); err != nil {
-		return err
-	}
-	if err := w.Generate("generic_json", "oas_json_generic_gen.go", cfg); err != nil {
 		return err
 	}
 	if err := w.Generate("server", "oas_server_gen.go", cfg); err != nil {

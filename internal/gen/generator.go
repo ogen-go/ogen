@@ -11,7 +11,6 @@ type Generator struct {
 	opt           Options
 	spec          *ogen.Spec
 	methods       []*ast.Method
-	generics      []*ast.Schema
 	schemas       map[string]*ast.Schema
 	schemaRefs    map[string]*ast.Schema
 	requestBodies map[string]*ast.RequestBody
@@ -41,7 +40,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 		return nil, xerrors.Errorf("methods: %w", err)
 	}
 
-	g.generatePrimitives()
+	g.generatePrimitiveGenerics()
 	g.simplify()
 	g.fix()
 	return g, nil

@@ -42,18 +42,32 @@ const (
 
 {{/* Define generic */}}
 {{- else if eq $.Kind "generic" }}
-// {{ $.Name }} is generic valiant of {{ $.GenericOf.Type }}.
+
+{{- $g := $.GenericOf }}
+{{- $v := $.GenericVariant }}
+
+// New returns new {{ $.Name }} with value set to v.
+func New{{ $.Name }}(v {{ $g.Type }}) {{ $.Name }} {
+    return {{ $.Name }} {
+        Value: v,
+    {{- if $v.Optional }}
+        Set: true,
+    {{- end }}
+    }
+}
+
+// {{ $.Name }} is generic valiant of {{ $g.Type }}.
 type {{ $.Name }} struct {
-    Value {{ $.GenericOf.Type }}
-{{- if $.GenericVariant.Optional }}
+    Value {{ $g.Type }}
+{{- if $v.Optional }}
     Set bool
 {{- end }}
-{{- if $.GenericVariant.Nullable }}
+{{- if $v.Nullable }}
     Null bool
 {{- end }}
 }
 
-{{- if $.GenericVariant.Optional }}
+{{- if $v.Optional }}
 // IsSet returns true if {{ $.Type }} was set.
 func (o {{ $.Name }}) IsSet() bool { return o.Set }
 
@@ -62,36 +76,36 @@ func (o *{{ $.Name }}) Reset() {
     var v {{ $.GenericOf.Type }}
     o.Value = v
     o.Set = false
-{{- if $.GenericVariant.Nullable }}
-    o.Nil = false
+{{- if $v.Nullable }}
+    o.Null = false
 {{- end }}
 }
 {{- end }}
 
 // SetTo sets value to v.
-func (o *{{ $.Name }}) SetTo(v {{ $.GenericOf.Type }}) {
-{{- if $.GenericVariant.Optional }}
+func (o *{{ $.Name }}) SetTo(v {{ $g.Type }}) {
+{{- if $v.Optional }}
     o.Set = true
 {{- end }}
-{{- if $.GenericVariant.Nullable }}
-    o.Nil = false
+{{- if $v.Nullable }}
+    o.Null = false
 {{- end }}
     o.Value = v
 }
 
-{{- if $.GenericVariant.Nullable  }}
-// IsSet returns true if value is nil.
-func (o {{ $.Name }}) IsNil() bool { return o.Nil }
+{{- if $v.Nullable  }}
+// IsSet returns true if value is Null.
+func (o {{ $.Name }}) IsNull() bool { return o.Null }
 {{ end }}
 
 // Get returns value and boolean that denotes whether value was set.
-func (o {{ $.Name }}) Get() (v {{ $.GenericOf.Type }}, ok bool) {
-{{- if $.GenericVariant.Nullable }}
-    if o.Nil {
+func (o {{ $.Name }}) Get() (v {{ $g.Type }}, ok bool) {
+{{- if $v.Nullable }}
+    if o.Null {
         return v, false
     }
 {{- end }}
-{{- if $.GenericVariant.Optional }}
+{{- if $v.Optional }}
     if !o.Set {
         return v, false
     }

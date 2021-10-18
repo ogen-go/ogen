@@ -55,6 +55,1386 @@ type HelloWorld struct {
 	Message string `json:"message"`
 }
 
+// New returns new NilBool with value set to v.
+func NewNilBool(v bool) NilBool {
+	return NilBool{
+		Value: v,
+	}
+}
+
+// NilBool is generic valiant of bool.
+type NilBool struct {
+	Value bool
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilBool) SetTo(v bool) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilBool) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilBool) Get() (v bool, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilDuration with value set to v.
+func NewNilDuration(v time.Duration) NilDuration {
+	return NilDuration{
+		Value: v,
+	}
+}
+
+// NilDuration is generic valiant of time.Duration.
+type NilDuration struct {
+	Value time.Duration
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilDuration) SetTo(v time.Duration) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilDuration) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilDuration) Get() (v time.Duration, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilFloat32 with value set to v.
+func NewNilFloat32(v float32) NilFloat32 {
+	return NilFloat32{
+		Value: v,
+	}
+}
+
+// NilFloat32 is generic valiant of float32.
+type NilFloat32 struct {
+	Value float32
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilFloat32) SetTo(v float32) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilFloat32) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilFloat32) Get() (v float32, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilFloat64 with value set to v.
+func NewNilFloat64(v float64) NilFloat64 {
+	return NilFloat64{
+		Value: v,
+	}
+}
+
+// NilFloat64 is generic valiant of float64.
+type NilFloat64 struct {
+	Value float64
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilFloat64) SetTo(v float64) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilFloat64) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilFloat64) Get() (v float64, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilIP with value set to v.
+func NewNilIP(v net.IP) NilIP {
+	return NilIP{
+		Value: v,
+	}
+}
+
+// NilIP is generic valiant of net.IP.
+type NilIP struct {
+	Value net.IP
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilIP) SetTo(v net.IP) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilIP) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilIP) Get() (v net.IP, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilInt with value set to v.
+func NewNilInt(v int) NilInt {
+	return NilInt{
+		Value: v,
+	}
+}
+
+// NilInt is generic valiant of int.
+type NilInt struct {
+	Value int
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilInt) SetTo(v int) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilInt) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilInt) Get() (v int, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilInt32 with value set to v.
+func NewNilInt32(v int32) NilInt32 {
+	return NilInt32{
+		Value: v,
+	}
+}
+
+// NilInt32 is generic valiant of int32.
+type NilInt32 struct {
+	Value int32
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilInt32) SetTo(v int32) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilInt32) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilInt32) Get() (v int32, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilInt64 with value set to v.
+func NewNilInt64(v int64) NilInt64 {
+	return NilInt64{
+		Value: v,
+	}
+}
+
+// NilInt64 is generic valiant of int64.
+type NilInt64 struct {
+	Value int64
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilInt64) SetTo(v int64) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilInt64) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilInt64) Get() (v int64, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilString with value set to v.
+func NewNilString(v string) NilString {
+	return NilString{
+		Value: v,
+	}
+}
+
+// NilString is generic valiant of string.
+type NilString struct {
+	Value string
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilString) SetTo(v string) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilString) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilString) Get() (v string, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilTime with value set to v.
+func NewNilTime(v time.Time) NilTime {
+	return NilTime{
+		Value: v,
+	}
+}
+
+// NilTime is generic valiant of time.Time.
+type NilTime struct {
+	Value time.Time
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilTime) SetTo(v time.Time) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilTime) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilTime) Get() (v time.Time, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilURL with value set to v.
+func NewNilURL(v url.URL) NilURL {
+	return NilURL{
+		Value: v,
+	}
+}
+
+// NilURL is generic valiant of url.URL.
+type NilURL struct {
+	Value url.URL
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilURL) SetTo(v url.URL) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilURL) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilURL) Get() (v url.URL, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilUUID with value set to v.
+func NewNilUUID(v uuid.UUID) NilUUID {
+	return NilUUID{
+		Value: v,
+	}
+}
+
+// NilUUID is generic valiant of uuid.UUID.
+type NilUUID struct {
+	Value uuid.UUID
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilUUID) SetTo(v uuid.UUID) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilUUID) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilUUID) Get() (v uuid.UUID, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalBool with value set to v.
+func NewOptionalBool(v bool) OptionalBool {
+	return OptionalBool{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalBool is generic valiant of bool.
+type OptionalBool struct {
+	Value bool
+	Set   bool
+}
+
+// IsSet returns true if OptionalBool was set.
+func (o OptionalBool) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalBool) Reset() {
+	var v bool
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalBool) SetTo(v bool) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalBool) Get() (v bool, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalDuration with value set to v.
+func NewOptionalDuration(v time.Duration) OptionalDuration {
+	return OptionalDuration{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalDuration is generic valiant of time.Duration.
+type OptionalDuration struct {
+	Value time.Duration
+	Set   bool
+}
+
+// IsSet returns true if OptionalDuration was set.
+func (o OptionalDuration) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalDuration) Reset() {
+	var v time.Duration
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalDuration) SetTo(v time.Duration) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalDuration) Get() (v time.Duration, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalFloat32 with value set to v.
+func NewOptionalFloat32(v float32) OptionalFloat32 {
+	return OptionalFloat32{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalFloat32 is generic valiant of float32.
+type OptionalFloat32 struct {
+	Value float32
+	Set   bool
+}
+
+// IsSet returns true if OptionalFloat32 was set.
+func (o OptionalFloat32) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalFloat32) Reset() {
+	var v float32
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalFloat32) SetTo(v float32) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalFloat32) Get() (v float32, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalFloat64 with value set to v.
+func NewOptionalFloat64(v float64) OptionalFloat64 {
+	return OptionalFloat64{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalFloat64 is generic valiant of float64.
+type OptionalFloat64 struct {
+	Value float64
+	Set   bool
+}
+
+// IsSet returns true if OptionalFloat64 was set.
+func (o OptionalFloat64) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalFloat64) Reset() {
+	var v float64
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalFloat64) SetTo(v float64) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalFloat64) Get() (v float64, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalIP with value set to v.
+func NewOptionalIP(v net.IP) OptionalIP {
+	return OptionalIP{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalIP is generic valiant of net.IP.
+type OptionalIP struct {
+	Value net.IP
+	Set   bool
+}
+
+// IsSet returns true if OptionalIP was set.
+func (o OptionalIP) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalIP) Reset() {
+	var v net.IP
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalIP) SetTo(v net.IP) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalIP) Get() (v net.IP, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalInt with value set to v.
+func NewOptionalInt(v int) OptionalInt {
+	return OptionalInt{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalInt is generic valiant of int.
+type OptionalInt struct {
+	Value int
+	Set   bool
+}
+
+// IsSet returns true if OptionalInt was set.
+func (o OptionalInt) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalInt) Reset() {
+	var v int
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalInt) SetTo(v int) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalInt) Get() (v int, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalInt32 with value set to v.
+func NewOptionalInt32(v int32) OptionalInt32 {
+	return OptionalInt32{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalInt32 is generic valiant of int32.
+type OptionalInt32 struct {
+	Value int32
+	Set   bool
+}
+
+// IsSet returns true if OptionalInt32 was set.
+func (o OptionalInt32) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalInt32) Reset() {
+	var v int32
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalInt32) SetTo(v int32) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalInt32) Get() (v int32, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalInt64 with value set to v.
+func NewOptionalInt64(v int64) OptionalInt64 {
+	return OptionalInt64{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalInt64 is generic valiant of int64.
+type OptionalInt64 struct {
+	Value int64
+	Set   bool
+}
+
+// IsSet returns true if OptionalInt64 was set.
+func (o OptionalInt64) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalInt64) Reset() {
+	var v int64
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalInt64) SetTo(v int64) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalInt64) Get() (v int64, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilBool with value set to v.
+func NewOptionalNilBool(v bool) OptionalNilBool {
+	return OptionalNilBool{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilBool is generic valiant of bool.
+type OptionalNilBool struct {
+	Value bool
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilBool was set.
+func (o OptionalNilBool) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilBool) Reset() {
+	var v bool
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilBool) SetTo(v bool) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilBool) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilBool) Get() (v bool, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilDuration with value set to v.
+func NewOptionalNilDuration(v time.Duration) OptionalNilDuration {
+	return OptionalNilDuration{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilDuration is generic valiant of time.Duration.
+type OptionalNilDuration struct {
+	Value time.Duration
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilDuration was set.
+func (o OptionalNilDuration) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilDuration) Reset() {
+	var v time.Duration
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilDuration) SetTo(v time.Duration) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilDuration) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilDuration) Get() (v time.Duration, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilFloat32 with value set to v.
+func NewOptionalNilFloat32(v float32) OptionalNilFloat32 {
+	return OptionalNilFloat32{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilFloat32 is generic valiant of float32.
+type OptionalNilFloat32 struct {
+	Value float32
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilFloat32 was set.
+func (o OptionalNilFloat32) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilFloat32) Reset() {
+	var v float32
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilFloat32) SetTo(v float32) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilFloat32) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilFloat32) Get() (v float32, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilFloat64 with value set to v.
+func NewOptionalNilFloat64(v float64) OptionalNilFloat64 {
+	return OptionalNilFloat64{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilFloat64 is generic valiant of float64.
+type OptionalNilFloat64 struct {
+	Value float64
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilFloat64 was set.
+func (o OptionalNilFloat64) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilFloat64) Reset() {
+	var v float64
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilFloat64) SetTo(v float64) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilFloat64) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilFloat64) Get() (v float64, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilIP with value set to v.
+func NewOptionalNilIP(v net.IP) OptionalNilIP {
+	return OptionalNilIP{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilIP is generic valiant of net.IP.
+type OptionalNilIP struct {
+	Value net.IP
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilIP was set.
+func (o OptionalNilIP) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilIP) Reset() {
+	var v net.IP
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilIP) SetTo(v net.IP) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilIP) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilIP) Get() (v net.IP, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilInt with value set to v.
+func NewOptionalNilInt(v int) OptionalNilInt {
+	return OptionalNilInt{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilInt is generic valiant of int.
+type OptionalNilInt struct {
+	Value int
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilInt was set.
+func (o OptionalNilInt) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilInt) Reset() {
+	var v int
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilInt) SetTo(v int) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilInt) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilInt) Get() (v int, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilInt32 with value set to v.
+func NewOptionalNilInt32(v int32) OptionalNilInt32 {
+	return OptionalNilInt32{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilInt32 is generic valiant of int32.
+type OptionalNilInt32 struct {
+	Value int32
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilInt32 was set.
+func (o OptionalNilInt32) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilInt32) Reset() {
+	var v int32
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilInt32) SetTo(v int32) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilInt32) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilInt32) Get() (v int32, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilInt64 with value set to v.
+func NewOptionalNilInt64(v int64) OptionalNilInt64 {
+	return OptionalNilInt64{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilInt64 is generic valiant of int64.
+type OptionalNilInt64 struct {
+	Value int64
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilInt64 was set.
+func (o OptionalNilInt64) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilInt64) Reset() {
+	var v int64
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilInt64) SetTo(v int64) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilInt64) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilInt64) Get() (v int64, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilString with value set to v.
+func NewOptionalNilString(v string) OptionalNilString {
+	return OptionalNilString{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilString is generic valiant of string.
+type OptionalNilString struct {
+	Value string
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilString was set.
+func (o OptionalNilString) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilString) Reset() {
+	var v string
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilString) SetTo(v string) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilString) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilString) Get() (v string, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilTime with value set to v.
+func NewOptionalNilTime(v time.Time) OptionalNilTime {
+	return OptionalNilTime{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilTime is generic valiant of time.Time.
+type OptionalNilTime struct {
+	Value time.Time
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilTime was set.
+func (o OptionalNilTime) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilTime) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilTime) SetTo(v time.Time) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilTime) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilTime) Get() (v time.Time, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilURL with value set to v.
+func NewOptionalNilURL(v url.URL) OptionalNilURL {
+	return OptionalNilURL{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilURL is generic valiant of url.URL.
+type OptionalNilURL struct {
+	Value url.URL
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilURL was set.
+func (o OptionalNilURL) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilURL) Reset() {
+	var v url.URL
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilURL) SetTo(v url.URL) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilURL) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilURL) Get() (v url.URL, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilUUID with value set to v.
+func NewOptionalNilUUID(v uuid.UUID) OptionalNilUUID {
+	return OptionalNilUUID{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilUUID is generic valiant of uuid.UUID.
+type OptionalNilUUID struct {
+	Value uuid.UUID
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilUUID was set.
+func (o OptionalNilUUID) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilUUID) Reset() {
+	var v uuid.UUID
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilUUID) SetTo(v uuid.UUID) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilUUID) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilUUID) Get() (v uuid.UUID, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalString with value set to v.
+func NewOptionalString(v string) OptionalString {
+	return OptionalString{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalString is generic valiant of string.
+type OptionalString struct {
+	Value string
+	Set   bool
+}
+
+// IsSet returns true if OptionalString was set.
+func (o OptionalString) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalString) Reset() {
+	var v string
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalString) SetTo(v string) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalString) Get() (v string, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalTime with value set to v.
+func NewOptionalTime(v time.Time) OptionalTime {
+	return OptionalTime{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTime is generic valiant of time.Time.
+type OptionalTime struct {
+	Value time.Time
+	Set   bool
+}
+
+// IsSet returns true if OptionalTime was set.
+func (o OptionalTime) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalTime) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTime) SetTo(v time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTime) Get() (v time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalURL with value set to v.
+func NewOptionalURL(v url.URL) OptionalURL {
+	return OptionalURL{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalURL is generic valiant of url.URL.
+type OptionalURL struct {
+	Value url.URL
+	Set   bool
+}
+
+// IsSet returns true if OptionalURL was set.
+func (o OptionalURL) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalURL) Reset() {
+	var v url.URL
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalURL) SetTo(v url.URL) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalURL) Get() (v url.URL, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalUUID with value set to v.
+func NewOptionalUUID(v uuid.UUID) OptionalUUID {
+	return OptionalUUID{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalUUID is generic valiant of uuid.UUID.
+type OptionalUUID struct {
+	Value uuid.UUID
+	Set   bool
+}
+
+// IsSet returns true if OptionalUUID was set.
+func (o OptionalUUID) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalUUID) Reset() {
+	var v uuid.UUID
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalUUID) SetTo(v uuid.UUID) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalUUID) Get() (v uuid.UUID, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // WorldObject describes #/components/schemas/WorldObject.
 type WorldObject struct {
 	ID           int64 `json:"id"`

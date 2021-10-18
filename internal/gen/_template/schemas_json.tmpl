@@ -12,19 +12,24 @@ func (s {{ $s.Name }}) WriteJSON(j *json.Stream) {
     field := json.NewFieldWriter(j)
     defer field.Reset()
     {{- range $f := $s.JSONFields }}
-        {{- if or ($f.Type.Generic) ($f.Type.IsStruct) }}
-            {{- if $f.Type.Optional }}
+        {{- if $f.Type.IsStruct }}
+        field.Write("{{ $f.Tag }}")
+        s.{{ $f.Name }}.WriteJSON(j)
+        {{- else if $f.Type.GenericOf }}
+            {{- $g := $f.Type.GenericOf }}
+            {{- $v := $f.Type.GenericVariant }}
+            {{- if $v.Optional }}
             if s.{{ $f.Name }}.Set {
                 field.Write("{{ $f.Tag }}")
-                s.{{ $f.Name }}.WriteJSON(j{{ if $f.Type.JSONFormat }}, json.Write{{ $f.Type.JSONFormat }}{{ end }})
+                s.{{ $f.Name }}.WriteJSON(j{{ if $g.FormatCustom }}, json.Write{{ $g.JSONHelper }}{{ end }})
             }
             {{- else }}
             field.Write("{{ $f.Tag }}")
-            s.{{ $f.Name }}.WriteJSON(j{{ if $f.Type.JSONFormat }}, json.Write{{ $f.Type.JSONFormat }}{{ end }})
+            s.{{ $f.Name }}.WriteJSON(j{{ if $g.FormatCustom }}, json.Write{{ $g.JSONHelper }}{{ end }})
             {{- end }}
-        {{- else if $f.Type.JSONFormat }}
+        {{- else if $f.Type.JSONHelper }}
             field.Write("{{ $f.Tag }}")
-            json.Write{{ $f.Type.JSONFormat }}(j, s.{{ $f.Name }})
+            json.Write{{ $f.Type.JSONHelper }}(j, s.{{ $f.Name }})
         {{- else if $f.Type.JSONWrite }}
             field.Write("{{ $f.Tag }}")
             j.{{ $f.Type.JSONWrite }}(s.{{ $f.Name }})
@@ -63,34 +68,41 @@ func (s *{{ $s.Name }}) ReadJSON(i *json.Iterator) error {
         switch k {
 {{- range $f := $s.JSONFields }}
     case "{{ $f.Tag }}":
-    {{- if $f.Type.Optional }}
+    {{- if $f.Type.GenericVariant.Optional }}
         s.{{ $f.Name }}.Reset()
     {{- end }}
-    {{- if or ($f.Type.Generic) ($f.Type.IsStruct) }}
-        {{- if $f.Type.JSONFormat }}
-            if err := s.{{ $f.Name }}.ReadJSON(i, json.Read{{ $f.Type.JSONFormat }}); err != nil {
-                i.ReportError("Field {{ $f.Name }}", err.Error())
-                return false
-            }
-            return true
-        {{- else }}
-            if err := s.{{ $f.Name }}.ReadJSON(i); err != nil {
-                i.ReportError("Field {{ $f.Name }}", err.Error())
-                return false
-            }
-            return true
-        {{- end }}
-    {{- else if $f.Type.JSONFormat }}
-        v, err := json.Read{{ $f.Type.JSONFormat }}(i)
+    {{- if $f.Type.IsStruct }}
+        if err := s.{{ $f.Name }}.ReadJSON(i); err != nil {
+            i.ReportError("Field {{ $f.Name }}", err.Error())
+            return false
+        }
+        return true
+    {{- else if $f.Type.GenericOf }}
+    {{- $g := $f.Type.GenericOf }}
+    {{- if $g.FormatCustom }}
+        if err := s.{{ $f.Name }}.ReadJSON(i, json.Read{{ $g.JSONHelper }}); err != nil {
+            i.ReportError("Field {{ $f.Name }}", err.Error())
+            return false
+        }
+        return true
+    {{- else }}
+        if err := s.{{ $f.Name }}.ReadJSON(i); err != nil {
+            i.ReportError("Field {{ $f.Name }}", err.Error())
+            return false
+        }
+        return true
+    {{- end }}
+    {{- else if $f.Type.JSONRead }}
+        s.{{ $f.Name }} = i.{{ $f.Type.JSONRead }}()
+        return i.Error == nil
+    {{- else if $f.Type.JSONHelper }}
+        v, err := json.Read{{ $f.Type.JSONHelper }}(i)
         if err != nil {
             i.ReportError("Field {{ $f.Name }}", err.Error())
             return false
         }
         s.{{ $f.Name }} = v
         return true
-    {{- else if $f.Type.JSONRead }}
-        s.{{ $f.Name }} = i.{{ $f.Type.JSONRead }}()
-        return i.Error == nil
     {{- else }}
         // Unsupported kind "{{ $f.Type.Kind  }}" for field "{{ $f.Name }}".
         i.Skip()
@@ -109,15 +121,15 @@ func (s *{{ $s.Name }}) ReadJSON(i *json.Iterator) error {
 // WriteJSON writes json value of {{ $g.Type }} to json stream.
 func (o {{ $s.Name }}) WriteJSON(j *json.Stream{{ if $g.FormatCustom }}, format func(*json.Stream, {{ $g.Type }}){{ end }}) {
 {{- if $s.GenericVariant.Nullable }}
-    if o.Nil {
+    if o.Null {
         j.WriteNil()
         return
     }
 {{- end }}
 {{- if $g.FormatCustom }}
     format(j, o.Value)
-{{- else if $g.JSONFormat }}
-    json.Write{{ $g.JSONFormat }}(j, o.Value)
+{{- else if $g.JSONHelper }}
+    json.Write{{ $g.JSONHelper }}(j, o.Value)
 {{- else if $g.JSONWrite }}
     j.{{ $g.JSONWrite }}({{ $g.Primitive }}(o.Value))
 {{- end }}
@@ -125,13 +137,14 @@ func (o {{ $s.Name }}) WriteJSON(j *json.Stream{{ if $g.FormatCustom }}, format 
 
 // ReadJSON reads json value of {{ $g.Type }} from json iterator.
 func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if $g.FormatCustom }}, format func(*json.Iterator) ({{ $g.Type }}, error){{ end }}) error {
+    // FormatCustom: {{ $g.FormatCustom }}, Type: {{ $g.Type }}, JSONType: {{ $g.JSONType }}, format "{{ $g.JSONHelper }}", read "{{ $g.JSONRead }}".
     switch i.WhatIsNext() {
     case json.{{ $g.JSONType }}:
     {{- if $s.GenericVariant.Optional }}
         o.Set = true
     {{- end }}
     {{- if $s.GenericVariant.Nullable }}
-        o.Nil = false
+        o.Null = false
     {{- end }}
     {{- if $g.FormatCustom }}
         v, err := format(i)
@@ -139,8 +152,8 @@ func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if $g.FormatCustom }}, forma
             return err
         }
         o.Value = v
-    {{- else if $g.JSONFormat  }}
-        v, err := json.Read{{ $g.JSONFormat }}(i)
+    {{- else if $g.JSONHelper }}
+        v, err := json.Read{{ $g.JSONHelper }}(i)
         if err != nil {
         return err
         }
@@ -151,14 +164,14 @@ func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if $g.FormatCustom }}, forma
         panic("Not supported {{ $g.Type }}")
     {{- end }}
         return i.Error
-    {{- if $s.Nullable }}
+    {{- if $s.GenericVariant.Nullable }}
     case json.NilValue:
         var v {{ $g.Type }}
         o.Value = v
         {{- if $s.GenericVariant.Optional }}
         o.Set = true
         {{- end }}
-        o.Nil = true
+        o.Null = true
         i.Skip()
         return i.Error
     {{- end }}

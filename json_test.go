@@ -57,7 +57,7 @@ func TestJSONGenerics(t *testing.T) {
 		{
 			Name:   "Nil",
 			Result: `{"key":null}`,
-			Value:  api.OptionalNilInt64{Nil: true, Set: true},
+			Value:  api.OptionalNilInt64{Null: true, Set: true},
 		},
 	} {
 		t.Run(tc.Name, func(t *testing.T) {

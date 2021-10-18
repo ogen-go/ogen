@@ -6,12 +6,12 @@
 
 {{- range $s := $.Schemas }}{{/*Range schemas*/}}
 {{- if $s.NeedValidation }}{{/*Need validation*/}}
-{{- if eq $s.Kind "struct" }}{{/*If struct*/}}
+{{- if $s.IsStruct }}{{/*If struct*/}}
 func (s *{{ $s.Name }}) validate() error {
     {{- range $f := $s.Fields }}{{/*Range fields*/}}
     {{- if $f.Type.NeedValidation }}
         {{- $fieldName := $f.Name }}
-        {{- if $f.Type.Generic }}{{ $fieldName = sprintf "%s.Value" $fieldName }}{{ end }}
+        {{- if $f.Type.GenericOf }}{{ $fieldName = sprintf "%s.Value" $fieldName }}{{ end }}
         {{- if $f.Type.Validators.String.Set }}
         {
             // Validate '{{ $f.Name }}' field.

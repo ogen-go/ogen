@@ -139,13 +139,13 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 		if schema.Items != nil {
 			return nil, xerrors.New("object cannot contain 'items' field")
 		}
-		required := func(name string) bool {
+		optional := func(name string) bool {
 			for _, p := range schema.Required {
 				if p == name {
-					return true
+					return false
 				}
 			}
-			return false
+			return true
 		}
 		s := sideEffect(ast.Struct(name))
 		s.Description = schema.Description
@@ -159,17 +159,11 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 			}
 			genericVariant := ast.GenericVariant{
 				Nullable: propSchema.Nullable,
-				Optional: !required(propName),
+				Optional: optional(propName),
 			}
-			if prop.CanGeneric() {
-				if genericVariant.Optional {
-					prop.Optional = true
-				}
-				if genericVariant.Nullable {
-					prop.Nullable = true
-				}
-			} else if genericVariant.Any() {
-				if prop.Is(ast.KindEnum) {
+			if genericVariant.Any() {
+				if prop.Is(ast.KindEnum) || prop.CanGeneric() {
+					prop.Format = propSchema.Format
 					prop = ast.Generic(
 						genericPostfix(prop.Type()),
 						prop,
@@ -178,15 +172,6 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 					g.side = append(g.side, prop)
 				} else {
 					prop = ast.Pointer(prop)
-				}
-			}
-
-			if prop.Generic() {
-				prop.GenericType = prop.GenericKind() + genericPostfix(prop.Primitive)
-				switch prop.Format {
-				case "uuid", "duration":
-					// Direct handling for UUID and duration.
-					prop.Format = ""
 				}
 			}
 
