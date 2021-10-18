@@ -10,13 +10,17 @@ import (
 	"net/http/httptest"
 	"net/url"
 	"testing"
+	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/google/uuid"
 	"github.com/stretchr/testify/require"
 	"github.com/valyala/fasthttp"
 	"golang.org/x/xerrors"
 
+	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
+	api "github.com/ogen-go/ogen/internal/sample_api"
 	"github.com/ogen-go/ogen/internal/techempower"
 	"github.com/ogen-go/ogen/json"
 )
@@ -277,6 +281,42 @@ func BenchmarkJSON(b *testing.B) {
 				for i := 0; i < b.N; i++ {
 					j.ResetBytes(data)
 					if err := v.ReadJSON(j); err != nil {
+						b.Fatal(err)
+					}
+				}
+			})
+		})
+	})
+	b.Run("Sample", func(b *testing.B) {
+		b.Run("Pet", func(b *testing.B) {
+			date := time.Date(2011, 10, 10, 7, 12, 34, 4125, time.UTC)
+			pet := api.Pet{
+				Birthday:     conv.Date(date),
+				ID:           42,
+				Name:         "SomePet",
+				Nickname:     api.NewNilString("Nick"),
+				NullStr:      api.NewOptionalNilString("Bar"),
+				Rate:         time.Second,
+				Tag:          api.NewOptionalUUID(uuid.New()),
+				TestDate:     api.NewOptionalTime(conv.Date(date)),
+				TestDateTime: api.NewOptionalTime(conv.DateTime(date)),
+				TestDuration: api.NewOptionalDuration(time.Minute),
+				TestFloat1:   api.NewOptionalFloat64(1.0),
+				TestInteger1: api.NewOptionalInt(10),
+				TestTime:     api.NewOptionalTime(conv.Time(date)),
+				UniqueID:     uuid.New(),
+			}
+			data := json.Encode(pet)
+			dataBytes := int64(len(data))
+			b.Run("Encode", func(b *testing.B) {
+				buf := new(bytes.Buffer)
+				s := json.NewStream(buf)
+				b.ReportAllocs()
+				b.SetBytes(dataBytes)
+				for i := 0; i < b.N; i++ {
+					buf.Reset()
+					pet.WriteJSON(s)
+					if err := s.Flush(); err != nil {
 						b.Fatal(err)
 					}
 				}
