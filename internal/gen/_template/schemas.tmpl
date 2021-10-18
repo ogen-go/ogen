@@ -56,7 +56,7 @@ func New{{ $.Name }}(v {{ $g.Type }}) {{ $.Name }} {
     }
 }
 
-// {{ $.Name }} is generic valiant of {{ $g.Type }}.
+// {{ $.Name }} is{{ if $v.Optional }} optional{{ end }}{{ if $v.Nullable }} nullable{{ end }} {{ $g.Type }}.
 type {{ $.Name }} struct {
     Value {{ $g.Type }}
 {{- if $v.Optional }}
@@ -114,13 +114,13 @@ func (o {{ $.Name }}) Get() (v {{ $g.Type }}, ok bool) {
 }
 
 
-{{/* Define enum */}}
+{{/* end define generic */}}
 {{- end }}
 
 {{/* Define methods */}}
 {{- range $method := $.Methods }}
 func (*{{ $.Name }}) {{ $method }}() {}
 {{- end }}
-{{/* Define methods */}}
+{{/* end define methods */}}
 
 {{- end }}

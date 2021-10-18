@@ -78,7 +78,7 @@ func NewNilString(v string) NilString {
 	}
 }
 
-// NilString is generic valiant of string.
+// NilString is nullable string.
 type NilString struct {
 	Value string
 	Null  bool
@@ -114,7 +114,7 @@ func NewOptData(v Data) OptData {
 	}
 }
 
-// OptData is generic valiant of Data.
+// OptData is optional Data.
 type OptData struct {
 	Value Data
 	Set   bool
@@ -152,7 +152,7 @@ func NewOptDuration(v time.Duration) OptDuration {
 	}
 }
 
-// OptDuration is generic valiant of time.Duration.
+// OptDuration is optional time.Duration.
 type OptDuration struct {
 	Value time.Duration
 	Set   bool
@@ -190,7 +190,7 @@ func NewOptFloat64(v float64) OptFloat64 {
 	}
 }
 
-// OptFloat64 is generic valiant of float64.
+// OptFloat64 is optional float64.
 type OptFloat64 struct {
 	Value float64
 	Set   bool
@@ -228,7 +228,7 @@ func NewOptInt(v int) OptInt {
 	}
 }
 
-// OptInt is generic valiant of int.
+// OptInt is optional int.
 type OptInt struct {
 	Value int
 	Set   bool
@@ -266,7 +266,7 @@ func NewOptNilString(v string) OptNilString {
 	}
 }
 
-// OptNilString is generic valiant of string.
+// OptNilString is optional nullable string.
 type OptNilString struct {
 	Value string
 	Set   bool
@@ -313,7 +313,7 @@ func NewOptPetType(v PetType) OptPetType {
 	}
 }
 
-// OptPetType is generic valiant of PetType.
+// OptPetType is optional PetType.
 type OptPetType struct {
 	Value PetType
 	Set   bool
@@ -351,7 +351,7 @@ func NewOptString(v string) OptString {
 	}
 }
 
-// OptString is generic valiant of string.
+// OptString is optional string.
 type OptString struct {
 	Value string
 	Set   bool
@@ -389,7 +389,7 @@ func NewOptTime(v time.Time) OptTime {
 	}
 }
 
-// OptTime is generic valiant of time.Time.
+// OptTime is optional time.Time.
 type OptTime struct {
 	Value time.Time
 	Set   bool
@@ -427,7 +427,7 @@ func NewOptUUID(v uuid.UUID) OptUUID {
 	}
 }
 
-// OptUUID is generic valiant of uuid.UUID.
+// OptUUID is optional uuid.UUID.
 type OptUUID struct {
 	Value uuid.UUID
 	Set   bool
