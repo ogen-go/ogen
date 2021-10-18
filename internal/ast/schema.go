@@ -313,6 +313,13 @@ func (s Schema) EncodeFn() string {
 	}
 }
 
+func (s Schema) ToString() string {
+	if s.EncodeFn() == "" {
+		return ""
+	}
+	return s.EncodeFn() + "ToString"
+}
+
 func (s Schema) FromString() string {
 	if s.EncodeFn() == "" {
 		return ""
