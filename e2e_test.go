@@ -3,6 +3,7 @@ package ogen
 import (
 	"bytes"
 	"context"
+	_ "embed"
 	"net"
 	"net/http/httptest"
 	"net/url"
@@ -81,6 +82,9 @@ func (s *sampleAPIServer) PetGetByName(ctx context.Context, params api.PetGetByN
 	return s.pet, nil
 }
 
+//go:embed _testdata/pet.json
+var petTestData string
+
 func TestIntegration(t *testing.T) {
 	t.Run("Sample", func(t *testing.T) {
 		mux := chi.NewRouter()
@@ -100,14 +104,14 @@ func TestIntegration(t *testing.T) {
 			Nickname:     api.NewNilString("Nick"),
 			NullStr:      api.NewOptNilString("Bar"),
 			Rate:         time.Second,
-			Tag:          api.NewOptUUID(uuid.New()),
+			Tag:          api.NewOptUUID(uuid.MustParse("fc9d49c6-1f3d-4ecb-92c7-be6d5049b3c8")),
 			TestDate:     api.NewOptTime(conv.Date(date)),
 			TestDateTime: api.NewOptTime(conv.DateTime(date)),
 			TestDuration: api.NewOptDuration(time.Minute),
 			TestFloat1:   api.NewOptFloat64(1.0),
 			TestInteger1: api.NewOptInt(10),
 			TestTime:     api.NewOptTime(conv.Time(date)),
-			UniqueID:     uuid.New(),
+			UniqueID:     uuid.MustParse("f76e18ae-e5ed-4342-922d-762ed1dfe593"),
 			URI:          url.URL{Scheme: "s3", Host: "foo", Path: "bar"},
 			IP:           net.IPv4(127, 0, 0, 1),
 			IPV4:         net.IPv4(127, 0, 0, 1),
@@ -127,6 +131,7 @@ func TestIntegration(t *testing.T) {
 			buf := new(bytes.Buffer)
 			require.NoError(t, pet.WriteJSONTo(buf))
 			require.True(t, jsoniter.Valid(buf.Bytes()), "json should be valid")
+			require.JSONEq(t, petTestData, buf.String(), "should be equal to golden json")
 		})
 
 		// Can't use assert.Equal due to time.Time type equality checks.
