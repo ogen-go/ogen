@@ -52,7 +52,7 @@ var (
 
 // Data describes #/components/schemas/Data.
 type Data struct {
-	Description OptionalString `json:"description"`
+	Description OptString `json:"description"`
 }
 
 type Error struct {
@@ -106,178 +106,178 @@ type NotFound struct{}
 func (*NotFound) foobarGetResponse()  {}
 func (*NotFound) foobarPostResponse() {}
 
-// New returns new OptionalData with value set to v.
-func NewOptionalData(v Data) OptionalData {
-	return OptionalData{
+// New returns new OptData with value set to v.
+func NewOptData(v Data) OptData {
+	return OptData{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalData is generic valiant of Data.
-type OptionalData struct {
+// OptData is generic valiant of Data.
+type OptData struct {
 	Value Data
 	Set   bool
 }
 
-// IsSet returns true if OptionalData was set.
-func (o OptionalData) IsSet() bool { return o.Set }
+// IsSet returns true if OptData was set.
+func (o OptData) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalData) Reset() {
+func (o *OptData) Reset() {
 	var v Data
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalData) SetTo(v Data) {
+func (o *OptData) SetTo(v Data) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalData) Get() (v Data, ok bool) {
+func (o OptData) Get() (v Data, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalDuration with value set to v.
-func NewOptionalDuration(v time.Duration) OptionalDuration {
-	return OptionalDuration{
+// New returns new OptDuration with value set to v.
+func NewOptDuration(v time.Duration) OptDuration {
+	return OptDuration{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalDuration is generic valiant of time.Duration.
-type OptionalDuration struct {
+// OptDuration is generic valiant of time.Duration.
+type OptDuration struct {
 	Value time.Duration
 	Set   bool
 }
 
-// IsSet returns true if OptionalDuration was set.
-func (o OptionalDuration) IsSet() bool { return o.Set }
+// IsSet returns true if OptDuration was set.
+func (o OptDuration) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalDuration) Reset() {
+func (o *OptDuration) Reset() {
 	var v time.Duration
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalDuration) SetTo(v time.Duration) {
+func (o *OptDuration) SetTo(v time.Duration) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalDuration) Get() (v time.Duration, ok bool) {
+func (o OptDuration) Get() (v time.Duration, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalFloat64 with value set to v.
-func NewOptionalFloat64(v float64) OptionalFloat64 {
-	return OptionalFloat64{
+// New returns new OptFloat64 with value set to v.
+func NewOptFloat64(v float64) OptFloat64 {
+	return OptFloat64{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalFloat64 is generic valiant of float64.
-type OptionalFloat64 struct {
+// OptFloat64 is generic valiant of float64.
+type OptFloat64 struct {
 	Value float64
 	Set   bool
 }
 
-// IsSet returns true if OptionalFloat64 was set.
-func (o OptionalFloat64) IsSet() bool { return o.Set }
+// IsSet returns true if OptFloat64 was set.
+func (o OptFloat64) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalFloat64) Reset() {
+func (o *OptFloat64) Reset() {
 	var v float64
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalFloat64) SetTo(v float64) {
+func (o *OptFloat64) SetTo(v float64) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalFloat64) Get() (v float64, ok bool) {
+func (o OptFloat64) Get() (v float64, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalInt with value set to v.
-func NewOptionalInt(v int) OptionalInt {
-	return OptionalInt{
+// New returns new OptInt with value set to v.
+func NewOptInt(v int) OptInt {
+	return OptInt{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalInt is generic valiant of int.
-type OptionalInt struct {
+// OptInt is generic valiant of int.
+type OptInt struct {
 	Value int
 	Set   bool
 }
 
-// IsSet returns true if OptionalInt was set.
-func (o OptionalInt) IsSet() bool { return o.Set }
+// IsSet returns true if OptInt was set.
+func (o OptInt) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalInt) Reset() {
+func (o *OptInt) Reset() {
 	var v int
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalInt) SetTo(v int) {
+func (o *OptInt) SetTo(v int) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalInt) Get() (v int, ok bool) {
+func (o OptInt) Get() (v int, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalNilString with value set to v.
-func NewOptionalNilString(v string) OptionalNilString {
-	return OptionalNilString{
+// New returns new OptNilString with value set to v.
+func NewOptNilString(v string) OptNilString {
+	return OptNilString{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalNilString is generic valiant of string.
-type OptionalNilString struct {
+// OptNilString is generic valiant of string.
+type OptNilString struct {
 	Value string
 	Set   bool
 	Null  bool
 }
 
-// IsSet returns true if OptionalNilString was set.
-func (o OptionalNilString) IsSet() bool { return o.Set }
+// IsSet returns true if OptNilString was set.
+func (o OptNilString) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalNilString) Reset() {
+func (o *OptNilString) Reset() {
 	var v string
 	o.Value = v
 	o.Set = false
@@ -285,17 +285,17 @@ func (o *OptionalNilString) Reset() {
 }
 
 // SetTo sets value to v.
-func (o *OptionalNilString) SetTo(v string) {
+func (o *OptNilString) SetTo(v string) {
 	o.Set = true
 	o.Null = false
 	o.Value = v
 }
 
 // IsSet returns true if value is Null.
-func (o OptionalNilString) IsNull() bool { return o.Null }
+func (o OptNilString) IsNull() bool { return o.Null }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalNilString) Get() (v string, ok bool) {
+func (o OptNilString) Get() (v string, ok bool) {
 	if o.Null {
 		return v, false
 	}
@@ -305,152 +305,152 @@ func (o OptionalNilString) Get() (v string, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptionalPetType with value set to v.
-func NewOptionalPetType(v PetType) OptionalPetType {
-	return OptionalPetType{
+// New returns new OptPetType with value set to v.
+func NewOptPetType(v PetType) OptPetType {
+	return OptPetType{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalPetType is generic valiant of PetType.
-type OptionalPetType struct {
+// OptPetType is generic valiant of PetType.
+type OptPetType struct {
 	Value PetType
 	Set   bool
 }
 
-// IsSet returns true if OptionalPetType was set.
-func (o OptionalPetType) IsSet() bool { return o.Set }
+// IsSet returns true if OptPetType was set.
+func (o OptPetType) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalPetType) Reset() {
+func (o *OptPetType) Reset() {
 	var v PetType
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalPetType) SetTo(v PetType) {
+func (o *OptPetType) SetTo(v PetType) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalPetType) Get() (v PetType, ok bool) {
+func (o OptPetType) Get() (v PetType, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalString with value set to v.
-func NewOptionalString(v string) OptionalString {
-	return OptionalString{
+// New returns new OptString with value set to v.
+func NewOptString(v string) OptString {
+	return OptString{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalString is generic valiant of string.
-type OptionalString struct {
+// OptString is generic valiant of string.
+type OptString struct {
 	Value string
 	Set   bool
 }
 
-// IsSet returns true if OptionalString was set.
-func (o OptionalString) IsSet() bool { return o.Set }
+// IsSet returns true if OptString was set.
+func (o OptString) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalString) Reset() {
+func (o *OptString) Reset() {
 	var v string
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalString) SetTo(v string) {
+func (o *OptString) SetTo(v string) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalString) Get() (v string, ok bool) {
+func (o OptString) Get() (v string, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalTime with value set to v.
-func NewOptionalTime(v time.Time) OptionalTime {
-	return OptionalTime{
+// New returns new OptTime with value set to v.
+func NewOptTime(v time.Time) OptTime {
+	return OptTime{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalTime is generic valiant of time.Time.
-type OptionalTime struct {
+// OptTime is generic valiant of time.Time.
+type OptTime struct {
 	Value time.Time
 	Set   bool
 }
 
-// IsSet returns true if OptionalTime was set.
-func (o OptionalTime) IsSet() bool { return o.Set }
+// IsSet returns true if OptTime was set.
+func (o OptTime) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalTime) Reset() {
+func (o *OptTime) Reset() {
 	var v time.Time
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalTime) SetTo(v time.Time) {
+func (o *OptTime) SetTo(v time.Time) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalTime) Get() (v time.Time, ok bool) {
+func (o OptTime) Get() (v time.Time, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalUUID with value set to v.
-func NewOptionalUUID(v uuid.UUID) OptionalUUID {
-	return OptionalUUID{
+// New returns new OptUUID with value set to v.
+func NewOptUUID(v uuid.UUID) OptUUID {
+	return OptUUID{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalUUID is generic valiant of uuid.UUID.
-type OptionalUUID struct {
+// OptUUID is generic valiant of uuid.UUID.
+type OptUUID struct {
 	Value uuid.UUID
 	Set   bool
 }
 
-// IsSet returns true if OptionalUUID was set.
-func (o OptionalUUID) IsSet() bool { return o.Set }
+// IsSet returns true if OptUUID was set.
+func (o OptUUID) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalUUID) Reset() {
+func (o *OptUUID) Reset() {
 	var v uuid.UUID
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalUUID) SetTo(v uuid.UUID) {
+func (o *OptUUID) SetTo(v uuid.UUID) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalUUID) Get() (v uuid.UUID, ok bool) {
+func (o OptUUID) Get() (v uuid.UUID, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -459,28 +459,28 @@ func (o OptionalUUID) Get() (v uuid.UUID, ok bool) {
 
 // Pet describes #/components/schemas/Pet.
 type Pet struct {
-	Birthday     time.Time         `json:"birthday"`
-	Friends      *[]Pet            `json:"friends"`
-	ID           int64             `json:"id"`
-	IP           net.IP            `json:"ip"`
-	IPV4         net.IP            `json:"ip_v4"`
-	IPV6         net.IP            `json:"ip_v6"`
-	Name         string            `json:"name"`
-	Next         OptionalData      `json:"next"`
-	Nickname     NilString         `json:"nickname"`
-	NullStr      OptionalNilString `json:"nullStr"`
-	Rate         time.Duration     `json:"rate"`
-	Tag          OptionalUUID      `json:"tag"`
-	TestArray1   *[][]string       `json:"testArray1"`
-	TestDate     OptionalTime      `json:"testDate"`
-	TestDateTime OptionalTime      `json:"testDateTime"`
-	TestDuration OptionalDuration  `json:"testDuration"`
-	TestFloat1   OptionalFloat64   `json:"testFloat1"`
-	TestInteger1 OptionalInt       `json:"testInteger1"`
-	TestTime     OptionalTime      `json:"testTime"`
-	Type         OptionalPetType   `json:"type"`
-	URI          url.URL           `json:"uri"`
-	UniqueID     uuid.UUID         `json:"unique_id"`
+	Birthday     time.Time     `json:"birthday"`
+	Friends      *[]Pet        `json:"friends"`
+	ID           int64         `json:"id"`
+	IP           net.IP        `json:"ip"`
+	IPV4         net.IP        `json:"ip_v4"`
+	IPV6         net.IP        `json:"ip_v6"`
+	Name         string        `json:"name"`
+	Next         OptData       `json:"next"`
+	Nickname     NilString     `json:"nickname"`
+	NullStr      OptNilString  `json:"nullStr"`
+	Rate         time.Duration `json:"rate"`
+	Tag          OptUUID       `json:"tag"`
+	TestArray1   *[][]string   `json:"testArray1"`
+	TestDate     OptTime       `json:"testDate"`
+	TestDateTime OptTime       `json:"testDateTime"`
+	TestDuration OptDuration   `json:"testDuration"`
+	TestFloat1   OptFloat64    `json:"testFloat1"`
+	TestInteger1 OptInt        `json:"testInteger1"`
+	TestTime     OptTime       `json:"testTime"`
+	Type         OptPetType    `json:"type"`
+	URI          url.URL       `json:"uri"`
+	UniqueID     uuid.UUID     `json:"unique_id"`
 }
 
 func (*Pet) foobarGetResponse()  {}

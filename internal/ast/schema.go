@@ -419,7 +419,7 @@ type GenericVariant struct {
 func (v GenericVariant) Name() string {
 	var b strings.Builder
 	if v.Optional {
-		b.WriteString("Optional")
+		b.WriteString("Opt")
 	}
 	if v.Nullable {
 		b.WriteString("Nil")

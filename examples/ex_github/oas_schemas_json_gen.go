@@ -29435,12 +29435,12 @@ func (s *OAuthAuthorizationsUpdateAuthorizationApplicationJSONRequest) ReadJSON(
 }
 
 // WriteJSON writes json value of APIOverviewSSHKeyFingerprints to json stream.
-func (o OptionalAPIOverviewSSHKeyFingerprints) WriteJSON(j *json.Stream) {
+func (o OptAPIOverviewSSHKeyFingerprints) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of APIOverviewSSHKeyFingerprints from json iterator.
-func (o *OptionalAPIOverviewSSHKeyFingerprints) ReadJSON(i *json.Iterator) error {
+func (o *OptAPIOverviewSSHKeyFingerprints) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -29449,54 +29449,54 @@ func (o *OptionalAPIOverviewSSHKeyFingerprints) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAPIOverviewSSHKeyFingerprints", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAPIOverviewSSHKeyFingerprints", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility to json stream.
-func (o OptionalActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+func (o OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility from json iterator.
-func (o *OptionalActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+func (o *OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility to json stream.
-func (o OptionalActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+func (o OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility from json iterator.
-func (o *OptionalActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+func (o *OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of Actor to json stream.
-func (o OptionalActor) WriteJSON(j *json.Stream) {
+func (o OptActor) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of Actor from json iterator.
-func (o *OptionalActor) ReadJSON(i *json.Iterator) error {
+func (o *OptActor) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -29505,36 +29505,36 @@ func (o *OptionalActor) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalActor", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptActor", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AllowedActions to json stream.
-func (o OptionalAllowedActions) WriteJSON(j *json.Stream) {
+func (o OptAllowedActions) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AllowedActions from json iterator.
-func (o *OptionalAllowedActions) ReadJSON(i *json.Iterator) error {
+func (o *OptAllowedActions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AllowedActions(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAllowedActions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAllowedActions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissions to json stream.
-func (o OptionalAppPermissions) WriteJSON(j *json.Stream) {
+func (o OptAppPermissions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of AppPermissions from json iterator.
-func (o *OptionalAppPermissions) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -29543,630 +29543,630 @@ func (o *OptionalAppPermissions) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsActions to json stream.
-func (o OptionalAppPermissionsActions) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsActions) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsActions from json iterator.
-func (o *OptionalAppPermissionsActions) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsActions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsActions(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsActions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsActions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsAdministration to json stream.
-func (o OptionalAppPermissionsAdministration) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsAdministration) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsAdministration from json iterator.
-func (o *OptionalAppPermissionsAdministration) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsAdministration) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsAdministration(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsAdministration", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsAdministration", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsChecks to json stream.
-func (o OptionalAppPermissionsChecks) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsChecks) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsChecks from json iterator.
-func (o *OptionalAppPermissionsChecks) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsChecks) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsChecks(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsChecks", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsChecks", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsContentReferences to json stream.
-func (o OptionalAppPermissionsContentReferences) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsContentReferences) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsContentReferences from json iterator.
-func (o *OptionalAppPermissionsContentReferences) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsContentReferences) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsContentReferences(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsContentReferences", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsContentReferences", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsContents to json stream.
-func (o OptionalAppPermissionsContents) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsContents) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsContents from json iterator.
-func (o *OptionalAppPermissionsContents) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsContents) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsContents(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsContents", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsContents", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsDeployments to json stream.
-func (o OptionalAppPermissionsDeployments) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsDeployments) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsDeployments from json iterator.
-func (o *OptionalAppPermissionsDeployments) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsDeployments) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsDeployments(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsDeployments", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsDeployments", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsEnvironments to json stream.
-func (o OptionalAppPermissionsEnvironments) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsEnvironments) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsEnvironments from json iterator.
-func (o *OptionalAppPermissionsEnvironments) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsEnvironments) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsEnvironments(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsEnvironments", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsEnvironments", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsIssues to json stream.
-func (o OptionalAppPermissionsIssues) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsIssues) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsIssues from json iterator.
-func (o *OptionalAppPermissionsIssues) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsIssues) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsIssues(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsIssues", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsIssues", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsMembers to json stream.
-func (o OptionalAppPermissionsMembers) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsMembers) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsMembers from json iterator.
-func (o *OptionalAppPermissionsMembers) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsMembers) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsMembers(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsMembers", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsMembers", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsMetadata to json stream.
-func (o OptionalAppPermissionsMetadata) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsMetadata) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsMetadata from json iterator.
-func (o *OptionalAppPermissionsMetadata) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsMetadata) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsMetadata(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsMetadata", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsMetadata", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsOrganizationAdministration to json stream.
-func (o OptionalAppPermissionsOrganizationAdministration) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsOrganizationAdministration) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsOrganizationAdministration from json iterator.
-func (o *OptionalAppPermissionsOrganizationAdministration) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsOrganizationAdministration) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsOrganizationAdministration(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsOrganizationAdministration", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsOrganizationAdministration", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsOrganizationHooks to json stream.
-func (o OptionalAppPermissionsOrganizationHooks) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsOrganizationHooks) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsOrganizationHooks from json iterator.
-func (o *OptionalAppPermissionsOrganizationHooks) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsOrganizationHooks) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsOrganizationHooks(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsOrganizationHooks", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsOrganizationHooks", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsOrganizationPackages to json stream.
-func (o OptionalAppPermissionsOrganizationPackages) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsOrganizationPackages) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsOrganizationPackages from json iterator.
-func (o *OptionalAppPermissionsOrganizationPackages) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsOrganizationPackages) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsOrganizationPackages(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsOrganizationPackages", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsOrganizationPackages", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsOrganizationPlan to json stream.
-func (o OptionalAppPermissionsOrganizationPlan) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsOrganizationPlan) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsOrganizationPlan from json iterator.
-func (o *OptionalAppPermissionsOrganizationPlan) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsOrganizationPlan) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsOrganizationPlan(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsOrganizationPlan", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsOrganizationPlan", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsOrganizationProjects to json stream.
-func (o OptionalAppPermissionsOrganizationProjects) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsOrganizationProjects) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsOrganizationProjects from json iterator.
-func (o *OptionalAppPermissionsOrganizationProjects) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsOrganizationProjects) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsOrganizationProjects(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsOrganizationProjects", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsOrganizationProjects", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsOrganizationSecrets to json stream.
-func (o OptionalAppPermissionsOrganizationSecrets) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsOrganizationSecrets) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsOrganizationSecrets from json iterator.
-func (o *OptionalAppPermissionsOrganizationSecrets) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsOrganizationSecrets) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsOrganizationSecrets(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsOrganizationSecrets", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsOrganizationSecrets", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsOrganizationSelfHostedRunners to json stream.
-func (o OptionalAppPermissionsOrganizationSelfHostedRunners) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsOrganizationSelfHostedRunners) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsOrganizationSelfHostedRunners from json iterator.
-func (o *OptionalAppPermissionsOrganizationSelfHostedRunners) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsOrganizationSelfHostedRunners) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsOrganizationSelfHostedRunners(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsOrganizationSelfHostedRunners", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsOrganizationSelfHostedRunners", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsOrganizationUserBlocking to json stream.
-func (o OptionalAppPermissionsOrganizationUserBlocking) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsOrganizationUserBlocking) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsOrganizationUserBlocking from json iterator.
-func (o *OptionalAppPermissionsOrganizationUserBlocking) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsOrganizationUserBlocking) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsOrganizationUserBlocking(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsOrganizationUserBlocking", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsOrganizationUserBlocking", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsPackages to json stream.
-func (o OptionalAppPermissionsPackages) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsPackages) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsPackages from json iterator.
-func (o *OptionalAppPermissionsPackages) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsPackages) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsPackages(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsPackages", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsPackages", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsPages to json stream.
-func (o OptionalAppPermissionsPages) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsPages) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsPages from json iterator.
-func (o *OptionalAppPermissionsPages) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsPages) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsPages(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsPages", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsPages", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsPullRequests to json stream.
-func (o OptionalAppPermissionsPullRequests) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsPullRequests) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsPullRequests from json iterator.
-func (o *OptionalAppPermissionsPullRequests) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsPullRequests) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsPullRequests(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsPullRequests", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsPullRequests", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsRepositoryHooks to json stream.
-func (o OptionalAppPermissionsRepositoryHooks) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsRepositoryHooks) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsRepositoryHooks from json iterator.
-func (o *OptionalAppPermissionsRepositoryHooks) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsRepositoryHooks) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsRepositoryHooks(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsRepositoryHooks", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsRepositoryHooks", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsRepositoryProjects to json stream.
-func (o OptionalAppPermissionsRepositoryProjects) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsRepositoryProjects) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsRepositoryProjects from json iterator.
-func (o *OptionalAppPermissionsRepositoryProjects) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsRepositoryProjects) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsRepositoryProjects(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsRepositoryProjects", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsRepositoryProjects", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsSecretScanningAlerts to json stream.
-func (o OptionalAppPermissionsSecretScanningAlerts) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsSecretScanningAlerts) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsSecretScanningAlerts from json iterator.
-func (o *OptionalAppPermissionsSecretScanningAlerts) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsSecretScanningAlerts) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsSecretScanningAlerts(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsSecretScanningAlerts", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsSecretScanningAlerts", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsSecrets to json stream.
-func (o OptionalAppPermissionsSecrets) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsSecrets) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsSecrets from json iterator.
-func (o *OptionalAppPermissionsSecrets) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsSecrets) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsSecrets(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsSecrets", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsSecrets", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsSecurityEvents to json stream.
-func (o OptionalAppPermissionsSecurityEvents) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsSecurityEvents) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsSecurityEvents from json iterator.
-func (o *OptionalAppPermissionsSecurityEvents) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsSecurityEvents) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsSecurityEvents(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsSecurityEvents", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsSecurityEvents", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsSingleFile to json stream.
-func (o OptionalAppPermissionsSingleFile) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsSingleFile) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsSingleFile from json iterator.
-func (o *OptionalAppPermissionsSingleFile) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsSingleFile) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsSingleFile(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsSingleFile", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsSingleFile", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsStatuses to json stream.
-func (o OptionalAppPermissionsStatuses) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsStatuses) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsStatuses from json iterator.
-func (o *OptionalAppPermissionsStatuses) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsStatuses) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsStatuses(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsStatuses", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsStatuses", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsTeamDiscussions to json stream.
-func (o OptionalAppPermissionsTeamDiscussions) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsTeamDiscussions) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsTeamDiscussions from json iterator.
-func (o *OptionalAppPermissionsTeamDiscussions) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsTeamDiscussions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsTeamDiscussions(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsTeamDiscussions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsTeamDiscussions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsVulnerabilityAlerts to json stream.
-func (o OptionalAppPermissionsVulnerabilityAlerts) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsVulnerabilityAlerts) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsVulnerabilityAlerts from json iterator.
-func (o *OptionalAppPermissionsVulnerabilityAlerts) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsVulnerabilityAlerts) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsVulnerabilityAlerts(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsVulnerabilityAlerts", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsVulnerabilityAlerts", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AppPermissionsWorkflows to json stream.
-func (o OptionalAppPermissionsWorkflows) WriteJSON(j *json.Stream) {
+func (o OptAppPermissionsWorkflows) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AppPermissionsWorkflows from json iterator.
-func (o *OptionalAppPermissionsWorkflows) ReadJSON(i *json.Iterator) error {
+func (o *OptAppPermissionsWorkflows) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AppPermissionsWorkflows(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsWorkflows", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAppPermissionsWorkflows", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AuthenticationTokenRepositorySelection to json stream.
-func (o OptionalAuthenticationTokenRepositorySelection) WriteJSON(j *json.Stream) {
+func (o OptAuthenticationTokenRepositorySelection) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AuthenticationTokenRepositorySelection from json iterator.
-func (o *OptionalAuthenticationTokenRepositorySelection) ReadJSON(i *json.Iterator) error {
+func (o *OptAuthenticationTokenRepositorySelection) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AuthenticationTokenRepositorySelection(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAuthenticationTokenRepositorySelection", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAuthenticationTokenRepositorySelection", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of AuthorAssociation to json stream.
-func (o OptionalAuthorAssociation) WriteJSON(j *json.Stream) {
+func (o OptAuthorAssociation) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of AuthorAssociation from json iterator.
-func (o *OptionalAuthorAssociation) ReadJSON(i *json.Iterator) error {
+func (o *OptAuthorAssociation) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = AuthorAssociation(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalAuthorAssociation", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptAuthorAssociation", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of bool to json stream.
-func (o OptionalBool) WriteJSON(j *json.Stream) {
+func (o OptBool) WriteJSON(j *json.Stream) {
 	j.WriteBool(bool(o.Value))
 }
 
 // ReadJSON reads json value of bool from json iterator.
-func (o *OptionalBool) ReadJSON(i *json.Iterator) error {
+func (o *OptBool) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.BoolValue:
 		o.Set = true
 		o.Value = bool(i.ReadBool())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalBool", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptBool", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of BranchProtection to json stream.
-func (o OptionalBranchProtection) WriteJSON(j *json.Stream) {
+func (o OptBranchProtection) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of BranchProtection from json iterator.
-func (o *OptionalBranchProtection) ReadJSON(i *json.Iterator) error {
+func (o *OptBranchProtection) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30175,18 +30175,18 @@ func (o *OptionalBranchProtection) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalBranchProtection", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptBranchProtection", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of BranchProtectionAllowDeletions to json stream.
-func (o OptionalBranchProtectionAllowDeletions) WriteJSON(j *json.Stream) {
+func (o OptBranchProtectionAllowDeletions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of BranchProtectionAllowDeletions from json iterator.
-func (o *OptionalBranchProtectionAllowDeletions) ReadJSON(i *json.Iterator) error {
+func (o *OptBranchProtectionAllowDeletions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30195,18 +30195,18 @@ func (o *OptionalBranchProtectionAllowDeletions) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalBranchProtectionAllowDeletions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptBranchProtectionAllowDeletions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of BranchProtectionAllowForcePushes to json stream.
-func (o OptionalBranchProtectionAllowForcePushes) WriteJSON(j *json.Stream) {
+func (o OptBranchProtectionAllowForcePushes) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of BranchProtectionAllowForcePushes from json iterator.
-func (o *OptionalBranchProtectionAllowForcePushes) ReadJSON(i *json.Iterator) error {
+func (o *OptBranchProtectionAllowForcePushes) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30215,18 +30215,18 @@ func (o *OptionalBranchProtectionAllowForcePushes) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalBranchProtectionAllowForcePushes", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptBranchProtectionAllowForcePushes", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of BranchProtectionRequiredConversationResolution to json stream.
-func (o OptionalBranchProtectionRequiredConversationResolution) WriteJSON(j *json.Stream) {
+func (o OptBranchProtectionRequiredConversationResolution) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of BranchProtectionRequiredConversationResolution from json iterator.
-func (o *OptionalBranchProtectionRequiredConversationResolution) ReadJSON(i *json.Iterator) error {
+func (o *OptBranchProtectionRequiredConversationResolution) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30235,18 +30235,18 @@ func (o *OptionalBranchProtectionRequiredConversationResolution) ReadJSON(i *jso
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalBranchProtectionRequiredConversationResolution", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptBranchProtectionRequiredConversationResolution", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of BranchProtectionRequiredLinearHistory to json stream.
-func (o OptionalBranchProtectionRequiredLinearHistory) WriteJSON(j *json.Stream) {
+func (o OptBranchProtectionRequiredLinearHistory) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of BranchProtectionRequiredLinearHistory from json iterator.
-func (o *OptionalBranchProtectionRequiredLinearHistory) ReadJSON(i *json.Iterator) error {
+func (o *OptBranchProtectionRequiredLinearHistory) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30255,18 +30255,18 @@ func (o *OptionalBranchProtectionRequiredLinearHistory) ReadJSON(i *json.Iterato
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalBranchProtectionRequiredLinearHistory", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptBranchProtectionRequiredLinearHistory", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of BranchProtectionRequiredSignatures to json stream.
-func (o OptionalBranchProtectionRequiredSignatures) WriteJSON(j *json.Stream) {
+func (o OptBranchProtectionRequiredSignatures) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of BranchProtectionRequiredSignatures from json iterator.
-func (o *OptionalBranchProtectionRequiredSignatures) ReadJSON(i *json.Iterator) error {
+func (o *OptBranchProtectionRequiredSignatures) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30275,18 +30275,18 @@ func (o *OptionalBranchProtectionRequiredSignatures) ReadJSON(i *json.Iterator) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalBranchProtectionRequiredSignatures", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptBranchProtectionRequiredSignatures", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of BranchProtectionRequiredStatusChecks to json stream.
-func (o OptionalBranchProtectionRequiredStatusChecks) WriteJSON(j *json.Stream) {
+func (o OptBranchProtectionRequiredStatusChecks) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of BranchProtectionRequiredStatusChecks from json iterator.
-func (o *OptionalBranchProtectionRequiredStatusChecks) ReadJSON(i *json.Iterator) error {
+func (o *OptBranchProtectionRequiredStatusChecks) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30295,18 +30295,18 @@ func (o *OptionalBranchProtectionRequiredStatusChecks) ReadJSON(i *json.Iterator
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalBranchProtectionRequiredStatusChecks", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptBranchProtectionRequiredStatusChecks", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of BranchRestrictionPolicy to json stream.
-func (o OptionalBranchRestrictionPolicy) WriteJSON(j *json.Stream) {
+func (o OptBranchRestrictionPolicy) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of BranchRestrictionPolicy from json iterator.
-func (o *OptionalBranchRestrictionPolicy) ReadJSON(i *json.Iterator) error {
+func (o *OptBranchRestrictionPolicy) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30315,18 +30315,18 @@ func (o *OptionalBranchRestrictionPolicy) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalBranchRestrictionPolicy", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptBranchRestrictionPolicy", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of BranchRestrictionPolicyAppsItemOwner to json stream.
-func (o OptionalBranchRestrictionPolicyAppsItemOwner) WriteJSON(j *json.Stream) {
+func (o OptBranchRestrictionPolicyAppsItemOwner) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of BranchRestrictionPolicyAppsItemOwner from json iterator.
-func (o *OptionalBranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error {
+func (o *OptBranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30335,18 +30335,18 @@ func (o *OptionalBranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalBranchRestrictionPolicyAppsItemOwner", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptBranchRestrictionPolicyAppsItemOwner", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of BranchRestrictionPolicyAppsItemPermissions to json stream.
-func (o OptionalBranchRestrictionPolicyAppsItemPermissions) WriteJSON(j *json.Stream) {
+func (o OptBranchRestrictionPolicyAppsItemPermissions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of BranchRestrictionPolicyAppsItemPermissions from json iterator.
-func (o *OptionalBranchRestrictionPolicyAppsItemPermissions) ReadJSON(i *json.Iterator) error {
+func (o *OptBranchRestrictionPolicyAppsItemPermissions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30355,18 +30355,18 @@ func (o *OptionalBranchRestrictionPolicyAppsItemPermissions) ReadJSON(i *json.It
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalBranchRestrictionPolicyAppsItemPermissions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptBranchRestrictionPolicyAppsItemPermissions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of CodeOfConduct to json stream.
-func (o OptionalCodeOfConduct) WriteJSON(j *json.Stream) {
+func (o OptCodeOfConduct) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of CodeOfConduct from json iterator.
-func (o *OptionalCodeOfConduct) ReadJSON(i *json.Iterator) error {
+func (o *OptCodeOfConduct) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30375,18 +30375,18 @@ func (o *OptionalCodeOfConduct) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalCodeOfConduct", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptCodeOfConduct", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of CodeOfConductSimple to json stream.
-func (o OptionalCodeOfConductSimple) WriteJSON(j *json.Stream) {
+func (o OptCodeOfConductSimple) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of CodeOfConductSimple from json iterator.
-func (o *OptionalCodeOfConductSimple) ReadJSON(i *json.Iterator) error {
+func (o *OptCodeOfConductSimple) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30395,36 +30395,36 @@ func (o *OptionalCodeOfConductSimple) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalCodeOfConductSimple", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptCodeOfConductSimple", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of CodeScanningAlertDismissedReason to json stream.
-func (o OptionalCodeScanningAlertDismissedReason) WriteJSON(j *json.Stream) {
+func (o OptCodeScanningAlertDismissedReason) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of CodeScanningAlertDismissedReason from json iterator.
-func (o *OptionalCodeScanningAlertDismissedReason) ReadJSON(i *json.Iterator) error {
+func (o *OptCodeScanningAlertDismissedReason) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = CodeScanningAlertDismissedReason(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalCodeScanningAlertDismissedReason", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptCodeScanningAlertDismissedReason", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of CodeScanningAlertInstanceMessage to json stream.
-func (o OptionalCodeScanningAlertInstanceMessage) WriteJSON(j *json.Stream) {
+func (o OptCodeScanningAlertInstanceMessage) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of CodeScanningAlertInstanceMessage from json iterator.
-func (o *OptionalCodeScanningAlertInstanceMessage) ReadJSON(i *json.Iterator) error {
+func (o *OptCodeScanningAlertInstanceMessage) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30433,18 +30433,18 @@ func (o *OptionalCodeScanningAlertInstanceMessage) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalCodeScanningAlertInstanceMessage", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptCodeScanningAlertInstanceMessage", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of CodeScanningAlertLocation to json stream.
-func (o OptionalCodeScanningAlertLocation) WriteJSON(j *json.Stream) {
+func (o OptCodeScanningAlertLocation) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of CodeScanningAlertLocation from json iterator.
-func (o *OptionalCodeScanningAlertLocation) ReadJSON(i *json.Iterator) error {
+func (o *OptCodeScanningAlertLocation) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30453,54 +30453,54 @@ func (o *OptionalCodeScanningAlertLocation) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalCodeScanningAlertLocation", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptCodeScanningAlertLocation", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of CodeScanningAlertState to json stream.
-func (o OptionalCodeScanningAlertState) WriteJSON(j *json.Stream) {
+func (o OptCodeScanningAlertState) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of CodeScanningAlertState from json iterator.
-func (o *OptionalCodeScanningAlertState) ReadJSON(i *json.Iterator) error {
+func (o *OptCodeScanningAlertState) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = CodeScanningAlertState(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalCodeScanningAlertState", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptCodeScanningAlertState", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of CodeScanningSarifsStatusProcessingStatus to json stream.
-func (o OptionalCodeScanningSarifsStatusProcessingStatus) WriteJSON(j *json.Stream) {
+func (o OptCodeScanningSarifsStatusProcessingStatus) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of CodeScanningSarifsStatusProcessingStatus from json iterator.
-func (o *OptionalCodeScanningSarifsStatusProcessingStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptCodeScanningSarifsStatusProcessingStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = CodeScanningSarifsStatusProcessingStatus(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalCodeScanningSarifsStatusProcessingStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptCodeScanningSarifsStatusProcessingStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of CommitStats to json stream.
-func (o OptionalCommitStats) WriteJSON(j *json.Stream) {
+func (o OptCommitStats) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of CommitStats from json iterator.
-func (o *OptionalCommitStats) ReadJSON(i *json.Iterator) error {
+func (o *OptCommitStats) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30509,18 +30509,18 @@ func (o *OptionalCommitStats) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalCommitStats", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptCommitStats", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of DeploymentBranchPolicy to json stream.
-func (o OptionalDeploymentBranchPolicy) WriteJSON(j *json.Stream) {
+func (o OptDeploymentBranchPolicy) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of DeploymentBranchPolicy from json iterator.
-func (o *OptionalDeploymentBranchPolicy) ReadJSON(i *json.Iterator) error {
+func (o *OptDeploymentBranchPolicy) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30529,36 +30529,36 @@ func (o *OptionalDeploymentBranchPolicy) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalDeploymentBranchPolicy", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptDeploymentBranchPolicy", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of DeploymentReviewerType to json stream.
-func (o OptionalDeploymentReviewerType) WriteJSON(j *json.Stream) {
+func (o OptDeploymentReviewerType) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of DeploymentReviewerType from json iterator.
-func (o *OptionalDeploymentReviewerType) ReadJSON(i *json.Iterator) error {
+func (o *OptDeploymentReviewerType) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = DeploymentReviewerType(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalDeploymentReviewerType", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptDeploymentReviewerType", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of DeploymentSimple to json stream.
-func (o OptionalDeploymentSimple) WriteJSON(j *json.Stream) {
+func (o OptDeploymentSimple) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of DeploymentSimple from json iterator.
-func (o *OptionalDeploymentSimple) ReadJSON(i *json.Iterator) error {
+func (o *OptDeploymentSimple) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30567,54 +30567,54 @@ func (o *OptionalDeploymentSimple) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalDeploymentSimple", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptDeploymentSimple", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility to json stream.
-func (o OptionalEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+func (o OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility from json iterator.
-func (o *OptionalEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+func (o *OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility to json stream.
-func (o OptionalEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+func (o OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility from json iterator.
-func (o *OptionalEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+func (o *OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of FileCommitCommitAuthor to json stream.
-func (o OptionalFileCommitCommitAuthor) WriteJSON(j *json.Stream) {
+func (o OptFileCommitCommitAuthor) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of FileCommitCommitAuthor from json iterator.
-func (o *OptionalFileCommitCommitAuthor) ReadJSON(i *json.Iterator) error {
+func (o *OptFileCommitCommitAuthor) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30623,18 +30623,18 @@ func (o *OptionalFileCommitCommitAuthor) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalFileCommitCommitAuthor", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptFileCommitCommitAuthor", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of FileCommitCommitCommitter to json stream.
-func (o OptionalFileCommitCommitCommitter) WriteJSON(j *json.Stream) {
+func (o OptFileCommitCommitCommitter) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of FileCommitCommitCommitter from json iterator.
-func (o *OptionalFileCommitCommitCommitter) ReadJSON(i *json.Iterator) error {
+func (o *OptFileCommitCommitCommitter) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30643,18 +30643,18 @@ func (o *OptionalFileCommitCommitCommitter) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalFileCommitCommitCommitter", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptFileCommitCommitCommitter", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of FileCommitCommitTree to json stream.
-func (o OptionalFileCommitCommitTree) WriteJSON(j *json.Stream) {
+func (o OptFileCommitCommitTree) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of FileCommitCommitTree from json iterator.
-func (o *OptionalFileCommitCommitTree) ReadJSON(i *json.Iterator) error {
+func (o *OptFileCommitCommitTree) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30663,18 +30663,18 @@ func (o *OptionalFileCommitCommitTree) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalFileCommitCommitTree", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptFileCommitCommitTree", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of FileCommitCommitVerification to json stream.
-func (o OptionalFileCommitCommitVerification) WriteJSON(j *json.Stream) {
+func (o OptFileCommitCommitVerification) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of FileCommitCommitVerification from json iterator.
-func (o *OptionalFileCommitCommitVerification) ReadJSON(i *json.Iterator) error {
+func (o *OptFileCommitCommitVerification) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30683,18 +30683,18 @@ func (o *OptionalFileCommitCommitVerification) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalFileCommitCommitVerification", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptFileCommitCommitVerification", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of FileCommitContentLinks to json stream.
-func (o OptionalFileCommitContentLinks) WriteJSON(j *json.Stream) {
+func (o OptFileCommitContentLinks) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of FileCommitContentLinks from json iterator.
-func (o *OptionalFileCommitContentLinks) ReadJSON(i *json.Iterator) error {
+func (o *OptFileCommitContentLinks) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30703,36 +30703,36 @@ func (o *OptionalFileCommitContentLinks) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalFileCommitContentLinks", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptFileCommitContentLinks", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of float64 to json stream.
-func (o OptionalFloat64) WriteJSON(j *json.Stream) {
+func (o OptFloat64) WriteJSON(j *json.Stream) {
 	j.WriteFloat64(float64(o.Value))
 }
 
 // ReadJSON reads json value of float64 from json iterator.
-func (o *OptionalFloat64) ReadJSON(i *json.Iterator) error {
+func (o *OptFloat64) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
 		o.Value = float64(i.ReadFloat64())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalFloat64", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptFloat64", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ForbiddenGistBlock to json stream.
-func (o OptionalForbiddenGistBlock) WriteJSON(j *json.Stream) {
+func (o OptForbiddenGistBlock) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ForbiddenGistBlock from json iterator.
-func (o *OptionalForbiddenGistBlock) ReadJSON(i *json.Iterator) error {
+func (o *OptForbiddenGistBlock) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30741,18 +30741,18 @@ func (o *OptionalForbiddenGistBlock) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalForbiddenGistBlock", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptForbiddenGistBlock", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of FullRepositoryPermissions to json stream.
-func (o OptionalFullRepositoryPermissions) WriteJSON(j *json.Stream) {
+func (o OptFullRepositoryPermissions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of FullRepositoryPermissions from json iterator.
-func (o *OptionalFullRepositoryPermissions) ReadJSON(i *json.Iterator) error {
+func (o *OptFullRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30761,18 +30761,18 @@ func (o *OptionalFullRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalFullRepositoryPermissions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptFullRepositoryPermissions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of FullRepositorySecurityAndAnalysisAdvancedSecurity to json stream.
-func (o OptionalFullRepositorySecurityAndAnalysisAdvancedSecurity) WriteJSON(j *json.Stream) {
+func (o OptFullRepositorySecurityAndAnalysisAdvancedSecurity) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of FullRepositorySecurityAndAnalysisAdvancedSecurity from json iterator.
-func (o *OptionalFullRepositorySecurityAndAnalysisAdvancedSecurity) ReadJSON(i *json.Iterator) error {
+func (o *OptFullRepositorySecurityAndAnalysisAdvancedSecurity) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30781,36 +30781,36 @@ func (o *OptionalFullRepositorySecurityAndAnalysisAdvancedSecurity) ReadJSON(i *
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalFullRepositorySecurityAndAnalysisAdvancedSecurity", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptFullRepositorySecurityAndAnalysisAdvancedSecurity", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of FullRepositorySecurityAndAnalysisAdvancedSecurityStatus to json stream.
-func (o OptionalFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) WriteJSON(j *json.Stream) {
+func (o OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of FullRepositorySecurityAndAnalysisAdvancedSecurityStatus from json iterator.
-func (o *OptionalFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = FullRepositorySecurityAndAnalysisAdvancedSecurityStatus(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalFullRepositorySecurityAndAnalysisAdvancedSecurityStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of FullRepositorySecurityAndAnalysisSecretScanning to json stream.
-func (o OptionalFullRepositorySecurityAndAnalysisSecretScanning) WriteJSON(j *json.Stream) {
+func (o OptFullRepositorySecurityAndAnalysisSecretScanning) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of FullRepositorySecurityAndAnalysisSecretScanning from json iterator.
-func (o *OptionalFullRepositorySecurityAndAnalysisSecretScanning) ReadJSON(i *json.Iterator) error {
+func (o *OptFullRepositorySecurityAndAnalysisSecretScanning) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30819,36 +30819,36 @@ func (o *OptionalFullRepositorySecurityAndAnalysisSecretScanning) ReadJSON(i *js
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalFullRepositorySecurityAndAnalysisSecretScanning", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptFullRepositorySecurityAndAnalysisSecretScanning", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of FullRepositorySecurityAndAnalysisSecretScanningStatus to json stream.
-func (o OptionalFullRepositorySecurityAndAnalysisSecretScanningStatus) WriteJSON(j *json.Stream) {
+func (o OptFullRepositorySecurityAndAnalysisSecretScanningStatus) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of FullRepositorySecurityAndAnalysisSecretScanningStatus from json iterator.
-func (o *OptionalFullRepositorySecurityAndAnalysisSecretScanningStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptFullRepositorySecurityAndAnalysisSecretScanningStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = FullRepositorySecurityAndAnalysisSecretScanningStatus(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalFullRepositorySecurityAndAnalysisSecretScanningStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptFullRepositorySecurityAndAnalysisSecretScanningStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of GistHistoryChangeStatus to json stream.
-func (o OptionalGistHistoryChangeStatus) WriteJSON(j *json.Stream) {
+func (o OptGistHistoryChangeStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of GistHistoryChangeStatus from json iterator.
-func (o *OptionalGistHistoryChangeStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptGistHistoryChangeStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30857,18 +30857,18 @@ func (o *OptionalGistHistoryChangeStatus) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalGistHistoryChangeStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptGistHistoryChangeStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of GitCreateCommitApplicationJSONRequestAuthor to json stream.
-func (o OptionalGitCreateCommitApplicationJSONRequestAuthor) WriteJSON(j *json.Stream) {
+func (o OptGitCreateCommitApplicationJSONRequestAuthor) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of GitCreateCommitApplicationJSONRequestAuthor from json iterator.
-func (o *OptionalGitCreateCommitApplicationJSONRequestAuthor) ReadJSON(i *json.Iterator) error {
+func (o *OptGitCreateCommitApplicationJSONRequestAuthor) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30877,18 +30877,18 @@ func (o *OptionalGitCreateCommitApplicationJSONRequestAuthor) ReadJSON(i *json.I
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalGitCreateCommitApplicationJSONRequestAuthor", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptGitCreateCommitApplicationJSONRequestAuthor", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of GitCreateCommitApplicationJSONRequestCommitter to json stream.
-func (o OptionalGitCreateCommitApplicationJSONRequestCommitter) WriteJSON(j *json.Stream) {
+func (o OptGitCreateCommitApplicationJSONRequestCommitter) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of GitCreateCommitApplicationJSONRequestCommitter from json iterator.
-func (o *OptionalGitCreateCommitApplicationJSONRequestCommitter) ReadJSON(i *json.Iterator) error {
+func (o *OptGitCreateCommitApplicationJSONRequestCommitter) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30897,18 +30897,18 @@ func (o *OptionalGitCreateCommitApplicationJSONRequestCommitter) ReadJSON(i *jso
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalGitCreateCommitApplicationJSONRequestCommitter", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptGitCreateCommitApplicationJSONRequestCommitter", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of GitCreateTagApplicationJSONRequestTagger to json stream.
-func (o OptionalGitCreateTagApplicationJSONRequestTagger) WriteJSON(j *json.Stream) {
+func (o OptGitCreateTagApplicationJSONRequestTagger) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of GitCreateTagApplicationJSONRequestTagger from json iterator.
-func (o *OptionalGitCreateTagApplicationJSONRequestTagger) ReadJSON(i *json.Iterator) error {
+func (o *OptGitCreateTagApplicationJSONRequestTagger) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -30917,126 +30917,126 @@ func (o *OptionalGitCreateTagApplicationJSONRequestTagger) ReadJSON(i *json.Iter
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalGitCreateTagApplicationJSONRequestTagger", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptGitCreateTagApplicationJSONRequestTagger", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of GitCreateTreeApplicationJSONRequestTreeItemMode to json stream.
-func (o OptionalGitCreateTreeApplicationJSONRequestTreeItemMode) WriteJSON(j *json.Stream) {
+func (o OptGitCreateTreeApplicationJSONRequestTreeItemMode) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of GitCreateTreeApplicationJSONRequestTreeItemMode from json iterator.
-func (o *OptionalGitCreateTreeApplicationJSONRequestTreeItemMode) ReadJSON(i *json.Iterator) error {
+func (o *OptGitCreateTreeApplicationJSONRequestTreeItemMode) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = GitCreateTreeApplicationJSONRequestTreeItemMode(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalGitCreateTreeApplicationJSONRequestTreeItemMode", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptGitCreateTreeApplicationJSONRequestTreeItemMode", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of GitCreateTreeApplicationJSONRequestTreeItemType to json stream.
-func (o OptionalGitCreateTreeApplicationJSONRequestTreeItemType) WriteJSON(j *json.Stream) {
+func (o OptGitCreateTreeApplicationJSONRequestTreeItemType) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of GitCreateTreeApplicationJSONRequestTreeItemType from json iterator.
-func (o *OptionalGitCreateTreeApplicationJSONRequestTreeItemType) ReadJSON(i *json.Iterator) error {
+func (o *OptGitCreateTreeApplicationJSONRequestTreeItemType) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = GitCreateTreeApplicationJSONRequestTreeItemType(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalGitCreateTreeApplicationJSONRequestTreeItemType", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptGitCreateTreeApplicationJSONRequestTreeItemType", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of InstallationTokenRepositorySelection to json stream.
-func (o OptionalInstallationTokenRepositorySelection) WriteJSON(j *json.Stream) {
+func (o OptInstallationTokenRepositorySelection) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of InstallationTokenRepositorySelection from json iterator.
-func (o *OptionalInstallationTokenRepositorySelection) ReadJSON(i *json.Iterator) error {
+func (o *OptInstallationTokenRepositorySelection) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = InstallationTokenRepositorySelection(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalInstallationTokenRepositorySelection", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptInstallationTokenRepositorySelection", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of int to json stream.
-func (o OptionalInt) WriteJSON(j *json.Stream) {
+func (o OptInt) WriteJSON(j *json.Stream) {
 	j.WriteInt(int(o.Value))
 }
 
 // ReadJSON reads json value of int from json iterator.
-func (o *OptionalInt) ReadJSON(i *json.Iterator) error {
+func (o *OptInt) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
 		o.Value = int(i.ReadInt())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalInt", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptInt", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of int64 to json stream.
-func (o OptionalInt64) WriteJSON(j *json.Stream) {
+func (o OptInt64) WriteJSON(j *json.Stream) {
 	j.WriteInt64(int64(o.Value))
 }
 
 // ReadJSON reads json value of int64 from json iterator.
-func (o *OptionalInt64) ReadJSON(i *json.Iterator) error {
+func (o *OptInt64) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
 		o.Value = int64(i.ReadInt64())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalInt64", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptInt64", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of InteractionExpiry to json stream.
-func (o OptionalInteractionExpiry) WriteJSON(j *json.Stream) {
+func (o OptInteractionExpiry) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of InteractionExpiry from json iterator.
-func (o *OptionalInteractionExpiry) ReadJSON(i *json.Iterator) error {
+func (o *OptInteractionExpiry) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = InteractionExpiry(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalInteractionExpiry", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptInteractionExpiry", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IssueComment to json stream.
-func (o OptionalIssueComment) WriteJSON(j *json.Stream) {
+func (o OptIssueComment) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IssueComment from json iterator.
-func (o *OptionalIssueComment) ReadJSON(i *json.Iterator) error {
+func (o *OptIssueComment) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31045,18 +31045,18 @@ func (o *OptionalIssueComment) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIssueComment", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIssueComment", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IssueEventDismissedReview to json stream.
-func (o OptionalIssueEventDismissedReview) WriteJSON(j *json.Stream) {
+func (o OptIssueEventDismissedReview) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IssueEventDismissedReview from json iterator.
-func (o *OptionalIssueEventDismissedReview) ReadJSON(i *json.Iterator) error {
+func (o *OptIssueEventDismissedReview) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31065,18 +31065,18 @@ func (o *OptionalIssueEventDismissedReview) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIssueEventDismissedReview", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIssueEventDismissedReview", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IssueEventLabel to json stream.
-func (o OptionalIssueEventLabel) WriteJSON(j *json.Stream) {
+func (o OptIssueEventLabel) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IssueEventLabel from json iterator.
-func (o *OptionalIssueEventLabel) ReadJSON(i *json.Iterator) error {
+func (o *OptIssueEventLabel) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31085,18 +31085,18 @@ func (o *OptionalIssueEventLabel) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIssueEventLabel", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIssueEventLabel", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IssueEventMilestone to json stream.
-func (o OptionalIssueEventMilestone) WriteJSON(j *json.Stream) {
+func (o OptIssueEventMilestone) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IssueEventMilestone from json iterator.
-func (o *OptionalIssueEventMilestone) ReadJSON(i *json.Iterator) error {
+func (o *OptIssueEventMilestone) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31105,18 +31105,18 @@ func (o *OptionalIssueEventMilestone) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIssueEventMilestone", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIssueEventMilestone", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IssueEventProjectCard to json stream.
-func (o OptionalIssueEventProjectCard) WriteJSON(j *json.Stream) {
+func (o OptIssueEventProjectCard) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IssueEventProjectCard from json iterator.
-func (o *OptionalIssueEventProjectCard) ReadJSON(i *json.Iterator) error {
+func (o *OptIssueEventProjectCard) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31125,18 +31125,18 @@ func (o *OptionalIssueEventProjectCard) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIssueEventProjectCard", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIssueEventProjectCard", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IssueEventRename to json stream.
-func (o OptionalIssueEventRename) WriteJSON(j *json.Stream) {
+func (o OptIssueEventRename) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IssueEventRename from json iterator.
-func (o *OptionalIssueEventRename) ReadJSON(i *json.Iterator) error {
+func (o *OptIssueEventRename) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31145,18 +31145,18 @@ func (o *OptionalIssueEventRename) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIssueEventRename", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIssueEventRename", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IssueSimple to json stream.
-func (o OptionalIssueSimple) WriteJSON(j *json.Stream) {
+func (o OptIssueSimple) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IssueSimple from json iterator.
-func (o *OptionalIssueSimple) ReadJSON(i *json.Iterator) error {
+func (o *OptIssueSimple) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31165,18 +31165,18 @@ func (o *OptionalIssueSimple) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIssueSimple", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIssueSimple", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IssueSimplePullRequest to json stream.
-func (o OptionalIssueSimplePullRequest) WriteJSON(j *json.Stream) {
+func (o OptIssueSimplePullRequest) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IssueSimplePullRequest from json iterator.
-func (o *OptionalIssueSimplePullRequest) ReadJSON(i *json.Iterator) error {
+func (o *OptIssueSimplePullRequest) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31185,72 +31185,72 @@ func (o *OptionalIssueSimplePullRequest) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIssueSimplePullRequest", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIssueSimplePullRequest", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IssuesCreateMilestoneApplicationJSONRequestState to json stream.
-func (o OptionalIssuesCreateMilestoneApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+func (o OptIssuesCreateMilestoneApplicationJSONRequestState) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of IssuesCreateMilestoneApplicationJSONRequestState from json iterator.
-func (o *OptionalIssuesCreateMilestoneApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
+func (o *OptIssuesCreateMilestoneApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = IssuesCreateMilestoneApplicationJSONRequestState(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIssuesCreateMilestoneApplicationJSONRequestState", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIssuesCreateMilestoneApplicationJSONRequestState", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IssuesLockApplicationJSONRequestLockReason to json stream.
-func (o OptionalIssuesLockApplicationJSONRequestLockReason) WriteJSON(j *json.Stream) {
+func (o OptIssuesLockApplicationJSONRequestLockReason) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of IssuesLockApplicationJSONRequestLockReason from json iterator.
-func (o *OptionalIssuesLockApplicationJSONRequestLockReason) ReadJSON(i *json.Iterator) error {
+func (o *OptIssuesLockApplicationJSONRequestLockReason) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = IssuesLockApplicationJSONRequestLockReason(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIssuesLockApplicationJSONRequestLockReason", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIssuesLockApplicationJSONRequestLockReason", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IssuesUpdateMilestoneApplicationJSONRequestState to json stream.
-func (o OptionalIssuesUpdateMilestoneApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+func (o OptIssuesUpdateMilestoneApplicationJSONRequestState) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of IssuesUpdateMilestoneApplicationJSONRequestState from json iterator.
-func (o *OptionalIssuesUpdateMilestoneApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
+func (o *OptIssuesUpdateMilestoneApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = IssuesUpdateMilestoneApplicationJSONRequestState(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIssuesUpdateMilestoneApplicationJSONRequestState", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIssuesUpdateMilestoneApplicationJSONRequestState", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of LinkWithType to json stream.
-func (o OptionalLinkWithType) WriteJSON(j *json.Stream) {
+func (o OptLinkWithType) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of LinkWithType from json iterator.
-func (o *OptionalLinkWithType) ReadJSON(i *json.Iterator) error {
+func (o *OptLinkWithType) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31259,36 +31259,36 @@ func (o *OptionalLinkWithType) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalLinkWithType", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptLinkWithType", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of MarkdownRenderApplicationJSONRequestMode to json stream.
-func (o OptionalMarkdownRenderApplicationJSONRequestMode) WriteJSON(j *json.Stream) {
+func (o OptMarkdownRenderApplicationJSONRequestMode) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of MarkdownRenderApplicationJSONRequestMode from json iterator.
-func (o *OptionalMarkdownRenderApplicationJSONRequestMode) ReadJSON(i *json.Iterator) error {
+func (o *OptMarkdownRenderApplicationJSONRequestMode) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = MarkdownRenderApplicationJSONRequestMode(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalMarkdownRenderApplicationJSONRequestMode", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptMarkdownRenderApplicationJSONRequestMode", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of MarketplaceListingPlan to json stream.
-func (o OptionalMarketplaceListingPlan) WriteJSON(j *json.Stream) {
+func (o OptMarketplaceListingPlan) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of MarketplaceListingPlan from json iterator.
-func (o *OptionalMarketplaceListingPlan) ReadJSON(i *json.Iterator) error {
+func (o *OptMarketplaceListingPlan) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31297,54 +31297,54 @@ func (o *OptionalMarketplaceListingPlan) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalMarketplaceListingPlan", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptMarketplaceListingPlan", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of MergedUpstreamMergeType to json stream.
-func (o OptionalMergedUpstreamMergeType) WriteJSON(j *json.Stream) {
+func (o OptMergedUpstreamMergeType) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of MergedUpstreamMergeType from json iterator.
-func (o *OptionalMergedUpstreamMergeType) ReadJSON(i *json.Iterator) error {
+func (o *OptMergedUpstreamMergeType) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = MergedUpstreamMergeType(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalMergedUpstreamMergeType", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptMergedUpstreamMergeType", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of MigrationsStartImportApplicationJSONRequestVcs to json stream.
-func (o OptionalMigrationsStartImportApplicationJSONRequestVcs) WriteJSON(j *json.Stream) {
+func (o OptMigrationsStartImportApplicationJSONRequestVcs) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of MigrationsStartImportApplicationJSONRequestVcs from json iterator.
-func (o *OptionalMigrationsStartImportApplicationJSONRequestVcs) ReadJSON(i *json.Iterator) error {
+func (o *OptMigrationsStartImportApplicationJSONRequestVcs) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = MigrationsStartImportApplicationJSONRequestVcs(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalMigrationsStartImportApplicationJSONRequestVcs", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptMigrationsStartImportApplicationJSONRequestVcs", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of MinimalRepositoryPermissions to json stream.
-func (o OptionalMinimalRepositoryPermissions) WriteJSON(j *json.Stream) {
+func (o OptMinimalRepositoryPermissions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of MinimalRepositoryPermissions from json iterator.
-func (o *OptionalMinimalRepositoryPermissions) ReadJSON(i *json.Iterator) error {
+func (o *OptMinimalRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31353,13 +31353,13 @@ func (o *OptionalMinimalRepositoryPermissions) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalMinimalRepositoryPermissions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptMinimalRepositoryPermissions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of bool to json stream.
-func (o OptionalNilBool) WriteJSON(j *json.Stream) {
+func (o OptNilBool) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -31368,7 +31368,7 @@ func (o OptionalNilBool) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of bool from json iterator.
-func (o *OptionalNilBool) ReadJSON(i *json.Iterator) error {
+func (o *OptNilBool) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.BoolValue:
 		o.Set = true
@@ -31383,13 +31383,13 @@ func (o *OptionalNilBool) ReadJSON(i *json.Iterator) error {
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNilBool", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNilBool", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of CodeScanningAlertRuleSecuritySeverityLevel to json stream.
-func (o OptionalNilCodeScanningAlertRuleSecuritySeverityLevel) WriteJSON(j *json.Stream) {
+func (o OptNilCodeScanningAlertRuleSecuritySeverityLevel) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -31398,7 +31398,7 @@ func (o OptionalNilCodeScanningAlertRuleSecuritySeverityLevel) WriteJSON(j *json
 }
 
 // ReadJSON reads json value of CodeScanningAlertRuleSecuritySeverityLevel from json iterator.
-func (o *OptionalNilCodeScanningAlertRuleSecuritySeverityLevel) ReadJSON(i *json.Iterator) error {
+func (o *OptNilCodeScanningAlertRuleSecuritySeverityLevel) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -31413,13 +31413,13 @@ func (o *OptionalNilCodeScanningAlertRuleSecuritySeverityLevel) ReadJSON(i *json
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNilCodeScanningAlertRuleSecuritySeverityLevel", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNilCodeScanningAlertRuleSecuritySeverityLevel", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of CodeScanningAlertRuleSeverity to json stream.
-func (o OptionalNilCodeScanningAlertRuleSeverity) WriteJSON(j *json.Stream) {
+func (o OptNilCodeScanningAlertRuleSeverity) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -31428,7 +31428,7 @@ func (o OptionalNilCodeScanningAlertRuleSeverity) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of CodeScanningAlertRuleSeverity from json iterator.
-func (o *OptionalNilCodeScanningAlertRuleSeverity) ReadJSON(i *json.Iterator) error {
+func (o *OptNilCodeScanningAlertRuleSeverity) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -31443,13 +31443,13 @@ func (o *OptionalNilCodeScanningAlertRuleSeverity) ReadJSON(i *json.Iterator) er
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNilCodeScanningAlertRuleSeverity", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNilCodeScanningAlertRuleSeverity", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of FullRepositorySecurityAndAnalysis to json stream.
-func (o OptionalNilFullRepositorySecurityAndAnalysis) WriteJSON(j *json.Stream) {
+func (o OptNilFullRepositorySecurityAndAnalysis) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -31458,7 +31458,7 @@ func (o OptionalNilFullRepositorySecurityAndAnalysis) WriteJSON(j *json.Stream) 
 }
 
 // ReadJSON reads json value of FullRepositorySecurityAndAnalysis from json iterator.
-func (o *OptionalNilFullRepositorySecurityAndAnalysis) ReadJSON(i *json.Iterator) error {
+func (o *OptNilFullRepositorySecurityAndAnalysis) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31475,13 +31475,13 @@ func (o *OptionalNilFullRepositorySecurityAndAnalysis) ReadJSON(i *json.Iterator
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNilFullRepositorySecurityAndAnalysis", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNilFullRepositorySecurityAndAnalysis", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of GistSimpleForkOf to json stream.
-func (o OptionalNilGistSimpleForkOf) WriteJSON(j *json.Stream) {
+func (o OptNilGistSimpleForkOf) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -31490,7 +31490,7 @@ func (o OptionalNilGistSimpleForkOf) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of GistSimpleForkOf from json iterator.
-func (o *OptionalNilGistSimpleForkOf) ReadJSON(i *json.Iterator) error {
+func (o *OptNilGistSimpleForkOf) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31507,13 +31507,13 @@ func (o *OptionalNilGistSimpleForkOf) ReadJSON(i *json.Iterator) error {
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNilGistSimpleForkOf", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNilGistSimpleForkOf", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of int to json stream.
-func (o OptionalNilInt) WriteJSON(j *json.Stream) {
+func (o OptNilInt) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -31522,7 +31522,7 @@ func (o OptionalNilInt) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of int from json iterator.
-func (o *OptionalNilInt) ReadJSON(i *json.Iterator) error {
+func (o *OptNilInt) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
@@ -31537,13 +31537,13 @@ func (o *OptionalNilInt) ReadJSON(i *json.Iterator) error {
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNilInt", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNilInt", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of MarketplacePurchaseMarketplacePendingChange to json stream.
-func (o OptionalNilMarketplacePurchaseMarketplacePendingChange) WriteJSON(j *json.Stream) {
+func (o OptNilMarketplacePurchaseMarketplacePendingChange) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -31552,7 +31552,7 @@ func (o OptionalNilMarketplacePurchaseMarketplacePendingChange) WriteJSON(j *jso
 }
 
 // ReadJSON reads json value of MarketplacePurchaseMarketplacePendingChange from json iterator.
-func (o *OptionalNilMarketplacePurchaseMarketplacePendingChange) ReadJSON(i *json.Iterator) error {
+func (o *OptNilMarketplacePurchaseMarketplacePendingChange) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31569,13 +31569,13 @@ func (o *OptionalNilMarketplacePurchaseMarketplacePendingChange) ReadJSON(i *jso
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNilMarketplacePurchaseMarketplacePendingChange", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNilMarketplacePurchaseMarketplacePendingChange", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of MinimalRepositoryLicense to json stream.
-func (o OptionalNilMinimalRepositoryLicense) WriteJSON(j *json.Stream) {
+func (o OptNilMinimalRepositoryLicense) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -31584,7 +31584,7 @@ func (o OptionalNilMinimalRepositoryLicense) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of MinimalRepositoryLicense from json iterator.
-func (o *OptionalNilMinimalRepositoryLicense) ReadJSON(i *json.Iterator) error {
+func (o *OptNilMinimalRepositoryLicense) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31601,13 +31601,13 @@ func (o *OptionalNilMinimalRepositoryLicense) ReadJSON(i *json.Iterator) error {
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNilMinimalRepositoryLicense", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNilMinimalRepositoryLicense", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of NullableRepositoryTemplateRepository to json stream.
-func (o OptionalNilNullableRepositoryTemplateRepository) WriteJSON(j *json.Stream) {
+func (o OptNilNullableRepositoryTemplateRepository) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -31616,7 +31616,7 @@ func (o OptionalNilNullableRepositoryTemplateRepository) WriteJSON(j *json.Strea
 }
 
 // ReadJSON reads json value of NullableRepositoryTemplateRepository from json iterator.
-func (o *OptionalNilNullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
+func (o *OptNilNullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31633,13 +31633,13 @@ func (o *OptionalNilNullableRepositoryTemplateRepository) ReadJSON(i *json.Itera
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNilNullableRepositoryTemplateRepository", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNilNullableRepositoryTemplateRepository", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of PageProtectedDomainState to json stream.
-func (o OptionalNilPageProtectedDomainState) WriteJSON(j *json.Stream) {
+func (o OptNilPageProtectedDomainState) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -31648,7 +31648,7 @@ func (o OptionalNilPageProtectedDomainState) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of PageProtectedDomainState from json iterator.
-func (o *OptionalNilPageProtectedDomainState) ReadJSON(i *json.Iterator) error {
+func (o *OptNilPageProtectedDomainState) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -31663,13 +31663,13 @@ func (o *OptionalNilPageProtectedDomainState) ReadJSON(i *json.Iterator) error {
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNilPageProtectedDomainState", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNilPageProtectedDomainState", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of PagesHealthCheckAltDomain to json stream.
-func (o OptionalNilPagesHealthCheckAltDomain) WriteJSON(j *json.Stream) {
+func (o OptNilPagesHealthCheckAltDomain) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -31678,7 +31678,7 @@ func (o OptionalNilPagesHealthCheckAltDomain) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of PagesHealthCheckAltDomain from json iterator.
-func (o *OptionalNilPagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
+func (o *OptNilPagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31695,13 +31695,13 @@ func (o *OptionalNilPagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error 
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNilPagesHealthCheckAltDomain", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNilPagesHealthCheckAltDomain", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of PullRequestReviewCommentStartSide to json stream.
-func (o OptionalNilPullRequestReviewCommentStartSide) WriteJSON(j *json.Stream) {
+func (o OptNilPullRequestReviewCommentStartSide) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -31710,7 +31710,7 @@ func (o OptionalNilPullRequestReviewCommentStartSide) WriteJSON(j *json.Stream) 
 }
 
 // ReadJSON reads json value of PullRequestReviewCommentStartSide from json iterator.
-func (o *OptionalNilPullRequestReviewCommentStartSide) ReadJSON(i *json.Iterator) error {
+func (o *OptNilPullRequestReviewCommentStartSide) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -31725,13 +31725,13 @@ func (o *OptionalNilPullRequestReviewCommentStartSide) ReadJSON(i *json.Iterator
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNilPullRequestReviewCommentStartSide", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNilPullRequestReviewCommentStartSide", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ReposUpdateApplicationJSONRequestSecurityAndAnalysis to json stream.
-func (o OptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) WriteJSON(j *json.Stream) {
+func (o OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -31740,7 +31740,7 @@ func (o OptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) WriteJS
 }
 
 // ReadJSON reads json value of ReposUpdateApplicationJSONRequestSecurityAndAnalysis from json iterator.
-func (o *OptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) ReadJSON(i *json.Iterator) error {
+func (o *OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31757,13 +31757,13 @@ func (o *OptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) ReadJS
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of RepositoryTemplateRepository to json stream.
-func (o OptionalNilRepositoryTemplateRepository) WriteJSON(j *json.Stream) {
+func (o OptNilRepositoryTemplateRepository) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -31772,7 +31772,7 @@ func (o OptionalNilRepositoryTemplateRepository) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of RepositoryTemplateRepository from json iterator.
-func (o *OptionalNilRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
+func (o *OptNilRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31789,13 +31789,13 @@ func (o *OptionalNilRepositoryTemplateRepository) ReadJSON(i *json.Iterator) err
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNilRepositoryTemplateRepository", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNilRepositoryTemplateRepository", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ReviewCommentStartSide to json stream.
-func (o OptionalNilReviewCommentStartSide) WriteJSON(j *json.Stream) {
+func (o OptNilReviewCommentStartSide) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -31804,7 +31804,7 @@ func (o OptionalNilReviewCommentStartSide) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of ReviewCommentStartSide from json iterator.
-func (o *OptionalNilReviewCommentStartSide) ReadJSON(i *json.Iterator) error {
+func (o *OptNilReviewCommentStartSide) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -31819,13 +31819,13 @@ func (o *OptionalNilReviewCommentStartSide) ReadJSON(i *json.Iterator) error {
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNilReviewCommentStartSide", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNilReviewCommentStartSide", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of string to json stream.
-func (o OptionalNilString) WriteJSON(j *json.Stream) {
+func (o OptNilString) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -31834,7 +31834,7 @@ func (o OptionalNilString) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of string from json iterator.
-func (o *OptionalNilString) ReadJSON(i *json.Iterator) error {
+func (o *OptNilString) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -31849,13 +31849,13 @@ func (o *OptionalNilString) ReadJSON(i *json.Iterator) error {
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNilString", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNilString", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of time.Time to json stream.
-func (o OptionalNilTime) WriteJSON(j *json.Stream, format func(*json.Stream, time.Time)) {
+func (o OptNilTime) WriteJSON(j *json.Stream, format func(*json.Stream, time.Time)) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -31864,7 +31864,7 @@ func (o OptionalNilTime) WriteJSON(j *json.Stream, format func(*json.Stream, tim
 }
 
 // ReadJSON reads json value of time.Time from json iterator.
-func (o *OptionalNilTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (time.Time, error)) error {
+func (o *OptNilTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (time.Time, error)) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -31883,13 +31883,13 @@ func (o *OptionalNilTime) ReadJSON(i *json.Iterator, format func(*json.Iterator)
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNilTime", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNilTime", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of url.URL to json stream.
-func (o OptionalNilURL) WriteJSON(j *json.Stream) {
+func (o OptNilURL) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -31898,7 +31898,7 @@ func (o OptionalNilURL) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of url.URL from json iterator.
-func (o *OptionalNilURL) ReadJSON(i *json.Iterator) error {
+func (o *OptNilURL) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -31917,18 +31917,18 @@ func (o *OptionalNilURL) ReadJSON(i *json.Iterator) error {
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNilURL", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNilURL", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of NullableIntegration to json stream.
-func (o OptionalNullableIntegration) WriteJSON(j *json.Stream) {
+func (o OptNullableIntegration) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of NullableIntegration from json iterator.
-func (o *OptionalNullableIntegration) ReadJSON(i *json.Iterator) error {
+func (o *OptNullableIntegration) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31937,18 +31937,18 @@ func (o *OptionalNullableIntegration) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNullableIntegration", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNullableIntegration", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of NullableRepository to json stream.
-func (o OptionalNullableRepository) WriteJSON(j *json.Stream) {
+func (o OptNullableRepository) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of NullableRepository from json iterator.
-func (o *OptionalNullableRepository) ReadJSON(i *json.Iterator) error {
+func (o *OptNullableRepository) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31957,18 +31957,18 @@ func (o *OptionalNullableRepository) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNullableRepository", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNullableRepository", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of NullableRepositoryPermissions to json stream.
-func (o OptionalNullableRepositoryPermissions) WriteJSON(j *json.Stream) {
+func (o OptNullableRepositoryPermissions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of NullableRepositoryPermissions from json iterator.
-func (o *OptionalNullableRepositoryPermissions) ReadJSON(i *json.Iterator) error {
+func (o *OptNullableRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31977,18 +31977,18 @@ func (o *OptionalNullableRepositoryPermissions) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNullableRepositoryPermissions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNullableRepositoryPermissions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of NullableRepositoryTemplateRepositoryOwner to json stream.
-func (o OptionalNullableRepositoryTemplateRepositoryOwner) WriteJSON(j *json.Stream) {
+func (o OptNullableRepositoryTemplateRepositoryOwner) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of NullableRepositoryTemplateRepositoryOwner from json iterator.
-func (o *OptionalNullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
+func (o *OptNullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -31997,18 +31997,18 @@ func (o *OptionalNullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNullableRepositoryTemplateRepositoryOwner", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNullableRepositoryTemplateRepositoryOwner", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of NullableRepositoryTemplateRepositoryPermissions to json stream.
-func (o OptionalNullableRepositoryTemplateRepositoryPermissions) WriteJSON(j *json.Stream) {
+func (o OptNullableRepositoryTemplateRepositoryPermissions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of NullableRepositoryTemplateRepositoryPermissions from json iterator.
-func (o *OptionalNullableRepositoryTemplateRepositoryPermissions) ReadJSON(i *json.Iterator) error {
+func (o *OptNullableRepositoryTemplateRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32017,18 +32017,18 @@ func (o *OptionalNullableRepositoryTemplateRepositoryPermissions) ReadJSON(i *js
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNullableRepositoryTemplateRepositoryPermissions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNullableRepositoryTemplateRepositoryPermissions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of NullableScopedInstallation to json stream.
-func (o OptionalNullableScopedInstallation) WriteJSON(j *json.Stream) {
+func (o OptNullableScopedInstallation) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of NullableScopedInstallation from json iterator.
-func (o *OptionalNullableScopedInstallation) ReadJSON(i *json.Iterator) error {
+func (o *OptNullableScopedInstallation) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32037,18 +32037,18 @@ func (o *OptionalNullableScopedInstallation) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNullableScopedInstallation", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNullableScopedInstallation", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of NullableSimpleUser to json stream.
-func (o OptionalNullableSimpleUser) WriteJSON(j *json.Stream) {
+func (o OptNullableSimpleUser) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of NullableSimpleUser from json iterator.
-func (o *OptionalNullableSimpleUser) ReadJSON(i *json.Iterator) error {
+func (o *OptNullableSimpleUser) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32057,18 +32057,18 @@ func (o *OptionalNullableSimpleUser) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNullableSimpleUser", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNullableSimpleUser", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of NullableTeamSimple to json stream.
-func (o OptionalNullableTeamSimple) WriteJSON(j *json.Stream) {
+func (o OptNullableTeamSimple) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of NullableTeamSimple from json iterator.
-func (o *OptionalNullableTeamSimple) ReadJSON(i *json.Iterator) error {
+func (o *OptNullableTeamSimple) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32077,18 +32077,18 @@ func (o *OptionalNullableTeamSimple) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNullableTeamSimple", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNullableTeamSimple", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of OrgMembershipPermissions to json stream.
-func (o OptionalOrgMembershipPermissions) WriteJSON(j *json.Stream) {
+func (o OptOrgMembershipPermissions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of OrgMembershipPermissions from json iterator.
-func (o *OptionalOrgMembershipPermissions) ReadJSON(i *json.Iterator) error {
+func (o *OptOrgMembershipPermissions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32097,18 +32097,18 @@ func (o *OptionalOrgMembershipPermissions) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalOrgMembershipPermissions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptOrgMembershipPermissions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of OrganizationFullPlan to json stream.
-func (o OptionalOrganizationFullPlan) WriteJSON(j *json.Stream) {
+func (o OptOrganizationFullPlan) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of OrganizationFullPlan from json iterator.
-func (o *OptionalOrganizationFullPlan) ReadJSON(i *json.Iterator) error {
+func (o *OptOrganizationFullPlan) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32117,90 +32117,90 @@ func (o *OptionalOrganizationFullPlan) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalOrganizationFullPlan", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptOrganizationFullPlan", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of OrgsCreateInvitationApplicationJSONRequestRole to json stream.
-func (o OptionalOrgsCreateInvitationApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
+func (o OptOrgsCreateInvitationApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of OrgsCreateInvitationApplicationJSONRequestRole from json iterator.
-func (o *OptionalOrgsCreateInvitationApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
+func (o *OptOrgsCreateInvitationApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = OrgsCreateInvitationApplicationJSONRequestRole(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalOrgsCreateInvitationApplicationJSONRequestRole", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptOrgsCreateInvitationApplicationJSONRequestRole", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of OrgsSetMembershipForUserApplicationJSONRequestRole to json stream.
-func (o OptionalOrgsSetMembershipForUserApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
+func (o OptOrgsSetMembershipForUserApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of OrgsSetMembershipForUserApplicationJSONRequestRole from json iterator.
-func (o *OptionalOrgsSetMembershipForUserApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
+func (o *OptOrgsSetMembershipForUserApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = OrgsSetMembershipForUserApplicationJSONRequestRole(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalOrgsSetMembershipForUserApplicationJSONRequestRole", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptOrgsSetMembershipForUserApplicationJSONRequestRole", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission to json stream.
-func (o OptionalOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) WriteJSON(j *json.Stream) {
+func (o OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission from json iterator.
-func (o *OptionalOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) ReadJSON(i *json.Iterator) error {
+func (o *OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType to json stream.
-func (o OptionalOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) WriteJSON(j *json.Stream) {
+func (o OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType from json iterator.
-func (o *OptionalOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) ReadJSON(i *json.Iterator) error {
+func (o *OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of PagesHTTPSCertificate to json stream.
-func (o OptionalPagesHTTPSCertificate) WriteJSON(j *json.Stream) {
+func (o OptPagesHTTPSCertificate) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of PagesHTTPSCertificate from json iterator.
-func (o *OptionalPagesHTTPSCertificate) ReadJSON(i *json.Iterator) error {
+func (o *OptPagesHTTPSCertificate) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32209,18 +32209,18 @@ func (o *OptionalPagesHTTPSCertificate) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalPagesHTTPSCertificate", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptPagesHTTPSCertificate", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of PagesHealthCheckDomain to json stream.
-func (o OptionalPagesHealthCheckDomain) WriteJSON(j *json.Stream) {
+func (o OptPagesHealthCheckDomain) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of PagesHealthCheckDomain from json iterator.
-func (o *OptionalPagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
+func (o *OptPagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32229,18 +32229,18 @@ func (o *OptionalPagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalPagesHealthCheckDomain", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptPagesHealthCheckDomain", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of PagesSourceHash to json stream.
-func (o OptionalPagesSourceHash) WriteJSON(j *json.Stream) {
+func (o OptPagesSourceHash) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of PagesSourceHash from json iterator.
-func (o *OptionalPagesSourceHash) ReadJSON(i *json.Iterator) error {
+func (o *OptPagesSourceHash) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32249,18 +32249,18 @@ func (o *OptionalPagesSourceHash) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalPagesSourceHash", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptPagesSourceHash", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of PrivateUserPlan to json stream.
-func (o OptionalPrivateUserPlan) WriteJSON(j *json.Stream) {
+func (o OptPrivateUserPlan) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of PrivateUserPlan from json iterator.
-func (o *OptionalPrivateUserPlan) ReadJSON(i *json.Iterator) error {
+func (o *OptPrivateUserPlan) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32269,72 +32269,72 @@ func (o *OptionalPrivateUserPlan) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalPrivateUserPlan", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptPrivateUserPlan", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ProjectOrganizationPermission to json stream.
-func (o OptionalProjectOrganizationPermission) WriteJSON(j *json.Stream) {
+func (o OptProjectOrganizationPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of ProjectOrganizationPermission from json iterator.
-func (o *OptionalProjectOrganizationPermission) ReadJSON(i *json.Iterator) error {
+func (o *OptProjectOrganizationPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = ProjectOrganizationPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalProjectOrganizationPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptProjectOrganizationPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ProjectsAddCollaboratorApplicationJSONRequestPermission to json stream.
-func (o OptionalProjectsAddCollaboratorApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+func (o OptProjectsAddCollaboratorApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of ProjectsAddCollaboratorApplicationJSONRequestPermission from json iterator.
-func (o *OptionalProjectsAddCollaboratorApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+func (o *OptProjectsAddCollaboratorApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = ProjectsAddCollaboratorApplicationJSONRequestPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalProjectsAddCollaboratorApplicationJSONRequestPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptProjectsAddCollaboratorApplicationJSONRequestPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ProjectsUpdateApplicationJSONRequestOrganizationPermission to json stream.
-func (o OptionalProjectsUpdateApplicationJSONRequestOrganizationPermission) WriteJSON(j *json.Stream) {
+func (o OptProjectsUpdateApplicationJSONRequestOrganizationPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of ProjectsUpdateApplicationJSONRequestOrganizationPermission from json iterator.
-func (o *OptionalProjectsUpdateApplicationJSONRequestOrganizationPermission) ReadJSON(i *json.Iterator) error {
+func (o *OptProjectsUpdateApplicationJSONRequestOrganizationPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = ProjectsUpdateApplicationJSONRequestOrganizationPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalProjectsUpdateApplicationJSONRequestOrganizationPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptProjectsUpdateApplicationJSONRequestOrganizationPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ProtectedBranchAdminEnforced to json stream.
-func (o OptionalProtectedBranchAdminEnforced) WriteJSON(j *json.Stream) {
+func (o OptProtectedBranchAdminEnforced) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ProtectedBranchAdminEnforced from json iterator.
-func (o *OptionalProtectedBranchAdminEnforced) ReadJSON(i *json.Iterator) error {
+func (o *OptProtectedBranchAdminEnforced) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32343,18 +32343,18 @@ func (o *OptionalProtectedBranchAdminEnforced) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchAdminEnforced", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptProtectedBranchAdminEnforced", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ProtectedBranchAllowDeletions to json stream.
-func (o OptionalProtectedBranchAllowDeletions) WriteJSON(j *json.Stream) {
+func (o OptProtectedBranchAllowDeletions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ProtectedBranchAllowDeletions from json iterator.
-func (o *OptionalProtectedBranchAllowDeletions) ReadJSON(i *json.Iterator) error {
+func (o *OptProtectedBranchAllowDeletions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32363,18 +32363,18 @@ func (o *OptionalProtectedBranchAllowDeletions) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchAllowDeletions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptProtectedBranchAllowDeletions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ProtectedBranchAllowForcePushes to json stream.
-func (o OptionalProtectedBranchAllowForcePushes) WriteJSON(j *json.Stream) {
+func (o OptProtectedBranchAllowForcePushes) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ProtectedBranchAllowForcePushes from json iterator.
-func (o *OptionalProtectedBranchAllowForcePushes) ReadJSON(i *json.Iterator) error {
+func (o *OptProtectedBranchAllowForcePushes) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32383,18 +32383,18 @@ func (o *OptionalProtectedBranchAllowForcePushes) ReadJSON(i *json.Iterator) err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchAllowForcePushes", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptProtectedBranchAllowForcePushes", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ProtectedBranchEnforceAdmins to json stream.
-func (o OptionalProtectedBranchEnforceAdmins) WriteJSON(j *json.Stream) {
+func (o OptProtectedBranchEnforceAdmins) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ProtectedBranchEnforceAdmins from json iterator.
-func (o *OptionalProtectedBranchEnforceAdmins) ReadJSON(i *json.Iterator) error {
+func (o *OptProtectedBranchEnforceAdmins) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32403,18 +32403,18 @@ func (o *OptionalProtectedBranchEnforceAdmins) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchEnforceAdmins", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptProtectedBranchEnforceAdmins", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ProtectedBranchPullRequestReview to json stream.
-func (o OptionalProtectedBranchPullRequestReview) WriteJSON(j *json.Stream) {
+func (o OptProtectedBranchPullRequestReview) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ProtectedBranchPullRequestReview from json iterator.
-func (o *OptionalProtectedBranchPullRequestReview) ReadJSON(i *json.Iterator) error {
+func (o *OptProtectedBranchPullRequestReview) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32423,18 +32423,18 @@ func (o *OptionalProtectedBranchPullRequestReview) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchPullRequestReview", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptProtectedBranchPullRequestReview", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ProtectedBranchPullRequestReviewDismissalRestrictions to json stream.
-func (o OptionalProtectedBranchPullRequestReviewDismissalRestrictions) WriteJSON(j *json.Stream) {
+func (o OptProtectedBranchPullRequestReviewDismissalRestrictions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ProtectedBranchPullRequestReviewDismissalRestrictions from json iterator.
-func (o *OptionalProtectedBranchPullRequestReviewDismissalRestrictions) ReadJSON(i *json.Iterator) error {
+func (o *OptProtectedBranchPullRequestReviewDismissalRestrictions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32443,18 +32443,18 @@ func (o *OptionalProtectedBranchPullRequestReviewDismissalRestrictions) ReadJSON
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchPullRequestReviewDismissalRestrictions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptProtectedBranchPullRequestReviewDismissalRestrictions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ProtectedBranchRequiredConversationResolution to json stream.
-func (o OptionalProtectedBranchRequiredConversationResolution) WriteJSON(j *json.Stream) {
+func (o OptProtectedBranchRequiredConversationResolution) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ProtectedBranchRequiredConversationResolution from json iterator.
-func (o *OptionalProtectedBranchRequiredConversationResolution) ReadJSON(i *json.Iterator) error {
+func (o *OptProtectedBranchRequiredConversationResolution) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32463,18 +32463,18 @@ func (o *OptionalProtectedBranchRequiredConversationResolution) ReadJSON(i *json
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchRequiredConversationResolution", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptProtectedBranchRequiredConversationResolution", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ProtectedBranchRequiredLinearHistory to json stream.
-func (o OptionalProtectedBranchRequiredLinearHistory) WriteJSON(j *json.Stream) {
+func (o OptProtectedBranchRequiredLinearHistory) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ProtectedBranchRequiredLinearHistory from json iterator.
-func (o *OptionalProtectedBranchRequiredLinearHistory) ReadJSON(i *json.Iterator) error {
+func (o *OptProtectedBranchRequiredLinearHistory) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32483,18 +32483,18 @@ func (o *OptionalProtectedBranchRequiredLinearHistory) ReadJSON(i *json.Iterator
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchRequiredLinearHistory", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptProtectedBranchRequiredLinearHistory", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ProtectedBranchRequiredPullRequestReviews to json stream.
-func (o OptionalProtectedBranchRequiredPullRequestReviews) WriteJSON(j *json.Stream) {
+func (o OptProtectedBranchRequiredPullRequestReviews) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ProtectedBranchRequiredPullRequestReviews from json iterator.
-func (o *OptionalProtectedBranchRequiredPullRequestReviews) ReadJSON(i *json.Iterator) error {
+func (o *OptProtectedBranchRequiredPullRequestReviews) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32503,18 +32503,18 @@ func (o *OptionalProtectedBranchRequiredPullRequestReviews) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchRequiredPullRequestReviews", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptProtectedBranchRequiredPullRequestReviews", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions to json stream.
-func (o OptionalProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) WriteJSON(j *json.Stream) {
+func (o OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions from json iterator.
-func (o *OptionalProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) ReadJSON(i *json.Iterator) error {
+func (o *OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32523,18 +32523,18 @@ func (o *OptionalProtectedBranchRequiredPullRequestReviewsDismissalRestrictions)
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchRequiredPullRequestReviewsDismissalRestrictions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ProtectedBranchRequiredSignatures to json stream.
-func (o OptionalProtectedBranchRequiredSignatures) WriteJSON(j *json.Stream) {
+func (o OptProtectedBranchRequiredSignatures) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ProtectedBranchRequiredSignatures from json iterator.
-func (o *OptionalProtectedBranchRequiredSignatures) ReadJSON(i *json.Iterator) error {
+func (o *OptProtectedBranchRequiredSignatures) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32543,18 +32543,18 @@ func (o *OptionalProtectedBranchRequiredSignatures) ReadJSON(i *json.Iterator) e
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchRequiredSignatures", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptProtectedBranchRequiredSignatures", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of PublicUser to json stream.
-func (o OptionalPublicUser) WriteJSON(j *json.Stream) {
+func (o OptPublicUser) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of PublicUser from json iterator.
-func (o *OptionalPublicUser) ReadJSON(i *json.Iterator) error {
+func (o *OptPublicUser) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32563,18 +32563,18 @@ func (o *OptionalPublicUser) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalPublicUser", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptPublicUser", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of PublicUserPlan to json stream.
-func (o OptionalPublicUserPlan) WriteJSON(j *json.Stream) {
+func (o OptPublicUserPlan) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of PublicUserPlan from json iterator.
-func (o *OptionalPublicUserPlan) ReadJSON(i *json.Iterator) error {
+func (o *OptPublicUserPlan) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32583,18 +32583,18 @@ func (o *OptionalPublicUserPlan) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalPublicUserPlan", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptPublicUserPlan", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of PullRequestBaseRepoPermissions to json stream.
-func (o OptionalPullRequestBaseRepoPermissions) WriteJSON(j *json.Stream) {
+func (o OptPullRequestBaseRepoPermissions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of PullRequestBaseRepoPermissions from json iterator.
-func (o *OptionalPullRequestBaseRepoPermissions) ReadJSON(i *json.Iterator) error {
+func (o *OptPullRequestBaseRepoPermissions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32603,18 +32603,18 @@ func (o *OptionalPullRequestBaseRepoPermissions) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalPullRequestBaseRepoPermissions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptPullRequestBaseRepoPermissions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of PullRequestHeadRepoPermissions to json stream.
-func (o OptionalPullRequestHeadRepoPermissions) WriteJSON(j *json.Stream) {
+func (o OptPullRequestHeadRepoPermissions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of PullRequestHeadRepoPermissions from json iterator.
-func (o *OptionalPullRequestHeadRepoPermissions) ReadJSON(i *json.Iterator) error {
+func (o *OptPullRequestHeadRepoPermissions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32623,126 +32623,126 @@ func (o *OptionalPullRequestHeadRepoPermissions) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalPullRequestHeadRepoPermissions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptPullRequestHeadRepoPermissions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of PullRequestReviewCommentSide to json stream.
-func (o OptionalPullRequestReviewCommentSide) WriteJSON(j *json.Stream) {
+func (o OptPullRequestReviewCommentSide) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of PullRequestReviewCommentSide from json iterator.
-func (o *OptionalPullRequestReviewCommentSide) ReadJSON(i *json.Iterator) error {
+func (o *OptPullRequestReviewCommentSide) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = PullRequestReviewCommentSide(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalPullRequestReviewCommentSide", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptPullRequestReviewCommentSide", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of PullsCreateReviewApplicationJSONRequestEvent to json stream.
-func (o OptionalPullsCreateReviewApplicationJSONRequestEvent) WriteJSON(j *json.Stream) {
+func (o OptPullsCreateReviewApplicationJSONRequestEvent) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of PullsCreateReviewApplicationJSONRequestEvent from json iterator.
-func (o *OptionalPullsCreateReviewApplicationJSONRequestEvent) ReadJSON(i *json.Iterator) error {
+func (o *OptPullsCreateReviewApplicationJSONRequestEvent) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = PullsCreateReviewApplicationJSONRequestEvent(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalPullsCreateReviewApplicationJSONRequestEvent", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptPullsCreateReviewApplicationJSONRequestEvent", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of PullsCreateReviewCommentApplicationJSONRequestSide to json stream.
-func (o OptionalPullsCreateReviewCommentApplicationJSONRequestSide) WriteJSON(j *json.Stream) {
+func (o OptPullsCreateReviewCommentApplicationJSONRequestSide) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of PullsCreateReviewCommentApplicationJSONRequestSide from json iterator.
-func (o *OptionalPullsCreateReviewCommentApplicationJSONRequestSide) ReadJSON(i *json.Iterator) error {
+func (o *OptPullsCreateReviewCommentApplicationJSONRequestSide) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = PullsCreateReviewCommentApplicationJSONRequestSide(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalPullsCreateReviewCommentApplicationJSONRequestSide", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptPullsCreateReviewCommentApplicationJSONRequestSide", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of PullsCreateReviewCommentApplicationJSONRequestStartSide to json stream.
-func (o OptionalPullsCreateReviewCommentApplicationJSONRequestStartSide) WriteJSON(j *json.Stream) {
+func (o OptPullsCreateReviewCommentApplicationJSONRequestStartSide) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of PullsCreateReviewCommentApplicationJSONRequestStartSide from json iterator.
-func (o *OptionalPullsCreateReviewCommentApplicationJSONRequestStartSide) ReadJSON(i *json.Iterator) error {
+func (o *OptPullsCreateReviewCommentApplicationJSONRequestStartSide) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = PullsCreateReviewCommentApplicationJSONRequestStartSide(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalPullsCreateReviewCommentApplicationJSONRequestStartSide", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptPullsCreateReviewCommentApplicationJSONRequestStartSide", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of PullsMergeApplicationJSONRequestMergeMethod to json stream.
-func (o OptionalPullsMergeApplicationJSONRequestMergeMethod) WriteJSON(j *json.Stream) {
+func (o OptPullsMergeApplicationJSONRequestMergeMethod) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of PullsMergeApplicationJSONRequestMergeMethod from json iterator.
-func (o *OptionalPullsMergeApplicationJSONRequestMergeMethod) ReadJSON(i *json.Iterator) error {
+func (o *OptPullsMergeApplicationJSONRequestMergeMethod) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = PullsMergeApplicationJSONRequestMergeMethod(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalPullsMergeApplicationJSONRequestMergeMethod", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptPullsMergeApplicationJSONRequestMergeMethod", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of PullsUpdateApplicationJSONRequestState to json stream.
-func (o OptionalPullsUpdateApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+func (o OptPullsUpdateApplicationJSONRequestState) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of PullsUpdateApplicationJSONRequestState from json iterator.
-func (o *OptionalPullsUpdateApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
+func (o *OptPullsUpdateApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = PullsUpdateApplicationJSONRequestState(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalPullsUpdateApplicationJSONRequestState", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptPullsUpdateApplicationJSONRequestState", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of RateLimit to json stream.
-func (o OptionalRateLimit) WriteJSON(j *json.Stream) {
+func (o OptRateLimit) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of RateLimit from json iterator.
-func (o *OptionalRateLimit) ReadJSON(i *json.Iterator) error {
+func (o *OptRateLimit) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32751,18 +32751,18 @@ func (o *OptionalRateLimit) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalRateLimit", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptRateLimit", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ReactionRollup to json stream.
-func (o OptionalReactionRollup) WriteJSON(j *json.Stream) {
+func (o OptReactionRollup) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ReactionRollup from json iterator.
-func (o *OptionalReactionRollup) ReadJSON(i *json.Iterator) error {
+func (o *OptReactionRollup) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32771,72 +32771,72 @@ func (o *OptionalReactionRollup) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalReactionRollup", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReactionRollup", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ReposAddCollaboratorApplicationJSONRequestPermission to json stream.
-func (o OptionalReposAddCollaboratorApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+func (o OptReposAddCollaboratorApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of ReposAddCollaboratorApplicationJSONRequestPermission from json iterator.
-func (o *OptionalReposAddCollaboratorApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+func (o *OptReposAddCollaboratorApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = ReposAddCollaboratorApplicationJSONRequestPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalReposAddCollaboratorApplicationJSONRequestPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposAddCollaboratorApplicationJSONRequestPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ReposCreateDeploymentStatusApplicationJSONRequestEnvironment to json stream.
-func (o OptionalReposCreateDeploymentStatusApplicationJSONRequestEnvironment) WriteJSON(j *json.Stream) {
+func (o OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of ReposCreateDeploymentStatusApplicationJSONRequestEnvironment from json iterator.
-func (o *OptionalReposCreateDeploymentStatusApplicationJSONRequestEnvironment) ReadJSON(i *json.Iterator) error {
+func (o *OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = ReposCreateDeploymentStatusApplicationJSONRequestEnvironment(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalReposCreateDeploymentStatusApplicationJSONRequestEnvironment", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ReposCreateInOrgApplicationJSONRequestVisibility to json stream.
-func (o OptionalReposCreateInOrgApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+func (o OptReposCreateInOrgApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of ReposCreateInOrgApplicationJSONRequestVisibility from json iterator.
-func (o *OptionalReposCreateInOrgApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+func (o *OptReposCreateInOrgApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = ReposCreateInOrgApplicationJSONRequestVisibility(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalReposCreateInOrgApplicationJSONRequestVisibility", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposCreateInOrgApplicationJSONRequestVisibility", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor to json stream.
-func (o OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) WriteJSON(j *json.Stream) {
+func (o OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor from json iterator.
-func (o *OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) ReadJSON(i *json.Iterator) error {
+func (o *OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32845,18 +32845,18 @@ func (o *OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) Re
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter to json stream.
-func (o OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) WriteJSON(j *json.Stream) {
+func (o OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter from json iterator.
-func (o *OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) ReadJSON(i *json.Iterator) error {
+func (o *OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32865,36 +32865,36 @@ func (o *OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter)
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ReposCreatePagesSiteApplicationJSONRequestSourcePath to json stream.
-func (o OptionalReposCreatePagesSiteApplicationJSONRequestSourcePath) WriteJSON(j *json.Stream) {
+func (o OptReposCreatePagesSiteApplicationJSONRequestSourcePath) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of ReposCreatePagesSiteApplicationJSONRequestSourcePath from json iterator.
-func (o *OptionalReposCreatePagesSiteApplicationJSONRequestSourcePath) ReadJSON(i *json.Iterator) error {
+func (o *OptReposCreatePagesSiteApplicationJSONRequestSourcePath) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = ReposCreatePagesSiteApplicationJSONRequestSourcePath(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalReposCreatePagesSiteApplicationJSONRequestSourcePath", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposCreatePagesSiteApplicationJSONRequestSourcePath", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ReposDeleteFileApplicationJSONRequestAuthor to json stream.
-func (o OptionalReposDeleteFileApplicationJSONRequestAuthor) WriteJSON(j *json.Stream) {
+func (o OptReposDeleteFileApplicationJSONRequestAuthor) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ReposDeleteFileApplicationJSONRequestAuthor from json iterator.
-func (o *OptionalReposDeleteFileApplicationJSONRequestAuthor) ReadJSON(i *json.Iterator) error {
+func (o *OptReposDeleteFileApplicationJSONRequestAuthor) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32903,18 +32903,18 @@ func (o *OptionalReposDeleteFileApplicationJSONRequestAuthor) ReadJSON(i *json.I
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalReposDeleteFileApplicationJSONRequestAuthor", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposDeleteFileApplicationJSONRequestAuthor", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ReposDeleteFileApplicationJSONRequestCommitter to json stream.
-func (o OptionalReposDeleteFileApplicationJSONRequestCommitter) WriteJSON(j *json.Stream) {
+func (o OptReposDeleteFileApplicationJSONRequestCommitter) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ReposDeleteFileApplicationJSONRequestCommitter from json iterator.
-func (o *OptionalReposDeleteFileApplicationJSONRequestCommitter) ReadJSON(i *json.Iterator) error {
+func (o *OptReposDeleteFileApplicationJSONRequestCommitter) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32923,18 +32923,18 @@ func (o *OptionalReposDeleteFileApplicationJSONRequestCommitter) ReadJSON(i *jso
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalReposDeleteFileApplicationJSONRequestCommitter", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposDeleteFileApplicationJSONRequestCommitter", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity to json stream.
-func (o OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) WriteJSON(j *json.Stream) {
+func (o OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity from json iterator.
-func (o *OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) ReadJSON(i *json.Iterator) error {
+func (o *OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32943,18 +32943,18 @@ func (o *OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSec
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning to json stream.
-func (o OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) WriteJSON(j *json.Stream) {
+func (o OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning from json iterator.
-func (o *OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) ReadJSON(i *json.Iterator) error {
+func (o *OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -32963,36 +32963,36 @@ func (o *OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScann
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ReposUpdateApplicationJSONRequestVisibility to json stream.
-func (o OptionalReposUpdateApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+func (o OptReposUpdateApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of ReposUpdateApplicationJSONRequestVisibility from json iterator.
-func (o *OptionalReposUpdateApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+func (o *OptReposUpdateApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = ReposUpdateApplicationJSONRequestVisibility(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalReposUpdateApplicationJSONRequestVisibility", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposUpdateApplicationJSONRequestVisibility", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions to json stream.
-func (o OptionalReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) WriteJSON(j *json.Stream) {
+func (o OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions from json iterator.
-func (o *OptionalReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) ReadJSON(i *json.Iterator) error {
+func (o *OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33001,36 +33001,36 @@ func (o *OptionalReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRe
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ReposUpdateInvitationApplicationJSONRequestPermissions to json stream.
-func (o OptionalReposUpdateInvitationApplicationJSONRequestPermissions) WriteJSON(j *json.Stream) {
+func (o OptReposUpdateInvitationApplicationJSONRequestPermissions) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of ReposUpdateInvitationApplicationJSONRequestPermissions from json iterator.
-func (o *OptionalReposUpdateInvitationApplicationJSONRequestPermissions) ReadJSON(i *json.Iterator) error {
+func (o *OptReposUpdateInvitationApplicationJSONRequestPermissions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = ReposUpdateInvitationApplicationJSONRequestPermissions(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalReposUpdateInvitationApplicationJSONRequestPermissions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposUpdateInvitationApplicationJSONRequestPermissions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions to json stream.
-func (o OptionalReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) WriteJSON(j *json.Stream) {
+func (o OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions from json iterator.
-func (o *OptionalReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) ReadJSON(i *json.Iterator) error {
+func (o *OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33039,18 +33039,18 @@ func (o *OptionalReposUpdatePullRequestReviewProtectionApplicationJSONRequestDis
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of Repository to json stream.
-func (o OptionalRepository) WriteJSON(j *json.Stream) {
+func (o OptRepository) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of Repository from json iterator.
-func (o *OptionalRepository) ReadJSON(i *json.Iterator) error {
+func (o *OptRepository) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33059,18 +33059,18 @@ func (o *OptionalRepository) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalRepository", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptRepository", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of RepositoryPermissions to json stream.
-func (o OptionalRepositoryPermissions) WriteJSON(j *json.Stream) {
+func (o OptRepositoryPermissions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of RepositoryPermissions from json iterator.
-func (o *OptionalRepositoryPermissions) ReadJSON(i *json.Iterator) error {
+func (o *OptRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33079,18 +33079,18 @@ func (o *OptionalRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalRepositoryPermissions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptRepositoryPermissions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of RepositoryTemplateRepositoryOwner to json stream.
-func (o OptionalRepositoryTemplateRepositoryOwner) WriteJSON(j *json.Stream) {
+func (o OptRepositoryTemplateRepositoryOwner) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of RepositoryTemplateRepositoryOwner from json iterator.
-func (o *OptionalRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
+func (o *OptRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33099,18 +33099,18 @@ func (o *OptionalRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) e
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalRepositoryTemplateRepositoryOwner", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptRepositoryTemplateRepositoryOwner", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of RepositoryTemplateRepositoryPermissions to json stream.
-func (o OptionalRepositoryTemplateRepositoryPermissions) WriteJSON(j *json.Stream) {
+func (o OptRepositoryTemplateRepositoryPermissions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of RepositoryTemplateRepositoryPermissions from json iterator.
-func (o *OptionalRepositoryTemplateRepositoryPermissions) ReadJSON(i *json.Iterator) error {
+func (o *OptRepositoryTemplateRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33119,54 +33119,54 @@ func (o *OptionalRepositoryTemplateRepositoryPermissions) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalRepositoryTemplateRepositoryPermissions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptRepositoryTemplateRepositoryPermissions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ReviewCommentSide to json stream.
-func (o OptionalReviewCommentSide) WriteJSON(j *json.Stream) {
+func (o OptReviewCommentSide) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of ReviewCommentSide from json iterator.
-func (o *OptionalReviewCommentSide) ReadJSON(i *json.Iterator) error {
+func (o *OptReviewCommentSide) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = ReviewCommentSide(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalReviewCommentSide", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptReviewCommentSide", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of RunnerLabelsItemType to json stream.
-func (o OptionalRunnerLabelsItemType) WriteJSON(j *json.Stream) {
+func (o OptRunnerLabelsItemType) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of RunnerLabelsItemType from json iterator.
-func (o *OptionalRunnerLabelsItemType) ReadJSON(i *json.Iterator) error {
+func (o *OptRunnerLabelsItemType) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = RunnerLabelsItemType(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalRunnerLabelsItemType", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptRunnerLabelsItemType", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ScimEnterpriseGroupMeta to json stream.
-func (o OptionalScimEnterpriseGroupMeta) WriteJSON(j *json.Stream) {
+func (o OptScimEnterpriseGroupMeta) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ScimEnterpriseGroupMeta from json iterator.
-func (o *OptionalScimEnterpriseGroupMeta) ReadJSON(i *json.Iterator) error {
+func (o *OptScimEnterpriseGroupMeta) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33175,18 +33175,18 @@ func (o *OptionalScimEnterpriseGroupMeta) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalScimEnterpriseGroupMeta", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptScimEnterpriseGroupMeta", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ScimEnterpriseUserMeta to json stream.
-func (o OptionalScimEnterpriseUserMeta) WriteJSON(j *json.Stream) {
+func (o OptScimEnterpriseUserMeta) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ScimEnterpriseUserMeta from json iterator.
-func (o *OptionalScimEnterpriseUserMeta) ReadJSON(i *json.Iterator) error {
+func (o *OptScimEnterpriseUserMeta) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33195,18 +33195,18 @@ func (o *OptionalScimEnterpriseUserMeta) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalScimEnterpriseUserMeta", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptScimEnterpriseUserMeta", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ScimEnterpriseUserName to json stream.
-func (o OptionalScimEnterpriseUserName) WriteJSON(j *json.Stream) {
+func (o OptScimEnterpriseUserName) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ScimEnterpriseUserName from json iterator.
-func (o *OptionalScimEnterpriseUserName) ReadJSON(i *json.Iterator) error {
+func (o *OptScimEnterpriseUserName) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33215,18 +33215,18 @@ func (o *OptionalScimEnterpriseUserName) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalScimEnterpriseUserName", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptScimEnterpriseUserName", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ScimGroupListEnterpriseResourcesItemMeta to json stream.
-func (o OptionalScimGroupListEnterpriseResourcesItemMeta) WriteJSON(j *json.Stream) {
+func (o OptScimGroupListEnterpriseResourcesItemMeta) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ScimGroupListEnterpriseResourcesItemMeta from json iterator.
-func (o *OptionalScimGroupListEnterpriseResourcesItemMeta) ReadJSON(i *json.Iterator) error {
+func (o *OptScimGroupListEnterpriseResourcesItemMeta) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33235,18 +33235,18 @@ func (o *OptionalScimGroupListEnterpriseResourcesItemMeta) ReadJSON(i *json.Iter
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalScimGroupListEnterpriseResourcesItemMeta", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptScimGroupListEnterpriseResourcesItemMeta", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ScimUserListEnterpriseResourcesItemMeta to json stream.
-func (o OptionalScimUserListEnterpriseResourcesItemMeta) WriteJSON(j *json.Stream) {
+func (o OptScimUserListEnterpriseResourcesItemMeta) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ScimUserListEnterpriseResourcesItemMeta from json iterator.
-func (o *OptionalScimUserListEnterpriseResourcesItemMeta) ReadJSON(i *json.Iterator) error {
+func (o *OptScimUserListEnterpriseResourcesItemMeta) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33255,18 +33255,18 @@ func (o *OptionalScimUserListEnterpriseResourcesItemMeta) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalScimUserListEnterpriseResourcesItemMeta", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptScimUserListEnterpriseResourcesItemMeta", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of ScimUserListEnterpriseResourcesItemName to json stream.
-func (o OptionalScimUserListEnterpriseResourcesItemName) WriteJSON(j *json.Stream) {
+func (o OptScimUserListEnterpriseResourcesItemName) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of ScimUserListEnterpriseResourcesItemName from json iterator.
-func (o *OptionalScimUserListEnterpriseResourcesItemName) ReadJSON(i *json.Iterator) error {
+func (o *OptScimUserListEnterpriseResourcesItemName) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33275,54 +33275,54 @@ func (o *OptionalScimUserListEnterpriseResourcesItemName) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalScimUserListEnterpriseResourcesItemName", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptScimUserListEnterpriseResourcesItemName", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of SecretScanningAlertResolution to json stream.
-func (o OptionalSecretScanningAlertResolution) WriteJSON(j *json.Stream) {
+func (o OptSecretScanningAlertResolution) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of SecretScanningAlertResolution from json iterator.
-func (o *OptionalSecretScanningAlertResolution) ReadJSON(i *json.Iterator) error {
+func (o *OptSecretScanningAlertResolution) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = SecretScanningAlertResolution(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalSecretScanningAlertResolution", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptSecretScanningAlertResolution", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of SecretScanningAlertState to json stream.
-func (o OptionalSecretScanningAlertState) WriteJSON(j *json.Stream) {
+func (o OptSecretScanningAlertState) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of SecretScanningAlertState from json iterator.
-func (o *OptionalSecretScanningAlertState) ReadJSON(i *json.Iterator) error {
+func (o *OptSecretScanningAlertState) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = SecretScanningAlertState(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalSecretScanningAlertState", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptSecretScanningAlertState", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of SimpleUser to json stream.
-func (o OptionalSimpleUser) WriteJSON(j *json.Stream) {
+func (o OptSimpleUser) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of SimpleUser from json iterator.
-func (o *OptionalSimpleUser) ReadJSON(i *json.Iterator) error {
+func (o *OptSimpleUser) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33331,18 +33331,18 @@ func (o *OptionalSimpleUser) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalSimpleUser", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptSimpleUser", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of StatusCheckPolicy to json stream.
-func (o OptionalStatusCheckPolicy) WriteJSON(j *json.Stream) {
+func (o OptStatusCheckPolicy) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of StatusCheckPolicy from json iterator.
-func (o *OptionalStatusCheckPolicy) ReadJSON(i *json.Iterator) error {
+func (o *OptStatusCheckPolicy) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33351,36 +33351,36 @@ func (o *OptionalStatusCheckPolicy) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalStatusCheckPolicy", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptStatusCheckPolicy", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of string to json stream.
-func (o OptionalString) WriteJSON(j *json.Stream) {
+func (o OptString) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of string from json iterator.
-func (o *OptionalString) ReadJSON(i *json.Iterator) error {
+func (o *OptString) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = string(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalString", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptString", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of Team to json stream.
-func (o OptionalTeam) WriteJSON(j *json.Stream) {
+func (o OptTeam) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of Team from json iterator.
-func (o *OptionalTeam) ReadJSON(i *json.Iterator) error {
+func (o *OptTeam) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33389,36 +33389,36 @@ func (o *OptionalTeam) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalTeam", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeam", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of TeamFullPrivacy to json stream.
-func (o OptionalTeamFullPrivacy) WriteJSON(j *json.Stream) {
+func (o OptTeamFullPrivacy) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of TeamFullPrivacy from json iterator.
-func (o *OptionalTeamFullPrivacy) ReadJSON(i *json.Iterator) error {
+func (o *OptTeamFullPrivacy) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = TeamFullPrivacy(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalTeamFullPrivacy", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamFullPrivacy", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of TeamPermissions to json stream.
-func (o OptionalTeamPermissions) WriteJSON(j *json.Stream) {
+func (o OptTeamPermissions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of TeamPermissions from json iterator.
-func (o *OptionalTeamPermissions) ReadJSON(i *json.Iterator) error {
+func (o *OptTeamPermissions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33427,18 +33427,18 @@ func (o *OptionalTeamPermissions) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalTeamPermissions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamPermissions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of TeamRepositoryPermissions to json stream.
-func (o OptionalTeamRepositoryPermissions) WriteJSON(j *json.Stream) {
+func (o OptTeamRepositoryPermissions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of TeamRepositoryPermissions from json iterator.
-func (o *OptionalTeamRepositoryPermissions) ReadJSON(i *json.Iterator) error {
+func (o *OptTeamRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33447,234 +33447,234 @@ func (o *OptionalTeamRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalTeamRepositoryPermissions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamRepositoryPermissions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole to json stream.
-func (o OptionalTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
+func (o OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole from json iterator.
-func (o *OptionalTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
+func (o *OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole to json stream.
-func (o OptionalTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
+func (o OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole from json iterator.
-func (o *OptionalTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
+func (o *OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission to json stream.
-func (o OptionalTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+func (o OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission from json iterator.
-func (o *OptionalTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+func (o *OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission to json stream.
-func (o OptionalTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+func (o OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission from json iterator.
-func (o *OptionalTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+func (o *OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission to json stream.
-func (o OptionalTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+func (o OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission from json iterator.
-func (o *OptionalTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+func (o *OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission to json stream.
-func (o OptionalTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+func (o OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission from json iterator.
-func (o *OptionalTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+func (o *OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of TeamsCreateApplicationJSONRequestPermission to json stream.
-func (o OptionalTeamsCreateApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+func (o OptTeamsCreateApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of TeamsCreateApplicationJSONRequestPermission from json iterator.
-func (o *OptionalTeamsCreateApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+func (o *OptTeamsCreateApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = TeamsCreateApplicationJSONRequestPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalTeamsCreateApplicationJSONRequestPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsCreateApplicationJSONRequestPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of TeamsCreateApplicationJSONRequestPrivacy to json stream.
-func (o OptionalTeamsCreateApplicationJSONRequestPrivacy) WriteJSON(j *json.Stream) {
+func (o OptTeamsCreateApplicationJSONRequestPrivacy) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of TeamsCreateApplicationJSONRequestPrivacy from json iterator.
-func (o *OptionalTeamsCreateApplicationJSONRequestPrivacy) ReadJSON(i *json.Iterator) error {
+func (o *OptTeamsCreateApplicationJSONRequestPrivacy) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = TeamsCreateApplicationJSONRequestPrivacy(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalTeamsCreateApplicationJSONRequestPrivacy", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsCreateApplicationJSONRequestPrivacy", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of TeamsUpdateInOrgApplicationJSONRequestPermission to json stream.
-func (o OptionalTeamsUpdateInOrgApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+func (o OptTeamsUpdateInOrgApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of TeamsUpdateInOrgApplicationJSONRequestPermission from json iterator.
-func (o *OptionalTeamsUpdateInOrgApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+func (o *OptTeamsUpdateInOrgApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = TeamsUpdateInOrgApplicationJSONRequestPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalTeamsUpdateInOrgApplicationJSONRequestPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsUpdateInOrgApplicationJSONRequestPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of TeamsUpdateInOrgApplicationJSONRequestPrivacy to json stream.
-func (o OptionalTeamsUpdateInOrgApplicationJSONRequestPrivacy) WriteJSON(j *json.Stream) {
+func (o OptTeamsUpdateInOrgApplicationJSONRequestPrivacy) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of TeamsUpdateInOrgApplicationJSONRequestPrivacy from json iterator.
-func (o *OptionalTeamsUpdateInOrgApplicationJSONRequestPrivacy) ReadJSON(i *json.Iterator) error {
+func (o *OptTeamsUpdateInOrgApplicationJSONRequestPrivacy) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = TeamsUpdateInOrgApplicationJSONRequestPrivacy(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalTeamsUpdateInOrgApplicationJSONRequestPrivacy", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsUpdateInOrgApplicationJSONRequestPrivacy", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of TeamsUpdateLegacyApplicationJSONRequestPermission to json stream.
-func (o OptionalTeamsUpdateLegacyApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+func (o OptTeamsUpdateLegacyApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of TeamsUpdateLegacyApplicationJSONRequestPermission from json iterator.
-func (o *OptionalTeamsUpdateLegacyApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+func (o *OptTeamsUpdateLegacyApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = TeamsUpdateLegacyApplicationJSONRequestPermission(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalTeamsUpdateLegacyApplicationJSONRequestPermission", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsUpdateLegacyApplicationJSONRequestPermission", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of TeamsUpdateLegacyApplicationJSONRequestPrivacy to json stream.
-func (o OptionalTeamsUpdateLegacyApplicationJSONRequestPrivacy) WriteJSON(j *json.Stream) {
+func (o OptTeamsUpdateLegacyApplicationJSONRequestPrivacy) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of TeamsUpdateLegacyApplicationJSONRequestPrivacy from json iterator.
-func (o *OptionalTeamsUpdateLegacyApplicationJSONRequestPrivacy) ReadJSON(i *json.Iterator) error {
+func (o *OptTeamsUpdateLegacyApplicationJSONRequestPrivacy) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = TeamsUpdateLegacyApplicationJSONRequestPrivacy(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalTeamsUpdateLegacyApplicationJSONRequestPrivacy", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTeamsUpdateLegacyApplicationJSONRequestPrivacy", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of time.Time to json stream.
-func (o OptionalTime) WriteJSON(j *json.Stream, format func(*json.Stream, time.Time)) {
+func (o OptTime) WriteJSON(j *json.Stream, format func(*json.Stream, time.Time)) {
 	format(j, o.Value)
 }
 
 // ReadJSON reads json value of time.Time from json iterator.
-func (o *OptionalTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (time.Time, error)) error {
+func (o *OptTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (time.Time, error)) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -33685,18 +33685,18 @@ func (o *OptionalTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (t
 		o.Value = v
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalTime", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTime", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of TopicSearchResultItemAliasesItemTopicRelation to json stream.
-func (o OptionalTopicSearchResultItemAliasesItemTopicRelation) WriteJSON(j *json.Stream) {
+func (o OptTopicSearchResultItemAliasesItemTopicRelation) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of TopicSearchResultItemAliasesItemTopicRelation from json iterator.
-func (o *OptionalTopicSearchResultItemAliasesItemTopicRelation) ReadJSON(i *json.Iterator) error {
+func (o *OptTopicSearchResultItemAliasesItemTopicRelation) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33705,18 +33705,18 @@ func (o *OptionalTopicSearchResultItemAliasesItemTopicRelation) ReadJSON(i *json
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalTopicSearchResultItemAliasesItemTopicRelation", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTopicSearchResultItemAliasesItemTopicRelation", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of TopicSearchResultItemRelatedItemTopicRelation to json stream.
-func (o OptionalTopicSearchResultItemRelatedItemTopicRelation) WriteJSON(j *json.Stream) {
+func (o OptTopicSearchResultItemRelatedItemTopicRelation) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of TopicSearchResultItemRelatedItemTopicRelation from json iterator.
-func (o *OptionalTopicSearchResultItemRelatedItemTopicRelation) ReadJSON(i *json.Iterator) error {
+func (o *OptTopicSearchResultItemRelatedItemTopicRelation) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33725,18 +33725,18 @@ func (o *OptionalTopicSearchResultItemRelatedItemTopicRelation) ReadJSON(i *json
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalTopicSearchResultItemRelatedItemTopicRelation", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTopicSearchResultItemRelatedItemTopicRelation", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of url.URL to json stream.
-func (o OptionalURL) WriteJSON(j *json.Stream) {
+func (o OptURL) WriteJSON(j *json.Stream) {
 	json.WriteURI(j, o.Value)
 }
 
 // ReadJSON reads json value of url.URL from json iterator.
-func (o *OptionalURL) ReadJSON(i *json.Iterator) error {
+func (o *OptURL) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -33747,18 +33747,18 @@ func (o *OptionalURL) ReadJSON(i *json.Iterator) error {
 		o.Value = v
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalURL", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptURL", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of Verification to json stream.
-func (o OptionalVerification) WriteJSON(j *json.Stream) {
+func (o OptVerification) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of Verification from json iterator.
-func (o *OptionalVerification) ReadJSON(i *json.Iterator) error {
+func (o *OptVerification) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33767,18 +33767,18 @@ func (o *OptionalVerification) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalVerification", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptVerification", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of WorkflowRunUsageBillableMACOS to json stream.
-func (o OptionalWorkflowRunUsageBillableMACOS) WriteJSON(j *json.Stream) {
+func (o OptWorkflowRunUsageBillableMACOS) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of WorkflowRunUsageBillableMACOS from json iterator.
-func (o *OptionalWorkflowRunUsageBillableMACOS) ReadJSON(i *json.Iterator) error {
+func (o *OptWorkflowRunUsageBillableMACOS) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33787,18 +33787,18 @@ func (o *OptionalWorkflowRunUsageBillableMACOS) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalWorkflowRunUsageBillableMACOS", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptWorkflowRunUsageBillableMACOS", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of WorkflowRunUsageBillableUBUNTU to json stream.
-func (o OptionalWorkflowRunUsageBillableUBUNTU) WriteJSON(j *json.Stream) {
+func (o OptWorkflowRunUsageBillableUBUNTU) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of WorkflowRunUsageBillableUBUNTU from json iterator.
-func (o *OptionalWorkflowRunUsageBillableUBUNTU) ReadJSON(i *json.Iterator) error {
+func (o *OptWorkflowRunUsageBillableUBUNTU) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33807,18 +33807,18 @@ func (o *OptionalWorkflowRunUsageBillableUBUNTU) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalWorkflowRunUsageBillableUBUNTU", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptWorkflowRunUsageBillableUBUNTU", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of WorkflowRunUsageBillableWINDOWS to json stream.
-func (o OptionalWorkflowRunUsageBillableWINDOWS) WriteJSON(j *json.Stream) {
+func (o OptWorkflowRunUsageBillableWINDOWS) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of WorkflowRunUsageBillableWINDOWS from json iterator.
-func (o *OptionalWorkflowRunUsageBillableWINDOWS) ReadJSON(i *json.Iterator) error {
+func (o *OptWorkflowRunUsageBillableWINDOWS) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -33827,7 +33827,7 @@ func (o *OptionalWorkflowRunUsageBillableWINDOWS) ReadJSON(i *json.Iterator) err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalWorkflowRunUsageBillableWINDOWS", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptWorkflowRunUsageBillableWINDOWS", i.WhatIsNext())
 	}
 	return nil
 }

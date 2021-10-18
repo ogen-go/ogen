@@ -52,29 +52,29 @@ var (
 
 // Balloon describes #/components/schemas/Balloon.
 type Balloon struct {
-	AmountMib             int         `json:"amount_mib"`
-	DeflateOnOom          bool        `json:"deflate_on_oom"`
-	StatsPollingIntervalS OptionalInt `json:"stats_polling_interval_s"`
+	AmountMib             int    `json:"amount_mib"`
+	DeflateOnOom          bool   `json:"deflate_on_oom"`
+	StatsPollingIntervalS OptInt `json:"stats_polling_interval_s"`
 }
 
 func (*Balloon) describeBalloonConfigResponse() {}
 
 // BalloonStats describes #/components/schemas/BalloonStats.
 type BalloonStats struct {
-	ActualMib          int           `json:"actual_mib"`
-	ActualPages        int           `json:"actual_pages"`
-	AvailableMemory    OptionalInt64 `json:"available_memory"`
-	DiskCaches         OptionalInt64 `json:"disk_caches"`
-	FreeMemory         OptionalInt64 `json:"free_memory"`
-	HugetlbAllocations OptionalInt64 `json:"hugetlb_allocations"`
-	HugetlbFailures    OptionalInt64 `json:"hugetlb_failures"`
-	MajorFaults        OptionalInt64 `json:"major_faults"`
-	MinorFaults        OptionalInt64 `json:"minor_faults"`
-	SwapIn             OptionalInt64 `json:"swap_in"`
-	SwapOut            OptionalInt64 `json:"swap_out"`
-	TargetMib          int           `json:"target_mib"`
-	TargetPages        int           `json:"target_pages"`
-	TotalMemory        OptionalInt64 `json:"total_memory"`
+	ActualMib          int      `json:"actual_mib"`
+	ActualPages        int      `json:"actual_pages"`
+	AvailableMemory    OptInt64 `json:"available_memory"`
+	DiskCaches         OptInt64 `json:"disk_caches"`
+	FreeMemory         OptInt64 `json:"free_memory"`
+	HugetlbAllocations OptInt64 `json:"hugetlb_allocations"`
+	HugetlbFailures    OptInt64 `json:"hugetlb_failures"`
+	MajorFaults        OptInt64 `json:"major_faults"`
+	MinorFaults        OptInt64 `json:"minor_faults"`
+	SwapIn             OptInt64 `json:"swap_in"`
+	SwapOut            OptInt64 `json:"swap_out"`
+	TargetMib          int      `json:"target_mib"`
+	TargetPages        int      `json:"target_pages"`
+	TotalMemory        OptInt64 `json:"total_memory"`
 }
 
 func (*BalloonStats) describeBalloonStatsResponse() {}
@@ -91,9 +91,9 @@ type BalloonUpdate struct {
 
 // BootSource describes #/components/schemas/BootSource.
 type BootSource struct {
-	BootArgs        OptionalString `json:"boot_args"`
-	InitrdPath      OptionalString `json:"initrd_path"`
-	KernelImagePath string         `json:"kernel_image_path"`
+	BootArgs        OptString `json:"boot_args"`
+	InitrdPath      OptString `json:"initrd_path"`
+	KernelImagePath string    `json:"kernel_image_path"`
 }
 
 type CpuTemplate string
@@ -113,18 +113,18 @@ func (*CreateSyncActionNoContent) createSyncActionResponse() {}
 
 // Drive describes #/components/schemas/Drive.
 type Drive struct {
-	CacheType    OptionalString      `json:"cache_type"`
-	DriveID      string              `json:"drive_id"`
-	IsReadOnly   bool                `json:"is_read_only"`
-	IsRootDevice bool                `json:"is_root_device"`
-	Partuuid     OptionalString      `json:"partuuid"`
-	PathOnHost   string              `json:"path_on_host"`
-	RateLimiter  OptionalRateLimiter `json:"rate_limiter"`
+	CacheType    OptString      `json:"cache_type"`
+	DriveID      string         `json:"drive_id"`
+	IsReadOnly   bool           `json:"is_read_only"`
+	IsRootDevice bool           `json:"is_root_device"`
+	Partuuid     OptString      `json:"partuuid"`
+	PathOnHost   string         `json:"path_on_host"`
+	RateLimiter  OptRateLimiter `json:"rate_limiter"`
 }
 
 // Error describes #/components/schemas/Error.
 type Error struct {
-	FaultMessage OptionalString `json:"fault_message"`
+	FaultMessage OptString `json:"fault_message"`
 }
 
 func (*Error) createSnapshotResponse()                 {}
@@ -185,15 +185,15 @@ func (*ErrorStatusCode) putMetricsResponse()                     {}
 
 // FullVmConfiguration describes #/components/schemas/FullVmConfiguration.
 type FullVmConfiguration struct {
-	BalloonDevice OptionalBalloon              `json:"balloon_device"`
-	BlockDevices  *[]Drive                     `json:"block_devices"`
-	BootSource    OptionalBootSource           `json:"boot_source"`
-	Logger        OptionalLogger               `json:"logger"`
-	MachineConfig OptionalMachineConfiguration `json:"machine_config"`
-	Metrics       OptionalMetrics              `json:"metrics"`
-	MmdsConfig    OptionalMmdsConfig           `json:"mmds_config"`
-	NetDevices    *[]NetworkInterface          `json:"net_devices"`
-	VsockDevice   OptionalVsock                `json:"vsock_device"`
+	BalloonDevice OptBalloon              `json:"balloon_device"`
+	BlockDevices  *[]Drive                `json:"block_devices"`
+	BootSource    OptBootSource           `json:"boot_source"`
+	Logger        OptLogger               `json:"logger"`
+	MachineConfig OptMachineConfiguration `json:"machine_config"`
+	Metrics       OptMetrics              `json:"metrics"`
+	MmdsConfig    OptMmdsConfig           `json:"mmds_config"`
+	NetDevices    *[]NetworkInterface     `json:"net_devices"`
+	VsockDevice   OptVsock                `json:"vsock_device"`
 }
 
 func (*FullVmConfiguration) getExportVmConfigResponse() {}
@@ -235,10 +235,10 @@ func (*LoadSnapshotNoContent) loadSnapshotResponse() {}
 
 // Logger describes #/components/schemas/Logger.
 type Logger struct {
-	Level         OptionalLoggerLevel `json:"level"`
-	LogPath       string              `json:"log_path"`
-	ShowLevel     OptionalBool        `json:"show_level"`
-	ShowLogOrigin OptionalBool        `json:"show_log_origin"`
+	Level         OptLoggerLevel `json:"level"`
+	LogPath       string         `json:"log_path"`
+	ShowLevel     OptBool        `json:"show_level"`
+	ShowLogOrigin OptBool        `json:"show_log_origin"`
 }
 
 type LoggerLevel string
@@ -252,11 +252,11 @@ const (
 
 // MachineConfiguration describes #/components/schemas/MachineConfiguration.
 type MachineConfiguration struct {
-	CPUTemplate     OptionalCpuTemplate `json:"cpu_template"`
-	HtEnabled       bool                `json:"ht_enabled"`
-	MemSizeMib      int                 `json:"mem_size_mib"`
-	TrackDirtyPages OptionalBool        `json:"track_dirty_pages"`
-	VcpuCount       int                 `json:"vcpu_count"`
+	CPUTemplate     OptCpuTemplate `json:"cpu_template"`
+	HtEnabled       bool           `json:"ht_enabled"`
+	MemSizeMib      int            `json:"mem_size_mib"`
+	TrackDirtyPages OptBool        `json:"track_dirty_pages"`
+	VcpuCount       int            `json:"vcpu_count"`
 }
 
 func (*MachineConfiguration) getMachineConfigurationResponse() {}
@@ -268,7 +268,7 @@ type Metrics struct {
 
 // MmdsConfig describes #/components/schemas/MmdsConfig.
 type MmdsConfig struct {
-	Ipv4Address OptionalString `json:"ipv4_address"`
+	Ipv4Address OptString `json:"ipv4_address"`
 }
 
 type MmdsConfigPutNoContent struct{}
@@ -293,616 +293,616 @@ func (*MmdsPutNoContent) mmdsPutResponse() {}
 
 // NetworkInterface describes #/components/schemas/NetworkInterface.
 type NetworkInterface struct {
-	AllowMmdsRequests OptionalBool        `json:"allow_mmds_requests"`
-	GuestMAC          OptionalString      `json:"guest_mac"`
-	HostDevName       string              `json:"host_dev_name"`
-	IfaceID           string              `json:"iface_id"`
-	RxRateLimiter     OptionalRateLimiter `json:"rx_rate_limiter"`
-	TxRateLimiter     OptionalRateLimiter `json:"tx_rate_limiter"`
+	AllowMmdsRequests OptBool        `json:"allow_mmds_requests"`
+	GuestMAC          OptString      `json:"guest_mac"`
+	HostDevName       string         `json:"host_dev_name"`
+	IfaceID           string         `json:"iface_id"`
+	RxRateLimiter     OptRateLimiter `json:"rx_rate_limiter"`
+	TxRateLimiter     OptRateLimiter `json:"tx_rate_limiter"`
 }
 
-// New returns new OptionalBalloon with value set to v.
-func NewOptionalBalloon(v Balloon) OptionalBalloon {
-	return OptionalBalloon{
+// New returns new OptBalloon with value set to v.
+func NewOptBalloon(v Balloon) OptBalloon {
+	return OptBalloon{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalBalloon is generic valiant of Balloon.
-type OptionalBalloon struct {
+// OptBalloon is generic valiant of Balloon.
+type OptBalloon struct {
 	Value Balloon
 	Set   bool
 }
 
-// IsSet returns true if OptionalBalloon was set.
-func (o OptionalBalloon) IsSet() bool { return o.Set }
+// IsSet returns true if OptBalloon was set.
+func (o OptBalloon) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalBalloon) Reset() {
+func (o *OptBalloon) Reset() {
 	var v Balloon
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalBalloon) SetTo(v Balloon) {
+func (o *OptBalloon) SetTo(v Balloon) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalBalloon) Get() (v Balloon, ok bool) {
+func (o OptBalloon) Get() (v Balloon, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalBool with value set to v.
-func NewOptionalBool(v bool) OptionalBool {
-	return OptionalBool{
+// New returns new OptBool with value set to v.
+func NewOptBool(v bool) OptBool {
+	return OptBool{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalBool is generic valiant of bool.
-type OptionalBool struct {
+// OptBool is generic valiant of bool.
+type OptBool struct {
 	Value bool
 	Set   bool
 }
 
-// IsSet returns true if OptionalBool was set.
-func (o OptionalBool) IsSet() bool { return o.Set }
+// IsSet returns true if OptBool was set.
+func (o OptBool) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalBool) Reset() {
+func (o *OptBool) Reset() {
 	var v bool
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalBool) SetTo(v bool) {
+func (o *OptBool) SetTo(v bool) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalBool) Get() (v bool, ok bool) {
+func (o OptBool) Get() (v bool, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalBootSource with value set to v.
-func NewOptionalBootSource(v BootSource) OptionalBootSource {
-	return OptionalBootSource{
+// New returns new OptBootSource with value set to v.
+func NewOptBootSource(v BootSource) OptBootSource {
+	return OptBootSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalBootSource is generic valiant of BootSource.
-type OptionalBootSource struct {
+// OptBootSource is generic valiant of BootSource.
+type OptBootSource struct {
 	Value BootSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalBootSource was set.
-func (o OptionalBootSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptBootSource was set.
+func (o OptBootSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalBootSource) Reset() {
+func (o *OptBootSource) Reset() {
 	var v BootSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalBootSource) SetTo(v BootSource) {
+func (o *OptBootSource) SetTo(v BootSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalBootSource) Get() (v BootSource, ok bool) {
+func (o OptBootSource) Get() (v BootSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalCpuTemplate with value set to v.
-func NewOptionalCpuTemplate(v CpuTemplate) OptionalCpuTemplate {
-	return OptionalCpuTemplate{
+// New returns new OptCpuTemplate with value set to v.
+func NewOptCpuTemplate(v CpuTemplate) OptCpuTemplate {
+	return OptCpuTemplate{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalCpuTemplate is generic valiant of CpuTemplate.
-type OptionalCpuTemplate struct {
+// OptCpuTemplate is generic valiant of CpuTemplate.
+type OptCpuTemplate struct {
 	Value CpuTemplate
 	Set   bool
 }
 
-// IsSet returns true if OptionalCpuTemplate was set.
-func (o OptionalCpuTemplate) IsSet() bool { return o.Set }
+// IsSet returns true if OptCpuTemplate was set.
+func (o OptCpuTemplate) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalCpuTemplate) Reset() {
+func (o *OptCpuTemplate) Reset() {
 	var v CpuTemplate
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalCpuTemplate) SetTo(v CpuTemplate) {
+func (o *OptCpuTemplate) SetTo(v CpuTemplate) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalCpuTemplate) Get() (v CpuTemplate, ok bool) {
+func (o OptCpuTemplate) Get() (v CpuTemplate, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalInt with value set to v.
-func NewOptionalInt(v int) OptionalInt {
-	return OptionalInt{
+// New returns new OptInt with value set to v.
+func NewOptInt(v int) OptInt {
+	return OptInt{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalInt is generic valiant of int.
-type OptionalInt struct {
+// OptInt is generic valiant of int.
+type OptInt struct {
 	Value int
 	Set   bool
 }
 
-// IsSet returns true if OptionalInt was set.
-func (o OptionalInt) IsSet() bool { return o.Set }
+// IsSet returns true if OptInt was set.
+func (o OptInt) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalInt) Reset() {
+func (o *OptInt) Reset() {
 	var v int
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalInt) SetTo(v int) {
+func (o *OptInt) SetTo(v int) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalInt) Get() (v int, ok bool) {
+func (o OptInt) Get() (v int, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalInt64 with value set to v.
-func NewOptionalInt64(v int64) OptionalInt64 {
-	return OptionalInt64{
+// New returns new OptInt64 with value set to v.
+func NewOptInt64(v int64) OptInt64 {
+	return OptInt64{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalInt64 is generic valiant of int64.
-type OptionalInt64 struct {
+// OptInt64 is generic valiant of int64.
+type OptInt64 struct {
 	Value int64
 	Set   bool
 }
 
-// IsSet returns true if OptionalInt64 was set.
-func (o OptionalInt64) IsSet() bool { return o.Set }
+// IsSet returns true if OptInt64 was set.
+func (o OptInt64) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalInt64) Reset() {
+func (o *OptInt64) Reset() {
 	var v int64
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalInt64) SetTo(v int64) {
+func (o *OptInt64) SetTo(v int64) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalInt64) Get() (v int64, ok bool) {
+func (o OptInt64) Get() (v int64, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalLogger with value set to v.
-func NewOptionalLogger(v Logger) OptionalLogger {
-	return OptionalLogger{
+// New returns new OptLogger with value set to v.
+func NewOptLogger(v Logger) OptLogger {
+	return OptLogger{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalLogger is generic valiant of Logger.
-type OptionalLogger struct {
+// OptLogger is generic valiant of Logger.
+type OptLogger struct {
 	Value Logger
 	Set   bool
 }
 
-// IsSet returns true if OptionalLogger was set.
-func (o OptionalLogger) IsSet() bool { return o.Set }
+// IsSet returns true if OptLogger was set.
+func (o OptLogger) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalLogger) Reset() {
+func (o *OptLogger) Reset() {
 	var v Logger
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalLogger) SetTo(v Logger) {
+func (o *OptLogger) SetTo(v Logger) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalLogger) Get() (v Logger, ok bool) {
+func (o OptLogger) Get() (v Logger, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalLoggerLevel with value set to v.
-func NewOptionalLoggerLevel(v LoggerLevel) OptionalLoggerLevel {
-	return OptionalLoggerLevel{
+// New returns new OptLoggerLevel with value set to v.
+func NewOptLoggerLevel(v LoggerLevel) OptLoggerLevel {
+	return OptLoggerLevel{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalLoggerLevel is generic valiant of LoggerLevel.
-type OptionalLoggerLevel struct {
+// OptLoggerLevel is generic valiant of LoggerLevel.
+type OptLoggerLevel struct {
 	Value LoggerLevel
 	Set   bool
 }
 
-// IsSet returns true if OptionalLoggerLevel was set.
-func (o OptionalLoggerLevel) IsSet() bool { return o.Set }
+// IsSet returns true if OptLoggerLevel was set.
+func (o OptLoggerLevel) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalLoggerLevel) Reset() {
+func (o *OptLoggerLevel) Reset() {
 	var v LoggerLevel
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalLoggerLevel) SetTo(v LoggerLevel) {
+func (o *OptLoggerLevel) SetTo(v LoggerLevel) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalLoggerLevel) Get() (v LoggerLevel, ok bool) {
+func (o OptLoggerLevel) Get() (v LoggerLevel, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalMachineConfiguration with value set to v.
-func NewOptionalMachineConfiguration(v MachineConfiguration) OptionalMachineConfiguration {
-	return OptionalMachineConfiguration{
+// New returns new OptMachineConfiguration with value set to v.
+func NewOptMachineConfiguration(v MachineConfiguration) OptMachineConfiguration {
+	return OptMachineConfiguration{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalMachineConfiguration is generic valiant of MachineConfiguration.
-type OptionalMachineConfiguration struct {
+// OptMachineConfiguration is generic valiant of MachineConfiguration.
+type OptMachineConfiguration struct {
 	Value MachineConfiguration
 	Set   bool
 }
 
-// IsSet returns true if OptionalMachineConfiguration was set.
-func (o OptionalMachineConfiguration) IsSet() bool { return o.Set }
+// IsSet returns true if OptMachineConfiguration was set.
+func (o OptMachineConfiguration) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalMachineConfiguration) Reset() {
+func (o *OptMachineConfiguration) Reset() {
 	var v MachineConfiguration
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalMachineConfiguration) SetTo(v MachineConfiguration) {
+func (o *OptMachineConfiguration) SetTo(v MachineConfiguration) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalMachineConfiguration) Get() (v MachineConfiguration, ok bool) {
+func (o OptMachineConfiguration) Get() (v MachineConfiguration, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalMetrics with value set to v.
-func NewOptionalMetrics(v Metrics) OptionalMetrics {
-	return OptionalMetrics{
+// New returns new OptMetrics with value set to v.
+func NewOptMetrics(v Metrics) OptMetrics {
+	return OptMetrics{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalMetrics is generic valiant of Metrics.
-type OptionalMetrics struct {
+// OptMetrics is generic valiant of Metrics.
+type OptMetrics struct {
 	Value Metrics
 	Set   bool
 }
 
-// IsSet returns true if OptionalMetrics was set.
-func (o OptionalMetrics) IsSet() bool { return o.Set }
+// IsSet returns true if OptMetrics was set.
+func (o OptMetrics) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalMetrics) Reset() {
+func (o *OptMetrics) Reset() {
 	var v Metrics
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalMetrics) SetTo(v Metrics) {
+func (o *OptMetrics) SetTo(v Metrics) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalMetrics) Get() (v Metrics, ok bool) {
+func (o OptMetrics) Get() (v Metrics, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalMmdsConfig with value set to v.
-func NewOptionalMmdsConfig(v MmdsConfig) OptionalMmdsConfig {
-	return OptionalMmdsConfig{
+// New returns new OptMmdsConfig with value set to v.
+func NewOptMmdsConfig(v MmdsConfig) OptMmdsConfig {
+	return OptMmdsConfig{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalMmdsConfig is generic valiant of MmdsConfig.
-type OptionalMmdsConfig struct {
+// OptMmdsConfig is generic valiant of MmdsConfig.
+type OptMmdsConfig struct {
 	Value MmdsConfig
 	Set   bool
 }
 
-// IsSet returns true if OptionalMmdsConfig was set.
-func (o OptionalMmdsConfig) IsSet() bool { return o.Set }
+// IsSet returns true if OptMmdsConfig was set.
+func (o OptMmdsConfig) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalMmdsConfig) Reset() {
+func (o *OptMmdsConfig) Reset() {
 	var v MmdsConfig
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalMmdsConfig) SetTo(v MmdsConfig) {
+func (o *OptMmdsConfig) SetTo(v MmdsConfig) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalMmdsConfig) Get() (v MmdsConfig, ok bool) {
+func (o OptMmdsConfig) Get() (v MmdsConfig, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalRateLimiter with value set to v.
-func NewOptionalRateLimiter(v RateLimiter) OptionalRateLimiter {
-	return OptionalRateLimiter{
+// New returns new OptRateLimiter with value set to v.
+func NewOptRateLimiter(v RateLimiter) OptRateLimiter {
+	return OptRateLimiter{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalRateLimiter is generic valiant of RateLimiter.
-type OptionalRateLimiter struct {
+// OptRateLimiter is generic valiant of RateLimiter.
+type OptRateLimiter struct {
 	Value RateLimiter
 	Set   bool
 }
 
-// IsSet returns true if OptionalRateLimiter was set.
-func (o OptionalRateLimiter) IsSet() bool { return o.Set }
+// IsSet returns true if OptRateLimiter was set.
+func (o OptRateLimiter) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalRateLimiter) Reset() {
+func (o *OptRateLimiter) Reset() {
 	var v RateLimiter
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalRateLimiter) SetTo(v RateLimiter) {
+func (o *OptRateLimiter) SetTo(v RateLimiter) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalRateLimiter) Get() (v RateLimiter, ok bool) {
+func (o OptRateLimiter) Get() (v RateLimiter, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalSnapshotCreateParamsSnapshotType with value set to v.
-func NewOptionalSnapshotCreateParamsSnapshotType(v SnapshotCreateParamsSnapshotType) OptionalSnapshotCreateParamsSnapshotType {
-	return OptionalSnapshotCreateParamsSnapshotType{
+// New returns new OptSnapshotCreateParamsSnapshotType with value set to v.
+func NewOptSnapshotCreateParamsSnapshotType(v SnapshotCreateParamsSnapshotType) OptSnapshotCreateParamsSnapshotType {
+	return OptSnapshotCreateParamsSnapshotType{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalSnapshotCreateParamsSnapshotType is generic valiant of SnapshotCreateParamsSnapshotType.
-type OptionalSnapshotCreateParamsSnapshotType struct {
+// OptSnapshotCreateParamsSnapshotType is generic valiant of SnapshotCreateParamsSnapshotType.
+type OptSnapshotCreateParamsSnapshotType struct {
 	Value SnapshotCreateParamsSnapshotType
 	Set   bool
 }
 
-// IsSet returns true if OptionalSnapshotCreateParamsSnapshotType was set.
-func (o OptionalSnapshotCreateParamsSnapshotType) IsSet() bool { return o.Set }
+// IsSet returns true if OptSnapshotCreateParamsSnapshotType was set.
+func (o OptSnapshotCreateParamsSnapshotType) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalSnapshotCreateParamsSnapshotType) Reset() {
+func (o *OptSnapshotCreateParamsSnapshotType) Reset() {
 	var v SnapshotCreateParamsSnapshotType
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalSnapshotCreateParamsSnapshotType) SetTo(v SnapshotCreateParamsSnapshotType) {
+func (o *OptSnapshotCreateParamsSnapshotType) SetTo(v SnapshotCreateParamsSnapshotType) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalSnapshotCreateParamsSnapshotType) Get() (v SnapshotCreateParamsSnapshotType, ok bool) {
+func (o OptSnapshotCreateParamsSnapshotType) Get() (v SnapshotCreateParamsSnapshotType, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalString with value set to v.
-func NewOptionalString(v string) OptionalString {
-	return OptionalString{
+// New returns new OptString with value set to v.
+func NewOptString(v string) OptString {
+	return OptString{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalString is generic valiant of string.
-type OptionalString struct {
+// OptString is generic valiant of string.
+type OptString struct {
 	Value string
 	Set   bool
 }
 
-// IsSet returns true if OptionalString was set.
-func (o OptionalString) IsSet() bool { return o.Set }
+// IsSet returns true if OptString was set.
+func (o OptString) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalString) Reset() {
+func (o *OptString) Reset() {
 	var v string
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalString) SetTo(v string) {
+func (o *OptString) SetTo(v string) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalString) Get() (v string, ok bool) {
+func (o OptString) Get() (v string, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalTokenBucket with value set to v.
-func NewOptionalTokenBucket(v TokenBucket) OptionalTokenBucket {
-	return OptionalTokenBucket{
+// New returns new OptTokenBucket with value set to v.
+func NewOptTokenBucket(v TokenBucket) OptTokenBucket {
+	return OptTokenBucket{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalTokenBucket is generic valiant of TokenBucket.
-type OptionalTokenBucket struct {
+// OptTokenBucket is generic valiant of TokenBucket.
+type OptTokenBucket struct {
 	Value TokenBucket
 	Set   bool
 }
 
-// IsSet returns true if OptionalTokenBucket was set.
-func (o OptionalTokenBucket) IsSet() bool { return o.Set }
+// IsSet returns true if OptTokenBucket was set.
+func (o OptTokenBucket) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalTokenBucket) Reset() {
+func (o *OptTokenBucket) Reset() {
 	var v TokenBucket
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalTokenBucket) SetTo(v TokenBucket) {
+func (o *OptTokenBucket) SetTo(v TokenBucket) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalTokenBucket) Get() (v TokenBucket, ok bool) {
+func (o OptTokenBucket) Get() (v TokenBucket, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalVsock with value set to v.
-func NewOptionalVsock(v Vsock) OptionalVsock {
-	return OptionalVsock{
+// New returns new OptVsock with value set to v.
+func NewOptVsock(v Vsock) OptVsock {
+	return OptVsock{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalVsock is generic valiant of Vsock.
-type OptionalVsock struct {
+// OptVsock is generic valiant of Vsock.
+type OptVsock struct {
 	Value Vsock
 	Set   bool
 }
 
-// IsSet returns true if OptionalVsock was set.
-func (o OptionalVsock) IsSet() bool { return o.Set }
+// IsSet returns true if OptVsock was set.
+func (o OptVsock) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalVsock) Reset() {
+func (o *OptVsock) Reset() {
 	var v Vsock
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalVsock) SetTo(v Vsock) {
+func (o *OptVsock) SetTo(v Vsock) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalVsock) Get() (v Vsock, ok bool) {
+func (o OptVsock) Get() (v Vsock, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -911,16 +911,16 @@ func (o OptionalVsock) Get() (v Vsock, ok bool) {
 
 // PartialDrive describes #/components/schemas/PartialDrive.
 type PartialDrive struct {
-	DriveID     string              `json:"drive_id"`
-	PathOnHost  OptionalString      `json:"path_on_host"`
-	RateLimiter OptionalRateLimiter `json:"rate_limiter"`
+	DriveID     string         `json:"drive_id"`
+	PathOnHost  OptString      `json:"path_on_host"`
+	RateLimiter OptRateLimiter `json:"rate_limiter"`
 }
 
 // PartialNetworkInterface describes #/components/schemas/PartialNetworkInterface.
 type PartialNetworkInterface struct {
-	IfaceID       string              `json:"iface_id"`
-	RxRateLimiter OptionalRateLimiter `json:"rx_rate_limiter"`
-	TxRateLimiter OptionalRateLimiter `json:"tx_rate_limiter"`
+	IfaceID       string         `json:"iface_id"`
+	RxRateLimiter OptRateLimiter `json:"rx_rate_limiter"`
+	TxRateLimiter OptRateLimiter `json:"tx_rate_limiter"`
 }
 
 type PatchBalloonNoContent struct{}
@@ -981,16 +981,16 @@ func (*PutMetricsNoContent) putMetricsResponse() {}
 
 // RateLimiter describes #/components/schemas/RateLimiter.
 type RateLimiter struct {
-	Bandwidth OptionalTokenBucket `json:"bandwidth"`
-	Ops       OptionalTokenBucket `json:"ops"`
+	Bandwidth OptTokenBucket `json:"bandwidth"`
+	Ops       OptTokenBucket `json:"ops"`
 }
 
 // SnapshotCreateParams describes #/components/schemas/SnapshotCreateParams.
 type SnapshotCreateParams struct {
-	MemFilePath  string                                   `json:"mem_file_path"`
-	SnapshotPath string                                   `json:"snapshot_path"`
-	SnapshotType OptionalSnapshotCreateParamsSnapshotType `json:"snapshot_type"`
-	Version      OptionalString                           `json:"version"`
+	MemFilePath  string                              `json:"mem_file_path"`
+	SnapshotPath string                              `json:"snapshot_path"`
+	SnapshotType OptSnapshotCreateParamsSnapshotType `json:"snapshot_type"`
+	Version      OptString                           `json:"version"`
 }
 
 type SnapshotCreateParamsSnapshotType string
@@ -1002,17 +1002,17 @@ const (
 
 // SnapshotLoadParams describes #/components/schemas/SnapshotLoadParams.
 type SnapshotLoadParams struct {
-	EnableDiffSnapshots OptionalBool `json:"enable_diff_snapshots"`
-	MemFilePath         string       `json:"mem_file_path"`
-	ResumeVM            OptionalBool `json:"resume_vm"`
-	SnapshotPath        string       `json:"snapshot_path"`
+	EnableDiffSnapshots OptBool `json:"enable_diff_snapshots"`
+	MemFilePath         string  `json:"mem_file_path"`
+	ResumeVM            OptBool `json:"resume_vm"`
+	SnapshotPath        string  `json:"snapshot_path"`
 }
 
 // TokenBucket describes #/components/schemas/TokenBucket.
 type TokenBucket struct {
-	OneTimeBurst OptionalInt64 `json:"one_time_burst"`
-	RefillTime   int64         `json:"refill_time"`
-	Size         int64         `json:"size"`
+	OneTimeBurst OptInt64 `json:"one_time_burst"`
+	RefillTime   int64    `json:"refill_time"`
+	Size         int64    `json:"size"`
 }
 
 // VM describes #/components/schemas/Vm.

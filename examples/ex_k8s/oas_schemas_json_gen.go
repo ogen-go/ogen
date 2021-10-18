@@ -41572,84 +41572,84 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) ReadJSON(i
 }
 
 // WriteJSON writes json value of bool to json stream.
-func (o OptionalBool) WriteJSON(j *json.Stream) {
+func (o OptBool) WriteJSON(j *json.Stream) {
 	j.WriteBool(bool(o.Value))
 }
 
 // ReadJSON reads json value of bool from json iterator.
-func (o *OptionalBool) ReadJSON(i *json.Iterator) error {
+func (o *OptBool) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.BoolValue:
 		o.Set = true
 		o.Value = bool(i.ReadBool())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalBool", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptBool", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of float64 to json stream.
-func (o OptionalFloat64) WriteJSON(j *json.Stream) {
+func (o OptFloat64) WriteJSON(j *json.Stream) {
 	j.WriteFloat64(float64(o.Value))
 }
 
 // ReadJSON reads json value of float64 from json iterator.
-func (o *OptionalFloat64) ReadJSON(i *json.Iterator) error {
+func (o *OptFloat64) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
 		o.Value = float64(i.ReadFloat64())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalFloat64", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptFloat64", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of int32 to json stream.
-func (o OptionalInt32) WriteJSON(j *json.Stream) {
+func (o OptInt32) WriteJSON(j *json.Stream) {
 	j.WriteInt32(int32(o.Value))
 }
 
 // ReadJSON reads json value of int32 from json iterator.
-func (o *OptionalInt32) ReadJSON(i *json.Iterator) error {
+func (o *OptInt32) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
 		o.Value = int32(i.ReadInt32())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalInt32", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptInt32", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of int64 to json stream.
-func (o OptionalInt64) WriteJSON(j *json.Stream) {
+func (o OptInt64) WriteJSON(j *json.Stream) {
 	j.WriteInt64(int64(o.Value))
 }
 
 // ReadJSON reads json value of int64 from json iterator.
-func (o *OptionalInt64) ReadJSON(i *json.Iterator) error {
+func (o *OptInt64) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
 		o.Value = int64(i.ReadInt64())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalInt64", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptInt64", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAdmissionregistrationV1ServiceReference to json stream.
-func (o OptionalIoK8sAPIAdmissionregistrationV1ServiceReference) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAdmissionregistrationV1ServiceReference) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAdmissionregistrationV1ServiceReference from json iterator.
-func (o *OptionalIoK8sAPIAdmissionregistrationV1ServiceReference) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAdmissionregistrationV1ServiceReference) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -41658,18 +41658,18 @@ func (o *OptionalIoK8sAPIAdmissionregistrationV1ServiceReference) ReadJSON(i *js
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAdmissionregistrationV1ServiceReference", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAdmissionregistrationV1ServiceReference", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAppsV1DaemonSetSpec to json stream.
-func (o OptionalIoK8sAPIAppsV1DaemonSetSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAppsV1DaemonSetSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAppsV1DaemonSetSpec from json iterator.
-func (o *OptionalIoK8sAPIAppsV1DaemonSetSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAppsV1DaemonSetSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -41678,18 +41678,18 @@ func (o *OptionalIoK8sAPIAppsV1DaemonSetSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1DaemonSetSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1DaemonSetSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAppsV1DaemonSetStatus to json stream.
-func (o OptionalIoK8sAPIAppsV1DaemonSetStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAppsV1DaemonSetStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAppsV1DaemonSetStatus from json iterator.
-func (o *OptionalIoK8sAPIAppsV1DaemonSetStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAppsV1DaemonSetStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -41698,18 +41698,18 @@ func (o *OptionalIoK8sAPIAppsV1DaemonSetStatus) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1DaemonSetStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1DaemonSetStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAppsV1DaemonSetUpdateStrategy to json stream.
-func (o OptionalIoK8sAPIAppsV1DaemonSetUpdateStrategy) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAppsV1DaemonSetUpdateStrategy from json iterator.
-func (o *OptionalIoK8sAPIAppsV1DaemonSetUpdateStrategy) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -41718,18 +41718,18 @@ func (o *OptionalIoK8sAPIAppsV1DaemonSetUpdateStrategy) ReadJSON(i *json.Iterato
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1DaemonSetUpdateStrategy", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1DaemonSetUpdateStrategy", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAppsV1DeploymentSpec to json stream.
-func (o OptionalIoK8sAPIAppsV1DeploymentSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAppsV1DeploymentSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAppsV1DeploymentSpec from json iterator.
-func (o *OptionalIoK8sAPIAppsV1DeploymentSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAppsV1DeploymentSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -41738,18 +41738,18 @@ func (o *OptionalIoK8sAPIAppsV1DeploymentSpec) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1DeploymentSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1DeploymentSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAppsV1DeploymentStatus to json stream.
-func (o OptionalIoK8sAPIAppsV1DeploymentStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAppsV1DeploymentStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAppsV1DeploymentStatus from json iterator.
-func (o *OptionalIoK8sAPIAppsV1DeploymentStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAppsV1DeploymentStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -41758,18 +41758,18 @@ func (o *OptionalIoK8sAPIAppsV1DeploymentStatus) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1DeploymentStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1DeploymentStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAppsV1DeploymentStrategy to json stream.
-func (o OptionalIoK8sAPIAppsV1DeploymentStrategy) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAppsV1DeploymentStrategy) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAppsV1DeploymentStrategy from json iterator.
-func (o *OptionalIoK8sAPIAppsV1DeploymentStrategy) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAppsV1DeploymentStrategy) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -41778,18 +41778,18 @@ func (o *OptionalIoK8sAPIAppsV1DeploymentStrategy) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1DeploymentStrategy", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1DeploymentStrategy", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAppsV1ReplicaSetSpec to json stream.
-func (o OptionalIoK8sAPIAppsV1ReplicaSetSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAppsV1ReplicaSetSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAppsV1ReplicaSetSpec from json iterator.
-func (o *OptionalIoK8sAPIAppsV1ReplicaSetSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAppsV1ReplicaSetSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -41798,18 +41798,18 @@ func (o *OptionalIoK8sAPIAppsV1ReplicaSetSpec) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1ReplicaSetSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1ReplicaSetSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAppsV1ReplicaSetStatus to json stream.
-func (o OptionalIoK8sAPIAppsV1ReplicaSetStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAppsV1ReplicaSetStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAppsV1ReplicaSetStatus from json iterator.
-func (o *OptionalIoK8sAPIAppsV1ReplicaSetStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAppsV1ReplicaSetStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -41818,18 +41818,18 @@ func (o *OptionalIoK8sAPIAppsV1ReplicaSetStatus) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1ReplicaSetStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1ReplicaSetStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAppsV1RollingUpdateDaemonSet to json stream.
-func (o OptionalIoK8sAPIAppsV1RollingUpdateDaemonSet) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAppsV1RollingUpdateDaemonSet) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAppsV1RollingUpdateDaemonSet from json iterator.
-func (o *OptionalIoK8sAPIAppsV1RollingUpdateDaemonSet) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAppsV1RollingUpdateDaemonSet) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -41838,18 +41838,18 @@ func (o *OptionalIoK8sAPIAppsV1RollingUpdateDaemonSet) ReadJSON(i *json.Iterator
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1RollingUpdateDaemonSet", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1RollingUpdateDaemonSet", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAppsV1RollingUpdateDeployment to json stream.
-func (o OptionalIoK8sAPIAppsV1RollingUpdateDeployment) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAppsV1RollingUpdateDeployment) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAppsV1RollingUpdateDeployment from json iterator.
-func (o *OptionalIoK8sAPIAppsV1RollingUpdateDeployment) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAppsV1RollingUpdateDeployment) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -41858,18 +41858,18 @@ func (o *OptionalIoK8sAPIAppsV1RollingUpdateDeployment) ReadJSON(i *json.Iterato
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1RollingUpdateDeployment", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1RollingUpdateDeployment", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy to json stream.
-func (o OptionalIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy from json iterator.
-func (o *OptionalIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -41878,18 +41878,18 @@ func (o *OptionalIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) ReadJSON(i *jso
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAppsV1StatefulSetSpec to json stream.
-func (o OptionalIoK8sAPIAppsV1StatefulSetSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAppsV1StatefulSetSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAppsV1StatefulSetSpec from json iterator.
-func (o *OptionalIoK8sAPIAppsV1StatefulSetSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAppsV1StatefulSetSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -41898,18 +41898,18 @@ func (o *OptionalIoK8sAPIAppsV1StatefulSetSpec) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1StatefulSetSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1StatefulSetSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAppsV1StatefulSetStatus to json stream.
-func (o OptionalIoK8sAPIAppsV1StatefulSetStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAppsV1StatefulSetStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAppsV1StatefulSetStatus from json iterator.
-func (o *OptionalIoK8sAPIAppsV1StatefulSetStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAppsV1StatefulSetStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -41918,18 +41918,18 @@ func (o *OptionalIoK8sAPIAppsV1StatefulSetStatus) ReadJSON(i *json.Iterator) err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1StatefulSetStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1StatefulSetStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAppsV1StatefulSetUpdateStrategy to json stream.
-func (o OptionalIoK8sAPIAppsV1StatefulSetUpdateStrategy) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAppsV1StatefulSetUpdateStrategy from json iterator.
-func (o *OptionalIoK8sAPIAppsV1StatefulSetUpdateStrategy) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -41938,18 +41938,18 @@ func (o *OptionalIoK8sAPIAppsV1StatefulSetUpdateStrategy) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1StatefulSetUpdateStrategy", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAppsV1StatefulSetUpdateStrategy", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAuthenticationV1TokenReviewStatus to json stream.
-func (o OptionalIoK8sAPIAuthenticationV1TokenReviewStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAuthenticationV1TokenReviewStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAuthenticationV1TokenReviewStatus from json iterator.
-func (o *OptionalIoK8sAPIAuthenticationV1TokenReviewStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAuthenticationV1TokenReviewStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -41958,18 +41958,18 @@ func (o *OptionalIoK8sAPIAuthenticationV1TokenReviewStatus) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAuthenticationV1TokenReviewStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAuthenticationV1TokenReviewStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAuthenticationV1UserInfo to json stream.
-func (o OptionalIoK8sAPIAuthenticationV1UserInfo) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAuthenticationV1UserInfo) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAuthenticationV1UserInfo from json iterator.
-func (o *OptionalIoK8sAPIAuthenticationV1UserInfo) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAuthenticationV1UserInfo) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -41978,18 +41978,18 @@ func (o *OptionalIoK8sAPIAuthenticationV1UserInfo) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAuthenticationV1UserInfo", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAuthenticationV1UserInfo", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAuthorizationV1NonResourceAttributes to json stream.
-func (o OptionalIoK8sAPIAuthorizationV1NonResourceAttributes) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAuthorizationV1NonResourceAttributes) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAuthorizationV1NonResourceAttributes from json iterator.
-func (o *OptionalIoK8sAPIAuthorizationV1NonResourceAttributes) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAuthorizationV1NonResourceAttributes) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -41998,18 +41998,18 @@ func (o *OptionalIoK8sAPIAuthorizationV1NonResourceAttributes) ReadJSON(i *json.
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAuthorizationV1NonResourceAttributes", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAuthorizationV1NonResourceAttributes", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAuthorizationV1ResourceAttributes to json stream.
-func (o OptionalIoK8sAPIAuthorizationV1ResourceAttributes) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAuthorizationV1ResourceAttributes) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAuthorizationV1ResourceAttributes from json iterator.
-func (o *OptionalIoK8sAPIAuthorizationV1ResourceAttributes) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAuthorizationV1ResourceAttributes) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42018,18 +42018,18 @@ func (o *OptionalIoK8sAPIAuthorizationV1ResourceAttributes) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAuthorizationV1ResourceAttributes", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAuthorizationV1ResourceAttributes", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAuthorizationV1SubjectAccessReviewStatus to json stream.
-func (o OptionalIoK8sAPIAuthorizationV1SubjectAccessReviewStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAuthorizationV1SubjectAccessReviewStatus from json iterator.
-func (o *OptionalIoK8sAPIAuthorizationV1SubjectAccessReviewStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42038,18 +42038,18 @@ func (o *OptionalIoK8sAPIAuthorizationV1SubjectAccessReviewStatus) ReadJSON(i *j
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAuthorizationV1SubjectAccessReviewStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAuthorizationV1SubjectRulesReviewStatus to json stream.
-func (o OptionalIoK8sAPIAuthorizationV1SubjectRulesReviewStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAuthorizationV1SubjectRulesReviewStatus from json iterator.
-func (o *OptionalIoK8sAPIAuthorizationV1SubjectRulesReviewStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42058,18 +42058,18 @@ func (o *OptionalIoK8sAPIAuthorizationV1SubjectRulesReviewStatus) ReadJSON(i *js
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAuthorizationV1SubjectRulesReviewStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec to json stream.
-func (o OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42078,18 +42078,18 @@ func (o *OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) ReadJSON(i *j
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus to json stream.
-func (o OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42098,18 +42098,18 @@ func (o *OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) ReadJSON(i 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42118,18 +42118,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) ReadJS
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42138,18 +42138,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) ReadJS
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1ExternalMetricSource to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ExternalMetricSource from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42158,18 +42158,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricSource) ReadJSON(i *jso
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1ExternalMetricStatus to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ExternalMetricStatus from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42178,18 +42178,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) ReadJSON(i *jso
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42198,18 +42198,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) ReadJSON
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42218,18 +42218,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) ReadJS
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1ObjectMetricSource to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ObjectMetricSource from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42238,18 +42238,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricSource) ReadJSON(i *json.
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1ObjectMetricStatus to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ObjectMetricStatus from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42258,18 +42258,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) ReadJSON(i *json.
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1PodsMetricSource to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta1PodsMetricSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1PodsMetricSource from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1PodsMetricSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42278,18 +42278,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta1PodsMetricSource) ReadJSON(i *json.It
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1PodsMetricSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1PodsMetricSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1PodsMetricStatus to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta1PodsMetricStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1PodsMetricStatus from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1PodsMetricStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42298,18 +42298,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta1PodsMetricStatus) ReadJSON(i *json.It
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1PodsMetricStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1ResourceMetricSource to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ResourceMetricSource from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42318,18 +42318,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricSource) ReadJSON(i *jso
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1ResourceMetricStatus to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ResourceMetricStatus from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42338,18 +42338,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) ReadJSON(i *jso
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42358,18 +42358,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) ReadJS
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42378,18 +42378,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) ReadJS
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2ExternalMetricSource to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ExternalMetricSource from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42398,18 +42398,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricSource) ReadJSON(i *jso
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2ExternalMetricStatus to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ExternalMetricStatus from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42418,18 +42418,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) ReadJSON(i *jso
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2HPAScalingRules to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta2HPAScalingRules) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2HPAScalingRules from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2HPAScalingRules) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42438,18 +42438,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta2HPAScalingRules) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2HPAScalingRules", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2HPAScalingRules", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42458,18 +42458,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Read
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42478,18 +42478,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) ReadJSON
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42498,18 +42498,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) ReadJS
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2ObjectMetricSource to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ObjectMetricSource from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42518,18 +42518,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricSource) ReadJSON(i *json.
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2ObjectMetricStatus to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ObjectMetricStatus from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42538,18 +42538,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) ReadJSON(i *json.
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2PodsMetricSource to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta2PodsMetricSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2PodsMetricSource from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2PodsMetricSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42558,18 +42558,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta2PodsMetricSource) ReadJSON(i *json.It
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2PodsMetricSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2PodsMetricSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2PodsMetricStatus to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta2PodsMetricStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2PodsMetricStatus from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2PodsMetricStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42578,18 +42578,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta2PodsMetricStatus) ReadJSON(i *json.It
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2PodsMetricStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2ResourceMetricSource to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ResourceMetricSource from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42598,18 +42598,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricSource) ReadJSON(i *jso
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2ResourceMetricStatus to json stream.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ResourceMetricStatus from json iterator.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42618,18 +42618,18 @@ func (o *OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) ReadJSON(i *jso
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIBatchV1CronJobSpec to json stream.
-func (o OptionalIoK8sAPIBatchV1CronJobSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIBatchV1CronJobSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIBatchV1CronJobSpec from json iterator.
-func (o *OptionalIoK8sAPIBatchV1CronJobSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIBatchV1CronJobSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42638,18 +42638,18 @@ func (o *OptionalIoK8sAPIBatchV1CronJobSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIBatchV1CronJobSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIBatchV1CronJobSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIBatchV1CronJobStatus to json stream.
-func (o OptionalIoK8sAPIBatchV1CronJobStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIBatchV1CronJobStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIBatchV1CronJobStatus from json iterator.
-func (o *OptionalIoK8sAPIBatchV1CronJobStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIBatchV1CronJobStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42658,18 +42658,18 @@ func (o *OptionalIoK8sAPIBatchV1CronJobStatus) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIBatchV1CronJobStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIBatchV1CronJobStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIBatchV1JobSpec to json stream.
-func (o OptionalIoK8sAPIBatchV1JobSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIBatchV1JobSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIBatchV1JobSpec from json iterator.
-func (o *OptionalIoK8sAPIBatchV1JobSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIBatchV1JobSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42678,18 +42678,18 @@ func (o *OptionalIoK8sAPIBatchV1JobSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIBatchV1JobSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIBatchV1JobSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIBatchV1JobStatus to json stream.
-func (o OptionalIoK8sAPIBatchV1JobStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIBatchV1JobStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIBatchV1JobStatus from json iterator.
-func (o *OptionalIoK8sAPIBatchV1JobStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIBatchV1JobStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42698,18 +42698,18 @@ func (o *OptionalIoK8sAPIBatchV1JobStatus) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIBatchV1JobStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIBatchV1JobStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIBatchV1UncountedTerminatedPods to json stream.
-func (o OptionalIoK8sAPIBatchV1UncountedTerminatedPods) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIBatchV1UncountedTerminatedPods) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIBatchV1UncountedTerminatedPods from json iterator.
-func (o *OptionalIoK8sAPIBatchV1UncountedTerminatedPods) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIBatchV1UncountedTerminatedPods) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42718,18 +42718,18 @@ func (o *OptionalIoK8sAPIBatchV1UncountedTerminatedPods) ReadJSON(i *json.Iterat
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIBatchV1UncountedTerminatedPods", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIBatchV1UncountedTerminatedPods", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIBatchV1beta1CronJobSpec to json stream.
-func (o OptionalIoK8sAPIBatchV1beta1CronJobSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIBatchV1beta1CronJobSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIBatchV1beta1CronJobSpec from json iterator.
-func (o *OptionalIoK8sAPIBatchV1beta1CronJobSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIBatchV1beta1CronJobSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42738,18 +42738,18 @@ func (o *OptionalIoK8sAPIBatchV1beta1CronJobSpec) ReadJSON(i *json.Iterator) err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIBatchV1beta1CronJobSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIBatchV1beta1CronJobSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIBatchV1beta1CronJobStatus to json stream.
-func (o OptionalIoK8sAPIBatchV1beta1CronJobStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIBatchV1beta1CronJobStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIBatchV1beta1CronJobStatus from json iterator.
-func (o *OptionalIoK8sAPIBatchV1beta1CronJobStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIBatchV1beta1CronJobStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42758,18 +42758,18 @@ func (o *OptionalIoK8sAPIBatchV1beta1CronJobStatus) ReadJSON(i *json.Iterator) e
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIBatchV1beta1CronJobStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIBatchV1beta1CronJobStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICertificatesV1CertificateSigningRequestStatus to json stream.
-func (o OptionalIoK8sAPICertificatesV1CertificateSigningRequestStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICertificatesV1CertificateSigningRequestStatus from json iterator.
-func (o *OptionalIoK8sAPICertificatesV1CertificateSigningRequestStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42778,18 +42778,18 @@ func (o *OptionalIoK8sAPICertificatesV1CertificateSigningRequestStatus) ReadJSON
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICertificatesV1CertificateSigningRequestStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICertificatesV1CertificateSigningRequestStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoordinationV1LeaseSpec to json stream.
-func (o OptionalIoK8sAPICoordinationV1LeaseSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoordinationV1LeaseSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoordinationV1LeaseSpec from json iterator.
-func (o *OptionalIoK8sAPICoordinationV1LeaseSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoordinationV1LeaseSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42798,18 +42798,18 @@ func (o *OptionalIoK8sAPICoordinationV1LeaseSpec) ReadJSON(i *json.Iterator) err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoordinationV1LeaseSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoordinationV1LeaseSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42818,18 +42818,18 @@ func (o *OptionalIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) ReadJSON(i *jso
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1Affinity to json stream.
-func (o OptionalIoK8sAPICoreV1Affinity) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1Affinity) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1Affinity from json iterator.
-func (o *OptionalIoK8sAPICoreV1Affinity) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1Affinity) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42838,18 +42838,18 @@ func (o *OptionalIoK8sAPICoreV1Affinity) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1Affinity", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1Affinity", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1AzureDiskVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1AzureDiskVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1AzureDiskVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1AzureDiskVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1AzureDiskVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1AzureDiskVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42858,18 +42858,18 @@ func (o *OptionalIoK8sAPICoreV1AzureDiskVolumeSource) ReadJSON(i *json.Iterator)
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1AzureDiskVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1AzureDiskVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1AzureFilePersistentVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1AzureFilePersistentVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1AzureFilePersistentVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1AzureFilePersistentVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42878,18 +42878,18 @@ func (o *OptionalIoK8sAPICoreV1AzureFilePersistentVolumeSource) ReadJSON(i *json
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1AzureFilePersistentVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1AzureFilePersistentVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1AzureFileVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1AzureFileVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1AzureFileVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1AzureFileVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1AzureFileVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1AzureFileVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42898,18 +42898,18 @@ func (o *OptionalIoK8sAPICoreV1AzureFileVolumeSource) ReadJSON(i *json.Iterator)
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1AzureFileVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1AzureFileVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1CSIPersistentVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1CSIPersistentVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1CSIPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1CSIPersistentVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1CSIPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1CSIPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42918,18 +42918,18 @@ func (o *OptionalIoK8sAPICoreV1CSIPersistentVolumeSource) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1CSIPersistentVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1CSIPersistentVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1CSIVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1CSIVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1CSIVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1CSIVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1CSIVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1CSIVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42938,18 +42938,18 @@ func (o *OptionalIoK8sAPICoreV1CSIVolumeSource) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1CSIVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1CSIVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1Capabilities to json stream.
-func (o OptionalIoK8sAPICoreV1Capabilities) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1Capabilities) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1Capabilities from json iterator.
-func (o *OptionalIoK8sAPICoreV1Capabilities) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1Capabilities) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42958,18 +42958,18 @@ func (o *OptionalIoK8sAPICoreV1Capabilities) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1Capabilities", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1Capabilities", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1CephFSPersistentVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1CephFSPersistentVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1CephFSPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1CephFSPersistentVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1CephFSPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1CephFSPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42978,18 +42978,18 @@ func (o *OptionalIoK8sAPICoreV1CephFSPersistentVolumeSource) ReadJSON(i *json.It
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1CephFSPersistentVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1CephFSPersistentVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1CephFSVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1CephFSVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1CephFSVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1CephFSVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1CephFSVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1CephFSVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -42998,18 +42998,18 @@ func (o *OptionalIoK8sAPICoreV1CephFSVolumeSource) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1CephFSVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1CephFSVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1CinderPersistentVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1CinderPersistentVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1CinderPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1CinderPersistentVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1CinderPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1CinderPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43018,18 +43018,18 @@ func (o *OptionalIoK8sAPICoreV1CinderPersistentVolumeSource) ReadJSON(i *json.It
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1CinderPersistentVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1CinderPersistentVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1CinderVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1CinderVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1CinderVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1CinderVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1CinderVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1CinderVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43038,18 +43038,18 @@ func (o *OptionalIoK8sAPICoreV1CinderVolumeSource) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1CinderVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1CinderVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ClientIPConfig to json stream.
-func (o OptionalIoK8sAPICoreV1ClientIPConfig) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ClientIPConfig) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ClientIPConfig from json iterator.
-func (o *OptionalIoK8sAPICoreV1ClientIPConfig) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ClientIPConfig) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43058,18 +43058,18 @@ func (o *OptionalIoK8sAPICoreV1ClientIPConfig) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ClientIPConfig", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ClientIPConfig", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ConfigMapEnvSource to json stream.
-func (o OptionalIoK8sAPICoreV1ConfigMapEnvSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ConfigMapEnvSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ConfigMapEnvSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1ConfigMapEnvSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ConfigMapEnvSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43078,18 +43078,18 @@ func (o *OptionalIoK8sAPICoreV1ConfigMapEnvSource) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ConfigMapEnvSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ConfigMapEnvSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ConfigMapKeySelector to json stream.
-func (o OptionalIoK8sAPICoreV1ConfigMapKeySelector) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ConfigMapKeySelector) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ConfigMapKeySelector from json iterator.
-func (o *OptionalIoK8sAPICoreV1ConfigMapKeySelector) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ConfigMapKeySelector) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43098,18 +43098,18 @@ func (o *OptionalIoK8sAPICoreV1ConfigMapKeySelector) ReadJSON(i *json.Iterator) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ConfigMapKeySelector", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ConfigMapKeySelector", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ConfigMapNodeConfigSource to json stream.
-func (o OptionalIoK8sAPICoreV1ConfigMapNodeConfigSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ConfigMapNodeConfigSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ConfigMapNodeConfigSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1ConfigMapNodeConfigSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ConfigMapNodeConfigSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43118,18 +43118,18 @@ func (o *OptionalIoK8sAPICoreV1ConfigMapNodeConfigSource) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ConfigMapNodeConfigSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ConfigMapNodeConfigSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ConfigMapProjection to json stream.
-func (o OptionalIoK8sAPICoreV1ConfigMapProjection) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ConfigMapProjection) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ConfigMapProjection from json iterator.
-func (o *OptionalIoK8sAPICoreV1ConfigMapProjection) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ConfigMapProjection) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43138,18 +43138,18 @@ func (o *OptionalIoK8sAPICoreV1ConfigMapProjection) ReadJSON(i *json.Iterator) e
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ConfigMapProjection", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ConfigMapProjection", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ConfigMapVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1ConfigMapVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ConfigMapVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ConfigMapVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1ConfigMapVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ConfigMapVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43158,18 +43158,18 @@ func (o *OptionalIoK8sAPICoreV1ConfigMapVolumeSource) ReadJSON(i *json.Iterator)
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ConfigMapVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ConfigMapVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ContainerState to json stream.
-func (o OptionalIoK8sAPICoreV1ContainerState) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ContainerState) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ContainerState from json iterator.
-func (o *OptionalIoK8sAPICoreV1ContainerState) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ContainerState) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43178,18 +43178,18 @@ func (o *OptionalIoK8sAPICoreV1ContainerState) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ContainerState", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ContainerState", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ContainerStateRunning to json stream.
-func (o OptionalIoK8sAPICoreV1ContainerStateRunning) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ContainerStateRunning) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ContainerStateRunning from json iterator.
-func (o *OptionalIoK8sAPICoreV1ContainerStateRunning) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ContainerStateRunning) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43198,18 +43198,18 @@ func (o *OptionalIoK8sAPICoreV1ContainerStateRunning) ReadJSON(i *json.Iterator)
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ContainerStateRunning", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ContainerStateRunning", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ContainerStateTerminated to json stream.
-func (o OptionalIoK8sAPICoreV1ContainerStateTerminated) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ContainerStateTerminated) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ContainerStateTerminated from json iterator.
-func (o *OptionalIoK8sAPICoreV1ContainerStateTerminated) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ContainerStateTerminated) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43218,18 +43218,18 @@ func (o *OptionalIoK8sAPICoreV1ContainerStateTerminated) ReadJSON(i *json.Iterat
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ContainerStateTerminated", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ContainerStateTerminated", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ContainerStateWaiting to json stream.
-func (o OptionalIoK8sAPICoreV1ContainerStateWaiting) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ContainerStateWaiting) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ContainerStateWaiting from json iterator.
-func (o *OptionalIoK8sAPICoreV1ContainerStateWaiting) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ContainerStateWaiting) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43238,18 +43238,18 @@ func (o *OptionalIoK8sAPICoreV1ContainerStateWaiting) ReadJSON(i *json.Iterator)
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ContainerStateWaiting", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ContainerStateWaiting", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1DaemonEndpoint to json stream.
-func (o OptionalIoK8sAPICoreV1DaemonEndpoint) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1DaemonEndpoint) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1DaemonEndpoint from json iterator.
-func (o *OptionalIoK8sAPICoreV1DaemonEndpoint) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1DaemonEndpoint) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43258,18 +43258,18 @@ func (o *OptionalIoK8sAPICoreV1DaemonEndpoint) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1DaemonEndpoint", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1DaemonEndpoint", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1DownwardAPIProjection to json stream.
-func (o OptionalIoK8sAPICoreV1DownwardAPIProjection) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1DownwardAPIProjection) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1DownwardAPIProjection from json iterator.
-func (o *OptionalIoK8sAPICoreV1DownwardAPIProjection) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1DownwardAPIProjection) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43278,18 +43278,18 @@ func (o *OptionalIoK8sAPICoreV1DownwardAPIProjection) ReadJSON(i *json.Iterator)
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1DownwardAPIProjection", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1DownwardAPIProjection", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1DownwardAPIVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1DownwardAPIVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1DownwardAPIVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1DownwardAPIVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1DownwardAPIVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1DownwardAPIVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43298,18 +43298,18 @@ func (o *OptionalIoK8sAPICoreV1DownwardAPIVolumeSource) ReadJSON(i *json.Iterato
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1DownwardAPIVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1DownwardAPIVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1EmptyDirVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1EmptyDirVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1EmptyDirVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1EmptyDirVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1EmptyDirVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1EmptyDirVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43318,18 +43318,18 @@ func (o *OptionalIoK8sAPICoreV1EmptyDirVolumeSource) ReadJSON(i *json.Iterator) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1EmptyDirVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1EmptyDirVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1EnvVarSource to json stream.
-func (o OptionalIoK8sAPICoreV1EnvVarSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1EnvVarSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1EnvVarSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1EnvVarSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1EnvVarSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43338,18 +43338,18 @@ func (o *OptionalIoK8sAPICoreV1EnvVarSource) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1EnvVarSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1EnvVarSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1EphemeralVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1EphemeralVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1EphemeralVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1EphemeralVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1EphemeralVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1EphemeralVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43358,18 +43358,18 @@ func (o *OptionalIoK8sAPICoreV1EphemeralVolumeSource) ReadJSON(i *json.Iterator)
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1EphemeralVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1EphemeralVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1EventSeries to json stream.
-func (o OptionalIoK8sAPICoreV1EventSeries) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1EventSeries) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1EventSeries from json iterator.
-func (o *OptionalIoK8sAPICoreV1EventSeries) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1EventSeries) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43378,18 +43378,18 @@ func (o *OptionalIoK8sAPICoreV1EventSeries) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1EventSeries", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1EventSeries", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1EventSource to json stream.
-func (o OptionalIoK8sAPICoreV1EventSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1EventSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1EventSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1EventSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1EventSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43398,18 +43398,18 @@ func (o *OptionalIoK8sAPICoreV1EventSource) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1EventSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1EventSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ExecAction to json stream.
-func (o OptionalIoK8sAPICoreV1ExecAction) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ExecAction) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ExecAction from json iterator.
-func (o *OptionalIoK8sAPICoreV1ExecAction) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ExecAction) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43418,18 +43418,18 @@ func (o *OptionalIoK8sAPICoreV1ExecAction) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ExecAction", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ExecAction", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1FCVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1FCVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1FCVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1FCVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1FCVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1FCVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43438,18 +43438,18 @@ func (o *OptionalIoK8sAPICoreV1FCVolumeSource) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1FCVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1FCVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1FlexPersistentVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1FlexPersistentVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1FlexPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1FlexPersistentVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1FlexPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1FlexPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43458,18 +43458,18 @@ func (o *OptionalIoK8sAPICoreV1FlexPersistentVolumeSource) ReadJSON(i *json.Iter
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1FlexPersistentVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1FlexPersistentVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1FlexVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1FlexVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1FlexVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1FlexVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1FlexVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1FlexVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43478,18 +43478,18 @@ func (o *OptionalIoK8sAPICoreV1FlexVolumeSource) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1FlexVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1FlexVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1FlockerVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1FlockerVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1FlockerVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1FlockerVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1FlockerVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1FlockerVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43498,18 +43498,18 @@ func (o *OptionalIoK8sAPICoreV1FlockerVolumeSource) ReadJSON(i *json.Iterator) e
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1FlockerVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1FlockerVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1GCEPersistentDiskVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1GCEPersistentDiskVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1GCEPersistentDiskVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1GCEPersistentDiskVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43518,18 +43518,18 @@ func (o *OptionalIoK8sAPICoreV1GCEPersistentDiskVolumeSource) ReadJSON(i *json.I
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1GCEPersistentDiskVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1GitRepoVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1GitRepoVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1GitRepoVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1GitRepoVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1GitRepoVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1GitRepoVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43538,18 +43538,18 @@ func (o *OptionalIoK8sAPICoreV1GitRepoVolumeSource) ReadJSON(i *json.Iterator) e
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1GitRepoVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1GitRepoVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1GlusterfsPersistentVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1GlusterfsPersistentVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1GlusterfsPersistentVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1GlusterfsPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43558,18 +43558,18 @@ func (o *OptionalIoK8sAPICoreV1GlusterfsPersistentVolumeSource) ReadJSON(i *json
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1GlusterfsPersistentVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1GlusterfsVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1GlusterfsVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1GlusterfsVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1GlusterfsVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1GlusterfsVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1GlusterfsVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43578,18 +43578,18 @@ func (o *OptionalIoK8sAPICoreV1GlusterfsVolumeSource) ReadJSON(i *json.Iterator)
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1GlusterfsVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1GlusterfsVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1HTTPGetAction to json stream.
-func (o OptionalIoK8sAPICoreV1HTTPGetAction) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1HTTPGetAction) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1HTTPGetAction from json iterator.
-func (o *OptionalIoK8sAPICoreV1HTTPGetAction) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1HTTPGetAction) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43598,18 +43598,18 @@ func (o *OptionalIoK8sAPICoreV1HTTPGetAction) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1HTTPGetAction", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1HTTPGetAction", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1Handler to json stream.
-func (o OptionalIoK8sAPICoreV1Handler) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1Handler) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1Handler from json iterator.
-func (o *OptionalIoK8sAPICoreV1Handler) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1Handler) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43618,18 +43618,18 @@ func (o *OptionalIoK8sAPICoreV1Handler) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1Handler", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1Handler", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1HostPathVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1HostPathVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1HostPathVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1HostPathVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1HostPathVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1HostPathVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43638,18 +43638,18 @@ func (o *OptionalIoK8sAPICoreV1HostPathVolumeSource) ReadJSON(i *json.Iterator) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1HostPathVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1HostPathVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ISCSIPersistentVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1ISCSIPersistentVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ISCSIPersistentVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1ISCSIPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43658,18 +43658,18 @@ func (o *OptionalIoK8sAPICoreV1ISCSIPersistentVolumeSource) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ISCSIPersistentVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ISCSIPersistentVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ISCSIVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1ISCSIVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ISCSIVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ISCSIVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1ISCSIVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ISCSIVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43678,18 +43678,18 @@ func (o *OptionalIoK8sAPICoreV1ISCSIVolumeSource) ReadJSON(i *json.Iterator) err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ISCSIVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ISCSIVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1Lifecycle to json stream.
-func (o OptionalIoK8sAPICoreV1Lifecycle) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1Lifecycle) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1Lifecycle from json iterator.
-func (o *OptionalIoK8sAPICoreV1Lifecycle) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1Lifecycle) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43698,18 +43698,18 @@ func (o *OptionalIoK8sAPICoreV1Lifecycle) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1Lifecycle", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1Lifecycle", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1LimitRangeSpec to json stream.
-func (o OptionalIoK8sAPICoreV1LimitRangeSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1LimitRangeSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1LimitRangeSpec from json iterator.
-func (o *OptionalIoK8sAPICoreV1LimitRangeSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1LimitRangeSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43718,18 +43718,18 @@ func (o *OptionalIoK8sAPICoreV1LimitRangeSpec) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1LimitRangeSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1LimitRangeSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1LoadBalancerStatus to json stream.
-func (o OptionalIoK8sAPICoreV1LoadBalancerStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1LoadBalancerStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1LoadBalancerStatus from json iterator.
-func (o *OptionalIoK8sAPICoreV1LoadBalancerStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1LoadBalancerStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43738,18 +43738,18 @@ func (o *OptionalIoK8sAPICoreV1LoadBalancerStatus) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1LoadBalancerStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1LoadBalancerStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1LocalObjectReference to json stream.
-func (o OptionalIoK8sAPICoreV1LocalObjectReference) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1LocalObjectReference) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1LocalObjectReference from json iterator.
-func (o *OptionalIoK8sAPICoreV1LocalObjectReference) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1LocalObjectReference) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43758,18 +43758,18 @@ func (o *OptionalIoK8sAPICoreV1LocalObjectReference) ReadJSON(i *json.Iterator) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1LocalObjectReference", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1LocalObjectReference", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1LocalVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1LocalVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1LocalVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1LocalVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1LocalVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1LocalVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43778,18 +43778,18 @@ func (o *OptionalIoK8sAPICoreV1LocalVolumeSource) ReadJSON(i *json.Iterator) err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1LocalVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1LocalVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1NFSVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1NFSVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1NFSVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1NFSVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1NFSVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1NFSVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43798,18 +43798,18 @@ func (o *OptionalIoK8sAPICoreV1NFSVolumeSource) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NFSVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NFSVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1NamespaceSpec to json stream.
-func (o OptionalIoK8sAPICoreV1NamespaceSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1NamespaceSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1NamespaceSpec from json iterator.
-func (o *OptionalIoK8sAPICoreV1NamespaceSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1NamespaceSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43818,18 +43818,18 @@ func (o *OptionalIoK8sAPICoreV1NamespaceSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NamespaceSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NamespaceSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1NamespaceStatus to json stream.
-func (o OptionalIoK8sAPICoreV1NamespaceStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1NamespaceStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1NamespaceStatus from json iterator.
-func (o *OptionalIoK8sAPICoreV1NamespaceStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1NamespaceStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43838,18 +43838,18 @@ func (o *OptionalIoK8sAPICoreV1NamespaceStatus) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NamespaceStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NamespaceStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1NodeAffinity to json stream.
-func (o OptionalIoK8sAPICoreV1NodeAffinity) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1NodeAffinity) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1NodeAffinity from json iterator.
-func (o *OptionalIoK8sAPICoreV1NodeAffinity) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1NodeAffinity) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43858,18 +43858,18 @@ func (o *OptionalIoK8sAPICoreV1NodeAffinity) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NodeAffinity", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NodeAffinity", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1NodeConfigSource to json stream.
-func (o OptionalIoK8sAPICoreV1NodeConfigSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1NodeConfigSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1NodeConfigSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1NodeConfigSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1NodeConfigSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43878,18 +43878,18 @@ func (o *OptionalIoK8sAPICoreV1NodeConfigSource) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NodeConfigSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NodeConfigSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1NodeConfigStatus to json stream.
-func (o OptionalIoK8sAPICoreV1NodeConfigStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1NodeConfigStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1NodeConfigStatus from json iterator.
-func (o *OptionalIoK8sAPICoreV1NodeConfigStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1NodeConfigStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43898,18 +43898,18 @@ func (o *OptionalIoK8sAPICoreV1NodeConfigStatus) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NodeConfigStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NodeConfigStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1NodeDaemonEndpoints to json stream.
-func (o OptionalIoK8sAPICoreV1NodeDaemonEndpoints) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1NodeDaemonEndpoints) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1NodeDaemonEndpoints from json iterator.
-func (o *OptionalIoK8sAPICoreV1NodeDaemonEndpoints) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1NodeDaemonEndpoints) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43918,18 +43918,18 @@ func (o *OptionalIoK8sAPICoreV1NodeDaemonEndpoints) ReadJSON(i *json.Iterator) e
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NodeDaemonEndpoints", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NodeDaemonEndpoints", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1NodeSelector to json stream.
-func (o OptionalIoK8sAPICoreV1NodeSelector) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1NodeSelector) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1NodeSelector from json iterator.
-func (o *OptionalIoK8sAPICoreV1NodeSelector) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1NodeSelector) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43938,18 +43938,18 @@ func (o *OptionalIoK8sAPICoreV1NodeSelector) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NodeSelector", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NodeSelector", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1NodeSpec to json stream.
-func (o OptionalIoK8sAPICoreV1NodeSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1NodeSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1NodeSpec from json iterator.
-func (o *OptionalIoK8sAPICoreV1NodeSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1NodeSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43958,18 +43958,18 @@ func (o *OptionalIoK8sAPICoreV1NodeSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NodeSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NodeSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1NodeStatus to json stream.
-func (o OptionalIoK8sAPICoreV1NodeStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1NodeStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1NodeStatus from json iterator.
-func (o *OptionalIoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43978,18 +43978,18 @@ func (o *OptionalIoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NodeStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NodeStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1NodeSystemInfo to json stream.
-func (o OptionalIoK8sAPICoreV1NodeSystemInfo) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1NodeSystemInfo) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1NodeSystemInfo from json iterator.
-func (o *OptionalIoK8sAPICoreV1NodeSystemInfo) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1NodeSystemInfo) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -43998,18 +43998,18 @@ func (o *OptionalIoK8sAPICoreV1NodeSystemInfo) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NodeSystemInfo", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1NodeSystemInfo", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ObjectFieldSelector to json stream.
-func (o OptionalIoK8sAPICoreV1ObjectFieldSelector) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ObjectFieldSelector) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ObjectFieldSelector from json iterator.
-func (o *OptionalIoK8sAPICoreV1ObjectFieldSelector) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ObjectFieldSelector) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44018,18 +44018,18 @@ func (o *OptionalIoK8sAPICoreV1ObjectFieldSelector) ReadJSON(i *json.Iterator) e
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ObjectFieldSelector", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ObjectFieldSelector", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ObjectReference to json stream.
-func (o OptionalIoK8sAPICoreV1ObjectReference) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ObjectReference) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ObjectReference from json iterator.
-func (o *OptionalIoK8sAPICoreV1ObjectReference) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ObjectReference) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44038,18 +44038,18 @@ func (o *OptionalIoK8sAPICoreV1ObjectReference) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ObjectReference", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ObjectReference", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1PersistentVolumeClaimSpec to json stream.
-func (o OptionalIoK8sAPICoreV1PersistentVolumeClaimSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1PersistentVolumeClaimSpec from json iterator.
-func (o *OptionalIoK8sAPICoreV1PersistentVolumeClaimSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1PersistentVolumeClaimSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44058,18 +44058,18 @@ func (o *OptionalIoK8sAPICoreV1PersistentVolumeClaimSpec) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PersistentVolumeClaimSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PersistentVolumeClaimSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1PersistentVolumeClaimStatus to json stream.
-func (o OptionalIoK8sAPICoreV1PersistentVolumeClaimStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1PersistentVolumeClaimStatus from json iterator.
-func (o *OptionalIoK8sAPICoreV1PersistentVolumeClaimStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1PersistentVolumeClaimStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44078,18 +44078,18 @@ func (o *OptionalIoK8sAPICoreV1PersistentVolumeClaimStatus) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PersistentVolumeClaimStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PersistentVolumeClaimStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1PersistentVolumeClaimTemplate to json stream.
-func (o OptionalIoK8sAPICoreV1PersistentVolumeClaimTemplate) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1PersistentVolumeClaimTemplate from json iterator.
-func (o *OptionalIoK8sAPICoreV1PersistentVolumeClaimTemplate) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44098,18 +44098,18 @@ func (o *OptionalIoK8sAPICoreV1PersistentVolumeClaimTemplate) ReadJSON(i *json.I
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PersistentVolumeClaimTemplate", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PersistentVolumeClaimTemplate", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1PersistentVolumeClaimVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1PersistentVolumeClaimVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44118,18 +44118,18 @@ func (o *OptionalIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) ReadJSON(i *js
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PersistentVolumeClaimVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1PersistentVolumeSpec to json stream.
-func (o OptionalIoK8sAPICoreV1PersistentVolumeSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1PersistentVolumeSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1PersistentVolumeSpec from json iterator.
-func (o *OptionalIoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44138,18 +44138,18 @@ func (o *OptionalIoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PersistentVolumeSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PersistentVolumeSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1PersistentVolumeStatus to json stream.
-func (o OptionalIoK8sAPICoreV1PersistentVolumeStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1PersistentVolumeStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1PersistentVolumeStatus from json iterator.
-func (o *OptionalIoK8sAPICoreV1PersistentVolumeStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1PersistentVolumeStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44158,18 +44158,18 @@ func (o *OptionalIoK8sAPICoreV1PersistentVolumeStatus) ReadJSON(i *json.Iterator
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PersistentVolumeStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PersistentVolumeStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1PhotonPersistentDiskVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1PhotonPersistentDiskVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44178,18 +44178,18 @@ func (o *OptionalIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) ReadJSON(i *jso
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PhotonPersistentDiskVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1PodAffinity to json stream.
-func (o OptionalIoK8sAPICoreV1PodAffinity) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1PodAffinity) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1PodAffinity from json iterator.
-func (o *OptionalIoK8sAPICoreV1PodAffinity) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1PodAffinity) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44198,18 +44198,18 @@ func (o *OptionalIoK8sAPICoreV1PodAffinity) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PodAffinity", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PodAffinity", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1PodAntiAffinity to json stream.
-func (o OptionalIoK8sAPICoreV1PodAntiAffinity) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1PodAntiAffinity) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1PodAntiAffinity from json iterator.
-func (o *OptionalIoK8sAPICoreV1PodAntiAffinity) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1PodAntiAffinity) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44218,18 +44218,18 @@ func (o *OptionalIoK8sAPICoreV1PodAntiAffinity) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PodAntiAffinity", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PodAntiAffinity", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1PodDNSConfig to json stream.
-func (o OptionalIoK8sAPICoreV1PodDNSConfig) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1PodDNSConfig) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1PodDNSConfig from json iterator.
-func (o *OptionalIoK8sAPICoreV1PodDNSConfig) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1PodDNSConfig) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44238,18 +44238,18 @@ func (o *OptionalIoK8sAPICoreV1PodDNSConfig) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PodDNSConfig", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PodDNSConfig", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1PodSecurityContext to json stream.
-func (o OptionalIoK8sAPICoreV1PodSecurityContext) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1PodSecurityContext) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1PodSecurityContext from json iterator.
-func (o *OptionalIoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44258,18 +44258,18 @@ func (o *OptionalIoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PodSecurityContext", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PodSecurityContext", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1PodSpec to json stream.
-func (o OptionalIoK8sAPICoreV1PodSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1PodSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1PodSpec from json iterator.
-func (o *OptionalIoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44278,18 +44278,18 @@ func (o *OptionalIoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PodSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PodSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1PodStatus to json stream.
-func (o OptionalIoK8sAPICoreV1PodStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1PodStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1PodStatus from json iterator.
-func (o *OptionalIoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44298,18 +44298,18 @@ func (o *OptionalIoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PodStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PodStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1PodTemplateSpec to json stream.
-func (o OptionalIoK8sAPICoreV1PodTemplateSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1PodTemplateSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1PodTemplateSpec from json iterator.
-func (o *OptionalIoK8sAPICoreV1PodTemplateSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1PodTemplateSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44318,18 +44318,18 @@ func (o *OptionalIoK8sAPICoreV1PodTemplateSpec) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PodTemplateSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PodTemplateSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1PortworxVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1PortworxVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1PortworxVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1PortworxVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1PortworxVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1PortworxVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44338,18 +44338,18 @@ func (o *OptionalIoK8sAPICoreV1PortworxVolumeSource) ReadJSON(i *json.Iterator) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PortworxVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1PortworxVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1Probe to json stream.
-func (o OptionalIoK8sAPICoreV1Probe) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1Probe) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1Probe from json iterator.
-func (o *OptionalIoK8sAPICoreV1Probe) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1Probe) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44358,18 +44358,18 @@ func (o *OptionalIoK8sAPICoreV1Probe) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1Probe", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1Probe", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ProjectedVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1ProjectedVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ProjectedVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ProjectedVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1ProjectedVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ProjectedVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44378,18 +44378,18 @@ func (o *OptionalIoK8sAPICoreV1ProjectedVolumeSource) ReadJSON(i *json.Iterator)
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ProjectedVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ProjectedVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1QuobyteVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1QuobyteVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1QuobyteVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1QuobyteVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1QuobyteVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1QuobyteVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44398,18 +44398,18 @@ func (o *OptionalIoK8sAPICoreV1QuobyteVolumeSource) ReadJSON(i *json.Iterator) e
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1QuobyteVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1QuobyteVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1RBDPersistentVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1RBDPersistentVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1RBDPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1RBDPersistentVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1RBDPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1RBDPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44418,18 +44418,18 @@ func (o *OptionalIoK8sAPICoreV1RBDPersistentVolumeSource) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1RBDPersistentVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1RBDPersistentVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1RBDVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1RBDVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1RBDVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1RBDVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1RBDVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1RBDVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44438,18 +44438,18 @@ func (o *OptionalIoK8sAPICoreV1RBDVolumeSource) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1RBDVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1RBDVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ReplicationControllerSpec to json stream.
-func (o OptionalIoK8sAPICoreV1ReplicationControllerSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ReplicationControllerSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ReplicationControllerSpec from json iterator.
-func (o *OptionalIoK8sAPICoreV1ReplicationControllerSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ReplicationControllerSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44458,18 +44458,18 @@ func (o *OptionalIoK8sAPICoreV1ReplicationControllerSpec) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ReplicationControllerSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ReplicationControllerSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ReplicationControllerStatus to json stream.
-func (o OptionalIoK8sAPICoreV1ReplicationControllerStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ReplicationControllerStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ReplicationControllerStatus from json iterator.
-func (o *OptionalIoK8sAPICoreV1ReplicationControllerStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ReplicationControllerStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44478,18 +44478,18 @@ func (o *OptionalIoK8sAPICoreV1ReplicationControllerStatus) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ReplicationControllerStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ReplicationControllerStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ResourceFieldSelector to json stream.
-func (o OptionalIoK8sAPICoreV1ResourceFieldSelector) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ResourceFieldSelector) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ResourceFieldSelector from json iterator.
-func (o *OptionalIoK8sAPICoreV1ResourceFieldSelector) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ResourceFieldSelector) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44498,18 +44498,18 @@ func (o *OptionalIoK8sAPICoreV1ResourceFieldSelector) ReadJSON(i *json.Iterator)
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ResourceFieldSelector", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ResourceFieldSelector", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ResourceQuotaSpec to json stream.
-func (o OptionalIoK8sAPICoreV1ResourceQuotaSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ResourceQuotaSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ResourceQuotaSpec from json iterator.
-func (o *OptionalIoK8sAPICoreV1ResourceQuotaSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ResourceQuotaSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44518,18 +44518,18 @@ func (o *OptionalIoK8sAPICoreV1ResourceQuotaSpec) ReadJSON(i *json.Iterator) err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ResourceQuotaSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ResourceQuotaSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ResourceQuotaStatus to json stream.
-func (o OptionalIoK8sAPICoreV1ResourceQuotaStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ResourceQuotaStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ResourceQuotaStatus from json iterator.
-func (o *OptionalIoK8sAPICoreV1ResourceQuotaStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ResourceQuotaStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44538,18 +44538,18 @@ func (o *OptionalIoK8sAPICoreV1ResourceQuotaStatus) ReadJSON(i *json.Iterator) e
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ResourceQuotaStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ResourceQuotaStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ResourceRequirements to json stream.
-func (o OptionalIoK8sAPICoreV1ResourceRequirements) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ResourceRequirements) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ResourceRequirements from json iterator.
-func (o *OptionalIoK8sAPICoreV1ResourceRequirements) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ResourceRequirements) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44558,18 +44558,18 @@ func (o *OptionalIoK8sAPICoreV1ResourceRequirements) ReadJSON(i *json.Iterator) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ResourceRequirements", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ResourceRequirements", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1SELinuxOptions to json stream.
-func (o OptionalIoK8sAPICoreV1SELinuxOptions) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1SELinuxOptions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1SELinuxOptions from json iterator.
-func (o *OptionalIoK8sAPICoreV1SELinuxOptions) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1SELinuxOptions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44578,18 +44578,18 @@ func (o *OptionalIoK8sAPICoreV1SELinuxOptions) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1SELinuxOptions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1SELinuxOptions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ScaleIOPersistentVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1ScaleIOPersistentVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ScaleIOPersistentVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1ScaleIOPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44598,18 +44598,18 @@ func (o *OptionalIoK8sAPICoreV1ScaleIOPersistentVolumeSource) ReadJSON(i *json.I
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ScaleIOPersistentVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ScaleIOVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1ScaleIOVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ScaleIOVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ScaleIOVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1ScaleIOVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ScaleIOVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44618,18 +44618,18 @@ func (o *OptionalIoK8sAPICoreV1ScaleIOVolumeSource) ReadJSON(i *json.Iterator) e
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ScaleIOVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ScaleIOVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ScopeSelector to json stream.
-func (o OptionalIoK8sAPICoreV1ScopeSelector) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ScopeSelector) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ScopeSelector from json iterator.
-func (o *OptionalIoK8sAPICoreV1ScopeSelector) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ScopeSelector) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44638,18 +44638,18 @@ func (o *OptionalIoK8sAPICoreV1ScopeSelector) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ScopeSelector", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ScopeSelector", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1SeccompProfile to json stream.
-func (o OptionalIoK8sAPICoreV1SeccompProfile) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1SeccompProfile) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1SeccompProfile from json iterator.
-func (o *OptionalIoK8sAPICoreV1SeccompProfile) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1SeccompProfile) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44658,18 +44658,18 @@ func (o *OptionalIoK8sAPICoreV1SeccompProfile) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1SeccompProfile", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1SeccompProfile", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1SecretEnvSource to json stream.
-func (o OptionalIoK8sAPICoreV1SecretEnvSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1SecretEnvSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1SecretEnvSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1SecretEnvSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1SecretEnvSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44678,18 +44678,18 @@ func (o *OptionalIoK8sAPICoreV1SecretEnvSource) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1SecretEnvSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1SecretEnvSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1SecretKeySelector to json stream.
-func (o OptionalIoK8sAPICoreV1SecretKeySelector) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1SecretKeySelector) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1SecretKeySelector from json iterator.
-func (o *OptionalIoK8sAPICoreV1SecretKeySelector) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1SecretKeySelector) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44698,18 +44698,18 @@ func (o *OptionalIoK8sAPICoreV1SecretKeySelector) ReadJSON(i *json.Iterator) err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1SecretKeySelector", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1SecretKeySelector", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1SecretProjection to json stream.
-func (o OptionalIoK8sAPICoreV1SecretProjection) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1SecretProjection) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1SecretProjection from json iterator.
-func (o *OptionalIoK8sAPICoreV1SecretProjection) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1SecretProjection) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44718,18 +44718,18 @@ func (o *OptionalIoK8sAPICoreV1SecretProjection) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1SecretProjection", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1SecretProjection", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1SecretReference to json stream.
-func (o OptionalIoK8sAPICoreV1SecretReference) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1SecretReference) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1SecretReference from json iterator.
-func (o *OptionalIoK8sAPICoreV1SecretReference) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1SecretReference) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44738,18 +44738,18 @@ func (o *OptionalIoK8sAPICoreV1SecretReference) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1SecretReference", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1SecretReference", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1SecretVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1SecretVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1SecretVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1SecretVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1SecretVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1SecretVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44758,18 +44758,18 @@ func (o *OptionalIoK8sAPICoreV1SecretVolumeSource) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1SecretVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1SecretVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1SecurityContext to json stream.
-func (o OptionalIoK8sAPICoreV1SecurityContext) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1SecurityContext) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1SecurityContext from json iterator.
-func (o *OptionalIoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44778,18 +44778,18 @@ func (o *OptionalIoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1SecurityContext", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1SecurityContext", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ServiceAccountTokenProjection to json stream.
-func (o OptionalIoK8sAPICoreV1ServiceAccountTokenProjection) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ServiceAccountTokenProjection) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ServiceAccountTokenProjection from json iterator.
-func (o *OptionalIoK8sAPICoreV1ServiceAccountTokenProjection) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ServiceAccountTokenProjection) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44798,18 +44798,18 @@ func (o *OptionalIoK8sAPICoreV1ServiceAccountTokenProjection) ReadJSON(i *json.I
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ServiceAccountTokenProjection", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ServiceAccountTokenProjection", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ServiceSpec to json stream.
-func (o OptionalIoK8sAPICoreV1ServiceSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ServiceSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ServiceSpec from json iterator.
-func (o *OptionalIoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44818,18 +44818,18 @@ func (o *OptionalIoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ServiceSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ServiceSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1ServiceStatus to json stream.
-func (o OptionalIoK8sAPICoreV1ServiceStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1ServiceStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1ServiceStatus from json iterator.
-func (o *OptionalIoK8sAPICoreV1ServiceStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1ServiceStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44838,18 +44838,18 @@ func (o *OptionalIoK8sAPICoreV1ServiceStatus) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ServiceStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1ServiceStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1SessionAffinityConfig to json stream.
-func (o OptionalIoK8sAPICoreV1SessionAffinityConfig) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1SessionAffinityConfig) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1SessionAffinityConfig from json iterator.
-func (o *OptionalIoK8sAPICoreV1SessionAffinityConfig) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1SessionAffinityConfig) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44858,18 +44858,18 @@ func (o *OptionalIoK8sAPICoreV1SessionAffinityConfig) ReadJSON(i *json.Iterator)
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1SessionAffinityConfig", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1SessionAffinityConfig", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1StorageOSPersistentVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1StorageOSPersistentVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1StorageOSPersistentVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1StorageOSPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44878,18 +44878,18 @@ func (o *OptionalIoK8sAPICoreV1StorageOSPersistentVolumeSource) ReadJSON(i *json
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1StorageOSPersistentVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1StorageOSPersistentVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1StorageOSVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1StorageOSVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1StorageOSVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1StorageOSVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1StorageOSVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1StorageOSVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44898,18 +44898,18 @@ func (o *OptionalIoK8sAPICoreV1StorageOSVolumeSource) ReadJSON(i *json.Iterator)
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1StorageOSVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1StorageOSVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1TCPSocketAction to json stream.
-func (o OptionalIoK8sAPICoreV1TCPSocketAction) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1TCPSocketAction) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1TCPSocketAction from json iterator.
-func (o *OptionalIoK8sAPICoreV1TCPSocketAction) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1TCPSocketAction) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44918,18 +44918,18 @@ func (o *OptionalIoK8sAPICoreV1TCPSocketAction) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1TCPSocketAction", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1TCPSocketAction", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1TypedLocalObjectReference to json stream.
-func (o OptionalIoK8sAPICoreV1TypedLocalObjectReference) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1TypedLocalObjectReference) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1TypedLocalObjectReference from json iterator.
-func (o *OptionalIoK8sAPICoreV1TypedLocalObjectReference) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1TypedLocalObjectReference) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44938,18 +44938,18 @@ func (o *OptionalIoK8sAPICoreV1TypedLocalObjectReference) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1TypedLocalObjectReference", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1TypedLocalObjectReference", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1VolumeNodeAffinity to json stream.
-func (o OptionalIoK8sAPICoreV1VolumeNodeAffinity) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1VolumeNodeAffinity) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1VolumeNodeAffinity from json iterator.
-func (o *OptionalIoK8sAPICoreV1VolumeNodeAffinity) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1VolumeNodeAffinity) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44958,18 +44958,18 @@ func (o *OptionalIoK8sAPICoreV1VolumeNodeAffinity) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1VolumeNodeAffinity", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1VolumeNodeAffinity", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1VsphereVirtualDiskVolumeSource to json stream.
-func (o OptionalIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1VsphereVirtualDiskVolumeSource from json iterator.
-func (o *OptionalIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44978,18 +44978,18 @@ func (o *OptionalIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) ReadJSON(i *json.
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1VsphereVirtualDiskVolumeSource", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPICoreV1WindowsSecurityContextOptions to json stream.
-func (o OptionalIoK8sAPICoreV1WindowsSecurityContextOptions) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPICoreV1WindowsSecurityContextOptions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPICoreV1WindowsSecurityContextOptions from json iterator.
-func (o *OptionalIoK8sAPICoreV1WindowsSecurityContextOptions) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPICoreV1WindowsSecurityContextOptions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -44998,18 +44998,18 @@ func (o *OptionalIoK8sAPICoreV1WindowsSecurityContextOptions) ReadJSON(i *json.I
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1WindowsSecurityContextOptions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPICoreV1WindowsSecurityContextOptions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIDiscoveryV1EndpointConditions to json stream.
-func (o OptionalIoK8sAPIDiscoveryV1EndpointConditions) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIDiscoveryV1EndpointConditions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIDiscoveryV1EndpointConditions from json iterator.
-func (o *OptionalIoK8sAPIDiscoveryV1EndpointConditions) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIDiscoveryV1EndpointConditions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45018,18 +45018,18 @@ func (o *OptionalIoK8sAPIDiscoveryV1EndpointConditions) ReadJSON(i *json.Iterato
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIDiscoveryV1EndpointConditions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIDiscoveryV1EndpointConditions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIDiscoveryV1EndpointHints to json stream.
-func (o OptionalIoK8sAPIDiscoveryV1EndpointHints) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIDiscoveryV1EndpointHints) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIDiscoveryV1EndpointHints from json iterator.
-func (o *OptionalIoK8sAPIDiscoveryV1EndpointHints) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIDiscoveryV1EndpointHints) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45038,18 +45038,18 @@ func (o *OptionalIoK8sAPIDiscoveryV1EndpointHints) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIDiscoveryV1EndpointHints", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIDiscoveryV1EndpointHints", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIDiscoveryV1beta1EndpointConditions to json stream.
-func (o OptionalIoK8sAPIDiscoveryV1beta1EndpointConditions) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIDiscoveryV1beta1EndpointConditions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIDiscoveryV1beta1EndpointConditions from json iterator.
-func (o *OptionalIoK8sAPIDiscoveryV1beta1EndpointConditions) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIDiscoveryV1beta1EndpointConditions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45058,18 +45058,18 @@ func (o *OptionalIoK8sAPIDiscoveryV1beta1EndpointConditions) ReadJSON(i *json.It
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIDiscoveryV1beta1EndpointConditions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIDiscoveryV1beta1EndpointConditions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIDiscoveryV1beta1EndpointHints to json stream.
-func (o OptionalIoK8sAPIDiscoveryV1beta1EndpointHints) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIDiscoveryV1beta1EndpointHints) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIDiscoveryV1beta1EndpointHints from json iterator.
-func (o *OptionalIoK8sAPIDiscoveryV1beta1EndpointHints) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIDiscoveryV1beta1EndpointHints) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45078,18 +45078,18 @@ func (o *OptionalIoK8sAPIDiscoveryV1beta1EndpointHints) ReadJSON(i *json.Iterato
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIDiscoveryV1beta1EndpointHints", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIDiscoveryV1beta1EndpointHints", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIEventsV1EventSeries to json stream.
-func (o OptionalIoK8sAPIEventsV1EventSeries) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIEventsV1EventSeries) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIEventsV1EventSeries from json iterator.
-func (o *OptionalIoK8sAPIEventsV1EventSeries) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIEventsV1EventSeries) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45098,18 +45098,18 @@ func (o *OptionalIoK8sAPIEventsV1EventSeries) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIEventsV1EventSeries", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIEventsV1EventSeries", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIEventsV1beta1EventSeries to json stream.
-func (o OptionalIoK8sAPIEventsV1beta1EventSeries) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIEventsV1beta1EventSeries) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIEventsV1beta1EventSeries from json iterator.
-func (o *OptionalIoK8sAPIEventsV1beta1EventSeries) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIEventsV1beta1EventSeries) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45118,18 +45118,18 @@ func (o *OptionalIoK8sAPIEventsV1beta1EventSeries) ReadJSON(i *json.Iterator) er
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIEventsV1beta1EventSeries", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIEventsV1beta1EventSeries", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45138,18 +45138,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) ReadJSON(i *
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45158,18 +45158,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) ReadJSON(i *json.Iter
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45178,18 +45178,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) ReadJSON(i *json.It
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1GroupSubject to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1GroupSubject) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta1GroupSubject) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1GroupSubject from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1GroupSubject) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta1GroupSubject) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45198,18 +45198,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta1GroupSubject) ReadJSON(i *json.Iterat
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1GroupSubject", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1GroupSubject", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1LimitResponse to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1LimitResponse) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta1LimitResponse) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1LimitResponse from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1LimitResponse) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta1LimitResponse) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45218,18 +45218,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta1LimitResponse) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1LimitResponse", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1LimitResponse", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45238,18 +45238,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Re
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45258,18 +45258,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) ReadJ
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45278,18 +45278,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Rea
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1QueuingConfiguration to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1QueuingConfiguration from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45298,18 +45298,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) ReadJSON(i *jso
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1QueuingConfiguration", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45318,18 +45318,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) ReadJSON(i *js
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1UserSubject to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1UserSubject) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta1UserSubject) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1UserSubject from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1UserSubject) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta1UserSubject) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45338,18 +45338,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta1UserSubject) ReadJSON(i *json.Iterato
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1UserSubject", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta1UserSubject", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45358,18 +45358,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) ReadJSON(i *
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45378,18 +45378,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) ReadJSON(i *json.Iter
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45398,18 +45398,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) ReadJSON(i *json.It
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2GroupSubject to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2GroupSubject) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta2GroupSubject) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2GroupSubject from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2GroupSubject) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta2GroupSubject) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45418,18 +45418,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta2GroupSubject) ReadJSON(i *json.Iterat
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2GroupSubject", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2GroupSubject", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2LimitResponse to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2LimitResponse) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta2LimitResponse) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2LimitResponse from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2LimitResponse) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta2LimitResponse) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45438,18 +45438,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta2LimitResponse) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2LimitResponse", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2LimitResponse", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45458,18 +45458,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Re
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45478,18 +45478,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) ReadJ
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45498,18 +45498,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Rea
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2QueuingConfiguration to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2QueuingConfiguration from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45518,18 +45518,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) ReadJSON(i *jso
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2QueuingConfiguration", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45538,18 +45538,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) ReadJSON(i *js
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2UserSubject to json stream.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2UserSubject) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIFlowcontrolV1beta2UserSubject) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2UserSubject from json iterator.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2UserSubject) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIFlowcontrolV1beta2UserSubject) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45558,18 +45558,18 @@ func (o *OptionalIoK8sAPIFlowcontrolV1beta2UserSubject) ReadJSON(i *json.Iterato
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2UserSubject", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIFlowcontrolV1beta2UserSubject", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPINetworkingV1HTTPIngressRuleValue to json stream.
-func (o OptionalIoK8sAPINetworkingV1HTTPIngressRuleValue) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPINetworkingV1HTTPIngressRuleValue) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPINetworkingV1HTTPIngressRuleValue from json iterator.
-func (o *OptionalIoK8sAPINetworkingV1HTTPIngressRuleValue) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPINetworkingV1HTTPIngressRuleValue) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45578,18 +45578,18 @@ func (o *OptionalIoK8sAPINetworkingV1HTTPIngressRuleValue) ReadJSON(i *json.Iter
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINetworkingV1HTTPIngressRuleValue", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINetworkingV1HTTPIngressRuleValue", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPINetworkingV1IPBlock to json stream.
-func (o OptionalIoK8sAPINetworkingV1IPBlock) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPINetworkingV1IPBlock) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPINetworkingV1IPBlock from json iterator.
-func (o *OptionalIoK8sAPINetworkingV1IPBlock) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPINetworkingV1IPBlock) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45598,18 +45598,18 @@ func (o *OptionalIoK8sAPINetworkingV1IPBlock) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINetworkingV1IPBlock", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINetworkingV1IPBlock", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPINetworkingV1IngressBackend to json stream.
-func (o OptionalIoK8sAPINetworkingV1IngressBackend) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPINetworkingV1IngressBackend) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPINetworkingV1IngressBackend from json iterator.
-func (o *OptionalIoK8sAPINetworkingV1IngressBackend) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPINetworkingV1IngressBackend) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45618,18 +45618,18 @@ func (o *OptionalIoK8sAPINetworkingV1IngressBackend) ReadJSON(i *json.Iterator) 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINetworkingV1IngressBackend", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINetworkingV1IngressBackend", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPINetworkingV1IngressClassParametersReference to json stream.
-func (o OptionalIoK8sAPINetworkingV1IngressClassParametersReference) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPINetworkingV1IngressClassParametersReference) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPINetworkingV1IngressClassParametersReference from json iterator.
-func (o *OptionalIoK8sAPINetworkingV1IngressClassParametersReference) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPINetworkingV1IngressClassParametersReference) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45638,18 +45638,18 @@ func (o *OptionalIoK8sAPINetworkingV1IngressClassParametersReference) ReadJSON(i
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINetworkingV1IngressClassParametersReference", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINetworkingV1IngressClassParametersReference", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPINetworkingV1IngressClassSpec to json stream.
-func (o OptionalIoK8sAPINetworkingV1IngressClassSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPINetworkingV1IngressClassSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPINetworkingV1IngressClassSpec from json iterator.
-func (o *OptionalIoK8sAPINetworkingV1IngressClassSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPINetworkingV1IngressClassSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45658,18 +45658,18 @@ func (o *OptionalIoK8sAPINetworkingV1IngressClassSpec) ReadJSON(i *json.Iterator
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINetworkingV1IngressClassSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINetworkingV1IngressClassSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPINetworkingV1IngressServiceBackend to json stream.
-func (o OptionalIoK8sAPINetworkingV1IngressServiceBackend) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPINetworkingV1IngressServiceBackend) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPINetworkingV1IngressServiceBackend from json iterator.
-func (o *OptionalIoK8sAPINetworkingV1IngressServiceBackend) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPINetworkingV1IngressServiceBackend) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45678,18 +45678,18 @@ func (o *OptionalIoK8sAPINetworkingV1IngressServiceBackend) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINetworkingV1IngressServiceBackend", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINetworkingV1IngressServiceBackend", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPINetworkingV1IngressSpec to json stream.
-func (o OptionalIoK8sAPINetworkingV1IngressSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPINetworkingV1IngressSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPINetworkingV1IngressSpec from json iterator.
-func (o *OptionalIoK8sAPINetworkingV1IngressSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPINetworkingV1IngressSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45698,18 +45698,18 @@ func (o *OptionalIoK8sAPINetworkingV1IngressSpec) ReadJSON(i *json.Iterator) err
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINetworkingV1IngressSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINetworkingV1IngressSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPINetworkingV1IngressStatus to json stream.
-func (o OptionalIoK8sAPINetworkingV1IngressStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPINetworkingV1IngressStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPINetworkingV1IngressStatus from json iterator.
-func (o *OptionalIoK8sAPINetworkingV1IngressStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPINetworkingV1IngressStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45718,18 +45718,18 @@ func (o *OptionalIoK8sAPINetworkingV1IngressStatus) ReadJSON(i *json.Iterator) e
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINetworkingV1IngressStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINetworkingV1IngressStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPINetworkingV1NetworkPolicySpec to json stream.
-func (o OptionalIoK8sAPINetworkingV1NetworkPolicySpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPINetworkingV1NetworkPolicySpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPINetworkingV1NetworkPolicySpec from json iterator.
-func (o *OptionalIoK8sAPINetworkingV1NetworkPolicySpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPINetworkingV1NetworkPolicySpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45738,18 +45738,18 @@ func (o *OptionalIoK8sAPINetworkingV1NetworkPolicySpec) ReadJSON(i *json.Iterato
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINetworkingV1NetworkPolicySpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINetworkingV1NetworkPolicySpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPINetworkingV1ServiceBackendPort to json stream.
-func (o OptionalIoK8sAPINetworkingV1ServiceBackendPort) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPINetworkingV1ServiceBackendPort) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPINetworkingV1ServiceBackendPort from json iterator.
-func (o *OptionalIoK8sAPINetworkingV1ServiceBackendPort) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPINetworkingV1ServiceBackendPort) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45758,18 +45758,18 @@ func (o *OptionalIoK8sAPINetworkingV1ServiceBackendPort) ReadJSON(i *json.Iterat
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINetworkingV1ServiceBackendPort", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINetworkingV1ServiceBackendPort", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPINodeV1Overhead to json stream.
-func (o OptionalIoK8sAPINodeV1Overhead) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPINodeV1Overhead) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPINodeV1Overhead from json iterator.
-func (o *OptionalIoK8sAPINodeV1Overhead) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPINodeV1Overhead) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45778,18 +45778,18 @@ func (o *OptionalIoK8sAPINodeV1Overhead) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINodeV1Overhead", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINodeV1Overhead", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPINodeV1Scheduling to json stream.
-func (o OptionalIoK8sAPINodeV1Scheduling) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPINodeV1Scheduling) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPINodeV1Scheduling from json iterator.
-func (o *OptionalIoK8sAPINodeV1Scheduling) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPINodeV1Scheduling) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45798,18 +45798,18 @@ func (o *OptionalIoK8sAPINodeV1Scheduling) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINodeV1Scheduling", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINodeV1Scheduling", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPINodeV1alpha1Overhead to json stream.
-func (o OptionalIoK8sAPINodeV1alpha1Overhead) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPINodeV1alpha1Overhead) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPINodeV1alpha1Overhead from json iterator.
-func (o *OptionalIoK8sAPINodeV1alpha1Overhead) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPINodeV1alpha1Overhead) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45818,18 +45818,18 @@ func (o *OptionalIoK8sAPINodeV1alpha1Overhead) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINodeV1alpha1Overhead", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINodeV1alpha1Overhead", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPINodeV1alpha1Scheduling to json stream.
-func (o OptionalIoK8sAPINodeV1alpha1Scheduling) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPINodeV1alpha1Scheduling) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPINodeV1alpha1Scheduling from json iterator.
-func (o *OptionalIoK8sAPINodeV1alpha1Scheduling) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPINodeV1alpha1Scheduling) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45838,18 +45838,18 @@ func (o *OptionalIoK8sAPINodeV1alpha1Scheduling) ReadJSON(i *json.Iterator) erro
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINodeV1alpha1Scheduling", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINodeV1alpha1Scheduling", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPINodeV1beta1Overhead to json stream.
-func (o OptionalIoK8sAPINodeV1beta1Overhead) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPINodeV1beta1Overhead) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPINodeV1beta1Overhead from json iterator.
-func (o *OptionalIoK8sAPINodeV1beta1Overhead) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPINodeV1beta1Overhead) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45858,18 +45858,18 @@ func (o *OptionalIoK8sAPINodeV1beta1Overhead) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINodeV1beta1Overhead", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINodeV1beta1Overhead", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPINodeV1beta1Scheduling to json stream.
-func (o OptionalIoK8sAPINodeV1beta1Scheduling) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPINodeV1beta1Scheduling) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPINodeV1beta1Scheduling from json iterator.
-func (o *OptionalIoK8sAPINodeV1beta1Scheduling) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPINodeV1beta1Scheduling) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45878,18 +45878,18 @@ func (o *OptionalIoK8sAPINodeV1beta1Scheduling) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINodeV1beta1Scheduling", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPINodeV1beta1Scheduling", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIPolicyV1PodDisruptionBudgetSpec to json stream.
-func (o OptionalIoK8sAPIPolicyV1PodDisruptionBudgetSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIPolicyV1PodDisruptionBudgetSpec from json iterator.
-func (o *OptionalIoK8sAPIPolicyV1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45898,18 +45898,18 @@ func (o *OptionalIoK8sAPIPolicyV1PodDisruptionBudgetSpec) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIPolicyV1PodDisruptionBudgetSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIPolicyV1PodDisruptionBudgetStatus to json stream.
-func (o OptionalIoK8sAPIPolicyV1PodDisruptionBudgetStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIPolicyV1PodDisruptionBudgetStatus from json iterator.
-func (o *OptionalIoK8sAPIPolicyV1PodDisruptionBudgetStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45918,18 +45918,18 @@ func (o *OptionalIoK8sAPIPolicyV1PodDisruptionBudgetStatus) ReadJSON(i *json.Ite
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIPolicyV1PodDisruptionBudgetStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec to json stream.
-func (o OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec from json iterator.
-func (o *OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45938,18 +45938,18 @@ func (o *OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) ReadJSON(i *json.
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus to json stream.
-func (o OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus from json iterator.
-func (o *OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45958,18 +45958,18 @@ func (o *OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) ReadJSON(i *jso
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIPolicyV1beta1PodSecurityPolicySpec to json stream.
-func (o OptionalIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIPolicyV1beta1PodSecurityPolicySpec from json iterator.
-func (o *OptionalIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45978,18 +45978,18 @@ func (o *OptionalIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.It
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIPolicyV1beta1PodSecurityPolicySpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions to json stream.
-func (o OptionalIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions from json iterator.
-func (o *OptionalIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -45998,18 +45998,18 @@ func (o *OptionalIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) ReadJSON(i *jso
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions to json stream.
-func (o OptionalIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions from json iterator.
-func (o *OptionalIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46018,18 +46018,18 @@ func (o *OptionalIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) ReadJSON(i *j
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIRbacV1AggregationRule to json stream.
-func (o OptionalIoK8sAPIRbacV1AggregationRule) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIRbacV1AggregationRule) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIRbacV1AggregationRule from json iterator.
-func (o *OptionalIoK8sAPIRbacV1AggregationRule) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIRbacV1AggregationRule) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46038,18 +46038,18 @@ func (o *OptionalIoK8sAPIRbacV1AggregationRule) ReadJSON(i *json.Iterator) error
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIRbacV1AggregationRule", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIRbacV1AggregationRule", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIStorageV1VolumeAttachmentStatus to json stream.
-func (o OptionalIoK8sAPIStorageV1VolumeAttachmentStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIStorageV1VolumeAttachmentStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIStorageV1VolumeAttachmentStatus from json iterator.
-func (o *OptionalIoK8sAPIStorageV1VolumeAttachmentStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIStorageV1VolumeAttachmentStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46058,18 +46058,18 @@ func (o *OptionalIoK8sAPIStorageV1VolumeAttachmentStatus) ReadJSON(i *json.Itera
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIStorageV1VolumeAttachmentStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIStorageV1VolumeAttachmentStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIStorageV1VolumeError to json stream.
-func (o OptionalIoK8sAPIStorageV1VolumeError) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIStorageV1VolumeError) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIStorageV1VolumeError from json iterator.
-func (o *OptionalIoK8sAPIStorageV1VolumeError) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIStorageV1VolumeError) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46078,18 +46078,18 @@ func (o *OptionalIoK8sAPIStorageV1VolumeError) ReadJSON(i *json.Iterator) error 
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIStorageV1VolumeError", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIStorageV1VolumeError", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sAPIStorageV1VolumeNodeResources to json stream.
-func (o OptionalIoK8sAPIStorageV1VolumeNodeResources) WriteJSON(j *json.Stream) {
+func (o OptIoK8sAPIStorageV1VolumeNodeResources) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sAPIStorageV1VolumeNodeResources from json iterator.
-func (o *OptionalIoK8sAPIStorageV1VolumeNodeResources) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sAPIStorageV1VolumeNodeResources) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46098,18 +46098,18 @@ func (o *OptionalIoK8sAPIStorageV1VolumeNodeResources) ReadJSON(i *json.Iterator
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIStorageV1VolumeNodeResources", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sAPIStorageV1VolumeNodeResources", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion to json stream.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) WriteJSON(j *json.Stream) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion from json iterator.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46118,18 +46118,18 @@ func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResource
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames to json stream.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) WriteJSON(j *json.Stream) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames from json iterator.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46138,18 +46138,18 @@ func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResource
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus to json stream.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus from json iterator.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46158,18 +46158,18 @@ func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResource
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale to json stream.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) WriteJSON(j *json.Stream) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale from json iterator.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46178,18 +46178,18 @@ func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResource
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources to json stream.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) WriteJSON(j *json.Stream) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources from json iterator.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46198,18 +46198,18 @@ func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResource
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation to json stream.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) WriteJSON(j *json.Stream) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation from json iterator.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46218,18 +46218,18 @@ func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResource
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation to json stream.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) WriteJSON(j *json.Stream) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation from json iterator.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46238,18 +46238,18 @@ func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocume
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps to json stream.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJSON(j *json.Stream) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps from json iterator.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46258,18 +46258,18 @@ func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProp
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference to json stream.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) WriteJSON(j *json.Stream) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference from json iterator.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46278,18 +46278,18 @@ func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReferen
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig to json stream.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) WriteJSON(j *json.Stream) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig from json iterator.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46298,18 +46298,18 @@ func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientC
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion to json stream.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) WriteJSON(j *json.Stream) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion from json iterator.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46318,18 +46318,18 @@ func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConvers
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery to json stream.
-func (o OptionalIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) WriteJSON(j *json.Stream) {
+func (o OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery from json iterator.
-func (o *OptionalIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46338,18 +46338,18 @@ func (o *OptionalIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) ReadJSO
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sApimachineryPkgApisMetaV1LabelSelector to json stream.
-func (o OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector) WriteJSON(j *json.Stream) {
+func (o OptIoK8sApimachineryPkgApisMetaV1LabelSelector) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1LabelSelector from json iterator.
-func (o *OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sApimachineryPkgApisMetaV1LabelSelector) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46358,18 +46358,18 @@ func (o *OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector) ReadJSON(i *json.I
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgApisMetaV1LabelSelector", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sApimachineryPkgApisMetaV1ListMeta to json stream.
-func (o OptionalIoK8sApimachineryPkgApisMetaV1ListMeta) WriteJSON(j *json.Stream) {
+func (o OptIoK8sApimachineryPkgApisMetaV1ListMeta) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1ListMeta from json iterator.
-func (o *OptionalIoK8sApimachineryPkgApisMetaV1ListMeta) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sApimachineryPkgApisMetaV1ListMeta) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46378,18 +46378,18 @@ func (o *OptionalIoK8sApimachineryPkgApisMetaV1ListMeta) ReadJSON(i *json.Iterat
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApimachineryPkgApisMetaV1ListMeta", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgApisMetaV1ListMeta", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sApimachineryPkgApisMetaV1ObjectMeta to json stream.
-func (o OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta) WriteJSON(j *json.Stream) {
+func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1ObjectMeta from json iterator.
-func (o *OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46398,18 +46398,18 @@ func (o *OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iter
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgApisMetaV1ObjectMeta", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sApimachineryPkgApisMetaV1Preconditions to json stream.
-func (o OptionalIoK8sApimachineryPkgApisMetaV1Preconditions) WriteJSON(j *json.Stream) {
+func (o OptIoK8sApimachineryPkgApisMetaV1Preconditions) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1Preconditions from json iterator.
-func (o *OptionalIoK8sApimachineryPkgApisMetaV1Preconditions) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sApimachineryPkgApisMetaV1Preconditions) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46418,18 +46418,18 @@ func (o *OptionalIoK8sApimachineryPkgApisMetaV1Preconditions) ReadJSON(i *json.I
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApimachineryPkgApisMetaV1Preconditions", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgApisMetaV1Preconditions", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sApimachineryPkgApisMetaV1StatusDetails to json stream.
-func (o OptionalIoK8sApimachineryPkgApisMetaV1StatusDetails) WriteJSON(j *json.Stream) {
+func (o OptIoK8sApimachineryPkgApisMetaV1StatusDetails) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1StatusDetails from json iterator.
-func (o *OptionalIoK8sApimachineryPkgApisMetaV1StatusDetails) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sApimachineryPkgApisMetaV1StatusDetails) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46438,18 +46438,18 @@ func (o *OptionalIoK8sApimachineryPkgApisMetaV1StatusDetails) ReadJSON(i *json.I
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApimachineryPkgApisMetaV1StatusDetails", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sApimachineryPkgApisMetaV1StatusDetails", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec to json stream.
-func (o OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) WriteJSON(j *json.Stream) {
+func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec from json iterator.
-func (o *OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46458,18 +46458,18 @@ func (o *OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Read
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus to json stream.
-func (o OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) WriteJSON(j *json.Stream) {
+func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus from json iterator.
-func (o *OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46478,18 +46478,18 @@ func (o *OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Re
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference to json stream.
-func (o OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) WriteJSON(j *json.Stream) {
+func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference from json iterator.
-func (o *OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) ReadJSON(i *json.Iterator) error {
+func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -46498,25 +46498,25 @@ func (o *OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Re
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of string to json stream.
-func (o OptionalString) WriteJSON(j *json.Stream) {
+func (o OptString) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of string from json iterator.
-func (o *OptionalString) ReadJSON(i *json.Iterator) error {
+func (o *OptString) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = string(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalString", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptString", i.WhatIsNext())
 	}
 	return nil
 }

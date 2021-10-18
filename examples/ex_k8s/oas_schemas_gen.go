@@ -2848,99 +2848,99 @@ func (*GetStorageV1beta1APIResourcesUnauthorized) getStorageV1beta1APIResourcesR
 type IoK8sAPIAdmissionregistrationV1MutatingWebhook struct {
 	AdmissionReviewVersions []string                                             `json:"admissionReviewVersions"`
 	ClientConfig            IoK8sAPIAdmissionregistrationV1WebhookClientConfig   `json:"clientConfig"`
-	FailurePolicy           OptionalString                                       `json:"failurePolicy"`
-	MatchPolicy             OptionalString                                       `json:"matchPolicy"`
+	FailurePolicy           OptString                                            `json:"failurePolicy"`
+	MatchPolicy             OptString                                            `json:"matchPolicy"`
 	Name                    string                                               `json:"name"`
-	NamespaceSelector       OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector  `json:"namespaceSelector"`
-	ObjectSelector          OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector  `json:"objectSelector"`
-	ReinvocationPolicy      OptionalString                                       `json:"reinvocationPolicy"`
+	NamespaceSelector       OptIoK8sApimachineryPkgApisMetaV1LabelSelector       `json:"namespaceSelector"`
+	ObjectSelector          OptIoK8sApimachineryPkgApisMetaV1LabelSelector       `json:"objectSelector"`
+	ReinvocationPolicy      OptString                                            `json:"reinvocationPolicy"`
 	Rules                   *[]IoK8sAPIAdmissionregistrationV1RuleWithOperations `json:"rules"`
 	SideEffects             string                                               `json:"sideEffects"`
-	TimeoutSeconds          OptionalInt32                                        `json:"timeoutSeconds"`
+	TimeoutSeconds          OptInt32                                             `json:"timeoutSeconds"`
 }
 
 // IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration describes #/components/schemas/io.k8s.api.admissionregistration.v1.MutatingWebhookConfiguration.
 type IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration struct {
-	ApiVersion OptionalString                                    `json:"apiVersion"`
-	Kind       OptionalString                                    `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta  `json:"metadata"`
+	ApiVersion OptString                                         `json:"apiVersion"`
+	Kind       OptString                                         `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta       `json:"metadata"`
 	Webhooks   *[]IoK8sAPIAdmissionregistrationV1MutatingWebhook `json:"webhooks"`
 }
 
 // IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList describes #/components/schemas/io.k8s.api.admissionregistration.v1.MutatingWebhookConfigurationList.
 type IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList struct {
-	ApiVersion OptionalString                                                `json:"apiVersion"`
+	ApiVersion OptString                                                     `json:"apiVersion"`
 	Items      []IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration `json:"items"`
-	Kind       OptionalString                                                `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta                `json:"metadata"`
+	Kind       OptString                                                     `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta                     `json:"metadata"`
 }
 
 // IoK8sAPIAdmissionregistrationV1RuleWithOperations describes #/components/schemas/io.k8s.api.admissionregistration.v1.RuleWithOperations.
 type IoK8sAPIAdmissionregistrationV1RuleWithOperations struct {
-	ApiGroups   *[]string      `json:"apiGroups"`
-	ApiVersions *[]string      `json:"apiVersions"`
-	Operations  *[]string      `json:"operations"`
-	Resources   *[]string      `json:"resources"`
-	Scope       OptionalString `json:"scope"`
+	ApiGroups   *[]string `json:"apiGroups"`
+	ApiVersions *[]string `json:"apiVersions"`
+	Operations  *[]string `json:"operations"`
+	Resources   *[]string `json:"resources"`
+	Scope       OptString `json:"scope"`
 }
 
 // IoK8sAPIAdmissionregistrationV1ServiceReference describes #/components/schemas/io.k8s.api.admissionregistration.v1.ServiceReference.
 type IoK8sAPIAdmissionregistrationV1ServiceReference struct {
-	Name      string         `json:"name"`
-	Namespace string         `json:"namespace"`
-	Path      OptionalString `json:"path"`
-	Port      OptionalInt32  `json:"port"`
+	Name      string    `json:"name"`
+	Namespace string    `json:"namespace"`
+	Path      OptString `json:"path"`
+	Port      OptInt32  `json:"port"`
 }
 
 // IoK8sAPIAdmissionregistrationV1ValidatingWebhook describes #/components/schemas/io.k8s.api.admissionregistration.v1.ValidatingWebhook.
 type IoK8sAPIAdmissionregistrationV1ValidatingWebhook struct {
 	AdmissionReviewVersions []string                                             `json:"admissionReviewVersions"`
 	ClientConfig            IoK8sAPIAdmissionregistrationV1WebhookClientConfig   `json:"clientConfig"`
-	FailurePolicy           OptionalString                                       `json:"failurePolicy"`
-	MatchPolicy             OptionalString                                       `json:"matchPolicy"`
+	FailurePolicy           OptString                                            `json:"failurePolicy"`
+	MatchPolicy             OptString                                            `json:"matchPolicy"`
 	Name                    string                                               `json:"name"`
-	NamespaceSelector       OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector  `json:"namespaceSelector"`
-	ObjectSelector          OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector  `json:"objectSelector"`
+	NamespaceSelector       OptIoK8sApimachineryPkgApisMetaV1LabelSelector       `json:"namespaceSelector"`
+	ObjectSelector          OptIoK8sApimachineryPkgApisMetaV1LabelSelector       `json:"objectSelector"`
 	Rules                   *[]IoK8sAPIAdmissionregistrationV1RuleWithOperations `json:"rules"`
 	SideEffects             string                                               `json:"sideEffects"`
-	TimeoutSeconds          OptionalInt32                                        `json:"timeoutSeconds"`
+	TimeoutSeconds          OptInt32                                             `json:"timeoutSeconds"`
 }
 
 // IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration describes #/components/schemas/io.k8s.api.admissionregistration.v1.ValidatingWebhookConfiguration.
 type IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration struct {
-	ApiVersion OptionalString                                      `json:"apiVersion"`
-	Kind       OptionalString                                      `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta    `json:"metadata"`
+	ApiVersion OptString                                           `json:"apiVersion"`
+	Kind       OptString                                           `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta         `json:"metadata"`
 	Webhooks   *[]IoK8sAPIAdmissionregistrationV1ValidatingWebhook `json:"webhooks"`
 }
 
 // IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList describes #/components/schemas/io.k8s.api.admissionregistration.v1.ValidatingWebhookConfigurationList.
 type IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList struct {
-	ApiVersion OptionalString                                                  `json:"apiVersion"`
+	ApiVersion OptString                                                       `json:"apiVersion"`
 	Items      []IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration `json:"items"`
-	Kind       OptionalString                                                  `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta                  `json:"metadata"`
+	Kind       OptString                                                       `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta                       `json:"metadata"`
 }
 
 // IoK8sAPIAdmissionregistrationV1WebhookClientConfig describes #/components/schemas/io.k8s.api.admissionregistration.v1.WebhookClientConfig.
 type IoK8sAPIAdmissionregistrationV1WebhookClientConfig struct {
-	CaBundle *[]byte                                                 `json:"caBundle"`
-	Service  OptionalIoK8sAPIAdmissionregistrationV1ServiceReference `json:"service"`
-	URL      OptionalString                                          `json:"url"`
+	CaBundle *[]byte                                            `json:"caBundle"`
+	Service  OptIoK8sAPIAdmissionregistrationV1ServiceReference `json:"service"`
+	URL      OptString                                          `json:"url"`
 }
 
 // IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion describes #/components/schemas/io.k8s.api.apiserverinternal.v1alpha1.ServerStorageVersion.
 type IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion struct {
-	ApiServerID       OptionalString `json:"apiServerID"`
-	DecodableVersions *[]string      `json:"decodableVersions"`
-	EncodingVersion   OptionalString `json:"encodingVersion"`
+	ApiServerID       OptString `json:"apiServerID"`
+	DecodableVersions *[]string `json:"decodableVersions"`
+	EncodingVersion   OptString `json:"encodingVersion"`
 }
 
 // IoK8sAPIApiserverinternalV1alpha1StorageVersion describes #/components/schemas/io.k8s.api.apiserverinternal.v1alpha1.StorageVersion.
 type IoK8sAPIApiserverinternalV1alpha1StorageVersion struct {
-	ApiVersion OptionalString                                        `json:"apiVersion"`
-	Kind       OptionalString                                        `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta      `json:"metadata"`
+	ApiVersion OptString                                             `json:"apiVersion"`
+	Kind       OptString                                             `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta           `json:"metadata"`
 	Spec       IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec   `json:"spec"`
 	Status     IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus `json:"status"`
 }
@@ -2948,8 +2948,8 @@ type IoK8sAPIApiserverinternalV1alpha1StorageVersion struct {
 // IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition describes #/components/schemas/io.k8s.api.apiserverinternal.v1alpha1.StorageVersionCondition.
 type IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition struct {
 	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptionalString                      `json:"message"`
-	ObservedGeneration OptionalInt64                       `json:"observedGeneration"`
+	Message            OptString                           `json:"message"`
+	ObservedGeneration OptInt64                            `json:"observedGeneration"`
 	Reason             string                              `json:"reason"`
 	Status             string                              `json:"status"`
 	Type               string                              `json:"type"`
@@ -2957,191 +2957,191 @@ type IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition struct {
 
 // IoK8sAPIApiserverinternalV1alpha1StorageVersionList describes #/components/schemas/io.k8s.api.apiserverinternal.v1alpha1.StorageVersionList.
 type IoK8sAPIApiserverinternalV1alpha1StorageVersionList struct {
-	ApiVersion OptionalString                                    `json:"apiVersion"`
+	ApiVersion OptString                                         `json:"apiVersion"`
 	Items      []IoK8sAPIApiserverinternalV1alpha1StorageVersion `json:"items"`
-	Kind       OptionalString                                    `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta    `json:"metadata"`
+	Kind       OptString                                         `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta         `json:"metadata"`
 }
 
 type IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec struct{}
 
 // IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus describes #/components/schemas/io.k8s.api.apiserverinternal.v1alpha1.StorageVersionStatus.
 type IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus struct {
-	CommonEncodingVersion OptionalString                                              `json:"commonEncodingVersion"`
+	CommonEncodingVersion OptString                                                   `json:"commonEncodingVersion"`
 	Conditions            *[]IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition `json:"conditions"`
 	StorageVersions       *[]IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion    `json:"storageVersions"`
 }
 
 // IoK8sAPIAppsV1ControllerRevision describes #/components/schemas/io.k8s.api.apps.v1.ControllerRevision.
 type IoK8sAPIAppsV1ControllerRevision struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Data       *IoK8sApimachineryPkgRuntimeRawExtension         `json:"data"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Revision   int64                                            `json:"revision"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Data       *IoK8sApimachineryPkgRuntimeRawExtension    `json:"data"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Revision   int64                                       `json:"revision"`
 }
 
 // IoK8sAPIAppsV1ControllerRevisionList describes #/components/schemas/io.k8s.api.apps.v1.ControllerRevisionList.
 type IoK8sAPIAppsV1ControllerRevisionList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIAppsV1ControllerRevision             `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIAppsV1ControllerRevision        `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIAppsV1DaemonSet describes #/components/schemas/io.k8s.api.apps.v1.DaemonSet.
 type IoK8sAPIAppsV1DaemonSet struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       OptionalIoK8sAPIAppsV1DaemonSetSpec              `json:"spec"`
-	Status     OptionalIoK8sAPIAppsV1DaemonSetStatus            `json:"status"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       OptIoK8sAPIAppsV1DaemonSetSpec              `json:"spec"`
+	Status     OptIoK8sAPIAppsV1DaemonSetStatus            `json:"status"`
 }
 
 // IoK8sAPIAppsV1DaemonSetCondition describes #/components/schemas/io.k8s.api.apps.v1.DaemonSetCondition.
 type IoK8sAPIAppsV1DaemonSetCondition struct {
 	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptionalString                      `json:"message"`
-	Reason             OptionalString                      `json:"reason"`
+	Message            OptString                           `json:"message"`
+	Reason             OptString                           `json:"reason"`
 	Status             string                              `json:"status"`
 	Type               string                              `json:"type"`
 }
 
 // IoK8sAPIAppsV1DaemonSetList describes #/components/schemas/io.k8s.api.apps.v1.DaemonSetList.
 type IoK8sAPIAppsV1DaemonSetList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIAppsV1DaemonSet                      `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIAppsV1DaemonSet                 `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIAppsV1DaemonSetSpec describes #/components/schemas/io.k8s.api.apps.v1.DaemonSetSpec.
 type IoK8sAPIAppsV1DaemonSetSpec struct {
-	MinReadySeconds      OptionalInt32                                 `json:"minReadySeconds"`
-	RevisionHistoryLimit OptionalInt32                                 `json:"revisionHistoryLimit"`
-	Selector             IoK8sApimachineryPkgApisMetaV1LabelSelector   `json:"selector"`
-	Template             IoK8sAPICoreV1PodTemplateSpec                 `json:"template"`
-	UpdateStrategy       OptionalIoK8sAPIAppsV1DaemonSetUpdateStrategy `json:"updateStrategy"`
+	MinReadySeconds      OptInt32                                    `json:"minReadySeconds"`
+	RevisionHistoryLimit OptInt32                                    `json:"revisionHistoryLimit"`
+	Selector             IoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
+	Template             IoK8sAPICoreV1PodTemplateSpec               `json:"template"`
+	UpdateStrategy       OptIoK8sAPIAppsV1DaemonSetUpdateStrategy    `json:"updateStrategy"`
 }
 
 // IoK8sAPIAppsV1DaemonSetStatus describes #/components/schemas/io.k8s.api.apps.v1.DaemonSetStatus.
 type IoK8sAPIAppsV1DaemonSetStatus struct {
-	CollisionCount         OptionalInt32                       `json:"collisionCount"`
+	CollisionCount         OptInt32                            `json:"collisionCount"`
 	Conditions             *[]IoK8sAPIAppsV1DaemonSetCondition `json:"conditions"`
 	CurrentNumberScheduled int32                               `json:"currentNumberScheduled"`
 	DesiredNumberScheduled int32                               `json:"desiredNumberScheduled"`
-	NumberAvailable        OptionalInt32                       `json:"numberAvailable"`
+	NumberAvailable        OptInt32                            `json:"numberAvailable"`
 	NumberMisscheduled     int32                               `json:"numberMisscheduled"`
 	NumberReady            int32                               `json:"numberReady"`
-	NumberUnavailable      OptionalInt32                       `json:"numberUnavailable"`
-	ObservedGeneration     OptionalInt64                       `json:"observedGeneration"`
-	UpdatedNumberScheduled OptionalInt32                       `json:"updatedNumberScheduled"`
+	NumberUnavailable      OptInt32                            `json:"numberUnavailable"`
+	ObservedGeneration     OptInt64                            `json:"observedGeneration"`
+	UpdatedNumberScheduled OptInt32                            `json:"updatedNumberScheduled"`
 }
 
 // IoK8sAPIAppsV1DaemonSetUpdateStrategy describes #/components/schemas/io.k8s.api.apps.v1.DaemonSetUpdateStrategy.
 type IoK8sAPIAppsV1DaemonSetUpdateStrategy struct {
-	RollingUpdate OptionalIoK8sAPIAppsV1RollingUpdateDaemonSet `json:"rollingUpdate"`
-	Type          OptionalString                               `json:"type"`
+	RollingUpdate OptIoK8sAPIAppsV1RollingUpdateDaemonSet `json:"rollingUpdate"`
+	Type          OptString                               `json:"type"`
 }
 
 // IoK8sAPIAppsV1Deployment describes #/components/schemas/io.k8s.api.apps.v1.Deployment.
 type IoK8sAPIAppsV1Deployment struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       OptionalIoK8sAPIAppsV1DeploymentSpec             `json:"spec"`
-	Status     OptionalIoK8sAPIAppsV1DeploymentStatus           `json:"status"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       OptIoK8sAPIAppsV1DeploymentSpec             `json:"spec"`
+	Status     OptIoK8sAPIAppsV1DeploymentStatus           `json:"status"`
 }
 
 // IoK8sAPIAppsV1DeploymentCondition describes #/components/schemas/io.k8s.api.apps.v1.DeploymentCondition.
 type IoK8sAPIAppsV1DeploymentCondition struct {
 	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
 	LastUpdateTime     *IoK8sApimachineryPkgApisMetaV1Time `json:"lastUpdateTime"`
-	Message            OptionalString                      `json:"message"`
-	Reason             OptionalString                      `json:"reason"`
+	Message            OptString                           `json:"message"`
+	Reason             OptString                           `json:"reason"`
 	Status             string                              `json:"status"`
 	Type               string                              `json:"type"`
 }
 
 // IoK8sAPIAppsV1DeploymentList describes #/components/schemas/io.k8s.api.apps.v1.DeploymentList.
 type IoK8sAPIAppsV1DeploymentList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIAppsV1Deployment                     `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIAppsV1Deployment                `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIAppsV1DeploymentSpec describes #/components/schemas/io.k8s.api.apps.v1.DeploymentSpec.
 type IoK8sAPIAppsV1DeploymentSpec struct {
-	MinReadySeconds         OptionalInt32                               `json:"minReadySeconds"`
-	Paused                  OptionalBool                                `json:"paused"`
-	ProgressDeadlineSeconds OptionalInt32                               `json:"progressDeadlineSeconds"`
-	Replicas                OptionalInt32                               `json:"replicas"`
-	RevisionHistoryLimit    OptionalInt32                               `json:"revisionHistoryLimit"`
+	MinReadySeconds         OptInt32                                    `json:"minReadySeconds"`
+	Paused                  OptBool                                     `json:"paused"`
+	ProgressDeadlineSeconds OptInt32                                    `json:"progressDeadlineSeconds"`
+	Replicas                OptInt32                                    `json:"replicas"`
+	RevisionHistoryLimit    OptInt32                                    `json:"revisionHistoryLimit"`
 	Selector                IoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
-	Strategy                OptionalIoK8sAPIAppsV1DeploymentStrategy    `json:"strategy"`
+	Strategy                OptIoK8sAPIAppsV1DeploymentStrategy         `json:"strategy"`
 	Template                IoK8sAPICoreV1PodTemplateSpec               `json:"template"`
 }
 
 // IoK8sAPIAppsV1DeploymentStatus describes #/components/schemas/io.k8s.api.apps.v1.DeploymentStatus.
 type IoK8sAPIAppsV1DeploymentStatus struct {
-	AvailableReplicas   OptionalInt32                        `json:"availableReplicas"`
-	CollisionCount      OptionalInt32                        `json:"collisionCount"`
+	AvailableReplicas   OptInt32                             `json:"availableReplicas"`
+	CollisionCount      OptInt32                             `json:"collisionCount"`
 	Conditions          *[]IoK8sAPIAppsV1DeploymentCondition `json:"conditions"`
-	ObservedGeneration  OptionalInt64                        `json:"observedGeneration"`
-	ReadyReplicas       OptionalInt32                        `json:"readyReplicas"`
-	Replicas            OptionalInt32                        `json:"replicas"`
-	UnavailableReplicas OptionalInt32                        `json:"unavailableReplicas"`
-	UpdatedReplicas     OptionalInt32                        `json:"updatedReplicas"`
+	ObservedGeneration  OptInt64                             `json:"observedGeneration"`
+	ReadyReplicas       OptInt32                             `json:"readyReplicas"`
+	Replicas            OptInt32                             `json:"replicas"`
+	UnavailableReplicas OptInt32                             `json:"unavailableReplicas"`
+	UpdatedReplicas     OptInt32                             `json:"updatedReplicas"`
 }
 
 // IoK8sAPIAppsV1DeploymentStrategy describes #/components/schemas/io.k8s.api.apps.v1.DeploymentStrategy.
 type IoK8sAPIAppsV1DeploymentStrategy struct {
-	RollingUpdate OptionalIoK8sAPIAppsV1RollingUpdateDeployment `json:"rollingUpdate"`
-	Type          OptionalString                                `json:"type"`
+	RollingUpdate OptIoK8sAPIAppsV1RollingUpdateDeployment `json:"rollingUpdate"`
+	Type          OptString                                `json:"type"`
 }
 
 // IoK8sAPIAppsV1ReplicaSet describes #/components/schemas/io.k8s.api.apps.v1.ReplicaSet.
 type IoK8sAPIAppsV1ReplicaSet struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       OptionalIoK8sAPIAppsV1ReplicaSetSpec             `json:"spec"`
-	Status     OptionalIoK8sAPIAppsV1ReplicaSetStatus           `json:"status"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       OptIoK8sAPIAppsV1ReplicaSetSpec             `json:"spec"`
+	Status     OptIoK8sAPIAppsV1ReplicaSetStatus           `json:"status"`
 }
 
 // IoK8sAPIAppsV1ReplicaSetCondition describes #/components/schemas/io.k8s.api.apps.v1.ReplicaSetCondition.
 type IoK8sAPIAppsV1ReplicaSetCondition struct {
 	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptionalString                      `json:"message"`
-	Reason             OptionalString                      `json:"reason"`
+	Message            OptString                           `json:"message"`
+	Reason             OptString                           `json:"reason"`
 	Status             string                              `json:"status"`
 	Type               string                              `json:"type"`
 }
 
 // IoK8sAPIAppsV1ReplicaSetList describes #/components/schemas/io.k8s.api.apps.v1.ReplicaSetList.
 type IoK8sAPIAppsV1ReplicaSetList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIAppsV1ReplicaSet                     `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIAppsV1ReplicaSet                `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIAppsV1ReplicaSetSpec describes #/components/schemas/io.k8s.api.apps.v1.ReplicaSetSpec.
 type IoK8sAPIAppsV1ReplicaSetSpec struct {
-	MinReadySeconds OptionalInt32                               `json:"minReadySeconds"`
-	Replicas        OptionalInt32                               `json:"replicas"`
+	MinReadySeconds OptInt32                                    `json:"minReadySeconds"`
+	Replicas        OptInt32                                    `json:"replicas"`
 	Selector        IoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
-	Template        OptionalIoK8sAPICoreV1PodTemplateSpec       `json:"template"`
+	Template        OptIoK8sAPICoreV1PodTemplateSpec            `json:"template"`
 }
 
 // IoK8sAPIAppsV1ReplicaSetStatus describes #/components/schemas/io.k8s.api.apps.v1.ReplicaSetStatus.
 type IoK8sAPIAppsV1ReplicaSetStatus struct {
-	AvailableReplicas    OptionalInt32                        `json:"availableReplicas"`
+	AvailableReplicas    OptInt32                             `json:"availableReplicas"`
 	Conditions           *[]IoK8sAPIAppsV1ReplicaSetCondition `json:"conditions"`
-	FullyLabeledReplicas OptionalInt32                        `json:"fullyLabeledReplicas"`
-	ObservedGeneration   OptionalInt64                        `json:"observedGeneration"`
-	ReadyReplicas        OptionalInt32                        `json:"readyReplicas"`
+	FullyLabeledReplicas OptInt32                             `json:"fullyLabeledReplicas"`
+	ObservedGeneration   OptInt64                             `json:"observedGeneration"`
+	ReadyReplicas        OptInt32                             `json:"readyReplicas"`
 	Replicas             int32                                `json:"replicas"`
 }
 
@@ -3159,103 +3159,103 @@ type IoK8sAPIAppsV1RollingUpdateDeployment struct {
 
 // IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy describes #/components/schemas/io.k8s.api.apps.v1.RollingUpdateStatefulSetStrategy.
 type IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy struct {
-	Partition OptionalInt32 `json:"partition"`
+	Partition OptInt32 `json:"partition"`
 }
 
 // IoK8sAPIAppsV1StatefulSet describes #/components/schemas/io.k8s.api.apps.v1.StatefulSet.
 type IoK8sAPIAppsV1StatefulSet struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       OptionalIoK8sAPIAppsV1StatefulSetSpec            `json:"spec"`
-	Status     OptionalIoK8sAPIAppsV1StatefulSetStatus          `json:"status"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       OptIoK8sAPIAppsV1StatefulSetSpec            `json:"spec"`
+	Status     OptIoK8sAPIAppsV1StatefulSetStatus          `json:"status"`
 }
 
 // IoK8sAPIAppsV1StatefulSetCondition describes #/components/schemas/io.k8s.api.apps.v1.StatefulSetCondition.
 type IoK8sAPIAppsV1StatefulSetCondition struct {
 	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptionalString                      `json:"message"`
-	Reason             OptionalString                      `json:"reason"`
+	Message            OptString                           `json:"message"`
+	Reason             OptString                           `json:"reason"`
 	Status             string                              `json:"status"`
 	Type               string                              `json:"type"`
 }
 
 // IoK8sAPIAppsV1StatefulSetList describes #/components/schemas/io.k8s.api.apps.v1.StatefulSetList.
 type IoK8sAPIAppsV1StatefulSetList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIAppsV1StatefulSet                    `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIAppsV1StatefulSet               `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIAppsV1StatefulSetSpec describes #/components/schemas/io.k8s.api.apps.v1.StatefulSetSpec.
 type IoK8sAPIAppsV1StatefulSetSpec struct {
-	MinReadySeconds      OptionalInt32                                   `json:"minReadySeconds"`
-	PodManagementPolicy  OptionalString                                  `json:"podManagementPolicy"`
-	Replicas             OptionalInt32                                   `json:"replicas"`
-	RevisionHistoryLimit OptionalInt32                                   `json:"revisionHistoryLimit"`
-	Selector             IoK8sApimachineryPkgApisMetaV1LabelSelector     `json:"selector"`
-	ServiceName          string                                          `json:"serviceName"`
-	Template             IoK8sAPICoreV1PodTemplateSpec                   `json:"template"`
-	UpdateStrategy       OptionalIoK8sAPIAppsV1StatefulSetUpdateStrategy `json:"updateStrategy"`
-	VolumeClaimTemplates *[]IoK8sAPICoreV1PersistentVolumeClaim          `json:"volumeClaimTemplates"`
+	MinReadySeconds      OptInt32                                    `json:"minReadySeconds"`
+	PodManagementPolicy  OptString                                   `json:"podManagementPolicy"`
+	Replicas             OptInt32                                    `json:"replicas"`
+	RevisionHistoryLimit OptInt32                                    `json:"revisionHistoryLimit"`
+	Selector             IoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
+	ServiceName          string                                      `json:"serviceName"`
+	Template             IoK8sAPICoreV1PodTemplateSpec               `json:"template"`
+	UpdateStrategy       OptIoK8sAPIAppsV1StatefulSetUpdateStrategy  `json:"updateStrategy"`
+	VolumeClaimTemplates *[]IoK8sAPICoreV1PersistentVolumeClaim      `json:"volumeClaimTemplates"`
 }
 
 // IoK8sAPIAppsV1StatefulSetStatus describes #/components/schemas/io.k8s.api.apps.v1.StatefulSetStatus.
 type IoK8sAPIAppsV1StatefulSetStatus struct {
 	AvailableReplicas  int32                                 `json:"availableReplicas"`
-	CollisionCount     OptionalInt32                         `json:"collisionCount"`
+	CollisionCount     OptInt32                              `json:"collisionCount"`
 	Conditions         *[]IoK8sAPIAppsV1StatefulSetCondition `json:"conditions"`
-	CurrentReplicas    OptionalInt32                         `json:"currentReplicas"`
-	CurrentRevision    OptionalString                        `json:"currentRevision"`
-	ObservedGeneration OptionalInt64                         `json:"observedGeneration"`
-	ReadyReplicas      OptionalInt32                         `json:"readyReplicas"`
+	CurrentReplicas    OptInt32                              `json:"currentReplicas"`
+	CurrentRevision    OptString                             `json:"currentRevision"`
+	ObservedGeneration OptInt64                              `json:"observedGeneration"`
+	ReadyReplicas      OptInt32                              `json:"readyReplicas"`
 	Replicas           int32                                 `json:"replicas"`
-	UpdateRevision     OptionalString                        `json:"updateRevision"`
-	UpdatedReplicas    OptionalInt32                         `json:"updatedReplicas"`
+	UpdateRevision     OptString                             `json:"updateRevision"`
+	UpdatedReplicas    OptInt32                              `json:"updatedReplicas"`
 }
 
 // IoK8sAPIAppsV1StatefulSetUpdateStrategy describes #/components/schemas/io.k8s.api.apps.v1.StatefulSetUpdateStrategy.
 type IoK8sAPIAppsV1StatefulSetUpdateStrategy struct {
-	RollingUpdate OptionalIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy `json:"rollingUpdate"`
-	Type          OptionalString                                         `json:"type"`
+	RollingUpdate OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy `json:"rollingUpdate"`
+	Type          OptString                                         `json:"type"`
 }
 
 // IoK8sAPIAuthenticationV1TokenReview describes #/components/schemas/io.k8s.api.authentication.v1.TokenReview.
 type IoK8sAPIAuthenticationV1TokenReview struct {
-	ApiVersion OptionalString                                    `json:"apiVersion"`
-	Kind       OptionalString                                    `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta  `json:"metadata"`
-	Spec       IoK8sAPIAuthenticationV1TokenReviewSpec           `json:"spec"`
-	Status     OptionalIoK8sAPIAuthenticationV1TokenReviewStatus `json:"status"`
+	ApiVersion OptString                                    `json:"apiVersion"`
+	Kind       OptString                                    `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta  `json:"metadata"`
+	Spec       IoK8sAPIAuthenticationV1TokenReviewSpec      `json:"spec"`
+	Status     OptIoK8sAPIAuthenticationV1TokenReviewStatus `json:"status"`
 }
 
 // IoK8sAPIAuthenticationV1TokenReviewSpec describes #/components/schemas/io.k8s.api.authentication.v1.TokenReviewSpec.
 type IoK8sAPIAuthenticationV1TokenReviewSpec struct {
-	Audiences *[]string      `json:"audiences"`
-	Token     OptionalString `json:"token"`
+	Audiences *[]string `json:"audiences"`
+	Token     OptString `json:"token"`
 }
 
 // IoK8sAPIAuthenticationV1TokenReviewStatus describes #/components/schemas/io.k8s.api.authentication.v1.TokenReviewStatus.
 type IoK8sAPIAuthenticationV1TokenReviewStatus struct {
-	Audiences     *[]string                                `json:"audiences"`
-	Authenticated OptionalBool                             `json:"authenticated"`
-	Error         OptionalString                           `json:"error"`
-	User          OptionalIoK8sAPIAuthenticationV1UserInfo `json:"user"`
+	Audiences     *[]string                           `json:"audiences"`
+	Authenticated OptBool                             `json:"authenticated"`
+	Error         OptString                           `json:"error"`
+	User          OptIoK8sAPIAuthenticationV1UserInfo `json:"user"`
 }
 
 // IoK8sAPIAuthenticationV1UserInfo describes #/components/schemas/io.k8s.api.authentication.v1.UserInfo.
 type IoK8sAPIAuthenticationV1UserInfo struct {
-	Extra    *struct{}      `json:"extra"`
-	Groups   *[]string      `json:"groups"`
-	UID      OptionalString `json:"uid"`
-	Username OptionalString `json:"username"`
+	Extra    *struct{} `json:"extra"`
+	Groups   *[]string `json:"groups"`
+	UID      OptString `json:"uid"`
+	Username OptString `json:"username"`
 }
 
 // IoK8sAPIAuthorizationV1NonResourceAttributes describes #/components/schemas/io.k8s.api.authorization.v1.NonResourceAttributes.
 type IoK8sAPIAuthorizationV1NonResourceAttributes struct {
-	Path OptionalString `json:"path"`
-	Verb OptionalString `json:"verb"`
+	Path OptString `json:"path"`
+	Verb OptString `json:"verb"`
 }
 
 // IoK8sAPIAuthorizationV1NonResourceRule describes #/components/schemas/io.k8s.api.authorization.v1.NonResourceRule.
@@ -3266,13 +3266,13 @@ type IoK8sAPIAuthorizationV1NonResourceRule struct {
 
 // IoK8sAPIAuthorizationV1ResourceAttributes describes #/components/schemas/io.k8s.api.authorization.v1.ResourceAttributes.
 type IoK8sAPIAuthorizationV1ResourceAttributes struct {
-	Group       OptionalString `json:"group"`
-	Name        OptionalString `json:"name"`
-	Namespace   OptionalString `json:"namespace"`
-	Resource    OptionalString `json:"resource"`
-	Subresource OptionalString `json:"subresource"`
-	Verb        OptionalString `json:"verb"`
-	Version     OptionalString `json:"version"`
+	Group       OptString `json:"group"`
+	Name        OptString `json:"name"`
+	Namespace   OptString `json:"namespace"`
+	Resource    OptString `json:"resource"`
+	Subresource OptString `json:"subresource"`
+	Verb        OptString `json:"verb"`
+	Version     OptString `json:"version"`
 }
 
 // IoK8sAPIAuthorizationV1ResourceRule describes #/components/schemas/io.k8s.api.authorization.v1.ResourceRule.
@@ -3285,63 +3285,63 @@ type IoK8sAPIAuthorizationV1ResourceRule struct {
 
 // IoK8sAPIAuthorizationV1SelfSubjectAccessReview describes #/components/schemas/io.k8s.api.authorization.v1.SelfSubjectAccessReview.
 type IoK8sAPIAuthorizationV1SelfSubjectAccessReview struct {
-	ApiVersion OptionalString                                           `json:"apiVersion"`
-	Kind       OptionalString                                           `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta         `json:"metadata"`
-	Spec       IoK8sAPIAuthorizationV1SelfSubjectAccessReviewSpec       `json:"spec"`
-	Status     OptionalIoK8sAPIAuthorizationV1SubjectAccessReviewStatus `json:"status"`
+	ApiVersion OptString                                           `json:"apiVersion"`
+	Kind       OptString                                           `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta         `json:"metadata"`
+	Spec       IoK8sAPIAuthorizationV1SelfSubjectAccessReviewSpec  `json:"spec"`
+	Status     OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus `json:"status"`
 }
 
 // IoK8sAPIAuthorizationV1SelfSubjectAccessReviewSpec describes #/components/schemas/io.k8s.api.authorization.v1.SelfSubjectAccessReviewSpec.
 type IoK8sAPIAuthorizationV1SelfSubjectAccessReviewSpec struct {
-	NonResourceAttributes OptionalIoK8sAPIAuthorizationV1NonResourceAttributes `json:"nonResourceAttributes"`
-	ResourceAttributes    OptionalIoK8sAPIAuthorizationV1ResourceAttributes    `json:"resourceAttributes"`
+	NonResourceAttributes OptIoK8sAPIAuthorizationV1NonResourceAttributes `json:"nonResourceAttributes"`
+	ResourceAttributes    OptIoK8sAPIAuthorizationV1ResourceAttributes    `json:"resourceAttributes"`
 }
 
 // IoK8sAPIAuthorizationV1SelfSubjectRulesReview describes #/components/schemas/io.k8s.api.authorization.v1.SelfSubjectRulesReview.
 type IoK8sAPIAuthorizationV1SelfSubjectRulesReview struct {
-	ApiVersion OptionalString                                          `json:"apiVersion"`
-	Kind       OptionalString                                          `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta        `json:"metadata"`
-	Spec       IoK8sAPIAuthorizationV1SelfSubjectRulesReviewSpec       `json:"spec"`
-	Status     OptionalIoK8sAPIAuthorizationV1SubjectRulesReviewStatus `json:"status"`
+	ApiVersion OptString                                          `json:"apiVersion"`
+	Kind       OptString                                          `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta        `json:"metadata"`
+	Spec       IoK8sAPIAuthorizationV1SelfSubjectRulesReviewSpec  `json:"spec"`
+	Status     OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus `json:"status"`
 }
 
 // IoK8sAPIAuthorizationV1SelfSubjectRulesReviewSpec describes #/components/schemas/io.k8s.api.authorization.v1.SelfSubjectRulesReviewSpec.
 type IoK8sAPIAuthorizationV1SelfSubjectRulesReviewSpec struct {
-	Namespace OptionalString `json:"namespace"`
+	Namespace OptString `json:"namespace"`
 }
 
 // IoK8sAPIAuthorizationV1SubjectAccessReview describes #/components/schemas/io.k8s.api.authorization.v1.SubjectAccessReview.
 type IoK8sAPIAuthorizationV1SubjectAccessReview struct {
-	ApiVersion OptionalString                                           `json:"apiVersion"`
-	Kind       OptionalString                                           `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta         `json:"metadata"`
-	Spec       IoK8sAPIAuthorizationV1SubjectAccessReviewSpec           `json:"spec"`
-	Status     OptionalIoK8sAPIAuthorizationV1SubjectAccessReviewStatus `json:"status"`
+	ApiVersion OptString                                           `json:"apiVersion"`
+	Kind       OptString                                           `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta         `json:"metadata"`
+	Spec       IoK8sAPIAuthorizationV1SubjectAccessReviewSpec      `json:"spec"`
+	Status     OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus `json:"status"`
 }
 
 // IoK8sAPIAuthorizationV1SubjectAccessReviewSpec describes #/components/schemas/io.k8s.api.authorization.v1.SubjectAccessReviewSpec.
 type IoK8sAPIAuthorizationV1SubjectAccessReviewSpec struct {
-	Extra                 *struct{}                                            `json:"extra"`
-	Groups                *[]string                                            `json:"groups"`
-	NonResourceAttributes OptionalIoK8sAPIAuthorizationV1NonResourceAttributes `json:"nonResourceAttributes"`
-	ResourceAttributes    OptionalIoK8sAPIAuthorizationV1ResourceAttributes    `json:"resourceAttributes"`
-	UID                   OptionalString                                       `json:"uid"`
-	User                  OptionalString                                       `json:"user"`
+	Extra                 *struct{}                                       `json:"extra"`
+	Groups                *[]string                                       `json:"groups"`
+	NonResourceAttributes OptIoK8sAPIAuthorizationV1NonResourceAttributes `json:"nonResourceAttributes"`
+	ResourceAttributes    OptIoK8sAPIAuthorizationV1ResourceAttributes    `json:"resourceAttributes"`
+	UID                   OptString                                       `json:"uid"`
+	User                  OptString                                       `json:"user"`
 }
 
 // IoK8sAPIAuthorizationV1SubjectAccessReviewStatus describes #/components/schemas/io.k8s.api.authorization.v1.SubjectAccessReviewStatus.
 type IoK8sAPIAuthorizationV1SubjectAccessReviewStatus struct {
-	Allowed         bool           `json:"allowed"`
-	Denied          OptionalBool   `json:"denied"`
-	EvaluationError OptionalString `json:"evaluationError"`
-	Reason          OptionalString `json:"reason"`
+	Allowed         bool      `json:"allowed"`
+	Denied          OptBool   `json:"denied"`
+	EvaluationError OptString `json:"evaluationError"`
+	Reason          OptString `json:"reason"`
 }
 
 // IoK8sAPIAuthorizationV1SubjectRulesReviewStatus describes #/components/schemas/io.k8s.api.authorization.v1.SubjectRulesReviewStatus.
 type IoK8sAPIAuthorizationV1SubjectRulesReviewStatus struct {
-	EvaluationError  OptionalString                           `json:"evaluationError"`
+	EvaluationError  OptString                                `json:"evaluationError"`
 	Incomplete       bool                                     `json:"incomplete"`
 	NonResourceRules []IoK8sAPIAuthorizationV1NonResourceRule `json:"nonResourceRules"`
 	ResourceRules    []IoK8sAPIAuthorizationV1ResourceRule    `json:"resourceRules"`
@@ -3349,115 +3349,115 @@ type IoK8sAPIAuthorizationV1SubjectRulesReviewStatus struct {
 
 // IoK8sAPIAutoscalingV1CrossVersionObjectReference describes #/components/schemas/io.k8s.api.autoscaling.v1.CrossVersionObjectReference.
 type IoK8sAPIAutoscalingV1CrossVersionObjectReference struct {
-	ApiVersion OptionalString `json:"apiVersion"`
-	Kind       string         `json:"kind"`
-	Name       string         `json:"name"`
+	ApiVersion OptString `json:"apiVersion"`
+	Kind       string    `json:"kind"`
+	Name       string    `json:"name"`
 }
 
 // IoK8sAPIAutoscalingV1HorizontalPodAutoscaler describes #/components/schemas/io.k8s.api.autoscaling.v1.HorizontalPodAutoscaler.
 type IoK8sAPIAutoscalingV1HorizontalPodAutoscaler struct {
-	ApiVersion OptionalString                                             `json:"apiVersion"`
-	Kind       OptionalString                                             `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta           `json:"metadata"`
-	Spec       OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec   `json:"spec"`
-	Status     OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus `json:"status"`
+	ApiVersion OptString                                             `json:"apiVersion"`
+	Kind       OptString                                             `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta           `json:"metadata"`
+	Spec       OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec   `json:"spec"`
+	Status     OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus `json:"status"`
 }
 
 // IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList describes #/components/schemas/io.k8s.api.autoscaling.v1.HorizontalPodAutoscalerList.
 type IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
+	ApiVersion OptString                                      `json:"apiVersion"`
 	Items      []IoK8sAPIAutoscalingV1HorizontalPodAutoscaler `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	Kind       OptString                                      `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta      `json:"metadata"`
 }
 
 // IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec describes #/components/schemas/io.k8s.api.autoscaling.v1.HorizontalPodAutoscalerSpec.
 type IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec struct {
 	MaxReplicas                    int32                                            `json:"maxReplicas"`
-	MinReplicas                    OptionalInt32                                    `json:"minReplicas"`
+	MinReplicas                    OptInt32                                         `json:"minReplicas"`
 	ScaleTargetRef                 IoK8sAPIAutoscalingV1CrossVersionObjectReference `json:"scaleTargetRef"`
-	TargetCPUUtilizationPercentage OptionalInt32                                    `json:"targetCPUUtilizationPercentage"`
+	TargetCPUUtilizationPercentage OptInt32                                         `json:"targetCPUUtilizationPercentage"`
 }
 
 // IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus describes #/components/schemas/io.k8s.api.autoscaling.v1.HorizontalPodAutoscalerStatus.
 type IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus struct {
-	CurrentCPUUtilizationPercentage OptionalInt32                       `json:"currentCPUUtilizationPercentage"`
+	CurrentCPUUtilizationPercentage OptInt32                            `json:"currentCPUUtilizationPercentage"`
 	CurrentReplicas                 int32                               `json:"currentReplicas"`
 	DesiredReplicas                 int32                               `json:"desiredReplicas"`
 	LastScaleTime                   *IoK8sApimachineryPkgApisMetaV1Time `json:"lastScaleTime"`
-	ObservedGeneration              OptionalInt64                       `json:"observedGeneration"`
+	ObservedGeneration              OptInt64                            `json:"observedGeneration"`
 }
 
 // IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource describes #/components/schemas/io.k8s.api.autoscaling.v2beta1.ContainerResourceMetricSource.
 type IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource struct {
 	Container                string                                   `json:"container"`
 	Name                     string                                   `json:"name"`
-	TargetAverageUtilization OptionalInt32                            `json:"targetAverageUtilization"`
+	TargetAverageUtilization OptInt32                                 `json:"targetAverageUtilization"`
 	TargetAverageValue       *IoK8sApimachineryPkgAPIResourceQuantity `json:"targetAverageValue"`
 }
 
 // IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus describes #/components/schemas/io.k8s.api.autoscaling.v2beta1.ContainerResourceMetricStatus.
 type IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus struct {
 	Container                 string                                  `json:"container"`
-	CurrentAverageUtilization OptionalInt32                           `json:"currentAverageUtilization"`
+	CurrentAverageUtilization OptInt32                                `json:"currentAverageUtilization"`
 	CurrentAverageValue       IoK8sApimachineryPkgAPIResourceQuantity `json:"currentAverageValue"`
 	Name                      string                                  `json:"name"`
 }
 
 // IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference describes #/components/schemas/io.k8s.api.autoscaling.v2beta1.CrossVersionObjectReference.
 type IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference struct {
-	ApiVersion OptionalString `json:"apiVersion"`
-	Kind       string         `json:"kind"`
-	Name       string         `json:"name"`
+	ApiVersion OptString `json:"apiVersion"`
+	Kind       string    `json:"kind"`
+	Name       string    `json:"name"`
 }
 
 // IoK8sAPIAutoscalingV2beta1ExternalMetricSource describes #/components/schemas/io.k8s.api.autoscaling.v2beta1.ExternalMetricSource.
 type IoK8sAPIAutoscalingV2beta1ExternalMetricSource struct {
-	MetricName         string                                              `json:"metricName"`
-	MetricSelector     OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"metricSelector"`
-	TargetAverageValue *IoK8sApimachineryPkgAPIResourceQuantity            `json:"targetAverageValue"`
-	TargetValue        *IoK8sApimachineryPkgAPIResourceQuantity            `json:"targetValue"`
+	MetricName         string                                         `json:"metricName"`
+	MetricSelector     OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"metricSelector"`
+	TargetAverageValue *IoK8sApimachineryPkgAPIResourceQuantity       `json:"targetAverageValue"`
+	TargetValue        *IoK8sApimachineryPkgAPIResourceQuantity       `json:"targetValue"`
 }
 
 // IoK8sAPIAutoscalingV2beta1ExternalMetricStatus describes #/components/schemas/io.k8s.api.autoscaling.v2beta1.ExternalMetricStatus.
 type IoK8sAPIAutoscalingV2beta1ExternalMetricStatus struct {
-	CurrentAverageValue *IoK8sApimachineryPkgAPIResourceQuantity            `json:"currentAverageValue"`
-	CurrentValue        IoK8sApimachineryPkgAPIResourceQuantity             `json:"currentValue"`
-	MetricName          string                                              `json:"metricName"`
-	MetricSelector      OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"metricSelector"`
+	CurrentAverageValue *IoK8sApimachineryPkgAPIResourceQuantity       `json:"currentAverageValue"`
+	CurrentValue        IoK8sApimachineryPkgAPIResourceQuantity        `json:"currentValue"`
+	MetricName          string                                         `json:"metricName"`
+	MetricSelector      OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"metricSelector"`
 }
 
 // IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler describes #/components/schemas/io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscaler.
 type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler struct {
-	ApiVersion OptionalString                                                  `json:"apiVersion"`
-	Kind       OptionalString                                                  `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta                `json:"metadata"`
-	Spec       OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec   `json:"spec"`
-	Status     OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus `json:"status"`
+	ApiVersion OptString                                                  `json:"apiVersion"`
+	Kind       OptString                                                  `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta                `json:"metadata"`
+	Spec       OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec   `json:"spec"`
+	Status     OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus `json:"status"`
 }
 
 // IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition describes #/components/schemas/io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscalerCondition.
 type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition struct {
 	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptionalString                      `json:"message"`
-	Reason             OptionalString                      `json:"reason"`
+	Message            OptString                           `json:"message"`
+	Reason             OptString                           `json:"reason"`
 	Status             string                              `json:"status"`
 	Type               string                              `json:"type"`
 }
 
 // IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList describes #/components/schemas/io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscalerList.
 type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList struct {
-	ApiVersion OptionalString                                      `json:"apiVersion"`
+	ApiVersion OptString                                           `json:"apiVersion"`
 	Items      []IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler `json:"items"`
-	Kind       OptionalString                                      `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta      `json:"metadata"`
+	Kind       OptString                                           `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta           `json:"metadata"`
 }
 
 // IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec describes #/components/schemas/io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscalerSpec.
 type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec struct {
 	MaxReplicas    int32                                                 `json:"maxReplicas"`
 	Metrics        *[]IoK8sAPIAutoscalingV2beta1MetricSpec               `json:"metrics"`
-	MinReplicas    OptionalInt32                                         `json:"minReplicas"`
+	MinReplicas    OptInt32                                              `json:"minReplicas"`
 	ScaleTargetRef IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference `json:"scaleTargetRef"`
 }
 
@@ -3468,34 +3468,34 @@ type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus struct {
 	CurrentReplicas    int32                                                        `json:"currentReplicas"`
 	DesiredReplicas    int32                                                        `json:"desiredReplicas"`
 	LastScaleTime      *IoK8sApimachineryPkgApisMetaV1Time                          `json:"lastScaleTime"`
-	ObservedGeneration OptionalInt64                                                `json:"observedGeneration"`
+	ObservedGeneration OptInt64                                                     `json:"observedGeneration"`
 }
 
 // IoK8sAPIAutoscalingV2beta1MetricSpec describes #/components/schemas/io.k8s.api.autoscaling.v2beta1.MetricSpec.
 type IoK8sAPIAutoscalingV2beta1MetricSpec struct {
-	ContainerResource OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource `json:"containerResource"`
-	External          OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricSource          `json:"external"`
-	Object            OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricSource            `json:"object"`
-	Pods              OptionalIoK8sAPIAutoscalingV2beta1PodsMetricSource              `json:"pods"`
-	Resource          OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricSource          `json:"resource"`
-	Type              string                                                          `json:"type"`
+	ContainerResource OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource `json:"containerResource"`
+	External          OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource          `json:"external"`
+	Object            OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource            `json:"object"`
+	Pods              OptIoK8sAPIAutoscalingV2beta1PodsMetricSource              `json:"pods"`
+	Resource          OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource          `json:"resource"`
+	Type              string                                                     `json:"type"`
 }
 
 // IoK8sAPIAutoscalingV2beta1MetricStatus describes #/components/schemas/io.k8s.api.autoscaling.v2beta1.MetricStatus.
 type IoK8sAPIAutoscalingV2beta1MetricStatus struct {
-	ContainerResource OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus `json:"containerResource"`
-	External          OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricStatus          `json:"external"`
-	Object            OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricStatus            `json:"object"`
-	Pods              OptionalIoK8sAPIAutoscalingV2beta1PodsMetricStatus              `json:"pods"`
-	Resource          OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricStatus          `json:"resource"`
-	Type              string                                                          `json:"type"`
+	ContainerResource OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus `json:"containerResource"`
+	External          OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus          `json:"external"`
+	Object            OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus            `json:"object"`
+	Pods              OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus              `json:"pods"`
+	Resource          OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus          `json:"resource"`
+	Type              string                                                     `json:"type"`
 }
 
 // IoK8sAPIAutoscalingV2beta1ObjectMetricSource describes #/components/schemas/io.k8s.api.autoscaling.v2beta1.ObjectMetricSource.
 type IoK8sAPIAutoscalingV2beta1ObjectMetricSource struct {
 	AverageValue *IoK8sApimachineryPkgAPIResourceQuantity              `json:"averageValue"`
 	MetricName   string                                                `json:"metricName"`
-	Selector     OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector   `json:"selector"`
+	Selector     OptIoK8sApimachineryPkgApisMetaV1LabelSelector        `json:"selector"`
 	Target       IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference `json:"target"`
 	TargetValue  IoK8sApimachineryPkgAPIResourceQuantity               `json:"targetValue"`
 }
@@ -3505,34 +3505,34 @@ type IoK8sAPIAutoscalingV2beta1ObjectMetricStatus struct {
 	AverageValue *IoK8sApimachineryPkgAPIResourceQuantity              `json:"averageValue"`
 	CurrentValue IoK8sApimachineryPkgAPIResourceQuantity               `json:"currentValue"`
 	MetricName   string                                                `json:"metricName"`
-	Selector     OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector   `json:"selector"`
+	Selector     OptIoK8sApimachineryPkgApisMetaV1LabelSelector        `json:"selector"`
 	Target       IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference `json:"target"`
 }
 
 // IoK8sAPIAutoscalingV2beta1PodsMetricSource describes #/components/schemas/io.k8s.api.autoscaling.v2beta1.PodsMetricSource.
 type IoK8sAPIAutoscalingV2beta1PodsMetricSource struct {
-	MetricName         string                                              `json:"metricName"`
-	Selector           OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
-	TargetAverageValue IoK8sApimachineryPkgAPIResourceQuantity             `json:"targetAverageValue"`
+	MetricName         string                                         `json:"metricName"`
+	Selector           OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
+	TargetAverageValue IoK8sApimachineryPkgAPIResourceQuantity        `json:"targetAverageValue"`
 }
 
 // IoK8sAPIAutoscalingV2beta1PodsMetricStatus describes #/components/schemas/io.k8s.api.autoscaling.v2beta1.PodsMetricStatus.
 type IoK8sAPIAutoscalingV2beta1PodsMetricStatus struct {
-	CurrentAverageValue IoK8sApimachineryPkgAPIResourceQuantity             `json:"currentAverageValue"`
-	MetricName          string                                              `json:"metricName"`
-	Selector            OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
+	CurrentAverageValue IoK8sApimachineryPkgAPIResourceQuantity        `json:"currentAverageValue"`
+	MetricName          string                                         `json:"metricName"`
+	Selector            OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
 }
 
 // IoK8sAPIAutoscalingV2beta1ResourceMetricSource describes #/components/schemas/io.k8s.api.autoscaling.v2beta1.ResourceMetricSource.
 type IoK8sAPIAutoscalingV2beta1ResourceMetricSource struct {
 	Name                     string                                   `json:"name"`
-	TargetAverageUtilization OptionalInt32                            `json:"targetAverageUtilization"`
+	TargetAverageUtilization OptInt32                                 `json:"targetAverageUtilization"`
 	TargetAverageValue       *IoK8sApimachineryPkgAPIResourceQuantity `json:"targetAverageValue"`
 }
 
 // IoK8sAPIAutoscalingV2beta1ResourceMetricStatus describes #/components/schemas/io.k8s.api.autoscaling.v2beta1.ResourceMetricStatus.
 type IoK8sAPIAutoscalingV2beta1ResourceMetricStatus struct {
-	CurrentAverageUtilization OptionalInt32                           `json:"currentAverageUtilization"`
+	CurrentAverageUtilization OptInt32                                `json:"currentAverageUtilization"`
 	CurrentAverageValue       IoK8sApimachineryPkgAPIResourceQuantity `json:"currentAverageValue"`
 	Name                      string                                  `json:"name"`
 }
@@ -3553,9 +3553,9 @@ type IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus struct {
 
 // IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference describes #/components/schemas/io.k8s.api.autoscaling.v2beta2.CrossVersionObjectReference.
 type IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference struct {
-	ApiVersion OptionalString `json:"apiVersion"`
-	Kind       string         `json:"kind"`
-	Name       string         `json:"name"`
+	ApiVersion OptString `json:"apiVersion"`
+	Kind       string    `json:"kind"`
+	Name       string    `json:"name"`
 }
 
 // IoK8sAPIAutoscalingV2beta2ExternalMetricSource describes #/components/schemas/io.k8s.api.autoscaling.v2beta2.ExternalMetricSource.
@@ -3580,49 +3580,49 @@ type IoK8sAPIAutoscalingV2beta2HPAScalingPolicy struct {
 // IoK8sAPIAutoscalingV2beta2HPAScalingRules describes #/components/schemas/io.k8s.api.autoscaling.v2beta2.HPAScalingRules.
 type IoK8sAPIAutoscalingV2beta2HPAScalingRules struct {
 	Policies                   *[]IoK8sAPIAutoscalingV2beta2HPAScalingPolicy `json:"policies"`
-	SelectPolicy               OptionalString                                `json:"selectPolicy"`
-	StabilizationWindowSeconds OptionalInt32                                 `json:"stabilizationWindowSeconds"`
+	SelectPolicy               OptString                                     `json:"selectPolicy"`
+	StabilizationWindowSeconds OptInt32                                      `json:"stabilizationWindowSeconds"`
 }
 
 // IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler describes #/components/schemas/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscaler.
 type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler struct {
-	ApiVersion OptionalString                                                  `json:"apiVersion"`
-	Kind       OptionalString                                                  `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta                `json:"metadata"`
-	Spec       OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec   `json:"spec"`
-	Status     OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus `json:"status"`
+	ApiVersion OptString                                                  `json:"apiVersion"`
+	Kind       OptString                                                  `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta                `json:"metadata"`
+	Spec       OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec   `json:"spec"`
+	Status     OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus `json:"status"`
 }
 
 // IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior describes #/components/schemas/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscalerBehavior.
 type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior struct {
-	ScaleDown OptionalIoK8sAPIAutoscalingV2beta2HPAScalingRules `json:"scaleDown"`
-	ScaleUp   OptionalIoK8sAPIAutoscalingV2beta2HPAScalingRules `json:"scaleUp"`
+	ScaleDown OptIoK8sAPIAutoscalingV2beta2HPAScalingRules `json:"scaleDown"`
+	ScaleUp   OptIoK8sAPIAutoscalingV2beta2HPAScalingRules `json:"scaleUp"`
 }
 
 // IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition describes #/components/schemas/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscalerCondition.
 type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition struct {
 	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptionalString                      `json:"message"`
-	Reason             OptionalString                      `json:"reason"`
+	Message            OptString                           `json:"message"`
+	Reason             OptString                           `json:"reason"`
 	Status             string                              `json:"status"`
 	Type               string                              `json:"type"`
 }
 
 // IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList describes #/components/schemas/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscalerList.
 type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList struct {
-	ApiVersion OptionalString                                      `json:"apiVersion"`
+	ApiVersion OptString                                           `json:"apiVersion"`
 	Items      []IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler `json:"items"`
-	Kind       OptionalString                                      `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta      `json:"metadata"`
+	Kind       OptString                                           `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta           `json:"metadata"`
 }
 
 // IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec describes #/components/schemas/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscalerSpec.
 type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec struct {
-	Behavior       OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior `json:"behavior"`
-	MaxReplicas    int32                                                             `json:"maxReplicas"`
-	Metrics        *[]IoK8sAPIAutoscalingV2beta2MetricSpec                           `json:"metrics"`
-	MinReplicas    OptionalInt32                                                     `json:"minReplicas"`
-	ScaleTargetRef IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference             `json:"scaleTargetRef"`
+	Behavior       OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior `json:"behavior"`
+	MaxReplicas    int32                                                        `json:"maxReplicas"`
+	Metrics        *[]IoK8sAPIAutoscalingV2beta2MetricSpec                      `json:"metrics"`
+	MinReplicas    OptInt32                                                     `json:"minReplicas"`
+	ScaleTargetRef IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference        `json:"scaleTargetRef"`
 }
 
 // IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus describes #/components/schemas/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscalerStatus.
@@ -3632,38 +3632,38 @@ type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus struct {
 	CurrentReplicas    int32                                                        `json:"currentReplicas"`
 	DesiredReplicas    int32                                                        `json:"desiredReplicas"`
 	LastScaleTime      *IoK8sApimachineryPkgApisMetaV1Time                          `json:"lastScaleTime"`
-	ObservedGeneration OptionalInt64                                                `json:"observedGeneration"`
+	ObservedGeneration OptInt64                                                     `json:"observedGeneration"`
 }
 
 // IoK8sAPIAutoscalingV2beta2MetricIdentifier describes #/components/schemas/io.k8s.api.autoscaling.v2beta2.MetricIdentifier.
 type IoK8sAPIAutoscalingV2beta2MetricIdentifier struct {
-	Name     string                                              `json:"name"`
-	Selector OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
+	Name     string                                         `json:"name"`
+	Selector OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
 }
 
 // IoK8sAPIAutoscalingV2beta2MetricSpec describes #/components/schemas/io.k8s.api.autoscaling.v2beta2.MetricSpec.
 type IoK8sAPIAutoscalingV2beta2MetricSpec struct {
-	ContainerResource OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource `json:"containerResource"`
-	External          OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricSource          `json:"external"`
-	Object            OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricSource            `json:"object"`
-	Pods              OptionalIoK8sAPIAutoscalingV2beta2PodsMetricSource              `json:"pods"`
-	Resource          OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricSource          `json:"resource"`
-	Type              string                                                          `json:"type"`
+	ContainerResource OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource `json:"containerResource"`
+	External          OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource          `json:"external"`
+	Object            OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource            `json:"object"`
+	Pods              OptIoK8sAPIAutoscalingV2beta2PodsMetricSource              `json:"pods"`
+	Resource          OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource          `json:"resource"`
+	Type              string                                                     `json:"type"`
 }
 
 // IoK8sAPIAutoscalingV2beta2MetricStatus describes #/components/schemas/io.k8s.api.autoscaling.v2beta2.MetricStatus.
 type IoK8sAPIAutoscalingV2beta2MetricStatus struct {
-	ContainerResource OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus `json:"containerResource"`
-	External          OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricStatus          `json:"external"`
-	Object            OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricStatus            `json:"object"`
-	Pods              OptionalIoK8sAPIAutoscalingV2beta2PodsMetricStatus              `json:"pods"`
-	Resource          OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricStatus          `json:"resource"`
-	Type              string                                                          `json:"type"`
+	ContainerResource OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus `json:"containerResource"`
+	External          OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus          `json:"external"`
+	Object            OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus            `json:"object"`
+	Pods              OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus              `json:"pods"`
+	Resource          OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus          `json:"resource"`
+	Type              string                                                     `json:"type"`
 }
 
 // IoK8sAPIAutoscalingV2beta2MetricTarget describes #/components/schemas/io.k8s.api.autoscaling.v2beta2.MetricTarget.
 type IoK8sAPIAutoscalingV2beta2MetricTarget struct {
-	AverageUtilization OptionalInt32                            `json:"averageUtilization"`
+	AverageUtilization OptInt32                                 `json:"averageUtilization"`
 	AverageValue       *IoK8sApimachineryPkgAPIResourceQuantity `json:"averageValue"`
 	Type               string                                   `json:"type"`
 	Value              *IoK8sApimachineryPkgAPIResourceQuantity `json:"value"`
@@ -3671,7 +3671,7 @@ type IoK8sAPIAutoscalingV2beta2MetricTarget struct {
 
 // IoK8sAPIAutoscalingV2beta2MetricValueStatus describes #/components/schemas/io.k8s.api.autoscaling.v2beta2.MetricValueStatus.
 type IoK8sAPIAutoscalingV2beta2MetricValueStatus struct {
-	AverageUtilization OptionalInt32                            `json:"averageUtilization"`
+	AverageUtilization OptInt32                                 `json:"averageUtilization"`
 	AverageValue       *IoK8sApimachineryPkgAPIResourceQuantity `json:"averageValue"`
 	Value              *IoK8sApimachineryPkgAPIResourceQuantity `json:"value"`
 }
@@ -3716,30 +3716,30 @@ type IoK8sAPIAutoscalingV2beta2ResourceMetricStatus struct {
 
 // IoK8sAPIBatchV1CronJob describes #/components/schemas/io.k8s.api.batch.v1.CronJob.
 type IoK8sAPIBatchV1CronJob struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       OptionalIoK8sAPIBatchV1CronJobSpec               `json:"spec"`
-	Status     OptionalIoK8sAPIBatchV1CronJobStatus             `json:"status"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       OptIoK8sAPIBatchV1CronJobSpec               `json:"spec"`
+	Status     OptIoK8sAPIBatchV1CronJobStatus             `json:"status"`
 }
 
 // IoK8sAPIBatchV1CronJobList describes #/components/schemas/io.k8s.api.batch.v1.CronJobList.
 type IoK8sAPIBatchV1CronJobList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIBatchV1CronJob                       `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIBatchV1CronJob                  `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIBatchV1CronJobSpec describes #/components/schemas/io.k8s.api.batch.v1.CronJobSpec.
 type IoK8sAPIBatchV1CronJobSpec struct {
-	ConcurrencyPolicy          OptionalString                 `json:"concurrencyPolicy"`
-	FailedJobsHistoryLimit     OptionalInt32                  `json:"failedJobsHistoryLimit"`
+	ConcurrencyPolicy          OptString                      `json:"concurrencyPolicy"`
+	FailedJobsHistoryLimit     OptInt32                       `json:"failedJobsHistoryLimit"`
 	JobTemplate                IoK8sAPIBatchV1JobTemplateSpec `json:"jobTemplate"`
 	Schedule                   string                         `json:"schedule"`
-	StartingDeadlineSeconds    OptionalInt64                  `json:"startingDeadlineSeconds"`
-	SuccessfulJobsHistoryLimit OptionalInt32                  `json:"successfulJobsHistoryLimit"`
-	Suspend                    OptionalBool                   `json:"suspend"`
+	StartingDeadlineSeconds    OptInt64                       `json:"startingDeadlineSeconds"`
+	SuccessfulJobsHistoryLimit OptInt32                       `json:"successfulJobsHistoryLimit"`
+	Suspend                    OptBool                        `json:"suspend"`
 }
 
 // IoK8sAPIBatchV1CronJobStatus describes #/components/schemas/io.k8s.api.batch.v1.CronJobStatus.
@@ -3751,61 +3751,61 @@ type IoK8sAPIBatchV1CronJobStatus struct {
 
 // IoK8sAPIBatchV1Job describes #/components/schemas/io.k8s.api.batch.v1.Job.
 type IoK8sAPIBatchV1Job struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       OptionalIoK8sAPIBatchV1JobSpec                   `json:"spec"`
-	Status     OptionalIoK8sAPIBatchV1JobStatus                 `json:"status"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       OptIoK8sAPIBatchV1JobSpec                   `json:"spec"`
+	Status     OptIoK8sAPIBatchV1JobStatus                 `json:"status"`
 }
 
 // IoK8sAPIBatchV1JobCondition describes #/components/schemas/io.k8s.api.batch.v1.JobCondition.
 type IoK8sAPIBatchV1JobCondition struct {
 	LastProbeTime      *IoK8sApimachineryPkgApisMetaV1Time `json:"lastProbeTime"`
 	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptionalString                      `json:"message"`
-	Reason             OptionalString                      `json:"reason"`
+	Message            OptString                           `json:"message"`
+	Reason             OptString                           `json:"reason"`
 	Status             string                              `json:"status"`
 	Type               string                              `json:"type"`
 }
 
 // IoK8sAPIBatchV1JobList describes #/components/schemas/io.k8s.api.batch.v1.JobList.
 type IoK8sAPIBatchV1JobList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIBatchV1Job                           `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIBatchV1Job                      `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIBatchV1JobSpec describes #/components/schemas/io.k8s.api.batch.v1.JobSpec.
 type IoK8sAPIBatchV1JobSpec struct {
-	ActiveDeadlineSeconds   OptionalInt64                                       `json:"activeDeadlineSeconds"`
-	BackoffLimit            OptionalInt32                                       `json:"backoffLimit"`
-	CompletionMode          OptionalString                                      `json:"completionMode"`
-	Completions             OptionalInt32                                       `json:"completions"`
-	ManualSelector          OptionalBool                                        `json:"manualSelector"`
-	Parallelism             OptionalInt32                                       `json:"parallelism"`
-	Selector                OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
-	Suspend                 OptionalBool                                        `json:"suspend"`
-	Template                IoK8sAPICoreV1PodTemplateSpec                       `json:"template"`
-	TtlSecondsAfterFinished OptionalInt32                                       `json:"ttlSecondsAfterFinished"`
+	ActiveDeadlineSeconds   OptInt64                                       `json:"activeDeadlineSeconds"`
+	BackoffLimit            OptInt32                                       `json:"backoffLimit"`
+	CompletionMode          OptString                                      `json:"completionMode"`
+	Completions             OptInt32                                       `json:"completions"`
+	ManualSelector          OptBool                                        `json:"manualSelector"`
+	Parallelism             OptInt32                                       `json:"parallelism"`
+	Selector                OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
+	Suspend                 OptBool                                        `json:"suspend"`
+	Template                IoK8sAPICoreV1PodTemplateSpec                  `json:"template"`
+	TtlSecondsAfterFinished OptInt32                                       `json:"ttlSecondsAfterFinished"`
 }
 
 // IoK8sAPIBatchV1JobStatus describes #/components/schemas/io.k8s.api.batch.v1.JobStatus.
 type IoK8sAPIBatchV1JobStatus struct {
-	Active                  OptionalInt32                                  `json:"active"`
-	CompletedIndexes        OptionalString                                 `json:"completedIndexes"`
-	CompletionTime          *IoK8sApimachineryPkgApisMetaV1Time            `json:"completionTime"`
-	Conditions              *[]IoK8sAPIBatchV1JobCondition                 `json:"conditions"`
-	Failed                  OptionalInt32                                  `json:"failed"`
-	StartTime               *IoK8sApimachineryPkgApisMetaV1Time            `json:"startTime"`
-	Succeeded               OptionalInt32                                  `json:"succeeded"`
-	UncountedTerminatedPods OptionalIoK8sAPIBatchV1UncountedTerminatedPods `json:"uncountedTerminatedPods"`
+	Active                  OptInt32                                  `json:"active"`
+	CompletedIndexes        OptString                                 `json:"completedIndexes"`
+	CompletionTime          *IoK8sApimachineryPkgApisMetaV1Time       `json:"completionTime"`
+	Conditions              *[]IoK8sAPIBatchV1JobCondition            `json:"conditions"`
+	Failed                  OptInt32                                  `json:"failed"`
+	StartTime               *IoK8sApimachineryPkgApisMetaV1Time       `json:"startTime"`
+	Succeeded               OptInt32                                  `json:"succeeded"`
+	UncountedTerminatedPods OptIoK8sAPIBatchV1UncountedTerminatedPods `json:"uncountedTerminatedPods"`
 }
 
 // IoK8sAPIBatchV1JobTemplateSpec describes #/components/schemas/io.k8s.api.batch.v1.JobTemplateSpec.
 type IoK8sAPIBatchV1JobTemplateSpec struct {
-	Metadata OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec     OptionalIoK8sAPIBatchV1JobSpec                   `json:"spec"`
+	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec     OptIoK8sAPIBatchV1JobSpec                   `json:"spec"`
 }
 
 // IoK8sAPIBatchV1UncountedTerminatedPods describes #/components/schemas/io.k8s.api.batch.v1.UncountedTerminatedPods.
@@ -3816,30 +3816,30 @@ type IoK8sAPIBatchV1UncountedTerminatedPods struct {
 
 // IoK8sAPIBatchV1beta1CronJob describes #/components/schemas/io.k8s.api.batch.v1beta1.CronJob.
 type IoK8sAPIBatchV1beta1CronJob struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       OptionalIoK8sAPIBatchV1beta1CronJobSpec          `json:"spec"`
-	Status     OptionalIoK8sAPIBatchV1beta1CronJobStatus        `json:"status"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       OptIoK8sAPIBatchV1beta1CronJobSpec          `json:"spec"`
+	Status     OptIoK8sAPIBatchV1beta1CronJobStatus        `json:"status"`
 }
 
 // IoK8sAPIBatchV1beta1CronJobList describes #/components/schemas/io.k8s.api.batch.v1beta1.CronJobList.
 type IoK8sAPIBatchV1beta1CronJobList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIBatchV1beta1CronJob                  `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIBatchV1beta1CronJob             `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIBatchV1beta1CronJobSpec describes #/components/schemas/io.k8s.api.batch.v1beta1.CronJobSpec.
 type IoK8sAPIBatchV1beta1CronJobSpec struct {
-	ConcurrencyPolicy          OptionalString                      `json:"concurrencyPolicy"`
-	FailedJobsHistoryLimit     OptionalInt32                       `json:"failedJobsHistoryLimit"`
+	ConcurrencyPolicy          OptString                           `json:"concurrencyPolicy"`
+	FailedJobsHistoryLimit     OptInt32                            `json:"failedJobsHistoryLimit"`
 	JobTemplate                IoK8sAPIBatchV1beta1JobTemplateSpec `json:"jobTemplate"`
 	Schedule                   string                              `json:"schedule"`
-	StartingDeadlineSeconds    OptionalInt64                       `json:"startingDeadlineSeconds"`
-	SuccessfulJobsHistoryLimit OptionalInt32                       `json:"successfulJobsHistoryLimit"`
-	Suspend                    OptionalBool                        `json:"suspend"`
+	StartingDeadlineSeconds    OptInt64                            `json:"startingDeadlineSeconds"`
+	SuccessfulJobsHistoryLimit OptInt32                            `json:"successfulJobsHistoryLimit"`
+	Suspend                    OptBool                             `json:"suspend"`
 }
 
 // IoK8sAPIBatchV1beta1CronJobStatus describes #/components/schemas/io.k8s.api.batch.v1beta1.CronJobStatus.
@@ -3851,47 +3851,47 @@ type IoK8sAPIBatchV1beta1CronJobStatus struct {
 
 // IoK8sAPIBatchV1beta1JobTemplateSpec describes #/components/schemas/io.k8s.api.batch.v1beta1.JobTemplateSpec.
 type IoK8sAPIBatchV1beta1JobTemplateSpec struct {
-	Metadata OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec     OptionalIoK8sAPIBatchV1JobSpec                   `json:"spec"`
+	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec     OptIoK8sAPIBatchV1JobSpec                   `json:"spec"`
 }
 
 // IoK8sAPICertificatesV1CertificateSigningRequest describes #/components/schemas/io.k8s.api.certificates.v1.CertificateSigningRequest.
 type IoK8sAPICertificatesV1CertificateSigningRequest struct {
-	ApiVersion OptionalString                                                `json:"apiVersion"`
-	Kind       OptionalString                                                `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta              `json:"metadata"`
-	Spec       IoK8sAPICertificatesV1CertificateSigningRequestSpec           `json:"spec"`
-	Status     OptionalIoK8sAPICertificatesV1CertificateSigningRequestStatus `json:"status"`
+	ApiVersion OptString                                                `json:"apiVersion"`
+	Kind       OptString                                                `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta              `json:"metadata"`
+	Spec       IoK8sAPICertificatesV1CertificateSigningRequestSpec      `json:"spec"`
+	Status     OptIoK8sAPICertificatesV1CertificateSigningRequestStatus `json:"status"`
 }
 
 // IoK8sAPICertificatesV1CertificateSigningRequestCondition describes #/components/schemas/io.k8s.api.certificates.v1.CertificateSigningRequestCondition.
 type IoK8sAPICertificatesV1CertificateSigningRequestCondition struct {
 	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
 	LastUpdateTime     *IoK8sApimachineryPkgApisMetaV1Time `json:"lastUpdateTime"`
-	Message            OptionalString                      `json:"message"`
-	Reason             OptionalString                      `json:"reason"`
+	Message            OptString                           `json:"message"`
+	Reason             OptString                           `json:"reason"`
 	Status             string                              `json:"status"`
 	Type               string                              `json:"type"`
 }
 
 // IoK8sAPICertificatesV1CertificateSigningRequestList describes #/components/schemas/io.k8s.api.certificates.v1.CertificateSigningRequestList.
 type IoK8sAPICertificatesV1CertificateSigningRequestList struct {
-	ApiVersion OptionalString                                    `json:"apiVersion"`
+	ApiVersion OptString                                         `json:"apiVersion"`
 	Items      []IoK8sAPICertificatesV1CertificateSigningRequest `json:"items"`
-	Kind       OptionalString                                    `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta    `json:"metadata"`
+	Kind       OptString                                         `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta         `json:"metadata"`
 }
 
 // IoK8sAPICertificatesV1CertificateSigningRequestSpec describes #/components/schemas/io.k8s.api.certificates.v1.CertificateSigningRequestSpec.
 type IoK8sAPICertificatesV1CertificateSigningRequestSpec struct {
-	ExpirationSeconds OptionalInt32  `json:"expirationSeconds"`
-	Extra             *struct{}      `json:"extra"`
-	Groups            *[]string      `json:"groups"`
-	Request           []byte         `json:"request"`
-	SignerName        string         `json:"signerName"`
-	UID               OptionalString `json:"uid"`
-	Usages            *[]string      `json:"usages"`
-	Username          OptionalString `json:"username"`
+	ExpirationSeconds OptInt32  `json:"expirationSeconds"`
+	Extra             *struct{} `json:"extra"`
+	Groups            *[]string `json:"groups"`
+	Request           []byte    `json:"request"`
+	SignerName        string    `json:"signerName"`
+	UID               OptString `json:"uid"`
+	Usages            *[]string `json:"usages"`
+	Username          OptString `json:"username"`
 }
 
 // IoK8sAPICertificatesV1CertificateSigningRequestStatus describes #/components/schemas/io.k8s.api.certificates.v1.CertificateSigningRequestStatus.
@@ -3902,42 +3902,42 @@ type IoK8sAPICertificatesV1CertificateSigningRequestStatus struct {
 
 // IoK8sAPICoordinationV1Lease describes #/components/schemas/io.k8s.api.coordination.v1.Lease.
 type IoK8sAPICoordinationV1Lease struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       OptionalIoK8sAPICoordinationV1LeaseSpec          `json:"spec"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       OptIoK8sAPICoordinationV1LeaseSpec          `json:"spec"`
 }
 
 // IoK8sAPICoordinationV1LeaseList describes #/components/schemas/io.k8s.api.coordination.v1.LeaseList.
 type IoK8sAPICoordinationV1LeaseList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPICoordinationV1Lease                  `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPICoordinationV1Lease             `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPICoordinationV1LeaseSpec describes #/components/schemas/io.k8s.api.coordination.v1.LeaseSpec.
 type IoK8sAPICoordinationV1LeaseSpec struct {
 	AcquireTime          *IoK8sApimachineryPkgApisMetaV1MicroTime `json:"acquireTime"`
-	HolderIdentity       OptionalString                           `json:"holderIdentity"`
-	LeaseDurationSeconds OptionalInt32                            `json:"leaseDurationSeconds"`
-	LeaseTransitions     OptionalInt32                            `json:"leaseTransitions"`
+	HolderIdentity       OptString                                `json:"holderIdentity"`
+	LeaseDurationSeconds OptInt32                                 `json:"leaseDurationSeconds"`
+	LeaseTransitions     OptInt32                                 `json:"leaseTransitions"`
 	RenewTime            *IoK8sApimachineryPkgApisMetaV1MicroTime `json:"renewTime"`
 }
 
 // IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource describes #/components/schemas/io.k8s.api.core.v1.AWSElasticBlockStoreVolumeSource.
 type IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource struct {
-	FsType    OptionalString `json:"fsType"`
-	Partition OptionalInt32  `json:"partition"`
-	ReadOnly  OptionalBool   `json:"readOnly"`
-	VolumeID  string         `json:"volumeID"`
+	FsType    OptString `json:"fsType"`
+	Partition OptInt32  `json:"partition"`
+	ReadOnly  OptBool   `json:"readOnly"`
+	VolumeID  string    `json:"volumeID"`
 }
 
 // IoK8sAPICoreV1Affinity describes #/components/schemas/io.k8s.api.core.v1.Affinity.
 type IoK8sAPICoreV1Affinity struct {
-	NodeAffinity    OptionalIoK8sAPICoreV1NodeAffinity    `json:"nodeAffinity"`
-	PodAffinity     OptionalIoK8sAPICoreV1PodAffinity     `json:"podAffinity"`
-	PodAntiAffinity OptionalIoK8sAPICoreV1PodAntiAffinity `json:"podAntiAffinity"`
+	NodeAffinity    OptIoK8sAPICoreV1NodeAffinity    `json:"nodeAffinity"`
+	PodAffinity     OptIoK8sAPICoreV1PodAffinity     `json:"podAffinity"`
+	PodAntiAffinity OptIoK8sAPICoreV1PodAntiAffinity `json:"podAntiAffinity"`
 }
 
 // IoK8sAPICoreV1AttachedVolume describes #/components/schemas/io.k8s.api.core.v1.AttachedVolume.
@@ -3948,49 +3948,49 @@ type IoK8sAPICoreV1AttachedVolume struct {
 
 // IoK8sAPICoreV1AzureDiskVolumeSource describes #/components/schemas/io.k8s.api.core.v1.AzureDiskVolumeSource.
 type IoK8sAPICoreV1AzureDiskVolumeSource struct {
-	CachingMode OptionalString `json:"cachingMode"`
-	DiskName    string         `json:"diskName"`
-	DiskURI     string         `json:"diskURI"`
-	FsType      OptionalString `json:"fsType"`
-	Kind        OptionalString `json:"kind"`
-	ReadOnly    OptionalBool   `json:"readOnly"`
+	CachingMode OptString `json:"cachingMode"`
+	DiskName    string    `json:"diskName"`
+	DiskURI     string    `json:"diskURI"`
+	FsType      OptString `json:"fsType"`
+	Kind        OptString `json:"kind"`
+	ReadOnly    OptBool   `json:"readOnly"`
 }
 
 // IoK8sAPICoreV1AzureFilePersistentVolumeSource describes #/components/schemas/io.k8s.api.core.v1.AzureFilePersistentVolumeSource.
 type IoK8sAPICoreV1AzureFilePersistentVolumeSource struct {
-	ReadOnly        OptionalBool   `json:"readOnly"`
-	SecretName      string         `json:"secretName"`
-	SecretNamespace OptionalString `json:"secretNamespace"`
-	ShareName       string         `json:"shareName"`
+	ReadOnly        OptBool   `json:"readOnly"`
+	SecretName      string    `json:"secretName"`
+	SecretNamespace OptString `json:"secretNamespace"`
+	ShareName       string    `json:"shareName"`
 }
 
 // IoK8sAPICoreV1AzureFileVolumeSource describes #/components/schemas/io.k8s.api.core.v1.AzureFileVolumeSource.
 type IoK8sAPICoreV1AzureFileVolumeSource struct {
-	ReadOnly   OptionalBool `json:"readOnly"`
-	SecretName string       `json:"secretName"`
-	ShareName  string       `json:"shareName"`
+	ReadOnly   OptBool `json:"readOnly"`
+	SecretName string  `json:"secretName"`
+	ShareName  string  `json:"shareName"`
 }
 
 // IoK8sAPICoreV1CSIPersistentVolumeSource describes #/components/schemas/io.k8s.api.core.v1.CSIPersistentVolumeSource.
 type IoK8sAPICoreV1CSIPersistentVolumeSource struct {
-	ControllerExpandSecretRef  OptionalIoK8sAPICoreV1SecretReference `json:"controllerExpandSecretRef"`
-	ControllerPublishSecretRef OptionalIoK8sAPICoreV1SecretReference `json:"controllerPublishSecretRef"`
-	Driver                     string                                `json:"driver"`
-	FsType                     OptionalString                        `json:"fsType"`
-	NodePublishSecretRef       OptionalIoK8sAPICoreV1SecretReference `json:"nodePublishSecretRef"`
-	NodeStageSecretRef         OptionalIoK8sAPICoreV1SecretReference `json:"nodeStageSecretRef"`
-	ReadOnly                   OptionalBool                          `json:"readOnly"`
-	VolumeAttributes           *struct{}                             `json:"volumeAttributes"`
-	VolumeHandle               string                                `json:"volumeHandle"`
+	ControllerExpandSecretRef  OptIoK8sAPICoreV1SecretReference `json:"controllerExpandSecretRef"`
+	ControllerPublishSecretRef OptIoK8sAPICoreV1SecretReference `json:"controllerPublishSecretRef"`
+	Driver                     string                           `json:"driver"`
+	FsType                     OptString                        `json:"fsType"`
+	NodePublishSecretRef       OptIoK8sAPICoreV1SecretReference `json:"nodePublishSecretRef"`
+	NodeStageSecretRef         OptIoK8sAPICoreV1SecretReference `json:"nodeStageSecretRef"`
+	ReadOnly                   OptBool                          `json:"readOnly"`
+	VolumeAttributes           *struct{}                        `json:"volumeAttributes"`
+	VolumeHandle               string                           `json:"volumeHandle"`
 }
 
 // IoK8sAPICoreV1CSIVolumeSource describes #/components/schemas/io.k8s.api.core.v1.CSIVolumeSource.
 type IoK8sAPICoreV1CSIVolumeSource struct {
-	Driver               string                                     `json:"driver"`
-	FsType               OptionalString                             `json:"fsType"`
-	NodePublishSecretRef OptionalIoK8sAPICoreV1LocalObjectReference `json:"nodePublishSecretRef"`
-	ReadOnly             OptionalBool                               `json:"readOnly"`
-	VolumeAttributes     *struct{}                                  `json:"volumeAttributes"`
+	Driver               string                                `json:"driver"`
+	FsType               OptString                             `json:"fsType"`
+	NodePublishSecretRef OptIoK8sAPICoreV1LocalObjectReference `json:"nodePublishSecretRef"`
+	ReadOnly             OptBool                               `json:"readOnly"`
+	VolumeAttributes     *struct{}                             `json:"volumeAttributes"`
 }
 
 // IoK8sAPICoreV1Capabilities describes #/components/schemas/io.k8s.api.core.v1.Capabilities.
@@ -4001,170 +4001,170 @@ type IoK8sAPICoreV1Capabilities struct {
 
 // IoK8sAPICoreV1CephFSPersistentVolumeSource describes #/components/schemas/io.k8s.api.core.v1.CephFSPersistentVolumeSource.
 type IoK8sAPICoreV1CephFSPersistentVolumeSource struct {
-	Monitors   []string                              `json:"monitors"`
-	Path       OptionalString                        `json:"path"`
-	ReadOnly   OptionalBool                          `json:"readOnly"`
-	SecretFile OptionalString                        `json:"secretFile"`
-	SecretRef  OptionalIoK8sAPICoreV1SecretReference `json:"secretRef"`
-	User       OptionalString                        `json:"user"`
+	Monitors   []string                         `json:"monitors"`
+	Path       OptString                        `json:"path"`
+	ReadOnly   OptBool                          `json:"readOnly"`
+	SecretFile OptString                        `json:"secretFile"`
+	SecretRef  OptIoK8sAPICoreV1SecretReference `json:"secretRef"`
+	User       OptString                        `json:"user"`
 }
 
 // IoK8sAPICoreV1CephFSVolumeSource describes #/components/schemas/io.k8s.api.core.v1.CephFSVolumeSource.
 type IoK8sAPICoreV1CephFSVolumeSource struct {
-	Monitors   []string                                   `json:"monitors"`
-	Path       OptionalString                             `json:"path"`
-	ReadOnly   OptionalBool                               `json:"readOnly"`
-	SecretFile OptionalString                             `json:"secretFile"`
-	SecretRef  OptionalIoK8sAPICoreV1LocalObjectReference `json:"secretRef"`
-	User       OptionalString                             `json:"user"`
+	Monitors   []string                              `json:"monitors"`
+	Path       OptString                             `json:"path"`
+	ReadOnly   OptBool                               `json:"readOnly"`
+	SecretFile OptString                             `json:"secretFile"`
+	SecretRef  OptIoK8sAPICoreV1LocalObjectReference `json:"secretRef"`
+	User       OptString                             `json:"user"`
 }
 
 // IoK8sAPICoreV1CinderPersistentVolumeSource describes #/components/schemas/io.k8s.api.core.v1.CinderPersistentVolumeSource.
 type IoK8sAPICoreV1CinderPersistentVolumeSource struct {
-	FsType    OptionalString                        `json:"fsType"`
-	ReadOnly  OptionalBool                          `json:"readOnly"`
-	SecretRef OptionalIoK8sAPICoreV1SecretReference `json:"secretRef"`
-	VolumeID  string                                `json:"volumeID"`
+	FsType    OptString                        `json:"fsType"`
+	ReadOnly  OptBool                          `json:"readOnly"`
+	SecretRef OptIoK8sAPICoreV1SecretReference `json:"secretRef"`
+	VolumeID  string                           `json:"volumeID"`
 }
 
 // IoK8sAPICoreV1CinderVolumeSource describes #/components/schemas/io.k8s.api.core.v1.CinderVolumeSource.
 type IoK8sAPICoreV1CinderVolumeSource struct {
-	FsType    OptionalString                             `json:"fsType"`
-	ReadOnly  OptionalBool                               `json:"readOnly"`
-	SecretRef OptionalIoK8sAPICoreV1LocalObjectReference `json:"secretRef"`
-	VolumeID  string                                     `json:"volumeID"`
+	FsType    OptString                             `json:"fsType"`
+	ReadOnly  OptBool                               `json:"readOnly"`
+	SecretRef OptIoK8sAPICoreV1LocalObjectReference `json:"secretRef"`
+	VolumeID  string                                `json:"volumeID"`
 }
 
 // IoK8sAPICoreV1ClientIPConfig describes #/components/schemas/io.k8s.api.core.v1.ClientIPConfig.
 type IoK8sAPICoreV1ClientIPConfig struct {
-	TimeoutSeconds OptionalInt32 `json:"timeoutSeconds"`
+	TimeoutSeconds OptInt32 `json:"timeoutSeconds"`
 }
 
 // IoK8sAPICoreV1ComponentCondition describes #/components/schemas/io.k8s.api.core.v1.ComponentCondition.
 type IoK8sAPICoreV1ComponentCondition struct {
-	Error   OptionalString `json:"error"`
-	Message OptionalString `json:"message"`
-	Status  string         `json:"status"`
-	Type    string         `json:"type"`
+	Error   OptString `json:"error"`
+	Message OptString `json:"message"`
+	Status  string    `json:"status"`
+	Type    string    `json:"type"`
 }
 
 // IoK8sAPICoreV1ComponentStatus describes #/components/schemas/io.k8s.api.core.v1.ComponentStatus.
 type IoK8sAPICoreV1ComponentStatus struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Conditions *[]IoK8sAPICoreV1ComponentCondition              `json:"conditions"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Conditions *[]IoK8sAPICoreV1ComponentCondition         `json:"conditions"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
 }
 
 // IoK8sAPICoreV1ComponentStatusList describes #/components/schemas/io.k8s.api.core.v1.ComponentStatusList.
 type IoK8sAPICoreV1ComponentStatusList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPICoreV1ComponentStatus                `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPICoreV1ComponentStatus           `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPICoreV1ConfigMap describes #/components/schemas/io.k8s.api.core.v1.ConfigMap.
 type IoK8sAPICoreV1ConfigMap struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	BinaryData *struct{}                                        `json:"binaryData"`
-	Data       *struct{}                                        `json:"data"`
-	Immutable  OptionalBool                                     `json:"immutable"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	BinaryData *struct{}                                   `json:"binaryData"`
+	Data       *struct{}                                   `json:"data"`
+	Immutable  OptBool                                     `json:"immutable"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
 }
 
 // IoK8sAPICoreV1ConfigMapEnvSource describes #/components/schemas/io.k8s.api.core.v1.ConfigMapEnvSource.
 type IoK8sAPICoreV1ConfigMapEnvSource struct {
-	Name     OptionalString `json:"name"`
-	Optional OptionalBool   `json:"optional"`
+	Name     OptString `json:"name"`
+	Optional OptBool   `json:"optional"`
 }
 
 // IoK8sAPICoreV1ConfigMapKeySelector describes #/components/schemas/io.k8s.api.core.v1.ConfigMapKeySelector.
 type IoK8sAPICoreV1ConfigMapKeySelector struct {
-	Key      string         `json:"key"`
-	Name     OptionalString `json:"name"`
-	Optional OptionalBool   `json:"optional"`
+	Key      string    `json:"key"`
+	Name     OptString `json:"name"`
+	Optional OptBool   `json:"optional"`
 }
 
 // IoK8sAPICoreV1ConfigMapList describes #/components/schemas/io.k8s.api.core.v1.ConfigMapList.
 type IoK8sAPICoreV1ConfigMapList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPICoreV1ConfigMap                      `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPICoreV1ConfigMap                 `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPICoreV1ConfigMapNodeConfigSource describes #/components/schemas/io.k8s.api.core.v1.ConfigMapNodeConfigSource.
 type IoK8sAPICoreV1ConfigMapNodeConfigSource struct {
-	KubeletConfigKey string         `json:"kubeletConfigKey"`
-	Name             string         `json:"name"`
-	Namespace        string         `json:"namespace"`
-	ResourceVersion  OptionalString `json:"resourceVersion"`
-	UID              OptionalString `json:"uid"`
+	KubeletConfigKey string    `json:"kubeletConfigKey"`
+	Name             string    `json:"name"`
+	Namespace        string    `json:"namespace"`
+	ResourceVersion  OptString `json:"resourceVersion"`
+	UID              OptString `json:"uid"`
 }
 
 // IoK8sAPICoreV1ConfigMapProjection describes #/components/schemas/io.k8s.api.core.v1.ConfigMapProjection.
 type IoK8sAPICoreV1ConfigMapProjection struct {
 	Items    *[]IoK8sAPICoreV1KeyToPath `json:"items"`
-	Name     OptionalString             `json:"name"`
-	Optional OptionalBool               `json:"optional"`
+	Name     OptString                  `json:"name"`
+	Optional OptBool                    `json:"optional"`
 }
 
 // IoK8sAPICoreV1ConfigMapVolumeSource describes #/components/schemas/io.k8s.api.core.v1.ConfigMapVolumeSource.
 type IoK8sAPICoreV1ConfigMapVolumeSource struct {
-	DefaultMode OptionalInt32              `json:"defaultMode"`
+	DefaultMode OptInt32                   `json:"defaultMode"`
 	Items       *[]IoK8sAPICoreV1KeyToPath `json:"items"`
-	Name        OptionalString             `json:"name"`
-	Optional    OptionalBool               `json:"optional"`
+	Name        OptString                  `json:"name"`
+	Optional    OptBool                    `json:"optional"`
 }
 
 // IoK8sAPICoreV1Container describes #/components/schemas/io.k8s.api.core.v1.Container.
 type IoK8sAPICoreV1Container struct {
-	Args                     *[]string                                  `json:"args"`
-	Command                  *[]string                                  `json:"command"`
-	Env                      *[]IoK8sAPICoreV1EnvVar                    `json:"env"`
-	EnvFrom                  *[]IoK8sAPICoreV1EnvFromSource             `json:"envFrom"`
-	Image                    OptionalString                             `json:"image"`
-	ImagePullPolicy          OptionalString                             `json:"imagePullPolicy"`
-	Lifecycle                OptionalIoK8sAPICoreV1Lifecycle            `json:"lifecycle"`
-	LivenessProbe            OptionalIoK8sAPICoreV1Probe                `json:"livenessProbe"`
-	Name                     string                                     `json:"name"`
-	Ports                    *[]IoK8sAPICoreV1ContainerPort             `json:"ports"`
-	ReadinessProbe           OptionalIoK8sAPICoreV1Probe                `json:"readinessProbe"`
-	Resources                OptionalIoK8sAPICoreV1ResourceRequirements `json:"resources"`
-	SecurityContext          OptionalIoK8sAPICoreV1SecurityContext      `json:"securityContext"`
-	StartupProbe             OptionalIoK8sAPICoreV1Probe                `json:"startupProbe"`
-	Stdin                    OptionalBool                               `json:"stdin"`
-	StdinOnce                OptionalBool                               `json:"stdinOnce"`
-	TerminationMessagePath   OptionalString                             `json:"terminationMessagePath"`
-	TerminationMessagePolicy OptionalString                             `json:"terminationMessagePolicy"`
-	Tty                      OptionalBool                               `json:"tty"`
-	VolumeDevices            *[]IoK8sAPICoreV1VolumeDevice              `json:"volumeDevices"`
-	VolumeMounts             *[]IoK8sAPICoreV1VolumeMount               `json:"volumeMounts"`
-	WorkingDir               OptionalString                             `json:"workingDir"`
+	Args                     *[]string                             `json:"args"`
+	Command                  *[]string                             `json:"command"`
+	Env                      *[]IoK8sAPICoreV1EnvVar               `json:"env"`
+	EnvFrom                  *[]IoK8sAPICoreV1EnvFromSource        `json:"envFrom"`
+	Image                    OptString                             `json:"image"`
+	ImagePullPolicy          OptString                             `json:"imagePullPolicy"`
+	Lifecycle                OptIoK8sAPICoreV1Lifecycle            `json:"lifecycle"`
+	LivenessProbe            OptIoK8sAPICoreV1Probe                `json:"livenessProbe"`
+	Name                     string                                `json:"name"`
+	Ports                    *[]IoK8sAPICoreV1ContainerPort        `json:"ports"`
+	ReadinessProbe           OptIoK8sAPICoreV1Probe                `json:"readinessProbe"`
+	Resources                OptIoK8sAPICoreV1ResourceRequirements `json:"resources"`
+	SecurityContext          OptIoK8sAPICoreV1SecurityContext      `json:"securityContext"`
+	StartupProbe             OptIoK8sAPICoreV1Probe                `json:"startupProbe"`
+	Stdin                    OptBool                               `json:"stdin"`
+	StdinOnce                OptBool                               `json:"stdinOnce"`
+	TerminationMessagePath   OptString                             `json:"terminationMessagePath"`
+	TerminationMessagePolicy OptString                             `json:"terminationMessagePolicy"`
+	Tty                      OptBool                               `json:"tty"`
+	VolumeDevices            *[]IoK8sAPICoreV1VolumeDevice         `json:"volumeDevices"`
+	VolumeMounts             *[]IoK8sAPICoreV1VolumeMount          `json:"volumeMounts"`
+	WorkingDir               OptString                             `json:"workingDir"`
 }
 
 // IoK8sAPICoreV1ContainerImage describes #/components/schemas/io.k8s.api.core.v1.ContainerImage.
 type IoK8sAPICoreV1ContainerImage struct {
-	Names     *[]string     `json:"names"`
-	SizeBytes OptionalInt64 `json:"sizeBytes"`
+	Names     *[]string `json:"names"`
+	SizeBytes OptInt64  `json:"sizeBytes"`
 }
 
 // IoK8sAPICoreV1ContainerPort describes #/components/schemas/io.k8s.api.core.v1.ContainerPort.
 type IoK8sAPICoreV1ContainerPort struct {
-	ContainerPort int32          `json:"containerPort"`
-	HostIP        OptionalString `json:"hostIP"`
-	HostPort      OptionalInt32  `json:"hostPort"`
-	Name          OptionalString `json:"name"`
-	Protocol      OptionalString `json:"protocol"`
+	ContainerPort int32     `json:"containerPort"`
+	HostIP        OptString `json:"hostIP"`
+	HostPort      OptInt32  `json:"hostPort"`
+	Name          OptString `json:"name"`
+	Protocol      OptString `json:"protocol"`
 }
 
 // IoK8sAPICoreV1ContainerState describes #/components/schemas/io.k8s.api.core.v1.ContainerState.
 type IoK8sAPICoreV1ContainerState struct {
-	Running    OptionalIoK8sAPICoreV1ContainerStateRunning    `json:"running"`
-	Terminated OptionalIoK8sAPICoreV1ContainerStateTerminated `json:"terminated"`
-	Waiting    OptionalIoK8sAPICoreV1ContainerStateWaiting    `json:"waiting"`
+	Running    OptIoK8sAPICoreV1ContainerStateRunning    `json:"running"`
+	Terminated OptIoK8sAPICoreV1ContainerStateTerminated `json:"terminated"`
+	Waiting    OptIoK8sAPICoreV1ContainerStateWaiting    `json:"waiting"`
 }
 
 // IoK8sAPICoreV1ContainerStateRunning describes #/components/schemas/io.k8s.api.core.v1.ContainerStateRunning.
@@ -4174,32 +4174,32 @@ type IoK8sAPICoreV1ContainerStateRunning struct {
 
 // IoK8sAPICoreV1ContainerStateTerminated describes #/components/schemas/io.k8s.api.core.v1.ContainerStateTerminated.
 type IoK8sAPICoreV1ContainerStateTerminated struct {
-	ContainerID OptionalString                      `json:"containerID"`
+	ContainerID OptString                           `json:"containerID"`
 	ExitCode    int32                               `json:"exitCode"`
 	FinishedAt  *IoK8sApimachineryPkgApisMetaV1Time `json:"finishedAt"`
-	Message     OptionalString                      `json:"message"`
-	Reason      OptionalString                      `json:"reason"`
-	Signal      OptionalInt32                       `json:"signal"`
+	Message     OptString                           `json:"message"`
+	Reason      OptString                           `json:"reason"`
+	Signal      OptInt32                            `json:"signal"`
 	StartedAt   *IoK8sApimachineryPkgApisMetaV1Time `json:"startedAt"`
 }
 
 // IoK8sAPICoreV1ContainerStateWaiting describes #/components/schemas/io.k8s.api.core.v1.ContainerStateWaiting.
 type IoK8sAPICoreV1ContainerStateWaiting struct {
-	Message OptionalString `json:"message"`
-	Reason  OptionalString `json:"reason"`
+	Message OptString `json:"message"`
+	Reason  OptString `json:"reason"`
 }
 
 // IoK8sAPICoreV1ContainerStatus describes #/components/schemas/io.k8s.api.core.v1.ContainerStatus.
 type IoK8sAPICoreV1ContainerStatus struct {
-	ContainerID  OptionalString                       `json:"containerID"`
-	Image        string                               `json:"image"`
-	ImageID      string                               `json:"imageID"`
-	LastState    OptionalIoK8sAPICoreV1ContainerState `json:"lastState"`
-	Name         string                               `json:"name"`
-	Ready        bool                                 `json:"ready"`
-	RestartCount int32                                `json:"restartCount"`
-	Started      OptionalBool                         `json:"started"`
-	State        OptionalIoK8sAPICoreV1ContainerState `json:"state"`
+	ContainerID  OptString                       `json:"containerID"`
+	Image        string                          `json:"image"`
+	ImageID      string                          `json:"imageID"`
+	LastState    OptIoK8sAPICoreV1ContainerState `json:"lastState"`
+	Name         string                          `json:"name"`
+	Ready        bool                            `json:"ready"`
+	RestartCount int32                           `json:"restartCount"`
+	Started      OptBool                         `json:"started"`
+	State        OptIoK8sAPICoreV1ContainerState `json:"state"`
 }
 
 // IoK8sAPICoreV1DaemonEndpoint describes #/components/schemas/io.k8s.api.core.v1.DaemonEndpoint.
@@ -4214,38 +4214,38 @@ type IoK8sAPICoreV1DownwardAPIProjection struct {
 
 // IoK8sAPICoreV1DownwardAPIVolumeFile describes #/components/schemas/io.k8s.api.core.v1.DownwardAPIVolumeFile.
 type IoK8sAPICoreV1DownwardAPIVolumeFile struct {
-	FieldRef         OptionalIoK8sAPICoreV1ObjectFieldSelector   `json:"fieldRef"`
-	Mode             OptionalInt32                               `json:"mode"`
-	Path             string                                      `json:"path"`
-	ResourceFieldRef OptionalIoK8sAPICoreV1ResourceFieldSelector `json:"resourceFieldRef"`
+	FieldRef         OptIoK8sAPICoreV1ObjectFieldSelector   `json:"fieldRef"`
+	Mode             OptInt32                               `json:"mode"`
+	Path             string                                 `json:"path"`
+	ResourceFieldRef OptIoK8sAPICoreV1ResourceFieldSelector `json:"resourceFieldRef"`
 }
 
 // IoK8sAPICoreV1DownwardAPIVolumeSource describes #/components/schemas/io.k8s.api.core.v1.DownwardAPIVolumeSource.
 type IoK8sAPICoreV1DownwardAPIVolumeSource struct {
-	DefaultMode OptionalInt32                          `json:"defaultMode"`
+	DefaultMode OptInt32                               `json:"defaultMode"`
 	Items       *[]IoK8sAPICoreV1DownwardAPIVolumeFile `json:"items"`
 }
 
 // IoK8sAPICoreV1EmptyDirVolumeSource describes #/components/schemas/io.k8s.api.core.v1.EmptyDirVolumeSource.
 type IoK8sAPICoreV1EmptyDirVolumeSource struct {
-	Medium    OptionalString                           `json:"medium"`
+	Medium    OptString                                `json:"medium"`
 	SizeLimit *IoK8sApimachineryPkgAPIResourceQuantity `json:"sizeLimit"`
 }
 
 // IoK8sAPICoreV1EndpointAddress describes #/components/schemas/io.k8s.api.core.v1.EndpointAddress.
 type IoK8sAPICoreV1EndpointAddress struct {
-	Hostname  OptionalString                        `json:"hostname"`
-	IP        string                                `json:"ip"`
-	NodeName  OptionalString                        `json:"nodeName"`
-	TargetRef OptionalIoK8sAPICoreV1ObjectReference `json:"targetRef"`
+	Hostname  OptString                        `json:"hostname"`
+	IP        string                           `json:"ip"`
+	NodeName  OptString                        `json:"nodeName"`
+	TargetRef OptIoK8sAPICoreV1ObjectReference `json:"targetRef"`
 }
 
 // IoK8sAPICoreV1EndpointPort describes #/components/schemas/io.k8s.api.core.v1.EndpointPort.
 type IoK8sAPICoreV1EndpointPort struct {
-	AppProtocol OptionalString `json:"appProtocol"`
-	Name        OptionalString `json:"name"`
-	Port        int32          `json:"port"`
-	Protocol    OptionalString `json:"protocol"`
+	AppProtocol OptString `json:"appProtocol"`
+	Name        OptString `json:"name"`
+	Port        int32     `json:"port"`
+	Protocol    OptString `json:"protocol"`
 }
 
 // IoK8sAPICoreV1EndpointSubset describes #/components/schemas/io.k8s.api.core.v1.EndpointSubset.
@@ -4257,113 +4257,113 @@ type IoK8sAPICoreV1EndpointSubset struct {
 
 // IoK8sAPICoreV1Endpoints describes #/components/schemas/io.k8s.api.core.v1.Endpoints.
 type IoK8sAPICoreV1Endpoints struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Subsets    *[]IoK8sAPICoreV1EndpointSubset                  `json:"subsets"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Subsets    *[]IoK8sAPICoreV1EndpointSubset             `json:"subsets"`
 }
 
 // IoK8sAPICoreV1EndpointsList describes #/components/schemas/io.k8s.api.core.v1.EndpointsList.
 type IoK8sAPICoreV1EndpointsList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPICoreV1Endpoints                      `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPICoreV1Endpoints                 `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPICoreV1EnvFromSource describes #/components/schemas/io.k8s.api.core.v1.EnvFromSource.
 type IoK8sAPICoreV1EnvFromSource struct {
-	ConfigMapRef OptionalIoK8sAPICoreV1ConfigMapEnvSource `json:"configMapRef"`
-	Prefix       OptionalString                           `json:"prefix"`
-	SecretRef    OptionalIoK8sAPICoreV1SecretEnvSource    `json:"secretRef"`
+	ConfigMapRef OptIoK8sAPICoreV1ConfigMapEnvSource `json:"configMapRef"`
+	Prefix       OptString                           `json:"prefix"`
+	SecretRef    OptIoK8sAPICoreV1SecretEnvSource    `json:"secretRef"`
 }
 
 // IoK8sAPICoreV1EnvVar describes #/components/schemas/io.k8s.api.core.v1.EnvVar.
 type IoK8sAPICoreV1EnvVar struct {
-	Name      string                             `json:"name"`
-	Value     OptionalString                     `json:"value"`
-	ValueFrom OptionalIoK8sAPICoreV1EnvVarSource `json:"valueFrom"`
+	Name      string                        `json:"name"`
+	Value     OptString                     `json:"value"`
+	ValueFrom OptIoK8sAPICoreV1EnvVarSource `json:"valueFrom"`
 }
 
 // IoK8sAPICoreV1EnvVarSource describes #/components/schemas/io.k8s.api.core.v1.EnvVarSource.
 type IoK8sAPICoreV1EnvVarSource struct {
-	ConfigMapKeyRef  OptionalIoK8sAPICoreV1ConfigMapKeySelector  `json:"configMapKeyRef"`
-	FieldRef         OptionalIoK8sAPICoreV1ObjectFieldSelector   `json:"fieldRef"`
-	ResourceFieldRef OptionalIoK8sAPICoreV1ResourceFieldSelector `json:"resourceFieldRef"`
-	SecretKeyRef     OptionalIoK8sAPICoreV1SecretKeySelector     `json:"secretKeyRef"`
+	ConfigMapKeyRef  OptIoK8sAPICoreV1ConfigMapKeySelector  `json:"configMapKeyRef"`
+	FieldRef         OptIoK8sAPICoreV1ObjectFieldSelector   `json:"fieldRef"`
+	ResourceFieldRef OptIoK8sAPICoreV1ResourceFieldSelector `json:"resourceFieldRef"`
+	SecretKeyRef     OptIoK8sAPICoreV1SecretKeySelector     `json:"secretKeyRef"`
 }
 
 // IoK8sAPICoreV1EphemeralContainer describes #/components/schemas/io.k8s.api.core.v1.EphemeralContainer.
 type IoK8sAPICoreV1EphemeralContainer struct {
-	Args                     *[]string                                  `json:"args"`
-	Command                  *[]string                                  `json:"command"`
-	Env                      *[]IoK8sAPICoreV1EnvVar                    `json:"env"`
-	EnvFrom                  *[]IoK8sAPICoreV1EnvFromSource             `json:"envFrom"`
-	Image                    OptionalString                             `json:"image"`
-	ImagePullPolicy          OptionalString                             `json:"imagePullPolicy"`
-	Lifecycle                OptionalIoK8sAPICoreV1Lifecycle            `json:"lifecycle"`
-	LivenessProbe            OptionalIoK8sAPICoreV1Probe                `json:"livenessProbe"`
-	Name                     string                                     `json:"name"`
-	Ports                    *[]IoK8sAPICoreV1ContainerPort             `json:"ports"`
-	ReadinessProbe           OptionalIoK8sAPICoreV1Probe                `json:"readinessProbe"`
-	Resources                OptionalIoK8sAPICoreV1ResourceRequirements `json:"resources"`
-	SecurityContext          OptionalIoK8sAPICoreV1SecurityContext      `json:"securityContext"`
-	StartupProbe             OptionalIoK8sAPICoreV1Probe                `json:"startupProbe"`
-	Stdin                    OptionalBool                               `json:"stdin"`
-	StdinOnce                OptionalBool                               `json:"stdinOnce"`
-	TargetContainerName      OptionalString                             `json:"targetContainerName"`
-	TerminationMessagePath   OptionalString                             `json:"terminationMessagePath"`
-	TerminationMessagePolicy OptionalString                             `json:"terminationMessagePolicy"`
-	Tty                      OptionalBool                               `json:"tty"`
-	VolumeDevices            *[]IoK8sAPICoreV1VolumeDevice              `json:"volumeDevices"`
-	VolumeMounts             *[]IoK8sAPICoreV1VolumeMount               `json:"volumeMounts"`
-	WorkingDir               OptionalString                             `json:"workingDir"`
+	Args                     *[]string                             `json:"args"`
+	Command                  *[]string                             `json:"command"`
+	Env                      *[]IoK8sAPICoreV1EnvVar               `json:"env"`
+	EnvFrom                  *[]IoK8sAPICoreV1EnvFromSource        `json:"envFrom"`
+	Image                    OptString                             `json:"image"`
+	ImagePullPolicy          OptString                             `json:"imagePullPolicy"`
+	Lifecycle                OptIoK8sAPICoreV1Lifecycle            `json:"lifecycle"`
+	LivenessProbe            OptIoK8sAPICoreV1Probe                `json:"livenessProbe"`
+	Name                     string                                `json:"name"`
+	Ports                    *[]IoK8sAPICoreV1ContainerPort        `json:"ports"`
+	ReadinessProbe           OptIoK8sAPICoreV1Probe                `json:"readinessProbe"`
+	Resources                OptIoK8sAPICoreV1ResourceRequirements `json:"resources"`
+	SecurityContext          OptIoK8sAPICoreV1SecurityContext      `json:"securityContext"`
+	StartupProbe             OptIoK8sAPICoreV1Probe                `json:"startupProbe"`
+	Stdin                    OptBool                               `json:"stdin"`
+	StdinOnce                OptBool                               `json:"stdinOnce"`
+	TargetContainerName      OptString                             `json:"targetContainerName"`
+	TerminationMessagePath   OptString                             `json:"terminationMessagePath"`
+	TerminationMessagePolicy OptString                             `json:"terminationMessagePolicy"`
+	Tty                      OptBool                               `json:"tty"`
+	VolumeDevices            *[]IoK8sAPICoreV1VolumeDevice         `json:"volumeDevices"`
+	VolumeMounts             *[]IoK8sAPICoreV1VolumeMount          `json:"volumeMounts"`
+	WorkingDir               OptString                             `json:"workingDir"`
 }
 
 // IoK8sAPICoreV1EphemeralVolumeSource describes #/components/schemas/io.k8s.api.core.v1.EphemeralVolumeSource.
 type IoK8sAPICoreV1EphemeralVolumeSource struct {
-	VolumeClaimTemplate OptionalIoK8sAPICoreV1PersistentVolumeClaimTemplate `json:"volumeClaimTemplate"`
+	VolumeClaimTemplate OptIoK8sAPICoreV1PersistentVolumeClaimTemplate `json:"volumeClaimTemplate"`
 }
 
 // IoK8sAPICoreV1Event describes #/components/schemas/io.k8s.api.core.v1.Event.
 type IoK8sAPICoreV1Event struct {
-	Action             OptionalString                           `json:"action"`
-	ApiVersion         OptionalString                           `json:"apiVersion"`
-	Count              OptionalInt32                            `json:"count"`
+	Action             OptString                                `json:"action"`
+	ApiVersion         OptString                                `json:"apiVersion"`
+	Count              OptInt32                                 `json:"count"`
 	EventTime          *IoK8sApimachineryPkgApisMetaV1MicroTime `json:"eventTime"`
 	FirstTimestamp     *IoK8sApimachineryPkgApisMetaV1Time      `json:"firstTimestamp"`
 	InvolvedObject     IoK8sAPICoreV1ObjectReference            `json:"involvedObject"`
-	Kind               OptionalString                           `json:"kind"`
+	Kind               OptString                                `json:"kind"`
 	LastTimestamp      *IoK8sApimachineryPkgApisMetaV1Time      `json:"lastTimestamp"`
-	Message            OptionalString                           `json:"message"`
+	Message            OptString                                `json:"message"`
 	Metadata           IoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Reason             OptionalString                           `json:"reason"`
-	Related            OptionalIoK8sAPICoreV1ObjectReference    `json:"related"`
-	ReportingComponent OptionalString                           `json:"reportingComponent"`
-	ReportingInstance  OptionalString                           `json:"reportingInstance"`
-	Series             OptionalIoK8sAPICoreV1EventSeries        `json:"series"`
-	Source             OptionalIoK8sAPICoreV1EventSource        `json:"source"`
-	Type               OptionalString                           `json:"type"`
+	Reason             OptString                                `json:"reason"`
+	Related            OptIoK8sAPICoreV1ObjectReference         `json:"related"`
+	ReportingComponent OptString                                `json:"reportingComponent"`
+	ReportingInstance  OptString                                `json:"reportingInstance"`
+	Series             OptIoK8sAPICoreV1EventSeries             `json:"series"`
+	Source             OptIoK8sAPICoreV1EventSource             `json:"source"`
+	Type               OptString                                `json:"type"`
 }
 
 // IoK8sAPICoreV1EventList describes #/components/schemas/io.k8s.api.core.v1.EventList.
 type IoK8sAPICoreV1EventList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPICoreV1Event                          `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPICoreV1Event                     `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPICoreV1EventSeries describes #/components/schemas/io.k8s.api.core.v1.EventSeries.
 type IoK8sAPICoreV1EventSeries struct {
-	Count            OptionalInt32                            `json:"count"`
+	Count            OptInt32                                 `json:"count"`
 	LastObservedTime *IoK8sApimachineryPkgApisMetaV1MicroTime `json:"lastObservedTime"`
 }
 
 // IoK8sAPICoreV1EventSource describes #/components/schemas/io.k8s.api.core.v1.EventSource.
 type IoK8sAPICoreV1EventSource struct {
-	Component OptionalString `json:"component"`
-	Host      OptionalString `json:"host"`
+	Component OptString `json:"component"`
+	Host      OptString `json:"host"`
 }
 
 // IoK8sAPICoreV1ExecAction describes #/components/schemas/io.k8s.api.core.v1.ExecAction.
@@ -4373,74 +4373,74 @@ type IoK8sAPICoreV1ExecAction struct {
 
 // IoK8sAPICoreV1FCVolumeSource describes #/components/schemas/io.k8s.api.core.v1.FCVolumeSource.
 type IoK8sAPICoreV1FCVolumeSource struct {
-	FsType     OptionalString `json:"fsType"`
-	Lun        OptionalInt32  `json:"lun"`
-	ReadOnly   OptionalBool   `json:"readOnly"`
-	TargetWWNs *[]string      `json:"targetWWNs"`
-	Wwids      *[]string      `json:"wwids"`
+	FsType     OptString `json:"fsType"`
+	Lun        OptInt32  `json:"lun"`
+	ReadOnly   OptBool   `json:"readOnly"`
+	TargetWWNs *[]string `json:"targetWWNs"`
+	Wwids      *[]string `json:"wwids"`
 }
 
 // IoK8sAPICoreV1FlexPersistentVolumeSource describes #/components/schemas/io.k8s.api.core.v1.FlexPersistentVolumeSource.
 type IoK8sAPICoreV1FlexPersistentVolumeSource struct {
-	Driver    string                                `json:"driver"`
-	FsType    OptionalString                        `json:"fsType"`
-	Options   *struct{}                             `json:"options"`
-	ReadOnly  OptionalBool                          `json:"readOnly"`
-	SecretRef OptionalIoK8sAPICoreV1SecretReference `json:"secretRef"`
+	Driver    string                           `json:"driver"`
+	FsType    OptString                        `json:"fsType"`
+	Options   *struct{}                        `json:"options"`
+	ReadOnly  OptBool                          `json:"readOnly"`
+	SecretRef OptIoK8sAPICoreV1SecretReference `json:"secretRef"`
 }
 
 // IoK8sAPICoreV1FlexVolumeSource describes #/components/schemas/io.k8s.api.core.v1.FlexVolumeSource.
 type IoK8sAPICoreV1FlexVolumeSource struct {
-	Driver    string                                     `json:"driver"`
-	FsType    OptionalString                             `json:"fsType"`
-	Options   *struct{}                                  `json:"options"`
-	ReadOnly  OptionalBool                               `json:"readOnly"`
-	SecretRef OptionalIoK8sAPICoreV1LocalObjectReference `json:"secretRef"`
+	Driver    string                                `json:"driver"`
+	FsType    OptString                             `json:"fsType"`
+	Options   *struct{}                             `json:"options"`
+	ReadOnly  OptBool                               `json:"readOnly"`
+	SecretRef OptIoK8sAPICoreV1LocalObjectReference `json:"secretRef"`
 }
 
 // IoK8sAPICoreV1FlockerVolumeSource describes #/components/schemas/io.k8s.api.core.v1.FlockerVolumeSource.
 type IoK8sAPICoreV1FlockerVolumeSource struct {
-	DatasetName OptionalString `json:"datasetName"`
-	DatasetUUID OptionalString `json:"datasetUUID"`
+	DatasetName OptString `json:"datasetName"`
+	DatasetUUID OptString `json:"datasetUUID"`
 }
 
 // IoK8sAPICoreV1GCEPersistentDiskVolumeSource describes #/components/schemas/io.k8s.api.core.v1.GCEPersistentDiskVolumeSource.
 type IoK8sAPICoreV1GCEPersistentDiskVolumeSource struct {
-	FsType    OptionalString `json:"fsType"`
-	Partition OptionalInt32  `json:"partition"`
-	PdName    string         `json:"pdName"`
-	ReadOnly  OptionalBool   `json:"readOnly"`
+	FsType    OptString `json:"fsType"`
+	Partition OptInt32  `json:"partition"`
+	PdName    string    `json:"pdName"`
+	ReadOnly  OptBool   `json:"readOnly"`
 }
 
 // IoK8sAPICoreV1GitRepoVolumeSource describes #/components/schemas/io.k8s.api.core.v1.GitRepoVolumeSource.
 type IoK8sAPICoreV1GitRepoVolumeSource struct {
-	Directory  OptionalString `json:"directory"`
-	Repository string         `json:"repository"`
-	Revision   OptionalString `json:"revision"`
+	Directory  OptString `json:"directory"`
+	Repository string    `json:"repository"`
+	Revision   OptString `json:"revision"`
 }
 
 // IoK8sAPICoreV1GlusterfsPersistentVolumeSource describes #/components/schemas/io.k8s.api.core.v1.GlusterfsPersistentVolumeSource.
 type IoK8sAPICoreV1GlusterfsPersistentVolumeSource struct {
-	Endpoints          string         `json:"endpoints"`
-	EndpointsNamespace OptionalString `json:"endpointsNamespace"`
-	Path               string         `json:"path"`
-	ReadOnly           OptionalBool   `json:"readOnly"`
+	Endpoints          string    `json:"endpoints"`
+	EndpointsNamespace OptString `json:"endpointsNamespace"`
+	Path               string    `json:"path"`
+	ReadOnly           OptBool   `json:"readOnly"`
 }
 
 // IoK8sAPICoreV1GlusterfsVolumeSource describes #/components/schemas/io.k8s.api.core.v1.GlusterfsVolumeSource.
 type IoK8sAPICoreV1GlusterfsVolumeSource struct {
-	Endpoints string       `json:"endpoints"`
-	Path      string       `json:"path"`
-	ReadOnly  OptionalBool `json:"readOnly"`
+	Endpoints string  `json:"endpoints"`
+	Path      string  `json:"path"`
+	ReadOnly  OptBool `json:"readOnly"`
 }
 
 // IoK8sAPICoreV1HTTPGetAction describes #/components/schemas/io.k8s.api.core.v1.HTTPGetAction.
 type IoK8sAPICoreV1HTTPGetAction struct {
-	Host        OptionalString                            `json:"host"`
+	Host        OptString                                 `json:"host"`
 	HttpHeaders *[]IoK8sAPICoreV1HTTPHeader               `json:"httpHeaders"`
-	Path        OptionalString                            `json:"path"`
+	Path        OptString                                 `json:"path"`
 	Port        IoK8sApimachineryPkgUtilIntstrIntOrString `json:"port"`
-	Scheme      OptionalString                            `json:"scheme"`
+	Scheme      OptString                                 `json:"scheme"`
 }
 
 // IoK8sAPICoreV1HTTPHeader describes #/components/schemas/io.k8s.api.core.v1.HTTPHeader.
@@ -4451,72 +4451,72 @@ type IoK8sAPICoreV1HTTPHeader struct {
 
 // IoK8sAPICoreV1Handler describes #/components/schemas/io.k8s.api.core.v1.Handler.
 type IoK8sAPICoreV1Handler struct {
-	Exec      OptionalIoK8sAPICoreV1ExecAction      `json:"exec"`
-	HttpGet   OptionalIoK8sAPICoreV1HTTPGetAction   `json:"httpGet"`
-	TcpSocket OptionalIoK8sAPICoreV1TCPSocketAction `json:"tcpSocket"`
+	Exec      OptIoK8sAPICoreV1ExecAction      `json:"exec"`
+	HttpGet   OptIoK8sAPICoreV1HTTPGetAction   `json:"httpGet"`
+	TcpSocket OptIoK8sAPICoreV1TCPSocketAction `json:"tcpSocket"`
 }
 
 // IoK8sAPICoreV1HostAlias describes #/components/schemas/io.k8s.api.core.v1.HostAlias.
 type IoK8sAPICoreV1HostAlias struct {
-	Hostnames *[]string      `json:"hostnames"`
-	IP        OptionalString `json:"ip"`
+	Hostnames *[]string `json:"hostnames"`
+	IP        OptString `json:"ip"`
 }
 
 // IoK8sAPICoreV1HostPathVolumeSource describes #/components/schemas/io.k8s.api.core.v1.HostPathVolumeSource.
 type IoK8sAPICoreV1HostPathVolumeSource struct {
-	Path string         `json:"path"`
-	Type OptionalString `json:"type"`
+	Path string    `json:"path"`
+	Type OptString `json:"type"`
 }
 
 // IoK8sAPICoreV1ISCSIPersistentVolumeSource describes #/components/schemas/io.k8s.api.core.v1.ISCSIPersistentVolumeSource.
 type IoK8sAPICoreV1ISCSIPersistentVolumeSource struct {
-	ChapAuthDiscovery OptionalBool                          `json:"chapAuthDiscovery"`
-	ChapAuthSession   OptionalBool                          `json:"chapAuthSession"`
-	FsType            OptionalString                        `json:"fsType"`
-	InitiatorName     OptionalString                        `json:"initiatorName"`
-	Iqn               string                                `json:"iqn"`
-	IscsiInterface    OptionalString                        `json:"iscsiInterface"`
-	Lun               int32                                 `json:"lun"`
-	Portals           *[]string                             `json:"portals"`
-	ReadOnly          OptionalBool                          `json:"readOnly"`
-	SecretRef         OptionalIoK8sAPICoreV1SecretReference `json:"secretRef"`
-	TargetPortal      string                                `json:"targetPortal"`
+	ChapAuthDiscovery OptBool                          `json:"chapAuthDiscovery"`
+	ChapAuthSession   OptBool                          `json:"chapAuthSession"`
+	FsType            OptString                        `json:"fsType"`
+	InitiatorName     OptString                        `json:"initiatorName"`
+	Iqn               string                           `json:"iqn"`
+	IscsiInterface    OptString                        `json:"iscsiInterface"`
+	Lun               int32                            `json:"lun"`
+	Portals           *[]string                        `json:"portals"`
+	ReadOnly          OptBool                          `json:"readOnly"`
+	SecretRef         OptIoK8sAPICoreV1SecretReference `json:"secretRef"`
+	TargetPortal      string                           `json:"targetPortal"`
 }
 
 // IoK8sAPICoreV1ISCSIVolumeSource describes #/components/schemas/io.k8s.api.core.v1.ISCSIVolumeSource.
 type IoK8sAPICoreV1ISCSIVolumeSource struct {
-	ChapAuthDiscovery OptionalBool                               `json:"chapAuthDiscovery"`
-	ChapAuthSession   OptionalBool                               `json:"chapAuthSession"`
-	FsType            OptionalString                             `json:"fsType"`
-	InitiatorName     OptionalString                             `json:"initiatorName"`
-	Iqn               string                                     `json:"iqn"`
-	IscsiInterface    OptionalString                             `json:"iscsiInterface"`
-	Lun               int32                                      `json:"lun"`
-	Portals           *[]string                                  `json:"portals"`
-	ReadOnly          OptionalBool                               `json:"readOnly"`
-	SecretRef         OptionalIoK8sAPICoreV1LocalObjectReference `json:"secretRef"`
-	TargetPortal      string                                     `json:"targetPortal"`
+	ChapAuthDiscovery OptBool                               `json:"chapAuthDiscovery"`
+	ChapAuthSession   OptBool                               `json:"chapAuthSession"`
+	FsType            OptString                             `json:"fsType"`
+	InitiatorName     OptString                             `json:"initiatorName"`
+	Iqn               string                                `json:"iqn"`
+	IscsiInterface    OptString                             `json:"iscsiInterface"`
+	Lun               int32                                 `json:"lun"`
+	Portals           *[]string                             `json:"portals"`
+	ReadOnly          OptBool                               `json:"readOnly"`
+	SecretRef         OptIoK8sAPICoreV1LocalObjectReference `json:"secretRef"`
+	TargetPortal      string                                `json:"targetPortal"`
 }
 
 // IoK8sAPICoreV1KeyToPath describes #/components/schemas/io.k8s.api.core.v1.KeyToPath.
 type IoK8sAPICoreV1KeyToPath struct {
-	Key  string        `json:"key"`
-	Mode OptionalInt32 `json:"mode"`
-	Path string        `json:"path"`
+	Key  string   `json:"key"`
+	Mode OptInt32 `json:"mode"`
+	Path string   `json:"path"`
 }
 
 // IoK8sAPICoreV1Lifecycle describes #/components/schemas/io.k8s.api.core.v1.Lifecycle.
 type IoK8sAPICoreV1Lifecycle struct {
-	PostStart OptionalIoK8sAPICoreV1Handler `json:"postStart"`
-	PreStop   OptionalIoK8sAPICoreV1Handler `json:"preStop"`
+	PostStart OptIoK8sAPICoreV1Handler `json:"postStart"`
+	PreStop   OptIoK8sAPICoreV1Handler `json:"preStop"`
 }
 
 // IoK8sAPICoreV1LimitRange describes #/components/schemas/io.k8s.api.core.v1.LimitRange.
 type IoK8sAPICoreV1LimitRange struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       OptionalIoK8sAPICoreV1LimitRangeSpec             `json:"spec"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       OptIoK8sAPICoreV1LimitRangeSpec             `json:"spec"`
 }
 
 // IoK8sAPICoreV1LimitRangeItem describes #/components/schemas/io.k8s.api.core.v1.LimitRangeItem.
@@ -4531,10 +4531,10 @@ type IoK8sAPICoreV1LimitRangeItem struct {
 
 // IoK8sAPICoreV1LimitRangeList describes #/components/schemas/io.k8s.api.core.v1.LimitRangeList.
 type IoK8sAPICoreV1LimitRangeList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPICoreV1LimitRange                     `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPICoreV1LimitRange                `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPICoreV1LimitRangeSpec describes #/components/schemas/io.k8s.api.core.v1.LimitRangeSpec.
@@ -4544,8 +4544,8 @@ type IoK8sAPICoreV1LimitRangeSpec struct {
 
 // IoK8sAPICoreV1LoadBalancerIngress describes #/components/schemas/io.k8s.api.core.v1.LoadBalancerIngress.
 type IoK8sAPICoreV1LoadBalancerIngress struct {
-	Hostname OptionalString              `json:"hostname"`
-	IP       OptionalString              `json:"ip"`
+	Hostname OptString                   `json:"hostname"`
+	IP       OptString                   `json:"ip"`
 	Ports    *[]IoK8sAPICoreV1PortStatus `json:"ports"`
 }
 
@@ -4556,46 +4556,46 @@ type IoK8sAPICoreV1LoadBalancerStatus struct {
 
 // IoK8sAPICoreV1LocalObjectReference describes #/components/schemas/io.k8s.api.core.v1.LocalObjectReference.
 type IoK8sAPICoreV1LocalObjectReference struct {
-	Name OptionalString `json:"name"`
+	Name OptString `json:"name"`
 }
 
 // IoK8sAPICoreV1LocalVolumeSource describes #/components/schemas/io.k8s.api.core.v1.LocalVolumeSource.
 type IoK8sAPICoreV1LocalVolumeSource struct {
-	FsType OptionalString `json:"fsType"`
-	Path   string         `json:"path"`
+	FsType OptString `json:"fsType"`
+	Path   string    `json:"path"`
 }
 
 // IoK8sAPICoreV1NFSVolumeSource describes #/components/schemas/io.k8s.api.core.v1.NFSVolumeSource.
 type IoK8sAPICoreV1NFSVolumeSource struct {
-	Path     string       `json:"path"`
-	ReadOnly OptionalBool `json:"readOnly"`
-	Server   string       `json:"server"`
+	Path     string  `json:"path"`
+	ReadOnly OptBool `json:"readOnly"`
+	Server   string  `json:"server"`
 }
 
 // IoK8sAPICoreV1Namespace describes #/components/schemas/io.k8s.api.core.v1.Namespace.
 type IoK8sAPICoreV1Namespace struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       OptionalIoK8sAPICoreV1NamespaceSpec              `json:"spec"`
-	Status     OptionalIoK8sAPICoreV1NamespaceStatus            `json:"status"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       OptIoK8sAPICoreV1NamespaceSpec              `json:"spec"`
+	Status     OptIoK8sAPICoreV1NamespaceStatus            `json:"status"`
 }
 
 // IoK8sAPICoreV1NamespaceCondition describes #/components/schemas/io.k8s.api.core.v1.NamespaceCondition.
 type IoK8sAPICoreV1NamespaceCondition struct {
 	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptionalString                      `json:"message"`
-	Reason             OptionalString                      `json:"reason"`
+	Message            OptString                           `json:"message"`
+	Reason             OptString                           `json:"reason"`
 	Status             string                              `json:"status"`
 	Type               string                              `json:"type"`
 }
 
 // IoK8sAPICoreV1NamespaceList describes #/components/schemas/io.k8s.api.core.v1.NamespaceList.
 type IoK8sAPICoreV1NamespaceList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPICoreV1Namespace                      `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPICoreV1Namespace                 `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPICoreV1NamespaceSpec describes #/components/schemas/io.k8s.api.core.v1.NamespaceSpec.
@@ -4606,16 +4606,16 @@ type IoK8sAPICoreV1NamespaceSpec struct {
 // IoK8sAPICoreV1NamespaceStatus describes #/components/schemas/io.k8s.api.core.v1.NamespaceStatus.
 type IoK8sAPICoreV1NamespaceStatus struct {
 	Conditions *[]IoK8sAPICoreV1NamespaceCondition `json:"conditions"`
-	Phase      OptionalString                      `json:"phase"`
+	Phase      OptString                           `json:"phase"`
 }
 
 // IoK8sAPICoreV1Node describes #/components/schemas/io.k8s.api.core.v1.Node.
 type IoK8sAPICoreV1Node struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       OptionalIoK8sAPICoreV1NodeSpec                   `json:"spec"`
-	Status     OptionalIoK8sAPICoreV1NodeStatus                 `json:"status"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       OptIoK8sAPICoreV1NodeSpec                   `json:"spec"`
+	Status     OptIoK8sAPICoreV1NodeStatus                 `json:"status"`
 }
 
 // IoK8sAPICoreV1NodeAddress describes #/components/schemas/io.k8s.api.core.v1.NodeAddress.
@@ -4627,43 +4627,43 @@ type IoK8sAPICoreV1NodeAddress struct {
 // IoK8sAPICoreV1NodeAffinity describes #/components/schemas/io.k8s.api.core.v1.NodeAffinity.
 type IoK8sAPICoreV1NodeAffinity struct {
 	PreferredDuringSchedulingIgnoredDuringExecution *[]IoK8sAPICoreV1PreferredSchedulingTerm `json:"preferredDuringSchedulingIgnoredDuringExecution"`
-	RequiredDuringSchedulingIgnoredDuringExecution  OptionalIoK8sAPICoreV1NodeSelector       `json:"requiredDuringSchedulingIgnoredDuringExecution"`
+	RequiredDuringSchedulingIgnoredDuringExecution  OptIoK8sAPICoreV1NodeSelector            `json:"requiredDuringSchedulingIgnoredDuringExecution"`
 }
 
 // IoK8sAPICoreV1NodeCondition describes #/components/schemas/io.k8s.api.core.v1.NodeCondition.
 type IoK8sAPICoreV1NodeCondition struct {
 	LastHeartbeatTime  *IoK8sApimachineryPkgApisMetaV1Time `json:"lastHeartbeatTime"`
 	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptionalString                      `json:"message"`
-	Reason             OptionalString                      `json:"reason"`
+	Message            OptString                           `json:"message"`
+	Reason             OptString                           `json:"reason"`
 	Status             string                              `json:"status"`
 	Type               string                              `json:"type"`
 }
 
 // IoK8sAPICoreV1NodeConfigSource describes #/components/schemas/io.k8s.api.core.v1.NodeConfigSource.
 type IoK8sAPICoreV1NodeConfigSource struct {
-	ConfigMap OptionalIoK8sAPICoreV1ConfigMapNodeConfigSource `json:"configMap"`
+	ConfigMap OptIoK8sAPICoreV1ConfigMapNodeConfigSource `json:"configMap"`
 }
 
 // IoK8sAPICoreV1NodeConfigStatus describes #/components/schemas/io.k8s.api.core.v1.NodeConfigStatus.
 type IoK8sAPICoreV1NodeConfigStatus struct {
-	Active        OptionalIoK8sAPICoreV1NodeConfigSource `json:"active"`
-	Assigned      OptionalIoK8sAPICoreV1NodeConfigSource `json:"assigned"`
-	Error         OptionalString                         `json:"error"`
-	LastKnownGood OptionalIoK8sAPICoreV1NodeConfigSource `json:"lastKnownGood"`
+	Active        OptIoK8sAPICoreV1NodeConfigSource `json:"active"`
+	Assigned      OptIoK8sAPICoreV1NodeConfigSource `json:"assigned"`
+	Error         OptString                         `json:"error"`
+	LastKnownGood OptIoK8sAPICoreV1NodeConfigSource `json:"lastKnownGood"`
 }
 
 // IoK8sAPICoreV1NodeDaemonEndpoints describes #/components/schemas/io.k8s.api.core.v1.NodeDaemonEndpoints.
 type IoK8sAPICoreV1NodeDaemonEndpoints struct {
-	KubeletEndpoint OptionalIoK8sAPICoreV1DaemonEndpoint `json:"kubeletEndpoint"`
+	KubeletEndpoint OptIoK8sAPICoreV1DaemonEndpoint `json:"kubeletEndpoint"`
 }
 
 // IoK8sAPICoreV1NodeList describes #/components/schemas/io.k8s.api.core.v1.NodeList.
 type IoK8sAPICoreV1NodeList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPICoreV1Node                           `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPICoreV1Node                      `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPICoreV1NodeSelector describes #/components/schemas/io.k8s.api.core.v1.NodeSelector.
@@ -4686,28 +4686,28 @@ type IoK8sAPICoreV1NodeSelectorTerm struct {
 
 // IoK8sAPICoreV1NodeSpec describes #/components/schemas/io.k8s.api.core.v1.NodeSpec.
 type IoK8sAPICoreV1NodeSpec struct {
-	ConfigSource  OptionalIoK8sAPICoreV1NodeConfigSource `json:"configSource"`
-	ExternalID    OptionalString                         `json:"externalID"`
-	PodCIDR       OptionalString                         `json:"podCIDR"`
-	PodCIDRs      *[]string                              `json:"podCIDRs"`
-	ProviderID    OptionalString                         `json:"providerID"`
-	Taints        *[]IoK8sAPICoreV1Taint                 `json:"taints"`
-	Unschedulable OptionalBool                           `json:"unschedulable"`
+	ConfigSource  OptIoK8sAPICoreV1NodeConfigSource `json:"configSource"`
+	ExternalID    OptString                         `json:"externalID"`
+	PodCIDR       OptString                         `json:"podCIDR"`
+	PodCIDRs      *[]string                         `json:"podCIDRs"`
+	ProviderID    OptString                         `json:"providerID"`
+	Taints        *[]IoK8sAPICoreV1Taint            `json:"taints"`
+	Unschedulable OptBool                           `json:"unschedulable"`
 }
 
 // IoK8sAPICoreV1NodeStatus describes #/components/schemas/io.k8s.api.core.v1.NodeStatus.
 type IoK8sAPICoreV1NodeStatus struct {
-	Addresses       *[]IoK8sAPICoreV1NodeAddress              `json:"addresses"`
-	Allocatable     *struct{}                                 `json:"allocatable"`
-	Capacity        *struct{}                                 `json:"capacity"`
-	Conditions      *[]IoK8sAPICoreV1NodeCondition            `json:"conditions"`
-	Config          OptionalIoK8sAPICoreV1NodeConfigStatus    `json:"config"`
-	DaemonEndpoints OptionalIoK8sAPICoreV1NodeDaemonEndpoints `json:"daemonEndpoints"`
-	Images          *[]IoK8sAPICoreV1ContainerImage           `json:"images"`
-	NodeInfo        OptionalIoK8sAPICoreV1NodeSystemInfo      `json:"nodeInfo"`
-	Phase           OptionalString                            `json:"phase"`
-	VolumesAttached *[]IoK8sAPICoreV1AttachedVolume           `json:"volumesAttached"`
-	VolumesInUse    *[]string                                 `json:"volumesInUse"`
+	Addresses       *[]IoK8sAPICoreV1NodeAddress         `json:"addresses"`
+	Allocatable     *struct{}                            `json:"allocatable"`
+	Capacity        *struct{}                            `json:"capacity"`
+	Conditions      *[]IoK8sAPICoreV1NodeCondition       `json:"conditions"`
+	Config          OptIoK8sAPICoreV1NodeConfigStatus    `json:"config"`
+	DaemonEndpoints OptIoK8sAPICoreV1NodeDaemonEndpoints `json:"daemonEndpoints"`
+	Images          *[]IoK8sAPICoreV1ContainerImage      `json:"images"`
+	NodeInfo        OptIoK8sAPICoreV1NodeSystemInfo      `json:"nodeInfo"`
+	Phase           OptString                            `json:"phase"`
+	VolumesAttached *[]IoK8sAPICoreV1AttachedVolume      `json:"volumesAttached"`
+	VolumesInUse    *[]string                            `json:"volumesInUse"`
 }
 
 // IoK8sAPICoreV1NodeSystemInfo describes #/components/schemas/io.k8s.api.core.v1.NodeSystemInfo.
@@ -4726,67 +4726,67 @@ type IoK8sAPICoreV1NodeSystemInfo struct {
 
 // IoK8sAPICoreV1ObjectFieldSelector describes #/components/schemas/io.k8s.api.core.v1.ObjectFieldSelector.
 type IoK8sAPICoreV1ObjectFieldSelector struct {
-	ApiVersion OptionalString `json:"apiVersion"`
-	FieldPath  string         `json:"fieldPath"`
+	ApiVersion OptString `json:"apiVersion"`
+	FieldPath  string    `json:"fieldPath"`
 }
 
 // IoK8sAPICoreV1ObjectReference describes #/components/schemas/io.k8s.api.core.v1.ObjectReference.
 type IoK8sAPICoreV1ObjectReference struct {
-	ApiVersion      OptionalString `json:"apiVersion"`
-	FieldPath       OptionalString `json:"fieldPath"`
-	Kind            OptionalString `json:"kind"`
-	Name            OptionalString `json:"name"`
-	Namespace       OptionalString `json:"namespace"`
-	ResourceVersion OptionalString `json:"resourceVersion"`
-	UID             OptionalString `json:"uid"`
+	ApiVersion      OptString `json:"apiVersion"`
+	FieldPath       OptString `json:"fieldPath"`
+	Kind            OptString `json:"kind"`
+	Name            OptString `json:"name"`
+	Namespace       OptString `json:"namespace"`
+	ResourceVersion OptString `json:"resourceVersion"`
+	UID             OptString `json:"uid"`
 }
 
 // IoK8sAPICoreV1PersistentVolume describes #/components/schemas/io.k8s.api.core.v1.PersistentVolume.
 type IoK8sAPICoreV1PersistentVolume struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       OptionalIoK8sAPICoreV1PersistentVolumeSpec       `json:"spec"`
-	Status     OptionalIoK8sAPICoreV1PersistentVolumeStatus     `json:"status"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       OptIoK8sAPICoreV1PersistentVolumeSpec       `json:"spec"`
+	Status     OptIoK8sAPICoreV1PersistentVolumeStatus     `json:"status"`
 }
 
 // IoK8sAPICoreV1PersistentVolumeClaim describes #/components/schemas/io.k8s.api.core.v1.PersistentVolumeClaim.
 type IoK8sAPICoreV1PersistentVolumeClaim struct {
-	ApiVersion OptionalString                                    `json:"apiVersion"`
-	Kind       OptionalString                                    `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta  `json:"metadata"`
-	Spec       OptionalIoK8sAPICoreV1PersistentVolumeClaimSpec   `json:"spec"`
-	Status     OptionalIoK8sAPICoreV1PersistentVolumeClaimStatus `json:"status"`
+	ApiVersion OptString                                    `json:"apiVersion"`
+	Kind       OptString                                    `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta  `json:"metadata"`
+	Spec       OptIoK8sAPICoreV1PersistentVolumeClaimSpec   `json:"spec"`
+	Status     OptIoK8sAPICoreV1PersistentVolumeClaimStatus `json:"status"`
 }
 
 // IoK8sAPICoreV1PersistentVolumeClaimCondition describes #/components/schemas/io.k8s.api.core.v1.PersistentVolumeClaimCondition.
 type IoK8sAPICoreV1PersistentVolumeClaimCondition struct {
 	LastProbeTime      *IoK8sApimachineryPkgApisMetaV1Time `json:"lastProbeTime"`
 	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptionalString                      `json:"message"`
-	Reason             OptionalString                      `json:"reason"`
+	Message            OptString                           `json:"message"`
+	Reason             OptString                           `json:"reason"`
 	Status             string                              `json:"status"`
 	Type               string                              `json:"type"`
 }
 
 // IoK8sAPICoreV1PersistentVolumeClaimList describes #/components/schemas/io.k8s.api.core.v1.PersistentVolumeClaimList.
 type IoK8sAPICoreV1PersistentVolumeClaimList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPICoreV1PersistentVolumeClaim          `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPICoreV1PersistentVolumeClaim     `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPICoreV1PersistentVolumeClaimSpec describes #/components/schemas/io.k8s.api.core.v1.PersistentVolumeClaimSpec.
 type IoK8sAPICoreV1PersistentVolumeClaimSpec struct {
-	AccessModes      *[]string                                           `json:"accessModes"`
-	DataSource       OptionalIoK8sAPICoreV1TypedLocalObjectReference     `json:"dataSource"`
-	DataSourceRef    OptionalIoK8sAPICoreV1TypedLocalObjectReference     `json:"dataSourceRef"`
-	Resources        OptionalIoK8sAPICoreV1ResourceRequirements          `json:"resources"`
-	Selector         OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
-	StorageClassName OptionalString                                      `json:"storageClassName"`
-	VolumeMode       OptionalString                                      `json:"volumeMode"`
-	VolumeName       OptionalString                                      `json:"volumeName"`
+	AccessModes      *[]string                                      `json:"accessModes"`
+	DataSource       OptIoK8sAPICoreV1TypedLocalObjectReference     `json:"dataSource"`
+	DataSourceRef    OptIoK8sAPICoreV1TypedLocalObjectReference     `json:"dataSourceRef"`
+	Resources        OptIoK8sAPICoreV1ResourceRequirements          `json:"resources"`
+	Selector         OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
+	StorageClassName OptString                                      `json:"storageClassName"`
+	VolumeMode       OptString                                      `json:"volumeMode"`
+	VolumeName       OptString                                      `json:"volumeName"`
 }
 
 // IoK8sAPICoreV1PersistentVolumeClaimStatus describes #/components/schemas/io.k8s.api.core.v1.PersistentVolumeClaimStatus.
@@ -4794,83 +4794,83 @@ type IoK8sAPICoreV1PersistentVolumeClaimStatus struct {
 	AccessModes *[]string                                       `json:"accessModes"`
 	Capacity    *struct{}                                       `json:"capacity"`
 	Conditions  *[]IoK8sAPICoreV1PersistentVolumeClaimCondition `json:"conditions"`
-	Phase       OptionalString                                  `json:"phase"`
+	Phase       OptString                                       `json:"phase"`
 }
 
 // IoK8sAPICoreV1PersistentVolumeClaimTemplate describes #/components/schemas/io.k8s.api.core.v1.PersistentVolumeClaimTemplate.
 type IoK8sAPICoreV1PersistentVolumeClaimTemplate struct {
-	Metadata OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec     IoK8sAPICoreV1PersistentVolumeClaimSpec          `json:"spec"`
+	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec     IoK8sAPICoreV1PersistentVolumeClaimSpec     `json:"spec"`
 }
 
 // IoK8sAPICoreV1PersistentVolumeClaimVolumeSource describes #/components/schemas/io.k8s.api.core.v1.PersistentVolumeClaimVolumeSource.
 type IoK8sAPICoreV1PersistentVolumeClaimVolumeSource struct {
-	ClaimName string       `json:"claimName"`
-	ReadOnly  OptionalBool `json:"readOnly"`
+	ClaimName string  `json:"claimName"`
+	ReadOnly  OptBool `json:"readOnly"`
 }
 
 // IoK8sAPICoreV1PersistentVolumeList describes #/components/schemas/io.k8s.api.core.v1.PersistentVolumeList.
 type IoK8sAPICoreV1PersistentVolumeList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPICoreV1PersistentVolume               `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPICoreV1PersistentVolume          `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPICoreV1PersistentVolumeSpec describes #/components/schemas/io.k8s.api.core.v1.PersistentVolumeSpec.
 type IoK8sAPICoreV1PersistentVolumeSpec struct {
-	AccessModes                   *[]string                                              `json:"accessModes"`
-	AwsElasticBlockStore          OptionalIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource `json:"awsElasticBlockStore"`
-	AzureDisk                     OptionalIoK8sAPICoreV1AzureDiskVolumeSource            `json:"azureDisk"`
-	AzureFile                     OptionalIoK8sAPICoreV1AzureFilePersistentVolumeSource  `json:"azureFile"`
-	Capacity                      *struct{}                                              `json:"capacity"`
-	Cephfs                        OptionalIoK8sAPICoreV1CephFSPersistentVolumeSource     `json:"cephfs"`
-	Cinder                        OptionalIoK8sAPICoreV1CinderPersistentVolumeSource     `json:"cinder"`
-	ClaimRef                      OptionalIoK8sAPICoreV1ObjectReference                  `json:"claimRef"`
-	Csi                           OptionalIoK8sAPICoreV1CSIPersistentVolumeSource        `json:"csi"`
-	Fc                            OptionalIoK8sAPICoreV1FCVolumeSource                   `json:"fc"`
-	FlexVolume                    OptionalIoK8sAPICoreV1FlexPersistentVolumeSource       `json:"flexVolume"`
-	Flocker                       OptionalIoK8sAPICoreV1FlockerVolumeSource              `json:"flocker"`
-	GcePersistentDisk             OptionalIoK8sAPICoreV1GCEPersistentDiskVolumeSource    `json:"gcePersistentDisk"`
-	Glusterfs                     OptionalIoK8sAPICoreV1GlusterfsPersistentVolumeSource  `json:"glusterfs"`
-	HostPath                      OptionalIoK8sAPICoreV1HostPathVolumeSource             `json:"hostPath"`
-	Iscsi                         OptionalIoK8sAPICoreV1ISCSIPersistentVolumeSource      `json:"iscsi"`
-	Local                         OptionalIoK8sAPICoreV1LocalVolumeSource                `json:"local"`
-	MountOptions                  *[]string                                              `json:"mountOptions"`
-	Nfs                           OptionalIoK8sAPICoreV1NFSVolumeSource                  `json:"nfs"`
-	NodeAffinity                  OptionalIoK8sAPICoreV1VolumeNodeAffinity               `json:"nodeAffinity"`
-	PersistentVolumeReclaimPolicy OptionalString                                         `json:"persistentVolumeReclaimPolicy"`
-	PhotonPersistentDisk          OptionalIoK8sAPICoreV1PhotonPersistentDiskVolumeSource `json:"photonPersistentDisk"`
-	PortworxVolume                OptionalIoK8sAPICoreV1PortworxVolumeSource             `json:"portworxVolume"`
-	Quobyte                       OptionalIoK8sAPICoreV1QuobyteVolumeSource              `json:"quobyte"`
-	Rbd                           OptionalIoK8sAPICoreV1RBDPersistentVolumeSource        `json:"rbd"`
-	ScaleIO                       OptionalIoK8sAPICoreV1ScaleIOPersistentVolumeSource    `json:"scaleIO"`
-	StorageClassName              OptionalString                                         `json:"storageClassName"`
-	Storageos                     OptionalIoK8sAPICoreV1StorageOSPersistentVolumeSource  `json:"storageos"`
-	VolumeMode                    OptionalString                                         `json:"volumeMode"`
-	VsphereVolume                 OptionalIoK8sAPICoreV1VsphereVirtualDiskVolumeSource   `json:"vsphereVolume"`
+	AccessModes                   *[]string                                         `json:"accessModes"`
+	AwsElasticBlockStore          OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource `json:"awsElasticBlockStore"`
+	AzureDisk                     OptIoK8sAPICoreV1AzureDiskVolumeSource            `json:"azureDisk"`
+	AzureFile                     OptIoK8sAPICoreV1AzureFilePersistentVolumeSource  `json:"azureFile"`
+	Capacity                      *struct{}                                         `json:"capacity"`
+	Cephfs                        OptIoK8sAPICoreV1CephFSPersistentVolumeSource     `json:"cephfs"`
+	Cinder                        OptIoK8sAPICoreV1CinderPersistentVolumeSource     `json:"cinder"`
+	ClaimRef                      OptIoK8sAPICoreV1ObjectReference                  `json:"claimRef"`
+	Csi                           OptIoK8sAPICoreV1CSIPersistentVolumeSource        `json:"csi"`
+	Fc                            OptIoK8sAPICoreV1FCVolumeSource                   `json:"fc"`
+	FlexVolume                    OptIoK8sAPICoreV1FlexPersistentVolumeSource       `json:"flexVolume"`
+	Flocker                       OptIoK8sAPICoreV1FlockerVolumeSource              `json:"flocker"`
+	GcePersistentDisk             OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource    `json:"gcePersistentDisk"`
+	Glusterfs                     OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource  `json:"glusterfs"`
+	HostPath                      OptIoK8sAPICoreV1HostPathVolumeSource             `json:"hostPath"`
+	Iscsi                         OptIoK8sAPICoreV1ISCSIPersistentVolumeSource      `json:"iscsi"`
+	Local                         OptIoK8sAPICoreV1LocalVolumeSource                `json:"local"`
+	MountOptions                  *[]string                                         `json:"mountOptions"`
+	Nfs                           OptIoK8sAPICoreV1NFSVolumeSource                  `json:"nfs"`
+	NodeAffinity                  OptIoK8sAPICoreV1VolumeNodeAffinity               `json:"nodeAffinity"`
+	PersistentVolumeReclaimPolicy OptString                                         `json:"persistentVolumeReclaimPolicy"`
+	PhotonPersistentDisk          OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource `json:"photonPersistentDisk"`
+	PortworxVolume                OptIoK8sAPICoreV1PortworxVolumeSource             `json:"portworxVolume"`
+	Quobyte                       OptIoK8sAPICoreV1QuobyteVolumeSource              `json:"quobyte"`
+	Rbd                           OptIoK8sAPICoreV1RBDPersistentVolumeSource        `json:"rbd"`
+	ScaleIO                       OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource    `json:"scaleIO"`
+	StorageClassName              OptString                                         `json:"storageClassName"`
+	Storageos                     OptIoK8sAPICoreV1StorageOSPersistentVolumeSource  `json:"storageos"`
+	VolumeMode                    OptString                                         `json:"volumeMode"`
+	VsphereVolume                 OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource   `json:"vsphereVolume"`
 }
 
 // IoK8sAPICoreV1PersistentVolumeStatus describes #/components/schemas/io.k8s.api.core.v1.PersistentVolumeStatus.
 type IoK8sAPICoreV1PersistentVolumeStatus struct {
-	Message OptionalString `json:"message"`
-	Phase   OptionalString `json:"phase"`
-	Reason  OptionalString `json:"reason"`
+	Message OptString `json:"message"`
+	Phase   OptString `json:"phase"`
+	Reason  OptString `json:"reason"`
 }
 
 // IoK8sAPICoreV1PhotonPersistentDiskVolumeSource describes #/components/schemas/io.k8s.api.core.v1.PhotonPersistentDiskVolumeSource.
 type IoK8sAPICoreV1PhotonPersistentDiskVolumeSource struct {
-	FsType OptionalString `json:"fsType"`
-	PdID   string         `json:"pdID"`
+	FsType OptString `json:"fsType"`
+	PdID   string    `json:"pdID"`
 }
 
 // IoK8sAPICoreV1Pod describes #/components/schemas/io.k8s.api.core.v1.Pod.
 type IoK8sAPICoreV1Pod struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       OptionalIoK8sAPICoreV1PodSpec                    `json:"spec"`
-	Status     OptionalIoK8sAPICoreV1PodStatus                  `json:"status"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       OptIoK8sAPICoreV1PodSpec                    `json:"spec"`
+	Status     OptIoK8sAPICoreV1PodStatus                  `json:"status"`
 }
 
 // IoK8sAPICoreV1PodAffinity describes #/components/schemas/io.k8s.api.core.v1.PodAffinity.
@@ -4881,10 +4881,10 @@ type IoK8sAPICoreV1PodAffinity struct {
 
 // IoK8sAPICoreV1PodAffinityTerm describes #/components/schemas/io.k8s.api.core.v1.PodAffinityTerm.
 type IoK8sAPICoreV1PodAffinityTerm struct {
-	LabelSelector     OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"labelSelector"`
-	NamespaceSelector OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"namespaceSelector"`
-	Namespaces        *[]string                                           `json:"namespaces"`
-	TopologyKey       string                                              `json:"topologyKey"`
+	LabelSelector     OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"labelSelector"`
+	NamespaceSelector OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"namespaceSelector"`
+	Namespaces        *[]string                                      `json:"namespaces"`
+	TopologyKey       string                                         `json:"topologyKey"`
 }
 
 // IoK8sAPICoreV1PodAntiAffinity describes #/components/schemas/io.k8s.api.core.v1.PodAntiAffinity.
@@ -4897,8 +4897,8 @@ type IoK8sAPICoreV1PodAntiAffinity struct {
 type IoK8sAPICoreV1PodCondition struct {
 	LastProbeTime      *IoK8sApimachineryPkgApisMetaV1Time `json:"lastProbeTime"`
 	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptionalString                      `json:"message"`
-	Reason             OptionalString                      `json:"reason"`
+	Message            OptString                           `json:"message"`
+	Reason             OptString                           `json:"reason"`
 	Status             string                              `json:"status"`
 	Type               string                              `json:"type"`
 }
@@ -4912,21 +4912,21 @@ type IoK8sAPICoreV1PodDNSConfig struct {
 
 // IoK8sAPICoreV1PodDNSConfigOption describes #/components/schemas/io.k8s.api.core.v1.PodDNSConfigOption.
 type IoK8sAPICoreV1PodDNSConfigOption struct {
-	Name  OptionalString `json:"name"`
-	Value OptionalString `json:"value"`
+	Name  OptString `json:"name"`
+	Value OptString `json:"value"`
 }
 
 // IoK8sAPICoreV1PodIP describes #/components/schemas/io.k8s.api.core.v1.PodIP.
 type IoK8sAPICoreV1PodIP struct {
-	IP OptionalString `json:"ip"`
+	IP OptString `json:"ip"`
 }
 
 // IoK8sAPICoreV1PodList describes #/components/schemas/io.k8s.api.core.v1.PodList.
 type IoK8sAPICoreV1PodList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPICoreV1Pod                            `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPICoreV1Pod                       `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPICoreV1PodReadinessGate describes #/components/schemas/io.k8s.api.core.v1.PodReadinessGate.
@@ -4936,52 +4936,52 @@ type IoK8sAPICoreV1PodReadinessGate struct {
 
 // IoK8sAPICoreV1PodSecurityContext describes #/components/schemas/io.k8s.api.core.v1.PodSecurityContext.
 type IoK8sAPICoreV1PodSecurityContext struct {
-	FsGroup             OptionalInt64                                       `json:"fsGroup"`
-	FsGroupChangePolicy OptionalString                                      `json:"fsGroupChangePolicy"`
-	RunAsGroup          OptionalInt64                                       `json:"runAsGroup"`
-	RunAsNonRoot        OptionalBool                                        `json:"runAsNonRoot"`
-	RunAsUser           OptionalInt64                                       `json:"runAsUser"`
-	SeLinuxOptions      OptionalIoK8sAPICoreV1SELinuxOptions                `json:"seLinuxOptions"`
-	SeccompProfile      OptionalIoK8sAPICoreV1SeccompProfile                `json:"seccompProfile"`
-	SupplementalGroups  *[]int64                                            `json:"supplementalGroups"`
-	Sysctls             *[]IoK8sAPICoreV1Sysctl                             `json:"sysctls"`
-	WindowsOptions      OptionalIoK8sAPICoreV1WindowsSecurityContextOptions `json:"windowsOptions"`
+	FsGroup             OptInt64                                       `json:"fsGroup"`
+	FsGroupChangePolicy OptString                                      `json:"fsGroupChangePolicy"`
+	RunAsGroup          OptInt64                                       `json:"runAsGroup"`
+	RunAsNonRoot        OptBool                                        `json:"runAsNonRoot"`
+	RunAsUser           OptInt64                                       `json:"runAsUser"`
+	SeLinuxOptions      OptIoK8sAPICoreV1SELinuxOptions                `json:"seLinuxOptions"`
+	SeccompProfile      OptIoK8sAPICoreV1SeccompProfile                `json:"seccompProfile"`
+	SupplementalGroups  *[]int64                                       `json:"supplementalGroups"`
+	Sysctls             *[]IoK8sAPICoreV1Sysctl                        `json:"sysctls"`
+	WindowsOptions      OptIoK8sAPICoreV1WindowsSecurityContextOptions `json:"windowsOptions"`
 }
 
 // IoK8sAPICoreV1PodSpec describes #/components/schemas/io.k8s.api.core.v1.PodSpec.
 type IoK8sAPICoreV1PodSpec struct {
-	ActiveDeadlineSeconds         OptionalInt64                             `json:"activeDeadlineSeconds"`
-	Affinity                      OptionalIoK8sAPICoreV1Affinity            `json:"affinity"`
-	AutomountServiceAccountToken  OptionalBool                              `json:"automountServiceAccountToken"`
+	ActiveDeadlineSeconds         OptInt64                                  `json:"activeDeadlineSeconds"`
+	Affinity                      OptIoK8sAPICoreV1Affinity                 `json:"affinity"`
+	AutomountServiceAccountToken  OptBool                                   `json:"automountServiceAccountToken"`
 	Containers                    []IoK8sAPICoreV1Container                 `json:"containers"`
-	DnsConfig                     OptionalIoK8sAPICoreV1PodDNSConfig        `json:"dnsConfig"`
-	DnsPolicy                     OptionalString                            `json:"dnsPolicy"`
-	EnableServiceLinks            OptionalBool                              `json:"enableServiceLinks"`
+	DnsConfig                     OptIoK8sAPICoreV1PodDNSConfig             `json:"dnsConfig"`
+	DnsPolicy                     OptString                                 `json:"dnsPolicy"`
+	EnableServiceLinks            OptBool                                   `json:"enableServiceLinks"`
 	EphemeralContainers           *[]IoK8sAPICoreV1EphemeralContainer       `json:"ephemeralContainers"`
 	HostAliases                   *[]IoK8sAPICoreV1HostAlias                `json:"hostAliases"`
-	HostIPC                       OptionalBool                              `json:"hostIPC"`
-	HostNetwork                   OptionalBool                              `json:"hostNetwork"`
-	HostPID                       OptionalBool                              `json:"hostPID"`
-	Hostname                      OptionalString                            `json:"hostname"`
+	HostIPC                       OptBool                                   `json:"hostIPC"`
+	HostNetwork                   OptBool                                   `json:"hostNetwork"`
+	HostPID                       OptBool                                   `json:"hostPID"`
+	Hostname                      OptString                                 `json:"hostname"`
 	ImagePullSecrets              *[]IoK8sAPICoreV1LocalObjectReference     `json:"imagePullSecrets"`
 	InitContainers                *[]IoK8sAPICoreV1Container                `json:"initContainers"`
-	NodeName                      OptionalString                            `json:"nodeName"`
+	NodeName                      OptString                                 `json:"nodeName"`
 	NodeSelector                  *struct{}                                 `json:"nodeSelector"`
 	Overhead                      *struct{}                                 `json:"overhead"`
-	PreemptionPolicy              OptionalString                            `json:"preemptionPolicy"`
-	Priority                      OptionalInt32                             `json:"priority"`
-	PriorityClassName             OptionalString                            `json:"priorityClassName"`
+	PreemptionPolicy              OptString                                 `json:"preemptionPolicy"`
+	Priority                      OptInt32                                  `json:"priority"`
+	PriorityClassName             OptString                                 `json:"priorityClassName"`
 	ReadinessGates                *[]IoK8sAPICoreV1PodReadinessGate         `json:"readinessGates"`
-	RestartPolicy                 OptionalString                            `json:"restartPolicy"`
-	RuntimeClassName              OptionalString                            `json:"runtimeClassName"`
-	SchedulerName                 OptionalString                            `json:"schedulerName"`
-	SecurityContext               OptionalIoK8sAPICoreV1PodSecurityContext  `json:"securityContext"`
-	ServiceAccount                OptionalString                            `json:"serviceAccount"`
-	ServiceAccountName            OptionalString                            `json:"serviceAccountName"`
-	SetHostnameAsFQDN             OptionalBool                              `json:"setHostnameAsFQDN"`
-	ShareProcessNamespace         OptionalBool                              `json:"shareProcessNamespace"`
-	Subdomain                     OptionalString                            `json:"subdomain"`
-	TerminationGracePeriodSeconds OptionalInt64                             `json:"terminationGracePeriodSeconds"`
+	RestartPolicy                 OptString                                 `json:"restartPolicy"`
+	RuntimeClassName              OptString                                 `json:"runtimeClassName"`
+	SchedulerName                 OptString                                 `json:"schedulerName"`
+	SecurityContext               OptIoK8sAPICoreV1PodSecurityContext       `json:"securityContext"`
+	ServiceAccount                OptString                                 `json:"serviceAccount"`
+	ServiceAccountName            OptString                                 `json:"serviceAccountName"`
+	SetHostnameAsFQDN             OptBool                                   `json:"setHostnameAsFQDN"`
+	ShareProcessNamespace         OptBool                                   `json:"shareProcessNamespace"`
+	Subdomain                     OptString                                 `json:"subdomain"`
+	TerminationGracePeriodSeconds OptInt64                                  `json:"terminationGracePeriodSeconds"`
 	Tolerations                   *[]IoK8sAPICoreV1Toleration               `json:"tolerations"`
 	TopologySpreadConstraints     *[]IoK8sAPICoreV1TopologySpreadConstraint `json:"topologySpreadConstraints"`
 	Volumes                       *[]IoK8sAPICoreV1Volume                   `json:"volumes"`
@@ -4992,52 +4992,52 @@ type IoK8sAPICoreV1PodStatus struct {
 	Conditions                 *[]IoK8sAPICoreV1PodCondition       `json:"conditions"`
 	ContainerStatuses          *[]IoK8sAPICoreV1ContainerStatus    `json:"containerStatuses"`
 	EphemeralContainerStatuses *[]IoK8sAPICoreV1ContainerStatus    `json:"ephemeralContainerStatuses"`
-	HostIP                     OptionalString                      `json:"hostIP"`
+	HostIP                     OptString                           `json:"hostIP"`
 	InitContainerStatuses      *[]IoK8sAPICoreV1ContainerStatus    `json:"initContainerStatuses"`
-	Message                    OptionalString                      `json:"message"`
-	NominatedNodeName          OptionalString                      `json:"nominatedNodeName"`
-	Phase                      OptionalString                      `json:"phase"`
-	PodIP                      OptionalString                      `json:"podIP"`
+	Message                    OptString                           `json:"message"`
+	NominatedNodeName          OptString                           `json:"nominatedNodeName"`
+	Phase                      OptString                           `json:"phase"`
+	PodIP                      OptString                           `json:"podIP"`
 	PodIPs                     *[]IoK8sAPICoreV1PodIP              `json:"podIPs"`
-	QosClass                   OptionalString                      `json:"qosClass"`
-	Reason                     OptionalString                      `json:"reason"`
+	QosClass                   OptString                           `json:"qosClass"`
+	Reason                     OptString                           `json:"reason"`
 	StartTime                  *IoK8sApimachineryPkgApisMetaV1Time `json:"startTime"`
 }
 
 // IoK8sAPICoreV1PodTemplate describes #/components/schemas/io.k8s.api.core.v1.PodTemplate.
 type IoK8sAPICoreV1PodTemplate struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Template   OptionalIoK8sAPICoreV1PodTemplateSpec            `json:"template"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Template   OptIoK8sAPICoreV1PodTemplateSpec            `json:"template"`
 }
 
 // IoK8sAPICoreV1PodTemplateList describes #/components/schemas/io.k8s.api.core.v1.PodTemplateList.
 type IoK8sAPICoreV1PodTemplateList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPICoreV1PodTemplate                    `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPICoreV1PodTemplate               `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPICoreV1PodTemplateSpec describes #/components/schemas/io.k8s.api.core.v1.PodTemplateSpec.
 type IoK8sAPICoreV1PodTemplateSpec struct {
-	Metadata OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec     OptionalIoK8sAPICoreV1PodSpec                    `json:"spec"`
+	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec     OptIoK8sAPICoreV1PodSpec                    `json:"spec"`
 }
 
 // IoK8sAPICoreV1PortStatus describes #/components/schemas/io.k8s.api.core.v1.PortStatus.
 type IoK8sAPICoreV1PortStatus struct {
-	Error    OptionalString `json:"error"`
-	Port     int32          `json:"port"`
-	Protocol string         `json:"protocol"`
+	Error    OptString `json:"error"`
+	Port     int32     `json:"port"`
+	Protocol string    `json:"protocol"`
 }
 
 // IoK8sAPICoreV1PortworxVolumeSource describes #/components/schemas/io.k8s.api.core.v1.PortworxVolumeSource.
 type IoK8sAPICoreV1PortworxVolumeSource struct {
-	FsType   OptionalString `json:"fsType"`
-	ReadOnly OptionalBool   `json:"readOnly"`
-	VolumeID string         `json:"volumeID"`
+	FsType   OptString `json:"fsType"`
+	ReadOnly OptBool   `json:"readOnly"`
+	VolumeID string    `json:"volumeID"`
 }
 
 // IoK8sAPICoreV1PreferredSchedulingTerm describes #/components/schemas/io.k8s.api.core.v1.PreferredSchedulingTerm.
@@ -5048,130 +5048,130 @@ type IoK8sAPICoreV1PreferredSchedulingTerm struct {
 
 // IoK8sAPICoreV1Probe describes #/components/schemas/io.k8s.api.core.v1.Probe.
 type IoK8sAPICoreV1Probe struct {
-	Exec                          OptionalIoK8sAPICoreV1ExecAction      `json:"exec"`
-	FailureThreshold              OptionalInt32                         `json:"failureThreshold"`
-	HttpGet                       OptionalIoK8sAPICoreV1HTTPGetAction   `json:"httpGet"`
-	InitialDelaySeconds           OptionalInt32                         `json:"initialDelaySeconds"`
-	PeriodSeconds                 OptionalInt32                         `json:"periodSeconds"`
-	SuccessThreshold              OptionalInt32                         `json:"successThreshold"`
-	TcpSocket                     OptionalIoK8sAPICoreV1TCPSocketAction `json:"tcpSocket"`
-	TerminationGracePeriodSeconds OptionalInt64                         `json:"terminationGracePeriodSeconds"`
-	TimeoutSeconds                OptionalInt32                         `json:"timeoutSeconds"`
+	Exec                          OptIoK8sAPICoreV1ExecAction      `json:"exec"`
+	FailureThreshold              OptInt32                         `json:"failureThreshold"`
+	HttpGet                       OptIoK8sAPICoreV1HTTPGetAction   `json:"httpGet"`
+	InitialDelaySeconds           OptInt32                         `json:"initialDelaySeconds"`
+	PeriodSeconds                 OptInt32                         `json:"periodSeconds"`
+	SuccessThreshold              OptInt32                         `json:"successThreshold"`
+	TcpSocket                     OptIoK8sAPICoreV1TCPSocketAction `json:"tcpSocket"`
+	TerminationGracePeriodSeconds OptInt64                         `json:"terminationGracePeriodSeconds"`
+	TimeoutSeconds                OptInt32                         `json:"timeoutSeconds"`
 }
 
 // IoK8sAPICoreV1ProjectedVolumeSource describes #/components/schemas/io.k8s.api.core.v1.ProjectedVolumeSource.
 type IoK8sAPICoreV1ProjectedVolumeSource struct {
-	DefaultMode OptionalInt32                     `json:"defaultMode"`
+	DefaultMode OptInt32                          `json:"defaultMode"`
 	Sources     *[]IoK8sAPICoreV1VolumeProjection `json:"sources"`
 }
 
 // IoK8sAPICoreV1QuobyteVolumeSource describes #/components/schemas/io.k8s.api.core.v1.QuobyteVolumeSource.
 type IoK8sAPICoreV1QuobyteVolumeSource struct {
-	Group    OptionalString `json:"group"`
-	ReadOnly OptionalBool   `json:"readOnly"`
-	Registry string         `json:"registry"`
-	Tenant   OptionalString `json:"tenant"`
-	User     OptionalString `json:"user"`
-	Volume   string         `json:"volume"`
+	Group    OptString `json:"group"`
+	ReadOnly OptBool   `json:"readOnly"`
+	Registry string    `json:"registry"`
+	Tenant   OptString `json:"tenant"`
+	User     OptString `json:"user"`
+	Volume   string    `json:"volume"`
 }
 
 // IoK8sAPICoreV1RBDPersistentVolumeSource describes #/components/schemas/io.k8s.api.core.v1.RBDPersistentVolumeSource.
 type IoK8sAPICoreV1RBDPersistentVolumeSource struct {
-	FsType    OptionalString                        `json:"fsType"`
-	Image     string                                `json:"image"`
-	Keyring   OptionalString                        `json:"keyring"`
-	Monitors  []string                              `json:"monitors"`
-	Pool      OptionalString                        `json:"pool"`
-	ReadOnly  OptionalBool                          `json:"readOnly"`
-	SecretRef OptionalIoK8sAPICoreV1SecretReference `json:"secretRef"`
-	User      OptionalString                        `json:"user"`
+	FsType    OptString                        `json:"fsType"`
+	Image     string                           `json:"image"`
+	Keyring   OptString                        `json:"keyring"`
+	Monitors  []string                         `json:"monitors"`
+	Pool      OptString                        `json:"pool"`
+	ReadOnly  OptBool                          `json:"readOnly"`
+	SecretRef OptIoK8sAPICoreV1SecretReference `json:"secretRef"`
+	User      OptString                        `json:"user"`
 }
 
 // IoK8sAPICoreV1RBDVolumeSource describes #/components/schemas/io.k8s.api.core.v1.RBDVolumeSource.
 type IoK8sAPICoreV1RBDVolumeSource struct {
-	FsType    OptionalString                             `json:"fsType"`
-	Image     string                                     `json:"image"`
-	Keyring   OptionalString                             `json:"keyring"`
-	Monitors  []string                                   `json:"monitors"`
-	Pool      OptionalString                             `json:"pool"`
-	ReadOnly  OptionalBool                               `json:"readOnly"`
-	SecretRef OptionalIoK8sAPICoreV1LocalObjectReference `json:"secretRef"`
-	User      OptionalString                             `json:"user"`
+	FsType    OptString                             `json:"fsType"`
+	Image     string                                `json:"image"`
+	Keyring   OptString                             `json:"keyring"`
+	Monitors  []string                              `json:"monitors"`
+	Pool      OptString                             `json:"pool"`
+	ReadOnly  OptBool                               `json:"readOnly"`
+	SecretRef OptIoK8sAPICoreV1LocalObjectReference `json:"secretRef"`
+	User      OptString                             `json:"user"`
 }
 
 // IoK8sAPICoreV1ReplicationController describes #/components/schemas/io.k8s.api.core.v1.ReplicationController.
 type IoK8sAPICoreV1ReplicationController struct {
-	ApiVersion OptionalString                                    `json:"apiVersion"`
-	Kind       OptionalString                                    `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta  `json:"metadata"`
-	Spec       OptionalIoK8sAPICoreV1ReplicationControllerSpec   `json:"spec"`
-	Status     OptionalIoK8sAPICoreV1ReplicationControllerStatus `json:"status"`
+	ApiVersion OptString                                    `json:"apiVersion"`
+	Kind       OptString                                    `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta  `json:"metadata"`
+	Spec       OptIoK8sAPICoreV1ReplicationControllerSpec   `json:"spec"`
+	Status     OptIoK8sAPICoreV1ReplicationControllerStatus `json:"status"`
 }
 
 // IoK8sAPICoreV1ReplicationControllerCondition describes #/components/schemas/io.k8s.api.core.v1.ReplicationControllerCondition.
 type IoK8sAPICoreV1ReplicationControllerCondition struct {
 	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptionalString                      `json:"message"`
-	Reason             OptionalString                      `json:"reason"`
+	Message            OptString                           `json:"message"`
+	Reason             OptString                           `json:"reason"`
 	Status             string                              `json:"status"`
 	Type               string                              `json:"type"`
 }
 
 // IoK8sAPICoreV1ReplicationControllerList describes #/components/schemas/io.k8s.api.core.v1.ReplicationControllerList.
 type IoK8sAPICoreV1ReplicationControllerList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPICoreV1ReplicationController          `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPICoreV1ReplicationController     `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPICoreV1ReplicationControllerSpec describes #/components/schemas/io.k8s.api.core.v1.ReplicationControllerSpec.
 type IoK8sAPICoreV1ReplicationControllerSpec struct {
-	MinReadySeconds OptionalInt32                         `json:"minReadySeconds"`
-	Replicas        OptionalInt32                         `json:"replicas"`
-	Selector        *struct{}                             `json:"selector"`
-	Template        OptionalIoK8sAPICoreV1PodTemplateSpec `json:"template"`
+	MinReadySeconds OptInt32                         `json:"minReadySeconds"`
+	Replicas        OptInt32                         `json:"replicas"`
+	Selector        *struct{}                        `json:"selector"`
+	Template        OptIoK8sAPICoreV1PodTemplateSpec `json:"template"`
 }
 
 // IoK8sAPICoreV1ReplicationControllerStatus describes #/components/schemas/io.k8s.api.core.v1.ReplicationControllerStatus.
 type IoK8sAPICoreV1ReplicationControllerStatus struct {
-	AvailableReplicas    OptionalInt32                                   `json:"availableReplicas"`
+	AvailableReplicas    OptInt32                                        `json:"availableReplicas"`
 	Conditions           *[]IoK8sAPICoreV1ReplicationControllerCondition `json:"conditions"`
-	FullyLabeledReplicas OptionalInt32                                   `json:"fullyLabeledReplicas"`
-	ObservedGeneration   OptionalInt64                                   `json:"observedGeneration"`
-	ReadyReplicas        OptionalInt32                                   `json:"readyReplicas"`
+	FullyLabeledReplicas OptInt32                                        `json:"fullyLabeledReplicas"`
+	ObservedGeneration   OptInt64                                        `json:"observedGeneration"`
+	ReadyReplicas        OptInt32                                        `json:"readyReplicas"`
 	Replicas             int32                                           `json:"replicas"`
 }
 
 // IoK8sAPICoreV1ResourceFieldSelector describes #/components/schemas/io.k8s.api.core.v1.ResourceFieldSelector.
 type IoK8sAPICoreV1ResourceFieldSelector struct {
-	ContainerName OptionalString                           `json:"containerName"`
+	ContainerName OptString                                `json:"containerName"`
 	Divisor       *IoK8sApimachineryPkgAPIResourceQuantity `json:"divisor"`
 	Resource      string                                   `json:"resource"`
 }
 
 // IoK8sAPICoreV1ResourceQuota describes #/components/schemas/io.k8s.api.core.v1.ResourceQuota.
 type IoK8sAPICoreV1ResourceQuota struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       OptionalIoK8sAPICoreV1ResourceQuotaSpec          `json:"spec"`
-	Status     OptionalIoK8sAPICoreV1ResourceQuotaStatus        `json:"status"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       OptIoK8sAPICoreV1ResourceQuotaSpec          `json:"spec"`
+	Status     OptIoK8sAPICoreV1ResourceQuotaStatus        `json:"status"`
 }
 
 // IoK8sAPICoreV1ResourceQuotaList describes #/components/schemas/io.k8s.api.core.v1.ResourceQuotaList.
 type IoK8sAPICoreV1ResourceQuotaList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPICoreV1ResourceQuota                  `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPICoreV1ResourceQuota             `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPICoreV1ResourceQuotaSpec describes #/components/schemas/io.k8s.api.core.v1.ResourceQuotaSpec.
 type IoK8sAPICoreV1ResourceQuotaSpec struct {
-	Hard          *struct{}                           `json:"hard"`
-	ScopeSelector OptionalIoK8sAPICoreV1ScopeSelector `json:"scopeSelector"`
-	Scopes        *[]string                           `json:"scopes"`
+	Hard          *struct{}                      `json:"hard"`
+	ScopeSelector OptIoK8sAPICoreV1ScopeSelector `json:"scopeSelector"`
+	Scopes        *[]string                      `json:"scopes"`
 }
 
 // IoK8sAPICoreV1ResourceQuotaStatus describes #/components/schemas/io.k8s.api.core.v1.ResourceQuotaStatus.
@@ -5188,38 +5188,38 @@ type IoK8sAPICoreV1ResourceRequirements struct {
 
 // IoK8sAPICoreV1SELinuxOptions describes #/components/schemas/io.k8s.api.core.v1.SELinuxOptions.
 type IoK8sAPICoreV1SELinuxOptions struct {
-	Level OptionalString `json:"level"`
-	Role  OptionalString `json:"role"`
-	Type  OptionalString `json:"type"`
-	User  OptionalString `json:"user"`
+	Level OptString `json:"level"`
+	Role  OptString `json:"role"`
+	Type  OptString `json:"type"`
+	User  OptString `json:"user"`
 }
 
 // IoK8sAPICoreV1ScaleIOPersistentVolumeSource describes #/components/schemas/io.k8s.api.core.v1.ScaleIOPersistentVolumeSource.
 type IoK8sAPICoreV1ScaleIOPersistentVolumeSource struct {
-	FsType           OptionalString                `json:"fsType"`
+	FsType           OptString                     `json:"fsType"`
 	Gateway          string                        `json:"gateway"`
-	ProtectionDomain OptionalString                `json:"protectionDomain"`
-	ReadOnly         OptionalBool                  `json:"readOnly"`
+	ProtectionDomain OptString                     `json:"protectionDomain"`
+	ReadOnly         OptBool                       `json:"readOnly"`
 	SecretRef        IoK8sAPICoreV1SecretReference `json:"secretRef"`
-	SslEnabled       OptionalBool                  `json:"sslEnabled"`
-	StorageMode      OptionalString                `json:"storageMode"`
-	StoragePool      OptionalString                `json:"storagePool"`
+	SslEnabled       OptBool                       `json:"sslEnabled"`
+	StorageMode      OptString                     `json:"storageMode"`
+	StoragePool      OptString                     `json:"storagePool"`
 	System           string                        `json:"system"`
-	VolumeName       OptionalString                `json:"volumeName"`
+	VolumeName       OptString                     `json:"volumeName"`
 }
 
 // IoK8sAPICoreV1ScaleIOVolumeSource describes #/components/schemas/io.k8s.api.core.v1.ScaleIOVolumeSource.
 type IoK8sAPICoreV1ScaleIOVolumeSource struct {
-	FsType           OptionalString                     `json:"fsType"`
+	FsType           OptString                          `json:"fsType"`
 	Gateway          string                             `json:"gateway"`
-	ProtectionDomain OptionalString                     `json:"protectionDomain"`
-	ReadOnly         OptionalBool                       `json:"readOnly"`
+	ProtectionDomain OptString                          `json:"protectionDomain"`
+	ReadOnly         OptBool                            `json:"readOnly"`
 	SecretRef        IoK8sAPICoreV1LocalObjectReference `json:"secretRef"`
-	SslEnabled       OptionalBool                       `json:"sslEnabled"`
-	StorageMode      OptionalString                     `json:"storageMode"`
-	StoragePool      OptionalString                     `json:"storagePool"`
+	SslEnabled       OptBool                            `json:"sslEnabled"`
+	StorageMode      OptString                          `json:"storageMode"`
+	StoragePool      OptString                          `json:"storagePool"`
 	System           string                             `json:"system"`
-	VolumeName       OptionalString                     `json:"volumeName"`
+	VolumeName       OptString                          `json:"volumeName"`
 }
 
 // IoK8sAPICoreV1ScopeSelector describes #/components/schemas/io.k8s.api.core.v1.ScopeSelector.
@@ -5236,180 +5236,180 @@ type IoK8sAPICoreV1ScopedResourceSelectorRequirement struct {
 
 // IoK8sAPICoreV1SeccompProfile describes #/components/schemas/io.k8s.api.core.v1.SeccompProfile.
 type IoK8sAPICoreV1SeccompProfile struct {
-	LocalhostProfile OptionalString `json:"localhostProfile"`
-	Type             string         `json:"type"`
+	LocalhostProfile OptString `json:"localhostProfile"`
+	Type             string    `json:"type"`
 }
 
 // IoK8sAPICoreV1Secret describes #/components/schemas/io.k8s.api.core.v1.Secret.
 type IoK8sAPICoreV1Secret struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Data       *struct{}                                        `json:"data"`
-	Immutable  OptionalBool                                     `json:"immutable"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	StringData *struct{}                                        `json:"stringData"`
-	Type       OptionalString                                   `json:"type"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Data       *struct{}                                   `json:"data"`
+	Immutable  OptBool                                     `json:"immutable"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	StringData *struct{}                                   `json:"stringData"`
+	Type       OptString                                   `json:"type"`
 }
 
 // IoK8sAPICoreV1SecretEnvSource describes #/components/schemas/io.k8s.api.core.v1.SecretEnvSource.
 type IoK8sAPICoreV1SecretEnvSource struct {
-	Name     OptionalString `json:"name"`
-	Optional OptionalBool   `json:"optional"`
+	Name     OptString `json:"name"`
+	Optional OptBool   `json:"optional"`
 }
 
 // IoK8sAPICoreV1SecretKeySelector describes #/components/schemas/io.k8s.api.core.v1.SecretKeySelector.
 type IoK8sAPICoreV1SecretKeySelector struct {
-	Key      string         `json:"key"`
-	Name     OptionalString `json:"name"`
-	Optional OptionalBool   `json:"optional"`
+	Key      string    `json:"key"`
+	Name     OptString `json:"name"`
+	Optional OptBool   `json:"optional"`
 }
 
 // IoK8sAPICoreV1SecretList describes #/components/schemas/io.k8s.api.core.v1.SecretList.
 type IoK8sAPICoreV1SecretList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPICoreV1Secret                         `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPICoreV1Secret                    `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPICoreV1SecretProjection describes #/components/schemas/io.k8s.api.core.v1.SecretProjection.
 type IoK8sAPICoreV1SecretProjection struct {
 	Items    *[]IoK8sAPICoreV1KeyToPath `json:"items"`
-	Name     OptionalString             `json:"name"`
-	Optional OptionalBool               `json:"optional"`
+	Name     OptString                  `json:"name"`
+	Optional OptBool                    `json:"optional"`
 }
 
 // IoK8sAPICoreV1SecretReference describes #/components/schemas/io.k8s.api.core.v1.SecretReference.
 type IoK8sAPICoreV1SecretReference struct {
-	Name      OptionalString `json:"name"`
-	Namespace OptionalString `json:"namespace"`
+	Name      OptString `json:"name"`
+	Namespace OptString `json:"namespace"`
 }
 
 // IoK8sAPICoreV1SecretVolumeSource describes #/components/schemas/io.k8s.api.core.v1.SecretVolumeSource.
 type IoK8sAPICoreV1SecretVolumeSource struct {
-	DefaultMode OptionalInt32              `json:"defaultMode"`
+	DefaultMode OptInt32                   `json:"defaultMode"`
 	Items       *[]IoK8sAPICoreV1KeyToPath `json:"items"`
-	Optional    OptionalBool               `json:"optional"`
-	SecretName  OptionalString             `json:"secretName"`
+	Optional    OptBool                    `json:"optional"`
+	SecretName  OptString                  `json:"secretName"`
 }
 
 // IoK8sAPICoreV1SecurityContext describes #/components/schemas/io.k8s.api.core.v1.SecurityContext.
 type IoK8sAPICoreV1SecurityContext struct {
-	AllowPrivilegeEscalation OptionalBool                                        `json:"allowPrivilegeEscalation"`
-	Capabilities             OptionalIoK8sAPICoreV1Capabilities                  `json:"capabilities"`
-	Privileged               OptionalBool                                        `json:"privileged"`
-	ProcMount                OptionalString                                      `json:"procMount"`
-	ReadOnlyRootFilesystem   OptionalBool                                        `json:"readOnlyRootFilesystem"`
-	RunAsGroup               OptionalInt64                                       `json:"runAsGroup"`
-	RunAsNonRoot             OptionalBool                                        `json:"runAsNonRoot"`
-	RunAsUser                OptionalInt64                                       `json:"runAsUser"`
-	SeLinuxOptions           OptionalIoK8sAPICoreV1SELinuxOptions                `json:"seLinuxOptions"`
-	SeccompProfile           OptionalIoK8sAPICoreV1SeccompProfile                `json:"seccompProfile"`
-	WindowsOptions           OptionalIoK8sAPICoreV1WindowsSecurityContextOptions `json:"windowsOptions"`
+	AllowPrivilegeEscalation OptBool                                        `json:"allowPrivilegeEscalation"`
+	Capabilities             OptIoK8sAPICoreV1Capabilities                  `json:"capabilities"`
+	Privileged               OptBool                                        `json:"privileged"`
+	ProcMount                OptString                                      `json:"procMount"`
+	ReadOnlyRootFilesystem   OptBool                                        `json:"readOnlyRootFilesystem"`
+	RunAsGroup               OptInt64                                       `json:"runAsGroup"`
+	RunAsNonRoot             OptBool                                        `json:"runAsNonRoot"`
+	RunAsUser                OptInt64                                       `json:"runAsUser"`
+	SeLinuxOptions           OptIoK8sAPICoreV1SELinuxOptions                `json:"seLinuxOptions"`
+	SeccompProfile           OptIoK8sAPICoreV1SeccompProfile                `json:"seccompProfile"`
+	WindowsOptions           OptIoK8sAPICoreV1WindowsSecurityContextOptions `json:"windowsOptions"`
 }
 
 // IoK8sAPICoreV1Service describes #/components/schemas/io.k8s.api.core.v1.Service.
 type IoK8sAPICoreV1Service struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       OptionalIoK8sAPICoreV1ServiceSpec                `json:"spec"`
-	Status     OptionalIoK8sAPICoreV1ServiceStatus              `json:"status"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       OptIoK8sAPICoreV1ServiceSpec                `json:"spec"`
+	Status     OptIoK8sAPICoreV1ServiceStatus              `json:"status"`
 }
 
 // IoK8sAPICoreV1ServiceAccount describes #/components/schemas/io.k8s.api.core.v1.ServiceAccount.
 type IoK8sAPICoreV1ServiceAccount struct {
-	ApiVersion                   OptionalString                                   `json:"apiVersion"`
-	AutomountServiceAccountToken OptionalBool                                     `json:"automountServiceAccountToken"`
-	ImagePullSecrets             *[]IoK8sAPICoreV1LocalObjectReference            `json:"imagePullSecrets"`
-	Kind                         OptionalString                                   `json:"kind"`
-	Metadata                     OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Secrets                      *[]IoK8sAPICoreV1ObjectReference                 `json:"secrets"`
+	ApiVersion                   OptString                                   `json:"apiVersion"`
+	AutomountServiceAccountToken OptBool                                     `json:"automountServiceAccountToken"`
+	ImagePullSecrets             *[]IoK8sAPICoreV1LocalObjectReference       `json:"imagePullSecrets"`
+	Kind                         OptString                                   `json:"kind"`
+	Metadata                     OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Secrets                      *[]IoK8sAPICoreV1ObjectReference            `json:"secrets"`
 }
 
 // IoK8sAPICoreV1ServiceAccountList describes #/components/schemas/io.k8s.api.core.v1.ServiceAccountList.
 type IoK8sAPICoreV1ServiceAccountList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPICoreV1ServiceAccount                 `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPICoreV1ServiceAccount            `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPICoreV1ServiceAccountTokenProjection describes #/components/schemas/io.k8s.api.core.v1.ServiceAccountTokenProjection.
 type IoK8sAPICoreV1ServiceAccountTokenProjection struct {
-	Audience          OptionalString `json:"audience"`
-	ExpirationSeconds OptionalInt64  `json:"expirationSeconds"`
-	Path              string         `json:"path"`
+	Audience          OptString `json:"audience"`
+	ExpirationSeconds OptInt64  `json:"expirationSeconds"`
+	Path              string    `json:"path"`
 }
 
 // IoK8sAPICoreV1ServiceList describes #/components/schemas/io.k8s.api.core.v1.ServiceList.
 type IoK8sAPICoreV1ServiceList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPICoreV1Service                        `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPICoreV1Service                   `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPICoreV1ServicePort describes #/components/schemas/io.k8s.api.core.v1.ServicePort.
 type IoK8sAPICoreV1ServicePort struct {
-	AppProtocol OptionalString                             `json:"appProtocol"`
-	Name        OptionalString                             `json:"name"`
-	NodePort    OptionalInt32                              `json:"nodePort"`
+	AppProtocol OptString                                  `json:"appProtocol"`
+	Name        OptString                                  `json:"name"`
+	NodePort    OptInt32                                   `json:"nodePort"`
 	Port        int32                                      `json:"port"`
-	Protocol    OptionalString                             `json:"protocol"`
+	Protocol    OptString                                  `json:"protocol"`
 	TargetPort  *IoK8sApimachineryPkgUtilIntstrIntOrString `json:"targetPort"`
 }
 
 // IoK8sAPICoreV1ServiceSpec describes #/components/schemas/io.k8s.api.core.v1.ServiceSpec.
 type IoK8sAPICoreV1ServiceSpec struct {
-	AllocateLoadBalancerNodePorts OptionalBool                                `json:"allocateLoadBalancerNodePorts"`
-	ClusterIP                     OptionalString                              `json:"clusterIP"`
-	ClusterIPs                    *[]string                                   `json:"clusterIPs"`
-	ExternalIPs                   *[]string                                   `json:"externalIPs"`
-	ExternalName                  OptionalString                              `json:"externalName"`
-	ExternalTrafficPolicy         OptionalString                              `json:"externalTrafficPolicy"`
-	HealthCheckNodePort           OptionalInt32                               `json:"healthCheckNodePort"`
-	InternalTrafficPolicy         OptionalString                              `json:"internalTrafficPolicy"`
-	IpFamilies                    *[]string                                   `json:"ipFamilies"`
-	IpFamilyPolicy                OptionalString                              `json:"ipFamilyPolicy"`
-	LoadBalancerClass             OptionalString                              `json:"loadBalancerClass"`
-	LoadBalancerIP                OptionalString                              `json:"loadBalancerIP"`
-	LoadBalancerSourceRanges      *[]string                                   `json:"loadBalancerSourceRanges"`
-	Ports                         *[]IoK8sAPICoreV1ServicePort                `json:"ports"`
-	PublishNotReadyAddresses      OptionalBool                                `json:"publishNotReadyAddresses"`
-	Selector                      *struct{}                                   `json:"selector"`
-	SessionAffinity               OptionalString                              `json:"sessionAffinity"`
-	SessionAffinityConfig         OptionalIoK8sAPICoreV1SessionAffinityConfig `json:"sessionAffinityConfig"`
-	Type                          OptionalString                              `json:"type"`
+	AllocateLoadBalancerNodePorts OptBool                                `json:"allocateLoadBalancerNodePorts"`
+	ClusterIP                     OptString                              `json:"clusterIP"`
+	ClusterIPs                    *[]string                              `json:"clusterIPs"`
+	ExternalIPs                   *[]string                              `json:"externalIPs"`
+	ExternalName                  OptString                              `json:"externalName"`
+	ExternalTrafficPolicy         OptString                              `json:"externalTrafficPolicy"`
+	HealthCheckNodePort           OptInt32                               `json:"healthCheckNodePort"`
+	InternalTrafficPolicy         OptString                              `json:"internalTrafficPolicy"`
+	IpFamilies                    *[]string                              `json:"ipFamilies"`
+	IpFamilyPolicy                OptString                              `json:"ipFamilyPolicy"`
+	LoadBalancerClass             OptString                              `json:"loadBalancerClass"`
+	LoadBalancerIP                OptString                              `json:"loadBalancerIP"`
+	LoadBalancerSourceRanges      *[]string                              `json:"loadBalancerSourceRanges"`
+	Ports                         *[]IoK8sAPICoreV1ServicePort           `json:"ports"`
+	PublishNotReadyAddresses      OptBool                                `json:"publishNotReadyAddresses"`
+	Selector                      *struct{}                              `json:"selector"`
+	SessionAffinity               OptString                              `json:"sessionAffinity"`
+	SessionAffinityConfig         OptIoK8sAPICoreV1SessionAffinityConfig `json:"sessionAffinityConfig"`
+	Type                          OptString                              `json:"type"`
 }
 
 // IoK8sAPICoreV1ServiceStatus describes #/components/schemas/io.k8s.api.core.v1.ServiceStatus.
 type IoK8sAPICoreV1ServiceStatus struct {
 	Conditions   *[]IoK8sApimachineryPkgApisMetaV1Condition `json:"conditions"`
-	LoadBalancer OptionalIoK8sAPICoreV1LoadBalancerStatus   `json:"loadBalancer"`
+	LoadBalancer OptIoK8sAPICoreV1LoadBalancerStatus        `json:"loadBalancer"`
 }
 
 // IoK8sAPICoreV1SessionAffinityConfig describes #/components/schemas/io.k8s.api.core.v1.SessionAffinityConfig.
 type IoK8sAPICoreV1SessionAffinityConfig struct {
-	ClientIP OptionalIoK8sAPICoreV1ClientIPConfig `json:"clientIP"`
+	ClientIP OptIoK8sAPICoreV1ClientIPConfig `json:"clientIP"`
 }
 
 // IoK8sAPICoreV1StorageOSPersistentVolumeSource describes #/components/schemas/io.k8s.api.core.v1.StorageOSPersistentVolumeSource.
 type IoK8sAPICoreV1StorageOSPersistentVolumeSource struct {
-	FsType          OptionalString                        `json:"fsType"`
-	ReadOnly        OptionalBool                          `json:"readOnly"`
-	SecretRef       OptionalIoK8sAPICoreV1ObjectReference `json:"secretRef"`
-	VolumeName      OptionalString                        `json:"volumeName"`
-	VolumeNamespace OptionalString                        `json:"volumeNamespace"`
+	FsType          OptString                        `json:"fsType"`
+	ReadOnly        OptBool                          `json:"readOnly"`
+	SecretRef       OptIoK8sAPICoreV1ObjectReference `json:"secretRef"`
+	VolumeName      OptString                        `json:"volumeName"`
+	VolumeNamespace OptString                        `json:"volumeNamespace"`
 }
 
 // IoK8sAPICoreV1StorageOSVolumeSource describes #/components/schemas/io.k8s.api.core.v1.StorageOSVolumeSource.
 type IoK8sAPICoreV1StorageOSVolumeSource struct {
-	FsType          OptionalString                             `json:"fsType"`
-	ReadOnly        OptionalBool                               `json:"readOnly"`
-	SecretRef       OptionalIoK8sAPICoreV1LocalObjectReference `json:"secretRef"`
-	VolumeName      OptionalString                             `json:"volumeName"`
-	VolumeNamespace OptionalString                             `json:"volumeNamespace"`
+	FsType          OptString                             `json:"fsType"`
+	ReadOnly        OptBool                               `json:"readOnly"`
+	SecretRef       OptIoK8sAPICoreV1LocalObjectReference `json:"secretRef"`
+	VolumeName      OptString                             `json:"volumeName"`
+	VolumeNamespace OptString                             `json:"volumeNamespace"`
 }
 
 // IoK8sAPICoreV1Sysctl describes #/components/schemas/io.k8s.api.core.v1.Sysctl.
@@ -5420,7 +5420,7 @@ type IoK8sAPICoreV1Sysctl struct {
 
 // IoK8sAPICoreV1TCPSocketAction describes #/components/schemas/io.k8s.api.core.v1.TCPSocketAction.
 type IoK8sAPICoreV1TCPSocketAction struct {
-	Host OptionalString                            `json:"host"`
+	Host OptString                                 `json:"host"`
 	Port IoK8sApimachineryPkgUtilIntstrIntOrString `json:"port"`
 }
 
@@ -5429,16 +5429,16 @@ type IoK8sAPICoreV1Taint struct {
 	Effect    string                              `json:"effect"`
 	Key       string                              `json:"key"`
 	TimeAdded *IoK8sApimachineryPkgApisMetaV1Time `json:"timeAdded"`
-	Value     OptionalString                      `json:"value"`
+	Value     OptString                           `json:"value"`
 }
 
 // IoK8sAPICoreV1Toleration describes #/components/schemas/io.k8s.api.core.v1.Toleration.
 type IoK8sAPICoreV1Toleration struct {
-	Effect            OptionalString `json:"effect"`
-	Key               OptionalString `json:"key"`
-	Operator          OptionalString `json:"operator"`
-	TolerationSeconds OptionalInt64  `json:"tolerationSeconds"`
-	Value             OptionalString `json:"value"`
+	Effect            OptString `json:"effect"`
+	Key               OptString `json:"key"`
+	Operator          OptString `json:"operator"`
+	TolerationSeconds OptInt64  `json:"tolerationSeconds"`
+	Value             OptString `json:"value"`
 }
 
 // IoK8sAPICoreV1TopologySelectorLabelRequirement describes #/components/schemas/io.k8s.api.core.v1.TopologySelectorLabelRequirement.
@@ -5454,51 +5454,51 @@ type IoK8sAPICoreV1TopologySelectorTerm struct {
 
 // IoK8sAPICoreV1TopologySpreadConstraint describes #/components/schemas/io.k8s.api.core.v1.TopologySpreadConstraint.
 type IoK8sAPICoreV1TopologySpreadConstraint struct {
-	LabelSelector     OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"labelSelector"`
-	MaxSkew           int32                                               `json:"maxSkew"`
-	TopologyKey       string                                              `json:"topologyKey"`
-	WhenUnsatisfiable string                                              `json:"whenUnsatisfiable"`
+	LabelSelector     OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"labelSelector"`
+	MaxSkew           int32                                          `json:"maxSkew"`
+	TopologyKey       string                                         `json:"topologyKey"`
+	WhenUnsatisfiable string                                         `json:"whenUnsatisfiable"`
 }
 
 // IoK8sAPICoreV1TypedLocalObjectReference describes #/components/schemas/io.k8s.api.core.v1.TypedLocalObjectReference.
 type IoK8sAPICoreV1TypedLocalObjectReference struct {
-	ApiGroup OptionalString `json:"apiGroup"`
-	Kind     string         `json:"kind"`
-	Name     string         `json:"name"`
+	ApiGroup OptString `json:"apiGroup"`
+	Kind     string    `json:"kind"`
+	Name     string    `json:"name"`
 }
 
 // IoK8sAPICoreV1Volume describes #/components/schemas/io.k8s.api.core.v1.Volume.
 type IoK8sAPICoreV1Volume struct {
-	AwsElasticBlockStore  OptionalIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource  `json:"awsElasticBlockStore"`
-	AzureDisk             OptionalIoK8sAPICoreV1AzureDiskVolumeSource             `json:"azureDisk"`
-	AzureFile             OptionalIoK8sAPICoreV1AzureFileVolumeSource             `json:"azureFile"`
-	Cephfs                OptionalIoK8sAPICoreV1CephFSVolumeSource                `json:"cephfs"`
-	Cinder                OptionalIoK8sAPICoreV1CinderVolumeSource                `json:"cinder"`
-	ConfigMap             OptionalIoK8sAPICoreV1ConfigMapVolumeSource             `json:"configMap"`
-	Csi                   OptionalIoK8sAPICoreV1CSIVolumeSource                   `json:"csi"`
-	DownwardAPI           OptionalIoK8sAPICoreV1DownwardAPIVolumeSource           `json:"downwardAPI"`
-	EmptyDir              OptionalIoK8sAPICoreV1EmptyDirVolumeSource              `json:"emptyDir"`
-	Ephemeral             OptionalIoK8sAPICoreV1EphemeralVolumeSource             `json:"ephemeral"`
-	Fc                    OptionalIoK8sAPICoreV1FCVolumeSource                    `json:"fc"`
-	FlexVolume            OptionalIoK8sAPICoreV1FlexVolumeSource                  `json:"flexVolume"`
-	Flocker               OptionalIoK8sAPICoreV1FlockerVolumeSource               `json:"flocker"`
-	GcePersistentDisk     OptionalIoK8sAPICoreV1GCEPersistentDiskVolumeSource     `json:"gcePersistentDisk"`
-	GitRepo               OptionalIoK8sAPICoreV1GitRepoVolumeSource               `json:"gitRepo"`
-	Glusterfs             OptionalIoK8sAPICoreV1GlusterfsVolumeSource             `json:"glusterfs"`
-	HostPath              OptionalIoK8sAPICoreV1HostPathVolumeSource              `json:"hostPath"`
-	Iscsi                 OptionalIoK8sAPICoreV1ISCSIVolumeSource                 `json:"iscsi"`
-	Name                  string                                                  `json:"name"`
-	Nfs                   OptionalIoK8sAPICoreV1NFSVolumeSource                   `json:"nfs"`
-	PersistentVolumeClaim OptionalIoK8sAPICoreV1PersistentVolumeClaimVolumeSource `json:"persistentVolumeClaim"`
-	PhotonPersistentDisk  OptionalIoK8sAPICoreV1PhotonPersistentDiskVolumeSource  `json:"photonPersistentDisk"`
-	PortworxVolume        OptionalIoK8sAPICoreV1PortworxVolumeSource              `json:"portworxVolume"`
-	Projected             OptionalIoK8sAPICoreV1ProjectedVolumeSource             `json:"projected"`
-	Quobyte               OptionalIoK8sAPICoreV1QuobyteVolumeSource               `json:"quobyte"`
-	Rbd                   OptionalIoK8sAPICoreV1RBDVolumeSource                   `json:"rbd"`
-	ScaleIO               OptionalIoK8sAPICoreV1ScaleIOVolumeSource               `json:"scaleIO"`
-	Secret                OptionalIoK8sAPICoreV1SecretVolumeSource                `json:"secret"`
-	Storageos             OptionalIoK8sAPICoreV1StorageOSVolumeSource             `json:"storageos"`
-	VsphereVolume         OptionalIoK8sAPICoreV1VsphereVirtualDiskVolumeSource    `json:"vsphereVolume"`
+	AwsElasticBlockStore  OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource  `json:"awsElasticBlockStore"`
+	AzureDisk             OptIoK8sAPICoreV1AzureDiskVolumeSource             `json:"azureDisk"`
+	AzureFile             OptIoK8sAPICoreV1AzureFileVolumeSource             `json:"azureFile"`
+	Cephfs                OptIoK8sAPICoreV1CephFSVolumeSource                `json:"cephfs"`
+	Cinder                OptIoK8sAPICoreV1CinderVolumeSource                `json:"cinder"`
+	ConfigMap             OptIoK8sAPICoreV1ConfigMapVolumeSource             `json:"configMap"`
+	Csi                   OptIoK8sAPICoreV1CSIVolumeSource                   `json:"csi"`
+	DownwardAPI           OptIoK8sAPICoreV1DownwardAPIVolumeSource           `json:"downwardAPI"`
+	EmptyDir              OptIoK8sAPICoreV1EmptyDirVolumeSource              `json:"emptyDir"`
+	Ephemeral             OptIoK8sAPICoreV1EphemeralVolumeSource             `json:"ephemeral"`
+	Fc                    OptIoK8sAPICoreV1FCVolumeSource                    `json:"fc"`
+	FlexVolume            OptIoK8sAPICoreV1FlexVolumeSource                  `json:"flexVolume"`
+	Flocker               OptIoK8sAPICoreV1FlockerVolumeSource               `json:"flocker"`
+	GcePersistentDisk     OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource     `json:"gcePersistentDisk"`
+	GitRepo               OptIoK8sAPICoreV1GitRepoVolumeSource               `json:"gitRepo"`
+	Glusterfs             OptIoK8sAPICoreV1GlusterfsVolumeSource             `json:"glusterfs"`
+	HostPath              OptIoK8sAPICoreV1HostPathVolumeSource              `json:"hostPath"`
+	Iscsi                 OptIoK8sAPICoreV1ISCSIVolumeSource                 `json:"iscsi"`
+	Name                  string                                             `json:"name"`
+	Nfs                   OptIoK8sAPICoreV1NFSVolumeSource                   `json:"nfs"`
+	PersistentVolumeClaim OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource `json:"persistentVolumeClaim"`
+	PhotonPersistentDisk  OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource  `json:"photonPersistentDisk"`
+	PortworxVolume        OptIoK8sAPICoreV1PortworxVolumeSource              `json:"portworxVolume"`
+	Projected             OptIoK8sAPICoreV1ProjectedVolumeSource             `json:"projected"`
+	Quobyte               OptIoK8sAPICoreV1QuobyteVolumeSource               `json:"quobyte"`
+	Rbd                   OptIoK8sAPICoreV1RBDVolumeSource                   `json:"rbd"`
+	ScaleIO               OptIoK8sAPICoreV1ScaleIOVolumeSource               `json:"scaleIO"`
+	Secret                OptIoK8sAPICoreV1SecretVolumeSource                `json:"secret"`
+	Storageos             OptIoK8sAPICoreV1StorageOSVolumeSource             `json:"storageos"`
+	VsphereVolume         OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource    `json:"vsphereVolume"`
 }
 
 // IoK8sAPICoreV1VolumeDevice describes #/components/schemas/io.k8s.api.core.v1.VolumeDevice.
@@ -5509,33 +5509,33 @@ type IoK8sAPICoreV1VolumeDevice struct {
 
 // IoK8sAPICoreV1VolumeMount describes #/components/schemas/io.k8s.api.core.v1.VolumeMount.
 type IoK8sAPICoreV1VolumeMount struct {
-	MountPath        string         `json:"mountPath"`
-	MountPropagation OptionalString `json:"mountPropagation"`
-	Name             string         `json:"name"`
-	ReadOnly         OptionalBool   `json:"readOnly"`
-	SubPath          OptionalString `json:"subPath"`
-	SubPathExpr      OptionalString `json:"subPathExpr"`
+	MountPath        string    `json:"mountPath"`
+	MountPropagation OptString `json:"mountPropagation"`
+	Name             string    `json:"name"`
+	ReadOnly         OptBool   `json:"readOnly"`
+	SubPath          OptString `json:"subPath"`
+	SubPathExpr      OptString `json:"subPathExpr"`
 }
 
 // IoK8sAPICoreV1VolumeNodeAffinity describes #/components/schemas/io.k8s.api.core.v1.VolumeNodeAffinity.
 type IoK8sAPICoreV1VolumeNodeAffinity struct {
-	Required OptionalIoK8sAPICoreV1NodeSelector `json:"required"`
+	Required OptIoK8sAPICoreV1NodeSelector `json:"required"`
 }
 
 // IoK8sAPICoreV1VolumeProjection describes #/components/schemas/io.k8s.api.core.v1.VolumeProjection.
 type IoK8sAPICoreV1VolumeProjection struct {
-	ConfigMap           OptionalIoK8sAPICoreV1ConfigMapProjection           `json:"configMap"`
-	DownwardAPI         OptionalIoK8sAPICoreV1DownwardAPIProjection         `json:"downwardAPI"`
-	Secret              OptionalIoK8sAPICoreV1SecretProjection              `json:"secret"`
-	ServiceAccountToken OptionalIoK8sAPICoreV1ServiceAccountTokenProjection `json:"serviceAccountToken"`
+	ConfigMap           OptIoK8sAPICoreV1ConfigMapProjection           `json:"configMap"`
+	DownwardAPI         OptIoK8sAPICoreV1DownwardAPIProjection         `json:"downwardAPI"`
+	Secret              OptIoK8sAPICoreV1SecretProjection              `json:"secret"`
+	ServiceAccountToken OptIoK8sAPICoreV1ServiceAccountTokenProjection `json:"serviceAccountToken"`
 }
 
 // IoK8sAPICoreV1VsphereVirtualDiskVolumeSource describes #/components/schemas/io.k8s.api.core.v1.VsphereVirtualDiskVolumeSource.
 type IoK8sAPICoreV1VsphereVirtualDiskVolumeSource struct {
-	FsType            OptionalString `json:"fsType"`
-	StoragePolicyID   OptionalString `json:"storagePolicyID"`
-	StoragePolicyName OptionalString `json:"storagePolicyName"`
-	VolumePath        string         `json:"volumePath"`
+	FsType            OptString `json:"fsType"`
+	StoragePolicyID   OptString `json:"storagePolicyID"`
+	StoragePolicyName OptString `json:"storagePolicyName"`
+	VolumePath        string    `json:"volumePath"`
 }
 
 // IoK8sAPICoreV1WeightedPodAffinityTerm describes #/components/schemas/io.k8s.api.core.v1.WeightedPodAffinityTerm.
@@ -5546,29 +5546,29 @@ type IoK8sAPICoreV1WeightedPodAffinityTerm struct {
 
 // IoK8sAPICoreV1WindowsSecurityContextOptions describes #/components/schemas/io.k8s.api.core.v1.WindowsSecurityContextOptions.
 type IoK8sAPICoreV1WindowsSecurityContextOptions struct {
-	GmsaCredentialSpec     OptionalString `json:"gmsaCredentialSpec"`
-	GmsaCredentialSpecName OptionalString `json:"gmsaCredentialSpecName"`
-	HostProcess            OptionalBool   `json:"hostProcess"`
-	RunAsUserName          OptionalString `json:"runAsUserName"`
+	GmsaCredentialSpec     OptString `json:"gmsaCredentialSpec"`
+	GmsaCredentialSpecName OptString `json:"gmsaCredentialSpecName"`
+	HostProcess            OptBool   `json:"hostProcess"`
+	RunAsUserName          OptString `json:"runAsUserName"`
 }
 
 // IoK8sAPIDiscoveryV1Endpoint describes #/components/schemas/io.k8s.api.discovery.v1.Endpoint.
 type IoK8sAPIDiscoveryV1Endpoint struct {
-	Addresses          []string                                      `json:"addresses"`
-	Conditions         OptionalIoK8sAPIDiscoveryV1EndpointConditions `json:"conditions"`
-	DeprecatedTopology *struct{}                                     `json:"deprecatedTopology"`
-	Hints              OptionalIoK8sAPIDiscoveryV1EndpointHints      `json:"hints"`
-	Hostname           OptionalString                                `json:"hostname"`
-	NodeName           OptionalString                                `json:"nodeName"`
-	TargetRef          OptionalIoK8sAPICoreV1ObjectReference         `json:"targetRef"`
-	Zone               OptionalString                                `json:"zone"`
+	Addresses          []string                                 `json:"addresses"`
+	Conditions         OptIoK8sAPIDiscoveryV1EndpointConditions `json:"conditions"`
+	DeprecatedTopology *struct{}                                `json:"deprecatedTopology"`
+	Hints              OptIoK8sAPIDiscoveryV1EndpointHints      `json:"hints"`
+	Hostname           OptString                                `json:"hostname"`
+	NodeName           OptString                                `json:"nodeName"`
+	TargetRef          OptIoK8sAPICoreV1ObjectReference         `json:"targetRef"`
+	Zone               OptString                                `json:"zone"`
 }
 
 // IoK8sAPIDiscoveryV1EndpointConditions describes #/components/schemas/io.k8s.api.discovery.v1.EndpointConditions.
 type IoK8sAPIDiscoveryV1EndpointConditions struct {
-	Ready       OptionalBool `json:"ready"`
-	Serving     OptionalBool `json:"serving"`
-	Terminating OptionalBool `json:"terminating"`
+	Ready       OptBool `json:"ready"`
+	Serving     OptBool `json:"serving"`
+	Terminating OptBool `json:"terminating"`
 }
 
 // IoK8sAPIDiscoveryV1EndpointHints describes #/components/schemas/io.k8s.api.discovery.v1.EndpointHints.
@@ -5578,28 +5578,28 @@ type IoK8sAPIDiscoveryV1EndpointHints struct {
 
 // IoK8sAPIDiscoveryV1EndpointPort describes #/components/schemas/io.k8s.api.discovery.v1.EndpointPort.
 type IoK8sAPIDiscoveryV1EndpointPort struct {
-	AppProtocol OptionalString `json:"appProtocol"`
-	Name        OptionalString `json:"name"`
-	Port        OptionalInt32  `json:"port"`
-	Protocol    OptionalString `json:"protocol"`
+	AppProtocol OptString `json:"appProtocol"`
+	Name        OptString `json:"name"`
+	Port        OptInt32  `json:"port"`
+	Protocol    OptString `json:"protocol"`
 }
 
 // IoK8sAPIDiscoveryV1EndpointSlice describes #/components/schemas/io.k8s.api.discovery.v1.EndpointSlice.
 type IoK8sAPIDiscoveryV1EndpointSlice struct {
-	AddressType string                                           `json:"addressType"`
-	ApiVersion  OptionalString                                   `json:"apiVersion"`
-	Endpoints   []IoK8sAPIDiscoveryV1Endpoint                    `json:"endpoints"`
-	Kind        OptionalString                                   `json:"kind"`
-	Metadata    OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Ports       *[]IoK8sAPIDiscoveryV1EndpointPort               `json:"ports"`
+	AddressType string                                      `json:"addressType"`
+	ApiVersion  OptString                                   `json:"apiVersion"`
+	Endpoints   []IoK8sAPIDiscoveryV1Endpoint               `json:"endpoints"`
+	Kind        OptString                                   `json:"kind"`
+	Metadata    OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Ports       *[]IoK8sAPIDiscoveryV1EndpointPort          `json:"ports"`
 }
 
 // IoK8sAPIDiscoveryV1EndpointSliceList describes #/components/schemas/io.k8s.api.discovery.v1.EndpointSliceList.
 type IoK8sAPIDiscoveryV1EndpointSliceList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIDiscoveryV1EndpointSlice             `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIDiscoveryV1EndpointSlice        `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIDiscoveryV1ForZone describes #/components/schemas/io.k8s.api.discovery.v1.ForZone.
@@ -5609,20 +5609,20 @@ type IoK8sAPIDiscoveryV1ForZone struct {
 
 // IoK8sAPIDiscoveryV1beta1Endpoint describes #/components/schemas/io.k8s.api.discovery.v1beta1.Endpoint.
 type IoK8sAPIDiscoveryV1beta1Endpoint struct {
-	Addresses  []string                                           `json:"addresses"`
-	Conditions OptionalIoK8sAPIDiscoveryV1beta1EndpointConditions `json:"conditions"`
-	Hints      OptionalIoK8sAPIDiscoveryV1beta1EndpointHints      `json:"hints"`
-	Hostname   OptionalString                                     `json:"hostname"`
-	NodeName   OptionalString                                     `json:"nodeName"`
-	TargetRef  OptionalIoK8sAPICoreV1ObjectReference              `json:"targetRef"`
-	Topology   *struct{}                                          `json:"topology"`
+	Addresses  []string                                      `json:"addresses"`
+	Conditions OptIoK8sAPIDiscoveryV1beta1EndpointConditions `json:"conditions"`
+	Hints      OptIoK8sAPIDiscoveryV1beta1EndpointHints      `json:"hints"`
+	Hostname   OptString                                     `json:"hostname"`
+	NodeName   OptString                                     `json:"nodeName"`
+	TargetRef  OptIoK8sAPICoreV1ObjectReference              `json:"targetRef"`
+	Topology   *struct{}                                     `json:"topology"`
 }
 
 // IoK8sAPIDiscoveryV1beta1EndpointConditions describes #/components/schemas/io.k8s.api.discovery.v1beta1.EndpointConditions.
 type IoK8sAPIDiscoveryV1beta1EndpointConditions struct {
-	Ready       OptionalBool `json:"ready"`
-	Serving     OptionalBool `json:"serving"`
-	Terminating OptionalBool `json:"terminating"`
+	Ready       OptBool `json:"ready"`
+	Serving     OptBool `json:"serving"`
+	Terminating OptBool `json:"terminating"`
 }
 
 // IoK8sAPIDiscoveryV1beta1EndpointHints describes #/components/schemas/io.k8s.api.discovery.v1beta1.EndpointHints.
@@ -5632,28 +5632,28 @@ type IoK8sAPIDiscoveryV1beta1EndpointHints struct {
 
 // IoK8sAPIDiscoveryV1beta1EndpointPort describes #/components/schemas/io.k8s.api.discovery.v1beta1.EndpointPort.
 type IoK8sAPIDiscoveryV1beta1EndpointPort struct {
-	AppProtocol OptionalString `json:"appProtocol"`
-	Name        OptionalString `json:"name"`
-	Port        OptionalInt32  `json:"port"`
-	Protocol    OptionalString `json:"protocol"`
+	AppProtocol OptString `json:"appProtocol"`
+	Name        OptString `json:"name"`
+	Port        OptInt32  `json:"port"`
+	Protocol    OptString `json:"protocol"`
 }
 
 // IoK8sAPIDiscoveryV1beta1EndpointSlice describes #/components/schemas/io.k8s.api.discovery.v1beta1.EndpointSlice.
 type IoK8sAPIDiscoveryV1beta1EndpointSlice struct {
-	AddressType string                                           `json:"addressType"`
-	ApiVersion  OptionalString                                   `json:"apiVersion"`
-	Endpoints   []IoK8sAPIDiscoveryV1beta1Endpoint               `json:"endpoints"`
-	Kind        OptionalString                                   `json:"kind"`
-	Metadata    OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Ports       *[]IoK8sAPIDiscoveryV1beta1EndpointPort          `json:"ports"`
+	AddressType string                                      `json:"addressType"`
+	ApiVersion  OptString                                   `json:"apiVersion"`
+	Endpoints   []IoK8sAPIDiscoveryV1beta1Endpoint          `json:"endpoints"`
+	Kind        OptString                                   `json:"kind"`
+	Metadata    OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Ports       *[]IoK8sAPIDiscoveryV1beta1EndpointPort     `json:"ports"`
 }
 
 // IoK8sAPIDiscoveryV1beta1EndpointSliceList describes #/components/schemas/io.k8s.api.discovery.v1beta1.EndpointSliceList.
 type IoK8sAPIDiscoveryV1beta1EndpointSliceList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIDiscoveryV1beta1EndpointSlice        `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIDiscoveryV1beta1EndpointSlice   `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIDiscoveryV1beta1ForZone describes #/components/schemas/io.k8s.api.discovery.v1beta1.ForZone.
@@ -5663,31 +5663,31 @@ type IoK8sAPIDiscoveryV1beta1ForZone struct {
 
 // IoK8sAPIEventsV1Event describes #/components/schemas/io.k8s.api.events.v1.Event.
 type IoK8sAPIEventsV1Event struct {
-	Action                   OptionalString                                   `json:"action"`
-	ApiVersion               OptionalString                                   `json:"apiVersion"`
-	DeprecatedCount          OptionalInt32                                    `json:"deprecatedCount"`
-	DeprecatedFirstTimestamp *IoK8sApimachineryPkgApisMetaV1Time              `json:"deprecatedFirstTimestamp"`
-	DeprecatedLastTimestamp  *IoK8sApimachineryPkgApisMetaV1Time              `json:"deprecatedLastTimestamp"`
-	DeprecatedSource         OptionalIoK8sAPICoreV1EventSource                `json:"deprecatedSource"`
-	EventTime                IoK8sApimachineryPkgApisMetaV1MicroTime          `json:"eventTime"`
-	Kind                     OptionalString                                   `json:"kind"`
-	Metadata                 OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Note                     OptionalString                                   `json:"note"`
-	Reason                   OptionalString                                   `json:"reason"`
-	Regarding                OptionalIoK8sAPICoreV1ObjectReference            `json:"regarding"`
-	Related                  OptionalIoK8sAPICoreV1ObjectReference            `json:"related"`
-	ReportingController      OptionalString                                   `json:"reportingController"`
-	ReportingInstance        OptionalString                                   `json:"reportingInstance"`
-	Series                   OptionalIoK8sAPIEventsV1EventSeries              `json:"series"`
-	Type                     OptionalString                                   `json:"type"`
+	Action                   OptString                                   `json:"action"`
+	ApiVersion               OptString                                   `json:"apiVersion"`
+	DeprecatedCount          OptInt32                                    `json:"deprecatedCount"`
+	DeprecatedFirstTimestamp *IoK8sApimachineryPkgApisMetaV1Time         `json:"deprecatedFirstTimestamp"`
+	DeprecatedLastTimestamp  *IoK8sApimachineryPkgApisMetaV1Time         `json:"deprecatedLastTimestamp"`
+	DeprecatedSource         OptIoK8sAPICoreV1EventSource                `json:"deprecatedSource"`
+	EventTime                IoK8sApimachineryPkgApisMetaV1MicroTime     `json:"eventTime"`
+	Kind                     OptString                                   `json:"kind"`
+	Metadata                 OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Note                     OptString                                   `json:"note"`
+	Reason                   OptString                                   `json:"reason"`
+	Regarding                OptIoK8sAPICoreV1ObjectReference            `json:"regarding"`
+	Related                  OptIoK8sAPICoreV1ObjectReference            `json:"related"`
+	ReportingController      OptString                                   `json:"reportingController"`
+	ReportingInstance        OptString                                   `json:"reportingInstance"`
+	Series                   OptIoK8sAPIEventsV1EventSeries              `json:"series"`
+	Type                     OptString                                   `json:"type"`
 }
 
 // IoK8sAPIEventsV1EventList describes #/components/schemas/io.k8s.api.events.v1.EventList.
 type IoK8sAPIEventsV1EventList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIEventsV1Event                        `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIEventsV1Event                   `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIEventsV1EventSeries describes #/components/schemas/io.k8s.api.events.v1.EventSeries.
@@ -5698,31 +5698,31 @@ type IoK8sAPIEventsV1EventSeries struct {
 
 // IoK8sAPIEventsV1beta1Event describes #/components/schemas/io.k8s.api.events.v1beta1.Event.
 type IoK8sAPIEventsV1beta1Event struct {
-	Action                   OptionalString                                   `json:"action"`
-	ApiVersion               OptionalString                                   `json:"apiVersion"`
-	DeprecatedCount          OptionalInt32                                    `json:"deprecatedCount"`
-	DeprecatedFirstTimestamp *IoK8sApimachineryPkgApisMetaV1Time              `json:"deprecatedFirstTimestamp"`
-	DeprecatedLastTimestamp  *IoK8sApimachineryPkgApisMetaV1Time              `json:"deprecatedLastTimestamp"`
-	DeprecatedSource         OptionalIoK8sAPICoreV1EventSource                `json:"deprecatedSource"`
-	EventTime                IoK8sApimachineryPkgApisMetaV1MicroTime          `json:"eventTime"`
-	Kind                     OptionalString                                   `json:"kind"`
-	Metadata                 OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Note                     OptionalString                                   `json:"note"`
-	Reason                   OptionalString                                   `json:"reason"`
-	Regarding                OptionalIoK8sAPICoreV1ObjectReference            `json:"regarding"`
-	Related                  OptionalIoK8sAPICoreV1ObjectReference            `json:"related"`
-	ReportingController      OptionalString                                   `json:"reportingController"`
-	ReportingInstance        OptionalString                                   `json:"reportingInstance"`
-	Series                   OptionalIoK8sAPIEventsV1beta1EventSeries         `json:"series"`
-	Type                     OptionalString                                   `json:"type"`
+	Action                   OptString                                   `json:"action"`
+	ApiVersion               OptString                                   `json:"apiVersion"`
+	DeprecatedCount          OptInt32                                    `json:"deprecatedCount"`
+	DeprecatedFirstTimestamp *IoK8sApimachineryPkgApisMetaV1Time         `json:"deprecatedFirstTimestamp"`
+	DeprecatedLastTimestamp  *IoK8sApimachineryPkgApisMetaV1Time         `json:"deprecatedLastTimestamp"`
+	DeprecatedSource         OptIoK8sAPICoreV1EventSource                `json:"deprecatedSource"`
+	EventTime                IoK8sApimachineryPkgApisMetaV1MicroTime     `json:"eventTime"`
+	Kind                     OptString                                   `json:"kind"`
+	Metadata                 OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Note                     OptString                                   `json:"note"`
+	Reason                   OptString                                   `json:"reason"`
+	Regarding                OptIoK8sAPICoreV1ObjectReference            `json:"regarding"`
+	Related                  OptIoK8sAPICoreV1ObjectReference            `json:"related"`
+	ReportingController      OptString                                   `json:"reportingController"`
+	ReportingInstance        OptString                                   `json:"reportingInstance"`
+	Series                   OptIoK8sAPIEventsV1beta1EventSeries         `json:"series"`
+	Type                     OptString                                   `json:"type"`
 }
 
 // IoK8sAPIEventsV1beta1EventList describes #/components/schemas/io.k8s.api.events.v1beta1.EventList.
 type IoK8sAPIEventsV1beta1EventList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIEventsV1beta1Event                   `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIEventsV1beta1Event              `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIEventsV1beta1EventSeries describes #/components/schemas/io.k8s.api.events.v1beta1.EventSeries.
@@ -5738,34 +5738,34 @@ type IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod struct {
 
 // IoK8sAPIFlowcontrolV1beta1FlowSchema describes #/components/schemas/io.k8s.api.flowcontrol.v1beta1.FlowSchema.
 type IoK8sAPIFlowcontrolV1beta1FlowSchema struct {
-	ApiVersion OptionalString                                     `json:"apiVersion"`
-	Kind       OptionalString                                     `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta   `json:"metadata"`
-	Spec       OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec   `json:"spec"`
-	Status     OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus `json:"status"`
+	ApiVersion OptString                                     `json:"apiVersion"`
+	Kind       OptString                                     `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta   `json:"metadata"`
+	Spec       OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec   `json:"spec"`
+	Status     OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus `json:"status"`
 }
 
 // IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition describes #/components/schemas/io.k8s.api.flowcontrol.v1beta1.FlowSchemaCondition.
 type IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition struct {
 	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptionalString                      `json:"message"`
-	Reason             OptionalString                      `json:"reason"`
-	Status             OptionalString                      `json:"status"`
-	Type               OptionalString                      `json:"type"`
+	Message            OptString                           `json:"message"`
+	Reason             OptString                           `json:"reason"`
+	Status             OptString                           `json:"status"`
+	Type               OptString                           `json:"type"`
 }
 
 // IoK8sAPIFlowcontrolV1beta1FlowSchemaList describes #/components/schemas/io.k8s.api.flowcontrol.v1beta1.FlowSchemaList.
 type IoK8sAPIFlowcontrolV1beta1FlowSchemaList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIFlowcontrolV1beta1FlowSchema         `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIFlowcontrolV1beta1FlowSchema    `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec describes #/components/schemas/io.k8s.api.flowcontrol.v1beta1.FlowSchemaSpec.
 type IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec struct {
-	DistinguisherMethod        OptionalIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod     `json:"distinguisherMethod"`
-	MatchingPrecedence         OptionalInt32                                                 `json:"matchingPrecedence"`
+	DistinguisherMethod        OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod          `json:"distinguisherMethod"`
+	MatchingPrecedence         OptInt32                                                      `json:"matchingPrecedence"`
 	PriorityLevelConfiguration IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference `json:"priorityLevelConfiguration"`
 	Rules                      *[]IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects          `json:"rules"`
 }
@@ -5782,14 +5782,14 @@ type IoK8sAPIFlowcontrolV1beta1GroupSubject struct {
 
 // IoK8sAPIFlowcontrolV1beta1LimitResponse describes #/components/schemas/io.k8s.api.flowcontrol.v1beta1.LimitResponse.
 type IoK8sAPIFlowcontrolV1beta1LimitResponse struct {
-	Queuing OptionalIoK8sAPIFlowcontrolV1beta1QueuingConfiguration `json:"queuing"`
-	Type    string                                                 `json:"type"`
+	Queuing OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration `json:"queuing"`
+	Type    string                                            `json:"type"`
 }
 
 // IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration describes #/components/schemas/io.k8s.api.flowcontrol.v1beta1.LimitedPriorityLevelConfiguration.
 type IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration struct {
-	AssuredConcurrencyShares OptionalInt32                                   `json:"assuredConcurrencyShares"`
-	LimitResponse            OptionalIoK8sAPIFlowcontrolV1beta1LimitResponse `json:"limitResponse"`
+	AssuredConcurrencyShares OptInt32                                   `json:"assuredConcurrencyShares"`
+	LimitResponse            OptIoK8sAPIFlowcontrolV1beta1LimitResponse `json:"limitResponse"`
 }
 
 // IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule describes #/components/schemas/io.k8s.api.flowcontrol.v1beta1.NonResourcePolicyRule.
@@ -5807,28 +5807,28 @@ type IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects struct {
 
 // IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration describes #/components/schemas/io.k8s.api.flowcontrol.v1beta1.PriorityLevelConfiguration.
 type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration struct {
-	ApiVersion OptionalString                                                     `json:"apiVersion"`
-	Kind       OptionalString                                                     `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta                   `json:"metadata"`
-	Spec       OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec   `json:"spec"`
-	Status     OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus `json:"status"`
+	ApiVersion OptString                                                     `json:"apiVersion"`
+	Kind       OptString                                                     `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta                   `json:"metadata"`
+	Spec       OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec   `json:"spec"`
+	Status     OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus `json:"status"`
 }
 
 // IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition describes #/components/schemas/io.k8s.api.flowcontrol.v1beta1.PriorityLevelConfigurationCondition.
 type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition struct {
 	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptionalString                      `json:"message"`
-	Reason             OptionalString                      `json:"reason"`
-	Status             OptionalString                      `json:"status"`
-	Type               OptionalString                      `json:"type"`
+	Message            OptString                           `json:"message"`
+	Reason             OptString                           `json:"reason"`
+	Status             OptString                           `json:"status"`
+	Type               OptString                           `json:"type"`
 }
 
 // IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList describes #/components/schemas/io.k8s.api.flowcontrol.v1beta1.PriorityLevelConfigurationList.
 type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList struct {
-	ApiVersion OptionalString                                         `json:"apiVersion"`
+	ApiVersion OptString                                              `json:"apiVersion"`
 	Items      []IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration `json:"items"`
-	Kind       OptionalString                                         `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta         `json:"metadata"`
+	Kind       OptString                                              `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta              `json:"metadata"`
 }
 
 // IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference describes #/components/schemas/io.k8s.api.flowcontrol.v1beta1.PriorityLevelConfigurationReference.
@@ -5838,8 +5838,8 @@ type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference struct {
 
 // IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec describes #/components/schemas/io.k8s.api.flowcontrol.v1beta1.PriorityLevelConfigurationSpec.
 type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec struct {
-	Limited OptionalIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration `json:"limited"`
-	Type    string                                                              `json:"type"`
+	Limited OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration `json:"limited"`
+	Type    string                                                         `json:"type"`
 }
 
 // IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus describes #/components/schemas/io.k8s.api.flowcontrol.v1beta1.PriorityLevelConfigurationStatus.
@@ -5849,18 +5849,18 @@ type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus struct {
 
 // IoK8sAPIFlowcontrolV1beta1QueuingConfiguration describes #/components/schemas/io.k8s.api.flowcontrol.v1beta1.QueuingConfiguration.
 type IoK8sAPIFlowcontrolV1beta1QueuingConfiguration struct {
-	HandSize         OptionalInt32 `json:"handSize"`
-	QueueLengthLimit OptionalInt32 `json:"queueLengthLimit"`
-	Queues           OptionalInt32 `json:"queues"`
+	HandSize         OptInt32 `json:"handSize"`
+	QueueLengthLimit OptInt32 `json:"queueLengthLimit"`
+	Queues           OptInt32 `json:"queues"`
 }
 
 // IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule describes #/components/schemas/io.k8s.api.flowcontrol.v1beta1.ResourcePolicyRule.
 type IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule struct {
-	ApiGroups    []string     `json:"apiGroups"`
-	ClusterScope OptionalBool `json:"clusterScope"`
-	Namespaces   *[]string    `json:"namespaces"`
-	Resources    []string     `json:"resources"`
-	Verbs        []string     `json:"verbs"`
+	ApiGroups    []string  `json:"apiGroups"`
+	ClusterScope OptBool   `json:"clusterScope"`
+	Namespaces   *[]string `json:"namespaces"`
+	Resources    []string  `json:"resources"`
+	Verbs        []string  `json:"verbs"`
 }
 
 // IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject describes #/components/schemas/io.k8s.api.flowcontrol.v1beta1.ServiceAccountSubject.
@@ -5871,10 +5871,10 @@ type IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject struct {
 
 // IoK8sAPIFlowcontrolV1beta1Subject describes #/components/schemas/io.k8s.api.flowcontrol.v1beta1.Subject.
 type IoK8sAPIFlowcontrolV1beta1Subject struct {
-	Group          OptionalIoK8sAPIFlowcontrolV1beta1GroupSubject          `json:"group"`
-	Kind           string                                                  `json:"kind"`
-	ServiceAccount OptionalIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject `json:"serviceAccount"`
-	User           OptionalIoK8sAPIFlowcontrolV1beta1UserSubject           `json:"user"`
+	Group          OptIoK8sAPIFlowcontrolV1beta1GroupSubject          `json:"group"`
+	Kind           string                                             `json:"kind"`
+	ServiceAccount OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject `json:"serviceAccount"`
+	User           OptIoK8sAPIFlowcontrolV1beta1UserSubject           `json:"user"`
 }
 
 // IoK8sAPIFlowcontrolV1beta1UserSubject describes #/components/schemas/io.k8s.api.flowcontrol.v1beta1.UserSubject.
@@ -5889,34 +5889,34 @@ type IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod struct {
 
 // IoK8sAPIFlowcontrolV1beta2FlowSchema describes #/components/schemas/io.k8s.api.flowcontrol.v1beta2.FlowSchema.
 type IoK8sAPIFlowcontrolV1beta2FlowSchema struct {
-	ApiVersion OptionalString                                     `json:"apiVersion"`
-	Kind       OptionalString                                     `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta   `json:"metadata"`
-	Spec       OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec   `json:"spec"`
-	Status     OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus `json:"status"`
+	ApiVersion OptString                                     `json:"apiVersion"`
+	Kind       OptString                                     `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta   `json:"metadata"`
+	Spec       OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec   `json:"spec"`
+	Status     OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus `json:"status"`
 }
 
 // IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition describes #/components/schemas/io.k8s.api.flowcontrol.v1beta2.FlowSchemaCondition.
 type IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition struct {
 	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptionalString                      `json:"message"`
-	Reason             OptionalString                      `json:"reason"`
-	Status             OptionalString                      `json:"status"`
-	Type               OptionalString                      `json:"type"`
+	Message            OptString                           `json:"message"`
+	Reason             OptString                           `json:"reason"`
+	Status             OptString                           `json:"status"`
+	Type               OptString                           `json:"type"`
 }
 
 // IoK8sAPIFlowcontrolV1beta2FlowSchemaList describes #/components/schemas/io.k8s.api.flowcontrol.v1beta2.FlowSchemaList.
 type IoK8sAPIFlowcontrolV1beta2FlowSchemaList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIFlowcontrolV1beta2FlowSchema         `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIFlowcontrolV1beta2FlowSchema    `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec describes #/components/schemas/io.k8s.api.flowcontrol.v1beta2.FlowSchemaSpec.
 type IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec struct {
-	DistinguisherMethod        OptionalIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod     `json:"distinguisherMethod"`
-	MatchingPrecedence         OptionalInt32                                                 `json:"matchingPrecedence"`
+	DistinguisherMethod        OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod          `json:"distinguisherMethod"`
+	MatchingPrecedence         OptInt32                                                      `json:"matchingPrecedence"`
 	PriorityLevelConfiguration IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference `json:"priorityLevelConfiguration"`
 	Rules                      *[]IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects          `json:"rules"`
 }
@@ -5933,14 +5933,14 @@ type IoK8sAPIFlowcontrolV1beta2GroupSubject struct {
 
 // IoK8sAPIFlowcontrolV1beta2LimitResponse describes #/components/schemas/io.k8s.api.flowcontrol.v1beta2.LimitResponse.
 type IoK8sAPIFlowcontrolV1beta2LimitResponse struct {
-	Queuing OptionalIoK8sAPIFlowcontrolV1beta2QueuingConfiguration `json:"queuing"`
-	Type    string                                                 `json:"type"`
+	Queuing OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration `json:"queuing"`
+	Type    string                                            `json:"type"`
 }
 
 // IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration describes #/components/schemas/io.k8s.api.flowcontrol.v1beta2.LimitedPriorityLevelConfiguration.
 type IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration struct {
-	AssuredConcurrencyShares OptionalInt32                                   `json:"assuredConcurrencyShares"`
-	LimitResponse            OptionalIoK8sAPIFlowcontrolV1beta2LimitResponse `json:"limitResponse"`
+	AssuredConcurrencyShares OptInt32                                   `json:"assuredConcurrencyShares"`
+	LimitResponse            OptIoK8sAPIFlowcontrolV1beta2LimitResponse `json:"limitResponse"`
 }
 
 // IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule describes #/components/schemas/io.k8s.api.flowcontrol.v1beta2.NonResourcePolicyRule.
@@ -5958,28 +5958,28 @@ type IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects struct {
 
 // IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration describes #/components/schemas/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfiguration.
 type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration struct {
-	ApiVersion OptionalString                                                     `json:"apiVersion"`
-	Kind       OptionalString                                                     `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta                   `json:"metadata"`
-	Spec       OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec   `json:"spec"`
-	Status     OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus `json:"status"`
+	ApiVersion OptString                                                     `json:"apiVersion"`
+	Kind       OptString                                                     `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta                   `json:"metadata"`
+	Spec       OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec   `json:"spec"`
+	Status     OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus `json:"status"`
 }
 
 // IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition describes #/components/schemas/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfigurationCondition.
 type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition struct {
 	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptionalString                      `json:"message"`
-	Reason             OptionalString                      `json:"reason"`
-	Status             OptionalString                      `json:"status"`
-	Type               OptionalString                      `json:"type"`
+	Message            OptString                           `json:"message"`
+	Reason             OptString                           `json:"reason"`
+	Status             OptString                           `json:"status"`
+	Type               OptString                           `json:"type"`
 }
 
 // IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList describes #/components/schemas/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfigurationList.
 type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList struct {
-	ApiVersion OptionalString                                         `json:"apiVersion"`
+	ApiVersion OptString                                              `json:"apiVersion"`
 	Items      []IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration `json:"items"`
-	Kind       OptionalString                                         `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta         `json:"metadata"`
+	Kind       OptString                                              `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta              `json:"metadata"`
 }
 
 // IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference describes #/components/schemas/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfigurationReference.
@@ -5989,8 +5989,8 @@ type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference struct {
 
 // IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec describes #/components/schemas/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfigurationSpec.
 type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec struct {
-	Limited OptionalIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration `json:"limited"`
-	Type    string                                                              `json:"type"`
+	Limited OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration `json:"limited"`
+	Type    string                                                         `json:"type"`
 }
 
 // IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus describes #/components/schemas/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfigurationStatus.
@@ -6000,18 +6000,18 @@ type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus struct {
 
 // IoK8sAPIFlowcontrolV1beta2QueuingConfiguration describes #/components/schemas/io.k8s.api.flowcontrol.v1beta2.QueuingConfiguration.
 type IoK8sAPIFlowcontrolV1beta2QueuingConfiguration struct {
-	HandSize         OptionalInt32 `json:"handSize"`
-	QueueLengthLimit OptionalInt32 `json:"queueLengthLimit"`
-	Queues           OptionalInt32 `json:"queues"`
+	HandSize         OptInt32 `json:"handSize"`
+	QueueLengthLimit OptInt32 `json:"queueLengthLimit"`
+	Queues           OptInt32 `json:"queues"`
 }
 
 // IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule describes #/components/schemas/io.k8s.api.flowcontrol.v1beta2.ResourcePolicyRule.
 type IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule struct {
-	ApiGroups    []string     `json:"apiGroups"`
-	ClusterScope OptionalBool `json:"clusterScope"`
-	Namespaces   *[]string    `json:"namespaces"`
-	Resources    []string     `json:"resources"`
-	Verbs        []string     `json:"verbs"`
+	ApiGroups    []string  `json:"apiGroups"`
+	ClusterScope OptBool   `json:"clusterScope"`
+	Namespaces   *[]string `json:"namespaces"`
+	Resources    []string  `json:"resources"`
+	Verbs        []string  `json:"verbs"`
 }
 
 // IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject describes #/components/schemas/io.k8s.api.flowcontrol.v1beta2.ServiceAccountSubject.
@@ -6022,10 +6022,10 @@ type IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject struct {
 
 // IoK8sAPIFlowcontrolV1beta2Subject describes #/components/schemas/io.k8s.api.flowcontrol.v1beta2.Subject.
 type IoK8sAPIFlowcontrolV1beta2Subject struct {
-	Group          OptionalIoK8sAPIFlowcontrolV1beta2GroupSubject          `json:"group"`
-	Kind           string                                                  `json:"kind"`
-	ServiceAccount OptionalIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject `json:"serviceAccount"`
-	User           OptionalIoK8sAPIFlowcontrolV1beta2UserSubject           `json:"user"`
+	Group          OptIoK8sAPIFlowcontrolV1beta2GroupSubject          `json:"group"`
+	Kind           string                                             `json:"kind"`
+	ServiceAccount OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject `json:"serviceAccount"`
+	User           OptIoK8sAPIFlowcontrolV1beta2UserSubject           `json:"user"`
 }
 
 // IoK8sAPIFlowcontrolV1beta2UserSubject describes #/components/schemas/io.k8s.api.flowcontrol.v1beta2.UserSubject.
@@ -6036,7 +6036,7 @@ type IoK8sAPIFlowcontrolV1beta2UserSubject struct {
 // IoK8sAPINetworkingV1HTTPIngressPath describes #/components/schemas/io.k8s.api.networking.v1.HTTPIngressPath.
 type IoK8sAPINetworkingV1HTTPIngressPath struct {
 	Backend  IoK8sAPINetworkingV1IngressBackend `json:"backend"`
-	Path     OptionalString                     `json:"path"`
+	Path     OptString                          `json:"path"`
 	PathType string                             `json:"pathType"`
 }
 
@@ -6053,95 +6053,95 @@ type IoK8sAPINetworkingV1IPBlock struct {
 
 // IoK8sAPINetworkingV1Ingress describes #/components/schemas/io.k8s.api.networking.v1.Ingress.
 type IoK8sAPINetworkingV1Ingress struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       OptionalIoK8sAPINetworkingV1IngressSpec          `json:"spec"`
-	Status     OptionalIoK8sAPINetworkingV1IngressStatus        `json:"status"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       OptIoK8sAPINetworkingV1IngressSpec          `json:"spec"`
+	Status     OptIoK8sAPINetworkingV1IngressStatus        `json:"status"`
 }
 
 // IoK8sAPINetworkingV1IngressBackend describes #/components/schemas/io.k8s.api.networking.v1.IngressBackend.
 type IoK8sAPINetworkingV1IngressBackend struct {
-	Resource OptionalIoK8sAPICoreV1TypedLocalObjectReference   `json:"resource"`
-	Service  OptionalIoK8sAPINetworkingV1IngressServiceBackend `json:"service"`
+	Resource OptIoK8sAPICoreV1TypedLocalObjectReference   `json:"resource"`
+	Service  OptIoK8sAPINetworkingV1IngressServiceBackend `json:"service"`
 }
 
 // IoK8sAPINetworkingV1IngressClass describes #/components/schemas/io.k8s.api.networking.v1.IngressClass.
 type IoK8sAPINetworkingV1IngressClass struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       OptionalIoK8sAPINetworkingV1IngressClassSpec     `json:"spec"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       OptIoK8sAPINetworkingV1IngressClassSpec     `json:"spec"`
 }
 
 // IoK8sAPINetworkingV1IngressClassList describes #/components/schemas/io.k8s.api.networking.v1.IngressClassList.
 type IoK8sAPINetworkingV1IngressClassList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPINetworkingV1IngressClass             `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPINetworkingV1IngressClass        `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPINetworkingV1IngressClassParametersReference describes #/components/schemas/io.k8s.api.networking.v1.IngressClassParametersReference.
 type IoK8sAPINetworkingV1IngressClassParametersReference struct {
-	ApiGroup  OptionalString `json:"apiGroup"`
-	Kind      string         `json:"kind"`
-	Name      string         `json:"name"`
-	Namespace OptionalString `json:"namespace"`
-	Scope     OptionalString `json:"scope"`
+	ApiGroup  OptString `json:"apiGroup"`
+	Kind      string    `json:"kind"`
+	Name      string    `json:"name"`
+	Namespace OptString `json:"namespace"`
+	Scope     OptString `json:"scope"`
 }
 
 // IoK8sAPINetworkingV1IngressClassSpec describes #/components/schemas/io.k8s.api.networking.v1.IngressClassSpec.
 type IoK8sAPINetworkingV1IngressClassSpec struct {
-	Controller OptionalString                                              `json:"controller"`
-	Parameters OptionalIoK8sAPINetworkingV1IngressClassParametersReference `json:"parameters"`
+	Controller OptString                                              `json:"controller"`
+	Parameters OptIoK8sAPINetworkingV1IngressClassParametersReference `json:"parameters"`
 }
 
 // IoK8sAPINetworkingV1IngressList describes #/components/schemas/io.k8s.api.networking.v1.IngressList.
 type IoK8sAPINetworkingV1IngressList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPINetworkingV1Ingress                  `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPINetworkingV1Ingress             `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPINetworkingV1IngressRule describes #/components/schemas/io.k8s.api.networking.v1.IngressRule.
 type IoK8sAPINetworkingV1IngressRule struct {
-	HTTP OptionalIoK8sAPINetworkingV1HTTPIngressRuleValue `json:"http"`
-	Host OptionalString                                   `json:"host"`
+	HTTP OptIoK8sAPINetworkingV1HTTPIngressRuleValue `json:"http"`
+	Host OptString                                   `json:"host"`
 }
 
 // IoK8sAPINetworkingV1IngressServiceBackend describes #/components/schemas/io.k8s.api.networking.v1.IngressServiceBackend.
 type IoK8sAPINetworkingV1IngressServiceBackend struct {
-	Name string                                         `json:"name"`
-	Port OptionalIoK8sAPINetworkingV1ServiceBackendPort `json:"port"`
+	Name string                                    `json:"name"`
+	Port OptIoK8sAPINetworkingV1ServiceBackendPort `json:"port"`
 }
 
 // IoK8sAPINetworkingV1IngressSpec describes #/components/schemas/io.k8s.api.networking.v1.IngressSpec.
 type IoK8sAPINetworkingV1IngressSpec struct {
-	DefaultBackend   OptionalIoK8sAPINetworkingV1IngressBackend `json:"defaultBackend"`
-	IngressClassName OptionalString                             `json:"ingressClassName"`
-	Rules            *[]IoK8sAPINetworkingV1IngressRule         `json:"rules"`
-	TLS              *[]IoK8sAPINetworkingV1IngressTLS          `json:"tls"`
+	DefaultBackend   OptIoK8sAPINetworkingV1IngressBackend `json:"defaultBackend"`
+	IngressClassName OptString                             `json:"ingressClassName"`
+	Rules            *[]IoK8sAPINetworkingV1IngressRule    `json:"rules"`
+	TLS              *[]IoK8sAPINetworkingV1IngressTLS     `json:"tls"`
 }
 
 // IoK8sAPINetworkingV1IngressStatus describes #/components/schemas/io.k8s.api.networking.v1.IngressStatus.
 type IoK8sAPINetworkingV1IngressStatus struct {
-	LoadBalancer OptionalIoK8sAPICoreV1LoadBalancerStatus `json:"loadBalancer"`
+	LoadBalancer OptIoK8sAPICoreV1LoadBalancerStatus `json:"loadBalancer"`
 }
 
 // IoK8sAPINetworkingV1IngressTLS describes #/components/schemas/io.k8s.api.networking.v1.IngressTLS.
 type IoK8sAPINetworkingV1IngressTLS struct {
-	Hosts      *[]string      `json:"hosts"`
-	SecretName OptionalString `json:"secretName"`
+	Hosts      *[]string `json:"hosts"`
+	SecretName OptString `json:"secretName"`
 }
 
 // IoK8sAPINetworkingV1NetworkPolicy describes #/components/schemas/io.k8s.api.networking.v1.NetworkPolicy.
 type IoK8sAPINetworkingV1NetworkPolicy struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       OptionalIoK8sAPINetworkingV1NetworkPolicySpec    `json:"spec"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       OptIoK8sAPINetworkingV1NetworkPolicySpec    `json:"spec"`
 }
 
 // IoK8sAPINetworkingV1NetworkPolicyEgressRule describes #/components/schemas/io.k8s.api.networking.v1.NetworkPolicyEgressRule.
@@ -6158,24 +6158,24 @@ type IoK8sAPINetworkingV1NetworkPolicyIngressRule struct {
 
 // IoK8sAPINetworkingV1NetworkPolicyList describes #/components/schemas/io.k8s.api.networking.v1.NetworkPolicyList.
 type IoK8sAPINetworkingV1NetworkPolicyList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPINetworkingV1NetworkPolicy            `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPINetworkingV1NetworkPolicy       `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPINetworkingV1NetworkPolicyPeer describes #/components/schemas/io.k8s.api.networking.v1.NetworkPolicyPeer.
 type IoK8sAPINetworkingV1NetworkPolicyPeer struct {
-	IpBlock           OptionalIoK8sAPINetworkingV1IPBlock                 `json:"ipBlock"`
-	NamespaceSelector OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"namespaceSelector"`
-	PodSelector       OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"podSelector"`
+	IpBlock           OptIoK8sAPINetworkingV1IPBlock                 `json:"ipBlock"`
+	NamespaceSelector OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"namespaceSelector"`
+	PodSelector       OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"podSelector"`
 }
 
 // IoK8sAPINetworkingV1NetworkPolicyPort describes #/components/schemas/io.k8s.api.networking.v1.NetworkPolicyPort.
 type IoK8sAPINetworkingV1NetworkPolicyPort struct {
-	EndPort  OptionalInt32                              `json:"endPort"`
+	EndPort  OptInt32                                   `json:"endPort"`
 	Port     *IoK8sApimachineryPkgUtilIntstrIntOrString `json:"port"`
-	Protocol OptionalString                             `json:"protocol"`
+	Protocol OptString                                  `json:"protocol"`
 }
 
 // IoK8sAPINetworkingV1NetworkPolicySpec describes #/components/schemas/io.k8s.api.networking.v1.NetworkPolicySpec.
@@ -6188,8 +6188,8 @@ type IoK8sAPINetworkingV1NetworkPolicySpec struct {
 
 // IoK8sAPINetworkingV1ServiceBackendPort describes #/components/schemas/io.k8s.api.networking.v1.ServiceBackendPort.
 type IoK8sAPINetworkingV1ServiceBackendPort struct {
-	Name   OptionalString `json:"name"`
-	Number OptionalInt32  `json:"number"`
+	Name   OptString `json:"name"`
+	Number OptInt32  `json:"number"`
 }
 
 // IoK8sAPINodeV1Overhead describes #/components/schemas/io.k8s.api.node.v1.Overhead.
@@ -6199,20 +6199,20 @@ type IoK8sAPINodeV1Overhead struct {
 
 // IoK8sAPINodeV1RuntimeClass describes #/components/schemas/io.k8s.api.node.v1.RuntimeClass.
 type IoK8sAPINodeV1RuntimeClass struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Handler    string                                           `json:"handler"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Overhead   OptionalIoK8sAPINodeV1Overhead                   `json:"overhead"`
-	Scheduling OptionalIoK8sAPINodeV1Scheduling                 `json:"scheduling"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Handler    string                                      `json:"handler"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Overhead   OptIoK8sAPINodeV1Overhead                   `json:"overhead"`
+	Scheduling OptIoK8sAPINodeV1Scheduling                 `json:"scheduling"`
 }
 
 // IoK8sAPINodeV1RuntimeClassList describes #/components/schemas/io.k8s.api.node.v1.RuntimeClassList.
 type IoK8sAPINodeV1RuntimeClassList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPINodeV1RuntimeClass                   `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPINodeV1RuntimeClass              `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPINodeV1Scheduling describes #/components/schemas/io.k8s.api.node.v1.Scheduling.
@@ -6228,25 +6228,25 @@ type IoK8sAPINodeV1alpha1Overhead struct {
 
 // IoK8sAPINodeV1alpha1RuntimeClass describes #/components/schemas/io.k8s.api.node.v1alpha1.RuntimeClass.
 type IoK8sAPINodeV1alpha1RuntimeClass struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       IoK8sAPINodeV1alpha1RuntimeClassSpec             `json:"spec"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       IoK8sAPINodeV1alpha1RuntimeClassSpec        `json:"spec"`
 }
 
 // IoK8sAPINodeV1alpha1RuntimeClassList describes #/components/schemas/io.k8s.api.node.v1alpha1.RuntimeClassList.
 type IoK8sAPINodeV1alpha1RuntimeClassList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPINodeV1alpha1RuntimeClass             `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPINodeV1alpha1RuntimeClass        `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPINodeV1alpha1RuntimeClassSpec describes #/components/schemas/io.k8s.api.node.v1alpha1.RuntimeClassSpec.
 type IoK8sAPINodeV1alpha1RuntimeClassSpec struct {
-	Overhead       OptionalIoK8sAPINodeV1alpha1Overhead   `json:"overhead"`
-	RuntimeHandler string                                 `json:"runtimeHandler"`
-	Scheduling     OptionalIoK8sAPINodeV1alpha1Scheduling `json:"scheduling"`
+	Overhead       OptIoK8sAPINodeV1alpha1Overhead   `json:"overhead"`
+	RuntimeHandler string                            `json:"runtimeHandler"`
+	Scheduling     OptIoK8sAPINodeV1alpha1Scheduling `json:"scheduling"`
 }
 
 // IoK8sAPINodeV1alpha1Scheduling describes #/components/schemas/io.k8s.api.node.v1alpha1.Scheduling.
@@ -6262,20 +6262,20 @@ type IoK8sAPINodeV1beta1Overhead struct {
 
 // IoK8sAPINodeV1beta1RuntimeClass describes #/components/schemas/io.k8s.api.node.v1beta1.RuntimeClass.
 type IoK8sAPINodeV1beta1RuntimeClass struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Handler    string                                           `json:"handler"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Overhead   OptionalIoK8sAPINodeV1beta1Overhead              `json:"overhead"`
-	Scheduling OptionalIoK8sAPINodeV1beta1Scheduling            `json:"scheduling"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Handler    string                                      `json:"handler"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Overhead   OptIoK8sAPINodeV1beta1Overhead              `json:"overhead"`
+	Scheduling OptIoK8sAPINodeV1beta1Scheduling            `json:"scheduling"`
 }
 
 // IoK8sAPINodeV1beta1RuntimeClassList describes #/components/schemas/io.k8s.api.node.v1beta1.RuntimeClassList.
 type IoK8sAPINodeV1beta1RuntimeClassList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPINodeV1beta1RuntimeClass              `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPINodeV1beta1RuntimeClass         `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPINodeV1beta1Scheduling describes #/components/schemas/io.k8s.api.node.v1beta1.Scheduling.
@@ -6286,26 +6286,26 @@ type IoK8sAPINodeV1beta1Scheduling struct {
 
 // IoK8sAPIPolicyV1PodDisruptionBudget describes #/components/schemas/io.k8s.api.policy.v1.PodDisruptionBudget.
 type IoK8sAPIPolicyV1PodDisruptionBudget struct {
-	ApiVersion OptionalString                                    `json:"apiVersion"`
-	Kind       OptionalString                                    `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta  `json:"metadata"`
-	Spec       OptionalIoK8sAPIPolicyV1PodDisruptionBudgetSpec   `json:"spec"`
-	Status     OptionalIoK8sAPIPolicyV1PodDisruptionBudgetStatus `json:"status"`
+	ApiVersion OptString                                    `json:"apiVersion"`
+	Kind       OptString                                    `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta  `json:"metadata"`
+	Spec       OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec   `json:"spec"`
+	Status     OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus `json:"status"`
 }
 
 // IoK8sAPIPolicyV1PodDisruptionBudgetList describes #/components/schemas/io.k8s.api.policy.v1.PodDisruptionBudgetList.
 type IoK8sAPIPolicyV1PodDisruptionBudgetList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIPolicyV1PodDisruptionBudget          `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIPolicyV1PodDisruptionBudget     `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIPolicyV1PodDisruptionBudgetSpec describes #/components/schemas/io.k8s.api.policy.v1.PodDisruptionBudgetSpec.
 type IoK8sAPIPolicyV1PodDisruptionBudgetSpec struct {
-	MaxUnavailable *IoK8sApimachineryPkgUtilIntstrIntOrString          `json:"maxUnavailable"`
-	MinAvailable   *IoK8sApimachineryPkgUtilIntstrIntOrString          `json:"minAvailable"`
-	Selector       OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
+	MaxUnavailable *IoK8sApimachineryPkgUtilIntstrIntOrString     `json:"maxUnavailable"`
+	MinAvailable   *IoK8sApimachineryPkgUtilIntstrIntOrString     `json:"minAvailable"`
+	Selector       OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
 }
 
 // IoK8sAPIPolicyV1PodDisruptionBudgetStatus describes #/components/schemas/io.k8s.api.policy.v1.PodDisruptionBudgetStatus.
@@ -6316,7 +6316,7 @@ type IoK8sAPIPolicyV1PodDisruptionBudgetStatus struct {
 	DisruptedPods      *struct{}                                  `json:"disruptedPods"`
 	DisruptionsAllowed int32                                      `json:"disruptionsAllowed"`
 	ExpectedPods       int32                                      `json:"expectedPods"`
-	ObservedGeneration OptionalInt64                              `json:"observedGeneration"`
+	ObservedGeneration OptInt64                                   `json:"observedGeneration"`
 }
 
 // IoK8sAPIPolicyV1beta1AllowedCSIDriver describes #/components/schemas/io.k8s.api.policy.v1beta1.AllowedCSIDriver.
@@ -6331,14 +6331,14 @@ type IoK8sAPIPolicyV1beta1AllowedFlexVolume struct {
 
 // IoK8sAPIPolicyV1beta1AllowedHostPath describes #/components/schemas/io.k8s.api.policy.v1beta1.AllowedHostPath.
 type IoK8sAPIPolicyV1beta1AllowedHostPath struct {
-	PathPrefix OptionalString `json:"pathPrefix"`
-	ReadOnly   OptionalBool   `json:"readOnly"`
+	PathPrefix OptString `json:"pathPrefix"`
+	ReadOnly   OptBool   `json:"readOnly"`
 }
 
 // IoK8sAPIPolicyV1beta1FSGroupStrategyOptions describes #/components/schemas/io.k8s.api.policy.v1beta1.FSGroupStrategyOptions.
 type IoK8sAPIPolicyV1beta1FSGroupStrategyOptions struct {
 	Ranges *[]IoK8sAPIPolicyV1beta1IDRange `json:"ranges"`
-	Rule   OptionalString                  `json:"rule"`
+	Rule   OptString                       `json:"rule"`
 }
 
 // IoK8sAPIPolicyV1beta1HostPortRange describes #/components/schemas/io.k8s.api.policy.v1beta1.HostPortRange.
@@ -6355,26 +6355,26 @@ type IoK8sAPIPolicyV1beta1IDRange struct {
 
 // IoK8sAPIPolicyV1beta1PodDisruptionBudget describes #/components/schemas/io.k8s.api.policy.v1beta1.PodDisruptionBudget.
 type IoK8sAPIPolicyV1beta1PodDisruptionBudget struct {
-	ApiVersion OptionalString                                         `json:"apiVersion"`
-	Kind       OptionalString                                         `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta       `json:"metadata"`
-	Spec       OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec   `json:"spec"`
-	Status     OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus `json:"status"`
+	ApiVersion OptString                                         `json:"apiVersion"`
+	Kind       OptString                                         `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta       `json:"metadata"`
+	Spec       OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec   `json:"spec"`
+	Status     OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus `json:"status"`
 }
 
 // IoK8sAPIPolicyV1beta1PodDisruptionBudgetList describes #/components/schemas/io.k8s.api.policy.v1beta1.PodDisruptionBudgetList.
 type IoK8sAPIPolicyV1beta1PodDisruptionBudgetList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIPolicyV1beta1PodDisruptionBudget     `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                  `json:"apiVersion"`
+	Items      []IoK8sAPIPolicyV1beta1PodDisruptionBudget `json:"items"`
+	Kind       OptString                                  `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta  `json:"metadata"`
 }
 
 // IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec describes #/components/schemas/io.k8s.api.policy.v1beta1.PodDisruptionBudgetSpec.
 type IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec struct {
-	MaxUnavailable *IoK8sApimachineryPkgUtilIntstrIntOrString          `json:"maxUnavailable"`
-	MinAvailable   *IoK8sApimachineryPkgUtilIntstrIntOrString          `json:"minAvailable"`
-	Selector       OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
+	MaxUnavailable *IoK8sApimachineryPkgUtilIntstrIntOrString     `json:"maxUnavailable"`
+	MinAvailable   *IoK8sApimachineryPkgUtilIntstrIntOrString     `json:"minAvailable"`
+	Selector       OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
 }
 
 // IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus describes #/components/schemas/io.k8s.api.policy.v1beta1.PodDisruptionBudgetStatus.
@@ -6385,51 +6385,51 @@ type IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus struct {
 	DisruptedPods      *struct{}                                  `json:"disruptedPods"`
 	DisruptionsAllowed int32                                      `json:"disruptionsAllowed"`
 	ExpectedPods       int32                                      `json:"expectedPods"`
-	ObservedGeneration OptionalInt64                              `json:"observedGeneration"`
+	ObservedGeneration OptInt64                                   `json:"observedGeneration"`
 }
 
 // IoK8sAPIPolicyV1beta1PodSecurityPolicy describes #/components/schemas/io.k8s.api.policy.v1beta1.PodSecurityPolicy.
 type IoK8sAPIPolicyV1beta1PodSecurityPolicy struct {
-	ApiVersion OptionalString                                     `json:"apiVersion"`
-	Kind       OptionalString                                     `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta   `json:"metadata"`
-	Spec       OptionalIoK8sAPIPolicyV1beta1PodSecurityPolicySpec `json:"spec"`
+	ApiVersion OptString                                     `json:"apiVersion"`
+	Kind       OptString                                     `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta   `json:"metadata"`
+	Spec       OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec `json:"spec"`
 }
 
 // IoK8sAPIPolicyV1beta1PodSecurityPolicyList describes #/components/schemas/io.k8s.api.policy.v1beta1.PodSecurityPolicyList.
 type IoK8sAPIPolicyV1beta1PodSecurityPolicyList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIPolicyV1beta1PodSecurityPolicy       `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIPolicyV1beta1PodSecurityPolicy  `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIPolicyV1beta1PodSecurityPolicySpec describes #/components/schemas/io.k8s.api.policy.v1beta1.PodSecurityPolicySpec.
 type IoK8sAPIPolicyV1beta1PodSecurityPolicySpec struct {
-	AllowPrivilegeEscalation        OptionalBool                                             `json:"allowPrivilegeEscalation"`
-	AllowedCSIDrivers               *[]IoK8sAPIPolicyV1beta1AllowedCSIDriver                 `json:"allowedCSIDrivers"`
-	AllowedCapabilities             *[]string                                                `json:"allowedCapabilities"`
-	AllowedFlexVolumes              *[]IoK8sAPIPolicyV1beta1AllowedFlexVolume                `json:"allowedFlexVolumes"`
-	AllowedHostPaths                *[]IoK8sAPIPolicyV1beta1AllowedHostPath                  `json:"allowedHostPaths"`
-	AllowedProcMountTypes           *[]string                                                `json:"allowedProcMountTypes"`
-	AllowedUnsafeSysctls            *[]string                                                `json:"allowedUnsafeSysctls"`
-	DefaultAddCapabilities          *[]string                                                `json:"defaultAddCapabilities"`
-	DefaultAllowPrivilegeEscalation OptionalBool                                             `json:"defaultAllowPrivilegeEscalation"`
-	ForbiddenSysctls                *[]string                                                `json:"forbiddenSysctls"`
-	FsGroup                         IoK8sAPIPolicyV1beta1FSGroupStrategyOptions              `json:"fsGroup"`
-	HostIPC                         OptionalBool                                             `json:"hostIPC"`
-	HostNetwork                     OptionalBool                                             `json:"hostNetwork"`
-	HostPID                         OptionalBool                                             `json:"hostPID"`
-	HostPorts                       *[]IoK8sAPIPolicyV1beta1HostPortRange                    `json:"hostPorts"`
-	Privileged                      OptionalBool                                             `json:"privileged"`
-	ReadOnlyRootFilesystem          OptionalBool                                             `json:"readOnlyRootFilesystem"`
-	RequiredDropCapabilities        *[]string                                                `json:"requiredDropCapabilities"`
-	RunAsGroup                      OptionalIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions   `json:"runAsGroup"`
-	RunAsUser                       IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions            `json:"runAsUser"`
-	RuntimeClass                    OptionalIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions `json:"runtimeClass"`
-	SeLinux                         IoK8sAPIPolicyV1beta1SELinuxStrategyOptions              `json:"seLinux"`
-	SupplementalGroups              IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions   `json:"supplementalGroups"`
-	Volumes                         *[]string                                                `json:"volumes"`
+	AllowPrivilegeEscalation        OptBool                                                `json:"allowPrivilegeEscalation"`
+	AllowedCSIDrivers               *[]IoK8sAPIPolicyV1beta1AllowedCSIDriver               `json:"allowedCSIDrivers"`
+	AllowedCapabilities             *[]string                                              `json:"allowedCapabilities"`
+	AllowedFlexVolumes              *[]IoK8sAPIPolicyV1beta1AllowedFlexVolume              `json:"allowedFlexVolumes"`
+	AllowedHostPaths                *[]IoK8sAPIPolicyV1beta1AllowedHostPath                `json:"allowedHostPaths"`
+	AllowedProcMountTypes           *[]string                                              `json:"allowedProcMountTypes"`
+	AllowedUnsafeSysctls            *[]string                                              `json:"allowedUnsafeSysctls"`
+	DefaultAddCapabilities          *[]string                                              `json:"defaultAddCapabilities"`
+	DefaultAllowPrivilegeEscalation OptBool                                                `json:"defaultAllowPrivilegeEscalation"`
+	ForbiddenSysctls                *[]string                                              `json:"forbiddenSysctls"`
+	FsGroup                         IoK8sAPIPolicyV1beta1FSGroupStrategyOptions            `json:"fsGroup"`
+	HostIPC                         OptBool                                                `json:"hostIPC"`
+	HostNetwork                     OptBool                                                `json:"hostNetwork"`
+	HostPID                         OptBool                                                `json:"hostPID"`
+	HostPorts                       *[]IoK8sAPIPolicyV1beta1HostPortRange                  `json:"hostPorts"`
+	Privileged                      OptBool                                                `json:"privileged"`
+	ReadOnlyRootFilesystem          OptBool                                                `json:"readOnlyRootFilesystem"`
+	RequiredDropCapabilities        *[]string                                              `json:"requiredDropCapabilities"`
+	RunAsGroup                      OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions      `json:"runAsGroup"`
+	RunAsUser                       IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions          `json:"runAsUser"`
+	RuntimeClass                    OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions    `json:"runtimeClass"`
+	SeLinux                         IoK8sAPIPolicyV1beta1SELinuxStrategyOptions            `json:"seLinux"`
+	SupplementalGroups              IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions `json:"supplementalGroups"`
+	Volumes                         *[]string                                              `json:"volumes"`
 }
 
 // IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions describes #/components/schemas/io.k8s.api.policy.v1beta1.RunAsGroupStrategyOptions.
@@ -6446,20 +6446,20 @@ type IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions struct {
 
 // IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions describes #/components/schemas/io.k8s.api.policy.v1beta1.RuntimeClassStrategyOptions.
 type IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions struct {
-	AllowedRuntimeClassNames []string       `json:"allowedRuntimeClassNames"`
-	DefaultRuntimeClassName  OptionalString `json:"defaultRuntimeClassName"`
+	AllowedRuntimeClassNames []string  `json:"allowedRuntimeClassNames"`
+	DefaultRuntimeClassName  OptString `json:"defaultRuntimeClassName"`
 }
 
 // IoK8sAPIPolicyV1beta1SELinuxStrategyOptions describes #/components/schemas/io.k8s.api.policy.v1beta1.SELinuxStrategyOptions.
 type IoK8sAPIPolicyV1beta1SELinuxStrategyOptions struct {
-	Rule           string                               `json:"rule"`
-	SeLinuxOptions OptionalIoK8sAPICoreV1SELinuxOptions `json:"seLinuxOptions"`
+	Rule           string                          `json:"rule"`
+	SeLinuxOptions OptIoK8sAPICoreV1SELinuxOptions `json:"seLinuxOptions"`
 }
 
 // IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions describes #/components/schemas/io.k8s.api.policy.v1beta1.SupplementalGroupsStrategyOptions.
 type IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions struct {
 	Ranges *[]IoK8sAPIPolicyV1beta1IDRange `json:"ranges"`
-	Rule   OptionalString                  `json:"rule"`
+	Rule   OptString                       `json:"rule"`
 }
 
 // IoK8sAPIRbacV1AggregationRule describes #/components/schemas/io.k8s.api.rbac.v1.AggregationRule.
@@ -6469,36 +6469,36 @@ type IoK8sAPIRbacV1AggregationRule struct {
 
 // IoK8sAPIRbacV1ClusterRole describes #/components/schemas/io.k8s.api.rbac.v1.ClusterRole.
 type IoK8sAPIRbacV1ClusterRole struct {
-	AggregationRule OptionalIoK8sAPIRbacV1AggregationRule            `json:"aggregationRule"`
-	ApiVersion      OptionalString                                   `json:"apiVersion"`
-	Kind            OptionalString                                   `json:"kind"`
-	Metadata        OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Rules           *[]IoK8sAPIRbacV1PolicyRule                      `json:"rules"`
+	AggregationRule OptIoK8sAPIRbacV1AggregationRule            `json:"aggregationRule"`
+	ApiVersion      OptString                                   `json:"apiVersion"`
+	Kind            OptString                                   `json:"kind"`
+	Metadata        OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Rules           *[]IoK8sAPIRbacV1PolicyRule                 `json:"rules"`
 }
 
 // IoK8sAPIRbacV1ClusterRoleBinding describes #/components/schemas/io.k8s.api.rbac.v1.ClusterRoleBinding.
 type IoK8sAPIRbacV1ClusterRoleBinding struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	RoleRef    IoK8sAPIRbacV1RoleRef                            `json:"roleRef"`
-	Subjects   *[]IoK8sAPIRbacV1Subject                         `json:"subjects"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	RoleRef    IoK8sAPIRbacV1RoleRef                       `json:"roleRef"`
+	Subjects   *[]IoK8sAPIRbacV1Subject                    `json:"subjects"`
 }
 
 // IoK8sAPIRbacV1ClusterRoleBindingList describes #/components/schemas/io.k8s.api.rbac.v1.ClusterRoleBindingList.
 type IoK8sAPIRbacV1ClusterRoleBindingList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIRbacV1ClusterRoleBinding             `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIRbacV1ClusterRoleBinding        `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIRbacV1ClusterRoleList describes #/components/schemas/io.k8s.api.rbac.v1.ClusterRoleList.
 type IoK8sAPIRbacV1ClusterRoleList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIRbacV1ClusterRole                    `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIRbacV1ClusterRole               `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIRbacV1PolicyRule describes #/components/schemas/io.k8s.api.rbac.v1.PolicyRule.
@@ -6512,35 +6512,35 @@ type IoK8sAPIRbacV1PolicyRule struct {
 
 // IoK8sAPIRbacV1Role describes #/components/schemas/io.k8s.api.rbac.v1.Role.
 type IoK8sAPIRbacV1Role struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Rules      *[]IoK8sAPIRbacV1PolicyRule                      `json:"rules"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Rules      *[]IoK8sAPIRbacV1PolicyRule                 `json:"rules"`
 }
 
 // IoK8sAPIRbacV1RoleBinding describes #/components/schemas/io.k8s.api.rbac.v1.RoleBinding.
 type IoK8sAPIRbacV1RoleBinding struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	RoleRef    IoK8sAPIRbacV1RoleRef                            `json:"roleRef"`
-	Subjects   *[]IoK8sAPIRbacV1Subject                         `json:"subjects"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	RoleRef    IoK8sAPIRbacV1RoleRef                       `json:"roleRef"`
+	Subjects   *[]IoK8sAPIRbacV1Subject                    `json:"subjects"`
 }
 
 // IoK8sAPIRbacV1RoleBindingList describes #/components/schemas/io.k8s.api.rbac.v1.RoleBindingList.
 type IoK8sAPIRbacV1RoleBindingList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIRbacV1RoleBinding                    `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIRbacV1RoleBinding               `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIRbacV1RoleList describes #/components/schemas/io.k8s.api.rbac.v1.RoleList.
 type IoK8sAPIRbacV1RoleList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIRbacV1Role                           `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIRbacV1Role                      `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIRbacV1RoleRef describes #/components/schemas/io.k8s.api.rbac.v1.RoleRef.
@@ -6552,80 +6552,80 @@ type IoK8sAPIRbacV1RoleRef struct {
 
 // IoK8sAPIRbacV1Subject describes #/components/schemas/io.k8s.api.rbac.v1.Subject.
 type IoK8sAPIRbacV1Subject struct {
-	ApiGroup  OptionalString `json:"apiGroup"`
-	Kind      string         `json:"kind"`
-	Name      string         `json:"name"`
-	Namespace OptionalString `json:"namespace"`
+	ApiGroup  OptString `json:"apiGroup"`
+	Kind      string    `json:"kind"`
+	Name      string    `json:"name"`
+	Namespace OptString `json:"namespace"`
 }
 
 // IoK8sAPISchedulingV1PriorityClass describes #/components/schemas/io.k8s.api.scheduling.v1.PriorityClass.
 type IoK8sAPISchedulingV1PriorityClass struct {
-	ApiVersion       OptionalString                                   `json:"apiVersion"`
-	Description      OptionalString                                   `json:"description"`
-	GlobalDefault    OptionalBool                                     `json:"globalDefault"`
-	Kind             OptionalString                                   `json:"kind"`
-	Metadata         OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	PreemptionPolicy OptionalString                                   `json:"preemptionPolicy"`
-	Value            int32                                            `json:"value"`
+	ApiVersion       OptString                                   `json:"apiVersion"`
+	Description      OptString                                   `json:"description"`
+	GlobalDefault    OptBool                                     `json:"globalDefault"`
+	Kind             OptString                                   `json:"kind"`
+	Metadata         OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	PreemptionPolicy OptString                                   `json:"preemptionPolicy"`
+	Value            int32                                       `json:"value"`
 }
 
 // IoK8sAPISchedulingV1PriorityClassList describes #/components/schemas/io.k8s.api.scheduling.v1.PriorityClassList.
 type IoK8sAPISchedulingV1PriorityClassList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPISchedulingV1PriorityClass            `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPISchedulingV1PriorityClass       `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIStorageV1CSIDriver describes #/components/schemas/io.k8s.api.storage.v1.CSIDriver.
 type IoK8sAPIStorageV1CSIDriver struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       IoK8sAPIStorageV1CSIDriverSpec                   `json:"spec"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       IoK8sAPIStorageV1CSIDriverSpec              `json:"spec"`
 }
 
 // IoK8sAPIStorageV1CSIDriverList describes #/components/schemas/io.k8s.api.storage.v1.CSIDriverList.
 type IoK8sAPIStorageV1CSIDriverList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIStorageV1CSIDriver                   `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIStorageV1CSIDriver              `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIStorageV1CSIDriverSpec describes #/components/schemas/io.k8s.api.storage.v1.CSIDriverSpec.
 type IoK8sAPIStorageV1CSIDriverSpec struct {
-	AttachRequired       OptionalBool                     `json:"attachRequired"`
-	FsGroupPolicy        OptionalString                   `json:"fsGroupPolicy"`
-	PodInfoOnMount       OptionalBool                     `json:"podInfoOnMount"`
-	RequiresRepublish    OptionalBool                     `json:"requiresRepublish"`
-	StorageCapacity      OptionalBool                     `json:"storageCapacity"`
+	AttachRequired       OptBool                          `json:"attachRequired"`
+	FsGroupPolicy        OptString                        `json:"fsGroupPolicy"`
+	PodInfoOnMount       OptBool                          `json:"podInfoOnMount"`
+	RequiresRepublish    OptBool                          `json:"requiresRepublish"`
+	StorageCapacity      OptBool                          `json:"storageCapacity"`
 	TokenRequests        *[]IoK8sAPIStorageV1TokenRequest `json:"tokenRequests"`
 	VolumeLifecycleModes *[]string                        `json:"volumeLifecycleModes"`
 }
 
 // IoK8sAPIStorageV1CSINode describes #/components/schemas/io.k8s.api.storage.v1.CSINode.
 type IoK8sAPIStorageV1CSINode struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       IoK8sAPIStorageV1CSINodeSpec                     `json:"spec"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       IoK8sAPIStorageV1CSINodeSpec                `json:"spec"`
 }
 
 // IoK8sAPIStorageV1CSINodeDriver describes #/components/schemas/io.k8s.api.storage.v1.CSINodeDriver.
 type IoK8sAPIStorageV1CSINodeDriver struct {
-	Allocatable  OptionalIoK8sAPIStorageV1VolumeNodeResources `json:"allocatable"`
-	Name         string                                       `json:"name"`
-	NodeID       string                                       `json:"nodeID"`
-	TopologyKeys *[]string                                    `json:"topologyKeys"`
+	Allocatable  OptIoK8sAPIStorageV1VolumeNodeResources `json:"allocatable"`
+	Name         string                                  `json:"name"`
+	NodeID       string                                  `json:"nodeID"`
+	TopologyKeys *[]string                               `json:"topologyKeys"`
 }
 
 // IoK8sAPIStorageV1CSINodeList describes #/components/schemas/io.k8s.api.storage.v1.CSINodeList.
 type IoK8sAPIStorageV1CSINodeList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIStorageV1CSINode                     `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIStorageV1CSINode                `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIStorageV1CSINodeSpec describes #/components/schemas/io.k8s.api.storage.v1.CSINodeSpec.
@@ -6635,53 +6635,53 @@ type IoK8sAPIStorageV1CSINodeSpec struct {
 
 // IoK8sAPIStorageV1StorageClass describes #/components/schemas/io.k8s.api.storage.v1.StorageClass.
 type IoK8sAPIStorageV1StorageClass struct {
-	AllowVolumeExpansion OptionalBool                                     `json:"allowVolumeExpansion"`
-	AllowedTopologies    *[]IoK8sAPICoreV1TopologySelectorTerm            `json:"allowedTopologies"`
-	ApiVersion           OptionalString                                   `json:"apiVersion"`
-	Kind                 OptionalString                                   `json:"kind"`
-	Metadata             OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	MountOptions         *[]string                                        `json:"mountOptions"`
-	Parameters           *struct{}                                        `json:"parameters"`
-	Provisioner          string                                           `json:"provisioner"`
-	ReclaimPolicy        OptionalString                                   `json:"reclaimPolicy"`
-	VolumeBindingMode    OptionalString                                   `json:"volumeBindingMode"`
+	AllowVolumeExpansion OptBool                                     `json:"allowVolumeExpansion"`
+	AllowedTopologies    *[]IoK8sAPICoreV1TopologySelectorTerm       `json:"allowedTopologies"`
+	ApiVersion           OptString                                   `json:"apiVersion"`
+	Kind                 OptString                                   `json:"kind"`
+	Metadata             OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	MountOptions         *[]string                                   `json:"mountOptions"`
+	Parameters           *struct{}                                   `json:"parameters"`
+	Provisioner          string                                      `json:"provisioner"`
+	ReclaimPolicy        OptString                                   `json:"reclaimPolicy"`
+	VolumeBindingMode    OptString                                   `json:"volumeBindingMode"`
 }
 
 // IoK8sAPIStorageV1StorageClassList describes #/components/schemas/io.k8s.api.storage.v1.StorageClassList.
 type IoK8sAPIStorageV1StorageClassList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIStorageV1StorageClass                `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIStorageV1StorageClass           `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIStorageV1TokenRequest describes #/components/schemas/io.k8s.api.storage.v1.TokenRequest.
 type IoK8sAPIStorageV1TokenRequest struct {
-	Audience          string        `json:"audience"`
-	ExpirationSeconds OptionalInt64 `json:"expirationSeconds"`
+	Audience          string   `json:"audience"`
+	ExpirationSeconds OptInt64 `json:"expirationSeconds"`
 }
 
 // IoK8sAPIStorageV1VolumeAttachment describes #/components/schemas/io.k8s.api.storage.v1.VolumeAttachment.
 type IoK8sAPIStorageV1VolumeAttachment struct {
-	ApiVersion OptionalString                                   `json:"apiVersion"`
-	Kind       OptionalString                                   `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	Spec       IoK8sAPIStorageV1VolumeAttachmentSpec            `json:"spec"`
-	Status     OptionalIoK8sAPIStorageV1VolumeAttachmentStatus  `json:"status"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
+	Spec       IoK8sAPIStorageV1VolumeAttachmentSpec       `json:"spec"`
+	Status     OptIoK8sAPIStorageV1VolumeAttachmentStatus  `json:"status"`
 }
 
 // IoK8sAPIStorageV1VolumeAttachmentList describes #/components/schemas/io.k8s.api.storage.v1.VolumeAttachmentList.
 type IoK8sAPIStorageV1VolumeAttachmentList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIStorageV1VolumeAttachment            `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                 `json:"apiVersion"`
+	Items      []IoK8sAPIStorageV1VolumeAttachment       `json:"items"`
+	Kind       OptString                                 `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
 }
 
 // IoK8sAPIStorageV1VolumeAttachmentSource describes #/components/schemas/io.k8s.api.storage.v1.VolumeAttachmentSource.
 type IoK8sAPIStorageV1VolumeAttachmentSource struct {
-	InlineVolumeSpec     OptionalIoK8sAPICoreV1PersistentVolumeSpec `json:"inlineVolumeSpec"`
-	PersistentVolumeName OptionalString                             `json:"persistentVolumeName"`
+	InlineVolumeSpec     OptIoK8sAPICoreV1PersistentVolumeSpec `json:"inlineVolumeSpec"`
+	PersistentVolumeName OptString                             `json:"persistentVolumeName"`
 }
 
 // IoK8sAPIStorageV1VolumeAttachmentSpec describes #/components/schemas/io.k8s.api.storage.v1.VolumeAttachmentSpec.
@@ -6693,215 +6693,215 @@ type IoK8sAPIStorageV1VolumeAttachmentSpec struct {
 
 // IoK8sAPIStorageV1VolumeAttachmentStatus describes #/components/schemas/io.k8s.api.storage.v1.VolumeAttachmentStatus.
 type IoK8sAPIStorageV1VolumeAttachmentStatus struct {
-	AttachError        OptionalIoK8sAPIStorageV1VolumeError `json:"attachError"`
-	Attached           bool                                 `json:"attached"`
-	AttachmentMetadata *struct{}                            `json:"attachmentMetadata"`
-	DetachError        OptionalIoK8sAPIStorageV1VolumeError `json:"detachError"`
+	AttachError        OptIoK8sAPIStorageV1VolumeError `json:"attachError"`
+	Attached           bool                            `json:"attached"`
+	AttachmentMetadata *struct{}                       `json:"attachmentMetadata"`
+	DetachError        OptIoK8sAPIStorageV1VolumeError `json:"detachError"`
 }
 
 // IoK8sAPIStorageV1VolumeError describes #/components/schemas/io.k8s.api.storage.v1.VolumeError.
 type IoK8sAPIStorageV1VolumeError struct {
-	Message OptionalString                      `json:"message"`
+	Message OptString                           `json:"message"`
 	Time    *IoK8sApimachineryPkgApisMetaV1Time `json:"time"`
 }
 
 // IoK8sAPIStorageV1VolumeNodeResources describes #/components/schemas/io.k8s.api.storage.v1.VolumeNodeResources.
 type IoK8sAPIStorageV1VolumeNodeResources struct {
-	Count OptionalInt32 `json:"count"`
+	Count OptInt32 `json:"count"`
 }
 
 // IoK8sAPIStorageV1alpha1CSIStorageCapacity describes #/components/schemas/io.k8s.api.storage.v1alpha1.CSIStorageCapacity.
 type IoK8sAPIStorageV1alpha1CSIStorageCapacity struct {
-	ApiVersion        OptionalString                                      `json:"apiVersion"`
-	Capacity          *IoK8sApimachineryPkgAPIResourceQuantity            `json:"capacity"`
-	Kind              OptionalString                                      `json:"kind"`
-	MaximumVolumeSize *IoK8sApimachineryPkgAPIResourceQuantity            `json:"maximumVolumeSize"`
-	Metadata          OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta    `json:"metadata"`
-	NodeTopology      OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"nodeTopology"`
-	StorageClassName  string                                              `json:"storageClassName"`
+	ApiVersion        OptString                                      `json:"apiVersion"`
+	Capacity          *IoK8sApimachineryPkgAPIResourceQuantity       `json:"capacity"`
+	Kind              OptString                                      `json:"kind"`
+	MaximumVolumeSize *IoK8sApimachineryPkgAPIResourceQuantity       `json:"maximumVolumeSize"`
+	Metadata          OptIoK8sApimachineryPkgApisMetaV1ObjectMeta    `json:"metadata"`
+	NodeTopology      OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"nodeTopology"`
+	StorageClassName  string                                         `json:"storageClassName"`
 }
 
 // IoK8sAPIStorageV1alpha1CSIStorageCapacityList describes #/components/schemas/io.k8s.api.storage.v1alpha1.CSIStorageCapacityList.
 type IoK8sAPIStorageV1alpha1CSIStorageCapacityList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIStorageV1alpha1CSIStorageCapacity    `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                   `json:"apiVersion"`
+	Items      []IoK8sAPIStorageV1alpha1CSIStorageCapacity `json:"items"`
+	Kind       OptString                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta   `json:"metadata"`
 }
 
 // IoK8sAPIStorageV1beta1CSIStorageCapacity describes #/components/schemas/io.k8s.api.storage.v1beta1.CSIStorageCapacity.
 type IoK8sAPIStorageV1beta1CSIStorageCapacity struct {
-	ApiVersion        OptionalString                                      `json:"apiVersion"`
-	Capacity          *IoK8sApimachineryPkgAPIResourceQuantity            `json:"capacity"`
-	Kind              OptionalString                                      `json:"kind"`
-	MaximumVolumeSize *IoK8sApimachineryPkgAPIResourceQuantity            `json:"maximumVolumeSize"`
-	Metadata          OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta    `json:"metadata"`
-	NodeTopology      OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"nodeTopology"`
-	StorageClassName  string                                              `json:"storageClassName"`
+	ApiVersion        OptString                                      `json:"apiVersion"`
+	Capacity          *IoK8sApimachineryPkgAPIResourceQuantity       `json:"capacity"`
+	Kind              OptString                                      `json:"kind"`
+	MaximumVolumeSize *IoK8sApimachineryPkgAPIResourceQuantity       `json:"maximumVolumeSize"`
+	Metadata          OptIoK8sApimachineryPkgApisMetaV1ObjectMeta    `json:"metadata"`
+	NodeTopology      OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"nodeTopology"`
+	StorageClassName  string                                         `json:"storageClassName"`
 }
 
 // IoK8sAPIStorageV1beta1CSIStorageCapacityList describes #/components/schemas/io.k8s.api.storage.v1beta1.CSIStorageCapacityList.
 type IoK8sAPIStorageV1beta1CSIStorageCapacityList struct {
-	ApiVersion OptionalString                                 `json:"apiVersion"`
-	Items      []IoK8sAPIStorageV1beta1CSIStorageCapacity     `json:"items"`
-	Kind       OptionalString                                 `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
+	ApiVersion OptString                                  `json:"apiVersion"`
+	Items      []IoK8sAPIStorageV1beta1CSIStorageCapacity `json:"items"`
+	Kind       OptString                                  `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta  `json:"metadata"`
 }
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceColumnDefinition.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition struct {
-	Description OptionalString `json:"description"`
-	Format      OptionalString `json:"format"`
-	JsonPath    string         `json:"jsonPath"`
-	Name        string         `json:"name"`
-	Priority    OptionalInt32  `json:"priority"`
-	Type        string         `json:"type"`
+	Description OptString `json:"description"`
+	Format      OptString `json:"format"`
+	JsonPath    string    `json:"jsonPath"`
+	Name        string    `json:"name"`
+	Priority    OptInt32  `json:"priority"`
+	Type        string    `json:"type"`
 }
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceConversion.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion struct {
-	Strategy string                                                                     `json:"strategy"`
-	Webhook  OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion `json:"webhook"`
+	Strategy string                                                                `json:"strategy"`
+	Webhook  OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion `json:"webhook"`
 }
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinition.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition struct {
-	ApiVersion OptionalString                                                                          `json:"apiVersion"`
-	Kind       OptionalString                                                                          `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta                                        `json:"metadata"`
-	Spec       IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec           `json:"spec"`
-	Status     OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus `json:"status"`
+	ApiVersion OptString                                                                          `json:"apiVersion"`
+	Kind       OptString                                                                          `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta                                        `json:"metadata"`
+	Spec       IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec      `json:"spec"`
+	Status     OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus `json:"status"`
 }
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionCondition.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition struct {
 	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptionalString                      `json:"message"`
-	Reason             OptionalString                      `json:"reason"`
+	Message            OptString                           `json:"message"`
+	Reason             OptString                           `json:"reason"`
 	Status             string                              `json:"status"`
 	Type               string                              `json:"type"`
 }
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionList.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList struct {
-	ApiVersion OptionalString                                                              `json:"apiVersion"`
+	ApiVersion OptString                                                                   `json:"apiVersion"`
 	Items      []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition `json:"items"`
-	Kind       OptionalString                                                              `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta                              `json:"metadata"`
+	Kind       OptString                                                                   `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta                                   `json:"metadata"`
 }
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionNames.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames struct {
-	Categories *[]string      `json:"categories"`
-	Kind       string         `json:"kind"`
-	ListKind   OptionalString `json:"listKind"`
-	Plural     string         `json:"plural"`
-	ShortNames *[]string      `json:"shortNames"`
-	Singular   OptionalString `json:"singular"`
+	Categories *[]string `json:"categories"`
+	Kind       string    `json:"kind"`
+	ListKind   OptString `json:"listKind"`
+	Plural     string    `json:"plural"`
+	ShortNames *[]string `json:"shortNames"`
+	Singular   OptString `json:"singular"`
 }
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionSpec.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec struct {
-	Conversion            OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion  `json:"conversion"`
+	Conversion            OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion       `json:"conversion"`
 	Group                 string                                                                             `json:"group"`
 	Names                 IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames     `json:"names"`
-	PreserveUnknownFields OptionalBool                                                                       `json:"preserveUnknownFields"`
+	PreserveUnknownFields OptBool                                                                            `json:"preserveUnknownFields"`
 	Scope                 string                                                                             `json:"scope"`
 	Versions              []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion `json:"versions"`
 }
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionStatus.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus struct {
-	AcceptedNames  OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames `json:"acceptedNames"`
-	Conditions     *[]IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition  `json:"conditions"`
-	StoredVersions *[]string                                                                              `json:"storedVersions"`
+	AcceptedNames  OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames     `json:"acceptedNames"`
+	Conditions     *[]IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition `json:"conditions"`
+	StoredVersions *[]string                                                                             `json:"storedVersions"`
 }
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionVersion.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion struct {
-	AdditionalPrinterColumns *[]IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition  `json:"additionalPrinterColumns"`
-	Deprecated               OptionalBool                                                                        `json:"deprecated"`
-	DeprecationWarning       OptionalString                                                                      `json:"deprecationWarning"`
-	Name                     string                                                                              `json:"name"`
-	Schema                   OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation   `json:"schema"`
-	Served                   bool                                                                                `json:"served"`
-	Storage                  bool                                                                                `json:"storage"`
-	Subresources             OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources `json:"subresources"`
+	AdditionalPrinterColumns *[]IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition `json:"additionalPrinterColumns"`
+	Deprecated               OptBool                                                                            `json:"deprecated"`
+	DeprecationWarning       OptString                                                                          `json:"deprecationWarning"`
+	Name                     string                                                                             `json:"name"`
+	Schema                   OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation       `json:"schema"`
+	Served                   bool                                                                               `json:"served"`
+	Storage                  bool                                                                               `json:"storage"`
+	Subresources             OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources     `json:"subresources"`
 }
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceSubresourceScale.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale struct {
-	LabelSelectorPath  OptionalString `json:"labelSelectorPath"`
-	SpecReplicasPath   string         `json:"specReplicasPath"`
-	StatusReplicasPath string         `json:"statusReplicasPath"`
+	LabelSelectorPath  OptString `json:"labelSelectorPath"`
+	SpecReplicasPath   string    `json:"specReplicasPath"`
+	StatusReplicasPath string    `json:"statusReplicasPath"`
 }
 
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus struct{}
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceSubresources.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources struct {
-	Scale  OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale `json:"scale"`
-	Status *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus       `json:"status"`
+	Scale  OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale `json:"scale"`
+	Status *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus  `json:"status"`
 }
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceValidation.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation struct {
-	OpenAPIV3Schema OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps `json:"openAPIV3Schema"`
+	OpenAPIV3Schema OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps `json:"openAPIV3Schema"`
 }
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.ExternalDocumentation.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation struct {
-	Description OptionalString `json:"description"`
-	URL         OptionalString `json:"url"`
+	Description OptString `json:"description"`
+	URL         OptString `json:"url"`
 }
 
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON struct{}
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps struct {
-	AdditionalItems                                      *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool        `json:"additionalItems"`
-	AdditionalProperties                                 *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool        `json:"additionalProperties"`
-	AllOf                                                *[]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps            `json:"allOf"`
-	AnyOf                                                *[]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps            `json:"anyOf"`
-	Default                                              *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                         `json:"default"`
-	Definitions                                          *struct{}                                                                      `json:"definitions"`
-	Dependencies                                         *struct{}                                                                      `json:"dependencies"`
-	Description                                          OptionalString                                                                 `json:"description"`
-	Enum                                                 *[]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                       `json:"enum"`
-	Example                                              *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                         `json:"example"`
-	ExclusiveMaximum                                     OptionalBool                                                                   `json:"exclusiveMaximum"`
-	ExclusiveMinimum                                     OptionalBool                                                                   `json:"exclusiveMinimum"`
-	ExternalDocs                                         OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation `json:"externalDocs"`
-	Format                                               OptionalString                                                                 `json:"format"`
-	ID                                                   OptionalString                                                                 `json:"id"`
-	Items                                                *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray       `json:"items"`
-	MaxItems                                             OptionalInt64                                                                  `json:"maxItems"`
-	MaxLength                                            OptionalInt64                                                                  `json:"maxLength"`
-	MaxProperties                                        OptionalInt64                                                                  `json:"maxProperties"`
-	Maximum                                              OptionalFloat64                                                                `json:"maximum"`
-	MinItems                                             OptionalInt64                                                                  `json:"minItems"`
-	MinLength                                            OptionalInt64                                                                  `json:"minLength"`
-	MinProperties                                        OptionalInt64                                                                  `json:"minProperties"`
-	Minimum                                              OptionalFloat64                                                                `json:"minimum"`
-	MultipleOf                                           OptionalFloat64                                                                `json:"multipleOf"`
-	Not                                                  OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps       `json:"not"`
-	Nullable                                             OptionalBool                                                                   `json:"nullable"`
-	OneOf                                                *[]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps            `json:"oneOf"`
-	Pattern                                              OptionalString                                                                 `json:"pattern"`
-	PatternProperties                                    *struct{}                                                                      `json:"patternProperties"`
-	Properties                                           *struct{}                                                                      `json:"properties"`
-	Ref                                                  OptionalString                                                                 `json:"$ref"`
-	Required                                             *[]string                                                                      `json:"required"`
-	Schema                                               OptionalString                                                                 `json:"$schema"`
-	Title                                                OptionalString                                                                 `json:"title"`
-	Type                                                 OptionalString                                                                 `json:"type"`
-	UniqueItems                                          OptionalBool                                                                   `json:"uniqueItems"`
-	XMinusKubernetesMinusEmbeddedMinusResource           OptionalBool                                                                   `json:"x-kubernetes-embedded-resource"`
-	XMinusKubernetesMinusIntMinusOrMinusString           OptionalBool                                                                   `json:"x-kubernetes-int-or-string"`
-	XMinusKubernetesMinusListMinusMapMinusKeys           *[]string                                                                      `json:"x-kubernetes-list-map-keys"`
-	XMinusKubernetesMinusListMinusType                   OptionalString                                                                 `json:"x-kubernetes-list-type"`
-	XMinusKubernetesMinusMapMinusType                    OptionalString                                                                 `json:"x-kubernetes-map-type"`
-	XMinusKubernetesMinusPreserveMinusUnknownMinusFields OptionalBool                                                                   `json:"x-kubernetes-preserve-unknown-fields"`
+	AdditionalItems                                      *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool   `json:"additionalItems"`
+	AdditionalProperties                                 *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool   `json:"additionalProperties"`
+	AllOf                                                *[]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps       `json:"allOf"`
+	AnyOf                                                *[]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps       `json:"anyOf"`
+	Default                                              *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                    `json:"default"`
+	Definitions                                          *struct{}                                                                 `json:"definitions"`
+	Dependencies                                         *struct{}                                                                 `json:"dependencies"`
+	Description                                          OptString                                                                 `json:"description"`
+	Enum                                                 *[]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                  `json:"enum"`
+	Example                                              *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                    `json:"example"`
+	ExclusiveMaximum                                     OptBool                                                                   `json:"exclusiveMaximum"`
+	ExclusiveMinimum                                     OptBool                                                                   `json:"exclusiveMinimum"`
+	ExternalDocs                                         OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation `json:"externalDocs"`
+	Format                                               OptString                                                                 `json:"format"`
+	ID                                                   OptString                                                                 `json:"id"`
+	Items                                                *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray  `json:"items"`
+	MaxItems                                             OptInt64                                                                  `json:"maxItems"`
+	MaxLength                                            OptInt64                                                                  `json:"maxLength"`
+	MaxProperties                                        OptInt64                                                                  `json:"maxProperties"`
+	Maximum                                              OptFloat64                                                                `json:"maximum"`
+	MinItems                                             OptInt64                                                                  `json:"minItems"`
+	MinLength                                            OptInt64                                                                  `json:"minLength"`
+	MinProperties                                        OptInt64                                                                  `json:"minProperties"`
+	Minimum                                              OptFloat64                                                                `json:"minimum"`
+	MultipleOf                                           OptFloat64                                                                `json:"multipleOf"`
+	Not                                                  OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps       `json:"not"`
+	Nullable                                             OptBool                                                                   `json:"nullable"`
+	OneOf                                                *[]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps       `json:"oneOf"`
+	Pattern                                              OptString                                                                 `json:"pattern"`
+	PatternProperties                                    *struct{}                                                                 `json:"patternProperties"`
+	Properties                                           *struct{}                                                                 `json:"properties"`
+	Ref                                                  OptString                                                                 `json:"$ref"`
+	Required                                             *[]string                                                                 `json:"required"`
+	Schema                                               OptString                                                                 `json:"$schema"`
+	Title                                                OptString                                                                 `json:"title"`
+	Type                                                 OptString                                                                 `json:"type"`
+	UniqueItems                                          OptBool                                                                   `json:"uniqueItems"`
+	XMinusKubernetesMinusEmbeddedMinusResource           OptBool                                                                   `json:"x-kubernetes-embedded-resource"`
+	XMinusKubernetesMinusIntMinusOrMinusString           OptBool                                                                   `json:"x-kubernetes-int-or-string"`
+	XMinusKubernetesMinusListMinusMapMinusKeys           *[]string                                                                 `json:"x-kubernetes-list-map-keys"`
+	XMinusKubernetesMinusListMinusType                   OptString                                                                 `json:"x-kubernetes-list-type"`
+	XMinusKubernetesMinusMapMinusType                    OptString                                                                 `json:"x-kubernetes-map-type"`
+	XMinusKubernetesMinusPreserveMinusUnknownMinusFields OptBool                                                                   `json:"x-kubernetes-preserve-unknown-fields"`
 }
 
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray struct{}
@@ -6910,70 +6910,70 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool stru
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.ServiceReference.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference struct {
-	Name      string         `json:"name"`
-	Namespace string         `json:"namespace"`
-	Path      OptionalString `json:"path"`
-	Port      OptionalInt32  `json:"port"`
+	Name      string    `json:"name"`
+	Namespace string    `json:"namespace"`
+	Path      OptString `json:"path"`
+	Port      OptInt32  `json:"port"`
 }
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.WebhookClientConfig.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig struct {
-	CaBundle *[]byte                                                                   `json:"caBundle"`
-	Service  OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference `json:"service"`
-	URL      OptionalString                                                            `json:"url"`
+	CaBundle *[]byte                                                              `json:"caBundle"`
+	Service  OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference `json:"service"`
+	URL      OptString                                                            `json:"url"`
 }
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.WebhookConversion.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion struct {
-	ClientConfig             OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig `json:"clientConfig"`
-	ConversionReviewVersions []string                                                                     `json:"conversionReviewVersions"`
+	ClientConfig             OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig `json:"clientConfig"`
+	ConversionReviewVersions []string                                                                `json:"conversionReviewVersions"`
 }
 
 type IoK8sApimachineryPkgAPIResourceQuantity string
 
 // IoK8sApimachineryPkgApisMetaV1APIGroup describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.APIGroup.
 type IoK8sApimachineryPkgApisMetaV1APIGroup struct {
-	ApiVersion                 OptionalString                                                 `json:"apiVersion"`
-	Kind                       OptionalString                                                 `json:"kind"`
-	Name                       string                                                         `json:"name"`
-	PreferredVersion           OptionalIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery `json:"preferredVersion"`
-	ServerAddressByClientCIDRs *[]IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR     `json:"serverAddressByClientCIDRs"`
-	Versions                   []IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery       `json:"versions"`
+	ApiVersion                 OptString                                                  `json:"apiVersion"`
+	Kind                       OptString                                                  `json:"kind"`
+	Name                       string                                                     `json:"name"`
+	PreferredVersion           OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery  `json:"preferredVersion"`
+	ServerAddressByClientCIDRs *[]IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR `json:"serverAddressByClientCIDRs"`
+	Versions                   []IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery   `json:"versions"`
 }
 
 // IoK8sApimachineryPkgApisMetaV1APIGroupList describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.APIGroupList.
 type IoK8sApimachineryPkgApisMetaV1APIGroupList struct {
-	ApiVersion OptionalString                           `json:"apiVersion"`
+	ApiVersion OptString                                `json:"apiVersion"`
 	Groups     []IoK8sApimachineryPkgApisMetaV1APIGroup `json:"groups"`
-	Kind       OptionalString                           `json:"kind"`
+	Kind       OptString                                `json:"kind"`
 }
 
 // IoK8sApimachineryPkgApisMetaV1APIResource describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.APIResource.
 type IoK8sApimachineryPkgApisMetaV1APIResource struct {
-	Categories         *[]string      `json:"categories"`
-	Group              OptionalString `json:"group"`
-	Kind               string         `json:"kind"`
-	Name               string         `json:"name"`
-	Namespaced         bool           `json:"namespaced"`
-	ShortNames         *[]string      `json:"shortNames"`
-	SingularName       string         `json:"singularName"`
-	StorageVersionHash OptionalString `json:"storageVersionHash"`
-	Verbs              []string       `json:"verbs"`
-	Version            OptionalString `json:"version"`
+	Categories         *[]string `json:"categories"`
+	Group              OptString `json:"group"`
+	Kind               string    `json:"kind"`
+	Name               string    `json:"name"`
+	Namespaced         bool      `json:"namespaced"`
+	ShortNames         *[]string `json:"shortNames"`
+	SingularName       string    `json:"singularName"`
+	StorageVersionHash OptString `json:"storageVersionHash"`
+	Verbs              []string  `json:"verbs"`
+	Version            OptString `json:"version"`
 }
 
 // IoK8sApimachineryPkgApisMetaV1APIResourceList describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.APIResourceList.
 type IoK8sApimachineryPkgApisMetaV1APIResourceList struct {
-	ApiVersion   OptionalString                              `json:"apiVersion"`
+	ApiVersion   OptString                                   `json:"apiVersion"`
 	GroupVersion string                                      `json:"groupVersion"`
-	Kind         OptionalString                              `json:"kind"`
+	Kind         OptString                                   `json:"kind"`
 	Resources    []IoK8sApimachineryPkgApisMetaV1APIResource `json:"resources"`
 }
 
 // IoK8sApimachineryPkgApisMetaV1APIVersions describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.APIVersions.
 type IoK8sApimachineryPkgApisMetaV1APIVersions struct {
-	ApiVersion                 OptionalString                                            `json:"apiVersion"`
-	Kind                       OptionalString                                            `json:"kind"`
+	ApiVersion                 OptString                                                 `json:"apiVersion"`
+	Kind                       OptString                                                 `json:"kind"`
 	ServerAddressByClientCIDRs []IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR `json:"serverAddressByClientCIDRs"`
 	Versions                   []string                                                  `json:"versions"`
 }
@@ -6982,7 +6982,7 @@ type IoK8sApimachineryPkgApisMetaV1APIVersions struct {
 type IoK8sApimachineryPkgApisMetaV1Condition struct {
 	LastTransitionTime IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
 	Message            string                             `json:"message"`
-	ObservedGeneration OptionalInt64                      `json:"observedGeneration"`
+	ObservedGeneration OptInt64                           `json:"observedGeneration"`
 	Reason             string                             `json:"reason"`
 	Status             string                             `json:"status"`
 	Type               string                             `json:"type"`
@@ -6990,13 +6990,13 @@ type IoK8sApimachineryPkgApisMetaV1Condition struct {
 
 // IoK8sApimachineryPkgApisMetaV1DeleteOptions describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions.
 type IoK8sApimachineryPkgApisMetaV1DeleteOptions struct {
-	ApiVersion         OptionalString                                      `json:"apiVersion"`
-	DryRun             *[]string                                           `json:"dryRun"`
-	GracePeriodSeconds OptionalInt64                                       `json:"gracePeriodSeconds"`
-	Kind               OptionalString                                      `json:"kind"`
-	OrphanDependents   OptionalBool                                        `json:"orphanDependents"`
-	Preconditions      OptionalIoK8sApimachineryPkgApisMetaV1Preconditions `json:"preconditions"`
-	PropagationPolicy  OptionalString                                      `json:"propagationPolicy"`
+	ApiVersion         OptString                                      `json:"apiVersion"`
+	DryRun             *[]string                                      `json:"dryRun"`
+	GracePeriodSeconds OptInt64                                       `json:"gracePeriodSeconds"`
+	Kind               OptString                                      `json:"kind"`
+	OrphanDependents   OptBool                                        `json:"orphanDependents"`
+	Preconditions      OptIoK8sApimachineryPkgApisMetaV1Preconditions `json:"preconditions"`
+	PropagationPolicy  OptString                                      `json:"propagationPolicy"`
 }
 
 type IoK8sApimachineryPkgApisMetaV1FieldsV1 struct{}
@@ -7022,20 +7022,20 @@ type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement struct {
 
 // IoK8sApimachineryPkgApisMetaV1ListMeta describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta.
 type IoK8sApimachineryPkgApisMetaV1ListMeta struct {
-	Continue           OptionalString `json:"continue"`
-	RemainingItemCount OptionalInt64  `json:"remainingItemCount"`
-	ResourceVersion    OptionalString `json:"resourceVersion"`
-	SelfLink           OptionalString `json:"selfLink"`
+	Continue           OptString `json:"continue"`
+	RemainingItemCount OptInt64  `json:"remainingItemCount"`
+	ResourceVersion    OptString `json:"resourceVersion"`
+	SelfLink           OptString `json:"selfLink"`
 }
 
 // IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry.
 type IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry struct {
-	ApiVersion  OptionalString                          `json:"apiVersion"`
-	FieldsType  OptionalString                          `json:"fieldsType"`
+	ApiVersion  OptString                               `json:"apiVersion"`
+	FieldsType  OptString                               `json:"fieldsType"`
 	FieldsV1    *IoK8sApimachineryPkgApisMetaV1FieldsV1 `json:"fieldsV1"`
-	Manager     OptionalString                          `json:"manager"`
-	Operation   OptionalString                          `json:"operation"`
-	Subresource OptionalString                          `json:"subresource"`
+	Manager     OptString                               `json:"manager"`
+	Operation   OptString                               `json:"operation"`
+	Subresource OptString                               `json:"subresource"`
 	Time        *IoK8sApimachineryPkgApisMetaV1Time     `json:"time"`
 }
 
@@ -7044,37 +7044,37 @@ type IoK8sApimachineryPkgApisMetaV1MicroTime time.Time
 // IoK8sApimachineryPkgApisMetaV1ObjectMeta describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta.
 type IoK8sApimachineryPkgApisMetaV1ObjectMeta struct {
 	Annotations                *struct{}                                           `json:"annotations"`
-	ClusterName                OptionalString                                      `json:"clusterName"`
+	ClusterName                OptString                                           `json:"clusterName"`
 	CreationTimestamp          *IoK8sApimachineryPkgApisMetaV1Time                 `json:"creationTimestamp"`
-	DeletionGracePeriodSeconds OptionalInt64                                       `json:"deletionGracePeriodSeconds"`
+	DeletionGracePeriodSeconds OptInt64                                            `json:"deletionGracePeriodSeconds"`
 	DeletionTimestamp          *IoK8sApimachineryPkgApisMetaV1Time                 `json:"deletionTimestamp"`
 	Finalizers                 *[]string                                           `json:"finalizers"`
-	GenerateName               OptionalString                                      `json:"generateName"`
-	Generation                 OptionalInt64                                       `json:"generation"`
+	GenerateName               OptString                                           `json:"generateName"`
+	Generation                 OptInt64                                            `json:"generation"`
 	Labels                     *struct{}                                           `json:"labels"`
 	ManagedFields              *[]IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry `json:"managedFields"`
-	Name                       OptionalString                                      `json:"name"`
-	Namespace                  OptionalString                                      `json:"namespace"`
+	Name                       OptString                                           `json:"name"`
+	Namespace                  OptString                                           `json:"namespace"`
 	OwnerReferences            *[]IoK8sApimachineryPkgApisMetaV1OwnerReference     `json:"ownerReferences"`
-	ResourceVersion            OptionalString                                      `json:"resourceVersion"`
-	SelfLink                   OptionalString                                      `json:"selfLink"`
-	UID                        OptionalString                                      `json:"uid"`
+	ResourceVersion            OptString                                           `json:"resourceVersion"`
+	SelfLink                   OptString                                           `json:"selfLink"`
+	UID                        OptString                                           `json:"uid"`
 }
 
 // IoK8sApimachineryPkgApisMetaV1OwnerReference describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference.
 type IoK8sApimachineryPkgApisMetaV1OwnerReference struct {
-	ApiVersion         string       `json:"apiVersion"`
-	BlockOwnerDeletion OptionalBool `json:"blockOwnerDeletion"`
-	Controller         OptionalBool `json:"controller"`
-	Kind               string       `json:"kind"`
-	Name               string       `json:"name"`
-	UID                string       `json:"uid"`
+	ApiVersion         string  `json:"apiVersion"`
+	BlockOwnerDeletion OptBool `json:"blockOwnerDeletion"`
+	Controller         OptBool `json:"controller"`
+	Kind               string  `json:"kind"`
+	Name               string  `json:"name"`
+	UID                string  `json:"uid"`
 }
 
 // IoK8sApimachineryPkgApisMetaV1Preconditions describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions.
 type IoK8sApimachineryPkgApisMetaV1Preconditions struct {
-	ResourceVersion OptionalString `json:"resourceVersion"`
-	UID             OptionalString `json:"uid"`
+	ResourceVersion OptString `json:"resourceVersion"`
+	UID             OptString `json:"uid"`
 }
 
 // IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ServerAddressByClientCIDR.
@@ -7085,31 +7085,31 @@ type IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR struct {
 
 // IoK8sApimachineryPkgApisMetaV1Status describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Status.
 type IoK8sApimachineryPkgApisMetaV1Status struct {
-	ApiVersion OptionalString                                      `json:"apiVersion"`
-	Code       OptionalInt32                                       `json:"code"`
-	Details    OptionalIoK8sApimachineryPkgApisMetaV1StatusDetails `json:"details"`
-	Kind       OptionalString                                      `json:"kind"`
-	Message    OptionalString                                      `json:"message"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta      `json:"metadata"`
-	Reason     OptionalString                                      `json:"reason"`
-	Status     OptionalString                                      `json:"status"`
+	ApiVersion OptString                                      `json:"apiVersion"`
+	Code       OptInt32                                       `json:"code"`
+	Details    OptIoK8sApimachineryPkgApisMetaV1StatusDetails `json:"details"`
+	Kind       OptString                                      `json:"kind"`
+	Message    OptString                                      `json:"message"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta      `json:"metadata"`
+	Reason     OptString                                      `json:"reason"`
+	Status     OptString                                      `json:"status"`
 }
 
 // IoK8sApimachineryPkgApisMetaV1StatusCause describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause.
 type IoK8sApimachineryPkgApisMetaV1StatusCause struct {
-	Field   OptionalString `json:"field"`
-	Message OptionalString `json:"message"`
-	Reason  OptionalString `json:"reason"`
+	Field   OptString `json:"field"`
+	Message OptString `json:"message"`
+	Reason  OptString `json:"reason"`
 }
 
 // IoK8sApimachineryPkgApisMetaV1StatusDetails describes #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails.
 type IoK8sApimachineryPkgApisMetaV1StatusDetails struct {
 	Causes            *[]IoK8sApimachineryPkgApisMetaV1StatusCause `json:"causes"`
-	Group             OptionalString                               `json:"group"`
-	Kind              OptionalString                               `json:"kind"`
-	Name              OptionalString                               `json:"name"`
-	RetryAfterSeconds OptionalInt32                                `json:"retryAfterSeconds"`
-	UID               OptionalString                               `json:"uid"`
+	Group             OptString                                    `json:"group"`
+	Kind              OptString                                    `json:"kind"`
+	Name              OptString                                    `json:"name"`
+	RetryAfterSeconds OptInt32                                     `json:"retryAfterSeconds"`
+	UID               OptString                                    `json:"uid"`
 }
 
 type IoK8sApimachineryPkgApisMetaV1Time time.Time
@@ -7141,39 +7141,39 @@ func (*IoK8sApimachineryPkgVersionInfo) getCodeVersionResponse() {}
 
 // IoK8sKubeAggregatorPkgApisApiregistrationV1APIService describes #/components/schemas/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIService.
 type IoK8sKubeAggregatorPkgApisApiregistrationV1APIService struct {
-	ApiVersion OptionalString                                                      `json:"apiVersion"`
-	Kind       OptionalString                                                      `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta                    `json:"metadata"`
-	Spec       OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec   `json:"spec"`
-	Status     OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus `json:"status"`
+	ApiVersion OptString                                                      `json:"apiVersion"`
+	Kind       OptString                                                      `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta                    `json:"metadata"`
+	Spec       OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec   `json:"spec"`
+	Status     OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus `json:"status"`
 }
 
 // IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition describes #/components/schemas/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIServiceCondition.
 type IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition struct {
 	LastTransitionTime *IoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
-	Message            OptionalString                      `json:"message"`
-	Reason             OptionalString                      `json:"reason"`
+	Message            OptString                           `json:"message"`
+	Reason             OptString                           `json:"reason"`
 	Status             string                              `json:"status"`
 	Type               string                              `json:"type"`
 }
 
 // IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList describes #/components/schemas/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIServiceList.
 type IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList struct {
-	ApiVersion OptionalString                                          `json:"apiVersion"`
+	ApiVersion OptString                                               `json:"apiVersion"`
 	Items      []IoK8sKubeAggregatorPkgApisApiregistrationV1APIService `json:"items"`
-	Kind       OptionalString                                          `json:"kind"`
-	Metadata   OptionalIoK8sApimachineryPkgApisMetaV1ListMeta          `json:"metadata"`
+	Kind       OptString                                               `json:"kind"`
+	Metadata   OptIoK8sApimachineryPkgApisMetaV1ListMeta               `json:"metadata"`
 }
 
 // IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec describes #/components/schemas/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIServiceSpec.
 type IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec struct {
-	CaBundle              *[]byte                                                             `json:"caBundle"`
-	Group                 OptionalString                                                      `json:"group"`
-	GroupPriorityMinimum  int32                                                               `json:"groupPriorityMinimum"`
-	InsecureSkipTLSVerify OptionalBool                                                        `json:"insecureSkipTLSVerify"`
-	Service               OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference `json:"service"`
-	Version               OptionalString                                                      `json:"version"`
-	VersionPriority       int32                                                               `json:"versionPriority"`
+	CaBundle              *[]byte                                                        `json:"caBundle"`
+	Group                 OptString                                                      `json:"group"`
+	GroupPriorityMinimum  int32                                                          `json:"groupPriorityMinimum"`
+	InsecureSkipTLSVerify OptBool                                                        `json:"insecureSkipTLSVerify"`
+	Service               OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference `json:"service"`
+	Version               OptString                                                      `json:"version"`
+	VersionPriority       int32                                                          `json:"versionPriority"`
 }
 
 // IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus describes #/components/schemas/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIServiceStatus.
@@ -7183,9 +7183,9 @@ type IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus struct {
 
 // IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference describes #/components/schemas/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.ServiceReference.
 type IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference struct {
-	Name      OptionalString `json:"name"`
-	Namespace OptionalString `json:"namespace"`
-	Port      OptionalInt32  `json:"port"`
+	Name      OptString `json:"name"`
+	Namespace OptString `json:"namespace"`
+	Port      OptInt32  `json:"port"`
 }
 
 type ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList
@@ -8979,9458 +8979,9446 @@ func (*ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) listSto
 
 type LogFileListHandler struct{}
 
-// New returns new OptionalBool with value set to v.
-func NewOptionalBool(v bool) OptionalBool {
-	return OptionalBool{
+// New returns new OptBool with value set to v.
+func NewOptBool(v bool) OptBool {
+	return OptBool{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalBool is generic valiant of bool.
-type OptionalBool struct {
+// OptBool is generic valiant of bool.
+type OptBool struct {
 	Value bool
 	Set   bool
 }
 
-// IsSet returns true if OptionalBool was set.
-func (o OptionalBool) IsSet() bool { return o.Set }
+// IsSet returns true if OptBool was set.
+func (o OptBool) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalBool) Reset() {
+func (o *OptBool) Reset() {
 	var v bool
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalBool) SetTo(v bool) {
+func (o *OptBool) SetTo(v bool) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalBool) Get() (v bool, ok bool) {
+func (o OptBool) Get() (v bool, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalFloat64 with value set to v.
-func NewOptionalFloat64(v float64) OptionalFloat64 {
-	return OptionalFloat64{
+// New returns new OptFloat64 with value set to v.
+func NewOptFloat64(v float64) OptFloat64 {
+	return OptFloat64{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalFloat64 is generic valiant of float64.
-type OptionalFloat64 struct {
+// OptFloat64 is generic valiant of float64.
+type OptFloat64 struct {
 	Value float64
 	Set   bool
 }
 
-// IsSet returns true if OptionalFloat64 was set.
-func (o OptionalFloat64) IsSet() bool { return o.Set }
+// IsSet returns true if OptFloat64 was set.
+func (o OptFloat64) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalFloat64) Reset() {
+func (o *OptFloat64) Reset() {
 	var v float64
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalFloat64) SetTo(v float64) {
+func (o *OptFloat64) SetTo(v float64) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalFloat64) Get() (v float64, ok bool) {
+func (o OptFloat64) Get() (v float64, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalInt32 with value set to v.
-func NewOptionalInt32(v int32) OptionalInt32 {
-	return OptionalInt32{
+// New returns new OptInt32 with value set to v.
+func NewOptInt32(v int32) OptInt32 {
+	return OptInt32{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalInt32 is generic valiant of int32.
-type OptionalInt32 struct {
+// OptInt32 is generic valiant of int32.
+type OptInt32 struct {
 	Value int32
 	Set   bool
 }
 
-// IsSet returns true if OptionalInt32 was set.
-func (o OptionalInt32) IsSet() bool { return o.Set }
+// IsSet returns true if OptInt32 was set.
+func (o OptInt32) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalInt32) Reset() {
+func (o *OptInt32) Reset() {
 	var v int32
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalInt32) SetTo(v int32) {
+func (o *OptInt32) SetTo(v int32) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalInt32) Get() (v int32, ok bool) {
+func (o OptInt32) Get() (v int32, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalInt64 with value set to v.
-func NewOptionalInt64(v int64) OptionalInt64 {
-	return OptionalInt64{
+// New returns new OptInt64 with value set to v.
+func NewOptInt64(v int64) OptInt64 {
+	return OptInt64{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalInt64 is generic valiant of int64.
-type OptionalInt64 struct {
+// OptInt64 is generic valiant of int64.
+type OptInt64 struct {
 	Value int64
 	Set   bool
 }
 
-// IsSet returns true if OptionalInt64 was set.
-func (o OptionalInt64) IsSet() bool { return o.Set }
+// IsSet returns true if OptInt64 was set.
+func (o OptInt64) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalInt64) Reset() {
+func (o *OptInt64) Reset() {
 	var v int64
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalInt64) SetTo(v int64) {
+func (o *OptInt64) SetTo(v int64) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalInt64) Get() (v int64, ok bool) {
+func (o OptInt64) Get() (v int64, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAdmissionregistrationV1ServiceReference with value set to v.
-func NewOptionalIoK8sAPIAdmissionregistrationV1ServiceReference(v IoK8sAPIAdmissionregistrationV1ServiceReference) OptionalIoK8sAPIAdmissionregistrationV1ServiceReference {
-	return OptionalIoK8sAPIAdmissionregistrationV1ServiceReference{
+// New returns new OptIoK8sAPIAdmissionregistrationV1ServiceReference with value set to v.
+func NewOptIoK8sAPIAdmissionregistrationV1ServiceReference(v IoK8sAPIAdmissionregistrationV1ServiceReference) OptIoK8sAPIAdmissionregistrationV1ServiceReference {
+	return OptIoK8sAPIAdmissionregistrationV1ServiceReference{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAdmissionregistrationV1ServiceReference is generic valiant of IoK8sAPIAdmissionregistrationV1ServiceReference.
-type OptionalIoK8sAPIAdmissionregistrationV1ServiceReference struct {
+// OptIoK8sAPIAdmissionregistrationV1ServiceReference is generic valiant of IoK8sAPIAdmissionregistrationV1ServiceReference.
+type OptIoK8sAPIAdmissionregistrationV1ServiceReference struct {
 	Value IoK8sAPIAdmissionregistrationV1ServiceReference
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAdmissionregistrationV1ServiceReference was set.
-func (o OptionalIoK8sAPIAdmissionregistrationV1ServiceReference) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAdmissionregistrationV1ServiceReference was set.
+func (o OptIoK8sAPIAdmissionregistrationV1ServiceReference) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAdmissionregistrationV1ServiceReference) Reset() {
+func (o *OptIoK8sAPIAdmissionregistrationV1ServiceReference) Reset() {
 	var v IoK8sAPIAdmissionregistrationV1ServiceReference
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAdmissionregistrationV1ServiceReference) SetTo(v IoK8sAPIAdmissionregistrationV1ServiceReference) {
+func (o *OptIoK8sAPIAdmissionregistrationV1ServiceReference) SetTo(v IoK8sAPIAdmissionregistrationV1ServiceReference) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAdmissionregistrationV1ServiceReference) Get() (v IoK8sAPIAdmissionregistrationV1ServiceReference, ok bool) {
+func (o OptIoK8sAPIAdmissionregistrationV1ServiceReference) Get() (v IoK8sAPIAdmissionregistrationV1ServiceReference, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAppsV1DaemonSetSpec with value set to v.
-func NewOptionalIoK8sAPIAppsV1DaemonSetSpec(v IoK8sAPIAppsV1DaemonSetSpec) OptionalIoK8sAPIAppsV1DaemonSetSpec {
-	return OptionalIoK8sAPIAppsV1DaemonSetSpec{
+// New returns new OptIoK8sAPIAppsV1DaemonSetSpec with value set to v.
+func NewOptIoK8sAPIAppsV1DaemonSetSpec(v IoK8sAPIAppsV1DaemonSetSpec) OptIoK8sAPIAppsV1DaemonSetSpec {
+	return OptIoK8sAPIAppsV1DaemonSetSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAppsV1DaemonSetSpec is generic valiant of IoK8sAPIAppsV1DaemonSetSpec.
-type OptionalIoK8sAPIAppsV1DaemonSetSpec struct {
+// OptIoK8sAPIAppsV1DaemonSetSpec is generic valiant of IoK8sAPIAppsV1DaemonSetSpec.
+type OptIoK8sAPIAppsV1DaemonSetSpec struct {
 	Value IoK8sAPIAppsV1DaemonSetSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAppsV1DaemonSetSpec was set.
-func (o OptionalIoK8sAPIAppsV1DaemonSetSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAppsV1DaemonSetSpec was set.
+func (o OptIoK8sAPIAppsV1DaemonSetSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAppsV1DaemonSetSpec) Reset() {
+func (o *OptIoK8sAPIAppsV1DaemonSetSpec) Reset() {
 	var v IoK8sAPIAppsV1DaemonSetSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAppsV1DaemonSetSpec) SetTo(v IoK8sAPIAppsV1DaemonSetSpec) {
+func (o *OptIoK8sAPIAppsV1DaemonSetSpec) SetTo(v IoK8sAPIAppsV1DaemonSetSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAppsV1DaemonSetSpec) Get() (v IoK8sAPIAppsV1DaemonSetSpec, ok bool) {
+func (o OptIoK8sAPIAppsV1DaemonSetSpec) Get() (v IoK8sAPIAppsV1DaemonSetSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAppsV1DaemonSetStatus with value set to v.
-func NewOptionalIoK8sAPIAppsV1DaemonSetStatus(v IoK8sAPIAppsV1DaemonSetStatus) OptionalIoK8sAPIAppsV1DaemonSetStatus {
-	return OptionalIoK8sAPIAppsV1DaemonSetStatus{
+// New returns new OptIoK8sAPIAppsV1DaemonSetStatus with value set to v.
+func NewOptIoK8sAPIAppsV1DaemonSetStatus(v IoK8sAPIAppsV1DaemonSetStatus) OptIoK8sAPIAppsV1DaemonSetStatus {
+	return OptIoK8sAPIAppsV1DaemonSetStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAppsV1DaemonSetStatus is generic valiant of IoK8sAPIAppsV1DaemonSetStatus.
-type OptionalIoK8sAPIAppsV1DaemonSetStatus struct {
+// OptIoK8sAPIAppsV1DaemonSetStatus is generic valiant of IoK8sAPIAppsV1DaemonSetStatus.
+type OptIoK8sAPIAppsV1DaemonSetStatus struct {
 	Value IoK8sAPIAppsV1DaemonSetStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAppsV1DaemonSetStatus was set.
-func (o OptionalIoK8sAPIAppsV1DaemonSetStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAppsV1DaemonSetStatus was set.
+func (o OptIoK8sAPIAppsV1DaemonSetStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAppsV1DaemonSetStatus) Reset() {
+func (o *OptIoK8sAPIAppsV1DaemonSetStatus) Reset() {
 	var v IoK8sAPIAppsV1DaemonSetStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAppsV1DaemonSetStatus) SetTo(v IoK8sAPIAppsV1DaemonSetStatus) {
+func (o *OptIoK8sAPIAppsV1DaemonSetStatus) SetTo(v IoK8sAPIAppsV1DaemonSetStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAppsV1DaemonSetStatus) Get() (v IoK8sAPIAppsV1DaemonSetStatus, ok bool) {
+func (o OptIoK8sAPIAppsV1DaemonSetStatus) Get() (v IoK8sAPIAppsV1DaemonSetStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAppsV1DaemonSetUpdateStrategy with value set to v.
-func NewOptionalIoK8sAPIAppsV1DaemonSetUpdateStrategy(v IoK8sAPIAppsV1DaemonSetUpdateStrategy) OptionalIoK8sAPIAppsV1DaemonSetUpdateStrategy {
-	return OptionalIoK8sAPIAppsV1DaemonSetUpdateStrategy{
+// New returns new OptIoK8sAPIAppsV1DaemonSetUpdateStrategy with value set to v.
+func NewOptIoK8sAPIAppsV1DaemonSetUpdateStrategy(v IoK8sAPIAppsV1DaemonSetUpdateStrategy) OptIoK8sAPIAppsV1DaemonSetUpdateStrategy {
+	return OptIoK8sAPIAppsV1DaemonSetUpdateStrategy{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAppsV1DaemonSetUpdateStrategy is generic valiant of IoK8sAPIAppsV1DaemonSetUpdateStrategy.
-type OptionalIoK8sAPIAppsV1DaemonSetUpdateStrategy struct {
+// OptIoK8sAPIAppsV1DaemonSetUpdateStrategy is generic valiant of IoK8sAPIAppsV1DaemonSetUpdateStrategy.
+type OptIoK8sAPIAppsV1DaemonSetUpdateStrategy struct {
 	Value IoK8sAPIAppsV1DaemonSetUpdateStrategy
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAppsV1DaemonSetUpdateStrategy was set.
-func (o OptionalIoK8sAPIAppsV1DaemonSetUpdateStrategy) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAppsV1DaemonSetUpdateStrategy was set.
+func (o OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAppsV1DaemonSetUpdateStrategy) Reset() {
+func (o *OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) Reset() {
 	var v IoK8sAPIAppsV1DaemonSetUpdateStrategy
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAppsV1DaemonSetUpdateStrategy) SetTo(v IoK8sAPIAppsV1DaemonSetUpdateStrategy) {
+func (o *OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) SetTo(v IoK8sAPIAppsV1DaemonSetUpdateStrategy) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAppsV1DaemonSetUpdateStrategy) Get() (v IoK8sAPIAppsV1DaemonSetUpdateStrategy, ok bool) {
+func (o OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) Get() (v IoK8sAPIAppsV1DaemonSetUpdateStrategy, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAppsV1DeploymentSpec with value set to v.
-func NewOptionalIoK8sAPIAppsV1DeploymentSpec(v IoK8sAPIAppsV1DeploymentSpec) OptionalIoK8sAPIAppsV1DeploymentSpec {
-	return OptionalIoK8sAPIAppsV1DeploymentSpec{
+// New returns new OptIoK8sAPIAppsV1DeploymentSpec with value set to v.
+func NewOptIoK8sAPIAppsV1DeploymentSpec(v IoK8sAPIAppsV1DeploymentSpec) OptIoK8sAPIAppsV1DeploymentSpec {
+	return OptIoK8sAPIAppsV1DeploymentSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAppsV1DeploymentSpec is generic valiant of IoK8sAPIAppsV1DeploymentSpec.
-type OptionalIoK8sAPIAppsV1DeploymentSpec struct {
+// OptIoK8sAPIAppsV1DeploymentSpec is generic valiant of IoK8sAPIAppsV1DeploymentSpec.
+type OptIoK8sAPIAppsV1DeploymentSpec struct {
 	Value IoK8sAPIAppsV1DeploymentSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAppsV1DeploymentSpec was set.
-func (o OptionalIoK8sAPIAppsV1DeploymentSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAppsV1DeploymentSpec was set.
+func (o OptIoK8sAPIAppsV1DeploymentSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAppsV1DeploymentSpec) Reset() {
+func (o *OptIoK8sAPIAppsV1DeploymentSpec) Reset() {
 	var v IoK8sAPIAppsV1DeploymentSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAppsV1DeploymentSpec) SetTo(v IoK8sAPIAppsV1DeploymentSpec) {
+func (o *OptIoK8sAPIAppsV1DeploymentSpec) SetTo(v IoK8sAPIAppsV1DeploymentSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAppsV1DeploymentSpec) Get() (v IoK8sAPIAppsV1DeploymentSpec, ok bool) {
+func (o OptIoK8sAPIAppsV1DeploymentSpec) Get() (v IoK8sAPIAppsV1DeploymentSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAppsV1DeploymentStatus with value set to v.
-func NewOptionalIoK8sAPIAppsV1DeploymentStatus(v IoK8sAPIAppsV1DeploymentStatus) OptionalIoK8sAPIAppsV1DeploymentStatus {
-	return OptionalIoK8sAPIAppsV1DeploymentStatus{
+// New returns new OptIoK8sAPIAppsV1DeploymentStatus with value set to v.
+func NewOptIoK8sAPIAppsV1DeploymentStatus(v IoK8sAPIAppsV1DeploymentStatus) OptIoK8sAPIAppsV1DeploymentStatus {
+	return OptIoK8sAPIAppsV1DeploymentStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAppsV1DeploymentStatus is generic valiant of IoK8sAPIAppsV1DeploymentStatus.
-type OptionalIoK8sAPIAppsV1DeploymentStatus struct {
+// OptIoK8sAPIAppsV1DeploymentStatus is generic valiant of IoK8sAPIAppsV1DeploymentStatus.
+type OptIoK8sAPIAppsV1DeploymentStatus struct {
 	Value IoK8sAPIAppsV1DeploymentStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAppsV1DeploymentStatus was set.
-func (o OptionalIoK8sAPIAppsV1DeploymentStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAppsV1DeploymentStatus was set.
+func (o OptIoK8sAPIAppsV1DeploymentStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAppsV1DeploymentStatus) Reset() {
+func (o *OptIoK8sAPIAppsV1DeploymentStatus) Reset() {
 	var v IoK8sAPIAppsV1DeploymentStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAppsV1DeploymentStatus) SetTo(v IoK8sAPIAppsV1DeploymentStatus) {
+func (o *OptIoK8sAPIAppsV1DeploymentStatus) SetTo(v IoK8sAPIAppsV1DeploymentStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAppsV1DeploymentStatus) Get() (v IoK8sAPIAppsV1DeploymentStatus, ok bool) {
+func (o OptIoK8sAPIAppsV1DeploymentStatus) Get() (v IoK8sAPIAppsV1DeploymentStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAppsV1DeploymentStrategy with value set to v.
-func NewOptionalIoK8sAPIAppsV1DeploymentStrategy(v IoK8sAPIAppsV1DeploymentStrategy) OptionalIoK8sAPIAppsV1DeploymentStrategy {
-	return OptionalIoK8sAPIAppsV1DeploymentStrategy{
+// New returns new OptIoK8sAPIAppsV1DeploymentStrategy with value set to v.
+func NewOptIoK8sAPIAppsV1DeploymentStrategy(v IoK8sAPIAppsV1DeploymentStrategy) OptIoK8sAPIAppsV1DeploymentStrategy {
+	return OptIoK8sAPIAppsV1DeploymentStrategy{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAppsV1DeploymentStrategy is generic valiant of IoK8sAPIAppsV1DeploymentStrategy.
-type OptionalIoK8sAPIAppsV1DeploymentStrategy struct {
+// OptIoK8sAPIAppsV1DeploymentStrategy is generic valiant of IoK8sAPIAppsV1DeploymentStrategy.
+type OptIoK8sAPIAppsV1DeploymentStrategy struct {
 	Value IoK8sAPIAppsV1DeploymentStrategy
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAppsV1DeploymentStrategy was set.
-func (o OptionalIoK8sAPIAppsV1DeploymentStrategy) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAppsV1DeploymentStrategy was set.
+func (o OptIoK8sAPIAppsV1DeploymentStrategy) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAppsV1DeploymentStrategy) Reset() {
+func (o *OptIoK8sAPIAppsV1DeploymentStrategy) Reset() {
 	var v IoK8sAPIAppsV1DeploymentStrategy
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAppsV1DeploymentStrategy) SetTo(v IoK8sAPIAppsV1DeploymentStrategy) {
+func (o *OptIoK8sAPIAppsV1DeploymentStrategy) SetTo(v IoK8sAPIAppsV1DeploymentStrategy) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAppsV1DeploymentStrategy) Get() (v IoK8sAPIAppsV1DeploymentStrategy, ok bool) {
+func (o OptIoK8sAPIAppsV1DeploymentStrategy) Get() (v IoK8sAPIAppsV1DeploymentStrategy, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAppsV1ReplicaSetSpec with value set to v.
-func NewOptionalIoK8sAPIAppsV1ReplicaSetSpec(v IoK8sAPIAppsV1ReplicaSetSpec) OptionalIoK8sAPIAppsV1ReplicaSetSpec {
-	return OptionalIoK8sAPIAppsV1ReplicaSetSpec{
+// New returns new OptIoK8sAPIAppsV1ReplicaSetSpec with value set to v.
+func NewOptIoK8sAPIAppsV1ReplicaSetSpec(v IoK8sAPIAppsV1ReplicaSetSpec) OptIoK8sAPIAppsV1ReplicaSetSpec {
+	return OptIoK8sAPIAppsV1ReplicaSetSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAppsV1ReplicaSetSpec is generic valiant of IoK8sAPIAppsV1ReplicaSetSpec.
-type OptionalIoK8sAPIAppsV1ReplicaSetSpec struct {
+// OptIoK8sAPIAppsV1ReplicaSetSpec is generic valiant of IoK8sAPIAppsV1ReplicaSetSpec.
+type OptIoK8sAPIAppsV1ReplicaSetSpec struct {
 	Value IoK8sAPIAppsV1ReplicaSetSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAppsV1ReplicaSetSpec was set.
-func (o OptionalIoK8sAPIAppsV1ReplicaSetSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAppsV1ReplicaSetSpec was set.
+func (o OptIoK8sAPIAppsV1ReplicaSetSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAppsV1ReplicaSetSpec) Reset() {
+func (o *OptIoK8sAPIAppsV1ReplicaSetSpec) Reset() {
 	var v IoK8sAPIAppsV1ReplicaSetSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAppsV1ReplicaSetSpec) SetTo(v IoK8sAPIAppsV1ReplicaSetSpec) {
+func (o *OptIoK8sAPIAppsV1ReplicaSetSpec) SetTo(v IoK8sAPIAppsV1ReplicaSetSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAppsV1ReplicaSetSpec) Get() (v IoK8sAPIAppsV1ReplicaSetSpec, ok bool) {
+func (o OptIoK8sAPIAppsV1ReplicaSetSpec) Get() (v IoK8sAPIAppsV1ReplicaSetSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAppsV1ReplicaSetStatus with value set to v.
-func NewOptionalIoK8sAPIAppsV1ReplicaSetStatus(v IoK8sAPIAppsV1ReplicaSetStatus) OptionalIoK8sAPIAppsV1ReplicaSetStatus {
-	return OptionalIoK8sAPIAppsV1ReplicaSetStatus{
+// New returns new OptIoK8sAPIAppsV1ReplicaSetStatus with value set to v.
+func NewOptIoK8sAPIAppsV1ReplicaSetStatus(v IoK8sAPIAppsV1ReplicaSetStatus) OptIoK8sAPIAppsV1ReplicaSetStatus {
+	return OptIoK8sAPIAppsV1ReplicaSetStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAppsV1ReplicaSetStatus is generic valiant of IoK8sAPIAppsV1ReplicaSetStatus.
-type OptionalIoK8sAPIAppsV1ReplicaSetStatus struct {
+// OptIoK8sAPIAppsV1ReplicaSetStatus is generic valiant of IoK8sAPIAppsV1ReplicaSetStatus.
+type OptIoK8sAPIAppsV1ReplicaSetStatus struct {
 	Value IoK8sAPIAppsV1ReplicaSetStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAppsV1ReplicaSetStatus was set.
-func (o OptionalIoK8sAPIAppsV1ReplicaSetStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAppsV1ReplicaSetStatus was set.
+func (o OptIoK8sAPIAppsV1ReplicaSetStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAppsV1ReplicaSetStatus) Reset() {
+func (o *OptIoK8sAPIAppsV1ReplicaSetStatus) Reset() {
 	var v IoK8sAPIAppsV1ReplicaSetStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAppsV1ReplicaSetStatus) SetTo(v IoK8sAPIAppsV1ReplicaSetStatus) {
+func (o *OptIoK8sAPIAppsV1ReplicaSetStatus) SetTo(v IoK8sAPIAppsV1ReplicaSetStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAppsV1ReplicaSetStatus) Get() (v IoK8sAPIAppsV1ReplicaSetStatus, ok bool) {
+func (o OptIoK8sAPIAppsV1ReplicaSetStatus) Get() (v IoK8sAPIAppsV1ReplicaSetStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAppsV1RollingUpdateDaemonSet with value set to v.
-func NewOptionalIoK8sAPIAppsV1RollingUpdateDaemonSet(v IoK8sAPIAppsV1RollingUpdateDaemonSet) OptionalIoK8sAPIAppsV1RollingUpdateDaemonSet {
-	return OptionalIoK8sAPIAppsV1RollingUpdateDaemonSet{
+// New returns new OptIoK8sAPIAppsV1RollingUpdateDaemonSet with value set to v.
+func NewOptIoK8sAPIAppsV1RollingUpdateDaemonSet(v IoK8sAPIAppsV1RollingUpdateDaemonSet) OptIoK8sAPIAppsV1RollingUpdateDaemonSet {
+	return OptIoK8sAPIAppsV1RollingUpdateDaemonSet{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAppsV1RollingUpdateDaemonSet is generic valiant of IoK8sAPIAppsV1RollingUpdateDaemonSet.
-type OptionalIoK8sAPIAppsV1RollingUpdateDaemonSet struct {
+// OptIoK8sAPIAppsV1RollingUpdateDaemonSet is generic valiant of IoK8sAPIAppsV1RollingUpdateDaemonSet.
+type OptIoK8sAPIAppsV1RollingUpdateDaemonSet struct {
 	Value IoK8sAPIAppsV1RollingUpdateDaemonSet
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAppsV1RollingUpdateDaemonSet was set.
-func (o OptionalIoK8sAPIAppsV1RollingUpdateDaemonSet) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAppsV1RollingUpdateDaemonSet was set.
+func (o OptIoK8sAPIAppsV1RollingUpdateDaemonSet) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAppsV1RollingUpdateDaemonSet) Reset() {
+func (o *OptIoK8sAPIAppsV1RollingUpdateDaemonSet) Reset() {
 	var v IoK8sAPIAppsV1RollingUpdateDaemonSet
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAppsV1RollingUpdateDaemonSet) SetTo(v IoK8sAPIAppsV1RollingUpdateDaemonSet) {
+func (o *OptIoK8sAPIAppsV1RollingUpdateDaemonSet) SetTo(v IoK8sAPIAppsV1RollingUpdateDaemonSet) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAppsV1RollingUpdateDaemonSet) Get() (v IoK8sAPIAppsV1RollingUpdateDaemonSet, ok bool) {
+func (o OptIoK8sAPIAppsV1RollingUpdateDaemonSet) Get() (v IoK8sAPIAppsV1RollingUpdateDaemonSet, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAppsV1RollingUpdateDeployment with value set to v.
-func NewOptionalIoK8sAPIAppsV1RollingUpdateDeployment(v IoK8sAPIAppsV1RollingUpdateDeployment) OptionalIoK8sAPIAppsV1RollingUpdateDeployment {
-	return OptionalIoK8sAPIAppsV1RollingUpdateDeployment{
+// New returns new OptIoK8sAPIAppsV1RollingUpdateDeployment with value set to v.
+func NewOptIoK8sAPIAppsV1RollingUpdateDeployment(v IoK8sAPIAppsV1RollingUpdateDeployment) OptIoK8sAPIAppsV1RollingUpdateDeployment {
+	return OptIoK8sAPIAppsV1RollingUpdateDeployment{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAppsV1RollingUpdateDeployment is generic valiant of IoK8sAPIAppsV1RollingUpdateDeployment.
-type OptionalIoK8sAPIAppsV1RollingUpdateDeployment struct {
+// OptIoK8sAPIAppsV1RollingUpdateDeployment is generic valiant of IoK8sAPIAppsV1RollingUpdateDeployment.
+type OptIoK8sAPIAppsV1RollingUpdateDeployment struct {
 	Value IoK8sAPIAppsV1RollingUpdateDeployment
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAppsV1RollingUpdateDeployment was set.
-func (o OptionalIoK8sAPIAppsV1RollingUpdateDeployment) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAppsV1RollingUpdateDeployment was set.
+func (o OptIoK8sAPIAppsV1RollingUpdateDeployment) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAppsV1RollingUpdateDeployment) Reset() {
+func (o *OptIoK8sAPIAppsV1RollingUpdateDeployment) Reset() {
 	var v IoK8sAPIAppsV1RollingUpdateDeployment
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAppsV1RollingUpdateDeployment) SetTo(v IoK8sAPIAppsV1RollingUpdateDeployment) {
+func (o *OptIoK8sAPIAppsV1RollingUpdateDeployment) SetTo(v IoK8sAPIAppsV1RollingUpdateDeployment) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAppsV1RollingUpdateDeployment) Get() (v IoK8sAPIAppsV1RollingUpdateDeployment, ok bool) {
+func (o OptIoK8sAPIAppsV1RollingUpdateDeployment) Get() (v IoK8sAPIAppsV1RollingUpdateDeployment, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy with value set to v.
-func NewOptionalIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy(v IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) OptionalIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy {
-	return OptionalIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy{
+// New returns new OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy with value set to v.
+func NewOptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy(v IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy {
+	return OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy is generic valiant of IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy.
-type OptionalIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy struct {
+// OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy is generic valiant of IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy.
+type OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy struct {
 	Value IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy was set.
-func (o OptionalIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy was set.
+func (o OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Reset() {
+func (o *OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Reset() {
 	var v IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) SetTo(v IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) {
+func (o *OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) SetTo(v IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Get() (v IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy, ok bool) {
+func (o OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Get() (v IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAppsV1StatefulSetSpec with value set to v.
-func NewOptionalIoK8sAPIAppsV1StatefulSetSpec(v IoK8sAPIAppsV1StatefulSetSpec) OptionalIoK8sAPIAppsV1StatefulSetSpec {
-	return OptionalIoK8sAPIAppsV1StatefulSetSpec{
+// New returns new OptIoK8sAPIAppsV1StatefulSetSpec with value set to v.
+func NewOptIoK8sAPIAppsV1StatefulSetSpec(v IoK8sAPIAppsV1StatefulSetSpec) OptIoK8sAPIAppsV1StatefulSetSpec {
+	return OptIoK8sAPIAppsV1StatefulSetSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAppsV1StatefulSetSpec is generic valiant of IoK8sAPIAppsV1StatefulSetSpec.
-type OptionalIoK8sAPIAppsV1StatefulSetSpec struct {
+// OptIoK8sAPIAppsV1StatefulSetSpec is generic valiant of IoK8sAPIAppsV1StatefulSetSpec.
+type OptIoK8sAPIAppsV1StatefulSetSpec struct {
 	Value IoK8sAPIAppsV1StatefulSetSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAppsV1StatefulSetSpec was set.
-func (o OptionalIoK8sAPIAppsV1StatefulSetSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAppsV1StatefulSetSpec was set.
+func (o OptIoK8sAPIAppsV1StatefulSetSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAppsV1StatefulSetSpec) Reset() {
+func (o *OptIoK8sAPIAppsV1StatefulSetSpec) Reset() {
 	var v IoK8sAPIAppsV1StatefulSetSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAppsV1StatefulSetSpec) SetTo(v IoK8sAPIAppsV1StatefulSetSpec) {
+func (o *OptIoK8sAPIAppsV1StatefulSetSpec) SetTo(v IoK8sAPIAppsV1StatefulSetSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAppsV1StatefulSetSpec) Get() (v IoK8sAPIAppsV1StatefulSetSpec, ok bool) {
+func (o OptIoK8sAPIAppsV1StatefulSetSpec) Get() (v IoK8sAPIAppsV1StatefulSetSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAppsV1StatefulSetStatus with value set to v.
-func NewOptionalIoK8sAPIAppsV1StatefulSetStatus(v IoK8sAPIAppsV1StatefulSetStatus) OptionalIoK8sAPIAppsV1StatefulSetStatus {
-	return OptionalIoK8sAPIAppsV1StatefulSetStatus{
+// New returns new OptIoK8sAPIAppsV1StatefulSetStatus with value set to v.
+func NewOptIoK8sAPIAppsV1StatefulSetStatus(v IoK8sAPIAppsV1StatefulSetStatus) OptIoK8sAPIAppsV1StatefulSetStatus {
+	return OptIoK8sAPIAppsV1StatefulSetStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAppsV1StatefulSetStatus is generic valiant of IoK8sAPIAppsV1StatefulSetStatus.
-type OptionalIoK8sAPIAppsV1StatefulSetStatus struct {
+// OptIoK8sAPIAppsV1StatefulSetStatus is generic valiant of IoK8sAPIAppsV1StatefulSetStatus.
+type OptIoK8sAPIAppsV1StatefulSetStatus struct {
 	Value IoK8sAPIAppsV1StatefulSetStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAppsV1StatefulSetStatus was set.
-func (o OptionalIoK8sAPIAppsV1StatefulSetStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAppsV1StatefulSetStatus was set.
+func (o OptIoK8sAPIAppsV1StatefulSetStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAppsV1StatefulSetStatus) Reset() {
+func (o *OptIoK8sAPIAppsV1StatefulSetStatus) Reset() {
 	var v IoK8sAPIAppsV1StatefulSetStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAppsV1StatefulSetStatus) SetTo(v IoK8sAPIAppsV1StatefulSetStatus) {
+func (o *OptIoK8sAPIAppsV1StatefulSetStatus) SetTo(v IoK8sAPIAppsV1StatefulSetStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAppsV1StatefulSetStatus) Get() (v IoK8sAPIAppsV1StatefulSetStatus, ok bool) {
+func (o OptIoK8sAPIAppsV1StatefulSetStatus) Get() (v IoK8sAPIAppsV1StatefulSetStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAppsV1StatefulSetUpdateStrategy with value set to v.
-func NewOptionalIoK8sAPIAppsV1StatefulSetUpdateStrategy(v IoK8sAPIAppsV1StatefulSetUpdateStrategy) OptionalIoK8sAPIAppsV1StatefulSetUpdateStrategy {
-	return OptionalIoK8sAPIAppsV1StatefulSetUpdateStrategy{
+// New returns new OptIoK8sAPIAppsV1StatefulSetUpdateStrategy with value set to v.
+func NewOptIoK8sAPIAppsV1StatefulSetUpdateStrategy(v IoK8sAPIAppsV1StatefulSetUpdateStrategy) OptIoK8sAPIAppsV1StatefulSetUpdateStrategy {
+	return OptIoK8sAPIAppsV1StatefulSetUpdateStrategy{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAppsV1StatefulSetUpdateStrategy is generic valiant of IoK8sAPIAppsV1StatefulSetUpdateStrategy.
-type OptionalIoK8sAPIAppsV1StatefulSetUpdateStrategy struct {
+// OptIoK8sAPIAppsV1StatefulSetUpdateStrategy is generic valiant of IoK8sAPIAppsV1StatefulSetUpdateStrategy.
+type OptIoK8sAPIAppsV1StatefulSetUpdateStrategy struct {
 	Value IoK8sAPIAppsV1StatefulSetUpdateStrategy
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAppsV1StatefulSetUpdateStrategy was set.
-func (o OptionalIoK8sAPIAppsV1StatefulSetUpdateStrategy) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAppsV1StatefulSetUpdateStrategy was set.
+func (o OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAppsV1StatefulSetUpdateStrategy) Reset() {
+func (o *OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) Reset() {
 	var v IoK8sAPIAppsV1StatefulSetUpdateStrategy
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAppsV1StatefulSetUpdateStrategy) SetTo(v IoK8sAPIAppsV1StatefulSetUpdateStrategy) {
+func (o *OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) SetTo(v IoK8sAPIAppsV1StatefulSetUpdateStrategy) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAppsV1StatefulSetUpdateStrategy) Get() (v IoK8sAPIAppsV1StatefulSetUpdateStrategy, ok bool) {
+func (o OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) Get() (v IoK8sAPIAppsV1StatefulSetUpdateStrategy, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAuthenticationV1TokenReviewStatus with value set to v.
-func NewOptionalIoK8sAPIAuthenticationV1TokenReviewStatus(v IoK8sAPIAuthenticationV1TokenReviewStatus) OptionalIoK8sAPIAuthenticationV1TokenReviewStatus {
-	return OptionalIoK8sAPIAuthenticationV1TokenReviewStatus{
+// New returns new OptIoK8sAPIAuthenticationV1TokenReviewStatus with value set to v.
+func NewOptIoK8sAPIAuthenticationV1TokenReviewStatus(v IoK8sAPIAuthenticationV1TokenReviewStatus) OptIoK8sAPIAuthenticationV1TokenReviewStatus {
+	return OptIoK8sAPIAuthenticationV1TokenReviewStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAuthenticationV1TokenReviewStatus is generic valiant of IoK8sAPIAuthenticationV1TokenReviewStatus.
-type OptionalIoK8sAPIAuthenticationV1TokenReviewStatus struct {
+// OptIoK8sAPIAuthenticationV1TokenReviewStatus is generic valiant of IoK8sAPIAuthenticationV1TokenReviewStatus.
+type OptIoK8sAPIAuthenticationV1TokenReviewStatus struct {
 	Value IoK8sAPIAuthenticationV1TokenReviewStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAuthenticationV1TokenReviewStatus was set.
-func (o OptionalIoK8sAPIAuthenticationV1TokenReviewStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAuthenticationV1TokenReviewStatus was set.
+func (o OptIoK8sAPIAuthenticationV1TokenReviewStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAuthenticationV1TokenReviewStatus) Reset() {
+func (o *OptIoK8sAPIAuthenticationV1TokenReviewStatus) Reset() {
 	var v IoK8sAPIAuthenticationV1TokenReviewStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAuthenticationV1TokenReviewStatus) SetTo(v IoK8sAPIAuthenticationV1TokenReviewStatus) {
+func (o *OptIoK8sAPIAuthenticationV1TokenReviewStatus) SetTo(v IoK8sAPIAuthenticationV1TokenReviewStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAuthenticationV1TokenReviewStatus) Get() (v IoK8sAPIAuthenticationV1TokenReviewStatus, ok bool) {
+func (o OptIoK8sAPIAuthenticationV1TokenReviewStatus) Get() (v IoK8sAPIAuthenticationV1TokenReviewStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAuthenticationV1UserInfo with value set to v.
-func NewOptionalIoK8sAPIAuthenticationV1UserInfo(v IoK8sAPIAuthenticationV1UserInfo) OptionalIoK8sAPIAuthenticationV1UserInfo {
-	return OptionalIoK8sAPIAuthenticationV1UserInfo{
+// New returns new OptIoK8sAPIAuthenticationV1UserInfo with value set to v.
+func NewOptIoK8sAPIAuthenticationV1UserInfo(v IoK8sAPIAuthenticationV1UserInfo) OptIoK8sAPIAuthenticationV1UserInfo {
+	return OptIoK8sAPIAuthenticationV1UserInfo{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAuthenticationV1UserInfo is generic valiant of IoK8sAPIAuthenticationV1UserInfo.
-type OptionalIoK8sAPIAuthenticationV1UserInfo struct {
+// OptIoK8sAPIAuthenticationV1UserInfo is generic valiant of IoK8sAPIAuthenticationV1UserInfo.
+type OptIoK8sAPIAuthenticationV1UserInfo struct {
 	Value IoK8sAPIAuthenticationV1UserInfo
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAuthenticationV1UserInfo was set.
-func (o OptionalIoK8sAPIAuthenticationV1UserInfo) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAuthenticationV1UserInfo was set.
+func (o OptIoK8sAPIAuthenticationV1UserInfo) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAuthenticationV1UserInfo) Reset() {
+func (o *OptIoK8sAPIAuthenticationV1UserInfo) Reset() {
 	var v IoK8sAPIAuthenticationV1UserInfo
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAuthenticationV1UserInfo) SetTo(v IoK8sAPIAuthenticationV1UserInfo) {
+func (o *OptIoK8sAPIAuthenticationV1UserInfo) SetTo(v IoK8sAPIAuthenticationV1UserInfo) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAuthenticationV1UserInfo) Get() (v IoK8sAPIAuthenticationV1UserInfo, ok bool) {
+func (o OptIoK8sAPIAuthenticationV1UserInfo) Get() (v IoK8sAPIAuthenticationV1UserInfo, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAuthorizationV1NonResourceAttributes with value set to v.
-func NewOptionalIoK8sAPIAuthorizationV1NonResourceAttributes(v IoK8sAPIAuthorizationV1NonResourceAttributes) OptionalIoK8sAPIAuthorizationV1NonResourceAttributes {
-	return OptionalIoK8sAPIAuthorizationV1NonResourceAttributes{
+// New returns new OptIoK8sAPIAuthorizationV1NonResourceAttributes with value set to v.
+func NewOptIoK8sAPIAuthorizationV1NonResourceAttributes(v IoK8sAPIAuthorizationV1NonResourceAttributes) OptIoK8sAPIAuthorizationV1NonResourceAttributes {
+	return OptIoK8sAPIAuthorizationV1NonResourceAttributes{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAuthorizationV1NonResourceAttributes is generic valiant of IoK8sAPIAuthorizationV1NonResourceAttributes.
-type OptionalIoK8sAPIAuthorizationV1NonResourceAttributes struct {
+// OptIoK8sAPIAuthorizationV1NonResourceAttributes is generic valiant of IoK8sAPIAuthorizationV1NonResourceAttributes.
+type OptIoK8sAPIAuthorizationV1NonResourceAttributes struct {
 	Value IoK8sAPIAuthorizationV1NonResourceAttributes
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAuthorizationV1NonResourceAttributes was set.
-func (o OptionalIoK8sAPIAuthorizationV1NonResourceAttributes) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAuthorizationV1NonResourceAttributes was set.
+func (o OptIoK8sAPIAuthorizationV1NonResourceAttributes) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAuthorizationV1NonResourceAttributes) Reset() {
+func (o *OptIoK8sAPIAuthorizationV1NonResourceAttributes) Reset() {
 	var v IoK8sAPIAuthorizationV1NonResourceAttributes
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAuthorizationV1NonResourceAttributes) SetTo(v IoK8sAPIAuthorizationV1NonResourceAttributes) {
+func (o *OptIoK8sAPIAuthorizationV1NonResourceAttributes) SetTo(v IoK8sAPIAuthorizationV1NonResourceAttributes) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAuthorizationV1NonResourceAttributes) Get() (v IoK8sAPIAuthorizationV1NonResourceAttributes, ok bool) {
+func (o OptIoK8sAPIAuthorizationV1NonResourceAttributes) Get() (v IoK8sAPIAuthorizationV1NonResourceAttributes, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAuthorizationV1ResourceAttributes with value set to v.
-func NewOptionalIoK8sAPIAuthorizationV1ResourceAttributes(v IoK8sAPIAuthorizationV1ResourceAttributes) OptionalIoK8sAPIAuthorizationV1ResourceAttributes {
-	return OptionalIoK8sAPIAuthorizationV1ResourceAttributes{
+// New returns new OptIoK8sAPIAuthorizationV1ResourceAttributes with value set to v.
+func NewOptIoK8sAPIAuthorizationV1ResourceAttributes(v IoK8sAPIAuthorizationV1ResourceAttributes) OptIoK8sAPIAuthorizationV1ResourceAttributes {
+	return OptIoK8sAPIAuthorizationV1ResourceAttributes{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAuthorizationV1ResourceAttributes is generic valiant of IoK8sAPIAuthorizationV1ResourceAttributes.
-type OptionalIoK8sAPIAuthorizationV1ResourceAttributes struct {
+// OptIoK8sAPIAuthorizationV1ResourceAttributes is generic valiant of IoK8sAPIAuthorizationV1ResourceAttributes.
+type OptIoK8sAPIAuthorizationV1ResourceAttributes struct {
 	Value IoK8sAPIAuthorizationV1ResourceAttributes
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAuthorizationV1ResourceAttributes was set.
-func (o OptionalIoK8sAPIAuthorizationV1ResourceAttributes) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAuthorizationV1ResourceAttributes was set.
+func (o OptIoK8sAPIAuthorizationV1ResourceAttributes) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAuthorizationV1ResourceAttributes) Reset() {
+func (o *OptIoK8sAPIAuthorizationV1ResourceAttributes) Reset() {
 	var v IoK8sAPIAuthorizationV1ResourceAttributes
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAuthorizationV1ResourceAttributes) SetTo(v IoK8sAPIAuthorizationV1ResourceAttributes) {
+func (o *OptIoK8sAPIAuthorizationV1ResourceAttributes) SetTo(v IoK8sAPIAuthorizationV1ResourceAttributes) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAuthorizationV1ResourceAttributes) Get() (v IoK8sAPIAuthorizationV1ResourceAttributes, ok bool) {
+func (o OptIoK8sAPIAuthorizationV1ResourceAttributes) Get() (v IoK8sAPIAuthorizationV1ResourceAttributes, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAuthorizationV1SubjectAccessReviewStatus with value set to v.
-func NewOptionalIoK8sAPIAuthorizationV1SubjectAccessReviewStatus(v IoK8sAPIAuthorizationV1SubjectAccessReviewStatus) OptionalIoK8sAPIAuthorizationV1SubjectAccessReviewStatus {
-	return OptionalIoK8sAPIAuthorizationV1SubjectAccessReviewStatus{
+// New returns new OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus with value set to v.
+func NewOptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus(v IoK8sAPIAuthorizationV1SubjectAccessReviewStatus) OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus {
+	return OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAuthorizationV1SubjectAccessReviewStatus is generic valiant of IoK8sAPIAuthorizationV1SubjectAccessReviewStatus.
-type OptionalIoK8sAPIAuthorizationV1SubjectAccessReviewStatus struct {
+// OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus is generic valiant of IoK8sAPIAuthorizationV1SubjectAccessReviewStatus.
+type OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus struct {
 	Value IoK8sAPIAuthorizationV1SubjectAccessReviewStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAuthorizationV1SubjectAccessReviewStatus was set.
-func (o OptionalIoK8sAPIAuthorizationV1SubjectAccessReviewStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus was set.
+func (o OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAuthorizationV1SubjectAccessReviewStatus) Reset() {
+func (o *OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus) Reset() {
 	var v IoK8sAPIAuthorizationV1SubjectAccessReviewStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAuthorizationV1SubjectAccessReviewStatus) SetTo(v IoK8sAPIAuthorizationV1SubjectAccessReviewStatus) {
+func (o *OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus) SetTo(v IoK8sAPIAuthorizationV1SubjectAccessReviewStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAuthorizationV1SubjectAccessReviewStatus) Get() (v IoK8sAPIAuthorizationV1SubjectAccessReviewStatus, ok bool) {
+func (o OptIoK8sAPIAuthorizationV1SubjectAccessReviewStatus) Get() (v IoK8sAPIAuthorizationV1SubjectAccessReviewStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAuthorizationV1SubjectRulesReviewStatus with value set to v.
-func NewOptionalIoK8sAPIAuthorizationV1SubjectRulesReviewStatus(v IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) OptionalIoK8sAPIAuthorizationV1SubjectRulesReviewStatus {
-	return OptionalIoK8sAPIAuthorizationV1SubjectRulesReviewStatus{
+// New returns new OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus with value set to v.
+func NewOptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus(v IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus {
+	return OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAuthorizationV1SubjectRulesReviewStatus is generic valiant of IoK8sAPIAuthorizationV1SubjectRulesReviewStatus.
-type OptionalIoK8sAPIAuthorizationV1SubjectRulesReviewStatus struct {
+// OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus is generic valiant of IoK8sAPIAuthorizationV1SubjectRulesReviewStatus.
+type OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus struct {
 	Value IoK8sAPIAuthorizationV1SubjectRulesReviewStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAuthorizationV1SubjectRulesReviewStatus was set.
-func (o OptionalIoK8sAPIAuthorizationV1SubjectRulesReviewStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus was set.
+func (o OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAuthorizationV1SubjectRulesReviewStatus) Reset() {
+func (o *OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus) Reset() {
 	var v IoK8sAPIAuthorizationV1SubjectRulesReviewStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAuthorizationV1SubjectRulesReviewStatus) SetTo(v IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) {
+func (o *OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus) SetTo(v IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAuthorizationV1SubjectRulesReviewStatus) Get() (v IoK8sAPIAuthorizationV1SubjectRulesReviewStatus, ok bool) {
+func (o OptIoK8sAPIAuthorizationV1SubjectRulesReviewStatus) Get() (v IoK8sAPIAuthorizationV1SubjectRulesReviewStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec(v IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec {
-	return OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec{
+// New returns new OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec with value set to v.
+func NewOptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec(v IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec {
+	return OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec is generic valiant of IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec.
-type OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec struct {
+// OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec is generic valiant of IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec.
+type OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec struct {
 	Value IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec was set.
-func (o OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec was set.
+func (o OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Reset() {
+func (o *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Reset() {
 	var v IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) SetTo(v IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) {
+func (o *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) SetTo(v IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Get() (v IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec, ok bool) {
+func (o OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Get() (v IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus(v IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus {
-	return OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus{
+// New returns new OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus with value set to v.
+func NewOptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus(v IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus {
+	return OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus is generic valiant of IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus.
-type OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus struct {
+// OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus is generic valiant of IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus.
+type OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus struct {
 	Value IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus was set.
-func (o OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus was set.
+func (o OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Reset() {
+func (o *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Reset() {
 	var v IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) SetTo(v IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) {
+func (o *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) SetTo(v IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Get() (v IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus, ok bool) {
+func (o OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Get() (v IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource(v IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource {
-	return OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource{
+// New returns new OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource(v IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource {
+	return OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource is generic valiant of IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource.
-type OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource struct {
+// OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource is generic valiant of IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource.
+type OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource struct {
 	Value IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource was set.
+func (o OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Reset() {
 	var v IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) SetTo(v IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) {
+func (o *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) SetTo(v IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Get() (v IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Get() (v IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus(v IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus {
-	return OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus{
+// New returns new OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus(v IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus {
+	return OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus is generic valiant of IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus.
-type OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus struct {
+// OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus is generic valiant of IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus.
+type OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus struct {
 	Value IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus was set.
+func (o OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Reset() {
 	var v IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) SetTo(v IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) {
+func (o *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) SetTo(v IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Get() (v IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Get() (v IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricSource with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta1ExternalMetricSource(v IoK8sAPIAutoscalingV2beta1ExternalMetricSource) OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricSource {
-	return OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricSource{
+// New returns new OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta1ExternalMetricSource(v IoK8sAPIAutoscalingV2beta1ExternalMetricSource) OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource {
+	return OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricSource is generic valiant of IoK8sAPIAutoscalingV2beta1ExternalMetricSource.
-type OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricSource struct {
+// OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource is generic valiant of IoK8sAPIAutoscalingV2beta1ExternalMetricSource.
+type OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource struct {
 	Value IoK8sAPIAutoscalingV2beta1ExternalMetricSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricSource was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource was set.
+func (o OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricSource) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) Reset() {
 	var v IoK8sAPIAutoscalingV2beta1ExternalMetricSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricSource) SetTo(v IoK8sAPIAutoscalingV2beta1ExternalMetricSource) {
+func (o *OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) SetTo(v IoK8sAPIAutoscalingV2beta1ExternalMetricSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricSource) Get() (v IoK8sAPIAutoscalingV2beta1ExternalMetricSource, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) Get() (v IoK8sAPIAutoscalingV2beta1ExternalMetricSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricStatus with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta1ExternalMetricStatus(v IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricStatus {
-	return OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricStatus{
+// New returns new OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus(v IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus {
+	return OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricStatus is generic valiant of IoK8sAPIAutoscalingV2beta1ExternalMetricStatus.
-type OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricStatus struct {
+// OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus is generic valiant of IoK8sAPIAutoscalingV2beta1ExternalMetricStatus.
+type OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus struct {
 	Value IoK8sAPIAutoscalingV2beta1ExternalMetricStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricStatus was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus was set.
+func (o OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Reset() {
 	var v IoK8sAPIAutoscalingV2beta1ExternalMetricStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) SetTo(v IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) {
+func (o *OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) SetTo(v IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Get() (v IoK8sAPIAutoscalingV2beta1ExternalMetricStatus, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Get() (v IoK8sAPIAutoscalingV2beta1ExternalMetricStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec(v IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec {
-	return OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec{
+// New returns new OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec(v IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec {
+	return OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec is generic valiant of IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec.
-type OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec struct {
+// OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec is generic valiant of IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec.
+type OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec struct {
 	Value IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec was set.
+func (o OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Reset() {
 	var v IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) SetTo(v IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) {
+func (o *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) SetTo(v IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Get() (v IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Get() (v IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus(v IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus {
-	return OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus{
+// New returns new OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus(v IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus {
+	return OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus is generic valiant of IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus.
-type OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus struct {
+// OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus is generic valiant of IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus.
+type OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus struct {
 	Value IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus was set.
+func (o OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Reset() {
 	var v IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) SetTo(v IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) {
+func (o *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) SetTo(v IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Get() (v IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Get() (v IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricSource with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta1ObjectMetricSource(v IoK8sAPIAutoscalingV2beta1ObjectMetricSource) OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricSource {
-	return OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricSource{
+// New returns new OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta1ObjectMetricSource(v IoK8sAPIAutoscalingV2beta1ObjectMetricSource) OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource {
+	return OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricSource is generic valiant of IoK8sAPIAutoscalingV2beta1ObjectMetricSource.
-type OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricSource struct {
+// OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource is generic valiant of IoK8sAPIAutoscalingV2beta1ObjectMetricSource.
+type OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource struct {
 	Value IoK8sAPIAutoscalingV2beta1ObjectMetricSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricSource was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource was set.
+func (o OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricSource) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) Reset() {
 	var v IoK8sAPIAutoscalingV2beta1ObjectMetricSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricSource) SetTo(v IoK8sAPIAutoscalingV2beta1ObjectMetricSource) {
+func (o *OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) SetTo(v IoK8sAPIAutoscalingV2beta1ObjectMetricSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricSource) Get() (v IoK8sAPIAutoscalingV2beta1ObjectMetricSource, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) Get() (v IoK8sAPIAutoscalingV2beta1ObjectMetricSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricStatus with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta1ObjectMetricStatus(v IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricStatus {
-	return OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricStatus{
+// New returns new OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus(v IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus {
+	return OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricStatus is generic valiant of IoK8sAPIAutoscalingV2beta1ObjectMetricStatus.
-type OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricStatus struct {
+// OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus is generic valiant of IoK8sAPIAutoscalingV2beta1ObjectMetricStatus.
+type OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus struct {
 	Value IoK8sAPIAutoscalingV2beta1ObjectMetricStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricStatus was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus was set.
+func (o OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Reset() {
 	var v IoK8sAPIAutoscalingV2beta1ObjectMetricStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) SetTo(v IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) {
+func (o *OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) SetTo(v IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Get() (v IoK8sAPIAutoscalingV2beta1ObjectMetricStatus, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Get() (v IoK8sAPIAutoscalingV2beta1ObjectMetricStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta1PodsMetricSource with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta1PodsMetricSource(v IoK8sAPIAutoscalingV2beta1PodsMetricSource) OptionalIoK8sAPIAutoscalingV2beta1PodsMetricSource {
-	return OptionalIoK8sAPIAutoscalingV2beta1PodsMetricSource{
+// New returns new OptIoK8sAPIAutoscalingV2beta1PodsMetricSource with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta1PodsMetricSource(v IoK8sAPIAutoscalingV2beta1PodsMetricSource) OptIoK8sAPIAutoscalingV2beta1PodsMetricSource {
+	return OptIoK8sAPIAutoscalingV2beta1PodsMetricSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta1PodsMetricSource is generic valiant of IoK8sAPIAutoscalingV2beta1PodsMetricSource.
-type OptionalIoK8sAPIAutoscalingV2beta1PodsMetricSource struct {
+// OptIoK8sAPIAutoscalingV2beta1PodsMetricSource is generic valiant of IoK8sAPIAutoscalingV2beta1PodsMetricSource.
+type OptIoK8sAPIAutoscalingV2beta1PodsMetricSource struct {
 	Value IoK8sAPIAutoscalingV2beta1PodsMetricSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta1PodsMetricSource was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1PodsMetricSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta1PodsMetricSource was set.
+func (o OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1PodsMetricSource) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) Reset() {
 	var v IoK8sAPIAutoscalingV2beta1PodsMetricSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1PodsMetricSource) SetTo(v IoK8sAPIAutoscalingV2beta1PodsMetricSource) {
+func (o *OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) SetTo(v IoK8sAPIAutoscalingV2beta1PodsMetricSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1PodsMetricSource) Get() (v IoK8sAPIAutoscalingV2beta1PodsMetricSource, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) Get() (v IoK8sAPIAutoscalingV2beta1PodsMetricSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta1PodsMetricStatus with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta1PodsMetricStatus(v IoK8sAPIAutoscalingV2beta1PodsMetricStatus) OptionalIoK8sAPIAutoscalingV2beta1PodsMetricStatus {
-	return OptionalIoK8sAPIAutoscalingV2beta1PodsMetricStatus{
+// New returns new OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta1PodsMetricStatus(v IoK8sAPIAutoscalingV2beta1PodsMetricStatus) OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus {
+	return OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta1PodsMetricStatus is generic valiant of IoK8sAPIAutoscalingV2beta1PodsMetricStatus.
-type OptionalIoK8sAPIAutoscalingV2beta1PodsMetricStatus struct {
+// OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus is generic valiant of IoK8sAPIAutoscalingV2beta1PodsMetricStatus.
+type OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus struct {
 	Value IoK8sAPIAutoscalingV2beta1PodsMetricStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta1PodsMetricStatus was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1PodsMetricStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus was set.
+func (o OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1PodsMetricStatus) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) Reset() {
 	var v IoK8sAPIAutoscalingV2beta1PodsMetricStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1PodsMetricStatus) SetTo(v IoK8sAPIAutoscalingV2beta1PodsMetricStatus) {
+func (o *OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) SetTo(v IoK8sAPIAutoscalingV2beta1PodsMetricStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1PodsMetricStatus) Get() (v IoK8sAPIAutoscalingV2beta1PodsMetricStatus, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) Get() (v IoK8sAPIAutoscalingV2beta1PodsMetricStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricSource with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta1ResourceMetricSource(v IoK8sAPIAutoscalingV2beta1ResourceMetricSource) OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricSource {
-	return OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricSource{
+// New returns new OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta1ResourceMetricSource(v IoK8sAPIAutoscalingV2beta1ResourceMetricSource) OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource {
+	return OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricSource is generic valiant of IoK8sAPIAutoscalingV2beta1ResourceMetricSource.
-type OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricSource struct {
+// OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource is generic valiant of IoK8sAPIAutoscalingV2beta1ResourceMetricSource.
+type OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource struct {
 	Value IoK8sAPIAutoscalingV2beta1ResourceMetricSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricSource was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource was set.
+func (o OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricSource) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) Reset() {
 	var v IoK8sAPIAutoscalingV2beta1ResourceMetricSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricSource) SetTo(v IoK8sAPIAutoscalingV2beta1ResourceMetricSource) {
+func (o *OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) SetTo(v IoK8sAPIAutoscalingV2beta1ResourceMetricSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricSource) Get() (v IoK8sAPIAutoscalingV2beta1ResourceMetricSource, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) Get() (v IoK8sAPIAutoscalingV2beta1ResourceMetricSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricStatus with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta1ResourceMetricStatus(v IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricStatus {
-	return OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricStatus{
+// New returns new OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus(v IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus {
+	return OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricStatus is generic valiant of IoK8sAPIAutoscalingV2beta1ResourceMetricStatus.
-type OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricStatus struct {
+// OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus is generic valiant of IoK8sAPIAutoscalingV2beta1ResourceMetricStatus.
+type OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus struct {
 	Value IoK8sAPIAutoscalingV2beta1ResourceMetricStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricStatus was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus was set.
+func (o OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Reset() {
 	var v IoK8sAPIAutoscalingV2beta1ResourceMetricStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) SetTo(v IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) {
+func (o *OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) SetTo(v IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Get() (v IoK8sAPIAutoscalingV2beta1ResourceMetricStatus, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Get() (v IoK8sAPIAutoscalingV2beta1ResourceMetricStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource(v IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource {
-	return OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource{
+// New returns new OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource(v IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource {
+	return OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource is generic valiant of IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource.
-type OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource struct {
+// OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource is generic valiant of IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource.
+type OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource struct {
 	Value IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource was set.
+func (o OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Reset() {
 	var v IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) SetTo(v IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) {
+func (o *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) SetTo(v IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Get() (v IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Get() (v IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus(v IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus {
-	return OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus{
+// New returns new OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus(v IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus {
+	return OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus is generic valiant of IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus.
-type OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus struct {
+// OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus is generic valiant of IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus.
+type OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus struct {
 	Value IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus was set.
+func (o OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Reset() {
 	var v IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) SetTo(v IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) {
+func (o *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) SetTo(v IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Get() (v IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Get() (v IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricSource with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta2ExternalMetricSource(v IoK8sAPIAutoscalingV2beta2ExternalMetricSource) OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricSource {
-	return OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricSource{
+// New returns new OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta2ExternalMetricSource(v IoK8sAPIAutoscalingV2beta2ExternalMetricSource) OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource {
+	return OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricSource is generic valiant of IoK8sAPIAutoscalingV2beta2ExternalMetricSource.
-type OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricSource struct {
+// OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource is generic valiant of IoK8sAPIAutoscalingV2beta2ExternalMetricSource.
+type OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource struct {
 	Value IoK8sAPIAutoscalingV2beta2ExternalMetricSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricSource was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource was set.
+func (o OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricSource) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) Reset() {
 	var v IoK8sAPIAutoscalingV2beta2ExternalMetricSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricSource) SetTo(v IoK8sAPIAutoscalingV2beta2ExternalMetricSource) {
+func (o *OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) SetTo(v IoK8sAPIAutoscalingV2beta2ExternalMetricSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricSource) Get() (v IoK8sAPIAutoscalingV2beta2ExternalMetricSource, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) Get() (v IoK8sAPIAutoscalingV2beta2ExternalMetricSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricStatus with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta2ExternalMetricStatus(v IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricStatus {
-	return OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricStatus{
+// New returns new OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus(v IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus {
+	return OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricStatus is generic valiant of IoK8sAPIAutoscalingV2beta2ExternalMetricStatus.
-type OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricStatus struct {
+// OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus is generic valiant of IoK8sAPIAutoscalingV2beta2ExternalMetricStatus.
+type OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus struct {
 	Value IoK8sAPIAutoscalingV2beta2ExternalMetricStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricStatus was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus was set.
+func (o OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Reset() {
 	var v IoK8sAPIAutoscalingV2beta2ExternalMetricStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) SetTo(v IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) {
+func (o *OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) SetTo(v IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Get() (v IoK8sAPIAutoscalingV2beta2ExternalMetricStatus, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Get() (v IoK8sAPIAutoscalingV2beta2ExternalMetricStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta2HPAScalingRules with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta2HPAScalingRules(v IoK8sAPIAutoscalingV2beta2HPAScalingRules) OptionalIoK8sAPIAutoscalingV2beta2HPAScalingRules {
-	return OptionalIoK8sAPIAutoscalingV2beta2HPAScalingRules{
+// New returns new OptIoK8sAPIAutoscalingV2beta2HPAScalingRules with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta2HPAScalingRules(v IoK8sAPIAutoscalingV2beta2HPAScalingRules) OptIoK8sAPIAutoscalingV2beta2HPAScalingRules {
+	return OptIoK8sAPIAutoscalingV2beta2HPAScalingRules{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta2HPAScalingRules is generic valiant of IoK8sAPIAutoscalingV2beta2HPAScalingRules.
-type OptionalIoK8sAPIAutoscalingV2beta2HPAScalingRules struct {
+// OptIoK8sAPIAutoscalingV2beta2HPAScalingRules is generic valiant of IoK8sAPIAutoscalingV2beta2HPAScalingRules.
+type OptIoK8sAPIAutoscalingV2beta2HPAScalingRules struct {
 	Value IoK8sAPIAutoscalingV2beta2HPAScalingRules
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta2HPAScalingRules was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2HPAScalingRules) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta2HPAScalingRules was set.
+func (o OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2HPAScalingRules) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) Reset() {
 	var v IoK8sAPIAutoscalingV2beta2HPAScalingRules
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2HPAScalingRules) SetTo(v IoK8sAPIAutoscalingV2beta2HPAScalingRules) {
+func (o *OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) SetTo(v IoK8sAPIAutoscalingV2beta2HPAScalingRules) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2HPAScalingRules) Get() (v IoK8sAPIAutoscalingV2beta2HPAScalingRules, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) Get() (v IoK8sAPIAutoscalingV2beta2HPAScalingRules, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior(v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior {
-	return OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior{
+// New returns new OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior(v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior {
+	return OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior is generic valiant of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior.
-type OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior struct {
+// OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior is generic valiant of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior.
+type OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior struct {
 	Value IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior was set.
+func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Reset() {
 	var v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) SetTo(v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) {
+func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) SetTo(v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Get() (v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Get() (v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec(v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec {
-	return OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec{
+// New returns new OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec(v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec {
+	return OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec is generic valiant of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec.
-type OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec struct {
+// OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec is generic valiant of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec.
+type OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec struct {
 	Value IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec was set.
+func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Reset() {
 	var v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) SetTo(v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) {
+func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) SetTo(v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Get() (v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Get() (v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus(v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus {
-	return OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus{
+// New returns new OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus(v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus {
+	return OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus is generic valiant of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus.
-type OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus struct {
+// OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus is generic valiant of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus.
+type OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus struct {
 	Value IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus was set.
+func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Reset() {
 	var v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) SetTo(v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) {
+func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) SetTo(v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Get() (v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Get() (v IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricSource with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta2ObjectMetricSource(v IoK8sAPIAutoscalingV2beta2ObjectMetricSource) OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricSource {
-	return OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricSource{
+// New returns new OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta2ObjectMetricSource(v IoK8sAPIAutoscalingV2beta2ObjectMetricSource) OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource {
+	return OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricSource is generic valiant of IoK8sAPIAutoscalingV2beta2ObjectMetricSource.
-type OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricSource struct {
+// OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource is generic valiant of IoK8sAPIAutoscalingV2beta2ObjectMetricSource.
+type OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource struct {
 	Value IoK8sAPIAutoscalingV2beta2ObjectMetricSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricSource was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource was set.
+func (o OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricSource) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) Reset() {
 	var v IoK8sAPIAutoscalingV2beta2ObjectMetricSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricSource) SetTo(v IoK8sAPIAutoscalingV2beta2ObjectMetricSource) {
+func (o *OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) SetTo(v IoK8sAPIAutoscalingV2beta2ObjectMetricSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricSource) Get() (v IoK8sAPIAutoscalingV2beta2ObjectMetricSource, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) Get() (v IoK8sAPIAutoscalingV2beta2ObjectMetricSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricStatus with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta2ObjectMetricStatus(v IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricStatus {
-	return OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricStatus{
+// New returns new OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus(v IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus {
+	return OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricStatus is generic valiant of IoK8sAPIAutoscalingV2beta2ObjectMetricStatus.
-type OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricStatus struct {
+// OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus is generic valiant of IoK8sAPIAutoscalingV2beta2ObjectMetricStatus.
+type OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus struct {
 	Value IoK8sAPIAutoscalingV2beta2ObjectMetricStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricStatus was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus was set.
+func (o OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Reset() {
 	var v IoK8sAPIAutoscalingV2beta2ObjectMetricStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) SetTo(v IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) {
+func (o *OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) SetTo(v IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Get() (v IoK8sAPIAutoscalingV2beta2ObjectMetricStatus, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Get() (v IoK8sAPIAutoscalingV2beta2ObjectMetricStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta2PodsMetricSource with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta2PodsMetricSource(v IoK8sAPIAutoscalingV2beta2PodsMetricSource) OptionalIoK8sAPIAutoscalingV2beta2PodsMetricSource {
-	return OptionalIoK8sAPIAutoscalingV2beta2PodsMetricSource{
+// New returns new OptIoK8sAPIAutoscalingV2beta2PodsMetricSource with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta2PodsMetricSource(v IoK8sAPIAutoscalingV2beta2PodsMetricSource) OptIoK8sAPIAutoscalingV2beta2PodsMetricSource {
+	return OptIoK8sAPIAutoscalingV2beta2PodsMetricSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta2PodsMetricSource is generic valiant of IoK8sAPIAutoscalingV2beta2PodsMetricSource.
-type OptionalIoK8sAPIAutoscalingV2beta2PodsMetricSource struct {
+// OptIoK8sAPIAutoscalingV2beta2PodsMetricSource is generic valiant of IoK8sAPIAutoscalingV2beta2PodsMetricSource.
+type OptIoK8sAPIAutoscalingV2beta2PodsMetricSource struct {
 	Value IoK8sAPIAutoscalingV2beta2PodsMetricSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta2PodsMetricSource was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2PodsMetricSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta2PodsMetricSource was set.
+func (o OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2PodsMetricSource) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) Reset() {
 	var v IoK8sAPIAutoscalingV2beta2PodsMetricSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2PodsMetricSource) SetTo(v IoK8sAPIAutoscalingV2beta2PodsMetricSource) {
+func (o *OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) SetTo(v IoK8sAPIAutoscalingV2beta2PodsMetricSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2PodsMetricSource) Get() (v IoK8sAPIAutoscalingV2beta2PodsMetricSource, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) Get() (v IoK8sAPIAutoscalingV2beta2PodsMetricSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta2PodsMetricStatus with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta2PodsMetricStatus(v IoK8sAPIAutoscalingV2beta2PodsMetricStatus) OptionalIoK8sAPIAutoscalingV2beta2PodsMetricStatus {
-	return OptionalIoK8sAPIAutoscalingV2beta2PodsMetricStatus{
+// New returns new OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta2PodsMetricStatus(v IoK8sAPIAutoscalingV2beta2PodsMetricStatus) OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus {
+	return OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta2PodsMetricStatus is generic valiant of IoK8sAPIAutoscalingV2beta2PodsMetricStatus.
-type OptionalIoK8sAPIAutoscalingV2beta2PodsMetricStatus struct {
+// OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus is generic valiant of IoK8sAPIAutoscalingV2beta2PodsMetricStatus.
+type OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus struct {
 	Value IoK8sAPIAutoscalingV2beta2PodsMetricStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta2PodsMetricStatus was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2PodsMetricStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus was set.
+func (o OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2PodsMetricStatus) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) Reset() {
 	var v IoK8sAPIAutoscalingV2beta2PodsMetricStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2PodsMetricStatus) SetTo(v IoK8sAPIAutoscalingV2beta2PodsMetricStatus) {
+func (o *OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) SetTo(v IoK8sAPIAutoscalingV2beta2PodsMetricStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2PodsMetricStatus) Get() (v IoK8sAPIAutoscalingV2beta2PodsMetricStatus, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) Get() (v IoK8sAPIAutoscalingV2beta2PodsMetricStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricSource with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta2ResourceMetricSource(v IoK8sAPIAutoscalingV2beta2ResourceMetricSource) OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricSource {
-	return OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricSource{
+// New returns new OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta2ResourceMetricSource(v IoK8sAPIAutoscalingV2beta2ResourceMetricSource) OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource {
+	return OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricSource is generic valiant of IoK8sAPIAutoscalingV2beta2ResourceMetricSource.
-type OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricSource struct {
+// OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource is generic valiant of IoK8sAPIAutoscalingV2beta2ResourceMetricSource.
+type OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource struct {
 	Value IoK8sAPIAutoscalingV2beta2ResourceMetricSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricSource was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource was set.
+func (o OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricSource) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) Reset() {
 	var v IoK8sAPIAutoscalingV2beta2ResourceMetricSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricSource) SetTo(v IoK8sAPIAutoscalingV2beta2ResourceMetricSource) {
+func (o *OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) SetTo(v IoK8sAPIAutoscalingV2beta2ResourceMetricSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricSource) Get() (v IoK8sAPIAutoscalingV2beta2ResourceMetricSource, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) Get() (v IoK8sAPIAutoscalingV2beta2ResourceMetricSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricStatus with value set to v.
-func NewOptionalIoK8sAPIAutoscalingV2beta2ResourceMetricStatus(v IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricStatus {
-	return OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricStatus{
+// New returns new OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus with value set to v.
+func NewOptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus(v IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus {
+	return OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricStatus is generic valiant of IoK8sAPIAutoscalingV2beta2ResourceMetricStatus.
-type OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricStatus struct {
+// OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus is generic valiant of IoK8sAPIAutoscalingV2beta2ResourceMetricStatus.
+type OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus struct {
 	Value IoK8sAPIAutoscalingV2beta2ResourceMetricStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricStatus was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus was set.
+func (o OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Reset() {
+func (o *OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Reset() {
 	var v IoK8sAPIAutoscalingV2beta2ResourceMetricStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) SetTo(v IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) {
+func (o *OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) SetTo(v IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Get() (v IoK8sAPIAutoscalingV2beta2ResourceMetricStatus, ok bool) {
+func (o OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Get() (v IoK8sAPIAutoscalingV2beta2ResourceMetricStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIBatchV1CronJobSpec with value set to v.
-func NewOptionalIoK8sAPIBatchV1CronJobSpec(v IoK8sAPIBatchV1CronJobSpec) OptionalIoK8sAPIBatchV1CronJobSpec {
-	return OptionalIoK8sAPIBatchV1CronJobSpec{
+// New returns new OptIoK8sAPIBatchV1CronJobSpec with value set to v.
+func NewOptIoK8sAPIBatchV1CronJobSpec(v IoK8sAPIBatchV1CronJobSpec) OptIoK8sAPIBatchV1CronJobSpec {
+	return OptIoK8sAPIBatchV1CronJobSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIBatchV1CronJobSpec is generic valiant of IoK8sAPIBatchV1CronJobSpec.
-type OptionalIoK8sAPIBatchV1CronJobSpec struct {
+// OptIoK8sAPIBatchV1CronJobSpec is generic valiant of IoK8sAPIBatchV1CronJobSpec.
+type OptIoK8sAPIBatchV1CronJobSpec struct {
 	Value IoK8sAPIBatchV1CronJobSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIBatchV1CronJobSpec was set.
-func (o OptionalIoK8sAPIBatchV1CronJobSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIBatchV1CronJobSpec was set.
+func (o OptIoK8sAPIBatchV1CronJobSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIBatchV1CronJobSpec) Reset() {
+func (o *OptIoK8sAPIBatchV1CronJobSpec) Reset() {
 	var v IoK8sAPIBatchV1CronJobSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIBatchV1CronJobSpec) SetTo(v IoK8sAPIBatchV1CronJobSpec) {
+func (o *OptIoK8sAPIBatchV1CronJobSpec) SetTo(v IoK8sAPIBatchV1CronJobSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIBatchV1CronJobSpec) Get() (v IoK8sAPIBatchV1CronJobSpec, ok bool) {
+func (o OptIoK8sAPIBatchV1CronJobSpec) Get() (v IoK8sAPIBatchV1CronJobSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIBatchV1CronJobStatus with value set to v.
-func NewOptionalIoK8sAPIBatchV1CronJobStatus(v IoK8sAPIBatchV1CronJobStatus) OptionalIoK8sAPIBatchV1CronJobStatus {
-	return OptionalIoK8sAPIBatchV1CronJobStatus{
+// New returns new OptIoK8sAPIBatchV1CronJobStatus with value set to v.
+func NewOptIoK8sAPIBatchV1CronJobStatus(v IoK8sAPIBatchV1CronJobStatus) OptIoK8sAPIBatchV1CronJobStatus {
+	return OptIoK8sAPIBatchV1CronJobStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIBatchV1CronJobStatus is generic valiant of IoK8sAPIBatchV1CronJobStatus.
-type OptionalIoK8sAPIBatchV1CronJobStatus struct {
+// OptIoK8sAPIBatchV1CronJobStatus is generic valiant of IoK8sAPIBatchV1CronJobStatus.
+type OptIoK8sAPIBatchV1CronJobStatus struct {
 	Value IoK8sAPIBatchV1CronJobStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIBatchV1CronJobStatus was set.
-func (o OptionalIoK8sAPIBatchV1CronJobStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIBatchV1CronJobStatus was set.
+func (o OptIoK8sAPIBatchV1CronJobStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIBatchV1CronJobStatus) Reset() {
+func (o *OptIoK8sAPIBatchV1CronJobStatus) Reset() {
 	var v IoK8sAPIBatchV1CronJobStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIBatchV1CronJobStatus) SetTo(v IoK8sAPIBatchV1CronJobStatus) {
+func (o *OptIoK8sAPIBatchV1CronJobStatus) SetTo(v IoK8sAPIBatchV1CronJobStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIBatchV1CronJobStatus) Get() (v IoK8sAPIBatchV1CronJobStatus, ok bool) {
+func (o OptIoK8sAPIBatchV1CronJobStatus) Get() (v IoK8sAPIBatchV1CronJobStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIBatchV1JobSpec with value set to v.
-func NewOptionalIoK8sAPIBatchV1JobSpec(v IoK8sAPIBatchV1JobSpec) OptionalIoK8sAPIBatchV1JobSpec {
-	return OptionalIoK8sAPIBatchV1JobSpec{
+// New returns new OptIoK8sAPIBatchV1JobSpec with value set to v.
+func NewOptIoK8sAPIBatchV1JobSpec(v IoK8sAPIBatchV1JobSpec) OptIoK8sAPIBatchV1JobSpec {
+	return OptIoK8sAPIBatchV1JobSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIBatchV1JobSpec is generic valiant of IoK8sAPIBatchV1JobSpec.
-type OptionalIoK8sAPIBatchV1JobSpec struct {
+// OptIoK8sAPIBatchV1JobSpec is generic valiant of IoK8sAPIBatchV1JobSpec.
+type OptIoK8sAPIBatchV1JobSpec struct {
 	Value IoK8sAPIBatchV1JobSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIBatchV1JobSpec was set.
-func (o OptionalIoK8sAPIBatchV1JobSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIBatchV1JobSpec was set.
+func (o OptIoK8sAPIBatchV1JobSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIBatchV1JobSpec) Reset() {
+func (o *OptIoK8sAPIBatchV1JobSpec) Reset() {
 	var v IoK8sAPIBatchV1JobSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIBatchV1JobSpec) SetTo(v IoK8sAPIBatchV1JobSpec) {
+func (o *OptIoK8sAPIBatchV1JobSpec) SetTo(v IoK8sAPIBatchV1JobSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIBatchV1JobSpec) Get() (v IoK8sAPIBatchV1JobSpec, ok bool) {
+func (o OptIoK8sAPIBatchV1JobSpec) Get() (v IoK8sAPIBatchV1JobSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIBatchV1JobStatus with value set to v.
-func NewOptionalIoK8sAPIBatchV1JobStatus(v IoK8sAPIBatchV1JobStatus) OptionalIoK8sAPIBatchV1JobStatus {
-	return OptionalIoK8sAPIBatchV1JobStatus{
+// New returns new OptIoK8sAPIBatchV1JobStatus with value set to v.
+func NewOptIoK8sAPIBatchV1JobStatus(v IoK8sAPIBatchV1JobStatus) OptIoK8sAPIBatchV1JobStatus {
+	return OptIoK8sAPIBatchV1JobStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIBatchV1JobStatus is generic valiant of IoK8sAPIBatchV1JobStatus.
-type OptionalIoK8sAPIBatchV1JobStatus struct {
+// OptIoK8sAPIBatchV1JobStatus is generic valiant of IoK8sAPIBatchV1JobStatus.
+type OptIoK8sAPIBatchV1JobStatus struct {
 	Value IoK8sAPIBatchV1JobStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIBatchV1JobStatus was set.
-func (o OptionalIoK8sAPIBatchV1JobStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIBatchV1JobStatus was set.
+func (o OptIoK8sAPIBatchV1JobStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIBatchV1JobStatus) Reset() {
+func (o *OptIoK8sAPIBatchV1JobStatus) Reset() {
 	var v IoK8sAPIBatchV1JobStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIBatchV1JobStatus) SetTo(v IoK8sAPIBatchV1JobStatus) {
+func (o *OptIoK8sAPIBatchV1JobStatus) SetTo(v IoK8sAPIBatchV1JobStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIBatchV1JobStatus) Get() (v IoK8sAPIBatchV1JobStatus, ok bool) {
+func (o OptIoK8sAPIBatchV1JobStatus) Get() (v IoK8sAPIBatchV1JobStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIBatchV1UncountedTerminatedPods with value set to v.
-func NewOptionalIoK8sAPIBatchV1UncountedTerminatedPods(v IoK8sAPIBatchV1UncountedTerminatedPods) OptionalIoK8sAPIBatchV1UncountedTerminatedPods {
-	return OptionalIoK8sAPIBatchV1UncountedTerminatedPods{
+// New returns new OptIoK8sAPIBatchV1UncountedTerminatedPods with value set to v.
+func NewOptIoK8sAPIBatchV1UncountedTerminatedPods(v IoK8sAPIBatchV1UncountedTerminatedPods) OptIoK8sAPIBatchV1UncountedTerminatedPods {
+	return OptIoK8sAPIBatchV1UncountedTerminatedPods{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIBatchV1UncountedTerminatedPods is generic valiant of IoK8sAPIBatchV1UncountedTerminatedPods.
-type OptionalIoK8sAPIBatchV1UncountedTerminatedPods struct {
+// OptIoK8sAPIBatchV1UncountedTerminatedPods is generic valiant of IoK8sAPIBatchV1UncountedTerminatedPods.
+type OptIoK8sAPIBatchV1UncountedTerminatedPods struct {
 	Value IoK8sAPIBatchV1UncountedTerminatedPods
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIBatchV1UncountedTerminatedPods was set.
-func (o OptionalIoK8sAPIBatchV1UncountedTerminatedPods) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIBatchV1UncountedTerminatedPods was set.
+func (o OptIoK8sAPIBatchV1UncountedTerminatedPods) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIBatchV1UncountedTerminatedPods) Reset() {
+func (o *OptIoK8sAPIBatchV1UncountedTerminatedPods) Reset() {
 	var v IoK8sAPIBatchV1UncountedTerminatedPods
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIBatchV1UncountedTerminatedPods) SetTo(v IoK8sAPIBatchV1UncountedTerminatedPods) {
+func (o *OptIoK8sAPIBatchV1UncountedTerminatedPods) SetTo(v IoK8sAPIBatchV1UncountedTerminatedPods) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIBatchV1UncountedTerminatedPods) Get() (v IoK8sAPIBatchV1UncountedTerminatedPods, ok bool) {
+func (o OptIoK8sAPIBatchV1UncountedTerminatedPods) Get() (v IoK8sAPIBatchV1UncountedTerminatedPods, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIBatchV1beta1CronJobSpec with value set to v.
-func NewOptionalIoK8sAPIBatchV1beta1CronJobSpec(v IoK8sAPIBatchV1beta1CronJobSpec) OptionalIoK8sAPIBatchV1beta1CronJobSpec {
-	return OptionalIoK8sAPIBatchV1beta1CronJobSpec{
+// New returns new OptIoK8sAPIBatchV1beta1CronJobSpec with value set to v.
+func NewOptIoK8sAPIBatchV1beta1CronJobSpec(v IoK8sAPIBatchV1beta1CronJobSpec) OptIoK8sAPIBatchV1beta1CronJobSpec {
+	return OptIoK8sAPIBatchV1beta1CronJobSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIBatchV1beta1CronJobSpec is generic valiant of IoK8sAPIBatchV1beta1CronJobSpec.
-type OptionalIoK8sAPIBatchV1beta1CronJobSpec struct {
+// OptIoK8sAPIBatchV1beta1CronJobSpec is generic valiant of IoK8sAPIBatchV1beta1CronJobSpec.
+type OptIoK8sAPIBatchV1beta1CronJobSpec struct {
 	Value IoK8sAPIBatchV1beta1CronJobSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIBatchV1beta1CronJobSpec was set.
-func (o OptionalIoK8sAPIBatchV1beta1CronJobSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIBatchV1beta1CronJobSpec was set.
+func (o OptIoK8sAPIBatchV1beta1CronJobSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIBatchV1beta1CronJobSpec) Reset() {
+func (o *OptIoK8sAPIBatchV1beta1CronJobSpec) Reset() {
 	var v IoK8sAPIBatchV1beta1CronJobSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIBatchV1beta1CronJobSpec) SetTo(v IoK8sAPIBatchV1beta1CronJobSpec) {
+func (o *OptIoK8sAPIBatchV1beta1CronJobSpec) SetTo(v IoK8sAPIBatchV1beta1CronJobSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIBatchV1beta1CronJobSpec) Get() (v IoK8sAPIBatchV1beta1CronJobSpec, ok bool) {
+func (o OptIoK8sAPIBatchV1beta1CronJobSpec) Get() (v IoK8sAPIBatchV1beta1CronJobSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIBatchV1beta1CronJobStatus with value set to v.
-func NewOptionalIoK8sAPIBatchV1beta1CronJobStatus(v IoK8sAPIBatchV1beta1CronJobStatus) OptionalIoK8sAPIBatchV1beta1CronJobStatus {
-	return OptionalIoK8sAPIBatchV1beta1CronJobStatus{
+// New returns new OptIoK8sAPIBatchV1beta1CronJobStatus with value set to v.
+func NewOptIoK8sAPIBatchV1beta1CronJobStatus(v IoK8sAPIBatchV1beta1CronJobStatus) OptIoK8sAPIBatchV1beta1CronJobStatus {
+	return OptIoK8sAPIBatchV1beta1CronJobStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIBatchV1beta1CronJobStatus is generic valiant of IoK8sAPIBatchV1beta1CronJobStatus.
-type OptionalIoK8sAPIBatchV1beta1CronJobStatus struct {
+// OptIoK8sAPIBatchV1beta1CronJobStatus is generic valiant of IoK8sAPIBatchV1beta1CronJobStatus.
+type OptIoK8sAPIBatchV1beta1CronJobStatus struct {
 	Value IoK8sAPIBatchV1beta1CronJobStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIBatchV1beta1CronJobStatus was set.
-func (o OptionalIoK8sAPIBatchV1beta1CronJobStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIBatchV1beta1CronJobStatus was set.
+func (o OptIoK8sAPIBatchV1beta1CronJobStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIBatchV1beta1CronJobStatus) Reset() {
+func (o *OptIoK8sAPIBatchV1beta1CronJobStatus) Reset() {
 	var v IoK8sAPIBatchV1beta1CronJobStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIBatchV1beta1CronJobStatus) SetTo(v IoK8sAPIBatchV1beta1CronJobStatus) {
+func (o *OptIoK8sAPIBatchV1beta1CronJobStatus) SetTo(v IoK8sAPIBatchV1beta1CronJobStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIBatchV1beta1CronJobStatus) Get() (v IoK8sAPIBatchV1beta1CronJobStatus, ok bool) {
+func (o OptIoK8sAPIBatchV1beta1CronJobStatus) Get() (v IoK8sAPIBatchV1beta1CronJobStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICertificatesV1CertificateSigningRequestStatus with value set to v.
-func NewOptionalIoK8sAPICertificatesV1CertificateSigningRequestStatus(v IoK8sAPICertificatesV1CertificateSigningRequestStatus) OptionalIoK8sAPICertificatesV1CertificateSigningRequestStatus {
-	return OptionalIoK8sAPICertificatesV1CertificateSigningRequestStatus{
+// New returns new OptIoK8sAPICertificatesV1CertificateSigningRequestStatus with value set to v.
+func NewOptIoK8sAPICertificatesV1CertificateSigningRequestStatus(v IoK8sAPICertificatesV1CertificateSigningRequestStatus) OptIoK8sAPICertificatesV1CertificateSigningRequestStatus {
+	return OptIoK8sAPICertificatesV1CertificateSigningRequestStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICertificatesV1CertificateSigningRequestStatus is generic valiant of IoK8sAPICertificatesV1CertificateSigningRequestStatus.
-type OptionalIoK8sAPICertificatesV1CertificateSigningRequestStatus struct {
+// OptIoK8sAPICertificatesV1CertificateSigningRequestStatus is generic valiant of IoK8sAPICertificatesV1CertificateSigningRequestStatus.
+type OptIoK8sAPICertificatesV1CertificateSigningRequestStatus struct {
 	Value IoK8sAPICertificatesV1CertificateSigningRequestStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICertificatesV1CertificateSigningRequestStatus was set.
-func (o OptionalIoK8sAPICertificatesV1CertificateSigningRequestStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICertificatesV1CertificateSigningRequestStatus was set.
+func (o OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICertificatesV1CertificateSigningRequestStatus) Reset() {
+func (o *OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) Reset() {
 	var v IoK8sAPICertificatesV1CertificateSigningRequestStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICertificatesV1CertificateSigningRequestStatus) SetTo(v IoK8sAPICertificatesV1CertificateSigningRequestStatus) {
+func (o *OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) SetTo(v IoK8sAPICertificatesV1CertificateSigningRequestStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICertificatesV1CertificateSigningRequestStatus) Get() (v IoK8sAPICertificatesV1CertificateSigningRequestStatus, ok bool) {
+func (o OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) Get() (v IoK8sAPICertificatesV1CertificateSigningRequestStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoordinationV1LeaseSpec with value set to v.
-func NewOptionalIoK8sAPICoordinationV1LeaseSpec(v IoK8sAPICoordinationV1LeaseSpec) OptionalIoK8sAPICoordinationV1LeaseSpec {
-	return OptionalIoK8sAPICoordinationV1LeaseSpec{
+// New returns new OptIoK8sAPICoordinationV1LeaseSpec with value set to v.
+func NewOptIoK8sAPICoordinationV1LeaseSpec(v IoK8sAPICoordinationV1LeaseSpec) OptIoK8sAPICoordinationV1LeaseSpec {
+	return OptIoK8sAPICoordinationV1LeaseSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoordinationV1LeaseSpec is generic valiant of IoK8sAPICoordinationV1LeaseSpec.
-type OptionalIoK8sAPICoordinationV1LeaseSpec struct {
+// OptIoK8sAPICoordinationV1LeaseSpec is generic valiant of IoK8sAPICoordinationV1LeaseSpec.
+type OptIoK8sAPICoordinationV1LeaseSpec struct {
 	Value IoK8sAPICoordinationV1LeaseSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoordinationV1LeaseSpec was set.
-func (o OptionalIoK8sAPICoordinationV1LeaseSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoordinationV1LeaseSpec was set.
+func (o OptIoK8sAPICoordinationV1LeaseSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoordinationV1LeaseSpec) Reset() {
+func (o *OptIoK8sAPICoordinationV1LeaseSpec) Reset() {
 	var v IoK8sAPICoordinationV1LeaseSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoordinationV1LeaseSpec) SetTo(v IoK8sAPICoordinationV1LeaseSpec) {
+func (o *OptIoK8sAPICoordinationV1LeaseSpec) SetTo(v IoK8sAPICoordinationV1LeaseSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoordinationV1LeaseSpec) Get() (v IoK8sAPICoordinationV1LeaseSpec, ok bool) {
+func (o OptIoK8sAPICoordinationV1LeaseSpec) Get() (v IoK8sAPICoordinationV1LeaseSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource(v IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) OptionalIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource {
-	return OptionalIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource{
+// New returns new OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource(v IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource {
+	return OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource is generic valiant of IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource.
-type OptionalIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource struct {
+// OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource is generic valiant of IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource.
+type OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource struct {
 	Value IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource was set.
+func (o OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Reset() {
 	var v IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) SetTo(v IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) {
+func (o *OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) SetTo(v IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Get() (v IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Get() (v IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1Affinity with value set to v.
-func NewOptionalIoK8sAPICoreV1Affinity(v IoK8sAPICoreV1Affinity) OptionalIoK8sAPICoreV1Affinity {
-	return OptionalIoK8sAPICoreV1Affinity{
+// New returns new OptIoK8sAPICoreV1Affinity with value set to v.
+func NewOptIoK8sAPICoreV1Affinity(v IoK8sAPICoreV1Affinity) OptIoK8sAPICoreV1Affinity {
+	return OptIoK8sAPICoreV1Affinity{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1Affinity is generic valiant of IoK8sAPICoreV1Affinity.
-type OptionalIoK8sAPICoreV1Affinity struct {
+// OptIoK8sAPICoreV1Affinity is generic valiant of IoK8sAPICoreV1Affinity.
+type OptIoK8sAPICoreV1Affinity struct {
 	Value IoK8sAPICoreV1Affinity
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1Affinity was set.
-func (o OptionalIoK8sAPICoreV1Affinity) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1Affinity was set.
+func (o OptIoK8sAPICoreV1Affinity) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1Affinity) Reset() {
+func (o *OptIoK8sAPICoreV1Affinity) Reset() {
 	var v IoK8sAPICoreV1Affinity
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1Affinity) SetTo(v IoK8sAPICoreV1Affinity) {
+func (o *OptIoK8sAPICoreV1Affinity) SetTo(v IoK8sAPICoreV1Affinity) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1Affinity) Get() (v IoK8sAPICoreV1Affinity, ok bool) {
+func (o OptIoK8sAPICoreV1Affinity) Get() (v IoK8sAPICoreV1Affinity, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1AzureDiskVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1AzureDiskVolumeSource(v IoK8sAPICoreV1AzureDiskVolumeSource) OptionalIoK8sAPICoreV1AzureDiskVolumeSource {
-	return OptionalIoK8sAPICoreV1AzureDiskVolumeSource{
+// New returns new OptIoK8sAPICoreV1AzureDiskVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1AzureDiskVolumeSource(v IoK8sAPICoreV1AzureDiskVolumeSource) OptIoK8sAPICoreV1AzureDiskVolumeSource {
+	return OptIoK8sAPICoreV1AzureDiskVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1AzureDiskVolumeSource is generic valiant of IoK8sAPICoreV1AzureDiskVolumeSource.
-type OptionalIoK8sAPICoreV1AzureDiskVolumeSource struct {
+// OptIoK8sAPICoreV1AzureDiskVolumeSource is generic valiant of IoK8sAPICoreV1AzureDiskVolumeSource.
+type OptIoK8sAPICoreV1AzureDiskVolumeSource struct {
 	Value IoK8sAPICoreV1AzureDiskVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1AzureDiskVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1AzureDiskVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1AzureDiskVolumeSource was set.
+func (o OptIoK8sAPICoreV1AzureDiskVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1AzureDiskVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1AzureDiskVolumeSource) Reset() {
 	var v IoK8sAPICoreV1AzureDiskVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1AzureDiskVolumeSource) SetTo(v IoK8sAPICoreV1AzureDiskVolumeSource) {
+func (o *OptIoK8sAPICoreV1AzureDiskVolumeSource) SetTo(v IoK8sAPICoreV1AzureDiskVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1AzureDiskVolumeSource) Get() (v IoK8sAPICoreV1AzureDiskVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1AzureDiskVolumeSource) Get() (v IoK8sAPICoreV1AzureDiskVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1AzureFilePersistentVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1AzureFilePersistentVolumeSource(v IoK8sAPICoreV1AzureFilePersistentVolumeSource) OptionalIoK8sAPICoreV1AzureFilePersistentVolumeSource {
-	return OptionalIoK8sAPICoreV1AzureFilePersistentVolumeSource{
+// New returns new OptIoK8sAPICoreV1AzureFilePersistentVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1AzureFilePersistentVolumeSource(v IoK8sAPICoreV1AzureFilePersistentVolumeSource) OptIoK8sAPICoreV1AzureFilePersistentVolumeSource {
+	return OptIoK8sAPICoreV1AzureFilePersistentVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1AzureFilePersistentVolumeSource is generic valiant of IoK8sAPICoreV1AzureFilePersistentVolumeSource.
-type OptionalIoK8sAPICoreV1AzureFilePersistentVolumeSource struct {
+// OptIoK8sAPICoreV1AzureFilePersistentVolumeSource is generic valiant of IoK8sAPICoreV1AzureFilePersistentVolumeSource.
+type OptIoK8sAPICoreV1AzureFilePersistentVolumeSource struct {
 	Value IoK8sAPICoreV1AzureFilePersistentVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1AzureFilePersistentVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1AzureFilePersistentVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1AzureFilePersistentVolumeSource was set.
+func (o OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1AzureFilePersistentVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) Reset() {
 	var v IoK8sAPICoreV1AzureFilePersistentVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1AzureFilePersistentVolumeSource) SetTo(v IoK8sAPICoreV1AzureFilePersistentVolumeSource) {
+func (o *OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) SetTo(v IoK8sAPICoreV1AzureFilePersistentVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1AzureFilePersistentVolumeSource) Get() (v IoK8sAPICoreV1AzureFilePersistentVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) Get() (v IoK8sAPICoreV1AzureFilePersistentVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1AzureFileVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1AzureFileVolumeSource(v IoK8sAPICoreV1AzureFileVolumeSource) OptionalIoK8sAPICoreV1AzureFileVolumeSource {
-	return OptionalIoK8sAPICoreV1AzureFileVolumeSource{
+// New returns new OptIoK8sAPICoreV1AzureFileVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1AzureFileVolumeSource(v IoK8sAPICoreV1AzureFileVolumeSource) OptIoK8sAPICoreV1AzureFileVolumeSource {
+	return OptIoK8sAPICoreV1AzureFileVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1AzureFileVolumeSource is generic valiant of IoK8sAPICoreV1AzureFileVolumeSource.
-type OptionalIoK8sAPICoreV1AzureFileVolumeSource struct {
+// OptIoK8sAPICoreV1AzureFileVolumeSource is generic valiant of IoK8sAPICoreV1AzureFileVolumeSource.
+type OptIoK8sAPICoreV1AzureFileVolumeSource struct {
 	Value IoK8sAPICoreV1AzureFileVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1AzureFileVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1AzureFileVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1AzureFileVolumeSource was set.
+func (o OptIoK8sAPICoreV1AzureFileVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1AzureFileVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1AzureFileVolumeSource) Reset() {
 	var v IoK8sAPICoreV1AzureFileVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1AzureFileVolumeSource) SetTo(v IoK8sAPICoreV1AzureFileVolumeSource) {
+func (o *OptIoK8sAPICoreV1AzureFileVolumeSource) SetTo(v IoK8sAPICoreV1AzureFileVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1AzureFileVolumeSource) Get() (v IoK8sAPICoreV1AzureFileVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1AzureFileVolumeSource) Get() (v IoK8sAPICoreV1AzureFileVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1CSIPersistentVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1CSIPersistentVolumeSource(v IoK8sAPICoreV1CSIPersistentVolumeSource) OptionalIoK8sAPICoreV1CSIPersistentVolumeSource {
-	return OptionalIoK8sAPICoreV1CSIPersistentVolumeSource{
+// New returns new OptIoK8sAPICoreV1CSIPersistentVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1CSIPersistentVolumeSource(v IoK8sAPICoreV1CSIPersistentVolumeSource) OptIoK8sAPICoreV1CSIPersistentVolumeSource {
+	return OptIoK8sAPICoreV1CSIPersistentVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1CSIPersistentVolumeSource is generic valiant of IoK8sAPICoreV1CSIPersistentVolumeSource.
-type OptionalIoK8sAPICoreV1CSIPersistentVolumeSource struct {
+// OptIoK8sAPICoreV1CSIPersistentVolumeSource is generic valiant of IoK8sAPICoreV1CSIPersistentVolumeSource.
+type OptIoK8sAPICoreV1CSIPersistentVolumeSource struct {
 	Value IoK8sAPICoreV1CSIPersistentVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1CSIPersistentVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1CSIPersistentVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1CSIPersistentVolumeSource was set.
+func (o OptIoK8sAPICoreV1CSIPersistentVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1CSIPersistentVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1CSIPersistentVolumeSource) Reset() {
 	var v IoK8sAPICoreV1CSIPersistentVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1CSIPersistentVolumeSource) SetTo(v IoK8sAPICoreV1CSIPersistentVolumeSource) {
+func (o *OptIoK8sAPICoreV1CSIPersistentVolumeSource) SetTo(v IoK8sAPICoreV1CSIPersistentVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1CSIPersistentVolumeSource) Get() (v IoK8sAPICoreV1CSIPersistentVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1CSIPersistentVolumeSource) Get() (v IoK8sAPICoreV1CSIPersistentVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1CSIVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1CSIVolumeSource(v IoK8sAPICoreV1CSIVolumeSource) OptionalIoK8sAPICoreV1CSIVolumeSource {
-	return OptionalIoK8sAPICoreV1CSIVolumeSource{
+// New returns new OptIoK8sAPICoreV1CSIVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1CSIVolumeSource(v IoK8sAPICoreV1CSIVolumeSource) OptIoK8sAPICoreV1CSIVolumeSource {
+	return OptIoK8sAPICoreV1CSIVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1CSIVolumeSource is generic valiant of IoK8sAPICoreV1CSIVolumeSource.
-type OptionalIoK8sAPICoreV1CSIVolumeSource struct {
+// OptIoK8sAPICoreV1CSIVolumeSource is generic valiant of IoK8sAPICoreV1CSIVolumeSource.
+type OptIoK8sAPICoreV1CSIVolumeSource struct {
 	Value IoK8sAPICoreV1CSIVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1CSIVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1CSIVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1CSIVolumeSource was set.
+func (o OptIoK8sAPICoreV1CSIVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1CSIVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1CSIVolumeSource) Reset() {
 	var v IoK8sAPICoreV1CSIVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1CSIVolumeSource) SetTo(v IoK8sAPICoreV1CSIVolumeSource) {
+func (o *OptIoK8sAPICoreV1CSIVolumeSource) SetTo(v IoK8sAPICoreV1CSIVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1CSIVolumeSource) Get() (v IoK8sAPICoreV1CSIVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1CSIVolumeSource) Get() (v IoK8sAPICoreV1CSIVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1Capabilities with value set to v.
-func NewOptionalIoK8sAPICoreV1Capabilities(v IoK8sAPICoreV1Capabilities) OptionalIoK8sAPICoreV1Capabilities {
-	return OptionalIoK8sAPICoreV1Capabilities{
+// New returns new OptIoK8sAPICoreV1Capabilities with value set to v.
+func NewOptIoK8sAPICoreV1Capabilities(v IoK8sAPICoreV1Capabilities) OptIoK8sAPICoreV1Capabilities {
+	return OptIoK8sAPICoreV1Capabilities{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1Capabilities is generic valiant of IoK8sAPICoreV1Capabilities.
-type OptionalIoK8sAPICoreV1Capabilities struct {
+// OptIoK8sAPICoreV1Capabilities is generic valiant of IoK8sAPICoreV1Capabilities.
+type OptIoK8sAPICoreV1Capabilities struct {
 	Value IoK8sAPICoreV1Capabilities
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1Capabilities was set.
-func (o OptionalIoK8sAPICoreV1Capabilities) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1Capabilities was set.
+func (o OptIoK8sAPICoreV1Capabilities) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1Capabilities) Reset() {
+func (o *OptIoK8sAPICoreV1Capabilities) Reset() {
 	var v IoK8sAPICoreV1Capabilities
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1Capabilities) SetTo(v IoK8sAPICoreV1Capabilities) {
+func (o *OptIoK8sAPICoreV1Capabilities) SetTo(v IoK8sAPICoreV1Capabilities) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1Capabilities) Get() (v IoK8sAPICoreV1Capabilities, ok bool) {
+func (o OptIoK8sAPICoreV1Capabilities) Get() (v IoK8sAPICoreV1Capabilities, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1CephFSPersistentVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1CephFSPersistentVolumeSource(v IoK8sAPICoreV1CephFSPersistentVolumeSource) OptionalIoK8sAPICoreV1CephFSPersistentVolumeSource {
-	return OptionalIoK8sAPICoreV1CephFSPersistentVolumeSource{
+// New returns new OptIoK8sAPICoreV1CephFSPersistentVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1CephFSPersistentVolumeSource(v IoK8sAPICoreV1CephFSPersistentVolumeSource) OptIoK8sAPICoreV1CephFSPersistentVolumeSource {
+	return OptIoK8sAPICoreV1CephFSPersistentVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1CephFSPersistentVolumeSource is generic valiant of IoK8sAPICoreV1CephFSPersistentVolumeSource.
-type OptionalIoK8sAPICoreV1CephFSPersistentVolumeSource struct {
+// OptIoK8sAPICoreV1CephFSPersistentVolumeSource is generic valiant of IoK8sAPICoreV1CephFSPersistentVolumeSource.
+type OptIoK8sAPICoreV1CephFSPersistentVolumeSource struct {
 	Value IoK8sAPICoreV1CephFSPersistentVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1CephFSPersistentVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1CephFSPersistentVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1CephFSPersistentVolumeSource was set.
+func (o OptIoK8sAPICoreV1CephFSPersistentVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1CephFSPersistentVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1CephFSPersistentVolumeSource) Reset() {
 	var v IoK8sAPICoreV1CephFSPersistentVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1CephFSPersistentVolumeSource) SetTo(v IoK8sAPICoreV1CephFSPersistentVolumeSource) {
+func (o *OptIoK8sAPICoreV1CephFSPersistentVolumeSource) SetTo(v IoK8sAPICoreV1CephFSPersistentVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1CephFSPersistentVolumeSource) Get() (v IoK8sAPICoreV1CephFSPersistentVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1CephFSPersistentVolumeSource) Get() (v IoK8sAPICoreV1CephFSPersistentVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1CephFSVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1CephFSVolumeSource(v IoK8sAPICoreV1CephFSVolumeSource) OptionalIoK8sAPICoreV1CephFSVolumeSource {
-	return OptionalIoK8sAPICoreV1CephFSVolumeSource{
+// New returns new OptIoK8sAPICoreV1CephFSVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1CephFSVolumeSource(v IoK8sAPICoreV1CephFSVolumeSource) OptIoK8sAPICoreV1CephFSVolumeSource {
+	return OptIoK8sAPICoreV1CephFSVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1CephFSVolumeSource is generic valiant of IoK8sAPICoreV1CephFSVolumeSource.
-type OptionalIoK8sAPICoreV1CephFSVolumeSource struct {
+// OptIoK8sAPICoreV1CephFSVolumeSource is generic valiant of IoK8sAPICoreV1CephFSVolumeSource.
+type OptIoK8sAPICoreV1CephFSVolumeSource struct {
 	Value IoK8sAPICoreV1CephFSVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1CephFSVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1CephFSVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1CephFSVolumeSource was set.
+func (o OptIoK8sAPICoreV1CephFSVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1CephFSVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1CephFSVolumeSource) Reset() {
 	var v IoK8sAPICoreV1CephFSVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1CephFSVolumeSource) SetTo(v IoK8sAPICoreV1CephFSVolumeSource) {
+func (o *OptIoK8sAPICoreV1CephFSVolumeSource) SetTo(v IoK8sAPICoreV1CephFSVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1CephFSVolumeSource) Get() (v IoK8sAPICoreV1CephFSVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1CephFSVolumeSource) Get() (v IoK8sAPICoreV1CephFSVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1CinderPersistentVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1CinderPersistentVolumeSource(v IoK8sAPICoreV1CinderPersistentVolumeSource) OptionalIoK8sAPICoreV1CinderPersistentVolumeSource {
-	return OptionalIoK8sAPICoreV1CinderPersistentVolumeSource{
+// New returns new OptIoK8sAPICoreV1CinderPersistentVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1CinderPersistentVolumeSource(v IoK8sAPICoreV1CinderPersistentVolumeSource) OptIoK8sAPICoreV1CinderPersistentVolumeSource {
+	return OptIoK8sAPICoreV1CinderPersistentVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1CinderPersistentVolumeSource is generic valiant of IoK8sAPICoreV1CinderPersistentVolumeSource.
-type OptionalIoK8sAPICoreV1CinderPersistentVolumeSource struct {
+// OptIoK8sAPICoreV1CinderPersistentVolumeSource is generic valiant of IoK8sAPICoreV1CinderPersistentVolumeSource.
+type OptIoK8sAPICoreV1CinderPersistentVolumeSource struct {
 	Value IoK8sAPICoreV1CinderPersistentVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1CinderPersistentVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1CinderPersistentVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1CinderPersistentVolumeSource was set.
+func (o OptIoK8sAPICoreV1CinderPersistentVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1CinderPersistentVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1CinderPersistentVolumeSource) Reset() {
 	var v IoK8sAPICoreV1CinderPersistentVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1CinderPersistentVolumeSource) SetTo(v IoK8sAPICoreV1CinderPersistentVolumeSource) {
+func (o *OptIoK8sAPICoreV1CinderPersistentVolumeSource) SetTo(v IoK8sAPICoreV1CinderPersistentVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1CinderPersistentVolumeSource) Get() (v IoK8sAPICoreV1CinderPersistentVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1CinderPersistentVolumeSource) Get() (v IoK8sAPICoreV1CinderPersistentVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1CinderVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1CinderVolumeSource(v IoK8sAPICoreV1CinderVolumeSource) OptionalIoK8sAPICoreV1CinderVolumeSource {
-	return OptionalIoK8sAPICoreV1CinderVolumeSource{
+// New returns new OptIoK8sAPICoreV1CinderVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1CinderVolumeSource(v IoK8sAPICoreV1CinderVolumeSource) OptIoK8sAPICoreV1CinderVolumeSource {
+	return OptIoK8sAPICoreV1CinderVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1CinderVolumeSource is generic valiant of IoK8sAPICoreV1CinderVolumeSource.
-type OptionalIoK8sAPICoreV1CinderVolumeSource struct {
+// OptIoK8sAPICoreV1CinderVolumeSource is generic valiant of IoK8sAPICoreV1CinderVolumeSource.
+type OptIoK8sAPICoreV1CinderVolumeSource struct {
 	Value IoK8sAPICoreV1CinderVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1CinderVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1CinderVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1CinderVolumeSource was set.
+func (o OptIoK8sAPICoreV1CinderVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1CinderVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1CinderVolumeSource) Reset() {
 	var v IoK8sAPICoreV1CinderVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1CinderVolumeSource) SetTo(v IoK8sAPICoreV1CinderVolumeSource) {
+func (o *OptIoK8sAPICoreV1CinderVolumeSource) SetTo(v IoK8sAPICoreV1CinderVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1CinderVolumeSource) Get() (v IoK8sAPICoreV1CinderVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1CinderVolumeSource) Get() (v IoK8sAPICoreV1CinderVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ClientIPConfig with value set to v.
-func NewOptionalIoK8sAPICoreV1ClientIPConfig(v IoK8sAPICoreV1ClientIPConfig) OptionalIoK8sAPICoreV1ClientIPConfig {
-	return OptionalIoK8sAPICoreV1ClientIPConfig{
+// New returns new OptIoK8sAPICoreV1ClientIPConfig with value set to v.
+func NewOptIoK8sAPICoreV1ClientIPConfig(v IoK8sAPICoreV1ClientIPConfig) OptIoK8sAPICoreV1ClientIPConfig {
+	return OptIoK8sAPICoreV1ClientIPConfig{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ClientIPConfig is generic valiant of IoK8sAPICoreV1ClientIPConfig.
-type OptionalIoK8sAPICoreV1ClientIPConfig struct {
+// OptIoK8sAPICoreV1ClientIPConfig is generic valiant of IoK8sAPICoreV1ClientIPConfig.
+type OptIoK8sAPICoreV1ClientIPConfig struct {
 	Value IoK8sAPICoreV1ClientIPConfig
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ClientIPConfig was set.
-func (o OptionalIoK8sAPICoreV1ClientIPConfig) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ClientIPConfig was set.
+func (o OptIoK8sAPICoreV1ClientIPConfig) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ClientIPConfig) Reset() {
+func (o *OptIoK8sAPICoreV1ClientIPConfig) Reset() {
 	var v IoK8sAPICoreV1ClientIPConfig
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ClientIPConfig) SetTo(v IoK8sAPICoreV1ClientIPConfig) {
+func (o *OptIoK8sAPICoreV1ClientIPConfig) SetTo(v IoK8sAPICoreV1ClientIPConfig) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ClientIPConfig) Get() (v IoK8sAPICoreV1ClientIPConfig, ok bool) {
+func (o OptIoK8sAPICoreV1ClientIPConfig) Get() (v IoK8sAPICoreV1ClientIPConfig, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ConfigMapEnvSource with value set to v.
-func NewOptionalIoK8sAPICoreV1ConfigMapEnvSource(v IoK8sAPICoreV1ConfigMapEnvSource) OptionalIoK8sAPICoreV1ConfigMapEnvSource {
-	return OptionalIoK8sAPICoreV1ConfigMapEnvSource{
+// New returns new OptIoK8sAPICoreV1ConfigMapEnvSource with value set to v.
+func NewOptIoK8sAPICoreV1ConfigMapEnvSource(v IoK8sAPICoreV1ConfigMapEnvSource) OptIoK8sAPICoreV1ConfigMapEnvSource {
+	return OptIoK8sAPICoreV1ConfigMapEnvSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ConfigMapEnvSource is generic valiant of IoK8sAPICoreV1ConfigMapEnvSource.
-type OptionalIoK8sAPICoreV1ConfigMapEnvSource struct {
+// OptIoK8sAPICoreV1ConfigMapEnvSource is generic valiant of IoK8sAPICoreV1ConfigMapEnvSource.
+type OptIoK8sAPICoreV1ConfigMapEnvSource struct {
 	Value IoK8sAPICoreV1ConfigMapEnvSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ConfigMapEnvSource was set.
-func (o OptionalIoK8sAPICoreV1ConfigMapEnvSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ConfigMapEnvSource was set.
+func (o OptIoK8sAPICoreV1ConfigMapEnvSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ConfigMapEnvSource) Reset() {
+func (o *OptIoK8sAPICoreV1ConfigMapEnvSource) Reset() {
 	var v IoK8sAPICoreV1ConfigMapEnvSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ConfigMapEnvSource) SetTo(v IoK8sAPICoreV1ConfigMapEnvSource) {
+func (o *OptIoK8sAPICoreV1ConfigMapEnvSource) SetTo(v IoK8sAPICoreV1ConfigMapEnvSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ConfigMapEnvSource) Get() (v IoK8sAPICoreV1ConfigMapEnvSource, ok bool) {
+func (o OptIoK8sAPICoreV1ConfigMapEnvSource) Get() (v IoK8sAPICoreV1ConfigMapEnvSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ConfigMapKeySelector with value set to v.
-func NewOptionalIoK8sAPICoreV1ConfigMapKeySelector(v IoK8sAPICoreV1ConfigMapKeySelector) OptionalIoK8sAPICoreV1ConfigMapKeySelector {
-	return OptionalIoK8sAPICoreV1ConfigMapKeySelector{
+// New returns new OptIoK8sAPICoreV1ConfigMapKeySelector with value set to v.
+func NewOptIoK8sAPICoreV1ConfigMapKeySelector(v IoK8sAPICoreV1ConfigMapKeySelector) OptIoK8sAPICoreV1ConfigMapKeySelector {
+	return OptIoK8sAPICoreV1ConfigMapKeySelector{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ConfigMapKeySelector is generic valiant of IoK8sAPICoreV1ConfigMapKeySelector.
-type OptionalIoK8sAPICoreV1ConfigMapKeySelector struct {
+// OptIoK8sAPICoreV1ConfigMapKeySelector is generic valiant of IoK8sAPICoreV1ConfigMapKeySelector.
+type OptIoK8sAPICoreV1ConfigMapKeySelector struct {
 	Value IoK8sAPICoreV1ConfigMapKeySelector
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ConfigMapKeySelector was set.
-func (o OptionalIoK8sAPICoreV1ConfigMapKeySelector) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ConfigMapKeySelector was set.
+func (o OptIoK8sAPICoreV1ConfigMapKeySelector) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ConfigMapKeySelector) Reset() {
+func (o *OptIoK8sAPICoreV1ConfigMapKeySelector) Reset() {
 	var v IoK8sAPICoreV1ConfigMapKeySelector
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ConfigMapKeySelector) SetTo(v IoK8sAPICoreV1ConfigMapKeySelector) {
+func (o *OptIoK8sAPICoreV1ConfigMapKeySelector) SetTo(v IoK8sAPICoreV1ConfigMapKeySelector) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ConfigMapKeySelector) Get() (v IoK8sAPICoreV1ConfigMapKeySelector, ok bool) {
+func (o OptIoK8sAPICoreV1ConfigMapKeySelector) Get() (v IoK8sAPICoreV1ConfigMapKeySelector, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ConfigMapNodeConfigSource with value set to v.
-func NewOptionalIoK8sAPICoreV1ConfigMapNodeConfigSource(v IoK8sAPICoreV1ConfigMapNodeConfigSource) OptionalIoK8sAPICoreV1ConfigMapNodeConfigSource {
-	return OptionalIoK8sAPICoreV1ConfigMapNodeConfigSource{
+// New returns new OptIoK8sAPICoreV1ConfigMapNodeConfigSource with value set to v.
+func NewOptIoK8sAPICoreV1ConfigMapNodeConfigSource(v IoK8sAPICoreV1ConfigMapNodeConfigSource) OptIoK8sAPICoreV1ConfigMapNodeConfigSource {
+	return OptIoK8sAPICoreV1ConfigMapNodeConfigSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ConfigMapNodeConfigSource is generic valiant of IoK8sAPICoreV1ConfigMapNodeConfigSource.
-type OptionalIoK8sAPICoreV1ConfigMapNodeConfigSource struct {
+// OptIoK8sAPICoreV1ConfigMapNodeConfigSource is generic valiant of IoK8sAPICoreV1ConfigMapNodeConfigSource.
+type OptIoK8sAPICoreV1ConfigMapNodeConfigSource struct {
 	Value IoK8sAPICoreV1ConfigMapNodeConfigSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ConfigMapNodeConfigSource was set.
-func (o OptionalIoK8sAPICoreV1ConfigMapNodeConfigSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ConfigMapNodeConfigSource was set.
+func (o OptIoK8sAPICoreV1ConfigMapNodeConfigSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ConfigMapNodeConfigSource) Reset() {
+func (o *OptIoK8sAPICoreV1ConfigMapNodeConfigSource) Reset() {
 	var v IoK8sAPICoreV1ConfigMapNodeConfigSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ConfigMapNodeConfigSource) SetTo(v IoK8sAPICoreV1ConfigMapNodeConfigSource) {
+func (o *OptIoK8sAPICoreV1ConfigMapNodeConfigSource) SetTo(v IoK8sAPICoreV1ConfigMapNodeConfigSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ConfigMapNodeConfigSource) Get() (v IoK8sAPICoreV1ConfigMapNodeConfigSource, ok bool) {
+func (o OptIoK8sAPICoreV1ConfigMapNodeConfigSource) Get() (v IoK8sAPICoreV1ConfigMapNodeConfigSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ConfigMapProjection with value set to v.
-func NewOptionalIoK8sAPICoreV1ConfigMapProjection(v IoK8sAPICoreV1ConfigMapProjection) OptionalIoK8sAPICoreV1ConfigMapProjection {
-	return OptionalIoK8sAPICoreV1ConfigMapProjection{
+// New returns new OptIoK8sAPICoreV1ConfigMapProjection with value set to v.
+func NewOptIoK8sAPICoreV1ConfigMapProjection(v IoK8sAPICoreV1ConfigMapProjection) OptIoK8sAPICoreV1ConfigMapProjection {
+	return OptIoK8sAPICoreV1ConfigMapProjection{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ConfigMapProjection is generic valiant of IoK8sAPICoreV1ConfigMapProjection.
-type OptionalIoK8sAPICoreV1ConfigMapProjection struct {
+// OptIoK8sAPICoreV1ConfigMapProjection is generic valiant of IoK8sAPICoreV1ConfigMapProjection.
+type OptIoK8sAPICoreV1ConfigMapProjection struct {
 	Value IoK8sAPICoreV1ConfigMapProjection
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ConfigMapProjection was set.
-func (o OptionalIoK8sAPICoreV1ConfigMapProjection) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ConfigMapProjection was set.
+func (o OptIoK8sAPICoreV1ConfigMapProjection) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ConfigMapProjection) Reset() {
+func (o *OptIoK8sAPICoreV1ConfigMapProjection) Reset() {
 	var v IoK8sAPICoreV1ConfigMapProjection
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ConfigMapProjection) SetTo(v IoK8sAPICoreV1ConfigMapProjection) {
+func (o *OptIoK8sAPICoreV1ConfigMapProjection) SetTo(v IoK8sAPICoreV1ConfigMapProjection) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ConfigMapProjection) Get() (v IoK8sAPICoreV1ConfigMapProjection, ok bool) {
+func (o OptIoK8sAPICoreV1ConfigMapProjection) Get() (v IoK8sAPICoreV1ConfigMapProjection, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ConfigMapVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1ConfigMapVolumeSource(v IoK8sAPICoreV1ConfigMapVolumeSource) OptionalIoK8sAPICoreV1ConfigMapVolumeSource {
-	return OptionalIoK8sAPICoreV1ConfigMapVolumeSource{
+// New returns new OptIoK8sAPICoreV1ConfigMapVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1ConfigMapVolumeSource(v IoK8sAPICoreV1ConfigMapVolumeSource) OptIoK8sAPICoreV1ConfigMapVolumeSource {
+	return OptIoK8sAPICoreV1ConfigMapVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ConfigMapVolumeSource is generic valiant of IoK8sAPICoreV1ConfigMapVolumeSource.
-type OptionalIoK8sAPICoreV1ConfigMapVolumeSource struct {
+// OptIoK8sAPICoreV1ConfigMapVolumeSource is generic valiant of IoK8sAPICoreV1ConfigMapVolumeSource.
+type OptIoK8sAPICoreV1ConfigMapVolumeSource struct {
 	Value IoK8sAPICoreV1ConfigMapVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ConfigMapVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1ConfigMapVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ConfigMapVolumeSource was set.
+func (o OptIoK8sAPICoreV1ConfigMapVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ConfigMapVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1ConfigMapVolumeSource) Reset() {
 	var v IoK8sAPICoreV1ConfigMapVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ConfigMapVolumeSource) SetTo(v IoK8sAPICoreV1ConfigMapVolumeSource) {
+func (o *OptIoK8sAPICoreV1ConfigMapVolumeSource) SetTo(v IoK8sAPICoreV1ConfigMapVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ConfigMapVolumeSource) Get() (v IoK8sAPICoreV1ConfigMapVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1ConfigMapVolumeSource) Get() (v IoK8sAPICoreV1ConfigMapVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ContainerState with value set to v.
-func NewOptionalIoK8sAPICoreV1ContainerState(v IoK8sAPICoreV1ContainerState) OptionalIoK8sAPICoreV1ContainerState {
-	return OptionalIoK8sAPICoreV1ContainerState{
+// New returns new OptIoK8sAPICoreV1ContainerState with value set to v.
+func NewOptIoK8sAPICoreV1ContainerState(v IoK8sAPICoreV1ContainerState) OptIoK8sAPICoreV1ContainerState {
+	return OptIoK8sAPICoreV1ContainerState{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ContainerState is generic valiant of IoK8sAPICoreV1ContainerState.
-type OptionalIoK8sAPICoreV1ContainerState struct {
+// OptIoK8sAPICoreV1ContainerState is generic valiant of IoK8sAPICoreV1ContainerState.
+type OptIoK8sAPICoreV1ContainerState struct {
 	Value IoK8sAPICoreV1ContainerState
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ContainerState was set.
-func (o OptionalIoK8sAPICoreV1ContainerState) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ContainerState was set.
+func (o OptIoK8sAPICoreV1ContainerState) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ContainerState) Reset() {
+func (o *OptIoK8sAPICoreV1ContainerState) Reset() {
 	var v IoK8sAPICoreV1ContainerState
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ContainerState) SetTo(v IoK8sAPICoreV1ContainerState) {
+func (o *OptIoK8sAPICoreV1ContainerState) SetTo(v IoK8sAPICoreV1ContainerState) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ContainerState) Get() (v IoK8sAPICoreV1ContainerState, ok bool) {
+func (o OptIoK8sAPICoreV1ContainerState) Get() (v IoK8sAPICoreV1ContainerState, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ContainerStateRunning with value set to v.
-func NewOptionalIoK8sAPICoreV1ContainerStateRunning(v IoK8sAPICoreV1ContainerStateRunning) OptionalIoK8sAPICoreV1ContainerStateRunning {
-	return OptionalIoK8sAPICoreV1ContainerStateRunning{
+// New returns new OptIoK8sAPICoreV1ContainerStateRunning with value set to v.
+func NewOptIoK8sAPICoreV1ContainerStateRunning(v IoK8sAPICoreV1ContainerStateRunning) OptIoK8sAPICoreV1ContainerStateRunning {
+	return OptIoK8sAPICoreV1ContainerStateRunning{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ContainerStateRunning is generic valiant of IoK8sAPICoreV1ContainerStateRunning.
-type OptionalIoK8sAPICoreV1ContainerStateRunning struct {
+// OptIoK8sAPICoreV1ContainerStateRunning is generic valiant of IoK8sAPICoreV1ContainerStateRunning.
+type OptIoK8sAPICoreV1ContainerStateRunning struct {
 	Value IoK8sAPICoreV1ContainerStateRunning
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ContainerStateRunning was set.
-func (o OptionalIoK8sAPICoreV1ContainerStateRunning) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ContainerStateRunning was set.
+func (o OptIoK8sAPICoreV1ContainerStateRunning) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ContainerStateRunning) Reset() {
+func (o *OptIoK8sAPICoreV1ContainerStateRunning) Reset() {
 	var v IoK8sAPICoreV1ContainerStateRunning
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ContainerStateRunning) SetTo(v IoK8sAPICoreV1ContainerStateRunning) {
+func (o *OptIoK8sAPICoreV1ContainerStateRunning) SetTo(v IoK8sAPICoreV1ContainerStateRunning) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ContainerStateRunning) Get() (v IoK8sAPICoreV1ContainerStateRunning, ok bool) {
+func (o OptIoK8sAPICoreV1ContainerStateRunning) Get() (v IoK8sAPICoreV1ContainerStateRunning, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ContainerStateTerminated with value set to v.
-func NewOptionalIoK8sAPICoreV1ContainerStateTerminated(v IoK8sAPICoreV1ContainerStateTerminated) OptionalIoK8sAPICoreV1ContainerStateTerminated {
-	return OptionalIoK8sAPICoreV1ContainerStateTerminated{
+// New returns new OptIoK8sAPICoreV1ContainerStateTerminated with value set to v.
+func NewOptIoK8sAPICoreV1ContainerStateTerminated(v IoK8sAPICoreV1ContainerStateTerminated) OptIoK8sAPICoreV1ContainerStateTerminated {
+	return OptIoK8sAPICoreV1ContainerStateTerminated{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ContainerStateTerminated is generic valiant of IoK8sAPICoreV1ContainerStateTerminated.
-type OptionalIoK8sAPICoreV1ContainerStateTerminated struct {
+// OptIoK8sAPICoreV1ContainerStateTerminated is generic valiant of IoK8sAPICoreV1ContainerStateTerminated.
+type OptIoK8sAPICoreV1ContainerStateTerminated struct {
 	Value IoK8sAPICoreV1ContainerStateTerminated
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ContainerStateTerminated was set.
-func (o OptionalIoK8sAPICoreV1ContainerStateTerminated) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ContainerStateTerminated was set.
+func (o OptIoK8sAPICoreV1ContainerStateTerminated) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ContainerStateTerminated) Reset() {
+func (o *OptIoK8sAPICoreV1ContainerStateTerminated) Reset() {
 	var v IoK8sAPICoreV1ContainerStateTerminated
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ContainerStateTerminated) SetTo(v IoK8sAPICoreV1ContainerStateTerminated) {
+func (o *OptIoK8sAPICoreV1ContainerStateTerminated) SetTo(v IoK8sAPICoreV1ContainerStateTerminated) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ContainerStateTerminated) Get() (v IoK8sAPICoreV1ContainerStateTerminated, ok bool) {
+func (o OptIoK8sAPICoreV1ContainerStateTerminated) Get() (v IoK8sAPICoreV1ContainerStateTerminated, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ContainerStateWaiting with value set to v.
-func NewOptionalIoK8sAPICoreV1ContainerStateWaiting(v IoK8sAPICoreV1ContainerStateWaiting) OptionalIoK8sAPICoreV1ContainerStateWaiting {
-	return OptionalIoK8sAPICoreV1ContainerStateWaiting{
+// New returns new OptIoK8sAPICoreV1ContainerStateWaiting with value set to v.
+func NewOptIoK8sAPICoreV1ContainerStateWaiting(v IoK8sAPICoreV1ContainerStateWaiting) OptIoK8sAPICoreV1ContainerStateWaiting {
+	return OptIoK8sAPICoreV1ContainerStateWaiting{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ContainerStateWaiting is generic valiant of IoK8sAPICoreV1ContainerStateWaiting.
-type OptionalIoK8sAPICoreV1ContainerStateWaiting struct {
+// OptIoK8sAPICoreV1ContainerStateWaiting is generic valiant of IoK8sAPICoreV1ContainerStateWaiting.
+type OptIoK8sAPICoreV1ContainerStateWaiting struct {
 	Value IoK8sAPICoreV1ContainerStateWaiting
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ContainerStateWaiting was set.
-func (o OptionalIoK8sAPICoreV1ContainerStateWaiting) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ContainerStateWaiting was set.
+func (o OptIoK8sAPICoreV1ContainerStateWaiting) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ContainerStateWaiting) Reset() {
+func (o *OptIoK8sAPICoreV1ContainerStateWaiting) Reset() {
 	var v IoK8sAPICoreV1ContainerStateWaiting
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ContainerStateWaiting) SetTo(v IoK8sAPICoreV1ContainerStateWaiting) {
+func (o *OptIoK8sAPICoreV1ContainerStateWaiting) SetTo(v IoK8sAPICoreV1ContainerStateWaiting) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ContainerStateWaiting) Get() (v IoK8sAPICoreV1ContainerStateWaiting, ok bool) {
+func (o OptIoK8sAPICoreV1ContainerStateWaiting) Get() (v IoK8sAPICoreV1ContainerStateWaiting, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1DaemonEndpoint with value set to v.
-func NewOptionalIoK8sAPICoreV1DaemonEndpoint(v IoK8sAPICoreV1DaemonEndpoint) OptionalIoK8sAPICoreV1DaemonEndpoint {
-	return OptionalIoK8sAPICoreV1DaemonEndpoint{
+// New returns new OptIoK8sAPICoreV1DaemonEndpoint with value set to v.
+func NewOptIoK8sAPICoreV1DaemonEndpoint(v IoK8sAPICoreV1DaemonEndpoint) OptIoK8sAPICoreV1DaemonEndpoint {
+	return OptIoK8sAPICoreV1DaemonEndpoint{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1DaemonEndpoint is generic valiant of IoK8sAPICoreV1DaemonEndpoint.
-type OptionalIoK8sAPICoreV1DaemonEndpoint struct {
+// OptIoK8sAPICoreV1DaemonEndpoint is generic valiant of IoK8sAPICoreV1DaemonEndpoint.
+type OptIoK8sAPICoreV1DaemonEndpoint struct {
 	Value IoK8sAPICoreV1DaemonEndpoint
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1DaemonEndpoint was set.
-func (o OptionalIoK8sAPICoreV1DaemonEndpoint) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1DaemonEndpoint was set.
+func (o OptIoK8sAPICoreV1DaemonEndpoint) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1DaemonEndpoint) Reset() {
+func (o *OptIoK8sAPICoreV1DaemonEndpoint) Reset() {
 	var v IoK8sAPICoreV1DaemonEndpoint
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1DaemonEndpoint) SetTo(v IoK8sAPICoreV1DaemonEndpoint) {
+func (o *OptIoK8sAPICoreV1DaemonEndpoint) SetTo(v IoK8sAPICoreV1DaemonEndpoint) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1DaemonEndpoint) Get() (v IoK8sAPICoreV1DaemonEndpoint, ok bool) {
+func (o OptIoK8sAPICoreV1DaemonEndpoint) Get() (v IoK8sAPICoreV1DaemonEndpoint, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1DownwardAPIProjection with value set to v.
-func NewOptionalIoK8sAPICoreV1DownwardAPIProjection(v IoK8sAPICoreV1DownwardAPIProjection) OptionalIoK8sAPICoreV1DownwardAPIProjection {
-	return OptionalIoK8sAPICoreV1DownwardAPIProjection{
+// New returns new OptIoK8sAPICoreV1DownwardAPIProjection with value set to v.
+func NewOptIoK8sAPICoreV1DownwardAPIProjection(v IoK8sAPICoreV1DownwardAPIProjection) OptIoK8sAPICoreV1DownwardAPIProjection {
+	return OptIoK8sAPICoreV1DownwardAPIProjection{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1DownwardAPIProjection is generic valiant of IoK8sAPICoreV1DownwardAPIProjection.
-type OptionalIoK8sAPICoreV1DownwardAPIProjection struct {
+// OptIoK8sAPICoreV1DownwardAPIProjection is generic valiant of IoK8sAPICoreV1DownwardAPIProjection.
+type OptIoK8sAPICoreV1DownwardAPIProjection struct {
 	Value IoK8sAPICoreV1DownwardAPIProjection
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1DownwardAPIProjection was set.
-func (o OptionalIoK8sAPICoreV1DownwardAPIProjection) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1DownwardAPIProjection was set.
+func (o OptIoK8sAPICoreV1DownwardAPIProjection) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1DownwardAPIProjection) Reset() {
+func (o *OptIoK8sAPICoreV1DownwardAPIProjection) Reset() {
 	var v IoK8sAPICoreV1DownwardAPIProjection
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1DownwardAPIProjection) SetTo(v IoK8sAPICoreV1DownwardAPIProjection) {
+func (o *OptIoK8sAPICoreV1DownwardAPIProjection) SetTo(v IoK8sAPICoreV1DownwardAPIProjection) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1DownwardAPIProjection) Get() (v IoK8sAPICoreV1DownwardAPIProjection, ok bool) {
+func (o OptIoK8sAPICoreV1DownwardAPIProjection) Get() (v IoK8sAPICoreV1DownwardAPIProjection, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1DownwardAPIVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1DownwardAPIVolumeSource(v IoK8sAPICoreV1DownwardAPIVolumeSource) OptionalIoK8sAPICoreV1DownwardAPIVolumeSource {
-	return OptionalIoK8sAPICoreV1DownwardAPIVolumeSource{
+// New returns new OptIoK8sAPICoreV1DownwardAPIVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1DownwardAPIVolumeSource(v IoK8sAPICoreV1DownwardAPIVolumeSource) OptIoK8sAPICoreV1DownwardAPIVolumeSource {
+	return OptIoK8sAPICoreV1DownwardAPIVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1DownwardAPIVolumeSource is generic valiant of IoK8sAPICoreV1DownwardAPIVolumeSource.
-type OptionalIoK8sAPICoreV1DownwardAPIVolumeSource struct {
+// OptIoK8sAPICoreV1DownwardAPIVolumeSource is generic valiant of IoK8sAPICoreV1DownwardAPIVolumeSource.
+type OptIoK8sAPICoreV1DownwardAPIVolumeSource struct {
 	Value IoK8sAPICoreV1DownwardAPIVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1DownwardAPIVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1DownwardAPIVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1DownwardAPIVolumeSource was set.
+func (o OptIoK8sAPICoreV1DownwardAPIVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1DownwardAPIVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1DownwardAPIVolumeSource) Reset() {
 	var v IoK8sAPICoreV1DownwardAPIVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1DownwardAPIVolumeSource) SetTo(v IoK8sAPICoreV1DownwardAPIVolumeSource) {
+func (o *OptIoK8sAPICoreV1DownwardAPIVolumeSource) SetTo(v IoK8sAPICoreV1DownwardAPIVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1DownwardAPIVolumeSource) Get() (v IoK8sAPICoreV1DownwardAPIVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1DownwardAPIVolumeSource) Get() (v IoK8sAPICoreV1DownwardAPIVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1EmptyDirVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1EmptyDirVolumeSource(v IoK8sAPICoreV1EmptyDirVolumeSource) OptionalIoK8sAPICoreV1EmptyDirVolumeSource {
-	return OptionalIoK8sAPICoreV1EmptyDirVolumeSource{
+// New returns new OptIoK8sAPICoreV1EmptyDirVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1EmptyDirVolumeSource(v IoK8sAPICoreV1EmptyDirVolumeSource) OptIoK8sAPICoreV1EmptyDirVolumeSource {
+	return OptIoK8sAPICoreV1EmptyDirVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1EmptyDirVolumeSource is generic valiant of IoK8sAPICoreV1EmptyDirVolumeSource.
-type OptionalIoK8sAPICoreV1EmptyDirVolumeSource struct {
+// OptIoK8sAPICoreV1EmptyDirVolumeSource is generic valiant of IoK8sAPICoreV1EmptyDirVolumeSource.
+type OptIoK8sAPICoreV1EmptyDirVolumeSource struct {
 	Value IoK8sAPICoreV1EmptyDirVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1EmptyDirVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1EmptyDirVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1EmptyDirVolumeSource was set.
+func (o OptIoK8sAPICoreV1EmptyDirVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1EmptyDirVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1EmptyDirVolumeSource) Reset() {
 	var v IoK8sAPICoreV1EmptyDirVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1EmptyDirVolumeSource) SetTo(v IoK8sAPICoreV1EmptyDirVolumeSource) {
+func (o *OptIoK8sAPICoreV1EmptyDirVolumeSource) SetTo(v IoK8sAPICoreV1EmptyDirVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1EmptyDirVolumeSource) Get() (v IoK8sAPICoreV1EmptyDirVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1EmptyDirVolumeSource) Get() (v IoK8sAPICoreV1EmptyDirVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1EnvVarSource with value set to v.
-func NewOptionalIoK8sAPICoreV1EnvVarSource(v IoK8sAPICoreV1EnvVarSource) OptionalIoK8sAPICoreV1EnvVarSource {
-	return OptionalIoK8sAPICoreV1EnvVarSource{
+// New returns new OptIoK8sAPICoreV1EnvVarSource with value set to v.
+func NewOptIoK8sAPICoreV1EnvVarSource(v IoK8sAPICoreV1EnvVarSource) OptIoK8sAPICoreV1EnvVarSource {
+	return OptIoK8sAPICoreV1EnvVarSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1EnvVarSource is generic valiant of IoK8sAPICoreV1EnvVarSource.
-type OptionalIoK8sAPICoreV1EnvVarSource struct {
+// OptIoK8sAPICoreV1EnvVarSource is generic valiant of IoK8sAPICoreV1EnvVarSource.
+type OptIoK8sAPICoreV1EnvVarSource struct {
 	Value IoK8sAPICoreV1EnvVarSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1EnvVarSource was set.
-func (o OptionalIoK8sAPICoreV1EnvVarSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1EnvVarSource was set.
+func (o OptIoK8sAPICoreV1EnvVarSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1EnvVarSource) Reset() {
+func (o *OptIoK8sAPICoreV1EnvVarSource) Reset() {
 	var v IoK8sAPICoreV1EnvVarSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1EnvVarSource) SetTo(v IoK8sAPICoreV1EnvVarSource) {
+func (o *OptIoK8sAPICoreV1EnvVarSource) SetTo(v IoK8sAPICoreV1EnvVarSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1EnvVarSource) Get() (v IoK8sAPICoreV1EnvVarSource, ok bool) {
+func (o OptIoK8sAPICoreV1EnvVarSource) Get() (v IoK8sAPICoreV1EnvVarSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1EphemeralVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1EphemeralVolumeSource(v IoK8sAPICoreV1EphemeralVolumeSource) OptionalIoK8sAPICoreV1EphemeralVolumeSource {
-	return OptionalIoK8sAPICoreV1EphemeralVolumeSource{
+// New returns new OptIoK8sAPICoreV1EphemeralVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1EphemeralVolumeSource(v IoK8sAPICoreV1EphemeralVolumeSource) OptIoK8sAPICoreV1EphemeralVolumeSource {
+	return OptIoK8sAPICoreV1EphemeralVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1EphemeralVolumeSource is generic valiant of IoK8sAPICoreV1EphemeralVolumeSource.
-type OptionalIoK8sAPICoreV1EphemeralVolumeSource struct {
+// OptIoK8sAPICoreV1EphemeralVolumeSource is generic valiant of IoK8sAPICoreV1EphemeralVolumeSource.
+type OptIoK8sAPICoreV1EphemeralVolumeSource struct {
 	Value IoK8sAPICoreV1EphemeralVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1EphemeralVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1EphemeralVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1EphemeralVolumeSource was set.
+func (o OptIoK8sAPICoreV1EphemeralVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1EphemeralVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1EphemeralVolumeSource) Reset() {
 	var v IoK8sAPICoreV1EphemeralVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1EphemeralVolumeSource) SetTo(v IoK8sAPICoreV1EphemeralVolumeSource) {
+func (o *OptIoK8sAPICoreV1EphemeralVolumeSource) SetTo(v IoK8sAPICoreV1EphemeralVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1EphemeralVolumeSource) Get() (v IoK8sAPICoreV1EphemeralVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1EphemeralVolumeSource) Get() (v IoK8sAPICoreV1EphemeralVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1EventSeries with value set to v.
-func NewOptionalIoK8sAPICoreV1EventSeries(v IoK8sAPICoreV1EventSeries) OptionalIoK8sAPICoreV1EventSeries {
-	return OptionalIoK8sAPICoreV1EventSeries{
+// New returns new OptIoK8sAPICoreV1EventSeries with value set to v.
+func NewOptIoK8sAPICoreV1EventSeries(v IoK8sAPICoreV1EventSeries) OptIoK8sAPICoreV1EventSeries {
+	return OptIoK8sAPICoreV1EventSeries{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1EventSeries is generic valiant of IoK8sAPICoreV1EventSeries.
-type OptionalIoK8sAPICoreV1EventSeries struct {
+// OptIoK8sAPICoreV1EventSeries is generic valiant of IoK8sAPICoreV1EventSeries.
+type OptIoK8sAPICoreV1EventSeries struct {
 	Value IoK8sAPICoreV1EventSeries
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1EventSeries was set.
-func (o OptionalIoK8sAPICoreV1EventSeries) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1EventSeries was set.
+func (o OptIoK8sAPICoreV1EventSeries) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1EventSeries) Reset() {
+func (o *OptIoK8sAPICoreV1EventSeries) Reset() {
 	var v IoK8sAPICoreV1EventSeries
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1EventSeries) SetTo(v IoK8sAPICoreV1EventSeries) {
+func (o *OptIoK8sAPICoreV1EventSeries) SetTo(v IoK8sAPICoreV1EventSeries) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1EventSeries) Get() (v IoK8sAPICoreV1EventSeries, ok bool) {
+func (o OptIoK8sAPICoreV1EventSeries) Get() (v IoK8sAPICoreV1EventSeries, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1EventSource with value set to v.
-func NewOptionalIoK8sAPICoreV1EventSource(v IoK8sAPICoreV1EventSource) OptionalIoK8sAPICoreV1EventSource {
-	return OptionalIoK8sAPICoreV1EventSource{
+// New returns new OptIoK8sAPICoreV1EventSource with value set to v.
+func NewOptIoK8sAPICoreV1EventSource(v IoK8sAPICoreV1EventSource) OptIoK8sAPICoreV1EventSource {
+	return OptIoK8sAPICoreV1EventSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1EventSource is generic valiant of IoK8sAPICoreV1EventSource.
-type OptionalIoK8sAPICoreV1EventSource struct {
+// OptIoK8sAPICoreV1EventSource is generic valiant of IoK8sAPICoreV1EventSource.
+type OptIoK8sAPICoreV1EventSource struct {
 	Value IoK8sAPICoreV1EventSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1EventSource was set.
-func (o OptionalIoK8sAPICoreV1EventSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1EventSource was set.
+func (o OptIoK8sAPICoreV1EventSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1EventSource) Reset() {
+func (o *OptIoK8sAPICoreV1EventSource) Reset() {
 	var v IoK8sAPICoreV1EventSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1EventSource) SetTo(v IoK8sAPICoreV1EventSource) {
+func (o *OptIoK8sAPICoreV1EventSource) SetTo(v IoK8sAPICoreV1EventSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1EventSource) Get() (v IoK8sAPICoreV1EventSource, ok bool) {
+func (o OptIoK8sAPICoreV1EventSource) Get() (v IoK8sAPICoreV1EventSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ExecAction with value set to v.
-func NewOptionalIoK8sAPICoreV1ExecAction(v IoK8sAPICoreV1ExecAction) OptionalIoK8sAPICoreV1ExecAction {
-	return OptionalIoK8sAPICoreV1ExecAction{
+// New returns new OptIoK8sAPICoreV1ExecAction with value set to v.
+func NewOptIoK8sAPICoreV1ExecAction(v IoK8sAPICoreV1ExecAction) OptIoK8sAPICoreV1ExecAction {
+	return OptIoK8sAPICoreV1ExecAction{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ExecAction is generic valiant of IoK8sAPICoreV1ExecAction.
-type OptionalIoK8sAPICoreV1ExecAction struct {
+// OptIoK8sAPICoreV1ExecAction is generic valiant of IoK8sAPICoreV1ExecAction.
+type OptIoK8sAPICoreV1ExecAction struct {
 	Value IoK8sAPICoreV1ExecAction
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ExecAction was set.
-func (o OptionalIoK8sAPICoreV1ExecAction) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ExecAction was set.
+func (o OptIoK8sAPICoreV1ExecAction) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ExecAction) Reset() {
+func (o *OptIoK8sAPICoreV1ExecAction) Reset() {
 	var v IoK8sAPICoreV1ExecAction
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ExecAction) SetTo(v IoK8sAPICoreV1ExecAction) {
+func (o *OptIoK8sAPICoreV1ExecAction) SetTo(v IoK8sAPICoreV1ExecAction) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ExecAction) Get() (v IoK8sAPICoreV1ExecAction, ok bool) {
+func (o OptIoK8sAPICoreV1ExecAction) Get() (v IoK8sAPICoreV1ExecAction, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1FCVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1FCVolumeSource(v IoK8sAPICoreV1FCVolumeSource) OptionalIoK8sAPICoreV1FCVolumeSource {
-	return OptionalIoK8sAPICoreV1FCVolumeSource{
+// New returns new OptIoK8sAPICoreV1FCVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1FCVolumeSource(v IoK8sAPICoreV1FCVolumeSource) OptIoK8sAPICoreV1FCVolumeSource {
+	return OptIoK8sAPICoreV1FCVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1FCVolumeSource is generic valiant of IoK8sAPICoreV1FCVolumeSource.
-type OptionalIoK8sAPICoreV1FCVolumeSource struct {
+// OptIoK8sAPICoreV1FCVolumeSource is generic valiant of IoK8sAPICoreV1FCVolumeSource.
+type OptIoK8sAPICoreV1FCVolumeSource struct {
 	Value IoK8sAPICoreV1FCVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1FCVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1FCVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1FCVolumeSource was set.
+func (o OptIoK8sAPICoreV1FCVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1FCVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1FCVolumeSource) Reset() {
 	var v IoK8sAPICoreV1FCVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1FCVolumeSource) SetTo(v IoK8sAPICoreV1FCVolumeSource) {
+func (o *OptIoK8sAPICoreV1FCVolumeSource) SetTo(v IoK8sAPICoreV1FCVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1FCVolumeSource) Get() (v IoK8sAPICoreV1FCVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1FCVolumeSource) Get() (v IoK8sAPICoreV1FCVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1FlexPersistentVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1FlexPersistentVolumeSource(v IoK8sAPICoreV1FlexPersistentVolumeSource) OptionalIoK8sAPICoreV1FlexPersistentVolumeSource {
-	return OptionalIoK8sAPICoreV1FlexPersistentVolumeSource{
+// New returns new OptIoK8sAPICoreV1FlexPersistentVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1FlexPersistentVolumeSource(v IoK8sAPICoreV1FlexPersistentVolumeSource) OptIoK8sAPICoreV1FlexPersistentVolumeSource {
+	return OptIoK8sAPICoreV1FlexPersistentVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1FlexPersistentVolumeSource is generic valiant of IoK8sAPICoreV1FlexPersistentVolumeSource.
-type OptionalIoK8sAPICoreV1FlexPersistentVolumeSource struct {
+// OptIoK8sAPICoreV1FlexPersistentVolumeSource is generic valiant of IoK8sAPICoreV1FlexPersistentVolumeSource.
+type OptIoK8sAPICoreV1FlexPersistentVolumeSource struct {
 	Value IoK8sAPICoreV1FlexPersistentVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1FlexPersistentVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1FlexPersistentVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1FlexPersistentVolumeSource was set.
+func (o OptIoK8sAPICoreV1FlexPersistentVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1FlexPersistentVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1FlexPersistentVolumeSource) Reset() {
 	var v IoK8sAPICoreV1FlexPersistentVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1FlexPersistentVolumeSource) SetTo(v IoK8sAPICoreV1FlexPersistentVolumeSource) {
+func (o *OptIoK8sAPICoreV1FlexPersistentVolumeSource) SetTo(v IoK8sAPICoreV1FlexPersistentVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1FlexPersistentVolumeSource) Get() (v IoK8sAPICoreV1FlexPersistentVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1FlexPersistentVolumeSource) Get() (v IoK8sAPICoreV1FlexPersistentVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1FlexVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1FlexVolumeSource(v IoK8sAPICoreV1FlexVolumeSource) OptionalIoK8sAPICoreV1FlexVolumeSource {
-	return OptionalIoK8sAPICoreV1FlexVolumeSource{
+// New returns new OptIoK8sAPICoreV1FlexVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1FlexVolumeSource(v IoK8sAPICoreV1FlexVolumeSource) OptIoK8sAPICoreV1FlexVolumeSource {
+	return OptIoK8sAPICoreV1FlexVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1FlexVolumeSource is generic valiant of IoK8sAPICoreV1FlexVolumeSource.
-type OptionalIoK8sAPICoreV1FlexVolumeSource struct {
+// OptIoK8sAPICoreV1FlexVolumeSource is generic valiant of IoK8sAPICoreV1FlexVolumeSource.
+type OptIoK8sAPICoreV1FlexVolumeSource struct {
 	Value IoK8sAPICoreV1FlexVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1FlexVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1FlexVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1FlexVolumeSource was set.
+func (o OptIoK8sAPICoreV1FlexVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1FlexVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1FlexVolumeSource) Reset() {
 	var v IoK8sAPICoreV1FlexVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1FlexVolumeSource) SetTo(v IoK8sAPICoreV1FlexVolumeSource) {
+func (o *OptIoK8sAPICoreV1FlexVolumeSource) SetTo(v IoK8sAPICoreV1FlexVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1FlexVolumeSource) Get() (v IoK8sAPICoreV1FlexVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1FlexVolumeSource) Get() (v IoK8sAPICoreV1FlexVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1FlockerVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1FlockerVolumeSource(v IoK8sAPICoreV1FlockerVolumeSource) OptionalIoK8sAPICoreV1FlockerVolumeSource {
-	return OptionalIoK8sAPICoreV1FlockerVolumeSource{
+// New returns new OptIoK8sAPICoreV1FlockerVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1FlockerVolumeSource(v IoK8sAPICoreV1FlockerVolumeSource) OptIoK8sAPICoreV1FlockerVolumeSource {
+	return OptIoK8sAPICoreV1FlockerVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1FlockerVolumeSource is generic valiant of IoK8sAPICoreV1FlockerVolumeSource.
-type OptionalIoK8sAPICoreV1FlockerVolumeSource struct {
+// OptIoK8sAPICoreV1FlockerVolumeSource is generic valiant of IoK8sAPICoreV1FlockerVolumeSource.
+type OptIoK8sAPICoreV1FlockerVolumeSource struct {
 	Value IoK8sAPICoreV1FlockerVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1FlockerVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1FlockerVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1FlockerVolumeSource was set.
+func (o OptIoK8sAPICoreV1FlockerVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1FlockerVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1FlockerVolumeSource) Reset() {
 	var v IoK8sAPICoreV1FlockerVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1FlockerVolumeSource) SetTo(v IoK8sAPICoreV1FlockerVolumeSource) {
+func (o *OptIoK8sAPICoreV1FlockerVolumeSource) SetTo(v IoK8sAPICoreV1FlockerVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1FlockerVolumeSource) Get() (v IoK8sAPICoreV1FlockerVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1FlockerVolumeSource) Get() (v IoK8sAPICoreV1FlockerVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1GCEPersistentDiskVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1GCEPersistentDiskVolumeSource(v IoK8sAPICoreV1GCEPersistentDiskVolumeSource) OptionalIoK8sAPICoreV1GCEPersistentDiskVolumeSource {
-	return OptionalIoK8sAPICoreV1GCEPersistentDiskVolumeSource{
+// New returns new OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1GCEPersistentDiskVolumeSource(v IoK8sAPICoreV1GCEPersistentDiskVolumeSource) OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource {
+	return OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1GCEPersistentDiskVolumeSource is generic valiant of IoK8sAPICoreV1GCEPersistentDiskVolumeSource.
-type OptionalIoK8sAPICoreV1GCEPersistentDiskVolumeSource struct {
+// OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource is generic valiant of IoK8sAPICoreV1GCEPersistentDiskVolumeSource.
+type OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource struct {
 	Value IoK8sAPICoreV1GCEPersistentDiskVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1GCEPersistentDiskVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1GCEPersistentDiskVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource was set.
+func (o OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1GCEPersistentDiskVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) Reset() {
 	var v IoK8sAPICoreV1GCEPersistentDiskVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1GCEPersistentDiskVolumeSource) SetTo(v IoK8sAPICoreV1GCEPersistentDiskVolumeSource) {
+func (o *OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) SetTo(v IoK8sAPICoreV1GCEPersistentDiskVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1GCEPersistentDiskVolumeSource) Get() (v IoK8sAPICoreV1GCEPersistentDiskVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) Get() (v IoK8sAPICoreV1GCEPersistentDiskVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1GitRepoVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1GitRepoVolumeSource(v IoK8sAPICoreV1GitRepoVolumeSource) OptionalIoK8sAPICoreV1GitRepoVolumeSource {
-	return OptionalIoK8sAPICoreV1GitRepoVolumeSource{
+// New returns new OptIoK8sAPICoreV1GitRepoVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1GitRepoVolumeSource(v IoK8sAPICoreV1GitRepoVolumeSource) OptIoK8sAPICoreV1GitRepoVolumeSource {
+	return OptIoK8sAPICoreV1GitRepoVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1GitRepoVolumeSource is generic valiant of IoK8sAPICoreV1GitRepoVolumeSource.
-type OptionalIoK8sAPICoreV1GitRepoVolumeSource struct {
+// OptIoK8sAPICoreV1GitRepoVolumeSource is generic valiant of IoK8sAPICoreV1GitRepoVolumeSource.
+type OptIoK8sAPICoreV1GitRepoVolumeSource struct {
 	Value IoK8sAPICoreV1GitRepoVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1GitRepoVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1GitRepoVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1GitRepoVolumeSource was set.
+func (o OptIoK8sAPICoreV1GitRepoVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1GitRepoVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1GitRepoVolumeSource) Reset() {
 	var v IoK8sAPICoreV1GitRepoVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1GitRepoVolumeSource) SetTo(v IoK8sAPICoreV1GitRepoVolumeSource) {
+func (o *OptIoK8sAPICoreV1GitRepoVolumeSource) SetTo(v IoK8sAPICoreV1GitRepoVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1GitRepoVolumeSource) Get() (v IoK8sAPICoreV1GitRepoVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1GitRepoVolumeSource) Get() (v IoK8sAPICoreV1GitRepoVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1GlusterfsPersistentVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1GlusterfsPersistentVolumeSource(v IoK8sAPICoreV1GlusterfsPersistentVolumeSource) OptionalIoK8sAPICoreV1GlusterfsPersistentVolumeSource {
-	return OptionalIoK8sAPICoreV1GlusterfsPersistentVolumeSource{
+// New returns new OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1GlusterfsPersistentVolumeSource(v IoK8sAPICoreV1GlusterfsPersistentVolumeSource) OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource {
+	return OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1GlusterfsPersistentVolumeSource is generic valiant of IoK8sAPICoreV1GlusterfsPersistentVolumeSource.
-type OptionalIoK8sAPICoreV1GlusterfsPersistentVolumeSource struct {
+// OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource is generic valiant of IoK8sAPICoreV1GlusterfsPersistentVolumeSource.
+type OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource struct {
 	Value IoK8sAPICoreV1GlusterfsPersistentVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1GlusterfsPersistentVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1GlusterfsPersistentVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource was set.
+func (o OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1GlusterfsPersistentVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) Reset() {
 	var v IoK8sAPICoreV1GlusterfsPersistentVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1GlusterfsPersistentVolumeSource) SetTo(v IoK8sAPICoreV1GlusterfsPersistentVolumeSource) {
+func (o *OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) SetTo(v IoK8sAPICoreV1GlusterfsPersistentVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1GlusterfsPersistentVolumeSource) Get() (v IoK8sAPICoreV1GlusterfsPersistentVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) Get() (v IoK8sAPICoreV1GlusterfsPersistentVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1GlusterfsVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1GlusterfsVolumeSource(v IoK8sAPICoreV1GlusterfsVolumeSource) OptionalIoK8sAPICoreV1GlusterfsVolumeSource {
-	return OptionalIoK8sAPICoreV1GlusterfsVolumeSource{
+// New returns new OptIoK8sAPICoreV1GlusterfsVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1GlusterfsVolumeSource(v IoK8sAPICoreV1GlusterfsVolumeSource) OptIoK8sAPICoreV1GlusterfsVolumeSource {
+	return OptIoK8sAPICoreV1GlusterfsVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1GlusterfsVolumeSource is generic valiant of IoK8sAPICoreV1GlusterfsVolumeSource.
-type OptionalIoK8sAPICoreV1GlusterfsVolumeSource struct {
+// OptIoK8sAPICoreV1GlusterfsVolumeSource is generic valiant of IoK8sAPICoreV1GlusterfsVolumeSource.
+type OptIoK8sAPICoreV1GlusterfsVolumeSource struct {
 	Value IoK8sAPICoreV1GlusterfsVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1GlusterfsVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1GlusterfsVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1GlusterfsVolumeSource was set.
+func (o OptIoK8sAPICoreV1GlusterfsVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1GlusterfsVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1GlusterfsVolumeSource) Reset() {
 	var v IoK8sAPICoreV1GlusterfsVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1GlusterfsVolumeSource) SetTo(v IoK8sAPICoreV1GlusterfsVolumeSource) {
+func (o *OptIoK8sAPICoreV1GlusterfsVolumeSource) SetTo(v IoK8sAPICoreV1GlusterfsVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1GlusterfsVolumeSource) Get() (v IoK8sAPICoreV1GlusterfsVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1GlusterfsVolumeSource) Get() (v IoK8sAPICoreV1GlusterfsVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1HTTPGetAction with value set to v.
-func NewOptionalIoK8sAPICoreV1HTTPGetAction(v IoK8sAPICoreV1HTTPGetAction) OptionalIoK8sAPICoreV1HTTPGetAction {
-	return OptionalIoK8sAPICoreV1HTTPGetAction{
+// New returns new OptIoK8sAPICoreV1HTTPGetAction with value set to v.
+func NewOptIoK8sAPICoreV1HTTPGetAction(v IoK8sAPICoreV1HTTPGetAction) OptIoK8sAPICoreV1HTTPGetAction {
+	return OptIoK8sAPICoreV1HTTPGetAction{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1HTTPGetAction is generic valiant of IoK8sAPICoreV1HTTPGetAction.
-type OptionalIoK8sAPICoreV1HTTPGetAction struct {
+// OptIoK8sAPICoreV1HTTPGetAction is generic valiant of IoK8sAPICoreV1HTTPGetAction.
+type OptIoK8sAPICoreV1HTTPGetAction struct {
 	Value IoK8sAPICoreV1HTTPGetAction
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1HTTPGetAction was set.
-func (o OptionalIoK8sAPICoreV1HTTPGetAction) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1HTTPGetAction was set.
+func (o OptIoK8sAPICoreV1HTTPGetAction) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1HTTPGetAction) Reset() {
+func (o *OptIoK8sAPICoreV1HTTPGetAction) Reset() {
 	var v IoK8sAPICoreV1HTTPGetAction
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1HTTPGetAction) SetTo(v IoK8sAPICoreV1HTTPGetAction) {
+func (o *OptIoK8sAPICoreV1HTTPGetAction) SetTo(v IoK8sAPICoreV1HTTPGetAction) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1HTTPGetAction) Get() (v IoK8sAPICoreV1HTTPGetAction, ok bool) {
+func (o OptIoK8sAPICoreV1HTTPGetAction) Get() (v IoK8sAPICoreV1HTTPGetAction, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1Handler with value set to v.
-func NewOptionalIoK8sAPICoreV1Handler(v IoK8sAPICoreV1Handler) OptionalIoK8sAPICoreV1Handler {
-	return OptionalIoK8sAPICoreV1Handler{
+// New returns new OptIoK8sAPICoreV1Handler with value set to v.
+func NewOptIoK8sAPICoreV1Handler(v IoK8sAPICoreV1Handler) OptIoK8sAPICoreV1Handler {
+	return OptIoK8sAPICoreV1Handler{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1Handler is generic valiant of IoK8sAPICoreV1Handler.
-type OptionalIoK8sAPICoreV1Handler struct {
+// OptIoK8sAPICoreV1Handler is generic valiant of IoK8sAPICoreV1Handler.
+type OptIoK8sAPICoreV1Handler struct {
 	Value IoK8sAPICoreV1Handler
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1Handler was set.
-func (o OptionalIoK8sAPICoreV1Handler) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1Handler was set.
+func (o OptIoK8sAPICoreV1Handler) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1Handler) Reset() {
+func (o *OptIoK8sAPICoreV1Handler) Reset() {
 	var v IoK8sAPICoreV1Handler
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1Handler) SetTo(v IoK8sAPICoreV1Handler) {
+func (o *OptIoK8sAPICoreV1Handler) SetTo(v IoK8sAPICoreV1Handler) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1Handler) Get() (v IoK8sAPICoreV1Handler, ok bool) {
+func (o OptIoK8sAPICoreV1Handler) Get() (v IoK8sAPICoreV1Handler, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1HostPathVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1HostPathVolumeSource(v IoK8sAPICoreV1HostPathVolumeSource) OptionalIoK8sAPICoreV1HostPathVolumeSource {
-	return OptionalIoK8sAPICoreV1HostPathVolumeSource{
+// New returns new OptIoK8sAPICoreV1HostPathVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1HostPathVolumeSource(v IoK8sAPICoreV1HostPathVolumeSource) OptIoK8sAPICoreV1HostPathVolumeSource {
+	return OptIoK8sAPICoreV1HostPathVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1HostPathVolumeSource is generic valiant of IoK8sAPICoreV1HostPathVolumeSource.
-type OptionalIoK8sAPICoreV1HostPathVolumeSource struct {
+// OptIoK8sAPICoreV1HostPathVolumeSource is generic valiant of IoK8sAPICoreV1HostPathVolumeSource.
+type OptIoK8sAPICoreV1HostPathVolumeSource struct {
 	Value IoK8sAPICoreV1HostPathVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1HostPathVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1HostPathVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1HostPathVolumeSource was set.
+func (o OptIoK8sAPICoreV1HostPathVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1HostPathVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1HostPathVolumeSource) Reset() {
 	var v IoK8sAPICoreV1HostPathVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1HostPathVolumeSource) SetTo(v IoK8sAPICoreV1HostPathVolumeSource) {
+func (o *OptIoK8sAPICoreV1HostPathVolumeSource) SetTo(v IoK8sAPICoreV1HostPathVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1HostPathVolumeSource) Get() (v IoK8sAPICoreV1HostPathVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1HostPathVolumeSource) Get() (v IoK8sAPICoreV1HostPathVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ISCSIPersistentVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1ISCSIPersistentVolumeSource(v IoK8sAPICoreV1ISCSIPersistentVolumeSource) OptionalIoK8sAPICoreV1ISCSIPersistentVolumeSource {
-	return OptionalIoK8sAPICoreV1ISCSIPersistentVolumeSource{
+// New returns new OptIoK8sAPICoreV1ISCSIPersistentVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1ISCSIPersistentVolumeSource(v IoK8sAPICoreV1ISCSIPersistentVolumeSource) OptIoK8sAPICoreV1ISCSIPersistentVolumeSource {
+	return OptIoK8sAPICoreV1ISCSIPersistentVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ISCSIPersistentVolumeSource is generic valiant of IoK8sAPICoreV1ISCSIPersistentVolumeSource.
-type OptionalIoK8sAPICoreV1ISCSIPersistentVolumeSource struct {
+// OptIoK8sAPICoreV1ISCSIPersistentVolumeSource is generic valiant of IoK8sAPICoreV1ISCSIPersistentVolumeSource.
+type OptIoK8sAPICoreV1ISCSIPersistentVolumeSource struct {
 	Value IoK8sAPICoreV1ISCSIPersistentVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ISCSIPersistentVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1ISCSIPersistentVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ISCSIPersistentVolumeSource was set.
+func (o OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ISCSIPersistentVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) Reset() {
 	var v IoK8sAPICoreV1ISCSIPersistentVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ISCSIPersistentVolumeSource) SetTo(v IoK8sAPICoreV1ISCSIPersistentVolumeSource) {
+func (o *OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) SetTo(v IoK8sAPICoreV1ISCSIPersistentVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ISCSIPersistentVolumeSource) Get() (v IoK8sAPICoreV1ISCSIPersistentVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) Get() (v IoK8sAPICoreV1ISCSIPersistentVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ISCSIVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1ISCSIVolumeSource(v IoK8sAPICoreV1ISCSIVolumeSource) OptionalIoK8sAPICoreV1ISCSIVolumeSource {
-	return OptionalIoK8sAPICoreV1ISCSIVolumeSource{
+// New returns new OptIoK8sAPICoreV1ISCSIVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1ISCSIVolumeSource(v IoK8sAPICoreV1ISCSIVolumeSource) OptIoK8sAPICoreV1ISCSIVolumeSource {
+	return OptIoK8sAPICoreV1ISCSIVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ISCSIVolumeSource is generic valiant of IoK8sAPICoreV1ISCSIVolumeSource.
-type OptionalIoK8sAPICoreV1ISCSIVolumeSource struct {
+// OptIoK8sAPICoreV1ISCSIVolumeSource is generic valiant of IoK8sAPICoreV1ISCSIVolumeSource.
+type OptIoK8sAPICoreV1ISCSIVolumeSource struct {
 	Value IoK8sAPICoreV1ISCSIVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ISCSIVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1ISCSIVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ISCSIVolumeSource was set.
+func (o OptIoK8sAPICoreV1ISCSIVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ISCSIVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1ISCSIVolumeSource) Reset() {
 	var v IoK8sAPICoreV1ISCSIVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ISCSIVolumeSource) SetTo(v IoK8sAPICoreV1ISCSIVolumeSource) {
+func (o *OptIoK8sAPICoreV1ISCSIVolumeSource) SetTo(v IoK8sAPICoreV1ISCSIVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ISCSIVolumeSource) Get() (v IoK8sAPICoreV1ISCSIVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1ISCSIVolumeSource) Get() (v IoK8sAPICoreV1ISCSIVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1Lifecycle with value set to v.
-func NewOptionalIoK8sAPICoreV1Lifecycle(v IoK8sAPICoreV1Lifecycle) OptionalIoK8sAPICoreV1Lifecycle {
-	return OptionalIoK8sAPICoreV1Lifecycle{
+// New returns new OptIoK8sAPICoreV1Lifecycle with value set to v.
+func NewOptIoK8sAPICoreV1Lifecycle(v IoK8sAPICoreV1Lifecycle) OptIoK8sAPICoreV1Lifecycle {
+	return OptIoK8sAPICoreV1Lifecycle{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1Lifecycle is generic valiant of IoK8sAPICoreV1Lifecycle.
-type OptionalIoK8sAPICoreV1Lifecycle struct {
+// OptIoK8sAPICoreV1Lifecycle is generic valiant of IoK8sAPICoreV1Lifecycle.
+type OptIoK8sAPICoreV1Lifecycle struct {
 	Value IoK8sAPICoreV1Lifecycle
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1Lifecycle was set.
-func (o OptionalIoK8sAPICoreV1Lifecycle) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1Lifecycle was set.
+func (o OptIoK8sAPICoreV1Lifecycle) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1Lifecycle) Reset() {
+func (o *OptIoK8sAPICoreV1Lifecycle) Reset() {
 	var v IoK8sAPICoreV1Lifecycle
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1Lifecycle) SetTo(v IoK8sAPICoreV1Lifecycle) {
+func (o *OptIoK8sAPICoreV1Lifecycle) SetTo(v IoK8sAPICoreV1Lifecycle) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1Lifecycle) Get() (v IoK8sAPICoreV1Lifecycle, ok bool) {
+func (o OptIoK8sAPICoreV1Lifecycle) Get() (v IoK8sAPICoreV1Lifecycle, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1LimitRangeSpec with value set to v.
-func NewOptionalIoK8sAPICoreV1LimitRangeSpec(v IoK8sAPICoreV1LimitRangeSpec) OptionalIoK8sAPICoreV1LimitRangeSpec {
-	return OptionalIoK8sAPICoreV1LimitRangeSpec{
+// New returns new OptIoK8sAPICoreV1LimitRangeSpec with value set to v.
+func NewOptIoK8sAPICoreV1LimitRangeSpec(v IoK8sAPICoreV1LimitRangeSpec) OptIoK8sAPICoreV1LimitRangeSpec {
+	return OptIoK8sAPICoreV1LimitRangeSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1LimitRangeSpec is generic valiant of IoK8sAPICoreV1LimitRangeSpec.
-type OptionalIoK8sAPICoreV1LimitRangeSpec struct {
+// OptIoK8sAPICoreV1LimitRangeSpec is generic valiant of IoK8sAPICoreV1LimitRangeSpec.
+type OptIoK8sAPICoreV1LimitRangeSpec struct {
 	Value IoK8sAPICoreV1LimitRangeSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1LimitRangeSpec was set.
-func (o OptionalIoK8sAPICoreV1LimitRangeSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1LimitRangeSpec was set.
+func (o OptIoK8sAPICoreV1LimitRangeSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1LimitRangeSpec) Reset() {
+func (o *OptIoK8sAPICoreV1LimitRangeSpec) Reset() {
 	var v IoK8sAPICoreV1LimitRangeSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1LimitRangeSpec) SetTo(v IoK8sAPICoreV1LimitRangeSpec) {
+func (o *OptIoK8sAPICoreV1LimitRangeSpec) SetTo(v IoK8sAPICoreV1LimitRangeSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1LimitRangeSpec) Get() (v IoK8sAPICoreV1LimitRangeSpec, ok bool) {
+func (o OptIoK8sAPICoreV1LimitRangeSpec) Get() (v IoK8sAPICoreV1LimitRangeSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1LoadBalancerStatus with value set to v.
-func NewOptionalIoK8sAPICoreV1LoadBalancerStatus(v IoK8sAPICoreV1LoadBalancerStatus) OptionalIoK8sAPICoreV1LoadBalancerStatus {
-	return OptionalIoK8sAPICoreV1LoadBalancerStatus{
+// New returns new OptIoK8sAPICoreV1LoadBalancerStatus with value set to v.
+func NewOptIoK8sAPICoreV1LoadBalancerStatus(v IoK8sAPICoreV1LoadBalancerStatus) OptIoK8sAPICoreV1LoadBalancerStatus {
+	return OptIoK8sAPICoreV1LoadBalancerStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1LoadBalancerStatus is generic valiant of IoK8sAPICoreV1LoadBalancerStatus.
-type OptionalIoK8sAPICoreV1LoadBalancerStatus struct {
+// OptIoK8sAPICoreV1LoadBalancerStatus is generic valiant of IoK8sAPICoreV1LoadBalancerStatus.
+type OptIoK8sAPICoreV1LoadBalancerStatus struct {
 	Value IoK8sAPICoreV1LoadBalancerStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1LoadBalancerStatus was set.
-func (o OptionalIoK8sAPICoreV1LoadBalancerStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1LoadBalancerStatus was set.
+func (o OptIoK8sAPICoreV1LoadBalancerStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1LoadBalancerStatus) Reset() {
+func (o *OptIoK8sAPICoreV1LoadBalancerStatus) Reset() {
 	var v IoK8sAPICoreV1LoadBalancerStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1LoadBalancerStatus) SetTo(v IoK8sAPICoreV1LoadBalancerStatus) {
+func (o *OptIoK8sAPICoreV1LoadBalancerStatus) SetTo(v IoK8sAPICoreV1LoadBalancerStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1LoadBalancerStatus) Get() (v IoK8sAPICoreV1LoadBalancerStatus, ok bool) {
+func (o OptIoK8sAPICoreV1LoadBalancerStatus) Get() (v IoK8sAPICoreV1LoadBalancerStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1LocalObjectReference with value set to v.
-func NewOptionalIoK8sAPICoreV1LocalObjectReference(v IoK8sAPICoreV1LocalObjectReference) OptionalIoK8sAPICoreV1LocalObjectReference {
-	return OptionalIoK8sAPICoreV1LocalObjectReference{
+// New returns new OptIoK8sAPICoreV1LocalObjectReference with value set to v.
+func NewOptIoK8sAPICoreV1LocalObjectReference(v IoK8sAPICoreV1LocalObjectReference) OptIoK8sAPICoreV1LocalObjectReference {
+	return OptIoK8sAPICoreV1LocalObjectReference{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1LocalObjectReference is generic valiant of IoK8sAPICoreV1LocalObjectReference.
-type OptionalIoK8sAPICoreV1LocalObjectReference struct {
+// OptIoK8sAPICoreV1LocalObjectReference is generic valiant of IoK8sAPICoreV1LocalObjectReference.
+type OptIoK8sAPICoreV1LocalObjectReference struct {
 	Value IoK8sAPICoreV1LocalObjectReference
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1LocalObjectReference was set.
-func (o OptionalIoK8sAPICoreV1LocalObjectReference) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1LocalObjectReference was set.
+func (o OptIoK8sAPICoreV1LocalObjectReference) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1LocalObjectReference) Reset() {
+func (o *OptIoK8sAPICoreV1LocalObjectReference) Reset() {
 	var v IoK8sAPICoreV1LocalObjectReference
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1LocalObjectReference) SetTo(v IoK8sAPICoreV1LocalObjectReference) {
+func (o *OptIoK8sAPICoreV1LocalObjectReference) SetTo(v IoK8sAPICoreV1LocalObjectReference) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1LocalObjectReference) Get() (v IoK8sAPICoreV1LocalObjectReference, ok bool) {
+func (o OptIoK8sAPICoreV1LocalObjectReference) Get() (v IoK8sAPICoreV1LocalObjectReference, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1LocalVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1LocalVolumeSource(v IoK8sAPICoreV1LocalVolumeSource) OptionalIoK8sAPICoreV1LocalVolumeSource {
-	return OptionalIoK8sAPICoreV1LocalVolumeSource{
+// New returns new OptIoK8sAPICoreV1LocalVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1LocalVolumeSource(v IoK8sAPICoreV1LocalVolumeSource) OptIoK8sAPICoreV1LocalVolumeSource {
+	return OptIoK8sAPICoreV1LocalVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1LocalVolumeSource is generic valiant of IoK8sAPICoreV1LocalVolumeSource.
-type OptionalIoK8sAPICoreV1LocalVolumeSource struct {
+// OptIoK8sAPICoreV1LocalVolumeSource is generic valiant of IoK8sAPICoreV1LocalVolumeSource.
+type OptIoK8sAPICoreV1LocalVolumeSource struct {
 	Value IoK8sAPICoreV1LocalVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1LocalVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1LocalVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1LocalVolumeSource was set.
+func (o OptIoK8sAPICoreV1LocalVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1LocalVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1LocalVolumeSource) Reset() {
 	var v IoK8sAPICoreV1LocalVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1LocalVolumeSource) SetTo(v IoK8sAPICoreV1LocalVolumeSource) {
+func (o *OptIoK8sAPICoreV1LocalVolumeSource) SetTo(v IoK8sAPICoreV1LocalVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1LocalVolumeSource) Get() (v IoK8sAPICoreV1LocalVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1LocalVolumeSource) Get() (v IoK8sAPICoreV1LocalVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1NFSVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1NFSVolumeSource(v IoK8sAPICoreV1NFSVolumeSource) OptionalIoK8sAPICoreV1NFSVolumeSource {
-	return OptionalIoK8sAPICoreV1NFSVolumeSource{
+// New returns new OptIoK8sAPICoreV1NFSVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1NFSVolumeSource(v IoK8sAPICoreV1NFSVolumeSource) OptIoK8sAPICoreV1NFSVolumeSource {
+	return OptIoK8sAPICoreV1NFSVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1NFSVolumeSource is generic valiant of IoK8sAPICoreV1NFSVolumeSource.
-type OptionalIoK8sAPICoreV1NFSVolumeSource struct {
+// OptIoK8sAPICoreV1NFSVolumeSource is generic valiant of IoK8sAPICoreV1NFSVolumeSource.
+type OptIoK8sAPICoreV1NFSVolumeSource struct {
 	Value IoK8sAPICoreV1NFSVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1NFSVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1NFSVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1NFSVolumeSource was set.
+func (o OptIoK8sAPICoreV1NFSVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1NFSVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1NFSVolumeSource) Reset() {
 	var v IoK8sAPICoreV1NFSVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1NFSVolumeSource) SetTo(v IoK8sAPICoreV1NFSVolumeSource) {
+func (o *OptIoK8sAPICoreV1NFSVolumeSource) SetTo(v IoK8sAPICoreV1NFSVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1NFSVolumeSource) Get() (v IoK8sAPICoreV1NFSVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1NFSVolumeSource) Get() (v IoK8sAPICoreV1NFSVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1NamespaceSpec with value set to v.
-func NewOptionalIoK8sAPICoreV1NamespaceSpec(v IoK8sAPICoreV1NamespaceSpec) OptionalIoK8sAPICoreV1NamespaceSpec {
-	return OptionalIoK8sAPICoreV1NamespaceSpec{
+// New returns new OptIoK8sAPICoreV1NamespaceSpec with value set to v.
+func NewOptIoK8sAPICoreV1NamespaceSpec(v IoK8sAPICoreV1NamespaceSpec) OptIoK8sAPICoreV1NamespaceSpec {
+	return OptIoK8sAPICoreV1NamespaceSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1NamespaceSpec is generic valiant of IoK8sAPICoreV1NamespaceSpec.
-type OptionalIoK8sAPICoreV1NamespaceSpec struct {
+// OptIoK8sAPICoreV1NamespaceSpec is generic valiant of IoK8sAPICoreV1NamespaceSpec.
+type OptIoK8sAPICoreV1NamespaceSpec struct {
 	Value IoK8sAPICoreV1NamespaceSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1NamespaceSpec was set.
-func (o OptionalIoK8sAPICoreV1NamespaceSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1NamespaceSpec was set.
+func (o OptIoK8sAPICoreV1NamespaceSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1NamespaceSpec) Reset() {
+func (o *OptIoK8sAPICoreV1NamespaceSpec) Reset() {
 	var v IoK8sAPICoreV1NamespaceSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1NamespaceSpec) SetTo(v IoK8sAPICoreV1NamespaceSpec) {
+func (o *OptIoK8sAPICoreV1NamespaceSpec) SetTo(v IoK8sAPICoreV1NamespaceSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1NamespaceSpec) Get() (v IoK8sAPICoreV1NamespaceSpec, ok bool) {
+func (o OptIoK8sAPICoreV1NamespaceSpec) Get() (v IoK8sAPICoreV1NamespaceSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1NamespaceStatus with value set to v.
-func NewOptionalIoK8sAPICoreV1NamespaceStatus(v IoK8sAPICoreV1NamespaceStatus) OptionalIoK8sAPICoreV1NamespaceStatus {
-	return OptionalIoK8sAPICoreV1NamespaceStatus{
+// New returns new OptIoK8sAPICoreV1NamespaceStatus with value set to v.
+func NewOptIoK8sAPICoreV1NamespaceStatus(v IoK8sAPICoreV1NamespaceStatus) OptIoK8sAPICoreV1NamespaceStatus {
+	return OptIoK8sAPICoreV1NamespaceStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1NamespaceStatus is generic valiant of IoK8sAPICoreV1NamespaceStatus.
-type OptionalIoK8sAPICoreV1NamespaceStatus struct {
+// OptIoK8sAPICoreV1NamespaceStatus is generic valiant of IoK8sAPICoreV1NamespaceStatus.
+type OptIoK8sAPICoreV1NamespaceStatus struct {
 	Value IoK8sAPICoreV1NamespaceStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1NamespaceStatus was set.
-func (o OptionalIoK8sAPICoreV1NamespaceStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1NamespaceStatus was set.
+func (o OptIoK8sAPICoreV1NamespaceStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1NamespaceStatus) Reset() {
+func (o *OptIoK8sAPICoreV1NamespaceStatus) Reset() {
 	var v IoK8sAPICoreV1NamespaceStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1NamespaceStatus) SetTo(v IoK8sAPICoreV1NamespaceStatus) {
+func (o *OptIoK8sAPICoreV1NamespaceStatus) SetTo(v IoK8sAPICoreV1NamespaceStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1NamespaceStatus) Get() (v IoK8sAPICoreV1NamespaceStatus, ok bool) {
+func (o OptIoK8sAPICoreV1NamespaceStatus) Get() (v IoK8sAPICoreV1NamespaceStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1NodeAffinity with value set to v.
-func NewOptionalIoK8sAPICoreV1NodeAffinity(v IoK8sAPICoreV1NodeAffinity) OptionalIoK8sAPICoreV1NodeAffinity {
-	return OptionalIoK8sAPICoreV1NodeAffinity{
+// New returns new OptIoK8sAPICoreV1NodeAffinity with value set to v.
+func NewOptIoK8sAPICoreV1NodeAffinity(v IoK8sAPICoreV1NodeAffinity) OptIoK8sAPICoreV1NodeAffinity {
+	return OptIoK8sAPICoreV1NodeAffinity{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1NodeAffinity is generic valiant of IoK8sAPICoreV1NodeAffinity.
-type OptionalIoK8sAPICoreV1NodeAffinity struct {
+// OptIoK8sAPICoreV1NodeAffinity is generic valiant of IoK8sAPICoreV1NodeAffinity.
+type OptIoK8sAPICoreV1NodeAffinity struct {
 	Value IoK8sAPICoreV1NodeAffinity
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1NodeAffinity was set.
-func (o OptionalIoK8sAPICoreV1NodeAffinity) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1NodeAffinity was set.
+func (o OptIoK8sAPICoreV1NodeAffinity) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1NodeAffinity) Reset() {
+func (o *OptIoK8sAPICoreV1NodeAffinity) Reset() {
 	var v IoK8sAPICoreV1NodeAffinity
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1NodeAffinity) SetTo(v IoK8sAPICoreV1NodeAffinity) {
+func (o *OptIoK8sAPICoreV1NodeAffinity) SetTo(v IoK8sAPICoreV1NodeAffinity) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1NodeAffinity) Get() (v IoK8sAPICoreV1NodeAffinity, ok bool) {
+func (o OptIoK8sAPICoreV1NodeAffinity) Get() (v IoK8sAPICoreV1NodeAffinity, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1NodeConfigSource with value set to v.
-func NewOptionalIoK8sAPICoreV1NodeConfigSource(v IoK8sAPICoreV1NodeConfigSource) OptionalIoK8sAPICoreV1NodeConfigSource {
-	return OptionalIoK8sAPICoreV1NodeConfigSource{
+// New returns new OptIoK8sAPICoreV1NodeConfigSource with value set to v.
+func NewOptIoK8sAPICoreV1NodeConfigSource(v IoK8sAPICoreV1NodeConfigSource) OptIoK8sAPICoreV1NodeConfigSource {
+	return OptIoK8sAPICoreV1NodeConfigSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1NodeConfigSource is generic valiant of IoK8sAPICoreV1NodeConfigSource.
-type OptionalIoK8sAPICoreV1NodeConfigSource struct {
+// OptIoK8sAPICoreV1NodeConfigSource is generic valiant of IoK8sAPICoreV1NodeConfigSource.
+type OptIoK8sAPICoreV1NodeConfigSource struct {
 	Value IoK8sAPICoreV1NodeConfigSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1NodeConfigSource was set.
-func (o OptionalIoK8sAPICoreV1NodeConfigSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1NodeConfigSource was set.
+func (o OptIoK8sAPICoreV1NodeConfigSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1NodeConfigSource) Reset() {
+func (o *OptIoK8sAPICoreV1NodeConfigSource) Reset() {
 	var v IoK8sAPICoreV1NodeConfigSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1NodeConfigSource) SetTo(v IoK8sAPICoreV1NodeConfigSource) {
+func (o *OptIoK8sAPICoreV1NodeConfigSource) SetTo(v IoK8sAPICoreV1NodeConfigSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1NodeConfigSource) Get() (v IoK8sAPICoreV1NodeConfigSource, ok bool) {
+func (o OptIoK8sAPICoreV1NodeConfigSource) Get() (v IoK8sAPICoreV1NodeConfigSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1NodeConfigStatus with value set to v.
-func NewOptionalIoK8sAPICoreV1NodeConfigStatus(v IoK8sAPICoreV1NodeConfigStatus) OptionalIoK8sAPICoreV1NodeConfigStatus {
-	return OptionalIoK8sAPICoreV1NodeConfigStatus{
+// New returns new OptIoK8sAPICoreV1NodeConfigStatus with value set to v.
+func NewOptIoK8sAPICoreV1NodeConfigStatus(v IoK8sAPICoreV1NodeConfigStatus) OptIoK8sAPICoreV1NodeConfigStatus {
+	return OptIoK8sAPICoreV1NodeConfigStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1NodeConfigStatus is generic valiant of IoK8sAPICoreV1NodeConfigStatus.
-type OptionalIoK8sAPICoreV1NodeConfigStatus struct {
+// OptIoK8sAPICoreV1NodeConfigStatus is generic valiant of IoK8sAPICoreV1NodeConfigStatus.
+type OptIoK8sAPICoreV1NodeConfigStatus struct {
 	Value IoK8sAPICoreV1NodeConfigStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1NodeConfigStatus was set.
-func (o OptionalIoK8sAPICoreV1NodeConfigStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1NodeConfigStatus was set.
+func (o OptIoK8sAPICoreV1NodeConfigStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1NodeConfigStatus) Reset() {
+func (o *OptIoK8sAPICoreV1NodeConfigStatus) Reset() {
 	var v IoK8sAPICoreV1NodeConfigStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1NodeConfigStatus) SetTo(v IoK8sAPICoreV1NodeConfigStatus) {
+func (o *OptIoK8sAPICoreV1NodeConfigStatus) SetTo(v IoK8sAPICoreV1NodeConfigStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1NodeConfigStatus) Get() (v IoK8sAPICoreV1NodeConfigStatus, ok bool) {
+func (o OptIoK8sAPICoreV1NodeConfigStatus) Get() (v IoK8sAPICoreV1NodeConfigStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1NodeDaemonEndpoints with value set to v.
-func NewOptionalIoK8sAPICoreV1NodeDaemonEndpoints(v IoK8sAPICoreV1NodeDaemonEndpoints) OptionalIoK8sAPICoreV1NodeDaemonEndpoints {
-	return OptionalIoK8sAPICoreV1NodeDaemonEndpoints{
+// New returns new OptIoK8sAPICoreV1NodeDaemonEndpoints with value set to v.
+func NewOptIoK8sAPICoreV1NodeDaemonEndpoints(v IoK8sAPICoreV1NodeDaemonEndpoints) OptIoK8sAPICoreV1NodeDaemonEndpoints {
+	return OptIoK8sAPICoreV1NodeDaemonEndpoints{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1NodeDaemonEndpoints is generic valiant of IoK8sAPICoreV1NodeDaemonEndpoints.
-type OptionalIoK8sAPICoreV1NodeDaemonEndpoints struct {
+// OptIoK8sAPICoreV1NodeDaemonEndpoints is generic valiant of IoK8sAPICoreV1NodeDaemonEndpoints.
+type OptIoK8sAPICoreV1NodeDaemonEndpoints struct {
 	Value IoK8sAPICoreV1NodeDaemonEndpoints
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1NodeDaemonEndpoints was set.
-func (o OptionalIoK8sAPICoreV1NodeDaemonEndpoints) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1NodeDaemonEndpoints was set.
+func (o OptIoK8sAPICoreV1NodeDaemonEndpoints) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1NodeDaemonEndpoints) Reset() {
+func (o *OptIoK8sAPICoreV1NodeDaemonEndpoints) Reset() {
 	var v IoK8sAPICoreV1NodeDaemonEndpoints
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1NodeDaemonEndpoints) SetTo(v IoK8sAPICoreV1NodeDaemonEndpoints) {
+func (o *OptIoK8sAPICoreV1NodeDaemonEndpoints) SetTo(v IoK8sAPICoreV1NodeDaemonEndpoints) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1NodeDaemonEndpoints) Get() (v IoK8sAPICoreV1NodeDaemonEndpoints, ok bool) {
+func (o OptIoK8sAPICoreV1NodeDaemonEndpoints) Get() (v IoK8sAPICoreV1NodeDaemonEndpoints, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1NodeSelector with value set to v.
-func NewOptionalIoK8sAPICoreV1NodeSelector(v IoK8sAPICoreV1NodeSelector) OptionalIoK8sAPICoreV1NodeSelector {
-	return OptionalIoK8sAPICoreV1NodeSelector{
+// New returns new OptIoK8sAPICoreV1NodeSelector with value set to v.
+func NewOptIoK8sAPICoreV1NodeSelector(v IoK8sAPICoreV1NodeSelector) OptIoK8sAPICoreV1NodeSelector {
+	return OptIoK8sAPICoreV1NodeSelector{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1NodeSelector is generic valiant of IoK8sAPICoreV1NodeSelector.
-type OptionalIoK8sAPICoreV1NodeSelector struct {
+// OptIoK8sAPICoreV1NodeSelector is generic valiant of IoK8sAPICoreV1NodeSelector.
+type OptIoK8sAPICoreV1NodeSelector struct {
 	Value IoK8sAPICoreV1NodeSelector
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1NodeSelector was set.
-func (o OptionalIoK8sAPICoreV1NodeSelector) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1NodeSelector was set.
+func (o OptIoK8sAPICoreV1NodeSelector) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1NodeSelector) Reset() {
+func (o *OptIoK8sAPICoreV1NodeSelector) Reset() {
 	var v IoK8sAPICoreV1NodeSelector
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1NodeSelector) SetTo(v IoK8sAPICoreV1NodeSelector) {
+func (o *OptIoK8sAPICoreV1NodeSelector) SetTo(v IoK8sAPICoreV1NodeSelector) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1NodeSelector) Get() (v IoK8sAPICoreV1NodeSelector, ok bool) {
+func (o OptIoK8sAPICoreV1NodeSelector) Get() (v IoK8sAPICoreV1NodeSelector, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1NodeSpec with value set to v.
-func NewOptionalIoK8sAPICoreV1NodeSpec(v IoK8sAPICoreV1NodeSpec) OptionalIoK8sAPICoreV1NodeSpec {
-	return OptionalIoK8sAPICoreV1NodeSpec{
+// New returns new OptIoK8sAPICoreV1NodeSpec with value set to v.
+func NewOptIoK8sAPICoreV1NodeSpec(v IoK8sAPICoreV1NodeSpec) OptIoK8sAPICoreV1NodeSpec {
+	return OptIoK8sAPICoreV1NodeSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1NodeSpec is generic valiant of IoK8sAPICoreV1NodeSpec.
-type OptionalIoK8sAPICoreV1NodeSpec struct {
+// OptIoK8sAPICoreV1NodeSpec is generic valiant of IoK8sAPICoreV1NodeSpec.
+type OptIoK8sAPICoreV1NodeSpec struct {
 	Value IoK8sAPICoreV1NodeSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1NodeSpec was set.
-func (o OptionalIoK8sAPICoreV1NodeSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1NodeSpec was set.
+func (o OptIoK8sAPICoreV1NodeSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1NodeSpec) Reset() {
+func (o *OptIoK8sAPICoreV1NodeSpec) Reset() {
 	var v IoK8sAPICoreV1NodeSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1NodeSpec) SetTo(v IoK8sAPICoreV1NodeSpec) {
+func (o *OptIoK8sAPICoreV1NodeSpec) SetTo(v IoK8sAPICoreV1NodeSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1NodeSpec) Get() (v IoK8sAPICoreV1NodeSpec, ok bool) {
+func (o OptIoK8sAPICoreV1NodeSpec) Get() (v IoK8sAPICoreV1NodeSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1NodeStatus with value set to v.
-func NewOptionalIoK8sAPICoreV1NodeStatus(v IoK8sAPICoreV1NodeStatus) OptionalIoK8sAPICoreV1NodeStatus {
-	return OptionalIoK8sAPICoreV1NodeStatus{
+// New returns new OptIoK8sAPICoreV1NodeStatus with value set to v.
+func NewOptIoK8sAPICoreV1NodeStatus(v IoK8sAPICoreV1NodeStatus) OptIoK8sAPICoreV1NodeStatus {
+	return OptIoK8sAPICoreV1NodeStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1NodeStatus is generic valiant of IoK8sAPICoreV1NodeStatus.
-type OptionalIoK8sAPICoreV1NodeStatus struct {
+// OptIoK8sAPICoreV1NodeStatus is generic valiant of IoK8sAPICoreV1NodeStatus.
+type OptIoK8sAPICoreV1NodeStatus struct {
 	Value IoK8sAPICoreV1NodeStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1NodeStatus was set.
-func (o OptionalIoK8sAPICoreV1NodeStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1NodeStatus was set.
+func (o OptIoK8sAPICoreV1NodeStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1NodeStatus) Reset() {
+func (o *OptIoK8sAPICoreV1NodeStatus) Reset() {
 	var v IoK8sAPICoreV1NodeStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1NodeStatus) SetTo(v IoK8sAPICoreV1NodeStatus) {
+func (o *OptIoK8sAPICoreV1NodeStatus) SetTo(v IoK8sAPICoreV1NodeStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1NodeStatus) Get() (v IoK8sAPICoreV1NodeStatus, ok bool) {
+func (o OptIoK8sAPICoreV1NodeStatus) Get() (v IoK8sAPICoreV1NodeStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1NodeSystemInfo with value set to v.
-func NewOptionalIoK8sAPICoreV1NodeSystemInfo(v IoK8sAPICoreV1NodeSystemInfo) OptionalIoK8sAPICoreV1NodeSystemInfo {
-	return OptionalIoK8sAPICoreV1NodeSystemInfo{
+// New returns new OptIoK8sAPICoreV1NodeSystemInfo with value set to v.
+func NewOptIoK8sAPICoreV1NodeSystemInfo(v IoK8sAPICoreV1NodeSystemInfo) OptIoK8sAPICoreV1NodeSystemInfo {
+	return OptIoK8sAPICoreV1NodeSystemInfo{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1NodeSystemInfo is generic valiant of IoK8sAPICoreV1NodeSystemInfo.
-type OptionalIoK8sAPICoreV1NodeSystemInfo struct {
+// OptIoK8sAPICoreV1NodeSystemInfo is generic valiant of IoK8sAPICoreV1NodeSystemInfo.
+type OptIoK8sAPICoreV1NodeSystemInfo struct {
 	Value IoK8sAPICoreV1NodeSystemInfo
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1NodeSystemInfo was set.
-func (o OptionalIoK8sAPICoreV1NodeSystemInfo) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1NodeSystemInfo was set.
+func (o OptIoK8sAPICoreV1NodeSystemInfo) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1NodeSystemInfo) Reset() {
+func (o *OptIoK8sAPICoreV1NodeSystemInfo) Reset() {
 	var v IoK8sAPICoreV1NodeSystemInfo
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1NodeSystemInfo) SetTo(v IoK8sAPICoreV1NodeSystemInfo) {
+func (o *OptIoK8sAPICoreV1NodeSystemInfo) SetTo(v IoK8sAPICoreV1NodeSystemInfo) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1NodeSystemInfo) Get() (v IoK8sAPICoreV1NodeSystemInfo, ok bool) {
+func (o OptIoK8sAPICoreV1NodeSystemInfo) Get() (v IoK8sAPICoreV1NodeSystemInfo, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ObjectFieldSelector with value set to v.
-func NewOptionalIoK8sAPICoreV1ObjectFieldSelector(v IoK8sAPICoreV1ObjectFieldSelector) OptionalIoK8sAPICoreV1ObjectFieldSelector {
-	return OptionalIoK8sAPICoreV1ObjectFieldSelector{
+// New returns new OptIoK8sAPICoreV1ObjectFieldSelector with value set to v.
+func NewOptIoK8sAPICoreV1ObjectFieldSelector(v IoK8sAPICoreV1ObjectFieldSelector) OptIoK8sAPICoreV1ObjectFieldSelector {
+	return OptIoK8sAPICoreV1ObjectFieldSelector{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ObjectFieldSelector is generic valiant of IoK8sAPICoreV1ObjectFieldSelector.
-type OptionalIoK8sAPICoreV1ObjectFieldSelector struct {
+// OptIoK8sAPICoreV1ObjectFieldSelector is generic valiant of IoK8sAPICoreV1ObjectFieldSelector.
+type OptIoK8sAPICoreV1ObjectFieldSelector struct {
 	Value IoK8sAPICoreV1ObjectFieldSelector
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ObjectFieldSelector was set.
-func (o OptionalIoK8sAPICoreV1ObjectFieldSelector) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ObjectFieldSelector was set.
+func (o OptIoK8sAPICoreV1ObjectFieldSelector) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ObjectFieldSelector) Reset() {
+func (o *OptIoK8sAPICoreV1ObjectFieldSelector) Reset() {
 	var v IoK8sAPICoreV1ObjectFieldSelector
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ObjectFieldSelector) SetTo(v IoK8sAPICoreV1ObjectFieldSelector) {
+func (o *OptIoK8sAPICoreV1ObjectFieldSelector) SetTo(v IoK8sAPICoreV1ObjectFieldSelector) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ObjectFieldSelector) Get() (v IoK8sAPICoreV1ObjectFieldSelector, ok bool) {
+func (o OptIoK8sAPICoreV1ObjectFieldSelector) Get() (v IoK8sAPICoreV1ObjectFieldSelector, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ObjectReference with value set to v.
-func NewOptionalIoK8sAPICoreV1ObjectReference(v IoK8sAPICoreV1ObjectReference) OptionalIoK8sAPICoreV1ObjectReference {
-	return OptionalIoK8sAPICoreV1ObjectReference{
+// New returns new OptIoK8sAPICoreV1ObjectReference with value set to v.
+func NewOptIoK8sAPICoreV1ObjectReference(v IoK8sAPICoreV1ObjectReference) OptIoK8sAPICoreV1ObjectReference {
+	return OptIoK8sAPICoreV1ObjectReference{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ObjectReference is generic valiant of IoK8sAPICoreV1ObjectReference.
-type OptionalIoK8sAPICoreV1ObjectReference struct {
+// OptIoK8sAPICoreV1ObjectReference is generic valiant of IoK8sAPICoreV1ObjectReference.
+type OptIoK8sAPICoreV1ObjectReference struct {
 	Value IoK8sAPICoreV1ObjectReference
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ObjectReference was set.
-func (o OptionalIoK8sAPICoreV1ObjectReference) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ObjectReference was set.
+func (o OptIoK8sAPICoreV1ObjectReference) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ObjectReference) Reset() {
+func (o *OptIoK8sAPICoreV1ObjectReference) Reset() {
 	var v IoK8sAPICoreV1ObjectReference
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ObjectReference) SetTo(v IoK8sAPICoreV1ObjectReference) {
+func (o *OptIoK8sAPICoreV1ObjectReference) SetTo(v IoK8sAPICoreV1ObjectReference) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ObjectReference) Get() (v IoK8sAPICoreV1ObjectReference, ok bool) {
+func (o OptIoK8sAPICoreV1ObjectReference) Get() (v IoK8sAPICoreV1ObjectReference, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1PersistentVolumeClaimSpec with value set to v.
-func NewOptionalIoK8sAPICoreV1PersistentVolumeClaimSpec(v IoK8sAPICoreV1PersistentVolumeClaimSpec) OptionalIoK8sAPICoreV1PersistentVolumeClaimSpec {
-	return OptionalIoK8sAPICoreV1PersistentVolumeClaimSpec{
+// New returns new OptIoK8sAPICoreV1PersistentVolumeClaimSpec with value set to v.
+func NewOptIoK8sAPICoreV1PersistentVolumeClaimSpec(v IoK8sAPICoreV1PersistentVolumeClaimSpec) OptIoK8sAPICoreV1PersistentVolumeClaimSpec {
+	return OptIoK8sAPICoreV1PersistentVolumeClaimSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1PersistentVolumeClaimSpec is generic valiant of IoK8sAPICoreV1PersistentVolumeClaimSpec.
-type OptionalIoK8sAPICoreV1PersistentVolumeClaimSpec struct {
+// OptIoK8sAPICoreV1PersistentVolumeClaimSpec is generic valiant of IoK8sAPICoreV1PersistentVolumeClaimSpec.
+type OptIoK8sAPICoreV1PersistentVolumeClaimSpec struct {
 	Value IoK8sAPICoreV1PersistentVolumeClaimSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1PersistentVolumeClaimSpec was set.
-func (o OptionalIoK8sAPICoreV1PersistentVolumeClaimSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1PersistentVolumeClaimSpec was set.
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1PersistentVolumeClaimSpec) Reset() {
+func (o *OptIoK8sAPICoreV1PersistentVolumeClaimSpec) Reset() {
 	var v IoK8sAPICoreV1PersistentVolumeClaimSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1PersistentVolumeClaimSpec) SetTo(v IoK8sAPICoreV1PersistentVolumeClaimSpec) {
+func (o *OptIoK8sAPICoreV1PersistentVolumeClaimSpec) SetTo(v IoK8sAPICoreV1PersistentVolumeClaimSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1PersistentVolumeClaimSpec) Get() (v IoK8sAPICoreV1PersistentVolumeClaimSpec, ok bool) {
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimSpec) Get() (v IoK8sAPICoreV1PersistentVolumeClaimSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1PersistentVolumeClaimStatus with value set to v.
-func NewOptionalIoK8sAPICoreV1PersistentVolumeClaimStatus(v IoK8sAPICoreV1PersistentVolumeClaimStatus) OptionalIoK8sAPICoreV1PersistentVolumeClaimStatus {
-	return OptionalIoK8sAPICoreV1PersistentVolumeClaimStatus{
+// New returns new OptIoK8sAPICoreV1PersistentVolumeClaimStatus with value set to v.
+func NewOptIoK8sAPICoreV1PersistentVolumeClaimStatus(v IoK8sAPICoreV1PersistentVolumeClaimStatus) OptIoK8sAPICoreV1PersistentVolumeClaimStatus {
+	return OptIoK8sAPICoreV1PersistentVolumeClaimStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1PersistentVolumeClaimStatus is generic valiant of IoK8sAPICoreV1PersistentVolumeClaimStatus.
-type OptionalIoK8sAPICoreV1PersistentVolumeClaimStatus struct {
+// OptIoK8sAPICoreV1PersistentVolumeClaimStatus is generic valiant of IoK8sAPICoreV1PersistentVolumeClaimStatus.
+type OptIoK8sAPICoreV1PersistentVolumeClaimStatus struct {
 	Value IoK8sAPICoreV1PersistentVolumeClaimStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1PersistentVolumeClaimStatus was set.
-func (o OptionalIoK8sAPICoreV1PersistentVolumeClaimStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1PersistentVolumeClaimStatus was set.
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1PersistentVolumeClaimStatus) Reset() {
+func (o *OptIoK8sAPICoreV1PersistentVolumeClaimStatus) Reset() {
 	var v IoK8sAPICoreV1PersistentVolumeClaimStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1PersistentVolumeClaimStatus) SetTo(v IoK8sAPICoreV1PersistentVolumeClaimStatus) {
+func (o *OptIoK8sAPICoreV1PersistentVolumeClaimStatus) SetTo(v IoK8sAPICoreV1PersistentVolumeClaimStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1PersistentVolumeClaimStatus) Get() (v IoK8sAPICoreV1PersistentVolumeClaimStatus, ok bool) {
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimStatus) Get() (v IoK8sAPICoreV1PersistentVolumeClaimStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1PersistentVolumeClaimTemplate with value set to v.
-func NewOptionalIoK8sAPICoreV1PersistentVolumeClaimTemplate(v IoK8sAPICoreV1PersistentVolumeClaimTemplate) OptionalIoK8sAPICoreV1PersistentVolumeClaimTemplate {
-	return OptionalIoK8sAPICoreV1PersistentVolumeClaimTemplate{
+// New returns new OptIoK8sAPICoreV1PersistentVolumeClaimTemplate with value set to v.
+func NewOptIoK8sAPICoreV1PersistentVolumeClaimTemplate(v IoK8sAPICoreV1PersistentVolumeClaimTemplate) OptIoK8sAPICoreV1PersistentVolumeClaimTemplate {
+	return OptIoK8sAPICoreV1PersistentVolumeClaimTemplate{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1PersistentVolumeClaimTemplate is generic valiant of IoK8sAPICoreV1PersistentVolumeClaimTemplate.
-type OptionalIoK8sAPICoreV1PersistentVolumeClaimTemplate struct {
+// OptIoK8sAPICoreV1PersistentVolumeClaimTemplate is generic valiant of IoK8sAPICoreV1PersistentVolumeClaimTemplate.
+type OptIoK8sAPICoreV1PersistentVolumeClaimTemplate struct {
 	Value IoK8sAPICoreV1PersistentVolumeClaimTemplate
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1PersistentVolumeClaimTemplate was set.
-func (o OptionalIoK8sAPICoreV1PersistentVolumeClaimTemplate) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1PersistentVolumeClaimTemplate was set.
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1PersistentVolumeClaimTemplate) Reset() {
+func (o *OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) Reset() {
 	var v IoK8sAPICoreV1PersistentVolumeClaimTemplate
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1PersistentVolumeClaimTemplate) SetTo(v IoK8sAPICoreV1PersistentVolumeClaimTemplate) {
+func (o *OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) SetTo(v IoK8sAPICoreV1PersistentVolumeClaimTemplate) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1PersistentVolumeClaimTemplate) Get() (v IoK8sAPICoreV1PersistentVolumeClaimTemplate, ok bool) {
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) Get() (v IoK8sAPICoreV1PersistentVolumeClaimTemplate, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1PersistentVolumeClaimVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1PersistentVolumeClaimVolumeSource(v IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) OptionalIoK8sAPICoreV1PersistentVolumeClaimVolumeSource {
-	return OptionalIoK8sAPICoreV1PersistentVolumeClaimVolumeSource{
+// New returns new OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource(v IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource {
+	return OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1PersistentVolumeClaimVolumeSource is generic valiant of IoK8sAPICoreV1PersistentVolumeClaimVolumeSource.
-type OptionalIoK8sAPICoreV1PersistentVolumeClaimVolumeSource struct {
+// OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource is generic valiant of IoK8sAPICoreV1PersistentVolumeClaimVolumeSource.
+type OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource struct {
 	Value IoK8sAPICoreV1PersistentVolumeClaimVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1PersistentVolumeClaimVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource was set.
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Reset() {
 	var v IoK8sAPICoreV1PersistentVolumeClaimVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) SetTo(v IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) {
+func (o *OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) SetTo(v IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Get() (v IoK8sAPICoreV1PersistentVolumeClaimVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Get() (v IoK8sAPICoreV1PersistentVolumeClaimVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1PersistentVolumeSpec with value set to v.
-func NewOptionalIoK8sAPICoreV1PersistentVolumeSpec(v IoK8sAPICoreV1PersistentVolumeSpec) OptionalIoK8sAPICoreV1PersistentVolumeSpec {
-	return OptionalIoK8sAPICoreV1PersistentVolumeSpec{
+// New returns new OptIoK8sAPICoreV1PersistentVolumeSpec with value set to v.
+func NewOptIoK8sAPICoreV1PersistentVolumeSpec(v IoK8sAPICoreV1PersistentVolumeSpec) OptIoK8sAPICoreV1PersistentVolumeSpec {
+	return OptIoK8sAPICoreV1PersistentVolumeSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1PersistentVolumeSpec is generic valiant of IoK8sAPICoreV1PersistentVolumeSpec.
-type OptionalIoK8sAPICoreV1PersistentVolumeSpec struct {
+// OptIoK8sAPICoreV1PersistentVolumeSpec is generic valiant of IoK8sAPICoreV1PersistentVolumeSpec.
+type OptIoK8sAPICoreV1PersistentVolumeSpec struct {
 	Value IoK8sAPICoreV1PersistentVolumeSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1PersistentVolumeSpec was set.
-func (o OptionalIoK8sAPICoreV1PersistentVolumeSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1PersistentVolumeSpec was set.
+func (o OptIoK8sAPICoreV1PersistentVolumeSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1PersistentVolumeSpec) Reset() {
+func (o *OptIoK8sAPICoreV1PersistentVolumeSpec) Reset() {
 	var v IoK8sAPICoreV1PersistentVolumeSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1PersistentVolumeSpec) SetTo(v IoK8sAPICoreV1PersistentVolumeSpec) {
+func (o *OptIoK8sAPICoreV1PersistentVolumeSpec) SetTo(v IoK8sAPICoreV1PersistentVolumeSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1PersistentVolumeSpec) Get() (v IoK8sAPICoreV1PersistentVolumeSpec, ok bool) {
+func (o OptIoK8sAPICoreV1PersistentVolumeSpec) Get() (v IoK8sAPICoreV1PersistentVolumeSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1PersistentVolumeStatus with value set to v.
-func NewOptionalIoK8sAPICoreV1PersistentVolumeStatus(v IoK8sAPICoreV1PersistentVolumeStatus) OptionalIoK8sAPICoreV1PersistentVolumeStatus {
-	return OptionalIoK8sAPICoreV1PersistentVolumeStatus{
+// New returns new OptIoK8sAPICoreV1PersistentVolumeStatus with value set to v.
+func NewOptIoK8sAPICoreV1PersistentVolumeStatus(v IoK8sAPICoreV1PersistentVolumeStatus) OptIoK8sAPICoreV1PersistentVolumeStatus {
+	return OptIoK8sAPICoreV1PersistentVolumeStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1PersistentVolumeStatus is generic valiant of IoK8sAPICoreV1PersistentVolumeStatus.
-type OptionalIoK8sAPICoreV1PersistentVolumeStatus struct {
+// OptIoK8sAPICoreV1PersistentVolumeStatus is generic valiant of IoK8sAPICoreV1PersistentVolumeStatus.
+type OptIoK8sAPICoreV1PersistentVolumeStatus struct {
 	Value IoK8sAPICoreV1PersistentVolumeStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1PersistentVolumeStatus was set.
-func (o OptionalIoK8sAPICoreV1PersistentVolumeStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1PersistentVolumeStatus was set.
+func (o OptIoK8sAPICoreV1PersistentVolumeStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1PersistentVolumeStatus) Reset() {
+func (o *OptIoK8sAPICoreV1PersistentVolumeStatus) Reset() {
 	var v IoK8sAPICoreV1PersistentVolumeStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1PersistentVolumeStatus) SetTo(v IoK8sAPICoreV1PersistentVolumeStatus) {
+func (o *OptIoK8sAPICoreV1PersistentVolumeStatus) SetTo(v IoK8sAPICoreV1PersistentVolumeStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1PersistentVolumeStatus) Get() (v IoK8sAPICoreV1PersistentVolumeStatus, ok bool) {
+func (o OptIoK8sAPICoreV1PersistentVolumeStatus) Get() (v IoK8sAPICoreV1PersistentVolumeStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1PhotonPersistentDiskVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1PhotonPersistentDiskVolumeSource(v IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) OptionalIoK8sAPICoreV1PhotonPersistentDiskVolumeSource {
-	return OptionalIoK8sAPICoreV1PhotonPersistentDiskVolumeSource{
+// New returns new OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource(v IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource {
+	return OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1PhotonPersistentDiskVolumeSource is generic valiant of IoK8sAPICoreV1PhotonPersistentDiskVolumeSource.
-type OptionalIoK8sAPICoreV1PhotonPersistentDiskVolumeSource struct {
+// OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource is generic valiant of IoK8sAPICoreV1PhotonPersistentDiskVolumeSource.
+type OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource struct {
 	Value IoK8sAPICoreV1PhotonPersistentDiskVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1PhotonPersistentDiskVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource was set.
+func (o OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Reset() {
 	var v IoK8sAPICoreV1PhotonPersistentDiskVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) SetTo(v IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) {
+func (o *OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) SetTo(v IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Get() (v IoK8sAPICoreV1PhotonPersistentDiskVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Get() (v IoK8sAPICoreV1PhotonPersistentDiskVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1PodAffinity with value set to v.
-func NewOptionalIoK8sAPICoreV1PodAffinity(v IoK8sAPICoreV1PodAffinity) OptionalIoK8sAPICoreV1PodAffinity {
-	return OptionalIoK8sAPICoreV1PodAffinity{
+// New returns new OptIoK8sAPICoreV1PodAffinity with value set to v.
+func NewOptIoK8sAPICoreV1PodAffinity(v IoK8sAPICoreV1PodAffinity) OptIoK8sAPICoreV1PodAffinity {
+	return OptIoK8sAPICoreV1PodAffinity{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1PodAffinity is generic valiant of IoK8sAPICoreV1PodAffinity.
-type OptionalIoK8sAPICoreV1PodAffinity struct {
+// OptIoK8sAPICoreV1PodAffinity is generic valiant of IoK8sAPICoreV1PodAffinity.
+type OptIoK8sAPICoreV1PodAffinity struct {
 	Value IoK8sAPICoreV1PodAffinity
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1PodAffinity was set.
-func (o OptionalIoK8sAPICoreV1PodAffinity) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1PodAffinity was set.
+func (o OptIoK8sAPICoreV1PodAffinity) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1PodAffinity) Reset() {
+func (o *OptIoK8sAPICoreV1PodAffinity) Reset() {
 	var v IoK8sAPICoreV1PodAffinity
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1PodAffinity) SetTo(v IoK8sAPICoreV1PodAffinity) {
+func (o *OptIoK8sAPICoreV1PodAffinity) SetTo(v IoK8sAPICoreV1PodAffinity) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1PodAffinity) Get() (v IoK8sAPICoreV1PodAffinity, ok bool) {
+func (o OptIoK8sAPICoreV1PodAffinity) Get() (v IoK8sAPICoreV1PodAffinity, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1PodAntiAffinity with value set to v.
-func NewOptionalIoK8sAPICoreV1PodAntiAffinity(v IoK8sAPICoreV1PodAntiAffinity) OptionalIoK8sAPICoreV1PodAntiAffinity {
-	return OptionalIoK8sAPICoreV1PodAntiAffinity{
+// New returns new OptIoK8sAPICoreV1PodAntiAffinity with value set to v.
+func NewOptIoK8sAPICoreV1PodAntiAffinity(v IoK8sAPICoreV1PodAntiAffinity) OptIoK8sAPICoreV1PodAntiAffinity {
+	return OptIoK8sAPICoreV1PodAntiAffinity{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1PodAntiAffinity is generic valiant of IoK8sAPICoreV1PodAntiAffinity.
-type OptionalIoK8sAPICoreV1PodAntiAffinity struct {
+// OptIoK8sAPICoreV1PodAntiAffinity is generic valiant of IoK8sAPICoreV1PodAntiAffinity.
+type OptIoK8sAPICoreV1PodAntiAffinity struct {
 	Value IoK8sAPICoreV1PodAntiAffinity
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1PodAntiAffinity was set.
-func (o OptionalIoK8sAPICoreV1PodAntiAffinity) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1PodAntiAffinity was set.
+func (o OptIoK8sAPICoreV1PodAntiAffinity) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1PodAntiAffinity) Reset() {
+func (o *OptIoK8sAPICoreV1PodAntiAffinity) Reset() {
 	var v IoK8sAPICoreV1PodAntiAffinity
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1PodAntiAffinity) SetTo(v IoK8sAPICoreV1PodAntiAffinity) {
+func (o *OptIoK8sAPICoreV1PodAntiAffinity) SetTo(v IoK8sAPICoreV1PodAntiAffinity) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1PodAntiAffinity) Get() (v IoK8sAPICoreV1PodAntiAffinity, ok bool) {
+func (o OptIoK8sAPICoreV1PodAntiAffinity) Get() (v IoK8sAPICoreV1PodAntiAffinity, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1PodDNSConfig with value set to v.
-func NewOptionalIoK8sAPICoreV1PodDNSConfig(v IoK8sAPICoreV1PodDNSConfig) OptionalIoK8sAPICoreV1PodDNSConfig {
-	return OptionalIoK8sAPICoreV1PodDNSConfig{
+// New returns new OptIoK8sAPICoreV1PodDNSConfig with value set to v.
+func NewOptIoK8sAPICoreV1PodDNSConfig(v IoK8sAPICoreV1PodDNSConfig) OptIoK8sAPICoreV1PodDNSConfig {
+	return OptIoK8sAPICoreV1PodDNSConfig{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1PodDNSConfig is generic valiant of IoK8sAPICoreV1PodDNSConfig.
-type OptionalIoK8sAPICoreV1PodDNSConfig struct {
+// OptIoK8sAPICoreV1PodDNSConfig is generic valiant of IoK8sAPICoreV1PodDNSConfig.
+type OptIoK8sAPICoreV1PodDNSConfig struct {
 	Value IoK8sAPICoreV1PodDNSConfig
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1PodDNSConfig was set.
-func (o OptionalIoK8sAPICoreV1PodDNSConfig) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1PodDNSConfig was set.
+func (o OptIoK8sAPICoreV1PodDNSConfig) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1PodDNSConfig) Reset() {
+func (o *OptIoK8sAPICoreV1PodDNSConfig) Reset() {
 	var v IoK8sAPICoreV1PodDNSConfig
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1PodDNSConfig) SetTo(v IoK8sAPICoreV1PodDNSConfig) {
+func (o *OptIoK8sAPICoreV1PodDNSConfig) SetTo(v IoK8sAPICoreV1PodDNSConfig) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1PodDNSConfig) Get() (v IoK8sAPICoreV1PodDNSConfig, ok bool) {
+func (o OptIoK8sAPICoreV1PodDNSConfig) Get() (v IoK8sAPICoreV1PodDNSConfig, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1PodSecurityContext with value set to v.
-func NewOptionalIoK8sAPICoreV1PodSecurityContext(v IoK8sAPICoreV1PodSecurityContext) OptionalIoK8sAPICoreV1PodSecurityContext {
-	return OptionalIoK8sAPICoreV1PodSecurityContext{
+// New returns new OptIoK8sAPICoreV1PodSecurityContext with value set to v.
+func NewOptIoK8sAPICoreV1PodSecurityContext(v IoK8sAPICoreV1PodSecurityContext) OptIoK8sAPICoreV1PodSecurityContext {
+	return OptIoK8sAPICoreV1PodSecurityContext{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1PodSecurityContext is generic valiant of IoK8sAPICoreV1PodSecurityContext.
-type OptionalIoK8sAPICoreV1PodSecurityContext struct {
+// OptIoK8sAPICoreV1PodSecurityContext is generic valiant of IoK8sAPICoreV1PodSecurityContext.
+type OptIoK8sAPICoreV1PodSecurityContext struct {
 	Value IoK8sAPICoreV1PodSecurityContext
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1PodSecurityContext was set.
-func (o OptionalIoK8sAPICoreV1PodSecurityContext) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1PodSecurityContext was set.
+func (o OptIoK8sAPICoreV1PodSecurityContext) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1PodSecurityContext) Reset() {
+func (o *OptIoK8sAPICoreV1PodSecurityContext) Reset() {
 	var v IoK8sAPICoreV1PodSecurityContext
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1PodSecurityContext) SetTo(v IoK8sAPICoreV1PodSecurityContext) {
+func (o *OptIoK8sAPICoreV1PodSecurityContext) SetTo(v IoK8sAPICoreV1PodSecurityContext) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1PodSecurityContext) Get() (v IoK8sAPICoreV1PodSecurityContext, ok bool) {
+func (o OptIoK8sAPICoreV1PodSecurityContext) Get() (v IoK8sAPICoreV1PodSecurityContext, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1PodSpec with value set to v.
-func NewOptionalIoK8sAPICoreV1PodSpec(v IoK8sAPICoreV1PodSpec) OptionalIoK8sAPICoreV1PodSpec {
-	return OptionalIoK8sAPICoreV1PodSpec{
+// New returns new OptIoK8sAPICoreV1PodSpec with value set to v.
+func NewOptIoK8sAPICoreV1PodSpec(v IoK8sAPICoreV1PodSpec) OptIoK8sAPICoreV1PodSpec {
+	return OptIoK8sAPICoreV1PodSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1PodSpec is generic valiant of IoK8sAPICoreV1PodSpec.
-type OptionalIoK8sAPICoreV1PodSpec struct {
+// OptIoK8sAPICoreV1PodSpec is generic valiant of IoK8sAPICoreV1PodSpec.
+type OptIoK8sAPICoreV1PodSpec struct {
 	Value IoK8sAPICoreV1PodSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1PodSpec was set.
-func (o OptionalIoK8sAPICoreV1PodSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1PodSpec was set.
+func (o OptIoK8sAPICoreV1PodSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1PodSpec) Reset() {
+func (o *OptIoK8sAPICoreV1PodSpec) Reset() {
 	var v IoK8sAPICoreV1PodSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1PodSpec) SetTo(v IoK8sAPICoreV1PodSpec) {
+func (o *OptIoK8sAPICoreV1PodSpec) SetTo(v IoK8sAPICoreV1PodSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1PodSpec) Get() (v IoK8sAPICoreV1PodSpec, ok bool) {
+func (o OptIoK8sAPICoreV1PodSpec) Get() (v IoK8sAPICoreV1PodSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1PodStatus with value set to v.
-func NewOptionalIoK8sAPICoreV1PodStatus(v IoK8sAPICoreV1PodStatus) OptionalIoK8sAPICoreV1PodStatus {
-	return OptionalIoK8sAPICoreV1PodStatus{
+// New returns new OptIoK8sAPICoreV1PodStatus with value set to v.
+func NewOptIoK8sAPICoreV1PodStatus(v IoK8sAPICoreV1PodStatus) OptIoK8sAPICoreV1PodStatus {
+	return OptIoK8sAPICoreV1PodStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1PodStatus is generic valiant of IoK8sAPICoreV1PodStatus.
-type OptionalIoK8sAPICoreV1PodStatus struct {
+// OptIoK8sAPICoreV1PodStatus is generic valiant of IoK8sAPICoreV1PodStatus.
+type OptIoK8sAPICoreV1PodStatus struct {
 	Value IoK8sAPICoreV1PodStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1PodStatus was set.
-func (o OptionalIoK8sAPICoreV1PodStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1PodStatus was set.
+func (o OptIoK8sAPICoreV1PodStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1PodStatus) Reset() {
+func (o *OptIoK8sAPICoreV1PodStatus) Reset() {
 	var v IoK8sAPICoreV1PodStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1PodStatus) SetTo(v IoK8sAPICoreV1PodStatus) {
+func (o *OptIoK8sAPICoreV1PodStatus) SetTo(v IoK8sAPICoreV1PodStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1PodStatus) Get() (v IoK8sAPICoreV1PodStatus, ok bool) {
+func (o OptIoK8sAPICoreV1PodStatus) Get() (v IoK8sAPICoreV1PodStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1PodTemplateSpec with value set to v.
-func NewOptionalIoK8sAPICoreV1PodTemplateSpec(v IoK8sAPICoreV1PodTemplateSpec) OptionalIoK8sAPICoreV1PodTemplateSpec {
-	return OptionalIoK8sAPICoreV1PodTemplateSpec{
+// New returns new OptIoK8sAPICoreV1PodTemplateSpec with value set to v.
+func NewOptIoK8sAPICoreV1PodTemplateSpec(v IoK8sAPICoreV1PodTemplateSpec) OptIoK8sAPICoreV1PodTemplateSpec {
+	return OptIoK8sAPICoreV1PodTemplateSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1PodTemplateSpec is generic valiant of IoK8sAPICoreV1PodTemplateSpec.
-type OptionalIoK8sAPICoreV1PodTemplateSpec struct {
+// OptIoK8sAPICoreV1PodTemplateSpec is generic valiant of IoK8sAPICoreV1PodTemplateSpec.
+type OptIoK8sAPICoreV1PodTemplateSpec struct {
 	Value IoK8sAPICoreV1PodTemplateSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1PodTemplateSpec was set.
-func (o OptionalIoK8sAPICoreV1PodTemplateSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1PodTemplateSpec was set.
+func (o OptIoK8sAPICoreV1PodTemplateSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1PodTemplateSpec) Reset() {
+func (o *OptIoK8sAPICoreV1PodTemplateSpec) Reset() {
 	var v IoK8sAPICoreV1PodTemplateSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1PodTemplateSpec) SetTo(v IoK8sAPICoreV1PodTemplateSpec) {
+func (o *OptIoK8sAPICoreV1PodTemplateSpec) SetTo(v IoK8sAPICoreV1PodTemplateSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1PodTemplateSpec) Get() (v IoK8sAPICoreV1PodTemplateSpec, ok bool) {
+func (o OptIoK8sAPICoreV1PodTemplateSpec) Get() (v IoK8sAPICoreV1PodTemplateSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1PortworxVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1PortworxVolumeSource(v IoK8sAPICoreV1PortworxVolumeSource) OptionalIoK8sAPICoreV1PortworxVolumeSource {
-	return OptionalIoK8sAPICoreV1PortworxVolumeSource{
+// New returns new OptIoK8sAPICoreV1PortworxVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1PortworxVolumeSource(v IoK8sAPICoreV1PortworxVolumeSource) OptIoK8sAPICoreV1PortworxVolumeSource {
+	return OptIoK8sAPICoreV1PortworxVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1PortworxVolumeSource is generic valiant of IoK8sAPICoreV1PortworxVolumeSource.
-type OptionalIoK8sAPICoreV1PortworxVolumeSource struct {
+// OptIoK8sAPICoreV1PortworxVolumeSource is generic valiant of IoK8sAPICoreV1PortworxVolumeSource.
+type OptIoK8sAPICoreV1PortworxVolumeSource struct {
 	Value IoK8sAPICoreV1PortworxVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1PortworxVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1PortworxVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1PortworxVolumeSource was set.
+func (o OptIoK8sAPICoreV1PortworxVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1PortworxVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1PortworxVolumeSource) Reset() {
 	var v IoK8sAPICoreV1PortworxVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1PortworxVolumeSource) SetTo(v IoK8sAPICoreV1PortworxVolumeSource) {
+func (o *OptIoK8sAPICoreV1PortworxVolumeSource) SetTo(v IoK8sAPICoreV1PortworxVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1PortworxVolumeSource) Get() (v IoK8sAPICoreV1PortworxVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1PortworxVolumeSource) Get() (v IoK8sAPICoreV1PortworxVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1Probe with value set to v.
-func NewOptionalIoK8sAPICoreV1Probe(v IoK8sAPICoreV1Probe) OptionalIoK8sAPICoreV1Probe {
-	return OptionalIoK8sAPICoreV1Probe{
+// New returns new OptIoK8sAPICoreV1Probe with value set to v.
+func NewOptIoK8sAPICoreV1Probe(v IoK8sAPICoreV1Probe) OptIoK8sAPICoreV1Probe {
+	return OptIoK8sAPICoreV1Probe{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1Probe is generic valiant of IoK8sAPICoreV1Probe.
-type OptionalIoK8sAPICoreV1Probe struct {
+// OptIoK8sAPICoreV1Probe is generic valiant of IoK8sAPICoreV1Probe.
+type OptIoK8sAPICoreV1Probe struct {
 	Value IoK8sAPICoreV1Probe
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1Probe was set.
-func (o OptionalIoK8sAPICoreV1Probe) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1Probe was set.
+func (o OptIoK8sAPICoreV1Probe) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1Probe) Reset() {
+func (o *OptIoK8sAPICoreV1Probe) Reset() {
 	var v IoK8sAPICoreV1Probe
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1Probe) SetTo(v IoK8sAPICoreV1Probe) {
+func (o *OptIoK8sAPICoreV1Probe) SetTo(v IoK8sAPICoreV1Probe) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1Probe) Get() (v IoK8sAPICoreV1Probe, ok bool) {
+func (o OptIoK8sAPICoreV1Probe) Get() (v IoK8sAPICoreV1Probe, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ProjectedVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1ProjectedVolumeSource(v IoK8sAPICoreV1ProjectedVolumeSource) OptionalIoK8sAPICoreV1ProjectedVolumeSource {
-	return OptionalIoK8sAPICoreV1ProjectedVolumeSource{
+// New returns new OptIoK8sAPICoreV1ProjectedVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1ProjectedVolumeSource(v IoK8sAPICoreV1ProjectedVolumeSource) OptIoK8sAPICoreV1ProjectedVolumeSource {
+	return OptIoK8sAPICoreV1ProjectedVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ProjectedVolumeSource is generic valiant of IoK8sAPICoreV1ProjectedVolumeSource.
-type OptionalIoK8sAPICoreV1ProjectedVolumeSource struct {
+// OptIoK8sAPICoreV1ProjectedVolumeSource is generic valiant of IoK8sAPICoreV1ProjectedVolumeSource.
+type OptIoK8sAPICoreV1ProjectedVolumeSource struct {
 	Value IoK8sAPICoreV1ProjectedVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ProjectedVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1ProjectedVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ProjectedVolumeSource was set.
+func (o OptIoK8sAPICoreV1ProjectedVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ProjectedVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1ProjectedVolumeSource) Reset() {
 	var v IoK8sAPICoreV1ProjectedVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ProjectedVolumeSource) SetTo(v IoK8sAPICoreV1ProjectedVolumeSource) {
+func (o *OptIoK8sAPICoreV1ProjectedVolumeSource) SetTo(v IoK8sAPICoreV1ProjectedVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ProjectedVolumeSource) Get() (v IoK8sAPICoreV1ProjectedVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1ProjectedVolumeSource) Get() (v IoK8sAPICoreV1ProjectedVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1QuobyteVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1QuobyteVolumeSource(v IoK8sAPICoreV1QuobyteVolumeSource) OptionalIoK8sAPICoreV1QuobyteVolumeSource {
-	return OptionalIoK8sAPICoreV1QuobyteVolumeSource{
+// New returns new OptIoK8sAPICoreV1QuobyteVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1QuobyteVolumeSource(v IoK8sAPICoreV1QuobyteVolumeSource) OptIoK8sAPICoreV1QuobyteVolumeSource {
+	return OptIoK8sAPICoreV1QuobyteVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1QuobyteVolumeSource is generic valiant of IoK8sAPICoreV1QuobyteVolumeSource.
-type OptionalIoK8sAPICoreV1QuobyteVolumeSource struct {
+// OptIoK8sAPICoreV1QuobyteVolumeSource is generic valiant of IoK8sAPICoreV1QuobyteVolumeSource.
+type OptIoK8sAPICoreV1QuobyteVolumeSource struct {
 	Value IoK8sAPICoreV1QuobyteVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1QuobyteVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1QuobyteVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1QuobyteVolumeSource was set.
+func (o OptIoK8sAPICoreV1QuobyteVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1QuobyteVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1QuobyteVolumeSource) Reset() {
 	var v IoK8sAPICoreV1QuobyteVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1QuobyteVolumeSource) SetTo(v IoK8sAPICoreV1QuobyteVolumeSource) {
+func (o *OptIoK8sAPICoreV1QuobyteVolumeSource) SetTo(v IoK8sAPICoreV1QuobyteVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1QuobyteVolumeSource) Get() (v IoK8sAPICoreV1QuobyteVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1QuobyteVolumeSource) Get() (v IoK8sAPICoreV1QuobyteVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1RBDPersistentVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1RBDPersistentVolumeSource(v IoK8sAPICoreV1RBDPersistentVolumeSource) OptionalIoK8sAPICoreV1RBDPersistentVolumeSource {
-	return OptionalIoK8sAPICoreV1RBDPersistentVolumeSource{
+// New returns new OptIoK8sAPICoreV1RBDPersistentVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1RBDPersistentVolumeSource(v IoK8sAPICoreV1RBDPersistentVolumeSource) OptIoK8sAPICoreV1RBDPersistentVolumeSource {
+	return OptIoK8sAPICoreV1RBDPersistentVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1RBDPersistentVolumeSource is generic valiant of IoK8sAPICoreV1RBDPersistentVolumeSource.
-type OptionalIoK8sAPICoreV1RBDPersistentVolumeSource struct {
+// OptIoK8sAPICoreV1RBDPersistentVolumeSource is generic valiant of IoK8sAPICoreV1RBDPersistentVolumeSource.
+type OptIoK8sAPICoreV1RBDPersistentVolumeSource struct {
 	Value IoK8sAPICoreV1RBDPersistentVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1RBDPersistentVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1RBDPersistentVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1RBDPersistentVolumeSource was set.
+func (o OptIoK8sAPICoreV1RBDPersistentVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1RBDPersistentVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1RBDPersistentVolumeSource) Reset() {
 	var v IoK8sAPICoreV1RBDPersistentVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1RBDPersistentVolumeSource) SetTo(v IoK8sAPICoreV1RBDPersistentVolumeSource) {
+func (o *OptIoK8sAPICoreV1RBDPersistentVolumeSource) SetTo(v IoK8sAPICoreV1RBDPersistentVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1RBDPersistentVolumeSource) Get() (v IoK8sAPICoreV1RBDPersistentVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1RBDPersistentVolumeSource) Get() (v IoK8sAPICoreV1RBDPersistentVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1RBDVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1RBDVolumeSource(v IoK8sAPICoreV1RBDVolumeSource) OptionalIoK8sAPICoreV1RBDVolumeSource {
-	return OptionalIoK8sAPICoreV1RBDVolumeSource{
+// New returns new OptIoK8sAPICoreV1RBDVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1RBDVolumeSource(v IoK8sAPICoreV1RBDVolumeSource) OptIoK8sAPICoreV1RBDVolumeSource {
+	return OptIoK8sAPICoreV1RBDVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1RBDVolumeSource is generic valiant of IoK8sAPICoreV1RBDVolumeSource.
-type OptionalIoK8sAPICoreV1RBDVolumeSource struct {
+// OptIoK8sAPICoreV1RBDVolumeSource is generic valiant of IoK8sAPICoreV1RBDVolumeSource.
+type OptIoK8sAPICoreV1RBDVolumeSource struct {
 	Value IoK8sAPICoreV1RBDVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1RBDVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1RBDVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1RBDVolumeSource was set.
+func (o OptIoK8sAPICoreV1RBDVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1RBDVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1RBDVolumeSource) Reset() {
 	var v IoK8sAPICoreV1RBDVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1RBDVolumeSource) SetTo(v IoK8sAPICoreV1RBDVolumeSource) {
+func (o *OptIoK8sAPICoreV1RBDVolumeSource) SetTo(v IoK8sAPICoreV1RBDVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1RBDVolumeSource) Get() (v IoK8sAPICoreV1RBDVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1RBDVolumeSource) Get() (v IoK8sAPICoreV1RBDVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ReplicationControllerSpec with value set to v.
-func NewOptionalIoK8sAPICoreV1ReplicationControllerSpec(v IoK8sAPICoreV1ReplicationControllerSpec) OptionalIoK8sAPICoreV1ReplicationControllerSpec {
-	return OptionalIoK8sAPICoreV1ReplicationControllerSpec{
+// New returns new OptIoK8sAPICoreV1ReplicationControllerSpec with value set to v.
+func NewOptIoK8sAPICoreV1ReplicationControllerSpec(v IoK8sAPICoreV1ReplicationControllerSpec) OptIoK8sAPICoreV1ReplicationControllerSpec {
+	return OptIoK8sAPICoreV1ReplicationControllerSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ReplicationControllerSpec is generic valiant of IoK8sAPICoreV1ReplicationControllerSpec.
-type OptionalIoK8sAPICoreV1ReplicationControllerSpec struct {
+// OptIoK8sAPICoreV1ReplicationControllerSpec is generic valiant of IoK8sAPICoreV1ReplicationControllerSpec.
+type OptIoK8sAPICoreV1ReplicationControllerSpec struct {
 	Value IoK8sAPICoreV1ReplicationControllerSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ReplicationControllerSpec was set.
-func (o OptionalIoK8sAPICoreV1ReplicationControllerSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ReplicationControllerSpec was set.
+func (o OptIoK8sAPICoreV1ReplicationControllerSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ReplicationControllerSpec) Reset() {
+func (o *OptIoK8sAPICoreV1ReplicationControllerSpec) Reset() {
 	var v IoK8sAPICoreV1ReplicationControllerSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ReplicationControllerSpec) SetTo(v IoK8sAPICoreV1ReplicationControllerSpec) {
+func (o *OptIoK8sAPICoreV1ReplicationControllerSpec) SetTo(v IoK8sAPICoreV1ReplicationControllerSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ReplicationControllerSpec) Get() (v IoK8sAPICoreV1ReplicationControllerSpec, ok bool) {
+func (o OptIoK8sAPICoreV1ReplicationControllerSpec) Get() (v IoK8sAPICoreV1ReplicationControllerSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ReplicationControllerStatus with value set to v.
-func NewOptionalIoK8sAPICoreV1ReplicationControllerStatus(v IoK8sAPICoreV1ReplicationControllerStatus) OptionalIoK8sAPICoreV1ReplicationControllerStatus {
-	return OptionalIoK8sAPICoreV1ReplicationControllerStatus{
+// New returns new OptIoK8sAPICoreV1ReplicationControllerStatus with value set to v.
+func NewOptIoK8sAPICoreV1ReplicationControllerStatus(v IoK8sAPICoreV1ReplicationControllerStatus) OptIoK8sAPICoreV1ReplicationControllerStatus {
+	return OptIoK8sAPICoreV1ReplicationControllerStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ReplicationControllerStatus is generic valiant of IoK8sAPICoreV1ReplicationControllerStatus.
-type OptionalIoK8sAPICoreV1ReplicationControllerStatus struct {
+// OptIoK8sAPICoreV1ReplicationControllerStatus is generic valiant of IoK8sAPICoreV1ReplicationControllerStatus.
+type OptIoK8sAPICoreV1ReplicationControllerStatus struct {
 	Value IoK8sAPICoreV1ReplicationControllerStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ReplicationControllerStatus was set.
-func (o OptionalIoK8sAPICoreV1ReplicationControllerStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ReplicationControllerStatus was set.
+func (o OptIoK8sAPICoreV1ReplicationControllerStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ReplicationControllerStatus) Reset() {
+func (o *OptIoK8sAPICoreV1ReplicationControllerStatus) Reset() {
 	var v IoK8sAPICoreV1ReplicationControllerStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ReplicationControllerStatus) SetTo(v IoK8sAPICoreV1ReplicationControllerStatus) {
+func (o *OptIoK8sAPICoreV1ReplicationControllerStatus) SetTo(v IoK8sAPICoreV1ReplicationControllerStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ReplicationControllerStatus) Get() (v IoK8sAPICoreV1ReplicationControllerStatus, ok bool) {
+func (o OptIoK8sAPICoreV1ReplicationControllerStatus) Get() (v IoK8sAPICoreV1ReplicationControllerStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ResourceFieldSelector with value set to v.
-func NewOptionalIoK8sAPICoreV1ResourceFieldSelector(v IoK8sAPICoreV1ResourceFieldSelector) OptionalIoK8sAPICoreV1ResourceFieldSelector {
-	return OptionalIoK8sAPICoreV1ResourceFieldSelector{
+// New returns new OptIoK8sAPICoreV1ResourceFieldSelector with value set to v.
+func NewOptIoK8sAPICoreV1ResourceFieldSelector(v IoK8sAPICoreV1ResourceFieldSelector) OptIoK8sAPICoreV1ResourceFieldSelector {
+	return OptIoK8sAPICoreV1ResourceFieldSelector{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ResourceFieldSelector is generic valiant of IoK8sAPICoreV1ResourceFieldSelector.
-type OptionalIoK8sAPICoreV1ResourceFieldSelector struct {
+// OptIoK8sAPICoreV1ResourceFieldSelector is generic valiant of IoK8sAPICoreV1ResourceFieldSelector.
+type OptIoK8sAPICoreV1ResourceFieldSelector struct {
 	Value IoK8sAPICoreV1ResourceFieldSelector
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ResourceFieldSelector was set.
-func (o OptionalIoK8sAPICoreV1ResourceFieldSelector) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ResourceFieldSelector was set.
+func (o OptIoK8sAPICoreV1ResourceFieldSelector) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ResourceFieldSelector) Reset() {
+func (o *OptIoK8sAPICoreV1ResourceFieldSelector) Reset() {
 	var v IoK8sAPICoreV1ResourceFieldSelector
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ResourceFieldSelector) SetTo(v IoK8sAPICoreV1ResourceFieldSelector) {
+func (o *OptIoK8sAPICoreV1ResourceFieldSelector) SetTo(v IoK8sAPICoreV1ResourceFieldSelector) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ResourceFieldSelector) Get() (v IoK8sAPICoreV1ResourceFieldSelector, ok bool) {
+func (o OptIoK8sAPICoreV1ResourceFieldSelector) Get() (v IoK8sAPICoreV1ResourceFieldSelector, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ResourceQuotaSpec with value set to v.
-func NewOptionalIoK8sAPICoreV1ResourceQuotaSpec(v IoK8sAPICoreV1ResourceQuotaSpec) OptionalIoK8sAPICoreV1ResourceQuotaSpec {
-	return OptionalIoK8sAPICoreV1ResourceQuotaSpec{
+// New returns new OptIoK8sAPICoreV1ResourceQuotaSpec with value set to v.
+func NewOptIoK8sAPICoreV1ResourceQuotaSpec(v IoK8sAPICoreV1ResourceQuotaSpec) OptIoK8sAPICoreV1ResourceQuotaSpec {
+	return OptIoK8sAPICoreV1ResourceQuotaSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ResourceQuotaSpec is generic valiant of IoK8sAPICoreV1ResourceQuotaSpec.
-type OptionalIoK8sAPICoreV1ResourceQuotaSpec struct {
+// OptIoK8sAPICoreV1ResourceQuotaSpec is generic valiant of IoK8sAPICoreV1ResourceQuotaSpec.
+type OptIoK8sAPICoreV1ResourceQuotaSpec struct {
 	Value IoK8sAPICoreV1ResourceQuotaSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ResourceQuotaSpec was set.
-func (o OptionalIoK8sAPICoreV1ResourceQuotaSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ResourceQuotaSpec was set.
+func (o OptIoK8sAPICoreV1ResourceQuotaSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ResourceQuotaSpec) Reset() {
+func (o *OptIoK8sAPICoreV1ResourceQuotaSpec) Reset() {
 	var v IoK8sAPICoreV1ResourceQuotaSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ResourceQuotaSpec) SetTo(v IoK8sAPICoreV1ResourceQuotaSpec) {
+func (o *OptIoK8sAPICoreV1ResourceQuotaSpec) SetTo(v IoK8sAPICoreV1ResourceQuotaSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ResourceQuotaSpec) Get() (v IoK8sAPICoreV1ResourceQuotaSpec, ok bool) {
+func (o OptIoK8sAPICoreV1ResourceQuotaSpec) Get() (v IoK8sAPICoreV1ResourceQuotaSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ResourceQuotaStatus with value set to v.
-func NewOptionalIoK8sAPICoreV1ResourceQuotaStatus(v IoK8sAPICoreV1ResourceQuotaStatus) OptionalIoK8sAPICoreV1ResourceQuotaStatus {
-	return OptionalIoK8sAPICoreV1ResourceQuotaStatus{
+// New returns new OptIoK8sAPICoreV1ResourceQuotaStatus with value set to v.
+func NewOptIoK8sAPICoreV1ResourceQuotaStatus(v IoK8sAPICoreV1ResourceQuotaStatus) OptIoK8sAPICoreV1ResourceQuotaStatus {
+	return OptIoK8sAPICoreV1ResourceQuotaStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ResourceQuotaStatus is generic valiant of IoK8sAPICoreV1ResourceQuotaStatus.
-type OptionalIoK8sAPICoreV1ResourceQuotaStatus struct {
+// OptIoK8sAPICoreV1ResourceQuotaStatus is generic valiant of IoK8sAPICoreV1ResourceQuotaStatus.
+type OptIoK8sAPICoreV1ResourceQuotaStatus struct {
 	Value IoK8sAPICoreV1ResourceQuotaStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ResourceQuotaStatus was set.
-func (o OptionalIoK8sAPICoreV1ResourceQuotaStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ResourceQuotaStatus was set.
+func (o OptIoK8sAPICoreV1ResourceQuotaStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ResourceQuotaStatus) Reset() {
+func (o *OptIoK8sAPICoreV1ResourceQuotaStatus) Reset() {
 	var v IoK8sAPICoreV1ResourceQuotaStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ResourceQuotaStatus) SetTo(v IoK8sAPICoreV1ResourceQuotaStatus) {
+func (o *OptIoK8sAPICoreV1ResourceQuotaStatus) SetTo(v IoK8sAPICoreV1ResourceQuotaStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ResourceQuotaStatus) Get() (v IoK8sAPICoreV1ResourceQuotaStatus, ok bool) {
+func (o OptIoK8sAPICoreV1ResourceQuotaStatus) Get() (v IoK8sAPICoreV1ResourceQuotaStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ResourceRequirements with value set to v.
-func NewOptionalIoK8sAPICoreV1ResourceRequirements(v IoK8sAPICoreV1ResourceRequirements) OptionalIoK8sAPICoreV1ResourceRequirements {
-	return OptionalIoK8sAPICoreV1ResourceRequirements{
+// New returns new OptIoK8sAPICoreV1ResourceRequirements with value set to v.
+func NewOptIoK8sAPICoreV1ResourceRequirements(v IoK8sAPICoreV1ResourceRequirements) OptIoK8sAPICoreV1ResourceRequirements {
+	return OptIoK8sAPICoreV1ResourceRequirements{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ResourceRequirements is generic valiant of IoK8sAPICoreV1ResourceRequirements.
-type OptionalIoK8sAPICoreV1ResourceRequirements struct {
+// OptIoK8sAPICoreV1ResourceRequirements is generic valiant of IoK8sAPICoreV1ResourceRequirements.
+type OptIoK8sAPICoreV1ResourceRequirements struct {
 	Value IoK8sAPICoreV1ResourceRequirements
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ResourceRequirements was set.
-func (o OptionalIoK8sAPICoreV1ResourceRequirements) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ResourceRequirements was set.
+func (o OptIoK8sAPICoreV1ResourceRequirements) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ResourceRequirements) Reset() {
+func (o *OptIoK8sAPICoreV1ResourceRequirements) Reset() {
 	var v IoK8sAPICoreV1ResourceRequirements
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ResourceRequirements) SetTo(v IoK8sAPICoreV1ResourceRequirements) {
+func (o *OptIoK8sAPICoreV1ResourceRequirements) SetTo(v IoK8sAPICoreV1ResourceRequirements) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ResourceRequirements) Get() (v IoK8sAPICoreV1ResourceRequirements, ok bool) {
+func (o OptIoK8sAPICoreV1ResourceRequirements) Get() (v IoK8sAPICoreV1ResourceRequirements, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1SELinuxOptions with value set to v.
-func NewOptionalIoK8sAPICoreV1SELinuxOptions(v IoK8sAPICoreV1SELinuxOptions) OptionalIoK8sAPICoreV1SELinuxOptions {
-	return OptionalIoK8sAPICoreV1SELinuxOptions{
+// New returns new OptIoK8sAPICoreV1SELinuxOptions with value set to v.
+func NewOptIoK8sAPICoreV1SELinuxOptions(v IoK8sAPICoreV1SELinuxOptions) OptIoK8sAPICoreV1SELinuxOptions {
+	return OptIoK8sAPICoreV1SELinuxOptions{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1SELinuxOptions is generic valiant of IoK8sAPICoreV1SELinuxOptions.
-type OptionalIoK8sAPICoreV1SELinuxOptions struct {
+// OptIoK8sAPICoreV1SELinuxOptions is generic valiant of IoK8sAPICoreV1SELinuxOptions.
+type OptIoK8sAPICoreV1SELinuxOptions struct {
 	Value IoK8sAPICoreV1SELinuxOptions
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1SELinuxOptions was set.
-func (o OptionalIoK8sAPICoreV1SELinuxOptions) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1SELinuxOptions was set.
+func (o OptIoK8sAPICoreV1SELinuxOptions) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1SELinuxOptions) Reset() {
+func (o *OptIoK8sAPICoreV1SELinuxOptions) Reset() {
 	var v IoK8sAPICoreV1SELinuxOptions
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1SELinuxOptions) SetTo(v IoK8sAPICoreV1SELinuxOptions) {
+func (o *OptIoK8sAPICoreV1SELinuxOptions) SetTo(v IoK8sAPICoreV1SELinuxOptions) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1SELinuxOptions) Get() (v IoK8sAPICoreV1SELinuxOptions, ok bool) {
+func (o OptIoK8sAPICoreV1SELinuxOptions) Get() (v IoK8sAPICoreV1SELinuxOptions, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ScaleIOPersistentVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1ScaleIOPersistentVolumeSource(v IoK8sAPICoreV1ScaleIOPersistentVolumeSource) OptionalIoK8sAPICoreV1ScaleIOPersistentVolumeSource {
-	return OptionalIoK8sAPICoreV1ScaleIOPersistentVolumeSource{
+// New returns new OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1ScaleIOPersistentVolumeSource(v IoK8sAPICoreV1ScaleIOPersistentVolumeSource) OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource {
+	return OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ScaleIOPersistentVolumeSource is generic valiant of IoK8sAPICoreV1ScaleIOPersistentVolumeSource.
-type OptionalIoK8sAPICoreV1ScaleIOPersistentVolumeSource struct {
+// OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource is generic valiant of IoK8sAPICoreV1ScaleIOPersistentVolumeSource.
+type OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource struct {
 	Value IoK8sAPICoreV1ScaleIOPersistentVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ScaleIOPersistentVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1ScaleIOPersistentVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource was set.
+func (o OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ScaleIOPersistentVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) Reset() {
 	var v IoK8sAPICoreV1ScaleIOPersistentVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ScaleIOPersistentVolumeSource) SetTo(v IoK8sAPICoreV1ScaleIOPersistentVolumeSource) {
+func (o *OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) SetTo(v IoK8sAPICoreV1ScaleIOPersistentVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ScaleIOPersistentVolumeSource) Get() (v IoK8sAPICoreV1ScaleIOPersistentVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) Get() (v IoK8sAPICoreV1ScaleIOPersistentVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ScaleIOVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1ScaleIOVolumeSource(v IoK8sAPICoreV1ScaleIOVolumeSource) OptionalIoK8sAPICoreV1ScaleIOVolumeSource {
-	return OptionalIoK8sAPICoreV1ScaleIOVolumeSource{
+// New returns new OptIoK8sAPICoreV1ScaleIOVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1ScaleIOVolumeSource(v IoK8sAPICoreV1ScaleIOVolumeSource) OptIoK8sAPICoreV1ScaleIOVolumeSource {
+	return OptIoK8sAPICoreV1ScaleIOVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ScaleIOVolumeSource is generic valiant of IoK8sAPICoreV1ScaleIOVolumeSource.
-type OptionalIoK8sAPICoreV1ScaleIOVolumeSource struct {
+// OptIoK8sAPICoreV1ScaleIOVolumeSource is generic valiant of IoK8sAPICoreV1ScaleIOVolumeSource.
+type OptIoK8sAPICoreV1ScaleIOVolumeSource struct {
 	Value IoK8sAPICoreV1ScaleIOVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ScaleIOVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1ScaleIOVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ScaleIOVolumeSource was set.
+func (o OptIoK8sAPICoreV1ScaleIOVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ScaleIOVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1ScaleIOVolumeSource) Reset() {
 	var v IoK8sAPICoreV1ScaleIOVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ScaleIOVolumeSource) SetTo(v IoK8sAPICoreV1ScaleIOVolumeSource) {
+func (o *OptIoK8sAPICoreV1ScaleIOVolumeSource) SetTo(v IoK8sAPICoreV1ScaleIOVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ScaleIOVolumeSource) Get() (v IoK8sAPICoreV1ScaleIOVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1ScaleIOVolumeSource) Get() (v IoK8sAPICoreV1ScaleIOVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ScopeSelector with value set to v.
-func NewOptionalIoK8sAPICoreV1ScopeSelector(v IoK8sAPICoreV1ScopeSelector) OptionalIoK8sAPICoreV1ScopeSelector {
-	return OptionalIoK8sAPICoreV1ScopeSelector{
+// New returns new OptIoK8sAPICoreV1ScopeSelector with value set to v.
+func NewOptIoK8sAPICoreV1ScopeSelector(v IoK8sAPICoreV1ScopeSelector) OptIoK8sAPICoreV1ScopeSelector {
+	return OptIoK8sAPICoreV1ScopeSelector{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ScopeSelector is generic valiant of IoK8sAPICoreV1ScopeSelector.
-type OptionalIoK8sAPICoreV1ScopeSelector struct {
+// OptIoK8sAPICoreV1ScopeSelector is generic valiant of IoK8sAPICoreV1ScopeSelector.
+type OptIoK8sAPICoreV1ScopeSelector struct {
 	Value IoK8sAPICoreV1ScopeSelector
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ScopeSelector was set.
-func (o OptionalIoK8sAPICoreV1ScopeSelector) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ScopeSelector was set.
+func (o OptIoK8sAPICoreV1ScopeSelector) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ScopeSelector) Reset() {
+func (o *OptIoK8sAPICoreV1ScopeSelector) Reset() {
 	var v IoK8sAPICoreV1ScopeSelector
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ScopeSelector) SetTo(v IoK8sAPICoreV1ScopeSelector) {
+func (o *OptIoK8sAPICoreV1ScopeSelector) SetTo(v IoK8sAPICoreV1ScopeSelector) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ScopeSelector) Get() (v IoK8sAPICoreV1ScopeSelector, ok bool) {
+func (o OptIoK8sAPICoreV1ScopeSelector) Get() (v IoK8sAPICoreV1ScopeSelector, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1SeccompProfile with value set to v.
-func NewOptionalIoK8sAPICoreV1SeccompProfile(v IoK8sAPICoreV1SeccompProfile) OptionalIoK8sAPICoreV1SeccompProfile {
-	return OptionalIoK8sAPICoreV1SeccompProfile{
+// New returns new OptIoK8sAPICoreV1SeccompProfile with value set to v.
+func NewOptIoK8sAPICoreV1SeccompProfile(v IoK8sAPICoreV1SeccompProfile) OptIoK8sAPICoreV1SeccompProfile {
+	return OptIoK8sAPICoreV1SeccompProfile{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1SeccompProfile is generic valiant of IoK8sAPICoreV1SeccompProfile.
-type OptionalIoK8sAPICoreV1SeccompProfile struct {
+// OptIoK8sAPICoreV1SeccompProfile is generic valiant of IoK8sAPICoreV1SeccompProfile.
+type OptIoK8sAPICoreV1SeccompProfile struct {
 	Value IoK8sAPICoreV1SeccompProfile
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1SeccompProfile was set.
-func (o OptionalIoK8sAPICoreV1SeccompProfile) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1SeccompProfile was set.
+func (o OptIoK8sAPICoreV1SeccompProfile) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1SeccompProfile) Reset() {
+func (o *OptIoK8sAPICoreV1SeccompProfile) Reset() {
 	var v IoK8sAPICoreV1SeccompProfile
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1SeccompProfile) SetTo(v IoK8sAPICoreV1SeccompProfile) {
+func (o *OptIoK8sAPICoreV1SeccompProfile) SetTo(v IoK8sAPICoreV1SeccompProfile) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1SeccompProfile) Get() (v IoK8sAPICoreV1SeccompProfile, ok bool) {
+func (o OptIoK8sAPICoreV1SeccompProfile) Get() (v IoK8sAPICoreV1SeccompProfile, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1SecretEnvSource with value set to v.
-func NewOptionalIoK8sAPICoreV1SecretEnvSource(v IoK8sAPICoreV1SecretEnvSource) OptionalIoK8sAPICoreV1SecretEnvSource {
-	return OptionalIoK8sAPICoreV1SecretEnvSource{
+// New returns new OptIoK8sAPICoreV1SecretEnvSource with value set to v.
+func NewOptIoK8sAPICoreV1SecretEnvSource(v IoK8sAPICoreV1SecretEnvSource) OptIoK8sAPICoreV1SecretEnvSource {
+	return OptIoK8sAPICoreV1SecretEnvSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1SecretEnvSource is generic valiant of IoK8sAPICoreV1SecretEnvSource.
-type OptionalIoK8sAPICoreV1SecretEnvSource struct {
+// OptIoK8sAPICoreV1SecretEnvSource is generic valiant of IoK8sAPICoreV1SecretEnvSource.
+type OptIoK8sAPICoreV1SecretEnvSource struct {
 	Value IoK8sAPICoreV1SecretEnvSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1SecretEnvSource was set.
-func (o OptionalIoK8sAPICoreV1SecretEnvSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1SecretEnvSource was set.
+func (o OptIoK8sAPICoreV1SecretEnvSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1SecretEnvSource) Reset() {
+func (o *OptIoK8sAPICoreV1SecretEnvSource) Reset() {
 	var v IoK8sAPICoreV1SecretEnvSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1SecretEnvSource) SetTo(v IoK8sAPICoreV1SecretEnvSource) {
+func (o *OptIoK8sAPICoreV1SecretEnvSource) SetTo(v IoK8sAPICoreV1SecretEnvSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1SecretEnvSource) Get() (v IoK8sAPICoreV1SecretEnvSource, ok bool) {
+func (o OptIoK8sAPICoreV1SecretEnvSource) Get() (v IoK8sAPICoreV1SecretEnvSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1SecretKeySelector with value set to v.
-func NewOptionalIoK8sAPICoreV1SecretKeySelector(v IoK8sAPICoreV1SecretKeySelector) OptionalIoK8sAPICoreV1SecretKeySelector {
-	return OptionalIoK8sAPICoreV1SecretKeySelector{
+// New returns new OptIoK8sAPICoreV1SecretKeySelector with value set to v.
+func NewOptIoK8sAPICoreV1SecretKeySelector(v IoK8sAPICoreV1SecretKeySelector) OptIoK8sAPICoreV1SecretKeySelector {
+	return OptIoK8sAPICoreV1SecretKeySelector{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1SecretKeySelector is generic valiant of IoK8sAPICoreV1SecretKeySelector.
-type OptionalIoK8sAPICoreV1SecretKeySelector struct {
+// OptIoK8sAPICoreV1SecretKeySelector is generic valiant of IoK8sAPICoreV1SecretKeySelector.
+type OptIoK8sAPICoreV1SecretKeySelector struct {
 	Value IoK8sAPICoreV1SecretKeySelector
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1SecretKeySelector was set.
-func (o OptionalIoK8sAPICoreV1SecretKeySelector) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1SecretKeySelector was set.
+func (o OptIoK8sAPICoreV1SecretKeySelector) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1SecretKeySelector) Reset() {
+func (o *OptIoK8sAPICoreV1SecretKeySelector) Reset() {
 	var v IoK8sAPICoreV1SecretKeySelector
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1SecretKeySelector) SetTo(v IoK8sAPICoreV1SecretKeySelector) {
+func (o *OptIoK8sAPICoreV1SecretKeySelector) SetTo(v IoK8sAPICoreV1SecretKeySelector) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1SecretKeySelector) Get() (v IoK8sAPICoreV1SecretKeySelector, ok bool) {
+func (o OptIoK8sAPICoreV1SecretKeySelector) Get() (v IoK8sAPICoreV1SecretKeySelector, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1SecretProjection with value set to v.
-func NewOptionalIoK8sAPICoreV1SecretProjection(v IoK8sAPICoreV1SecretProjection) OptionalIoK8sAPICoreV1SecretProjection {
-	return OptionalIoK8sAPICoreV1SecretProjection{
+// New returns new OptIoK8sAPICoreV1SecretProjection with value set to v.
+func NewOptIoK8sAPICoreV1SecretProjection(v IoK8sAPICoreV1SecretProjection) OptIoK8sAPICoreV1SecretProjection {
+	return OptIoK8sAPICoreV1SecretProjection{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1SecretProjection is generic valiant of IoK8sAPICoreV1SecretProjection.
-type OptionalIoK8sAPICoreV1SecretProjection struct {
+// OptIoK8sAPICoreV1SecretProjection is generic valiant of IoK8sAPICoreV1SecretProjection.
+type OptIoK8sAPICoreV1SecretProjection struct {
 	Value IoK8sAPICoreV1SecretProjection
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1SecretProjection was set.
-func (o OptionalIoK8sAPICoreV1SecretProjection) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1SecretProjection was set.
+func (o OptIoK8sAPICoreV1SecretProjection) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1SecretProjection) Reset() {
+func (o *OptIoK8sAPICoreV1SecretProjection) Reset() {
 	var v IoK8sAPICoreV1SecretProjection
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1SecretProjection) SetTo(v IoK8sAPICoreV1SecretProjection) {
+func (o *OptIoK8sAPICoreV1SecretProjection) SetTo(v IoK8sAPICoreV1SecretProjection) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1SecretProjection) Get() (v IoK8sAPICoreV1SecretProjection, ok bool) {
+func (o OptIoK8sAPICoreV1SecretProjection) Get() (v IoK8sAPICoreV1SecretProjection, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1SecretReference with value set to v.
-func NewOptionalIoK8sAPICoreV1SecretReference(v IoK8sAPICoreV1SecretReference) OptionalIoK8sAPICoreV1SecretReference {
-	return OptionalIoK8sAPICoreV1SecretReference{
+// New returns new OptIoK8sAPICoreV1SecretReference with value set to v.
+func NewOptIoK8sAPICoreV1SecretReference(v IoK8sAPICoreV1SecretReference) OptIoK8sAPICoreV1SecretReference {
+	return OptIoK8sAPICoreV1SecretReference{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1SecretReference is generic valiant of IoK8sAPICoreV1SecretReference.
-type OptionalIoK8sAPICoreV1SecretReference struct {
+// OptIoK8sAPICoreV1SecretReference is generic valiant of IoK8sAPICoreV1SecretReference.
+type OptIoK8sAPICoreV1SecretReference struct {
 	Value IoK8sAPICoreV1SecretReference
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1SecretReference was set.
-func (o OptionalIoK8sAPICoreV1SecretReference) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1SecretReference was set.
+func (o OptIoK8sAPICoreV1SecretReference) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1SecretReference) Reset() {
+func (o *OptIoK8sAPICoreV1SecretReference) Reset() {
 	var v IoK8sAPICoreV1SecretReference
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1SecretReference) SetTo(v IoK8sAPICoreV1SecretReference) {
+func (o *OptIoK8sAPICoreV1SecretReference) SetTo(v IoK8sAPICoreV1SecretReference) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1SecretReference) Get() (v IoK8sAPICoreV1SecretReference, ok bool) {
+func (o OptIoK8sAPICoreV1SecretReference) Get() (v IoK8sAPICoreV1SecretReference, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1SecretVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1SecretVolumeSource(v IoK8sAPICoreV1SecretVolumeSource) OptionalIoK8sAPICoreV1SecretVolumeSource {
-	return OptionalIoK8sAPICoreV1SecretVolumeSource{
+// New returns new OptIoK8sAPICoreV1SecretVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1SecretVolumeSource(v IoK8sAPICoreV1SecretVolumeSource) OptIoK8sAPICoreV1SecretVolumeSource {
+	return OptIoK8sAPICoreV1SecretVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1SecretVolumeSource is generic valiant of IoK8sAPICoreV1SecretVolumeSource.
-type OptionalIoK8sAPICoreV1SecretVolumeSource struct {
+// OptIoK8sAPICoreV1SecretVolumeSource is generic valiant of IoK8sAPICoreV1SecretVolumeSource.
+type OptIoK8sAPICoreV1SecretVolumeSource struct {
 	Value IoK8sAPICoreV1SecretVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1SecretVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1SecretVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1SecretVolumeSource was set.
+func (o OptIoK8sAPICoreV1SecretVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1SecretVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1SecretVolumeSource) Reset() {
 	var v IoK8sAPICoreV1SecretVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1SecretVolumeSource) SetTo(v IoK8sAPICoreV1SecretVolumeSource) {
+func (o *OptIoK8sAPICoreV1SecretVolumeSource) SetTo(v IoK8sAPICoreV1SecretVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1SecretVolumeSource) Get() (v IoK8sAPICoreV1SecretVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1SecretVolumeSource) Get() (v IoK8sAPICoreV1SecretVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1SecurityContext with value set to v.
-func NewOptionalIoK8sAPICoreV1SecurityContext(v IoK8sAPICoreV1SecurityContext) OptionalIoK8sAPICoreV1SecurityContext {
-	return OptionalIoK8sAPICoreV1SecurityContext{
+// New returns new OptIoK8sAPICoreV1SecurityContext with value set to v.
+func NewOptIoK8sAPICoreV1SecurityContext(v IoK8sAPICoreV1SecurityContext) OptIoK8sAPICoreV1SecurityContext {
+	return OptIoK8sAPICoreV1SecurityContext{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1SecurityContext is generic valiant of IoK8sAPICoreV1SecurityContext.
-type OptionalIoK8sAPICoreV1SecurityContext struct {
+// OptIoK8sAPICoreV1SecurityContext is generic valiant of IoK8sAPICoreV1SecurityContext.
+type OptIoK8sAPICoreV1SecurityContext struct {
 	Value IoK8sAPICoreV1SecurityContext
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1SecurityContext was set.
-func (o OptionalIoK8sAPICoreV1SecurityContext) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1SecurityContext was set.
+func (o OptIoK8sAPICoreV1SecurityContext) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1SecurityContext) Reset() {
+func (o *OptIoK8sAPICoreV1SecurityContext) Reset() {
 	var v IoK8sAPICoreV1SecurityContext
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1SecurityContext) SetTo(v IoK8sAPICoreV1SecurityContext) {
+func (o *OptIoK8sAPICoreV1SecurityContext) SetTo(v IoK8sAPICoreV1SecurityContext) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1SecurityContext) Get() (v IoK8sAPICoreV1SecurityContext, ok bool) {
+func (o OptIoK8sAPICoreV1SecurityContext) Get() (v IoK8sAPICoreV1SecurityContext, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ServiceAccountTokenProjection with value set to v.
-func NewOptionalIoK8sAPICoreV1ServiceAccountTokenProjection(v IoK8sAPICoreV1ServiceAccountTokenProjection) OptionalIoK8sAPICoreV1ServiceAccountTokenProjection {
-	return OptionalIoK8sAPICoreV1ServiceAccountTokenProjection{
+// New returns new OptIoK8sAPICoreV1ServiceAccountTokenProjection with value set to v.
+func NewOptIoK8sAPICoreV1ServiceAccountTokenProjection(v IoK8sAPICoreV1ServiceAccountTokenProjection) OptIoK8sAPICoreV1ServiceAccountTokenProjection {
+	return OptIoK8sAPICoreV1ServiceAccountTokenProjection{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ServiceAccountTokenProjection is generic valiant of IoK8sAPICoreV1ServiceAccountTokenProjection.
-type OptionalIoK8sAPICoreV1ServiceAccountTokenProjection struct {
+// OptIoK8sAPICoreV1ServiceAccountTokenProjection is generic valiant of IoK8sAPICoreV1ServiceAccountTokenProjection.
+type OptIoK8sAPICoreV1ServiceAccountTokenProjection struct {
 	Value IoK8sAPICoreV1ServiceAccountTokenProjection
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ServiceAccountTokenProjection was set.
-func (o OptionalIoK8sAPICoreV1ServiceAccountTokenProjection) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ServiceAccountTokenProjection was set.
+func (o OptIoK8sAPICoreV1ServiceAccountTokenProjection) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ServiceAccountTokenProjection) Reset() {
+func (o *OptIoK8sAPICoreV1ServiceAccountTokenProjection) Reset() {
 	var v IoK8sAPICoreV1ServiceAccountTokenProjection
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ServiceAccountTokenProjection) SetTo(v IoK8sAPICoreV1ServiceAccountTokenProjection) {
+func (o *OptIoK8sAPICoreV1ServiceAccountTokenProjection) SetTo(v IoK8sAPICoreV1ServiceAccountTokenProjection) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ServiceAccountTokenProjection) Get() (v IoK8sAPICoreV1ServiceAccountTokenProjection, ok bool) {
+func (o OptIoK8sAPICoreV1ServiceAccountTokenProjection) Get() (v IoK8sAPICoreV1ServiceAccountTokenProjection, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ServiceSpec with value set to v.
-func NewOptionalIoK8sAPICoreV1ServiceSpec(v IoK8sAPICoreV1ServiceSpec) OptionalIoK8sAPICoreV1ServiceSpec {
-	return OptionalIoK8sAPICoreV1ServiceSpec{
+// New returns new OptIoK8sAPICoreV1ServiceSpec with value set to v.
+func NewOptIoK8sAPICoreV1ServiceSpec(v IoK8sAPICoreV1ServiceSpec) OptIoK8sAPICoreV1ServiceSpec {
+	return OptIoK8sAPICoreV1ServiceSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ServiceSpec is generic valiant of IoK8sAPICoreV1ServiceSpec.
-type OptionalIoK8sAPICoreV1ServiceSpec struct {
+// OptIoK8sAPICoreV1ServiceSpec is generic valiant of IoK8sAPICoreV1ServiceSpec.
+type OptIoK8sAPICoreV1ServiceSpec struct {
 	Value IoK8sAPICoreV1ServiceSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ServiceSpec was set.
-func (o OptionalIoK8sAPICoreV1ServiceSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ServiceSpec was set.
+func (o OptIoK8sAPICoreV1ServiceSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ServiceSpec) Reset() {
+func (o *OptIoK8sAPICoreV1ServiceSpec) Reset() {
 	var v IoK8sAPICoreV1ServiceSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ServiceSpec) SetTo(v IoK8sAPICoreV1ServiceSpec) {
+func (o *OptIoK8sAPICoreV1ServiceSpec) SetTo(v IoK8sAPICoreV1ServiceSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ServiceSpec) Get() (v IoK8sAPICoreV1ServiceSpec, ok bool) {
+func (o OptIoK8sAPICoreV1ServiceSpec) Get() (v IoK8sAPICoreV1ServiceSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1ServiceStatus with value set to v.
-func NewOptionalIoK8sAPICoreV1ServiceStatus(v IoK8sAPICoreV1ServiceStatus) OptionalIoK8sAPICoreV1ServiceStatus {
-	return OptionalIoK8sAPICoreV1ServiceStatus{
+// New returns new OptIoK8sAPICoreV1ServiceStatus with value set to v.
+func NewOptIoK8sAPICoreV1ServiceStatus(v IoK8sAPICoreV1ServiceStatus) OptIoK8sAPICoreV1ServiceStatus {
+	return OptIoK8sAPICoreV1ServiceStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1ServiceStatus is generic valiant of IoK8sAPICoreV1ServiceStatus.
-type OptionalIoK8sAPICoreV1ServiceStatus struct {
+// OptIoK8sAPICoreV1ServiceStatus is generic valiant of IoK8sAPICoreV1ServiceStatus.
+type OptIoK8sAPICoreV1ServiceStatus struct {
 	Value IoK8sAPICoreV1ServiceStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1ServiceStatus was set.
-func (o OptionalIoK8sAPICoreV1ServiceStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1ServiceStatus was set.
+func (o OptIoK8sAPICoreV1ServiceStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1ServiceStatus) Reset() {
+func (o *OptIoK8sAPICoreV1ServiceStatus) Reset() {
 	var v IoK8sAPICoreV1ServiceStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1ServiceStatus) SetTo(v IoK8sAPICoreV1ServiceStatus) {
+func (o *OptIoK8sAPICoreV1ServiceStatus) SetTo(v IoK8sAPICoreV1ServiceStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1ServiceStatus) Get() (v IoK8sAPICoreV1ServiceStatus, ok bool) {
+func (o OptIoK8sAPICoreV1ServiceStatus) Get() (v IoK8sAPICoreV1ServiceStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1SessionAffinityConfig with value set to v.
-func NewOptionalIoK8sAPICoreV1SessionAffinityConfig(v IoK8sAPICoreV1SessionAffinityConfig) OptionalIoK8sAPICoreV1SessionAffinityConfig {
-	return OptionalIoK8sAPICoreV1SessionAffinityConfig{
+// New returns new OptIoK8sAPICoreV1SessionAffinityConfig with value set to v.
+func NewOptIoK8sAPICoreV1SessionAffinityConfig(v IoK8sAPICoreV1SessionAffinityConfig) OptIoK8sAPICoreV1SessionAffinityConfig {
+	return OptIoK8sAPICoreV1SessionAffinityConfig{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1SessionAffinityConfig is generic valiant of IoK8sAPICoreV1SessionAffinityConfig.
-type OptionalIoK8sAPICoreV1SessionAffinityConfig struct {
+// OptIoK8sAPICoreV1SessionAffinityConfig is generic valiant of IoK8sAPICoreV1SessionAffinityConfig.
+type OptIoK8sAPICoreV1SessionAffinityConfig struct {
 	Value IoK8sAPICoreV1SessionAffinityConfig
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1SessionAffinityConfig was set.
-func (o OptionalIoK8sAPICoreV1SessionAffinityConfig) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1SessionAffinityConfig was set.
+func (o OptIoK8sAPICoreV1SessionAffinityConfig) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1SessionAffinityConfig) Reset() {
+func (o *OptIoK8sAPICoreV1SessionAffinityConfig) Reset() {
 	var v IoK8sAPICoreV1SessionAffinityConfig
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1SessionAffinityConfig) SetTo(v IoK8sAPICoreV1SessionAffinityConfig) {
+func (o *OptIoK8sAPICoreV1SessionAffinityConfig) SetTo(v IoK8sAPICoreV1SessionAffinityConfig) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1SessionAffinityConfig) Get() (v IoK8sAPICoreV1SessionAffinityConfig, ok bool) {
+func (o OptIoK8sAPICoreV1SessionAffinityConfig) Get() (v IoK8sAPICoreV1SessionAffinityConfig, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1StorageOSPersistentVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1StorageOSPersistentVolumeSource(v IoK8sAPICoreV1StorageOSPersistentVolumeSource) OptionalIoK8sAPICoreV1StorageOSPersistentVolumeSource {
-	return OptionalIoK8sAPICoreV1StorageOSPersistentVolumeSource{
+// New returns new OptIoK8sAPICoreV1StorageOSPersistentVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1StorageOSPersistentVolumeSource(v IoK8sAPICoreV1StorageOSPersistentVolumeSource) OptIoK8sAPICoreV1StorageOSPersistentVolumeSource {
+	return OptIoK8sAPICoreV1StorageOSPersistentVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1StorageOSPersistentVolumeSource is generic valiant of IoK8sAPICoreV1StorageOSPersistentVolumeSource.
-type OptionalIoK8sAPICoreV1StorageOSPersistentVolumeSource struct {
+// OptIoK8sAPICoreV1StorageOSPersistentVolumeSource is generic valiant of IoK8sAPICoreV1StorageOSPersistentVolumeSource.
+type OptIoK8sAPICoreV1StorageOSPersistentVolumeSource struct {
 	Value IoK8sAPICoreV1StorageOSPersistentVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1StorageOSPersistentVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1StorageOSPersistentVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1StorageOSPersistentVolumeSource was set.
+func (o OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1StorageOSPersistentVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) Reset() {
 	var v IoK8sAPICoreV1StorageOSPersistentVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1StorageOSPersistentVolumeSource) SetTo(v IoK8sAPICoreV1StorageOSPersistentVolumeSource) {
+func (o *OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) SetTo(v IoK8sAPICoreV1StorageOSPersistentVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1StorageOSPersistentVolumeSource) Get() (v IoK8sAPICoreV1StorageOSPersistentVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) Get() (v IoK8sAPICoreV1StorageOSPersistentVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1StorageOSVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1StorageOSVolumeSource(v IoK8sAPICoreV1StorageOSVolumeSource) OptionalIoK8sAPICoreV1StorageOSVolumeSource {
-	return OptionalIoK8sAPICoreV1StorageOSVolumeSource{
+// New returns new OptIoK8sAPICoreV1StorageOSVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1StorageOSVolumeSource(v IoK8sAPICoreV1StorageOSVolumeSource) OptIoK8sAPICoreV1StorageOSVolumeSource {
+	return OptIoK8sAPICoreV1StorageOSVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1StorageOSVolumeSource is generic valiant of IoK8sAPICoreV1StorageOSVolumeSource.
-type OptionalIoK8sAPICoreV1StorageOSVolumeSource struct {
+// OptIoK8sAPICoreV1StorageOSVolumeSource is generic valiant of IoK8sAPICoreV1StorageOSVolumeSource.
+type OptIoK8sAPICoreV1StorageOSVolumeSource struct {
 	Value IoK8sAPICoreV1StorageOSVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1StorageOSVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1StorageOSVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1StorageOSVolumeSource was set.
+func (o OptIoK8sAPICoreV1StorageOSVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1StorageOSVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1StorageOSVolumeSource) Reset() {
 	var v IoK8sAPICoreV1StorageOSVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1StorageOSVolumeSource) SetTo(v IoK8sAPICoreV1StorageOSVolumeSource) {
+func (o *OptIoK8sAPICoreV1StorageOSVolumeSource) SetTo(v IoK8sAPICoreV1StorageOSVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1StorageOSVolumeSource) Get() (v IoK8sAPICoreV1StorageOSVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1StorageOSVolumeSource) Get() (v IoK8sAPICoreV1StorageOSVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1TCPSocketAction with value set to v.
-func NewOptionalIoK8sAPICoreV1TCPSocketAction(v IoK8sAPICoreV1TCPSocketAction) OptionalIoK8sAPICoreV1TCPSocketAction {
-	return OptionalIoK8sAPICoreV1TCPSocketAction{
+// New returns new OptIoK8sAPICoreV1TCPSocketAction with value set to v.
+func NewOptIoK8sAPICoreV1TCPSocketAction(v IoK8sAPICoreV1TCPSocketAction) OptIoK8sAPICoreV1TCPSocketAction {
+	return OptIoK8sAPICoreV1TCPSocketAction{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1TCPSocketAction is generic valiant of IoK8sAPICoreV1TCPSocketAction.
-type OptionalIoK8sAPICoreV1TCPSocketAction struct {
+// OptIoK8sAPICoreV1TCPSocketAction is generic valiant of IoK8sAPICoreV1TCPSocketAction.
+type OptIoK8sAPICoreV1TCPSocketAction struct {
 	Value IoK8sAPICoreV1TCPSocketAction
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1TCPSocketAction was set.
-func (o OptionalIoK8sAPICoreV1TCPSocketAction) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1TCPSocketAction was set.
+func (o OptIoK8sAPICoreV1TCPSocketAction) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1TCPSocketAction) Reset() {
+func (o *OptIoK8sAPICoreV1TCPSocketAction) Reset() {
 	var v IoK8sAPICoreV1TCPSocketAction
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1TCPSocketAction) SetTo(v IoK8sAPICoreV1TCPSocketAction) {
+func (o *OptIoK8sAPICoreV1TCPSocketAction) SetTo(v IoK8sAPICoreV1TCPSocketAction) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1TCPSocketAction) Get() (v IoK8sAPICoreV1TCPSocketAction, ok bool) {
+func (o OptIoK8sAPICoreV1TCPSocketAction) Get() (v IoK8sAPICoreV1TCPSocketAction, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1TypedLocalObjectReference with value set to v.
-func NewOptionalIoK8sAPICoreV1TypedLocalObjectReference(v IoK8sAPICoreV1TypedLocalObjectReference) OptionalIoK8sAPICoreV1TypedLocalObjectReference {
-	return OptionalIoK8sAPICoreV1TypedLocalObjectReference{
+// New returns new OptIoK8sAPICoreV1TypedLocalObjectReference with value set to v.
+func NewOptIoK8sAPICoreV1TypedLocalObjectReference(v IoK8sAPICoreV1TypedLocalObjectReference) OptIoK8sAPICoreV1TypedLocalObjectReference {
+	return OptIoK8sAPICoreV1TypedLocalObjectReference{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1TypedLocalObjectReference is generic valiant of IoK8sAPICoreV1TypedLocalObjectReference.
-type OptionalIoK8sAPICoreV1TypedLocalObjectReference struct {
+// OptIoK8sAPICoreV1TypedLocalObjectReference is generic valiant of IoK8sAPICoreV1TypedLocalObjectReference.
+type OptIoK8sAPICoreV1TypedLocalObjectReference struct {
 	Value IoK8sAPICoreV1TypedLocalObjectReference
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1TypedLocalObjectReference was set.
-func (o OptionalIoK8sAPICoreV1TypedLocalObjectReference) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1TypedLocalObjectReference was set.
+func (o OptIoK8sAPICoreV1TypedLocalObjectReference) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1TypedLocalObjectReference) Reset() {
+func (o *OptIoK8sAPICoreV1TypedLocalObjectReference) Reset() {
 	var v IoK8sAPICoreV1TypedLocalObjectReference
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1TypedLocalObjectReference) SetTo(v IoK8sAPICoreV1TypedLocalObjectReference) {
+func (o *OptIoK8sAPICoreV1TypedLocalObjectReference) SetTo(v IoK8sAPICoreV1TypedLocalObjectReference) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1TypedLocalObjectReference) Get() (v IoK8sAPICoreV1TypedLocalObjectReference, ok bool) {
+func (o OptIoK8sAPICoreV1TypedLocalObjectReference) Get() (v IoK8sAPICoreV1TypedLocalObjectReference, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1VolumeNodeAffinity with value set to v.
-func NewOptionalIoK8sAPICoreV1VolumeNodeAffinity(v IoK8sAPICoreV1VolumeNodeAffinity) OptionalIoK8sAPICoreV1VolumeNodeAffinity {
-	return OptionalIoK8sAPICoreV1VolumeNodeAffinity{
+// New returns new OptIoK8sAPICoreV1VolumeNodeAffinity with value set to v.
+func NewOptIoK8sAPICoreV1VolumeNodeAffinity(v IoK8sAPICoreV1VolumeNodeAffinity) OptIoK8sAPICoreV1VolumeNodeAffinity {
+	return OptIoK8sAPICoreV1VolumeNodeAffinity{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1VolumeNodeAffinity is generic valiant of IoK8sAPICoreV1VolumeNodeAffinity.
-type OptionalIoK8sAPICoreV1VolumeNodeAffinity struct {
+// OptIoK8sAPICoreV1VolumeNodeAffinity is generic valiant of IoK8sAPICoreV1VolumeNodeAffinity.
+type OptIoK8sAPICoreV1VolumeNodeAffinity struct {
 	Value IoK8sAPICoreV1VolumeNodeAffinity
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1VolumeNodeAffinity was set.
-func (o OptionalIoK8sAPICoreV1VolumeNodeAffinity) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1VolumeNodeAffinity was set.
+func (o OptIoK8sAPICoreV1VolumeNodeAffinity) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1VolumeNodeAffinity) Reset() {
+func (o *OptIoK8sAPICoreV1VolumeNodeAffinity) Reset() {
 	var v IoK8sAPICoreV1VolumeNodeAffinity
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1VolumeNodeAffinity) SetTo(v IoK8sAPICoreV1VolumeNodeAffinity) {
+func (o *OptIoK8sAPICoreV1VolumeNodeAffinity) SetTo(v IoK8sAPICoreV1VolumeNodeAffinity) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1VolumeNodeAffinity) Get() (v IoK8sAPICoreV1VolumeNodeAffinity, ok bool) {
+func (o OptIoK8sAPICoreV1VolumeNodeAffinity) Get() (v IoK8sAPICoreV1VolumeNodeAffinity, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1VsphereVirtualDiskVolumeSource with value set to v.
-func NewOptionalIoK8sAPICoreV1VsphereVirtualDiskVolumeSource(v IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) OptionalIoK8sAPICoreV1VsphereVirtualDiskVolumeSource {
-	return OptionalIoK8sAPICoreV1VsphereVirtualDiskVolumeSource{
+// New returns new OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource with value set to v.
+func NewOptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource(v IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource {
+	return OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1VsphereVirtualDiskVolumeSource is generic valiant of IoK8sAPICoreV1VsphereVirtualDiskVolumeSource.
-type OptionalIoK8sAPICoreV1VsphereVirtualDiskVolumeSource struct {
+// OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource is generic valiant of IoK8sAPICoreV1VsphereVirtualDiskVolumeSource.
+type OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource struct {
 	Value IoK8sAPICoreV1VsphereVirtualDiskVolumeSource
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1VsphereVirtualDiskVolumeSource was set.
-func (o OptionalIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource was set.
+func (o OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Reset() {
+func (o *OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Reset() {
 	var v IoK8sAPICoreV1VsphereVirtualDiskVolumeSource
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) SetTo(v IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) {
+func (o *OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) SetTo(v IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Get() (v IoK8sAPICoreV1VsphereVirtualDiskVolumeSource, ok bool) {
+func (o OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Get() (v IoK8sAPICoreV1VsphereVirtualDiskVolumeSource, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPICoreV1WindowsSecurityContextOptions with value set to v.
-func NewOptionalIoK8sAPICoreV1WindowsSecurityContextOptions(v IoK8sAPICoreV1WindowsSecurityContextOptions) OptionalIoK8sAPICoreV1WindowsSecurityContextOptions {
-	return OptionalIoK8sAPICoreV1WindowsSecurityContextOptions{
+// New returns new OptIoK8sAPICoreV1WindowsSecurityContextOptions with value set to v.
+func NewOptIoK8sAPICoreV1WindowsSecurityContextOptions(v IoK8sAPICoreV1WindowsSecurityContextOptions) OptIoK8sAPICoreV1WindowsSecurityContextOptions {
+	return OptIoK8sAPICoreV1WindowsSecurityContextOptions{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPICoreV1WindowsSecurityContextOptions is generic valiant of IoK8sAPICoreV1WindowsSecurityContextOptions.
-type OptionalIoK8sAPICoreV1WindowsSecurityContextOptions struct {
+// OptIoK8sAPICoreV1WindowsSecurityContextOptions is generic valiant of IoK8sAPICoreV1WindowsSecurityContextOptions.
+type OptIoK8sAPICoreV1WindowsSecurityContextOptions struct {
 	Value IoK8sAPICoreV1WindowsSecurityContextOptions
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPICoreV1WindowsSecurityContextOptions was set.
-func (o OptionalIoK8sAPICoreV1WindowsSecurityContextOptions) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPICoreV1WindowsSecurityContextOptions was set.
+func (o OptIoK8sAPICoreV1WindowsSecurityContextOptions) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPICoreV1WindowsSecurityContextOptions) Reset() {
+func (o *OptIoK8sAPICoreV1WindowsSecurityContextOptions) Reset() {
 	var v IoK8sAPICoreV1WindowsSecurityContextOptions
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPICoreV1WindowsSecurityContextOptions) SetTo(v IoK8sAPICoreV1WindowsSecurityContextOptions) {
+func (o *OptIoK8sAPICoreV1WindowsSecurityContextOptions) SetTo(v IoK8sAPICoreV1WindowsSecurityContextOptions) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPICoreV1WindowsSecurityContextOptions) Get() (v IoK8sAPICoreV1WindowsSecurityContextOptions, ok bool) {
+func (o OptIoK8sAPICoreV1WindowsSecurityContextOptions) Get() (v IoK8sAPICoreV1WindowsSecurityContextOptions, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIDiscoveryV1EndpointConditions with value set to v.
-func NewOptionalIoK8sAPIDiscoveryV1EndpointConditions(v IoK8sAPIDiscoveryV1EndpointConditions) OptionalIoK8sAPIDiscoveryV1EndpointConditions {
-	return OptionalIoK8sAPIDiscoveryV1EndpointConditions{
+// New returns new OptIoK8sAPIDiscoveryV1EndpointConditions with value set to v.
+func NewOptIoK8sAPIDiscoveryV1EndpointConditions(v IoK8sAPIDiscoveryV1EndpointConditions) OptIoK8sAPIDiscoveryV1EndpointConditions {
+	return OptIoK8sAPIDiscoveryV1EndpointConditions{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIDiscoveryV1EndpointConditions is generic valiant of IoK8sAPIDiscoveryV1EndpointConditions.
-type OptionalIoK8sAPIDiscoveryV1EndpointConditions struct {
+// OptIoK8sAPIDiscoveryV1EndpointConditions is generic valiant of IoK8sAPIDiscoveryV1EndpointConditions.
+type OptIoK8sAPIDiscoveryV1EndpointConditions struct {
 	Value IoK8sAPIDiscoveryV1EndpointConditions
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIDiscoveryV1EndpointConditions was set.
-func (o OptionalIoK8sAPIDiscoveryV1EndpointConditions) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIDiscoveryV1EndpointConditions was set.
+func (o OptIoK8sAPIDiscoveryV1EndpointConditions) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIDiscoveryV1EndpointConditions) Reset() {
+func (o *OptIoK8sAPIDiscoveryV1EndpointConditions) Reset() {
 	var v IoK8sAPIDiscoveryV1EndpointConditions
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIDiscoveryV1EndpointConditions) SetTo(v IoK8sAPIDiscoveryV1EndpointConditions) {
+func (o *OptIoK8sAPIDiscoveryV1EndpointConditions) SetTo(v IoK8sAPIDiscoveryV1EndpointConditions) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIDiscoveryV1EndpointConditions) Get() (v IoK8sAPIDiscoveryV1EndpointConditions, ok bool) {
+func (o OptIoK8sAPIDiscoveryV1EndpointConditions) Get() (v IoK8sAPIDiscoveryV1EndpointConditions, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIDiscoveryV1EndpointHints with value set to v.
-func NewOptionalIoK8sAPIDiscoveryV1EndpointHints(v IoK8sAPIDiscoveryV1EndpointHints) OptionalIoK8sAPIDiscoveryV1EndpointHints {
-	return OptionalIoK8sAPIDiscoveryV1EndpointHints{
+// New returns new OptIoK8sAPIDiscoveryV1EndpointHints with value set to v.
+func NewOptIoK8sAPIDiscoveryV1EndpointHints(v IoK8sAPIDiscoveryV1EndpointHints) OptIoK8sAPIDiscoveryV1EndpointHints {
+	return OptIoK8sAPIDiscoveryV1EndpointHints{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIDiscoveryV1EndpointHints is generic valiant of IoK8sAPIDiscoveryV1EndpointHints.
-type OptionalIoK8sAPIDiscoveryV1EndpointHints struct {
+// OptIoK8sAPIDiscoveryV1EndpointHints is generic valiant of IoK8sAPIDiscoveryV1EndpointHints.
+type OptIoK8sAPIDiscoveryV1EndpointHints struct {
 	Value IoK8sAPIDiscoveryV1EndpointHints
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIDiscoveryV1EndpointHints was set.
-func (o OptionalIoK8sAPIDiscoveryV1EndpointHints) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIDiscoveryV1EndpointHints was set.
+func (o OptIoK8sAPIDiscoveryV1EndpointHints) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIDiscoveryV1EndpointHints) Reset() {
+func (o *OptIoK8sAPIDiscoveryV1EndpointHints) Reset() {
 	var v IoK8sAPIDiscoveryV1EndpointHints
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIDiscoveryV1EndpointHints) SetTo(v IoK8sAPIDiscoveryV1EndpointHints) {
+func (o *OptIoK8sAPIDiscoveryV1EndpointHints) SetTo(v IoK8sAPIDiscoveryV1EndpointHints) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIDiscoveryV1EndpointHints) Get() (v IoK8sAPIDiscoveryV1EndpointHints, ok bool) {
+func (o OptIoK8sAPIDiscoveryV1EndpointHints) Get() (v IoK8sAPIDiscoveryV1EndpointHints, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIDiscoveryV1beta1EndpointConditions with value set to v.
-func NewOptionalIoK8sAPIDiscoveryV1beta1EndpointConditions(v IoK8sAPIDiscoveryV1beta1EndpointConditions) OptionalIoK8sAPIDiscoveryV1beta1EndpointConditions {
-	return OptionalIoK8sAPIDiscoveryV1beta1EndpointConditions{
+// New returns new OptIoK8sAPIDiscoveryV1beta1EndpointConditions with value set to v.
+func NewOptIoK8sAPIDiscoveryV1beta1EndpointConditions(v IoK8sAPIDiscoveryV1beta1EndpointConditions) OptIoK8sAPIDiscoveryV1beta1EndpointConditions {
+	return OptIoK8sAPIDiscoveryV1beta1EndpointConditions{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIDiscoveryV1beta1EndpointConditions is generic valiant of IoK8sAPIDiscoveryV1beta1EndpointConditions.
-type OptionalIoK8sAPIDiscoveryV1beta1EndpointConditions struct {
+// OptIoK8sAPIDiscoveryV1beta1EndpointConditions is generic valiant of IoK8sAPIDiscoveryV1beta1EndpointConditions.
+type OptIoK8sAPIDiscoveryV1beta1EndpointConditions struct {
 	Value IoK8sAPIDiscoveryV1beta1EndpointConditions
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIDiscoveryV1beta1EndpointConditions was set.
-func (o OptionalIoK8sAPIDiscoveryV1beta1EndpointConditions) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIDiscoveryV1beta1EndpointConditions was set.
+func (o OptIoK8sAPIDiscoveryV1beta1EndpointConditions) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIDiscoveryV1beta1EndpointConditions) Reset() {
+func (o *OptIoK8sAPIDiscoveryV1beta1EndpointConditions) Reset() {
 	var v IoK8sAPIDiscoveryV1beta1EndpointConditions
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIDiscoveryV1beta1EndpointConditions) SetTo(v IoK8sAPIDiscoveryV1beta1EndpointConditions) {
+func (o *OptIoK8sAPIDiscoveryV1beta1EndpointConditions) SetTo(v IoK8sAPIDiscoveryV1beta1EndpointConditions) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIDiscoveryV1beta1EndpointConditions) Get() (v IoK8sAPIDiscoveryV1beta1EndpointConditions, ok bool) {
+func (o OptIoK8sAPIDiscoveryV1beta1EndpointConditions) Get() (v IoK8sAPIDiscoveryV1beta1EndpointConditions, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIDiscoveryV1beta1EndpointHints with value set to v.
-func NewOptionalIoK8sAPIDiscoveryV1beta1EndpointHints(v IoK8sAPIDiscoveryV1beta1EndpointHints) OptionalIoK8sAPIDiscoveryV1beta1EndpointHints {
-	return OptionalIoK8sAPIDiscoveryV1beta1EndpointHints{
+// New returns new OptIoK8sAPIDiscoveryV1beta1EndpointHints with value set to v.
+func NewOptIoK8sAPIDiscoveryV1beta1EndpointHints(v IoK8sAPIDiscoveryV1beta1EndpointHints) OptIoK8sAPIDiscoveryV1beta1EndpointHints {
+	return OptIoK8sAPIDiscoveryV1beta1EndpointHints{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIDiscoveryV1beta1EndpointHints is generic valiant of IoK8sAPIDiscoveryV1beta1EndpointHints.
-type OptionalIoK8sAPIDiscoveryV1beta1EndpointHints struct {
+// OptIoK8sAPIDiscoveryV1beta1EndpointHints is generic valiant of IoK8sAPIDiscoveryV1beta1EndpointHints.
+type OptIoK8sAPIDiscoveryV1beta1EndpointHints struct {
 	Value IoK8sAPIDiscoveryV1beta1EndpointHints
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIDiscoveryV1beta1EndpointHints was set.
-func (o OptionalIoK8sAPIDiscoveryV1beta1EndpointHints) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIDiscoveryV1beta1EndpointHints was set.
+func (o OptIoK8sAPIDiscoveryV1beta1EndpointHints) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIDiscoveryV1beta1EndpointHints) Reset() {
+func (o *OptIoK8sAPIDiscoveryV1beta1EndpointHints) Reset() {
 	var v IoK8sAPIDiscoveryV1beta1EndpointHints
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIDiscoveryV1beta1EndpointHints) SetTo(v IoK8sAPIDiscoveryV1beta1EndpointHints) {
+func (o *OptIoK8sAPIDiscoveryV1beta1EndpointHints) SetTo(v IoK8sAPIDiscoveryV1beta1EndpointHints) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIDiscoveryV1beta1EndpointHints) Get() (v IoK8sAPIDiscoveryV1beta1EndpointHints, ok bool) {
+func (o OptIoK8sAPIDiscoveryV1beta1EndpointHints) Get() (v IoK8sAPIDiscoveryV1beta1EndpointHints, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIEventsV1EventSeries with value set to v.
-func NewOptionalIoK8sAPIEventsV1EventSeries(v IoK8sAPIEventsV1EventSeries) OptionalIoK8sAPIEventsV1EventSeries {
-	return OptionalIoK8sAPIEventsV1EventSeries{
+// New returns new OptIoK8sAPIEventsV1EventSeries with value set to v.
+func NewOptIoK8sAPIEventsV1EventSeries(v IoK8sAPIEventsV1EventSeries) OptIoK8sAPIEventsV1EventSeries {
+	return OptIoK8sAPIEventsV1EventSeries{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIEventsV1EventSeries is generic valiant of IoK8sAPIEventsV1EventSeries.
-type OptionalIoK8sAPIEventsV1EventSeries struct {
+// OptIoK8sAPIEventsV1EventSeries is generic valiant of IoK8sAPIEventsV1EventSeries.
+type OptIoK8sAPIEventsV1EventSeries struct {
 	Value IoK8sAPIEventsV1EventSeries
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIEventsV1EventSeries was set.
-func (o OptionalIoK8sAPIEventsV1EventSeries) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIEventsV1EventSeries was set.
+func (o OptIoK8sAPIEventsV1EventSeries) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIEventsV1EventSeries) Reset() {
+func (o *OptIoK8sAPIEventsV1EventSeries) Reset() {
 	var v IoK8sAPIEventsV1EventSeries
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIEventsV1EventSeries) SetTo(v IoK8sAPIEventsV1EventSeries) {
+func (o *OptIoK8sAPIEventsV1EventSeries) SetTo(v IoK8sAPIEventsV1EventSeries) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIEventsV1EventSeries) Get() (v IoK8sAPIEventsV1EventSeries, ok bool) {
+func (o OptIoK8sAPIEventsV1EventSeries) Get() (v IoK8sAPIEventsV1EventSeries, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIEventsV1beta1EventSeries with value set to v.
-func NewOptionalIoK8sAPIEventsV1beta1EventSeries(v IoK8sAPIEventsV1beta1EventSeries) OptionalIoK8sAPIEventsV1beta1EventSeries {
-	return OptionalIoK8sAPIEventsV1beta1EventSeries{
+// New returns new OptIoK8sAPIEventsV1beta1EventSeries with value set to v.
+func NewOptIoK8sAPIEventsV1beta1EventSeries(v IoK8sAPIEventsV1beta1EventSeries) OptIoK8sAPIEventsV1beta1EventSeries {
+	return OptIoK8sAPIEventsV1beta1EventSeries{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIEventsV1beta1EventSeries is generic valiant of IoK8sAPIEventsV1beta1EventSeries.
-type OptionalIoK8sAPIEventsV1beta1EventSeries struct {
+// OptIoK8sAPIEventsV1beta1EventSeries is generic valiant of IoK8sAPIEventsV1beta1EventSeries.
+type OptIoK8sAPIEventsV1beta1EventSeries struct {
 	Value IoK8sAPIEventsV1beta1EventSeries
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIEventsV1beta1EventSeries was set.
-func (o OptionalIoK8sAPIEventsV1beta1EventSeries) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIEventsV1beta1EventSeries was set.
+func (o OptIoK8sAPIEventsV1beta1EventSeries) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIEventsV1beta1EventSeries) Reset() {
+func (o *OptIoK8sAPIEventsV1beta1EventSeries) Reset() {
 	var v IoK8sAPIEventsV1beta1EventSeries
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIEventsV1beta1EventSeries) SetTo(v IoK8sAPIEventsV1beta1EventSeries) {
+func (o *OptIoK8sAPIEventsV1beta1EventSeries) SetTo(v IoK8sAPIEventsV1beta1EventSeries) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIEventsV1beta1EventSeries) Get() (v IoK8sAPIEventsV1beta1EventSeries, ok bool) {
+func (o OptIoK8sAPIEventsV1beta1EventSeries) Get() (v IoK8sAPIEventsV1beta1EventSeries, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod(v IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) OptionalIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod {
-	return OptionalIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod{
+// New returns new OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod(v IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod {
+	return OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod is generic valiant of IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod.
-type OptionalIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod struct {
+// OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod is generic valiant of IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod.
+type OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod struct {
 	Value IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod was set.
+func (o OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) SetTo(v IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) {
+func (o *OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) SetTo(v IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Get() (v IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Get() (v IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec(v IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec {
-	return OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec{
+// New returns new OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec(v IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec {
+	return OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec is generic valiant of IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec.
-type OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec struct {
+// OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec is generic valiant of IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec.
+type OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec struct {
 	Value IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec was set.
+func (o OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) SetTo(v IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) {
+func (o *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) SetTo(v IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Get() (v IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Get() (v IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus(v IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus {
-	return OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus{
+// New returns new OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus(v IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus {
+	return OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus is generic valiant of IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus.
-type OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus struct {
+// OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus is generic valiant of IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus.
+type OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus struct {
 	Value IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus was set.
+func (o OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) SetTo(v IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) {
+func (o *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) SetTo(v IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Get() (v IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Get() (v IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta1GroupSubject with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta1GroupSubject(v IoK8sAPIFlowcontrolV1beta1GroupSubject) OptionalIoK8sAPIFlowcontrolV1beta1GroupSubject {
-	return OptionalIoK8sAPIFlowcontrolV1beta1GroupSubject{
+// New returns new OptIoK8sAPIFlowcontrolV1beta1GroupSubject with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta1GroupSubject(v IoK8sAPIFlowcontrolV1beta1GroupSubject) OptIoK8sAPIFlowcontrolV1beta1GroupSubject {
+	return OptIoK8sAPIFlowcontrolV1beta1GroupSubject{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta1GroupSubject is generic valiant of IoK8sAPIFlowcontrolV1beta1GroupSubject.
-type OptionalIoK8sAPIFlowcontrolV1beta1GroupSubject struct {
+// OptIoK8sAPIFlowcontrolV1beta1GroupSubject is generic valiant of IoK8sAPIFlowcontrolV1beta1GroupSubject.
+type OptIoK8sAPIFlowcontrolV1beta1GroupSubject struct {
 	Value IoK8sAPIFlowcontrolV1beta1GroupSubject
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta1GroupSubject was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1GroupSubject) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta1GroupSubject was set.
+func (o OptIoK8sAPIFlowcontrolV1beta1GroupSubject) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1GroupSubject) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta1GroupSubject) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta1GroupSubject
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1GroupSubject) SetTo(v IoK8sAPIFlowcontrolV1beta1GroupSubject) {
+func (o *OptIoK8sAPIFlowcontrolV1beta1GroupSubject) SetTo(v IoK8sAPIFlowcontrolV1beta1GroupSubject) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1GroupSubject) Get() (v IoK8sAPIFlowcontrolV1beta1GroupSubject, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta1GroupSubject) Get() (v IoK8sAPIFlowcontrolV1beta1GroupSubject, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta1LimitResponse with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta1LimitResponse(v IoK8sAPIFlowcontrolV1beta1LimitResponse) OptionalIoK8sAPIFlowcontrolV1beta1LimitResponse {
-	return OptionalIoK8sAPIFlowcontrolV1beta1LimitResponse{
+// New returns new OptIoK8sAPIFlowcontrolV1beta1LimitResponse with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta1LimitResponse(v IoK8sAPIFlowcontrolV1beta1LimitResponse) OptIoK8sAPIFlowcontrolV1beta1LimitResponse {
+	return OptIoK8sAPIFlowcontrolV1beta1LimitResponse{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta1LimitResponse is generic valiant of IoK8sAPIFlowcontrolV1beta1LimitResponse.
-type OptionalIoK8sAPIFlowcontrolV1beta1LimitResponse struct {
+// OptIoK8sAPIFlowcontrolV1beta1LimitResponse is generic valiant of IoK8sAPIFlowcontrolV1beta1LimitResponse.
+type OptIoK8sAPIFlowcontrolV1beta1LimitResponse struct {
 	Value IoK8sAPIFlowcontrolV1beta1LimitResponse
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta1LimitResponse was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1LimitResponse) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta1LimitResponse was set.
+func (o OptIoK8sAPIFlowcontrolV1beta1LimitResponse) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1LimitResponse) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta1LimitResponse) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta1LimitResponse
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1LimitResponse) SetTo(v IoK8sAPIFlowcontrolV1beta1LimitResponse) {
+func (o *OptIoK8sAPIFlowcontrolV1beta1LimitResponse) SetTo(v IoK8sAPIFlowcontrolV1beta1LimitResponse) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1LimitResponse) Get() (v IoK8sAPIFlowcontrolV1beta1LimitResponse, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta1LimitResponse) Get() (v IoK8sAPIFlowcontrolV1beta1LimitResponse, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration(v IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) OptionalIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration {
-	return OptionalIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration{
+// New returns new OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration(v IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration {
+	return OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration is generic valiant of IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration.
-type OptionalIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration struct {
+// OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration is generic valiant of IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration.
+type OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration struct {
 	Value IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) IsSet() bool {
-	return o.Set
-}
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration was set.
+func (o OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) SetTo(v IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) {
+func (o *OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) SetTo(v IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Get() (v IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Get() (v IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec(v IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec {
-	return OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec{
+// New returns new OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec(v IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec {
+	return OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec is generic valiant of IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec.
-type OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec struct {
+// OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec is generic valiant of IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec.
+type OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec struct {
 	Value IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec was set.
+func (o OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) SetTo(v IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) {
+func (o *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) SetTo(v IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Get() (v IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Get() (v IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus(v IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus {
-	return OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus{
+// New returns new OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus(v IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus {
+	return OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus is generic valiant of IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus.
-type OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus struct {
+// OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus is generic valiant of IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus.
+type OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus struct {
 	Value IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) IsSet() bool {
-	return o.Set
-}
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus was set.
+func (o OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) SetTo(v IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) {
+func (o *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) SetTo(v IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Get() (v IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Get() (v IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta1QueuingConfiguration with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta1QueuingConfiguration(v IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) OptionalIoK8sAPIFlowcontrolV1beta1QueuingConfiguration {
-	return OptionalIoK8sAPIFlowcontrolV1beta1QueuingConfiguration{
+// New returns new OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration(v IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration {
+	return OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta1QueuingConfiguration is generic valiant of IoK8sAPIFlowcontrolV1beta1QueuingConfiguration.
-type OptionalIoK8sAPIFlowcontrolV1beta1QueuingConfiguration struct {
+// OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration is generic valiant of IoK8sAPIFlowcontrolV1beta1QueuingConfiguration.
+type OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration struct {
 	Value IoK8sAPIFlowcontrolV1beta1QueuingConfiguration
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta1QueuingConfiguration was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration was set.
+func (o OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta1QueuingConfiguration
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) SetTo(v IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) {
+func (o *OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) SetTo(v IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Get() (v IoK8sAPIFlowcontrolV1beta1QueuingConfiguration, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Get() (v IoK8sAPIFlowcontrolV1beta1QueuingConfiguration, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject(v IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) OptionalIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject {
-	return OptionalIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject{
+// New returns new OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject(v IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject {
+	return OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject is generic valiant of IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject.
-type OptionalIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject struct {
+// OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject is generic valiant of IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject.
+type OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject struct {
 	Value IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject was set.
+func (o OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) SetTo(v IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) {
+func (o *OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) SetTo(v IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Get() (v IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Get() (v IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta1UserSubject with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta1UserSubject(v IoK8sAPIFlowcontrolV1beta1UserSubject) OptionalIoK8sAPIFlowcontrolV1beta1UserSubject {
-	return OptionalIoK8sAPIFlowcontrolV1beta1UserSubject{
+// New returns new OptIoK8sAPIFlowcontrolV1beta1UserSubject with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta1UserSubject(v IoK8sAPIFlowcontrolV1beta1UserSubject) OptIoK8sAPIFlowcontrolV1beta1UserSubject {
+	return OptIoK8sAPIFlowcontrolV1beta1UserSubject{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta1UserSubject is generic valiant of IoK8sAPIFlowcontrolV1beta1UserSubject.
-type OptionalIoK8sAPIFlowcontrolV1beta1UserSubject struct {
+// OptIoK8sAPIFlowcontrolV1beta1UserSubject is generic valiant of IoK8sAPIFlowcontrolV1beta1UserSubject.
+type OptIoK8sAPIFlowcontrolV1beta1UserSubject struct {
 	Value IoK8sAPIFlowcontrolV1beta1UserSubject
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta1UserSubject was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1UserSubject) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta1UserSubject was set.
+func (o OptIoK8sAPIFlowcontrolV1beta1UserSubject) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1UserSubject) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta1UserSubject) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta1UserSubject
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta1UserSubject) SetTo(v IoK8sAPIFlowcontrolV1beta1UserSubject) {
+func (o *OptIoK8sAPIFlowcontrolV1beta1UserSubject) SetTo(v IoK8sAPIFlowcontrolV1beta1UserSubject) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta1UserSubject) Get() (v IoK8sAPIFlowcontrolV1beta1UserSubject, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta1UserSubject) Get() (v IoK8sAPIFlowcontrolV1beta1UserSubject, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod(v IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) OptionalIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod {
-	return OptionalIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod{
+// New returns new OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod(v IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod {
+	return OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod is generic valiant of IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod.
-type OptionalIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod struct {
+// OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod is generic valiant of IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod.
+type OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod struct {
 	Value IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod was set.
+func (o OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) SetTo(v IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) {
+func (o *OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) SetTo(v IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Get() (v IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Get() (v IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec(v IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec {
-	return OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec{
+// New returns new OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec(v IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec {
+	return OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec is generic valiant of IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec.
-type OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec struct {
+// OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec is generic valiant of IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec.
+type OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec struct {
 	Value IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec was set.
+func (o OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) SetTo(v IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) {
+func (o *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) SetTo(v IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Get() (v IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Get() (v IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus(v IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus {
-	return OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus{
+// New returns new OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus(v IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus {
+	return OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus is generic valiant of IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus.
-type OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus struct {
+// OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus is generic valiant of IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus.
+type OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus struct {
 	Value IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus was set.
+func (o OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) SetTo(v IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) {
+func (o *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) SetTo(v IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Get() (v IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Get() (v IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta2GroupSubject with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta2GroupSubject(v IoK8sAPIFlowcontrolV1beta2GroupSubject) OptionalIoK8sAPIFlowcontrolV1beta2GroupSubject {
-	return OptionalIoK8sAPIFlowcontrolV1beta2GroupSubject{
+// New returns new OptIoK8sAPIFlowcontrolV1beta2GroupSubject with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta2GroupSubject(v IoK8sAPIFlowcontrolV1beta2GroupSubject) OptIoK8sAPIFlowcontrolV1beta2GroupSubject {
+	return OptIoK8sAPIFlowcontrolV1beta2GroupSubject{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta2GroupSubject is generic valiant of IoK8sAPIFlowcontrolV1beta2GroupSubject.
-type OptionalIoK8sAPIFlowcontrolV1beta2GroupSubject struct {
+// OptIoK8sAPIFlowcontrolV1beta2GroupSubject is generic valiant of IoK8sAPIFlowcontrolV1beta2GroupSubject.
+type OptIoK8sAPIFlowcontrolV1beta2GroupSubject struct {
 	Value IoK8sAPIFlowcontrolV1beta2GroupSubject
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta2GroupSubject was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2GroupSubject) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta2GroupSubject was set.
+func (o OptIoK8sAPIFlowcontrolV1beta2GroupSubject) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2GroupSubject) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta2GroupSubject) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta2GroupSubject
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2GroupSubject) SetTo(v IoK8sAPIFlowcontrolV1beta2GroupSubject) {
+func (o *OptIoK8sAPIFlowcontrolV1beta2GroupSubject) SetTo(v IoK8sAPIFlowcontrolV1beta2GroupSubject) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2GroupSubject) Get() (v IoK8sAPIFlowcontrolV1beta2GroupSubject, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta2GroupSubject) Get() (v IoK8sAPIFlowcontrolV1beta2GroupSubject, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta2LimitResponse with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta2LimitResponse(v IoK8sAPIFlowcontrolV1beta2LimitResponse) OptionalIoK8sAPIFlowcontrolV1beta2LimitResponse {
-	return OptionalIoK8sAPIFlowcontrolV1beta2LimitResponse{
+// New returns new OptIoK8sAPIFlowcontrolV1beta2LimitResponse with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta2LimitResponse(v IoK8sAPIFlowcontrolV1beta2LimitResponse) OptIoK8sAPIFlowcontrolV1beta2LimitResponse {
+	return OptIoK8sAPIFlowcontrolV1beta2LimitResponse{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta2LimitResponse is generic valiant of IoK8sAPIFlowcontrolV1beta2LimitResponse.
-type OptionalIoK8sAPIFlowcontrolV1beta2LimitResponse struct {
+// OptIoK8sAPIFlowcontrolV1beta2LimitResponse is generic valiant of IoK8sAPIFlowcontrolV1beta2LimitResponse.
+type OptIoK8sAPIFlowcontrolV1beta2LimitResponse struct {
 	Value IoK8sAPIFlowcontrolV1beta2LimitResponse
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta2LimitResponse was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2LimitResponse) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta2LimitResponse was set.
+func (o OptIoK8sAPIFlowcontrolV1beta2LimitResponse) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2LimitResponse) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta2LimitResponse) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta2LimitResponse
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2LimitResponse) SetTo(v IoK8sAPIFlowcontrolV1beta2LimitResponse) {
+func (o *OptIoK8sAPIFlowcontrolV1beta2LimitResponse) SetTo(v IoK8sAPIFlowcontrolV1beta2LimitResponse) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2LimitResponse) Get() (v IoK8sAPIFlowcontrolV1beta2LimitResponse, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta2LimitResponse) Get() (v IoK8sAPIFlowcontrolV1beta2LimitResponse, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration(v IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) OptionalIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration {
-	return OptionalIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration{
+// New returns new OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration(v IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration {
+	return OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration is generic valiant of IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration.
-type OptionalIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration struct {
+// OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration is generic valiant of IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration.
+type OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration struct {
 	Value IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) IsSet() bool {
-	return o.Set
-}
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration was set.
+func (o OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) SetTo(v IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) {
+func (o *OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) SetTo(v IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Get() (v IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Get() (v IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec(v IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec {
-	return OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec{
+// New returns new OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec(v IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec {
+	return OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec is generic valiant of IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec.
-type OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec struct {
+// OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec is generic valiant of IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec.
+type OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec struct {
 	Value IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec was set.
+func (o OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) SetTo(v IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) {
+func (o *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) SetTo(v IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Get() (v IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Get() (v IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus(v IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus {
-	return OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus{
+// New returns new OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus(v IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus {
+	return OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus is generic valiant of IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus.
-type OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus struct {
+// OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus is generic valiant of IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus.
+type OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus struct {
 	Value IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) IsSet() bool {
-	return o.Set
-}
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus was set.
+func (o OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) SetTo(v IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) {
+func (o *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) SetTo(v IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Get() (v IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Get() (v IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta2QueuingConfiguration with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta2QueuingConfiguration(v IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) OptionalIoK8sAPIFlowcontrolV1beta2QueuingConfiguration {
-	return OptionalIoK8sAPIFlowcontrolV1beta2QueuingConfiguration{
+// New returns new OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration(v IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration {
+	return OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta2QueuingConfiguration is generic valiant of IoK8sAPIFlowcontrolV1beta2QueuingConfiguration.
-type OptionalIoK8sAPIFlowcontrolV1beta2QueuingConfiguration struct {
+// OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration is generic valiant of IoK8sAPIFlowcontrolV1beta2QueuingConfiguration.
+type OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration struct {
 	Value IoK8sAPIFlowcontrolV1beta2QueuingConfiguration
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta2QueuingConfiguration was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration was set.
+func (o OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta2QueuingConfiguration
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) SetTo(v IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) {
+func (o *OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) SetTo(v IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Get() (v IoK8sAPIFlowcontrolV1beta2QueuingConfiguration, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Get() (v IoK8sAPIFlowcontrolV1beta2QueuingConfiguration, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject(v IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) OptionalIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject {
-	return OptionalIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject{
+// New returns new OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject(v IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject {
+	return OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject is generic valiant of IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject.
-type OptionalIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject struct {
+// OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject is generic valiant of IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject.
+type OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject struct {
 	Value IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject was set.
+func (o OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) SetTo(v IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) {
+func (o *OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) SetTo(v IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Get() (v IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Get() (v IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIFlowcontrolV1beta2UserSubject with value set to v.
-func NewOptionalIoK8sAPIFlowcontrolV1beta2UserSubject(v IoK8sAPIFlowcontrolV1beta2UserSubject) OptionalIoK8sAPIFlowcontrolV1beta2UserSubject {
-	return OptionalIoK8sAPIFlowcontrolV1beta2UserSubject{
+// New returns new OptIoK8sAPIFlowcontrolV1beta2UserSubject with value set to v.
+func NewOptIoK8sAPIFlowcontrolV1beta2UserSubject(v IoK8sAPIFlowcontrolV1beta2UserSubject) OptIoK8sAPIFlowcontrolV1beta2UserSubject {
+	return OptIoK8sAPIFlowcontrolV1beta2UserSubject{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIFlowcontrolV1beta2UserSubject is generic valiant of IoK8sAPIFlowcontrolV1beta2UserSubject.
-type OptionalIoK8sAPIFlowcontrolV1beta2UserSubject struct {
+// OptIoK8sAPIFlowcontrolV1beta2UserSubject is generic valiant of IoK8sAPIFlowcontrolV1beta2UserSubject.
+type OptIoK8sAPIFlowcontrolV1beta2UserSubject struct {
 	Value IoK8sAPIFlowcontrolV1beta2UserSubject
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIFlowcontrolV1beta2UserSubject was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2UserSubject) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIFlowcontrolV1beta2UserSubject was set.
+func (o OptIoK8sAPIFlowcontrolV1beta2UserSubject) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2UserSubject) Reset() {
+func (o *OptIoK8sAPIFlowcontrolV1beta2UserSubject) Reset() {
 	var v IoK8sAPIFlowcontrolV1beta2UserSubject
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIFlowcontrolV1beta2UserSubject) SetTo(v IoK8sAPIFlowcontrolV1beta2UserSubject) {
+func (o *OptIoK8sAPIFlowcontrolV1beta2UserSubject) SetTo(v IoK8sAPIFlowcontrolV1beta2UserSubject) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIFlowcontrolV1beta2UserSubject) Get() (v IoK8sAPIFlowcontrolV1beta2UserSubject, ok bool) {
+func (o OptIoK8sAPIFlowcontrolV1beta2UserSubject) Get() (v IoK8sAPIFlowcontrolV1beta2UserSubject, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPINetworkingV1HTTPIngressRuleValue with value set to v.
-func NewOptionalIoK8sAPINetworkingV1HTTPIngressRuleValue(v IoK8sAPINetworkingV1HTTPIngressRuleValue) OptionalIoK8sAPINetworkingV1HTTPIngressRuleValue {
-	return OptionalIoK8sAPINetworkingV1HTTPIngressRuleValue{
+// New returns new OptIoK8sAPINetworkingV1HTTPIngressRuleValue with value set to v.
+func NewOptIoK8sAPINetworkingV1HTTPIngressRuleValue(v IoK8sAPINetworkingV1HTTPIngressRuleValue) OptIoK8sAPINetworkingV1HTTPIngressRuleValue {
+	return OptIoK8sAPINetworkingV1HTTPIngressRuleValue{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPINetworkingV1HTTPIngressRuleValue is generic valiant of IoK8sAPINetworkingV1HTTPIngressRuleValue.
-type OptionalIoK8sAPINetworkingV1HTTPIngressRuleValue struct {
+// OptIoK8sAPINetworkingV1HTTPIngressRuleValue is generic valiant of IoK8sAPINetworkingV1HTTPIngressRuleValue.
+type OptIoK8sAPINetworkingV1HTTPIngressRuleValue struct {
 	Value IoK8sAPINetworkingV1HTTPIngressRuleValue
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPINetworkingV1HTTPIngressRuleValue was set.
-func (o OptionalIoK8sAPINetworkingV1HTTPIngressRuleValue) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPINetworkingV1HTTPIngressRuleValue was set.
+func (o OptIoK8sAPINetworkingV1HTTPIngressRuleValue) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPINetworkingV1HTTPIngressRuleValue) Reset() {
+func (o *OptIoK8sAPINetworkingV1HTTPIngressRuleValue) Reset() {
 	var v IoK8sAPINetworkingV1HTTPIngressRuleValue
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPINetworkingV1HTTPIngressRuleValue) SetTo(v IoK8sAPINetworkingV1HTTPIngressRuleValue) {
+func (o *OptIoK8sAPINetworkingV1HTTPIngressRuleValue) SetTo(v IoK8sAPINetworkingV1HTTPIngressRuleValue) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPINetworkingV1HTTPIngressRuleValue) Get() (v IoK8sAPINetworkingV1HTTPIngressRuleValue, ok bool) {
+func (o OptIoK8sAPINetworkingV1HTTPIngressRuleValue) Get() (v IoK8sAPINetworkingV1HTTPIngressRuleValue, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPINetworkingV1IPBlock with value set to v.
-func NewOptionalIoK8sAPINetworkingV1IPBlock(v IoK8sAPINetworkingV1IPBlock) OptionalIoK8sAPINetworkingV1IPBlock {
-	return OptionalIoK8sAPINetworkingV1IPBlock{
+// New returns new OptIoK8sAPINetworkingV1IPBlock with value set to v.
+func NewOptIoK8sAPINetworkingV1IPBlock(v IoK8sAPINetworkingV1IPBlock) OptIoK8sAPINetworkingV1IPBlock {
+	return OptIoK8sAPINetworkingV1IPBlock{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPINetworkingV1IPBlock is generic valiant of IoK8sAPINetworkingV1IPBlock.
-type OptionalIoK8sAPINetworkingV1IPBlock struct {
+// OptIoK8sAPINetworkingV1IPBlock is generic valiant of IoK8sAPINetworkingV1IPBlock.
+type OptIoK8sAPINetworkingV1IPBlock struct {
 	Value IoK8sAPINetworkingV1IPBlock
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPINetworkingV1IPBlock was set.
-func (o OptionalIoK8sAPINetworkingV1IPBlock) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPINetworkingV1IPBlock was set.
+func (o OptIoK8sAPINetworkingV1IPBlock) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPINetworkingV1IPBlock) Reset() {
+func (o *OptIoK8sAPINetworkingV1IPBlock) Reset() {
 	var v IoK8sAPINetworkingV1IPBlock
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPINetworkingV1IPBlock) SetTo(v IoK8sAPINetworkingV1IPBlock) {
+func (o *OptIoK8sAPINetworkingV1IPBlock) SetTo(v IoK8sAPINetworkingV1IPBlock) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPINetworkingV1IPBlock) Get() (v IoK8sAPINetworkingV1IPBlock, ok bool) {
+func (o OptIoK8sAPINetworkingV1IPBlock) Get() (v IoK8sAPINetworkingV1IPBlock, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPINetworkingV1IngressBackend with value set to v.
-func NewOptionalIoK8sAPINetworkingV1IngressBackend(v IoK8sAPINetworkingV1IngressBackend) OptionalIoK8sAPINetworkingV1IngressBackend {
-	return OptionalIoK8sAPINetworkingV1IngressBackend{
+// New returns new OptIoK8sAPINetworkingV1IngressBackend with value set to v.
+func NewOptIoK8sAPINetworkingV1IngressBackend(v IoK8sAPINetworkingV1IngressBackend) OptIoK8sAPINetworkingV1IngressBackend {
+	return OptIoK8sAPINetworkingV1IngressBackend{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPINetworkingV1IngressBackend is generic valiant of IoK8sAPINetworkingV1IngressBackend.
-type OptionalIoK8sAPINetworkingV1IngressBackend struct {
+// OptIoK8sAPINetworkingV1IngressBackend is generic valiant of IoK8sAPINetworkingV1IngressBackend.
+type OptIoK8sAPINetworkingV1IngressBackend struct {
 	Value IoK8sAPINetworkingV1IngressBackend
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPINetworkingV1IngressBackend was set.
-func (o OptionalIoK8sAPINetworkingV1IngressBackend) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPINetworkingV1IngressBackend was set.
+func (o OptIoK8sAPINetworkingV1IngressBackend) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPINetworkingV1IngressBackend) Reset() {
+func (o *OptIoK8sAPINetworkingV1IngressBackend) Reset() {
 	var v IoK8sAPINetworkingV1IngressBackend
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPINetworkingV1IngressBackend) SetTo(v IoK8sAPINetworkingV1IngressBackend) {
+func (o *OptIoK8sAPINetworkingV1IngressBackend) SetTo(v IoK8sAPINetworkingV1IngressBackend) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPINetworkingV1IngressBackend) Get() (v IoK8sAPINetworkingV1IngressBackend, ok bool) {
+func (o OptIoK8sAPINetworkingV1IngressBackend) Get() (v IoK8sAPINetworkingV1IngressBackend, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPINetworkingV1IngressClassParametersReference with value set to v.
-func NewOptionalIoK8sAPINetworkingV1IngressClassParametersReference(v IoK8sAPINetworkingV1IngressClassParametersReference) OptionalIoK8sAPINetworkingV1IngressClassParametersReference {
-	return OptionalIoK8sAPINetworkingV1IngressClassParametersReference{
+// New returns new OptIoK8sAPINetworkingV1IngressClassParametersReference with value set to v.
+func NewOptIoK8sAPINetworkingV1IngressClassParametersReference(v IoK8sAPINetworkingV1IngressClassParametersReference) OptIoK8sAPINetworkingV1IngressClassParametersReference {
+	return OptIoK8sAPINetworkingV1IngressClassParametersReference{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPINetworkingV1IngressClassParametersReference is generic valiant of IoK8sAPINetworkingV1IngressClassParametersReference.
-type OptionalIoK8sAPINetworkingV1IngressClassParametersReference struct {
+// OptIoK8sAPINetworkingV1IngressClassParametersReference is generic valiant of IoK8sAPINetworkingV1IngressClassParametersReference.
+type OptIoK8sAPINetworkingV1IngressClassParametersReference struct {
 	Value IoK8sAPINetworkingV1IngressClassParametersReference
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPINetworkingV1IngressClassParametersReference was set.
-func (o OptionalIoK8sAPINetworkingV1IngressClassParametersReference) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPINetworkingV1IngressClassParametersReference was set.
+func (o OptIoK8sAPINetworkingV1IngressClassParametersReference) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPINetworkingV1IngressClassParametersReference) Reset() {
+func (o *OptIoK8sAPINetworkingV1IngressClassParametersReference) Reset() {
 	var v IoK8sAPINetworkingV1IngressClassParametersReference
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPINetworkingV1IngressClassParametersReference) SetTo(v IoK8sAPINetworkingV1IngressClassParametersReference) {
+func (o *OptIoK8sAPINetworkingV1IngressClassParametersReference) SetTo(v IoK8sAPINetworkingV1IngressClassParametersReference) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPINetworkingV1IngressClassParametersReference) Get() (v IoK8sAPINetworkingV1IngressClassParametersReference, ok bool) {
+func (o OptIoK8sAPINetworkingV1IngressClassParametersReference) Get() (v IoK8sAPINetworkingV1IngressClassParametersReference, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPINetworkingV1IngressClassSpec with value set to v.
-func NewOptionalIoK8sAPINetworkingV1IngressClassSpec(v IoK8sAPINetworkingV1IngressClassSpec) OptionalIoK8sAPINetworkingV1IngressClassSpec {
-	return OptionalIoK8sAPINetworkingV1IngressClassSpec{
+// New returns new OptIoK8sAPINetworkingV1IngressClassSpec with value set to v.
+func NewOptIoK8sAPINetworkingV1IngressClassSpec(v IoK8sAPINetworkingV1IngressClassSpec) OptIoK8sAPINetworkingV1IngressClassSpec {
+	return OptIoK8sAPINetworkingV1IngressClassSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPINetworkingV1IngressClassSpec is generic valiant of IoK8sAPINetworkingV1IngressClassSpec.
-type OptionalIoK8sAPINetworkingV1IngressClassSpec struct {
+// OptIoK8sAPINetworkingV1IngressClassSpec is generic valiant of IoK8sAPINetworkingV1IngressClassSpec.
+type OptIoK8sAPINetworkingV1IngressClassSpec struct {
 	Value IoK8sAPINetworkingV1IngressClassSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPINetworkingV1IngressClassSpec was set.
-func (o OptionalIoK8sAPINetworkingV1IngressClassSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPINetworkingV1IngressClassSpec was set.
+func (o OptIoK8sAPINetworkingV1IngressClassSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPINetworkingV1IngressClassSpec) Reset() {
+func (o *OptIoK8sAPINetworkingV1IngressClassSpec) Reset() {
 	var v IoK8sAPINetworkingV1IngressClassSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPINetworkingV1IngressClassSpec) SetTo(v IoK8sAPINetworkingV1IngressClassSpec) {
+func (o *OptIoK8sAPINetworkingV1IngressClassSpec) SetTo(v IoK8sAPINetworkingV1IngressClassSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPINetworkingV1IngressClassSpec) Get() (v IoK8sAPINetworkingV1IngressClassSpec, ok bool) {
+func (o OptIoK8sAPINetworkingV1IngressClassSpec) Get() (v IoK8sAPINetworkingV1IngressClassSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPINetworkingV1IngressServiceBackend with value set to v.
-func NewOptionalIoK8sAPINetworkingV1IngressServiceBackend(v IoK8sAPINetworkingV1IngressServiceBackend) OptionalIoK8sAPINetworkingV1IngressServiceBackend {
-	return OptionalIoK8sAPINetworkingV1IngressServiceBackend{
+// New returns new OptIoK8sAPINetworkingV1IngressServiceBackend with value set to v.
+func NewOptIoK8sAPINetworkingV1IngressServiceBackend(v IoK8sAPINetworkingV1IngressServiceBackend) OptIoK8sAPINetworkingV1IngressServiceBackend {
+	return OptIoK8sAPINetworkingV1IngressServiceBackend{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPINetworkingV1IngressServiceBackend is generic valiant of IoK8sAPINetworkingV1IngressServiceBackend.
-type OptionalIoK8sAPINetworkingV1IngressServiceBackend struct {
+// OptIoK8sAPINetworkingV1IngressServiceBackend is generic valiant of IoK8sAPINetworkingV1IngressServiceBackend.
+type OptIoK8sAPINetworkingV1IngressServiceBackend struct {
 	Value IoK8sAPINetworkingV1IngressServiceBackend
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPINetworkingV1IngressServiceBackend was set.
-func (o OptionalIoK8sAPINetworkingV1IngressServiceBackend) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPINetworkingV1IngressServiceBackend was set.
+func (o OptIoK8sAPINetworkingV1IngressServiceBackend) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPINetworkingV1IngressServiceBackend) Reset() {
+func (o *OptIoK8sAPINetworkingV1IngressServiceBackend) Reset() {
 	var v IoK8sAPINetworkingV1IngressServiceBackend
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPINetworkingV1IngressServiceBackend) SetTo(v IoK8sAPINetworkingV1IngressServiceBackend) {
+func (o *OptIoK8sAPINetworkingV1IngressServiceBackend) SetTo(v IoK8sAPINetworkingV1IngressServiceBackend) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPINetworkingV1IngressServiceBackend) Get() (v IoK8sAPINetworkingV1IngressServiceBackend, ok bool) {
+func (o OptIoK8sAPINetworkingV1IngressServiceBackend) Get() (v IoK8sAPINetworkingV1IngressServiceBackend, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPINetworkingV1IngressSpec with value set to v.
-func NewOptionalIoK8sAPINetworkingV1IngressSpec(v IoK8sAPINetworkingV1IngressSpec) OptionalIoK8sAPINetworkingV1IngressSpec {
-	return OptionalIoK8sAPINetworkingV1IngressSpec{
+// New returns new OptIoK8sAPINetworkingV1IngressSpec with value set to v.
+func NewOptIoK8sAPINetworkingV1IngressSpec(v IoK8sAPINetworkingV1IngressSpec) OptIoK8sAPINetworkingV1IngressSpec {
+	return OptIoK8sAPINetworkingV1IngressSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPINetworkingV1IngressSpec is generic valiant of IoK8sAPINetworkingV1IngressSpec.
-type OptionalIoK8sAPINetworkingV1IngressSpec struct {
+// OptIoK8sAPINetworkingV1IngressSpec is generic valiant of IoK8sAPINetworkingV1IngressSpec.
+type OptIoK8sAPINetworkingV1IngressSpec struct {
 	Value IoK8sAPINetworkingV1IngressSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPINetworkingV1IngressSpec was set.
-func (o OptionalIoK8sAPINetworkingV1IngressSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPINetworkingV1IngressSpec was set.
+func (o OptIoK8sAPINetworkingV1IngressSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPINetworkingV1IngressSpec) Reset() {
+func (o *OptIoK8sAPINetworkingV1IngressSpec) Reset() {
 	var v IoK8sAPINetworkingV1IngressSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPINetworkingV1IngressSpec) SetTo(v IoK8sAPINetworkingV1IngressSpec) {
+func (o *OptIoK8sAPINetworkingV1IngressSpec) SetTo(v IoK8sAPINetworkingV1IngressSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPINetworkingV1IngressSpec) Get() (v IoK8sAPINetworkingV1IngressSpec, ok bool) {
+func (o OptIoK8sAPINetworkingV1IngressSpec) Get() (v IoK8sAPINetworkingV1IngressSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPINetworkingV1IngressStatus with value set to v.
-func NewOptionalIoK8sAPINetworkingV1IngressStatus(v IoK8sAPINetworkingV1IngressStatus) OptionalIoK8sAPINetworkingV1IngressStatus {
-	return OptionalIoK8sAPINetworkingV1IngressStatus{
+// New returns new OptIoK8sAPINetworkingV1IngressStatus with value set to v.
+func NewOptIoK8sAPINetworkingV1IngressStatus(v IoK8sAPINetworkingV1IngressStatus) OptIoK8sAPINetworkingV1IngressStatus {
+	return OptIoK8sAPINetworkingV1IngressStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPINetworkingV1IngressStatus is generic valiant of IoK8sAPINetworkingV1IngressStatus.
-type OptionalIoK8sAPINetworkingV1IngressStatus struct {
+// OptIoK8sAPINetworkingV1IngressStatus is generic valiant of IoK8sAPINetworkingV1IngressStatus.
+type OptIoK8sAPINetworkingV1IngressStatus struct {
 	Value IoK8sAPINetworkingV1IngressStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPINetworkingV1IngressStatus was set.
-func (o OptionalIoK8sAPINetworkingV1IngressStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPINetworkingV1IngressStatus was set.
+func (o OptIoK8sAPINetworkingV1IngressStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPINetworkingV1IngressStatus) Reset() {
+func (o *OptIoK8sAPINetworkingV1IngressStatus) Reset() {
 	var v IoK8sAPINetworkingV1IngressStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPINetworkingV1IngressStatus) SetTo(v IoK8sAPINetworkingV1IngressStatus) {
+func (o *OptIoK8sAPINetworkingV1IngressStatus) SetTo(v IoK8sAPINetworkingV1IngressStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPINetworkingV1IngressStatus) Get() (v IoK8sAPINetworkingV1IngressStatus, ok bool) {
+func (o OptIoK8sAPINetworkingV1IngressStatus) Get() (v IoK8sAPINetworkingV1IngressStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPINetworkingV1NetworkPolicySpec with value set to v.
-func NewOptionalIoK8sAPINetworkingV1NetworkPolicySpec(v IoK8sAPINetworkingV1NetworkPolicySpec) OptionalIoK8sAPINetworkingV1NetworkPolicySpec {
-	return OptionalIoK8sAPINetworkingV1NetworkPolicySpec{
+// New returns new OptIoK8sAPINetworkingV1NetworkPolicySpec with value set to v.
+func NewOptIoK8sAPINetworkingV1NetworkPolicySpec(v IoK8sAPINetworkingV1NetworkPolicySpec) OptIoK8sAPINetworkingV1NetworkPolicySpec {
+	return OptIoK8sAPINetworkingV1NetworkPolicySpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPINetworkingV1NetworkPolicySpec is generic valiant of IoK8sAPINetworkingV1NetworkPolicySpec.
-type OptionalIoK8sAPINetworkingV1NetworkPolicySpec struct {
+// OptIoK8sAPINetworkingV1NetworkPolicySpec is generic valiant of IoK8sAPINetworkingV1NetworkPolicySpec.
+type OptIoK8sAPINetworkingV1NetworkPolicySpec struct {
 	Value IoK8sAPINetworkingV1NetworkPolicySpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPINetworkingV1NetworkPolicySpec was set.
-func (o OptionalIoK8sAPINetworkingV1NetworkPolicySpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPINetworkingV1NetworkPolicySpec was set.
+func (o OptIoK8sAPINetworkingV1NetworkPolicySpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPINetworkingV1NetworkPolicySpec) Reset() {
+func (o *OptIoK8sAPINetworkingV1NetworkPolicySpec) Reset() {
 	var v IoK8sAPINetworkingV1NetworkPolicySpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPINetworkingV1NetworkPolicySpec) SetTo(v IoK8sAPINetworkingV1NetworkPolicySpec) {
+func (o *OptIoK8sAPINetworkingV1NetworkPolicySpec) SetTo(v IoK8sAPINetworkingV1NetworkPolicySpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPINetworkingV1NetworkPolicySpec) Get() (v IoK8sAPINetworkingV1NetworkPolicySpec, ok bool) {
+func (o OptIoK8sAPINetworkingV1NetworkPolicySpec) Get() (v IoK8sAPINetworkingV1NetworkPolicySpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPINetworkingV1ServiceBackendPort with value set to v.
-func NewOptionalIoK8sAPINetworkingV1ServiceBackendPort(v IoK8sAPINetworkingV1ServiceBackendPort) OptionalIoK8sAPINetworkingV1ServiceBackendPort {
-	return OptionalIoK8sAPINetworkingV1ServiceBackendPort{
+// New returns new OptIoK8sAPINetworkingV1ServiceBackendPort with value set to v.
+func NewOptIoK8sAPINetworkingV1ServiceBackendPort(v IoK8sAPINetworkingV1ServiceBackendPort) OptIoK8sAPINetworkingV1ServiceBackendPort {
+	return OptIoK8sAPINetworkingV1ServiceBackendPort{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPINetworkingV1ServiceBackendPort is generic valiant of IoK8sAPINetworkingV1ServiceBackendPort.
-type OptionalIoK8sAPINetworkingV1ServiceBackendPort struct {
+// OptIoK8sAPINetworkingV1ServiceBackendPort is generic valiant of IoK8sAPINetworkingV1ServiceBackendPort.
+type OptIoK8sAPINetworkingV1ServiceBackendPort struct {
 	Value IoK8sAPINetworkingV1ServiceBackendPort
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPINetworkingV1ServiceBackendPort was set.
-func (o OptionalIoK8sAPINetworkingV1ServiceBackendPort) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPINetworkingV1ServiceBackendPort was set.
+func (o OptIoK8sAPINetworkingV1ServiceBackendPort) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPINetworkingV1ServiceBackendPort) Reset() {
+func (o *OptIoK8sAPINetworkingV1ServiceBackendPort) Reset() {
 	var v IoK8sAPINetworkingV1ServiceBackendPort
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPINetworkingV1ServiceBackendPort) SetTo(v IoK8sAPINetworkingV1ServiceBackendPort) {
+func (o *OptIoK8sAPINetworkingV1ServiceBackendPort) SetTo(v IoK8sAPINetworkingV1ServiceBackendPort) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPINetworkingV1ServiceBackendPort) Get() (v IoK8sAPINetworkingV1ServiceBackendPort, ok bool) {
+func (o OptIoK8sAPINetworkingV1ServiceBackendPort) Get() (v IoK8sAPINetworkingV1ServiceBackendPort, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPINodeV1Overhead with value set to v.
-func NewOptionalIoK8sAPINodeV1Overhead(v IoK8sAPINodeV1Overhead) OptionalIoK8sAPINodeV1Overhead {
-	return OptionalIoK8sAPINodeV1Overhead{
+// New returns new OptIoK8sAPINodeV1Overhead with value set to v.
+func NewOptIoK8sAPINodeV1Overhead(v IoK8sAPINodeV1Overhead) OptIoK8sAPINodeV1Overhead {
+	return OptIoK8sAPINodeV1Overhead{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPINodeV1Overhead is generic valiant of IoK8sAPINodeV1Overhead.
-type OptionalIoK8sAPINodeV1Overhead struct {
+// OptIoK8sAPINodeV1Overhead is generic valiant of IoK8sAPINodeV1Overhead.
+type OptIoK8sAPINodeV1Overhead struct {
 	Value IoK8sAPINodeV1Overhead
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPINodeV1Overhead was set.
-func (o OptionalIoK8sAPINodeV1Overhead) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPINodeV1Overhead was set.
+func (o OptIoK8sAPINodeV1Overhead) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPINodeV1Overhead) Reset() {
+func (o *OptIoK8sAPINodeV1Overhead) Reset() {
 	var v IoK8sAPINodeV1Overhead
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPINodeV1Overhead) SetTo(v IoK8sAPINodeV1Overhead) {
+func (o *OptIoK8sAPINodeV1Overhead) SetTo(v IoK8sAPINodeV1Overhead) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPINodeV1Overhead) Get() (v IoK8sAPINodeV1Overhead, ok bool) {
+func (o OptIoK8sAPINodeV1Overhead) Get() (v IoK8sAPINodeV1Overhead, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPINodeV1Scheduling with value set to v.
-func NewOptionalIoK8sAPINodeV1Scheduling(v IoK8sAPINodeV1Scheduling) OptionalIoK8sAPINodeV1Scheduling {
-	return OptionalIoK8sAPINodeV1Scheduling{
+// New returns new OptIoK8sAPINodeV1Scheduling with value set to v.
+func NewOptIoK8sAPINodeV1Scheduling(v IoK8sAPINodeV1Scheduling) OptIoK8sAPINodeV1Scheduling {
+	return OptIoK8sAPINodeV1Scheduling{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPINodeV1Scheduling is generic valiant of IoK8sAPINodeV1Scheduling.
-type OptionalIoK8sAPINodeV1Scheduling struct {
+// OptIoK8sAPINodeV1Scheduling is generic valiant of IoK8sAPINodeV1Scheduling.
+type OptIoK8sAPINodeV1Scheduling struct {
 	Value IoK8sAPINodeV1Scheduling
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPINodeV1Scheduling was set.
-func (o OptionalIoK8sAPINodeV1Scheduling) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPINodeV1Scheduling was set.
+func (o OptIoK8sAPINodeV1Scheduling) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPINodeV1Scheduling) Reset() {
+func (o *OptIoK8sAPINodeV1Scheduling) Reset() {
 	var v IoK8sAPINodeV1Scheduling
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPINodeV1Scheduling) SetTo(v IoK8sAPINodeV1Scheduling) {
+func (o *OptIoK8sAPINodeV1Scheduling) SetTo(v IoK8sAPINodeV1Scheduling) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPINodeV1Scheduling) Get() (v IoK8sAPINodeV1Scheduling, ok bool) {
+func (o OptIoK8sAPINodeV1Scheduling) Get() (v IoK8sAPINodeV1Scheduling, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPINodeV1alpha1Overhead with value set to v.
-func NewOptionalIoK8sAPINodeV1alpha1Overhead(v IoK8sAPINodeV1alpha1Overhead) OptionalIoK8sAPINodeV1alpha1Overhead {
-	return OptionalIoK8sAPINodeV1alpha1Overhead{
+// New returns new OptIoK8sAPINodeV1alpha1Overhead with value set to v.
+func NewOptIoK8sAPINodeV1alpha1Overhead(v IoK8sAPINodeV1alpha1Overhead) OptIoK8sAPINodeV1alpha1Overhead {
+	return OptIoK8sAPINodeV1alpha1Overhead{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPINodeV1alpha1Overhead is generic valiant of IoK8sAPINodeV1alpha1Overhead.
-type OptionalIoK8sAPINodeV1alpha1Overhead struct {
+// OptIoK8sAPINodeV1alpha1Overhead is generic valiant of IoK8sAPINodeV1alpha1Overhead.
+type OptIoK8sAPINodeV1alpha1Overhead struct {
 	Value IoK8sAPINodeV1alpha1Overhead
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPINodeV1alpha1Overhead was set.
-func (o OptionalIoK8sAPINodeV1alpha1Overhead) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPINodeV1alpha1Overhead was set.
+func (o OptIoK8sAPINodeV1alpha1Overhead) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPINodeV1alpha1Overhead) Reset() {
+func (o *OptIoK8sAPINodeV1alpha1Overhead) Reset() {
 	var v IoK8sAPINodeV1alpha1Overhead
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPINodeV1alpha1Overhead) SetTo(v IoK8sAPINodeV1alpha1Overhead) {
+func (o *OptIoK8sAPINodeV1alpha1Overhead) SetTo(v IoK8sAPINodeV1alpha1Overhead) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPINodeV1alpha1Overhead) Get() (v IoK8sAPINodeV1alpha1Overhead, ok bool) {
+func (o OptIoK8sAPINodeV1alpha1Overhead) Get() (v IoK8sAPINodeV1alpha1Overhead, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPINodeV1alpha1Scheduling with value set to v.
-func NewOptionalIoK8sAPINodeV1alpha1Scheduling(v IoK8sAPINodeV1alpha1Scheduling) OptionalIoK8sAPINodeV1alpha1Scheduling {
-	return OptionalIoK8sAPINodeV1alpha1Scheduling{
+// New returns new OptIoK8sAPINodeV1alpha1Scheduling with value set to v.
+func NewOptIoK8sAPINodeV1alpha1Scheduling(v IoK8sAPINodeV1alpha1Scheduling) OptIoK8sAPINodeV1alpha1Scheduling {
+	return OptIoK8sAPINodeV1alpha1Scheduling{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPINodeV1alpha1Scheduling is generic valiant of IoK8sAPINodeV1alpha1Scheduling.
-type OptionalIoK8sAPINodeV1alpha1Scheduling struct {
+// OptIoK8sAPINodeV1alpha1Scheduling is generic valiant of IoK8sAPINodeV1alpha1Scheduling.
+type OptIoK8sAPINodeV1alpha1Scheduling struct {
 	Value IoK8sAPINodeV1alpha1Scheduling
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPINodeV1alpha1Scheduling was set.
-func (o OptionalIoK8sAPINodeV1alpha1Scheduling) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPINodeV1alpha1Scheduling was set.
+func (o OptIoK8sAPINodeV1alpha1Scheduling) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPINodeV1alpha1Scheduling) Reset() {
+func (o *OptIoK8sAPINodeV1alpha1Scheduling) Reset() {
 	var v IoK8sAPINodeV1alpha1Scheduling
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPINodeV1alpha1Scheduling) SetTo(v IoK8sAPINodeV1alpha1Scheduling) {
+func (o *OptIoK8sAPINodeV1alpha1Scheduling) SetTo(v IoK8sAPINodeV1alpha1Scheduling) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPINodeV1alpha1Scheduling) Get() (v IoK8sAPINodeV1alpha1Scheduling, ok bool) {
+func (o OptIoK8sAPINodeV1alpha1Scheduling) Get() (v IoK8sAPINodeV1alpha1Scheduling, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPINodeV1beta1Overhead with value set to v.
-func NewOptionalIoK8sAPINodeV1beta1Overhead(v IoK8sAPINodeV1beta1Overhead) OptionalIoK8sAPINodeV1beta1Overhead {
-	return OptionalIoK8sAPINodeV1beta1Overhead{
+// New returns new OptIoK8sAPINodeV1beta1Overhead with value set to v.
+func NewOptIoK8sAPINodeV1beta1Overhead(v IoK8sAPINodeV1beta1Overhead) OptIoK8sAPINodeV1beta1Overhead {
+	return OptIoK8sAPINodeV1beta1Overhead{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPINodeV1beta1Overhead is generic valiant of IoK8sAPINodeV1beta1Overhead.
-type OptionalIoK8sAPINodeV1beta1Overhead struct {
+// OptIoK8sAPINodeV1beta1Overhead is generic valiant of IoK8sAPINodeV1beta1Overhead.
+type OptIoK8sAPINodeV1beta1Overhead struct {
 	Value IoK8sAPINodeV1beta1Overhead
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPINodeV1beta1Overhead was set.
-func (o OptionalIoK8sAPINodeV1beta1Overhead) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPINodeV1beta1Overhead was set.
+func (o OptIoK8sAPINodeV1beta1Overhead) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPINodeV1beta1Overhead) Reset() {
+func (o *OptIoK8sAPINodeV1beta1Overhead) Reset() {
 	var v IoK8sAPINodeV1beta1Overhead
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPINodeV1beta1Overhead) SetTo(v IoK8sAPINodeV1beta1Overhead) {
+func (o *OptIoK8sAPINodeV1beta1Overhead) SetTo(v IoK8sAPINodeV1beta1Overhead) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPINodeV1beta1Overhead) Get() (v IoK8sAPINodeV1beta1Overhead, ok bool) {
+func (o OptIoK8sAPINodeV1beta1Overhead) Get() (v IoK8sAPINodeV1beta1Overhead, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPINodeV1beta1Scheduling with value set to v.
-func NewOptionalIoK8sAPINodeV1beta1Scheduling(v IoK8sAPINodeV1beta1Scheduling) OptionalIoK8sAPINodeV1beta1Scheduling {
-	return OptionalIoK8sAPINodeV1beta1Scheduling{
+// New returns new OptIoK8sAPINodeV1beta1Scheduling with value set to v.
+func NewOptIoK8sAPINodeV1beta1Scheduling(v IoK8sAPINodeV1beta1Scheduling) OptIoK8sAPINodeV1beta1Scheduling {
+	return OptIoK8sAPINodeV1beta1Scheduling{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPINodeV1beta1Scheduling is generic valiant of IoK8sAPINodeV1beta1Scheduling.
-type OptionalIoK8sAPINodeV1beta1Scheduling struct {
+// OptIoK8sAPINodeV1beta1Scheduling is generic valiant of IoK8sAPINodeV1beta1Scheduling.
+type OptIoK8sAPINodeV1beta1Scheduling struct {
 	Value IoK8sAPINodeV1beta1Scheduling
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPINodeV1beta1Scheduling was set.
-func (o OptionalIoK8sAPINodeV1beta1Scheduling) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPINodeV1beta1Scheduling was set.
+func (o OptIoK8sAPINodeV1beta1Scheduling) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPINodeV1beta1Scheduling) Reset() {
+func (o *OptIoK8sAPINodeV1beta1Scheduling) Reset() {
 	var v IoK8sAPINodeV1beta1Scheduling
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPINodeV1beta1Scheduling) SetTo(v IoK8sAPINodeV1beta1Scheduling) {
+func (o *OptIoK8sAPINodeV1beta1Scheduling) SetTo(v IoK8sAPINodeV1beta1Scheduling) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPINodeV1beta1Scheduling) Get() (v IoK8sAPINodeV1beta1Scheduling, ok bool) {
+func (o OptIoK8sAPINodeV1beta1Scheduling) Get() (v IoK8sAPINodeV1beta1Scheduling, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIPolicyV1PodDisruptionBudgetSpec with value set to v.
-func NewOptionalIoK8sAPIPolicyV1PodDisruptionBudgetSpec(v IoK8sAPIPolicyV1PodDisruptionBudgetSpec) OptionalIoK8sAPIPolicyV1PodDisruptionBudgetSpec {
-	return OptionalIoK8sAPIPolicyV1PodDisruptionBudgetSpec{
+// New returns new OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec with value set to v.
+func NewOptIoK8sAPIPolicyV1PodDisruptionBudgetSpec(v IoK8sAPIPolicyV1PodDisruptionBudgetSpec) OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec {
+	return OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIPolicyV1PodDisruptionBudgetSpec is generic valiant of IoK8sAPIPolicyV1PodDisruptionBudgetSpec.
-type OptionalIoK8sAPIPolicyV1PodDisruptionBudgetSpec struct {
+// OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec is generic valiant of IoK8sAPIPolicyV1PodDisruptionBudgetSpec.
+type OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec struct {
 	Value IoK8sAPIPolicyV1PodDisruptionBudgetSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIPolicyV1PodDisruptionBudgetSpec was set.
-func (o OptionalIoK8sAPIPolicyV1PodDisruptionBudgetSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec was set.
+func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIPolicyV1PodDisruptionBudgetSpec) Reset() {
+func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) Reset() {
 	var v IoK8sAPIPolicyV1PodDisruptionBudgetSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIPolicyV1PodDisruptionBudgetSpec) SetTo(v IoK8sAPIPolicyV1PodDisruptionBudgetSpec) {
+func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) SetTo(v IoK8sAPIPolicyV1PodDisruptionBudgetSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIPolicyV1PodDisruptionBudgetSpec) Get() (v IoK8sAPIPolicyV1PodDisruptionBudgetSpec, ok bool) {
+func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) Get() (v IoK8sAPIPolicyV1PodDisruptionBudgetSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIPolicyV1PodDisruptionBudgetStatus with value set to v.
-func NewOptionalIoK8sAPIPolicyV1PodDisruptionBudgetStatus(v IoK8sAPIPolicyV1PodDisruptionBudgetStatus) OptionalIoK8sAPIPolicyV1PodDisruptionBudgetStatus {
-	return OptionalIoK8sAPIPolicyV1PodDisruptionBudgetStatus{
+// New returns new OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus with value set to v.
+func NewOptIoK8sAPIPolicyV1PodDisruptionBudgetStatus(v IoK8sAPIPolicyV1PodDisruptionBudgetStatus) OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus {
+	return OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIPolicyV1PodDisruptionBudgetStatus is generic valiant of IoK8sAPIPolicyV1PodDisruptionBudgetStatus.
-type OptionalIoK8sAPIPolicyV1PodDisruptionBudgetStatus struct {
+// OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus is generic valiant of IoK8sAPIPolicyV1PodDisruptionBudgetStatus.
+type OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus struct {
 	Value IoK8sAPIPolicyV1PodDisruptionBudgetStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIPolicyV1PodDisruptionBudgetStatus was set.
-func (o OptionalIoK8sAPIPolicyV1PodDisruptionBudgetStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus was set.
+func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIPolicyV1PodDisruptionBudgetStatus) Reset() {
+func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) Reset() {
 	var v IoK8sAPIPolicyV1PodDisruptionBudgetStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIPolicyV1PodDisruptionBudgetStatus) SetTo(v IoK8sAPIPolicyV1PodDisruptionBudgetStatus) {
+func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) SetTo(v IoK8sAPIPolicyV1PodDisruptionBudgetStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIPolicyV1PodDisruptionBudgetStatus) Get() (v IoK8sAPIPolicyV1PodDisruptionBudgetStatus, ok bool) {
+func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) Get() (v IoK8sAPIPolicyV1PodDisruptionBudgetStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec with value set to v.
-func NewOptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec(v IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec {
-	return OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec{
+// New returns new OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec with value set to v.
+func NewOptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec(v IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec {
+	return OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec is generic valiant of IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec.
-type OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec struct {
+// OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec is generic valiant of IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec.
+type OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec struct {
 	Value IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec was set.
-func (o OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec was set.
+func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Reset() {
+func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Reset() {
 	var v IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) SetTo(v IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) {
+func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) SetTo(v IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Get() (v IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec, ok bool) {
+func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Get() (v IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus with value set to v.
-func NewOptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus(v IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus {
-	return OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus{
+// New returns new OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus with value set to v.
+func NewOptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus(v IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus {
+	return OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus is generic valiant of IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus.
-type OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus struct {
+// OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus is generic valiant of IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus.
+type OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus struct {
 	Value IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus was set.
-func (o OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus was set.
+func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Reset() {
+func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Reset() {
 	var v IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) SetTo(v IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) {
+func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) SetTo(v IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Get() (v IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus, ok bool) {
+func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Get() (v IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIPolicyV1beta1PodSecurityPolicySpec with value set to v.
-func NewOptionalIoK8sAPIPolicyV1beta1PodSecurityPolicySpec(v IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) OptionalIoK8sAPIPolicyV1beta1PodSecurityPolicySpec {
-	return OptionalIoK8sAPIPolicyV1beta1PodSecurityPolicySpec{
+// New returns new OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec with value set to v.
+func NewOptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec(v IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec {
+	return OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIPolicyV1beta1PodSecurityPolicySpec is generic valiant of IoK8sAPIPolicyV1beta1PodSecurityPolicySpec.
-type OptionalIoK8sAPIPolicyV1beta1PodSecurityPolicySpec struct {
+// OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec is generic valiant of IoK8sAPIPolicyV1beta1PodSecurityPolicySpec.
+type OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec struct {
 	Value IoK8sAPIPolicyV1beta1PodSecurityPolicySpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIPolicyV1beta1PodSecurityPolicySpec was set.
-func (o OptionalIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec was set.
+func (o OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Reset() {
+func (o *OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Reset() {
 	var v IoK8sAPIPolicyV1beta1PodSecurityPolicySpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetTo(v IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) {
+func (o *OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetTo(v IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Get() (v IoK8sAPIPolicyV1beta1PodSecurityPolicySpec, ok bool) {
+func (o OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Get() (v IoK8sAPIPolicyV1beta1PodSecurityPolicySpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions with value set to v.
-func NewOptionalIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions(v IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) OptionalIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions {
-	return OptionalIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions{
+// New returns new OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions with value set to v.
+func NewOptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions(v IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions {
+	return OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions is generic valiant of IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions.
-type OptionalIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions struct {
+// OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions is generic valiant of IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions.
+type OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions struct {
 	Value IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions was set.
-func (o OptionalIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions was set.
+func (o OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Reset() {
+func (o *OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Reset() {
 	var v IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) SetTo(v IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) {
+func (o *OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) SetTo(v IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Get() (v IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions, ok bool) {
+func (o OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Get() (v IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions with value set to v.
-func NewOptionalIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions(v IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) OptionalIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions {
-	return OptionalIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions{
+// New returns new OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions with value set to v.
+func NewOptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions(v IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions {
+	return OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions is generic valiant of IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions.
-type OptionalIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions struct {
+// OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions is generic valiant of IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions.
+type OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions struct {
 	Value IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions was set.
-func (o OptionalIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions was set.
+func (o OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Reset() {
+func (o *OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Reset() {
 	var v IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) SetTo(v IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) {
+func (o *OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) SetTo(v IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Get() (v IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions, ok bool) {
+func (o OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Get() (v IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIRbacV1AggregationRule with value set to v.
-func NewOptionalIoK8sAPIRbacV1AggregationRule(v IoK8sAPIRbacV1AggregationRule) OptionalIoK8sAPIRbacV1AggregationRule {
-	return OptionalIoK8sAPIRbacV1AggregationRule{
+// New returns new OptIoK8sAPIRbacV1AggregationRule with value set to v.
+func NewOptIoK8sAPIRbacV1AggregationRule(v IoK8sAPIRbacV1AggregationRule) OptIoK8sAPIRbacV1AggregationRule {
+	return OptIoK8sAPIRbacV1AggregationRule{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIRbacV1AggregationRule is generic valiant of IoK8sAPIRbacV1AggregationRule.
-type OptionalIoK8sAPIRbacV1AggregationRule struct {
+// OptIoK8sAPIRbacV1AggregationRule is generic valiant of IoK8sAPIRbacV1AggregationRule.
+type OptIoK8sAPIRbacV1AggregationRule struct {
 	Value IoK8sAPIRbacV1AggregationRule
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIRbacV1AggregationRule was set.
-func (o OptionalIoK8sAPIRbacV1AggregationRule) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIRbacV1AggregationRule was set.
+func (o OptIoK8sAPIRbacV1AggregationRule) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIRbacV1AggregationRule) Reset() {
+func (o *OptIoK8sAPIRbacV1AggregationRule) Reset() {
 	var v IoK8sAPIRbacV1AggregationRule
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIRbacV1AggregationRule) SetTo(v IoK8sAPIRbacV1AggregationRule) {
+func (o *OptIoK8sAPIRbacV1AggregationRule) SetTo(v IoK8sAPIRbacV1AggregationRule) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIRbacV1AggregationRule) Get() (v IoK8sAPIRbacV1AggregationRule, ok bool) {
+func (o OptIoK8sAPIRbacV1AggregationRule) Get() (v IoK8sAPIRbacV1AggregationRule, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIStorageV1VolumeAttachmentStatus with value set to v.
-func NewOptionalIoK8sAPIStorageV1VolumeAttachmentStatus(v IoK8sAPIStorageV1VolumeAttachmentStatus) OptionalIoK8sAPIStorageV1VolumeAttachmentStatus {
-	return OptionalIoK8sAPIStorageV1VolumeAttachmentStatus{
+// New returns new OptIoK8sAPIStorageV1VolumeAttachmentStatus with value set to v.
+func NewOptIoK8sAPIStorageV1VolumeAttachmentStatus(v IoK8sAPIStorageV1VolumeAttachmentStatus) OptIoK8sAPIStorageV1VolumeAttachmentStatus {
+	return OptIoK8sAPIStorageV1VolumeAttachmentStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIStorageV1VolumeAttachmentStatus is generic valiant of IoK8sAPIStorageV1VolumeAttachmentStatus.
-type OptionalIoK8sAPIStorageV1VolumeAttachmentStatus struct {
+// OptIoK8sAPIStorageV1VolumeAttachmentStatus is generic valiant of IoK8sAPIStorageV1VolumeAttachmentStatus.
+type OptIoK8sAPIStorageV1VolumeAttachmentStatus struct {
 	Value IoK8sAPIStorageV1VolumeAttachmentStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIStorageV1VolumeAttachmentStatus was set.
-func (o OptionalIoK8sAPIStorageV1VolumeAttachmentStatus) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIStorageV1VolumeAttachmentStatus was set.
+func (o OptIoK8sAPIStorageV1VolumeAttachmentStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIStorageV1VolumeAttachmentStatus) Reset() {
+func (o *OptIoK8sAPIStorageV1VolumeAttachmentStatus) Reset() {
 	var v IoK8sAPIStorageV1VolumeAttachmentStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIStorageV1VolumeAttachmentStatus) SetTo(v IoK8sAPIStorageV1VolumeAttachmentStatus) {
+func (o *OptIoK8sAPIStorageV1VolumeAttachmentStatus) SetTo(v IoK8sAPIStorageV1VolumeAttachmentStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIStorageV1VolumeAttachmentStatus) Get() (v IoK8sAPIStorageV1VolumeAttachmentStatus, ok bool) {
+func (o OptIoK8sAPIStorageV1VolumeAttachmentStatus) Get() (v IoK8sAPIStorageV1VolumeAttachmentStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIStorageV1VolumeError with value set to v.
-func NewOptionalIoK8sAPIStorageV1VolumeError(v IoK8sAPIStorageV1VolumeError) OptionalIoK8sAPIStorageV1VolumeError {
-	return OptionalIoK8sAPIStorageV1VolumeError{
+// New returns new OptIoK8sAPIStorageV1VolumeError with value set to v.
+func NewOptIoK8sAPIStorageV1VolumeError(v IoK8sAPIStorageV1VolumeError) OptIoK8sAPIStorageV1VolumeError {
+	return OptIoK8sAPIStorageV1VolumeError{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIStorageV1VolumeError is generic valiant of IoK8sAPIStorageV1VolumeError.
-type OptionalIoK8sAPIStorageV1VolumeError struct {
+// OptIoK8sAPIStorageV1VolumeError is generic valiant of IoK8sAPIStorageV1VolumeError.
+type OptIoK8sAPIStorageV1VolumeError struct {
 	Value IoK8sAPIStorageV1VolumeError
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIStorageV1VolumeError was set.
-func (o OptionalIoK8sAPIStorageV1VolumeError) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIStorageV1VolumeError was set.
+func (o OptIoK8sAPIStorageV1VolumeError) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIStorageV1VolumeError) Reset() {
+func (o *OptIoK8sAPIStorageV1VolumeError) Reset() {
 	var v IoK8sAPIStorageV1VolumeError
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIStorageV1VolumeError) SetTo(v IoK8sAPIStorageV1VolumeError) {
+func (o *OptIoK8sAPIStorageV1VolumeError) SetTo(v IoK8sAPIStorageV1VolumeError) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIStorageV1VolumeError) Get() (v IoK8sAPIStorageV1VolumeError, ok bool) {
+func (o OptIoK8sAPIStorageV1VolumeError) Get() (v IoK8sAPIStorageV1VolumeError, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sAPIStorageV1VolumeNodeResources with value set to v.
-func NewOptionalIoK8sAPIStorageV1VolumeNodeResources(v IoK8sAPIStorageV1VolumeNodeResources) OptionalIoK8sAPIStorageV1VolumeNodeResources {
-	return OptionalIoK8sAPIStorageV1VolumeNodeResources{
+// New returns new OptIoK8sAPIStorageV1VolumeNodeResources with value set to v.
+func NewOptIoK8sAPIStorageV1VolumeNodeResources(v IoK8sAPIStorageV1VolumeNodeResources) OptIoK8sAPIStorageV1VolumeNodeResources {
+	return OptIoK8sAPIStorageV1VolumeNodeResources{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sAPIStorageV1VolumeNodeResources is generic valiant of IoK8sAPIStorageV1VolumeNodeResources.
-type OptionalIoK8sAPIStorageV1VolumeNodeResources struct {
+// OptIoK8sAPIStorageV1VolumeNodeResources is generic valiant of IoK8sAPIStorageV1VolumeNodeResources.
+type OptIoK8sAPIStorageV1VolumeNodeResources struct {
 	Value IoK8sAPIStorageV1VolumeNodeResources
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sAPIStorageV1VolumeNodeResources was set.
-func (o OptionalIoK8sAPIStorageV1VolumeNodeResources) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sAPIStorageV1VolumeNodeResources was set.
+func (o OptIoK8sAPIStorageV1VolumeNodeResources) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sAPIStorageV1VolumeNodeResources) Reset() {
+func (o *OptIoK8sAPIStorageV1VolumeNodeResources) Reset() {
 	var v IoK8sAPIStorageV1VolumeNodeResources
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sAPIStorageV1VolumeNodeResources) SetTo(v IoK8sAPIStorageV1VolumeNodeResources) {
+func (o *OptIoK8sAPIStorageV1VolumeNodeResources) SetTo(v IoK8sAPIStorageV1VolumeNodeResources) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sAPIStorageV1VolumeNodeResources) Get() (v IoK8sAPIStorageV1VolumeNodeResources, ok bool) {
+func (o OptIoK8sAPIStorageV1VolumeNodeResources) Get() (v IoK8sAPIStorageV1VolumeNodeResources, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion with value set to v.
-func NewOptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion {
-	return OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion{
+// New returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion with value set to v.
+func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion {
+	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion.
-type OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion struct {
+// OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion.
+type OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion struct {
 	Value IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) IsSet() bool {
+// IsSet returns true if OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) Reset() {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) Reset() {
 	var v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion, ok bool) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames with value set to v.
-func NewOptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames {
-	return OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames{
+// New returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames with value set to v.
+func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames {
+	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames.
-type OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames struct {
+// OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames.
+type OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames struct {
 	Value IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) IsSet() bool {
+// IsSet returns true if OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) Reset() {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) Reset() {
 	var v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames, ok bool) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus with value set to v.
-func NewOptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus {
-	return OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus{
+// New returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus with value set to v.
+func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus {
+	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus.
-type OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus struct {
+// OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus.
+type OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus struct {
 	Value IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) IsSet() bool {
+// IsSet returns true if OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) Reset() {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) Reset() {
 	var v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus, ok bool) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale with value set to v.
-func NewOptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale {
-	return OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale{
+// New returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale with value set to v.
+func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale {
+	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale.
-type OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale struct {
+// OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale.
+type OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale struct {
 	Value IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) IsSet() bool {
+// IsSet returns true if OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) Reset() {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) Reset() {
 	var v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale, ok bool) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources with value set to v.
-func NewOptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources {
-	return OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources{
+// New returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources with value set to v.
+func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources {
+	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources.
-type OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources struct {
+// OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources.
+type OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources struct {
 	Value IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) IsSet() bool {
+// IsSet returns true if OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) Reset() {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) Reset() {
 	var v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources, ok bool) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation with value set to v.
-func NewOptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation {
-	return OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation{
+// New returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation with value set to v.
+func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation {
+	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation.
-type OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation struct {
+// OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation.
+type OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation struct {
 	Value IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) IsSet() bool {
+// IsSet returns true if OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) Reset() {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) Reset() {
 	var v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation, ok bool) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation with value set to v.
-func NewOptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation {
-	return OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation{
+// New returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation with value set to v.
+func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation {
+	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation.
-type OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation struct {
+// OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation.
+type OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation struct {
 	Value IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) IsSet() bool {
+// IsSet returns true if OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) Reset() {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) Reset() {
 	var v IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation, ok bool) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps with value set to v.
-func NewOptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
-	return OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps{
+// New returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps with value set to v.
+func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
+	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps.
-type OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps struct {
+// OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps.
+type OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps struct {
 	Value IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) IsSet() bool {
+// IsSet returns true if OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Reset() {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Reset() {
 	var v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps, ok bool) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference with value set to v.
-func NewOptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference {
-	return OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference{
+// New returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference with value set to v.
+func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference {
+	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference.
-type OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference struct {
+// OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference.
+type OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference struct {
 	Value IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) IsSet() bool {
+// IsSet returns true if OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Reset() {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Reset() {
 	var v IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference, ok bool) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig with value set to v.
-func NewOptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig {
-	return OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig{
+// New returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig with value set to v.
+func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig {
+	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig.
-type OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig struct {
+// OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig.
+type OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig struct {
 	Value IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) IsSet() bool {
+// IsSet returns true if OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Reset() {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Reset() {
 	var v IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig, ok bool) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion with value set to v.
-func NewOptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion {
-	return OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion{
+// New returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion with value set to v.
+func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion {
+	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion.
-type OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion struct {
+// OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion is generic valiant of IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion.
+type OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion struct {
 	Value IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) IsSet() bool {
+// IsSet returns true if OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) IsSet() bool {
 	return o.Set
 }
 
 // Reset unsets value.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Reset() {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Reset() {
 	var v IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) {
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion, ok bool) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery with value set to v.
-func NewOptionalIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery(v IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) OptionalIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
-	return OptionalIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery{
+// New returns new OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery with value set to v.
+func NewOptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery(v IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
+	return OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery is generic valiant of IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery.
-type OptionalIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery struct {
+// OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery is generic valiant of IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery.
+type OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery struct {
 	Value IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery was set.
-func (o OptionalIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery was set.
+func (o OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Reset() {
+func (o *OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Reset() {
 	var v IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) SetTo(v IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) {
+func (o *OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) SetTo(v IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Get() (v IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery, ok bool) {
+func (o OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Get() (v IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector with value set to v.
-func NewOptionalIoK8sApimachineryPkgApisMetaV1LabelSelector(v IoK8sApimachineryPkgApisMetaV1LabelSelector) OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector {
-	return OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector{
+// New returns new OptIoK8sApimachineryPkgApisMetaV1LabelSelector with value set to v.
+func NewOptIoK8sApimachineryPkgApisMetaV1LabelSelector(v IoK8sApimachineryPkgApisMetaV1LabelSelector) OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return OptIoK8sApimachineryPkgApisMetaV1LabelSelector{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector is generic valiant of IoK8sApimachineryPkgApisMetaV1LabelSelector.
-type OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector struct {
+// OptIoK8sApimachineryPkgApisMetaV1LabelSelector is generic valiant of IoK8sApimachineryPkgApisMetaV1LabelSelector.
+type OptIoK8sApimachineryPkgApisMetaV1LabelSelector struct {
 	Value IoK8sApimachineryPkgApisMetaV1LabelSelector
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector was set.
-func (o OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sApimachineryPkgApisMetaV1LabelSelector was set.
+func (o OptIoK8sApimachineryPkgApisMetaV1LabelSelector) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector) Reset() {
+func (o *OptIoK8sApimachineryPkgApisMetaV1LabelSelector) Reset() {
 	var v IoK8sApimachineryPkgApisMetaV1LabelSelector
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector) SetTo(v IoK8sApimachineryPkgApisMetaV1LabelSelector) {
+func (o *OptIoK8sApimachineryPkgApisMetaV1LabelSelector) SetTo(v IoK8sApimachineryPkgApisMetaV1LabelSelector) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector) Get() (v IoK8sApimachineryPkgApisMetaV1LabelSelector, ok bool) {
+func (o OptIoK8sApimachineryPkgApisMetaV1LabelSelector) Get() (v IoK8sApimachineryPkgApisMetaV1LabelSelector, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sApimachineryPkgApisMetaV1ListMeta with value set to v.
-func NewOptionalIoK8sApimachineryPkgApisMetaV1ListMeta(v IoK8sApimachineryPkgApisMetaV1ListMeta) OptionalIoK8sApimachineryPkgApisMetaV1ListMeta {
-	return OptionalIoK8sApimachineryPkgApisMetaV1ListMeta{
+// New returns new OptIoK8sApimachineryPkgApisMetaV1ListMeta with value set to v.
+func NewOptIoK8sApimachineryPkgApisMetaV1ListMeta(v IoK8sApimachineryPkgApisMetaV1ListMeta) OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return OptIoK8sApimachineryPkgApisMetaV1ListMeta{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sApimachineryPkgApisMetaV1ListMeta is generic valiant of IoK8sApimachineryPkgApisMetaV1ListMeta.
-type OptionalIoK8sApimachineryPkgApisMetaV1ListMeta struct {
+// OptIoK8sApimachineryPkgApisMetaV1ListMeta is generic valiant of IoK8sApimachineryPkgApisMetaV1ListMeta.
+type OptIoK8sApimachineryPkgApisMetaV1ListMeta struct {
 	Value IoK8sApimachineryPkgApisMetaV1ListMeta
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sApimachineryPkgApisMetaV1ListMeta was set.
-func (o OptionalIoK8sApimachineryPkgApisMetaV1ListMeta) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sApimachineryPkgApisMetaV1ListMeta was set.
+func (o OptIoK8sApimachineryPkgApisMetaV1ListMeta) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sApimachineryPkgApisMetaV1ListMeta) Reset() {
+func (o *OptIoK8sApimachineryPkgApisMetaV1ListMeta) Reset() {
 	var v IoK8sApimachineryPkgApisMetaV1ListMeta
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sApimachineryPkgApisMetaV1ListMeta) SetTo(v IoK8sApimachineryPkgApisMetaV1ListMeta) {
+func (o *OptIoK8sApimachineryPkgApisMetaV1ListMeta) SetTo(v IoK8sApimachineryPkgApisMetaV1ListMeta) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sApimachineryPkgApisMetaV1ListMeta) Get() (v IoK8sApimachineryPkgApisMetaV1ListMeta, ok bool) {
+func (o OptIoK8sApimachineryPkgApisMetaV1ListMeta) Get() (v IoK8sApimachineryPkgApisMetaV1ListMeta, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta with value set to v.
-func NewOptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta(v IoK8sApimachineryPkgApisMetaV1ObjectMeta) OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta {
-	return OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta{
+// New returns new OptIoK8sApimachineryPkgApisMetaV1ObjectMeta with value set to v.
+func NewOptIoK8sApimachineryPkgApisMetaV1ObjectMeta(v IoK8sApimachineryPkgApisMetaV1ObjectMeta) OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return OptIoK8sApimachineryPkgApisMetaV1ObjectMeta{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta is generic valiant of IoK8sApimachineryPkgApisMetaV1ObjectMeta.
-type OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta struct {
+// OptIoK8sApimachineryPkgApisMetaV1ObjectMeta is generic valiant of IoK8sApimachineryPkgApisMetaV1ObjectMeta.
+type OptIoK8sApimachineryPkgApisMetaV1ObjectMeta struct {
 	Value IoK8sApimachineryPkgApisMetaV1ObjectMeta
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta was set.
-func (o OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sApimachineryPkgApisMetaV1ObjectMeta was set.
+func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta) Reset() {
+func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) Reset() {
 	var v IoK8sApimachineryPkgApisMetaV1ObjectMeta
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta) SetTo(v IoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) SetTo(v IoK8sApimachineryPkgApisMetaV1ObjectMeta) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta) Get() (v IoK8sApimachineryPkgApisMetaV1ObjectMeta, ok bool) {
+func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) Get() (v IoK8sApimachineryPkgApisMetaV1ObjectMeta, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sApimachineryPkgApisMetaV1Preconditions with value set to v.
-func NewOptionalIoK8sApimachineryPkgApisMetaV1Preconditions(v IoK8sApimachineryPkgApisMetaV1Preconditions) OptionalIoK8sApimachineryPkgApisMetaV1Preconditions {
-	return OptionalIoK8sApimachineryPkgApisMetaV1Preconditions{
+// New returns new OptIoK8sApimachineryPkgApisMetaV1Preconditions with value set to v.
+func NewOptIoK8sApimachineryPkgApisMetaV1Preconditions(v IoK8sApimachineryPkgApisMetaV1Preconditions) OptIoK8sApimachineryPkgApisMetaV1Preconditions {
+	return OptIoK8sApimachineryPkgApisMetaV1Preconditions{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sApimachineryPkgApisMetaV1Preconditions is generic valiant of IoK8sApimachineryPkgApisMetaV1Preconditions.
-type OptionalIoK8sApimachineryPkgApisMetaV1Preconditions struct {
+// OptIoK8sApimachineryPkgApisMetaV1Preconditions is generic valiant of IoK8sApimachineryPkgApisMetaV1Preconditions.
+type OptIoK8sApimachineryPkgApisMetaV1Preconditions struct {
 	Value IoK8sApimachineryPkgApisMetaV1Preconditions
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sApimachineryPkgApisMetaV1Preconditions was set.
-func (o OptionalIoK8sApimachineryPkgApisMetaV1Preconditions) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sApimachineryPkgApisMetaV1Preconditions was set.
+func (o OptIoK8sApimachineryPkgApisMetaV1Preconditions) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sApimachineryPkgApisMetaV1Preconditions) Reset() {
+func (o *OptIoK8sApimachineryPkgApisMetaV1Preconditions) Reset() {
 	var v IoK8sApimachineryPkgApisMetaV1Preconditions
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sApimachineryPkgApisMetaV1Preconditions) SetTo(v IoK8sApimachineryPkgApisMetaV1Preconditions) {
+func (o *OptIoK8sApimachineryPkgApisMetaV1Preconditions) SetTo(v IoK8sApimachineryPkgApisMetaV1Preconditions) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sApimachineryPkgApisMetaV1Preconditions) Get() (v IoK8sApimachineryPkgApisMetaV1Preconditions, ok bool) {
+func (o OptIoK8sApimachineryPkgApisMetaV1Preconditions) Get() (v IoK8sApimachineryPkgApisMetaV1Preconditions, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sApimachineryPkgApisMetaV1StatusDetails with value set to v.
-func NewOptionalIoK8sApimachineryPkgApisMetaV1StatusDetails(v IoK8sApimachineryPkgApisMetaV1StatusDetails) OptionalIoK8sApimachineryPkgApisMetaV1StatusDetails {
-	return OptionalIoK8sApimachineryPkgApisMetaV1StatusDetails{
+// New returns new OptIoK8sApimachineryPkgApisMetaV1StatusDetails with value set to v.
+func NewOptIoK8sApimachineryPkgApisMetaV1StatusDetails(v IoK8sApimachineryPkgApisMetaV1StatusDetails) OptIoK8sApimachineryPkgApisMetaV1StatusDetails {
+	return OptIoK8sApimachineryPkgApisMetaV1StatusDetails{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sApimachineryPkgApisMetaV1StatusDetails is generic valiant of IoK8sApimachineryPkgApisMetaV1StatusDetails.
-type OptionalIoK8sApimachineryPkgApisMetaV1StatusDetails struct {
+// OptIoK8sApimachineryPkgApisMetaV1StatusDetails is generic valiant of IoK8sApimachineryPkgApisMetaV1StatusDetails.
+type OptIoK8sApimachineryPkgApisMetaV1StatusDetails struct {
 	Value IoK8sApimachineryPkgApisMetaV1StatusDetails
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sApimachineryPkgApisMetaV1StatusDetails was set.
-func (o OptionalIoK8sApimachineryPkgApisMetaV1StatusDetails) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sApimachineryPkgApisMetaV1StatusDetails was set.
+func (o OptIoK8sApimachineryPkgApisMetaV1StatusDetails) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sApimachineryPkgApisMetaV1StatusDetails) Reset() {
+func (o *OptIoK8sApimachineryPkgApisMetaV1StatusDetails) Reset() {
 	var v IoK8sApimachineryPkgApisMetaV1StatusDetails
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sApimachineryPkgApisMetaV1StatusDetails) SetTo(v IoK8sApimachineryPkgApisMetaV1StatusDetails) {
+func (o *OptIoK8sApimachineryPkgApisMetaV1StatusDetails) SetTo(v IoK8sApimachineryPkgApisMetaV1StatusDetails) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sApimachineryPkgApisMetaV1StatusDetails) Get() (v IoK8sApimachineryPkgApisMetaV1StatusDetails, ok bool) {
+func (o OptIoK8sApimachineryPkgApisMetaV1StatusDetails) Get() (v IoK8sApimachineryPkgApisMetaV1StatusDetails, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec with value set to v.
-func NewOptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec(v IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec {
-	return OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec{
+// New returns new OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec with value set to v.
+func NewOptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec(v IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec {
+	return OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec is generic valiant of IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec.
-type OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec struct {
+// OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec is generic valiant of IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec.
+type OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec struct {
 	Value IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec was set.
-func (o OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) IsSet() bool { return o.Set }
+// IsSet returns true if OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec was set.
+func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Reset() {
+func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Reset() {
 	var v IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) SetTo(v IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) {
+func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) SetTo(v IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Get() (v IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec, ok bool) {
+func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Get() (v IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus with value set to v.
-func NewOptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus(v IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus {
-	return OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus{
+// New returns new OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus with value set to v.
+func NewOptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus(v IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus {
+	return OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus is generic valiant of IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus.
-type OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus struct {
+// OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus is generic valiant of IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus.
+type OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus struct {
 	Value IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus was set.
-func (o OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) IsSet() bool {
-	return o.Set
-}
+// IsSet returns true if OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus was set.
+func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Reset() {
+func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Reset() {
 	var v IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) SetTo(v IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) {
+func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) SetTo(v IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Get() (v IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus, ok bool) {
+func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Get() (v IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference with value set to v.
-func NewOptionalIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference(v IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference {
-	return OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference{
+// New returns new OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference with value set to v.
+func NewOptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference(v IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference {
+	return OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference is generic valiant of IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference.
-type OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference struct {
+// OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference is generic valiant of IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference.
+type OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference struct {
 	Value IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference
 	Set   bool
 }
 
-// IsSet returns true if OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference was set.
-func (o OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) IsSet() bool {
-	return o.Set
-}
+// IsSet returns true if OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference was set.
+func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Reset() {
+func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Reset() {
 	var v IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) SetTo(v IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) {
+func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) SetTo(v IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Get() (v IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference, ok bool) {
+func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Get() (v IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference, ok bool) {
 	if !o.Set {
 		return v, false
 	}
 	return o.Value, true
 }
 
-// New returns new OptionalString with value set to v.
-func NewOptionalString(v string) OptionalString {
-	return OptionalString{
+// New returns new OptString with value set to v.
+func NewOptString(v string) OptString {
+	return OptString{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptionalString is generic valiant of string.
-type OptionalString struct {
+// OptString is generic valiant of string.
+type OptString struct {
 	Value string
 	Set   bool
 }
 
-// IsSet returns true if OptionalString was set.
-func (o OptionalString) IsSet() bool { return o.Set }
+// IsSet returns true if OptString was set.
+func (o OptString) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptionalString) Reset() {
+func (o *OptString) Reset() {
 	var v string
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptionalString) SetTo(v string) {
+func (o *OptString) SetTo(v string) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptionalString) Get() (v string, ok bool) {
+func (o OptString) Get() (v string, ok bool) {
 	if !o.Set {
 		return v, false
 	}

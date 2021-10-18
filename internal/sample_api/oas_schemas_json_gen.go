@@ -268,12 +268,12 @@ func (o *NilString) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON writes json value of Data to json stream.
-func (o OptionalData) WriteJSON(j *json.Stream) {
+func (o OptData) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
 }
 
 // ReadJSON reads json value of Data from json iterator.
-func (o *OptionalData) ReadJSON(i *json.Iterator) error {
+func (o *OptData) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.ObjectValue:
 		o.Set = true
@@ -282,18 +282,18 @@ func (o *OptionalData) ReadJSON(i *json.Iterator) error {
 		}
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalData", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptData", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of time.Duration to json stream.
-func (o OptionalDuration) WriteJSON(j *json.Stream) {
+func (o OptDuration) WriteJSON(j *json.Stream) {
 	json.WriteDuration(j, o.Value)
 }
 
 // ReadJSON reads json value of time.Duration from json iterator.
-func (o *OptionalDuration) ReadJSON(i *json.Iterator) error {
+func (o *OptDuration) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -304,49 +304,49 @@ func (o *OptionalDuration) ReadJSON(i *json.Iterator) error {
 		o.Value = v
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalDuration", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptDuration", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of float64 to json stream.
-func (o OptionalFloat64) WriteJSON(j *json.Stream) {
+func (o OptFloat64) WriteJSON(j *json.Stream) {
 	j.WriteFloat64(float64(o.Value))
 }
 
 // ReadJSON reads json value of float64 from json iterator.
-func (o *OptionalFloat64) ReadJSON(i *json.Iterator) error {
+func (o *OptFloat64) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
 		o.Value = float64(i.ReadFloat64())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalFloat64", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptFloat64", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of int to json stream.
-func (o OptionalInt) WriteJSON(j *json.Stream) {
+func (o OptInt) WriteJSON(j *json.Stream) {
 	j.WriteInt(int(o.Value))
 }
 
 // ReadJSON reads json value of int from json iterator.
-func (o *OptionalInt) ReadJSON(i *json.Iterator) error {
+func (o *OptInt) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
 		o.Value = int(i.ReadInt())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalInt", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptInt", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of string to json stream.
-func (o OptionalNilString) WriteJSON(j *json.Stream) {
+func (o OptNilString) WriteJSON(j *json.Stream) {
 	if o.Null {
 		j.WriteNil()
 		return
@@ -355,7 +355,7 @@ func (o OptionalNilString) WriteJSON(j *json.Stream) {
 }
 
 // ReadJSON reads json value of string from json iterator.
-func (o *OptionalNilString) ReadJSON(i *json.Iterator) error {
+func (o *OptNilString) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -370,54 +370,54 @@ func (o *OptionalNilString) ReadJSON(i *json.Iterator) error {
 		i.Skip()
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalNilString", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptNilString", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of PetType to json stream.
-func (o OptionalPetType) WriteJSON(j *json.Stream) {
+func (o OptPetType) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of PetType from json iterator.
-func (o *OptionalPetType) ReadJSON(i *json.Iterator) error {
+func (o *OptPetType) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = PetType(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalPetType", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptPetType", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of string to json stream.
-func (o OptionalString) WriteJSON(j *json.Stream) {
+func (o OptString) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
 }
 
 // ReadJSON reads json value of string from json iterator.
-func (o *OptionalString) ReadJSON(i *json.Iterator) error {
+func (o *OptString) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
 		o.Value = string(i.ReadString())
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalString", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptString", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of time.Time to json stream.
-func (o OptionalTime) WriteJSON(j *json.Stream, format func(*json.Stream, time.Time)) {
+func (o OptTime) WriteJSON(j *json.Stream, format func(*json.Stream, time.Time)) {
 	format(j, o.Value)
 }
 
 // ReadJSON reads json value of time.Time from json iterator.
-func (o *OptionalTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (time.Time, error)) error {
+func (o *OptTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (time.Time, error)) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -428,18 +428,18 @@ func (o *OptionalTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (t
 		o.Value = v
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalTime", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptTime", i.WhatIsNext())
 	}
 	return nil
 }
 
 // WriteJSON writes json value of uuid.UUID to json stream.
-func (o OptionalUUID) WriteJSON(j *json.Stream) {
+func (o OptUUID) WriteJSON(j *json.Stream) {
 	json.WriteUUID(j, o.Value)
 }
 
 // ReadJSON reads json value of uuid.UUID from json iterator.
-func (o *OptionalUUID) ReadJSON(i *json.Iterator) error {
+func (o *OptUUID) ReadJSON(i *json.Iterator) error {
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -450,7 +450,7 @@ func (o *OptionalUUID) ReadJSON(i *json.Iterator) error {
 		o.Value = v
 		return i.Error
 	default:
-		return fmt.Errorf("unexpected type %d while reading OptionalUUID", i.WhatIsNext())
+		return fmt.Errorf("unexpected type %d while reading OptUUID", i.WhatIsNext())
 	}
 	return nil
 }
