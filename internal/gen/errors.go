@@ -24,26 +24,22 @@ func (e *ErrNotImplemented) Error() string {
 }
 
 func (g *Generator) checkErr(err error) error {
-	{
-		var notImplementedErr *ErrNotImplemented
-		if xerrors.As(err, &notImplementedErr) {
-			for _, s := range g.opt.IgnoreNotImplemented {
-				s = strings.TrimSpace(s)
-				if s == "all" {
-					return nil
-				}
-				if s == notImplementedErr.Name {
-					return nil
-				}
+	var notImplementedErr *ErrNotImplemented
+	if xerrors.As(err, &notImplementedErr) {
+		for _, s := range g.opt.IgnoreNotImplemented {
+			s = strings.TrimSpace(s)
+			if s == "all" {
+				return nil
+			}
+			if s == notImplementedErr.Name {
+				return nil
 			}
 		}
 	}
-	{
-		var paramErr *ErrPathParameterNotSpecified
-		if xerrors.As(err, &paramErr) {
-			if g.opt.IgnoreUnspecifiedParams {
-				return nil
-			}
+	var paramErr *ErrPathParameterNotSpecified
+	if xerrors.As(err, &paramErr) {
+		if g.opt.IgnoreUnspecifiedParams {
+			return nil
 		}
 	}
 
