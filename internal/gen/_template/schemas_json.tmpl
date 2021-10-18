@@ -166,6 +166,17 @@ func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if $g.FormatCustom }}, forma
 
 {{ end }}
 
+{{ define "json_array" }}
+{{- /*gotype: github.com/ogen-go/ogen/internal/ast.Leaf*/ -}}
+more.Down()
+j.WriteArrayStart()
+for _, elem := range {{ $.Var }} {
+    {{- template "json_value" array_leaf $.Type.Item -}}
+}
+j.WriteArrayEnd()
+more.Up()
+{{ end }}
+
 {{ define "json_start" }}
 {{- /*gotype: github.com/ogen-go/ogen/internal/ast.Leaf*/ -}}
 more.More()
@@ -199,37 +210,19 @@ j.WriteObjectField("{{ $.Field }}")
         j.{{ $.Type.JSONWrite }}({{ $.Var }})
     {{- else if $.Type.IsArray }}
         {{- if eq $.Type.ArrayVariant "required" -}}
-            {{- template "json_start" $ }}
-            more.Down()
-            j.WriteArrayStart()
-            for _, elem := range {{ $.Var }} {
-                {{- template "json_value" array_leaf $.Type.Item -}}
-            }
-            j.WriteArrayEnd()
-            more.Up()
+            {{ template "json_start" $ }}
+            {{ template "json_array" $ }}
         {{- else if eq $.Type.ArrayVariant "optional" -}}
             if {{ $.Var }} != nil {
-                {{- template "json_start" $ }}
-                more.Down()
-                j.WriteArrayStart()
-                for _, elem := range {{ $.Var }} {
-                    {{- template "json_value" array_leaf $.Type.Item -}}
-                }
-                j.WriteArrayEnd()
-                more.Up()
+                {{ template "json_start" $ }}
+                {{ template "json_array" $ }}
             }
         {{- else if eq $.Type.ArrayVariant "nullable" }}
             {{- template "json_start" $ }}
             if {{ $.Var }} == nil {
                 j.WriteNil()
             } else {
-                more.Down()
-                j.WriteArrayStart()
-                for _, elem := range {{ $.Var }} {
-                    {{- template "json_value" array_leaf $.Type.Item -}}
-                }
-                j.WriteArrayEnd()
-                more.Up()
+                {{ template "json_array" $ }}
             }
         {{- end }}
     {{- else }}

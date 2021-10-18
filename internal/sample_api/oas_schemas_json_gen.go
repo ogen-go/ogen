@@ -483,6 +483,7 @@ func (s Pet) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
+
 	}
 
 	more.More()
@@ -546,9 +547,11 @@ func (s Pet) WriteJSON(j *json.Stream) {
 			}
 			j.WriteArrayEnd()
 			more.Up()
+
 		}
 		j.WriteArrayEnd()
 		more.Up()
+
 	}
 
 	if s.TestDate.Set {
