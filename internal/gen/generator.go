@@ -40,7 +40,6 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 		return nil, xerrors.Errorf("methods: %w", err)
 	}
 
-	g.generatePrimitiveGenerics()
 	g.simplify()
 	g.fix()
 	return g, nil

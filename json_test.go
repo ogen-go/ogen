@@ -42,7 +42,7 @@ func encodeObject(v json.Marshaler) []byte {
 func TestJSONGenerics(t *testing.T) {
 	for _, tc := range []struct {
 		Name   string
-		Value  api.OptionalNilInt64
+		Value  api.OptionalNilString
 		Result string
 	}{
 		{
@@ -51,19 +51,19 @@ func TestJSONGenerics(t *testing.T) {
 		},
 		{
 			Name:   "Set",
-			Result: `{"key":10}`,
-			Value:  api.NewOptionalNilInt64(10),
+			Result: `{"key":"foo"}`,
+			Value:  api.NewOptionalNilString("foo"),
 		},
 		{
 			Name:   "Nil",
 			Result: `{"key":null}`,
-			Value:  api.OptionalNilInt64{Null: true, Set: true},
+			Value:  api.OptionalNilString{Null: true, Set: true},
 		},
 	} {
 		t.Run(tc.Name, func(t *testing.T) {
 			result := encodeObject(tc.Value)
 			require.Equal(t, tc.Result, string(result), "encoding result mismatch")
-			var v api.OptionalNilInt64
+			var v api.OptionalNilString
 			decodeObject(t, result, &v)
 			require.Equal(t, tc.Value, v)
 			require.Equal(t, tc.Result, string(encodeObject(v)))
