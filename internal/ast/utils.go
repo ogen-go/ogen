@@ -19,8 +19,8 @@ func parseJsonValue(typ string, v json.RawMessage) (interface{}, error) {
 		return nil, errNullValue
 	}
 
-	str := func(vtyp jsoniter.ValueType) string {
-		switch vtyp {
+	str := func(t jsoniter.ValueType) string {
+		switch t {
 		case jsoniter.InvalidValue:
 			return "invalid"
 		case jsoniter.StringValue:
