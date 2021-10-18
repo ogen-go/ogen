@@ -51,6 +51,9 @@ func (t Int) Validate(v int64) error {
 	if t.MaxSet && (v > t.Max || t.MaxExclusive && v == t.Max) {
 		return fmt.Errorf("%d > %d (max)", v, t.Min)
 	}
+	if t.MultipleOfSet && (v%int64(t.MultipleOf)) != 0 {
+		return fmt.Errorf("%d is not multiple of %d", v, t.MultipleOf)
+	}
 
 	return nil
 }

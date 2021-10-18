@@ -57,6 +57,18 @@ func TestInt_Validate(t *testing.T) {
 			Value:     10,
 			Valid:     false,
 		},
+		{
+			Name:      "MultipleOfOk",
+			Validator: Int{MultipleOf: 2, MultipleOfSet: true},
+			Value:     8,
+			Valid:     true,
+		},
+		{
+			Name:      "MultipleOfErr",
+			Validator: Int{MultipleOf: 2, MultipleOfSet: true},
+			Value:     13,
+			Valid:     false,
+		},
 	} {
 		t.Run(tc.Name, func(t *testing.T) {
 			valid := tc.Validator.Validate(tc.Value) == nil
