@@ -129,13 +129,13 @@ func (g *Generator) createDefaultResponse(methodName string, r ogen.Response) (*
 }
 
 // generateResponse creates new response based on schema definition.
-func (g *Generator) generateResponse(rname string, resp ogen.Response) (*ast.Response, error) {
+func (g *Generator) generateResponse(respName string, resp ogen.Response) (*ast.Response, error) {
 	response := ast.CreateResponse()
 
 	// Response without content.
 	// Create empty struct.
 	if len(resp.Content) == 0 {
-		s := ast.Alias(rname, ast.Primitive("struct{}"))
+		s := ast.Alias(respName, ast.Primitive("struct{}"))
 		g.schemas[s.Name] = s
 		response.NoContent = s
 		return response, nil
@@ -150,9 +150,9 @@ func (g *Generator) generateResponse(rname string, resp ogen.Response) (*ast.Res
 	for _, contentType := range ctypes {
 		media := resp.Content[contentType]
 		// Create unique response name.
-		name := rname
+		name := respName
 		if len(resp.Content) > 1 {
-			name = pascal(rname, contentType)
+			name = pascal(respName, contentType)
 		}
 
 		schema, err := g.generateSchema(name, media.Schema)
@@ -224,7 +224,6 @@ func (g *Generator) wrapStatusCode(schema *ast.Schema) *ast.Schema {
 			Name: "StatusCode",
 			Type: ast.Primitive("int"),
 			Tag:  "-",
-			
 		},
 		{
 			Name: "Response",
