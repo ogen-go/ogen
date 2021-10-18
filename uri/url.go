@@ -23,7 +23,7 @@ func Put(u *url.URL) {
 
 // Clone clones u and returns cloned url that you can modify.
 //
-// Cal PutURL for performance.
+// Call Put for performance.
 func Clone(u *url.URL) *url.URL {
 	target := Acquire()
 
