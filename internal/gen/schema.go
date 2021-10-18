@@ -27,7 +27,7 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 			panic("unreachable")
 		}
 
-		if _, found := g.schemas[side.Name]; found {
+		if _, found := g.schemas[side.Name]; found && !side.IsGeneric() {
 			panic(fmt.Sprintf("side schema name conflict: %s", side.Name))
 		}
 

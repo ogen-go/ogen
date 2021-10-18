@@ -20,7 +20,10 @@ const (
 	KindPrimitive SchemaKind = "primitive"
 	KindArray     SchemaKind = "array"
 	KindEnum      SchemaKind = "enum"
-	KindPointer   SchemaKind = "pointer"
+	// KindPointer simulates optionals via go pointers.
+	// Deprecated. Use KindGeneric.
+	KindPointer SchemaKind = "pointer"
+	KindGeneric SchemaKind = "generic"
 )
 
 type Validators struct {
@@ -53,6 +56,10 @@ func (s Schema) IsStruct() bool {
 	return s.Is(KindStruct)
 }
 
+func (s Schema) IsGeneric() bool {
+	return s.Is(KindGeneric)
+}
+
 func (s Schema) CanGeneric() bool {
 	if !s.Is(KindPrimitive) {
 		return false
@@ -79,6 +86,7 @@ type Schema struct {
 	PointerTo  *Schema
 	Primitive  string
 	Item       *Schema
+	GenericOf  *Schema
 	EnumValues []interface{}
 	Fields     []SchemaField
 
@@ -97,9 +105,10 @@ type Schema struct {
 	// MaxProperties *uint64
 	// MinProperties *uint64
 
-	Optional    bool
-	Nullable    bool
-	GenericType string
+	Optional       bool
+	Nullable       bool
+	GenericType    string
+	GenericVariant GenericVariant
 }
 
 func (s Schema) canRawJSON() bool {
@@ -117,6 +126,12 @@ func (s Schema) canRawJSON() bool {
 func (s Schema) JSONType() string {
 	if s.IsNumeric() {
 		return "NumberValue"
+	}
+	if s.IsArray() {
+		return "ArrayValue"
+	}
+	if s.IsStruct() {
+		return "ObjectValue"
 	}
 	switch s.Primitive {
 	case "bool":
@@ -270,6 +285,8 @@ func (s *Schema) needValidation(visited map[*Schema]struct{}) (result bool) {
 		return s.AliasTo.needValidation(visited)
 	case KindPointer:
 		return s.PointerTo.needValidation(visited)
+	case KindGeneric:
+		return s.GenericOf.needValidation(visited)
 	case KindArray:
 		if s.Validators.Array.Set() {
 			return true
@@ -346,6 +363,8 @@ func (s Schema) Type() string {
 			return s.GenericType
 		}
 		return s.Primitive
+	case KindGeneric:
+		return s.Name
 	case KindArray:
 		return "[]" + s.Item.Type()
 	case KindEnum:
@@ -430,6 +449,39 @@ func Pointer(to *Schema) *Schema {
 	return &Schema{
 		Kind:      KindPointer,
 		PointerTo: to,
+	}
+}
+
+type GenericVariant struct {
+	Nullable bool
+	Optional bool
+}
+
+func (v GenericVariant) Name() string {
+	var b strings.Builder
+	if v.Optional {
+		b.WriteString("Optional")
+	}
+	if v.Nullable {
+		b.WriteString("Nil")
+	}
+	return b.String()
+}
+
+func (v GenericVariant) Any() bool {
+	return v.Nullable || v.Optional
+}
+
+func Generic(name string, of *Schema, v GenericVariant) *Schema {
+	name = v.Name() + name
+	if of.IsArray() {
+		name = name + "Array"
+	}
+	return &Schema{
+		Name:           name,
+		Kind:           KindGeneric,
+		GenericOf:      of,
+		GenericVariant: v,
 	}
 }
 

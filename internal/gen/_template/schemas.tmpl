@@ -39,6 +39,68 @@ const (
 {{- end }}
 )
 {{/* Define enum */}}
+
+{{/* Define generic */}}
+{{- else if eq $.Kind "generic" }}
+// {{ $.Name }} is generic valiant of {{ $.GenericOf.Type }}.
+type {{ $.Name }} struct {
+    Value {{ $.GenericOf.Type }}
+{{- if $.GenericVariant.Optional }}
+    Set bool
+{{- end }}
+{{- if $.GenericVariant.Nullable }}
+    Null bool
+{{- end }}
+}
+
+{{- if $.GenericVariant.Optional }}
+// IsSet returns true if {{ $.Type }} was set.
+func (o {{ $.Name }}) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *{{ $.Name }}) Reset() {
+    var v {{ $.GenericOf.Type }}
+    o.Value = v
+    o.Set = false
+{{- if $.GenericVariant.Nullable }}
+    o.Nil = false
+{{- end }}
+}
+{{- end }}
+
+// SetTo sets value to v.
+func (o *{{ $.Name }}) SetTo(v {{ $.GenericOf.Type }}) {
+{{- if $.GenericVariant.Optional }}
+    o.Set = true
+{{- end }}
+{{- if $.GenericVariant.Nullable }}
+    o.Nil = false
+{{- end }}
+    o.Value = v
+}
+
+{{- if $.GenericVariant.Nullable  }}
+// IsSet returns true if value is nil.
+func (o {{ $.Name }}) IsNil() bool { return o.Nil }
+{{ end }}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o {{ $.Name }}) Get() (v {{ $.GenericOf.Type }}, ok bool) {
+{{- if $.GenericVariant.Nullable }}
+    if o.Nil {
+        return v, false
+    }
+{{- end }}
+{{- if $.GenericVariant.Optional }}
+    if !o.Set {
+        return v, false
+    }
+{{- end }}
+    return o.Value, true
+}
+
+
+{{/* Define enum */}}
 {{- end }}
 
 {{/* Define methods */}}

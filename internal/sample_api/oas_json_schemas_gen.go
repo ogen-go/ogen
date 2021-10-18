@@ -186,6 +186,24 @@ func (s *FoobarPutDefault) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
+// WriteJSON writes json value of PetType to json stream.
+func (o OptionalPetType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of PetType from json iterator.
+func (o *OptionalPetType) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = PetType(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalPetType", i.WhatIsNext())
+	}
+	return nil
+}
+
 // WriteJSON implements json.Marshaler.
 func (s Pet) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
@@ -241,7 +259,7 @@ func (s Pet) WriteJSON(j *json.Stream) {
 		field.Write("testTime")
 		s.TestTime.WriteJSON(j, json.WriteTime)
 	}
-	// Unsupported kind "pointer" for field "Type".
+	// Unsupported kind "generic" for field "Type".
 	field.Write("uri")
 	json.WriteURI(j, s.URI)
 	field.Write("unique_id")
@@ -392,7 +410,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "type":
-			// Unsupported kind "pointer" for field "Type".
+			// Unsupported kind "generic" for field "Type".
 			i.Skip()
 			return true
 		case "uri":

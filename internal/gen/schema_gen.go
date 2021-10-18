@@ -94,7 +94,7 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 		if ref != "" {
 			// Reference pointed to a scalar type.
 			// Wrap it with an alias using component name.
-			if s.Is(ast.KindPrimitive, ast.KindArray, ast.KindPointer) {
+			if s.Is(ast.KindPrimitive, ast.KindArray, ast.KindPointer, ast.KindGeneric) {
 				s = ast.Alias(name, s)
 			}
 			g.localRefs[ref] = s
@@ -103,7 +103,7 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 
 		// If schema it's a nested object (non-root)
 		// and has a complex type (struct or alias) save it in g.side.
-		if !root && !s.Is(ast.KindPrimitive, ast.KindArray, ast.KindPointer) {
+		if !root && !s.Is(ast.KindPrimitive, ast.KindArray, ast.KindPointer, ast.KindGeneric) {
 			g.side = append(g.side, s)
 		}
 		return s
@@ -139,7 +139,6 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 		if schema.Items != nil {
 			return nil, xerrors.New("object cannot contain 'items' field")
 		}
-
 		required := func(name string) bool {
 			for _, p := range schema.Required {
 				if p == name {
@@ -148,7 +147,6 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 			}
 			return false
 		}
-
 		s := sideEffect(ast.Struct(name))
 		s.Description = schema.Description
 		if ref != "" {
@@ -159,18 +157,30 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 			if err != nil {
 				return nil, xerrors.Errorf("%s: %w", propName, err)
 			}
+			genericVariant := ast.GenericVariant{
+				Nullable: propSchema.Nullable,
+				Optional: !required(propName),
+			}
 			if prop.CanGeneric() {
-				if !required(propName) {
+				if genericVariant.Optional {
 					prop.Optional = true
 				}
-				if propSchema.Nullable {
+				if genericVariant.Nullable {
 					prop.Nullable = true
 				}
-			} else if !required(propName) {
-				// Fallback to non-generic.
-				// TODO(ernado): Support non-primitive generics.
-				prop = ast.Pointer(prop)
+			} else if genericVariant.Any() {
+				if prop.Is(ast.KindEnum) {
+					prop = ast.Generic(
+						genericPostfix(prop.Type()),
+						prop,
+						genericVariant,
+					)
+					g.side = append(g.side, prop)
+				} else {
+					prop = ast.Pointer(prop)
+				}
 			}
+
 			if prop.Generic() {
 				prop.GenericType = prop.GenericKind() + genericPostfix(prop.Primitive)
 				switch prop.Format {

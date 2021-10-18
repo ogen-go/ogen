@@ -71,6 +71,36 @@ type NotFound struct{}
 func (*NotFound) foobarGetResponse()  {}
 func (*NotFound) foobarPostResponse() {}
 
+// OptionalPetType is generic valiant of PetType.
+type OptionalPetType struct {
+	Value PetType
+	Set   bool
+}
+
+// IsSet returns true if OptionalPetType was set.
+func (o OptionalPetType) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalPetType) Reset() {
+	var v PetType
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalPetType) SetTo(v PetType) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalPetType) Get() (v PetType, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // Pet describes #/components/schemas/Pet.
 type Pet struct {
 	Birthday     time.Time         `json:"birthday"`
@@ -91,7 +121,7 @@ type Pet struct {
 	TestFloat1   OptionalFloat64   `json:"testFloat1"`
 	TestInteger1 OptionalInt       `json:"testInteger1"`
 	TestTime     OptionalTime      `json:"testTime"`
-	Type         *PetType          `json:"type"`
+	Type         OptionalPetType   `json:"type"`
 	URI          url.URL           `json:"uri"`
 	UniqueID     uuid.UUID         `json:"unique_id"`
 }

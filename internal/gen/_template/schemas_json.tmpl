@@ -104,7 +104,71 @@ func (s *{{ $s.Name }}) ReadJSON(i *json.Iterator) error {
     })
     return i.Error
 }
+{{- else if $s.IsGeneric }}
+{{ $g := $s.GenericOf }}
+// WriteJSON writes json value of {{ $g.Type }} to json stream.
+func (o {{ $s.Name }}) WriteJSON(j *json.Stream{{ if $g.FormatCustom }}, format func(*json.Stream, {{ $g.Type }}){{ end }}) {
+{{- if $s.GenericVariant.Nullable }}
+    if o.Nil {
+        j.WriteNil()
+        return
+    }
 {{- end }}
+{{- if $g.FormatCustom }}
+    format(j, o.Value)
+{{- else if $g.JSONFormat }}
+    json.Write{{ $g.JSONFormat }}(j, o.Value)
+{{- else if $g.JSONWrite }}
+    j.{{ $g.JSONWrite }}({{ $g.Primitive }}(o.Value))
+{{- end }}
+}
+
+// ReadJSON reads json value of {{ $g.Type }} from json iterator.
+func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if $g.FormatCustom }}, format func(*json.Iterator) ({{ $g.Type }}, error){{ end }}) error {
+    switch i.WhatIsNext() {
+    case json.{{ $g.JSONType }}:
+    {{- if $s.GenericVariant.Optional }}
+        o.Set = true
+    {{- end }}
+    {{- if $s.GenericVariant.Nullable }}
+        o.Nil = false
+    {{- end }}
+    {{- if $g.FormatCustom }}
+        v, err := format(i)
+        if err != nil {
+            return err
+        }
+        o.Value = v
+    {{- else if $g.JSONFormat  }}
+        v, err := json.Read{{ $g.JSONFormat }}(i)
+        if err != nil {
+        return err
+        }
+        o.Value = v
+    {{- else if $g.JSONRead }}
+        o.Value = {{ $g.Type }}(i.{{ $g.JSONRead }}())
+    {{- else }}
+        panic("Not supported {{ $g.Type }}")
+    {{- end }}
+        return i.Error
+    {{- if $s.Nullable }}
+    case json.NilValue:
+        var v {{ $g.Type }}
+        o.Value = v
+        {{- if $s.GenericVariant.Optional }}
+        o.Set = true
+        {{- end }}
+        o.Nil = true
+        i.Skip()
+        return i.Error
+    {{- end }}
+    default:
+        return fmt.Errorf("unexpected type %d while reading {{ $s.Name }}", i.WhatIsNext())
+    }
+    return nil
+}
+{{- end }}
+
 {{- end }}
 
 {{ end }}
