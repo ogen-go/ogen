@@ -11,6 +11,23 @@ import (
 	"github.com/ogen-go/ogen/internal/ast"
 )
 
+func fieldElem(s *ast.SchemaField) Elem {
+	return Elem{
+		ArrElem: false,
+		Field:   s.Tag,
+		Type:    s.Type,
+		Var:     fmt.Sprintf("s.%s", s.Name),
+	}
+}
+
+// Elem variable helper for recursive array or object encoding.
+type Elem struct {
+	ArrElem bool
+	Field   string
+	Type    *ast.Schema
+	Var     string
+}
+
 // templateFuncs returns functions which used in templates.
 func templateFuncs() template.FuncMap {
 	return template.FuncMap{
@@ -21,7 +38,8 @@ func templateFuncs() template.FuncMap {
 		"hasPrefix":  strings.HasPrefix,
 		"hasSuffix":  strings.HasSuffix,
 		"pascalMP":   pascalMP,
-		"array_leaf": func(s *ast.Schema) ast.Leaf { return ast.Leaf{Type: s, Element: true, Var: "elem"} },
+		"array_elem": func(s *ast.Schema) Elem { return Elem{Type: s, ArrElem: true, Var: "elem"} },
+		"field_elem": fieldElem,
 		"toString":   func(v interface{}) string { return fmt.Sprintf("%v", v) },
 		"enumString": func(v interface{}) string {
 			switch v := v.(type) {

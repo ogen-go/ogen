@@ -289,22 +289,6 @@ type SchemaField struct {
 	Tag  string
 }
 
-func (s SchemaField) Leaf() Leaf {
-	return Leaf{
-		Element: false,
-		Field:   s.Tag,
-		Type:    s.Type,
-		Var:     fmt.Sprintf("s.%s", s.Name),
-	}
-}
-
-type Leaf struct {
-	Element bool
-	Field   string
-	Type    *Schema
-	Var     string
-}
-
 func afterDot(v string) string {
 	idx := strings.Index(v, ".")
 	if idx > 0 {

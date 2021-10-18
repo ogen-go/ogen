@@ -12,7 +12,7 @@ func (s {{ $s.Name }}) WriteJSON(j *json.Stream) {
     more := json.NewMore(j)
     defer more.Reset()
     {{- range $f := $s.JSONFields }}
-        {{ template "json_value" $f.Leaf }}
+        {{ template "json_value" field_elem $f }}
     {{- end }}
     j.WriteObjectEnd()
 }
@@ -171,7 +171,7 @@ func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if $g.FormatCustom }}, forma
 more.Down()
 j.WriteArrayStart()
 for _, elem := range {{ $.Var }} {
-    {{- template "json_value" array_leaf $.Type.Item -}}
+    {{- template "json_value" array_elem $.Type.Item -}}
 }
 j.WriteArrayEnd()
 more.Up()
