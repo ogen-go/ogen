@@ -4,9 +4,24 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestArray_Set(t *testing.T) {
+	var v Array
+	v.SetMaxLength(10)
+	v.SetMinLength(5)
+	require.True(t, v.Set())
+	require.Equal(t, Array{
+		MinLength:    5,
+		MinLengthSet: true,
+		MaxLength:    10,
+		MaxLengthSet: true,
+	}, v)
+	require.NoError(t, v.ValidateLength(7))
+}
+
+func TestArray_ValidateLength(t *testing.T) {
 	for _, tc := range []struct {
 		Name      string
 		Validator Array
