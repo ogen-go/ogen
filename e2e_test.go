@@ -1,6 +1,7 @@
 package ogen
 
 import (
+	"bytes"
 	"context"
 	"net"
 	"net/http/httptest"
@@ -10,6 +11,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
+	jsoniter "github.com/json-iterator/go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
@@ -93,6 +95,7 @@ func TestIntegration(t *testing.T) {
 		pet := api.Pet{
 			Birthday:     conv.Date(date),
 			ID:           42,
+			Type:         api.NewOptPetType(api.PetTypeFofa),
 			Name:         "SomePet",
 			Nickname:     api.NewNilString("Nick"),
 			NullStr:      api.NewOptNilString("Bar"),
@@ -110,7 +113,21 @@ func TestIntegration(t *testing.T) {
 			IPV4:         net.IPv4(127, 0, 0, 1),
 			IPV6:         net.ParseIP("2001:0db8:85a3:0000:0000:8a2e:0370:7334"),
 			Next:         api.NewOptData(api.Data{Description: api.NewOptString("Foo")}),
+
+			// TODO(ernado): support decoding and check those
+			Friends: nil,
+			TestArray1: [][]string{
+				{"Foo", "Bar"},
+				{"Baz"},
+				{},
+			},
 		}
+
+		t.Run("Valid", func(t *testing.T) {
+			buf := new(bytes.Buffer)
+			require.NoError(t, pet.WriteJSONTo(buf))
+			require.True(t, jsoniter.Valid(buf.Bytes()), "json should be valid")
+		})
 
 		// Can't use assert.Equal due to time.Time type equality checks.
 		assertPet := func(t testing.TB, exp, got api.Pet) {
@@ -148,6 +165,8 @@ func TestIntegration(t *testing.T) {
 			a.Equal(pet.URI.String(), got.URI.String(), "URI")
 
 			a.Equal(pet.Next, got.Next, "Next")
+
+			a.Equal(pet.Type, got.Type, "Type")
 		}
 
 		t.Run("PetCreate", func(t *testing.T) {
