@@ -9,7 +9,7 @@ import (
 
 var errNullValue = xerrors.New("json null value")
 
-func parseJsonValue(typ string, v json.RawMessage) (interface{}, error) {
+func parseJSONValue(typ string, v json.RawMessage) (interface{}, error) {
 	var (
 		iter = jsoniter.ParseBytes(jsoniter.ConfigDefault, v)
 		next = iter.WhatIsNext()

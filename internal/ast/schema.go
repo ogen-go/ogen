@@ -491,7 +491,7 @@ func Enum(name, typ string, rawValues []json.RawMessage) (*Schema, error) {
 		uniq   = map[interface{}]struct{}{}
 	)
 	for _, raw := range rawValues {
-		val, err := parseJsonValue(typ, raw)
+		val, err := parseJSONValue(typ, raw)
 		if err != nil {
 			if xerrors.Is(err, errNullValue) {
 				continue
