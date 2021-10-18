@@ -197,7 +197,6 @@ func (o NilBool) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of bool from json iterator.
 func (o *NilBool) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: bool, JSONType: BoolValue, format "", read "ReadBool".
 	switch i.WhatIsNext() {
 	case json.BoolValue:
 		o.Null = false
@@ -226,7 +225,6 @@ func (o NilDuration) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of time.Duration from json iterator.
 func (o *NilDuration) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: time.Duration, JSONType: StringValue, format "Duration", read "".
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Null = false
@@ -259,7 +257,6 @@ func (o NilFloat32) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of float32 from json iterator.
 func (o *NilFloat32) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: float32, JSONType: NumberValue, format "", read "ReadFloat32".
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Null = false
@@ -288,7 +285,6 @@ func (o NilFloat64) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of float64 from json iterator.
 func (o *NilFloat64) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: float64, JSONType: NumberValue, format "", read "ReadFloat64".
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Null = false
@@ -317,7 +313,6 @@ func (o NilIP) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of net.IP from json iterator.
 func (o *NilIP) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: net.IP, JSONType: StringValue, format "IP", read "".
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Null = false
@@ -350,7 +345,6 @@ func (o NilInt) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of int from json iterator.
 func (o *NilInt) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: int, JSONType: NumberValue, format "", read "ReadInt".
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Null = false
@@ -379,7 +373,6 @@ func (o NilInt32) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of int32 from json iterator.
 func (o *NilInt32) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: int32, JSONType: NumberValue, format "", read "ReadInt32".
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Null = false
@@ -408,7 +401,6 @@ func (o NilInt64) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of int64 from json iterator.
 func (o *NilInt64) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: int64, JSONType: NumberValue, format "", read "ReadInt64".
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Null = false
@@ -437,7 +429,6 @@ func (o NilString) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of string from json iterator.
 func (o *NilString) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: string, JSONType: StringValue, format "", read "ReadString".
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Null = false
@@ -466,7 +457,6 @@ func (o NilTime) WriteJSON(j *json.Stream, format func(*json.Stream, time.Time))
 
 // ReadJSON reads json value of time.Time from json iterator.
 func (o *NilTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (time.Time, error)) error {
-	// FormatCustom: true, Type: time.Time, JSONType: StringValue, format "", read "".
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Null = false
@@ -499,7 +489,6 @@ func (o NilURL) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of url.URL from json iterator.
 func (o *NilURL) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: url.URL, JSONType: StringValue, format "URI", read "".
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Null = false
@@ -532,7 +521,6 @@ func (o NilUUID) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of uuid.UUID from json iterator.
 func (o *NilUUID) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: uuid.UUID, JSONType: StringValue, format "UUID", read "".
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Null = false
@@ -561,7 +549,6 @@ func (o OptionalBool) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of bool from json iterator.
 func (o *OptionalBool) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: bool, JSONType: BoolValue, format "", read "ReadBool".
 	switch i.WhatIsNext() {
 	case json.BoolValue:
 		o.Set = true
@@ -580,7 +567,6 @@ func (o OptionalDuration) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of time.Duration from json iterator.
 func (o *OptionalDuration) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: time.Duration, JSONType: StringValue, format "Duration", read "".
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -603,7 +589,6 @@ func (o OptionalFloat32) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of float32 from json iterator.
 func (o *OptionalFloat32) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: float32, JSONType: NumberValue, format "", read "ReadFloat32".
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
@@ -622,7 +607,6 @@ func (o OptionalFloat64) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of float64 from json iterator.
 func (o *OptionalFloat64) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: float64, JSONType: NumberValue, format "", read "ReadFloat64".
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
@@ -641,7 +625,6 @@ func (o OptionalIP) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of net.IP from json iterator.
 func (o *OptionalIP) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: net.IP, JSONType: StringValue, format "IP", read "".
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -664,7 +647,6 @@ func (o OptionalInt) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of int from json iterator.
 func (o *OptionalInt) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: int, JSONType: NumberValue, format "", read "ReadInt".
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
@@ -683,7 +665,6 @@ func (o OptionalInt32) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of int32 from json iterator.
 func (o *OptionalInt32) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: int32, JSONType: NumberValue, format "", read "ReadInt32".
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
@@ -702,7 +683,6 @@ func (o OptionalInt64) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of int64 from json iterator.
 func (o *OptionalInt64) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: int64, JSONType: NumberValue, format "", read "ReadInt64".
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
@@ -725,7 +705,6 @@ func (o OptionalNilBool) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of bool from json iterator.
 func (o *OptionalNilBool) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: bool, JSONType: BoolValue, format "", read "ReadBool".
 	switch i.WhatIsNext() {
 	case json.BoolValue:
 		o.Set = true
@@ -756,7 +735,6 @@ func (o OptionalNilDuration) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of time.Duration from json iterator.
 func (o *OptionalNilDuration) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: time.Duration, JSONType: StringValue, format "Duration", read "".
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -791,7 +769,6 @@ func (o OptionalNilFloat32) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of float32 from json iterator.
 func (o *OptionalNilFloat32) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: float32, JSONType: NumberValue, format "", read "ReadFloat32".
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
@@ -822,7 +799,6 @@ func (o OptionalNilFloat64) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of float64 from json iterator.
 func (o *OptionalNilFloat64) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: float64, JSONType: NumberValue, format "", read "ReadFloat64".
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
@@ -853,7 +829,6 @@ func (o OptionalNilIP) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of net.IP from json iterator.
 func (o *OptionalNilIP) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: net.IP, JSONType: StringValue, format "IP", read "".
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -888,7 +863,6 @@ func (o OptionalNilInt) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of int from json iterator.
 func (o *OptionalNilInt) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: int, JSONType: NumberValue, format "", read "ReadInt".
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
@@ -919,7 +893,6 @@ func (o OptionalNilInt32) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of int32 from json iterator.
 func (o *OptionalNilInt32) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: int32, JSONType: NumberValue, format "", read "ReadInt32".
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
@@ -950,7 +923,6 @@ func (o OptionalNilInt64) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of int64 from json iterator.
 func (o *OptionalNilInt64) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: int64, JSONType: NumberValue, format "", read "ReadInt64".
 	switch i.WhatIsNext() {
 	case json.NumberValue:
 		o.Set = true
@@ -981,7 +953,6 @@ func (o OptionalNilString) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of string from json iterator.
 func (o *OptionalNilString) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: string, JSONType: StringValue, format "", read "ReadString".
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -1012,7 +983,6 @@ func (o OptionalNilTime) WriteJSON(j *json.Stream, format func(*json.Stream, tim
 
 // ReadJSON reads json value of time.Time from json iterator.
 func (o *OptionalNilTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (time.Time, error)) error {
-	// FormatCustom: true, Type: time.Time, JSONType: StringValue, format "", read "".
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -1047,7 +1017,6 @@ func (o OptionalNilURL) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of url.URL from json iterator.
 func (o *OptionalNilURL) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: url.URL, JSONType: StringValue, format "URI", read "".
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -1082,7 +1051,6 @@ func (o OptionalNilUUID) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of uuid.UUID from json iterator.
 func (o *OptionalNilUUID) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: uuid.UUID, JSONType: StringValue, format "UUID", read "".
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -1113,7 +1081,6 @@ func (o OptionalPetType) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of PetType from json iterator.
 func (o *OptionalPetType) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: PetType, JSONType: StringValue, format "", read "ReadString".
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -1132,7 +1099,6 @@ func (o OptionalString) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of string from json iterator.
 func (o *OptionalString) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: string, JSONType: StringValue, format "", read "ReadString".
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -1151,7 +1117,6 @@ func (o OptionalTime) WriteJSON(j *json.Stream, format func(*json.Stream, time.T
 
 // ReadJSON reads json value of time.Time from json iterator.
 func (o *OptionalTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (time.Time, error)) error {
-	// FormatCustom: true, Type: time.Time, JSONType: StringValue, format "", read "".
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -1174,7 +1139,6 @@ func (o OptionalURL) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of url.URL from json iterator.
 func (o *OptionalURL) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: url.URL, JSONType: StringValue, format "URI", read "".
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true
@@ -1197,7 +1161,6 @@ func (o OptionalUUID) WriteJSON(j *json.Stream) {
 
 // ReadJSON reads json value of uuid.UUID from json iterator.
 func (o *OptionalUUID) ReadJSON(i *json.Iterator) error {
-	// FormatCustom: false, Type: uuid.UUID, JSONType: StringValue, format "UUID", read "".
 	switch i.WhatIsNext() {
 	case json.StringValue:
 		o.Set = true

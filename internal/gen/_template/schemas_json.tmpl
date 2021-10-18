@@ -137,7 +137,6 @@ func (o {{ $s.Name }}) WriteJSON(j *json.Stream{{ if $g.FormatCustom }}, format 
 
 // ReadJSON reads json value of {{ $g.Type }} from json iterator.
 func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if $g.FormatCustom }}, format func(*json.Iterator) ({{ $g.Type }}, error){{ end }}) error {
-    // FormatCustom: {{ $g.FormatCustom }}, Type: {{ $g.Type }}, JSONType: {{ $g.JSONType }}, format "{{ $g.JSONHelper }}", read "{{ $g.JSONRead }}".
     switch i.WhatIsNext() {
     case json.{{ $g.JSONType }}:
     {{- if $s.GenericVariant.Optional }}
