@@ -46,7 +46,7 @@ const (
 {{- $g := $.GenericOf }}
 {{- $v := $.GenericVariant }}
 
-// New returns new {{ $.Name }} with value set to v.
+// New{{ $.Name }} returns new {{ $.Name }} with value set to v.
 func New{{ $.Name }}(v {{ $g.Type }}) {{ $.Name }} {
     return {{ $.Name }} {
         Value: v,

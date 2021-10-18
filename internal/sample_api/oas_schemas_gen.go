@@ -71,7 +71,7 @@ type FoobarPutDefault struct {
 	StatusCode int `json:"-"`
 }
 
-// New returns new NilString with value set to v.
+// NewNilString returns new NilString with value set to v.
 func NewNilString(v string) NilString {
 	return NilString{
 		Value: v,
@@ -106,7 +106,7 @@ type NotFound struct{}
 func (*NotFound) foobarGetResponse()  {}
 func (*NotFound) foobarPostResponse() {}
 
-// New returns new OptData with value set to v.
+// NewOptData returns new OptData with value set to v.
 func NewOptData(v Data) OptData {
 	return OptData{
 		Value: v,
@@ -144,7 +144,7 @@ func (o OptData) Get() (v Data, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptDuration with value set to v.
+// NewOptDuration returns new OptDuration with value set to v.
 func NewOptDuration(v time.Duration) OptDuration {
 	return OptDuration{
 		Value: v,
@@ -182,7 +182,7 @@ func (o OptDuration) Get() (v time.Duration, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptFloat64 with value set to v.
+// NewOptFloat64 returns new OptFloat64 with value set to v.
 func NewOptFloat64(v float64) OptFloat64 {
 	return OptFloat64{
 		Value: v,
@@ -220,7 +220,7 @@ func (o OptFloat64) Get() (v float64, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptInt with value set to v.
+// NewOptInt returns new OptInt with value set to v.
 func NewOptInt(v int) OptInt {
 	return OptInt{
 		Value: v,
@@ -258,7 +258,7 @@ func (o OptInt) Get() (v int, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptNilString with value set to v.
+// NewOptNilString returns new OptNilString with value set to v.
 func NewOptNilString(v string) OptNilString {
 	return OptNilString{
 		Value: v,
@@ -305,7 +305,7 @@ func (o OptNilString) Get() (v string, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptPetType with value set to v.
+// NewOptPetType returns new OptPetType with value set to v.
 func NewOptPetType(v PetType) OptPetType {
 	return OptPetType{
 		Value: v,
@@ -343,7 +343,7 @@ func (o OptPetType) Get() (v PetType, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptString with value set to v.
+// NewOptString returns new OptString with value set to v.
 func NewOptString(v string) OptString {
 	return OptString{
 		Value: v,
@@ -381,7 +381,7 @@ func (o OptString) Get() (v string, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptTime with value set to v.
+// NewOptTime returns new OptTime with value set to v.
 func NewOptTime(v time.Time) OptTime {
 	return OptTime{
 		Value: v,
@@ -419,7 +419,7 @@ func (o OptTime) Get() (v time.Time, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptUUID with value set to v.
+// NewOptUUID returns new OptUUID with value set to v.
 func NewOptUUID(v uuid.UUID) OptUUID {
 	return OptUUID{
 		Value: v,
