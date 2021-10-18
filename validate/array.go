@@ -24,7 +24,7 @@ func (t Array) ValidateLength(v int) error {
 		return fmt.Errorf("max: %d", t.MaxLength)
 	}
 	if t.MinLengthSet && v < t.MinLength {
-		return fmt.Errorf("min: %d", t.MaxLength)
+		return fmt.Errorf("min: %d", t.MinLength)
 	}
 
 	return nil
