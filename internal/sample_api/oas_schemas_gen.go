@@ -460,7 +460,7 @@ func (o OptUUID) Get() (v uuid.UUID, ok bool) {
 // Pet describes #/components/schemas/Pet.
 type Pet struct {
 	Birthday     time.Time     `json:"birthday"`
-	Friends      *[]Pet        `json:"friends"`
+	Friends      []Pet         `json:"friends"`
 	ID           int64         `json:"id"`
 	IP           net.IP        `json:"ip"`
 	IPV4         net.IP        `json:"ip_v4"`
@@ -471,7 +471,7 @@ type Pet struct {
 	NullStr      OptNilString  `json:"nullStr"`
 	Rate         time.Duration `json:"rate"`
 	Tag          OptUUID       `json:"tag"`
-	TestArray1   *[][]string   `json:"testArray1"`
+	TestArray1   [][]string    `json:"testArray1"`
 	TestDate     OptTime       `json:"testDate"`
 	TestDateTime OptTime       `json:"testDateTime"`
 	TestDuration OptDuration   `json:"testDuration"`

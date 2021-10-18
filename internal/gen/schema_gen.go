@@ -157,22 +157,38 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 			if err != nil {
 				return nil, xerrors.Errorf("%s: %w", propName, err)
 			}
-			genericVariant := ast.GenericVariant{
+			v := ast.GenericVariant{
 				Nullable: propSchema.Nullable,
 				Optional: optional(propName),
 			}
-			if genericVariant.Any() && prop.CanGeneric() {
-				prop.Format = propSchema.Format
-				prop = ast.Generic(
-					genericPostfix(prop.Type()),
-					prop,
-					genericVariant,
-				)
-				g.side = append(g.side, prop)
-			} else if genericVariant.Optional {
-				prop = ast.Pointer(prop)
+			if v.Any() {
+				if prop.CanGeneric() {
+					// Box value with generic wrapper.
+					prop.Format = propSchema.Format
+					prop = ast.Generic(
+						genericPostfix(prop.Type()),
+						prop,
+						v,
+					)
+					g.side = append(g.side, prop)
+				} else if prop.IsArray() {
+					// Using special case for array nil value if possible.
+					switch {
+					case v.OnlyOptional():
+						prop.ArrayVariant = ast.ArrayOptional
+					case v.OnlyNullable():
+						prop.ArrayVariant = ast.ArrayNullable
+					default:
+						// TODO(ernado): fallback to boxing
+						return nil, xerrors.Errorf("%s: %w", ref, &ErrNotImplemented{Name: "optional nullable array"})
+					}
+				} else if v.OnlyOptional() {
+					// Fallback to pointer.
+					prop = ast.Pointer(prop)
+				} else {
+					return nil, xerrors.Errorf("%s: %w", ref, &ErrNotImplemented{Name: "nullable"})
+				}
 			}
-
 			s.Fields = append(s.Fields, ast.SchemaField{
 				Name: pascalMP(propName),
 				Type: prop,

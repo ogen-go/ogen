@@ -53,12 +53,14 @@ var (
 // WriteJSON implements json.Marshaler.
 func (s Data) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Description.Set {
-		field.Write("description")
+		more.More()
+		j.WriteObjectField("description")
 		s.Description.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
@@ -106,12 +108,17 @@ func (s *Data) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s Error) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("code")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("code")
 	j.WriteInt64(s.Code)
-	field.Write("message")
+
+	more.More()
+	j.WriteObjectField("message")
 	j.WriteString(s.Message)
+
 	j.WriteObjectEnd()
 }
 
@@ -158,8 +165,8 @@ func (s *Error) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s ErrorStatusCode) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
@@ -200,8 +207,8 @@ func (s *ErrorStatusCode) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s FoobarPutDefault) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
@@ -458,70 +465,142 @@ func (o *OptUUID) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s Pet) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("birthday")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("birthday")
 	json.WriteDate(j, s.Birthday)
-	// Unsupported kind "pointer" for field "Friends".
-	field.Write("id")
+
+	if s.Friends != nil {
+		more.More()
+		j.WriteObjectField("friends")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Friends {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+	}
+
+	more.More()
+	j.WriteObjectField("id")
 	j.WriteInt64(s.ID)
-	field.Write("ip")
+
+	more.More()
+	j.WriteObjectField("ip")
 	json.WriteIP(j, s.IP)
-	field.Write("ip_v4")
+
+	more.More()
+	j.WriteObjectField("ip_v4")
 	json.WriteIP(j, s.IPV4)
-	field.Write("ip_v6")
+
+	more.More()
+	j.WriteObjectField("ip_v6")
 	json.WriteIP(j, s.IPV6)
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	if s.Next.Set {
-		field.Write("next")
+		more.More()
+		j.WriteObjectField("next")
 		s.Next.WriteJSON(j)
 	}
-	field.Write("nickname")
+
+	more.More()
+	j.WriteObjectField("nickname")
 	s.Nickname.WriteJSON(j)
+
 	if s.NullStr.Set {
-		field.Write("nullStr")
+		more.More()
+		j.WriteObjectField("nullStr")
 		s.NullStr.WriteJSON(j)
 	}
-	field.Write("rate")
+
+	more.More()
+	j.WriteObjectField("rate")
 	json.WriteDuration(j, s.Rate)
+
 	if s.Tag.Set {
-		field.Write("tag")
+		more.More()
+		j.WriteObjectField("tag")
 		s.Tag.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "TestArray1".
+
+	if s.TestArray1 != nil {
+		more.More()
+		j.WriteObjectField("testArray1")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.TestArray1 {
+			more.More()
+			more.Down()
+			j.WriteArrayStart()
+			for _, elem := range elem {
+				more.More()
+				j.WriteString(elem)
+			}
+			j.WriteArrayEnd()
+			more.Up()
+		}
+		j.WriteArrayEnd()
+		more.Up()
+	}
+
 	if s.TestDate.Set {
-		field.Write("testDate")
+		more.More()
+		j.WriteObjectField("testDate")
 		s.TestDate.WriteJSON(j, json.WriteDate)
 	}
+
 	if s.TestDateTime.Set {
-		field.Write("testDateTime")
+		more.More()
+		j.WriteObjectField("testDateTime")
 		s.TestDateTime.WriteJSON(j, json.WriteDateTime)
 	}
+
 	if s.TestDuration.Set {
-		field.Write("testDuration")
+		more.More()
+		j.WriteObjectField("testDuration")
 		s.TestDuration.WriteJSON(j)
 	}
+
 	if s.TestFloat1.Set {
-		field.Write("testFloat1")
+		more.More()
+		j.WriteObjectField("testFloat1")
 		s.TestFloat1.WriteJSON(j)
 	}
+
 	if s.TestInteger1.Set {
-		field.Write("testInteger1")
+		more.More()
+		j.WriteObjectField("testInteger1")
 		s.TestInteger1.WriteJSON(j)
 	}
+
 	if s.TestTime.Set {
-		field.Write("testTime")
+		more.More()
+		j.WriteObjectField("testTime")
 		s.TestTime.WriteJSON(j, json.WriteTime)
 	}
+
 	if s.Type.Set {
-		field.Write("type")
+		more.More()
+		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
-	field.Write("uri")
+
+	more.More()
+	j.WriteObjectField("uri")
 	json.WriteURI(j, s.URI)
-	field.Write("unique_id")
+
+	more.More()
+	j.WriteObjectField("unique_id")
 	json.WriteUUID(j, s.UniqueID)
+
 	j.WriteObjectEnd()
 }
 
@@ -560,7 +639,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			s.Birthday = v
 			return true
 		case "friends":
-			// Unsupported kind "pointer" for field "Friends".
+			// Unsupported kind "array" for field "Friends".
 			i.Skip()
 			return true
 		case "id":
@@ -629,7 +708,7 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "testArray1":
-			// Unsupported kind "pointer" for field "TestArray1".
+			// Unsupported kind "array" for field "TestArray1".
 			i.Skip()
 			return true
 		case "testDate":
@@ -708,10 +787,13 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s PetGetDefault) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("message")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("message")
 	j.WriteString(s.Message)
+
 	j.WriteObjectEnd()
 }
 
@@ -755,8 +837,8 @@ func (s *PetGetDefault) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s PetGetDefaultStatusCode) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	j.WriteObjectEnd()
 }
 

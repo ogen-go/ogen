@@ -9,33 +9,10 @@
 // WriteJSON implements json.Marshaler.
 func (s {{ $s.Name }}) WriteJSON(j *json.Stream) {
     j.WriteObjectStart()
-    field := json.NewFieldWriter(j)
-    defer field.Reset()
+    more := json.NewMore(j)
+    defer more.Reset()
     {{- range $f := $s.JSONFields }}
-        {{- if $f.Type.IsStruct }}
-        field.Write("{{ $f.Tag }}")
-        s.{{ $f.Name }}.WriteJSON(j)
-        {{- else if $f.Type.GenericOf }}
-            {{- $g := $f.Type.GenericOf }}
-            {{- $v := $f.Type.GenericVariant }}
-            {{- if $v.Optional }}
-            if s.{{ $f.Name }}.Set {
-                field.Write("{{ $f.Tag }}")
-                s.{{ $f.Name }}.WriteJSON(j{{ if $g.FormatCustom }}, json.Write{{ $g.JSONHelper }}{{ end }})
-            }
-            {{- else }}
-            field.Write("{{ $f.Tag }}")
-            s.{{ $f.Name }}.WriteJSON(j{{ if $g.FormatCustom }}, json.Write{{ $g.JSONHelper }}{{ end }})
-            {{- end }}
-        {{- else if $f.Type.JSONHelper }}
-            field.Write("{{ $f.Tag }}")
-            json.Write{{ $f.Type.JSONHelper }}(j, s.{{ $f.Name }})
-        {{- else if $f.Type.JSONWrite }}
-            field.Write("{{ $f.Tag }}")
-            j.{{ $f.Type.JSONWrite }}(s.{{ $f.Name }})
-        {{- else }}
-            // Unsupported kind "{{ $f.Type.Kind  }}" for field "{{ $f.Name }}".
-        {{- end }}
+        {{ template "json_value" $f.Leaf }}
     {{- end }}
     j.WriteObjectEnd()
 }
@@ -187,4 +164,75 @@ func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if $g.FormatCustom }}, forma
 
 {{- end }}
 
+{{ end }}
+
+{{ define "json_start" }}
+{{- /*gotype: github.com/ogen-go/ogen/internal/ast.Leaf*/ -}}
+more.More()
+{{- if $.Field }}
+j.WriteObjectField("{{ $.Field }}")
+{{- end -}}
+{{ end }}
+
+{{ define "json_value" }}
+    {{- /*gotype: github.com/ogen-go/ogen/internal/ast.Leaf*/ -}}
+    {{- if $.Type.IsStruct }}
+        {{- template "json_start" $ }}
+        {{ $.Var }}.WriteJSON(j)
+    {{- else if $.Type.GenericOf -}}
+        {{- $g := $.Type.GenericOf -}}
+        {{- $v := $.Type.GenericVariant -}}
+        {{- if $v.Optional -}}
+            if {{ $.Var }}.Set {
+                {{- template "json_start" $ }}
+                {{ $.Var }}.WriteJSON(j{{ if $g.FormatCustom }}, json.Write{{ $g.JSONHelper }}{{ end }})
+            }
+        {{- else }}
+            {{- template "json_start" $ }}
+            {{ $.Var }}.WriteJSON(j{{ if $g.FormatCustom }}, json.Write{{ $g.JSONHelper }}{{ end }})
+        {{- end }}
+    {{- else if $.Type.JSONHelper }}
+        {{ template "json_start" $ }}
+        json.Write{{ $.Type.JSONHelper }}(j, {{ $.Var }})
+    {{- else if $.Type.JSONWrite }}
+        {{ template "json_start" $ }}
+        j.{{ $.Type.JSONWrite }}({{ $.Var }})
+    {{- else if $.Type.IsArray }}
+        {{- if eq $.Type.ArrayVariant "required" -}}
+            {{- template "json_start" $ }}
+            more.Down()
+            j.WriteArrayStart()
+            for _, elem := range {{ $.Var }} {
+                {{- template "json_value" array_leaf $.Type.Item -}}
+            }
+            j.WriteArrayEnd()
+            more.Up()
+        {{- else if eq $.Type.ArrayVariant "optional" -}}
+            if {{ $.Var }} != nil {
+                {{- template "json_start" $ }}
+                more.Down()
+                j.WriteArrayStart()
+                for _, elem := range {{ $.Var }} {
+                    {{- template "json_value" array_leaf $.Type.Item -}}
+                }
+                j.WriteArrayEnd()
+                more.Up()
+            }
+        {{- else if eq $.Type.ArrayVariant "nullable" }}
+            {{- template "json_start" $ }}
+            if {{ $.Var }} == nil {
+                j.WriteNil()
+            } else {
+                more.Down()
+                j.WriteArrayStart()
+                for _, elem := range {{ $.Var }} {
+                    {{- template "json_value" array_leaf $.Type.Item -}}
+                }
+                j.WriteArrayEnd()
+                more.Up()
+            }
+        {{- end }}
+    {{- else }}
+        // Unsupported kind "{{ $.Type.Kind  }}" for field "{{ $.Field }}".
+    {{- end }}
 {{ end }}

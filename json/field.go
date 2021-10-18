@@ -1,29 +1,33 @@
 package json
 
-// FieldWriter is helper for writing fields with ",".
-type FieldWriter struct {
-	s          *Stream
-	shouldMore bool
+const MaxMoreLevel = 10
+
+// More is helper for writing commas.
+//
+// Up to MaxMoreLevel levels.
+type More struct {
+	idx  int
+	s    *Stream
+	more [MaxMoreLevel]bool
 }
 
-func NewFieldWriter(s *Stream) FieldWriter {
-	return FieldWriter{
-		s: s,
-	}
-}
-
-func (f *FieldWriter) Reset() {
+func (f *More) Reset() {
 	f.s = nil
-	f.shouldMore = false
+	f.more = [MaxMoreLevel]bool{}
+}
+func NewMore(s *Stream) More { return More{s: s} }
+
+func (f *More) Down() { f.idx++ }
+
+func (f *More) Up() {
+	f.more[f.idx] = false
+	f.idx--
 }
 
-// Write "," (if needed) and new field.
-func (f *FieldWriter) Write(k string) {
-	if f.shouldMore {
+// More writes "more" (comma) if required and maintans state.
+func (f *More) More() {
+	if f.more[f.idx] {
 		f.s.WriteMore()
-		f.shouldMore = false
 	}
-
-	f.s.WriteObjectField(k)
-	f.shouldMore = true
+	f.more[f.idx] = true
 }

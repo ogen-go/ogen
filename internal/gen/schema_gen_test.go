@@ -213,7 +213,8 @@ func TestSchemaReferencedArray(t *testing.T) {
 		Kind: ast.KindAlias,
 		Name: "Pets",
 		AliasTo: &ast.Schema{
-			Kind: ast.KindArray,
+			Kind:         ast.KindArray,
+			ArrayVariant: ast.ArrayRequired,
 			Item: &ast.Schema{
 				Kind:      ast.KindPrimitive,
 				Primitive: "string",

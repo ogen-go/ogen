@@ -7,6 +7,8 @@ import (
 	"text/template"
 
 	"golang.org/x/xerrors"
+
+	"github.com/ogen-go/ogen/internal/ast"
 )
 
 // templateFuncs returns functions which used in templates.
@@ -19,6 +21,7 @@ func templateFuncs() template.FuncMap {
 		"hasPrefix":  strings.HasPrefix,
 		"hasSuffix":  strings.HasSuffix,
 		"pascalMP":   pascalMP,
+		"array_leaf": func(s *ast.Schema) ast.Leaf { return ast.Leaf{Type: s, Element: true, Var: "elem"} },
 		"toString":   func(v interface{}) string { return fmt.Sprintf("%v", v) },
 		"enumString": func(v interface{}) string {
 			switch v := v.(type) {

@@ -2,10 +2,16 @@ package ogen
 
 import (
 	"bytes"
+	"net"
+	"net/url"
 	"testing"
+	"time"
 
+	"github.com/google/uuid"
+	jsoniter "github.com/json-iterator/go"
 	"github.com/stretchr/testify/require"
 
+	"github.com/ogen-go/ogen/conv"
 	api "github.com/ogen-go/ogen/internal/sample_api"
 	"github.com/ogen-go/ogen/json"
 )
@@ -69,4 +75,43 @@ func TestJSONGenerics(t *testing.T) {
 			require.Equal(t, tc.Result, string(encodeObject(v)))
 		})
 	}
+}
+
+func TestJSONExample(t *testing.T) {
+	date := time.Date(2011, 10, 10, 7, 12, 34, 4125, time.UTC)
+	pet := api.Pet{
+		Friends:  []api.Pet{},
+		Birthday: conv.Date(date),
+		ID:       42,
+		Name:     "SomePet",
+		TestArray1: [][]string{
+			{
+				"Foo", "Bar",
+			},
+			{
+				"Baz",
+			},
+			{},
+		},
+		Nickname:     api.NewNilString("Nick"),
+		NullStr:      api.NewOptNilString("Bar"),
+		Rate:         time.Second,
+		Tag:          api.NewOptUUID(uuid.New()),
+		TestDate:     api.NewOptTime(conv.Date(date)),
+		TestDateTime: api.NewOptTime(conv.DateTime(date)),
+		TestDuration: api.NewOptDuration(time.Minute),
+		TestFloat1:   api.NewOptFloat64(1.0),
+		TestInteger1: api.NewOptInt(10),
+		TestTime:     api.NewOptTime(conv.Time(date)),
+		UniqueID:     uuid.New(),
+		URI:          url.URL{Scheme: "s3", Host: "foo", Path: "bar"},
+		IP:           net.IPv4(127, 0, 0, 1),
+		IPV4:         net.IPv4(127, 0, 0, 1),
+		IPV6:         net.ParseIP("2001:0db8:85a3:0000:0000:8a2e:0370:7334"),
+		Next:         api.NewOptData(api.Data{Description: api.NewOptString("Foo")}),
+	}
+	buf := new(bytes.Buffer)
+	require.NoError(t, pet.WriteJSONTo(buf))
+	t.Logf("%s", buf)
+	require.True(t, jsoniter.Valid(buf.Bytes()), "invalid json")
 }

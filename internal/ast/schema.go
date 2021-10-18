@@ -68,6 +68,16 @@ func (s Schema) CanGeneric() bool {
 	return s.Is(KindPrimitive, KindEnum, KindStruct)
 }
 
+// ArrayVariant specifies nil value semantics of slice.
+type ArrayVariant string
+
+// Possible Array nil semantics.
+const (
+	ArrayRequired ArrayVariant = "required" // nil is invalid
+	ArrayOptional ArrayVariant = "optional" // nil is "no value"
+	ArrayNullable ArrayVariant = "nullable" // nil is null
+)
+
 type Schema struct {
 	Kind        SchemaKind
 	Name        string
@@ -78,10 +88,13 @@ type Schema struct {
 	GenericOf      *Schema
 	GenericVariant GenericVariant
 
-	AliasTo    *Schema
-	PointerTo  *Schema
-	Primitive  string
-	Item       *Schema
+	AliasTo   *Schema
+	PointerTo *Schema
+	Primitive string
+
+	Item         *Schema
+	ArrayVariant ArrayVariant
+
 	EnumValues []interface{}
 	Fields     []SchemaField
 
@@ -276,6 +289,22 @@ type SchemaField struct {
 	Tag  string
 }
 
+func (s SchemaField) Leaf() Leaf {
+	return Leaf{
+		Element: false,
+		Field:   s.Tag,
+		Type:    s.Type,
+		Var:     fmt.Sprintf("s.%s", s.Name),
+	}
+}
+
+type Leaf struct {
+	Element bool
+	Field   string
+	Type    *Schema
+	Var     string
+}
+
 func afterDot(v string) string {
 	idx := strings.Index(v, ".")
 	if idx > 0 {
@@ -404,6 +433,9 @@ func Alias(name string, typ *Schema) *Schema {
 	}
 }
 
+// Pointer makes new pointer type.
+//
+// Deprecated, use generics.
 func Pointer(to *Schema) *Schema {
 	return &Schema{
 		Kind:      KindPointer,
@@ -414,6 +446,14 @@ func Pointer(to *Schema) *Schema {
 type GenericVariant struct {
 	Nullable bool
 	Optional bool
+}
+
+func (v GenericVariant) OnlyOptional() bool {
+	return v.Optional && !v.Nullable
+}
+
+func (v GenericVariant) OnlyNullable() bool {
+	return v.Nullable && !v.Optional
 }
 
 func (v GenericVariant) Name() string {
@@ -446,8 +486,9 @@ func Generic(name string, of *Schema, v GenericVariant) *Schema {
 
 func Array(item *Schema) *Schema {
 	return &Schema{
-		Kind: KindArray,
-		Item: item,
+		Kind:         KindArray,
+		Item:         item,
+		ArrayVariant: ArrayRequired,
 	}
 }
 

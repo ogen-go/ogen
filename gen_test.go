@@ -41,6 +41,7 @@ func TestGenerate(t *testing.T) {
 					"allOf",
 					"nullable",
 					"array parameter with complex type",
+					"optional nullable array",
 				},
 			},
 		},
