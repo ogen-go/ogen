@@ -4,10 +4,15 @@ import (
 	"context"
 	"net/http/httptest"
 	"testing"
+	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/google/uuid"
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
+	"github.com/ogen-go/ogen/conv"
+	api "github.com/ogen-go/ogen/internal/sample_api"
 	"github.com/ogen-go/ogen/internal/techempower"
 )
 
@@ -38,7 +43,110 @@ func (t techEmpowerServer) JSON(ctx context.Context) (techempower.HelloWorld, er
 	}, nil
 }
 
+type sampleAPIServer struct {
+	pet api.Pet
+}
+
+func (s sampleAPIServer) FoobarGet(ctx context.Context, params api.FoobarGetParams) (api.FoobarGetResponse, error) {
+	panic("implement me")
+}
+
+func (s sampleAPIServer) FoobarPut(ctx context.Context) (api.FoobarPutDefault, error) {
+	panic("implement me")
+}
+
+func (s sampleAPIServer) FoobarPost(ctx context.Context, req *api.Pet) (api.FoobarPostResponse, error) {
+	panic("implement me")
+}
+
+func (s sampleAPIServer) PetGet(ctx context.Context, params api.PetGetParams) (api.PetGetResponse, error) {
+	panic("implement me")
+}
+
+func (s *sampleAPIServer) PetCreate(ctx context.Context, req api.PetCreateRequest) (pet api.Pet, err error) {
+	switch p := req.(type) {
+	case *api.Pet:
+		s.pet = *p
+		return s.pet, nil
+	default:
+		panic("not implemented")
+	}
+}
+
+func (s *sampleAPIServer) PetGetByName(ctx context.Context, params api.PetGetByNameParams) (api.Pet, error) {
+	return s.pet, nil
+}
+
 func TestIntegration(t *testing.T) {
+	t.Run("Sample", func(t *testing.T) {
+		mux := chi.NewRouter()
+		api.Register(mux, &sampleAPIServer{})
+		s := httptest.NewServer(mux)
+		defer s.Close()
+
+		client := api.NewClient(s.URL)
+		ctx := context.Background()
+
+		date := time.Date(2011, 10, 10, 7, 12, 34, 4125, time.UTC)
+		pet := api.Pet{
+			Birthday:     conv.Date(date),
+			ID:           42,
+			Name:         "SomePet",
+			Nickname:     api.NewNilString("Nick"),
+			NullStr:      api.NewOptionalNilString("Bar"),
+			Rate:         time.Second,
+			Tag:          api.NewOptionalUUID(uuid.New()),
+			TestDate:     api.NewOptionalTime(conv.Date(date)),
+			TestDateTime: api.NewOptionalTime(conv.DateTime(date)),
+			TestDuration: api.NewOptionalDuration(time.Minute),
+			TestFloat1:   api.NewOptionalFloat64(1.0),
+			TestInteger1: api.NewOptionalInt(10),
+			TestTime:     api.NewOptionalTime(conv.Time(date)),
+			UniqueID:     uuid.New(),
+		}
+
+		// Can't use assert.Equal due to time.Time type equality checks.
+		assertPet := func(t testing.TB, exp, got api.Pet) {
+			a := assert.New(t)
+			a.True(exp.Birthday.Equal(got.Birthday), "Birthday")
+			a.Equal(exp.ID, got.ID, "ID")
+			a.Equal(exp.Name, got.Name, "Name")
+			a.Equal(exp.Nickname, got.Nickname, "Nickname")
+			a.Equal(exp.NullStr, got.NullStr, "NullStr")
+			a.Equal(exp.Rate, got.Rate, "Rate")
+			a.Equal(exp.Tag, got.Tag, "Tag")
+
+			a.Equal(exp.TestDate.Set, got.TestDate.Set, "TestDate")
+			a.True(exp.TestDate.Value.Equal(got.TestDate.Value), "TestDate %s (exp) != %s (got)", exp.TestDate.Value, got.TestDate.Value)
+
+			a.Equal(exp.TestDateTime.Set, got.TestDateTime.Set, "TestDateTime")
+			a.True(exp.TestDateTime.Value.Equal(got.TestDateTime.Value), "TestDateTime %s (exp) != %s (got)", exp.TestDateTime.Value, got.TestDateTime.Value)
+
+			a.Equal(exp.TestDuration, got.TestDuration, "TestDuration")
+			a.Equal(exp.TestFloat1, got.TestFloat1, "TestFloat1")
+			a.Equal(exp.TestInteger1, got.TestInteger1, "TestInteger1")
+
+			// Probably we need separate type for Time.
+			a.Equal(exp.TestTime.Set, got.TestTime.Set, "TestTime")
+			a.Equal(exp.TestTime.Value.Hour(), got.TestTime.Value.Hour())
+			a.Equal(exp.TestTime.Value.Minute(), got.TestTime.Value.Minute())
+			a.Equal(exp.TestTime.Value.Second(), got.TestTime.Value.Second())
+
+			a.Equal(pet.UniqueID, got.UniqueID)
+		}
+
+		t.Run("PetCreate", func(t *testing.T) {
+			got, err := client.PetCreate(ctx, &pet)
+			require.NoError(t, err)
+			assertPet(t, pet, got)
+
+			t.Run("PetGet", func(t *testing.T) {
+				got, err := client.PetGetByName(ctx, api.PetGetByNameParams{Name: pet.Name})
+				require.NoError(t, err)
+				assertPet(t, pet, got)
+			})
+		})
+	})
 	t.Run("TechEmpower", func(t *testing.T) {
 		// Using TechEmpower as most popular general purpose framework benchmark.
 		// https://github.com/TechEmpower/FrameworkBenchmarks/wiki/Project-Information-Framework-Tests-Overview#test-types

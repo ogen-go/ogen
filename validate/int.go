@@ -20,8 +20,11 @@ type Int struct {
 }
 
 func (t Int) Validate(v int64) error {
-	if t.MinimumSet && v > t.Minimum {
-		return fmt.Errorf("%d > %d (min)", v, t.Minimum)
+	if t.MinimumSet && v < t.Minimum {
+		return fmt.Errorf("%d < %d (min)", v, t.Minimum)
+	}
+	if t.MaximumSet && v > t.Maximum {
+		return fmt.Errorf("%d > %d (max)", v, t.Minimum)
 	}
 
 	return nil
