@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"net"
 	"net/http"
 	"net/url"
 	"sort"
@@ -46,6 +47,7 @@ var (
 	_ = math.Mod
 	_ = validate.Int{}
 	_ = ht.NewRequest
+	_ = net.IP{}
 )
 
 type Error struct {
@@ -74,6 +76,9 @@ type Pet struct {
 	Birthday     time.Time         `json:"birthday"`
 	Friends      *[]Pet            `json:"friends"`
 	ID           int64             `json:"id"`
+	IP           net.IP            `json:"ip"`
+	IPV4         net.IP            `json:"ip_v4"`
+	IPV6         net.IP            `json:"ip_v6"`
 	Name         string            `json:"name"`
 	Nickname     NilString         `json:"nickname"`
 	NullStr      OptionalNilString `json:"nullStr"`
@@ -87,6 +92,7 @@ type Pet struct {
 	TestInteger1 OptionalInt       `json:"testInteger1"`
 	TestTime     OptionalTime      `json:"testTime"`
 	Type         *PetType          `json:"type"`
+	URI          url.URL           `json:"uri"`
 	UniqueID     uuid.UUID         `json:"unique_id"`
 }
 

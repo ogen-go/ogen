@@ -107,7 +107,7 @@ func (s Schema) canRawJSON() bool {
 		return true
 	}
 	switch s.Primitive {
-	case "bool", "string", "time.Time", "time.Duration", "uuid.UUID":
+	case "bool", "string", "time.Time", "time.Duration", "uuid.UUID", "net.IP", "url.URL":
 		return true
 	default:
 		return false
@@ -121,7 +121,7 @@ func (s Schema) JSONType() string {
 	switch s.Primitive {
 	case "bool":
 		return "BoolValue"
-	case "string", "time.Time", "time.Duration", "uuid.UUID":
+	case "string", "time.Time", "time.Duration", "uuid.UUID", "net.IP", "url.URL":
 		return "StringValue"
 	default:
 		return ""
@@ -144,6 +144,10 @@ func (s Schema) JSONFormat() string {
 		return "DateTime"
 	case "duration":
 		return "Duration"
+	case "ip", "ipv4", "ipv6":
+		return "IP"
+	case "uri":
+		return "URI"
 	default:
 		return ""
 	}

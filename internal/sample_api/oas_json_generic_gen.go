@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"net"
 	"net/http"
 	"net/url"
 	"sort"
@@ -46,6 +47,7 @@ var (
 	_ = math.Mod
 	_ = validate.Int{}
 	_ = ht.NewRequest
+	_ = net.IP{}
 )
 
 // New returns new OptionalString with value set to v.
@@ -1990,6 +1992,412 @@ func (o *OptionalNilDuration) ReadJSON(i *json.Iterator) error {
 		return i.Error
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptionalNilDuration", i.WhatIsNext())
+	}
+	return nil
+}
+
+// New returns new OptionalIP with value set to v.
+func NewOptionalIP(v net.IP) OptionalIP {
+	return OptionalIP{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalIP is optional net.IP.
+type OptionalIP struct {
+	Value net.IP
+	Set   bool
+}
+
+// IsSet returns true if net.IP was set.
+func (o OptionalIP) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalIP) Reset() {
+	var v net.IP
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalIP) SetTo(v net.IP) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalIP) Get() (v net.IP, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of net.IP to json stream.
+func (o OptionalIP) WriteJSON(j *json.Stream) {
+	json.WriteIP(j, o.Value)
+}
+
+// ReadJSON reads json value of net.IP from json iterator.
+func (o *OptionalIP) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		v, err := json.ReadIP(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIP", i.WhatIsNext())
+	}
+	return nil
+}
+
+// New returns new NilIP with value set to v.
+func NewNilIP(v net.IP) NilIP {
+	return NilIP{
+		Value: v,
+	}
+}
+
+// NilIP is nillable net.IP.
+type NilIP struct {
+	Value net.IP
+	Nil   bool
+}
+
+// SetTo sets value to v.
+func (o *NilIP) SetTo(v net.IP) {
+	o.Nil = false
+	o.Value = v
+}
+
+// IsSet returns true if value is nil.
+func (o NilIP) IsNil() bool { return o.Nil }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilIP) Get() (v net.IP, ok bool) {
+	if o.Nil {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of net.IP to json stream.
+func (o NilIP) WriteJSON(j *json.Stream) {
+	if o.Nil {
+		j.WriteNil()
+		return
+	}
+	json.WriteIP(j, o.Value)
+}
+
+// ReadJSON reads json value of net.IP from json iterator.
+func (o *NilIP) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Nil = false
+		v, err := json.ReadIP(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	case json.NilValue:
+		var v net.IP
+		o.Value = v
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilIP", i.WhatIsNext())
+	}
+	return nil
+}
+
+// New returns new OptionalNilIP with value set to v.
+func NewOptionalNilIP(v net.IP) OptionalNilIP {
+	return OptionalNilIP{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilIP is optional nillable net.IP.
+type OptionalNilIP struct {
+	Value net.IP
+	Set   bool
+	Nil   bool
+}
+
+// IsSet returns true if net.IP was set.
+func (o OptionalNilIP) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilIP) Reset() {
+	var v net.IP
+	o.Value = v
+	o.Set = false
+	o.Nil = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilIP) SetTo(v net.IP) {
+	o.Set = true
+	o.Nil = false
+	o.Value = v
+}
+
+// IsSet returns true if value is nil.
+func (o OptionalNilIP) IsNil() bool { return o.Nil }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilIP) Get() (v net.IP, ok bool) {
+	if o.Nil {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of net.IP to json stream.
+func (o OptionalNilIP) WriteJSON(j *json.Stream) {
+	if o.Nil {
+		j.WriteNil()
+		return
+	}
+	json.WriteIP(j, o.Value)
+}
+
+// ReadJSON reads json value of net.IP from json iterator.
+func (o *OptionalNilIP) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Nil = false
+		v, err := json.ReadIP(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	case json.NilValue:
+		var v net.IP
+		o.Value = v
+		o.Set = true
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilIP", i.WhatIsNext())
+	}
+	return nil
+}
+
+// New returns new OptionalURL with value set to v.
+func NewOptionalURL(v url.URL) OptionalURL {
+	return OptionalURL{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalURL is optional url.URL.
+type OptionalURL struct {
+	Value url.URL
+	Set   bool
+}
+
+// IsSet returns true if url.URL was set.
+func (o OptionalURL) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalURL) Reset() {
+	var v url.URL
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalURL) SetTo(v url.URL) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalURL) Get() (v url.URL, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of url.URL to json stream.
+func (o OptionalURL) WriteJSON(j *json.Stream) {
+	json.WriteURI(j, o.Value)
+}
+
+// ReadJSON reads json value of url.URL from json iterator.
+func (o *OptionalURL) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		v, err := json.ReadURI(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalURL", i.WhatIsNext())
+	}
+	return nil
+}
+
+// New returns new NilURL with value set to v.
+func NewNilURL(v url.URL) NilURL {
+	return NilURL{
+		Value: v,
+	}
+}
+
+// NilURL is nillable url.URL.
+type NilURL struct {
+	Value url.URL
+	Nil   bool
+}
+
+// SetTo sets value to v.
+func (o *NilURL) SetTo(v url.URL) {
+	o.Nil = false
+	o.Value = v
+}
+
+// IsSet returns true if value is nil.
+func (o NilURL) IsNil() bool { return o.Nil }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilURL) Get() (v url.URL, ok bool) {
+	if o.Nil {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of url.URL to json stream.
+func (o NilURL) WriteJSON(j *json.Stream) {
+	if o.Nil {
+		j.WriteNil()
+		return
+	}
+	json.WriteURI(j, o.Value)
+}
+
+// ReadJSON reads json value of url.URL from json iterator.
+func (o *NilURL) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Nil = false
+		v, err := json.ReadURI(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	case json.NilValue:
+		var v url.URL
+		o.Value = v
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilURL", i.WhatIsNext())
+	}
+	return nil
+}
+
+// New returns new OptionalNilURL with value set to v.
+func NewOptionalNilURL(v url.URL) OptionalNilURL {
+	return OptionalNilURL{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilURL is optional nillable url.URL.
+type OptionalNilURL struct {
+	Value url.URL
+	Set   bool
+	Nil   bool
+}
+
+// IsSet returns true if url.URL was set.
+func (o OptionalNilURL) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilURL) Reset() {
+	var v url.URL
+	o.Value = v
+	o.Set = false
+	o.Nil = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilURL) SetTo(v url.URL) {
+	o.Set = true
+	o.Nil = false
+	o.Value = v
+}
+
+// IsSet returns true if value is nil.
+func (o OptionalNilURL) IsNil() bool { return o.Nil }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilURL) Get() (v url.URL, ok bool) {
+	if o.Nil {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// WriteJSON writes json value of url.URL to json stream.
+func (o OptionalNilURL) WriteJSON(j *json.Stream) {
+	if o.Nil {
+		j.WriteNil()
+		return
+	}
+	json.WriteURI(j, o.Value)
+}
+
+// ReadJSON reads json value of url.URL from json iterator.
+func (o *OptionalNilURL) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Nil = false
+		v, err := json.ReadURI(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	case json.NilValue:
+		var v url.URL
+		o.Value = v
+		o.Set = true
+		o.Nil = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilURL", i.WhatIsNext())
 	}
 	return nil
 }

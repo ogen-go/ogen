@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"net"
 	"net/http"
 	"net/url"
 	"sort"
@@ -46,6 +47,7 @@ var (
 	_ = math.Mod
 	_ = validate.Int{}
 	_ = ht.NewRequest
+	_ = net.IP{}
 )
 
 func encodeFoobarGetResponse(response FoobarGetResponse, w http.ResponseWriter) error {

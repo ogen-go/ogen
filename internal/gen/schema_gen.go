@@ -267,6 +267,10 @@ func (g *schemaGen) parseSimple(typ, format string) (string, error) {
 			"duration":  "time.Duration",
 			"password":  "string",
 			"uuid":      "uuid.UUID",
+			"ipv4":      "net.IP",
+			"ipv6":      "net.IP",
+			"ip":        "net.IP",
+			"uri":       "url.URL",
 			// TODO: support binary format
 		},
 		"boolean": {

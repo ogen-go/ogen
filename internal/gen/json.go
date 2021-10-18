@@ -18,6 +18,8 @@ func (g *Generator) generatePrimitives() {
 		"uuid.UUID",
 		"time.Time",
 		"time.Duration",
+		"net.IP",
+		"url.URL",
 	} {
 		for _, v := range []struct {
 			Optional bool
@@ -38,6 +40,10 @@ func (g *Generator) generatePrimitives() {
 				gt.Format = "uuid"
 			case "time.Duration":
 				gt.Format = "duration"
+			case "net.IP":
+				gt.Format = "ip"
+			case "url.URL":
+				gt.Format = "uri"
 			}
 			if strings.Contains(name, "time.Time") {
 				// The time.Time requires custom format, so setting special

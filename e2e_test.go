@@ -2,7 +2,9 @@ package ogen
 
 import (
 	"context"
+	"net"
 	"net/http/httptest"
+	"net/url"
 	"testing"
 	"time"
 
@@ -103,6 +105,10 @@ func TestIntegration(t *testing.T) {
 			TestInteger1: api.NewOptionalInt(10),
 			TestTime:     api.NewOptionalTime(conv.Time(date)),
 			UniqueID:     uuid.New(),
+			URI:          url.URL{Scheme: "s3", Host: "foo", Path: "bar"},
+			IP:           net.IPv4(127, 0, 0, 1),
+			IPV4:         net.IPv4(127, 0, 0, 1),
+			IPV6:         net.ParseIP("2001:0db8:85a3:0000:0000:8a2e:0370:7334"),
 		}
 
 		// Can't use assert.Equal due to time.Time type equality checks.
@@ -133,6 +139,12 @@ func TestIntegration(t *testing.T) {
 			a.Equal(exp.TestTime.Value.Second(), got.TestTime.Value.Second())
 
 			a.Equal(pet.UniqueID, got.UniqueID)
+
+			a.True(pet.IP.Equal(got.IP), "IP")
+			a.True(pet.IPV4.Equal(got.IPV4), "IPV4")
+			a.True(pet.IPV6.Equal(got.IPV6), "IPV6")
+
+			a.Equal(pet.URI.String(), got.URI.String(), "URI")
 		}
 
 		t.Run("PetCreate", func(t *testing.T) {

@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"net"
 	"net/http"
 	"net/url"
 	"sort"
@@ -46,6 +47,7 @@ var (
 	_ = math.Mod
 	_ = validate.Int{}
 	_ = ht.NewRequest
+	_ = net.IP{}
 )
 
 // WriteJSON implements json.Marshaler.
@@ -194,6 +196,12 @@ func (s Pet) WriteJSON(j *json.Stream) {
 	// Unsupported kind "pointer" for field "Friends".
 	field.Write("id")
 	j.WriteInt64(s.ID)
+	field.Write("ip")
+	json.WriteIP(j, s.IP)
+	field.Write("ip_v4")
+	json.WriteIP(j, s.IPV4)
+	field.Write("ip_v6")
+	json.WriteIP(j, s.IPV6)
 	field.Write("name")
 	j.WriteString(s.Name)
 	field.Write("nickname")
@@ -234,6 +242,8 @@ func (s Pet) WriteJSON(j *json.Stream) {
 		s.TestTime.WriteJSON(j, json.WriteTime)
 	}
 	// Unsupported kind "pointer" for field "Type".
+	field.Write("uri")
+	json.WriteURI(j, s.URI)
 	field.Write("unique_id")
 	json.WriteUUID(j, s.UniqueID)
 	j.WriteObjectEnd()
@@ -280,6 +290,30 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 		case "id":
 			s.ID = i.ReadInt64()
 			return i.Error == nil
+		case "ip":
+			v, err := json.ReadIP(i)
+			if err != nil {
+				i.ReportError("Field IP", err.Error())
+				return false
+			}
+			s.IP = v
+			return true
+		case "ip_v4":
+			v, err := json.ReadIP(i)
+			if err != nil {
+				i.ReportError("Field IPV4", err.Error())
+				return false
+			}
+			s.IPV4 = v
+			return true
+		case "ip_v6":
+			v, err := json.ReadIP(i)
+			if err != nil {
+				i.ReportError("Field IPV6", err.Error())
+				return false
+			}
+			s.IPV6 = v
+			return true
 		case "name":
 			s.Name = i.ReadString()
 			return i.Error == nil
@@ -360,6 +394,14 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 		case "type":
 			// Unsupported kind "pointer" for field "Type".
 			i.Skip()
+			return true
+		case "uri":
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URI", err.Error())
+				return false
+			}
+			s.URI = v
 			return true
 		case "unique_id":
 			v, err := json.ReadUUID(i)

@@ -250,6 +250,22 @@
             "type": "string",
             "format": "uuid"
           },
+          "ip": {
+            "type": "string",
+            "format": "ip"
+          },
+          "ip_v4": {
+            "type": "string",
+            "format": "ipv4"
+          },
+          "ip_v6": {
+            "type": "string",
+            "format": "ipv6"
+          },
+          "uri": {
+            "type": "string",
+            "format": "uri"
+          },
           "birthday": {
             "type": "string",
             "format": "date"
@@ -316,7 +332,11 @@
           "name",
           "birthday",
           "nickname",
-          "rate"
+          "rate",
+          "ip",
+          "ip_v4",
+          "ip_v6",
+          "uri"
         ]
       }
     },

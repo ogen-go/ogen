@@ -42,10 +42,7 @@ go get github.com/ogen-go/ogen
 * OneOf/AnyOf
 * Format
   * [String format](https://json-schema.org/understanding-json-schema/reference/string.html)
-    * IPv4/IPv6
     * Email
-    * UUID
-    * URI
     * Hostname
     * Regular expression
 * Webhook support
