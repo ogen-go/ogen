@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"net"
 	"net/http"
+	"net/url"
 	"sort"
 	"strconv"
 	"strings"
@@ -18,6 +20,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -40,8 +43,11 @@ var (
 	_ = conv.ToInt32
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
+	_ = url.URL{}
 	_ = math.Mod
 	_ = validate.Int{}
+	_ = ht.NewRequest
+	_ = net.IP{}
 )
 
 type HTTPClient interface {
@@ -49,13 +55,17 @@ type HTTPClient interface {
 }
 
 type Client struct {
-	serverURL string
+	serverURL *url.URL
 	http      HTTPClient
 }
 
 func NewClient(serverURL string) *Client {
+	u, err := url.Parse(serverURL)
+	if err != nil {
+		panic(err) // TODO: fix
+	}
 	return &Client{
-		serverURL: serverURL,
+		serverURL: u,
 		http: &http.Client{
 			Timeout: time.Second * 15,
 		},
@@ -63,13 +73,11 @@ func NewClient(serverURL string) *Client {
 }
 
 func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context) (res GetServiceAccountIssuerOpenIDConfigurationResponse, err error) {
-	path := c.serverURL
-	path += "/.well-known/openid-configuration/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/.well-known/openid-configuration/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -86,13 +94,11 @@ func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context)
 }
 
 func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersionsResponse, err error) {
-	path := c.serverURL
-	path += "/api/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -109,13 +115,11 @@ func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersions
 }
 
 func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -132,13 +136,11 @@ func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIRes
 }
 
 func (c *Client) ListCoreV1ComponentStatus(ctx context.Context) (res ListCoreV1ComponentStatusResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/componentstatuses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/componentstatuses"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -155,13 +157,11 @@ func (c *Client) ListCoreV1ComponentStatus(ctx context.Context) (res ListCoreV1C
 }
 
 func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context) (res ListCoreV1ConfigMapForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/configmaps"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/configmaps"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -178,13 +178,11 @@ func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context) (res L
 }
 
 func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context) (res ListCoreV1EndpointsForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/endpoints"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/endpoints"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -201,13 +199,11 @@ func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context) (res L
 }
 
 func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context) (res ListCoreV1EventForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/events"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/events"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -224,13 +220,11 @@ func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context) (res ListC
 }
 
 func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context) (res ListCoreV1LimitRangeForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/limitranges"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/limitranges"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -247,15 +241,10 @@ func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context) (res 
 }
 
 func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1NamespaceParams) (res ListCoreV1NamespaceResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/namespaces"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/namespaces"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -346,7 +335,10 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -368,17 +360,10 @@ func (c *Client) CreateCoreV1Namespace(ctx context.Context, req IoK8sAPICoreV1Na
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/api/v1/namespaces"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/namespaces"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -399,7 +384,12 @@ func (c *Client) CreateCoreV1Namespace(ctx context.Context, req IoK8sAPICoreV1Na
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -416,15 +406,10 @@ func (c *Client) CreateCoreV1Namespace(ctx context.Context, req IoK8sAPICoreV1Na
 }
 
 func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams) (res ListCoreV1NodeResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/nodes"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/nodes"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -515,7 +500,10 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -537,17 +525,10 @@ func (c *Client) CreateCoreV1Node(ctx context.Context, req IoK8sAPICoreV1Node, p
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/api/v1/nodes"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/nodes"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -568,7 +549,12 @@ func (c *Client) CreateCoreV1Node(ctx context.Context, req IoK8sAPICoreV1Node, p
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -590,17 +576,10 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, req *IoK8sApima
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/api/v1/nodes"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/nodes"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -711,7 +690,12 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, req *IoK8sApima
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -728,13 +712,11 @@ func (c *Client) DeleteCoreV1CollectionNode(ctx context.Context, req *IoK8sApima
 }
 
 func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Context) (res ListCoreV1PersistentVolumeClaimForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/persistentvolumeclaims"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/persistentvolumeclaims"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -751,15 +733,10 @@ func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Con
 }
 
 func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCoreV1PersistentVolumeParams) (res ListCoreV1PersistentVolumeResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/persistentvolumes"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/persistentvolumes"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -850,7 +827,10 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -872,17 +852,10 @@ func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, req IoK8sAPIC
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/api/v1/persistentvolumes"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/persistentvolumes"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -903,7 +876,12 @@ func (c *Client) CreateCoreV1PersistentVolume(ctx context.Context, req IoK8sAPIC
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -925,17 +903,10 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/api/v1/persistentvolumes"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/persistentvolumes"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -1046,7 +1017,12 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1063,13 +1039,11 @@ func (c *Client) DeleteCoreV1CollectionPersistentVolume(ctx context.Context, req
 }
 
 func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context) (res ListCoreV1PodForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/pods"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/pods"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1086,13 +1060,11 @@ func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context) (res ListCor
 }
 
 func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context) (res ListCoreV1PodTemplateForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/podtemplates"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/podtemplates"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1109,13 +1081,11 @@ func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context) (res
 }
 
 func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Context) (res ListCoreV1ReplicationControllerForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/replicationcontrollers"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/replicationcontrollers"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1132,13 +1102,11 @@ func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Con
 }
 
 func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context) (res ListCoreV1ResourceQuotaForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/resourcequotas"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/resourcequotas"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1155,13 +1123,11 @@ func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context) (r
 }
 
 func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context) (res ListCoreV1SecretForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/secrets"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/secrets"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1178,13 +1144,11 @@ func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context) (res List
 }
 
 func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context) (res ListCoreV1ServiceAccountForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/serviceaccounts"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/serviceaccounts"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1201,13 +1165,11 @@ func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context) (
 }
 
 func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context) (res ListCoreV1ServiceForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/services"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/services"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1224,13 +1186,11 @@ func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context) (res Lis
 }
 
 func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context) (res WatchCoreV1ConfigMapListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/watch/configmaps"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/watch/configmaps"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1247,13 +1207,11 @@ func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context) (
 }
 
 func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context) (res WatchCoreV1EndpointsListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/watch/endpoints"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/watch/endpoints"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1270,13 +1228,11 @@ func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context) (
 }
 
 func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context) (res WatchCoreV1EventListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/watch/events"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/watch/events"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1293,13 +1249,11 @@ func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context) (res 
 }
 
 func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context) (res WatchCoreV1LimitRangeListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/watch/limitranges"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/watch/limitranges"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1316,13 +1270,11 @@ func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context) 
 }
 
 func (c *Client) WatchCoreV1NamespaceList(ctx context.Context) (res WatchCoreV1NamespaceListResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/watch/namespaces"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/watch/namespaces"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1339,13 +1291,11 @@ func (c *Client) WatchCoreV1NamespaceList(ctx context.Context) (res WatchCoreV1N
 }
 
 func (c *Client) WatchCoreV1NodeList(ctx context.Context) (res WatchCoreV1NodeListResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/watch/nodes"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/watch/nodes"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1362,13 +1312,11 @@ func (c *Client) WatchCoreV1NodeList(ctx context.Context) (res WatchCoreV1NodeLi
 }
 
 func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx context.Context) (res WatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/watch/persistentvolumeclaims"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/watch/persistentvolumeclaims"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1385,13 +1333,11 @@ func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx contex
 }
 
 func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context) (res WatchCoreV1PersistentVolumeListResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/watch/persistentvolumes"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/watch/persistentvolumes"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1408,13 +1354,11 @@ func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context) (res Watch
 }
 
 func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context) (res WatchCoreV1PodListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/watch/pods"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/watch/pods"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1431,13 +1375,11 @@ func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context) (res Wa
 }
 
 func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context) (res WatchCoreV1PodTemplateListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/watch/podtemplates"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/watch/podtemplates"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1454,13 +1396,11 @@ func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context)
 }
 
 func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx context.Context) (res WatchCoreV1ReplicationControllerListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/watch/replicationcontrollers"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/watch/replicationcontrollers"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1477,13 +1417,11 @@ func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx contex
 }
 
 func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Context) (res WatchCoreV1ResourceQuotaListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/watch/resourcequotas"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/watch/resourcequotas"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1500,13 +1438,11 @@ func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Contex
 }
 
 func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context) (res WatchCoreV1SecretListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/watch/secrets"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/watch/secrets"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1523,13 +1459,11 @@ func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context) (res
 }
 
 func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Context) (res WatchCoreV1ServiceAccountListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/watch/serviceaccounts"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/watch/serviceaccounts"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1546,13 +1480,11 @@ func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Conte
 }
 
 func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context) (res WatchCoreV1ServiceListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/api/v1/watch/services"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/api/v1/watch/services"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1569,13 +1501,11 @@ func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context) (re
 }
 
 func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsResponse, err error) {
-	path := c.serverURL
-	path += "/apis/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1592,13 +1522,11 @@ func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsResponse
 }
 
 func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetAdmissionregistrationAPIGroupResponse, err error) {
-	path := c.serverURL
-	path += "/apis/admissionregistration.k8s.io/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/admissionregistration.k8s.io/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1615,13 +1543,11 @@ func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetA
 }
 
 func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (res GetAdmissionregistrationV1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/admissionregistration.k8s.io/v1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/admissionregistration.k8s.io/v1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1638,15 +1564,10 @@ func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (re
 }
 
 func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1MutatingWebhookConfigurationParams) (res ListAdmissionregistrationV1MutatingWebhookConfigurationResponse, err error) {
-	path := c.serverURL
-	path += "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -1737,7 +1658,10 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1759,17 +1683,10 @@ func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx c
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -1790,7 +1707,12 @@ func (c *Client) CreateAdmissionregistrationV1MutatingWebhookConfiguration(ctx c
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1812,17 +1734,10 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -1933,7 +1848,12 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -1950,15 +1870,10 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
 }
 
 func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res ListAdmissionregistrationV1ValidatingWebhookConfigurationResponse, err error) {
-	path := c.serverURL
-	path += "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -2049,7 +1964,10 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -2071,17 +1989,10 @@ func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -2102,7 +2013,12 @@ func (c *Client) CreateAdmissionregistrationV1ValidatingWebhookConfiguration(ctx
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -2124,17 +2040,10 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -2245,7 +2154,12 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -2262,13 +2176,11 @@ func (c *Client) DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
 }
 
 func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx context.Context) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -2285,13 +2197,11 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ct
 }
 
 func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(ctx context.Context) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -2308,13 +2218,11 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(
 }
 
 func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextensionsAPIGroupResponse, err error) {
-	path := c.serverURL
-	path += "/apis/apiextensions.k8s.io/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apiextensions.k8s.io/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -2331,13 +2239,11 @@ func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextens
 }
 
 func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApiextensionsV1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/apiextensions.k8s.io/v1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apiextensions.k8s.io/v1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -2354,15 +2260,10 @@ func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApi
 }
 
 func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context, params ListApiextensionsV1CustomResourceDefinitionParams) (res ListApiextensionsV1CustomResourceDefinitionResponse, err error) {
-	path := c.serverURL
-	path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -2453,7 +2354,10 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -2475,17 +2379,10 @@ func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Conte
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -2506,7 +2403,12 @@ func (c *Client) CreateApiextensionsV1CustomResourceDefinition(ctx context.Conte
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -2528,17 +2430,10 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -2649,7 +2544,12 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -2666,13 +2566,11 @@ func (c *Client) DeleteApiextensionsV1CollectionCustomResourceDefinition(ctx con
 }
 
 func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Context) (res WatchApiextensionsV1CustomResourceDefinitionListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -2689,13 +2587,11 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Co
 }
 
 func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregistrationAPIGroupResponse, err error) {
-	path := c.serverURL
-	path += "/apis/apiregistration.k8s.io/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apiregistration.k8s.io/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -2712,13 +2608,11 @@ func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregi
 }
 
 func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetApiregistrationV1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/apiregistration.k8s.io/v1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apiregistration.k8s.io/v1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -2735,15 +2629,10 @@ func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetA
 }
 
 func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params ListApiregistrationV1APIServiceParams) (res ListApiregistrationV1APIServiceResponse, err error) {
-	path := c.serverURL
-	path += "/apis/apiregistration.k8s.io/v1/apiservices"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apiregistration.k8s.io/v1/apiservices"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -2834,7 +2723,10 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -2856,17 +2748,10 @@ func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, req IoK8
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/apiregistration.k8s.io/v1/apiservices"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apiregistration.k8s.io/v1/apiservices"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -2887,7 +2772,12 @@ func (c *Client) CreateApiregistrationV1APIService(ctx context.Context, req IoK8
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -2909,17 +2799,10 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/apiregistration.k8s.io/v1/apiservices"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apiregistration.k8s.io/v1/apiservices"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -3030,7 +2913,12 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3047,13 +2935,11 @@ func (c *Client) DeleteApiregistrationV1CollectionAPIService(ctx context.Context
 }
 
 func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context) (res WatchApiregistrationV1APIServiceListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/apiregistration.k8s.io/v1/watch/apiservices"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apiregistration.k8s.io/v1/watch/apiservices"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3070,13 +2956,11 @@ func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context) (res 
 }
 
 func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupResponse, err error) {
-	path := c.serverURL
-	path += "/apis/apps/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apps/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3093,13 +2977,11 @@ func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRespon
 }
 
 func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/apps/v1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apps/v1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3116,13 +2998,11 @@ func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIRes
 }
 
 func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Context) (res ListAppsV1ControllerRevisionForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/apps/v1/controllerrevisions"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apps/v1/controllerrevisions"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3139,13 +3019,11 @@ func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Contex
 }
 
 func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context) (res ListAppsV1DaemonSetForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/apps/v1/daemonsets"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apps/v1/daemonsets"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3162,13 +3040,11 @@ func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context) (res L
 }
 
 func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context) (res ListAppsV1DeploymentForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/apps/v1/deployments"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apps/v1/deployments"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3185,13 +3061,11 @@ func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context) (res 
 }
 
 func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context) (res ListAppsV1ReplicaSetForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/apps/v1/replicasets"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apps/v1/replicasets"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3208,13 +3082,11 @@ func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context) (res 
 }
 
 func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context) (res ListAppsV1StatefulSetForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/apps/v1/statefulsets"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apps/v1/statefulsets"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3231,13 +3103,11 @@ func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context) (res
 }
 
 func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.Context) (res WatchAppsV1ControllerRevisionListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/apps/v1/watch/controllerrevisions"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apps/v1/watch/controllerrevisions"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3254,13 +3124,11 @@ func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.C
 }
 
 func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context) (res WatchAppsV1DaemonSetListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/apps/v1/watch/daemonsets"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apps/v1/watch/daemonsets"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3277,13 +3145,11 @@ func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context) (
 }
 
 func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context) (res WatchAppsV1DeploymentListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/apps/v1/watch/deployments"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apps/v1/watch/deployments"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3300,13 +3166,11 @@ func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context) 
 }
 
 func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context) (res WatchAppsV1ReplicaSetListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/apps/v1/watch/replicasets"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apps/v1/watch/replicasets"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3323,13 +3187,11 @@ func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context) 
 }
 
 func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context) (res WatchAppsV1StatefulSetListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/apps/v1/watch/statefulsets"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/apps/v1/watch/statefulsets"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3346,13 +3208,11 @@ func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context)
 }
 
 func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenticationAPIGroupResponse, err error) {
-	path := c.serverURL
-	path += "/apis/authentication.k8s.io/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/authentication.k8s.io/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3369,13 +3229,11 @@ func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenti
 }
 
 func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAuthenticationV1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/authentication.k8s.io/v1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/authentication.k8s.io/v1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3397,13 +3255,11 @@ func (c *Client) CreateAuthenticationV1TokenReview(ctx context.Context, req IoK8
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/authentication.k8s.io/v1/tokenreviews"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/authentication.k8s.io/v1/tokenreviews"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -3422,13 +3278,11 @@ func (c *Client) CreateAuthenticationV1TokenReview(ctx context.Context, req IoK8
 }
 
 func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthorizationAPIGroupResponse, err error) {
-	path := c.serverURL
-	path += "/apis/authorization.k8s.io/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/authorization.k8s.io/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3445,13 +3299,11 @@ func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthoriza
 }
 
 func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAuthorizationV1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/authorization.k8s.io/v1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/authorization.k8s.io/v1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3473,13 +3325,11 @@ func (c *Client) CreateAuthorizationV1SelfSubjectAccessReview(ctx context.Contex
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/authorization.k8s.io/v1/selfsubjectaccessreviews"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/authorization.k8s.io/v1/selfsubjectaccessreviews"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -3503,13 +3353,11 @@ func (c *Client) CreateAuthorizationV1SelfSubjectRulesReview(ctx context.Context
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/authorization.k8s.io/v1/selfsubjectrulesreviews"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/authorization.k8s.io/v1/selfsubjectrulesreviews"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -3533,13 +3381,11 @@ func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, r
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/authorization.k8s.io/v1/subjectaccessreviews"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/authorization.k8s.io/v1/subjectaccessreviews"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -3558,13 +3404,11 @@ func (c *Client) CreateAuthorizationV1SubjectAccessReview(ctx context.Context, r
 }
 
 func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscalingAPIGroupResponse, err error) {
-	path := c.serverURL
-	path += "/apis/autoscaling/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/autoscaling/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3581,13 +3425,11 @@ func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscaling
 }
 
 func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutoscalingV1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/autoscaling/v1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/autoscaling/v1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3604,13 +3446,11 @@ func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutos
 }
 
 func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context) (res ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/autoscaling/v1/horizontalpodautoscalers"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/autoscaling/v1/horizontalpodautoscalers"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3627,13 +3467,11 @@ func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx co
 }
 
 func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context) (res WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/autoscaling/v1/watch/horizontalpodautoscalers"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/autoscaling/v1/watch/horizontalpodautoscalers"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3650,13 +3488,11 @@ func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(c
 }
 
 func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res GetAutoscalingV2beta1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/autoscaling/v2beta1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/autoscaling/v2beta1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3673,13 +3509,11 @@ func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res Get
 }
 
 func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context) (res ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/autoscaling/v2beta1/horizontalpodautoscalers"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/autoscaling/v2beta1/horizontalpodautoscalers"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3696,13 +3530,11 @@ func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(c
 }
 
 func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context) (res WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3719,13 +3551,11 @@ func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespa
 }
 
 func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res GetAutoscalingV2beta2APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/autoscaling/v2beta2/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/autoscaling/v2beta2/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3742,13 +3572,11 @@ func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res Get
 }
 
 func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(ctx context.Context) (res ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/autoscaling/v2beta2/horizontalpodautoscalers"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/autoscaling/v2beta2/horizontalpodautoscalers"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3765,13 +3593,11 @@ func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(c
 }
 
 func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context) (res WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/autoscaling/v2beta2/watch/horizontalpodautoscalers"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/autoscaling/v2beta2/watch/horizontalpodautoscalers"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3788,13 +3614,11 @@ func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespa
 }
 
 func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupResponse, err error) {
-	path := c.serverURL
-	path += "/apis/batch/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/batch/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3811,13 +3635,11 @@ func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupResp
 }
 
 func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/batch/v1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/batch/v1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3834,13 +3656,11 @@ func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIR
 }
 
 func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context) (res ListBatchV1CronJobForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/batch/v1/cronjobs"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/batch/v1/cronjobs"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3857,13 +3677,11 @@ func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context) (res Li
 }
 
 func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context) (res ListBatchV1JobForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/batch/v1/jobs"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/batch/v1/jobs"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3880,13 +3698,11 @@ func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context) (res ListBa
 }
 
 func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context) (res WatchBatchV1CronJobListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/batch/v1/watch/cronjobs"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/batch/v1/watch/cronjobs"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3903,13 +3719,11 @@ func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context) (r
 }
 
 func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context) (res WatchBatchV1JobListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/batch/v1/watch/jobs"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/batch/v1/watch/jobs"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3926,13 +3740,11 @@ func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context) (res W
 }
 
 func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV1beta1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/batch/v1beta1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/batch/v1beta1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3949,13 +3761,11 @@ func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV
 }
 
 func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context) (res ListBatchV1beta1CronJobForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/batch/v1beta1/cronjobs"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/batch/v1beta1/cronjobs"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3972,13 +3782,11 @@ func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context) (r
 }
 
 func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Context) (res WatchBatchV1beta1CronJobListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/batch/v1beta1/watch/cronjobs"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/batch/v1beta1/watch/cronjobs"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -3995,13 +3803,11 @@ func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Contex
 }
 
 func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificatesAPIGroupResponse, err error) {
-	path := c.serverURL
-	path += "/apis/certificates.k8s.io/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/certificates.k8s.io/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4018,13 +3824,11 @@ func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificat
 }
 
 func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCertificatesV1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/certificates.k8s.io/v1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/certificates.k8s.io/v1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4041,15 +3845,10 @@ func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCert
 }
 
 func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context, params ListCertificatesV1CertificateSigningRequestParams) (res ListCertificatesV1CertificateSigningRequestResponse, err error) {
-	path := c.serverURL
-	path += "/apis/certificates.k8s.io/v1/certificatesigningrequests"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -4140,7 +3939,10 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4162,17 +3964,10 @@ func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Conte
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/certificates.k8s.io/v1/certificatesigningrequests"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -4193,7 +3988,12 @@ func (c *Client) CreateCertificatesV1CertificateSigningRequest(ctx context.Conte
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4215,17 +4015,10 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/certificates.k8s.io/v1/certificatesigningrequests"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -4336,7 +4129,12 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4353,13 +4151,11 @@ func (c *Client) DeleteCertificatesV1CollectionCertificateSigningRequest(ctx con
 }
 
 func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Context) (res WatchCertificatesV1CertificateSigningRequestListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4376,13 +4172,11 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Co
 }
 
 func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinationAPIGroupResponse, err error) {
-	path := c.serverURL
-	path += "/apis/coordination.k8s.io/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/coordination.k8s.io/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4399,13 +4193,11 @@ func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinati
 }
 
 func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoordinationV1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/coordination.k8s.io/v1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/coordination.k8s.io/v1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4422,13 +4214,11 @@ func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoor
 }
 
 func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context) (res ListCoordinationV1LeaseForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/coordination.k8s.io/v1/leases"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/coordination.k8s.io/v1/leases"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4445,13 +4235,11 @@ func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context) (r
 }
 
 func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Context) (res WatchCoordinationV1LeaseListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/coordination.k8s.io/v1/watch/leases"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/coordination.k8s.io/v1/watch/leases"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4468,13 +4256,11 @@ func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Contex
 }
 
 func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIGroupResponse, err error) {
-	path := c.serverURL
-	path += "/apis/discovery.k8s.io/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/discovery.k8s.io/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4491,13 +4277,11 @@ func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIG
 }
 
 func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscoveryV1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/discovery.k8s.io/v1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/discovery.k8s.io/v1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4514,13 +4298,11 @@ func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscove
 }
 
 func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Context) (res ListDiscoveryV1EndpointSliceForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/discovery.k8s.io/v1/endpointslices"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/discovery.k8s.io/v1/endpointslices"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4537,13 +4319,11 @@ func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Contex
 }
 
 func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.Context) (res WatchDiscoveryV1EndpointSliceListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/discovery.k8s.io/v1/watch/endpointslices"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/discovery.k8s.io/v1/watch/endpointslices"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4560,13 +4340,11 @@ func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.C
 }
 
 func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDiscoveryV1beta1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/discovery.k8s.io/v1beta1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/discovery.k8s.io/v1beta1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4583,13 +4361,11 @@ func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDi
 }
 
 func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.Context) (res ListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/discovery.k8s.io/v1beta1/endpointslices"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/discovery.k8s.io/v1beta1/endpointslices"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4606,13 +4382,11 @@ func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.C
 }
 
 func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx context.Context) (res WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/discovery.k8s.io/v1beta1/watch/endpointslices"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/discovery.k8s.io/v1beta1/watch/endpointslices"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4629,13 +4403,11 @@ func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx cont
 }
 
 func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupResponse, err error) {
-	path := c.serverURL
-	path += "/apis/events.k8s.io/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/events.k8s.io/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4652,13 +4424,11 @@ func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRe
 }
 
 func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/events.k8s.io/v1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/events.k8s.io/v1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4675,13 +4445,11 @@ func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1AP
 }
 
 func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context) (res ListEventsV1EventForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/events.k8s.io/v1/events"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/events.k8s.io/v1/events"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4698,13 +4466,11 @@ func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context) (res Lis
 }
 
 func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context) (res WatchEventsV1EventListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/events.k8s.io/v1/watch/events"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/events.k8s.io/v1/watch/events"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4721,13 +4487,11 @@ func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context) (re
 }
 
 func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEventsV1beta1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/events.k8s.io/v1beta1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/events.k8s.io/v1beta1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4744,13 +4508,11 @@ func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEvent
 }
 
 func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context) (res ListEventsV1beta1EventForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/events.k8s.io/v1beta1/events"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/events.k8s.io/v1beta1/events"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4767,13 +4529,11 @@ func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context) (re
 }
 
 func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context) (res WatchEventsV1beta1EventListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/events.k8s.io/v1beta1/watch/events"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/events.k8s.io/v1beta1/watch/events"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4790,13 +4550,11 @@ func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context
 }
 
 func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFlowcontrolApiserverAPIGroupResponse, err error) {
-	path := c.serverURL
-	path += "/apis/flowcontrol.apiserver.k8s.io/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/flowcontrol.apiserver.k8s.io/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4813,13 +4571,11 @@ func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFl
 }
 
 func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context) (res GetFlowcontrolApiserverV1beta1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4836,15 +4592,10 @@ func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context)
 }
 
 func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta1FlowSchemaParams) (res ListFlowcontrolApiserverV1beta1FlowSchemaResponse, err error) {
-	path := c.serverURL
-	path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -4935,7 +4686,10 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -4957,17 +4711,10 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -4988,7 +4735,12 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -5010,17 +4762,10 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -5131,7 +4876,12 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -5148,15 +4898,10 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionFlowSchema(ctx conte
 }
 
 func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse, err error) {
-	path := c.serverURL
-	path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -5247,7 +4992,10 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -5269,17 +5017,10 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -5300,7 +5041,12 @@ func (c *Client) CreateFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -5322,17 +5068,10 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -5443,7 +5182,12 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -5460,13 +5204,11 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigu
 }
 
 func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Context) (res WatchFlowcontrolApiserverV1beta1FlowSchemaListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -5483,13 +5225,11 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Cont
 }
 
 func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(ctx context.Context) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -5506,13 +5246,11 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(
 }
 
 func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context) (res GetFlowcontrolApiserverV1beta2APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -5529,15 +5267,10 @@ func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context)
 }
 
 func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta2FlowSchemaParams) (res ListFlowcontrolApiserverV1beta2FlowSchemaResponse, err error) {
-	path := c.serverURL
-	path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -5628,7 +5361,10 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -5650,17 +5386,10 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -5681,7 +5410,12 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -5703,17 +5437,10 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -5824,7 +5551,12 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -5841,15 +5573,10 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionFlowSchema(ctx conte
 }
 
 func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse, err error) {
-	path := c.serverURL
-	path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -5940,7 +5667,10 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -5962,17 +5692,10 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -5993,7 +5716,12 @@ func (c *Client) CreateFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -6015,17 +5743,10 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -6136,7 +5857,12 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -6153,13 +5879,11 @@ func (c *Client) DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigu
 }
 
 func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Context) (res WatchFlowcontrolApiserverV1beta2FlowSchemaListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -6176,13 +5900,11 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Cont
 }
 
 func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx context.Context) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -6199,13 +5921,11 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(
 }
 
 func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInternalApiserverAPIGroupResponse, err error) {
-	path := c.serverURL
-	path += "/apis/internal.apiserver.k8s.io/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/internal.apiserver.k8s.io/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -6222,13 +5942,11 @@ func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInter
 }
 
 func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (res GetInternalApiserverV1alpha1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/internal.apiserver.k8s.io/v1alpha1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -6245,15 +5963,10 @@ func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (
 }
 
 func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ListInternalApiserverV1alpha1StorageVersionParams) (res ListInternalApiserverV1alpha1StorageVersionResponse, err error) {
-	path := c.serverURL
-	path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -6344,7 +6057,10 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -6366,17 +6082,10 @@ func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Conte
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -6397,7 +6106,12 @@ func (c *Client) CreateInternalApiserverV1alpha1StorageVersion(ctx context.Conte
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -6419,17 +6133,10 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -6540,7 +6247,12 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -6557,13 +6269,11 @@ func (c *Client) DeleteInternalApiserverV1alpha1CollectionStorageVersion(ctx con
 }
 
 func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Context) (res WatchInternalApiserverV1alpha1StorageVersionListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -6580,13 +6290,11 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Co
 }
 
 func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAPIGroupResponse, err error) {
-	path := c.serverURL
-	path += "/apis/networking.k8s.io/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/networking.k8s.io/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -6603,13 +6311,11 @@ func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAP
 }
 
 func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetworkingV1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/networking.k8s.io/v1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/networking.k8s.io/v1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -6626,15 +6332,10 @@ func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetwor
 }
 
 func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNetworkingV1IngressClassParams) (res ListNetworkingV1IngressClassResponse, err error) {
-	path := c.serverURL
-	path += "/apis/networking.k8s.io/v1/ingressclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/networking.k8s.io/v1/ingressclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -6725,7 +6426,10 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -6747,17 +6451,10 @@ func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, req IoK8sAP
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/networking.k8s.io/v1/ingressclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/networking.k8s.io/v1/ingressclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -6778,7 +6475,12 @@ func (c *Client) CreateNetworkingV1IngressClass(ctx context.Context, req IoK8sAP
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -6800,17 +6502,10 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/networking.k8s.io/v1/ingressclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/networking.k8s.io/v1/ingressclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -6921,7 +6616,12 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -6938,13 +6638,11 @@ func (c *Client) DeleteNetworkingV1CollectionIngressClass(ctx context.Context, r
 }
 
 func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context) (res ListNetworkingV1IngressForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/networking.k8s.io/v1/ingresses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/networking.k8s.io/v1/ingresses"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -6961,13 +6659,11 @@ func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context) (r
 }
 
 func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Context) (res ListNetworkingV1NetworkPolicyForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/networking.k8s.io/v1/networkpolicies"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/networking.k8s.io/v1/networkpolicies"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -6984,13 +6680,11 @@ func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Conte
 }
 
 func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context) (res WatchNetworkingV1IngressClassListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/networking.k8s.io/v1/watch/ingressclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/networking.k8s.io/v1/watch/ingressclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -7007,13 +6701,11 @@ func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context) (res Wat
 }
 
 func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Context) (res WatchNetworkingV1IngressListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/networking.k8s.io/v1/watch/ingresses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/networking.k8s.io/v1/watch/ingresses"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -7030,13 +6722,11 @@ func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Contex
 }
 
 func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.Context) (res WatchNetworkingV1NetworkPolicyListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/networking.k8s.io/v1/watch/networkpolicies"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/networking.k8s.io/v1/watch/networkpolicies"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -7053,13 +6743,11 @@ func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.
 }
 
 func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupResponse, err error) {
-	path := c.serverURL
-	path += "/apis/node.k8s.io/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/node.k8s.io/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -7076,13 +6764,11 @@ func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRespon
 }
 
 func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/node.k8s.io/v1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/node.k8s.io/v1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -7099,15 +6785,10 @@ func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIRes
 }
 
 func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1RuntimeClassParams) (res ListNodeV1RuntimeClassResponse, err error) {
-	path := c.serverURL
-	path += "/apis/node.k8s.io/v1/runtimeclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/node.k8s.io/v1/runtimeclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -7198,7 +6879,10 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -7220,17 +6904,10 @@ func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, req IoK8sAPINodeV
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/node.k8s.io/v1/runtimeclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/node.k8s.io/v1/runtimeclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -7251,7 +6928,12 @@ func (c *Client) CreateNodeV1RuntimeClass(ctx context.Context, req IoK8sAPINodeV
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -7273,17 +6955,10 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, req *Io
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/node.k8s.io/v1/runtimeclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/node.k8s.io/v1/runtimeclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -7394,7 +7069,12 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, req *Io
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -7411,13 +7091,11 @@ func (c *Client) DeleteNodeV1CollectionRuntimeClass(ctx context.Context, req *Io
 }
 
 func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context) (res WatchNodeV1RuntimeClassListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/node.k8s.io/v1/watch/runtimeclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/node.k8s.io/v1/watch/runtimeclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -7434,13 +7112,11 @@ func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context) (res WatchNode
 }
 
 func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1alpha1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/node.k8s.io/v1alpha1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/node.k8s.io/v1alpha1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -7457,15 +7133,10 @@ func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1
 }
 
 func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNodeV1alpha1RuntimeClassParams) (res ListNodeV1alpha1RuntimeClassResponse, err error) {
-	path := c.serverURL
-	path += "/apis/node.k8s.io/v1alpha1/runtimeclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/node.k8s.io/v1alpha1/runtimeclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -7556,7 +7227,10 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -7578,17 +7252,10 @@ func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, req IoK8sAP
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/node.k8s.io/v1alpha1/runtimeclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/node.k8s.io/v1alpha1/runtimeclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -7609,7 +7276,12 @@ func (c *Client) CreateNodeV1alpha1RuntimeClass(ctx context.Context, req IoK8sAP
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -7631,17 +7303,10 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/node.k8s.io/v1alpha1/runtimeclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/node.k8s.io/v1alpha1/runtimeclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -7752,7 +7417,12 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -7769,13 +7439,11 @@ func (c *Client) DeleteNodeV1alpha1CollectionRuntimeClass(ctx context.Context, r
 }
 
 func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context) (res WatchNodeV1alpha1RuntimeClassListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/node.k8s.io/v1alpha1/watch/runtimeclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/node.k8s.io/v1alpha1/watch/runtimeclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -7792,13 +7460,11 @@ func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context) (res Wat
 }
 
 func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1beta1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/node.k8s.io/v1beta1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/node.k8s.io/v1beta1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -7815,15 +7481,10 @@ func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1b
 }
 
 func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNodeV1beta1RuntimeClassParams) (res ListNodeV1beta1RuntimeClassResponse, err error) {
-	path := c.serverURL
-	path += "/apis/node.k8s.io/v1beta1/runtimeclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/node.k8s.io/v1beta1/runtimeclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -7914,7 +7575,10 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -7936,17 +7600,10 @@ func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, req IoK8sAPI
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/node.k8s.io/v1beta1/runtimeclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/node.k8s.io/v1beta1/runtimeclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -7967,7 +7624,12 @@ func (c *Client) CreateNodeV1beta1RuntimeClass(ctx context.Context, req IoK8sAPI
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -7989,17 +7651,10 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/node.k8s.io/v1beta1/runtimeclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/node.k8s.io/v1beta1/runtimeclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -8110,7 +7765,12 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -8127,13 +7787,11 @@ func (c *Client) DeleteNodeV1beta1CollectionRuntimeClass(ctx context.Context, re
 }
 
 func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context) (res WatchNodeV1beta1RuntimeClassListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/node.k8s.io/v1beta1/watch/runtimeclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/node.k8s.io/v1beta1/watch/runtimeclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -8150,13 +7808,11 @@ func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context) (res Watc
 }
 
 func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupResponse, err error) {
-	path := c.serverURL
-	path += "/apis/policy/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/policy/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -8173,13 +7829,11 @@ func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRe
 }
 
 func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/policy/v1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/policy/v1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -8196,13 +7850,11 @@ func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1AP
 }
 
 func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Context) (res ListPolicyV1PodDisruptionBudgetForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/policy/v1/poddisruptionbudgets"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/policy/v1/poddisruptionbudgets"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -8219,13 +7871,11 @@ func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Con
 }
 
 func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx context.Context) (res WatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/policy/v1/watch/poddisruptionbudgets"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/policy/v1/watch/poddisruptionbudgets"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -8242,13 +7892,11 @@ func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx contex
 }
 
 func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolicyV1beta1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/policy/v1beta1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/policy/v1beta1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -8265,13 +7913,11 @@ func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolic
 }
 
 func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx context.Context) (res ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/policy/v1beta1/poddisruptionbudgets"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/policy/v1beta1/poddisruptionbudgets"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -8288,15 +7934,10 @@ func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx contex
 }
 
 func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ListPolicyV1beta1PodSecurityPolicyParams) (res ListPolicyV1beta1PodSecurityPolicyResponse, err error) {
-	path := c.serverURL
-	path += "/apis/policy/v1beta1/podsecuritypolicies"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/policy/v1beta1/podsecuritypolicies"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -8387,7 +8028,10 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -8409,17 +8053,10 @@ func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, req I
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/policy/v1beta1/podsecuritypolicies"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/policy/v1beta1/podsecuritypolicies"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -8440,7 +8077,12 @@ func (c *Client) CreatePolicyV1beta1PodSecurityPolicy(ctx context.Context, req I
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -8462,17 +8104,10 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/policy/v1beta1/podsecuritypolicies"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/policy/v1beta1/podsecuritypolicies"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -8583,7 +8218,12 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -8600,13 +8240,11 @@ func (c *Client) DeletePolicyV1beta1CollectionPodSecurityPolicy(ctx context.Cont
 }
 
 func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx context.Context) (res WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/policy/v1beta1/watch/poddisruptionbudgets"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/policy/v1beta1/watch/poddisruptionbudgets"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -8623,13 +8261,11 @@ func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx c
 }
 
 func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context) (res WatchPolicyV1beta1PodSecurityPolicyListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/policy/v1beta1/watch/podsecuritypolicies"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/policy/v1beta1/watch/podsecuritypolicies"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -8646,13 +8282,11 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context) (r
 }
 
 func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacAuthorizationAPIGroupResponse, err error) {
-	path := c.serverURL
-	path += "/apis/rbac.authorization.k8s.io/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/rbac.authorization.k8s.io/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -8669,13 +8303,11 @@ func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacA
 }
 
 func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res GetRbacAuthorizationV1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/rbac.authorization.k8s.io/v1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/rbac.authorization.k8s.io/v1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -8692,15 +8324,10 @@ func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res Ge
 }
 
 func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleBindingParams) (res ListRbacAuthorizationV1ClusterRoleBindingResponse, err error) {
-	path := c.serverURL
-	path += "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -8791,7 +8418,10 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -8813,17 +8443,10 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -8844,7 +8467,12 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRoleBinding(ctx context.Context
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -8866,17 +8494,10 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -8987,7 +8608,12 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -9004,15 +8630,10 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRoleBinding(ctx conte
 }
 
 func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleParams) (res ListRbacAuthorizationV1ClusterRoleResponse, err error) {
-	path := c.serverURL
-	path += "/apis/rbac.authorization.k8s.io/v1/clusterroles"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterroles"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -9103,7 +8724,10 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -9125,17 +8749,10 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, req I
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/rbac.authorization.k8s.io/v1/clusterroles"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterroles"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -9156,7 +8773,12 @@ func (c *Client) CreateRbacAuthorizationV1ClusterRole(ctx context.Context, req I
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -9178,17 +8800,10 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/rbac.authorization.k8s.io/v1/clusterroles"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterroles"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -9299,7 +8914,12 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -9316,13 +8936,11 @@ func (c *Client) DeleteRbacAuthorizationV1CollectionClusterRole(ctx context.Cont
 }
 
 func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.Context) (res ListRbacAuthorizationV1RoleBindingForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/rbac.authorization.k8s.io/v1/rolebindings"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/rbac.authorization.k8s.io/v1/rolebindings"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -9339,13 +8957,11 @@ func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.
 }
 
 func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context) (res ListRbacAuthorizationV1RoleForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/rbac.authorization.k8s.io/v1/roles"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/rbac.authorization.k8s.io/v1/roles"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -9362,13 +8978,11 @@ func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context
 }
 
 func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Context) (res WatchRbacAuthorizationV1ClusterRoleBindingListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -9385,13 +8999,11 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Cont
 }
 
 func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context) (res WatchRbacAuthorizationV1ClusterRoleListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -9408,13 +9020,11 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context) (r
 }
 
 func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx context.Context) (res WatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/rbac.authorization.k8s.io/v1/watch/rolebindings"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/rolebindings"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -9431,13 +9041,11 @@ func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx con
 }
 
 func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Context) (res WatchRbacAuthorizationV1RoleListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/rbac.authorization.k8s.io/v1/watch/roles"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/roles"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -9454,13 +9062,11 @@ func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Co
 }
 
 func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAPIGroupResponse, err error) {
-	path := c.serverURL
-	path += "/apis/scheduling.k8s.io/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/scheduling.k8s.io/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -9477,13 +9083,11 @@ func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAP
 }
 
 func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedulingV1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/scheduling.k8s.io/v1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/scheduling.k8s.io/v1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -9500,15 +9104,10 @@ func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedu
 }
 
 func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListSchedulingV1PriorityClassParams) (res ListSchedulingV1PriorityClassResponse, err error) {
-	path := c.serverURL
-	path += "/apis/scheduling.k8s.io/v1/priorityclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/scheduling.k8s.io/v1/priorityclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -9599,7 +9198,10 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -9621,17 +9223,10 @@ func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, req IoK8sA
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/scheduling.k8s.io/v1/priorityclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/scheduling.k8s.io/v1/priorityclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -9652,7 +9247,12 @@ func (c *Client) CreateSchedulingV1PriorityClass(ctx context.Context, req IoK8sA
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -9674,17 +9274,10 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/scheduling.k8s.io/v1/priorityclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/scheduling.k8s.io/v1/priorityclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -9795,7 +9388,12 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -9812,13 +9410,11 @@ func (c *Client) DeleteSchedulingV1CollectionPriorityClass(ctx context.Context, 
 }
 
 func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context) (res WatchSchedulingV1PriorityClassListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/scheduling.k8s.io/v1/watch/priorityclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/scheduling.k8s.io/v1/watch/priorityclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -9835,13 +9431,11 @@ func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context) (res Wa
 }
 
 func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroupResponse, err error) {
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -9858,13 +9452,11 @@ func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroup
 }
 
 func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -9881,15 +9473,10 @@ func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1
 }
 
 func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV1CSIDriverParams) (res ListStorageV1CSIDriverResponse, err error) {
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1/csidrivers"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1/csidrivers"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -9980,7 +9567,10 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -10002,17 +9592,10 @@ func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, req IoK8sAPIStora
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1/csidrivers"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1/csidrivers"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -10033,7 +9616,12 @@ func (c *Client) CreateStorageV1CSIDriver(ctx context.Context, req IoK8sAPIStora
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -10055,17 +9643,10 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, req *Io
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1/csidrivers"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1/csidrivers"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -10176,7 +9757,12 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, req *Io
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -10193,15 +9779,10 @@ func (c *Client) DeleteStorageV1CollectionCSIDriver(ctx context.Context, req *Io
 }
 
 func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1CSINodeParams) (res ListStorageV1CSINodeResponse, err error) {
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1/csinodes"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1/csinodes"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -10292,7 +9873,10 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -10314,17 +9898,10 @@ func (c *Client) CreateStorageV1CSINode(ctx context.Context, req IoK8sAPIStorage
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1/csinodes"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1/csinodes"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -10345,7 +9922,12 @@ func (c *Client) CreateStorageV1CSINode(ctx context.Context, req IoK8sAPIStorage
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -10367,17 +9949,10 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, req *IoK8
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1/csinodes"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1/csinodes"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -10488,7 +10063,12 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, req *IoK8
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -10505,15 +10085,10 @@ func (c *Client) DeleteStorageV1CollectionCSINode(ctx context.Context, req *IoK8
 }
 
 func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStorageV1StorageClassParams) (res ListStorageV1StorageClassResponse, err error) {
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1/storageclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1/storageclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -10604,7 +10179,10 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -10626,17 +10204,10 @@ func (c *Client) CreateStorageV1StorageClass(ctx context.Context, req IoK8sAPISt
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1/storageclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1/storageclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -10657,7 +10228,12 @@ func (c *Client) CreateStorageV1StorageClass(ctx context.Context, req IoK8sAPISt
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -10679,17 +10255,10 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, req 
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1/storageclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1/storageclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -10800,7 +10369,12 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, req 
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -10817,15 +10391,10 @@ func (c *Client) DeleteStorageV1CollectionStorageClass(ctx context.Context, req 
 }
 
 func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListStorageV1VolumeAttachmentParams) (res ListStorageV1VolumeAttachmentResponse, err error) {
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1/volumeattachments"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1/volumeattachments"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'allowWatchBookmarks' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -10916,7 +10485,10 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 		param := e.EncodeBool(v)
 		q.Set("watch", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -10938,17 +10510,10 @@ func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, req IoK8sA
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1/volumeattachments"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1/volumeattachments"
 
-	r, err := http.NewRequestWithContext(ctx, "POST", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'dryRun' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -10969,7 +10534,12 @@ func (c *Client) CreateStorageV1VolumeAttachment(ctx context.Context, req IoK8sA
 		param := e.EncodeString(v)
 		q.Set("fieldManager", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -10991,17 +10561,10 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1/volumeattachments"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1/volumeattachments"
 
-	r, err := http.NewRequestWithContext(ctx, "DELETE", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
-
-	r.Header.Set("Content-Type", contentType)
-
-	q := r.URL.Query()
+	q := u.Query()
 	{
 		// Encode 'continue' parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
@@ -11112,7 +10675,12 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 		param := e.EncodeInt(v)
 		q.Set("timeoutSeconds", param)
 	}
-	r.URL.RawQuery = q.Encode()
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "DELETE", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -11129,13 +10697,11 @@ func (c *Client) DeleteStorageV1CollectionVolumeAttachment(ctx context.Context, 
 }
 
 func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context) (res WatchStorageV1CSIDriverListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1/watch/csidrivers"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1/watch/csidrivers"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -11152,13 +10718,11 @@ func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context) (res WatchStor
 }
 
 func (c *Client) WatchStorageV1CSINodeList(ctx context.Context) (res WatchStorageV1CSINodeListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1/watch/csinodes"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1/watch/csinodes"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -11175,13 +10739,11 @@ func (c *Client) WatchStorageV1CSINodeList(ctx context.Context) (res WatchStorag
 }
 
 func (c *Client) WatchStorageV1StorageClassList(ctx context.Context) (res WatchStorageV1StorageClassListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1/watch/storageclasses"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1/watch/storageclasses"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -11198,13 +10760,11 @@ func (c *Client) WatchStorageV1StorageClassList(ctx context.Context) (res WatchS
 }
 
 func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context) (res WatchStorageV1VolumeAttachmentListResponse, err error) {
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1/watch/volumeattachments"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1/watch/volumeattachments"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -11221,13 +10781,11 @@ func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context) (res Wa
 }
 
 func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetStorageV1alpha1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1alpha1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1alpha1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -11244,13 +10802,11 @@ func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetSto
 }
 
 func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx context.Context) (res ListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1alpha1/csistoragecapacities"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1alpha1/csistoragecapacities"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -11267,13 +10823,11 @@ func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx conte
 }
 
 func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx context.Context) (res WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -11290,13 +10844,11 @@ func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx 
 }
 
 func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStorageV1beta1APIResourcesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1beta1/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1beta1/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -11313,13 +10865,11 @@ func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStor
 }
 
 func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx context.Context) (res ListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1beta1/csistoragecapacities"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1beta1/csistoragecapacities"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -11336,13 +10886,11 @@ func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx contex
 }
 
 func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx context.Context) (res WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse, err error) {
-	path := c.serverURL
-	path += "/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -11359,13 +10907,11 @@ func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx c
 }
 
 func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandler, err error) {
-	path := c.serverURL
-	path += "/logs/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/logs/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -11382,13 +10928,11 @@ func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandler
 }
 
 func (c *Client) GetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (res GetServiceAccountIssuerOpenIDKeysetResponse, err error) {
-	path := c.serverURL
-	path += "/openid/v1/jwks/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/openid/v1/jwks/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -11405,13 +10949,11 @@ func (c *Client) GetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (res G
 }
 
 func (c *Client) GetCodeVersion(ctx context.Context) (res GetCodeVersionResponse, err error) {
-	path := c.serverURL
-	path += "/version/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/version/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {

@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"net"
 	"net/http"
+	"net/url"
 	"sort"
 	"strconv"
 	"strings"
@@ -18,6 +20,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -40,8 +43,11 @@ var (
 	_ = conv.ToInt32
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
+	_ = url.URL{}
 	_ = math.Mod
 	_ = validate.Int{}
+	_ = ht.NewRequest
+	_ = net.IP{}
 )
 
 func (s *Drive) validate() error {
@@ -70,7 +76,7 @@ func (s *MachineConfiguration) validate() error {
 			MinExclusive: false,
 			MaxExclusive: false,
 		}
-		if err := validator.Validate(int64(s.VcpuCount)); err != nil {
+		if err := validator.Validate(s.VcpuCount); err != nil {
 			return fmt.Errorf("field VcpuCount: %w", err)
 		}
 	}
@@ -136,7 +142,7 @@ func (s *Vsock) validate() error {
 			MinExclusive: false,
 			MaxExclusive: false,
 		}
-		if err := validator.Validate(int64(s.GuestCid)); err != nil {
+		if err := validator.Validate(s.GuestCid); err != nil {
 			return fmt.Errorf("field GuestCid: %w", err)
 		}
 	}

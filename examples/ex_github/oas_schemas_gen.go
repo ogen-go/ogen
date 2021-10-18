@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"net"
 	"net/http"
+	"net/url"
 	"sort"
 	"strconv"
 	"strings"
@@ -18,6 +20,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -40,23 +43,26 @@ var (
 	_ = conv.ToInt32
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
+	_ = url.URL{}
 	_ = math.Mod
 	_ = validate.Int{}
+	_ = ht.NewRequest
+	_ = net.IP{}
 )
 
 // APIOverview describes #/components/schemas/api-overview.
 type APIOverview struct {
-	API                              *[]string                      `json:"api"`
-	Actions                          *[]string                      `json:"actions"`
-	Dependabot                       *[]string                      `json:"dependabot"`
-	Git                              *[]string                      `json:"git"`
-	Hooks                            *[]string                      `json:"hooks"`
-	Importer                         *[]string                      `json:"importer"`
-	Packages                         *[]string                      `json:"packages"`
-	Pages                            *[]string                      `json:"pages"`
-	SSHKeyFingerprints               *APIOverviewSSHKeyFingerprints `json:"ssh_key_fingerprints"`
-	VerifiablePasswordAuthentication bool                           `json:"verifiable_password_authentication"`
-	Web                              *[]string                      `json:"web"`
+	API                              *[]string                             `json:"api"`
+	Actions                          *[]string                             `json:"actions"`
+	Dependabot                       *[]string                             `json:"dependabot"`
+	Git                              *[]string                             `json:"git"`
+	Hooks                            *[]string                             `json:"hooks"`
+	Importer                         *[]string                             `json:"importer"`
+	Packages                         *[]string                             `json:"packages"`
+	Pages                            *[]string                             `json:"pages"`
+	SSHKeyFingerprints               OptionalAPIOverviewSSHKeyFingerprints `json:"ssh_key_fingerprints"`
+	VerifiablePasswordAuthentication bool                                  `json:"verifiable_password_authentication"`
+	Web                              *[]string                             `json:"web"`
 }
 
 func (*APIOverview) metaGetResponse() {}
@@ -154,10 +160,10 @@ type ActionsCreateOrUpdateRepoSecretNoContent struct{}
 func (*ActionsCreateOrUpdateRepoSecretNoContent) actionsCreateOrUpdateRepoSecretResponse() {}
 
 type ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest struct {
-	Name                  string                                                                    `json:"name"`
-	Runners               *[]int                                                                    `json:"runners"`
-	SelectedRepositoryIds *[]int                                                                    `json:"selected_repository_ids"`
-	Visibility            *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility `json:"visibility"`
+	Name                  string                                                                           `json:"name"`
+	Runners               *[]int                                                                           `json:"runners"`
+	SelectedRepositoryIds *[]int                                                                           `json:"selected_repository_ids"`
+	Visibility            OptionalActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility `json:"visibility"`
 }
 
 type ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility string
@@ -200,10 +206,10 @@ type ActionsEnabled bool
 
 // ActionsEnterprisePermissions describes #/components/schemas/actions-enterprise-permissions.
 type ActionsEnterprisePermissions struct {
-	AllowedActions           *AllowedActions      `json:"allowed_actions"`
-	EnabledOrganizations     EnabledOrganizations `json:"enabled_organizations"`
-	SelectedActionsURL       *SelectedActionsURL  `json:"selected_actions_url"`
-	SelectedOrganizationsURL OptionalString       `json:"selected_organizations_url"`
+	AllowedActions           OptionalAllowedActions `json:"allowed_actions"`
+	EnabledOrganizations     EnabledOrganizations   `json:"enabled_organizations"`
+	SelectedActionsURL       *SelectedActionsURL    `json:"selected_actions_url"`
+	SelectedOrganizationsURL OptionalString         `json:"selected_organizations_url"`
 }
 
 type ActionsListArtifactsForRepo struct {
@@ -273,10 +279,10 @@ type ActionsListWorkflowRunArtifacts struct {
 
 // ActionsOrganizationPermissions describes #/components/schemas/actions-organization-permissions.
 type ActionsOrganizationPermissions struct {
-	AllowedActions          *AllowedActions     `json:"allowed_actions"`
-	EnabledRepositories     EnabledRepositories `json:"enabled_repositories"`
-	SelectedActionsURL      *SelectedActionsURL `json:"selected_actions_url"`
-	SelectedRepositoriesURL OptionalString      `json:"selected_repositories_url"`
+	AllowedActions          OptionalAllowedActions `json:"allowed_actions"`
+	EnabledRepositories     EnabledRepositories    `json:"enabled_repositories"`
+	SelectedActionsURL      *SelectedActionsURL    `json:"selected_actions_url"`
+	SelectedRepositoriesURL OptionalString         `json:"selected_repositories_url"`
 }
 
 // ActionsPublicKey describes #/components/schemas/actions-public-key.
@@ -307,9 +313,9 @@ type ActionsRemoveSelfHostedRunnerFromGroupForOrg struct{}
 
 // ActionsRepositoryPermissions describes #/components/schemas/actions-repository-permissions.
 type ActionsRepositoryPermissions struct {
-	AllowedActions     *AllowedActions     `json:"allowed_actions"`
-	Enabled            ActionsEnabled      `json:"enabled"`
-	SelectedActionsURL *SelectedActionsURL `json:"selected_actions_url"`
+	AllowedActions     OptionalAllowedActions `json:"allowed_actions"`
+	Enabled            ActionsEnabled         `json:"enabled"`
+	SelectedActionsURL *SelectedActionsURL    `json:"selected_actions_url"`
 }
 
 type ActionsRetryWorkflow struct{}
@@ -344,15 +350,15 @@ type ActionsSetAllowedActionsRepository struct{}
 type ActionsSetGithubActionsPermissionsOrganization struct{}
 
 type ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest struct {
-	AllowedActions      *AllowedActions     `json:"allowed_actions"`
-	EnabledRepositories EnabledRepositories `json:"enabled_repositories"`
+	AllowedActions      OptionalAllowedActions `json:"allowed_actions"`
+	EnabledRepositories EnabledRepositories    `json:"enabled_repositories"`
 }
 
 type ActionsSetGithubActionsPermissionsRepository struct{}
 
 type ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest struct {
-	AllowedActions *AllowedActions `json:"allowed_actions"`
-	Enabled        ActionsEnabled  `json:"enabled"`
+	AllowedActions OptionalAllowedActions `json:"allowed_actions"`
+	Enabled        ActionsEnabled         `json:"enabled"`
 }
 
 type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg struct{}
@@ -380,8 +386,8 @@ type ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest struct {
 }
 
 type ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest struct {
-	Name       string                                                                    `json:"name"`
-	Visibility *ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility `json:"visibility"`
+	Name       string                                                                           `json:"name"`
+	Visibility OptionalActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility `json:"visibility"`
 }
 
 type ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility string
@@ -596,23 +602,23 @@ func (*ActivityUnstarRepoForAuthenticatedUserNoContent) activityUnstarRepoForAut
 
 // Actor describes #/components/schemas/actor.
 type Actor struct {
-	AvatarURL    string         `json:"avatar_url"`
+	AvatarURL    url.URL        `json:"avatar_url"`
 	DisplayLogin OptionalString `json:"display_login"`
 	GravatarID   NilString      `json:"gravatar_id"`
 	ID           int            `json:"id"`
 	Login        string         `json:"login"`
-	URL          string         `json:"url"`
+	URL          url.URL        `json:"url"`
 }
 
 type AlertCreatedAt time.Time
 
-type AlertHTMLURL string
+type AlertHTMLURL url.URL
 
-type AlertInstancesURL string
+type AlertInstancesURL url.URL
 
 type AlertNumber int
 
-type AlertURL string
+type AlertURL url.URL
 
 type AllowedActions string
 
@@ -624,37 +630,37 @@ const (
 
 // AppPermissions describes #/components/schemas/app-permissions.
 type AppPermissions struct {
-	Actions                       *AppPermissionsActions                       `json:"actions"`
-	Administration                *AppPermissionsAdministration                `json:"administration"`
-	Checks                        *AppPermissionsChecks                        `json:"checks"`
-	ContentReferences             *AppPermissionsContentReferences             `json:"content_references"`
-	Contents                      *AppPermissionsContents                      `json:"contents"`
-	Deployments                   *AppPermissionsDeployments                   `json:"deployments"`
-	Environments                  *AppPermissionsEnvironments                  `json:"environments"`
-	Issues                        *AppPermissionsIssues                        `json:"issues"`
-	Members                       *AppPermissionsMembers                       `json:"members"`
-	Metadata                      *AppPermissionsMetadata                      `json:"metadata"`
-	OrganizationAdministration    *AppPermissionsOrganizationAdministration    `json:"organization_administration"`
-	OrganizationHooks             *AppPermissionsOrganizationHooks             `json:"organization_hooks"`
-	OrganizationPackages          *AppPermissionsOrganizationPackages          `json:"organization_packages"`
-	OrganizationPlan              *AppPermissionsOrganizationPlan              `json:"organization_plan"`
-	OrganizationProjects          *AppPermissionsOrganizationProjects          `json:"organization_projects"`
-	OrganizationSecrets           *AppPermissionsOrganizationSecrets           `json:"organization_secrets"`
-	OrganizationSelfHostedRunners *AppPermissionsOrganizationSelfHostedRunners `json:"organization_self_hosted_runners"`
-	OrganizationUserBlocking      *AppPermissionsOrganizationUserBlocking      `json:"organization_user_blocking"`
-	Packages                      *AppPermissionsPackages                      `json:"packages"`
-	Pages                         *AppPermissionsPages                         `json:"pages"`
-	PullRequests                  *AppPermissionsPullRequests                  `json:"pull_requests"`
-	RepositoryHooks               *AppPermissionsRepositoryHooks               `json:"repository_hooks"`
-	RepositoryProjects            *AppPermissionsRepositoryProjects            `json:"repository_projects"`
-	SecretScanningAlerts          *AppPermissionsSecretScanningAlerts          `json:"secret_scanning_alerts"`
-	Secrets                       *AppPermissionsSecrets                       `json:"secrets"`
-	SecurityEvents                *AppPermissionsSecurityEvents                `json:"security_events"`
-	SingleFile                    *AppPermissionsSingleFile                    `json:"single_file"`
-	Statuses                      *AppPermissionsStatuses                      `json:"statuses"`
-	TeamDiscussions               *AppPermissionsTeamDiscussions               `json:"team_discussions"`
-	VulnerabilityAlerts           *AppPermissionsVulnerabilityAlerts           `json:"vulnerability_alerts"`
-	Workflows                     *AppPermissionsWorkflows                     `json:"workflows"`
+	Actions                       OptionalAppPermissionsActions                       `json:"actions"`
+	Administration                OptionalAppPermissionsAdministration                `json:"administration"`
+	Checks                        OptionalAppPermissionsChecks                        `json:"checks"`
+	ContentReferences             OptionalAppPermissionsContentReferences             `json:"content_references"`
+	Contents                      OptionalAppPermissionsContents                      `json:"contents"`
+	Deployments                   OptionalAppPermissionsDeployments                   `json:"deployments"`
+	Environments                  OptionalAppPermissionsEnvironments                  `json:"environments"`
+	Issues                        OptionalAppPermissionsIssues                        `json:"issues"`
+	Members                       OptionalAppPermissionsMembers                       `json:"members"`
+	Metadata                      OptionalAppPermissionsMetadata                      `json:"metadata"`
+	OrganizationAdministration    OptionalAppPermissionsOrganizationAdministration    `json:"organization_administration"`
+	OrganizationHooks             OptionalAppPermissionsOrganizationHooks             `json:"organization_hooks"`
+	OrganizationPackages          OptionalAppPermissionsOrganizationPackages          `json:"organization_packages"`
+	OrganizationPlan              OptionalAppPermissionsOrganizationPlan              `json:"organization_plan"`
+	OrganizationProjects          OptionalAppPermissionsOrganizationProjects          `json:"organization_projects"`
+	OrganizationSecrets           OptionalAppPermissionsOrganizationSecrets           `json:"organization_secrets"`
+	OrganizationSelfHostedRunners OptionalAppPermissionsOrganizationSelfHostedRunners `json:"organization_self_hosted_runners"`
+	OrganizationUserBlocking      OptionalAppPermissionsOrganizationUserBlocking      `json:"organization_user_blocking"`
+	Packages                      OptionalAppPermissionsPackages                      `json:"packages"`
+	Pages                         OptionalAppPermissionsPages                         `json:"pages"`
+	PullRequests                  OptionalAppPermissionsPullRequests                  `json:"pull_requests"`
+	RepositoryHooks               OptionalAppPermissionsRepositoryHooks               `json:"repository_hooks"`
+	RepositoryProjects            OptionalAppPermissionsRepositoryProjects            `json:"repository_projects"`
+	SecretScanningAlerts          OptionalAppPermissionsSecretScanningAlerts          `json:"secret_scanning_alerts"`
+	Secrets                       OptionalAppPermissionsSecrets                       `json:"secrets"`
+	SecurityEvents                OptionalAppPermissionsSecurityEvents                `json:"security_events"`
+	SingleFile                    OptionalAppPermissionsSingleFile                    `json:"single_file"`
+	Statuses                      OptionalAppPermissionsStatuses                      `json:"statuses"`
+	TeamDiscussions               OptionalAppPermissionsTeamDiscussions               `json:"team_discussions"`
+	VulnerabilityAlerts           OptionalAppPermissionsVulnerabilityAlerts           `json:"vulnerability_alerts"`
+	Workflows                     OptionalAppPermissionsWorkflows                     `json:"workflows"`
 }
 
 type AppPermissionsActions string
@@ -875,21 +881,21 @@ const (
 
 // ApplicationGrant describes #/components/schemas/application-grant.
 type ApplicationGrant struct {
-	App       ApplicationGrantApp `json:"app"`
-	CreatedAt time.Time           `json:"created_at"`
-	ID        int                 `json:"id"`
-	Scopes    []string            `json:"scopes"`
-	URL       string              `json:"url"`
-	UpdatedAt time.Time           `json:"updated_at"`
-	User      *NullableSimpleUser `json:"user"`
+	App       ApplicationGrantApp        `json:"app"`
+	CreatedAt time.Time                  `json:"created_at"`
+	ID        int                        `json:"id"`
+	Scopes    []string                   `json:"scopes"`
+	URL       url.URL                    `json:"url"`
+	UpdatedAt time.Time                  `json:"updated_at"`
+	User      OptionalNullableSimpleUser `json:"user"`
 }
 
 func (*ApplicationGrant) oAuthAuthorizationsGetGrantResponse() {}
 
 type ApplicationGrantApp struct {
-	ClientID string `json:"client_id"`
-	Name     string `json:"name"`
-	URL      string `json:"url"`
+	ClientID string  `json:"client_id"`
+	Name     string  `json:"name"`
+	URL      url.URL `json:"url"`
 }
 
 type AppsAddRepoToInstallationApplicationJSONForbidden BasicError
@@ -922,9 +928,9 @@ type AppsCreateFromManifestApplicationJSONRequest struct{}
 func (*AppsCreateFromManifestApplicationJSONRequest) appsCreateFromManifestRequest() {}
 
 type AppsCreateInstallationAccessTokenApplicationJSONRequest struct {
-	Permissions   *AppPermissions `json:"permissions"`
-	Repositories  *[]string       `json:"repositories"`
-	RepositoryIds *[]int          `json:"repository_ids"`
+	Permissions   OptionalAppPermissions `json:"permissions"`
+	Repositories  *[]string              `json:"repositories"`
+	RepositoryIds *[]int                 `json:"repository_ids"`
 }
 
 func (*AppsCreateInstallationAccessTokenApplicationJSONRequest) appsCreateInstallationAccessTokenRequest() {
@@ -1071,12 +1077,12 @@ func (*AppsResetTokenApplicationJSONRequest) appsResetTokenRequest() {}
 type AppsRevokeInstallationAccessToken struct{}
 
 type AppsScopeTokenApplicationJSONRequest struct {
-	AccessToken   string          `json:"access_token"`
-	Permissions   *AppPermissions `json:"permissions"`
-	Repositories  *[]string       `json:"repositories"`
-	RepositoryIds *[]int          `json:"repository_ids"`
-	Target        OptionalString  `json:"target"`
-	TargetID      OptionalInt     `json:"target_id"`
+	AccessToken   string                 `json:"access_token"`
+	Permissions   OptionalAppPermissions `json:"permissions"`
+	Repositories  *[]string              `json:"repositories"`
+	RepositoryIds *[]int                 `json:"repository_ids"`
+	Target        OptionalString         `json:"target"`
+	TargetID      OptionalInt            `json:"target_id"`
 }
 
 func (*AppsScopeTokenApplicationJSONRequest) appsScopeTokenRequest() {}
@@ -1105,12 +1111,12 @@ type Artifact struct {
 
 // AuthenticationToken describes #/components/schemas/authentication-token.
 type AuthenticationToken struct {
-	ExpiresAt           time.Time                               `json:"expires_at"`
-	Permissions         *struct{}                               `json:"permissions"`
-	Repositories        *[]Repository                           `json:"repositories"`
-	RepositorySelection *AuthenticationTokenRepositorySelection `json:"repository_selection"`
-	SingleFile          OptionalNilString                       `json:"single_file"`
-	Token               string                                  `json:"token"`
+	ExpiresAt           time.Time                                      `json:"expires_at"`
+	Permissions         *struct{}                                      `json:"permissions"`
+	Repositories        *[]Repository                                  `json:"repositories"`
+	RepositorySelection OptionalAuthenticationTokenRepositorySelection `json:"repository_selection"`
+	SingleFile          OptionalNilString                              `json:"single_file"`
+	Token               string                                         `json:"token"`
 }
 
 type AuthenticationTokenRepositorySelection string
@@ -1135,29 +1141,29 @@ const (
 
 // Authorization describes #/components/schemas/authorization.
 type Authorization struct {
-	App            AuthorizationApp            `json:"app"`
-	CreatedAt      time.Time                   `json:"created_at"`
-	ExpiresAt      NilTime                     `json:"expires_at"`
-	Fingerprint    NilString                   `json:"fingerprint"`
-	HashedToken    NilString                   `json:"hashed_token"`
-	ID             int                         `json:"id"`
-	Installation   *NullableScopedInstallation `json:"installation"`
-	Note           NilString                   `json:"note"`
-	NoteURL        NilString                   `json:"note_url"`
-	Scopes         []string                    `json:"scopes"`
-	Token          string                      `json:"token"`
-	TokenLastEight NilString                   `json:"token_last_eight"`
-	URL            string                      `json:"url"`
-	UpdatedAt      time.Time                   `json:"updated_at"`
-	User           *NullableSimpleUser         `json:"user"`
+	App            AuthorizationApp                   `json:"app"`
+	CreatedAt      time.Time                          `json:"created_at"`
+	ExpiresAt      NilTime                            `json:"expires_at"`
+	Fingerprint    NilString                          `json:"fingerprint"`
+	HashedToken    NilString                          `json:"hashed_token"`
+	ID             int                                `json:"id"`
+	Installation   OptionalNullableScopedInstallation `json:"installation"`
+	Note           NilString                          `json:"note"`
+	NoteURL        NilURL                             `json:"note_url"`
+	Scopes         []string                           `json:"scopes"`
+	Token          string                             `json:"token"`
+	TokenLastEight NilString                          `json:"token_last_eight"`
+	URL            url.URL                            `json:"url"`
+	UpdatedAt      time.Time                          `json:"updated_at"`
+	User           OptionalNullableSimpleUser         `json:"user"`
 }
 
 func (*Authorization) oAuthAuthorizationsGetAuthorizationResponse() {}
 
 type AuthorizationApp struct {
-	ClientID string `json:"client_id"`
-	Name     string `json:"name"`
-	URL      string `json:"url"`
+	ClientID string  `json:"client_id"`
+	Name     string  `json:"name"`
+	URL      url.URL `json:"url"`
 }
 
 // AutoMerge describes #/components/schemas/auto_merge.
@@ -1188,23 +1194,23 @@ func (*Autolink) reposGetAutolinkResponse() {}
 // BaseGist describes #/components/schemas/base-gist.
 type BaseGist struct {
 	Comments    int                `json:"comments"`
-	CommentsURL string             `json:"comments_url"`
-	CommitsURL  string             `json:"commits_url"`
+	CommentsURL url.URL            `json:"comments_url"`
+	CommitsURL  url.URL            `json:"commits_url"`
 	CreatedAt   time.Time          `json:"created_at"`
 	Description NilString          `json:"description"`
 	Files       struct{}           `json:"files"`
 	Forks       *[]string          `json:"forks"`
-	ForksURL    string             `json:"forks_url"`
-	GitPullURL  string             `json:"git_pull_url"`
-	GitPushURL  string             `json:"git_push_url"`
-	HTMLURL     string             `json:"html_url"`
+	ForksURL    url.URL            `json:"forks_url"`
+	GitPullURL  url.URL            `json:"git_pull_url"`
+	GitPushURL  url.URL            `json:"git_push_url"`
+	HTMLURL     url.URL            `json:"html_url"`
 	History     *[]string          `json:"history"`
 	ID          string             `json:"id"`
 	NodeID      string             `json:"node_id"`
-	Owner       *SimpleUser        `json:"owner"`
+	Owner       OptionalSimpleUser `json:"owner"`
 	Public      bool               `json:"public"`
 	Truncated   OptionalBool       `json:"truncated"`
-	URL         string             `json:"url"`
+	URL         url.URL            `json:"url"`
 	UpdatedAt   time.Time          `json:"updated_at"`
 	User        NullableSimpleUser `json:"user"`
 }
@@ -1332,24 +1338,24 @@ type Blob struct {
 	NodeID             string         `json:"node_id"`
 	Sha                string         `json:"sha"`
 	Size               NilInt         `json:"size"`
-	URL                string         `json:"url"`
+	URL                url.URL        `json:"url"`
 }
 
 // BranchProtection describes #/components/schemas/branch-protection.
 type BranchProtection struct {
-	AllowDeletions                 *BranchProtectionAllowDeletions                 `json:"allow_deletions"`
-	AllowForcePushes               *BranchProtectionAllowForcePushes               `json:"allow_force_pushes"`
-	Enabled                        OptionalBool                                    `json:"enabled"`
-	EnforceAdmins                  *ProtectedBranchAdminEnforced                   `json:"enforce_admins"`
-	Name                           OptionalString                                  `json:"name"`
-	ProtectionURL                  OptionalString                                  `json:"protection_url"`
-	RequiredConversationResolution *BranchProtectionRequiredConversationResolution `json:"required_conversation_resolution"`
-	RequiredLinearHistory          *BranchProtectionRequiredLinearHistory          `json:"required_linear_history"`
-	RequiredPullRequestReviews     *ProtectedBranchPullRequestReview               `json:"required_pull_request_reviews"`
-	RequiredSignatures             *BranchProtectionRequiredSignatures             `json:"required_signatures"`
-	RequiredStatusChecks           *BranchProtectionRequiredStatusChecks           `json:"required_status_checks"`
-	Restrictions                   *BranchRestrictionPolicy                        `json:"restrictions"`
-	URL                            OptionalString                                  `json:"url"`
+	AllowDeletions                 OptionalBranchProtectionAllowDeletions                 `json:"allow_deletions"`
+	AllowForcePushes               OptionalBranchProtectionAllowForcePushes               `json:"allow_force_pushes"`
+	Enabled                        OptionalBool                                           `json:"enabled"`
+	EnforceAdmins                  OptionalProtectedBranchAdminEnforced                   `json:"enforce_admins"`
+	Name                           OptionalString                                         `json:"name"`
+	ProtectionURL                  OptionalString                                         `json:"protection_url"`
+	RequiredConversationResolution OptionalBranchProtectionRequiredConversationResolution `json:"required_conversation_resolution"`
+	RequiredLinearHistory          OptionalBranchProtectionRequiredLinearHistory          `json:"required_linear_history"`
+	RequiredPullRequestReviews     OptionalProtectedBranchPullRequestReview               `json:"required_pull_request_reviews"`
+	RequiredSignatures             OptionalBranchProtectionRequiredSignatures             `json:"required_signatures"`
+	RequiredStatusChecks           OptionalBranchProtectionRequiredStatusChecks           `json:"required_status_checks"`
+	Restrictions                   OptionalBranchRestrictionPolicy                        `json:"restrictions"`
+	URL                            OptionalString                                         `json:"url"`
 }
 
 func (*BranchProtection) reposGetBranchProtectionResponse() {}
@@ -1371,8 +1377,8 @@ type BranchProtectionRequiredLinearHistory struct {
 }
 
 type BranchProtectionRequiredSignatures struct {
-	Enabled bool   `json:"enabled"`
-	URL     string `json:"url"`
+	Enabled bool    `json:"enabled"`
+	URL     url.URL `json:"url"`
 }
 
 type BranchProtectionRequiredStatusChecks struct {
@@ -1386,29 +1392,29 @@ type BranchProtectionRequiredStatusChecks struct {
 // BranchRestrictionPolicy describes #/components/schemas/branch-restriction-policy.
 type BranchRestrictionPolicy struct {
 	Apps     []BranchRestrictionPolicyAppsItem  `json:"apps"`
-	AppsURL  string                             `json:"apps_url"`
+	AppsURL  url.URL                            `json:"apps_url"`
 	Teams    []BranchRestrictionPolicyTeamsItem `json:"teams"`
-	TeamsURL string                             `json:"teams_url"`
-	URL      string                             `json:"url"`
+	TeamsURL url.URL                            `json:"teams_url"`
+	URL      url.URL                            `json:"url"`
 	Users    []BranchRestrictionPolicyUsersItem `json:"users"`
-	UsersURL string                             `json:"users_url"`
+	UsersURL url.URL                            `json:"users_url"`
 }
 
 func (*BranchRestrictionPolicy) reposGetAccessRestrictionsResponse() {}
 
 type BranchRestrictionPolicyAppsItem struct {
-	CreatedAt   OptionalString                              `json:"created_at"`
-	Description OptionalString                              `json:"description"`
-	Events      *[]string                                   `json:"events"`
-	ExternalURL OptionalString                              `json:"external_url"`
-	HTMLURL     OptionalString                              `json:"html_url"`
-	ID          OptionalInt                                 `json:"id"`
-	Name        OptionalString                              `json:"name"`
-	NodeID      OptionalString                              `json:"node_id"`
-	Owner       *BranchRestrictionPolicyAppsItemOwner       `json:"owner"`
-	Permissions *BranchRestrictionPolicyAppsItemPermissions `json:"permissions"`
-	Slug        OptionalString                              `json:"slug"`
-	UpdatedAt   OptionalString                              `json:"updated_at"`
+	CreatedAt   OptionalString                                     `json:"created_at"`
+	Description OptionalString                                     `json:"description"`
+	Events      *[]string                                          `json:"events"`
+	ExternalURL OptionalString                                     `json:"external_url"`
+	HTMLURL     OptionalString                                     `json:"html_url"`
+	ID          OptionalInt                                        `json:"id"`
+	Name        OptionalString                                     `json:"name"`
+	NodeID      OptionalString                                     `json:"node_id"`
+	Owner       OptionalBranchRestrictionPolicyAppsItemOwner       `json:"owner"`
+	Permissions OptionalBranchRestrictionPolicyAppsItemPermissions `json:"permissions"`
+	Slug        OptionalString                                     `json:"slug"`
+	UpdatedAt   OptionalString                                     `json:"updated_at"`
 }
 
 type BranchRestrictionPolicyAppsItemOwner struct {
@@ -1500,15 +1506,15 @@ type BranchWithProtection struct {
 	Pattern                      OptionalString            `json:"pattern"`
 	Protected                    bool                      `json:"protected"`
 	Protection                   BranchProtection          `json:"protection"`
-	ProtectionURL                string                    `json:"protection_url"`
+	ProtectionURL                url.URL                   `json:"protection_url"`
 	RequiredApprovingReviewCount OptionalInt               `json:"required_approving_review_count"`
 }
 
 func (*BranchWithProtection) reposGetBranchResponse() {}
 
 type BranchWithProtectionLinks struct {
-	HTML string `json:"html"`
-	Self string `json:"self"`
+	HTML string  `json:"html"`
+	Self url.URL `json:"self"`
 }
 
 // CheckAnnotation describes #/components/schemas/check-annotation.
@@ -1527,23 +1533,23 @@ type CheckAnnotation struct {
 
 // CheckRun describes #/components/schemas/check-run.
 type CheckRun struct {
-	App          NullableIntegration `json:"app"`
-	CheckSuite   CheckRunCheckSuite  `json:"check_suite"`
-	CompletedAt  NilTime             `json:"completed_at"`
-	Conclusion   CheckRunConclusion  `json:"conclusion"`
-	Deployment   *DeploymentSimple   `json:"deployment"`
-	DetailsURL   NilString           `json:"details_url"`
-	ExternalID   NilString           `json:"external_id"`
-	HTMLURL      NilString           `json:"html_url"`
-	HeadSha      string              `json:"head_sha"`
-	ID           int                 `json:"id"`
-	Name         string              `json:"name"`
-	NodeID       string              `json:"node_id"`
-	Output       CheckRunOutput      `json:"output"`
-	PullRequests string              `json:"pull_requests"`
-	StartedAt    NilTime             `json:"started_at"`
-	Status       CheckRunStatus      `json:"status"`
-	URL          string              `json:"url"`
+	App          NullableIntegration      `json:"app"`
+	CheckSuite   NilCheckRunCheckSuite    `json:"check_suite"`
+	CompletedAt  NilTime                  `json:"completed_at"`
+	Conclusion   NilCheckRunConclusion    `json:"conclusion"`
+	Deployment   OptionalDeploymentSimple `json:"deployment"`
+	DetailsURL   NilString                `json:"details_url"`
+	ExternalID   NilString                `json:"external_id"`
+	HTMLURL      NilString                `json:"html_url"`
+	HeadSha      string                   `json:"head_sha"`
+	ID           int                      `json:"id"`
+	Name         string                   `json:"name"`
+	NodeID       string                   `json:"node_id"`
+	Output       CheckRunOutput           `json:"output"`
+	PullRequests string                   `json:"pull_requests"`
+	StartedAt    NilTime                  `json:"started_at"`
+	Status       CheckRunStatus           `json:"status"`
+	URL          string                   `json:"url"`
 }
 
 type CheckRunCheckSuite struct {
@@ -1564,7 +1570,7 @@ const (
 
 type CheckRunOutput struct {
 	AnnotationsCount int       `json:"annotations_count"`
-	AnnotationsURL   string    `json:"annotations_url"`
+	AnnotationsURL   url.URL   `json:"annotations_url"`
 	Summary          NilString `json:"summary"`
 	Text             NilString `json:"text"`
 	Title            NilString `json:"title"`
@@ -1580,23 +1586,23 @@ const (
 
 // CheckSuite describes #/components/schemas/check-suite.
 type CheckSuite struct {
-	After                NilString            `json:"after"`
-	App                  NullableIntegration  `json:"app"`
-	Before               NilString            `json:"before"`
-	CheckRunsURL         string               `json:"check_runs_url"`
-	Conclusion           CheckSuiteConclusion `json:"conclusion"`
-	CreatedAt            NilTime              `json:"created_at"`
-	HeadBranch           NilString            `json:"head_branch"`
-	HeadCommit           SimpleCommit         `json:"head_commit"`
-	HeadSha              string               `json:"head_sha"`
-	ID                   int                  `json:"id"`
-	LatestCheckRunsCount int                  `json:"latest_check_runs_count"`
-	NodeID               string               `json:"node_id"`
-	PullRequests         []PullRequestMinimal `json:"pull_requests"`
-	Repository           MinimalRepository    `json:"repository"`
-	Status               CheckSuiteStatus     `json:"status"`
-	URL                  NilString            `json:"url"`
-	UpdatedAt            NilTime              `json:"updated_at"`
+	After                NilString               `json:"after"`
+	App                  NullableIntegration     `json:"app"`
+	Before               NilString               `json:"before"`
+	CheckRunsURL         string                  `json:"check_runs_url"`
+	Conclusion           NilCheckSuiteConclusion `json:"conclusion"`
+	CreatedAt            NilTime                 `json:"created_at"`
+	HeadBranch           NilString               `json:"head_branch"`
+	HeadCommit           SimpleCommit            `json:"head_commit"`
+	HeadSha              string                  `json:"head_sha"`
+	ID                   int                     `json:"id"`
+	LatestCheckRunsCount int                     `json:"latest_check_runs_count"`
+	NodeID               string                  `json:"node_id"`
+	PullRequests         []PullRequestMinimal    `json:"pull_requests"`
+	Repository           MinimalRepository       `json:"repository"`
+	Status               NilCheckSuiteStatus     `json:"status"`
+	URL                  NilString               `json:"url"`
+	UpdatedAt            NilTime                 `json:"updated_at"`
 }
 
 type CheckSuiteConclusion string
@@ -1667,20 +1673,20 @@ type CodeFrequencyStat []int
 // CodeOfConduct describes #/components/schemas/code-of-conduct.
 type CodeOfConduct struct {
 	Body    OptionalString `json:"body"`
-	HTMLURL NilString      `json:"html_url"`
+	HTMLURL NilURL         `json:"html_url"`
 	Key     string         `json:"key"`
 	Name    string         `json:"name"`
-	URL     string         `json:"url"`
+	URL     url.URL        `json:"url"`
 }
 
 func (*CodeOfConduct) codesOfConductGetConductCodeResponse() {}
 
 // CodeOfConductSimple describes #/components/schemas/code-of-conduct-simple.
 type CodeOfConductSimple struct {
-	HTMLURL NilString `json:"html_url"`
-	Key     string    `json:"key"`
-	Name    string    `json:"name"`
-	URL     string    `json:"url"`
+	HTMLURL NilURL  `json:"html_url"`
+	Key     string  `json:"key"`
+	Name    string  `json:"name"`
+	URL     url.URL `json:"url"`
 }
 
 // CodeScanningAlert describes #/components/schemas/code-scanning-alert.
@@ -1726,16 +1732,16 @@ type CodeScanningAlertEnvironment string
 
 // CodeScanningAlertInstance describes #/components/schemas/code-scanning-alert-instance.
 type CodeScanningAlertInstance struct {
-	AnalysisKey     *CodeScanningAnalysisAnalysisKey   `json:"analysis_key"`
-	Category        *CodeScanningAnalysisCategory      `json:"category"`
-	Classifications *[]CodeScanningAlertClassification `json:"classifications"`
-	CommitSha       OptionalString                     `json:"commit_sha"`
-	Environment     *CodeScanningAlertEnvironment      `json:"environment"`
-	HTMLURL         OptionalString                     `json:"html_url"`
-	Location        *CodeScanningAlertLocation         `json:"location"`
-	Message         *CodeScanningAlertInstanceMessage  `json:"message"`
-	Ref             *CodeScanningRef                   `json:"ref"`
-	State           *CodeScanningAlertState            `json:"state"`
+	AnalysisKey     *CodeScanningAnalysisAnalysisKey         `json:"analysis_key"`
+	Category        *CodeScanningAnalysisCategory            `json:"category"`
+	Classifications *[]CodeScanningAlertClassification       `json:"classifications"`
+	CommitSha       OptionalString                           `json:"commit_sha"`
+	Environment     *CodeScanningAlertEnvironment            `json:"environment"`
+	HTMLURL         OptionalString                           `json:"html_url"`
+	Location        OptionalCodeScanningAlertLocation        `json:"location"`
+	Message         OptionalCodeScanningAlertInstanceMessage `json:"message"`
+	Ref             *CodeScanningRef                         `json:"ref"`
+	State           OptionalCodeScanningAlertState           `json:"state"`
 }
 
 type CodeScanningAlertInstanceMessage struct {
@@ -1753,14 +1759,14 @@ type CodeScanningAlertLocation struct {
 
 // CodeScanningAlertRule describes #/components/schemas/code-scanning-alert-rule.
 type CodeScanningAlertRule struct {
-	Description           OptionalString                              `json:"description"`
-	FullDescription       OptionalString                              `json:"full_description"`
-	Help                  OptionalNilString                           `json:"help"`
-	ID                    OptionalNilString                           `json:"id"`
-	Name                  OptionalString                              `json:"name"`
-	SecuritySeverityLevel *CodeScanningAlertRuleSecuritySeverityLevel `json:"security_severity_level"`
-	Severity              *CodeScanningAlertRuleSeverity              `json:"severity"`
-	Tags                  *[]string                                   `json:"tags"`
+	Description           OptionalString                                        `json:"description"`
+	FullDescription       OptionalString                                        `json:"full_description"`
+	Help                  OptionalNilString                                     `json:"help"`
+	ID                    OptionalNilString                                     `json:"id"`
+	Name                  OptionalString                                        `json:"name"`
+	SecuritySeverityLevel OptionalNilCodeScanningAlertRuleSecuritySeverityLevel `json:"security_severity_level"`
+	Severity              OptionalNilCodeScanningAlertRuleSeverity              `json:"severity"`
+	Tags                  *[]string                                             `json:"tags"`
 }
 
 type CodeScanningAlertRuleSecuritySeverityLevel string
@@ -1829,8 +1835,8 @@ type CodeScanningAnalysisCreatedAt time.Time
 
 // CodeScanningAnalysisDeletion describes #/components/schemas/code-scanning-analysis-deletion.
 type CodeScanningAnalysisDeletion struct {
-	ConfirmDeleteURL NilString `json:"confirm_delete_url"`
-	NextAnalysisURL  NilString `json:"next_analysis_url"`
+	ConfirmDeleteURL NilURL `json:"confirm_delete_url"`
+	NextAnalysisURL  NilURL `json:"next_analysis_url"`
 }
 
 func (*CodeScanningAnalysisDeletion) codeScanningDeleteAnalysisResponse() {}
@@ -1854,7 +1860,7 @@ type CodeScanningAnalysisToolName string
 
 type CodeScanningAnalysisToolVersion string
 
-type CodeScanningAnalysisURL string
+type CodeScanningAnalysisURL url.URL
 
 type CodeScanningDeleteAnalysisApplicationJSONBadRequest BasicError
 
@@ -1925,15 +1931,15 @@ type CodeScanningRef string
 // CodeScanningSarifsReceipt describes #/components/schemas/code-scanning-sarifs-receipt.
 type CodeScanningSarifsReceipt struct {
 	ID  *CodeScanningAnalysisSarifID `json:"id"`
-	URL OptionalString               `json:"url"`
+	URL OptionalURL                  `json:"url"`
 }
 
 func (*CodeScanningSarifsReceipt) codeScanningUploadSarifResponse() {}
 
 // CodeScanningSarifsStatus describes #/components/schemas/code-scanning-sarifs-status.
 type CodeScanningSarifsStatus struct {
-	AnalysesURL      OptionalNilString                         `json:"analyses_url"`
-	ProcessingStatus *CodeScanningSarifsStatusProcessingStatus `json:"processing_status"`
+	AnalysesURL      OptionalNilURL                                   `json:"analyses_url"`
+	ProcessingStatus OptionalCodeScanningSarifsStatusProcessingStatus `json:"processing_status"`
 }
 
 func (*CodeScanningSarifsStatus) codeScanningGetSarifResponse() {}
@@ -1954,8 +1960,8 @@ type CodeScanningUpdateAlertApplicationJSONNotFound BasicError
 func (*CodeScanningUpdateAlertApplicationJSONNotFound) codeScanningUpdateAlertResponse() {}
 
 type CodeScanningUpdateAlertApplicationJSONRequest struct {
-	DismissedReason *CodeScanningAlertDismissedReason `json:"dismissed_reason"`
-	State           CodeScanningAlertSetState         `json:"state"`
+	DismissedReason OptionalCodeScanningAlertDismissedReason `json:"dismissed_reason"`
+	State           CodeScanningAlertSetState                `json:"state"`
 }
 
 type CodeScanningUploadSarifApplicationJSONForbidden BasicError
@@ -1967,7 +1973,7 @@ type CodeScanningUploadSarifApplicationJSONNotFound BasicError
 func (*CodeScanningUploadSarifApplicationJSONNotFound) codeScanningUploadSarifResponse() {}
 
 type CodeScanningUploadSarifApplicationJSONRequest struct {
-	CheckoutURI OptionalString                `json:"checkout_uri"`
+	CheckoutURI OptionalURL                   `json:"checkout_uri"`
 	CommitSha   CodeScanningAnalysisCommitSha `json:"commit_sha"`
 	Ref         CodeScanningRef               `json:"ref"`
 	Sarif       CodeScanningAnalysisSarifFile `json:"sarif"`
@@ -1996,13 +2002,13 @@ type CombinedBillingUsage struct {
 
 // CombinedCommitStatus describes #/components/schemas/combined-commit-status.
 type CombinedCommitStatus struct {
-	CommitURL  string               `json:"commit_url"`
+	CommitURL  url.URL              `json:"commit_url"`
 	Repository MinimalRepository    `json:"repository"`
 	Sha        string               `json:"sha"`
 	State      string               `json:"state"`
 	Statuses   []SimpleCommitStatus `json:"statuses"`
 	TotalCount int                  `json:"total_count"`
-	URL        string               `json:"url"`
+	URL        url.URL              `json:"url"`
 }
 
 func (*CombinedCommitStatus) reposGetCombinedStatusForRefResponse() {}
@@ -2010,16 +2016,16 @@ func (*CombinedCommitStatus) reposGetCombinedStatusForRefResponse() {}
 // Commit describes #/components/schemas/commit.
 type Commit struct {
 	Author      NullableSimpleUser  `json:"author"`
-	CommentsURL string              `json:"comments_url"`
+	CommentsURL url.URL             `json:"comments_url"`
 	Commit      CommitCommit        `json:"commit"`
 	Committer   NullableSimpleUser  `json:"committer"`
 	Files       *[]CommitFilesItem  `json:"files"`
-	HTMLURL     string              `json:"html_url"`
+	HTMLURL     url.URL             `json:"html_url"`
 	NodeID      string              `json:"node_id"`
 	Parents     []CommitParentsItem `json:"parents"`
 	Sha         string              `json:"sha"`
-	Stats       *CommitStats        `json:"stats"`
-	URL         string              `json:"url"`
+	Stats       OptionalCommitStats `json:"stats"`
+	URL         url.URL             `json:"url"`
 }
 
 // CommitActivity describes #/components/schemas/commit-activity.
@@ -2031,38 +2037,38 @@ type CommitActivity struct {
 
 // CommitComment describes #/components/schemas/commit-comment.
 type CommitComment struct {
-	AuthorAssociation AuthorAssociation  `json:"author_association"`
-	Body              string             `json:"body"`
-	CommitID          string             `json:"commit_id"`
-	CreatedAt         time.Time          `json:"created_at"`
-	HTMLURL           string             `json:"html_url"`
-	ID                int                `json:"id"`
-	Line              NilInt             `json:"line"`
-	NodeID            string             `json:"node_id"`
-	Path              NilString          `json:"path"`
-	Position          NilInt             `json:"position"`
-	Reactions         *ReactionRollup    `json:"reactions"`
-	URL               string             `json:"url"`
-	UpdatedAt         time.Time          `json:"updated_at"`
-	User              NullableSimpleUser `json:"user"`
+	AuthorAssociation AuthorAssociation      `json:"author_association"`
+	Body              string                 `json:"body"`
+	CommitID          string                 `json:"commit_id"`
+	CreatedAt         time.Time              `json:"created_at"`
+	HTMLURL           url.URL                `json:"html_url"`
+	ID                int                    `json:"id"`
+	Line              NilInt                 `json:"line"`
+	NodeID            string                 `json:"node_id"`
+	Path              NilString              `json:"path"`
+	Position          NilInt                 `json:"position"`
+	Reactions         OptionalReactionRollup `json:"reactions"`
+	URL               url.URL                `json:"url"`
+	UpdatedAt         time.Time              `json:"updated_at"`
+	User              NullableSimpleUser     `json:"user"`
 }
 
 func (*CommitComment) reposGetCommitCommentResponse()    {}
 func (*CommitComment) reposUpdateCommitCommentResponse() {}
 
 type CommitCommit struct {
-	Author       NullableGitUser  `json:"author"`
-	CommentCount int              `json:"comment_count"`
-	Committer    NullableGitUser  `json:"committer"`
-	Message      string           `json:"message"`
-	Tree         CommitCommitTree `json:"tree"`
-	URL          string           `json:"url"`
-	Verification *Verification    `json:"verification"`
+	Author       NullableGitUser      `json:"author"`
+	CommentCount int                  `json:"comment_count"`
+	Committer    NullableGitUser      `json:"committer"`
+	Message      string               `json:"message"`
+	Tree         CommitCommitTree     `json:"tree"`
+	URL          url.URL              `json:"url"`
+	Verification OptionalVerification `json:"verification"`
 }
 
 type CommitCommitTree struct {
-	Sha string `json:"sha"`
-	URL string `json:"url"`
+	Sha string  `json:"sha"`
+	URL url.URL `json:"url"`
 }
 
 // CommitComparison describes #/components/schemas/commit-comparison.
@@ -2071,15 +2077,15 @@ type CommitComparison struct {
 	BaseCommit      Commit                 `json:"base_commit"`
 	BehindBy        int                    `json:"behind_by"`
 	Commits         []Commit               `json:"commits"`
-	DiffURL         string                 `json:"diff_url"`
+	DiffURL         url.URL                `json:"diff_url"`
 	Files           *[]DiffEntry           `json:"files"`
-	HTMLURL         string                 `json:"html_url"`
+	HTMLURL         url.URL                `json:"html_url"`
 	MergeBaseCommit Commit                 `json:"merge_base_commit"`
-	PatchURL        string                 `json:"patch_url"`
-	PermalinkURL    string                 `json:"permalink_url"`
+	PatchURL        url.URL                `json:"patch_url"`
+	PermalinkURL    url.URL                `json:"permalink_url"`
 	Status          CommitComparisonStatus `json:"status"`
 	TotalCommits    int                    `json:"total_commits"`
-	URL             string                 `json:"url"`
+	URL             url.URL                `json:"url"`
 }
 
 func (*CommitComparison) reposCompareCommitsResponse() {}
@@ -2108,9 +2114,9 @@ type CommitFilesItem struct {
 }
 
 type CommitParentsItem struct {
-	HTMLURL OptionalString `json:"html_url"`
-	Sha     string         `json:"sha"`
-	URL     string         `json:"url"`
+	HTMLURL OptionalURL `json:"html_url"`
+	Sha     string      `json:"sha"`
+	URL     url.URL     `json:"url"`
 }
 
 type CommitStats struct {
@@ -2142,10 +2148,10 @@ type CommunityProfileFiles struct {
 // ContentFile describes #/components/schemas/content-file.
 type ContentFile struct {
 	Content         string           `json:"content"`
-	DownloadURL     NilString        `json:"download_url"`
+	DownloadURL     NilURL           `json:"download_url"`
 	Encoding        string           `json:"encoding"`
-	GitURL          NilString        `json:"git_url"`
-	HTMLURL         NilString        `json:"html_url"`
+	GitURL          NilURL           `json:"git_url"`
+	HTMLURL         NilURL           `json:"html_url"`
 	Links           ContentFileLinks `json:"_links"`
 	Name            string           `json:"name"`
 	Path            string           `json:"path"`
@@ -2154,13 +2160,13 @@ type ContentFile struct {
 	SubmoduleGitURL OptionalString   `json:"submodule_git_url"`
 	Target          OptionalString   `json:"target"`
 	Type            string           `json:"type"`
-	URL             string           `json:"url"`
+	URL             url.URL          `json:"url"`
 }
 
 type ContentFileLinks struct {
-	Git  NilString `json:"git"`
-	HTML NilString `json:"html"`
-	Self string    `json:"self"`
+	Git  NilURL  `json:"git"`
+	HTML NilURL  `json:"html"`
+	Self url.URL `json:"self"`
 }
 
 // ContentReferenceAttachment describes #/components/schemas/content-reference-attachment.
@@ -2181,27 +2187,27 @@ type ContentTraffic struct {
 
 // Contributor describes #/components/schemas/contributor.
 type Contributor struct {
-	AvatarURL         OptionalString    `json:"avatar_url"`
+	AvatarURL         OptionalURL       `json:"avatar_url"`
 	Contributions     int               `json:"contributions"`
 	Email             OptionalString    `json:"email"`
 	EventsURL         OptionalString    `json:"events_url"`
-	FollowersURL      OptionalString    `json:"followers_url"`
+	FollowersURL      OptionalURL       `json:"followers_url"`
 	FollowingURL      OptionalString    `json:"following_url"`
 	GistsURL          OptionalString    `json:"gists_url"`
 	GravatarID        OptionalNilString `json:"gravatar_id"`
-	HTMLURL           OptionalString    `json:"html_url"`
+	HTMLURL           OptionalURL       `json:"html_url"`
 	ID                OptionalInt       `json:"id"`
 	Login             OptionalString    `json:"login"`
 	Name              OptionalString    `json:"name"`
 	NodeID            OptionalString    `json:"node_id"`
-	OrganizationsURL  OptionalString    `json:"organizations_url"`
-	ReceivedEventsURL OptionalString    `json:"received_events_url"`
-	ReposURL          OptionalString    `json:"repos_url"`
+	OrganizationsURL  OptionalURL       `json:"organizations_url"`
+	ReceivedEventsURL OptionalURL       `json:"received_events_url"`
+	ReposURL          OptionalURL       `json:"repos_url"`
 	SiteAdmin         OptionalBool      `json:"site_admin"`
 	StarredURL        OptionalString    `json:"starred_url"`
-	SubscriptionsURL  OptionalString    `json:"subscriptions_url"`
+	SubscriptionsURL  OptionalURL       `json:"subscriptions_url"`
 	Type              string            `json:"type"`
-	URL               OptionalString    `json:"url"`
+	URL               OptionalURL       `json:"url"`
 }
 
 // ContributorActivity describes #/components/schemas/contributor-activity.
@@ -2261,39 +2267,39 @@ const (
 
 // DeploymentSimple describes #/components/schemas/deployment-simple.
 type DeploymentSimple struct {
-	CreatedAt             time.Time            `json:"created_at"`
-	Description           NilString            `json:"description"`
-	Environment           string               `json:"environment"`
-	ID                    int                  `json:"id"`
-	NodeID                string               `json:"node_id"`
-	OriginalEnvironment   OptionalString       `json:"original_environment"`
-	PerformedViaGithubApp *NullableIntegration `json:"performed_via_github_app"`
-	ProductionEnvironment OptionalBool         `json:"production_environment"`
-	RepositoryURL         string               `json:"repository_url"`
-	StatusesURL           string               `json:"statuses_url"`
-	Task                  string               `json:"task"`
-	TransientEnvironment  OptionalBool         `json:"transient_environment"`
-	URL                   string               `json:"url"`
-	UpdatedAt             time.Time            `json:"updated_at"`
+	CreatedAt             time.Time                   `json:"created_at"`
+	Description           NilString                   `json:"description"`
+	Environment           string                      `json:"environment"`
+	ID                    int                         `json:"id"`
+	NodeID                string                      `json:"node_id"`
+	OriginalEnvironment   OptionalString              `json:"original_environment"`
+	PerformedViaGithubApp OptionalNullableIntegration `json:"performed_via_github_app"`
+	ProductionEnvironment OptionalBool                `json:"production_environment"`
+	RepositoryURL         url.URL                     `json:"repository_url"`
+	StatusesURL           url.URL                     `json:"statuses_url"`
+	Task                  string                      `json:"task"`
+	TransientEnvironment  OptionalBool                `json:"transient_environment"`
+	URL                   url.URL                     `json:"url"`
+	UpdatedAt             time.Time                   `json:"updated_at"`
 }
 
 // DeploymentStatus describes #/components/schemas/deployment-status.
 type DeploymentStatus struct {
-	CreatedAt             time.Time             `json:"created_at"`
-	Creator               NullableSimpleUser    `json:"creator"`
-	DeploymentURL         string                `json:"deployment_url"`
-	Description           string                `json:"description"`
-	Environment           OptionalString        `json:"environment"`
-	EnvironmentURL        OptionalString        `json:"environment_url"`
-	ID                    int                   `json:"id"`
-	LogURL                OptionalString        `json:"log_url"`
-	NodeID                string                `json:"node_id"`
-	PerformedViaGithubApp *NullableIntegration  `json:"performed_via_github_app"`
-	RepositoryURL         string                `json:"repository_url"`
-	State                 DeploymentStatusState `json:"state"`
-	TargetURL             string                `json:"target_url"`
-	URL                   string                `json:"url"`
-	UpdatedAt             time.Time             `json:"updated_at"`
+	CreatedAt             time.Time                   `json:"created_at"`
+	Creator               NullableSimpleUser          `json:"creator"`
+	DeploymentURL         url.URL                     `json:"deployment_url"`
+	Description           string                      `json:"description"`
+	Environment           OptionalString              `json:"environment"`
+	EnvironmentURL        OptionalURL                 `json:"environment_url"`
+	ID                    int                         `json:"id"`
+	LogURL                OptionalURL                 `json:"log_url"`
+	NodeID                string                      `json:"node_id"`
+	PerformedViaGithubApp OptionalNullableIntegration `json:"performed_via_github_app"`
+	RepositoryURL         url.URL                     `json:"repository_url"`
+	State                 DeploymentStatusState       `json:"state"`
+	TargetURL             url.URL                     `json:"target_url"`
+	URL                   url.URL                     `json:"url"`
+	UpdatedAt             time.Time                   `json:"updated_at"`
 }
 
 func (*DeploymentStatus) reposGetDeploymentStatusResponse() {}
@@ -2313,14 +2319,14 @@ const (
 // DiffEntry describes #/components/schemas/diff-entry.
 type DiffEntry struct {
 	Additions        int             `json:"additions"`
-	BlobURL          string          `json:"blob_url"`
+	BlobURL          url.URL         `json:"blob_url"`
 	Changes          int             `json:"changes"`
-	ContentsURL      string          `json:"contents_url"`
+	ContentsURL      url.URL         `json:"contents_url"`
 	Deletions        int             `json:"deletions"`
 	Filename         string          `json:"filename"`
 	Patch            OptionalString  `json:"patch"`
 	PreviousFilename OptionalString  `json:"previous_filename"`
-	RawURL           string          `json:"raw_url"`
+	RawURL           url.URL         `json:"raw_url"`
 	Sha              string          `json:"sha"`
 	Status           DiffEntryStatus `json:"status"`
 }
@@ -2377,10 +2383,10 @@ type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise struct{}
 type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise struct{}
 
 type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest struct {
-	Name                    string                                                                                   `json:"name"`
-	Runners                 *[]int                                                                                   `json:"runners"`
-	SelectedOrganizationIds *[]int                                                                                   `json:"selected_organization_ids"`
-	Visibility              *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility `json:"visibility"`
+	Name                    string                                                                                          `json:"name"`
+	Runners                 *[]int                                                                                          `json:"runners"`
+	SelectedOrganizationIds *[]int                                                                                          `json:"selected_organization_ids"`
+	Visibility              OptionalEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility `json:"visibility"`
 }
 
 type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility string
@@ -2469,8 +2475,8 @@ type EnterpriseAdminSetAllowedActionsEnterprise struct{}
 type EnterpriseAdminSetGithubActionsPermissionsEnterprise struct{}
 
 type EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequest struct {
-	AllowedActions       *AllowedActions      `json:"allowed_actions"`
-	EnabledOrganizations EnabledOrganizations `json:"enabled_organizations"`
+	AllowedActions       OptionalAllowedActions `json:"allowed_actions"`
+	EnabledOrganizations EnabledOrganizations   `json:"enabled_organizations"`
 }
 
 type EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequest struct {
@@ -2530,8 +2536,8 @@ type EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest struc
 }
 
 type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest struct {
-	Name       OptionalString                                                                           `json:"name"`
-	Visibility *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility `json:"visibility"`
+	Name       OptionalString                                                                                  `json:"name"`
+	Visibility OptionalEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility `json:"visibility"`
 }
 
 type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility string
@@ -2568,20 +2574,20 @@ const (
 
 // Event describes #/components/schemas/event.
 type Event struct {
-	Actor     Actor        `json:"actor"`
-	CreatedAt NilTime      `json:"created_at"`
-	ID        string       `json:"id"`
-	Org       *Actor       `json:"org"`
-	Payload   EventPayload `json:"payload"`
-	Public    bool         `json:"public"`
-	Repo      EventRepo    `json:"repo"`
-	Type      NilString    `json:"type"`
+	Actor     Actor         `json:"actor"`
+	CreatedAt NilTime       `json:"created_at"`
+	ID        string        `json:"id"`
+	Org       OptionalActor `json:"org"`
+	Payload   EventPayload  `json:"payload"`
+	Public    bool          `json:"public"`
+	Repo      EventRepo     `json:"repo"`
+	Type      NilString     `json:"type"`
 }
 
 type EventPayload struct {
 	Action  OptionalString           `json:"action"`
-	Comment *IssueComment            `json:"comment"`
-	Issue   *IssueSimple             `json:"issue"`
+	Comment OptionalIssueComment     `json:"comment"`
+	Issue   OptionalIssueSimple      `json:"issue"`
 	Pages   *[]EventPayloadPagesItem `json:"pages"`
 }
 
@@ -2595,16 +2601,16 @@ type EventPayloadPagesItem struct {
 }
 
 type EventRepo struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
-	URL  string `json:"url"`
+	ID   int     `json:"id"`
+	Name string  `json:"name"`
+	URL  url.URL `json:"url"`
 }
 
 // Feed describes #/components/schemas/feed.
 type Feed struct {
 	CurrentUserActorURL         OptionalString `json:"current_user_actor_url"`
 	CurrentUserOrganizationURL  OptionalString `json:"current_user_organization_url"`
-	CurrentUserOrganizationUrls *[]string      `json:"current_user_organization_urls"`
+	CurrentUserOrganizationUrls *[]url.URL     `json:"current_user_organization_urls"`
 	CurrentUserPublicURL        OptionalString `json:"current_user_public_url"`
 	CurrentUserURL              OptionalString `json:"current_user_url"`
 	Links                       FeedLinks      `json:"_links"`
@@ -2614,33 +2620,33 @@ type Feed struct {
 }
 
 type FeedLinks struct {
-	CurrentUser              *LinkWithType   `json:"current_user"`
-	CurrentUserActor         *LinkWithType   `json:"current_user_actor"`
-	CurrentUserOrganization  *LinkWithType   `json:"current_user_organization"`
-	CurrentUserOrganizations *[]LinkWithType `json:"current_user_organizations"`
-	CurrentUserPublic        *LinkWithType   `json:"current_user_public"`
-	SecurityAdvisories       *LinkWithType   `json:"security_advisories"`
-	Timeline                 LinkWithType    `json:"timeline"`
-	User                     LinkWithType    `json:"user"`
+	CurrentUser              OptionalLinkWithType `json:"current_user"`
+	CurrentUserActor         OptionalLinkWithType `json:"current_user_actor"`
+	CurrentUserOrganization  OptionalLinkWithType `json:"current_user_organization"`
+	CurrentUserOrganizations *[]LinkWithType      `json:"current_user_organizations"`
+	CurrentUserPublic        OptionalLinkWithType `json:"current_user_public"`
+	SecurityAdvisories       OptionalLinkWithType `json:"security_advisories"`
+	Timeline                 LinkWithType         `json:"timeline"`
+	User                     LinkWithType         `json:"user"`
 }
 
 // FileCommit describes #/components/schemas/file-commit.
 type FileCommit struct {
-	Commit  FileCommitCommit  `json:"commit"`
-	Content FileCommitContent `json:"content"`
+	Commit  FileCommitCommit     `json:"commit"`
+	Content NilFileCommitContent `json:"content"`
 }
 
 type FileCommitCommit struct {
-	Author       *FileCommitCommitAuthor        `json:"author"`
-	Committer    *FileCommitCommitCommitter     `json:"committer"`
-	HTMLURL      OptionalString                 `json:"html_url"`
-	Message      OptionalString                 `json:"message"`
-	NodeID       OptionalString                 `json:"node_id"`
-	Parents      *[]FileCommitCommitParentsItem `json:"parents"`
-	Sha          OptionalString                 `json:"sha"`
-	Tree         *FileCommitCommitTree          `json:"tree"`
-	URL          OptionalString                 `json:"url"`
-	Verification *FileCommitCommitVerification  `json:"verification"`
+	Author       OptionalFileCommitCommitAuthor       `json:"author"`
+	Committer    OptionalFileCommitCommitCommitter    `json:"committer"`
+	HTMLURL      OptionalString                       `json:"html_url"`
+	Message      OptionalString                       `json:"message"`
+	NodeID       OptionalString                       `json:"node_id"`
+	Parents      *[]FileCommitCommitParentsItem       `json:"parents"`
+	Sha          OptionalString                       `json:"sha"`
+	Tree         OptionalFileCommitCommitTree         `json:"tree"`
+	URL          OptionalString                       `json:"url"`
+	Verification OptionalFileCommitCommitVerification `json:"verification"`
 }
 
 type FileCommitCommitAuthor struct {
@@ -2674,16 +2680,16 @@ type FileCommitCommitVerification struct {
 }
 
 type FileCommitContent struct {
-	DownloadURL OptionalString          `json:"download_url"`
-	GitURL      OptionalString          `json:"git_url"`
-	HTMLURL     OptionalString          `json:"html_url"`
-	Links       *FileCommitContentLinks `json:"_links"`
-	Name        OptionalString          `json:"name"`
-	Path        OptionalString          `json:"path"`
-	Sha         OptionalString          `json:"sha"`
-	Size        OptionalInt             `json:"size"`
-	Type        OptionalString          `json:"type"`
-	URL         OptionalString          `json:"url"`
+	DownloadURL OptionalString                 `json:"download_url"`
+	GitURL      OptionalString                 `json:"git_url"`
+	HTMLURL     OptionalString                 `json:"html_url"`
+	Links       OptionalFileCommitContentLinks `json:"_links"`
+	Name        OptionalString                 `json:"name"`
+	Path        OptionalString                 `json:"path"`
+	Sha         OptionalString                 `json:"sha"`
+	Size        OptionalInt                    `json:"size"`
+	Type        OptionalString                 `json:"type"`
+	URL         OptionalString                 `json:"url"`
 }
 
 type FileCommitContentLinks struct {
@@ -2693,9 +2699,9 @@ type FileCommitContentLinks struct {
 }
 
 type ForbiddenGist struct {
-	Block            *ForbiddenGistBlock `json:"block"`
-	DocumentationURL OptionalString      `json:"documentation_url"`
-	Message          OptionalString      `json:"message"`
+	Block            OptionalForbiddenGistBlock `json:"block"`
+	DocumentationURL OptionalString             `json:"documentation_url"`
+	Message          OptionalString             `json:"message"`
 }
 
 func (*ForbiddenGist) gistsGetCommentResponse() {}
@@ -2713,100 +2719,100 @@ func (*Found) reposGetReleaseAssetResponse() {}
 
 // FullRepository describes #/components/schemas/full-repository.
 type FullRepository struct {
-	AllowAutoMerge         OptionalBool                       `json:"allow_auto_merge"`
-	AllowForking           OptionalBool                       `json:"allow_forking"`
-	AllowMergeCommit       OptionalBool                       `json:"allow_merge_commit"`
-	AllowRebaseMerge       OptionalBool                       `json:"allow_rebase_merge"`
-	AllowSquashMerge       OptionalBool                       `json:"allow_squash_merge"`
-	AnonymousAccessEnabled OptionalBool                       `json:"anonymous_access_enabled"`
-	ArchiveURL             string                             `json:"archive_url"`
-	Archived               bool                               `json:"archived"`
-	AssigneesURL           string                             `json:"assignees_url"`
-	BlobsURL               string                             `json:"blobs_url"`
-	BranchesURL            string                             `json:"branches_url"`
-	CloneURL               string                             `json:"clone_url"`
-	CodeOfConduct          *CodeOfConductSimple               `json:"code_of_conduct"`
-	CollaboratorsURL       string                             `json:"collaborators_url"`
-	CommentsURL            string                             `json:"comments_url"`
-	CommitsURL             string                             `json:"commits_url"`
-	CompareURL             string                             `json:"compare_url"`
-	ContentsURL            string                             `json:"contents_url"`
-	ContributorsURL        string                             `json:"contributors_url"`
-	CreatedAt              time.Time                          `json:"created_at"`
-	DefaultBranch          string                             `json:"default_branch"`
-	DeleteBranchOnMerge    OptionalBool                       `json:"delete_branch_on_merge"`
-	DeploymentsURL         string                             `json:"deployments_url"`
-	Description            NilString                          `json:"description"`
-	Disabled               bool                               `json:"disabled"`
-	DownloadsURL           string                             `json:"downloads_url"`
-	EventsURL              string                             `json:"events_url"`
-	Fork                   bool                               `json:"fork"`
-	Forks                  int                                `json:"forks"`
-	ForksCount             int                                `json:"forks_count"`
-	ForksURL               string                             `json:"forks_url"`
-	FullName               string                             `json:"full_name"`
-	GitCommitsURL          string                             `json:"git_commits_url"`
-	GitRefsURL             string                             `json:"git_refs_url"`
-	GitTagsURL             string                             `json:"git_tags_url"`
-	GitURL                 string                             `json:"git_url"`
-	HTMLURL                string                             `json:"html_url"`
-	HasDownloads           bool                               `json:"has_downloads"`
-	HasIssues              bool                               `json:"has_issues"`
-	HasPages               bool                               `json:"has_pages"`
-	HasProjects            bool                               `json:"has_projects"`
-	HasWiki                bool                               `json:"has_wiki"`
-	Homepage               NilString                          `json:"homepage"`
-	HooksURL               string                             `json:"hooks_url"`
-	ID                     int                                `json:"id"`
-	IsTemplate             OptionalBool                       `json:"is_template"`
-	IssueCommentURL        string                             `json:"issue_comment_url"`
-	IssueEventsURL         string                             `json:"issue_events_url"`
-	IssuesURL              string                             `json:"issues_url"`
-	KeysURL                string                             `json:"keys_url"`
-	LabelsURL              string                             `json:"labels_url"`
-	Language               NilString                          `json:"language"`
-	LanguagesURL           string                             `json:"languages_url"`
-	License                NullableLicenseSimple              `json:"license"`
-	MasterBranch           OptionalString                     `json:"master_branch"`
-	MergesURL              string                             `json:"merges_url"`
-	MilestonesURL          string                             `json:"milestones_url"`
-	MirrorURL              NilString                          `json:"mirror_url"`
-	Name                   string                             `json:"name"`
-	NetworkCount           int                                `json:"network_count"`
-	NodeID                 string                             `json:"node_id"`
-	NotificationsURL       string                             `json:"notifications_url"`
-	OpenIssues             int                                `json:"open_issues"`
-	OpenIssuesCount        int                                `json:"open_issues_count"`
-	Organization           *NullableSimpleUser                `json:"organization"`
-	Owner                  SimpleUser                         `json:"owner"`
-	Parent                 *Repository                        `json:"parent"`
-	Permissions            *FullRepositoryPermissions         `json:"permissions"`
-	Private                bool                               `json:"private"`
-	PullsURL               string                             `json:"pulls_url"`
-	PushedAt               time.Time                          `json:"pushed_at"`
-	ReleasesURL            string                             `json:"releases_url"`
-	SSHURL                 string                             `json:"ssh_url"`
-	SecurityAndAnalysis    *FullRepositorySecurityAndAnalysis `json:"security_and_analysis"`
-	Size                   int                                `json:"size"`
-	Source                 *Repository                        `json:"source"`
-	StargazersCount        int                                `json:"stargazers_count"`
-	StargazersURL          string                             `json:"stargazers_url"`
-	StatusesURL            string                             `json:"statuses_url"`
-	SubscribersCount       int                                `json:"subscribers_count"`
-	SubscribersURL         string                             `json:"subscribers_url"`
-	SubscriptionURL        string                             `json:"subscription_url"`
-	SvnURL                 string                             `json:"svn_url"`
-	TagsURL                string                             `json:"tags_url"`
-	TeamsURL               string                             `json:"teams_url"`
-	TempCloneToken         OptionalNilString                  `json:"temp_clone_token"`
-	TemplateRepository     *NullableRepository                `json:"template_repository"`
-	Topics                 *[]string                          `json:"topics"`
-	TreesURL               string                             `json:"trees_url"`
-	URL                    string                             `json:"url"`
-	UpdatedAt              time.Time                          `json:"updated_at"`
-	Visibility             OptionalString                     `json:"visibility"`
-	Watchers               int                                `json:"watchers"`
-	WatchersCount          int                                `json:"watchers_count"`
+	AllowAutoMerge         OptionalBool                                 `json:"allow_auto_merge"`
+	AllowForking           OptionalBool                                 `json:"allow_forking"`
+	AllowMergeCommit       OptionalBool                                 `json:"allow_merge_commit"`
+	AllowRebaseMerge       OptionalBool                                 `json:"allow_rebase_merge"`
+	AllowSquashMerge       OptionalBool                                 `json:"allow_squash_merge"`
+	AnonymousAccessEnabled OptionalBool                                 `json:"anonymous_access_enabled"`
+	ArchiveURL             string                                       `json:"archive_url"`
+	Archived               bool                                         `json:"archived"`
+	AssigneesURL           string                                       `json:"assignees_url"`
+	BlobsURL               string                                       `json:"blobs_url"`
+	BranchesURL            string                                       `json:"branches_url"`
+	CloneURL               string                                       `json:"clone_url"`
+	CodeOfConduct          OptionalCodeOfConductSimple                  `json:"code_of_conduct"`
+	CollaboratorsURL       string                                       `json:"collaborators_url"`
+	CommentsURL            string                                       `json:"comments_url"`
+	CommitsURL             string                                       `json:"commits_url"`
+	CompareURL             string                                       `json:"compare_url"`
+	ContentsURL            string                                       `json:"contents_url"`
+	ContributorsURL        url.URL                                      `json:"contributors_url"`
+	CreatedAt              time.Time                                    `json:"created_at"`
+	DefaultBranch          string                                       `json:"default_branch"`
+	DeleteBranchOnMerge    OptionalBool                                 `json:"delete_branch_on_merge"`
+	DeploymentsURL         url.URL                                      `json:"deployments_url"`
+	Description            NilString                                    `json:"description"`
+	Disabled               bool                                         `json:"disabled"`
+	DownloadsURL           url.URL                                      `json:"downloads_url"`
+	EventsURL              url.URL                                      `json:"events_url"`
+	Fork                   bool                                         `json:"fork"`
+	Forks                  int                                          `json:"forks"`
+	ForksCount             int                                          `json:"forks_count"`
+	ForksURL               url.URL                                      `json:"forks_url"`
+	FullName               string                                       `json:"full_name"`
+	GitCommitsURL          string                                       `json:"git_commits_url"`
+	GitRefsURL             string                                       `json:"git_refs_url"`
+	GitTagsURL             string                                       `json:"git_tags_url"`
+	GitURL                 string                                       `json:"git_url"`
+	HTMLURL                url.URL                                      `json:"html_url"`
+	HasDownloads           bool                                         `json:"has_downloads"`
+	HasIssues              bool                                         `json:"has_issues"`
+	HasPages               bool                                         `json:"has_pages"`
+	HasProjects            bool                                         `json:"has_projects"`
+	HasWiki                bool                                         `json:"has_wiki"`
+	Homepage               NilURL                                       `json:"homepage"`
+	HooksURL               url.URL                                      `json:"hooks_url"`
+	ID                     int                                          `json:"id"`
+	IsTemplate             OptionalBool                                 `json:"is_template"`
+	IssueCommentURL        string                                       `json:"issue_comment_url"`
+	IssueEventsURL         string                                       `json:"issue_events_url"`
+	IssuesURL              string                                       `json:"issues_url"`
+	KeysURL                string                                       `json:"keys_url"`
+	LabelsURL              string                                       `json:"labels_url"`
+	Language               NilString                                    `json:"language"`
+	LanguagesURL           url.URL                                      `json:"languages_url"`
+	License                NullableLicenseSimple                        `json:"license"`
+	MasterBranch           OptionalString                               `json:"master_branch"`
+	MergesURL              url.URL                                      `json:"merges_url"`
+	MilestonesURL          string                                       `json:"milestones_url"`
+	MirrorURL              NilURL                                       `json:"mirror_url"`
+	Name                   string                                       `json:"name"`
+	NetworkCount           int                                          `json:"network_count"`
+	NodeID                 string                                       `json:"node_id"`
+	NotificationsURL       string                                       `json:"notifications_url"`
+	OpenIssues             int                                          `json:"open_issues"`
+	OpenIssuesCount        int                                          `json:"open_issues_count"`
+	Organization           OptionalNullableSimpleUser                   `json:"organization"`
+	Owner                  SimpleUser                                   `json:"owner"`
+	Parent                 OptionalRepository                           `json:"parent"`
+	Permissions            OptionalFullRepositoryPermissions            `json:"permissions"`
+	Private                bool                                         `json:"private"`
+	PullsURL               string                                       `json:"pulls_url"`
+	PushedAt               time.Time                                    `json:"pushed_at"`
+	ReleasesURL            string                                       `json:"releases_url"`
+	SSHURL                 string                                       `json:"ssh_url"`
+	SecurityAndAnalysis    OptionalNilFullRepositorySecurityAndAnalysis `json:"security_and_analysis"`
+	Size                   int                                          `json:"size"`
+	Source                 OptionalRepository                           `json:"source"`
+	StargazersCount        int                                          `json:"stargazers_count"`
+	StargazersURL          url.URL                                      `json:"stargazers_url"`
+	StatusesURL            string                                       `json:"statuses_url"`
+	SubscribersCount       int                                          `json:"subscribers_count"`
+	SubscribersURL         url.URL                                      `json:"subscribers_url"`
+	SubscriptionURL        url.URL                                      `json:"subscription_url"`
+	SvnURL                 url.URL                                      `json:"svn_url"`
+	TagsURL                url.URL                                      `json:"tags_url"`
+	TeamsURL               url.URL                                      `json:"teams_url"`
+	TempCloneToken         OptionalNilString                            `json:"temp_clone_token"`
+	TemplateRepository     OptionalNullableRepository                   `json:"template_repository"`
+	Topics                 *[]string                                    `json:"topics"`
+	TreesURL               string                                       `json:"trees_url"`
+	URL                    url.URL                                      `json:"url"`
+	UpdatedAt              time.Time                                    `json:"updated_at"`
+	Visibility             OptionalString                               `json:"visibility"`
+	Watchers               int                                          `json:"watchers"`
+	WatchersCount          int                                          `json:"watchers_count"`
 }
 
 func (*FullRepository) reposGetResponse() {}
@@ -2820,12 +2826,12 @@ type FullRepositoryPermissions struct {
 }
 
 type FullRepositorySecurityAndAnalysis struct {
-	AdvancedSecurity *FullRepositorySecurityAndAnalysisAdvancedSecurity `json:"advanced_security"`
-	SecretScanning   *FullRepositorySecurityAndAnalysisSecretScanning   `json:"secret_scanning"`
+	AdvancedSecurity OptionalFullRepositorySecurityAndAnalysisAdvancedSecurity `json:"advanced_security"`
+	SecretScanning   OptionalFullRepositorySecurityAndAnalysisSecretScanning   `json:"secret_scanning"`
 }
 
 type FullRepositorySecurityAndAnalysisAdvancedSecurity struct {
-	Status *FullRepositorySecurityAndAnalysisAdvancedSecurityStatus `json:"status"`
+	Status OptionalFullRepositorySecurityAndAnalysisAdvancedSecurityStatus `json:"status"`
 }
 
 type FullRepositorySecurityAndAnalysisAdvancedSecurityStatus string
@@ -2836,7 +2842,7 @@ const (
 )
 
 type FullRepositorySecurityAndAnalysisSecretScanning struct {
-	Status *FullRepositorySecurityAndAnalysisSecretScanningStatus `json:"status"`
+	Status OptionalFullRepositorySecurityAndAnalysisSecretScanningStatus `json:"status"`
 }
 
 type FullRepositorySecurityAndAnalysisSecretScanningStatus string
@@ -2853,7 +2859,7 @@ type GistComment struct {
 	CreatedAt         time.Time          `json:"created_at"`
 	ID                int                `json:"id"`
 	NodeID            string             `json:"node_id"`
-	URL               string             `json:"url"`
+	URL               url.URL            `json:"url"`
 	UpdatedAt         time.Time          `json:"updated_at"`
 	User              NullableSimpleUser `json:"user"`
 }
@@ -2866,7 +2872,7 @@ func (*GistComment) gistsUpdateCommentResponse() {}
 type GistCommit struct {
 	ChangeStatus GistCommitChangeStatus `json:"change_status"`
 	CommittedAt  time.Time              `json:"committed_at"`
-	URL          string                 `json:"url"`
+	URL          url.URL                `json:"url"`
 	User         NullableSimpleUser     `json:"user"`
 	Version      string                 `json:"version"`
 }
@@ -2879,11 +2885,11 @@ type GistCommitChangeStatus struct {
 
 // GistHistory describes #/components/schemas/gist-history.
 type GistHistory struct {
-	ChangeStatus *GistHistoryChangeStatus `json:"change_status"`
-	CommittedAt  OptionalTime             `json:"committed_at"`
-	URL          OptionalString           `json:"url"`
-	User         *NullableSimpleUser      `json:"user"`
-	Version      OptionalString           `json:"version"`
+	ChangeStatus OptionalGistHistoryChangeStatus `json:"change_status"`
+	CommittedAt  OptionalTime                    `json:"committed_at"`
+	URL          OptionalURL                     `json:"url"`
+	User         OptionalNullableSimpleUser      `json:"user"`
+	Version      OptionalString                  `json:"version"`
 }
 
 type GistHistoryChangeStatus struct {
@@ -2894,60 +2900,60 @@ type GistHistoryChangeStatus struct {
 
 // GistSimple describes #/components/schemas/gist-simple.
 type GistSimple struct {
-	Comments    OptionalInt            `json:"comments"`
-	CommentsURL OptionalString         `json:"comments_url"`
-	CommitsURL  OptionalString         `json:"commits_url"`
-	CreatedAt   OptionalString         `json:"created_at"`
-	Description OptionalNilString      `json:"description"`
-	Files       *struct{}              `json:"files"`
-	ForkOf      *GistSimpleForkOf      `json:"fork_of"`
-	Forks       *[]GistSimpleForksItem `json:"forks"`
-	ForksURL    OptionalString         `json:"forks_url"`
-	GitPullURL  OptionalString         `json:"git_pull_url"`
-	GitPushURL  OptionalString         `json:"git_push_url"`
-	HTMLURL     OptionalString         `json:"html_url"`
-	History     *[]GistHistory         `json:"history"`
-	ID          OptionalString         `json:"id"`
-	NodeID      OptionalString         `json:"node_id"`
-	Owner       *SimpleUser            `json:"owner"`
-	Public      OptionalBool           `json:"public"`
-	Truncated   OptionalBool           `json:"truncated"`
-	URL         OptionalString         `json:"url"`
-	UpdatedAt   OptionalString         `json:"updated_at"`
-	User        OptionalNilString      `json:"user"`
+	Comments    OptionalInt                 `json:"comments"`
+	CommentsURL OptionalString              `json:"comments_url"`
+	CommitsURL  OptionalString              `json:"commits_url"`
+	CreatedAt   OptionalString              `json:"created_at"`
+	Description OptionalNilString           `json:"description"`
+	Files       *struct{}                   `json:"files"`
+	ForkOf      OptionalNilGistSimpleForkOf `json:"fork_of"`
+	Forks       *[]GistSimpleForksItem      `json:"forks"`
+	ForksURL    OptionalString              `json:"forks_url"`
+	GitPullURL  OptionalString              `json:"git_pull_url"`
+	GitPushURL  OptionalString              `json:"git_push_url"`
+	HTMLURL     OptionalString              `json:"html_url"`
+	History     *[]GistHistory              `json:"history"`
+	ID          OptionalString              `json:"id"`
+	NodeID      OptionalString              `json:"node_id"`
+	Owner       OptionalSimpleUser          `json:"owner"`
+	Public      OptionalBool                `json:"public"`
+	Truncated   OptionalBool                `json:"truncated"`
+	URL         OptionalString              `json:"url"`
+	UpdatedAt   OptionalString              `json:"updated_at"`
+	User        OptionalNilString           `json:"user"`
 }
 
 func (*GistSimple) gistsGetResponse() {}
 
 type GistSimpleForkOf struct {
-	Comments    int                 `json:"comments"`
-	CommentsURL string              `json:"comments_url"`
-	CommitsURL  string              `json:"commits_url"`
-	CreatedAt   time.Time           `json:"created_at"`
-	Description NilString           `json:"description"`
-	Files       struct{}            `json:"files"`
-	Forks       *[]string           `json:"forks"`
-	ForksURL    string              `json:"forks_url"`
-	GitPullURL  string              `json:"git_pull_url"`
-	GitPushURL  string              `json:"git_push_url"`
-	HTMLURL     string              `json:"html_url"`
-	History     *[]string           `json:"history"`
-	ID          string              `json:"id"`
-	NodeID      string              `json:"node_id"`
-	Owner       *NullableSimpleUser `json:"owner"`
-	Public      bool                `json:"public"`
-	Truncated   OptionalBool        `json:"truncated"`
-	URL         string              `json:"url"`
-	UpdatedAt   time.Time           `json:"updated_at"`
-	User        NullableSimpleUser  `json:"user"`
+	Comments    int                        `json:"comments"`
+	CommentsURL url.URL                    `json:"comments_url"`
+	CommitsURL  url.URL                    `json:"commits_url"`
+	CreatedAt   time.Time                  `json:"created_at"`
+	Description NilString                  `json:"description"`
+	Files       struct{}                   `json:"files"`
+	Forks       *[]string                  `json:"forks"`
+	ForksURL    url.URL                    `json:"forks_url"`
+	GitPullURL  url.URL                    `json:"git_pull_url"`
+	GitPushURL  url.URL                    `json:"git_push_url"`
+	HTMLURL     url.URL                    `json:"html_url"`
+	History     *[]string                  `json:"history"`
+	ID          string                     `json:"id"`
+	NodeID      string                     `json:"node_id"`
+	Owner       OptionalNullableSimpleUser `json:"owner"`
+	Public      bool                       `json:"public"`
+	Truncated   OptionalBool               `json:"truncated"`
+	URL         url.URL                    `json:"url"`
+	UpdatedAt   time.Time                  `json:"updated_at"`
+	User        NullableSimpleUser         `json:"user"`
 }
 
 type GistSimpleForksItem struct {
-	CreatedAt OptionalTime   `json:"created_at"`
-	ID        OptionalString `json:"id"`
-	URL       OptionalString `json:"url"`
-	UpdatedAt OptionalTime   `json:"updated_at"`
-	User      *PublicUser    `json:"user"`
+	CreatedAt OptionalTime       `json:"created_at"`
+	ID        OptionalString     `json:"id"`
+	URL       OptionalURL        `json:"url"`
+	UpdatedAt OptionalTime       `json:"updated_at"`
+	User      OptionalPublicUser `json:"user"`
 }
 
 type GistsCheckIsStarredNoContent struct{}
@@ -3082,13 +3088,13 @@ type GistsUpdateCommentApplicationJSONRequest struct {
 type GitCommit struct {
 	Author       GitCommitAuthor        `json:"author"`
 	Committer    GitCommitCommitter     `json:"committer"`
-	HTMLURL      string                 `json:"html_url"`
+	HTMLURL      url.URL                `json:"html_url"`
 	Message      string                 `json:"message"`
 	NodeID       string                 `json:"node_id"`
 	Parents      []GitCommitParentsItem `json:"parents"`
 	Sha          string                 `json:"sha"`
 	Tree         GitCommitTree          `json:"tree"`
-	URL          string                 `json:"url"`
+	URL          url.URL                `json:"url"`
 	Verification GitCommitVerification  `json:"verification"`
 }
 
@@ -3107,14 +3113,14 @@ type GitCommitCommitter struct {
 }
 
 type GitCommitParentsItem struct {
-	HTMLURL string `json:"html_url"`
-	Sha     string `json:"sha"`
-	URL     string `json:"url"`
+	HTMLURL url.URL `json:"html_url"`
+	Sha     string  `json:"sha"`
+	URL     url.URL `json:"url"`
 }
 
 type GitCommitTree struct {
-	Sha string `json:"sha"`
-	URL string `json:"url"`
+	Sha string  `json:"sha"`
+	URL url.URL `json:"url"`
 }
 
 type GitCommitVerification struct {
@@ -3132,12 +3138,12 @@ type GitCreateBlobApplicationJSONRequest struct {
 func (*GitCreateBlobApplicationJSONRequest) gitCreateBlobRequest() {}
 
 type GitCreateCommitApplicationJSONRequest struct {
-	Author    *GitCreateCommitApplicationJSONRequestAuthor    `json:"author"`
-	Committer *GitCreateCommitApplicationJSONRequestCommitter `json:"committer"`
-	Message   string                                          `json:"message"`
-	Parents   *[]string                                       `json:"parents"`
-	Signature OptionalString                                  `json:"signature"`
-	Tree      string                                          `json:"tree"`
+	Author    OptionalGitCreateCommitApplicationJSONRequestAuthor    `json:"author"`
+	Committer OptionalGitCreateCommitApplicationJSONRequestCommitter `json:"committer"`
+	Message   string                                                 `json:"message"`
+	Parents   *[]string                                              `json:"parents"`
+	Signature OptionalString                                         `json:"signature"`
+	Tree      string                                                 `json:"tree"`
 }
 
 func (*GitCreateCommitApplicationJSONRequest) gitCreateCommitRequest() {}
@@ -3163,11 +3169,11 @@ type GitCreateRefApplicationJSONRequest struct {
 func (*GitCreateRefApplicationJSONRequest) gitCreateRefRequest() {}
 
 type GitCreateTagApplicationJSONRequest struct {
-	Message string                                    `json:"message"`
-	Object  string                                    `json:"object"`
-	Tag     string                                    `json:"tag"`
-	Tagger  *GitCreateTagApplicationJSONRequestTagger `json:"tagger"`
-	Type    GitCreateTagApplicationJSONRequestType    `json:"type"`
+	Message string                                           `json:"message"`
+	Object  string                                           `json:"object"`
+	Tag     string                                           `json:"tag"`
+	Tagger  OptionalGitCreateTagApplicationJSONRequestTagger `json:"tagger"`
+	Type    GitCreateTagApplicationJSONRequestType           `json:"type"`
 }
 
 func (*GitCreateTagApplicationJSONRequest) gitCreateTagRequest() {}
@@ -3194,11 +3200,11 @@ type GitCreateTreeApplicationJSONRequest struct {
 func (*GitCreateTreeApplicationJSONRequest) gitCreateTreeRequest() {}
 
 type GitCreateTreeApplicationJSONRequestTreeItem struct {
-	Content OptionalString                                   `json:"content"`
-	Mode    *GitCreateTreeApplicationJSONRequestTreeItemMode `json:"mode"`
-	Path    OptionalString                                   `json:"path"`
-	Sha     OptionalNilString                                `json:"sha"`
-	Type    *GitCreateTreeApplicationJSONRequestTreeItemType `json:"type"`
+	Content OptionalString                                          `json:"content"`
+	Mode    OptionalGitCreateTreeApplicationJSONRequestTreeItemMode `json:"mode"`
+	Path    OptionalString                                          `json:"path"`
+	Sha     OptionalNilString                                       `json:"sha"`
+	Type    OptionalGitCreateTreeApplicationJSONRequestTreeItemType `json:"type"`
 }
 
 type GitCreateTreeApplicationJSONRequestTreeItemMode string
@@ -3226,35 +3232,35 @@ type GitRef struct {
 	NodeID string       `json:"node_id"`
 	Object GitRefObject `json:"object"`
 	Ref    string       `json:"ref"`
-	URL    string       `json:"url"`
+	URL    url.URL      `json:"url"`
 }
 
 func (*GitRef) gitGetRefResponse() {}
 
 type GitRefObject struct {
-	Sha  string `json:"sha"`
-	Type string `json:"type"`
-	URL  string `json:"url"`
+	Sha  string  `json:"sha"`
+	Type string  `json:"type"`
+	URL  url.URL `json:"url"`
 }
 
 // GitTag describes #/components/schemas/git-tag.
 type GitTag struct {
-	Message      string        `json:"message"`
-	NodeID       string        `json:"node_id"`
-	Object       GitTagObject  `json:"object"`
-	Sha          string        `json:"sha"`
-	Tag          string        `json:"tag"`
-	Tagger       GitTagTagger  `json:"tagger"`
-	URL          string        `json:"url"`
-	Verification *Verification `json:"verification"`
+	Message      string               `json:"message"`
+	NodeID       string               `json:"node_id"`
+	Object       GitTagObject         `json:"object"`
+	Sha          string               `json:"sha"`
+	Tag          string               `json:"tag"`
+	Tagger       GitTagTagger         `json:"tagger"`
+	URL          url.URL              `json:"url"`
+	Verification OptionalVerification `json:"verification"`
 }
 
 func (*GitTag) gitGetTagResponse() {}
 
 type GitTagObject struct {
-	Sha  string `json:"sha"`
-	Type string `json:"type"`
-	URL  string `json:"url"`
+	Sha  string  `json:"sha"`
+	Type string  `json:"type"`
+	URL  url.URL `json:"url"`
 }
 
 type GitTagTagger struct {
@@ -3268,7 +3274,7 @@ type GitTree struct {
 	Sha       string            `json:"sha"`
 	Tree      []GitTreeTreeItem `json:"tree"`
 	Truncated bool              `json:"truncated"`
-	URL       string            `json:"url"`
+	URL       url.URL           `json:"url"`
 }
 
 type GitTreeTreeItem struct {
@@ -3400,11 +3406,11 @@ type HookDeliveryResponse struct {
 // Import describes #/components/schemas/import.
 type Import struct {
 	AuthorsCount    OptionalNilInt              `json:"authors_count"`
-	AuthorsURL      string                      `json:"authors_url"`
+	AuthorsURL      url.URL                     `json:"authors_url"`
 	CommitCount     OptionalNilInt              `json:"commit_count"`
 	ErrorMessage    OptionalNilString           `json:"error_message"`
 	FailedStep      OptionalNilString           `json:"failed_step"`
-	HTMLURL         string                      `json:"html_url"`
+	HTMLURL         url.URL                     `json:"html_url"`
 	HasLargeFiles   OptionalBool                `json:"has_large_files"`
 	ImportPercent   OptionalNilInt              `json:"import_percent"`
 	LargeFilesCount OptionalInt                 `json:"large_files_count"`
@@ -3412,13 +3418,13 @@ type Import struct {
 	Message         OptionalString              `json:"message"`
 	ProjectChoices  *[]ImportProjectChoicesItem `json:"project_choices"`
 	PushPercent     OptionalNilInt              `json:"push_percent"`
-	RepositoryURL   string                      `json:"repository_url"`
+	RepositoryURL   url.URL                     `json:"repository_url"`
 	Status          ImportStatus                `json:"status"`
 	StatusText      OptionalNilString           `json:"status_text"`
 	SvcRoot         OptionalString              `json:"svc_root"`
 	SvnRoot         OptionalString              `json:"svn_root"`
 	TfvcProject     OptionalString              `json:"tfvc_project"`
-	URL             string                      `json:"url"`
+	URL             url.URL                     `json:"url"`
 	UseLfs          OptionalBool                `json:"use_lfs"`
 	Vcs             NilString                   `json:"vcs"`
 	VcsURL          string                      `json:"vcs_url"`
@@ -3455,14 +3461,14 @@ const (
 
 // InstallationToken describes #/components/schemas/installation-token.
 type InstallationToken struct {
-	ExpiresAt              string                                `json:"expires_at"`
-	HasMultipleSingleFiles OptionalBool                          `json:"has_multiple_single_files"`
-	Permissions            *AppPermissions                       `json:"permissions"`
-	Repositories           *[]Repository                         `json:"repositories"`
-	RepositorySelection    *InstallationTokenRepositorySelection `json:"repository_selection"`
-	SingleFile             OptionalString                        `json:"single_file"`
-	SingleFilePaths        *[]string                             `json:"single_file_paths"`
-	Token                  string                                `json:"token"`
+	ExpiresAt              string                                       `json:"expires_at"`
+	HasMultipleSingleFiles OptionalBool                                 `json:"has_multiple_single_files"`
+	Permissions            OptionalAppPermissions                       `json:"permissions"`
+	Repositories           *[]Repository                                `json:"repositories"`
+	RepositorySelection    OptionalInstallationTokenRepositorySelection `json:"repository_selection"`
+	SingleFile             OptionalString                               `json:"single_file"`
+	SingleFilePaths        *[]string                                    `json:"single_file_paths"`
+	Token                  string                                       `json:"token"`
 }
 
 type InstallationTokenRepositorySelection string
@@ -3479,8 +3485,8 @@ type Integration struct {
 	CreatedAt          time.Time              `json:"created_at"`
 	Description        NilString              `json:"description"`
 	Events             []string               `json:"events"`
-	ExternalURL        string                 `json:"external_url"`
-	HTMLURL            string                 `json:"html_url"`
+	ExternalURL        url.URL                `json:"external_url"`
+	HTMLURL            url.URL                `json:"html_url"`
 	ID                 int                    `json:"id"`
 	InstallationsCount OptionalInt            `json:"installations_count"`
 	Name               string                 `json:"name"`
@@ -3523,8 +3529,8 @@ const (
 
 // InteractionLimit describes #/components/schemas/interaction-limit.
 type InteractionLimit struct {
-	Expiry *InteractionExpiry `json:"expiry"`
-	Limit  InteractionGroup   `json:"limit"`
+	Expiry OptionalInteractionExpiry `json:"expiry"`
+	Limit  InteractionGroup          `json:"limit"`
 }
 
 func (*InteractionLimit) interactionsSetRestrictionsForAuthenticatedUserRequest() {}
@@ -3559,48 +3565,48 @@ func (*InteractionsSetRestrictionsForRepoConflict) interactionsSetRestrictionsFo
 
 // IssueComment describes #/components/schemas/issue-comment.
 type IssueComment struct {
-	AuthorAssociation     AuthorAssociation    `json:"author_association"`
-	Body                  OptionalString       `json:"body"`
-	BodyHTML              OptionalString       `json:"body_html"`
-	BodyText              OptionalString       `json:"body_text"`
-	CreatedAt             time.Time            `json:"created_at"`
-	HTMLURL               string               `json:"html_url"`
-	ID                    int                  `json:"id"`
-	IssueURL              string               `json:"issue_url"`
-	NodeID                string               `json:"node_id"`
-	PerformedViaGithubApp *NullableIntegration `json:"performed_via_github_app"`
-	Reactions             *ReactionRollup      `json:"reactions"`
-	URL                   string               `json:"url"`
-	UpdatedAt             time.Time            `json:"updated_at"`
-	User                  NullableSimpleUser   `json:"user"`
+	AuthorAssociation     AuthorAssociation           `json:"author_association"`
+	Body                  OptionalString              `json:"body"`
+	BodyHTML              OptionalString              `json:"body_html"`
+	BodyText              OptionalString              `json:"body_text"`
+	CreatedAt             time.Time                   `json:"created_at"`
+	HTMLURL               url.URL                     `json:"html_url"`
+	ID                    int                         `json:"id"`
+	IssueURL              url.URL                     `json:"issue_url"`
+	NodeID                string                      `json:"node_id"`
+	PerformedViaGithubApp OptionalNullableIntegration `json:"performed_via_github_app"`
+	Reactions             OptionalReactionRollup      `json:"reactions"`
+	URL                   url.URL                     `json:"url"`
+	UpdatedAt             time.Time                   `json:"updated_at"`
+	User                  NullableSimpleUser          `json:"user"`
 }
 
 func (*IssueComment) issuesGetCommentResponse() {}
 
 // IssueEvent describes #/components/schemas/issue-event.
 type IssueEvent struct {
-	Actor                 NullableSimpleUser         `json:"actor"`
-	Assignee              *NullableSimpleUser        `json:"assignee"`
-	Assigner              *NullableSimpleUser        `json:"assigner"`
-	AuthorAssociation     *AuthorAssociation         `json:"author_association"`
-	CommitID              NilString                  `json:"commit_id"`
-	CommitURL             NilString                  `json:"commit_url"`
-	CreatedAt             time.Time                  `json:"created_at"`
-	DismissedReview       *IssueEventDismissedReview `json:"dismissed_review"`
-	Event                 string                     `json:"event"`
-	ID                    int                        `json:"id"`
-	Issue                 *IssueSimple               `json:"issue"`
-	Label                 *IssueEventLabel           `json:"label"`
-	LockReason            OptionalNilString          `json:"lock_reason"`
-	Milestone             *IssueEventMilestone       `json:"milestone"`
-	NodeID                string                     `json:"node_id"`
-	PerformedViaGithubApp *NullableIntegration       `json:"performed_via_github_app"`
-	ProjectCard           *IssueEventProjectCard     `json:"project_card"`
-	Rename                *IssueEventRename          `json:"rename"`
-	RequestedReviewer     *NullableSimpleUser        `json:"requested_reviewer"`
-	RequestedTeam         *Team                      `json:"requested_team"`
-	ReviewRequester       *NullableSimpleUser        `json:"review_requester"`
-	URL                   string                     `json:"url"`
+	Actor                 NullableSimpleUser                `json:"actor"`
+	Assignee              OptionalNullableSimpleUser        `json:"assignee"`
+	Assigner              OptionalNullableSimpleUser        `json:"assigner"`
+	AuthorAssociation     OptionalAuthorAssociation         `json:"author_association"`
+	CommitID              NilString                         `json:"commit_id"`
+	CommitURL             NilString                         `json:"commit_url"`
+	CreatedAt             time.Time                         `json:"created_at"`
+	DismissedReview       OptionalIssueEventDismissedReview `json:"dismissed_review"`
+	Event                 string                            `json:"event"`
+	ID                    int                               `json:"id"`
+	Issue                 OptionalIssueSimple               `json:"issue"`
+	Label                 OptionalIssueEventLabel           `json:"label"`
+	LockReason            OptionalNilString                 `json:"lock_reason"`
+	Milestone             OptionalIssueEventMilestone       `json:"milestone"`
+	NodeID                string                            `json:"node_id"`
+	PerformedViaGithubApp OptionalNullableIntegration       `json:"performed_via_github_app"`
+	ProjectCard           OptionalIssueEventProjectCard     `json:"project_card"`
+	Rename                OptionalIssueEventRename          `json:"rename"`
+	RequestedReviewer     OptionalNullableSimpleUser        `json:"requested_reviewer"`
+	RequestedTeam         OptionalTeam                      `json:"requested_team"`
+	ReviewRequester       OptionalNullableSimpleUser        `json:"review_requester"`
+	URL                   url.URL                           `json:"url"`
 }
 
 func (*IssueEvent) issuesGetEventResponse() {}
@@ -3630,8 +3636,8 @@ type IssueEventProjectCard struct {
 	ID                 int            `json:"id"`
 	PreviousColumnName OptionalString `json:"previous_column_name"`
 	ProjectID          int            `json:"project_id"`
-	ProjectURL         string         `json:"project_url"`
-	URL                string         `json:"url"`
+	ProjectURL         url.URL        `json:"project_url"`
+	URL                url.URL        `json:"url"`
 }
 
 // IssueEventRename describes #/components/schemas/issue-event-rename.
@@ -3642,44 +3648,44 @@ type IssueEventRename struct {
 
 // IssueSimple describes #/components/schemas/issue-simple.
 type IssueSimple struct {
-	ActiveLockReason      OptionalNilString       `json:"active_lock_reason"`
-	Assignee              NullableSimpleUser      `json:"assignee"`
-	Assignees             *[]SimpleUser           `json:"assignees"`
-	AuthorAssociation     AuthorAssociation       `json:"author_association"`
-	Body                  OptionalString          `json:"body"`
-	BodyHTML              OptionalString          `json:"body_html"`
-	BodyText              OptionalString          `json:"body_text"`
-	ClosedAt              NilTime                 `json:"closed_at"`
-	Comments              int                     `json:"comments"`
-	CommentsURL           string                  `json:"comments_url"`
-	CreatedAt             time.Time               `json:"created_at"`
-	EventsURL             string                  `json:"events_url"`
-	HTMLURL               string                  `json:"html_url"`
-	ID                    int                     `json:"id"`
-	Labels                []Label                 `json:"labels"`
-	LabelsURL             string                  `json:"labels_url"`
-	Locked                bool                    `json:"locked"`
-	Milestone             NullableMilestone       `json:"milestone"`
-	NodeID                string                  `json:"node_id"`
-	Number                int                     `json:"number"`
-	PerformedViaGithubApp *NullableIntegration    `json:"performed_via_github_app"`
-	PullRequest           *IssueSimplePullRequest `json:"pull_request"`
-	Repository            *Repository             `json:"repository"`
-	RepositoryURL         string                  `json:"repository_url"`
-	State                 string                  `json:"state"`
-	TimelineURL           OptionalString          `json:"timeline_url"`
-	Title                 string                  `json:"title"`
-	URL                   string                  `json:"url"`
-	UpdatedAt             time.Time               `json:"updated_at"`
-	User                  NullableSimpleUser      `json:"user"`
+	ActiveLockReason      OptionalNilString              `json:"active_lock_reason"`
+	Assignee              NullableSimpleUser             `json:"assignee"`
+	Assignees             *[]SimpleUser                  `json:"assignees"`
+	AuthorAssociation     AuthorAssociation              `json:"author_association"`
+	Body                  OptionalString                 `json:"body"`
+	BodyHTML              OptionalString                 `json:"body_html"`
+	BodyText              OptionalString                 `json:"body_text"`
+	ClosedAt              NilTime                        `json:"closed_at"`
+	Comments              int                            `json:"comments"`
+	CommentsURL           url.URL                        `json:"comments_url"`
+	CreatedAt             time.Time                      `json:"created_at"`
+	EventsURL             url.URL                        `json:"events_url"`
+	HTMLURL               url.URL                        `json:"html_url"`
+	ID                    int                            `json:"id"`
+	Labels                []Label                        `json:"labels"`
+	LabelsURL             string                         `json:"labels_url"`
+	Locked                bool                           `json:"locked"`
+	Milestone             NullableMilestone              `json:"milestone"`
+	NodeID                string                         `json:"node_id"`
+	Number                int                            `json:"number"`
+	PerformedViaGithubApp OptionalNullableIntegration    `json:"performed_via_github_app"`
+	PullRequest           OptionalIssueSimplePullRequest `json:"pull_request"`
+	Repository            OptionalRepository             `json:"repository"`
+	RepositoryURL         url.URL                        `json:"repository_url"`
+	State                 string                         `json:"state"`
+	TimelineURL           OptionalURL                    `json:"timeline_url"`
+	Title                 string                         `json:"title"`
+	URL                   url.URL                        `json:"url"`
+	UpdatedAt             time.Time                      `json:"updated_at"`
+	User                  NullableSimpleUser             `json:"user"`
 }
 
 type IssueSimplePullRequest struct {
-	DiffURL  NilString       `json:"diff_url"`
-	HTMLURL  NilString       `json:"html_url"`
+	DiffURL  NilURL          `json:"diff_url"`
+	HTMLURL  NilURL          `json:"html_url"`
 	MergedAt OptionalNilTime `json:"merged_at"`
-	PatchURL NilString       `json:"patch_url"`
-	URL      NilString       `json:"url"`
+	PatchURL NilURL          `json:"patch_url"`
+	URL      NilURL          `json:"url"`
 }
 
 type IssuesAddAssigneesApplicationJSONRequest struct {
@@ -3705,10 +3711,10 @@ type IssuesCreateLabelApplicationJSONRequest struct {
 func (*IssuesCreateLabelApplicationJSONRequest) issuesCreateLabelRequest() {}
 
 type IssuesCreateMilestoneApplicationJSONRequest struct {
-	Description OptionalString                                    `json:"description"`
-	DueOn       OptionalTime                                      `json:"due_on"`
-	State       *IssuesCreateMilestoneApplicationJSONRequestState `json:"state"`
-	Title       string                                            `json:"title"`
+	Description OptionalString                                           `json:"description"`
+	DueOn       OptionalTime                                             `json:"due_on"`
+	State       OptionalIssuesCreateMilestoneApplicationJSONRequestState `json:"state"`
+	Title       string                                                   `json:"title"`
 }
 
 func (*IssuesCreateMilestoneApplicationJSONRequest) issuesCreateMilestoneRequest() {}
@@ -3767,7 +3773,7 @@ type IssuesListLabelsOnIssueOK []Label
 func (*IssuesListLabelsOnIssueOK) issuesListLabelsOnIssueResponse() {}
 
 type IssuesLockApplicationJSONRequest struct {
-	LockReason *IssuesLockApplicationJSONRequestLockReason `json:"lock_reason"`
+	LockReason OptionalIssuesLockApplicationJSONRequestLockReason `json:"lock_reason"`
 }
 
 func (*IssuesLockApplicationJSONRequest) issuesLockRequest() {}
@@ -3828,10 +3834,10 @@ type IssuesUpdateLabelApplicationJSONRequest struct {
 }
 
 type IssuesUpdateMilestoneApplicationJSONRequest struct {
-	Description OptionalString                                    `json:"description"`
-	DueOn       OptionalTime                                      `json:"due_on"`
-	State       *IssuesUpdateMilestoneApplicationJSONRequestState `json:"state"`
-	Title       OptionalString                                    `json:"title"`
+	Description OptionalString                                           `json:"description"`
+	DueOn       OptionalTime                                             `json:"due_on"`
+	State       OptionalIssuesUpdateMilestoneApplicationJSONRequestState `json:"state"`
+	Title       OptionalString                                           `json:"title"`
 }
 
 type IssuesUpdateMilestoneApplicationJSONRequestState string
@@ -3911,7 +3917,7 @@ type Label struct {
 	ID          int64     `json:"id"`
 	Name        string    `json:"name"`
 	NodeID      string    `json:"node_id"`
-	URL         string    `json:"url"`
+	URL         url.URL   `json:"url"`
 }
 
 func (*Label) issuesGetLabelResponse() {}
@@ -3924,7 +3930,7 @@ type License struct {
 	Conditions     []string  `json:"conditions"`
 	Description    string    `json:"description"`
 	Featured       bool      `json:"featured"`
-	HTMLURL        string    `json:"html_url"`
+	HTMLURL        url.URL   `json:"html_url"`
 	Implementation string    `json:"implementation"`
 	Key            string    `json:"key"`
 	Limitations    []string  `json:"limitations"`
@@ -3932,7 +3938,7 @@ type License struct {
 	NodeID         string    `json:"node_id"`
 	Permissions    []string  `json:"permissions"`
 	SpdxID         NilString `json:"spdx_id"`
-	URL            NilString `json:"url"`
+	URL            NilURL    `json:"url"`
 }
 
 func (*License) licensesGetResponse() {}
@@ -3940,10 +3946,10 @@ func (*License) licensesGetResponse() {}
 // LicenseContent describes #/components/schemas/license-content.
 type LicenseContent struct {
 	Content     string                `json:"content"`
-	DownloadURL NilString             `json:"download_url"`
+	DownloadURL NilURL                `json:"download_url"`
 	Encoding    string                `json:"encoding"`
-	GitURL      NilString             `json:"git_url"`
-	HTMLURL     NilString             `json:"html_url"`
+	GitURL      NilURL                `json:"git_url"`
+	HTMLURL     NilURL                `json:"html_url"`
 	License     NullableLicenseSimple `json:"license"`
 	Links       LicenseContentLinks   `json:"_links"`
 	Name        string                `json:"name"`
@@ -3951,23 +3957,23 @@ type LicenseContent struct {
 	Sha         string                `json:"sha"`
 	Size        int                   `json:"size"`
 	Type        string                `json:"type"`
-	URL         string                `json:"url"`
+	URL         url.URL               `json:"url"`
 }
 
 type LicenseContentLinks struct {
-	Git  NilString `json:"git"`
-	HTML NilString `json:"html"`
-	Self string    `json:"self"`
+	Git  NilURL  `json:"git"`
+	HTML NilURL  `json:"html"`
+	Self url.URL `json:"self"`
 }
 
 // LicenseSimple describes #/components/schemas/license-simple.
 type LicenseSimple struct {
-	HTMLURL OptionalString `json:"html_url"`
-	Key     string         `json:"key"`
-	Name    string         `json:"name"`
-	NodeID  string         `json:"node_id"`
-	SpdxID  NilString      `json:"spdx_id"`
-	URL     NilString      `json:"url"`
+	HTMLURL OptionalURL `json:"html_url"`
+	Key     string      `json:"key"`
+	Name    string      `json:"name"`
+	NodeID  string      `json:"node_id"`
+	SpdxID  NilString   `json:"spdx_id"`
+	URL     NilURL      `json:"url"`
 }
 
 type LicensesGetAllCommonlyUsedOK []LicenseSimple
@@ -3994,9 +4000,9 @@ type LinkWithType struct {
 }
 
 type MarkdownRenderApplicationJSONRequest struct {
-	Context OptionalString                            `json:"context"`
-	Mode    *MarkdownRenderApplicationJSONRequestMode `json:"mode"`
-	Text    string                                    `json:"text"`
+	Context OptionalString                                   `json:"context"`
+	Mode    OptionalMarkdownRenderApplicationJSONRequestMode `json:"mode"`
+	Text    string                                           `json:"text"`
 }
 
 type MarkdownRenderApplicationJSONRequestMode string
@@ -4030,12 +4036,12 @@ type MarketplaceAccount struct {
 	NodeID                   OptionalString    `json:"node_id"`
 	OrganizationBillingEmail OptionalNilString `json:"organization_billing_email"`
 	Type                     string            `json:"type"`
-	URL                      string            `json:"url"`
+	URL                      url.URL           `json:"url"`
 }
 
 // MarketplaceListingPlan describes #/components/schemas/marketplace-listing-plan.
 type MarketplaceListingPlan struct {
-	AccountsURL         string    `json:"accounts_url"`
+	AccountsURL         url.URL   `json:"accounts_url"`
 	Bullets             []string  `json:"bullets"`
 	Description         string    `json:"description"`
 	HasFreeTrial        bool      `json:"has_free_trial"`
@@ -4045,50 +4051,50 @@ type MarketplaceListingPlan struct {
 	Number              int       `json:"number"`
 	PriceModel          string    `json:"price_model"`
 	State               string    `json:"state"`
-	URL                 string    `json:"url"`
+	URL                 url.URL   `json:"url"`
 	UnitName            NilString `json:"unit_name"`
 	YearlyPriceInCents  int       `json:"yearly_price_in_cents"`
 }
 
 // MarketplacePurchase describes #/components/schemas/marketplace-purchase.
 type MarketplacePurchase struct {
-	Email                    OptionalNilString                            `json:"email"`
-	ID                       int                                          `json:"id"`
-	Login                    string                                       `json:"login"`
-	MarketplacePendingChange *MarketplacePurchaseMarketplacePendingChange `json:"marketplace_pending_change"`
-	MarketplacePurchase      MarketplacePurchaseMarketplacePurchase       `json:"marketplace_purchase"`
-	OrganizationBillingEmail OptionalString                               `json:"organization_billing_email"`
-	Type                     string                                       `json:"type"`
-	URL                      string                                       `json:"url"`
+	Email                    OptionalNilString                                      `json:"email"`
+	ID                       int                                                    `json:"id"`
+	Login                    string                                                 `json:"login"`
+	MarketplacePendingChange OptionalNilMarketplacePurchaseMarketplacePendingChange `json:"marketplace_pending_change"`
+	MarketplacePurchase      MarketplacePurchaseMarketplacePurchase                 `json:"marketplace_purchase"`
+	OrganizationBillingEmail OptionalString                                         `json:"organization_billing_email"`
+	Type                     string                                                 `json:"type"`
+	URL                      string                                                 `json:"url"`
 }
 
 func (*MarketplacePurchase) appsGetSubscriptionPlanForAccountResponse()        {}
 func (*MarketplacePurchase) appsGetSubscriptionPlanForAccountStubbedResponse() {}
 
 type MarketplacePurchaseMarketplacePendingChange struct {
-	EffectiveDate OptionalString          `json:"effective_date"`
-	ID            OptionalInt             `json:"id"`
-	IsInstalled   OptionalBool            `json:"is_installed"`
-	Plan          *MarketplaceListingPlan `json:"plan"`
-	UnitCount     OptionalNilInt          `json:"unit_count"`
+	EffectiveDate OptionalString                 `json:"effective_date"`
+	ID            OptionalInt                    `json:"id"`
+	IsInstalled   OptionalBool                   `json:"is_installed"`
+	Plan          OptionalMarketplaceListingPlan `json:"plan"`
+	UnitCount     OptionalNilInt                 `json:"unit_count"`
 }
 
 type MarketplacePurchaseMarketplacePurchase struct {
-	BillingCycle    OptionalString          `json:"billing_cycle"`
-	FreeTrialEndsOn OptionalNilString       `json:"free_trial_ends_on"`
-	IsInstalled     OptionalBool            `json:"is_installed"`
-	NextBillingDate OptionalNilString       `json:"next_billing_date"`
-	OnFreeTrial     OptionalBool            `json:"on_free_trial"`
-	Plan            *MarketplaceListingPlan `json:"plan"`
-	UnitCount       OptionalNilInt          `json:"unit_count"`
-	UpdatedAt       OptionalString          `json:"updated_at"`
+	BillingCycle    OptionalString                 `json:"billing_cycle"`
+	FreeTrialEndsOn OptionalNilString              `json:"free_trial_ends_on"`
+	IsInstalled     OptionalBool                   `json:"is_installed"`
+	NextBillingDate OptionalNilString              `json:"next_billing_date"`
+	OnFreeTrial     OptionalBool                   `json:"on_free_trial"`
+	Plan            OptionalMarketplaceListingPlan `json:"plan"`
+	UnitCount       OptionalNilInt                 `json:"unit_count"`
+	UpdatedAt       OptionalString                 `json:"updated_at"`
 }
 
 // MergedUpstream describes #/components/schemas/merged-upstream.
 type MergedUpstream struct {
-	BaseBranch OptionalString           `json:"base_branch"`
-	MergeType  *MergedUpstreamMergeType `json:"merge_type"`
-	Message    OptionalString           `json:"message"`
+	BaseBranch OptionalString                  `json:"base_branch"`
+	MergeType  OptionalMergedUpstreamMergeType `json:"merge_type"`
+	Message    OptionalString                  `json:"message"`
 }
 
 func (*MergedUpstream) reposMergeUpstreamResponse() {}
@@ -4139,7 +4145,7 @@ type MetaRoot struct {
 
 // Migration describes #/components/schemas/migration.
 type Migration struct {
-	ArchiveURL           OptionalString     `json:"archive_url"`
+	ArchiveURL           OptionalURL        `json:"archive_url"`
 	CreatedAt            time.Time          `json:"created_at"`
 	Exclude              *[]string          `json:"exclude"`
 	ExcludeAttachments   bool               `json:"exclude_attachments"`
@@ -4154,7 +4160,7 @@ type Migration struct {
 	Owner                NullableSimpleUser `json:"owner"`
 	Repositories         []Repository       `json:"repositories"`
 	State                string             `json:"state"`
-	URL                  string             `json:"url"`
+	URL                  url.URL            `json:"url"`
 	UpdatedAt            time.Time          `json:"updated_at"`
 }
 
@@ -4314,11 +4320,11 @@ const (
 )
 
 type MigrationsStartImportApplicationJSONRequest struct {
-	TfvcProject OptionalString                                  `json:"tfvc_project"`
-	Vcs         *MigrationsStartImportApplicationJSONRequestVcs `json:"vcs"`
-	VcsPassword OptionalString                                  `json:"vcs_password"`
-	VcsURL      string                                          `json:"vcs_url"`
-	VcsUsername OptionalString                                  `json:"vcs_username"`
+	TfvcProject OptionalString                                         `json:"tfvc_project"`
+	Vcs         OptionalMigrationsStartImportApplicationJSONRequestVcs `json:"vcs"`
+	VcsPassword OptionalString                                         `json:"vcs_password"`
+	VcsURL      string                                                 `json:"vcs_url"`
+	VcsUsername OptionalString                                         `json:"vcs_username"`
 }
 
 func (*MigrationsStartImportApplicationJSONRequest) migrationsStartImportRequest() {}
@@ -4371,15 +4377,15 @@ type Milestone struct {
 	Creator      NullableSimpleUser `json:"creator"`
 	Description  NilString          `json:"description"`
 	DueOn        NilTime            `json:"due_on"`
-	HTMLURL      string             `json:"html_url"`
+	HTMLURL      url.URL            `json:"html_url"`
 	ID           int                `json:"id"`
-	LabelsURL    string             `json:"labels_url"`
+	LabelsURL    url.URL            `json:"labels_url"`
 	NodeID       string             `json:"node_id"`
 	Number       int                `json:"number"`
 	OpenIssues   int                `json:"open_issues"`
 	State        MilestoneState     `json:"state"`
 	Title        string             `json:"title"`
-	URL          string             `json:"url"`
+	URL          url.URL            `json:"url"`
 	UpdatedAt    time.Time          `json:"updated_at"`
 }
 
@@ -4394,90 +4400,90 @@ const (
 
 // MinimalRepository describes #/components/schemas/minimal-repository.
 type MinimalRepository struct {
-	AllowForking        OptionalBool                  `json:"allow_forking"`
-	ArchiveURL          string                        `json:"archive_url"`
-	Archived            OptionalBool                  `json:"archived"`
-	AssigneesURL        string                        `json:"assignees_url"`
-	BlobsURL            string                        `json:"blobs_url"`
-	BranchesURL         string                        `json:"branches_url"`
-	CloneURL            OptionalString                `json:"clone_url"`
-	CodeOfConduct       *CodeOfConduct                `json:"code_of_conduct"`
-	CollaboratorsURL    string                        `json:"collaborators_url"`
-	CommentsURL         string                        `json:"comments_url"`
-	CommitsURL          string                        `json:"commits_url"`
-	CompareURL          string                        `json:"compare_url"`
-	ContentsURL         string                        `json:"contents_url"`
-	ContributorsURL     string                        `json:"contributors_url"`
-	CreatedAt           OptionalNilTime               `json:"created_at"`
-	DefaultBranch       OptionalString                `json:"default_branch"`
-	DeleteBranchOnMerge OptionalBool                  `json:"delete_branch_on_merge"`
-	DeploymentsURL      string                        `json:"deployments_url"`
-	Description         NilString                     `json:"description"`
-	Disabled            OptionalBool                  `json:"disabled"`
-	DownloadsURL        string                        `json:"downloads_url"`
-	EventsURL           string                        `json:"events_url"`
-	Fork                bool                          `json:"fork"`
-	Forks               OptionalInt                   `json:"forks"`
-	ForksCount          OptionalInt                   `json:"forks_count"`
-	ForksURL            string                        `json:"forks_url"`
-	FullName            string                        `json:"full_name"`
-	GitCommitsURL       string                        `json:"git_commits_url"`
-	GitRefsURL          string                        `json:"git_refs_url"`
-	GitTagsURL          string                        `json:"git_tags_url"`
-	GitURL              OptionalString                `json:"git_url"`
-	HTMLURL             string                        `json:"html_url"`
-	HasDownloads        OptionalBool                  `json:"has_downloads"`
-	HasIssues           OptionalBool                  `json:"has_issues"`
-	HasPages            OptionalBool                  `json:"has_pages"`
-	HasProjects         OptionalBool                  `json:"has_projects"`
-	HasWiki             OptionalBool                  `json:"has_wiki"`
-	Homepage            OptionalNilString             `json:"homepage"`
-	HooksURL            string                        `json:"hooks_url"`
-	ID                  int                           `json:"id"`
-	IsTemplate          OptionalBool                  `json:"is_template"`
-	IssueCommentURL     string                        `json:"issue_comment_url"`
-	IssueEventsURL      string                        `json:"issue_events_url"`
-	IssuesURL           string                        `json:"issues_url"`
-	KeysURL             string                        `json:"keys_url"`
-	LabelsURL           string                        `json:"labels_url"`
-	Language            OptionalNilString             `json:"language"`
-	LanguagesURL        string                        `json:"languages_url"`
-	License             *MinimalRepositoryLicense     `json:"license"`
-	MergesURL           string                        `json:"merges_url"`
-	MilestonesURL       string                        `json:"milestones_url"`
-	MirrorURL           OptionalNilString             `json:"mirror_url"`
-	Name                string                        `json:"name"`
-	NetworkCount        OptionalInt                   `json:"network_count"`
-	NodeID              string                        `json:"node_id"`
-	NotificationsURL    string                        `json:"notifications_url"`
-	OpenIssues          OptionalInt                   `json:"open_issues"`
-	OpenIssuesCount     OptionalInt                   `json:"open_issues_count"`
-	Owner               SimpleUser                    `json:"owner"`
-	Permissions         *MinimalRepositoryPermissions `json:"permissions"`
-	Private             bool                          `json:"private"`
-	PullsURL            string                        `json:"pulls_url"`
-	PushedAt            OptionalNilTime               `json:"pushed_at"`
-	ReleasesURL         string                        `json:"releases_url"`
-	SSHURL              OptionalString                `json:"ssh_url"`
-	Size                OptionalInt                   `json:"size"`
-	StargazersCount     OptionalInt                   `json:"stargazers_count"`
-	StargazersURL       string                        `json:"stargazers_url"`
-	StatusesURL         string                        `json:"statuses_url"`
-	SubscribersCount    OptionalInt                   `json:"subscribers_count"`
-	SubscribersURL      string                        `json:"subscribers_url"`
-	SubscriptionURL     string                        `json:"subscription_url"`
-	SvnURL              OptionalString                `json:"svn_url"`
-	TagsURL             string                        `json:"tags_url"`
-	TeamsURL            string                        `json:"teams_url"`
-	TempCloneToken      OptionalString                `json:"temp_clone_token"`
-	TemplateRepository  *NullableRepository           `json:"template_repository"`
-	Topics              *[]string                     `json:"topics"`
-	TreesURL            string                        `json:"trees_url"`
-	URL                 string                        `json:"url"`
-	UpdatedAt           OptionalNilTime               `json:"updated_at"`
-	Visibility          OptionalString                `json:"visibility"`
-	Watchers            OptionalInt                   `json:"watchers"`
-	WatchersCount       OptionalInt                   `json:"watchers_count"`
+	AllowForking        OptionalBool                         `json:"allow_forking"`
+	ArchiveURL          string                               `json:"archive_url"`
+	Archived            OptionalBool                         `json:"archived"`
+	AssigneesURL        string                               `json:"assignees_url"`
+	BlobsURL            string                               `json:"blobs_url"`
+	BranchesURL         string                               `json:"branches_url"`
+	CloneURL            OptionalString                       `json:"clone_url"`
+	CodeOfConduct       OptionalCodeOfConduct                `json:"code_of_conduct"`
+	CollaboratorsURL    string                               `json:"collaborators_url"`
+	CommentsURL         string                               `json:"comments_url"`
+	CommitsURL          string                               `json:"commits_url"`
+	CompareURL          string                               `json:"compare_url"`
+	ContentsURL         string                               `json:"contents_url"`
+	ContributorsURL     url.URL                              `json:"contributors_url"`
+	CreatedAt           OptionalNilTime                      `json:"created_at"`
+	DefaultBranch       OptionalString                       `json:"default_branch"`
+	DeleteBranchOnMerge OptionalBool                         `json:"delete_branch_on_merge"`
+	DeploymentsURL      url.URL                              `json:"deployments_url"`
+	Description         NilString                            `json:"description"`
+	Disabled            OptionalBool                         `json:"disabled"`
+	DownloadsURL        url.URL                              `json:"downloads_url"`
+	EventsURL           url.URL                              `json:"events_url"`
+	Fork                bool                                 `json:"fork"`
+	Forks               OptionalInt                          `json:"forks"`
+	ForksCount          OptionalInt                          `json:"forks_count"`
+	ForksURL            url.URL                              `json:"forks_url"`
+	FullName            string                               `json:"full_name"`
+	GitCommitsURL       string                               `json:"git_commits_url"`
+	GitRefsURL          string                               `json:"git_refs_url"`
+	GitTagsURL          string                               `json:"git_tags_url"`
+	GitURL              OptionalString                       `json:"git_url"`
+	HTMLURL             url.URL                              `json:"html_url"`
+	HasDownloads        OptionalBool                         `json:"has_downloads"`
+	HasIssues           OptionalBool                         `json:"has_issues"`
+	HasPages            OptionalBool                         `json:"has_pages"`
+	HasProjects         OptionalBool                         `json:"has_projects"`
+	HasWiki             OptionalBool                         `json:"has_wiki"`
+	Homepage            OptionalNilString                    `json:"homepage"`
+	HooksURL            url.URL                              `json:"hooks_url"`
+	ID                  int                                  `json:"id"`
+	IsTemplate          OptionalBool                         `json:"is_template"`
+	IssueCommentURL     string                               `json:"issue_comment_url"`
+	IssueEventsURL      string                               `json:"issue_events_url"`
+	IssuesURL           string                               `json:"issues_url"`
+	KeysURL             string                               `json:"keys_url"`
+	LabelsURL           string                               `json:"labels_url"`
+	Language            OptionalNilString                    `json:"language"`
+	LanguagesURL        url.URL                              `json:"languages_url"`
+	License             OptionalNilMinimalRepositoryLicense  `json:"license"`
+	MergesURL           url.URL                              `json:"merges_url"`
+	MilestonesURL       string                               `json:"milestones_url"`
+	MirrorURL           OptionalNilString                    `json:"mirror_url"`
+	Name                string                               `json:"name"`
+	NetworkCount        OptionalInt                          `json:"network_count"`
+	NodeID              string                               `json:"node_id"`
+	NotificationsURL    string                               `json:"notifications_url"`
+	OpenIssues          OptionalInt                          `json:"open_issues"`
+	OpenIssuesCount     OptionalInt                          `json:"open_issues_count"`
+	Owner               SimpleUser                           `json:"owner"`
+	Permissions         OptionalMinimalRepositoryPermissions `json:"permissions"`
+	Private             bool                                 `json:"private"`
+	PullsURL            string                               `json:"pulls_url"`
+	PushedAt            OptionalNilTime                      `json:"pushed_at"`
+	ReleasesURL         string                               `json:"releases_url"`
+	SSHURL              OptionalString                       `json:"ssh_url"`
+	Size                OptionalInt                          `json:"size"`
+	StargazersCount     OptionalInt                          `json:"stargazers_count"`
+	StargazersURL       url.URL                              `json:"stargazers_url"`
+	StatusesURL         string                               `json:"statuses_url"`
+	SubscribersCount    OptionalInt                          `json:"subscribers_count"`
+	SubscribersURL      url.URL                              `json:"subscribers_url"`
+	SubscriptionURL     url.URL                              `json:"subscription_url"`
+	SvnURL              OptionalString                       `json:"svn_url"`
+	TagsURL             url.URL                              `json:"tags_url"`
+	TeamsURL            url.URL                              `json:"teams_url"`
+	TempCloneToken      OptionalString                       `json:"temp_clone_token"`
+	TemplateRepository  OptionalNullableRepository           `json:"template_repository"`
+	Topics              *[]string                            `json:"topics"`
+	TreesURL            string                               `json:"trees_url"`
+	URL                 url.URL                              `json:"url"`
+	UpdatedAt           OptionalNilTime                      `json:"updated_at"`
+	Visibility          OptionalString                       `json:"visibility"`
+	Watchers            OptionalInt                          `json:"watchers"`
+	WatchersCount       OptionalInt                          `json:"watchers_count"`
 }
 
 type MinimalRepositoryLicense struct {
@@ -4494,6 +4500,612 @@ type MinimalRepositoryPermissions struct {
 	Pull     OptionalBool `json:"pull"`
 	Push     OptionalBool `json:"push"`
 	Triage   OptionalBool `json:"triage"`
+}
+
+// New returns new NilBool with value set to v.
+func NewNilBool(v bool) NilBool {
+	return NilBool{
+		Value: v,
+	}
+}
+
+// NilBool is generic valiant of bool.
+type NilBool struct {
+	Value bool
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilBool) SetTo(v bool) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilBool) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilBool) Get() (v bool, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilCheckRunCheckSuite with value set to v.
+func NewNilCheckRunCheckSuite(v CheckRunCheckSuite) NilCheckRunCheckSuite {
+	return NilCheckRunCheckSuite{
+		Value: v,
+	}
+}
+
+// NilCheckRunCheckSuite is generic valiant of CheckRunCheckSuite.
+type NilCheckRunCheckSuite struct {
+	Value CheckRunCheckSuite
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilCheckRunCheckSuite) SetTo(v CheckRunCheckSuite) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilCheckRunCheckSuite) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilCheckRunCheckSuite) Get() (v CheckRunCheckSuite, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilCheckRunConclusion with value set to v.
+func NewNilCheckRunConclusion(v CheckRunConclusion) NilCheckRunConclusion {
+	return NilCheckRunConclusion{
+		Value: v,
+	}
+}
+
+// NilCheckRunConclusion is generic valiant of CheckRunConclusion.
+type NilCheckRunConclusion struct {
+	Value CheckRunConclusion
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilCheckRunConclusion) SetTo(v CheckRunConclusion) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilCheckRunConclusion) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilCheckRunConclusion) Get() (v CheckRunConclusion, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilCheckSuiteConclusion with value set to v.
+func NewNilCheckSuiteConclusion(v CheckSuiteConclusion) NilCheckSuiteConclusion {
+	return NilCheckSuiteConclusion{
+		Value: v,
+	}
+}
+
+// NilCheckSuiteConclusion is generic valiant of CheckSuiteConclusion.
+type NilCheckSuiteConclusion struct {
+	Value CheckSuiteConclusion
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilCheckSuiteConclusion) SetTo(v CheckSuiteConclusion) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilCheckSuiteConclusion) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilCheckSuiteConclusion) Get() (v CheckSuiteConclusion, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilCheckSuiteStatus with value set to v.
+func NewNilCheckSuiteStatus(v CheckSuiteStatus) NilCheckSuiteStatus {
+	return NilCheckSuiteStatus{
+		Value: v,
+	}
+}
+
+// NilCheckSuiteStatus is generic valiant of CheckSuiteStatus.
+type NilCheckSuiteStatus struct {
+	Value CheckSuiteStatus
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilCheckSuiteStatus) SetTo(v CheckSuiteStatus) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilCheckSuiteStatus) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilCheckSuiteStatus) Get() (v CheckSuiteStatus, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilFileCommitContent with value set to v.
+func NewNilFileCommitContent(v FileCommitContent) NilFileCommitContent {
+	return NilFileCommitContent{
+		Value: v,
+	}
+}
+
+// NilFileCommitContent is generic valiant of FileCommitContent.
+type NilFileCommitContent struct {
+	Value FileCommitContent
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilFileCommitContent) SetTo(v FileCommitContent) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilFileCommitContent) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilFileCommitContent) Get() (v FileCommitContent, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilInt with value set to v.
+func NewNilInt(v int) NilInt {
+	return NilInt{
+		Value: v,
+	}
+}
+
+// NilInt is generic valiant of int.
+type NilInt struct {
+	Value int
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilInt) SetTo(v int) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilInt) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilInt) Get() (v int, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilNullableSimpleCommitAuthor with value set to v.
+func NewNilNullableSimpleCommitAuthor(v NullableSimpleCommitAuthor) NilNullableSimpleCommitAuthor {
+	return NilNullableSimpleCommitAuthor{
+		Value: v,
+	}
+}
+
+// NilNullableSimpleCommitAuthor is generic valiant of NullableSimpleCommitAuthor.
+type NilNullableSimpleCommitAuthor struct {
+	Value NullableSimpleCommitAuthor
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilNullableSimpleCommitAuthor) SetTo(v NullableSimpleCommitAuthor) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilNullableSimpleCommitAuthor) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilNullableSimpleCommitAuthor) Get() (v NullableSimpleCommitAuthor, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilNullableSimpleCommitCommitter with value set to v.
+func NewNilNullableSimpleCommitCommitter(v NullableSimpleCommitCommitter) NilNullableSimpleCommitCommitter {
+	return NilNullableSimpleCommitCommitter{
+		Value: v,
+	}
+}
+
+// NilNullableSimpleCommitCommitter is generic valiant of NullableSimpleCommitCommitter.
+type NilNullableSimpleCommitCommitter struct {
+	Value NullableSimpleCommitCommitter
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilNullableSimpleCommitCommitter) SetTo(v NullableSimpleCommitCommitter) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilNullableSimpleCommitCommitter) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilNullableSimpleCommitCommitter) Get() (v NullableSimpleCommitCommitter, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilPageStatus with value set to v.
+func NewNilPageStatus(v PageStatus) NilPageStatus {
+	return NilPageStatus{
+		Value: v,
+	}
+}
+
+// NilPageStatus is generic valiant of PageStatus.
+type NilPageStatus struct {
+	Value PageStatus
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilPageStatus) SetTo(v PageStatus) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilPageStatus) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilPageStatus) Get() (v PageStatus, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilPullRequestHeadRepo with value set to v.
+func NewNilPullRequestHeadRepo(v PullRequestHeadRepo) NilPullRequestHeadRepo {
+	return NilPullRequestHeadRepo{
+		Value: v,
+	}
+}
+
+// NilPullRequestHeadRepo is generic valiant of PullRequestHeadRepo.
+type NilPullRequestHeadRepo struct {
+	Value PullRequestHeadRepo
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilPullRequestHeadRepo) SetTo(v PullRequestHeadRepo) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilPullRequestHeadRepo) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilPullRequestHeadRepo) Get() (v PullRequestHeadRepo, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilPullRequestHeadRepoLicense with value set to v.
+func NewNilPullRequestHeadRepoLicense(v PullRequestHeadRepoLicense) NilPullRequestHeadRepoLicense {
+	return NilPullRequestHeadRepoLicense{
+		Value: v,
+	}
+}
+
+// NilPullRequestHeadRepoLicense is generic valiant of PullRequestHeadRepoLicense.
+type NilPullRequestHeadRepoLicense struct {
+	Value PullRequestHeadRepoLicense
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilPullRequestHeadRepoLicense) SetTo(v PullRequestHeadRepoLicense) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilPullRequestHeadRepoLicense) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilPullRequestHeadRepoLicense) Get() (v PullRequestHeadRepoLicense, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews with value set to v.
+func NewNilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews(v ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews) NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews {
+	return NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews{
+		Value: v,
+	}
+}
+
+// NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews is generic valiant of ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews.
+type NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews struct {
+	Value ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews) SetTo(v ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews) IsNull() bool {
+	return o.Null
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews) Get() (v ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks with value set to v.
+func NewNilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks(v ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks {
+	return NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks{
+		Value: v,
+	}
+}
+
+// NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks is generic valiant of ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks.
+type NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks struct {
+	Value ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) SetTo(v ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) IsNull() bool {
+	return o.Null
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) Get() (v ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions with value set to v.
+func NewNilReposUpdateBranchProtectionApplicationJSONRequestRestrictions(v ReposUpdateBranchProtectionApplicationJSONRequestRestrictions) NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions {
+	return NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions{
+		Value: v,
+	}
+}
+
+// NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions is generic valiant of ReposUpdateBranchProtectionApplicationJSONRequestRestrictions.
+type NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions struct {
+	Value ReposUpdateBranchProtectionApplicationJSONRequestRestrictions
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions) SetTo(v ReposUpdateBranchProtectionApplicationJSONRequestRestrictions) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions) IsNull() bool {
+	return o.Null
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions) Get() (v ReposUpdateBranchProtectionApplicationJSONRequestRestrictions, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilSimpleCommitAuthor with value set to v.
+func NewNilSimpleCommitAuthor(v SimpleCommitAuthor) NilSimpleCommitAuthor {
+	return NilSimpleCommitAuthor{
+		Value: v,
+	}
+}
+
+// NilSimpleCommitAuthor is generic valiant of SimpleCommitAuthor.
+type NilSimpleCommitAuthor struct {
+	Value SimpleCommitAuthor
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilSimpleCommitAuthor) SetTo(v SimpleCommitAuthor) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilSimpleCommitAuthor) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilSimpleCommitAuthor) Get() (v SimpleCommitAuthor, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilSimpleCommitCommitter with value set to v.
+func NewNilSimpleCommitCommitter(v SimpleCommitCommitter) NilSimpleCommitCommitter {
+	return NilSimpleCommitCommitter{
+		Value: v,
+	}
+}
+
+// NilSimpleCommitCommitter is generic valiant of SimpleCommitCommitter.
+type NilSimpleCommitCommitter struct {
+	Value SimpleCommitCommitter
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilSimpleCommitCommitter) SetTo(v SimpleCommitCommitter) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilSimpleCommitCommitter) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilSimpleCommitCommitter) Get() (v SimpleCommitCommitter, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilString with value set to v.
+func NewNilString(v string) NilString {
+	return NilString{
+		Value: v,
+	}
+}
+
+// NilString is generic valiant of string.
+type NilString struct {
+	Value string
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilString) SetTo(v string) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilString) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilString) Get() (v string, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilTime with value set to v.
+func NewNilTime(v time.Time) NilTime {
+	return NilTime{
+		Value: v,
+	}
+}
+
+// NilTime is generic valiant of time.Time.
+type NilTime struct {
+	Value time.Time
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilTime) SetTo(v time.Time) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilTime) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilTime) Get() (v time.Time, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new NilURL with value set to v.
+func NewNilURL(v url.URL) NilURL {
+	return NilURL{
+		Value: v,
+	}
+}
+
+// NilURL is generic valiant of url.URL.
+type NilURL struct {
+	Value url.URL
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilURL) SetTo(v url.URL) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilURL) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilURL) Get() (v url.URL, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
 }
 
 type NoContent struct{}
@@ -4600,16 +5212,16 @@ func (*NotModified) usersUnfollowResponse()                                     
 
 // NullableCodeOfConductSimple describes #/components/schemas/nullable-code-of-conduct-simple.
 type NullableCodeOfConductSimple struct {
-	HTMLURL NilString `json:"html_url"`
-	Key     string    `json:"key"`
-	Name    string    `json:"name"`
-	URL     string    `json:"url"`
+	HTMLURL NilURL  `json:"html_url"`
+	Key     string  `json:"key"`
+	Name    string  `json:"name"`
+	URL     url.URL `json:"url"`
 }
 
 // NullableCommunityHealthFile describes #/components/schemas/nullable-community-health-file.
 type NullableCommunityHealthFile struct {
-	HTMLURL string `json:"html_url"`
-	URL     string `json:"url"`
+	HTMLURL url.URL `json:"html_url"`
+	URL     url.URL `json:"url"`
 }
 
 // NullableGitUser describes #/components/schemas/nullable-git-user.
@@ -4626,8 +5238,8 @@ type NullableIntegration struct {
 	CreatedAt          time.Time                      `json:"created_at"`
 	Description        NilString                      `json:"description"`
 	Events             []string                       `json:"events"`
-	ExternalURL        string                         `json:"external_url"`
-	HTMLURL            string                         `json:"html_url"`
+	ExternalURL        url.URL                        `json:"external_url"`
+	HTMLURL            url.URL                        `json:"html_url"`
 	ID                 int                            `json:"id"`
 	InstallationsCount OptionalInt                    `json:"installations_count"`
 	Name               string                         `json:"name"`
@@ -4650,12 +5262,12 @@ type NullableIntegrationPermissions struct {
 
 // NullableLicenseSimple describes #/components/schemas/nullable-license-simple.
 type NullableLicenseSimple struct {
-	HTMLURL OptionalString `json:"html_url"`
-	Key     string         `json:"key"`
-	Name    string         `json:"name"`
-	NodeID  string         `json:"node_id"`
-	SpdxID  NilString      `json:"spdx_id"`
-	URL     NilString      `json:"url"`
+	HTMLURL OptionalURL `json:"html_url"`
+	Key     string      `json:"key"`
+	Name    string      `json:"name"`
+	NodeID  string      `json:"node_id"`
+	SpdxID  NilString   `json:"spdx_id"`
+	URL     NilURL      `json:"url"`
 }
 
 // NullableMilestone describes #/components/schemas/nullable-milestone.
@@ -4666,15 +5278,15 @@ type NullableMilestone struct {
 	Creator      NullableSimpleUser     `json:"creator"`
 	Description  NilString              `json:"description"`
 	DueOn        NilTime                `json:"due_on"`
-	HTMLURL      string                 `json:"html_url"`
+	HTMLURL      url.URL                `json:"html_url"`
 	ID           int                    `json:"id"`
-	LabelsURL    string                 `json:"labels_url"`
+	LabelsURL    url.URL                `json:"labels_url"`
 	NodeID       string                 `json:"node_id"`
 	Number       int                    `json:"number"`
 	OpenIssues   int                    `json:"open_issues"`
 	State        NullableMilestoneState `json:"state"`
 	Title        string                 `json:"title"`
-	URL          string                 `json:"url"`
+	URL          url.URL                `json:"url"`
 	UpdatedAt    time.Time              `json:"updated_at"`
 }
 
@@ -4687,96 +5299,96 @@ const (
 
 // NullableRepository describes #/components/schemas/nullable-repository.
 type NullableRepository struct {
-	AllowAutoMerge      OptionalBool                          `json:"allow_auto_merge"`
-	AllowForking        OptionalBool                          `json:"allow_forking"`
-	AllowMergeCommit    OptionalBool                          `json:"allow_merge_commit"`
-	AllowRebaseMerge    OptionalBool                          `json:"allow_rebase_merge"`
-	AllowSquashMerge    OptionalBool                          `json:"allow_squash_merge"`
-	ArchiveURL          string                                `json:"archive_url"`
-	Archived            bool                                  `json:"archived"`
-	AssigneesURL        string                                `json:"assignees_url"`
-	BlobsURL            string                                `json:"blobs_url"`
-	BranchesURL         string                                `json:"branches_url"`
-	CloneURL            string                                `json:"clone_url"`
-	CollaboratorsURL    string                                `json:"collaborators_url"`
-	CommentsURL         string                                `json:"comments_url"`
-	CommitsURL          string                                `json:"commits_url"`
-	CompareURL          string                                `json:"compare_url"`
-	ContentsURL         string                                `json:"contents_url"`
-	ContributorsURL     string                                `json:"contributors_url"`
-	CreatedAt           NilTime                               `json:"created_at"`
-	DefaultBranch       string                                `json:"default_branch"`
-	DeleteBranchOnMerge OptionalBool                          `json:"delete_branch_on_merge"`
-	DeploymentsURL      string                                `json:"deployments_url"`
-	Description         NilString                             `json:"description"`
-	Disabled            bool                                  `json:"disabled"`
-	DownloadsURL        string                                `json:"downloads_url"`
-	EventsURL           string                                `json:"events_url"`
-	Fork                bool                                  `json:"fork"`
-	Forks               int                                   `json:"forks"`
-	ForksCount          int                                   `json:"forks_count"`
-	ForksURL            string                                `json:"forks_url"`
-	FullName            string                                `json:"full_name"`
-	GitCommitsURL       string                                `json:"git_commits_url"`
-	GitRefsURL          string                                `json:"git_refs_url"`
-	GitTagsURL          string                                `json:"git_tags_url"`
-	GitURL              string                                `json:"git_url"`
-	HTMLURL             string                                `json:"html_url"`
-	HasDownloads        bool                                  `json:"has_downloads"`
-	HasIssues           bool                                  `json:"has_issues"`
-	HasPages            bool                                  `json:"has_pages"`
-	HasProjects         bool                                  `json:"has_projects"`
-	HasWiki             bool                                  `json:"has_wiki"`
-	Homepage            NilString                             `json:"homepage"`
-	HooksURL            string                                `json:"hooks_url"`
-	ID                  int                                   `json:"id"`
-	IsTemplate          OptionalBool                          `json:"is_template"`
-	IssueCommentURL     string                                `json:"issue_comment_url"`
-	IssueEventsURL      string                                `json:"issue_events_url"`
-	IssuesURL           string                                `json:"issues_url"`
-	KeysURL             string                                `json:"keys_url"`
-	LabelsURL           string                                `json:"labels_url"`
-	Language            NilString                             `json:"language"`
-	LanguagesURL        string                                `json:"languages_url"`
-	License             NullableLicenseSimple                 `json:"license"`
-	MasterBranch        OptionalString                        `json:"master_branch"`
-	MergesURL           string                                `json:"merges_url"`
-	MilestonesURL       string                                `json:"milestones_url"`
-	MirrorURL           NilString                             `json:"mirror_url"`
-	Name                string                                `json:"name"`
-	NetworkCount        OptionalInt                           `json:"network_count"`
-	NodeID              string                                `json:"node_id"`
-	NotificationsURL    string                                `json:"notifications_url"`
-	OpenIssues          int                                   `json:"open_issues"`
-	OpenIssuesCount     int                                   `json:"open_issues_count"`
-	Organization        *NullableSimpleUser                   `json:"organization"`
-	Owner               SimpleUser                            `json:"owner"`
-	Permissions         *NullableRepositoryPermissions        `json:"permissions"`
-	Private             bool                                  `json:"private"`
-	PullsURL            string                                `json:"pulls_url"`
-	PushedAt            NilTime                               `json:"pushed_at"`
-	ReleasesURL         string                                `json:"releases_url"`
-	SSHURL              string                                `json:"ssh_url"`
-	Size                int                                   `json:"size"`
-	StargazersCount     int                                   `json:"stargazers_count"`
-	StargazersURL       string                                `json:"stargazers_url"`
-	StarredAt           OptionalString                        `json:"starred_at"`
-	StatusesURL         string                                `json:"statuses_url"`
-	SubscribersCount    OptionalInt                           `json:"subscribers_count"`
-	SubscribersURL      string                                `json:"subscribers_url"`
-	SubscriptionURL     string                                `json:"subscription_url"`
-	SvnURL              string                                `json:"svn_url"`
-	TagsURL             string                                `json:"tags_url"`
-	TeamsURL            string                                `json:"teams_url"`
-	TempCloneToken      OptionalString                        `json:"temp_clone_token"`
-	TemplateRepository  *NullableRepositoryTemplateRepository `json:"template_repository"`
-	Topics              *[]string                             `json:"topics"`
-	TreesURL            string                                `json:"trees_url"`
-	URL                 string                                `json:"url"`
-	UpdatedAt           NilTime                               `json:"updated_at"`
-	Visibility          OptionalString                        `json:"visibility"`
-	Watchers            int                                   `json:"watchers"`
-	WatchersCount       int                                   `json:"watchers_count"`
+	AllowAutoMerge      OptionalBool                                    `json:"allow_auto_merge"`
+	AllowForking        OptionalBool                                    `json:"allow_forking"`
+	AllowMergeCommit    OptionalBool                                    `json:"allow_merge_commit"`
+	AllowRebaseMerge    OptionalBool                                    `json:"allow_rebase_merge"`
+	AllowSquashMerge    OptionalBool                                    `json:"allow_squash_merge"`
+	ArchiveURL          string                                          `json:"archive_url"`
+	Archived            bool                                            `json:"archived"`
+	AssigneesURL        string                                          `json:"assignees_url"`
+	BlobsURL            string                                          `json:"blobs_url"`
+	BranchesURL         string                                          `json:"branches_url"`
+	CloneURL            string                                          `json:"clone_url"`
+	CollaboratorsURL    string                                          `json:"collaborators_url"`
+	CommentsURL         string                                          `json:"comments_url"`
+	CommitsURL          string                                          `json:"commits_url"`
+	CompareURL          string                                          `json:"compare_url"`
+	ContentsURL         string                                          `json:"contents_url"`
+	ContributorsURL     url.URL                                         `json:"contributors_url"`
+	CreatedAt           NilTime                                         `json:"created_at"`
+	DefaultBranch       string                                          `json:"default_branch"`
+	DeleteBranchOnMerge OptionalBool                                    `json:"delete_branch_on_merge"`
+	DeploymentsURL      url.URL                                         `json:"deployments_url"`
+	Description         NilString                                       `json:"description"`
+	Disabled            bool                                            `json:"disabled"`
+	DownloadsURL        url.URL                                         `json:"downloads_url"`
+	EventsURL           url.URL                                         `json:"events_url"`
+	Fork                bool                                            `json:"fork"`
+	Forks               int                                             `json:"forks"`
+	ForksCount          int                                             `json:"forks_count"`
+	ForksURL            url.URL                                         `json:"forks_url"`
+	FullName            string                                          `json:"full_name"`
+	GitCommitsURL       string                                          `json:"git_commits_url"`
+	GitRefsURL          string                                          `json:"git_refs_url"`
+	GitTagsURL          string                                          `json:"git_tags_url"`
+	GitURL              string                                          `json:"git_url"`
+	HTMLURL             url.URL                                         `json:"html_url"`
+	HasDownloads        bool                                            `json:"has_downloads"`
+	HasIssues           bool                                            `json:"has_issues"`
+	HasPages            bool                                            `json:"has_pages"`
+	HasProjects         bool                                            `json:"has_projects"`
+	HasWiki             bool                                            `json:"has_wiki"`
+	Homepage            NilURL                                          `json:"homepage"`
+	HooksURL            url.URL                                         `json:"hooks_url"`
+	ID                  int                                             `json:"id"`
+	IsTemplate          OptionalBool                                    `json:"is_template"`
+	IssueCommentURL     string                                          `json:"issue_comment_url"`
+	IssueEventsURL      string                                          `json:"issue_events_url"`
+	IssuesURL           string                                          `json:"issues_url"`
+	KeysURL             string                                          `json:"keys_url"`
+	LabelsURL           string                                          `json:"labels_url"`
+	Language            NilString                                       `json:"language"`
+	LanguagesURL        url.URL                                         `json:"languages_url"`
+	License             NullableLicenseSimple                           `json:"license"`
+	MasterBranch        OptionalString                                  `json:"master_branch"`
+	MergesURL           url.URL                                         `json:"merges_url"`
+	MilestonesURL       string                                          `json:"milestones_url"`
+	MirrorURL           NilURL                                          `json:"mirror_url"`
+	Name                string                                          `json:"name"`
+	NetworkCount        OptionalInt                                     `json:"network_count"`
+	NodeID              string                                          `json:"node_id"`
+	NotificationsURL    string                                          `json:"notifications_url"`
+	OpenIssues          int                                             `json:"open_issues"`
+	OpenIssuesCount     int                                             `json:"open_issues_count"`
+	Organization        OptionalNullableSimpleUser                      `json:"organization"`
+	Owner               SimpleUser                                      `json:"owner"`
+	Permissions         OptionalNullableRepositoryPermissions           `json:"permissions"`
+	Private             bool                                            `json:"private"`
+	PullsURL            string                                          `json:"pulls_url"`
+	PushedAt            NilTime                                         `json:"pushed_at"`
+	ReleasesURL         string                                          `json:"releases_url"`
+	SSHURL              string                                          `json:"ssh_url"`
+	Size                int                                             `json:"size"`
+	StargazersCount     int                                             `json:"stargazers_count"`
+	StargazersURL       url.URL                                         `json:"stargazers_url"`
+	StarredAt           OptionalString                                  `json:"starred_at"`
+	StatusesURL         string                                          `json:"statuses_url"`
+	SubscribersCount    OptionalInt                                     `json:"subscribers_count"`
+	SubscribersURL      url.URL                                         `json:"subscribers_url"`
+	SubscriptionURL     url.URL                                         `json:"subscription_url"`
+	SvnURL              url.URL                                         `json:"svn_url"`
+	TagsURL             url.URL                                         `json:"tags_url"`
+	TeamsURL            url.URL                                         `json:"teams_url"`
+	TempCloneToken      OptionalString                                  `json:"temp_clone_token"`
+	TemplateRepository  OptionalNilNullableRepositoryTemplateRepository `json:"template_repository"`
+	Topics              *[]string                                       `json:"topics"`
+	TreesURL            string                                          `json:"trees_url"`
+	URL                 url.URL                                         `json:"url"`
+	UpdatedAt           NilTime                                         `json:"updated_at"`
+	Visibility          OptionalString                                  `json:"visibility"`
+	Watchers            int                                             `json:"watchers"`
+	WatchersCount       int                                             `json:"watchers_count"`
 }
 
 type NullableRepositoryPermissions struct {
@@ -4788,87 +5400,87 @@ type NullableRepositoryPermissions struct {
 }
 
 type NullableRepositoryTemplateRepository struct {
-	AllowAutoMerge      OptionalBool                                     `json:"allow_auto_merge"`
-	AllowMergeCommit    OptionalBool                                     `json:"allow_merge_commit"`
-	AllowRebaseMerge    OptionalBool                                     `json:"allow_rebase_merge"`
-	AllowSquashMerge    OptionalBool                                     `json:"allow_squash_merge"`
-	ArchiveURL          OptionalString                                   `json:"archive_url"`
-	Archived            OptionalBool                                     `json:"archived"`
-	AssigneesURL        OptionalString                                   `json:"assignees_url"`
-	BlobsURL            OptionalString                                   `json:"blobs_url"`
-	BranchesURL         OptionalString                                   `json:"branches_url"`
-	CloneURL            OptionalString                                   `json:"clone_url"`
-	CollaboratorsURL    OptionalString                                   `json:"collaborators_url"`
-	CommentsURL         OptionalString                                   `json:"comments_url"`
-	CommitsURL          OptionalString                                   `json:"commits_url"`
-	CompareURL          OptionalString                                   `json:"compare_url"`
-	ContentsURL         OptionalString                                   `json:"contents_url"`
-	ContributorsURL     OptionalString                                   `json:"contributors_url"`
-	CreatedAt           OptionalString                                   `json:"created_at"`
-	DefaultBranch       OptionalString                                   `json:"default_branch"`
-	DeleteBranchOnMerge OptionalBool                                     `json:"delete_branch_on_merge"`
-	DeploymentsURL      OptionalString                                   `json:"deployments_url"`
-	Description         OptionalString                                   `json:"description"`
-	Disabled            OptionalBool                                     `json:"disabled"`
-	DownloadsURL        OptionalString                                   `json:"downloads_url"`
-	EventsURL           OptionalString                                   `json:"events_url"`
-	Fork                OptionalBool                                     `json:"fork"`
-	ForksCount          OptionalInt                                      `json:"forks_count"`
-	ForksURL            OptionalString                                   `json:"forks_url"`
-	FullName            OptionalString                                   `json:"full_name"`
-	GitCommitsURL       OptionalString                                   `json:"git_commits_url"`
-	GitRefsURL          OptionalString                                   `json:"git_refs_url"`
-	GitTagsURL          OptionalString                                   `json:"git_tags_url"`
-	GitURL              OptionalString                                   `json:"git_url"`
-	HTMLURL             OptionalString                                   `json:"html_url"`
-	HasDownloads        OptionalBool                                     `json:"has_downloads"`
-	HasIssues           OptionalBool                                     `json:"has_issues"`
-	HasPages            OptionalBool                                     `json:"has_pages"`
-	HasProjects         OptionalBool                                     `json:"has_projects"`
-	HasWiki             OptionalBool                                     `json:"has_wiki"`
-	Homepage            OptionalString                                   `json:"homepage"`
-	HooksURL            OptionalString                                   `json:"hooks_url"`
-	ID                  OptionalInt                                      `json:"id"`
-	IsTemplate          OptionalBool                                     `json:"is_template"`
-	IssueCommentURL     OptionalString                                   `json:"issue_comment_url"`
-	IssueEventsURL      OptionalString                                   `json:"issue_events_url"`
-	IssuesURL           OptionalString                                   `json:"issues_url"`
-	KeysURL             OptionalString                                   `json:"keys_url"`
-	LabelsURL           OptionalString                                   `json:"labels_url"`
-	Language            OptionalString                                   `json:"language"`
-	LanguagesURL        OptionalString                                   `json:"languages_url"`
-	MergesURL           OptionalString                                   `json:"merges_url"`
-	MilestonesURL       OptionalString                                   `json:"milestones_url"`
-	MirrorURL           OptionalString                                   `json:"mirror_url"`
-	Name                OptionalString                                   `json:"name"`
-	NetworkCount        OptionalInt                                      `json:"network_count"`
-	NodeID              OptionalString                                   `json:"node_id"`
-	NotificationsURL    OptionalString                                   `json:"notifications_url"`
-	OpenIssuesCount     OptionalInt                                      `json:"open_issues_count"`
-	Owner               *NullableRepositoryTemplateRepositoryOwner       `json:"owner"`
-	Permissions         *NullableRepositoryTemplateRepositoryPermissions `json:"permissions"`
-	Private             OptionalBool                                     `json:"private"`
-	PullsURL            OptionalString                                   `json:"pulls_url"`
-	PushedAt            OptionalString                                   `json:"pushed_at"`
-	ReleasesURL         OptionalString                                   `json:"releases_url"`
-	SSHURL              OptionalString                                   `json:"ssh_url"`
-	Size                OptionalInt                                      `json:"size"`
-	StargazersCount     OptionalInt                                      `json:"stargazers_count"`
-	StargazersURL       OptionalString                                   `json:"stargazers_url"`
-	StatusesURL         OptionalString                                   `json:"statuses_url"`
-	SubscribersCount    OptionalInt                                      `json:"subscribers_count"`
-	SubscribersURL      OptionalString                                   `json:"subscribers_url"`
-	SubscriptionURL     OptionalString                                   `json:"subscription_url"`
-	SvnURL              OptionalString                                   `json:"svn_url"`
-	TagsURL             OptionalString                                   `json:"tags_url"`
-	TeamsURL            OptionalString                                   `json:"teams_url"`
-	TempCloneToken      OptionalString                                   `json:"temp_clone_token"`
-	Topics              *[]string                                        `json:"topics"`
-	TreesURL            OptionalString                                   `json:"trees_url"`
-	URL                 OptionalString                                   `json:"url"`
-	UpdatedAt           OptionalString                                   `json:"updated_at"`
-	Visibility          OptionalString                                   `json:"visibility"`
-	WatchersCount       OptionalInt                                      `json:"watchers_count"`
+	AllowAutoMerge      OptionalBool                                            `json:"allow_auto_merge"`
+	AllowMergeCommit    OptionalBool                                            `json:"allow_merge_commit"`
+	AllowRebaseMerge    OptionalBool                                            `json:"allow_rebase_merge"`
+	AllowSquashMerge    OptionalBool                                            `json:"allow_squash_merge"`
+	ArchiveURL          OptionalString                                          `json:"archive_url"`
+	Archived            OptionalBool                                            `json:"archived"`
+	AssigneesURL        OptionalString                                          `json:"assignees_url"`
+	BlobsURL            OptionalString                                          `json:"blobs_url"`
+	BranchesURL         OptionalString                                          `json:"branches_url"`
+	CloneURL            OptionalString                                          `json:"clone_url"`
+	CollaboratorsURL    OptionalString                                          `json:"collaborators_url"`
+	CommentsURL         OptionalString                                          `json:"comments_url"`
+	CommitsURL          OptionalString                                          `json:"commits_url"`
+	CompareURL          OptionalString                                          `json:"compare_url"`
+	ContentsURL         OptionalString                                          `json:"contents_url"`
+	ContributorsURL     OptionalString                                          `json:"contributors_url"`
+	CreatedAt           OptionalString                                          `json:"created_at"`
+	DefaultBranch       OptionalString                                          `json:"default_branch"`
+	DeleteBranchOnMerge OptionalBool                                            `json:"delete_branch_on_merge"`
+	DeploymentsURL      OptionalString                                          `json:"deployments_url"`
+	Description         OptionalString                                          `json:"description"`
+	Disabled            OptionalBool                                            `json:"disabled"`
+	DownloadsURL        OptionalString                                          `json:"downloads_url"`
+	EventsURL           OptionalString                                          `json:"events_url"`
+	Fork                OptionalBool                                            `json:"fork"`
+	ForksCount          OptionalInt                                             `json:"forks_count"`
+	ForksURL            OptionalString                                          `json:"forks_url"`
+	FullName            OptionalString                                          `json:"full_name"`
+	GitCommitsURL       OptionalString                                          `json:"git_commits_url"`
+	GitRefsURL          OptionalString                                          `json:"git_refs_url"`
+	GitTagsURL          OptionalString                                          `json:"git_tags_url"`
+	GitURL              OptionalString                                          `json:"git_url"`
+	HTMLURL             OptionalString                                          `json:"html_url"`
+	HasDownloads        OptionalBool                                            `json:"has_downloads"`
+	HasIssues           OptionalBool                                            `json:"has_issues"`
+	HasPages            OptionalBool                                            `json:"has_pages"`
+	HasProjects         OptionalBool                                            `json:"has_projects"`
+	HasWiki             OptionalBool                                            `json:"has_wiki"`
+	Homepage            OptionalString                                          `json:"homepage"`
+	HooksURL            OptionalString                                          `json:"hooks_url"`
+	ID                  OptionalInt                                             `json:"id"`
+	IsTemplate          OptionalBool                                            `json:"is_template"`
+	IssueCommentURL     OptionalString                                          `json:"issue_comment_url"`
+	IssueEventsURL      OptionalString                                          `json:"issue_events_url"`
+	IssuesURL           OptionalString                                          `json:"issues_url"`
+	KeysURL             OptionalString                                          `json:"keys_url"`
+	LabelsURL           OptionalString                                          `json:"labels_url"`
+	Language            OptionalString                                          `json:"language"`
+	LanguagesURL        OptionalString                                          `json:"languages_url"`
+	MergesURL           OptionalString                                          `json:"merges_url"`
+	MilestonesURL       OptionalString                                          `json:"milestones_url"`
+	MirrorURL           OptionalString                                          `json:"mirror_url"`
+	Name                OptionalString                                          `json:"name"`
+	NetworkCount        OptionalInt                                             `json:"network_count"`
+	NodeID              OptionalString                                          `json:"node_id"`
+	NotificationsURL    OptionalString                                          `json:"notifications_url"`
+	OpenIssuesCount     OptionalInt                                             `json:"open_issues_count"`
+	Owner               OptionalNullableRepositoryTemplateRepositoryOwner       `json:"owner"`
+	Permissions         OptionalNullableRepositoryTemplateRepositoryPermissions `json:"permissions"`
+	Private             OptionalBool                                            `json:"private"`
+	PullsURL            OptionalString                                          `json:"pulls_url"`
+	PushedAt            OptionalString                                          `json:"pushed_at"`
+	ReleasesURL         OptionalString                                          `json:"releases_url"`
+	SSHURL              OptionalString                                          `json:"ssh_url"`
+	Size                OptionalInt                                             `json:"size"`
+	StargazersCount     OptionalInt                                             `json:"stargazers_count"`
+	StargazersURL       OptionalString                                          `json:"stargazers_url"`
+	StatusesURL         OptionalString                                          `json:"statuses_url"`
+	SubscribersCount    OptionalInt                                             `json:"subscribers_count"`
+	SubscribersURL      OptionalString                                          `json:"subscribers_url"`
+	SubscriptionURL     OptionalString                                          `json:"subscription_url"`
+	SvnURL              OptionalString                                          `json:"svn_url"`
+	TagsURL             OptionalString                                          `json:"tags_url"`
+	TeamsURL            OptionalString                                          `json:"teams_url"`
+	TempCloneToken      OptionalString                                          `json:"temp_clone_token"`
+	Topics              *[]string                                               `json:"topics"`
+	TreesURL            OptionalString                                          `json:"trees_url"`
+	URL                 OptionalString                                          `json:"url"`
+	UpdatedAt           OptionalString                                          `json:"updated_at"`
+	Visibility          OptionalString                                          `json:"visibility"`
+	WatchersCount       OptionalInt                                             `json:"watchers_count"`
 }
 
 type NullableRepositoryTemplateRepositoryOwner struct {
@@ -4905,7 +5517,7 @@ type NullableScopedInstallation struct {
 	Account                SimpleUser                                    `json:"account"`
 	HasMultipleSingleFiles OptionalBool                                  `json:"has_multiple_single_files"`
 	Permissions            AppPermissions                                `json:"permissions"`
-	RepositoriesURL        string                                        `json:"repositories_url"`
+	RepositoriesURL        url.URL                                       `json:"repositories_url"`
 	RepositorySelection    NullableScopedInstallationRepositorySelection `json:"repository_selection"`
 	SingleFileName         NilString                                     `json:"single_file_name"`
 	SingleFilePaths        *[]string                                     `json:"single_file_paths"`
@@ -4920,12 +5532,12 @@ const (
 
 // NullableSimpleCommit describes #/components/schemas/nullable-simple-commit.
 type NullableSimpleCommit struct {
-	Author    NullableSimpleCommitAuthor    `json:"author"`
-	Committer NullableSimpleCommitCommitter `json:"committer"`
-	ID        string                        `json:"id"`
-	Message   string                        `json:"message"`
-	Timestamp time.Time                     `json:"timestamp"`
-	TreeID    string                        `json:"tree_id"`
+	Author    NilNullableSimpleCommitAuthor    `json:"author"`
+	Committer NilNullableSimpleCommitCommitter `json:"committer"`
+	ID        string                           `json:"id"`
+	Message   string                           `json:"message"`
+	Timestamp time.Time                        `json:"timestamp"`
+	TreeID    string                           `json:"tree_id"`
 }
 
 type NullableSimpleCommitAuthor struct {
@@ -4940,33 +5552,33 @@ type NullableSimpleCommitCommitter struct {
 
 // NullableSimpleUser describes #/components/schemas/nullable-simple-user.
 type NullableSimpleUser struct {
-	AvatarURL         string            `json:"avatar_url"`
+	AvatarURL         url.URL           `json:"avatar_url"`
 	Email             OptionalNilString `json:"email"`
 	EventsURL         string            `json:"events_url"`
-	FollowersURL      string            `json:"followers_url"`
+	FollowersURL      url.URL           `json:"followers_url"`
 	FollowingURL      string            `json:"following_url"`
 	GistsURL          string            `json:"gists_url"`
 	GravatarID        NilString         `json:"gravatar_id"`
-	HTMLURL           string            `json:"html_url"`
+	HTMLURL           url.URL           `json:"html_url"`
 	ID                int               `json:"id"`
 	Login             string            `json:"login"`
 	Name              OptionalNilString `json:"name"`
 	NodeID            string            `json:"node_id"`
-	OrganizationsURL  string            `json:"organizations_url"`
-	ReceivedEventsURL string            `json:"received_events_url"`
-	ReposURL          string            `json:"repos_url"`
+	OrganizationsURL  url.URL           `json:"organizations_url"`
+	ReceivedEventsURL url.URL           `json:"received_events_url"`
+	ReposURL          url.URL           `json:"repos_url"`
 	SiteAdmin         bool              `json:"site_admin"`
 	StarredAt         OptionalString    `json:"starred_at"`
 	StarredURL        string            `json:"starred_url"`
-	SubscriptionsURL  string            `json:"subscriptions_url"`
+	SubscriptionsURL  url.URL           `json:"subscriptions_url"`
 	Type              string            `json:"type"`
-	URL               string            `json:"url"`
+	URL               url.URL           `json:"url"`
 }
 
 // NullableTeamSimple describes #/components/schemas/nullable-team-simple.
 type NullableTeamSimple struct {
 	Description     NilString      `json:"description"`
-	HTMLURL         string         `json:"html_url"`
+	HTMLURL         url.URL        `json:"html_url"`
 	ID              int            `json:"id"`
 	LdapDn          OptionalString `json:"ldap_dn"`
 	MembersURL      string         `json:"members_url"`
@@ -4974,9 +5586,9 @@ type NullableTeamSimple struct {
 	NodeID          string         `json:"node_id"`
 	Permission      string         `json:"permission"`
 	Privacy         OptionalString `json:"privacy"`
-	RepositoriesURL string         `json:"repositories_url"`
+	RepositoriesURL url.URL        `json:"repositories_url"`
 	Slug            string         `json:"slug"`
-	URL             string         `json:"url"`
+	URL             url.URL        `json:"url"`
 }
 
 type OAuthAuthorizationsCreateAuthorizationApplicationJSONRequest struct {
@@ -5110,19 +5722,8545 @@ type OAuthAuthorizationsUpdateAuthorizationApplicationJSONRequest struct {
 func (*OAuthAuthorizationsUpdateAuthorizationApplicationJSONRequest) oAuthAuthorizationsUpdateAuthorizationRequest() {
 }
 
+// New returns new OptionalAPIOverviewSSHKeyFingerprints with value set to v.
+func NewOptionalAPIOverviewSSHKeyFingerprints(v APIOverviewSSHKeyFingerprints) OptionalAPIOverviewSSHKeyFingerprints {
+	return OptionalAPIOverviewSSHKeyFingerprints{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAPIOverviewSSHKeyFingerprints is generic valiant of APIOverviewSSHKeyFingerprints.
+type OptionalAPIOverviewSSHKeyFingerprints struct {
+	Value APIOverviewSSHKeyFingerprints
+	Set   bool
+}
+
+// IsSet returns true if OptionalAPIOverviewSSHKeyFingerprints was set.
+func (o OptionalAPIOverviewSSHKeyFingerprints) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAPIOverviewSSHKeyFingerprints) Reset() {
+	var v APIOverviewSSHKeyFingerprints
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAPIOverviewSSHKeyFingerprints) SetTo(v APIOverviewSSHKeyFingerprints) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAPIOverviewSSHKeyFingerprints) Get() (v APIOverviewSSHKeyFingerprints, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility with value set to v.
+func NewOptionalActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility(v ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) OptionalActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility {
+	return OptionalActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility is generic valiant of ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility.
+type OptionalActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility struct {
+	Value ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility
+	Set   bool
+}
+
+// IsSet returns true if OptionalActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility was set.
+func (o OptionalActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) Reset() {
+	var v ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) SetTo(v ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) Get() (v ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility with value set to v.
+func NewOptionalActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility(v ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) OptionalActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility {
+	return OptionalActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility is generic valiant of ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility.
+type OptionalActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility struct {
+	Value ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility
+	Set   bool
+}
+
+// IsSet returns true if OptionalActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility was set.
+func (o OptionalActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) Reset() {
+	var v ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) SetTo(v ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) Get() (v ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalActor with value set to v.
+func NewOptionalActor(v Actor) OptionalActor {
+	return OptionalActor{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalActor is generic valiant of Actor.
+type OptionalActor struct {
+	Value Actor
+	Set   bool
+}
+
+// IsSet returns true if OptionalActor was set.
+func (o OptionalActor) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalActor) Reset() {
+	var v Actor
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalActor) SetTo(v Actor) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalActor) Get() (v Actor, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAllowedActions with value set to v.
+func NewOptionalAllowedActions(v AllowedActions) OptionalAllowedActions {
+	return OptionalAllowedActions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAllowedActions is generic valiant of AllowedActions.
+type OptionalAllowedActions struct {
+	Value AllowedActions
+	Set   bool
+}
+
+// IsSet returns true if OptionalAllowedActions was set.
+func (o OptionalAllowedActions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAllowedActions) Reset() {
+	var v AllowedActions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAllowedActions) SetTo(v AllowedActions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAllowedActions) Get() (v AllowedActions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissions with value set to v.
+func NewOptionalAppPermissions(v AppPermissions) OptionalAppPermissions {
+	return OptionalAppPermissions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissions is generic valiant of AppPermissions.
+type OptionalAppPermissions struct {
+	Value AppPermissions
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissions was set.
+func (o OptionalAppPermissions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissions) Reset() {
+	var v AppPermissions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissions) SetTo(v AppPermissions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissions) Get() (v AppPermissions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsActions with value set to v.
+func NewOptionalAppPermissionsActions(v AppPermissionsActions) OptionalAppPermissionsActions {
+	return OptionalAppPermissionsActions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsActions is generic valiant of AppPermissionsActions.
+type OptionalAppPermissionsActions struct {
+	Value AppPermissionsActions
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsActions was set.
+func (o OptionalAppPermissionsActions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsActions) Reset() {
+	var v AppPermissionsActions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsActions) SetTo(v AppPermissionsActions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsActions) Get() (v AppPermissionsActions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsAdministration with value set to v.
+func NewOptionalAppPermissionsAdministration(v AppPermissionsAdministration) OptionalAppPermissionsAdministration {
+	return OptionalAppPermissionsAdministration{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsAdministration is generic valiant of AppPermissionsAdministration.
+type OptionalAppPermissionsAdministration struct {
+	Value AppPermissionsAdministration
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsAdministration was set.
+func (o OptionalAppPermissionsAdministration) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsAdministration) Reset() {
+	var v AppPermissionsAdministration
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsAdministration) SetTo(v AppPermissionsAdministration) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsAdministration) Get() (v AppPermissionsAdministration, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsChecks with value set to v.
+func NewOptionalAppPermissionsChecks(v AppPermissionsChecks) OptionalAppPermissionsChecks {
+	return OptionalAppPermissionsChecks{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsChecks is generic valiant of AppPermissionsChecks.
+type OptionalAppPermissionsChecks struct {
+	Value AppPermissionsChecks
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsChecks was set.
+func (o OptionalAppPermissionsChecks) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsChecks) Reset() {
+	var v AppPermissionsChecks
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsChecks) SetTo(v AppPermissionsChecks) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsChecks) Get() (v AppPermissionsChecks, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsContentReferences with value set to v.
+func NewOptionalAppPermissionsContentReferences(v AppPermissionsContentReferences) OptionalAppPermissionsContentReferences {
+	return OptionalAppPermissionsContentReferences{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsContentReferences is generic valiant of AppPermissionsContentReferences.
+type OptionalAppPermissionsContentReferences struct {
+	Value AppPermissionsContentReferences
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsContentReferences was set.
+func (o OptionalAppPermissionsContentReferences) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsContentReferences) Reset() {
+	var v AppPermissionsContentReferences
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsContentReferences) SetTo(v AppPermissionsContentReferences) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsContentReferences) Get() (v AppPermissionsContentReferences, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsContents with value set to v.
+func NewOptionalAppPermissionsContents(v AppPermissionsContents) OptionalAppPermissionsContents {
+	return OptionalAppPermissionsContents{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsContents is generic valiant of AppPermissionsContents.
+type OptionalAppPermissionsContents struct {
+	Value AppPermissionsContents
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsContents was set.
+func (o OptionalAppPermissionsContents) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsContents) Reset() {
+	var v AppPermissionsContents
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsContents) SetTo(v AppPermissionsContents) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsContents) Get() (v AppPermissionsContents, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsDeployments with value set to v.
+func NewOptionalAppPermissionsDeployments(v AppPermissionsDeployments) OptionalAppPermissionsDeployments {
+	return OptionalAppPermissionsDeployments{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsDeployments is generic valiant of AppPermissionsDeployments.
+type OptionalAppPermissionsDeployments struct {
+	Value AppPermissionsDeployments
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsDeployments was set.
+func (o OptionalAppPermissionsDeployments) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsDeployments) Reset() {
+	var v AppPermissionsDeployments
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsDeployments) SetTo(v AppPermissionsDeployments) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsDeployments) Get() (v AppPermissionsDeployments, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsEnvironments with value set to v.
+func NewOptionalAppPermissionsEnvironments(v AppPermissionsEnvironments) OptionalAppPermissionsEnvironments {
+	return OptionalAppPermissionsEnvironments{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsEnvironments is generic valiant of AppPermissionsEnvironments.
+type OptionalAppPermissionsEnvironments struct {
+	Value AppPermissionsEnvironments
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsEnvironments was set.
+func (o OptionalAppPermissionsEnvironments) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsEnvironments) Reset() {
+	var v AppPermissionsEnvironments
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsEnvironments) SetTo(v AppPermissionsEnvironments) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsEnvironments) Get() (v AppPermissionsEnvironments, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsIssues with value set to v.
+func NewOptionalAppPermissionsIssues(v AppPermissionsIssues) OptionalAppPermissionsIssues {
+	return OptionalAppPermissionsIssues{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsIssues is generic valiant of AppPermissionsIssues.
+type OptionalAppPermissionsIssues struct {
+	Value AppPermissionsIssues
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsIssues was set.
+func (o OptionalAppPermissionsIssues) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsIssues) Reset() {
+	var v AppPermissionsIssues
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsIssues) SetTo(v AppPermissionsIssues) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsIssues) Get() (v AppPermissionsIssues, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsMembers with value set to v.
+func NewOptionalAppPermissionsMembers(v AppPermissionsMembers) OptionalAppPermissionsMembers {
+	return OptionalAppPermissionsMembers{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsMembers is generic valiant of AppPermissionsMembers.
+type OptionalAppPermissionsMembers struct {
+	Value AppPermissionsMembers
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsMembers was set.
+func (o OptionalAppPermissionsMembers) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsMembers) Reset() {
+	var v AppPermissionsMembers
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsMembers) SetTo(v AppPermissionsMembers) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsMembers) Get() (v AppPermissionsMembers, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsMetadata with value set to v.
+func NewOptionalAppPermissionsMetadata(v AppPermissionsMetadata) OptionalAppPermissionsMetadata {
+	return OptionalAppPermissionsMetadata{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsMetadata is generic valiant of AppPermissionsMetadata.
+type OptionalAppPermissionsMetadata struct {
+	Value AppPermissionsMetadata
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsMetadata was set.
+func (o OptionalAppPermissionsMetadata) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsMetadata) Reset() {
+	var v AppPermissionsMetadata
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsMetadata) SetTo(v AppPermissionsMetadata) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsMetadata) Get() (v AppPermissionsMetadata, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsOrganizationAdministration with value set to v.
+func NewOptionalAppPermissionsOrganizationAdministration(v AppPermissionsOrganizationAdministration) OptionalAppPermissionsOrganizationAdministration {
+	return OptionalAppPermissionsOrganizationAdministration{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsOrganizationAdministration is generic valiant of AppPermissionsOrganizationAdministration.
+type OptionalAppPermissionsOrganizationAdministration struct {
+	Value AppPermissionsOrganizationAdministration
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsOrganizationAdministration was set.
+func (o OptionalAppPermissionsOrganizationAdministration) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsOrganizationAdministration) Reset() {
+	var v AppPermissionsOrganizationAdministration
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsOrganizationAdministration) SetTo(v AppPermissionsOrganizationAdministration) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsOrganizationAdministration) Get() (v AppPermissionsOrganizationAdministration, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsOrganizationHooks with value set to v.
+func NewOptionalAppPermissionsOrganizationHooks(v AppPermissionsOrganizationHooks) OptionalAppPermissionsOrganizationHooks {
+	return OptionalAppPermissionsOrganizationHooks{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsOrganizationHooks is generic valiant of AppPermissionsOrganizationHooks.
+type OptionalAppPermissionsOrganizationHooks struct {
+	Value AppPermissionsOrganizationHooks
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsOrganizationHooks was set.
+func (o OptionalAppPermissionsOrganizationHooks) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsOrganizationHooks) Reset() {
+	var v AppPermissionsOrganizationHooks
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsOrganizationHooks) SetTo(v AppPermissionsOrganizationHooks) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsOrganizationHooks) Get() (v AppPermissionsOrganizationHooks, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsOrganizationPackages with value set to v.
+func NewOptionalAppPermissionsOrganizationPackages(v AppPermissionsOrganizationPackages) OptionalAppPermissionsOrganizationPackages {
+	return OptionalAppPermissionsOrganizationPackages{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsOrganizationPackages is generic valiant of AppPermissionsOrganizationPackages.
+type OptionalAppPermissionsOrganizationPackages struct {
+	Value AppPermissionsOrganizationPackages
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsOrganizationPackages was set.
+func (o OptionalAppPermissionsOrganizationPackages) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsOrganizationPackages) Reset() {
+	var v AppPermissionsOrganizationPackages
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsOrganizationPackages) SetTo(v AppPermissionsOrganizationPackages) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsOrganizationPackages) Get() (v AppPermissionsOrganizationPackages, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsOrganizationPlan with value set to v.
+func NewOptionalAppPermissionsOrganizationPlan(v AppPermissionsOrganizationPlan) OptionalAppPermissionsOrganizationPlan {
+	return OptionalAppPermissionsOrganizationPlan{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsOrganizationPlan is generic valiant of AppPermissionsOrganizationPlan.
+type OptionalAppPermissionsOrganizationPlan struct {
+	Value AppPermissionsOrganizationPlan
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsOrganizationPlan was set.
+func (o OptionalAppPermissionsOrganizationPlan) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsOrganizationPlan) Reset() {
+	var v AppPermissionsOrganizationPlan
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsOrganizationPlan) SetTo(v AppPermissionsOrganizationPlan) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsOrganizationPlan) Get() (v AppPermissionsOrganizationPlan, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsOrganizationProjects with value set to v.
+func NewOptionalAppPermissionsOrganizationProjects(v AppPermissionsOrganizationProjects) OptionalAppPermissionsOrganizationProjects {
+	return OptionalAppPermissionsOrganizationProjects{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsOrganizationProjects is generic valiant of AppPermissionsOrganizationProjects.
+type OptionalAppPermissionsOrganizationProjects struct {
+	Value AppPermissionsOrganizationProjects
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsOrganizationProjects was set.
+func (o OptionalAppPermissionsOrganizationProjects) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsOrganizationProjects) Reset() {
+	var v AppPermissionsOrganizationProjects
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsOrganizationProjects) SetTo(v AppPermissionsOrganizationProjects) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsOrganizationProjects) Get() (v AppPermissionsOrganizationProjects, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsOrganizationSecrets with value set to v.
+func NewOptionalAppPermissionsOrganizationSecrets(v AppPermissionsOrganizationSecrets) OptionalAppPermissionsOrganizationSecrets {
+	return OptionalAppPermissionsOrganizationSecrets{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsOrganizationSecrets is generic valiant of AppPermissionsOrganizationSecrets.
+type OptionalAppPermissionsOrganizationSecrets struct {
+	Value AppPermissionsOrganizationSecrets
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsOrganizationSecrets was set.
+func (o OptionalAppPermissionsOrganizationSecrets) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsOrganizationSecrets) Reset() {
+	var v AppPermissionsOrganizationSecrets
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsOrganizationSecrets) SetTo(v AppPermissionsOrganizationSecrets) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsOrganizationSecrets) Get() (v AppPermissionsOrganizationSecrets, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsOrganizationSelfHostedRunners with value set to v.
+func NewOptionalAppPermissionsOrganizationSelfHostedRunners(v AppPermissionsOrganizationSelfHostedRunners) OptionalAppPermissionsOrganizationSelfHostedRunners {
+	return OptionalAppPermissionsOrganizationSelfHostedRunners{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsOrganizationSelfHostedRunners is generic valiant of AppPermissionsOrganizationSelfHostedRunners.
+type OptionalAppPermissionsOrganizationSelfHostedRunners struct {
+	Value AppPermissionsOrganizationSelfHostedRunners
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsOrganizationSelfHostedRunners was set.
+func (o OptionalAppPermissionsOrganizationSelfHostedRunners) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsOrganizationSelfHostedRunners) Reset() {
+	var v AppPermissionsOrganizationSelfHostedRunners
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsOrganizationSelfHostedRunners) SetTo(v AppPermissionsOrganizationSelfHostedRunners) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsOrganizationSelfHostedRunners) Get() (v AppPermissionsOrganizationSelfHostedRunners, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsOrganizationUserBlocking with value set to v.
+func NewOptionalAppPermissionsOrganizationUserBlocking(v AppPermissionsOrganizationUserBlocking) OptionalAppPermissionsOrganizationUserBlocking {
+	return OptionalAppPermissionsOrganizationUserBlocking{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsOrganizationUserBlocking is generic valiant of AppPermissionsOrganizationUserBlocking.
+type OptionalAppPermissionsOrganizationUserBlocking struct {
+	Value AppPermissionsOrganizationUserBlocking
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsOrganizationUserBlocking was set.
+func (o OptionalAppPermissionsOrganizationUserBlocking) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsOrganizationUserBlocking) Reset() {
+	var v AppPermissionsOrganizationUserBlocking
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsOrganizationUserBlocking) SetTo(v AppPermissionsOrganizationUserBlocking) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsOrganizationUserBlocking) Get() (v AppPermissionsOrganizationUserBlocking, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsPackages with value set to v.
+func NewOptionalAppPermissionsPackages(v AppPermissionsPackages) OptionalAppPermissionsPackages {
+	return OptionalAppPermissionsPackages{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsPackages is generic valiant of AppPermissionsPackages.
+type OptionalAppPermissionsPackages struct {
+	Value AppPermissionsPackages
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsPackages was set.
+func (o OptionalAppPermissionsPackages) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsPackages) Reset() {
+	var v AppPermissionsPackages
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsPackages) SetTo(v AppPermissionsPackages) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsPackages) Get() (v AppPermissionsPackages, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsPages with value set to v.
+func NewOptionalAppPermissionsPages(v AppPermissionsPages) OptionalAppPermissionsPages {
+	return OptionalAppPermissionsPages{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsPages is generic valiant of AppPermissionsPages.
+type OptionalAppPermissionsPages struct {
+	Value AppPermissionsPages
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsPages was set.
+func (o OptionalAppPermissionsPages) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsPages) Reset() {
+	var v AppPermissionsPages
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsPages) SetTo(v AppPermissionsPages) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsPages) Get() (v AppPermissionsPages, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsPullRequests with value set to v.
+func NewOptionalAppPermissionsPullRequests(v AppPermissionsPullRequests) OptionalAppPermissionsPullRequests {
+	return OptionalAppPermissionsPullRequests{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsPullRequests is generic valiant of AppPermissionsPullRequests.
+type OptionalAppPermissionsPullRequests struct {
+	Value AppPermissionsPullRequests
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsPullRequests was set.
+func (o OptionalAppPermissionsPullRequests) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsPullRequests) Reset() {
+	var v AppPermissionsPullRequests
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsPullRequests) SetTo(v AppPermissionsPullRequests) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsPullRequests) Get() (v AppPermissionsPullRequests, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsRepositoryHooks with value set to v.
+func NewOptionalAppPermissionsRepositoryHooks(v AppPermissionsRepositoryHooks) OptionalAppPermissionsRepositoryHooks {
+	return OptionalAppPermissionsRepositoryHooks{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsRepositoryHooks is generic valiant of AppPermissionsRepositoryHooks.
+type OptionalAppPermissionsRepositoryHooks struct {
+	Value AppPermissionsRepositoryHooks
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsRepositoryHooks was set.
+func (o OptionalAppPermissionsRepositoryHooks) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsRepositoryHooks) Reset() {
+	var v AppPermissionsRepositoryHooks
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsRepositoryHooks) SetTo(v AppPermissionsRepositoryHooks) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsRepositoryHooks) Get() (v AppPermissionsRepositoryHooks, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsRepositoryProjects with value set to v.
+func NewOptionalAppPermissionsRepositoryProjects(v AppPermissionsRepositoryProjects) OptionalAppPermissionsRepositoryProjects {
+	return OptionalAppPermissionsRepositoryProjects{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsRepositoryProjects is generic valiant of AppPermissionsRepositoryProjects.
+type OptionalAppPermissionsRepositoryProjects struct {
+	Value AppPermissionsRepositoryProjects
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsRepositoryProjects was set.
+func (o OptionalAppPermissionsRepositoryProjects) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsRepositoryProjects) Reset() {
+	var v AppPermissionsRepositoryProjects
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsRepositoryProjects) SetTo(v AppPermissionsRepositoryProjects) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsRepositoryProjects) Get() (v AppPermissionsRepositoryProjects, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsSecretScanningAlerts with value set to v.
+func NewOptionalAppPermissionsSecretScanningAlerts(v AppPermissionsSecretScanningAlerts) OptionalAppPermissionsSecretScanningAlerts {
+	return OptionalAppPermissionsSecretScanningAlerts{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsSecretScanningAlerts is generic valiant of AppPermissionsSecretScanningAlerts.
+type OptionalAppPermissionsSecretScanningAlerts struct {
+	Value AppPermissionsSecretScanningAlerts
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsSecretScanningAlerts was set.
+func (o OptionalAppPermissionsSecretScanningAlerts) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsSecretScanningAlerts) Reset() {
+	var v AppPermissionsSecretScanningAlerts
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsSecretScanningAlerts) SetTo(v AppPermissionsSecretScanningAlerts) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsSecretScanningAlerts) Get() (v AppPermissionsSecretScanningAlerts, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsSecrets with value set to v.
+func NewOptionalAppPermissionsSecrets(v AppPermissionsSecrets) OptionalAppPermissionsSecrets {
+	return OptionalAppPermissionsSecrets{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsSecrets is generic valiant of AppPermissionsSecrets.
+type OptionalAppPermissionsSecrets struct {
+	Value AppPermissionsSecrets
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsSecrets was set.
+func (o OptionalAppPermissionsSecrets) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsSecrets) Reset() {
+	var v AppPermissionsSecrets
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsSecrets) SetTo(v AppPermissionsSecrets) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsSecrets) Get() (v AppPermissionsSecrets, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsSecurityEvents with value set to v.
+func NewOptionalAppPermissionsSecurityEvents(v AppPermissionsSecurityEvents) OptionalAppPermissionsSecurityEvents {
+	return OptionalAppPermissionsSecurityEvents{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsSecurityEvents is generic valiant of AppPermissionsSecurityEvents.
+type OptionalAppPermissionsSecurityEvents struct {
+	Value AppPermissionsSecurityEvents
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsSecurityEvents was set.
+func (o OptionalAppPermissionsSecurityEvents) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsSecurityEvents) Reset() {
+	var v AppPermissionsSecurityEvents
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsSecurityEvents) SetTo(v AppPermissionsSecurityEvents) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsSecurityEvents) Get() (v AppPermissionsSecurityEvents, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsSingleFile with value set to v.
+func NewOptionalAppPermissionsSingleFile(v AppPermissionsSingleFile) OptionalAppPermissionsSingleFile {
+	return OptionalAppPermissionsSingleFile{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsSingleFile is generic valiant of AppPermissionsSingleFile.
+type OptionalAppPermissionsSingleFile struct {
+	Value AppPermissionsSingleFile
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsSingleFile was set.
+func (o OptionalAppPermissionsSingleFile) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsSingleFile) Reset() {
+	var v AppPermissionsSingleFile
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsSingleFile) SetTo(v AppPermissionsSingleFile) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsSingleFile) Get() (v AppPermissionsSingleFile, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsStatuses with value set to v.
+func NewOptionalAppPermissionsStatuses(v AppPermissionsStatuses) OptionalAppPermissionsStatuses {
+	return OptionalAppPermissionsStatuses{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsStatuses is generic valiant of AppPermissionsStatuses.
+type OptionalAppPermissionsStatuses struct {
+	Value AppPermissionsStatuses
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsStatuses was set.
+func (o OptionalAppPermissionsStatuses) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsStatuses) Reset() {
+	var v AppPermissionsStatuses
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsStatuses) SetTo(v AppPermissionsStatuses) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsStatuses) Get() (v AppPermissionsStatuses, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsTeamDiscussions with value set to v.
+func NewOptionalAppPermissionsTeamDiscussions(v AppPermissionsTeamDiscussions) OptionalAppPermissionsTeamDiscussions {
+	return OptionalAppPermissionsTeamDiscussions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsTeamDiscussions is generic valiant of AppPermissionsTeamDiscussions.
+type OptionalAppPermissionsTeamDiscussions struct {
+	Value AppPermissionsTeamDiscussions
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsTeamDiscussions was set.
+func (o OptionalAppPermissionsTeamDiscussions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsTeamDiscussions) Reset() {
+	var v AppPermissionsTeamDiscussions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsTeamDiscussions) SetTo(v AppPermissionsTeamDiscussions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsTeamDiscussions) Get() (v AppPermissionsTeamDiscussions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsVulnerabilityAlerts with value set to v.
+func NewOptionalAppPermissionsVulnerabilityAlerts(v AppPermissionsVulnerabilityAlerts) OptionalAppPermissionsVulnerabilityAlerts {
+	return OptionalAppPermissionsVulnerabilityAlerts{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsVulnerabilityAlerts is generic valiant of AppPermissionsVulnerabilityAlerts.
+type OptionalAppPermissionsVulnerabilityAlerts struct {
+	Value AppPermissionsVulnerabilityAlerts
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsVulnerabilityAlerts was set.
+func (o OptionalAppPermissionsVulnerabilityAlerts) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsVulnerabilityAlerts) Reset() {
+	var v AppPermissionsVulnerabilityAlerts
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsVulnerabilityAlerts) SetTo(v AppPermissionsVulnerabilityAlerts) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsVulnerabilityAlerts) Get() (v AppPermissionsVulnerabilityAlerts, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAppPermissionsWorkflows with value set to v.
+func NewOptionalAppPermissionsWorkflows(v AppPermissionsWorkflows) OptionalAppPermissionsWorkflows {
+	return OptionalAppPermissionsWorkflows{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAppPermissionsWorkflows is generic valiant of AppPermissionsWorkflows.
+type OptionalAppPermissionsWorkflows struct {
+	Value AppPermissionsWorkflows
+	Set   bool
+}
+
+// IsSet returns true if OptionalAppPermissionsWorkflows was set.
+func (o OptionalAppPermissionsWorkflows) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAppPermissionsWorkflows) Reset() {
+	var v AppPermissionsWorkflows
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAppPermissionsWorkflows) SetTo(v AppPermissionsWorkflows) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAppPermissionsWorkflows) Get() (v AppPermissionsWorkflows, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAuthenticationTokenRepositorySelection with value set to v.
+func NewOptionalAuthenticationTokenRepositorySelection(v AuthenticationTokenRepositorySelection) OptionalAuthenticationTokenRepositorySelection {
+	return OptionalAuthenticationTokenRepositorySelection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAuthenticationTokenRepositorySelection is generic valiant of AuthenticationTokenRepositorySelection.
+type OptionalAuthenticationTokenRepositorySelection struct {
+	Value AuthenticationTokenRepositorySelection
+	Set   bool
+}
+
+// IsSet returns true if OptionalAuthenticationTokenRepositorySelection was set.
+func (o OptionalAuthenticationTokenRepositorySelection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAuthenticationTokenRepositorySelection) Reset() {
+	var v AuthenticationTokenRepositorySelection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAuthenticationTokenRepositorySelection) SetTo(v AuthenticationTokenRepositorySelection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAuthenticationTokenRepositorySelection) Get() (v AuthenticationTokenRepositorySelection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalAuthorAssociation with value set to v.
+func NewOptionalAuthorAssociation(v AuthorAssociation) OptionalAuthorAssociation {
+	return OptionalAuthorAssociation{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalAuthorAssociation is generic valiant of AuthorAssociation.
+type OptionalAuthorAssociation struct {
+	Value AuthorAssociation
+	Set   bool
+}
+
+// IsSet returns true if OptionalAuthorAssociation was set.
+func (o OptionalAuthorAssociation) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalAuthorAssociation) Reset() {
+	var v AuthorAssociation
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalAuthorAssociation) SetTo(v AuthorAssociation) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalAuthorAssociation) Get() (v AuthorAssociation, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalBool with value set to v.
+func NewOptionalBool(v bool) OptionalBool {
+	return OptionalBool{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalBool is generic valiant of bool.
+type OptionalBool struct {
+	Value bool
+	Set   bool
+}
+
+// IsSet returns true if OptionalBool was set.
+func (o OptionalBool) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalBool) Reset() {
+	var v bool
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalBool) SetTo(v bool) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalBool) Get() (v bool, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalBranchProtection with value set to v.
+func NewOptionalBranchProtection(v BranchProtection) OptionalBranchProtection {
+	return OptionalBranchProtection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalBranchProtection is generic valiant of BranchProtection.
+type OptionalBranchProtection struct {
+	Value BranchProtection
+	Set   bool
+}
+
+// IsSet returns true if OptionalBranchProtection was set.
+func (o OptionalBranchProtection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalBranchProtection) Reset() {
+	var v BranchProtection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalBranchProtection) SetTo(v BranchProtection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalBranchProtection) Get() (v BranchProtection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalBranchProtectionAllowDeletions with value set to v.
+func NewOptionalBranchProtectionAllowDeletions(v BranchProtectionAllowDeletions) OptionalBranchProtectionAllowDeletions {
+	return OptionalBranchProtectionAllowDeletions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalBranchProtectionAllowDeletions is generic valiant of BranchProtectionAllowDeletions.
+type OptionalBranchProtectionAllowDeletions struct {
+	Value BranchProtectionAllowDeletions
+	Set   bool
+}
+
+// IsSet returns true if OptionalBranchProtectionAllowDeletions was set.
+func (o OptionalBranchProtectionAllowDeletions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalBranchProtectionAllowDeletions) Reset() {
+	var v BranchProtectionAllowDeletions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalBranchProtectionAllowDeletions) SetTo(v BranchProtectionAllowDeletions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalBranchProtectionAllowDeletions) Get() (v BranchProtectionAllowDeletions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalBranchProtectionAllowForcePushes with value set to v.
+func NewOptionalBranchProtectionAllowForcePushes(v BranchProtectionAllowForcePushes) OptionalBranchProtectionAllowForcePushes {
+	return OptionalBranchProtectionAllowForcePushes{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalBranchProtectionAllowForcePushes is generic valiant of BranchProtectionAllowForcePushes.
+type OptionalBranchProtectionAllowForcePushes struct {
+	Value BranchProtectionAllowForcePushes
+	Set   bool
+}
+
+// IsSet returns true if OptionalBranchProtectionAllowForcePushes was set.
+func (o OptionalBranchProtectionAllowForcePushes) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalBranchProtectionAllowForcePushes) Reset() {
+	var v BranchProtectionAllowForcePushes
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalBranchProtectionAllowForcePushes) SetTo(v BranchProtectionAllowForcePushes) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalBranchProtectionAllowForcePushes) Get() (v BranchProtectionAllowForcePushes, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalBranchProtectionRequiredConversationResolution with value set to v.
+func NewOptionalBranchProtectionRequiredConversationResolution(v BranchProtectionRequiredConversationResolution) OptionalBranchProtectionRequiredConversationResolution {
+	return OptionalBranchProtectionRequiredConversationResolution{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalBranchProtectionRequiredConversationResolution is generic valiant of BranchProtectionRequiredConversationResolution.
+type OptionalBranchProtectionRequiredConversationResolution struct {
+	Value BranchProtectionRequiredConversationResolution
+	Set   bool
+}
+
+// IsSet returns true if OptionalBranchProtectionRequiredConversationResolution was set.
+func (o OptionalBranchProtectionRequiredConversationResolution) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalBranchProtectionRequiredConversationResolution) Reset() {
+	var v BranchProtectionRequiredConversationResolution
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalBranchProtectionRequiredConversationResolution) SetTo(v BranchProtectionRequiredConversationResolution) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalBranchProtectionRequiredConversationResolution) Get() (v BranchProtectionRequiredConversationResolution, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalBranchProtectionRequiredLinearHistory with value set to v.
+func NewOptionalBranchProtectionRequiredLinearHistory(v BranchProtectionRequiredLinearHistory) OptionalBranchProtectionRequiredLinearHistory {
+	return OptionalBranchProtectionRequiredLinearHistory{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalBranchProtectionRequiredLinearHistory is generic valiant of BranchProtectionRequiredLinearHistory.
+type OptionalBranchProtectionRequiredLinearHistory struct {
+	Value BranchProtectionRequiredLinearHistory
+	Set   bool
+}
+
+// IsSet returns true if OptionalBranchProtectionRequiredLinearHistory was set.
+func (o OptionalBranchProtectionRequiredLinearHistory) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalBranchProtectionRequiredLinearHistory) Reset() {
+	var v BranchProtectionRequiredLinearHistory
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalBranchProtectionRequiredLinearHistory) SetTo(v BranchProtectionRequiredLinearHistory) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalBranchProtectionRequiredLinearHistory) Get() (v BranchProtectionRequiredLinearHistory, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalBranchProtectionRequiredSignatures with value set to v.
+func NewOptionalBranchProtectionRequiredSignatures(v BranchProtectionRequiredSignatures) OptionalBranchProtectionRequiredSignatures {
+	return OptionalBranchProtectionRequiredSignatures{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalBranchProtectionRequiredSignatures is generic valiant of BranchProtectionRequiredSignatures.
+type OptionalBranchProtectionRequiredSignatures struct {
+	Value BranchProtectionRequiredSignatures
+	Set   bool
+}
+
+// IsSet returns true if OptionalBranchProtectionRequiredSignatures was set.
+func (o OptionalBranchProtectionRequiredSignatures) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalBranchProtectionRequiredSignatures) Reset() {
+	var v BranchProtectionRequiredSignatures
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalBranchProtectionRequiredSignatures) SetTo(v BranchProtectionRequiredSignatures) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalBranchProtectionRequiredSignatures) Get() (v BranchProtectionRequiredSignatures, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalBranchProtectionRequiredStatusChecks with value set to v.
+func NewOptionalBranchProtectionRequiredStatusChecks(v BranchProtectionRequiredStatusChecks) OptionalBranchProtectionRequiredStatusChecks {
+	return OptionalBranchProtectionRequiredStatusChecks{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalBranchProtectionRequiredStatusChecks is generic valiant of BranchProtectionRequiredStatusChecks.
+type OptionalBranchProtectionRequiredStatusChecks struct {
+	Value BranchProtectionRequiredStatusChecks
+	Set   bool
+}
+
+// IsSet returns true if OptionalBranchProtectionRequiredStatusChecks was set.
+func (o OptionalBranchProtectionRequiredStatusChecks) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalBranchProtectionRequiredStatusChecks) Reset() {
+	var v BranchProtectionRequiredStatusChecks
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalBranchProtectionRequiredStatusChecks) SetTo(v BranchProtectionRequiredStatusChecks) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalBranchProtectionRequiredStatusChecks) Get() (v BranchProtectionRequiredStatusChecks, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalBranchRestrictionPolicy with value set to v.
+func NewOptionalBranchRestrictionPolicy(v BranchRestrictionPolicy) OptionalBranchRestrictionPolicy {
+	return OptionalBranchRestrictionPolicy{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalBranchRestrictionPolicy is generic valiant of BranchRestrictionPolicy.
+type OptionalBranchRestrictionPolicy struct {
+	Value BranchRestrictionPolicy
+	Set   bool
+}
+
+// IsSet returns true if OptionalBranchRestrictionPolicy was set.
+func (o OptionalBranchRestrictionPolicy) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalBranchRestrictionPolicy) Reset() {
+	var v BranchRestrictionPolicy
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalBranchRestrictionPolicy) SetTo(v BranchRestrictionPolicy) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalBranchRestrictionPolicy) Get() (v BranchRestrictionPolicy, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalBranchRestrictionPolicyAppsItemOwner with value set to v.
+func NewOptionalBranchRestrictionPolicyAppsItemOwner(v BranchRestrictionPolicyAppsItemOwner) OptionalBranchRestrictionPolicyAppsItemOwner {
+	return OptionalBranchRestrictionPolicyAppsItemOwner{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalBranchRestrictionPolicyAppsItemOwner is generic valiant of BranchRestrictionPolicyAppsItemOwner.
+type OptionalBranchRestrictionPolicyAppsItemOwner struct {
+	Value BranchRestrictionPolicyAppsItemOwner
+	Set   bool
+}
+
+// IsSet returns true if OptionalBranchRestrictionPolicyAppsItemOwner was set.
+func (o OptionalBranchRestrictionPolicyAppsItemOwner) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalBranchRestrictionPolicyAppsItemOwner) Reset() {
+	var v BranchRestrictionPolicyAppsItemOwner
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalBranchRestrictionPolicyAppsItemOwner) SetTo(v BranchRestrictionPolicyAppsItemOwner) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalBranchRestrictionPolicyAppsItemOwner) Get() (v BranchRestrictionPolicyAppsItemOwner, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalBranchRestrictionPolicyAppsItemPermissions with value set to v.
+func NewOptionalBranchRestrictionPolicyAppsItemPermissions(v BranchRestrictionPolicyAppsItemPermissions) OptionalBranchRestrictionPolicyAppsItemPermissions {
+	return OptionalBranchRestrictionPolicyAppsItemPermissions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalBranchRestrictionPolicyAppsItemPermissions is generic valiant of BranchRestrictionPolicyAppsItemPermissions.
+type OptionalBranchRestrictionPolicyAppsItemPermissions struct {
+	Value BranchRestrictionPolicyAppsItemPermissions
+	Set   bool
+}
+
+// IsSet returns true if OptionalBranchRestrictionPolicyAppsItemPermissions was set.
+func (o OptionalBranchRestrictionPolicyAppsItemPermissions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalBranchRestrictionPolicyAppsItemPermissions) Reset() {
+	var v BranchRestrictionPolicyAppsItemPermissions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalBranchRestrictionPolicyAppsItemPermissions) SetTo(v BranchRestrictionPolicyAppsItemPermissions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalBranchRestrictionPolicyAppsItemPermissions) Get() (v BranchRestrictionPolicyAppsItemPermissions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalCodeOfConduct with value set to v.
+func NewOptionalCodeOfConduct(v CodeOfConduct) OptionalCodeOfConduct {
+	return OptionalCodeOfConduct{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalCodeOfConduct is generic valiant of CodeOfConduct.
+type OptionalCodeOfConduct struct {
+	Value CodeOfConduct
+	Set   bool
+}
+
+// IsSet returns true if OptionalCodeOfConduct was set.
+func (o OptionalCodeOfConduct) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalCodeOfConduct) Reset() {
+	var v CodeOfConduct
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalCodeOfConduct) SetTo(v CodeOfConduct) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalCodeOfConduct) Get() (v CodeOfConduct, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalCodeOfConductSimple with value set to v.
+func NewOptionalCodeOfConductSimple(v CodeOfConductSimple) OptionalCodeOfConductSimple {
+	return OptionalCodeOfConductSimple{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalCodeOfConductSimple is generic valiant of CodeOfConductSimple.
+type OptionalCodeOfConductSimple struct {
+	Value CodeOfConductSimple
+	Set   bool
+}
+
+// IsSet returns true if OptionalCodeOfConductSimple was set.
+func (o OptionalCodeOfConductSimple) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalCodeOfConductSimple) Reset() {
+	var v CodeOfConductSimple
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalCodeOfConductSimple) SetTo(v CodeOfConductSimple) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalCodeOfConductSimple) Get() (v CodeOfConductSimple, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalCodeScanningAlertDismissedReason with value set to v.
+func NewOptionalCodeScanningAlertDismissedReason(v CodeScanningAlertDismissedReason) OptionalCodeScanningAlertDismissedReason {
+	return OptionalCodeScanningAlertDismissedReason{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalCodeScanningAlertDismissedReason is generic valiant of CodeScanningAlertDismissedReason.
+type OptionalCodeScanningAlertDismissedReason struct {
+	Value CodeScanningAlertDismissedReason
+	Set   bool
+}
+
+// IsSet returns true if OptionalCodeScanningAlertDismissedReason was set.
+func (o OptionalCodeScanningAlertDismissedReason) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalCodeScanningAlertDismissedReason) Reset() {
+	var v CodeScanningAlertDismissedReason
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalCodeScanningAlertDismissedReason) SetTo(v CodeScanningAlertDismissedReason) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalCodeScanningAlertDismissedReason) Get() (v CodeScanningAlertDismissedReason, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalCodeScanningAlertInstanceMessage with value set to v.
+func NewOptionalCodeScanningAlertInstanceMessage(v CodeScanningAlertInstanceMessage) OptionalCodeScanningAlertInstanceMessage {
+	return OptionalCodeScanningAlertInstanceMessage{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalCodeScanningAlertInstanceMessage is generic valiant of CodeScanningAlertInstanceMessage.
+type OptionalCodeScanningAlertInstanceMessage struct {
+	Value CodeScanningAlertInstanceMessage
+	Set   bool
+}
+
+// IsSet returns true if OptionalCodeScanningAlertInstanceMessage was set.
+func (o OptionalCodeScanningAlertInstanceMessage) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalCodeScanningAlertInstanceMessage) Reset() {
+	var v CodeScanningAlertInstanceMessage
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalCodeScanningAlertInstanceMessage) SetTo(v CodeScanningAlertInstanceMessage) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalCodeScanningAlertInstanceMessage) Get() (v CodeScanningAlertInstanceMessage, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalCodeScanningAlertLocation with value set to v.
+func NewOptionalCodeScanningAlertLocation(v CodeScanningAlertLocation) OptionalCodeScanningAlertLocation {
+	return OptionalCodeScanningAlertLocation{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalCodeScanningAlertLocation is generic valiant of CodeScanningAlertLocation.
+type OptionalCodeScanningAlertLocation struct {
+	Value CodeScanningAlertLocation
+	Set   bool
+}
+
+// IsSet returns true if OptionalCodeScanningAlertLocation was set.
+func (o OptionalCodeScanningAlertLocation) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalCodeScanningAlertLocation) Reset() {
+	var v CodeScanningAlertLocation
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalCodeScanningAlertLocation) SetTo(v CodeScanningAlertLocation) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalCodeScanningAlertLocation) Get() (v CodeScanningAlertLocation, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalCodeScanningAlertState with value set to v.
+func NewOptionalCodeScanningAlertState(v CodeScanningAlertState) OptionalCodeScanningAlertState {
+	return OptionalCodeScanningAlertState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalCodeScanningAlertState is generic valiant of CodeScanningAlertState.
+type OptionalCodeScanningAlertState struct {
+	Value CodeScanningAlertState
+	Set   bool
+}
+
+// IsSet returns true if OptionalCodeScanningAlertState was set.
+func (o OptionalCodeScanningAlertState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalCodeScanningAlertState) Reset() {
+	var v CodeScanningAlertState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalCodeScanningAlertState) SetTo(v CodeScanningAlertState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalCodeScanningAlertState) Get() (v CodeScanningAlertState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalCodeScanningSarifsStatusProcessingStatus with value set to v.
+func NewOptionalCodeScanningSarifsStatusProcessingStatus(v CodeScanningSarifsStatusProcessingStatus) OptionalCodeScanningSarifsStatusProcessingStatus {
+	return OptionalCodeScanningSarifsStatusProcessingStatus{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalCodeScanningSarifsStatusProcessingStatus is generic valiant of CodeScanningSarifsStatusProcessingStatus.
+type OptionalCodeScanningSarifsStatusProcessingStatus struct {
+	Value CodeScanningSarifsStatusProcessingStatus
+	Set   bool
+}
+
+// IsSet returns true if OptionalCodeScanningSarifsStatusProcessingStatus was set.
+func (o OptionalCodeScanningSarifsStatusProcessingStatus) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalCodeScanningSarifsStatusProcessingStatus) Reset() {
+	var v CodeScanningSarifsStatusProcessingStatus
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalCodeScanningSarifsStatusProcessingStatus) SetTo(v CodeScanningSarifsStatusProcessingStatus) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalCodeScanningSarifsStatusProcessingStatus) Get() (v CodeScanningSarifsStatusProcessingStatus, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalCommitStats with value set to v.
+func NewOptionalCommitStats(v CommitStats) OptionalCommitStats {
+	return OptionalCommitStats{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalCommitStats is generic valiant of CommitStats.
+type OptionalCommitStats struct {
+	Value CommitStats
+	Set   bool
+}
+
+// IsSet returns true if OptionalCommitStats was set.
+func (o OptionalCommitStats) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalCommitStats) Reset() {
+	var v CommitStats
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalCommitStats) SetTo(v CommitStats) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalCommitStats) Get() (v CommitStats, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalDeploymentBranchPolicy with value set to v.
+func NewOptionalDeploymentBranchPolicy(v DeploymentBranchPolicy) OptionalDeploymentBranchPolicy {
+	return OptionalDeploymentBranchPolicy{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalDeploymentBranchPolicy is generic valiant of DeploymentBranchPolicy.
+type OptionalDeploymentBranchPolicy struct {
+	Value DeploymentBranchPolicy
+	Set   bool
+}
+
+// IsSet returns true if OptionalDeploymentBranchPolicy was set.
+func (o OptionalDeploymentBranchPolicy) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalDeploymentBranchPolicy) Reset() {
+	var v DeploymentBranchPolicy
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalDeploymentBranchPolicy) SetTo(v DeploymentBranchPolicy) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalDeploymentBranchPolicy) Get() (v DeploymentBranchPolicy, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalDeploymentReviewerType with value set to v.
+func NewOptionalDeploymentReviewerType(v DeploymentReviewerType) OptionalDeploymentReviewerType {
+	return OptionalDeploymentReviewerType{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalDeploymentReviewerType is generic valiant of DeploymentReviewerType.
+type OptionalDeploymentReviewerType struct {
+	Value DeploymentReviewerType
+	Set   bool
+}
+
+// IsSet returns true if OptionalDeploymentReviewerType was set.
+func (o OptionalDeploymentReviewerType) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalDeploymentReviewerType) Reset() {
+	var v DeploymentReviewerType
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalDeploymentReviewerType) SetTo(v DeploymentReviewerType) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalDeploymentReviewerType) Get() (v DeploymentReviewerType, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalDeploymentSimple with value set to v.
+func NewOptionalDeploymentSimple(v DeploymentSimple) OptionalDeploymentSimple {
+	return OptionalDeploymentSimple{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalDeploymentSimple is generic valiant of DeploymentSimple.
+type OptionalDeploymentSimple struct {
+	Value DeploymentSimple
+	Set   bool
+}
+
+// IsSet returns true if OptionalDeploymentSimple was set.
+func (o OptionalDeploymentSimple) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalDeploymentSimple) Reset() {
+	var v DeploymentSimple
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalDeploymentSimple) SetTo(v DeploymentSimple) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalDeploymentSimple) Get() (v DeploymentSimple, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility with value set to v.
+func NewOptionalEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility(v EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) OptionalEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility {
+	return OptionalEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility is generic valiant of EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility.
+type OptionalEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility struct {
+	Value EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility
+	Set   bool
+}
+
+// IsSet returns true if OptionalEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility was set.
+func (o OptionalEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) Reset() {
+	var v EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) SetTo(v EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) Get() (v EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility with value set to v.
+func NewOptionalEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility(v EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) OptionalEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility {
+	return OptionalEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility is generic valiant of EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility.
+type OptionalEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility struct {
+	Value EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility
+	Set   bool
+}
+
+// IsSet returns true if OptionalEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility was set.
+func (o OptionalEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) Reset() {
+	var v EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) SetTo(v EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) Get() (v EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalFileCommitCommitAuthor with value set to v.
+func NewOptionalFileCommitCommitAuthor(v FileCommitCommitAuthor) OptionalFileCommitCommitAuthor {
+	return OptionalFileCommitCommitAuthor{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalFileCommitCommitAuthor is generic valiant of FileCommitCommitAuthor.
+type OptionalFileCommitCommitAuthor struct {
+	Value FileCommitCommitAuthor
+	Set   bool
+}
+
+// IsSet returns true if OptionalFileCommitCommitAuthor was set.
+func (o OptionalFileCommitCommitAuthor) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalFileCommitCommitAuthor) Reset() {
+	var v FileCommitCommitAuthor
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalFileCommitCommitAuthor) SetTo(v FileCommitCommitAuthor) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalFileCommitCommitAuthor) Get() (v FileCommitCommitAuthor, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalFileCommitCommitCommitter with value set to v.
+func NewOptionalFileCommitCommitCommitter(v FileCommitCommitCommitter) OptionalFileCommitCommitCommitter {
+	return OptionalFileCommitCommitCommitter{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalFileCommitCommitCommitter is generic valiant of FileCommitCommitCommitter.
+type OptionalFileCommitCommitCommitter struct {
+	Value FileCommitCommitCommitter
+	Set   bool
+}
+
+// IsSet returns true if OptionalFileCommitCommitCommitter was set.
+func (o OptionalFileCommitCommitCommitter) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalFileCommitCommitCommitter) Reset() {
+	var v FileCommitCommitCommitter
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalFileCommitCommitCommitter) SetTo(v FileCommitCommitCommitter) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalFileCommitCommitCommitter) Get() (v FileCommitCommitCommitter, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalFileCommitCommitTree with value set to v.
+func NewOptionalFileCommitCommitTree(v FileCommitCommitTree) OptionalFileCommitCommitTree {
+	return OptionalFileCommitCommitTree{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalFileCommitCommitTree is generic valiant of FileCommitCommitTree.
+type OptionalFileCommitCommitTree struct {
+	Value FileCommitCommitTree
+	Set   bool
+}
+
+// IsSet returns true if OptionalFileCommitCommitTree was set.
+func (o OptionalFileCommitCommitTree) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalFileCommitCommitTree) Reset() {
+	var v FileCommitCommitTree
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalFileCommitCommitTree) SetTo(v FileCommitCommitTree) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalFileCommitCommitTree) Get() (v FileCommitCommitTree, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalFileCommitCommitVerification with value set to v.
+func NewOptionalFileCommitCommitVerification(v FileCommitCommitVerification) OptionalFileCommitCommitVerification {
+	return OptionalFileCommitCommitVerification{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalFileCommitCommitVerification is generic valiant of FileCommitCommitVerification.
+type OptionalFileCommitCommitVerification struct {
+	Value FileCommitCommitVerification
+	Set   bool
+}
+
+// IsSet returns true if OptionalFileCommitCommitVerification was set.
+func (o OptionalFileCommitCommitVerification) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalFileCommitCommitVerification) Reset() {
+	var v FileCommitCommitVerification
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalFileCommitCommitVerification) SetTo(v FileCommitCommitVerification) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalFileCommitCommitVerification) Get() (v FileCommitCommitVerification, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalFileCommitContentLinks with value set to v.
+func NewOptionalFileCommitContentLinks(v FileCommitContentLinks) OptionalFileCommitContentLinks {
+	return OptionalFileCommitContentLinks{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalFileCommitContentLinks is generic valiant of FileCommitContentLinks.
+type OptionalFileCommitContentLinks struct {
+	Value FileCommitContentLinks
+	Set   bool
+}
+
+// IsSet returns true if OptionalFileCommitContentLinks was set.
+func (o OptionalFileCommitContentLinks) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalFileCommitContentLinks) Reset() {
+	var v FileCommitContentLinks
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalFileCommitContentLinks) SetTo(v FileCommitContentLinks) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalFileCommitContentLinks) Get() (v FileCommitContentLinks, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalFloat64 with value set to v.
+func NewOptionalFloat64(v float64) OptionalFloat64 {
+	return OptionalFloat64{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalFloat64 is generic valiant of float64.
+type OptionalFloat64 struct {
+	Value float64
+	Set   bool
+}
+
+// IsSet returns true if OptionalFloat64 was set.
+func (o OptionalFloat64) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalFloat64) Reset() {
+	var v float64
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalFloat64) SetTo(v float64) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalFloat64) Get() (v float64, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalForbiddenGistBlock with value set to v.
+func NewOptionalForbiddenGistBlock(v ForbiddenGistBlock) OptionalForbiddenGistBlock {
+	return OptionalForbiddenGistBlock{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalForbiddenGistBlock is generic valiant of ForbiddenGistBlock.
+type OptionalForbiddenGistBlock struct {
+	Value ForbiddenGistBlock
+	Set   bool
+}
+
+// IsSet returns true if OptionalForbiddenGistBlock was set.
+func (o OptionalForbiddenGistBlock) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalForbiddenGistBlock) Reset() {
+	var v ForbiddenGistBlock
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalForbiddenGistBlock) SetTo(v ForbiddenGistBlock) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalForbiddenGistBlock) Get() (v ForbiddenGistBlock, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalFullRepositoryPermissions with value set to v.
+func NewOptionalFullRepositoryPermissions(v FullRepositoryPermissions) OptionalFullRepositoryPermissions {
+	return OptionalFullRepositoryPermissions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalFullRepositoryPermissions is generic valiant of FullRepositoryPermissions.
+type OptionalFullRepositoryPermissions struct {
+	Value FullRepositoryPermissions
+	Set   bool
+}
+
+// IsSet returns true if OptionalFullRepositoryPermissions was set.
+func (o OptionalFullRepositoryPermissions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalFullRepositoryPermissions) Reset() {
+	var v FullRepositoryPermissions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalFullRepositoryPermissions) SetTo(v FullRepositoryPermissions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalFullRepositoryPermissions) Get() (v FullRepositoryPermissions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalFullRepositorySecurityAndAnalysisAdvancedSecurity with value set to v.
+func NewOptionalFullRepositorySecurityAndAnalysisAdvancedSecurity(v FullRepositorySecurityAndAnalysisAdvancedSecurity) OptionalFullRepositorySecurityAndAnalysisAdvancedSecurity {
+	return OptionalFullRepositorySecurityAndAnalysisAdvancedSecurity{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalFullRepositorySecurityAndAnalysisAdvancedSecurity is generic valiant of FullRepositorySecurityAndAnalysisAdvancedSecurity.
+type OptionalFullRepositorySecurityAndAnalysisAdvancedSecurity struct {
+	Value FullRepositorySecurityAndAnalysisAdvancedSecurity
+	Set   bool
+}
+
+// IsSet returns true if OptionalFullRepositorySecurityAndAnalysisAdvancedSecurity was set.
+func (o OptionalFullRepositorySecurityAndAnalysisAdvancedSecurity) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalFullRepositorySecurityAndAnalysisAdvancedSecurity) Reset() {
+	var v FullRepositorySecurityAndAnalysisAdvancedSecurity
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalFullRepositorySecurityAndAnalysisAdvancedSecurity) SetTo(v FullRepositorySecurityAndAnalysisAdvancedSecurity) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalFullRepositorySecurityAndAnalysisAdvancedSecurity) Get() (v FullRepositorySecurityAndAnalysisAdvancedSecurity, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalFullRepositorySecurityAndAnalysisAdvancedSecurityStatus with value set to v.
+func NewOptionalFullRepositorySecurityAndAnalysisAdvancedSecurityStatus(v FullRepositorySecurityAndAnalysisAdvancedSecurityStatus) OptionalFullRepositorySecurityAndAnalysisAdvancedSecurityStatus {
+	return OptionalFullRepositorySecurityAndAnalysisAdvancedSecurityStatus{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalFullRepositorySecurityAndAnalysisAdvancedSecurityStatus is generic valiant of FullRepositorySecurityAndAnalysisAdvancedSecurityStatus.
+type OptionalFullRepositorySecurityAndAnalysisAdvancedSecurityStatus struct {
+	Value FullRepositorySecurityAndAnalysisAdvancedSecurityStatus
+	Set   bool
+}
+
+// IsSet returns true if OptionalFullRepositorySecurityAndAnalysisAdvancedSecurityStatus was set.
+func (o OptionalFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) Reset() {
+	var v FullRepositorySecurityAndAnalysisAdvancedSecurityStatus
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) SetTo(v FullRepositorySecurityAndAnalysisAdvancedSecurityStatus) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) Get() (v FullRepositorySecurityAndAnalysisAdvancedSecurityStatus, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalFullRepositorySecurityAndAnalysisSecretScanning with value set to v.
+func NewOptionalFullRepositorySecurityAndAnalysisSecretScanning(v FullRepositorySecurityAndAnalysisSecretScanning) OptionalFullRepositorySecurityAndAnalysisSecretScanning {
+	return OptionalFullRepositorySecurityAndAnalysisSecretScanning{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalFullRepositorySecurityAndAnalysisSecretScanning is generic valiant of FullRepositorySecurityAndAnalysisSecretScanning.
+type OptionalFullRepositorySecurityAndAnalysisSecretScanning struct {
+	Value FullRepositorySecurityAndAnalysisSecretScanning
+	Set   bool
+}
+
+// IsSet returns true if OptionalFullRepositorySecurityAndAnalysisSecretScanning was set.
+func (o OptionalFullRepositorySecurityAndAnalysisSecretScanning) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalFullRepositorySecurityAndAnalysisSecretScanning) Reset() {
+	var v FullRepositorySecurityAndAnalysisSecretScanning
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalFullRepositorySecurityAndAnalysisSecretScanning) SetTo(v FullRepositorySecurityAndAnalysisSecretScanning) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalFullRepositorySecurityAndAnalysisSecretScanning) Get() (v FullRepositorySecurityAndAnalysisSecretScanning, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalFullRepositorySecurityAndAnalysisSecretScanningStatus with value set to v.
+func NewOptionalFullRepositorySecurityAndAnalysisSecretScanningStatus(v FullRepositorySecurityAndAnalysisSecretScanningStatus) OptionalFullRepositorySecurityAndAnalysisSecretScanningStatus {
+	return OptionalFullRepositorySecurityAndAnalysisSecretScanningStatus{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalFullRepositorySecurityAndAnalysisSecretScanningStatus is generic valiant of FullRepositorySecurityAndAnalysisSecretScanningStatus.
+type OptionalFullRepositorySecurityAndAnalysisSecretScanningStatus struct {
+	Value FullRepositorySecurityAndAnalysisSecretScanningStatus
+	Set   bool
+}
+
+// IsSet returns true if OptionalFullRepositorySecurityAndAnalysisSecretScanningStatus was set.
+func (o OptionalFullRepositorySecurityAndAnalysisSecretScanningStatus) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalFullRepositorySecurityAndAnalysisSecretScanningStatus) Reset() {
+	var v FullRepositorySecurityAndAnalysisSecretScanningStatus
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalFullRepositorySecurityAndAnalysisSecretScanningStatus) SetTo(v FullRepositorySecurityAndAnalysisSecretScanningStatus) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalFullRepositorySecurityAndAnalysisSecretScanningStatus) Get() (v FullRepositorySecurityAndAnalysisSecretScanningStatus, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalGistHistoryChangeStatus with value set to v.
+func NewOptionalGistHistoryChangeStatus(v GistHistoryChangeStatus) OptionalGistHistoryChangeStatus {
+	return OptionalGistHistoryChangeStatus{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalGistHistoryChangeStatus is generic valiant of GistHistoryChangeStatus.
+type OptionalGistHistoryChangeStatus struct {
+	Value GistHistoryChangeStatus
+	Set   bool
+}
+
+// IsSet returns true if OptionalGistHistoryChangeStatus was set.
+func (o OptionalGistHistoryChangeStatus) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalGistHistoryChangeStatus) Reset() {
+	var v GistHistoryChangeStatus
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalGistHistoryChangeStatus) SetTo(v GistHistoryChangeStatus) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalGistHistoryChangeStatus) Get() (v GistHistoryChangeStatus, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalGitCreateCommitApplicationJSONRequestAuthor with value set to v.
+func NewOptionalGitCreateCommitApplicationJSONRequestAuthor(v GitCreateCommitApplicationJSONRequestAuthor) OptionalGitCreateCommitApplicationJSONRequestAuthor {
+	return OptionalGitCreateCommitApplicationJSONRequestAuthor{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalGitCreateCommitApplicationJSONRequestAuthor is generic valiant of GitCreateCommitApplicationJSONRequestAuthor.
+type OptionalGitCreateCommitApplicationJSONRequestAuthor struct {
+	Value GitCreateCommitApplicationJSONRequestAuthor
+	Set   bool
+}
+
+// IsSet returns true if OptionalGitCreateCommitApplicationJSONRequestAuthor was set.
+func (o OptionalGitCreateCommitApplicationJSONRequestAuthor) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalGitCreateCommitApplicationJSONRequestAuthor) Reset() {
+	var v GitCreateCommitApplicationJSONRequestAuthor
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalGitCreateCommitApplicationJSONRequestAuthor) SetTo(v GitCreateCommitApplicationJSONRequestAuthor) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalGitCreateCommitApplicationJSONRequestAuthor) Get() (v GitCreateCommitApplicationJSONRequestAuthor, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalGitCreateCommitApplicationJSONRequestCommitter with value set to v.
+func NewOptionalGitCreateCommitApplicationJSONRequestCommitter(v GitCreateCommitApplicationJSONRequestCommitter) OptionalGitCreateCommitApplicationJSONRequestCommitter {
+	return OptionalGitCreateCommitApplicationJSONRequestCommitter{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalGitCreateCommitApplicationJSONRequestCommitter is generic valiant of GitCreateCommitApplicationJSONRequestCommitter.
+type OptionalGitCreateCommitApplicationJSONRequestCommitter struct {
+	Value GitCreateCommitApplicationJSONRequestCommitter
+	Set   bool
+}
+
+// IsSet returns true if OptionalGitCreateCommitApplicationJSONRequestCommitter was set.
+func (o OptionalGitCreateCommitApplicationJSONRequestCommitter) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalGitCreateCommitApplicationJSONRequestCommitter) Reset() {
+	var v GitCreateCommitApplicationJSONRequestCommitter
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalGitCreateCommitApplicationJSONRequestCommitter) SetTo(v GitCreateCommitApplicationJSONRequestCommitter) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalGitCreateCommitApplicationJSONRequestCommitter) Get() (v GitCreateCommitApplicationJSONRequestCommitter, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalGitCreateTagApplicationJSONRequestTagger with value set to v.
+func NewOptionalGitCreateTagApplicationJSONRequestTagger(v GitCreateTagApplicationJSONRequestTagger) OptionalGitCreateTagApplicationJSONRequestTagger {
+	return OptionalGitCreateTagApplicationJSONRequestTagger{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalGitCreateTagApplicationJSONRequestTagger is generic valiant of GitCreateTagApplicationJSONRequestTagger.
+type OptionalGitCreateTagApplicationJSONRequestTagger struct {
+	Value GitCreateTagApplicationJSONRequestTagger
+	Set   bool
+}
+
+// IsSet returns true if OptionalGitCreateTagApplicationJSONRequestTagger was set.
+func (o OptionalGitCreateTagApplicationJSONRequestTagger) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalGitCreateTagApplicationJSONRequestTagger) Reset() {
+	var v GitCreateTagApplicationJSONRequestTagger
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalGitCreateTagApplicationJSONRequestTagger) SetTo(v GitCreateTagApplicationJSONRequestTagger) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalGitCreateTagApplicationJSONRequestTagger) Get() (v GitCreateTagApplicationJSONRequestTagger, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalGitCreateTreeApplicationJSONRequestTreeItemMode with value set to v.
+func NewOptionalGitCreateTreeApplicationJSONRequestTreeItemMode(v GitCreateTreeApplicationJSONRequestTreeItemMode) OptionalGitCreateTreeApplicationJSONRequestTreeItemMode {
+	return OptionalGitCreateTreeApplicationJSONRequestTreeItemMode{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalGitCreateTreeApplicationJSONRequestTreeItemMode is generic valiant of GitCreateTreeApplicationJSONRequestTreeItemMode.
+type OptionalGitCreateTreeApplicationJSONRequestTreeItemMode struct {
+	Value GitCreateTreeApplicationJSONRequestTreeItemMode
+	Set   bool
+}
+
+// IsSet returns true if OptionalGitCreateTreeApplicationJSONRequestTreeItemMode was set.
+func (o OptionalGitCreateTreeApplicationJSONRequestTreeItemMode) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalGitCreateTreeApplicationJSONRequestTreeItemMode) Reset() {
+	var v GitCreateTreeApplicationJSONRequestTreeItemMode
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalGitCreateTreeApplicationJSONRequestTreeItemMode) SetTo(v GitCreateTreeApplicationJSONRequestTreeItemMode) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalGitCreateTreeApplicationJSONRequestTreeItemMode) Get() (v GitCreateTreeApplicationJSONRequestTreeItemMode, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalGitCreateTreeApplicationJSONRequestTreeItemType with value set to v.
+func NewOptionalGitCreateTreeApplicationJSONRequestTreeItemType(v GitCreateTreeApplicationJSONRequestTreeItemType) OptionalGitCreateTreeApplicationJSONRequestTreeItemType {
+	return OptionalGitCreateTreeApplicationJSONRequestTreeItemType{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalGitCreateTreeApplicationJSONRequestTreeItemType is generic valiant of GitCreateTreeApplicationJSONRequestTreeItemType.
+type OptionalGitCreateTreeApplicationJSONRequestTreeItemType struct {
+	Value GitCreateTreeApplicationJSONRequestTreeItemType
+	Set   bool
+}
+
+// IsSet returns true if OptionalGitCreateTreeApplicationJSONRequestTreeItemType was set.
+func (o OptionalGitCreateTreeApplicationJSONRequestTreeItemType) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalGitCreateTreeApplicationJSONRequestTreeItemType) Reset() {
+	var v GitCreateTreeApplicationJSONRequestTreeItemType
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalGitCreateTreeApplicationJSONRequestTreeItemType) SetTo(v GitCreateTreeApplicationJSONRequestTreeItemType) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalGitCreateTreeApplicationJSONRequestTreeItemType) Get() (v GitCreateTreeApplicationJSONRequestTreeItemType, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalInstallationTokenRepositorySelection with value set to v.
+func NewOptionalInstallationTokenRepositorySelection(v InstallationTokenRepositorySelection) OptionalInstallationTokenRepositorySelection {
+	return OptionalInstallationTokenRepositorySelection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalInstallationTokenRepositorySelection is generic valiant of InstallationTokenRepositorySelection.
+type OptionalInstallationTokenRepositorySelection struct {
+	Value InstallationTokenRepositorySelection
+	Set   bool
+}
+
+// IsSet returns true if OptionalInstallationTokenRepositorySelection was set.
+func (o OptionalInstallationTokenRepositorySelection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalInstallationTokenRepositorySelection) Reset() {
+	var v InstallationTokenRepositorySelection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalInstallationTokenRepositorySelection) SetTo(v InstallationTokenRepositorySelection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalInstallationTokenRepositorySelection) Get() (v InstallationTokenRepositorySelection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalInt with value set to v.
+func NewOptionalInt(v int) OptionalInt {
+	return OptionalInt{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalInt is generic valiant of int.
+type OptionalInt struct {
+	Value int
+	Set   bool
+}
+
+// IsSet returns true if OptionalInt was set.
+func (o OptionalInt) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalInt) Reset() {
+	var v int
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalInt) SetTo(v int) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalInt) Get() (v int, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalInt64 with value set to v.
+func NewOptionalInt64(v int64) OptionalInt64 {
+	return OptionalInt64{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalInt64 is generic valiant of int64.
+type OptionalInt64 struct {
+	Value int64
+	Set   bool
+}
+
+// IsSet returns true if OptionalInt64 was set.
+func (o OptionalInt64) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalInt64) Reset() {
+	var v int64
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalInt64) SetTo(v int64) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalInt64) Get() (v int64, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalInteractionExpiry with value set to v.
+func NewOptionalInteractionExpiry(v InteractionExpiry) OptionalInteractionExpiry {
+	return OptionalInteractionExpiry{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalInteractionExpiry is generic valiant of InteractionExpiry.
+type OptionalInteractionExpiry struct {
+	Value InteractionExpiry
+	Set   bool
+}
+
+// IsSet returns true if OptionalInteractionExpiry was set.
+func (o OptionalInteractionExpiry) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalInteractionExpiry) Reset() {
+	var v InteractionExpiry
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalInteractionExpiry) SetTo(v InteractionExpiry) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalInteractionExpiry) Get() (v InteractionExpiry, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalIssueComment with value set to v.
+func NewOptionalIssueComment(v IssueComment) OptionalIssueComment {
+	return OptionalIssueComment{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalIssueComment is generic valiant of IssueComment.
+type OptionalIssueComment struct {
+	Value IssueComment
+	Set   bool
+}
+
+// IsSet returns true if OptionalIssueComment was set.
+func (o OptionalIssueComment) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalIssueComment) Reset() {
+	var v IssueComment
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalIssueComment) SetTo(v IssueComment) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalIssueComment) Get() (v IssueComment, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalIssueEventDismissedReview with value set to v.
+func NewOptionalIssueEventDismissedReview(v IssueEventDismissedReview) OptionalIssueEventDismissedReview {
+	return OptionalIssueEventDismissedReview{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalIssueEventDismissedReview is generic valiant of IssueEventDismissedReview.
+type OptionalIssueEventDismissedReview struct {
+	Value IssueEventDismissedReview
+	Set   bool
+}
+
+// IsSet returns true if OptionalIssueEventDismissedReview was set.
+func (o OptionalIssueEventDismissedReview) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalIssueEventDismissedReview) Reset() {
+	var v IssueEventDismissedReview
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalIssueEventDismissedReview) SetTo(v IssueEventDismissedReview) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalIssueEventDismissedReview) Get() (v IssueEventDismissedReview, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalIssueEventLabel with value set to v.
+func NewOptionalIssueEventLabel(v IssueEventLabel) OptionalIssueEventLabel {
+	return OptionalIssueEventLabel{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalIssueEventLabel is generic valiant of IssueEventLabel.
+type OptionalIssueEventLabel struct {
+	Value IssueEventLabel
+	Set   bool
+}
+
+// IsSet returns true if OptionalIssueEventLabel was set.
+func (o OptionalIssueEventLabel) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalIssueEventLabel) Reset() {
+	var v IssueEventLabel
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalIssueEventLabel) SetTo(v IssueEventLabel) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalIssueEventLabel) Get() (v IssueEventLabel, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalIssueEventMilestone with value set to v.
+func NewOptionalIssueEventMilestone(v IssueEventMilestone) OptionalIssueEventMilestone {
+	return OptionalIssueEventMilestone{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalIssueEventMilestone is generic valiant of IssueEventMilestone.
+type OptionalIssueEventMilestone struct {
+	Value IssueEventMilestone
+	Set   bool
+}
+
+// IsSet returns true if OptionalIssueEventMilestone was set.
+func (o OptionalIssueEventMilestone) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalIssueEventMilestone) Reset() {
+	var v IssueEventMilestone
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalIssueEventMilestone) SetTo(v IssueEventMilestone) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalIssueEventMilestone) Get() (v IssueEventMilestone, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalIssueEventProjectCard with value set to v.
+func NewOptionalIssueEventProjectCard(v IssueEventProjectCard) OptionalIssueEventProjectCard {
+	return OptionalIssueEventProjectCard{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalIssueEventProjectCard is generic valiant of IssueEventProjectCard.
+type OptionalIssueEventProjectCard struct {
+	Value IssueEventProjectCard
+	Set   bool
+}
+
+// IsSet returns true if OptionalIssueEventProjectCard was set.
+func (o OptionalIssueEventProjectCard) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalIssueEventProjectCard) Reset() {
+	var v IssueEventProjectCard
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalIssueEventProjectCard) SetTo(v IssueEventProjectCard) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalIssueEventProjectCard) Get() (v IssueEventProjectCard, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalIssueEventRename with value set to v.
+func NewOptionalIssueEventRename(v IssueEventRename) OptionalIssueEventRename {
+	return OptionalIssueEventRename{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalIssueEventRename is generic valiant of IssueEventRename.
+type OptionalIssueEventRename struct {
+	Value IssueEventRename
+	Set   bool
+}
+
+// IsSet returns true if OptionalIssueEventRename was set.
+func (o OptionalIssueEventRename) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalIssueEventRename) Reset() {
+	var v IssueEventRename
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalIssueEventRename) SetTo(v IssueEventRename) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalIssueEventRename) Get() (v IssueEventRename, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalIssueSimple with value set to v.
+func NewOptionalIssueSimple(v IssueSimple) OptionalIssueSimple {
+	return OptionalIssueSimple{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalIssueSimple is generic valiant of IssueSimple.
+type OptionalIssueSimple struct {
+	Value IssueSimple
+	Set   bool
+}
+
+// IsSet returns true if OptionalIssueSimple was set.
+func (o OptionalIssueSimple) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalIssueSimple) Reset() {
+	var v IssueSimple
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalIssueSimple) SetTo(v IssueSimple) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalIssueSimple) Get() (v IssueSimple, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalIssueSimplePullRequest with value set to v.
+func NewOptionalIssueSimplePullRequest(v IssueSimplePullRequest) OptionalIssueSimplePullRequest {
+	return OptionalIssueSimplePullRequest{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalIssueSimplePullRequest is generic valiant of IssueSimplePullRequest.
+type OptionalIssueSimplePullRequest struct {
+	Value IssueSimplePullRequest
+	Set   bool
+}
+
+// IsSet returns true if OptionalIssueSimplePullRequest was set.
+func (o OptionalIssueSimplePullRequest) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalIssueSimplePullRequest) Reset() {
+	var v IssueSimplePullRequest
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalIssueSimplePullRequest) SetTo(v IssueSimplePullRequest) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalIssueSimplePullRequest) Get() (v IssueSimplePullRequest, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalIssuesCreateMilestoneApplicationJSONRequestState with value set to v.
+func NewOptionalIssuesCreateMilestoneApplicationJSONRequestState(v IssuesCreateMilestoneApplicationJSONRequestState) OptionalIssuesCreateMilestoneApplicationJSONRequestState {
+	return OptionalIssuesCreateMilestoneApplicationJSONRequestState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalIssuesCreateMilestoneApplicationJSONRequestState is generic valiant of IssuesCreateMilestoneApplicationJSONRequestState.
+type OptionalIssuesCreateMilestoneApplicationJSONRequestState struct {
+	Value IssuesCreateMilestoneApplicationJSONRequestState
+	Set   bool
+}
+
+// IsSet returns true if OptionalIssuesCreateMilestoneApplicationJSONRequestState was set.
+func (o OptionalIssuesCreateMilestoneApplicationJSONRequestState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalIssuesCreateMilestoneApplicationJSONRequestState) Reset() {
+	var v IssuesCreateMilestoneApplicationJSONRequestState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalIssuesCreateMilestoneApplicationJSONRequestState) SetTo(v IssuesCreateMilestoneApplicationJSONRequestState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalIssuesCreateMilestoneApplicationJSONRequestState) Get() (v IssuesCreateMilestoneApplicationJSONRequestState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalIssuesLockApplicationJSONRequestLockReason with value set to v.
+func NewOptionalIssuesLockApplicationJSONRequestLockReason(v IssuesLockApplicationJSONRequestLockReason) OptionalIssuesLockApplicationJSONRequestLockReason {
+	return OptionalIssuesLockApplicationJSONRequestLockReason{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalIssuesLockApplicationJSONRequestLockReason is generic valiant of IssuesLockApplicationJSONRequestLockReason.
+type OptionalIssuesLockApplicationJSONRequestLockReason struct {
+	Value IssuesLockApplicationJSONRequestLockReason
+	Set   bool
+}
+
+// IsSet returns true if OptionalIssuesLockApplicationJSONRequestLockReason was set.
+func (o OptionalIssuesLockApplicationJSONRequestLockReason) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalIssuesLockApplicationJSONRequestLockReason) Reset() {
+	var v IssuesLockApplicationJSONRequestLockReason
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalIssuesLockApplicationJSONRequestLockReason) SetTo(v IssuesLockApplicationJSONRequestLockReason) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalIssuesLockApplicationJSONRequestLockReason) Get() (v IssuesLockApplicationJSONRequestLockReason, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalIssuesUpdateMilestoneApplicationJSONRequestState with value set to v.
+func NewOptionalIssuesUpdateMilestoneApplicationJSONRequestState(v IssuesUpdateMilestoneApplicationJSONRequestState) OptionalIssuesUpdateMilestoneApplicationJSONRequestState {
+	return OptionalIssuesUpdateMilestoneApplicationJSONRequestState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalIssuesUpdateMilestoneApplicationJSONRequestState is generic valiant of IssuesUpdateMilestoneApplicationJSONRequestState.
+type OptionalIssuesUpdateMilestoneApplicationJSONRequestState struct {
+	Value IssuesUpdateMilestoneApplicationJSONRequestState
+	Set   bool
+}
+
+// IsSet returns true if OptionalIssuesUpdateMilestoneApplicationJSONRequestState was set.
+func (o OptionalIssuesUpdateMilestoneApplicationJSONRequestState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalIssuesUpdateMilestoneApplicationJSONRequestState) Reset() {
+	var v IssuesUpdateMilestoneApplicationJSONRequestState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalIssuesUpdateMilestoneApplicationJSONRequestState) SetTo(v IssuesUpdateMilestoneApplicationJSONRequestState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalIssuesUpdateMilestoneApplicationJSONRequestState) Get() (v IssuesUpdateMilestoneApplicationJSONRequestState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalLinkWithType with value set to v.
+func NewOptionalLinkWithType(v LinkWithType) OptionalLinkWithType {
+	return OptionalLinkWithType{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalLinkWithType is generic valiant of LinkWithType.
+type OptionalLinkWithType struct {
+	Value LinkWithType
+	Set   bool
+}
+
+// IsSet returns true if OptionalLinkWithType was set.
+func (o OptionalLinkWithType) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalLinkWithType) Reset() {
+	var v LinkWithType
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalLinkWithType) SetTo(v LinkWithType) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalLinkWithType) Get() (v LinkWithType, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalMarkdownRenderApplicationJSONRequestMode with value set to v.
+func NewOptionalMarkdownRenderApplicationJSONRequestMode(v MarkdownRenderApplicationJSONRequestMode) OptionalMarkdownRenderApplicationJSONRequestMode {
+	return OptionalMarkdownRenderApplicationJSONRequestMode{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalMarkdownRenderApplicationJSONRequestMode is generic valiant of MarkdownRenderApplicationJSONRequestMode.
+type OptionalMarkdownRenderApplicationJSONRequestMode struct {
+	Value MarkdownRenderApplicationJSONRequestMode
+	Set   bool
+}
+
+// IsSet returns true if OptionalMarkdownRenderApplicationJSONRequestMode was set.
+func (o OptionalMarkdownRenderApplicationJSONRequestMode) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalMarkdownRenderApplicationJSONRequestMode) Reset() {
+	var v MarkdownRenderApplicationJSONRequestMode
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalMarkdownRenderApplicationJSONRequestMode) SetTo(v MarkdownRenderApplicationJSONRequestMode) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalMarkdownRenderApplicationJSONRequestMode) Get() (v MarkdownRenderApplicationJSONRequestMode, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalMarketplaceListingPlan with value set to v.
+func NewOptionalMarketplaceListingPlan(v MarketplaceListingPlan) OptionalMarketplaceListingPlan {
+	return OptionalMarketplaceListingPlan{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalMarketplaceListingPlan is generic valiant of MarketplaceListingPlan.
+type OptionalMarketplaceListingPlan struct {
+	Value MarketplaceListingPlan
+	Set   bool
+}
+
+// IsSet returns true if OptionalMarketplaceListingPlan was set.
+func (o OptionalMarketplaceListingPlan) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalMarketplaceListingPlan) Reset() {
+	var v MarketplaceListingPlan
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalMarketplaceListingPlan) SetTo(v MarketplaceListingPlan) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalMarketplaceListingPlan) Get() (v MarketplaceListingPlan, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalMergedUpstreamMergeType with value set to v.
+func NewOptionalMergedUpstreamMergeType(v MergedUpstreamMergeType) OptionalMergedUpstreamMergeType {
+	return OptionalMergedUpstreamMergeType{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalMergedUpstreamMergeType is generic valiant of MergedUpstreamMergeType.
+type OptionalMergedUpstreamMergeType struct {
+	Value MergedUpstreamMergeType
+	Set   bool
+}
+
+// IsSet returns true if OptionalMergedUpstreamMergeType was set.
+func (o OptionalMergedUpstreamMergeType) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalMergedUpstreamMergeType) Reset() {
+	var v MergedUpstreamMergeType
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalMergedUpstreamMergeType) SetTo(v MergedUpstreamMergeType) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalMergedUpstreamMergeType) Get() (v MergedUpstreamMergeType, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalMigrationsStartImportApplicationJSONRequestVcs with value set to v.
+func NewOptionalMigrationsStartImportApplicationJSONRequestVcs(v MigrationsStartImportApplicationJSONRequestVcs) OptionalMigrationsStartImportApplicationJSONRequestVcs {
+	return OptionalMigrationsStartImportApplicationJSONRequestVcs{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalMigrationsStartImportApplicationJSONRequestVcs is generic valiant of MigrationsStartImportApplicationJSONRequestVcs.
+type OptionalMigrationsStartImportApplicationJSONRequestVcs struct {
+	Value MigrationsStartImportApplicationJSONRequestVcs
+	Set   bool
+}
+
+// IsSet returns true if OptionalMigrationsStartImportApplicationJSONRequestVcs was set.
+func (o OptionalMigrationsStartImportApplicationJSONRequestVcs) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalMigrationsStartImportApplicationJSONRequestVcs) Reset() {
+	var v MigrationsStartImportApplicationJSONRequestVcs
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalMigrationsStartImportApplicationJSONRequestVcs) SetTo(v MigrationsStartImportApplicationJSONRequestVcs) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalMigrationsStartImportApplicationJSONRequestVcs) Get() (v MigrationsStartImportApplicationJSONRequestVcs, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalMinimalRepositoryPermissions with value set to v.
+func NewOptionalMinimalRepositoryPermissions(v MinimalRepositoryPermissions) OptionalMinimalRepositoryPermissions {
+	return OptionalMinimalRepositoryPermissions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalMinimalRepositoryPermissions is generic valiant of MinimalRepositoryPermissions.
+type OptionalMinimalRepositoryPermissions struct {
+	Value MinimalRepositoryPermissions
+	Set   bool
+}
+
+// IsSet returns true if OptionalMinimalRepositoryPermissions was set.
+func (o OptionalMinimalRepositoryPermissions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalMinimalRepositoryPermissions) Reset() {
+	var v MinimalRepositoryPermissions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalMinimalRepositoryPermissions) SetTo(v MinimalRepositoryPermissions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalMinimalRepositoryPermissions) Get() (v MinimalRepositoryPermissions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilBool with value set to v.
+func NewOptionalNilBool(v bool) OptionalNilBool {
+	return OptionalNilBool{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilBool is generic valiant of bool.
+type OptionalNilBool struct {
+	Value bool
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilBool was set.
+func (o OptionalNilBool) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilBool) Reset() {
+	var v bool
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilBool) SetTo(v bool) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilBool) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilBool) Get() (v bool, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilCodeScanningAlertRuleSecuritySeverityLevel with value set to v.
+func NewOptionalNilCodeScanningAlertRuleSecuritySeverityLevel(v CodeScanningAlertRuleSecuritySeverityLevel) OptionalNilCodeScanningAlertRuleSecuritySeverityLevel {
+	return OptionalNilCodeScanningAlertRuleSecuritySeverityLevel{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilCodeScanningAlertRuleSecuritySeverityLevel is generic valiant of CodeScanningAlertRuleSecuritySeverityLevel.
+type OptionalNilCodeScanningAlertRuleSecuritySeverityLevel struct {
+	Value CodeScanningAlertRuleSecuritySeverityLevel
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilCodeScanningAlertRuleSecuritySeverityLevel was set.
+func (o OptionalNilCodeScanningAlertRuleSecuritySeverityLevel) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilCodeScanningAlertRuleSecuritySeverityLevel) Reset() {
+	var v CodeScanningAlertRuleSecuritySeverityLevel
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilCodeScanningAlertRuleSecuritySeverityLevel) SetTo(v CodeScanningAlertRuleSecuritySeverityLevel) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilCodeScanningAlertRuleSecuritySeverityLevel) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilCodeScanningAlertRuleSecuritySeverityLevel) Get() (v CodeScanningAlertRuleSecuritySeverityLevel, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilCodeScanningAlertRuleSeverity with value set to v.
+func NewOptionalNilCodeScanningAlertRuleSeverity(v CodeScanningAlertRuleSeverity) OptionalNilCodeScanningAlertRuleSeverity {
+	return OptionalNilCodeScanningAlertRuleSeverity{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilCodeScanningAlertRuleSeverity is generic valiant of CodeScanningAlertRuleSeverity.
+type OptionalNilCodeScanningAlertRuleSeverity struct {
+	Value CodeScanningAlertRuleSeverity
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilCodeScanningAlertRuleSeverity was set.
+func (o OptionalNilCodeScanningAlertRuleSeverity) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilCodeScanningAlertRuleSeverity) Reset() {
+	var v CodeScanningAlertRuleSeverity
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilCodeScanningAlertRuleSeverity) SetTo(v CodeScanningAlertRuleSeverity) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilCodeScanningAlertRuleSeverity) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilCodeScanningAlertRuleSeverity) Get() (v CodeScanningAlertRuleSeverity, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilFullRepositorySecurityAndAnalysis with value set to v.
+func NewOptionalNilFullRepositorySecurityAndAnalysis(v FullRepositorySecurityAndAnalysis) OptionalNilFullRepositorySecurityAndAnalysis {
+	return OptionalNilFullRepositorySecurityAndAnalysis{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilFullRepositorySecurityAndAnalysis is generic valiant of FullRepositorySecurityAndAnalysis.
+type OptionalNilFullRepositorySecurityAndAnalysis struct {
+	Value FullRepositorySecurityAndAnalysis
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilFullRepositorySecurityAndAnalysis was set.
+func (o OptionalNilFullRepositorySecurityAndAnalysis) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilFullRepositorySecurityAndAnalysis) Reset() {
+	var v FullRepositorySecurityAndAnalysis
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilFullRepositorySecurityAndAnalysis) SetTo(v FullRepositorySecurityAndAnalysis) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilFullRepositorySecurityAndAnalysis) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilFullRepositorySecurityAndAnalysis) Get() (v FullRepositorySecurityAndAnalysis, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilGistSimpleForkOf with value set to v.
+func NewOptionalNilGistSimpleForkOf(v GistSimpleForkOf) OptionalNilGistSimpleForkOf {
+	return OptionalNilGistSimpleForkOf{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilGistSimpleForkOf is generic valiant of GistSimpleForkOf.
+type OptionalNilGistSimpleForkOf struct {
+	Value GistSimpleForkOf
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilGistSimpleForkOf was set.
+func (o OptionalNilGistSimpleForkOf) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilGistSimpleForkOf) Reset() {
+	var v GistSimpleForkOf
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilGistSimpleForkOf) SetTo(v GistSimpleForkOf) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilGistSimpleForkOf) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilGistSimpleForkOf) Get() (v GistSimpleForkOf, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilInt with value set to v.
+func NewOptionalNilInt(v int) OptionalNilInt {
+	return OptionalNilInt{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilInt is generic valiant of int.
+type OptionalNilInt struct {
+	Value int
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilInt was set.
+func (o OptionalNilInt) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilInt) Reset() {
+	var v int
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilInt) SetTo(v int) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilInt) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilInt) Get() (v int, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilMarketplacePurchaseMarketplacePendingChange with value set to v.
+func NewOptionalNilMarketplacePurchaseMarketplacePendingChange(v MarketplacePurchaseMarketplacePendingChange) OptionalNilMarketplacePurchaseMarketplacePendingChange {
+	return OptionalNilMarketplacePurchaseMarketplacePendingChange{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilMarketplacePurchaseMarketplacePendingChange is generic valiant of MarketplacePurchaseMarketplacePendingChange.
+type OptionalNilMarketplacePurchaseMarketplacePendingChange struct {
+	Value MarketplacePurchaseMarketplacePendingChange
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilMarketplacePurchaseMarketplacePendingChange was set.
+func (o OptionalNilMarketplacePurchaseMarketplacePendingChange) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilMarketplacePurchaseMarketplacePendingChange) Reset() {
+	var v MarketplacePurchaseMarketplacePendingChange
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilMarketplacePurchaseMarketplacePendingChange) SetTo(v MarketplacePurchaseMarketplacePendingChange) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilMarketplacePurchaseMarketplacePendingChange) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilMarketplacePurchaseMarketplacePendingChange) Get() (v MarketplacePurchaseMarketplacePendingChange, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilMinimalRepositoryLicense with value set to v.
+func NewOptionalNilMinimalRepositoryLicense(v MinimalRepositoryLicense) OptionalNilMinimalRepositoryLicense {
+	return OptionalNilMinimalRepositoryLicense{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilMinimalRepositoryLicense is generic valiant of MinimalRepositoryLicense.
+type OptionalNilMinimalRepositoryLicense struct {
+	Value MinimalRepositoryLicense
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilMinimalRepositoryLicense was set.
+func (o OptionalNilMinimalRepositoryLicense) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilMinimalRepositoryLicense) Reset() {
+	var v MinimalRepositoryLicense
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilMinimalRepositoryLicense) SetTo(v MinimalRepositoryLicense) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilMinimalRepositoryLicense) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilMinimalRepositoryLicense) Get() (v MinimalRepositoryLicense, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilNullableRepositoryTemplateRepository with value set to v.
+func NewOptionalNilNullableRepositoryTemplateRepository(v NullableRepositoryTemplateRepository) OptionalNilNullableRepositoryTemplateRepository {
+	return OptionalNilNullableRepositoryTemplateRepository{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilNullableRepositoryTemplateRepository is generic valiant of NullableRepositoryTemplateRepository.
+type OptionalNilNullableRepositoryTemplateRepository struct {
+	Value NullableRepositoryTemplateRepository
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilNullableRepositoryTemplateRepository was set.
+func (o OptionalNilNullableRepositoryTemplateRepository) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilNullableRepositoryTemplateRepository) Reset() {
+	var v NullableRepositoryTemplateRepository
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilNullableRepositoryTemplateRepository) SetTo(v NullableRepositoryTemplateRepository) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilNullableRepositoryTemplateRepository) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilNullableRepositoryTemplateRepository) Get() (v NullableRepositoryTemplateRepository, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilPageProtectedDomainState with value set to v.
+func NewOptionalNilPageProtectedDomainState(v PageProtectedDomainState) OptionalNilPageProtectedDomainState {
+	return OptionalNilPageProtectedDomainState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilPageProtectedDomainState is generic valiant of PageProtectedDomainState.
+type OptionalNilPageProtectedDomainState struct {
+	Value PageProtectedDomainState
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilPageProtectedDomainState was set.
+func (o OptionalNilPageProtectedDomainState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilPageProtectedDomainState) Reset() {
+	var v PageProtectedDomainState
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilPageProtectedDomainState) SetTo(v PageProtectedDomainState) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilPageProtectedDomainState) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilPageProtectedDomainState) Get() (v PageProtectedDomainState, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilPagesHealthCheckAltDomain with value set to v.
+func NewOptionalNilPagesHealthCheckAltDomain(v PagesHealthCheckAltDomain) OptionalNilPagesHealthCheckAltDomain {
+	return OptionalNilPagesHealthCheckAltDomain{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilPagesHealthCheckAltDomain is generic valiant of PagesHealthCheckAltDomain.
+type OptionalNilPagesHealthCheckAltDomain struct {
+	Value PagesHealthCheckAltDomain
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilPagesHealthCheckAltDomain was set.
+func (o OptionalNilPagesHealthCheckAltDomain) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilPagesHealthCheckAltDomain) Reset() {
+	var v PagesHealthCheckAltDomain
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilPagesHealthCheckAltDomain) SetTo(v PagesHealthCheckAltDomain) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilPagesHealthCheckAltDomain) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilPagesHealthCheckAltDomain) Get() (v PagesHealthCheckAltDomain, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilPullRequestReviewCommentStartSide with value set to v.
+func NewOptionalNilPullRequestReviewCommentStartSide(v PullRequestReviewCommentStartSide) OptionalNilPullRequestReviewCommentStartSide {
+	return OptionalNilPullRequestReviewCommentStartSide{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilPullRequestReviewCommentStartSide is generic valiant of PullRequestReviewCommentStartSide.
+type OptionalNilPullRequestReviewCommentStartSide struct {
+	Value PullRequestReviewCommentStartSide
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilPullRequestReviewCommentStartSide was set.
+func (o OptionalNilPullRequestReviewCommentStartSide) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilPullRequestReviewCommentStartSide) Reset() {
+	var v PullRequestReviewCommentStartSide
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilPullRequestReviewCommentStartSide) SetTo(v PullRequestReviewCommentStartSide) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilPullRequestReviewCommentStartSide) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilPullRequestReviewCommentStartSide) Get() (v PullRequestReviewCommentStartSide, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis with value set to v.
+func NewOptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis(v ReposUpdateApplicationJSONRequestSecurityAndAnalysis) OptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis {
+	return OptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis is generic valiant of ReposUpdateApplicationJSONRequestSecurityAndAnalysis.
+type OptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis struct {
+	Value ReposUpdateApplicationJSONRequestSecurityAndAnalysis
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis was set.
+func (o OptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) Reset() {
+	var v ReposUpdateApplicationJSONRequestSecurityAndAnalysis
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) SetTo(v ReposUpdateApplicationJSONRequestSecurityAndAnalysis) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) Get() (v ReposUpdateApplicationJSONRequestSecurityAndAnalysis, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilRepositoryTemplateRepository with value set to v.
+func NewOptionalNilRepositoryTemplateRepository(v RepositoryTemplateRepository) OptionalNilRepositoryTemplateRepository {
+	return OptionalNilRepositoryTemplateRepository{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilRepositoryTemplateRepository is generic valiant of RepositoryTemplateRepository.
+type OptionalNilRepositoryTemplateRepository struct {
+	Value RepositoryTemplateRepository
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilRepositoryTemplateRepository was set.
+func (o OptionalNilRepositoryTemplateRepository) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilRepositoryTemplateRepository) Reset() {
+	var v RepositoryTemplateRepository
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilRepositoryTemplateRepository) SetTo(v RepositoryTemplateRepository) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilRepositoryTemplateRepository) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilRepositoryTemplateRepository) Get() (v RepositoryTemplateRepository, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilReviewCommentStartSide with value set to v.
+func NewOptionalNilReviewCommentStartSide(v ReviewCommentStartSide) OptionalNilReviewCommentStartSide {
+	return OptionalNilReviewCommentStartSide{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilReviewCommentStartSide is generic valiant of ReviewCommentStartSide.
+type OptionalNilReviewCommentStartSide struct {
+	Value ReviewCommentStartSide
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilReviewCommentStartSide was set.
+func (o OptionalNilReviewCommentStartSide) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilReviewCommentStartSide) Reset() {
+	var v ReviewCommentStartSide
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilReviewCommentStartSide) SetTo(v ReviewCommentStartSide) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilReviewCommentStartSide) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilReviewCommentStartSide) Get() (v ReviewCommentStartSide, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilString with value set to v.
+func NewOptionalNilString(v string) OptionalNilString {
+	return OptionalNilString{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilString is generic valiant of string.
+type OptionalNilString struct {
+	Value string
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilString was set.
+func (o OptionalNilString) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilString) Reset() {
+	var v string
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilString) SetTo(v string) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilString) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilString) Get() (v string, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilTime with value set to v.
+func NewOptionalNilTime(v time.Time) OptionalNilTime {
+	return OptionalNilTime{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilTime is generic valiant of time.Time.
+type OptionalNilTime struct {
+	Value time.Time
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilTime was set.
+func (o OptionalNilTime) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilTime) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilTime) SetTo(v time.Time) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilTime) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilTime) Get() (v time.Time, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNilURL with value set to v.
+func NewOptionalNilURL(v url.URL) OptionalNilURL {
+	return OptionalNilURL{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNilURL is generic valiant of url.URL.
+type OptionalNilURL struct {
+	Value url.URL
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptionalNilURL was set.
+func (o OptionalNilURL) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNilURL) Reset() {
+	var v url.URL
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNilURL) SetTo(v url.URL) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptionalNilURL) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNilURL) Get() (v url.URL, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNullableIntegration with value set to v.
+func NewOptionalNullableIntegration(v NullableIntegration) OptionalNullableIntegration {
+	return OptionalNullableIntegration{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNullableIntegration is generic valiant of NullableIntegration.
+type OptionalNullableIntegration struct {
+	Value NullableIntegration
+	Set   bool
+}
+
+// IsSet returns true if OptionalNullableIntegration was set.
+func (o OptionalNullableIntegration) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNullableIntegration) Reset() {
+	var v NullableIntegration
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNullableIntegration) SetTo(v NullableIntegration) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNullableIntegration) Get() (v NullableIntegration, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNullableRepository with value set to v.
+func NewOptionalNullableRepository(v NullableRepository) OptionalNullableRepository {
+	return OptionalNullableRepository{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNullableRepository is generic valiant of NullableRepository.
+type OptionalNullableRepository struct {
+	Value NullableRepository
+	Set   bool
+}
+
+// IsSet returns true if OptionalNullableRepository was set.
+func (o OptionalNullableRepository) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNullableRepository) Reset() {
+	var v NullableRepository
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNullableRepository) SetTo(v NullableRepository) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNullableRepository) Get() (v NullableRepository, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNullableRepositoryPermissions with value set to v.
+func NewOptionalNullableRepositoryPermissions(v NullableRepositoryPermissions) OptionalNullableRepositoryPermissions {
+	return OptionalNullableRepositoryPermissions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNullableRepositoryPermissions is generic valiant of NullableRepositoryPermissions.
+type OptionalNullableRepositoryPermissions struct {
+	Value NullableRepositoryPermissions
+	Set   bool
+}
+
+// IsSet returns true if OptionalNullableRepositoryPermissions was set.
+func (o OptionalNullableRepositoryPermissions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNullableRepositoryPermissions) Reset() {
+	var v NullableRepositoryPermissions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNullableRepositoryPermissions) SetTo(v NullableRepositoryPermissions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNullableRepositoryPermissions) Get() (v NullableRepositoryPermissions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNullableRepositoryTemplateRepositoryOwner with value set to v.
+func NewOptionalNullableRepositoryTemplateRepositoryOwner(v NullableRepositoryTemplateRepositoryOwner) OptionalNullableRepositoryTemplateRepositoryOwner {
+	return OptionalNullableRepositoryTemplateRepositoryOwner{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNullableRepositoryTemplateRepositoryOwner is generic valiant of NullableRepositoryTemplateRepositoryOwner.
+type OptionalNullableRepositoryTemplateRepositoryOwner struct {
+	Value NullableRepositoryTemplateRepositoryOwner
+	Set   bool
+}
+
+// IsSet returns true if OptionalNullableRepositoryTemplateRepositoryOwner was set.
+func (o OptionalNullableRepositoryTemplateRepositoryOwner) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNullableRepositoryTemplateRepositoryOwner) Reset() {
+	var v NullableRepositoryTemplateRepositoryOwner
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNullableRepositoryTemplateRepositoryOwner) SetTo(v NullableRepositoryTemplateRepositoryOwner) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNullableRepositoryTemplateRepositoryOwner) Get() (v NullableRepositoryTemplateRepositoryOwner, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNullableRepositoryTemplateRepositoryPermissions with value set to v.
+func NewOptionalNullableRepositoryTemplateRepositoryPermissions(v NullableRepositoryTemplateRepositoryPermissions) OptionalNullableRepositoryTemplateRepositoryPermissions {
+	return OptionalNullableRepositoryTemplateRepositoryPermissions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNullableRepositoryTemplateRepositoryPermissions is generic valiant of NullableRepositoryTemplateRepositoryPermissions.
+type OptionalNullableRepositoryTemplateRepositoryPermissions struct {
+	Value NullableRepositoryTemplateRepositoryPermissions
+	Set   bool
+}
+
+// IsSet returns true if OptionalNullableRepositoryTemplateRepositoryPermissions was set.
+func (o OptionalNullableRepositoryTemplateRepositoryPermissions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNullableRepositoryTemplateRepositoryPermissions) Reset() {
+	var v NullableRepositoryTemplateRepositoryPermissions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNullableRepositoryTemplateRepositoryPermissions) SetTo(v NullableRepositoryTemplateRepositoryPermissions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNullableRepositoryTemplateRepositoryPermissions) Get() (v NullableRepositoryTemplateRepositoryPermissions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNullableScopedInstallation with value set to v.
+func NewOptionalNullableScopedInstallation(v NullableScopedInstallation) OptionalNullableScopedInstallation {
+	return OptionalNullableScopedInstallation{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNullableScopedInstallation is generic valiant of NullableScopedInstallation.
+type OptionalNullableScopedInstallation struct {
+	Value NullableScopedInstallation
+	Set   bool
+}
+
+// IsSet returns true if OptionalNullableScopedInstallation was set.
+func (o OptionalNullableScopedInstallation) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNullableScopedInstallation) Reset() {
+	var v NullableScopedInstallation
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNullableScopedInstallation) SetTo(v NullableScopedInstallation) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNullableScopedInstallation) Get() (v NullableScopedInstallation, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNullableSimpleUser with value set to v.
+func NewOptionalNullableSimpleUser(v NullableSimpleUser) OptionalNullableSimpleUser {
+	return OptionalNullableSimpleUser{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNullableSimpleUser is generic valiant of NullableSimpleUser.
+type OptionalNullableSimpleUser struct {
+	Value NullableSimpleUser
+	Set   bool
+}
+
+// IsSet returns true if OptionalNullableSimpleUser was set.
+func (o OptionalNullableSimpleUser) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNullableSimpleUser) Reset() {
+	var v NullableSimpleUser
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNullableSimpleUser) SetTo(v NullableSimpleUser) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNullableSimpleUser) Get() (v NullableSimpleUser, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalNullableTeamSimple with value set to v.
+func NewOptionalNullableTeamSimple(v NullableTeamSimple) OptionalNullableTeamSimple {
+	return OptionalNullableTeamSimple{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalNullableTeamSimple is generic valiant of NullableTeamSimple.
+type OptionalNullableTeamSimple struct {
+	Value NullableTeamSimple
+	Set   bool
+}
+
+// IsSet returns true if OptionalNullableTeamSimple was set.
+func (o OptionalNullableTeamSimple) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalNullableTeamSimple) Reset() {
+	var v NullableTeamSimple
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalNullableTeamSimple) SetTo(v NullableTeamSimple) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalNullableTeamSimple) Get() (v NullableTeamSimple, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalOrgMembershipPermissions with value set to v.
+func NewOptionalOrgMembershipPermissions(v OrgMembershipPermissions) OptionalOrgMembershipPermissions {
+	return OptionalOrgMembershipPermissions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalOrgMembershipPermissions is generic valiant of OrgMembershipPermissions.
+type OptionalOrgMembershipPermissions struct {
+	Value OrgMembershipPermissions
+	Set   bool
+}
+
+// IsSet returns true if OptionalOrgMembershipPermissions was set.
+func (o OptionalOrgMembershipPermissions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalOrgMembershipPermissions) Reset() {
+	var v OrgMembershipPermissions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalOrgMembershipPermissions) SetTo(v OrgMembershipPermissions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalOrgMembershipPermissions) Get() (v OrgMembershipPermissions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalOrganizationFullPlan with value set to v.
+func NewOptionalOrganizationFullPlan(v OrganizationFullPlan) OptionalOrganizationFullPlan {
+	return OptionalOrganizationFullPlan{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalOrganizationFullPlan is generic valiant of OrganizationFullPlan.
+type OptionalOrganizationFullPlan struct {
+	Value OrganizationFullPlan
+	Set   bool
+}
+
+// IsSet returns true if OptionalOrganizationFullPlan was set.
+func (o OptionalOrganizationFullPlan) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalOrganizationFullPlan) Reset() {
+	var v OrganizationFullPlan
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalOrganizationFullPlan) SetTo(v OrganizationFullPlan) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalOrganizationFullPlan) Get() (v OrganizationFullPlan, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalOrgsCreateInvitationApplicationJSONRequestRole with value set to v.
+func NewOptionalOrgsCreateInvitationApplicationJSONRequestRole(v OrgsCreateInvitationApplicationJSONRequestRole) OptionalOrgsCreateInvitationApplicationJSONRequestRole {
+	return OptionalOrgsCreateInvitationApplicationJSONRequestRole{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalOrgsCreateInvitationApplicationJSONRequestRole is generic valiant of OrgsCreateInvitationApplicationJSONRequestRole.
+type OptionalOrgsCreateInvitationApplicationJSONRequestRole struct {
+	Value OrgsCreateInvitationApplicationJSONRequestRole
+	Set   bool
+}
+
+// IsSet returns true if OptionalOrgsCreateInvitationApplicationJSONRequestRole was set.
+func (o OptionalOrgsCreateInvitationApplicationJSONRequestRole) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalOrgsCreateInvitationApplicationJSONRequestRole) Reset() {
+	var v OrgsCreateInvitationApplicationJSONRequestRole
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalOrgsCreateInvitationApplicationJSONRequestRole) SetTo(v OrgsCreateInvitationApplicationJSONRequestRole) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalOrgsCreateInvitationApplicationJSONRequestRole) Get() (v OrgsCreateInvitationApplicationJSONRequestRole, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalOrgsSetMembershipForUserApplicationJSONRequestRole with value set to v.
+func NewOptionalOrgsSetMembershipForUserApplicationJSONRequestRole(v OrgsSetMembershipForUserApplicationJSONRequestRole) OptionalOrgsSetMembershipForUserApplicationJSONRequestRole {
+	return OptionalOrgsSetMembershipForUserApplicationJSONRequestRole{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalOrgsSetMembershipForUserApplicationJSONRequestRole is generic valiant of OrgsSetMembershipForUserApplicationJSONRequestRole.
+type OptionalOrgsSetMembershipForUserApplicationJSONRequestRole struct {
+	Value OrgsSetMembershipForUserApplicationJSONRequestRole
+	Set   bool
+}
+
+// IsSet returns true if OptionalOrgsSetMembershipForUserApplicationJSONRequestRole was set.
+func (o OptionalOrgsSetMembershipForUserApplicationJSONRequestRole) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalOrgsSetMembershipForUserApplicationJSONRequestRole) Reset() {
+	var v OrgsSetMembershipForUserApplicationJSONRequestRole
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalOrgsSetMembershipForUserApplicationJSONRequestRole) SetTo(v OrgsSetMembershipForUserApplicationJSONRequestRole) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalOrgsSetMembershipForUserApplicationJSONRequestRole) Get() (v OrgsSetMembershipForUserApplicationJSONRequestRole, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission with value set to v.
+func NewOptionalOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission(v OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) OptionalOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission {
+	return OptionalOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission is generic valiant of OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission.
+type OptionalOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission struct {
+	Value OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission
+	Set   bool
+}
+
+// IsSet returns true if OptionalOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission was set.
+func (o OptionalOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) Reset() {
+	var v OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) SetTo(v OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) Get() (v OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType with value set to v.
+func NewOptionalOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType(v OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) OptionalOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType {
+	return OptionalOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType is generic valiant of OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType.
+type OptionalOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType struct {
+	Value OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType
+	Set   bool
+}
+
+// IsSet returns true if OptionalOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType was set.
+func (o OptionalOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) Reset() {
+	var v OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) SetTo(v OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) Get() (v OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalPagesHTTPSCertificate with value set to v.
+func NewOptionalPagesHTTPSCertificate(v PagesHTTPSCertificate) OptionalPagesHTTPSCertificate {
+	return OptionalPagesHTTPSCertificate{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalPagesHTTPSCertificate is generic valiant of PagesHTTPSCertificate.
+type OptionalPagesHTTPSCertificate struct {
+	Value PagesHTTPSCertificate
+	Set   bool
+}
+
+// IsSet returns true if OptionalPagesHTTPSCertificate was set.
+func (o OptionalPagesHTTPSCertificate) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalPagesHTTPSCertificate) Reset() {
+	var v PagesHTTPSCertificate
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalPagesHTTPSCertificate) SetTo(v PagesHTTPSCertificate) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalPagesHTTPSCertificate) Get() (v PagesHTTPSCertificate, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalPagesHealthCheckDomain with value set to v.
+func NewOptionalPagesHealthCheckDomain(v PagesHealthCheckDomain) OptionalPagesHealthCheckDomain {
+	return OptionalPagesHealthCheckDomain{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalPagesHealthCheckDomain is generic valiant of PagesHealthCheckDomain.
+type OptionalPagesHealthCheckDomain struct {
+	Value PagesHealthCheckDomain
+	Set   bool
+}
+
+// IsSet returns true if OptionalPagesHealthCheckDomain was set.
+func (o OptionalPagesHealthCheckDomain) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalPagesHealthCheckDomain) Reset() {
+	var v PagesHealthCheckDomain
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalPagesHealthCheckDomain) SetTo(v PagesHealthCheckDomain) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalPagesHealthCheckDomain) Get() (v PagesHealthCheckDomain, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalPagesSourceHash with value set to v.
+func NewOptionalPagesSourceHash(v PagesSourceHash) OptionalPagesSourceHash {
+	return OptionalPagesSourceHash{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalPagesSourceHash is generic valiant of PagesSourceHash.
+type OptionalPagesSourceHash struct {
+	Value PagesSourceHash
+	Set   bool
+}
+
+// IsSet returns true if OptionalPagesSourceHash was set.
+func (o OptionalPagesSourceHash) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalPagesSourceHash) Reset() {
+	var v PagesSourceHash
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalPagesSourceHash) SetTo(v PagesSourceHash) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalPagesSourceHash) Get() (v PagesSourceHash, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalPrivateUserPlan with value set to v.
+func NewOptionalPrivateUserPlan(v PrivateUserPlan) OptionalPrivateUserPlan {
+	return OptionalPrivateUserPlan{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalPrivateUserPlan is generic valiant of PrivateUserPlan.
+type OptionalPrivateUserPlan struct {
+	Value PrivateUserPlan
+	Set   bool
+}
+
+// IsSet returns true if OptionalPrivateUserPlan was set.
+func (o OptionalPrivateUserPlan) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalPrivateUserPlan) Reset() {
+	var v PrivateUserPlan
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalPrivateUserPlan) SetTo(v PrivateUserPlan) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalPrivateUserPlan) Get() (v PrivateUserPlan, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalProjectOrganizationPermission with value set to v.
+func NewOptionalProjectOrganizationPermission(v ProjectOrganizationPermission) OptionalProjectOrganizationPermission {
+	return OptionalProjectOrganizationPermission{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalProjectOrganizationPermission is generic valiant of ProjectOrganizationPermission.
+type OptionalProjectOrganizationPermission struct {
+	Value ProjectOrganizationPermission
+	Set   bool
+}
+
+// IsSet returns true if OptionalProjectOrganizationPermission was set.
+func (o OptionalProjectOrganizationPermission) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalProjectOrganizationPermission) Reset() {
+	var v ProjectOrganizationPermission
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalProjectOrganizationPermission) SetTo(v ProjectOrganizationPermission) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalProjectOrganizationPermission) Get() (v ProjectOrganizationPermission, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalProjectsAddCollaboratorApplicationJSONRequestPermission with value set to v.
+func NewOptionalProjectsAddCollaboratorApplicationJSONRequestPermission(v ProjectsAddCollaboratorApplicationJSONRequestPermission) OptionalProjectsAddCollaboratorApplicationJSONRequestPermission {
+	return OptionalProjectsAddCollaboratorApplicationJSONRequestPermission{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalProjectsAddCollaboratorApplicationJSONRequestPermission is generic valiant of ProjectsAddCollaboratorApplicationJSONRequestPermission.
+type OptionalProjectsAddCollaboratorApplicationJSONRequestPermission struct {
+	Value ProjectsAddCollaboratorApplicationJSONRequestPermission
+	Set   bool
+}
+
+// IsSet returns true if OptionalProjectsAddCollaboratorApplicationJSONRequestPermission was set.
+func (o OptionalProjectsAddCollaboratorApplicationJSONRequestPermission) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalProjectsAddCollaboratorApplicationJSONRequestPermission) Reset() {
+	var v ProjectsAddCollaboratorApplicationJSONRequestPermission
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalProjectsAddCollaboratorApplicationJSONRequestPermission) SetTo(v ProjectsAddCollaboratorApplicationJSONRequestPermission) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalProjectsAddCollaboratorApplicationJSONRequestPermission) Get() (v ProjectsAddCollaboratorApplicationJSONRequestPermission, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalProjectsUpdateApplicationJSONRequestOrganizationPermission with value set to v.
+func NewOptionalProjectsUpdateApplicationJSONRequestOrganizationPermission(v ProjectsUpdateApplicationJSONRequestOrganizationPermission) OptionalProjectsUpdateApplicationJSONRequestOrganizationPermission {
+	return OptionalProjectsUpdateApplicationJSONRequestOrganizationPermission{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalProjectsUpdateApplicationJSONRequestOrganizationPermission is generic valiant of ProjectsUpdateApplicationJSONRequestOrganizationPermission.
+type OptionalProjectsUpdateApplicationJSONRequestOrganizationPermission struct {
+	Value ProjectsUpdateApplicationJSONRequestOrganizationPermission
+	Set   bool
+}
+
+// IsSet returns true if OptionalProjectsUpdateApplicationJSONRequestOrganizationPermission was set.
+func (o OptionalProjectsUpdateApplicationJSONRequestOrganizationPermission) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalProjectsUpdateApplicationJSONRequestOrganizationPermission) Reset() {
+	var v ProjectsUpdateApplicationJSONRequestOrganizationPermission
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalProjectsUpdateApplicationJSONRequestOrganizationPermission) SetTo(v ProjectsUpdateApplicationJSONRequestOrganizationPermission) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalProjectsUpdateApplicationJSONRequestOrganizationPermission) Get() (v ProjectsUpdateApplicationJSONRequestOrganizationPermission, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalProtectedBranchAdminEnforced with value set to v.
+func NewOptionalProtectedBranchAdminEnforced(v ProtectedBranchAdminEnforced) OptionalProtectedBranchAdminEnforced {
+	return OptionalProtectedBranchAdminEnforced{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalProtectedBranchAdminEnforced is generic valiant of ProtectedBranchAdminEnforced.
+type OptionalProtectedBranchAdminEnforced struct {
+	Value ProtectedBranchAdminEnforced
+	Set   bool
+}
+
+// IsSet returns true if OptionalProtectedBranchAdminEnforced was set.
+func (o OptionalProtectedBranchAdminEnforced) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalProtectedBranchAdminEnforced) Reset() {
+	var v ProtectedBranchAdminEnforced
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalProtectedBranchAdminEnforced) SetTo(v ProtectedBranchAdminEnforced) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalProtectedBranchAdminEnforced) Get() (v ProtectedBranchAdminEnforced, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalProtectedBranchAllowDeletions with value set to v.
+func NewOptionalProtectedBranchAllowDeletions(v ProtectedBranchAllowDeletions) OptionalProtectedBranchAllowDeletions {
+	return OptionalProtectedBranchAllowDeletions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalProtectedBranchAllowDeletions is generic valiant of ProtectedBranchAllowDeletions.
+type OptionalProtectedBranchAllowDeletions struct {
+	Value ProtectedBranchAllowDeletions
+	Set   bool
+}
+
+// IsSet returns true if OptionalProtectedBranchAllowDeletions was set.
+func (o OptionalProtectedBranchAllowDeletions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalProtectedBranchAllowDeletions) Reset() {
+	var v ProtectedBranchAllowDeletions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalProtectedBranchAllowDeletions) SetTo(v ProtectedBranchAllowDeletions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalProtectedBranchAllowDeletions) Get() (v ProtectedBranchAllowDeletions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalProtectedBranchAllowForcePushes with value set to v.
+func NewOptionalProtectedBranchAllowForcePushes(v ProtectedBranchAllowForcePushes) OptionalProtectedBranchAllowForcePushes {
+	return OptionalProtectedBranchAllowForcePushes{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalProtectedBranchAllowForcePushes is generic valiant of ProtectedBranchAllowForcePushes.
+type OptionalProtectedBranchAllowForcePushes struct {
+	Value ProtectedBranchAllowForcePushes
+	Set   bool
+}
+
+// IsSet returns true if OptionalProtectedBranchAllowForcePushes was set.
+func (o OptionalProtectedBranchAllowForcePushes) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalProtectedBranchAllowForcePushes) Reset() {
+	var v ProtectedBranchAllowForcePushes
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalProtectedBranchAllowForcePushes) SetTo(v ProtectedBranchAllowForcePushes) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalProtectedBranchAllowForcePushes) Get() (v ProtectedBranchAllowForcePushes, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalProtectedBranchEnforceAdmins with value set to v.
+func NewOptionalProtectedBranchEnforceAdmins(v ProtectedBranchEnforceAdmins) OptionalProtectedBranchEnforceAdmins {
+	return OptionalProtectedBranchEnforceAdmins{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalProtectedBranchEnforceAdmins is generic valiant of ProtectedBranchEnforceAdmins.
+type OptionalProtectedBranchEnforceAdmins struct {
+	Value ProtectedBranchEnforceAdmins
+	Set   bool
+}
+
+// IsSet returns true if OptionalProtectedBranchEnforceAdmins was set.
+func (o OptionalProtectedBranchEnforceAdmins) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalProtectedBranchEnforceAdmins) Reset() {
+	var v ProtectedBranchEnforceAdmins
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalProtectedBranchEnforceAdmins) SetTo(v ProtectedBranchEnforceAdmins) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalProtectedBranchEnforceAdmins) Get() (v ProtectedBranchEnforceAdmins, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalProtectedBranchPullRequestReview with value set to v.
+func NewOptionalProtectedBranchPullRequestReview(v ProtectedBranchPullRequestReview) OptionalProtectedBranchPullRequestReview {
+	return OptionalProtectedBranchPullRequestReview{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalProtectedBranchPullRequestReview is generic valiant of ProtectedBranchPullRequestReview.
+type OptionalProtectedBranchPullRequestReview struct {
+	Value ProtectedBranchPullRequestReview
+	Set   bool
+}
+
+// IsSet returns true if OptionalProtectedBranchPullRequestReview was set.
+func (o OptionalProtectedBranchPullRequestReview) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalProtectedBranchPullRequestReview) Reset() {
+	var v ProtectedBranchPullRequestReview
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalProtectedBranchPullRequestReview) SetTo(v ProtectedBranchPullRequestReview) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalProtectedBranchPullRequestReview) Get() (v ProtectedBranchPullRequestReview, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalProtectedBranchPullRequestReviewDismissalRestrictions with value set to v.
+func NewOptionalProtectedBranchPullRequestReviewDismissalRestrictions(v ProtectedBranchPullRequestReviewDismissalRestrictions) OptionalProtectedBranchPullRequestReviewDismissalRestrictions {
+	return OptionalProtectedBranchPullRequestReviewDismissalRestrictions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalProtectedBranchPullRequestReviewDismissalRestrictions is generic valiant of ProtectedBranchPullRequestReviewDismissalRestrictions.
+type OptionalProtectedBranchPullRequestReviewDismissalRestrictions struct {
+	Value ProtectedBranchPullRequestReviewDismissalRestrictions
+	Set   bool
+}
+
+// IsSet returns true if OptionalProtectedBranchPullRequestReviewDismissalRestrictions was set.
+func (o OptionalProtectedBranchPullRequestReviewDismissalRestrictions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalProtectedBranchPullRequestReviewDismissalRestrictions) Reset() {
+	var v ProtectedBranchPullRequestReviewDismissalRestrictions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalProtectedBranchPullRequestReviewDismissalRestrictions) SetTo(v ProtectedBranchPullRequestReviewDismissalRestrictions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalProtectedBranchPullRequestReviewDismissalRestrictions) Get() (v ProtectedBranchPullRequestReviewDismissalRestrictions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalProtectedBranchRequiredConversationResolution with value set to v.
+func NewOptionalProtectedBranchRequiredConversationResolution(v ProtectedBranchRequiredConversationResolution) OptionalProtectedBranchRequiredConversationResolution {
+	return OptionalProtectedBranchRequiredConversationResolution{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalProtectedBranchRequiredConversationResolution is generic valiant of ProtectedBranchRequiredConversationResolution.
+type OptionalProtectedBranchRequiredConversationResolution struct {
+	Value ProtectedBranchRequiredConversationResolution
+	Set   bool
+}
+
+// IsSet returns true if OptionalProtectedBranchRequiredConversationResolution was set.
+func (o OptionalProtectedBranchRequiredConversationResolution) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalProtectedBranchRequiredConversationResolution) Reset() {
+	var v ProtectedBranchRequiredConversationResolution
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalProtectedBranchRequiredConversationResolution) SetTo(v ProtectedBranchRequiredConversationResolution) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalProtectedBranchRequiredConversationResolution) Get() (v ProtectedBranchRequiredConversationResolution, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalProtectedBranchRequiredLinearHistory with value set to v.
+func NewOptionalProtectedBranchRequiredLinearHistory(v ProtectedBranchRequiredLinearHistory) OptionalProtectedBranchRequiredLinearHistory {
+	return OptionalProtectedBranchRequiredLinearHistory{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalProtectedBranchRequiredLinearHistory is generic valiant of ProtectedBranchRequiredLinearHistory.
+type OptionalProtectedBranchRequiredLinearHistory struct {
+	Value ProtectedBranchRequiredLinearHistory
+	Set   bool
+}
+
+// IsSet returns true if OptionalProtectedBranchRequiredLinearHistory was set.
+func (o OptionalProtectedBranchRequiredLinearHistory) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalProtectedBranchRequiredLinearHistory) Reset() {
+	var v ProtectedBranchRequiredLinearHistory
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalProtectedBranchRequiredLinearHistory) SetTo(v ProtectedBranchRequiredLinearHistory) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalProtectedBranchRequiredLinearHistory) Get() (v ProtectedBranchRequiredLinearHistory, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalProtectedBranchRequiredPullRequestReviews with value set to v.
+func NewOptionalProtectedBranchRequiredPullRequestReviews(v ProtectedBranchRequiredPullRequestReviews) OptionalProtectedBranchRequiredPullRequestReviews {
+	return OptionalProtectedBranchRequiredPullRequestReviews{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalProtectedBranchRequiredPullRequestReviews is generic valiant of ProtectedBranchRequiredPullRequestReviews.
+type OptionalProtectedBranchRequiredPullRequestReviews struct {
+	Value ProtectedBranchRequiredPullRequestReviews
+	Set   bool
+}
+
+// IsSet returns true if OptionalProtectedBranchRequiredPullRequestReviews was set.
+func (o OptionalProtectedBranchRequiredPullRequestReviews) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalProtectedBranchRequiredPullRequestReviews) Reset() {
+	var v ProtectedBranchRequiredPullRequestReviews
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalProtectedBranchRequiredPullRequestReviews) SetTo(v ProtectedBranchRequiredPullRequestReviews) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalProtectedBranchRequiredPullRequestReviews) Get() (v ProtectedBranchRequiredPullRequestReviews, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalProtectedBranchRequiredPullRequestReviewsDismissalRestrictions with value set to v.
+func NewOptionalProtectedBranchRequiredPullRequestReviewsDismissalRestrictions(v ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) OptionalProtectedBranchRequiredPullRequestReviewsDismissalRestrictions {
+	return OptionalProtectedBranchRequiredPullRequestReviewsDismissalRestrictions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalProtectedBranchRequiredPullRequestReviewsDismissalRestrictions is generic valiant of ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions.
+type OptionalProtectedBranchRequiredPullRequestReviewsDismissalRestrictions struct {
+	Value ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions
+	Set   bool
+}
+
+// IsSet returns true if OptionalProtectedBranchRequiredPullRequestReviewsDismissalRestrictions was set.
+func (o OptionalProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Reset() {
+	var v ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) SetTo(v ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Get() (v ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalProtectedBranchRequiredSignatures with value set to v.
+func NewOptionalProtectedBranchRequiredSignatures(v ProtectedBranchRequiredSignatures) OptionalProtectedBranchRequiredSignatures {
+	return OptionalProtectedBranchRequiredSignatures{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalProtectedBranchRequiredSignatures is generic valiant of ProtectedBranchRequiredSignatures.
+type OptionalProtectedBranchRequiredSignatures struct {
+	Value ProtectedBranchRequiredSignatures
+	Set   bool
+}
+
+// IsSet returns true if OptionalProtectedBranchRequiredSignatures was set.
+func (o OptionalProtectedBranchRequiredSignatures) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalProtectedBranchRequiredSignatures) Reset() {
+	var v ProtectedBranchRequiredSignatures
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalProtectedBranchRequiredSignatures) SetTo(v ProtectedBranchRequiredSignatures) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalProtectedBranchRequiredSignatures) Get() (v ProtectedBranchRequiredSignatures, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalPublicUser with value set to v.
+func NewOptionalPublicUser(v PublicUser) OptionalPublicUser {
+	return OptionalPublicUser{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalPublicUser is generic valiant of PublicUser.
+type OptionalPublicUser struct {
+	Value PublicUser
+	Set   bool
+}
+
+// IsSet returns true if OptionalPublicUser was set.
+func (o OptionalPublicUser) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalPublicUser) Reset() {
+	var v PublicUser
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalPublicUser) SetTo(v PublicUser) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalPublicUser) Get() (v PublicUser, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalPublicUserPlan with value set to v.
+func NewOptionalPublicUserPlan(v PublicUserPlan) OptionalPublicUserPlan {
+	return OptionalPublicUserPlan{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalPublicUserPlan is generic valiant of PublicUserPlan.
+type OptionalPublicUserPlan struct {
+	Value PublicUserPlan
+	Set   bool
+}
+
+// IsSet returns true if OptionalPublicUserPlan was set.
+func (o OptionalPublicUserPlan) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalPublicUserPlan) Reset() {
+	var v PublicUserPlan
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalPublicUserPlan) SetTo(v PublicUserPlan) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalPublicUserPlan) Get() (v PublicUserPlan, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalPullRequestBaseRepoPermissions with value set to v.
+func NewOptionalPullRequestBaseRepoPermissions(v PullRequestBaseRepoPermissions) OptionalPullRequestBaseRepoPermissions {
+	return OptionalPullRequestBaseRepoPermissions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalPullRequestBaseRepoPermissions is generic valiant of PullRequestBaseRepoPermissions.
+type OptionalPullRequestBaseRepoPermissions struct {
+	Value PullRequestBaseRepoPermissions
+	Set   bool
+}
+
+// IsSet returns true if OptionalPullRequestBaseRepoPermissions was set.
+func (o OptionalPullRequestBaseRepoPermissions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalPullRequestBaseRepoPermissions) Reset() {
+	var v PullRequestBaseRepoPermissions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalPullRequestBaseRepoPermissions) SetTo(v PullRequestBaseRepoPermissions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalPullRequestBaseRepoPermissions) Get() (v PullRequestBaseRepoPermissions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalPullRequestHeadRepoPermissions with value set to v.
+func NewOptionalPullRequestHeadRepoPermissions(v PullRequestHeadRepoPermissions) OptionalPullRequestHeadRepoPermissions {
+	return OptionalPullRequestHeadRepoPermissions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalPullRequestHeadRepoPermissions is generic valiant of PullRequestHeadRepoPermissions.
+type OptionalPullRequestHeadRepoPermissions struct {
+	Value PullRequestHeadRepoPermissions
+	Set   bool
+}
+
+// IsSet returns true if OptionalPullRequestHeadRepoPermissions was set.
+func (o OptionalPullRequestHeadRepoPermissions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalPullRequestHeadRepoPermissions) Reset() {
+	var v PullRequestHeadRepoPermissions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalPullRequestHeadRepoPermissions) SetTo(v PullRequestHeadRepoPermissions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalPullRequestHeadRepoPermissions) Get() (v PullRequestHeadRepoPermissions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalPullRequestReviewCommentSide with value set to v.
+func NewOptionalPullRequestReviewCommentSide(v PullRequestReviewCommentSide) OptionalPullRequestReviewCommentSide {
+	return OptionalPullRequestReviewCommentSide{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalPullRequestReviewCommentSide is generic valiant of PullRequestReviewCommentSide.
+type OptionalPullRequestReviewCommentSide struct {
+	Value PullRequestReviewCommentSide
+	Set   bool
+}
+
+// IsSet returns true if OptionalPullRequestReviewCommentSide was set.
+func (o OptionalPullRequestReviewCommentSide) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalPullRequestReviewCommentSide) Reset() {
+	var v PullRequestReviewCommentSide
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalPullRequestReviewCommentSide) SetTo(v PullRequestReviewCommentSide) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalPullRequestReviewCommentSide) Get() (v PullRequestReviewCommentSide, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalPullsCreateReviewApplicationJSONRequestEvent with value set to v.
+func NewOptionalPullsCreateReviewApplicationJSONRequestEvent(v PullsCreateReviewApplicationJSONRequestEvent) OptionalPullsCreateReviewApplicationJSONRequestEvent {
+	return OptionalPullsCreateReviewApplicationJSONRequestEvent{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalPullsCreateReviewApplicationJSONRequestEvent is generic valiant of PullsCreateReviewApplicationJSONRequestEvent.
+type OptionalPullsCreateReviewApplicationJSONRequestEvent struct {
+	Value PullsCreateReviewApplicationJSONRequestEvent
+	Set   bool
+}
+
+// IsSet returns true if OptionalPullsCreateReviewApplicationJSONRequestEvent was set.
+func (o OptionalPullsCreateReviewApplicationJSONRequestEvent) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalPullsCreateReviewApplicationJSONRequestEvent) Reset() {
+	var v PullsCreateReviewApplicationJSONRequestEvent
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalPullsCreateReviewApplicationJSONRequestEvent) SetTo(v PullsCreateReviewApplicationJSONRequestEvent) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalPullsCreateReviewApplicationJSONRequestEvent) Get() (v PullsCreateReviewApplicationJSONRequestEvent, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalPullsCreateReviewCommentApplicationJSONRequestSide with value set to v.
+func NewOptionalPullsCreateReviewCommentApplicationJSONRequestSide(v PullsCreateReviewCommentApplicationJSONRequestSide) OptionalPullsCreateReviewCommentApplicationJSONRequestSide {
+	return OptionalPullsCreateReviewCommentApplicationJSONRequestSide{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalPullsCreateReviewCommentApplicationJSONRequestSide is generic valiant of PullsCreateReviewCommentApplicationJSONRequestSide.
+type OptionalPullsCreateReviewCommentApplicationJSONRequestSide struct {
+	Value PullsCreateReviewCommentApplicationJSONRequestSide
+	Set   bool
+}
+
+// IsSet returns true if OptionalPullsCreateReviewCommentApplicationJSONRequestSide was set.
+func (o OptionalPullsCreateReviewCommentApplicationJSONRequestSide) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalPullsCreateReviewCommentApplicationJSONRequestSide) Reset() {
+	var v PullsCreateReviewCommentApplicationJSONRequestSide
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalPullsCreateReviewCommentApplicationJSONRequestSide) SetTo(v PullsCreateReviewCommentApplicationJSONRequestSide) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalPullsCreateReviewCommentApplicationJSONRequestSide) Get() (v PullsCreateReviewCommentApplicationJSONRequestSide, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalPullsCreateReviewCommentApplicationJSONRequestStartSide with value set to v.
+func NewOptionalPullsCreateReviewCommentApplicationJSONRequestStartSide(v PullsCreateReviewCommentApplicationJSONRequestStartSide) OptionalPullsCreateReviewCommentApplicationJSONRequestStartSide {
+	return OptionalPullsCreateReviewCommentApplicationJSONRequestStartSide{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalPullsCreateReviewCommentApplicationJSONRequestStartSide is generic valiant of PullsCreateReviewCommentApplicationJSONRequestStartSide.
+type OptionalPullsCreateReviewCommentApplicationJSONRequestStartSide struct {
+	Value PullsCreateReviewCommentApplicationJSONRequestStartSide
+	Set   bool
+}
+
+// IsSet returns true if OptionalPullsCreateReviewCommentApplicationJSONRequestStartSide was set.
+func (o OptionalPullsCreateReviewCommentApplicationJSONRequestStartSide) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalPullsCreateReviewCommentApplicationJSONRequestStartSide) Reset() {
+	var v PullsCreateReviewCommentApplicationJSONRequestStartSide
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalPullsCreateReviewCommentApplicationJSONRequestStartSide) SetTo(v PullsCreateReviewCommentApplicationJSONRequestStartSide) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalPullsCreateReviewCommentApplicationJSONRequestStartSide) Get() (v PullsCreateReviewCommentApplicationJSONRequestStartSide, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalPullsMergeApplicationJSONRequestMergeMethod with value set to v.
+func NewOptionalPullsMergeApplicationJSONRequestMergeMethod(v PullsMergeApplicationJSONRequestMergeMethod) OptionalPullsMergeApplicationJSONRequestMergeMethod {
+	return OptionalPullsMergeApplicationJSONRequestMergeMethod{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalPullsMergeApplicationJSONRequestMergeMethod is generic valiant of PullsMergeApplicationJSONRequestMergeMethod.
+type OptionalPullsMergeApplicationJSONRequestMergeMethod struct {
+	Value PullsMergeApplicationJSONRequestMergeMethod
+	Set   bool
+}
+
+// IsSet returns true if OptionalPullsMergeApplicationJSONRequestMergeMethod was set.
+func (o OptionalPullsMergeApplicationJSONRequestMergeMethod) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalPullsMergeApplicationJSONRequestMergeMethod) Reset() {
+	var v PullsMergeApplicationJSONRequestMergeMethod
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalPullsMergeApplicationJSONRequestMergeMethod) SetTo(v PullsMergeApplicationJSONRequestMergeMethod) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalPullsMergeApplicationJSONRequestMergeMethod) Get() (v PullsMergeApplicationJSONRequestMergeMethod, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalPullsUpdateApplicationJSONRequestState with value set to v.
+func NewOptionalPullsUpdateApplicationJSONRequestState(v PullsUpdateApplicationJSONRequestState) OptionalPullsUpdateApplicationJSONRequestState {
+	return OptionalPullsUpdateApplicationJSONRequestState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalPullsUpdateApplicationJSONRequestState is generic valiant of PullsUpdateApplicationJSONRequestState.
+type OptionalPullsUpdateApplicationJSONRequestState struct {
+	Value PullsUpdateApplicationJSONRequestState
+	Set   bool
+}
+
+// IsSet returns true if OptionalPullsUpdateApplicationJSONRequestState was set.
+func (o OptionalPullsUpdateApplicationJSONRequestState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalPullsUpdateApplicationJSONRequestState) Reset() {
+	var v PullsUpdateApplicationJSONRequestState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalPullsUpdateApplicationJSONRequestState) SetTo(v PullsUpdateApplicationJSONRequestState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalPullsUpdateApplicationJSONRequestState) Get() (v PullsUpdateApplicationJSONRequestState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalRateLimit with value set to v.
+func NewOptionalRateLimit(v RateLimit) OptionalRateLimit {
+	return OptionalRateLimit{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalRateLimit is generic valiant of RateLimit.
+type OptionalRateLimit struct {
+	Value RateLimit
+	Set   bool
+}
+
+// IsSet returns true if OptionalRateLimit was set.
+func (o OptionalRateLimit) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalRateLimit) Reset() {
+	var v RateLimit
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalRateLimit) SetTo(v RateLimit) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalRateLimit) Get() (v RateLimit, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalReactionRollup with value set to v.
+func NewOptionalReactionRollup(v ReactionRollup) OptionalReactionRollup {
+	return OptionalReactionRollup{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalReactionRollup is generic valiant of ReactionRollup.
+type OptionalReactionRollup struct {
+	Value ReactionRollup
+	Set   bool
+}
+
+// IsSet returns true if OptionalReactionRollup was set.
+func (o OptionalReactionRollup) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalReactionRollup) Reset() {
+	var v ReactionRollup
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalReactionRollup) SetTo(v ReactionRollup) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalReactionRollup) Get() (v ReactionRollup, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalReposAddCollaboratorApplicationJSONRequestPermission with value set to v.
+func NewOptionalReposAddCollaboratorApplicationJSONRequestPermission(v ReposAddCollaboratorApplicationJSONRequestPermission) OptionalReposAddCollaboratorApplicationJSONRequestPermission {
+	return OptionalReposAddCollaboratorApplicationJSONRequestPermission{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalReposAddCollaboratorApplicationJSONRequestPermission is generic valiant of ReposAddCollaboratorApplicationJSONRequestPermission.
+type OptionalReposAddCollaboratorApplicationJSONRequestPermission struct {
+	Value ReposAddCollaboratorApplicationJSONRequestPermission
+	Set   bool
+}
+
+// IsSet returns true if OptionalReposAddCollaboratorApplicationJSONRequestPermission was set.
+func (o OptionalReposAddCollaboratorApplicationJSONRequestPermission) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalReposAddCollaboratorApplicationJSONRequestPermission) Reset() {
+	var v ReposAddCollaboratorApplicationJSONRequestPermission
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalReposAddCollaboratorApplicationJSONRequestPermission) SetTo(v ReposAddCollaboratorApplicationJSONRequestPermission) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalReposAddCollaboratorApplicationJSONRequestPermission) Get() (v ReposAddCollaboratorApplicationJSONRequestPermission, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalReposCreateDeploymentStatusApplicationJSONRequestEnvironment with value set to v.
+func NewOptionalReposCreateDeploymentStatusApplicationJSONRequestEnvironment(v ReposCreateDeploymentStatusApplicationJSONRequestEnvironment) OptionalReposCreateDeploymentStatusApplicationJSONRequestEnvironment {
+	return OptionalReposCreateDeploymentStatusApplicationJSONRequestEnvironment{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalReposCreateDeploymentStatusApplicationJSONRequestEnvironment is generic valiant of ReposCreateDeploymentStatusApplicationJSONRequestEnvironment.
+type OptionalReposCreateDeploymentStatusApplicationJSONRequestEnvironment struct {
+	Value ReposCreateDeploymentStatusApplicationJSONRequestEnvironment
+	Set   bool
+}
+
+// IsSet returns true if OptionalReposCreateDeploymentStatusApplicationJSONRequestEnvironment was set.
+func (o OptionalReposCreateDeploymentStatusApplicationJSONRequestEnvironment) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalReposCreateDeploymentStatusApplicationJSONRequestEnvironment) Reset() {
+	var v ReposCreateDeploymentStatusApplicationJSONRequestEnvironment
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalReposCreateDeploymentStatusApplicationJSONRequestEnvironment) SetTo(v ReposCreateDeploymentStatusApplicationJSONRequestEnvironment) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalReposCreateDeploymentStatusApplicationJSONRequestEnvironment) Get() (v ReposCreateDeploymentStatusApplicationJSONRequestEnvironment, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalReposCreateInOrgApplicationJSONRequestVisibility with value set to v.
+func NewOptionalReposCreateInOrgApplicationJSONRequestVisibility(v ReposCreateInOrgApplicationJSONRequestVisibility) OptionalReposCreateInOrgApplicationJSONRequestVisibility {
+	return OptionalReposCreateInOrgApplicationJSONRequestVisibility{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalReposCreateInOrgApplicationJSONRequestVisibility is generic valiant of ReposCreateInOrgApplicationJSONRequestVisibility.
+type OptionalReposCreateInOrgApplicationJSONRequestVisibility struct {
+	Value ReposCreateInOrgApplicationJSONRequestVisibility
+	Set   bool
+}
+
+// IsSet returns true if OptionalReposCreateInOrgApplicationJSONRequestVisibility was set.
+func (o OptionalReposCreateInOrgApplicationJSONRequestVisibility) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalReposCreateInOrgApplicationJSONRequestVisibility) Reset() {
+	var v ReposCreateInOrgApplicationJSONRequestVisibility
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalReposCreateInOrgApplicationJSONRequestVisibility) SetTo(v ReposCreateInOrgApplicationJSONRequestVisibility) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalReposCreateInOrgApplicationJSONRequestVisibility) Get() (v ReposCreateInOrgApplicationJSONRequestVisibility, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor with value set to v.
+func NewOptionalReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor(v ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor {
+	return OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor is generic valiant of ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor.
+type OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor struct {
+	Value ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor
+	Set   bool
+}
+
+// IsSet returns true if OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor was set.
+func (o OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) Reset() {
+	var v ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) SetTo(v ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) Get() (v ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter with value set to v.
+func NewOptionalReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter(v ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter {
+	return OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter is generic valiant of ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter.
+type OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter struct {
+	Value ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter
+	Set   bool
+}
+
+// IsSet returns true if OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter was set.
+func (o OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) Reset() {
+	var v ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) SetTo(v ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) Get() (v ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalReposCreatePagesSiteApplicationJSONRequestSourcePath with value set to v.
+func NewOptionalReposCreatePagesSiteApplicationJSONRequestSourcePath(v ReposCreatePagesSiteApplicationJSONRequestSourcePath) OptionalReposCreatePagesSiteApplicationJSONRequestSourcePath {
+	return OptionalReposCreatePagesSiteApplicationJSONRequestSourcePath{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalReposCreatePagesSiteApplicationJSONRequestSourcePath is generic valiant of ReposCreatePagesSiteApplicationJSONRequestSourcePath.
+type OptionalReposCreatePagesSiteApplicationJSONRequestSourcePath struct {
+	Value ReposCreatePagesSiteApplicationJSONRequestSourcePath
+	Set   bool
+}
+
+// IsSet returns true if OptionalReposCreatePagesSiteApplicationJSONRequestSourcePath was set.
+func (o OptionalReposCreatePagesSiteApplicationJSONRequestSourcePath) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalReposCreatePagesSiteApplicationJSONRequestSourcePath) Reset() {
+	var v ReposCreatePagesSiteApplicationJSONRequestSourcePath
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalReposCreatePagesSiteApplicationJSONRequestSourcePath) SetTo(v ReposCreatePagesSiteApplicationJSONRequestSourcePath) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalReposCreatePagesSiteApplicationJSONRequestSourcePath) Get() (v ReposCreatePagesSiteApplicationJSONRequestSourcePath, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalReposDeleteFileApplicationJSONRequestAuthor with value set to v.
+func NewOptionalReposDeleteFileApplicationJSONRequestAuthor(v ReposDeleteFileApplicationJSONRequestAuthor) OptionalReposDeleteFileApplicationJSONRequestAuthor {
+	return OptionalReposDeleteFileApplicationJSONRequestAuthor{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalReposDeleteFileApplicationJSONRequestAuthor is generic valiant of ReposDeleteFileApplicationJSONRequestAuthor.
+type OptionalReposDeleteFileApplicationJSONRequestAuthor struct {
+	Value ReposDeleteFileApplicationJSONRequestAuthor
+	Set   bool
+}
+
+// IsSet returns true if OptionalReposDeleteFileApplicationJSONRequestAuthor was set.
+func (o OptionalReposDeleteFileApplicationJSONRequestAuthor) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalReposDeleteFileApplicationJSONRequestAuthor) Reset() {
+	var v ReposDeleteFileApplicationJSONRequestAuthor
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalReposDeleteFileApplicationJSONRequestAuthor) SetTo(v ReposDeleteFileApplicationJSONRequestAuthor) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalReposDeleteFileApplicationJSONRequestAuthor) Get() (v ReposDeleteFileApplicationJSONRequestAuthor, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalReposDeleteFileApplicationJSONRequestCommitter with value set to v.
+func NewOptionalReposDeleteFileApplicationJSONRequestCommitter(v ReposDeleteFileApplicationJSONRequestCommitter) OptionalReposDeleteFileApplicationJSONRequestCommitter {
+	return OptionalReposDeleteFileApplicationJSONRequestCommitter{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalReposDeleteFileApplicationJSONRequestCommitter is generic valiant of ReposDeleteFileApplicationJSONRequestCommitter.
+type OptionalReposDeleteFileApplicationJSONRequestCommitter struct {
+	Value ReposDeleteFileApplicationJSONRequestCommitter
+	Set   bool
+}
+
+// IsSet returns true if OptionalReposDeleteFileApplicationJSONRequestCommitter was set.
+func (o OptionalReposDeleteFileApplicationJSONRequestCommitter) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalReposDeleteFileApplicationJSONRequestCommitter) Reset() {
+	var v ReposDeleteFileApplicationJSONRequestCommitter
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalReposDeleteFileApplicationJSONRequestCommitter) SetTo(v ReposDeleteFileApplicationJSONRequestCommitter) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalReposDeleteFileApplicationJSONRequestCommitter) Get() (v ReposDeleteFileApplicationJSONRequestCommitter, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity with value set to v.
+func NewOptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity(v ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity {
+	return OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity is generic valiant of ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity.
+type OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity struct {
+	Value ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity
+	Set   bool
+}
+
+// IsSet returns true if OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity was set.
+func (o OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) Reset() {
+	var v ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) SetTo(v ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) Get() (v ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning with value set to v.
+func NewOptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning(v ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning {
+	return OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning is generic valiant of ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning.
+type OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning struct {
+	Value ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning
+	Set   bool
+}
+
+// IsSet returns true if OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning was set.
+func (o OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) Reset() {
+	var v ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) SetTo(v ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) Get() (v ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalReposUpdateApplicationJSONRequestVisibility with value set to v.
+func NewOptionalReposUpdateApplicationJSONRequestVisibility(v ReposUpdateApplicationJSONRequestVisibility) OptionalReposUpdateApplicationJSONRequestVisibility {
+	return OptionalReposUpdateApplicationJSONRequestVisibility{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalReposUpdateApplicationJSONRequestVisibility is generic valiant of ReposUpdateApplicationJSONRequestVisibility.
+type OptionalReposUpdateApplicationJSONRequestVisibility struct {
+	Value ReposUpdateApplicationJSONRequestVisibility
+	Set   bool
+}
+
+// IsSet returns true if OptionalReposUpdateApplicationJSONRequestVisibility was set.
+func (o OptionalReposUpdateApplicationJSONRequestVisibility) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalReposUpdateApplicationJSONRequestVisibility) Reset() {
+	var v ReposUpdateApplicationJSONRequestVisibility
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalReposUpdateApplicationJSONRequestVisibility) SetTo(v ReposUpdateApplicationJSONRequestVisibility) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalReposUpdateApplicationJSONRequestVisibility) Get() (v ReposUpdateApplicationJSONRequestVisibility, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions with value set to v.
+func NewOptionalReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions(v ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) OptionalReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions {
+	return OptionalReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions is generic valiant of ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions.
+type OptionalReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions struct {
+	Value ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions
+	Set   bool
+}
+
+// IsSet returns true if OptionalReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions was set.
+func (o OptionalReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) Reset() {
+	var v ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) SetTo(v ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) Get() (v ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalReposUpdateInvitationApplicationJSONRequestPermissions with value set to v.
+func NewOptionalReposUpdateInvitationApplicationJSONRequestPermissions(v ReposUpdateInvitationApplicationJSONRequestPermissions) OptionalReposUpdateInvitationApplicationJSONRequestPermissions {
+	return OptionalReposUpdateInvitationApplicationJSONRequestPermissions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalReposUpdateInvitationApplicationJSONRequestPermissions is generic valiant of ReposUpdateInvitationApplicationJSONRequestPermissions.
+type OptionalReposUpdateInvitationApplicationJSONRequestPermissions struct {
+	Value ReposUpdateInvitationApplicationJSONRequestPermissions
+	Set   bool
+}
+
+// IsSet returns true if OptionalReposUpdateInvitationApplicationJSONRequestPermissions was set.
+func (o OptionalReposUpdateInvitationApplicationJSONRequestPermissions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalReposUpdateInvitationApplicationJSONRequestPermissions) Reset() {
+	var v ReposUpdateInvitationApplicationJSONRequestPermissions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalReposUpdateInvitationApplicationJSONRequestPermissions) SetTo(v ReposUpdateInvitationApplicationJSONRequestPermissions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalReposUpdateInvitationApplicationJSONRequestPermissions) Get() (v ReposUpdateInvitationApplicationJSONRequestPermissions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions with value set to v.
+func NewOptionalReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions(v ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) OptionalReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions {
+	return OptionalReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions is generic valiant of ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions.
+type OptionalReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions struct {
+	Value ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions
+	Set   bool
+}
+
+// IsSet returns true if OptionalReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions was set.
+func (o OptionalReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) Reset() {
+	var v ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) SetTo(v ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) Get() (v ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalRepository with value set to v.
+func NewOptionalRepository(v Repository) OptionalRepository {
+	return OptionalRepository{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalRepository is generic valiant of Repository.
+type OptionalRepository struct {
+	Value Repository
+	Set   bool
+}
+
+// IsSet returns true if OptionalRepository was set.
+func (o OptionalRepository) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalRepository) Reset() {
+	var v Repository
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalRepository) SetTo(v Repository) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalRepository) Get() (v Repository, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalRepositoryPermissions with value set to v.
+func NewOptionalRepositoryPermissions(v RepositoryPermissions) OptionalRepositoryPermissions {
+	return OptionalRepositoryPermissions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalRepositoryPermissions is generic valiant of RepositoryPermissions.
+type OptionalRepositoryPermissions struct {
+	Value RepositoryPermissions
+	Set   bool
+}
+
+// IsSet returns true if OptionalRepositoryPermissions was set.
+func (o OptionalRepositoryPermissions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalRepositoryPermissions) Reset() {
+	var v RepositoryPermissions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalRepositoryPermissions) SetTo(v RepositoryPermissions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalRepositoryPermissions) Get() (v RepositoryPermissions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalRepositoryTemplateRepositoryOwner with value set to v.
+func NewOptionalRepositoryTemplateRepositoryOwner(v RepositoryTemplateRepositoryOwner) OptionalRepositoryTemplateRepositoryOwner {
+	return OptionalRepositoryTemplateRepositoryOwner{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalRepositoryTemplateRepositoryOwner is generic valiant of RepositoryTemplateRepositoryOwner.
+type OptionalRepositoryTemplateRepositoryOwner struct {
+	Value RepositoryTemplateRepositoryOwner
+	Set   bool
+}
+
+// IsSet returns true if OptionalRepositoryTemplateRepositoryOwner was set.
+func (o OptionalRepositoryTemplateRepositoryOwner) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalRepositoryTemplateRepositoryOwner) Reset() {
+	var v RepositoryTemplateRepositoryOwner
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalRepositoryTemplateRepositoryOwner) SetTo(v RepositoryTemplateRepositoryOwner) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalRepositoryTemplateRepositoryOwner) Get() (v RepositoryTemplateRepositoryOwner, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalRepositoryTemplateRepositoryPermissions with value set to v.
+func NewOptionalRepositoryTemplateRepositoryPermissions(v RepositoryTemplateRepositoryPermissions) OptionalRepositoryTemplateRepositoryPermissions {
+	return OptionalRepositoryTemplateRepositoryPermissions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalRepositoryTemplateRepositoryPermissions is generic valiant of RepositoryTemplateRepositoryPermissions.
+type OptionalRepositoryTemplateRepositoryPermissions struct {
+	Value RepositoryTemplateRepositoryPermissions
+	Set   bool
+}
+
+// IsSet returns true if OptionalRepositoryTemplateRepositoryPermissions was set.
+func (o OptionalRepositoryTemplateRepositoryPermissions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalRepositoryTemplateRepositoryPermissions) Reset() {
+	var v RepositoryTemplateRepositoryPermissions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalRepositoryTemplateRepositoryPermissions) SetTo(v RepositoryTemplateRepositoryPermissions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalRepositoryTemplateRepositoryPermissions) Get() (v RepositoryTemplateRepositoryPermissions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalReviewCommentSide with value set to v.
+func NewOptionalReviewCommentSide(v ReviewCommentSide) OptionalReviewCommentSide {
+	return OptionalReviewCommentSide{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalReviewCommentSide is generic valiant of ReviewCommentSide.
+type OptionalReviewCommentSide struct {
+	Value ReviewCommentSide
+	Set   bool
+}
+
+// IsSet returns true if OptionalReviewCommentSide was set.
+func (o OptionalReviewCommentSide) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalReviewCommentSide) Reset() {
+	var v ReviewCommentSide
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalReviewCommentSide) SetTo(v ReviewCommentSide) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalReviewCommentSide) Get() (v ReviewCommentSide, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalRunnerLabelsItemType with value set to v.
+func NewOptionalRunnerLabelsItemType(v RunnerLabelsItemType) OptionalRunnerLabelsItemType {
+	return OptionalRunnerLabelsItemType{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalRunnerLabelsItemType is generic valiant of RunnerLabelsItemType.
+type OptionalRunnerLabelsItemType struct {
+	Value RunnerLabelsItemType
+	Set   bool
+}
+
+// IsSet returns true if OptionalRunnerLabelsItemType was set.
+func (o OptionalRunnerLabelsItemType) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalRunnerLabelsItemType) Reset() {
+	var v RunnerLabelsItemType
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalRunnerLabelsItemType) SetTo(v RunnerLabelsItemType) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalRunnerLabelsItemType) Get() (v RunnerLabelsItemType, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalScimEnterpriseGroupMeta with value set to v.
+func NewOptionalScimEnterpriseGroupMeta(v ScimEnterpriseGroupMeta) OptionalScimEnterpriseGroupMeta {
+	return OptionalScimEnterpriseGroupMeta{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalScimEnterpriseGroupMeta is generic valiant of ScimEnterpriseGroupMeta.
+type OptionalScimEnterpriseGroupMeta struct {
+	Value ScimEnterpriseGroupMeta
+	Set   bool
+}
+
+// IsSet returns true if OptionalScimEnterpriseGroupMeta was set.
+func (o OptionalScimEnterpriseGroupMeta) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalScimEnterpriseGroupMeta) Reset() {
+	var v ScimEnterpriseGroupMeta
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalScimEnterpriseGroupMeta) SetTo(v ScimEnterpriseGroupMeta) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalScimEnterpriseGroupMeta) Get() (v ScimEnterpriseGroupMeta, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalScimEnterpriseUserMeta with value set to v.
+func NewOptionalScimEnterpriseUserMeta(v ScimEnterpriseUserMeta) OptionalScimEnterpriseUserMeta {
+	return OptionalScimEnterpriseUserMeta{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalScimEnterpriseUserMeta is generic valiant of ScimEnterpriseUserMeta.
+type OptionalScimEnterpriseUserMeta struct {
+	Value ScimEnterpriseUserMeta
+	Set   bool
+}
+
+// IsSet returns true if OptionalScimEnterpriseUserMeta was set.
+func (o OptionalScimEnterpriseUserMeta) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalScimEnterpriseUserMeta) Reset() {
+	var v ScimEnterpriseUserMeta
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalScimEnterpriseUserMeta) SetTo(v ScimEnterpriseUserMeta) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalScimEnterpriseUserMeta) Get() (v ScimEnterpriseUserMeta, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalScimEnterpriseUserName with value set to v.
+func NewOptionalScimEnterpriseUserName(v ScimEnterpriseUserName) OptionalScimEnterpriseUserName {
+	return OptionalScimEnterpriseUserName{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalScimEnterpriseUserName is generic valiant of ScimEnterpriseUserName.
+type OptionalScimEnterpriseUserName struct {
+	Value ScimEnterpriseUserName
+	Set   bool
+}
+
+// IsSet returns true if OptionalScimEnterpriseUserName was set.
+func (o OptionalScimEnterpriseUserName) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalScimEnterpriseUserName) Reset() {
+	var v ScimEnterpriseUserName
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalScimEnterpriseUserName) SetTo(v ScimEnterpriseUserName) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalScimEnterpriseUserName) Get() (v ScimEnterpriseUserName, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalScimGroupListEnterpriseResourcesItemMeta with value set to v.
+func NewOptionalScimGroupListEnterpriseResourcesItemMeta(v ScimGroupListEnterpriseResourcesItemMeta) OptionalScimGroupListEnterpriseResourcesItemMeta {
+	return OptionalScimGroupListEnterpriseResourcesItemMeta{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalScimGroupListEnterpriseResourcesItemMeta is generic valiant of ScimGroupListEnterpriseResourcesItemMeta.
+type OptionalScimGroupListEnterpriseResourcesItemMeta struct {
+	Value ScimGroupListEnterpriseResourcesItemMeta
+	Set   bool
+}
+
+// IsSet returns true if OptionalScimGroupListEnterpriseResourcesItemMeta was set.
+func (o OptionalScimGroupListEnterpriseResourcesItemMeta) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalScimGroupListEnterpriseResourcesItemMeta) Reset() {
+	var v ScimGroupListEnterpriseResourcesItemMeta
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalScimGroupListEnterpriseResourcesItemMeta) SetTo(v ScimGroupListEnterpriseResourcesItemMeta) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalScimGroupListEnterpriseResourcesItemMeta) Get() (v ScimGroupListEnterpriseResourcesItemMeta, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalScimUserListEnterpriseResourcesItemMeta with value set to v.
+func NewOptionalScimUserListEnterpriseResourcesItemMeta(v ScimUserListEnterpriseResourcesItemMeta) OptionalScimUserListEnterpriseResourcesItemMeta {
+	return OptionalScimUserListEnterpriseResourcesItemMeta{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalScimUserListEnterpriseResourcesItemMeta is generic valiant of ScimUserListEnterpriseResourcesItemMeta.
+type OptionalScimUserListEnterpriseResourcesItemMeta struct {
+	Value ScimUserListEnterpriseResourcesItemMeta
+	Set   bool
+}
+
+// IsSet returns true if OptionalScimUserListEnterpriseResourcesItemMeta was set.
+func (o OptionalScimUserListEnterpriseResourcesItemMeta) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalScimUserListEnterpriseResourcesItemMeta) Reset() {
+	var v ScimUserListEnterpriseResourcesItemMeta
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalScimUserListEnterpriseResourcesItemMeta) SetTo(v ScimUserListEnterpriseResourcesItemMeta) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalScimUserListEnterpriseResourcesItemMeta) Get() (v ScimUserListEnterpriseResourcesItemMeta, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalScimUserListEnterpriseResourcesItemName with value set to v.
+func NewOptionalScimUserListEnterpriseResourcesItemName(v ScimUserListEnterpriseResourcesItemName) OptionalScimUserListEnterpriseResourcesItemName {
+	return OptionalScimUserListEnterpriseResourcesItemName{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalScimUserListEnterpriseResourcesItemName is generic valiant of ScimUserListEnterpriseResourcesItemName.
+type OptionalScimUserListEnterpriseResourcesItemName struct {
+	Value ScimUserListEnterpriseResourcesItemName
+	Set   bool
+}
+
+// IsSet returns true if OptionalScimUserListEnterpriseResourcesItemName was set.
+func (o OptionalScimUserListEnterpriseResourcesItemName) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalScimUserListEnterpriseResourcesItemName) Reset() {
+	var v ScimUserListEnterpriseResourcesItemName
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalScimUserListEnterpriseResourcesItemName) SetTo(v ScimUserListEnterpriseResourcesItemName) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalScimUserListEnterpriseResourcesItemName) Get() (v ScimUserListEnterpriseResourcesItemName, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalSecretScanningAlertResolution with value set to v.
+func NewOptionalSecretScanningAlertResolution(v SecretScanningAlertResolution) OptionalSecretScanningAlertResolution {
+	return OptionalSecretScanningAlertResolution{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalSecretScanningAlertResolution is generic valiant of SecretScanningAlertResolution.
+type OptionalSecretScanningAlertResolution struct {
+	Value SecretScanningAlertResolution
+	Set   bool
+}
+
+// IsSet returns true if OptionalSecretScanningAlertResolution was set.
+func (o OptionalSecretScanningAlertResolution) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalSecretScanningAlertResolution) Reset() {
+	var v SecretScanningAlertResolution
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalSecretScanningAlertResolution) SetTo(v SecretScanningAlertResolution) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalSecretScanningAlertResolution) Get() (v SecretScanningAlertResolution, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalSecretScanningAlertState with value set to v.
+func NewOptionalSecretScanningAlertState(v SecretScanningAlertState) OptionalSecretScanningAlertState {
+	return OptionalSecretScanningAlertState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalSecretScanningAlertState is generic valiant of SecretScanningAlertState.
+type OptionalSecretScanningAlertState struct {
+	Value SecretScanningAlertState
+	Set   bool
+}
+
+// IsSet returns true if OptionalSecretScanningAlertState was set.
+func (o OptionalSecretScanningAlertState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalSecretScanningAlertState) Reset() {
+	var v SecretScanningAlertState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalSecretScanningAlertState) SetTo(v SecretScanningAlertState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalSecretScanningAlertState) Get() (v SecretScanningAlertState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalSimpleUser with value set to v.
+func NewOptionalSimpleUser(v SimpleUser) OptionalSimpleUser {
+	return OptionalSimpleUser{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalSimpleUser is generic valiant of SimpleUser.
+type OptionalSimpleUser struct {
+	Value SimpleUser
+	Set   bool
+}
+
+// IsSet returns true if OptionalSimpleUser was set.
+func (o OptionalSimpleUser) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalSimpleUser) Reset() {
+	var v SimpleUser
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalSimpleUser) SetTo(v SimpleUser) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalSimpleUser) Get() (v SimpleUser, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalStatusCheckPolicy with value set to v.
+func NewOptionalStatusCheckPolicy(v StatusCheckPolicy) OptionalStatusCheckPolicy {
+	return OptionalStatusCheckPolicy{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalStatusCheckPolicy is generic valiant of StatusCheckPolicy.
+type OptionalStatusCheckPolicy struct {
+	Value StatusCheckPolicy
+	Set   bool
+}
+
+// IsSet returns true if OptionalStatusCheckPolicy was set.
+func (o OptionalStatusCheckPolicy) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalStatusCheckPolicy) Reset() {
+	var v StatusCheckPolicy
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalStatusCheckPolicy) SetTo(v StatusCheckPolicy) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalStatusCheckPolicy) Get() (v StatusCheckPolicy, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalString with value set to v.
+func NewOptionalString(v string) OptionalString {
+	return OptionalString{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalString is generic valiant of string.
+type OptionalString struct {
+	Value string
+	Set   bool
+}
+
+// IsSet returns true if OptionalString was set.
+func (o OptionalString) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalString) Reset() {
+	var v string
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalString) SetTo(v string) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalString) Get() (v string, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalTeam with value set to v.
+func NewOptionalTeam(v Team) OptionalTeam {
+	return OptionalTeam{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTeam is generic valiant of Team.
+type OptionalTeam struct {
+	Value Team
+	Set   bool
+}
+
+// IsSet returns true if OptionalTeam was set.
+func (o OptionalTeam) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalTeam) Reset() {
+	var v Team
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTeam) SetTo(v Team) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTeam) Get() (v Team, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalTeamFullPrivacy with value set to v.
+func NewOptionalTeamFullPrivacy(v TeamFullPrivacy) OptionalTeamFullPrivacy {
+	return OptionalTeamFullPrivacy{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTeamFullPrivacy is generic valiant of TeamFullPrivacy.
+type OptionalTeamFullPrivacy struct {
+	Value TeamFullPrivacy
+	Set   bool
+}
+
+// IsSet returns true if OptionalTeamFullPrivacy was set.
+func (o OptionalTeamFullPrivacy) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalTeamFullPrivacy) Reset() {
+	var v TeamFullPrivacy
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTeamFullPrivacy) SetTo(v TeamFullPrivacy) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTeamFullPrivacy) Get() (v TeamFullPrivacy, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalTeamPermissions with value set to v.
+func NewOptionalTeamPermissions(v TeamPermissions) OptionalTeamPermissions {
+	return OptionalTeamPermissions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTeamPermissions is generic valiant of TeamPermissions.
+type OptionalTeamPermissions struct {
+	Value TeamPermissions
+	Set   bool
+}
+
+// IsSet returns true if OptionalTeamPermissions was set.
+func (o OptionalTeamPermissions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalTeamPermissions) Reset() {
+	var v TeamPermissions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTeamPermissions) SetTo(v TeamPermissions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTeamPermissions) Get() (v TeamPermissions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalTeamRepositoryPermissions with value set to v.
+func NewOptionalTeamRepositoryPermissions(v TeamRepositoryPermissions) OptionalTeamRepositoryPermissions {
+	return OptionalTeamRepositoryPermissions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTeamRepositoryPermissions is generic valiant of TeamRepositoryPermissions.
+type OptionalTeamRepositoryPermissions struct {
+	Value TeamRepositoryPermissions
+	Set   bool
+}
+
+// IsSet returns true if OptionalTeamRepositoryPermissions was set.
+func (o OptionalTeamRepositoryPermissions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalTeamRepositoryPermissions) Reset() {
+	var v TeamRepositoryPermissions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTeamRepositoryPermissions) SetTo(v TeamRepositoryPermissions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTeamRepositoryPermissions) Get() (v TeamRepositoryPermissions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole with value set to v.
+func NewOptionalTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole(v TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) OptionalTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole {
+	return OptionalTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole is generic valiant of TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole.
+type OptionalTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole struct {
+	Value TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole
+	Set   bool
+}
+
+// IsSet returns true if OptionalTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole was set.
+func (o OptionalTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) Reset() {
+	var v TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) SetTo(v TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) Get() (v TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole with value set to v.
+func NewOptionalTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole(v TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) OptionalTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole {
+	return OptionalTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole is generic valiant of TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole.
+type OptionalTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole struct {
+	Value TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole
+	Set   bool
+}
+
+// IsSet returns true if OptionalTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole was set.
+func (o OptionalTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) Reset() {
+	var v TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) SetTo(v TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) Get() (v TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission with value set to v.
+func NewOptionalTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission(v TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) OptionalTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission {
+	return OptionalTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission is generic valiant of TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission.
+type OptionalTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission struct {
+	Value TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission
+	Set   bool
+}
+
+// IsSet returns true if OptionalTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission was set.
+func (o OptionalTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) Reset() {
+	var v TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) SetTo(v TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) Get() (v TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission with value set to v.
+func NewOptionalTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission(v TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) OptionalTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission {
+	return OptionalTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission is generic valiant of TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission.
+type OptionalTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission struct {
+	Value TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission
+	Set   bool
+}
+
+// IsSet returns true if OptionalTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission was set.
+func (o OptionalTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) Reset() {
+	var v TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) SetTo(v TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) Get() (v TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission with value set to v.
+func NewOptionalTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission(v TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) OptionalTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission {
+	return OptionalTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission is generic valiant of TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission.
+type OptionalTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission struct {
+	Value TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission
+	Set   bool
+}
+
+// IsSet returns true if OptionalTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission was set.
+func (o OptionalTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) Reset() {
+	var v TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) SetTo(v TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) Get() (v TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission with value set to v.
+func NewOptionalTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission(v TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) OptionalTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission {
+	return OptionalTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission is generic valiant of TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission.
+type OptionalTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission struct {
+	Value TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission
+	Set   bool
+}
+
+// IsSet returns true if OptionalTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission was set.
+func (o OptionalTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptionalTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) Reset() {
+	var v TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) SetTo(v TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) Get() (v TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalTeamsCreateApplicationJSONRequestPermission with value set to v.
+func NewOptionalTeamsCreateApplicationJSONRequestPermission(v TeamsCreateApplicationJSONRequestPermission) OptionalTeamsCreateApplicationJSONRequestPermission {
+	return OptionalTeamsCreateApplicationJSONRequestPermission{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTeamsCreateApplicationJSONRequestPermission is generic valiant of TeamsCreateApplicationJSONRequestPermission.
+type OptionalTeamsCreateApplicationJSONRequestPermission struct {
+	Value TeamsCreateApplicationJSONRequestPermission
+	Set   bool
+}
+
+// IsSet returns true if OptionalTeamsCreateApplicationJSONRequestPermission was set.
+func (o OptionalTeamsCreateApplicationJSONRequestPermission) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalTeamsCreateApplicationJSONRequestPermission) Reset() {
+	var v TeamsCreateApplicationJSONRequestPermission
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTeamsCreateApplicationJSONRequestPermission) SetTo(v TeamsCreateApplicationJSONRequestPermission) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTeamsCreateApplicationJSONRequestPermission) Get() (v TeamsCreateApplicationJSONRequestPermission, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalTeamsCreateApplicationJSONRequestPrivacy with value set to v.
+func NewOptionalTeamsCreateApplicationJSONRequestPrivacy(v TeamsCreateApplicationJSONRequestPrivacy) OptionalTeamsCreateApplicationJSONRequestPrivacy {
+	return OptionalTeamsCreateApplicationJSONRequestPrivacy{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTeamsCreateApplicationJSONRequestPrivacy is generic valiant of TeamsCreateApplicationJSONRequestPrivacy.
+type OptionalTeamsCreateApplicationJSONRequestPrivacy struct {
+	Value TeamsCreateApplicationJSONRequestPrivacy
+	Set   bool
+}
+
+// IsSet returns true if OptionalTeamsCreateApplicationJSONRequestPrivacy was set.
+func (o OptionalTeamsCreateApplicationJSONRequestPrivacy) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalTeamsCreateApplicationJSONRequestPrivacy) Reset() {
+	var v TeamsCreateApplicationJSONRequestPrivacy
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTeamsCreateApplicationJSONRequestPrivacy) SetTo(v TeamsCreateApplicationJSONRequestPrivacy) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTeamsCreateApplicationJSONRequestPrivacy) Get() (v TeamsCreateApplicationJSONRequestPrivacy, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalTeamsUpdateInOrgApplicationJSONRequestPermission with value set to v.
+func NewOptionalTeamsUpdateInOrgApplicationJSONRequestPermission(v TeamsUpdateInOrgApplicationJSONRequestPermission) OptionalTeamsUpdateInOrgApplicationJSONRequestPermission {
+	return OptionalTeamsUpdateInOrgApplicationJSONRequestPermission{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTeamsUpdateInOrgApplicationJSONRequestPermission is generic valiant of TeamsUpdateInOrgApplicationJSONRequestPermission.
+type OptionalTeamsUpdateInOrgApplicationJSONRequestPermission struct {
+	Value TeamsUpdateInOrgApplicationJSONRequestPermission
+	Set   bool
+}
+
+// IsSet returns true if OptionalTeamsUpdateInOrgApplicationJSONRequestPermission was set.
+func (o OptionalTeamsUpdateInOrgApplicationJSONRequestPermission) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalTeamsUpdateInOrgApplicationJSONRequestPermission) Reset() {
+	var v TeamsUpdateInOrgApplicationJSONRequestPermission
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTeamsUpdateInOrgApplicationJSONRequestPermission) SetTo(v TeamsUpdateInOrgApplicationJSONRequestPermission) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTeamsUpdateInOrgApplicationJSONRequestPermission) Get() (v TeamsUpdateInOrgApplicationJSONRequestPermission, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalTeamsUpdateInOrgApplicationJSONRequestPrivacy with value set to v.
+func NewOptionalTeamsUpdateInOrgApplicationJSONRequestPrivacy(v TeamsUpdateInOrgApplicationJSONRequestPrivacy) OptionalTeamsUpdateInOrgApplicationJSONRequestPrivacy {
+	return OptionalTeamsUpdateInOrgApplicationJSONRequestPrivacy{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTeamsUpdateInOrgApplicationJSONRequestPrivacy is generic valiant of TeamsUpdateInOrgApplicationJSONRequestPrivacy.
+type OptionalTeamsUpdateInOrgApplicationJSONRequestPrivacy struct {
+	Value TeamsUpdateInOrgApplicationJSONRequestPrivacy
+	Set   bool
+}
+
+// IsSet returns true if OptionalTeamsUpdateInOrgApplicationJSONRequestPrivacy was set.
+func (o OptionalTeamsUpdateInOrgApplicationJSONRequestPrivacy) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalTeamsUpdateInOrgApplicationJSONRequestPrivacy) Reset() {
+	var v TeamsUpdateInOrgApplicationJSONRequestPrivacy
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTeamsUpdateInOrgApplicationJSONRequestPrivacy) SetTo(v TeamsUpdateInOrgApplicationJSONRequestPrivacy) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTeamsUpdateInOrgApplicationJSONRequestPrivacy) Get() (v TeamsUpdateInOrgApplicationJSONRequestPrivacy, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalTeamsUpdateLegacyApplicationJSONRequestPermission with value set to v.
+func NewOptionalTeamsUpdateLegacyApplicationJSONRequestPermission(v TeamsUpdateLegacyApplicationJSONRequestPermission) OptionalTeamsUpdateLegacyApplicationJSONRequestPermission {
+	return OptionalTeamsUpdateLegacyApplicationJSONRequestPermission{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTeamsUpdateLegacyApplicationJSONRequestPermission is generic valiant of TeamsUpdateLegacyApplicationJSONRequestPermission.
+type OptionalTeamsUpdateLegacyApplicationJSONRequestPermission struct {
+	Value TeamsUpdateLegacyApplicationJSONRequestPermission
+	Set   bool
+}
+
+// IsSet returns true if OptionalTeamsUpdateLegacyApplicationJSONRequestPermission was set.
+func (o OptionalTeamsUpdateLegacyApplicationJSONRequestPermission) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalTeamsUpdateLegacyApplicationJSONRequestPermission) Reset() {
+	var v TeamsUpdateLegacyApplicationJSONRequestPermission
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTeamsUpdateLegacyApplicationJSONRequestPermission) SetTo(v TeamsUpdateLegacyApplicationJSONRequestPermission) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTeamsUpdateLegacyApplicationJSONRequestPermission) Get() (v TeamsUpdateLegacyApplicationJSONRequestPermission, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalTeamsUpdateLegacyApplicationJSONRequestPrivacy with value set to v.
+func NewOptionalTeamsUpdateLegacyApplicationJSONRequestPrivacy(v TeamsUpdateLegacyApplicationJSONRequestPrivacy) OptionalTeamsUpdateLegacyApplicationJSONRequestPrivacy {
+	return OptionalTeamsUpdateLegacyApplicationJSONRequestPrivacy{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTeamsUpdateLegacyApplicationJSONRequestPrivacy is generic valiant of TeamsUpdateLegacyApplicationJSONRequestPrivacy.
+type OptionalTeamsUpdateLegacyApplicationJSONRequestPrivacy struct {
+	Value TeamsUpdateLegacyApplicationJSONRequestPrivacy
+	Set   bool
+}
+
+// IsSet returns true if OptionalTeamsUpdateLegacyApplicationJSONRequestPrivacy was set.
+func (o OptionalTeamsUpdateLegacyApplicationJSONRequestPrivacy) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalTeamsUpdateLegacyApplicationJSONRequestPrivacy) Reset() {
+	var v TeamsUpdateLegacyApplicationJSONRequestPrivacy
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTeamsUpdateLegacyApplicationJSONRequestPrivacy) SetTo(v TeamsUpdateLegacyApplicationJSONRequestPrivacy) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTeamsUpdateLegacyApplicationJSONRequestPrivacy) Get() (v TeamsUpdateLegacyApplicationJSONRequestPrivacy, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalTime with value set to v.
+func NewOptionalTime(v time.Time) OptionalTime {
+	return OptionalTime{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTime is generic valiant of time.Time.
+type OptionalTime struct {
+	Value time.Time
+	Set   bool
+}
+
+// IsSet returns true if OptionalTime was set.
+func (o OptionalTime) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalTime) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTime) SetTo(v time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTime) Get() (v time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalTopicSearchResultItemAliasesItemTopicRelation with value set to v.
+func NewOptionalTopicSearchResultItemAliasesItemTopicRelation(v TopicSearchResultItemAliasesItemTopicRelation) OptionalTopicSearchResultItemAliasesItemTopicRelation {
+	return OptionalTopicSearchResultItemAliasesItemTopicRelation{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTopicSearchResultItemAliasesItemTopicRelation is generic valiant of TopicSearchResultItemAliasesItemTopicRelation.
+type OptionalTopicSearchResultItemAliasesItemTopicRelation struct {
+	Value TopicSearchResultItemAliasesItemTopicRelation
+	Set   bool
+}
+
+// IsSet returns true if OptionalTopicSearchResultItemAliasesItemTopicRelation was set.
+func (o OptionalTopicSearchResultItemAliasesItemTopicRelation) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalTopicSearchResultItemAliasesItemTopicRelation) Reset() {
+	var v TopicSearchResultItemAliasesItemTopicRelation
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTopicSearchResultItemAliasesItemTopicRelation) SetTo(v TopicSearchResultItemAliasesItemTopicRelation) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTopicSearchResultItemAliasesItemTopicRelation) Get() (v TopicSearchResultItemAliasesItemTopicRelation, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalTopicSearchResultItemRelatedItemTopicRelation with value set to v.
+func NewOptionalTopicSearchResultItemRelatedItemTopicRelation(v TopicSearchResultItemRelatedItemTopicRelation) OptionalTopicSearchResultItemRelatedItemTopicRelation {
+	return OptionalTopicSearchResultItemRelatedItemTopicRelation{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalTopicSearchResultItemRelatedItemTopicRelation is generic valiant of TopicSearchResultItemRelatedItemTopicRelation.
+type OptionalTopicSearchResultItemRelatedItemTopicRelation struct {
+	Value TopicSearchResultItemRelatedItemTopicRelation
+	Set   bool
+}
+
+// IsSet returns true if OptionalTopicSearchResultItemRelatedItemTopicRelation was set.
+func (o OptionalTopicSearchResultItemRelatedItemTopicRelation) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalTopicSearchResultItemRelatedItemTopicRelation) Reset() {
+	var v TopicSearchResultItemRelatedItemTopicRelation
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalTopicSearchResultItemRelatedItemTopicRelation) SetTo(v TopicSearchResultItemRelatedItemTopicRelation) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalTopicSearchResultItemRelatedItemTopicRelation) Get() (v TopicSearchResultItemRelatedItemTopicRelation, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalURL with value set to v.
+func NewOptionalURL(v url.URL) OptionalURL {
+	return OptionalURL{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalURL is generic valiant of url.URL.
+type OptionalURL struct {
+	Value url.URL
+	Set   bool
+}
+
+// IsSet returns true if OptionalURL was set.
+func (o OptionalURL) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalURL) Reset() {
+	var v url.URL
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalURL) SetTo(v url.URL) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalURL) Get() (v url.URL, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalVerification with value set to v.
+func NewOptionalVerification(v Verification) OptionalVerification {
+	return OptionalVerification{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalVerification is generic valiant of Verification.
+type OptionalVerification struct {
+	Value Verification
+	Set   bool
+}
+
+// IsSet returns true if OptionalVerification was set.
+func (o OptionalVerification) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalVerification) Reset() {
+	var v Verification
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalVerification) SetTo(v Verification) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalVerification) Get() (v Verification, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalWorkflowRunUsageBillableMACOS with value set to v.
+func NewOptionalWorkflowRunUsageBillableMACOS(v WorkflowRunUsageBillableMACOS) OptionalWorkflowRunUsageBillableMACOS {
+	return OptionalWorkflowRunUsageBillableMACOS{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalWorkflowRunUsageBillableMACOS is generic valiant of WorkflowRunUsageBillableMACOS.
+type OptionalWorkflowRunUsageBillableMACOS struct {
+	Value WorkflowRunUsageBillableMACOS
+	Set   bool
+}
+
+// IsSet returns true if OptionalWorkflowRunUsageBillableMACOS was set.
+func (o OptionalWorkflowRunUsageBillableMACOS) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalWorkflowRunUsageBillableMACOS) Reset() {
+	var v WorkflowRunUsageBillableMACOS
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalWorkflowRunUsageBillableMACOS) SetTo(v WorkflowRunUsageBillableMACOS) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalWorkflowRunUsageBillableMACOS) Get() (v WorkflowRunUsageBillableMACOS, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalWorkflowRunUsageBillableUBUNTU with value set to v.
+func NewOptionalWorkflowRunUsageBillableUBUNTU(v WorkflowRunUsageBillableUBUNTU) OptionalWorkflowRunUsageBillableUBUNTU {
+	return OptionalWorkflowRunUsageBillableUBUNTU{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalWorkflowRunUsageBillableUBUNTU is generic valiant of WorkflowRunUsageBillableUBUNTU.
+type OptionalWorkflowRunUsageBillableUBUNTU struct {
+	Value WorkflowRunUsageBillableUBUNTU
+	Set   bool
+}
+
+// IsSet returns true if OptionalWorkflowRunUsageBillableUBUNTU was set.
+func (o OptionalWorkflowRunUsageBillableUBUNTU) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalWorkflowRunUsageBillableUBUNTU) Reset() {
+	var v WorkflowRunUsageBillableUBUNTU
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalWorkflowRunUsageBillableUBUNTU) SetTo(v WorkflowRunUsageBillableUBUNTU) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalWorkflowRunUsageBillableUBUNTU) Get() (v WorkflowRunUsageBillableUBUNTU, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalWorkflowRunUsageBillableWINDOWS with value set to v.
+func NewOptionalWorkflowRunUsageBillableWINDOWS(v WorkflowRunUsageBillableWINDOWS) OptionalWorkflowRunUsageBillableWINDOWS {
+	return OptionalWorkflowRunUsageBillableWINDOWS{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalWorkflowRunUsageBillableWINDOWS is generic valiant of WorkflowRunUsageBillableWINDOWS.
+type OptionalWorkflowRunUsageBillableWINDOWS struct {
+	Value WorkflowRunUsageBillableWINDOWS
+	Set   bool
+}
+
+// IsSet returns true if OptionalWorkflowRunUsageBillableWINDOWS was set.
+func (o OptionalWorkflowRunUsageBillableWINDOWS) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalWorkflowRunUsageBillableWINDOWS) Reset() {
+	var v WorkflowRunUsageBillableWINDOWS
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalWorkflowRunUsageBillableWINDOWS) SetTo(v WorkflowRunUsageBillableWINDOWS) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalWorkflowRunUsageBillableWINDOWS) Get() (v WorkflowRunUsageBillableWINDOWS, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
 // OrgHook describes #/components/schemas/org-hook.
 type OrgHook struct {
-	Active        bool           `json:"active"`
-	Config        OrgHookConfig  `json:"config"`
-	CreatedAt     time.Time      `json:"created_at"`
-	DeliveriesURL OptionalString `json:"deliveries_url"`
-	Events        []string       `json:"events"`
-	ID            int            `json:"id"`
-	Name          string         `json:"name"`
-	PingURL       string         `json:"ping_url"`
-	Type          string         `json:"type"`
-	URL           string         `json:"url"`
-	UpdatedAt     time.Time      `json:"updated_at"`
+	Active        bool          `json:"active"`
+	Config        OrgHookConfig `json:"config"`
+	CreatedAt     time.Time     `json:"created_at"`
+	DeliveriesURL OptionalURL   `json:"deliveries_url"`
+	Events        []string      `json:"events"`
+	ID            int           `json:"id"`
+	Name          string        `json:"name"`
+	PingURL       url.URL       `json:"ping_url"`
+	Type          string        `json:"type"`
+	URL           url.URL       `json:"url"`
+	UpdatedAt     time.Time     `json:"updated_at"`
 }
 
 func (*OrgHook) orgsGetWebhookResponse() {}
@@ -5136,13 +14274,13 @@ type OrgHookConfig struct {
 
 // OrgMembership describes #/components/schemas/org-membership.
 type OrgMembership struct {
-	Organization    OrganizationSimple        `json:"organization"`
-	OrganizationURL string                    `json:"organization_url"`
-	Permissions     *OrgMembershipPermissions `json:"permissions"`
-	Role            OrgMembershipRole         `json:"role"`
-	State           OrgMembershipState        `json:"state"`
-	URL             string                    `json:"url"`
-	User            NullableSimpleUser        `json:"user"`
+	Organization    OrganizationSimple               `json:"organization"`
+	OrganizationURL url.URL                          `json:"organization_url"`
+	Permissions     OptionalOrgMembershipPermissions `json:"permissions"`
+	Role            OrgMembershipRole                `json:"role"`
+	State           OrgMembershipState               `json:"state"`
+	URL             url.URL                          `json:"url"`
+	User            NullableSimpleUser               `json:"user"`
 }
 
 func (*OrgMembership) orgsGetMembershipForAuthenticatedUserResponse() {}
@@ -5171,7 +14309,7 @@ const (
 type OrganizationActionsSecret struct {
 	CreatedAt               time.Time                           `json:"created_at"`
 	Name                    string                              `json:"name"`
-	SelectedRepositoriesURL OptionalString                      `json:"selected_repositories_url"`
+	SelectedRepositoriesURL OptionalURL                         `json:"selected_repositories_url"`
 	UpdatedAt               time.Time                           `json:"updated_at"`
 	Visibility              OrganizationActionsSecretVisibility `json:"visibility"`
 }
@@ -5186,52 +14324,52 @@ const (
 
 // OrganizationFull describes #/components/schemas/organization-full.
 type OrganizationFull struct {
-	AvatarURL                            string                `json:"avatar_url"`
-	BillingEmail                         OptionalNilString     `json:"billing_email"`
-	Blog                                 OptionalString        `json:"blog"`
-	Collaborators                        OptionalNilInt        `json:"collaborators"`
-	Company                              OptionalString        `json:"company"`
-	CreatedAt                            time.Time             `json:"created_at"`
-	DefaultRepositoryPermission          OptionalNilString     `json:"default_repository_permission"`
-	Description                          NilString             `json:"description"`
-	DiskUsage                            OptionalNilInt        `json:"disk_usage"`
-	Email                                OptionalString        `json:"email"`
-	EventsURL                            string                `json:"events_url"`
-	Followers                            int                   `json:"followers"`
-	Following                            int                   `json:"following"`
-	HTMLURL                              string                `json:"html_url"`
-	HasOrganizationProjects              bool                  `json:"has_organization_projects"`
-	HasRepositoryProjects                bool                  `json:"has_repository_projects"`
-	HooksURL                             string                `json:"hooks_url"`
-	ID                                   int                   `json:"id"`
-	IsVerified                           OptionalBool          `json:"is_verified"`
-	IssuesURL                            string                `json:"issues_url"`
-	Location                             OptionalString        `json:"location"`
-	Login                                string                `json:"login"`
-	MembersAllowedRepositoryCreationType OptionalString        `json:"members_allowed_repository_creation_type"`
-	MembersCanCreateInternalRepositories OptionalBool          `json:"members_can_create_internal_repositories"`
-	MembersCanCreatePages                OptionalBool          `json:"members_can_create_pages"`
-	MembersCanCreatePrivatePages         OptionalBool          `json:"members_can_create_private_pages"`
-	MembersCanCreatePrivateRepositories  OptionalBool          `json:"members_can_create_private_repositories"`
-	MembersCanCreatePublicPages          OptionalBool          `json:"members_can_create_public_pages"`
-	MembersCanCreatePublicRepositories   OptionalBool          `json:"members_can_create_public_repositories"`
-	MembersCanCreateRepositories         OptionalNilBool       `json:"members_can_create_repositories"`
-	MembersURL                           string                `json:"members_url"`
-	Name                                 OptionalString        `json:"name"`
-	NodeID                               string                `json:"node_id"`
-	OwnedPrivateRepos                    OptionalInt           `json:"owned_private_repos"`
-	Plan                                 *OrganizationFullPlan `json:"plan"`
-	PrivateGists                         OptionalNilInt        `json:"private_gists"`
-	PublicGists                          int                   `json:"public_gists"`
-	PublicMembersURL                     string                `json:"public_members_url"`
-	PublicRepos                          int                   `json:"public_repos"`
-	ReposURL                             string                `json:"repos_url"`
-	TotalPrivateRepos                    OptionalInt           `json:"total_private_repos"`
-	TwitterUsername                      OptionalNilString     `json:"twitter_username"`
-	TwoFactorRequirementEnabled          OptionalNilBool       `json:"two_factor_requirement_enabled"`
-	Type                                 string                `json:"type"`
-	URL                                  string                `json:"url"`
-	UpdatedAt                            time.Time             `json:"updated_at"`
+	AvatarURL                            string                       `json:"avatar_url"`
+	BillingEmail                         OptionalNilString            `json:"billing_email"`
+	Blog                                 OptionalURL                  `json:"blog"`
+	Collaborators                        OptionalNilInt               `json:"collaborators"`
+	Company                              OptionalString               `json:"company"`
+	CreatedAt                            time.Time                    `json:"created_at"`
+	DefaultRepositoryPermission          OptionalNilString            `json:"default_repository_permission"`
+	Description                          NilString                    `json:"description"`
+	DiskUsage                            OptionalNilInt               `json:"disk_usage"`
+	Email                                OptionalString               `json:"email"`
+	EventsURL                            url.URL                      `json:"events_url"`
+	Followers                            int                          `json:"followers"`
+	Following                            int                          `json:"following"`
+	HTMLURL                              url.URL                      `json:"html_url"`
+	HasOrganizationProjects              bool                         `json:"has_organization_projects"`
+	HasRepositoryProjects                bool                         `json:"has_repository_projects"`
+	HooksURL                             string                       `json:"hooks_url"`
+	ID                                   int                          `json:"id"`
+	IsVerified                           OptionalBool                 `json:"is_verified"`
+	IssuesURL                            string                       `json:"issues_url"`
+	Location                             OptionalString               `json:"location"`
+	Login                                string                       `json:"login"`
+	MembersAllowedRepositoryCreationType OptionalString               `json:"members_allowed_repository_creation_type"`
+	MembersCanCreateInternalRepositories OptionalBool                 `json:"members_can_create_internal_repositories"`
+	MembersCanCreatePages                OptionalBool                 `json:"members_can_create_pages"`
+	MembersCanCreatePrivatePages         OptionalBool                 `json:"members_can_create_private_pages"`
+	MembersCanCreatePrivateRepositories  OptionalBool                 `json:"members_can_create_private_repositories"`
+	MembersCanCreatePublicPages          OptionalBool                 `json:"members_can_create_public_pages"`
+	MembersCanCreatePublicRepositories   OptionalBool                 `json:"members_can_create_public_repositories"`
+	MembersCanCreateRepositories         OptionalNilBool              `json:"members_can_create_repositories"`
+	MembersURL                           string                       `json:"members_url"`
+	Name                                 OptionalString               `json:"name"`
+	NodeID                               string                       `json:"node_id"`
+	OwnedPrivateRepos                    OptionalInt                  `json:"owned_private_repos"`
+	Plan                                 OptionalOrganizationFullPlan `json:"plan"`
+	PrivateGists                         OptionalNilInt               `json:"private_gists"`
+	PublicGists                          int                          `json:"public_gists"`
+	PublicMembersURL                     string                       `json:"public_members_url"`
+	PublicRepos                          int                          `json:"public_repos"`
+	ReposURL                             url.URL                      `json:"repos_url"`
+	TotalPrivateRepos                    OptionalInt                  `json:"total_private_repos"`
+	TwitterUsername                      OptionalNilString            `json:"twitter_username"`
+	TwoFactorRequirementEnabled          OptionalNilBool              `json:"two_factor_requirement_enabled"`
+	Type                                 string                       `json:"type"`
+	URL                                  url.URL                      `json:"url"`
+	UpdatedAt                            time.Time                    `json:"updated_at"`
 }
 
 func (*OrganizationFull) orgsGetResponse() {}
@@ -5263,7 +14401,7 @@ type OrganizationInvitation struct {
 type OrganizationSimple struct {
 	AvatarURL        string    `json:"avatar_url"`
 	Description      NilString `json:"description"`
-	EventsURL        string    `json:"events_url"`
+	EventsURL        url.URL   `json:"events_url"`
 	HooksURL         string    `json:"hooks_url"`
 	ID               int       `json:"id"`
 	IssuesURL        string    `json:"issues_url"`
@@ -5271,8 +14409,8 @@ type OrganizationSimple struct {
 	MembersURL       string    `json:"members_url"`
 	NodeID           string    `json:"node_id"`
 	PublicMembersURL string    `json:"public_members_url"`
-	ReposURL         string    `json:"repos_url"`
-	URL              string    `json:"url"`
+	ReposURL         url.URL   `json:"repos_url"`
+	URL              url.URL   `json:"url"`
 }
 
 type OrgsBlockUserNoContent struct{}
@@ -5319,10 +14457,10 @@ func (*OrgsConvertMemberToOutsideCollaboratorNoContent) orgsConvertMemberToOutsi
 }
 
 type OrgsCreateInvitationApplicationJSONRequest struct {
-	Email     OptionalString                                  `json:"email"`
-	InviteeID OptionalInt                                     `json:"invitee_id"`
-	Role      *OrgsCreateInvitationApplicationJSONRequestRole `json:"role"`
-	TeamIds   *[]int                                          `json:"team_ids"`
+	Email     OptionalString                                         `json:"email"`
+	InviteeID OptionalInt                                            `json:"invitee_id"`
+	Role      OptionalOrgsCreateInvitationApplicationJSONRequestRole `json:"role"`
+	TeamIds   *[]int                                                 `json:"team_ids"`
 }
 
 func (*OrgsCreateInvitationApplicationJSONRequest) orgsCreateInvitationRequest() {}
@@ -5434,7 +14572,7 @@ type OrgsRemoveSamlSSOAuthorizationNoContent struct{}
 func (*OrgsRemoveSamlSSOAuthorizationNoContent) orgsRemoveSamlSSOAuthorizationResponse() {}
 
 type OrgsSetMembershipForUserApplicationJSONRequest struct {
-	Role *OrgsSetMembershipForUserApplicationJSONRequestRole `json:"role"`
+	Role OptionalOrgsSetMembershipForUserApplicationJSONRequestRole `json:"role"`
 }
 
 func (*OrgsSetMembershipForUserApplicationJSONRequest) orgsSetMembershipForUserRequest() {}
@@ -5454,25 +14592,25 @@ func (*OrgsSetPublicMembershipForAuthenticatedUserNoContent) orgsSetPublicMember
 type OrgsUnblockUser struct{}
 
 type OrgsUpdateApplicationJSONRequest struct {
-	BillingEmail                         OptionalString                                                        `json:"billing_email"`
-	Blog                                 OptionalString                                                        `json:"blog"`
-	Company                              OptionalString                                                        `json:"company"`
-	DefaultRepositoryPermission          *OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission          `json:"default_repository_permission"`
-	Description                          OptionalString                                                        `json:"description"`
-	Email                                OptionalString                                                        `json:"email"`
-	HasOrganizationProjects              OptionalBool                                                          `json:"has_organization_projects"`
-	HasRepositoryProjects                OptionalBool                                                          `json:"has_repository_projects"`
-	Location                             OptionalString                                                        `json:"location"`
-	MembersAllowedRepositoryCreationType *OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType `json:"members_allowed_repository_creation_type"`
-	MembersCanCreateInternalRepositories OptionalBool                                                          `json:"members_can_create_internal_repositories"`
-	MembersCanCreatePages                OptionalBool                                                          `json:"members_can_create_pages"`
-	MembersCanCreatePrivatePages         OptionalBool                                                          `json:"members_can_create_private_pages"`
-	MembersCanCreatePrivateRepositories  OptionalBool                                                          `json:"members_can_create_private_repositories"`
-	MembersCanCreatePublicPages          OptionalBool                                                          `json:"members_can_create_public_pages"`
-	MembersCanCreatePublicRepositories   OptionalBool                                                          `json:"members_can_create_public_repositories"`
-	MembersCanCreateRepositories         OptionalBool                                                          `json:"members_can_create_repositories"`
-	Name                                 OptionalString                                                        `json:"name"`
-	TwitterUsername                      OptionalString                                                        `json:"twitter_username"`
+	BillingEmail                         OptionalString                                                               `json:"billing_email"`
+	Blog                                 OptionalString                                                               `json:"blog"`
+	Company                              OptionalString                                                               `json:"company"`
+	DefaultRepositoryPermission          OptionalOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission          `json:"default_repository_permission"`
+	Description                          OptionalString                                                               `json:"description"`
+	Email                                OptionalString                                                               `json:"email"`
+	HasOrganizationProjects              OptionalBool                                                                 `json:"has_organization_projects"`
+	HasRepositoryProjects                OptionalBool                                                                 `json:"has_repository_projects"`
+	Location                             OptionalString                                                               `json:"location"`
+	MembersAllowedRepositoryCreationType OptionalOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType `json:"members_allowed_repository_creation_type"`
+	MembersCanCreateInternalRepositories OptionalBool                                                                 `json:"members_can_create_internal_repositories"`
+	MembersCanCreatePages                OptionalBool                                                                 `json:"members_can_create_pages"`
+	MembersCanCreatePrivatePages         OptionalBool                                                                 `json:"members_can_create_private_pages"`
+	MembersCanCreatePrivateRepositories  OptionalBool                                                                 `json:"members_can_create_private_repositories"`
+	MembersCanCreatePublicPages          OptionalBool                                                                 `json:"members_can_create_public_pages"`
+	MembersCanCreatePublicRepositories   OptionalBool                                                                 `json:"members_can_create_public_repositories"`
+	MembersCanCreateRepositories         OptionalBool                                                                 `json:"members_can_create_repositories"`
+	Name                                 OptionalString                                                               `json:"name"`
+	TwitterUsername                      OptionalString                                                               `json:"twitter_username"`
 }
 
 func (*OrgsUpdateApplicationJSONRequest) orgsUpdateRequest() {}
@@ -5516,17 +14654,17 @@ type PackagesBillingUsage struct {
 
 // Page describes #/components/schemas/page.
 type Page struct {
-	Cname                     NilString                 `json:"cname"`
-	Custom404                 bool                      `json:"custom_404"`
-	HTMLURL                   OptionalString            `json:"html_url"`
-	HTTPSCertificate          *PagesHTTPSCertificate    `json:"https_certificate"`
-	HTTPSEnforced             OptionalBool              `json:"https_enforced"`
-	PendingDomainUnverifiedAt OptionalNilTime           `json:"pending_domain_unverified_at"`
-	ProtectedDomainState      *PageProtectedDomainState `json:"protected_domain_state"`
-	Public                    bool                      `json:"public"`
-	Source                    *PagesSourceHash          `json:"source"`
-	Status                    PageStatus                `json:"status"`
-	URL                       string                    `json:"url"`
+	Cname                     NilString                           `json:"cname"`
+	Custom404                 bool                                `json:"custom_404"`
+	HTMLURL                   OptionalURL                         `json:"html_url"`
+	HTTPSCertificate          OptionalPagesHTTPSCertificate       `json:"https_certificate"`
+	HTTPSEnforced             OptionalBool                        `json:"https_enforced"`
+	PendingDomainUnverifiedAt OptionalNilTime                     `json:"pending_domain_unverified_at"`
+	ProtectedDomainState      OptionalNilPageProtectedDomainState `json:"protected_domain_state"`
+	Public                    bool                                `json:"public"`
+	Source                    OptionalPagesSourceHash             `json:"source"`
+	Status                    NilPageStatus                       `json:"status"`
+	URL                       url.URL                             `json:"url"`
 }
 
 func (*Page) reposGetPagesResponse() {}
@@ -5539,7 +14677,7 @@ type PageBuild struct {
 	Error     PageBuildError     `json:"error"`
 	Pusher    NullableSimpleUser `json:"pusher"`
 	Status    string             `json:"status"`
-	URL       string             `json:"url"`
+	URL       url.URL            `json:"url"`
 	UpdatedAt time.Time          `json:"updated_at"`
 }
 
@@ -5549,8 +14687,8 @@ type PageBuildError struct {
 
 // PageBuildStatus describes #/components/schemas/page-build-status.
 type PageBuildStatus struct {
-	Status string `json:"status"`
-	URL    string `json:"url"`
+	Status string  `json:"status"`
+	URL    url.URL `json:"url"`
 }
 
 type PageProtectedDomainState string
@@ -5596,8 +14734,8 @@ const (
 
 // PagesHealthCheck describes #/components/schemas/pages-health-check.
 type PagesHealthCheck struct {
-	AltDomain *PagesHealthCheckAltDomain `json:"alt_domain"`
-	Domain    *PagesHealthCheckDomain    `json:"domain"`
+	AltDomain OptionalNilPagesHealthCheckAltDomain `json:"alt_domain"`
+	Domain    OptionalPagesHealthCheckDomain       `json:"domain"`
 }
 
 func (*PagesHealthCheck) reposGetPagesHealthCheckResponse() {}
@@ -5680,13 +14818,13 @@ func (*ParticipationStats) reposGetParticipationStatsResponse() {}
 
 // PorterAuthor describes #/components/schemas/porter-author.
 type PorterAuthor struct {
-	Email      string `json:"email"`
-	ID         int    `json:"id"`
-	ImportURL  string `json:"import_url"`
-	Name       string `json:"name"`
-	RemoteID   string `json:"remote_id"`
-	RemoteName string `json:"remote_name"`
-	URL        string `json:"url"`
+	Email      string  `json:"email"`
+	ID         int     `json:"id"`
+	ImportURL  url.URL `json:"import_url"`
+	Name       string  `json:"name"`
+	RemoteID   string  `json:"remote_id"`
+	RemoteName string  `json:"remote_name"`
+	URL        url.URL `json:"url"`
 }
 
 // PorterLargeFile describes #/components/schemas/porter-large-file.
@@ -5716,48 +14854,48 @@ func (*PreviewHeaderMissing) usersListBlockedByAuthenticatedResponse()    {}
 
 // PrivateUser describes #/components/schemas/private-user.
 type PrivateUser struct {
-	AvatarURL               string            `json:"avatar_url"`
-	Bio                     NilString         `json:"bio"`
-	Blog                    NilString         `json:"blog"`
-	BusinessPlus            OptionalBool      `json:"business_plus"`
-	Collaborators           int               `json:"collaborators"`
-	Company                 NilString         `json:"company"`
-	CreatedAt               time.Time         `json:"created_at"`
-	DiskUsage               int               `json:"disk_usage"`
-	Email                   NilString         `json:"email"`
-	EventsURL               string            `json:"events_url"`
-	Followers               int               `json:"followers"`
-	FollowersURL            string            `json:"followers_url"`
-	Following               int               `json:"following"`
-	FollowingURL            string            `json:"following_url"`
-	GistsURL                string            `json:"gists_url"`
-	GravatarID              NilString         `json:"gravatar_id"`
-	HTMLURL                 string            `json:"html_url"`
-	Hireable                NilBool           `json:"hireable"`
-	ID                      int               `json:"id"`
-	LdapDn                  OptionalString    `json:"ldap_dn"`
-	Location                NilString         `json:"location"`
-	Login                   string            `json:"login"`
-	Name                    NilString         `json:"name"`
-	NodeID                  string            `json:"node_id"`
-	OrganizationsURL        string            `json:"organizations_url"`
-	OwnedPrivateRepos       int               `json:"owned_private_repos"`
-	Plan                    *PrivateUserPlan  `json:"plan"`
-	PrivateGists            int               `json:"private_gists"`
-	PublicGists             int               `json:"public_gists"`
-	PublicRepos             int               `json:"public_repos"`
-	ReceivedEventsURL       string            `json:"received_events_url"`
-	ReposURL                string            `json:"repos_url"`
-	SiteAdmin               bool              `json:"site_admin"`
-	StarredURL              string            `json:"starred_url"`
-	SubscriptionsURL        string            `json:"subscriptions_url"`
-	SuspendedAt             OptionalNilTime   `json:"suspended_at"`
-	TotalPrivateRepos       int               `json:"total_private_repos"`
-	TwitterUsername         OptionalNilString `json:"twitter_username"`
-	TwoFactorAuthentication bool              `json:"two_factor_authentication"`
-	Type                    string            `json:"type"`
-	URL                     string            `json:"url"`
-	UpdatedAt               time.Time         `json:"updated_at"`
+	AvatarURL               url.URL                 `json:"avatar_url"`
+	Bio                     NilString               `json:"bio"`
+	Blog                    NilString               `json:"blog"`
+	BusinessPlus            OptionalBool            `json:"business_plus"`
+	Collaborators           int                     `json:"collaborators"`
+	Company                 NilString               `json:"company"`
+	CreatedAt               time.Time               `json:"created_at"`
+	DiskUsage               int                     `json:"disk_usage"`
+	Email                   NilString               `json:"email"`
+	EventsURL               string                  `json:"events_url"`
+	Followers               int                     `json:"followers"`
+	FollowersURL            url.URL                 `json:"followers_url"`
+	Following               int                     `json:"following"`
+	FollowingURL            string                  `json:"following_url"`
+	GistsURL                string                  `json:"gists_url"`
+	GravatarID              NilString               `json:"gravatar_id"`
+	HTMLURL                 url.URL                 `json:"html_url"`
+	Hireable                NilBool                 `json:"hireable"`
+	ID                      int                     `json:"id"`
+	LdapDn                  OptionalString          `json:"ldap_dn"`
+	Location                NilString               `json:"location"`
+	Login                   string                  `json:"login"`
+	Name                    NilString               `json:"name"`
+	NodeID                  string                  `json:"node_id"`
+	OrganizationsURL        url.URL                 `json:"organizations_url"`
+	OwnedPrivateRepos       int                     `json:"owned_private_repos"`
+	Plan                    OptionalPrivateUserPlan `json:"plan"`
+	PrivateGists            int                     `json:"private_gists"`
+	PublicGists             int                     `json:"public_gists"`
+	PublicRepos             int                     `json:"public_repos"`
+	ReceivedEventsURL       url.URL                 `json:"received_events_url"`
+	ReposURL                url.URL                 `json:"repos_url"`
+	SiteAdmin               bool                    `json:"site_admin"`
+	StarredURL              string                  `json:"starred_url"`
+	SubscriptionsURL        url.URL                 `json:"subscriptions_url"`
+	SuspendedAt             OptionalNilTime         `json:"suspended_at"`
+	TotalPrivateRepos       int                     `json:"total_private_repos"`
+	TwitterUsername         OptionalNilString       `json:"twitter_username"`
+	TwoFactorAuthentication bool                    `json:"two_factor_authentication"`
+	Type                    string                  `json:"type"`
+	URL                     url.URL                 `json:"url"`
+	UpdatedAt               time.Time               `json:"updated_at"`
 }
 
 type PrivateUserPlan struct {
@@ -5769,21 +14907,21 @@ type PrivateUserPlan struct {
 
 // Project describes #/components/schemas/project.
 type Project struct {
-	Body                   NilString                      `json:"body"`
-	ColumnsURL             string                         `json:"columns_url"`
-	CreatedAt              time.Time                      `json:"created_at"`
-	Creator                NullableSimpleUser             `json:"creator"`
-	HTMLURL                string                         `json:"html_url"`
-	ID                     int                            `json:"id"`
-	Name                   string                         `json:"name"`
-	NodeID                 string                         `json:"node_id"`
-	Number                 int                            `json:"number"`
-	OrganizationPermission *ProjectOrganizationPermission `json:"organization_permission"`
-	OwnerURL               string                         `json:"owner_url"`
-	Private                OptionalBool                   `json:"private"`
-	State                  string                         `json:"state"`
-	URL                    string                         `json:"url"`
-	UpdatedAt              time.Time                      `json:"updated_at"`
+	Body                   NilString                             `json:"body"`
+	ColumnsURL             url.URL                               `json:"columns_url"`
+	CreatedAt              time.Time                             `json:"created_at"`
+	Creator                NullableSimpleUser                    `json:"creator"`
+	HTMLURL                url.URL                               `json:"html_url"`
+	ID                     int                                   `json:"id"`
+	Name                   string                                `json:"name"`
+	NodeID                 string                                `json:"node_id"`
+	Number                 int                                   `json:"number"`
+	OrganizationPermission OptionalProjectOrganizationPermission `json:"organization_permission"`
+	OwnerURL               url.URL                               `json:"owner_url"`
+	Private                OptionalBool                          `json:"private"`
+	State                  string                                `json:"state"`
+	URL                    url.URL                               `json:"url"`
+	UpdatedAt              time.Time                             `json:"updated_at"`
 }
 
 func (*Project) projectsCreateForAuthenticatedUserResponse() {}
@@ -5796,16 +14934,16 @@ func (*Project) projectsUpdateResponse()                     {}
 type ProjectCard struct {
 	Archived   OptionalBool       `json:"archived"`
 	ColumnName OptionalString     `json:"column_name"`
-	ColumnURL  string             `json:"column_url"`
-	ContentURL OptionalString     `json:"content_url"`
+	ColumnURL  url.URL            `json:"column_url"`
+	ContentURL OptionalURL        `json:"content_url"`
 	CreatedAt  time.Time          `json:"created_at"`
 	Creator    NullableSimpleUser `json:"creator"`
 	ID         int                `json:"id"`
 	NodeID     string             `json:"node_id"`
 	Note       NilString          `json:"note"`
 	ProjectID  OptionalString     `json:"project_id"`
-	ProjectURL string             `json:"project_url"`
-	URL        string             `json:"url"`
+	ProjectURL url.URL            `json:"project_url"`
+	URL        url.URL            `json:"url"`
 	UpdatedAt  time.Time          `json:"updated_at"`
 }
 
@@ -5814,13 +14952,13 @@ func (*ProjectCard) projectsUpdateCardResponse() {}
 
 // ProjectColumn describes #/components/schemas/project-column.
 type ProjectColumn struct {
-	CardsURL   string    `json:"cards_url"`
+	CardsURL   url.URL   `json:"cards_url"`
 	CreatedAt  time.Time `json:"created_at"`
 	ID         int       `json:"id"`
 	Name       string    `json:"name"`
 	NodeID     string    `json:"node_id"`
-	ProjectURL string    `json:"project_url"`
-	URL        string    `json:"url"`
+	ProjectURL url.URL   `json:"project_url"`
+	URL        url.URL   `json:"url"`
 	UpdatedAt  time.Time `json:"updated_at"`
 }
 
@@ -5838,7 +14976,7 @@ const (
 )
 
 type ProjectsAddCollaboratorApplicationJSONRequest struct {
-	Permission *ProjectsAddCollaboratorApplicationJSONRequestPermission `json:"permission"`
+	Permission OptionalProjectsAddCollaboratorApplicationJSONRequestPermission `json:"permission"`
 }
 
 func (*ProjectsAddCollaboratorApplicationJSONRequest) projectsAddCollaboratorRequest() {}
@@ -6067,11 +15205,11 @@ type ProjectsUpdateApplicationJSONGone BasicError
 func (*ProjectsUpdateApplicationJSONGone) projectsUpdateResponse() {}
 
 type ProjectsUpdateApplicationJSONRequest struct {
-	Body                   OptionalNilString                                           `json:"body"`
-	Name                   OptionalString                                              `json:"name"`
-	OrganizationPermission *ProjectsUpdateApplicationJSONRequestOrganizationPermission `json:"organization_permission"`
-	Private                OptionalBool                                                `json:"private"`
-	State                  OptionalString                                              `json:"state"`
+	Body                   OptionalNilString                                                  `json:"body"`
+	Name                   OptionalString                                                     `json:"name"`
+	OrganizationPermission OptionalProjectsUpdateApplicationJSONRequestOrganizationPermission `json:"organization_permission"`
+	Private                OptionalBool                                                       `json:"private"`
+	State                  OptionalString                                                     `json:"state"`
 }
 
 type ProjectsUpdateApplicationJSONRequestOrganizationPermission string
@@ -6130,24 +15268,24 @@ func (*ProjectsUpdateNotFound) projectsUpdateResponse() {}
 
 // ProtectedBranch describes #/components/schemas/protected-branch.
 type ProtectedBranch struct {
-	AllowDeletions                 *ProtectedBranchAllowDeletions                 `json:"allow_deletions"`
-	AllowForcePushes               *ProtectedBranchAllowForcePushes               `json:"allow_force_pushes"`
-	EnforceAdmins                  *ProtectedBranchEnforceAdmins                  `json:"enforce_admins"`
-	RequiredConversationResolution *ProtectedBranchRequiredConversationResolution `json:"required_conversation_resolution"`
-	RequiredLinearHistory          *ProtectedBranchRequiredLinearHistory          `json:"required_linear_history"`
-	RequiredPullRequestReviews     *ProtectedBranchRequiredPullRequestReviews     `json:"required_pull_request_reviews"`
-	RequiredSignatures             *ProtectedBranchRequiredSignatures             `json:"required_signatures"`
-	RequiredStatusChecks           *StatusCheckPolicy                             `json:"required_status_checks"`
-	Restrictions                   *BranchRestrictionPolicy                       `json:"restrictions"`
-	URL                            string                                         `json:"url"`
+	AllowDeletions                 OptionalProtectedBranchAllowDeletions                 `json:"allow_deletions"`
+	AllowForcePushes               OptionalProtectedBranchAllowForcePushes               `json:"allow_force_pushes"`
+	EnforceAdmins                  OptionalProtectedBranchEnforceAdmins                  `json:"enforce_admins"`
+	RequiredConversationResolution OptionalProtectedBranchRequiredConversationResolution `json:"required_conversation_resolution"`
+	RequiredLinearHistory          OptionalProtectedBranchRequiredLinearHistory          `json:"required_linear_history"`
+	RequiredPullRequestReviews     OptionalProtectedBranchRequiredPullRequestReviews     `json:"required_pull_request_reviews"`
+	RequiredSignatures             OptionalProtectedBranchRequiredSignatures             `json:"required_signatures"`
+	RequiredStatusChecks           OptionalStatusCheckPolicy                             `json:"required_status_checks"`
+	Restrictions                   OptionalBranchRestrictionPolicy                       `json:"restrictions"`
+	URL                            url.URL                                               `json:"url"`
 }
 
 func (*ProtectedBranch) reposUpdateBranchProtectionResponse() {}
 
 // ProtectedBranchAdminEnforced describes #/components/schemas/protected-branch-admin-enforced.
 type ProtectedBranchAdminEnforced struct {
-	Enabled bool   `json:"enabled"`
-	URL     string `json:"url"`
+	Enabled bool    `json:"enabled"`
+	URL     url.URL `json:"url"`
 }
 
 func (*ProtectedBranchAdminEnforced) reposCreateCommitSignatureProtectionResponse() {}
@@ -6162,17 +15300,17 @@ type ProtectedBranchAllowForcePushes struct {
 }
 
 type ProtectedBranchEnforceAdmins struct {
-	Enabled bool   `json:"enabled"`
-	URL     string `json:"url"`
+	Enabled bool    `json:"enabled"`
+	URL     url.URL `json:"url"`
 }
 
 // ProtectedBranchPullRequestReview describes #/components/schemas/protected-branch-pull-request-review.
 type ProtectedBranchPullRequestReview struct {
-	DismissStaleReviews          bool                                                   `json:"dismiss_stale_reviews"`
-	DismissalRestrictions        *ProtectedBranchPullRequestReviewDismissalRestrictions `json:"dismissal_restrictions"`
-	RequireCodeOwnerReviews      bool                                                   `json:"require_code_owner_reviews"`
-	RequiredApprovingReviewCount OptionalInt                                            `json:"required_approving_review_count"`
-	URL                          OptionalString                                         `json:"url"`
+	DismissStaleReviews          bool                                                          `json:"dismiss_stale_reviews"`
+	DismissalRestrictions        OptionalProtectedBranchPullRequestReviewDismissalRestrictions `json:"dismissal_restrictions"`
+	RequireCodeOwnerReviews      bool                                                          `json:"require_code_owner_reviews"`
+	RequiredApprovingReviewCount OptionalInt                                                   `json:"required_approving_review_count"`
+	URL                          OptionalURL                                                   `json:"url"`
 }
 
 type ProtectedBranchPullRequestReviewDismissalRestrictions struct {
@@ -6192,67 +15330,67 @@ type ProtectedBranchRequiredLinearHistory struct {
 }
 
 type ProtectedBranchRequiredPullRequestReviews struct {
-	DismissStaleReviews          OptionalBool                                                    `json:"dismiss_stale_reviews"`
-	DismissalRestrictions        *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions `json:"dismissal_restrictions"`
-	RequireCodeOwnerReviews      OptionalBool                                                    `json:"require_code_owner_reviews"`
-	RequiredApprovingReviewCount OptionalInt                                                     `json:"required_approving_review_count"`
-	URL                          string                                                          `json:"url"`
+	DismissStaleReviews          OptionalBool                                                           `json:"dismiss_stale_reviews"`
+	DismissalRestrictions        OptionalProtectedBranchRequiredPullRequestReviewsDismissalRestrictions `json:"dismissal_restrictions"`
+	RequireCodeOwnerReviews      OptionalBool                                                           `json:"require_code_owner_reviews"`
+	RequiredApprovingReviewCount OptionalInt                                                            `json:"required_approving_review_count"`
+	URL                          url.URL                                                                `json:"url"`
 }
 
 type ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions struct {
 	Teams    []Team       `json:"teams"`
-	TeamsURL string       `json:"teams_url"`
-	URL      string       `json:"url"`
+	TeamsURL url.URL      `json:"teams_url"`
+	URL      url.URL      `json:"url"`
 	Users    []SimpleUser `json:"users"`
-	UsersURL string       `json:"users_url"`
+	UsersURL url.URL      `json:"users_url"`
 }
 
 type ProtectedBranchRequiredSignatures struct {
-	Enabled bool   `json:"enabled"`
-	URL     string `json:"url"`
+	Enabled bool    `json:"enabled"`
+	URL     url.URL `json:"url"`
 }
 
 // PublicUser describes #/components/schemas/public-user.
 type PublicUser struct {
-	AvatarURL         string            `json:"avatar_url"`
-	Bio               NilString         `json:"bio"`
-	Blog              NilString         `json:"blog"`
-	Collaborators     OptionalInt       `json:"collaborators"`
-	Company           NilString         `json:"company"`
-	CreatedAt         time.Time         `json:"created_at"`
-	DiskUsage         OptionalInt       `json:"disk_usage"`
-	Email             NilString         `json:"email"`
-	EventsURL         string            `json:"events_url"`
-	Followers         int               `json:"followers"`
-	FollowersURL      string            `json:"followers_url"`
-	Following         int               `json:"following"`
-	FollowingURL      string            `json:"following_url"`
-	GistsURL          string            `json:"gists_url"`
-	GravatarID        NilString         `json:"gravatar_id"`
-	HTMLURL           string            `json:"html_url"`
-	Hireable          NilBool           `json:"hireable"`
-	ID                int               `json:"id"`
-	Location          NilString         `json:"location"`
-	Login             string            `json:"login"`
-	Name              NilString         `json:"name"`
-	NodeID            string            `json:"node_id"`
-	OrganizationsURL  string            `json:"organizations_url"`
-	OwnedPrivateRepos OptionalInt       `json:"owned_private_repos"`
-	Plan              *PublicUserPlan   `json:"plan"`
-	PrivateGists      OptionalInt       `json:"private_gists"`
-	PublicGists       int               `json:"public_gists"`
-	PublicRepos       int               `json:"public_repos"`
-	ReceivedEventsURL string            `json:"received_events_url"`
-	ReposURL          string            `json:"repos_url"`
-	SiteAdmin         bool              `json:"site_admin"`
-	StarredURL        string            `json:"starred_url"`
-	SubscriptionsURL  string            `json:"subscriptions_url"`
-	SuspendedAt       OptionalNilTime   `json:"suspended_at"`
-	TotalPrivateRepos OptionalInt       `json:"total_private_repos"`
-	TwitterUsername   OptionalNilString `json:"twitter_username"`
-	Type              string            `json:"type"`
-	URL               string            `json:"url"`
-	UpdatedAt         time.Time         `json:"updated_at"`
+	AvatarURL         url.URL                `json:"avatar_url"`
+	Bio               NilString              `json:"bio"`
+	Blog              NilString              `json:"blog"`
+	Collaborators     OptionalInt            `json:"collaborators"`
+	Company           NilString              `json:"company"`
+	CreatedAt         time.Time              `json:"created_at"`
+	DiskUsage         OptionalInt            `json:"disk_usage"`
+	Email             NilString              `json:"email"`
+	EventsURL         string                 `json:"events_url"`
+	Followers         int                    `json:"followers"`
+	FollowersURL      url.URL                `json:"followers_url"`
+	Following         int                    `json:"following"`
+	FollowingURL      string                 `json:"following_url"`
+	GistsURL          string                 `json:"gists_url"`
+	GravatarID        NilString              `json:"gravatar_id"`
+	HTMLURL           url.URL                `json:"html_url"`
+	Hireable          NilBool                `json:"hireable"`
+	ID                int                    `json:"id"`
+	Location          NilString              `json:"location"`
+	Login             string                 `json:"login"`
+	Name              NilString              `json:"name"`
+	NodeID            string                 `json:"node_id"`
+	OrganizationsURL  url.URL                `json:"organizations_url"`
+	OwnedPrivateRepos OptionalInt            `json:"owned_private_repos"`
+	Plan              OptionalPublicUserPlan `json:"plan"`
+	PrivateGists      OptionalInt            `json:"private_gists"`
+	PublicGists       int                    `json:"public_gists"`
+	PublicRepos       int                    `json:"public_repos"`
+	ReceivedEventsURL url.URL                `json:"received_events_url"`
+	ReposURL          url.URL                `json:"repos_url"`
+	SiteAdmin         bool                   `json:"site_admin"`
+	StarredURL        string                 `json:"starred_url"`
+	SubscriptionsURL  url.URL                `json:"subscriptions_url"`
+	SuspendedAt       OptionalNilTime        `json:"suspended_at"`
+	TotalPrivateRepos OptionalInt            `json:"total_private_repos"`
+	TwitterUsername   OptionalNilString      `json:"twitter_username"`
+	Type              string                 `json:"type"`
+	URL               url.URL                `json:"url"`
+	UpdatedAt         time.Time              `json:"updated_at"`
 }
 
 type PublicUserPlan struct {
@@ -6275,17 +15413,17 @@ type PullRequest struct {
 	ChangedFiles        int                     `json:"changed_files"`
 	ClosedAt            NilTime                 `json:"closed_at"`
 	Comments            int                     `json:"comments"`
-	CommentsURL         string                  `json:"comments_url"`
+	CommentsURL         url.URL                 `json:"comments_url"`
 	Commits             int                     `json:"commits"`
-	CommitsURL          string                  `json:"commits_url"`
+	CommitsURL          url.URL                 `json:"commits_url"`
 	CreatedAt           time.Time               `json:"created_at"`
 	Deletions           int                     `json:"deletions"`
-	DiffURL             string                  `json:"diff_url"`
+	DiffURL             url.URL                 `json:"diff_url"`
 	Draft               OptionalBool            `json:"draft"`
-	HTMLURL             string                  `json:"html_url"`
+	HTMLURL             url.URL                 `json:"html_url"`
 	Head                PullRequestHead         `json:"head"`
 	ID                  int                     `json:"id"`
-	IssueURL            string                  `json:"issue_url"`
+	IssueURL            url.URL                 `json:"issue_url"`
 	Labels              []PullRequestLabelsItem `json:"labels"`
 	Links               PullRequestLinks        `json:"_links"`
 	Locked              bool                    `json:"locked"`
@@ -6299,17 +15437,17 @@ type PullRequest struct {
 	Milestone           NullableMilestone       `json:"milestone"`
 	NodeID              string                  `json:"node_id"`
 	Number              int                     `json:"number"`
-	PatchURL            string                  `json:"patch_url"`
+	PatchURL            url.URL                 `json:"patch_url"`
 	Rebaseable          OptionalNilBool         `json:"rebaseable"`
 	RequestedReviewers  *[]SimpleUser           `json:"requested_reviewers"`
 	RequestedTeams      *[]TeamSimple           `json:"requested_teams"`
 	ReviewCommentURL    string                  `json:"review_comment_url"`
 	ReviewComments      int                     `json:"review_comments"`
-	ReviewCommentsURL   string                  `json:"review_comments_url"`
+	ReviewCommentsURL   url.URL                 `json:"review_comments_url"`
 	State               PullRequestState        `json:"state"`
-	StatusesURL         string                  `json:"statuses_url"`
+	StatusesURL         url.URL                 `json:"statuses_url"`
 	Title               string                  `json:"title"`
-	URL                 string                  `json:"url"`
+	URL                 url.URL                 `json:"url"`
 	UpdatedAt           time.Time               `json:"updated_at"`
 	User                NullableSimpleUser      `json:"user"`
 }
@@ -6325,108 +15463,108 @@ type PullRequestBase struct {
 }
 
 type PullRequestBaseRepo struct {
-	AllowForking     OptionalBool                    `json:"allow_forking"`
-	AllowMergeCommit OptionalBool                    `json:"allow_merge_commit"`
-	AllowRebaseMerge OptionalBool                    `json:"allow_rebase_merge"`
-	AllowSquashMerge OptionalBool                    `json:"allow_squash_merge"`
-	ArchiveURL       string                          `json:"archive_url"`
-	Archived         bool                            `json:"archived"`
-	AssigneesURL     string                          `json:"assignees_url"`
-	BlobsURL         string                          `json:"blobs_url"`
-	BranchesURL      string                          `json:"branches_url"`
-	CloneURL         string                          `json:"clone_url"`
-	CollaboratorsURL string                          `json:"collaborators_url"`
-	CommentsURL      string                          `json:"comments_url"`
-	CommitsURL       string                          `json:"commits_url"`
-	CompareURL       string                          `json:"compare_url"`
-	ContentsURL      string                          `json:"contents_url"`
-	ContributorsURL  string                          `json:"contributors_url"`
-	CreatedAt        time.Time                       `json:"created_at"`
-	DefaultBranch    string                          `json:"default_branch"`
-	DeploymentsURL   string                          `json:"deployments_url"`
-	Description      NilString                       `json:"description"`
-	Disabled         bool                            `json:"disabled"`
-	DownloadsURL     string                          `json:"downloads_url"`
-	EventsURL        string                          `json:"events_url"`
-	Fork             bool                            `json:"fork"`
-	Forks            int                             `json:"forks"`
-	ForksCount       int                             `json:"forks_count"`
-	ForksURL         string                          `json:"forks_url"`
-	FullName         string                          `json:"full_name"`
-	GitCommitsURL    string                          `json:"git_commits_url"`
-	GitRefsURL       string                          `json:"git_refs_url"`
-	GitTagsURL       string                          `json:"git_tags_url"`
-	GitURL           string                          `json:"git_url"`
-	HTMLURL          string                          `json:"html_url"`
-	HasDownloads     bool                            `json:"has_downloads"`
-	HasIssues        bool                            `json:"has_issues"`
-	HasPages         bool                            `json:"has_pages"`
-	HasProjects      bool                            `json:"has_projects"`
-	HasWiki          bool                            `json:"has_wiki"`
-	Homepage         NilString                       `json:"homepage"`
-	HooksURL         string                          `json:"hooks_url"`
-	ID               int                             `json:"id"`
-	IssueCommentURL  string                          `json:"issue_comment_url"`
-	IssueEventsURL   string                          `json:"issue_events_url"`
-	IssuesURL        string                          `json:"issues_url"`
-	KeysURL          string                          `json:"keys_url"`
-	LabelsURL        string                          `json:"labels_url"`
-	Language         NilString                       `json:"language"`
-	LanguagesURL     string                          `json:"languages_url"`
-	License          NullableLicenseSimple           `json:"license"`
-	MasterBranch     OptionalString                  `json:"master_branch"`
-	MergesURL        string                          `json:"merges_url"`
-	MilestonesURL    string                          `json:"milestones_url"`
-	MirrorURL        NilString                       `json:"mirror_url"`
-	Name             string                          `json:"name"`
-	NodeID           string                          `json:"node_id"`
-	NotificationsURL string                          `json:"notifications_url"`
-	OpenIssues       int                             `json:"open_issues"`
-	OpenIssuesCount  int                             `json:"open_issues_count"`
-	Owner            PullRequestBaseRepoOwner        `json:"owner"`
-	Permissions      *PullRequestBaseRepoPermissions `json:"permissions"`
-	Private          bool                            `json:"private"`
-	PullsURL         string                          `json:"pulls_url"`
-	PushedAt         time.Time                       `json:"pushed_at"`
-	ReleasesURL      string                          `json:"releases_url"`
-	SSHURL           string                          `json:"ssh_url"`
-	Size             int                             `json:"size"`
-	StargazersCount  int                             `json:"stargazers_count"`
-	StargazersURL    string                          `json:"stargazers_url"`
-	StatusesURL      string                          `json:"statuses_url"`
-	SubscribersURL   string                          `json:"subscribers_url"`
-	SubscriptionURL  string                          `json:"subscription_url"`
-	SvnURL           string                          `json:"svn_url"`
-	TagsURL          string                          `json:"tags_url"`
-	TeamsURL         string                          `json:"teams_url"`
-	TempCloneToken   OptionalString                  `json:"temp_clone_token"`
-	Topics           *[]string                       `json:"topics"`
-	TreesURL         string                          `json:"trees_url"`
-	URL              string                          `json:"url"`
-	UpdatedAt        time.Time                       `json:"updated_at"`
-	Watchers         int                             `json:"watchers"`
-	WatchersCount    int                             `json:"watchers_count"`
+	AllowForking     OptionalBool                           `json:"allow_forking"`
+	AllowMergeCommit OptionalBool                           `json:"allow_merge_commit"`
+	AllowRebaseMerge OptionalBool                           `json:"allow_rebase_merge"`
+	AllowSquashMerge OptionalBool                           `json:"allow_squash_merge"`
+	ArchiveURL       string                                 `json:"archive_url"`
+	Archived         bool                                   `json:"archived"`
+	AssigneesURL     string                                 `json:"assignees_url"`
+	BlobsURL         string                                 `json:"blobs_url"`
+	BranchesURL      string                                 `json:"branches_url"`
+	CloneURL         string                                 `json:"clone_url"`
+	CollaboratorsURL string                                 `json:"collaborators_url"`
+	CommentsURL      string                                 `json:"comments_url"`
+	CommitsURL       string                                 `json:"commits_url"`
+	CompareURL       string                                 `json:"compare_url"`
+	ContentsURL      string                                 `json:"contents_url"`
+	ContributorsURL  url.URL                                `json:"contributors_url"`
+	CreatedAt        time.Time                              `json:"created_at"`
+	DefaultBranch    string                                 `json:"default_branch"`
+	DeploymentsURL   url.URL                                `json:"deployments_url"`
+	Description      NilString                              `json:"description"`
+	Disabled         bool                                   `json:"disabled"`
+	DownloadsURL     url.URL                                `json:"downloads_url"`
+	EventsURL        url.URL                                `json:"events_url"`
+	Fork             bool                                   `json:"fork"`
+	Forks            int                                    `json:"forks"`
+	ForksCount       int                                    `json:"forks_count"`
+	ForksURL         url.URL                                `json:"forks_url"`
+	FullName         string                                 `json:"full_name"`
+	GitCommitsURL    string                                 `json:"git_commits_url"`
+	GitRefsURL       string                                 `json:"git_refs_url"`
+	GitTagsURL       string                                 `json:"git_tags_url"`
+	GitURL           string                                 `json:"git_url"`
+	HTMLURL          url.URL                                `json:"html_url"`
+	HasDownloads     bool                                   `json:"has_downloads"`
+	HasIssues        bool                                   `json:"has_issues"`
+	HasPages         bool                                   `json:"has_pages"`
+	HasProjects      bool                                   `json:"has_projects"`
+	HasWiki          bool                                   `json:"has_wiki"`
+	Homepage         NilURL                                 `json:"homepage"`
+	HooksURL         url.URL                                `json:"hooks_url"`
+	ID               int                                    `json:"id"`
+	IssueCommentURL  string                                 `json:"issue_comment_url"`
+	IssueEventsURL   string                                 `json:"issue_events_url"`
+	IssuesURL        string                                 `json:"issues_url"`
+	KeysURL          string                                 `json:"keys_url"`
+	LabelsURL        string                                 `json:"labels_url"`
+	Language         NilString                              `json:"language"`
+	LanguagesURL     url.URL                                `json:"languages_url"`
+	License          NullableLicenseSimple                  `json:"license"`
+	MasterBranch     OptionalString                         `json:"master_branch"`
+	MergesURL        url.URL                                `json:"merges_url"`
+	MilestonesURL    string                                 `json:"milestones_url"`
+	MirrorURL        NilURL                                 `json:"mirror_url"`
+	Name             string                                 `json:"name"`
+	NodeID           string                                 `json:"node_id"`
+	NotificationsURL string                                 `json:"notifications_url"`
+	OpenIssues       int                                    `json:"open_issues"`
+	OpenIssuesCount  int                                    `json:"open_issues_count"`
+	Owner            PullRequestBaseRepoOwner               `json:"owner"`
+	Permissions      OptionalPullRequestBaseRepoPermissions `json:"permissions"`
+	Private          bool                                   `json:"private"`
+	PullsURL         string                                 `json:"pulls_url"`
+	PushedAt         time.Time                              `json:"pushed_at"`
+	ReleasesURL      string                                 `json:"releases_url"`
+	SSHURL           string                                 `json:"ssh_url"`
+	Size             int                                    `json:"size"`
+	StargazersCount  int                                    `json:"stargazers_count"`
+	StargazersURL    url.URL                                `json:"stargazers_url"`
+	StatusesURL      string                                 `json:"statuses_url"`
+	SubscribersURL   url.URL                                `json:"subscribers_url"`
+	SubscriptionURL  url.URL                                `json:"subscription_url"`
+	SvnURL           url.URL                                `json:"svn_url"`
+	TagsURL          url.URL                                `json:"tags_url"`
+	TeamsURL         url.URL                                `json:"teams_url"`
+	TempCloneToken   OptionalString                         `json:"temp_clone_token"`
+	Topics           *[]string                              `json:"topics"`
+	TreesURL         string                                 `json:"trees_url"`
+	URL              url.URL                                `json:"url"`
+	UpdatedAt        time.Time                              `json:"updated_at"`
+	Watchers         int                                    `json:"watchers"`
+	WatchersCount    int                                    `json:"watchers_count"`
 }
 
 type PullRequestBaseRepoOwner struct {
-	AvatarURL         string    `json:"avatar_url"`
+	AvatarURL         url.URL   `json:"avatar_url"`
 	EventsURL         string    `json:"events_url"`
-	FollowersURL      string    `json:"followers_url"`
+	FollowersURL      url.URL   `json:"followers_url"`
 	FollowingURL      string    `json:"following_url"`
 	GistsURL          string    `json:"gists_url"`
 	GravatarID        NilString `json:"gravatar_id"`
-	HTMLURL           string    `json:"html_url"`
+	HTMLURL           url.URL   `json:"html_url"`
 	ID                int       `json:"id"`
 	Login             string    `json:"login"`
 	NodeID            string    `json:"node_id"`
-	OrganizationsURL  string    `json:"organizations_url"`
-	ReceivedEventsURL string    `json:"received_events_url"`
-	ReposURL          string    `json:"repos_url"`
+	OrganizationsURL  url.URL   `json:"organizations_url"`
+	ReceivedEventsURL url.URL   `json:"received_events_url"`
+	ReposURL          url.URL   `json:"repos_url"`
 	SiteAdmin         bool      `json:"site_admin"`
 	StarredURL        string    `json:"starred_url"`
-	SubscriptionsURL  string    `json:"subscriptions_url"`
+	SubscriptionsURL  url.URL   `json:"subscriptions_url"`
 	Type              string    `json:"type"`
-	URL               string    `json:"url"`
+	URL               url.URL   `json:"url"`
 }
 
 type PullRequestBaseRepoPermissions struct {
@@ -6438,116 +15576,116 @@ type PullRequestBaseRepoPermissions struct {
 }
 
 type PullRequestBaseUser struct {
-	AvatarURL         string    `json:"avatar_url"`
+	AvatarURL         url.URL   `json:"avatar_url"`
 	EventsURL         string    `json:"events_url"`
-	FollowersURL      string    `json:"followers_url"`
+	FollowersURL      url.URL   `json:"followers_url"`
 	FollowingURL      string    `json:"following_url"`
 	GistsURL          string    `json:"gists_url"`
 	GravatarID        NilString `json:"gravatar_id"`
-	HTMLURL           string    `json:"html_url"`
+	HTMLURL           url.URL   `json:"html_url"`
 	ID                int       `json:"id"`
 	Login             string    `json:"login"`
 	NodeID            string    `json:"node_id"`
-	OrganizationsURL  string    `json:"organizations_url"`
-	ReceivedEventsURL string    `json:"received_events_url"`
-	ReposURL          string    `json:"repos_url"`
+	OrganizationsURL  url.URL   `json:"organizations_url"`
+	ReceivedEventsURL url.URL   `json:"received_events_url"`
+	ReposURL          url.URL   `json:"repos_url"`
 	SiteAdmin         bool      `json:"site_admin"`
 	StarredURL        string    `json:"starred_url"`
-	SubscriptionsURL  string    `json:"subscriptions_url"`
+	SubscriptionsURL  url.URL   `json:"subscriptions_url"`
 	Type              string    `json:"type"`
-	URL               string    `json:"url"`
+	URL               url.URL   `json:"url"`
 }
 
 type PullRequestHead struct {
-	Label string              `json:"label"`
-	Ref   string              `json:"ref"`
-	Repo  PullRequestHeadRepo `json:"repo"`
-	Sha   string              `json:"sha"`
-	User  PullRequestHeadUser `json:"user"`
+	Label string                 `json:"label"`
+	Ref   string                 `json:"ref"`
+	Repo  NilPullRequestHeadRepo `json:"repo"`
+	Sha   string                 `json:"sha"`
+	User  PullRequestHeadUser    `json:"user"`
 }
 
 type PullRequestHeadRepo struct {
-	AllowForking     OptionalBool                    `json:"allow_forking"`
-	AllowMergeCommit OptionalBool                    `json:"allow_merge_commit"`
-	AllowRebaseMerge OptionalBool                    `json:"allow_rebase_merge"`
-	AllowSquashMerge OptionalBool                    `json:"allow_squash_merge"`
-	ArchiveURL       string                          `json:"archive_url"`
-	Archived         bool                            `json:"archived"`
-	AssigneesURL     string                          `json:"assignees_url"`
-	BlobsURL         string                          `json:"blobs_url"`
-	BranchesURL      string                          `json:"branches_url"`
-	CloneURL         string                          `json:"clone_url"`
-	CollaboratorsURL string                          `json:"collaborators_url"`
-	CommentsURL      string                          `json:"comments_url"`
-	CommitsURL       string                          `json:"commits_url"`
-	CompareURL       string                          `json:"compare_url"`
-	ContentsURL      string                          `json:"contents_url"`
-	ContributorsURL  string                          `json:"contributors_url"`
-	CreatedAt        time.Time                       `json:"created_at"`
-	DefaultBranch    string                          `json:"default_branch"`
-	DeploymentsURL   string                          `json:"deployments_url"`
-	Description      NilString                       `json:"description"`
-	Disabled         bool                            `json:"disabled"`
-	DownloadsURL     string                          `json:"downloads_url"`
-	EventsURL        string                          `json:"events_url"`
-	Fork             bool                            `json:"fork"`
-	Forks            int                             `json:"forks"`
-	ForksCount       int                             `json:"forks_count"`
-	ForksURL         string                          `json:"forks_url"`
-	FullName         string                          `json:"full_name"`
-	GitCommitsURL    string                          `json:"git_commits_url"`
-	GitRefsURL       string                          `json:"git_refs_url"`
-	GitTagsURL       string                          `json:"git_tags_url"`
-	GitURL           string                          `json:"git_url"`
-	HTMLURL          string                          `json:"html_url"`
-	HasDownloads     bool                            `json:"has_downloads"`
-	HasIssues        bool                            `json:"has_issues"`
-	HasPages         bool                            `json:"has_pages"`
-	HasProjects      bool                            `json:"has_projects"`
-	HasWiki          bool                            `json:"has_wiki"`
-	Homepage         NilString                       `json:"homepage"`
-	HooksURL         string                          `json:"hooks_url"`
-	ID               int                             `json:"id"`
-	IssueCommentURL  string                          `json:"issue_comment_url"`
-	IssueEventsURL   string                          `json:"issue_events_url"`
-	IssuesURL        string                          `json:"issues_url"`
-	KeysURL          string                          `json:"keys_url"`
-	LabelsURL        string                          `json:"labels_url"`
-	Language         NilString                       `json:"language"`
-	LanguagesURL     string                          `json:"languages_url"`
-	License          PullRequestHeadRepoLicense      `json:"license"`
-	MasterBranch     OptionalString                  `json:"master_branch"`
-	MergesURL        string                          `json:"merges_url"`
-	MilestonesURL    string                          `json:"milestones_url"`
-	MirrorURL        NilString                       `json:"mirror_url"`
-	Name             string                          `json:"name"`
-	NodeID           string                          `json:"node_id"`
-	NotificationsURL string                          `json:"notifications_url"`
-	OpenIssues       int                             `json:"open_issues"`
-	OpenIssuesCount  int                             `json:"open_issues_count"`
-	Owner            PullRequestHeadRepoOwner        `json:"owner"`
-	Permissions      *PullRequestHeadRepoPermissions `json:"permissions"`
-	Private          bool                            `json:"private"`
-	PullsURL         string                          `json:"pulls_url"`
-	PushedAt         time.Time                       `json:"pushed_at"`
-	ReleasesURL      string                          `json:"releases_url"`
-	SSHURL           string                          `json:"ssh_url"`
-	Size             int                             `json:"size"`
-	StargazersCount  int                             `json:"stargazers_count"`
-	StargazersURL    string                          `json:"stargazers_url"`
-	StatusesURL      string                          `json:"statuses_url"`
-	SubscribersURL   string                          `json:"subscribers_url"`
-	SubscriptionURL  string                          `json:"subscription_url"`
-	SvnURL           string                          `json:"svn_url"`
-	TagsURL          string                          `json:"tags_url"`
-	TeamsURL         string                          `json:"teams_url"`
-	TempCloneToken   OptionalString                  `json:"temp_clone_token"`
-	Topics           *[]string                       `json:"topics"`
-	TreesURL         string                          `json:"trees_url"`
-	URL              string                          `json:"url"`
-	UpdatedAt        time.Time                       `json:"updated_at"`
-	Watchers         int                             `json:"watchers"`
-	WatchersCount    int                             `json:"watchers_count"`
+	AllowForking     OptionalBool                           `json:"allow_forking"`
+	AllowMergeCommit OptionalBool                           `json:"allow_merge_commit"`
+	AllowRebaseMerge OptionalBool                           `json:"allow_rebase_merge"`
+	AllowSquashMerge OptionalBool                           `json:"allow_squash_merge"`
+	ArchiveURL       string                                 `json:"archive_url"`
+	Archived         bool                                   `json:"archived"`
+	AssigneesURL     string                                 `json:"assignees_url"`
+	BlobsURL         string                                 `json:"blobs_url"`
+	BranchesURL      string                                 `json:"branches_url"`
+	CloneURL         string                                 `json:"clone_url"`
+	CollaboratorsURL string                                 `json:"collaborators_url"`
+	CommentsURL      string                                 `json:"comments_url"`
+	CommitsURL       string                                 `json:"commits_url"`
+	CompareURL       string                                 `json:"compare_url"`
+	ContentsURL      string                                 `json:"contents_url"`
+	ContributorsURL  url.URL                                `json:"contributors_url"`
+	CreatedAt        time.Time                              `json:"created_at"`
+	DefaultBranch    string                                 `json:"default_branch"`
+	DeploymentsURL   url.URL                                `json:"deployments_url"`
+	Description      NilString                              `json:"description"`
+	Disabled         bool                                   `json:"disabled"`
+	DownloadsURL     url.URL                                `json:"downloads_url"`
+	EventsURL        url.URL                                `json:"events_url"`
+	Fork             bool                                   `json:"fork"`
+	Forks            int                                    `json:"forks"`
+	ForksCount       int                                    `json:"forks_count"`
+	ForksURL         url.URL                                `json:"forks_url"`
+	FullName         string                                 `json:"full_name"`
+	GitCommitsURL    string                                 `json:"git_commits_url"`
+	GitRefsURL       string                                 `json:"git_refs_url"`
+	GitTagsURL       string                                 `json:"git_tags_url"`
+	GitURL           string                                 `json:"git_url"`
+	HTMLURL          url.URL                                `json:"html_url"`
+	HasDownloads     bool                                   `json:"has_downloads"`
+	HasIssues        bool                                   `json:"has_issues"`
+	HasPages         bool                                   `json:"has_pages"`
+	HasProjects      bool                                   `json:"has_projects"`
+	HasWiki          bool                                   `json:"has_wiki"`
+	Homepage         NilURL                                 `json:"homepage"`
+	HooksURL         url.URL                                `json:"hooks_url"`
+	ID               int                                    `json:"id"`
+	IssueCommentURL  string                                 `json:"issue_comment_url"`
+	IssueEventsURL   string                                 `json:"issue_events_url"`
+	IssuesURL        string                                 `json:"issues_url"`
+	KeysURL          string                                 `json:"keys_url"`
+	LabelsURL        string                                 `json:"labels_url"`
+	Language         NilString                              `json:"language"`
+	LanguagesURL     url.URL                                `json:"languages_url"`
+	License          NilPullRequestHeadRepoLicense          `json:"license"`
+	MasterBranch     OptionalString                         `json:"master_branch"`
+	MergesURL        url.URL                                `json:"merges_url"`
+	MilestonesURL    string                                 `json:"milestones_url"`
+	MirrorURL        NilURL                                 `json:"mirror_url"`
+	Name             string                                 `json:"name"`
+	NodeID           string                                 `json:"node_id"`
+	NotificationsURL string                                 `json:"notifications_url"`
+	OpenIssues       int                                    `json:"open_issues"`
+	OpenIssuesCount  int                                    `json:"open_issues_count"`
+	Owner            PullRequestHeadRepoOwner               `json:"owner"`
+	Permissions      OptionalPullRequestHeadRepoPermissions `json:"permissions"`
+	Private          bool                                   `json:"private"`
+	PullsURL         string                                 `json:"pulls_url"`
+	PushedAt         time.Time                              `json:"pushed_at"`
+	ReleasesURL      string                                 `json:"releases_url"`
+	SSHURL           string                                 `json:"ssh_url"`
+	Size             int                                    `json:"size"`
+	StargazersCount  int                                    `json:"stargazers_count"`
+	StargazersURL    url.URL                                `json:"stargazers_url"`
+	StatusesURL      string                                 `json:"statuses_url"`
+	SubscribersURL   url.URL                                `json:"subscribers_url"`
+	SubscriptionURL  url.URL                                `json:"subscription_url"`
+	SvnURL           url.URL                                `json:"svn_url"`
+	TagsURL          url.URL                                `json:"tags_url"`
+	TeamsURL         url.URL                                `json:"teams_url"`
+	TempCloneToken   OptionalString                         `json:"temp_clone_token"`
+	Topics           *[]string                              `json:"topics"`
+	TreesURL         string                                 `json:"trees_url"`
+	URL              url.URL                                `json:"url"`
+	UpdatedAt        time.Time                              `json:"updated_at"`
+	Watchers         int                                    `json:"watchers"`
+	WatchersCount    int                                    `json:"watchers_count"`
 }
 
 type PullRequestHeadRepoLicense struct {
@@ -6555,28 +15693,28 @@ type PullRequestHeadRepoLicense struct {
 	Name   string    `json:"name"`
 	NodeID string    `json:"node_id"`
 	SpdxID NilString `json:"spdx_id"`
-	URL    NilString `json:"url"`
+	URL    NilURL    `json:"url"`
 }
 
 type PullRequestHeadRepoOwner struct {
-	AvatarURL         string    `json:"avatar_url"`
+	AvatarURL         url.URL   `json:"avatar_url"`
 	EventsURL         string    `json:"events_url"`
-	FollowersURL      string    `json:"followers_url"`
+	FollowersURL      url.URL   `json:"followers_url"`
 	FollowingURL      string    `json:"following_url"`
 	GistsURL          string    `json:"gists_url"`
 	GravatarID        NilString `json:"gravatar_id"`
-	HTMLURL           string    `json:"html_url"`
+	HTMLURL           url.URL   `json:"html_url"`
 	ID                int       `json:"id"`
 	Login             string    `json:"login"`
 	NodeID            string    `json:"node_id"`
-	OrganizationsURL  string    `json:"organizations_url"`
-	ReceivedEventsURL string    `json:"received_events_url"`
-	ReposURL          string    `json:"repos_url"`
+	OrganizationsURL  url.URL   `json:"organizations_url"`
+	ReceivedEventsURL url.URL   `json:"received_events_url"`
+	ReposURL          url.URL   `json:"repos_url"`
 	SiteAdmin         bool      `json:"site_admin"`
 	StarredURL        string    `json:"starred_url"`
-	SubscriptionsURL  string    `json:"subscriptions_url"`
+	SubscriptionsURL  url.URL   `json:"subscriptions_url"`
 	Type              string    `json:"type"`
-	URL               string    `json:"url"`
+	URL               url.URL   `json:"url"`
 }
 
 type PullRequestHeadRepoPermissions struct {
@@ -6588,24 +15726,24 @@ type PullRequestHeadRepoPermissions struct {
 }
 
 type PullRequestHeadUser struct {
-	AvatarURL         string    `json:"avatar_url"`
+	AvatarURL         url.URL   `json:"avatar_url"`
 	EventsURL         string    `json:"events_url"`
-	FollowersURL      string    `json:"followers_url"`
+	FollowersURL      url.URL   `json:"followers_url"`
 	FollowingURL      string    `json:"following_url"`
 	GistsURL          string    `json:"gists_url"`
 	GravatarID        NilString `json:"gravatar_id"`
-	HTMLURL           string    `json:"html_url"`
+	HTMLURL           url.URL   `json:"html_url"`
 	ID                int       `json:"id"`
 	Login             string    `json:"login"`
 	NodeID            string    `json:"node_id"`
-	OrganizationsURL  string    `json:"organizations_url"`
-	ReceivedEventsURL string    `json:"received_events_url"`
-	ReposURL          string    `json:"repos_url"`
+	OrganizationsURL  url.URL   `json:"organizations_url"`
+	ReceivedEventsURL url.URL   `json:"received_events_url"`
+	ReposURL          url.URL   `json:"repos_url"`
 	SiteAdmin         bool      `json:"site_admin"`
 	StarredURL        string    `json:"starred_url"`
-	SubscriptionsURL  string    `json:"subscriptions_url"`
+	SubscriptionsURL  url.URL   `json:"subscriptions_url"`
 	Type              string    `json:"type"`
-	URL               string    `json:"url"`
+	URL               url.URL   `json:"url"`
 }
 
 type PullRequestLabelsItem struct {
@@ -6676,11 +15814,11 @@ type PullRequestReview struct {
 	BodyHTML          OptionalString         `json:"body_html"`
 	BodyText          OptionalString         `json:"body_text"`
 	CommitID          string                 `json:"commit_id"`
-	HTMLURL           string                 `json:"html_url"`
+	HTMLURL           url.URL                `json:"html_url"`
 	ID                int                    `json:"id"`
 	Links             PullRequestReviewLinks `json:"_links"`
 	NodeID            string                 `json:"node_id"`
-	PullRequestURL    string                 `json:"pull_request_url"`
+	PullRequestURL    url.URL                `json:"pull_request_url"`
 	State             string                 `json:"state"`
 	SubmittedAt       OptionalTime           `json:"submitted_at"`
 	User              NullableSimpleUser     `json:"user"`
@@ -6695,34 +15833,34 @@ func (*PullRequestReview) pullsUpdateReviewResponse()        {}
 
 // PullRequestReviewComment describes #/components/schemas/pull-request-review-comment.
 type PullRequestReviewComment struct {
-	AuthorAssociation   AuthorAssociation                  `json:"author_association"`
-	Body                string                             `json:"body"`
-	BodyHTML            OptionalString                     `json:"body_html"`
-	BodyText            OptionalString                     `json:"body_text"`
-	CommitID            string                             `json:"commit_id"`
-	CreatedAt           time.Time                          `json:"created_at"`
-	DiffHunk            string                             `json:"diff_hunk"`
-	HTMLURL             string                             `json:"html_url"`
-	ID                  int                                `json:"id"`
-	InReplyToID         OptionalInt                        `json:"in_reply_to_id"`
-	Line                OptionalInt                        `json:"line"`
-	Links               PullRequestReviewCommentLinks      `json:"_links"`
-	NodeID              string                             `json:"node_id"`
-	OriginalCommitID    string                             `json:"original_commit_id"`
-	OriginalLine        OptionalInt                        `json:"original_line"`
-	OriginalPosition    int                                `json:"original_position"`
-	OriginalStartLine   OptionalNilInt                     `json:"original_start_line"`
-	Path                string                             `json:"path"`
-	Position            int                                `json:"position"`
-	PullRequestReviewID NilInt                             `json:"pull_request_review_id"`
-	PullRequestURL      string                             `json:"pull_request_url"`
-	Reactions           *ReactionRollup                    `json:"reactions"`
-	Side                *PullRequestReviewCommentSide      `json:"side"`
-	StartLine           OptionalNilInt                     `json:"start_line"`
-	StartSide           *PullRequestReviewCommentStartSide `json:"start_side"`
-	URL                 string                             `json:"url"`
-	UpdatedAt           time.Time                          `json:"updated_at"`
-	User                SimpleUser                         `json:"user"`
+	AuthorAssociation   AuthorAssociation                            `json:"author_association"`
+	Body                string                                       `json:"body"`
+	BodyHTML            OptionalString                               `json:"body_html"`
+	BodyText            OptionalString                               `json:"body_text"`
+	CommitID            string                                       `json:"commit_id"`
+	CreatedAt           time.Time                                    `json:"created_at"`
+	DiffHunk            string                                       `json:"diff_hunk"`
+	HTMLURL             url.URL                                      `json:"html_url"`
+	ID                  int                                          `json:"id"`
+	InReplyToID         OptionalInt                                  `json:"in_reply_to_id"`
+	Line                OptionalInt                                  `json:"line"`
+	Links               PullRequestReviewCommentLinks                `json:"_links"`
+	NodeID              string                                       `json:"node_id"`
+	OriginalCommitID    string                                       `json:"original_commit_id"`
+	OriginalLine        OptionalInt                                  `json:"original_line"`
+	OriginalPosition    int                                          `json:"original_position"`
+	OriginalStartLine   OptionalNilInt                               `json:"original_start_line"`
+	Path                string                                       `json:"path"`
+	Position            int                                          `json:"position"`
+	PullRequestReviewID NilInt                                       `json:"pull_request_review_id"`
+	PullRequestURL      url.URL                                      `json:"pull_request_url"`
+	Reactions           OptionalReactionRollup                       `json:"reactions"`
+	Side                OptionalPullRequestReviewCommentSide         `json:"side"`
+	StartLine           OptionalNilInt                               `json:"start_line"`
+	StartSide           OptionalNilPullRequestReviewCommentStartSide `json:"start_side"`
+	URL                 string                                       `json:"url"`
+	UpdatedAt           time.Time                                    `json:"updated_at"`
+	User                SimpleUser                                   `json:"user"`
 }
 
 func (*PullRequestReviewComment) pullsCreateReplyForReviewCommentResponse() {}
@@ -6735,15 +15873,15 @@ type PullRequestReviewCommentLinks struct {
 }
 
 type PullRequestReviewCommentLinksHTML struct {
-	Href string `json:"href"`
+	Href url.URL `json:"href"`
 }
 
 type PullRequestReviewCommentLinksPullRequest struct {
-	Href string `json:"href"`
+	Href url.URL `json:"href"`
 }
 
 type PullRequestReviewCommentLinksSelf struct {
-	Href string `json:"href"`
+	Href url.URL `json:"href"`
 }
 
 type PullRequestReviewCommentSide string
@@ -6789,15 +15927,15 @@ type PullRequestSimple struct {
 	Base               PullRequestSimpleBase         `json:"base"`
 	Body               NilString                     `json:"body"`
 	ClosedAt           NilTime                       `json:"closed_at"`
-	CommentsURL        string                        `json:"comments_url"`
-	CommitsURL         string                        `json:"commits_url"`
+	CommentsURL        url.URL                       `json:"comments_url"`
+	CommitsURL         url.URL                       `json:"commits_url"`
 	CreatedAt          time.Time                     `json:"created_at"`
-	DiffURL            string                        `json:"diff_url"`
+	DiffURL            url.URL                       `json:"diff_url"`
 	Draft              OptionalBool                  `json:"draft"`
-	HTMLURL            string                        `json:"html_url"`
+	HTMLURL            url.URL                       `json:"html_url"`
 	Head               PullRequestSimpleHead         `json:"head"`
 	ID                 int                           `json:"id"`
-	IssueURL           string                        `json:"issue_url"`
+	IssueURL           url.URL                       `json:"issue_url"`
 	Labels             []PullRequestSimpleLabelsItem `json:"labels"`
 	Links              PullRequestSimpleLinks        `json:"_links"`
 	Locked             bool                          `json:"locked"`
@@ -6806,15 +15944,15 @@ type PullRequestSimple struct {
 	Milestone          NullableMilestone             `json:"milestone"`
 	NodeID             string                        `json:"node_id"`
 	Number             int                           `json:"number"`
-	PatchURL           string                        `json:"patch_url"`
+	PatchURL           url.URL                       `json:"patch_url"`
 	RequestedReviewers *[]SimpleUser                 `json:"requested_reviewers"`
 	RequestedTeams     *[]Team                       `json:"requested_teams"`
 	ReviewCommentURL   string                        `json:"review_comment_url"`
-	ReviewCommentsURL  string                        `json:"review_comments_url"`
+	ReviewCommentsURL  url.URL                       `json:"review_comments_url"`
 	State              string                        `json:"state"`
-	StatusesURL        string                        `json:"statuses_url"`
+	StatusesURL        url.URL                       `json:"statuses_url"`
 	Title              string                        `json:"title"`
-	URL                string                        `json:"url"`
+	URL                url.URL                       `json:"url"`
 	UpdatedAt          time.Time                     `json:"updated_at"`
 	User               NullableSimpleUser            `json:"user"`
 }
@@ -6891,7 +16029,7 @@ type PullsCreateReviewApplicationJSONRequest struct {
 	Body     OptionalString                                         `json:"body"`
 	Comments *[]PullsCreateReviewApplicationJSONRequestCommentsItem `json:"comments"`
 	CommitID OptionalString                                         `json:"commit_id"`
-	Event    *PullsCreateReviewApplicationJSONRequestEvent          `json:"event"`
+	Event    OptionalPullsCreateReviewApplicationJSONRequestEvent   `json:"event"`
 }
 
 type PullsCreateReviewApplicationJSONRequestCommentsItem struct {
@@ -6913,15 +16051,15 @@ const (
 )
 
 type PullsCreateReviewCommentApplicationJSONRequest struct {
-	Body      string                                                   `json:"body"`
-	CommitID  OptionalString                                           `json:"commit_id"`
-	InReplyTo OptionalInt                                              `json:"in_reply_to"`
-	Line      OptionalInt                                              `json:"line"`
-	Path      OptionalString                                           `json:"path"`
-	Position  OptionalInt                                              `json:"position"`
-	Side      *PullsCreateReviewCommentApplicationJSONRequestSide      `json:"side"`
-	StartLine OptionalInt                                              `json:"start_line"`
-	StartSide *PullsCreateReviewCommentApplicationJSONRequestStartSide `json:"start_side"`
+	Body      string                                                          `json:"body"`
+	CommitID  OptionalString                                                  `json:"commit_id"`
+	InReplyTo OptionalInt                                                     `json:"in_reply_to"`
+	Line      OptionalInt                                                     `json:"line"`
+	Path      OptionalString                                                  `json:"path"`
+	Position  OptionalInt                                                     `json:"position"`
+	Side      OptionalPullsCreateReviewCommentApplicationJSONRequestSide      `json:"side"`
+	StartLine OptionalInt                                                     `json:"start_line"`
+	StartSide OptionalPullsCreateReviewCommentApplicationJSONRequestStartSide `json:"start_side"`
 }
 
 func (*PullsCreateReviewCommentApplicationJSONRequest) pullsCreateReviewCommentRequest() {}
@@ -6965,10 +16103,10 @@ func (*PullsListCommentsForReviewOK) pullsListCommentsForReviewResponse() {}
 type PullsListFilesOK []DiffEntry
 
 type PullsMergeApplicationJSONRequest struct {
-	CommitMessage OptionalString                               `json:"commit_message"`
-	CommitTitle   OptionalString                               `json:"commit_title"`
-	MergeMethod   *PullsMergeApplicationJSONRequestMergeMethod `json:"merge_method"`
-	Sha           OptionalString                               `json:"sha"`
+	CommitMessage OptionalString                                      `json:"commit_message"`
+	CommitTitle   OptionalString                                      `json:"commit_title"`
+	MergeMethod   OptionalPullsMergeApplicationJSONRequestMergeMethod `json:"merge_method"`
+	Sha           OptionalString                                      `json:"sha"`
 }
 
 func (*PullsMergeApplicationJSONRequest) pullsMergeRequest() {}
@@ -7020,11 +16158,11 @@ const (
 )
 
 type PullsUpdateApplicationJSONRequest struct {
-	Base                OptionalString                          `json:"base"`
-	Body                OptionalString                          `json:"body"`
-	MaintainerCanModify OptionalBool                            `json:"maintainer_can_modify"`
-	State               *PullsUpdateApplicationJSONRequestState `json:"state"`
-	Title               OptionalString                          `json:"title"`
+	Base                OptionalString                                 `json:"base"`
+	Body                OptionalString                                 `json:"body"`
+	MaintainerCanModify OptionalBool                                   `json:"maintainer_can_modify"`
+	State               OptionalPullsUpdateApplicationJSONRequestState `json:"state"`
+	Title               OptionalString                                 `json:"title"`
 }
 
 func (*PullsUpdateApplicationJSONRequest) pullsUpdateRequest() {}
@@ -7072,13 +16210,13 @@ type RateLimitOverview struct {
 func (*RateLimitOverview) rateLimitGetResponse() {}
 
 type RateLimitOverviewResources struct {
-	ActionsRunnerRegistration *RateLimit `json:"actions_runner_registration"`
-	CodeScanningUpload        *RateLimit `json:"code_scanning_upload"`
-	Core                      RateLimit  `json:"core"`
-	Graphql                   *RateLimit `json:"graphql"`
-	IntegrationManifest       *RateLimit `json:"integration_manifest"`
-	Search                    RateLimit  `json:"search"`
-	SourceImport              *RateLimit `json:"source_import"`
+	ActionsRunnerRegistration OptionalRateLimit `json:"actions_runner_registration"`
+	CodeScanningUpload        OptionalRateLimit `json:"code_scanning_upload"`
+	Core                      RateLimit         `json:"core"`
+	Graphql                   OptionalRateLimit `json:"graphql"`
+	IntegrationManifest       OptionalRateLimit `json:"integration_manifest"`
+	Search                    RateLimit         `json:"search"`
+	SourceImport              OptionalRateLimit `json:"source_import"`
 }
 
 // Reaction describes #/components/schemas/reaction.
@@ -7105,16 +16243,16 @@ const (
 
 // ReactionRollup describes #/components/schemas/reaction-rollup.
 type ReactionRollup struct {
-	Confused   int    `json:"confused"`
-	Eyes       int    `json:"eyes"`
-	Heart      int    `json:"heart"`
-	Hooray     int    `json:"hooray"`
-	Laugh      int    `json:"laugh"`
-	Minus1     int    `json:"-1"`
-	Plus1      int    `json:"+1"`
-	Rocket     int    `json:"rocket"`
-	TotalCount int    `json:"total_count"`
-	URL        string `json:"url"`
+	Confused   int     `json:"confused"`
+	Eyes       int     `json:"eyes"`
+	Heart      int     `json:"heart"`
+	Hooray     int     `json:"hooray"`
+	Laugh      int     `json:"laugh"`
+	Minus1     int     `json:"-1"`
+	Plus1      int     `json:"+1"`
+	Rocket     int     `json:"rocket"`
+	TotalCount int     `json:"total_count"`
+	URL        url.URL `json:"url"`
 }
 
 type ReactionsCreateForCommitCommentApplicationJSONRequest struct {
@@ -7338,29 +16476,29 @@ type ReferrerTraffic struct {
 
 // Release describes #/components/schemas/release.
 type Release struct {
-	Assets          []ReleaseAsset    `json:"assets"`
-	AssetsURL       string            `json:"assets_url"`
-	Author          SimpleUser        `json:"author"`
-	Body            OptionalNilString `json:"body"`
-	BodyHTML        OptionalString    `json:"body_html"`
-	BodyText        OptionalString    `json:"body_text"`
-	CreatedAt       time.Time         `json:"created_at"`
-	DiscussionURL   OptionalString    `json:"discussion_url"`
-	Draft           bool              `json:"draft"`
-	HTMLURL         string            `json:"html_url"`
-	ID              int               `json:"id"`
-	MentionsCount   OptionalInt       `json:"mentions_count"`
-	Name            NilString         `json:"name"`
-	NodeID          string            `json:"node_id"`
-	Prerelease      bool              `json:"prerelease"`
-	PublishedAt     NilTime           `json:"published_at"`
-	Reactions       *ReactionRollup   `json:"reactions"`
-	TagName         string            `json:"tag_name"`
-	TarballURL      NilString         `json:"tarball_url"`
-	TargetCommitish string            `json:"target_commitish"`
-	URL             string            `json:"url"`
-	UploadURL       string            `json:"upload_url"`
-	ZipballURL      NilString         `json:"zipball_url"`
+	Assets          []ReleaseAsset         `json:"assets"`
+	AssetsURL       url.URL                `json:"assets_url"`
+	Author          SimpleUser             `json:"author"`
+	Body            OptionalNilString      `json:"body"`
+	BodyHTML        OptionalString         `json:"body_html"`
+	BodyText        OptionalString         `json:"body_text"`
+	CreatedAt       time.Time              `json:"created_at"`
+	DiscussionURL   OptionalURL            `json:"discussion_url"`
+	Draft           bool                   `json:"draft"`
+	HTMLURL         url.URL                `json:"html_url"`
+	ID              int                    `json:"id"`
+	MentionsCount   OptionalInt            `json:"mentions_count"`
+	Name            NilString              `json:"name"`
+	NodeID          string                 `json:"node_id"`
+	Prerelease      bool                   `json:"prerelease"`
+	PublishedAt     NilTime                `json:"published_at"`
+	Reactions       OptionalReactionRollup `json:"reactions"`
+	TagName         string                 `json:"tag_name"`
+	TarballURL      NilURL                 `json:"tarball_url"`
+	TargetCommitish string                 `json:"target_commitish"`
+	URL             url.URL                `json:"url"`
+	UploadURL       string                 `json:"upload_url"`
+	ZipballURL      NilURL                 `json:"zipball_url"`
 }
 
 func (*Release) reposGetReleaseByTagResponse() {}
@@ -7369,7 +16507,7 @@ func (*Release) reposUpdateReleaseResponse()   {}
 
 // ReleaseAsset describes #/components/schemas/release-asset.
 type ReleaseAsset struct {
-	BrowserDownloadURL string             `json:"browser_download_url"`
+	BrowserDownloadURL url.URL            `json:"browser_download_url"`
 	ContentType        string             `json:"content_type"`
 	CreatedAt          time.Time          `json:"created_at"`
 	DownloadCount      int                `json:"download_count"`
@@ -7379,7 +16517,7 @@ type ReleaseAsset struct {
 	NodeID             string             `json:"node_id"`
 	Size               int                `json:"size"`
 	State              ReleaseAssetState  `json:"state"`
-	URL                string             `json:"url"`
+	URL                url.URL            `json:"url"`
 	UpdatedAt          time.Time          `json:"updated_at"`
 	Uploader           NullableSimpleUser `json:"uploader"`
 }
@@ -7410,8 +16548,8 @@ type ReposAcceptInvitationNoContent struct{}
 func (*ReposAcceptInvitationNoContent) reposAcceptInvitationResponse() {}
 
 type ReposAddCollaboratorApplicationJSONRequest struct {
-	Permission  *ReposAddCollaboratorApplicationJSONRequestPermission `json:"permission"`
-	Permissions OptionalString                                        `json:"permissions"`
+	Permission  OptionalReposAddCollaboratorApplicationJSONRequestPermission `json:"permission"`
+	Permissions OptionalString                                               `json:"permissions"`
 }
 
 func (*ReposAddCollaboratorApplicationJSONRequest) reposAddCollaboratorRequest() {}
@@ -7493,13 +16631,13 @@ type ReposCreateDeployKeyApplicationJSONRequest struct {
 func (*ReposCreateDeployKeyApplicationJSONRequest) reposCreateDeployKeyRequest() {}
 
 type ReposCreateDeploymentStatusApplicationJSONRequest struct {
-	AutoInactive   OptionalBool                                                  `json:"auto_inactive"`
-	Description    OptionalString                                                `json:"description"`
-	Environment    *ReposCreateDeploymentStatusApplicationJSONRequestEnvironment `json:"environment"`
-	EnvironmentURL OptionalString                                                `json:"environment_url"`
-	LogURL         OptionalString                                                `json:"log_url"`
-	State          ReposCreateDeploymentStatusApplicationJSONRequestState        `json:"state"`
-	TargetURL      OptionalString                                                `json:"target_url"`
+	AutoInactive   OptionalBool                                                         `json:"auto_inactive"`
+	Description    OptionalString                                                       `json:"description"`
+	Environment    OptionalReposCreateDeploymentStatusApplicationJSONRequestEnvironment `json:"environment"`
+	EnvironmentURL OptionalString                                                       `json:"environment_url"`
+	LogURL         OptionalString                                                       `json:"log_url"`
+	State          ReposCreateDeploymentStatusApplicationJSONRequestState               `json:"state"`
+	TargetURL      OptionalString                                                       `json:"target_url"`
 }
 
 func (*ReposCreateDeploymentStatusApplicationJSONRequest) reposCreateDeploymentStatusRequest() {}
@@ -7564,24 +16702,24 @@ type ReposCreateForkApplicationJSONRequest struct {
 func (*ReposCreateForkApplicationJSONRequest) reposCreateForkRequest() {}
 
 type ReposCreateInOrgApplicationJSONRequest struct {
-	AllowAutoMerge      OptionalBool                                      `json:"allow_auto_merge"`
-	AllowMergeCommit    OptionalBool                                      `json:"allow_merge_commit"`
-	AllowRebaseMerge    OptionalBool                                      `json:"allow_rebase_merge"`
-	AllowSquashMerge    OptionalBool                                      `json:"allow_squash_merge"`
-	AutoInit            OptionalBool                                      `json:"auto_init"`
-	DeleteBranchOnMerge OptionalBool                                      `json:"delete_branch_on_merge"`
-	Description         OptionalString                                    `json:"description"`
-	GitignoreTemplate   OptionalString                                    `json:"gitignore_template"`
-	HasIssues           OptionalBool                                      `json:"has_issues"`
-	HasProjects         OptionalBool                                      `json:"has_projects"`
-	HasWiki             OptionalBool                                      `json:"has_wiki"`
-	Homepage            OptionalString                                    `json:"homepage"`
-	IsTemplate          OptionalBool                                      `json:"is_template"`
-	LicenseTemplate     OptionalString                                    `json:"license_template"`
-	Name                string                                            `json:"name"`
-	Private             OptionalBool                                      `json:"private"`
-	TeamID              OptionalInt                                       `json:"team_id"`
-	Visibility          *ReposCreateInOrgApplicationJSONRequestVisibility `json:"visibility"`
+	AllowAutoMerge      OptionalBool                                             `json:"allow_auto_merge"`
+	AllowMergeCommit    OptionalBool                                             `json:"allow_merge_commit"`
+	AllowRebaseMerge    OptionalBool                                             `json:"allow_rebase_merge"`
+	AllowSquashMerge    OptionalBool                                             `json:"allow_squash_merge"`
+	AutoInit            OptionalBool                                             `json:"auto_init"`
+	DeleteBranchOnMerge OptionalBool                                             `json:"delete_branch_on_merge"`
+	Description         OptionalString                                           `json:"description"`
+	GitignoreTemplate   OptionalString                                           `json:"gitignore_template"`
+	HasIssues           OptionalBool                                             `json:"has_issues"`
+	HasProjects         OptionalBool                                             `json:"has_projects"`
+	HasWiki             OptionalBool                                             `json:"has_wiki"`
+	Homepage            OptionalString                                           `json:"homepage"`
+	IsTemplate          OptionalBool                                             `json:"is_template"`
+	LicenseTemplate     OptionalString                                           `json:"license_template"`
+	Name                string                                                   `json:"name"`
+	Private             OptionalBool                                             `json:"private"`
+	TeamID              OptionalInt                                              `json:"team_id"`
+	Visibility          OptionalReposCreateInOrgApplicationJSONRequestVisibility `json:"visibility"`
 }
 
 func (*ReposCreateInOrgApplicationJSONRequest) reposCreateInOrgRequest() {}
@@ -7596,7 +16734,7 @@ const (
 )
 
 type ReposCreateOrUpdateEnvironmentApplicationJSONRequest struct {
-	DeploymentBranchPolicy *DeploymentBranchPolicy                                              `json:"deployment_branch_policy"`
+	DeploymentBranchPolicy OptionalDeploymentBranchPolicy                                       `json:"deployment_branch_policy"`
 	Reviewers              *[]ReposCreateOrUpdateEnvironmentApplicationJSONRequestReviewersItem `json:"reviewers"`
 	WaitTimer              *WaitTimer                                                           `json:"wait_timer"`
 }
@@ -7605,17 +16743,17 @@ func (*ReposCreateOrUpdateEnvironmentApplicationJSONRequest) reposCreateOrUpdate
 }
 
 type ReposCreateOrUpdateEnvironmentApplicationJSONRequestReviewersItem struct {
-	ID   OptionalInt             `json:"id"`
-	Type *DeploymentReviewerType `json:"type"`
+	ID   OptionalInt                    `json:"id"`
+	Type OptionalDeploymentReviewerType `json:"type"`
 }
 
 type ReposCreateOrUpdateFileContentsApplicationJSONRequest struct {
-	Author    *ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor    `json:"author"`
-	Branch    OptionalString                                                  `json:"branch"`
-	Committer *ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter `json:"committer"`
-	Content   string                                                          `json:"content"`
-	Message   string                                                          `json:"message"`
-	Sha       OptionalString                                                  `json:"sha"`
+	Author    OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor    `json:"author"`
+	Branch    OptionalString                                                         `json:"branch"`
+	Committer OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter `json:"committer"`
+	Content   string                                                                 `json:"content"`
+	Message   string                                                                 `json:"message"`
+	Sha       OptionalString                                                         `json:"sha"`
 }
 
 func (*ReposCreateOrUpdateFileContentsApplicationJSONRequest) reposCreateOrUpdateFileContentsRequest() {
@@ -7640,8 +16778,8 @@ type ReposCreatePagesSiteApplicationJSONRequest struct {
 func (*ReposCreatePagesSiteApplicationJSONRequest) reposCreatePagesSiteRequest() {}
 
 type ReposCreatePagesSiteApplicationJSONRequestSource struct {
-	Branch string                                                `json:"branch"`
-	Path   *ReposCreatePagesSiteApplicationJSONRequestSourcePath `json:"path"`
+	Branch string                                                       `json:"branch"`
+	Path   OptionalReposCreatePagesSiteApplicationJSONRequestSourcePath `json:"path"`
 }
 
 type ReposCreatePagesSiteApplicationJSONRequestSourcePath string
@@ -7727,11 +16865,11 @@ type ReposDeleteDeploymentNoContent struct{}
 func (*ReposDeleteDeploymentNoContent) reposDeleteDeploymentResponse() {}
 
 type ReposDeleteFileApplicationJSONRequest struct {
-	Author    *ReposDeleteFileApplicationJSONRequestAuthor    `json:"author"`
-	Branch    OptionalString                                  `json:"branch"`
-	Committer *ReposDeleteFileApplicationJSONRequestCommitter `json:"committer"`
-	Message   string                                          `json:"message"`
-	Sha       string                                          `json:"sha"`
+	Author    OptionalReposDeleteFileApplicationJSONRequestAuthor    `json:"author"`
+	Branch    OptionalString                                         `json:"branch"`
+	Committer OptionalReposDeleteFileApplicationJSONRequestCommitter `json:"committer"`
+	Message   string                                                 `json:"message"`
+	Sha       string                                                 `json:"sha"`
 }
 
 func (*ReposDeleteFileApplicationJSONRequest) reposDeleteFileRequest() {}
@@ -7994,31 +17132,31 @@ type ReposTransferApplicationJSONRequest struct {
 }
 
 type ReposUpdateApplicationJSONRequest struct {
-	AllowAutoMerge      OptionalBool                                          `json:"allow_auto_merge"`
-	AllowForking        OptionalBool                                          `json:"allow_forking"`
-	AllowMergeCommit    OptionalBool                                          `json:"allow_merge_commit"`
-	AllowRebaseMerge    OptionalBool                                          `json:"allow_rebase_merge"`
-	AllowSquashMerge    OptionalBool                                          `json:"allow_squash_merge"`
-	Archived            OptionalBool                                          `json:"archived"`
-	DefaultBranch       OptionalString                                        `json:"default_branch"`
-	DeleteBranchOnMerge OptionalBool                                          `json:"delete_branch_on_merge"`
-	Description         OptionalString                                        `json:"description"`
-	HasIssues           OptionalBool                                          `json:"has_issues"`
-	HasProjects         OptionalBool                                          `json:"has_projects"`
-	HasWiki             OptionalBool                                          `json:"has_wiki"`
-	Homepage            OptionalString                                        `json:"homepage"`
-	IsTemplate          OptionalBool                                          `json:"is_template"`
-	Name                OptionalString                                        `json:"name"`
-	Private             OptionalBool                                          `json:"private"`
-	SecurityAndAnalysis *ReposUpdateApplicationJSONRequestSecurityAndAnalysis `json:"security_and_analysis"`
-	Visibility          *ReposUpdateApplicationJSONRequestVisibility          `json:"visibility"`
+	AllowAutoMerge      OptionalBool                                                    `json:"allow_auto_merge"`
+	AllowForking        OptionalBool                                                    `json:"allow_forking"`
+	AllowMergeCommit    OptionalBool                                                    `json:"allow_merge_commit"`
+	AllowRebaseMerge    OptionalBool                                                    `json:"allow_rebase_merge"`
+	AllowSquashMerge    OptionalBool                                                    `json:"allow_squash_merge"`
+	Archived            OptionalBool                                                    `json:"archived"`
+	DefaultBranch       OptionalString                                                  `json:"default_branch"`
+	DeleteBranchOnMerge OptionalBool                                                    `json:"delete_branch_on_merge"`
+	Description         OptionalString                                                  `json:"description"`
+	HasIssues           OptionalBool                                                    `json:"has_issues"`
+	HasProjects         OptionalBool                                                    `json:"has_projects"`
+	HasWiki             OptionalBool                                                    `json:"has_wiki"`
+	Homepage            OptionalString                                                  `json:"homepage"`
+	IsTemplate          OptionalBool                                                    `json:"is_template"`
+	Name                OptionalString                                                  `json:"name"`
+	Private             OptionalBool                                                    `json:"private"`
+	SecurityAndAnalysis OptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis `json:"security_and_analysis"`
+	Visibility          OptionalReposUpdateApplicationJSONRequestVisibility             `json:"visibility"`
 }
 
 func (*ReposUpdateApplicationJSONRequest) reposUpdateRequest() {}
 
 type ReposUpdateApplicationJSONRequestSecurityAndAnalysis struct {
-	AdvancedSecurity *ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity `json:"advanced_security"`
-	SecretScanning   *ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning   `json:"secret_scanning"`
+	AdvancedSecurity OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity `json:"advanced_security"`
+	SecretScanning   OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning   `json:"secret_scanning"`
 }
 
 type ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity struct {
@@ -8047,21 +17185,21 @@ type ReposUpdateBranchProtectionApplicationJSONNotFound BasicError
 func (*ReposUpdateBranchProtectionApplicationJSONNotFound) reposUpdateBranchProtectionResponse() {}
 
 type ReposUpdateBranchProtectionApplicationJSONRequest struct {
-	AllowDeletions                 OptionalBool                                                                `json:"allow_deletions"`
-	AllowForcePushes               OptionalNilBool                                                             `json:"allow_force_pushes"`
-	EnforceAdmins                  NilBool                                                                     `json:"enforce_admins"`
-	RequiredConversationResolution OptionalBool                                                                `json:"required_conversation_resolution"`
-	RequiredLinearHistory          OptionalBool                                                                `json:"required_linear_history"`
-	RequiredPullRequestReviews     ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews `json:"required_pull_request_reviews"`
-	RequiredStatusChecks           ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks       `json:"required_status_checks"`
-	Restrictions                   ReposUpdateBranchProtectionApplicationJSONRequestRestrictions               `json:"restrictions"`
+	AllowDeletions                 OptionalBool                                                                   `json:"allow_deletions"`
+	AllowForcePushes               OptionalNilBool                                                                `json:"allow_force_pushes"`
+	EnforceAdmins                  NilBool                                                                        `json:"enforce_admins"`
+	RequiredConversationResolution OptionalBool                                                                   `json:"required_conversation_resolution"`
+	RequiredLinearHistory          OptionalBool                                                                   `json:"required_linear_history"`
+	RequiredPullRequestReviews     NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews `json:"required_pull_request_reviews"`
+	RequiredStatusChecks           NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks       `json:"required_status_checks"`
+	Restrictions                   NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions               `json:"restrictions"`
 }
 
 type ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews struct {
-	DismissStaleReviews          OptionalBool                                                                                      `json:"dismiss_stale_reviews"`
-	DismissalRestrictions        *ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions `json:"dismissal_restrictions"`
-	RequireCodeOwnerReviews      OptionalBool                                                                                      `json:"require_code_owner_reviews"`
-	RequiredApprovingReviewCount OptionalInt                                                                                       `json:"required_approving_review_count"`
+	DismissStaleReviews          OptionalBool                                                                                             `json:"dismiss_stale_reviews"`
+	DismissalRestrictions        OptionalReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions `json:"dismissal_restrictions"`
+	RequireCodeOwnerReviews      OptionalBool                                                                                             `json:"require_code_owner_reviews"`
+	RequiredApprovingReviewCount OptionalInt                                                                                              `json:"required_approving_review_count"`
 }
 
 type ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions struct {
@@ -8085,7 +17223,7 @@ type ReposUpdateCommitCommentApplicationJSONRequest struct {
 }
 
 type ReposUpdateInvitationApplicationJSONRequest struct {
-	Permissions *ReposUpdateInvitationApplicationJSONRequestPermissions `json:"permissions"`
+	Permissions OptionalReposUpdateInvitationApplicationJSONRequestPermissions `json:"permissions"`
 }
 
 type ReposUpdateInvitationApplicationJSONRequestPermissions string
@@ -8099,10 +17237,10 @@ const (
 )
 
 type ReposUpdatePullRequestReviewProtectionApplicationJSONRequest struct {
-	DismissStaleReviews          OptionalBool                                                                       `json:"dismiss_stale_reviews"`
-	DismissalRestrictions        *ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions `json:"dismissal_restrictions"`
-	RequireCodeOwnerReviews      OptionalBool                                                                       `json:"require_code_owner_reviews"`
-	RequiredApprovingReviewCount OptionalInt                                                                        `json:"required_approving_review_count"`
+	DismissStaleReviews          OptionalBool                                                                              `json:"dismiss_stale_reviews"`
+	DismissalRestrictions        OptionalReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions `json:"dismissal_restrictions"`
+	RequireCodeOwnerReviews      OptionalBool                                                                              `json:"require_code_owner_reviews"`
+	RequiredApprovingReviewCount OptionalInt                                                                               `json:"required_approving_review_count"`
 }
 
 func (*ReposUpdatePullRequestReviewProtectionApplicationJSONRequest) reposUpdatePullRequestReviewProtectionRequest() {
@@ -8139,96 +17277,96 @@ func (*ReposUpdateStatusCheckProtectionApplicationJSONRequest) reposUpdateStatus
 
 // Repository describes #/components/schemas/repository.
 type Repository struct {
-	AllowAutoMerge      OptionalBool                  `json:"allow_auto_merge"`
-	AllowForking        OptionalBool                  `json:"allow_forking"`
-	AllowMergeCommit    OptionalBool                  `json:"allow_merge_commit"`
-	AllowRebaseMerge    OptionalBool                  `json:"allow_rebase_merge"`
-	AllowSquashMerge    OptionalBool                  `json:"allow_squash_merge"`
-	ArchiveURL          string                        `json:"archive_url"`
-	Archived            bool                          `json:"archived"`
-	AssigneesURL        string                        `json:"assignees_url"`
-	BlobsURL            string                        `json:"blobs_url"`
-	BranchesURL         string                        `json:"branches_url"`
-	CloneURL            string                        `json:"clone_url"`
-	CollaboratorsURL    string                        `json:"collaborators_url"`
-	CommentsURL         string                        `json:"comments_url"`
-	CommitsURL          string                        `json:"commits_url"`
-	CompareURL          string                        `json:"compare_url"`
-	ContentsURL         string                        `json:"contents_url"`
-	ContributorsURL     string                        `json:"contributors_url"`
-	CreatedAt           NilTime                       `json:"created_at"`
-	DefaultBranch       string                        `json:"default_branch"`
-	DeleteBranchOnMerge OptionalBool                  `json:"delete_branch_on_merge"`
-	DeploymentsURL      string                        `json:"deployments_url"`
-	Description         NilString                     `json:"description"`
-	Disabled            bool                          `json:"disabled"`
-	DownloadsURL        string                        `json:"downloads_url"`
-	EventsURL           string                        `json:"events_url"`
-	Fork                bool                          `json:"fork"`
-	Forks               int                           `json:"forks"`
-	ForksCount          int                           `json:"forks_count"`
-	ForksURL            string                        `json:"forks_url"`
-	FullName            string                        `json:"full_name"`
-	GitCommitsURL       string                        `json:"git_commits_url"`
-	GitRefsURL          string                        `json:"git_refs_url"`
-	GitTagsURL          string                        `json:"git_tags_url"`
-	GitURL              string                        `json:"git_url"`
-	HTMLURL             string                        `json:"html_url"`
-	HasDownloads        bool                          `json:"has_downloads"`
-	HasIssues           bool                          `json:"has_issues"`
-	HasPages            bool                          `json:"has_pages"`
-	HasProjects         bool                          `json:"has_projects"`
-	HasWiki             bool                          `json:"has_wiki"`
-	Homepage            NilString                     `json:"homepage"`
-	HooksURL            string                        `json:"hooks_url"`
-	ID                  int                           `json:"id"`
-	IsTemplate          OptionalBool                  `json:"is_template"`
-	IssueCommentURL     string                        `json:"issue_comment_url"`
-	IssueEventsURL      string                        `json:"issue_events_url"`
-	IssuesURL           string                        `json:"issues_url"`
-	KeysURL             string                        `json:"keys_url"`
-	LabelsURL           string                        `json:"labels_url"`
-	Language            NilString                     `json:"language"`
-	LanguagesURL        string                        `json:"languages_url"`
-	License             NullableLicenseSimple         `json:"license"`
-	MasterBranch        OptionalString                `json:"master_branch"`
-	MergesURL           string                        `json:"merges_url"`
-	MilestonesURL       string                        `json:"milestones_url"`
-	MirrorURL           NilString                     `json:"mirror_url"`
-	Name                string                        `json:"name"`
-	NetworkCount        OptionalInt                   `json:"network_count"`
-	NodeID              string                        `json:"node_id"`
-	NotificationsURL    string                        `json:"notifications_url"`
-	OpenIssues          int                           `json:"open_issues"`
-	OpenIssuesCount     int                           `json:"open_issues_count"`
-	Organization        *NullableSimpleUser           `json:"organization"`
-	Owner               SimpleUser                    `json:"owner"`
-	Permissions         *RepositoryPermissions        `json:"permissions"`
-	Private             bool                          `json:"private"`
-	PullsURL            string                        `json:"pulls_url"`
-	PushedAt            NilTime                       `json:"pushed_at"`
-	ReleasesURL         string                        `json:"releases_url"`
-	SSHURL              string                        `json:"ssh_url"`
-	Size                int                           `json:"size"`
-	StargazersCount     int                           `json:"stargazers_count"`
-	StargazersURL       string                        `json:"stargazers_url"`
-	StarredAt           OptionalString                `json:"starred_at"`
-	StatusesURL         string                        `json:"statuses_url"`
-	SubscribersCount    OptionalInt                   `json:"subscribers_count"`
-	SubscribersURL      string                        `json:"subscribers_url"`
-	SubscriptionURL     string                        `json:"subscription_url"`
-	SvnURL              string                        `json:"svn_url"`
-	TagsURL             string                        `json:"tags_url"`
-	TeamsURL            string                        `json:"teams_url"`
-	TempCloneToken      OptionalString                `json:"temp_clone_token"`
-	TemplateRepository  *RepositoryTemplateRepository `json:"template_repository"`
-	Topics              *[]string                     `json:"topics"`
-	TreesURL            string                        `json:"trees_url"`
-	URL                 string                        `json:"url"`
-	UpdatedAt           NilTime                       `json:"updated_at"`
-	Visibility          OptionalString                `json:"visibility"`
-	Watchers            int                           `json:"watchers"`
-	WatchersCount       int                           `json:"watchers_count"`
+	AllowAutoMerge      OptionalBool                            `json:"allow_auto_merge"`
+	AllowForking        OptionalBool                            `json:"allow_forking"`
+	AllowMergeCommit    OptionalBool                            `json:"allow_merge_commit"`
+	AllowRebaseMerge    OptionalBool                            `json:"allow_rebase_merge"`
+	AllowSquashMerge    OptionalBool                            `json:"allow_squash_merge"`
+	ArchiveURL          string                                  `json:"archive_url"`
+	Archived            bool                                    `json:"archived"`
+	AssigneesURL        string                                  `json:"assignees_url"`
+	BlobsURL            string                                  `json:"blobs_url"`
+	BranchesURL         string                                  `json:"branches_url"`
+	CloneURL            string                                  `json:"clone_url"`
+	CollaboratorsURL    string                                  `json:"collaborators_url"`
+	CommentsURL         string                                  `json:"comments_url"`
+	CommitsURL          string                                  `json:"commits_url"`
+	CompareURL          string                                  `json:"compare_url"`
+	ContentsURL         string                                  `json:"contents_url"`
+	ContributorsURL     url.URL                                 `json:"contributors_url"`
+	CreatedAt           NilTime                                 `json:"created_at"`
+	DefaultBranch       string                                  `json:"default_branch"`
+	DeleteBranchOnMerge OptionalBool                            `json:"delete_branch_on_merge"`
+	DeploymentsURL      url.URL                                 `json:"deployments_url"`
+	Description         NilString                               `json:"description"`
+	Disabled            bool                                    `json:"disabled"`
+	DownloadsURL        url.URL                                 `json:"downloads_url"`
+	EventsURL           url.URL                                 `json:"events_url"`
+	Fork                bool                                    `json:"fork"`
+	Forks               int                                     `json:"forks"`
+	ForksCount          int                                     `json:"forks_count"`
+	ForksURL            url.URL                                 `json:"forks_url"`
+	FullName            string                                  `json:"full_name"`
+	GitCommitsURL       string                                  `json:"git_commits_url"`
+	GitRefsURL          string                                  `json:"git_refs_url"`
+	GitTagsURL          string                                  `json:"git_tags_url"`
+	GitURL              string                                  `json:"git_url"`
+	HTMLURL             url.URL                                 `json:"html_url"`
+	HasDownloads        bool                                    `json:"has_downloads"`
+	HasIssues           bool                                    `json:"has_issues"`
+	HasPages            bool                                    `json:"has_pages"`
+	HasProjects         bool                                    `json:"has_projects"`
+	HasWiki             bool                                    `json:"has_wiki"`
+	Homepage            NilURL                                  `json:"homepage"`
+	HooksURL            url.URL                                 `json:"hooks_url"`
+	ID                  int                                     `json:"id"`
+	IsTemplate          OptionalBool                            `json:"is_template"`
+	IssueCommentURL     string                                  `json:"issue_comment_url"`
+	IssueEventsURL      string                                  `json:"issue_events_url"`
+	IssuesURL           string                                  `json:"issues_url"`
+	KeysURL             string                                  `json:"keys_url"`
+	LabelsURL           string                                  `json:"labels_url"`
+	Language            NilString                               `json:"language"`
+	LanguagesURL        url.URL                                 `json:"languages_url"`
+	License             NullableLicenseSimple                   `json:"license"`
+	MasterBranch        OptionalString                          `json:"master_branch"`
+	MergesURL           url.URL                                 `json:"merges_url"`
+	MilestonesURL       string                                  `json:"milestones_url"`
+	MirrorURL           NilURL                                  `json:"mirror_url"`
+	Name                string                                  `json:"name"`
+	NetworkCount        OptionalInt                             `json:"network_count"`
+	NodeID              string                                  `json:"node_id"`
+	NotificationsURL    string                                  `json:"notifications_url"`
+	OpenIssues          int                                     `json:"open_issues"`
+	OpenIssuesCount     int                                     `json:"open_issues_count"`
+	Organization        OptionalNullableSimpleUser              `json:"organization"`
+	Owner               SimpleUser                              `json:"owner"`
+	Permissions         OptionalRepositoryPermissions           `json:"permissions"`
+	Private             bool                                    `json:"private"`
+	PullsURL            string                                  `json:"pulls_url"`
+	PushedAt            NilTime                                 `json:"pushed_at"`
+	ReleasesURL         string                                  `json:"releases_url"`
+	SSHURL              string                                  `json:"ssh_url"`
+	Size                int                                     `json:"size"`
+	StargazersCount     int                                     `json:"stargazers_count"`
+	StargazersURL       url.URL                                 `json:"stargazers_url"`
+	StarredAt           OptionalString                          `json:"starred_at"`
+	StatusesURL         string                                  `json:"statuses_url"`
+	SubscribersCount    OptionalInt                             `json:"subscribers_count"`
+	SubscribersURL      url.URL                                 `json:"subscribers_url"`
+	SubscriptionURL     url.URL                                 `json:"subscription_url"`
+	SvnURL              url.URL                                 `json:"svn_url"`
+	TagsURL             url.URL                                 `json:"tags_url"`
+	TeamsURL            url.URL                                 `json:"teams_url"`
+	TempCloneToken      OptionalString                          `json:"temp_clone_token"`
+	TemplateRepository  OptionalNilRepositoryTemplateRepository `json:"template_repository"`
+	Topics              *[]string                               `json:"topics"`
+	TreesURL            string                                  `json:"trees_url"`
+	URL                 url.URL                                 `json:"url"`
+	UpdatedAt           NilTime                                 `json:"updated_at"`
+	Visibility          OptionalString                          `json:"visibility"`
+	Watchers            int                                     `json:"watchers"`
+	WatchersCount       int                                     `json:"watchers_count"`
 }
 
 // RepositoryCollaboratorPermission describes #/components/schemas/repository-collaborator-permission.
@@ -8276,95 +17414,95 @@ type RepositorySubscription struct {
 	CreatedAt     time.Time `json:"created_at"`
 	Ignored       bool      `json:"ignored"`
 	Reason        NilString `json:"reason"`
-	RepositoryURL string    `json:"repository_url"`
+	RepositoryURL url.URL   `json:"repository_url"`
 	Subscribed    bool      `json:"subscribed"`
-	URL           string    `json:"url"`
+	URL           url.URL   `json:"url"`
 }
 
 func (*RepositorySubscription) activityGetRepoSubscriptionResponse() {}
 
 type RepositoryTemplateRepository struct {
-	AllowAutoMerge      OptionalBool                             `json:"allow_auto_merge"`
-	AllowMergeCommit    OptionalBool                             `json:"allow_merge_commit"`
-	AllowRebaseMerge    OptionalBool                             `json:"allow_rebase_merge"`
-	AllowSquashMerge    OptionalBool                             `json:"allow_squash_merge"`
-	ArchiveURL          OptionalString                           `json:"archive_url"`
-	Archived            OptionalBool                             `json:"archived"`
-	AssigneesURL        OptionalString                           `json:"assignees_url"`
-	BlobsURL            OptionalString                           `json:"blobs_url"`
-	BranchesURL         OptionalString                           `json:"branches_url"`
-	CloneURL            OptionalString                           `json:"clone_url"`
-	CollaboratorsURL    OptionalString                           `json:"collaborators_url"`
-	CommentsURL         OptionalString                           `json:"comments_url"`
-	CommitsURL          OptionalString                           `json:"commits_url"`
-	CompareURL          OptionalString                           `json:"compare_url"`
-	ContentsURL         OptionalString                           `json:"contents_url"`
-	ContributorsURL     OptionalString                           `json:"contributors_url"`
-	CreatedAt           OptionalString                           `json:"created_at"`
-	DefaultBranch       OptionalString                           `json:"default_branch"`
-	DeleteBranchOnMerge OptionalBool                             `json:"delete_branch_on_merge"`
-	DeploymentsURL      OptionalString                           `json:"deployments_url"`
-	Description         OptionalString                           `json:"description"`
-	Disabled            OptionalBool                             `json:"disabled"`
-	DownloadsURL        OptionalString                           `json:"downloads_url"`
-	EventsURL           OptionalString                           `json:"events_url"`
-	Fork                OptionalBool                             `json:"fork"`
-	ForksCount          OptionalInt                              `json:"forks_count"`
-	ForksURL            OptionalString                           `json:"forks_url"`
-	FullName            OptionalString                           `json:"full_name"`
-	GitCommitsURL       OptionalString                           `json:"git_commits_url"`
-	GitRefsURL          OptionalString                           `json:"git_refs_url"`
-	GitTagsURL          OptionalString                           `json:"git_tags_url"`
-	GitURL              OptionalString                           `json:"git_url"`
-	HTMLURL             OptionalString                           `json:"html_url"`
-	HasDownloads        OptionalBool                             `json:"has_downloads"`
-	HasIssues           OptionalBool                             `json:"has_issues"`
-	HasPages            OptionalBool                             `json:"has_pages"`
-	HasProjects         OptionalBool                             `json:"has_projects"`
-	HasWiki             OptionalBool                             `json:"has_wiki"`
-	Homepage            OptionalString                           `json:"homepage"`
-	HooksURL            OptionalString                           `json:"hooks_url"`
-	ID                  OptionalInt                              `json:"id"`
-	IsTemplate          OptionalBool                             `json:"is_template"`
-	IssueCommentURL     OptionalString                           `json:"issue_comment_url"`
-	IssueEventsURL      OptionalString                           `json:"issue_events_url"`
-	IssuesURL           OptionalString                           `json:"issues_url"`
-	KeysURL             OptionalString                           `json:"keys_url"`
-	LabelsURL           OptionalString                           `json:"labels_url"`
-	Language            OptionalString                           `json:"language"`
-	LanguagesURL        OptionalString                           `json:"languages_url"`
-	MergesURL           OptionalString                           `json:"merges_url"`
-	MilestonesURL       OptionalString                           `json:"milestones_url"`
-	MirrorURL           OptionalString                           `json:"mirror_url"`
-	Name                OptionalString                           `json:"name"`
-	NetworkCount        OptionalInt                              `json:"network_count"`
-	NodeID              OptionalString                           `json:"node_id"`
-	NotificationsURL    OptionalString                           `json:"notifications_url"`
-	OpenIssuesCount     OptionalInt                              `json:"open_issues_count"`
-	Owner               *RepositoryTemplateRepositoryOwner       `json:"owner"`
-	Permissions         *RepositoryTemplateRepositoryPermissions `json:"permissions"`
-	Private             OptionalBool                             `json:"private"`
-	PullsURL            OptionalString                           `json:"pulls_url"`
-	PushedAt            OptionalString                           `json:"pushed_at"`
-	ReleasesURL         OptionalString                           `json:"releases_url"`
-	SSHURL              OptionalString                           `json:"ssh_url"`
-	Size                OptionalInt                              `json:"size"`
-	StargazersCount     OptionalInt                              `json:"stargazers_count"`
-	StargazersURL       OptionalString                           `json:"stargazers_url"`
-	StatusesURL         OptionalString                           `json:"statuses_url"`
-	SubscribersCount    OptionalInt                              `json:"subscribers_count"`
-	SubscribersURL      OptionalString                           `json:"subscribers_url"`
-	SubscriptionURL     OptionalString                           `json:"subscription_url"`
-	SvnURL              OptionalString                           `json:"svn_url"`
-	TagsURL             OptionalString                           `json:"tags_url"`
-	TeamsURL            OptionalString                           `json:"teams_url"`
-	TempCloneToken      OptionalString                           `json:"temp_clone_token"`
-	Topics              *[]string                                `json:"topics"`
-	TreesURL            OptionalString                           `json:"trees_url"`
-	URL                 OptionalString                           `json:"url"`
-	UpdatedAt           OptionalString                           `json:"updated_at"`
-	Visibility          OptionalString                           `json:"visibility"`
-	WatchersCount       OptionalInt                              `json:"watchers_count"`
+	AllowAutoMerge      OptionalBool                                    `json:"allow_auto_merge"`
+	AllowMergeCommit    OptionalBool                                    `json:"allow_merge_commit"`
+	AllowRebaseMerge    OptionalBool                                    `json:"allow_rebase_merge"`
+	AllowSquashMerge    OptionalBool                                    `json:"allow_squash_merge"`
+	ArchiveURL          OptionalString                                  `json:"archive_url"`
+	Archived            OptionalBool                                    `json:"archived"`
+	AssigneesURL        OptionalString                                  `json:"assignees_url"`
+	BlobsURL            OptionalString                                  `json:"blobs_url"`
+	BranchesURL         OptionalString                                  `json:"branches_url"`
+	CloneURL            OptionalString                                  `json:"clone_url"`
+	CollaboratorsURL    OptionalString                                  `json:"collaborators_url"`
+	CommentsURL         OptionalString                                  `json:"comments_url"`
+	CommitsURL          OptionalString                                  `json:"commits_url"`
+	CompareURL          OptionalString                                  `json:"compare_url"`
+	ContentsURL         OptionalString                                  `json:"contents_url"`
+	ContributorsURL     OptionalString                                  `json:"contributors_url"`
+	CreatedAt           OptionalString                                  `json:"created_at"`
+	DefaultBranch       OptionalString                                  `json:"default_branch"`
+	DeleteBranchOnMerge OptionalBool                                    `json:"delete_branch_on_merge"`
+	DeploymentsURL      OptionalString                                  `json:"deployments_url"`
+	Description         OptionalString                                  `json:"description"`
+	Disabled            OptionalBool                                    `json:"disabled"`
+	DownloadsURL        OptionalString                                  `json:"downloads_url"`
+	EventsURL           OptionalString                                  `json:"events_url"`
+	Fork                OptionalBool                                    `json:"fork"`
+	ForksCount          OptionalInt                                     `json:"forks_count"`
+	ForksURL            OptionalString                                  `json:"forks_url"`
+	FullName            OptionalString                                  `json:"full_name"`
+	GitCommitsURL       OptionalString                                  `json:"git_commits_url"`
+	GitRefsURL          OptionalString                                  `json:"git_refs_url"`
+	GitTagsURL          OptionalString                                  `json:"git_tags_url"`
+	GitURL              OptionalString                                  `json:"git_url"`
+	HTMLURL             OptionalString                                  `json:"html_url"`
+	HasDownloads        OptionalBool                                    `json:"has_downloads"`
+	HasIssues           OptionalBool                                    `json:"has_issues"`
+	HasPages            OptionalBool                                    `json:"has_pages"`
+	HasProjects         OptionalBool                                    `json:"has_projects"`
+	HasWiki             OptionalBool                                    `json:"has_wiki"`
+	Homepage            OptionalString                                  `json:"homepage"`
+	HooksURL            OptionalString                                  `json:"hooks_url"`
+	ID                  OptionalInt                                     `json:"id"`
+	IsTemplate          OptionalBool                                    `json:"is_template"`
+	IssueCommentURL     OptionalString                                  `json:"issue_comment_url"`
+	IssueEventsURL      OptionalString                                  `json:"issue_events_url"`
+	IssuesURL           OptionalString                                  `json:"issues_url"`
+	KeysURL             OptionalString                                  `json:"keys_url"`
+	LabelsURL           OptionalString                                  `json:"labels_url"`
+	Language            OptionalString                                  `json:"language"`
+	LanguagesURL        OptionalString                                  `json:"languages_url"`
+	MergesURL           OptionalString                                  `json:"merges_url"`
+	MilestonesURL       OptionalString                                  `json:"milestones_url"`
+	MirrorURL           OptionalString                                  `json:"mirror_url"`
+	Name                OptionalString                                  `json:"name"`
+	NetworkCount        OptionalInt                                     `json:"network_count"`
+	NodeID              OptionalString                                  `json:"node_id"`
+	NotificationsURL    OptionalString                                  `json:"notifications_url"`
+	OpenIssuesCount     OptionalInt                                     `json:"open_issues_count"`
+	Owner               OptionalRepositoryTemplateRepositoryOwner       `json:"owner"`
+	Permissions         OptionalRepositoryTemplateRepositoryPermissions `json:"permissions"`
+	Private             OptionalBool                                    `json:"private"`
+	PullsURL            OptionalString                                  `json:"pulls_url"`
+	PushedAt            OptionalString                                  `json:"pushed_at"`
+	ReleasesURL         OptionalString                                  `json:"releases_url"`
+	SSHURL              OptionalString                                  `json:"ssh_url"`
+	Size                OptionalInt                                     `json:"size"`
+	StargazersCount     OptionalInt                                     `json:"stargazers_count"`
+	StargazersURL       OptionalString                                  `json:"stargazers_url"`
+	StatusesURL         OptionalString                                  `json:"statuses_url"`
+	SubscribersCount    OptionalInt                                     `json:"subscribers_count"`
+	SubscribersURL      OptionalString                                  `json:"subscribers_url"`
+	SubscriptionURL     OptionalString                                  `json:"subscription_url"`
+	SvnURL              OptionalString                                  `json:"svn_url"`
+	TagsURL             OptionalString                                  `json:"tags_url"`
+	TeamsURL            OptionalString                                  `json:"teams_url"`
+	TempCloneToken      OptionalString                                  `json:"temp_clone_token"`
+	Topics              *[]string                                       `json:"topics"`
+	TreesURL            OptionalString                                  `json:"trees_url"`
+	URL                 OptionalString                                  `json:"url"`
+	UpdatedAt           OptionalString                                  `json:"updated_at"`
+	Visibility          OptionalString                                  `json:"visibility"`
+	WatchersCount       OptionalInt                                     `json:"watchers_count"`
 }
 
 type RepositoryTemplateRepositoryOwner struct {
@@ -8398,34 +17536,34 @@ type RepositoryTemplateRepositoryPermissions struct {
 
 // ReviewComment describes #/components/schemas/review-comment.
 type ReviewComment struct {
-	AuthorAssociation   AuthorAssociation       `json:"author_association"`
-	Body                string                  `json:"body"`
-	BodyHTML            OptionalString          `json:"body_html"`
-	BodyText            OptionalString          `json:"body_text"`
-	CommitID            string                  `json:"commit_id"`
-	CreatedAt           time.Time               `json:"created_at"`
-	DiffHunk            string                  `json:"diff_hunk"`
-	HTMLURL             string                  `json:"html_url"`
-	ID                  int                     `json:"id"`
-	InReplyToID         OptionalInt             `json:"in_reply_to_id"`
-	Line                OptionalInt             `json:"line"`
-	Links               ReviewCommentLinks      `json:"_links"`
-	NodeID              string                  `json:"node_id"`
-	OriginalCommitID    string                  `json:"original_commit_id"`
-	OriginalLine        OptionalInt             `json:"original_line"`
-	OriginalPosition    int                     `json:"original_position"`
-	OriginalStartLine   OptionalNilInt          `json:"original_start_line"`
-	Path                string                  `json:"path"`
-	Position            NilInt                  `json:"position"`
-	PullRequestReviewID NilInt                  `json:"pull_request_review_id"`
-	PullRequestURL      string                  `json:"pull_request_url"`
-	Reactions           *ReactionRollup         `json:"reactions"`
-	Side                *ReviewCommentSide      `json:"side"`
-	StartLine           OptionalNilInt          `json:"start_line"`
-	StartSide           *ReviewCommentStartSide `json:"start_side"`
-	URL                 string                  `json:"url"`
-	UpdatedAt           time.Time               `json:"updated_at"`
-	User                NullableSimpleUser      `json:"user"`
+	AuthorAssociation   AuthorAssociation                 `json:"author_association"`
+	Body                string                            `json:"body"`
+	BodyHTML            OptionalString                    `json:"body_html"`
+	BodyText            OptionalString                    `json:"body_text"`
+	CommitID            string                            `json:"commit_id"`
+	CreatedAt           time.Time                         `json:"created_at"`
+	DiffHunk            string                            `json:"diff_hunk"`
+	HTMLURL             url.URL                           `json:"html_url"`
+	ID                  int                               `json:"id"`
+	InReplyToID         OptionalInt                       `json:"in_reply_to_id"`
+	Line                OptionalInt                       `json:"line"`
+	Links               ReviewCommentLinks                `json:"_links"`
+	NodeID              string                            `json:"node_id"`
+	OriginalCommitID    string                            `json:"original_commit_id"`
+	OriginalLine        OptionalInt                       `json:"original_line"`
+	OriginalPosition    int                               `json:"original_position"`
+	OriginalStartLine   OptionalNilInt                    `json:"original_start_line"`
+	Path                string                            `json:"path"`
+	Position            NilInt                            `json:"position"`
+	PullRequestReviewID NilInt                            `json:"pull_request_review_id"`
+	PullRequestURL      url.URL                           `json:"pull_request_url"`
+	Reactions           OptionalReactionRollup            `json:"reactions"`
+	Side                OptionalReviewCommentSide         `json:"side"`
+	StartLine           OptionalNilInt                    `json:"start_line"`
+	StartSide           OptionalNilReviewCommentStartSide `json:"start_side"`
+	URL                 url.URL                           `json:"url"`
+	UpdatedAt           time.Time                         `json:"updated_at"`
+	User                NullableSimpleUser                `json:"user"`
 }
 
 type ReviewCommentLinks struct {
@@ -8493,9 +17631,9 @@ type RunnerGroupsOrg struct {
 }
 
 type RunnerLabelsItem struct {
-	ID   OptionalInt           `json:"id"`
-	Name OptionalString        `json:"name"`
-	Type *RunnerLabelsItemType `json:"type"`
+	ID   OptionalInt                  `json:"id"`
+	Name OptionalString               `json:"name"`
+	Type OptionalRunnerLabelsItemType `json:"type"`
 }
 
 type RunnerLabelsItemType string
@@ -8531,7 +17669,7 @@ type ScimEnterpriseGroup struct {
 	ExternalId  OptionalNilString                 `json:"externalId"`
 	ID          string                            `json:"id"`
 	Members     *[]ScimEnterpriseGroupMembersItem `json:"members"`
-	Meta        *ScimEnterpriseGroupMeta          `json:"meta"`
+	Meta        OptionalScimEnterpriseGroupMeta   `json:"meta"`
 	Schemas     []string                          `json:"schemas"`
 }
 
@@ -8555,8 +17693,8 @@ type ScimEnterpriseUser struct {
 	ExternalId OptionalString                  `json:"externalId"`
 	Groups     *[]ScimEnterpriseUserGroupsItem `json:"groups"`
 	ID         string                          `json:"id"`
-	Meta       *ScimEnterpriseUserMeta         `json:"meta"`
-	Name       *ScimEnterpriseUserName         `json:"name"`
+	Meta       OptionalScimEnterpriseUserMeta  `json:"meta"`
+	Name       OptionalScimEnterpriseUserName  `json:"name"`
 	Schemas    []string                        `json:"schemas"`
 	UserName   OptionalString                  `json:"userName"`
 }
@@ -8610,7 +17748,7 @@ type ScimGroupListEnterpriseResourcesItem struct {
 	ExternalId  OptionalNilString                                  `json:"externalId"`
 	ID          string                                             `json:"id"`
 	Members     *[]ScimGroupListEnterpriseResourcesItemMembersItem `json:"members"`
-	Meta        *ScimGroupListEnterpriseResourcesItemMeta          `json:"meta"`
+	Meta        OptionalScimGroupListEnterpriseResourcesItemMeta   `json:"meta"`
 	Schemas     []string                                           `json:"schemas"`
 }
 
@@ -8693,8 +17831,8 @@ type ScimUserListEnterpriseResourcesItem struct {
 	ExternalId OptionalString                                   `json:"externalId"`
 	Groups     *[]ScimUserListEnterpriseResourcesItemGroupsItem `json:"groups"`
 	ID         string                                           `json:"id"`
-	Meta       *ScimUserListEnterpriseResourcesItemMeta         `json:"meta"`
-	Name       *ScimUserListEnterpriseResourcesItemName         `json:"name"`
+	Meta       OptionalScimUserListEnterpriseResourcesItemMeta  `json:"meta"`
+	Name       OptionalScimUserListEnterpriseResourcesItemName  `json:"name"`
 	Schemas    []string                                         `json:"schemas"`
 	UserName   OptionalString                                   `json:"userName"`
 }
@@ -8746,17 +17884,17 @@ func (*SearchTopicsOK) searchTopicsResponse() {}
 
 // SecretScanningAlert describes #/components/schemas/secret-scanning-alert.
 type SecretScanningAlert struct {
-	CreatedAt    *AlertCreatedAt                `json:"created_at"`
-	HTMLURL      *AlertHTMLURL                  `json:"html_url"`
-	LocationsURL OptionalString                 `json:"locations_url"`
-	Number       *AlertNumber                   `json:"number"`
-	Resolution   *SecretScanningAlertResolution `json:"resolution"`
-	ResolvedAt   OptionalNilTime                `json:"resolved_at"`
-	ResolvedBy   *NullableSimpleUser            `json:"resolved_by"`
-	Secret       OptionalString                 `json:"secret"`
-	SecretType   OptionalString                 `json:"secret_type"`
-	State        *SecretScanningAlertState      `json:"state"`
-	URL          *AlertURL                      `json:"url"`
+	CreatedAt    *AlertCreatedAt                       `json:"created_at"`
+	HTMLURL      *AlertHTMLURL                         `json:"html_url"`
+	LocationsURL OptionalURL                           `json:"locations_url"`
+	Number       *AlertNumber                          `json:"number"`
+	Resolution   OptionalSecretScanningAlertResolution `json:"resolution"`
+	ResolvedAt   OptionalNilTime                       `json:"resolved_at"`
+	ResolvedBy   OptionalNullableSimpleUser            `json:"resolved_by"`
+	Secret       OptionalString                        `json:"secret"`
+	SecretType   OptionalString                        `json:"secret_type"`
+	State        OptionalSecretScanningAlertState      `json:"state"`
+	URL          *AlertURL                             `json:"url"`
 }
 
 func (*SecretScanningAlert) secretScanningGetAlertResponse()    {}
@@ -8783,8 +17921,8 @@ type SecretScanningGetAlertNotFound struct{}
 func (*SecretScanningGetAlertNotFound) secretScanningGetAlertResponse() {}
 
 type SecretScanningUpdateAlertApplicationJSONRequest struct {
-	Resolution *SecretScanningAlertResolution `json:"resolution"`
-	State      SecretScanningAlertState       `json:"state"`
+	Resolution OptionalSecretScanningAlertResolution `json:"resolution"`
+	State      SecretScanningAlertState              `json:"state"`
 }
 
 type SecretScanningUpdateAlertNotFound struct{}
@@ -8830,26 +17968,26 @@ type ShortBlob struct {
 
 // ShortBranch describes #/components/schemas/short-branch.
 type ShortBranch struct {
-	Commit        ShortBranchCommit `json:"commit"`
-	Name          string            `json:"name"`
-	Protected     bool              `json:"protected"`
-	Protection    *BranchProtection `json:"protection"`
-	ProtectionURL OptionalString    `json:"protection_url"`
+	Commit        ShortBranchCommit        `json:"commit"`
+	Name          string                   `json:"name"`
+	Protected     bool                     `json:"protected"`
+	Protection    OptionalBranchProtection `json:"protection"`
+	ProtectionURL OptionalURL              `json:"protection_url"`
 }
 
 type ShortBranchCommit struct {
-	Sha string `json:"sha"`
-	URL string `json:"url"`
+	Sha string  `json:"sha"`
+	URL url.URL `json:"url"`
 }
 
 // SimpleCommit describes #/components/schemas/simple-commit.
 type SimpleCommit struct {
-	Author    SimpleCommitAuthor    `json:"author"`
-	Committer SimpleCommitCommitter `json:"committer"`
-	ID        string                `json:"id"`
-	Message   string                `json:"message"`
-	Timestamp time.Time             `json:"timestamp"`
-	TreeID    string                `json:"tree_id"`
+	Author    NilSimpleCommitAuthor    `json:"author"`
+	Committer NilSimpleCommitCommitter `json:"committer"`
+	ID        string                   `json:"id"`
+	Message   string                   `json:"message"`
+	Timestamp time.Time                `json:"timestamp"`
+	TreeID    string                   `json:"tree_id"`
 }
 
 type SimpleCommitAuthor struct {
@@ -8864,7 +18002,7 @@ type SimpleCommitCommitter struct {
 
 // SimpleCommitStatus describes #/components/schemas/simple-commit-status.
 type SimpleCommitStatus struct {
-	AvatarURL   NilString       `json:"avatar_url"`
+	AvatarURL   NilURL          `json:"avatar_url"`
 	Context     string          `json:"context"`
 	CreatedAt   time.Time       `json:"created_at"`
 	Description NilString       `json:"description"`
@@ -8872,34 +18010,34 @@ type SimpleCommitStatus struct {
 	NodeID      string          `json:"node_id"`
 	Required    OptionalNilBool `json:"required"`
 	State       string          `json:"state"`
-	TargetURL   string          `json:"target_url"`
-	URL         string          `json:"url"`
+	TargetURL   url.URL         `json:"target_url"`
+	URL         url.URL         `json:"url"`
 	UpdatedAt   time.Time       `json:"updated_at"`
 }
 
 // SimpleUser describes #/components/schemas/simple-user.
 type SimpleUser struct {
-	AvatarURL         string            `json:"avatar_url"`
+	AvatarURL         url.URL           `json:"avatar_url"`
 	Email             OptionalNilString `json:"email"`
 	EventsURL         string            `json:"events_url"`
-	FollowersURL      string            `json:"followers_url"`
+	FollowersURL      url.URL           `json:"followers_url"`
 	FollowingURL      string            `json:"following_url"`
 	GistsURL          string            `json:"gists_url"`
 	GravatarID        NilString         `json:"gravatar_id"`
-	HTMLURL           string            `json:"html_url"`
+	HTMLURL           url.URL           `json:"html_url"`
 	ID                int               `json:"id"`
 	Login             string            `json:"login"`
 	Name              OptionalNilString `json:"name"`
 	NodeID            string            `json:"node_id"`
-	OrganizationsURL  string            `json:"organizations_url"`
-	ReceivedEventsURL string            `json:"received_events_url"`
-	ReposURL          string            `json:"repos_url"`
+	OrganizationsURL  url.URL           `json:"organizations_url"`
+	ReceivedEventsURL url.URL           `json:"received_events_url"`
+	ReposURL          url.URL           `json:"repos_url"`
 	SiteAdmin         bool              `json:"site_admin"`
 	StarredAt         OptionalString    `json:"starred_at"`
 	StarredURL        string            `json:"starred_url"`
-	SubscriptionsURL  string            `json:"subscriptions_url"`
+	SubscriptionsURL  url.URL           `json:"subscriptions_url"`
 	Type              string            `json:"type"`
-	URL               string            `json:"url"`
+	URL               url.URL           `json:"url"`
 }
 
 // Status describes #/components/schemas/status.
@@ -8920,9 +18058,9 @@ type Status struct {
 // StatusCheckPolicy describes #/components/schemas/status-check-policy.
 type StatusCheckPolicy struct {
 	Contexts    []string `json:"contexts"`
-	ContextsURL string   `json:"contexts_url"`
+	ContextsURL url.URL  `json:"contexts_url"`
 	Strict      bool     `json:"strict"`
-	URL         string   `json:"url"`
+	URL         url.URL  `json:"url"`
 }
 
 func (*StatusCheckPolicy) reposGetStatusChecksProtectionResponse() {}
@@ -8932,91 +18070,91 @@ type Tag struct {
 	Commit     TagCommit `json:"commit"`
 	Name       string    `json:"name"`
 	NodeID     string    `json:"node_id"`
-	TarballURL string    `json:"tarball_url"`
-	ZipballURL string    `json:"zipball_url"`
+	TarballURL url.URL   `json:"tarball_url"`
+	ZipballURL url.URL   `json:"zipball_url"`
 }
 
 type TagCommit struct {
-	Sha string `json:"sha"`
-	URL string `json:"url"`
+	Sha string  `json:"sha"`
+	URL url.URL `json:"url"`
 }
 
 // Team describes #/components/schemas/team.
 type Team struct {
-	Description     NilString          `json:"description"`
-	HTMLURL         string             `json:"html_url"`
-	ID              int                `json:"id"`
-	MembersURL      string             `json:"members_url"`
-	Name            string             `json:"name"`
-	NodeID          string             `json:"node_id"`
-	Parent          NullableTeamSimple `json:"parent"`
-	Permission      string             `json:"permission"`
-	Permissions     *TeamPermissions   `json:"permissions"`
-	Privacy         OptionalString     `json:"privacy"`
-	RepositoriesURL string             `json:"repositories_url"`
-	Slug            string             `json:"slug"`
-	URL             string             `json:"url"`
+	Description     NilString               `json:"description"`
+	HTMLURL         url.URL                 `json:"html_url"`
+	ID              int                     `json:"id"`
+	MembersURL      string                  `json:"members_url"`
+	Name            string                  `json:"name"`
+	NodeID          string                  `json:"node_id"`
+	Parent          NullableTeamSimple      `json:"parent"`
+	Permission      string                  `json:"permission"`
+	Permissions     OptionalTeamPermissions `json:"permissions"`
+	Privacy         OptionalString          `json:"privacy"`
+	RepositoriesURL url.URL                 `json:"repositories_url"`
+	Slug            string                  `json:"slug"`
+	URL             url.URL                 `json:"url"`
 }
 
 // TeamDiscussion describes #/components/schemas/team-discussion.
 type TeamDiscussion struct {
-	Author        NullableSimpleUser `json:"author"`
-	Body          string             `json:"body"`
-	BodyHTML      string             `json:"body_html"`
-	BodyVersion   string             `json:"body_version"`
-	CommentsCount int                `json:"comments_count"`
-	CommentsURL   string             `json:"comments_url"`
-	CreatedAt     time.Time          `json:"created_at"`
-	HTMLURL       string             `json:"html_url"`
-	LastEditedAt  NilTime            `json:"last_edited_at"`
-	NodeID        string             `json:"node_id"`
-	Number        int                `json:"number"`
-	Pinned        bool               `json:"pinned"`
-	Private       bool               `json:"private"`
-	Reactions     *ReactionRollup    `json:"reactions"`
-	TeamURL       string             `json:"team_url"`
-	Title         string             `json:"title"`
-	URL           string             `json:"url"`
-	UpdatedAt     time.Time          `json:"updated_at"`
+	Author        NullableSimpleUser     `json:"author"`
+	Body          string                 `json:"body"`
+	BodyHTML      string                 `json:"body_html"`
+	BodyVersion   string                 `json:"body_version"`
+	CommentsCount int                    `json:"comments_count"`
+	CommentsURL   url.URL                `json:"comments_url"`
+	CreatedAt     time.Time              `json:"created_at"`
+	HTMLURL       url.URL                `json:"html_url"`
+	LastEditedAt  NilTime                `json:"last_edited_at"`
+	NodeID        string                 `json:"node_id"`
+	Number        int                    `json:"number"`
+	Pinned        bool                   `json:"pinned"`
+	Private       bool                   `json:"private"`
+	Reactions     OptionalReactionRollup `json:"reactions"`
+	TeamURL       url.URL                `json:"team_url"`
+	Title         string                 `json:"title"`
+	URL           url.URL                `json:"url"`
+	UpdatedAt     time.Time              `json:"updated_at"`
 }
 
 // TeamDiscussionComment describes #/components/schemas/team-discussion-comment.
 type TeamDiscussionComment struct {
-	Author        NullableSimpleUser `json:"author"`
-	Body          string             `json:"body"`
-	BodyHTML      string             `json:"body_html"`
-	BodyVersion   string             `json:"body_version"`
-	CreatedAt     time.Time          `json:"created_at"`
-	DiscussionURL string             `json:"discussion_url"`
-	HTMLURL       string             `json:"html_url"`
-	LastEditedAt  NilTime            `json:"last_edited_at"`
-	NodeID        string             `json:"node_id"`
-	Number        int                `json:"number"`
-	Reactions     *ReactionRollup    `json:"reactions"`
-	URL           string             `json:"url"`
-	UpdatedAt     time.Time          `json:"updated_at"`
+	Author        NullableSimpleUser     `json:"author"`
+	Body          string                 `json:"body"`
+	BodyHTML      string                 `json:"body_html"`
+	BodyVersion   string                 `json:"body_version"`
+	CreatedAt     time.Time              `json:"created_at"`
+	DiscussionURL url.URL                `json:"discussion_url"`
+	HTMLURL       url.URL                `json:"html_url"`
+	LastEditedAt  NilTime                `json:"last_edited_at"`
+	NodeID        string                 `json:"node_id"`
+	Number        int                    `json:"number"`
+	Reactions     OptionalReactionRollup `json:"reactions"`
+	URL           url.URL                `json:"url"`
+	UpdatedAt     time.Time              `json:"updated_at"`
 }
 
 // TeamFull describes #/components/schemas/team-full.
 type TeamFull struct {
-	CreatedAt       time.Time           `json:"created_at"`
-	Description     NilString           `json:"description"`
-	HTMLURL         string              `json:"html_url"`
-	ID              int                 `json:"id"`
-	LdapDn          OptionalString      `json:"ldap_dn"`
-	MembersCount    int                 `json:"members_count"`
-	MembersURL      string              `json:"members_url"`
-	Name            string              `json:"name"`
-	NodeID          string              `json:"node_id"`
-	Organization    OrganizationFull    `json:"organization"`
-	Parent          *NullableTeamSimple `json:"parent"`
-	Permission      string              `json:"permission"`
-	Privacy         *TeamFullPrivacy    `json:"privacy"`
-	ReposCount      int                 `json:"repos_count"`
-	RepositoriesURL string              `json:"repositories_url"`
-	Slug            string              `json:"slug"`
-	URL             string              `json:"url"`
-	UpdatedAt       time.Time           `json:"updated_at"`
+	CreatedAt       time.Time                  `json:"created_at"`
+	Description     NilString                  `json:"description"`
+	HTMLURL         url.URL                    `json:"html_url"`
+	ID              int                        `json:"id"`
+	LdapDn          OptionalString             `json:"ldap_dn"`
+	MembersCount    int                        `json:"members_count"`
+	MembersURL      string                     `json:"members_url"`
+	Name            string                     `json:"name"`
+	NodeID          string                     `json:"node_id"`
+	Organization    OrganizationFull           `json:"organization"`
+	Parent          OptionalNullableTeamSimple `json:"parent"`
+	Permission      string                     `json:"permission"`
+	Privacy         OptionalTeamFullPrivacy    `json:"privacy"`
+	ReposCount      int                        `json:"repos_count"`
+	RepositoriesURL url.URL                    `json:"repositories_url"`
+	Slug            string                     `json:"slug"`
+	URL             url.URL                    `json:"url"`
+	UpdatedAt       time.Time                  `json:"updated_at"`
 }
 
 func (*TeamFull) teamsGetByNameResponse() {}
@@ -9033,7 +18171,7 @@ const (
 type TeamMembership struct {
 	Role  TeamMembershipRole  `json:"role"`
 	State TeamMembershipState `json:"state"`
-	URL   string              `json:"url"`
+	URL   url.URL             `json:"url"`
 }
 
 func (*TeamMembership) teamsAddOrUpdateMembershipForUserInOrgResponse()  {}
@@ -9094,94 +18232,94 @@ type TeamProjectPermissions struct {
 
 // TeamRepository describes #/components/schemas/team-repository.
 type TeamRepository struct {
-	AllowAutoMerge      OptionalBool               `json:"allow_auto_merge"`
-	AllowForking        OptionalBool               `json:"allow_forking"`
-	AllowMergeCommit    OptionalBool               `json:"allow_merge_commit"`
-	AllowRebaseMerge    OptionalBool               `json:"allow_rebase_merge"`
-	AllowSquashMerge    OptionalBool               `json:"allow_squash_merge"`
-	ArchiveURL          string                     `json:"archive_url"`
-	Archived            bool                       `json:"archived"`
-	AssigneesURL        string                     `json:"assignees_url"`
-	BlobsURL            string                     `json:"blobs_url"`
-	BranchesURL         string                     `json:"branches_url"`
-	CloneURL            string                     `json:"clone_url"`
-	CollaboratorsURL    string                     `json:"collaborators_url"`
-	CommentsURL         string                     `json:"comments_url"`
-	CommitsURL          string                     `json:"commits_url"`
-	CompareURL          string                     `json:"compare_url"`
-	ContentsURL         string                     `json:"contents_url"`
-	ContributorsURL     string                     `json:"contributors_url"`
-	CreatedAt           NilTime                    `json:"created_at"`
-	DefaultBranch       string                     `json:"default_branch"`
-	DeleteBranchOnMerge OptionalBool               `json:"delete_branch_on_merge"`
-	DeploymentsURL      string                     `json:"deployments_url"`
-	Description         NilString                  `json:"description"`
-	Disabled            bool                       `json:"disabled"`
-	DownloadsURL        string                     `json:"downloads_url"`
-	EventsURL           string                     `json:"events_url"`
-	Fork                bool                       `json:"fork"`
-	Forks               int                        `json:"forks"`
-	ForksCount          int                        `json:"forks_count"`
-	ForksURL            string                     `json:"forks_url"`
-	FullName            string                     `json:"full_name"`
-	GitCommitsURL       string                     `json:"git_commits_url"`
-	GitRefsURL          string                     `json:"git_refs_url"`
-	GitTagsURL          string                     `json:"git_tags_url"`
-	GitURL              string                     `json:"git_url"`
-	HTMLURL             string                     `json:"html_url"`
-	HasDownloads        bool                       `json:"has_downloads"`
-	HasIssues           bool                       `json:"has_issues"`
-	HasPages            bool                       `json:"has_pages"`
-	HasProjects         bool                       `json:"has_projects"`
-	HasWiki             bool                       `json:"has_wiki"`
-	Homepage            NilString                  `json:"homepage"`
-	HooksURL            string                     `json:"hooks_url"`
-	ID                  int                        `json:"id"`
-	IsTemplate          OptionalBool               `json:"is_template"`
-	IssueCommentURL     string                     `json:"issue_comment_url"`
-	IssueEventsURL      string                     `json:"issue_events_url"`
-	IssuesURL           string                     `json:"issues_url"`
-	KeysURL             string                     `json:"keys_url"`
-	LabelsURL           string                     `json:"labels_url"`
-	Language            NilString                  `json:"language"`
-	LanguagesURL        string                     `json:"languages_url"`
-	License             NullableLicenseSimple      `json:"license"`
-	MasterBranch        OptionalString             `json:"master_branch"`
-	MergesURL           string                     `json:"merges_url"`
-	MilestonesURL       string                     `json:"milestones_url"`
-	MirrorURL           NilString                  `json:"mirror_url"`
-	Name                string                     `json:"name"`
-	NetworkCount        OptionalInt                `json:"network_count"`
-	NodeID              string                     `json:"node_id"`
-	NotificationsURL    string                     `json:"notifications_url"`
-	OpenIssues          int                        `json:"open_issues"`
-	OpenIssuesCount     int                        `json:"open_issues_count"`
-	Owner               NullableSimpleUser         `json:"owner"`
-	Permissions         *TeamRepositoryPermissions `json:"permissions"`
-	Private             bool                       `json:"private"`
-	PullsURL            string                     `json:"pulls_url"`
-	PushedAt            NilTime                    `json:"pushed_at"`
-	ReleasesURL         string                     `json:"releases_url"`
-	SSHURL              string                     `json:"ssh_url"`
-	Size                int                        `json:"size"`
-	StargazersCount     int                        `json:"stargazers_count"`
-	StargazersURL       string                     `json:"stargazers_url"`
-	StatusesURL         string                     `json:"statuses_url"`
-	SubscribersCount    OptionalInt                `json:"subscribers_count"`
-	SubscribersURL      string                     `json:"subscribers_url"`
-	SubscriptionURL     string                     `json:"subscription_url"`
-	SvnURL              string                     `json:"svn_url"`
-	TagsURL             string                     `json:"tags_url"`
-	TeamsURL            string                     `json:"teams_url"`
-	TempCloneToken      OptionalString             `json:"temp_clone_token"`
-	TemplateRepository  *NullableRepository        `json:"template_repository"`
-	Topics              *[]string                  `json:"topics"`
-	TreesURL            string                     `json:"trees_url"`
-	URL                 string                     `json:"url"`
-	UpdatedAt           NilTime                    `json:"updated_at"`
-	Visibility          OptionalString             `json:"visibility"`
-	Watchers            int                        `json:"watchers"`
-	WatchersCount       int                        `json:"watchers_count"`
+	AllowAutoMerge      OptionalBool                      `json:"allow_auto_merge"`
+	AllowForking        OptionalBool                      `json:"allow_forking"`
+	AllowMergeCommit    OptionalBool                      `json:"allow_merge_commit"`
+	AllowRebaseMerge    OptionalBool                      `json:"allow_rebase_merge"`
+	AllowSquashMerge    OptionalBool                      `json:"allow_squash_merge"`
+	ArchiveURL          string                            `json:"archive_url"`
+	Archived            bool                              `json:"archived"`
+	AssigneesURL        string                            `json:"assignees_url"`
+	BlobsURL            string                            `json:"blobs_url"`
+	BranchesURL         string                            `json:"branches_url"`
+	CloneURL            string                            `json:"clone_url"`
+	CollaboratorsURL    string                            `json:"collaborators_url"`
+	CommentsURL         string                            `json:"comments_url"`
+	CommitsURL          string                            `json:"commits_url"`
+	CompareURL          string                            `json:"compare_url"`
+	ContentsURL         string                            `json:"contents_url"`
+	ContributorsURL     url.URL                           `json:"contributors_url"`
+	CreatedAt           NilTime                           `json:"created_at"`
+	DefaultBranch       string                            `json:"default_branch"`
+	DeleteBranchOnMerge OptionalBool                      `json:"delete_branch_on_merge"`
+	DeploymentsURL      url.URL                           `json:"deployments_url"`
+	Description         NilString                         `json:"description"`
+	Disabled            bool                              `json:"disabled"`
+	DownloadsURL        url.URL                           `json:"downloads_url"`
+	EventsURL           url.URL                           `json:"events_url"`
+	Fork                bool                              `json:"fork"`
+	Forks               int                               `json:"forks"`
+	ForksCount          int                               `json:"forks_count"`
+	ForksURL            url.URL                           `json:"forks_url"`
+	FullName            string                            `json:"full_name"`
+	GitCommitsURL       string                            `json:"git_commits_url"`
+	GitRefsURL          string                            `json:"git_refs_url"`
+	GitTagsURL          string                            `json:"git_tags_url"`
+	GitURL              string                            `json:"git_url"`
+	HTMLURL             url.URL                           `json:"html_url"`
+	HasDownloads        bool                              `json:"has_downloads"`
+	HasIssues           bool                              `json:"has_issues"`
+	HasPages            bool                              `json:"has_pages"`
+	HasProjects         bool                              `json:"has_projects"`
+	HasWiki             bool                              `json:"has_wiki"`
+	Homepage            NilURL                            `json:"homepage"`
+	HooksURL            url.URL                           `json:"hooks_url"`
+	ID                  int                               `json:"id"`
+	IsTemplate          OptionalBool                      `json:"is_template"`
+	IssueCommentURL     string                            `json:"issue_comment_url"`
+	IssueEventsURL      string                            `json:"issue_events_url"`
+	IssuesURL           string                            `json:"issues_url"`
+	KeysURL             string                            `json:"keys_url"`
+	LabelsURL           string                            `json:"labels_url"`
+	Language            NilString                         `json:"language"`
+	LanguagesURL        url.URL                           `json:"languages_url"`
+	License             NullableLicenseSimple             `json:"license"`
+	MasterBranch        OptionalString                    `json:"master_branch"`
+	MergesURL           url.URL                           `json:"merges_url"`
+	MilestonesURL       string                            `json:"milestones_url"`
+	MirrorURL           NilURL                            `json:"mirror_url"`
+	Name                string                            `json:"name"`
+	NetworkCount        OptionalInt                       `json:"network_count"`
+	NodeID              string                            `json:"node_id"`
+	NotificationsURL    string                            `json:"notifications_url"`
+	OpenIssues          int                               `json:"open_issues"`
+	OpenIssuesCount     int                               `json:"open_issues_count"`
+	Owner               NullableSimpleUser                `json:"owner"`
+	Permissions         OptionalTeamRepositoryPermissions `json:"permissions"`
+	Private             bool                              `json:"private"`
+	PullsURL            string                            `json:"pulls_url"`
+	PushedAt            NilTime                           `json:"pushed_at"`
+	ReleasesURL         string                            `json:"releases_url"`
+	SSHURL              string                            `json:"ssh_url"`
+	Size                int                               `json:"size"`
+	StargazersCount     int                               `json:"stargazers_count"`
+	StargazersURL       url.URL                           `json:"stargazers_url"`
+	StatusesURL         string                            `json:"statuses_url"`
+	SubscribersCount    OptionalInt                       `json:"subscribers_count"`
+	SubscribersURL      url.URL                           `json:"subscribers_url"`
+	SubscriptionURL     url.URL                           `json:"subscription_url"`
+	SvnURL              url.URL                           `json:"svn_url"`
+	TagsURL             url.URL                           `json:"tags_url"`
+	TeamsURL            url.URL                           `json:"teams_url"`
+	TempCloneToken      OptionalString                    `json:"temp_clone_token"`
+	TemplateRepository  OptionalNullableRepository        `json:"template_repository"`
+	Topics              *[]string                         `json:"topics"`
+	TreesURL            string                            `json:"trees_url"`
+	URL                 url.URL                           `json:"url"`
+	UpdatedAt           NilTime                           `json:"updated_at"`
+	Visibility          OptionalString                    `json:"visibility"`
+	Watchers            int                               `json:"watchers"`
+	WatchersCount       int                               `json:"watchers_count"`
 }
 
 func (*TeamRepository) teamsCheckPermissionsForRepoInOrgResponse()  {}
@@ -9198,7 +18336,7 @@ type TeamRepositoryPermissions struct {
 // TeamSimple describes #/components/schemas/team-simple.
 type TeamSimple struct {
 	Description     NilString      `json:"description"`
-	HTMLURL         string         `json:"html_url"`
+	HTMLURL         url.URL        `json:"html_url"`
 	ID              int            `json:"id"`
 	LdapDn          OptionalString `json:"ldap_dn"`
 	MembersURL      string         `json:"members_url"`
@@ -9206,9 +18344,9 @@ type TeamSimple struct {
 	NodeID          string         `json:"node_id"`
 	Permission      string         `json:"permission"`
 	Privacy         OptionalString `json:"privacy"`
-	RepositoriesURL string         `json:"repositories_url"`
+	RepositoriesURL url.URL        `json:"repositories_url"`
 	Slug            string         `json:"slug"`
-	URL             string         `json:"url"`
+	URL             url.URL        `json:"url"`
 }
 
 type TeamsAddMemberLegacyNoContent struct{}
@@ -9224,7 +18362,7 @@ type TeamsAddMemberLegacyUnprocessableEntity struct{}
 func (*TeamsAddMemberLegacyUnprocessableEntity) teamsAddMemberLegacyResponse() {}
 
 type TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest struct {
-	Role *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole `json:"role"`
+	Role OptionalTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole `json:"role"`
 }
 
 type TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole string
@@ -9245,7 +18383,7 @@ func (*TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) teamsAddOrUpda
 }
 
 type TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest struct {
-	Role *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole `json:"role"`
+	Role OptionalTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole `json:"role"`
 }
 
 type TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole string
@@ -9266,7 +18404,7 @@ func (*TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) teamsAddOrUpd
 }
 
 type TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest struct {
-	Permission *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission `json:"permission"`
+	Permission OptionalTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission `json:"permission"`
 }
 
 type TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission string
@@ -9291,7 +18429,7 @@ func (*TeamsAddOrUpdateProjectPermissionsInOrgNoContent) teamsAddOrUpdateProject
 }
 
 type TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest struct {
-	Permission *TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission `json:"permission"`
+	Permission OptionalTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission `json:"permission"`
 }
 
 func (*TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest) teamsAddOrUpdateProjectPermissionsLegacyRequest() {
@@ -9315,7 +18453,7 @@ type TeamsAddOrUpdateProjectPermissionsLegacyNoContent struct{}
 type TeamsAddOrUpdateRepoPermissionsInOrg struct{}
 
 type TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest struct {
-	Permission *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission `json:"permission"`
+	Permission OptionalTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission `json:"permission"`
 }
 
 type TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission string
@@ -9329,7 +18467,7 @@ const (
 )
 
 type TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest struct {
-	Permission *TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission `json:"permission"`
+	Permission OptionalTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission `json:"permission"`
 }
 
 func (*TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest) teamsAddOrUpdateRepoPermissionsLegacyRequest() {
@@ -9371,13 +18509,13 @@ type TeamsCheckPermissionsForRepoLegacyNotFound struct{}
 func (*TeamsCheckPermissionsForRepoLegacyNotFound) teamsCheckPermissionsForRepoLegacyResponse() {}
 
 type TeamsCreateApplicationJSONRequest struct {
-	Description  OptionalString                               `json:"description"`
-	Maintainers  *[]string                                    `json:"maintainers"`
-	Name         string                                       `json:"name"`
-	ParentTeamID OptionalInt                                  `json:"parent_team_id"`
-	Permission   *TeamsCreateApplicationJSONRequestPermission `json:"permission"`
-	Privacy      *TeamsCreateApplicationJSONRequestPrivacy    `json:"privacy"`
-	RepoNames    *[]string                                    `json:"repo_names"`
+	Description  OptionalString                                      `json:"description"`
+	Maintainers  *[]string                                           `json:"maintainers"`
+	Name         string                                              `json:"name"`
+	ParentTeamID OptionalInt                                         `json:"parent_team_id"`
+	Permission   OptionalTeamsCreateApplicationJSONRequestPermission `json:"permission"`
+	Privacy      OptionalTeamsCreateApplicationJSONRequestPrivacy    `json:"privacy"`
+	RepoNames    *[]string                                           `json:"repo_names"`
 }
 
 func (*TeamsCreateApplicationJSONRequest) teamsCreateRequest() {}
@@ -9555,11 +18693,11 @@ type TeamsUpdateDiscussionLegacyApplicationJSONRequest struct {
 }
 
 type TeamsUpdateInOrgApplicationJSONRequest struct {
-	Description  OptionalString                                    `json:"description"`
-	Name         OptionalString                                    `json:"name"`
-	ParentTeamID OptionalNilInt                                    `json:"parent_team_id"`
-	Permission   *TeamsUpdateInOrgApplicationJSONRequestPermission `json:"permission"`
-	Privacy      *TeamsUpdateInOrgApplicationJSONRequestPrivacy    `json:"privacy"`
+	Description  OptionalString                                           `json:"description"`
+	Name         OptionalString                                           `json:"name"`
+	ParentTeamID OptionalNilInt                                           `json:"parent_team_id"`
+	Permission   OptionalTeamsUpdateInOrgApplicationJSONRequestPermission `json:"permission"`
+	Privacy      OptionalTeamsUpdateInOrgApplicationJSONRequestPrivacy    `json:"privacy"`
 }
 
 type TeamsUpdateInOrgApplicationJSONRequestPermission string
@@ -9578,11 +18716,11 @@ const (
 )
 
 type TeamsUpdateLegacyApplicationJSONRequest struct {
-	Description  OptionalString                                     `json:"description"`
-	Name         string                                             `json:"name"`
-	ParentTeamID OptionalNilInt                                     `json:"parent_team_id"`
-	Permission   *TeamsUpdateLegacyApplicationJSONRequestPermission `json:"permission"`
-	Privacy      *TeamsUpdateLegacyApplicationJSONRequestPrivacy    `json:"privacy"`
+	Description  OptionalString                                            `json:"description"`
+	Name         string                                                    `json:"name"`
+	ParentTeamID OptionalNilInt                                            `json:"parent_team_id"`
+	Permission   OptionalTeamsUpdateLegacyApplicationJSONRequestPermission `json:"permission"`
+	Privacy      OptionalTeamsUpdateLegacyApplicationJSONRequestPrivacy    `json:"privacy"`
 }
 
 func (*TeamsUpdateLegacyApplicationJSONRequest) teamsUpdateLegacyRequest() {}
@@ -9626,13 +18764,13 @@ type ThreadSubject struct {
 
 // ThreadSubscription describes #/components/schemas/thread-subscription.
 type ThreadSubscription struct {
-	CreatedAt     NilTime        `json:"created_at"`
-	Ignored       bool           `json:"ignored"`
-	Reason        NilString      `json:"reason"`
-	RepositoryURL OptionalString `json:"repository_url"`
-	Subscribed    bool           `json:"subscribed"`
-	ThreadURL     OptionalString `json:"thread_url"`
-	URL           string         `json:"url"`
+	CreatedAt     NilTime     `json:"created_at"`
+	Ignored       bool        `json:"ignored"`
+	Reason        NilString   `json:"reason"`
+	RepositoryURL OptionalURL `json:"repository_url"`
+	Subscribed    bool        `json:"subscribed"`
+	ThreadURL     OptionalURL `json:"thread_url"`
+	URL           url.URL     `json:"url"`
 }
 
 func (*ThreadSubscription) activityGetThreadSubscriptionForAuthenticatedUserResponse() {}
@@ -9655,7 +18793,7 @@ type TopicSearchResultItem struct {
 	Description      NilString                           `json:"description"`
 	DisplayName      NilString                           `json:"display_name"`
 	Featured         bool                                `json:"featured"`
-	LogoURL          OptionalNilString                   `json:"logo_url"`
+	LogoURL          OptionalNilURL                      `json:"logo_url"`
 	Name             string                              `json:"name"`
 	Related          *[]TopicSearchResultItemRelatedItem `json:"related"`
 	Released         NilString                           `json:"released"`
@@ -9667,7 +18805,7 @@ type TopicSearchResultItem struct {
 }
 
 type TopicSearchResultItemAliasesItem struct {
-	TopicRelation *TopicSearchResultItemAliasesItemTopicRelation `json:"topic_relation"`
+	TopicRelation OptionalTopicSearchResultItemAliasesItemTopicRelation `json:"topic_relation"`
 }
 
 type TopicSearchResultItemAliasesItemTopicRelation struct {
@@ -9678,7 +18816,7 @@ type TopicSearchResultItemAliasesItemTopicRelation struct {
 }
 
 type TopicSearchResultItemRelatedItem struct {
-	TopicRelation *TopicSearchResultItemRelatedItemTopicRelation `json:"topic_relation"`
+	TopicRelation OptionalTopicSearchResultItemRelatedItemTopicRelation `json:"topic_relation"`
 }
 
 type TopicSearchResultItemRelatedItemTopicRelation struct {
@@ -10106,9 +19244,9 @@ type WorkflowRunUsage struct {
 }
 
 type WorkflowRunUsageBillable struct {
-	MACOS   *WorkflowRunUsageBillableMACOS   `json:"MACOS"`
-	UBUNTU  *WorkflowRunUsageBillableUBUNTU  `json:"UBUNTU"`
-	WINDOWS *WorkflowRunUsageBillableWINDOWS `json:"WINDOWS"`
+	MACOS   OptionalWorkflowRunUsageBillableMACOS   `json:"MACOS"`
+	UBUNTU  OptionalWorkflowRunUsageBillableUBUNTU  `json:"UBUNTU"`
+	WINDOWS OptionalWorkflowRunUsageBillableWINDOWS `json:"WINDOWS"`
 }
 
 type WorkflowRunUsageBillableMACOS struct {

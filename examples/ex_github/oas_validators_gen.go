@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"net"
 	"net/http"
+	"net/url"
 	"sort"
 	"strconv"
 	"strings"
@@ -18,6 +20,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -40,8 +43,11 @@ var (
 	_ = conv.ToInt32
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
+	_ = url.URL{}
 	_ = math.Mod
 	_ = validate.Int{}
+	_ = ht.NewRequest
+	_ = net.IP{}
 )
 
 func (s *ActionsCreateOrUpdateOrgSecretApplicationJSONRequest) validate() error {
@@ -129,6 +135,12 @@ func (s *Authorization) validate() error {
 	return nil
 }
 func (s *AutoMerge) validate() error {
+	return nil
+}
+func (s *BranchProtection) validate() error {
+	return nil
+}
+func (s *BranchWithProtection) validate() error {
 	return nil
 }
 func (s *CheckRun) validate() error {
@@ -383,6 +395,9 @@ func (s *NullableMilestone) validate() error {
 func (s *NullableScopedInstallation) validate() error {
 	return nil
 }
+func (s *OAuthAuthorizationsCreateAuthorizationApplicationJSONRequest) validate() error {
+	return nil
+}
 func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONRequest) validate() error {
 	{
 		// Validate 'ClientSecret' field.
@@ -444,6 +459,9 @@ func (s *ProjectsAddCollaboratorApplicationJSONRequest) validate() error {
 	return nil
 }
 func (s *ProjectsUpdateApplicationJSONRequest) validate() error {
+	return nil
+}
+func (s *ProtectedBranchPullRequestReview) validate() error {
 	return nil
 }
 func (s *PullRequest) validate() error {
@@ -576,6 +594,9 @@ func (s *SecretScanningAlert) validate() error {
 	return nil
 }
 func (s *SecretScanningUpdateAlertApplicationJSONRequest) validate() error {
+	return nil
+}
+func (s *ShortBranch) validate() error {
 	return nil
 }
 func (s *TeamFull) validate() error {

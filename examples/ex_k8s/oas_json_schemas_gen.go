@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"net"
 	"net/http"
+	"net/url"
 	"sort"
 	"strconv"
 	"strings"
@@ -18,6 +20,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -40,8 +43,11 @@ var (
 	_ = conv.ToInt32
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
+	_ = url.URL{}
 	_ = math.Mod
 	_ = validate.Int{}
+	_ = ht.NewRequest
+	_ = net.IP{}
 )
 
 // WriteJSON implements json.Marshaler.
@@ -62,8 +68,14 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) WriteJSON(j *json.Stream
 	}
 	field.Write("name")
 	j.WriteString(s.Name)
-	// Unsupported kind "pointer" for field "NamespaceSelector".
-	// Unsupported kind "pointer" for field "ObjectSelector".
+	if s.NamespaceSelector.Set {
+		field.Write("namespaceSelector")
+		s.NamespaceSelector.WriteJSON(j)
+	}
+	if s.ObjectSelector.Set {
+		field.Write("objectSelector")
+		s.ObjectSelector.WriteJSON(j)
+	}
 	if s.ReinvocationPolicy.Set {
 		field.Write("reinvocationPolicy")
 		s.ReinvocationPolicy.WriteJSON(j)
@@ -132,12 +144,18 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) ReadJSON(i *json.Iterat
 			s.Name = i.ReadString()
 			return i.Error == nil
 		case "namespaceSelector":
-			// Unsupported kind "pointer" for field "NamespaceSelector".
-			i.Skip()
+			s.NamespaceSelector.Reset()
+			if err := s.NamespaceSelector.ReadJSON(i); err != nil {
+				i.ReportError("Field NamespaceSelector", err.Error())
+				return false
+			}
 			return true
 		case "objectSelector":
-			// Unsupported kind "pointer" for field "ObjectSelector".
-			i.Skip()
+			s.ObjectSelector.Reset()
+			if err := s.ObjectSelector.ReadJSON(i); err != nil {
+				i.ReportError("Field ObjectSelector", err.Error())
+				return false
+			}
 			return true
 		case "reinvocationPolicy":
 			s.ReinvocationPolicy.Reset()
@@ -181,7 +199,10 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) WriteJSON(j
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Webhooks".
 	j.WriteObjectEnd()
 }
@@ -227,8 +248,11 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) ReadJSON(i
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "webhooks":
 			// Unsupported kind "pointer" for field "Webhooks".
@@ -256,7 +280,10 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) WriteJS
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -305,8 +332,11 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) ReadJS
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -481,8 +511,14 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) WriteJSON(j *json.Stre
 	}
 	field.Write("name")
 	j.WriteString(s.Name)
-	// Unsupported kind "pointer" for field "NamespaceSelector".
-	// Unsupported kind "pointer" for field "ObjectSelector".
+	if s.NamespaceSelector.Set {
+		field.Write("namespaceSelector")
+		s.NamespaceSelector.WriteJSON(j)
+	}
+	if s.ObjectSelector.Set {
+		field.Write("objectSelector")
+		s.ObjectSelector.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Rules".
 	field.Write("sideEffects")
 	j.WriteString(s.SideEffects)
@@ -547,12 +583,18 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) ReadJSON(i *json.Iter
 			s.Name = i.ReadString()
 			return i.Error == nil
 		case "namespaceSelector":
-			// Unsupported kind "pointer" for field "NamespaceSelector".
-			i.Skip()
+			s.NamespaceSelector.Reset()
+			if err := s.NamespaceSelector.ReadJSON(i); err != nil {
+				i.ReportError("Field NamespaceSelector", err.Error())
+				return false
+			}
 			return true
 		case "objectSelector":
-			// Unsupported kind "pointer" for field "ObjectSelector".
-			i.Skip()
+			s.ObjectSelector.Reset()
+			if err := s.ObjectSelector.ReadJSON(i); err != nil {
+				i.ReportError("Field ObjectSelector", err.Error())
+				return false
+			}
 			return true
 		case "rules":
 			// Unsupported kind "pointer" for field "Rules".
@@ -589,7 +631,10 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) WriteJSON
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Webhooks".
 	j.WriteObjectEnd()
 }
@@ -635,8 +680,11 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) ReadJSON
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "webhooks":
 			// Unsupported kind "pointer" for field "Webhooks".
@@ -664,7 +712,10 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Write
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -713,8 +764,11 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Read
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -730,7 +784,10 @@ func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) WriteJSON(j *json.St
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	// Unsupported kind "pointer" for field "CaBundle".
-	// Unsupported kind "pointer" for field "Service".
+	if s.Service.Set {
+		field.Write("service")
+		s.Service.WriteJSON(j)
+	}
 	if s.URL.Set {
 		field.Write("url")
 		s.URL.WriteJSON(j)
@@ -769,8 +826,11 @@ func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) ReadJSON(i *json.It
 			i.Skip()
 			return true
 		case "service":
-			// Unsupported kind "pointer" for field "Service".
-			i.Skip()
+			s.Service.Reset()
+			if err := s.Service.ReadJSON(i); err != nil {
+				i.ReportError("Field Service", err.Error())
+				return false
+			}
 			return true
 		case "url":
 			s.URL.Reset()
@@ -869,7 +929,10 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) WriteJSON(j *json.Strea
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	// Unsupported kind "alias" for field "Spec".
 	field.Write("status")
 	s.Status.WriteJSON(j)
@@ -917,8 +980,11 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) ReadJSON(i *json.Itera
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
 			// Unsupported kind "alias" for field "Spec".
@@ -1036,7 +1102,10 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) WriteJSON(j *json.S
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -1085,8 +1154,11 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) ReadJSON(i *json.I
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -1173,7 +1245,10 @@ func (s IoK8sAPIAppsV1ControllerRevision) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	field.Write("revision")
 	j.WriteInt64(s.Revision)
 	j.WriteObjectEnd()
@@ -1224,8 +1299,11 @@ func (s *IoK8sAPIAppsV1ControllerRevision) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "revision":
 			s.Revision = i.ReadInt64()
@@ -1252,7 +1330,10 @@ func (s IoK8sAPIAppsV1ControllerRevisionList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -1301,8 +1382,11 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) ReadJSON(i *json.Iterator) error 
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -1325,9 +1409,18 @@ func (s IoK8sAPIAppsV1DaemonSet) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -1372,16 +1465,25 @@ func (s *IoK8sAPIAppsV1DaemonSet) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -1484,7 +1586,10 @@ func (s IoK8sAPIAppsV1DaemonSetList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -1533,8 +1638,11 @@ func (s *IoK8sAPIAppsV1DaemonSetList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -1561,7 +1669,10 @@ func (s IoK8sAPIAppsV1DaemonSetSpec) WriteJSON(j *json.Stream) {
 	s.Selector.WriteJSON(j)
 	field.Write("template")
 	s.Template.WriteJSON(j)
-	// Unsupported kind "pointer" for field "UpdateStrategy".
+	if s.UpdateStrategy.Set {
+		field.Write("updateStrategy")
+		s.UpdateStrategy.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -1618,8 +1729,11 @@ func (s *IoK8sAPIAppsV1DaemonSetSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "updateStrategy":
-			// Unsupported kind "pointer" for field "UpdateStrategy".
-			i.Skip()
+			s.UpdateStrategy.Reset()
+			if err := s.UpdateStrategy.ReadJSON(i); err != nil {
+				i.ReportError("Field UpdateStrategy", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -1756,7 +1870,10 @@ func (s IoK8sAPIAppsV1DaemonSetUpdateStrategy) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "RollingUpdate".
+	if s.RollingUpdate.Set {
+		field.Write("rollingUpdate")
+		s.RollingUpdate.WriteJSON(j)
+	}
 	if s.Type.Set {
 		field.Write("type")
 		s.Type.WriteJSON(j)
@@ -1791,8 +1908,11 @@ func (s *IoK8sAPIAppsV1DaemonSetUpdateStrategy) ReadJSON(i *json.Iterator) error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "rollingUpdate":
-			// Unsupported kind "pointer" for field "RollingUpdate".
-			i.Skip()
+			s.RollingUpdate.Reset()
+			if err := s.RollingUpdate.ReadJSON(i); err != nil {
+				i.ReportError("Field RollingUpdate", err.Error())
+				return false
+			}
 			return true
 		case "type":
 			s.Type.Reset()
@@ -1822,9 +1942,18 @@ func (s IoK8sAPIAppsV1Deployment) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -1869,16 +1998,25 @@ func (s *IoK8sAPIAppsV1Deployment) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -1986,7 +2124,10 @@ func (s IoK8sAPIAppsV1DeploymentList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -2035,8 +2176,11 @@ func (s *IoK8sAPIAppsV1DeploymentList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -2073,7 +2217,10 @@ func (s IoK8sAPIAppsV1DeploymentSpec) WriteJSON(j *json.Stream) {
 	}
 	field.Write("selector")
 	s.Selector.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Strategy".
+	if s.Strategy.Set {
+		field.Write("strategy")
+		s.Strategy.WriteJSON(j)
+	}
 	field.Write("template")
 	s.Template.WriteJSON(j)
 	j.WriteObjectEnd()
@@ -2147,8 +2294,11 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "strategy":
-			// Unsupported kind "pointer" for field "Strategy".
-			i.Skip()
+			s.Strategy.Reset()
+			if err := s.Strategy.ReadJSON(i); err != nil {
+				i.ReportError("Field Strategy", err.Error())
+				return false
+			}
 			return true
 		case "template":
 			if err := s.Template.ReadJSON(i); err != nil {
@@ -2293,7 +2443,10 @@ func (s IoK8sAPIAppsV1DeploymentStrategy) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "RollingUpdate".
+	if s.RollingUpdate.Set {
+		field.Write("rollingUpdate")
+		s.RollingUpdate.WriteJSON(j)
+	}
 	if s.Type.Set {
 		field.Write("type")
 		s.Type.WriteJSON(j)
@@ -2328,8 +2481,11 @@ func (s *IoK8sAPIAppsV1DeploymentStrategy) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "rollingUpdate":
-			// Unsupported kind "pointer" for field "RollingUpdate".
-			i.Skip()
+			s.RollingUpdate.Reset()
+			if err := s.RollingUpdate.ReadJSON(i); err != nil {
+				i.ReportError("Field RollingUpdate", err.Error())
+				return false
+			}
 			return true
 		case "type":
 			s.Type.Reset()
@@ -2359,9 +2515,18 @@ func (s IoK8sAPIAppsV1ReplicaSet) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -2406,16 +2571,25 @@ func (s *IoK8sAPIAppsV1ReplicaSet) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -2518,7 +2692,10 @@ func (s IoK8sAPIAppsV1ReplicaSetList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -2567,8 +2744,11 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -2593,7 +2773,10 @@ func (s IoK8sAPIAppsV1ReplicaSetSpec) WriteJSON(j *json.Stream) {
 	}
 	field.Write("selector")
 	s.Selector.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Template".
+	if s.Template.Set {
+		field.Write("template")
+		s.Template.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -2644,8 +2827,11 @@ func (s *IoK8sAPIAppsV1ReplicaSetSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "template":
-			// Unsupported kind "pointer" for field "Template".
-			i.Skip()
+			s.Template.Reset()
+			if err := s.Template.ReadJSON(i); err != nil {
+				i.ReportError("Field Template", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -2921,9 +3107,18 @@ func (s IoK8sAPIAppsV1StatefulSet) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -2968,16 +3163,25 @@ func (s *IoK8sAPIAppsV1StatefulSet) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -3080,7 +3284,10 @@ func (s IoK8sAPIAppsV1StatefulSetList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -3129,8 +3336,11 @@ func (s *IoK8sAPIAppsV1StatefulSetList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -3167,7 +3377,10 @@ func (s IoK8sAPIAppsV1StatefulSetSpec) WriteJSON(j *json.Stream) {
 	j.WriteString(s.ServiceName)
 	field.Write("template")
 	s.Template.WriteJSON(j)
-	// Unsupported kind "pointer" for field "UpdateStrategy".
+	if s.UpdateStrategy.Set {
+		field.Write("updateStrategy")
+		s.UpdateStrategy.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "VolumeClaimTemplates".
 	j.WriteObjectEnd()
 }
@@ -3242,8 +3455,11 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "updateStrategy":
-			// Unsupported kind "pointer" for field "UpdateStrategy".
-			i.Skip()
+			s.UpdateStrategy.Reset()
+			if err := s.UpdateStrategy.ReadJSON(i); err != nil {
+				i.ReportError("Field UpdateStrategy", err.Error())
+				return false
+			}
 			return true
 		case "volumeClaimTemplates":
 			// Unsupported kind "pointer" for field "VolumeClaimTemplates".
@@ -3396,7 +3612,10 @@ func (s IoK8sAPIAppsV1StatefulSetUpdateStrategy) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "RollingUpdate".
+	if s.RollingUpdate.Set {
+		field.Write("rollingUpdate")
+		s.RollingUpdate.WriteJSON(j)
+	}
 	if s.Type.Set {
 		field.Write("type")
 		s.Type.WriteJSON(j)
@@ -3431,8 +3650,11 @@ func (s *IoK8sAPIAppsV1StatefulSetUpdateStrategy) ReadJSON(i *json.Iterator) err
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "rollingUpdate":
-			// Unsupported kind "pointer" for field "RollingUpdate".
-			i.Skip()
+			s.RollingUpdate.Reset()
+			if err := s.RollingUpdate.ReadJSON(i); err != nil {
+				i.ReportError("Field RollingUpdate", err.Error())
+				return false
+			}
 			return true
 		case "type":
 			s.Type.Reset()
@@ -3462,10 +3684,16 @@ func (s IoK8sAPIAuthenticationV1TokenReview) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	field.Write("spec")
 	s.Spec.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Status".
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -3510,8 +3738,11 @@ func (s *IoK8sAPIAuthenticationV1TokenReview) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
 			if err := s.Spec.ReadJSON(i); err != nil {
@@ -3520,8 +3751,11 @@ func (s *IoK8sAPIAuthenticationV1TokenReview) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -3603,7 +3837,10 @@ func (s IoK8sAPIAuthenticationV1TokenReviewStatus) WriteJSON(j *json.Stream) {
 		field.Write("error")
 		s.Error.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "User".
+	if s.User.Set {
+		field.Write("user")
+		s.User.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -3652,8 +3889,11 @@ func (s *IoK8sAPIAuthenticationV1TokenReviewStatus) ReadJSON(i *json.Iterator) e
 			}
 			return true
 		case "user":
-			// Unsupported kind "pointer" for field "User".
-			i.Skip()
+			s.User.Reset()
+			if err := s.User.ReadJSON(i); err != nil {
+				i.ReportError("Field User", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -4047,10 +4287,16 @@ func (s IoK8sAPIAuthorizationV1SelfSubjectAccessReview) WriteJSON(j *json.Stream
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	field.Write("spec")
 	s.Spec.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Status".
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -4095,8 +4341,11 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectAccessReview) ReadJSON(i *json.Iterat
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
 			if err := s.Spec.ReadJSON(i); err != nil {
@@ -4105,8 +4354,11 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectAccessReview) ReadJSON(i *json.Iterat
 			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -4121,8 +4373,14 @@ func (s IoK8sAPIAuthorizationV1SelfSubjectAccessReviewSpec) WriteJSON(j *json.St
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "NonResourceAttributes".
-	// Unsupported kind "pointer" for field "ResourceAttributes".
+	if s.NonResourceAttributes.Set {
+		field.Write("nonResourceAttributes")
+		s.NonResourceAttributes.WriteJSON(j)
+	}
+	if s.ResourceAttributes.Set {
+		field.Write("resourceAttributes")
+		s.ResourceAttributes.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -4153,12 +4411,18 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectAccessReviewSpec) ReadJSON(i *json.It
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "nonResourceAttributes":
-			// Unsupported kind "pointer" for field "NonResourceAttributes".
-			i.Skip()
+			s.NonResourceAttributes.Reset()
+			if err := s.NonResourceAttributes.ReadJSON(i); err != nil {
+				i.ReportError("Field NonResourceAttributes", err.Error())
+				return false
+			}
 			return true
 		case "resourceAttributes":
-			// Unsupported kind "pointer" for field "ResourceAttributes".
-			i.Skip()
+			s.ResourceAttributes.Reset()
+			if err := s.ResourceAttributes.ReadJSON(i); err != nil {
+				i.ReportError("Field ResourceAttributes", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -4181,10 +4445,16 @@ func (s IoK8sAPIAuthorizationV1SelfSubjectRulesReview) WriteJSON(j *json.Stream)
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	field.Write("spec")
 	s.Spec.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Status".
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -4229,8 +4499,11 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectRulesReview) ReadJSON(i *json.Iterato
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
 			if err := s.Spec.ReadJSON(i); err != nil {
@@ -4239,8 +4512,11 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectRulesReview) ReadJSON(i *json.Iterato
 			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -4316,10 +4592,16 @@ func (s IoK8sAPIAuthorizationV1SubjectAccessReview) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	field.Write("spec")
 	s.Spec.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Status".
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -4364,8 +4646,11 @@ func (s *IoK8sAPIAuthorizationV1SubjectAccessReview) ReadJSON(i *json.Iterator) 
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
 			if err := s.Spec.ReadJSON(i); err != nil {
@@ -4374,8 +4659,11 @@ func (s *IoK8sAPIAuthorizationV1SubjectAccessReview) ReadJSON(i *json.Iterator) 
 			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -4392,8 +4680,14 @@ func (s IoK8sAPIAuthorizationV1SubjectAccessReviewSpec) WriteJSON(j *json.Stream
 	defer field.Reset()
 	// Unsupported kind "pointer" for field "Extra".
 	// Unsupported kind "pointer" for field "Groups".
-	// Unsupported kind "pointer" for field "NonResourceAttributes".
-	// Unsupported kind "pointer" for field "ResourceAttributes".
+	if s.NonResourceAttributes.Set {
+		field.Write("nonResourceAttributes")
+		s.NonResourceAttributes.WriteJSON(j)
+	}
+	if s.ResourceAttributes.Set {
+		field.Write("resourceAttributes")
+		s.ResourceAttributes.WriteJSON(j)
+	}
 	if s.UID.Set {
 		field.Write("uid")
 		s.UID.WriteJSON(j)
@@ -4440,12 +4734,18 @@ func (s *IoK8sAPIAuthorizationV1SubjectAccessReviewSpec) ReadJSON(i *json.Iterat
 			i.Skip()
 			return true
 		case "nonResourceAttributes":
-			// Unsupported kind "pointer" for field "NonResourceAttributes".
-			i.Skip()
+			s.NonResourceAttributes.Reset()
+			if err := s.NonResourceAttributes.ReadJSON(i); err != nil {
+				i.ReportError("Field NonResourceAttributes", err.Error())
+				return false
+			}
 			return true
 		case "resourceAttributes":
-			// Unsupported kind "pointer" for field "ResourceAttributes".
-			i.Skip()
+			s.ResourceAttributes.Reset()
+			if err := s.ResourceAttributes.ReadJSON(i); err != nil {
+				i.ReportError("Field ResourceAttributes", err.Error())
+				return false
+			}
 			return true
 		case "uid":
 			s.UID.Reset()
@@ -4693,9 +4993,18 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) WriteJSON(j *json.Stream) 
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -4740,16 +5049,25 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) ReadJSON(i *json.Iterator
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -4773,7 +5091,10 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) WriteJSON(j *json.Stre
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -4822,8 +5143,11 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) ReadJSON(i *json.Iter
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -5195,7 +5519,10 @@ func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) WriteJSON(j *json.Stream
 	defer field.Reset()
 	field.Write("metricName")
 	j.WriteString(s.MetricName)
-	// Unsupported kind "pointer" for field "MetricSelector".
+	if s.MetricSelector.Set {
+		field.Write("metricSelector")
+		s.MetricSelector.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "TargetAverageValue".
 	// Unsupported kind "pointer" for field "TargetValue".
 	j.WriteObjectEnd()
@@ -5231,8 +5558,11 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) ReadJSON(i *json.Iterat
 			s.MetricName = i.ReadString()
 			return i.Error == nil
 		case "metricSelector":
-			// Unsupported kind "pointer" for field "MetricSelector".
-			i.Skip()
+			s.MetricSelector.Reset()
+			if err := s.MetricSelector.ReadJSON(i); err != nil {
+				i.ReportError("Field MetricSelector", err.Error())
+				return false
+			}
 			return true
 		case "targetAverageValue":
 			// Unsupported kind "pointer" for field "TargetAverageValue".
@@ -5259,7 +5589,10 @@ func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) WriteJSON(j *json.Stream
 	// Unsupported kind "alias" for field "CurrentValue".
 	field.Write("metricName")
 	j.WriteString(s.MetricName)
-	// Unsupported kind "pointer" for field "MetricSelector".
+	if s.MetricSelector.Set {
+		field.Write("metricSelector")
+		s.MetricSelector.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -5301,8 +5634,11 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) ReadJSON(i *json.Iterat
 			s.MetricName = i.ReadString()
 			return i.Error == nil
 		case "metricSelector":
-			// Unsupported kind "pointer" for field "MetricSelector".
-			i.Skip()
+			s.MetricSelector.Reset()
+			if err := s.MetricSelector.ReadJSON(i); err != nil {
+				i.ReportError("Field MetricSelector", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -5325,9 +5661,18 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) WriteJSON(j *json.Str
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -5372,16 +5717,25 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) ReadJSON(i *json.Ite
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -5484,7 +5838,10 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) WriteJSON(j *json
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -5533,8 +5890,11 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) ReadJSON(i *json
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -5698,11 +6058,26 @@ func (s IoK8sAPIAutoscalingV2beta1MetricSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "ContainerResource".
-	// Unsupported kind "pointer" for field "External".
-	// Unsupported kind "pointer" for field "Object".
-	// Unsupported kind "pointer" for field "Pods".
-	// Unsupported kind "pointer" for field "Resource".
+	if s.ContainerResource.Set {
+		field.Write("containerResource")
+		s.ContainerResource.WriteJSON(j)
+	}
+	if s.External.Set {
+		field.Write("external")
+		s.External.WriteJSON(j)
+	}
+	if s.Object.Set {
+		field.Write("object")
+		s.Object.WriteJSON(j)
+	}
+	if s.Pods.Set {
+		field.Write("pods")
+		s.Pods.WriteJSON(j)
+	}
+	if s.Resource.Set {
+		field.Write("resource")
+		s.Resource.WriteJSON(j)
+	}
 	field.Write("type")
 	j.WriteString(s.Type)
 	j.WriteObjectEnd()
@@ -5735,24 +6110,39 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) ReadJSON(i *json.Iterator) error 
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "containerResource":
-			// Unsupported kind "pointer" for field "ContainerResource".
-			i.Skip()
+			s.ContainerResource.Reset()
+			if err := s.ContainerResource.ReadJSON(i); err != nil {
+				i.ReportError("Field ContainerResource", err.Error())
+				return false
+			}
 			return true
 		case "external":
-			// Unsupported kind "pointer" for field "External".
-			i.Skip()
+			s.External.Reset()
+			if err := s.External.ReadJSON(i); err != nil {
+				i.ReportError("Field External", err.Error())
+				return false
+			}
 			return true
 		case "object":
-			// Unsupported kind "pointer" for field "Object".
-			i.Skip()
+			s.Object.Reset()
+			if err := s.Object.ReadJSON(i); err != nil {
+				i.ReportError("Field Object", err.Error())
+				return false
+			}
 			return true
 		case "pods":
-			// Unsupported kind "pointer" for field "Pods".
-			i.Skip()
+			s.Pods.Reset()
+			if err := s.Pods.ReadJSON(i); err != nil {
+				i.ReportError("Field Pods", err.Error())
+				return false
+			}
 			return true
 		case "resource":
-			// Unsupported kind "pointer" for field "Resource".
-			i.Skip()
+			s.Resource.Reset()
+			if err := s.Resource.ReadJSON(i); err != nil {
+				i.ReportError("Field Resource", err.Error())
+				return false
+			}
 			return true
 		case "type":
 			s.Type = i.ReadString()
@@ -5770,11 +6160,26 @@ func (s IoK8sAPIAutoscalingV2beta1MetricStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "ContainerResource".
-	// Unsupported kind "pointer" for field "External".
-	// Unsupported kind "pointer" for field "Object".
-	// Unsupported kind "pointer" for field "Pods".
-	// Unsupported kind "pointer" for field "Resource".
+	if s.ContainerResource.Set {
+		field.Write("containerResource")
+		s.ContainerResource.WriteJSON(j)
+	}
+	if s.External.Set {
+		field.Write("external")
+		s.External.WriteJSON(j)
+	}
+	if s.Object.Set {
+		field.Write("object")
+		s.Object.WriteJSON(j)
+	}
+	if s.Pods.Set {
+		field.Write("pods")
+		s.Pods.WriteJSON(j)
+	}
+	if s.Resource.Set {
+		field.Write("resource")
+		s.Resource.WriteJSON(j)
+	}
 	field.Write("type")
 	j.WriteString(s.Type)
 	j.WriteObjectEnd()
@@ -5807,24 +6212,39 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) ReadJSON(i *json.Iterator) erro
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "containerResource":
-			// Unsupported kind "pointer" for field "ContainerResource".
-			i.Skip()
+			s.ContainerResource.Reset()
+			if err := s.ContainerResource.ReadJSON(i); err != nil {
+				i.ReportError("Field ContainerResource", err.Error())
+				return false
+			}
 			return true
 		case "external":
-			// Unsupported kind "pointer" for field "External".
-			i.Skip()
+			s.External.Reset()
+			if err := s.External.ReadJSON(i); err != nil {
+				i.ReportError("Field External", err.Error())
+				return false
+			}
 			return true
 		case "object":
-			// Unsupported kind "pointer" for field "Object".
-			i.Skip()
+			s.Object.Reset()
+			if err := s.Object.ReadJSON(i); err != nil {
+				i.ReportError("Field Object", err.Error())
+				return false
+			}
 			return true
 		case "pods":
-			// Unsupported kind "pointer" for field "Pods".
-			i.Skip()
+			s.Pods.Reset()
+			if err := s.Pods.ReadJSON(i); err != nil {
+				i.ReportError("Field Pods", err.Error())
+				return false
+			}
 			return true
 		case "resource":
-			// Unsupported kind "pointer" for field "Resource".
-			i.Skip()
+			s.Resource.Reset()
+			if err := s.Resource.ReadJSON(i); err != nil {
+				i.ReportError("Field Resource", err.Error())
+				return false
+			}
 			return true
 		case "type":
 			s.Type = i.ReadString()
@@ -5845,7 +6265,10 @@ func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) WriteJSON(j *json.Stream) 
 	// Unsupported kind "pointer" for field "AverageValue".
 	field.Write("metricName")
 	j.WriteString(s.MetricName)
-	// Unsupported kind "pointer" for field "Selector".
+	if s.Selector.Set {
+		field.Write("selector")
+		s.Selector.WriteJSON(j)
+	}
 	field.Write("target")
 	s.Target.WriteJSON(j)
 	// Unsupported kind "alias" for field "TargetValue".
@@ -5886,8 +6309,11 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) ReadJSON(i *json.Iterator
 			s.MetricName = i.ReadString()
 			return i.Error == nil
 		case "selector":
-			// Unsupported kind "pointer" for field "Selector".
-			i.Skip()
+			s.Selector.Reset()
+			if err := s.Selector.ReadJSON(i); err != nil {
+				i.ReportError("Field Selector", err.Error())
+				return false
+			}
 			return true
 		case "target":
 			if err := s.Target.ReadJSON(i); err != nil {
@@ -5916,7 +6342,10 @@ func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) WriteJSON(j *json.Stream) 
 	// Unsupported kind "alias" for field "CurrentValue".
 	field.Write("metricName")
 	j.WriteString(s.MetricName)
-	// Unsupported kind "pointer" for field "Selector".
+	if s.Selector.Set {
+		field.Write("selector")
+		s.Selector.WriteJSON(j)
+	}
 	field.Write("target")
 	s.Target.WriteJSON(j)
 	j.WriteObjectEnd()
@@ -5960,8 +6389,11 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) ReadJSON(i *json.Iterator
 			s.MetricName = i.ReadString()
 			return i.Error == nil
 		case "selector":
-			// Unsupported kind "pointer" for field "Selector".
-			i.Skip()
+			s.Selector.Reset()
+			if err := s.Selector.ReadJSON(i); err != nil {
+				i.ReportError("Field Selector", err.Error())
+				return false
+			}
 			return true
 		case "target":
 			if err := s.Target.ReadJSON(i); err != nil {
@@ -5984,7 +6416,10 @@ func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) WriteJSON(j *json.Stream) {
 	defer field.Reset()
 	field.Write("metricName")
 	j.WriteString(s.MetricName)
-	// Unsupported kind "pointer" for field "Selector".
+	if s.Selector.Set {
+		field.Write("selector")
+		s.Selector.WriteJSON(j)
+	}
 	// Unsupported kind "alias" for field "TargetAverageValue".
 	j.WriteObjectEnd()
 }
@@ -6019,8 +6454,11 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) ReadJSON(i *json.Iterator) 
 			s.MetricName = i.ReadString()
 			return i.Error == nil
 		case "selector":
-			// Unsupported kind "pointer" for field "Selector".
-			i.Skip()
+			s.Selector.Reset()
+			if err := s.Selector.ReadJSON(i); err != nil {
+				i.ReportError("Field Selector", err.Error())
+				return false
+			}
 			return true
 		case "targetAverageValue":
 			// Unsupported kind "alias" for field "TargetAverageValue".
@@ -6042,7 +6480,10 @@ func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) WriteJSON(j *json.Stream) {
 	// Unsupported kind "alias" for field "CurrentAverageValue".
 	field.Write("metricName")
 	j.WriteString(s.MetricName)
-	// Unsupported kind "pointer" for field "Selector".
+	if s.Selector.Set {
+		field.Write("selector")
+		s.Selector.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -6080,8 +6521,11 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) ReadJSON(i *json.Iterator) 
 			s.MetricName = i.ReadString()
 			return i.Error == nil
 		case "selector":
-			// Unsupported kind "pointer" for field "Selector".
-			i.Skip()
+			s.Selector.Reset()
+			if err := s.Selector.ReadJSON(i); err != nil {
+				i.ReportError("Field Selector", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -6655,9 +7099,18 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) WriteJSON(j *json.Str
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -6702,16 +7155,25 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) ReadJSON(i *json.Ite
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -6726,8 +7188,14 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) WriteJSON(j *
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "ScaleDown".
-	// Unsupported kind "pointer" for field "ScaleUp".
+	if s.ScaleDown.Set {
+		field.Write("scaleDown")
+		s.ScaleDown.WriteJSON(j)
+	}
+	if s.ScaleUp.Set {
+		field.Write("scaleUp")
+		s.ScaleUp.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -6758,12 +7226,18 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) ReadJSON(i *
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "scaleDown":
-			// Unsupported kind "pointer" for field "ScaleDown".
-			i.Skip()
+			s.ScaleDown.Reset()
+			if err := s.ScaleDown.ReadJSON(i); err != nil {
+				i.ReportError("Field ScaleDown", err.Error())
+				return false
+			}
 			return true
 		case "scaleUp":
-			// Unsupported kind "pointer" for field "ScaleUp".
-			i.Skip()
+			s.ScaleUp.Reset()
+			if err := s.ScaleUp.ReadJSON(i); err != nil {
+				i.ReportError("Field ScaleUp", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -6866,7 +7340,10 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) WriteJSON(j *json
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -6915,8 +7392,11 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) ReadJSON(i *json
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -6931,7 +7411,10 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) WriteJSON(j *json
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Behavior".
+	if s.Behavior.Set {
+		field.Write("behavior")
+		s.Behavior.WriteJSON(j)
+	}
 	field.Write("maxReplicas")
 	j.WriteInt32(s.MaxReplicas)
 	// Unsupported kind "pointer" for field "Metrics".
@@ -6971,8 +7454,11 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) ReadJSON(i *json
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "behavior":
-			// Unsupported kind "pointer" for field "Behavior".
-			i.Skip()
+			s.Behavior.Reset()
+			if err := s.Behavior.ReadJSON(i); err != nil {
+				i.ReportError("Field Behavior", err.Error())
+				return false
+			}
 			return true
 		case "maxReplicas":
 			s.MaxReplicas = i.ReadInt32()
@@ -7087,7 +7573,10 @@ func (s IoK8sAPIAutoscalingV2beta2MetricIdentifier) WriteJSON(j *json.Stream) {
 	defer field.Reset()
 	field.Write("name")
 	j.WriteString(s.Name)
-	// Unsupported kind "pointer" for field "Selector".
+	if s.Selector.Set {
+		field.Write("selector")
+		s.Selector.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -7121,8 +7610,11 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) ReadJSON(i *json.Iterator) 
 			s.Name = i.ReadString()
 			return i.Error == nil
 		case "selector":
-			// Unsupported kind "pointer" for field "Selector".
-			i.Skip()
+			s.Selector.Reset()
+			if err := s.Selector.ReadJSON(i); err != nil {
+				i.ReportError("Field Selector", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -7137,11 +7629,26 @@ func (s IoK8sAPIAutoscalingV2beta2MetricSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "ContainerResource".
-	// Unsupported kind "pointer" for field "External".
-	// Unsupported kind "pointer" for field "Object".
-	// Unsupported kind "pointer" for field "Pods".
-	// Unsupported kind "pointer" for field "Resource".
+	if s.ContainerResource.Set {
+		field.Write("containerResource")
+		s.ContainerResource.WriteJSON(j)
+	}
+	if s.External.Set {
+		field.Write("external")
+		s.External.WriteJSON(j)
+	}
+	if s.Object.Set {
+		field.Write("object")
+		s.Object.WriteJSON(j)
+	}
+	if s.Pods.Set {
+		field.Write("pods")
+		s.Pods.WriteJSON(j)
+	}
+	if s.Resource.Set {
+		field.Write("resource")
+		s.Resource.WriteJSON(j)
+	}
 	field.Write("type")
 	j.WriteString(s.Type)
 	j.WriteObjectEnd()
@@ -7174,24 +7681,39 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) ReadJSON(i *json.Iterator) error 
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "containerResource":
-			// Unsupported kind "pointer" for field "ContainerResource".
-			i.Skip()
+			s.ContainerResource.Reset()
+			if err := s.ContainerResource.ReadJSON(i); err != nil {
+				i.ReportError("Field ContainerResource", err.Error())
+				return false
+			}
 			return true
 		case "external":
-			// Unsupported kind "pointer" for field "External".
-			i.Skip()
+			s.External.Reset()
+			if err := s.External.ReadJSON(i); err != nil {
+				i.ReportError("Field External", err.Error())
+				return false
+			}
 			return true
 		case "object":
-			// Unsupported kind "pointer" for field "Object".
-			i.Skip()
+			s.Object.Reset()
+			if err := s.Object.ReadJSON(i); err != nil {
+				i.ReportError("Field Object", err.Error())
+				return false
+			}
 			return true
 		case "pods":
-			// Unsupported kind "pointer" for field "Pods".
-			i.Skip()
+			s.Pods.Reset()
+			if err := s.Pods.ReadJSON(i); err != nil {
+				i.ReportError("Field Pods", err.Error())
+				return false
+			}
 			return true
 		case "resource":
-			// Unsupported kind "pointer" for field "Resource".
-			i.Skip()
+			s.Resource.Reset()
+			if err := s.Resource.ReadJSON(i); err != nil {
+				i.ReportError("Field Resource", err.Error())
+				return false
+			}
 			return true
 		case "type":
 			s.Type = i.ReadString()
@@ -7209,11 +7731,26 @@ func (s IoK8sAPIAutoscalingV2beta2MetricStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "ContainerResource".
-	// Unsupported kind "pointer" for field "External".
-	// Unsupported kind "pointer" for field "Object".
-	// Unsupported kind "pointer" for field "Pods".
-	// Unsupported kind "pointer" for field "Resource".
+	if s.ContainerResource.Set {
+		field.Write("containerResource")
+		s.ContainerResource.WriteJSON(j)
+	}
+	if s.External.Set {
+		field.Write("external")
+		s.External.WriteJSON(j)
+	}
+	if s.Object.Set {
+		field.Write("object")
+		s.Object.WriteJSON(j)
+	}
+	if s.Pods.Set {
+		field.Write("pods")
+		s.Pods.WriteJSON(j)
+	}
+	if s.Resource.Set {
+		field.Write("resource")
+		s.Resource.WriteJSON(j)
+	}
 	field.Write("type")
 	j.WriteString(s.Type)
 	j.WriteObjectEnd()
@@ -7246,24 +7783,39 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) ReadJSON(i *json.Iterator) erro
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "containerResource":
-			// Unsupported kind "pointer" for field "ContainerResource".
-			i.Skip()
+			s.ContainerResource.Reset()
+			if err := s.ContainerResource.ReadJSON(i); err != nil {
+				i.ReportError("Field ContainerResource", err.Error())
+				return false
+			}
 			return true
 		case "external":
-			// Unsupported kind "pointer" for field "External".
-			i.Skip()
+			s.External.Reset()
+			if err := s.External.ReadJSON(i); err != nil {
+				i.ReportError("Field External", err.Error())
+				return false
+			}
 			return true
 		case "object":
-			// Unsupported kind "pointer" for field "Object".
-			i.Skip()
+			s.Object.Reset()
+			if err := s.Object.ReadJSON(i); err != nil {
+				i.ReportError("Field Object", err.Error())
+				return false
+			}
 			return true
 		case "pods":
-			// Unsupported kind "pointer" for field "Pods".
-			i.Skip()
+			s.Pods.Reset()
+			if err := s.Pods.ReadJSON(i); err != nil {
+				i.ReportError("Field Pods", err.Error())
+				return false
+			}
 			return true
 		case "resource":
-			// Unsupported kind "pointer" for field "Resource".
-			i.Skip()
+			s.Resource.Reset()
+			if err := s.Resource.ReadJSON(i); err != nil {
+				i.ReportError("Field Resource", err.Error())
+				return false
+			}
 			return true
 		case "type":
 			s.Type = i.ReadString()
@@ -7778,9 +8330,18 @@ func (s IoK8sAPIBatchV1CronJob) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -7825,16 +8386,25 @@ func (s *IoK8sAPIBatchV1CronJob) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -7858,7 +8428,10 @@ func (s IoK8sAPIBatchV1CronJobList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -7907,8 +8480,11 @@ func (s *IoK8sAPIBatchV1CronJobList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -8098,9 +8674,18 @@ func (s IoK8sAPIBatchV1Job) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -8145,16 +8730,25 @@ func (s *IoK8sAPIBatchV1Job) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -8262,7 +8856,10 @@ func (s IoK8sAPIBatchV1JobList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -8311,8 +8908,11 @@ func (s *IoK8sAPIBatchV1JobList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -8351,7 +8951,10 @@ func (s IoK8sAPIBatchV1JobSpec) WriteJSON(j *json.Stream) {
 		field.Write("parallelism")
 		s.Parallelism.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Selector".
+	if s.Selector.Set {
+		field.Write("selector")
+		s.Selector.WriteJSON(j)
+	}
 	if s.Suspend.Set {
 		field.Write("suspend")
 		s.Suspend.WriteJSON(j)
@@ -8434,8 +9037,11 @@ func (s *IoK8sAPIBatchV1JobSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "selector":
-			// Unsupported kind "pointer" for field "Selector".
-			i.Skip()
+			s.Selector.Reset()
+			if err := s.Selector.ReadJSON(i); err != nil {
+				i.ReportError("Field Selector", err.Error())
+				return false
+			}
 			return true
 		case "suspend":
 			s.Suspend.Reset()
@@ -8489,7 +9095,10 @@ func (s IoK8sAPIBatchV1JobStatus) WriteJSON(j *json.Stream) {
 		field.Write("succeeded")
 		s.Succeeded.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "UncountedTerminatedPods".
+	if s.UncountedTerminatedPods.Set {
+		field.Write("uncountedTerminatedPods")
+		s.UncountedTerminatedPods.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -8560,8 +9169,11 @@ func (s *IoK8sAPIBatchV1JobStatus) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "uncountedTerminatedPods":
-			// Unsupported kind "pointer" for field "UncountedTerminatedPods".
-			i.Skip()
+			s.UncountedTerminatedPods.Reset()
+			if err := s.UncountedTerminatedPods.ReadJSON(i); err != nil {
+				i.ReportError("Field UncountedTerminatedPods", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -8576,8 +9188,14 @@ func (s IoK8sAPIBatchV1JobTemplateSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -8608,12 +9226,18 @@ func (s *IoK8sAPIBatchV1JobTemplateSpec) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -8688,9 +9312,18 @@ func (s IoK8sAPIBatchV1beta1CronJob) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -8735,16 +9368,25 @@ func (s *IoK8sAPIBatchV1beta1CronJob) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -8768,7 +9410,10 @@ func (s IoK8sAPIBatchV1beta1CronJobList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -8817,8 +9462,11 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -9000,8 +9648,14 @@ func (s IoK8sAPIBatchV1beta1JobTemplateSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -9032,12 +9686,18 @@ func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -9060,10 +9720,16 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequest) WriteJSON(j *json.Strea
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	field.Write("spec")
 	s.Spec.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Status".
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -9108,8 +9774,11 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) ReadJSON(i *json.Itera
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
 			if err := s.Spec.ReadJSON(i); err != nil {
@@ -9118,8 +9787,11 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) ReadJSON(i *json.Itera
 			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -9227,7 +9899,10 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestList) WriteJSON(j *json.S
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -9276,8 +9951,11 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) ReadJSON(i *json.I
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -9452,8 +10130,14 @@ func (s IoK8sAPICoordinationV1Lease) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -9498,12 +10182,18 @@ func (s *IoK8sAPICoordinationV1Lease) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -9527,7 +10217,10 @@ func (s IoK8sAPICoordinationV1LeaseList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -9576,8 +10269,11 @@ func (s *IoK8sAPICoordinationV1LeaseList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -9757,9 +10453,18 @@ func (s IoK8sAPICoreV1Affinity) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "NodeAffinity".
-	// Unsupported kind "pointer" for field "PodAffinity".
-	// Unsupported kind "pointer" for field "PodAntiAffinity".
+	if s.NodeAffinity.Set {
+		field.Write("nodeAffinity")
+		s.NodeAffinity.WriteJSON(j)
+	}
+	if s.PodAffinity.Set {
+		field.Write("podAffinity")
+		s.PodAffinity.WriteJSON(j)
+	}
+	if s.PodAntiAffinity.Set {
+		field.Write("podAntiAffinity")
+		s.PodAntiAffinity.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -9790,16 +10495,25 @@ func (s *IoK8sAPICoreV1Affinity) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "nodeAffinity":
-			// Unsupported kind "pointer" for field "NodeAffinity".
-			i.Skip()
+			s.NodeAffinity.Reset()
+			if err := s.NodeAffinity.ReadJSON(i); err != nil {
+				i.ReportError("Field NodeAffinity", err.Error())
+				return false
+			}
 			return true
 		case "podAffinity":
-			// Unsupported kind "pointer" for field "PodAffinity".
-			i.Skip()
+			s.PodAffinity.Reset()
+			if err := s.PodAffinity.ReadJSON(i); err != nil {
+				i.ReportError("Field PodAffinity", err.Error())
+				return false
+			}
 			return true
 		case "podAntiAffinity":
-			// Unsupported kind "pointer" for field "PodAntiAffinity".
-			i.Skip()
+			s.PodAntiAffinity.Reset()
+			if err := s.PodAntiAffinity.ReadJSON(i); err != nil {
+				i.ReportError("Field PodAntiAffinity", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -10099,16 +10813,28 @@ func (s IoK8sAPICoreV1CSIPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "ControllerExpandSecretRef".
-	// Unsupported kind "pointer" for field "ControllerPublishSecretRef".
+	if s.ControllerExpandSecretRef.Set {
+		field.Write("controllerExpandSecretRef")
+		s.ControllerExpandSecretRef.WriteJSON(j)
+	}
+	if s.ControllerPublishSecretRef.Set {
+		field.Write("controllerPublishSecretRef")
+		s.ControllerPublishSecretRef.WriteJSON(j)
+	}
 	field.Write("driver")
 	j.WriteString(s.Driver)
 	if s.FsType.Set {
 		field.Write("fsType")
 		s.FsType.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "NodePublishSecretRef".
-	// Unsupported kind "pointer" for field "NodeStageSecretRef".
+	if s.NodePublishSecretRef.Set {
+		field.Write("nodePublishSecretRef")
+		s.NodePublishSecretRef.WriteJSON(j)
+	}
+	if s.NodeStageSecretRef.Set {
+		field.Write("nodeStageSecretRef")
+		s.NodeStageSecretRef.WriteJSON(j)
+	}
 	if s.ReadOnly.Set {
 		field.Write("readOnly")
 		s.ReadOnly.WriteJSON(j)
@@ -10146,12 +10872,18 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) ReadJSON(i *json.Iterator) err
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "controllerExpandSecretRef":
-			// Unsupported kind "pointer" for field "ControllerExpandSecretRef".
-			i.Skip()
+			s.ControllerExpandSecretRef.Reset()
+			if err := s.ControllerExpandSecretRef.ReadJSON(i); err != nil {
+				i.ReportError("Field ControllerExpandSecretRef", err.Error())
+				return false
+			}
 			return true
 		case "controllerPublishSecretRef":
-			// Unsupported kind "pointer" for field "ControllerPublishSecretRef".
-			i.Skip()
+			s.ControllerPublishSecretRef.Reset()
+			if err := s.ControllerPublishSecretRef.ReadJSON(i); err != nil {
+				i.ReportError("Field ControllerPublishSecretRef", err.Error())
+				return false
+			}
 			return true
 		case "driver":
 			s.Driver = i.ReadString()
@@ -10164,12 +10896,18 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) ReadJSON(i *json.Iterator) err
 			}
 			return true
 		case "nodePublishSecretRef":
-			// Unsupported kind "pointer" for field "NodePublishSecretRef".
-			i.Skip()
+			s.NodePublishSecretRef.Reset()
+			if err := s.NodePublishSecretRef.ReadJSON(i); err != nil {
+				i.ReportError("Field NodePublishSecretRef", err.Error())
+				return false
+			}
 			return true
 		case "nodeStageSecretRef":
-			// Unsupported kind "pointer" for field "NodeStageSecretRef".
-			i.Skip()
+			s.NodeStageSecretRef.Reset()
+			if err := s.NodeStageSecretRef.ReadJSON(i); err != nil {
+				i.ReportError("Field NodeStageSecretRef", err.Error())
+				return false
+			}
 			return true
 		case "readOnly":
 			s.ReadOnly.Reset()
@@ -10204,7 +10942,10 @@ func (s IoK8sAPICoreV1CSIVolumeSource) WriteJSON(j *json.Stream) {
 		field.Write("fsType")
 		s.FsType.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "NodePublishSecretRef".
+	if s.NodePublishSecretRef.Set {
+		field.Write("nodePublishSecretRef")
+		s.NodePublishSecretRef.WriteJSON(j)
+	}
 	if s.ReadOnly.Set {
 		field.Write("readOnly")
 		s.ReadOnly.WriteJSON(j)
@@ -10250,8 +10991,11 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "nodePublishSecretRef":
-			// Unsupported kind "pointer" for field "NodePublishSecretRef".
-			i.Skip()
+			s.NodePublishSecretRef.Reset()
+			if err := s.NodePublishSecretRef.ReadJSON(i); err != nil {
+				i.ReportError("Field NodePublishSecretRef", err.Error())
+				return false
+			}
 			return true
 		case "readOnly":
 			s.ReadOnly.Reset()
@@ -10342,7 +11086,10 @@ func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) WriteJSON(j *json.Stream) {
 		field.Write("secretFile")
 		s.SecretFile.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SecretRef".
+	if s.SecretRef.Set {
+		field.Write("secretRef")
+		s.SecretRef.WriteJSON(j)
+	}
 	if s.User.Set {
 		field.Write("user")
 		s.User.WriteJSON(j)
@@ -10402,8 +11149,11 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) ReadJSON(i *json.Iterator) 
 			}
 			return true
 		case "secretRef":
-			// Unsupported kind "pointer" for field "SecretRef".
-			i.Skip()
+			s.SecretRef.Reset()
+			if err := s.SecretRef.ReadJSON(i); err != nil {
+				i.ReportError("Field SecretRef", err.Error())
+				return false
+			}
 			return true
 		case "user":
 			s.User.Reset()
@@ -10438,7 +11188,10 @@ func (s IoK8sAPICoreV1CephFSVolumeSource) WriteJSON(j *json.Stream) {
 		field.Write("secretFile")
 		s.SecretFile.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SecretRef".
+	if s.SecretRef.Set {
+		field.Write("secretRef")
+		s.SecretRef.WriteJSON(j)
+	}
 	if s.User.Set {
 		field.Write("user")
 		s.User.WriteJSON(j)
@@ -10498,8 +11251,11 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "secretRef":
-			// Unsupported kind "pointer" for field "SecretRef".
-			i.Skip()
+			s.SecretRef.Reset()
+			if err := s.SecretRef.ReadJSON(i); err != nil {
+				i.ReportError("Field SecretRef", err.Error())
+				return false
+			}
 			return true
 		case "user":
 			s.User.Reset()
@@ -10529,7 +11285,10 @@ func (s IoK8sAPICoreV1CinderPersistentVolumeSource) WriteJSON(j *json.Stream) {
 		field.Write("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SecretRef".
+	if s.SecretRef.Set {
+		field.Write("secretRef")
+		s.SecretRef.WriteJSON(j)
+	}
 	field.Write("volumeID")
 	j.WriteString(s.VolumeID)
 	j.WriteObjectEnd()
@@ -10576,8 +11335,11 @@ func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) ReadJSON(i *json.Iterator) 
 			}
 			return true
 		case "secretRef":
-			// Unsupported kind "pointer" for field "SecretRef".
-			i.Skip()
+			s.SecretRef.Reset()
+			if err := s.SecretRef.ReadJSON(i); err != nil {
+				i.ReportError("Field SecretRef", err.Error())
+				return false
+			}
 			return true
 		case "volumeID":
 			s.VolumeID = i.ReadString()
@@ -10603,7 +11365,10 @@ func (s IoK8sAPICoreV1CinderVolumeSource) WriteJSON(j *json.Stream) {
 		field.Write("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SecretRef".
+	if s.SecretRef.Set {
+		field.Write("secretRef")
+		s.SecretRef.WriteJSON(j)
+	}
 	field.Write("volumeID")
 	j.WriteString(s.VolumeID)
 	j.WriteObjectEnd()
@@ -10650,8 +11415,11 @@ func (s *IoK8sAPICoreV1CinderVolumeSource) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "secretRef":
-			// Unsupported kind "pointer" for field "SecretRef".
-			i.Skip()
+			s.SecretRef.Reset()
+			if err := s.SecretRef.ReadJSON(i); err != nil {
+				i.ReportError("Field SecretRef", err.Error())
+				return false
+			}
 			return true
 		case "volumeID":
 			s.VolumeID = i.ReadString()
@@ -10805,7 +11573,10 @@ func (s IoK8sAPICoreV1ComponentStatus) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -10854,8 +11625,11 @@ func (s *IoK8sAPICoreV1ComponentStatus) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -10879,7 +11653,10 @@ func (s IoK8sAPICoreV1ComponentStatusList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -10928,8 +11705,11 @@ func (s *IoK8sAPICoreV1ComponentStatusList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -10958,7 +11738,10 @@ func (s IoK8sAPICoreV1ConfigMap) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -11018,8 +11801,11 @@ func (s *IoK8sAPICoreV1ConfigMap) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -11176,7 +11962,10 @@ func (s IoK8sAPICoreV1ConfigMapList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -11225,8 +12014,11 @@ func (s *IoK8sAPICoreV1ConfigMapList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -11481,15 +12273,33 @@ func (s IoK8sAPICoreV1Container) WriteJSON(j *json.Stream) {
 		field.Write("imagePullPolicy")
 		s.ImagePullPolicy.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Lifecycle".
-	// Unsupported kind "pointer" for field "LivenessProbe".
+	if s.Lifecycle.Set {
+		field.Write("lifecycle")
+		s.Lifecycle.WriteJSON(j)
+	}
+	if s.LivenessProbe.Set {
+		field.Write("livenessProbe")
+		s.LivenessProbe.WriteJSON(j)
+	}
 	field.Write("name")
 	j.WriteString(s.Name)
 	// Unsupported kind "pointer" for field "Ports".
-	// Unsupported kind "pointer" for field "ReadinessProbe".
-	// Unsupported kind "pointer" for field "Resources".
-	// Unsupported kind "pointer" for field "SecurityContext".
-	// Unsupported kind "pointer" for field "StartupProbe".
+	if s.ReadinessProbe.Set {
+		field.Write("readinessProbe")
+		s.ReadinessProbe.WriteJSON(j)
+	}
+	if s.Resources.Set {
+		field.Write("resources")
+		s.Resources.WriteJSON(j)
+	}
+	if s.SecurityContext.Set {
+		field.Write("securityContext")
+		s.SecurityContext.WriteJSON(j)
+	}
+	if s.StartupProbe.Set {
+		field.Write("startupProbe")
+		s.StartupProbe.WriteJSON(j)
+	}
 	if s.Stdin.Set {
 		field.Write("stdin")
 		s.Stdin.WriteJSON(j)
@@ -11576,12 +12386,18 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "lifecycle":
-			// Unsupported kind "pointer" for field "Lifecycle".
-			i.Skip()
+			s.Lifecycle.Reset()
+			if err := s.Lifecycle.ReadJSON(i); err != nil {
+				i.ReportError("Field Lifecycle", err.Error())
+				return false
+			}
 			return true
 		case "livenessProbe":
-			// Unsupported kind "pointer" for field "LivenessProbe".
-			i.Skip()
+			s.LivenessProbe.Reset()
+			if err := s.LivenessProbe.ReadJSON(i); err != nil {
+				i.ReportError("Field LivenessProbe", err.Error())
+				return false
+			}
 			return true
 		case "name":
 			s.Name = i.ReadString()
@@ -11591,20 +12407,32 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "readinessProbe":
-			// Unsupported kind "pointer" for field "ReadinessProbe".
-			i.Skip()
+			s.ReadinessProbe.Reset()
+			if err := s.ReadinessProbe.ReadJSON(i); err != nil {
+				i.ReportError("Field ReadinessProbe", err.Error())
+				return false
+			}
 			return true
 		case "resources":
-			// Unsupported kind "pointer" for field "Resources".
-			i.Skip()
+			s.Resources.Reset()
+			if err := s.Resources.ReadJSON(i); err != nil {
+				i.ReportError("Field Resources", err.Error())
+				return false
+			}
 			return true
 		case "securityContext":
-			// Unsupported kind "pointer" for field "SecurityContext".
-			i.Skip()
+			s.SecurityContext.Reset()
+			if err := s.SecurityContext.ReadJSON(i); err != nil {
+				i.ReportError("Field SecurityContext", err.Error())
+				return false
+			}
 			return true
 		case "startupProbe":
-			// Unsupported kind "pointer" for field "StartupProbe".
-			i.Skip()
+			s.StartupProbe.Reset()
+			if err := s.StartupProbe.ReadJSON(i); err != nil {
+				i.ReportError("Field StartupProbe", err.Error())
+				return false
+			}
 			return true
 		case "stdin":
 			s.Stdin.Reset()
@@ -11818,9 +12646,18 @@ func (s IoK8sAPICoreV1ContainerState) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Running".
-	// Unsupported kind "pointer" for field "Terminated".
-	// Unsupported kind "pointer" for field "Waiting".
+	if s.Running.Set {
+		field.Write("running")
+		s.Running.WriteJSON(j)
+	}
+	if s.Terminated.Set {
+		field.Write("terminated")
+		s.Terminated.WriteJSON(j)
+	}
+	if s.Waiting.Set {
+		field.Write("waiting")
+		s.Waiting.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -11851,16 +12688,25 @@ func (s *IoK8sAPICoreV1ContainerState) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "running":
-			// Unsupported kind "pointer" for field "Running".
-			i.Skip()
+			s.Running.Reset()
+			if err := s.Running.ReadJSON(i); err != nil {
+				i.ReportError("Field Running", err.Error())
+				return false
+			}
 			return true
 		case "terminated":
-			// Unsupported kind "pointer" for field "Terminated".
-			i.Skip()
+			s.Terminated.Reset()
+			if err := s.Terminated.ReadJSON(i); err != nil {
+				i.ReportError("Field Terminated", err.Error())
+				return false
+			}
 			return true
 		case "waiting":
-			// Unsupported kind "pointer" for field "Waiting".
-			i.Skip()
+			s.Waiting.Reset()
+			if err := s.Waiting.ReadJSON(i); err != nil {
+				i.ReportError("Field Waiting", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -12095,7 +12941,10 @@ func (s IoK8sAPICoreV1ContainerStatus) WriteJSON(j *json.Stream) {
 	j.WriteString(s.Image)
 	field.Write("imageID")
 	j.WriteString(s.ImageID)
-	// Unsupported kind "pointer" for field "LastState".
+	if s.LastState.Set {
+		field.Write("lastState")
+		s.LastState.WriteJSON(j)
+	}
 	field.Write("name")
 	j.WriteString(s.Name)
 	field.Write("ready")
@@ -12106,7 +12955,10 @@ func (s IoK8sAPICoreV1ContainerStatus) WriteJSON(j *json.Stream) {
 		field.Write("started")
 		s.Started.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "State".
+	if s.State.Set {
+		field.Write("state")
+		s.State.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -12150,8 +13002,11 @@ func (s *IoK8sAPICoreV1ContainerStatus) ReadJSON(i *json.Iterator) error {
 			s.ImageID = i.ReadString()
 			return i.Error == nil
 		case "lastState":
-			// Unsupported kind "pointer" for field "LastState".
-			i.Skip()
+			s.LastState.Reset()
+			if err := s.LastState.ReadJSON(i); err != nil {
+				i.ReportError("Field LastState", err.Error())
+				return false
+			}
 			return true
 		case "name":
 			s.Name = i.ReadString()
@@ -12170,8 +13025,11 @@ func (s *IoK8sAPICoreV1ContainerStatus) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "state":
-			// Unsupported kind "pointer" for field "State".
-			i.Skip()
+			s.State.Reset()
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -12280,14 +13138,20 @@ func (s IoK8sAPICoreV1DownwardAPIVolumeFile) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "FieldRef".
+	if s.FieldRef.Set {
+		field.Write("fieldRef")
+		s.FieldRef.WriteJSON(j)
+	}
 	if s.Mode.Set {
 		field.Write("mode")
 		s.Mode.WriteJSON(j)
 	}
 	field.Write("path")
 	j.WriteString(s.Path)
-	// Unsupported kind "pointer" for field "ResourceFieldRef".
+	if s.ResourceFieldRef.Set {
+		field.Write("resourceFieldRef")
+		s.ResourceFieldRef.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -12318,8 +13182,11 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "fieldRef":
-			// Unsupported kind "pointer" for field "FieldRef".
-			i.Skip()
+			s.FieldRef.Reset()
+			if err := s.FieldRef.ReadJSON(i); err != nil {
+				i.ReportError("Field FieldRef", err.Error())
+				return false
+			}
 			return true
 		case "mode":
 			s.Mode.Reset()
@@ -12332,8 +13199,11 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) ReadJSON(i *json.Iterator) error {
 			s.Path = i.ReadString()
 			return i.Error == nil
 		case "resourceFieldRef":
-			// Unsupported kind "pointer" for field "ResourceFieldRef".
-			i.Skip()
+			s.ResourceFieldRef.Reset()
+			if err := s.ResourceFieldRef.ReadJSON(i); err != nil {
+				i.ReportError("Field ResourceFieldRef", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -12474,7 +13344,10 @@ func (s IoK8sAPICoreV1EndpointAddress) WriteJSON(j *json.Stream) {
 		field.Write("nodeName")
 		s.NodeName.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "TargetRef".
+	if s.TargetRef.Set {
+		field.Write("targetRef")
+		s.TargetRef.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -12522,8 +13395,11 @@ func (s *IoK8sAPICoreV1EndpointAddress) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "targetRef":
-			// Unsupported kind "pointer" for field "TargetRef".
-			i.Skip()
+			s.TargetRef.Reset()
+			if err := s.TargetRef.ReadJSON(i); err != nil {
+				i.ReportError("Field TargetRef", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -12683,7 +13559,10 @@ func (s IoK8sAPICoreV1Endpoints) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Subsets".
 	j.WriteObjectEnd()
 }
@@ -12729,8 +13608,11 @@ func (s *IoK8sAPICoreV1Endpoints) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "subsets":
 			// Unsupported kind "pointer" for field "Subsets".
@@ -12758,7 +13640,10 @@ func (s IoK8sAPICoreV1EndpointsList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -12807,8 +13692,11 @@ func (s *IoK8sAPICoreV1EndpointsList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -12823,12 +13711,18 @@ func (s IoK8sAPICoreV1EnvFromSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "ConfigMapRef".
+	if s.ConfigMapRef.Set {
+		field.Write("configMapRef")
+		s.ConfigMapRef.WriteJSON(j)
+	}
 	if s.Prefix.Set {
 		field.Write("prefix")
 		s.Prefix.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SecretRef".
+	if s.SecretRef.Set {
+		field.Write("secretRef")
+		s.SecretRef.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -12859,8 +13753,11 @@ func (s *IoK8sAPICoreV1EnvFromSource) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "configMapRef":
-			// Unsupported kind "pointer" for field "ConfigMapRef".
-			i.Skip()
+			s.ConfigMapRef.Reset()
+			if err := s.ConfigMapRef.ReadJSON(i); err != nil {
+				i.ReportError("Field ConfigMapRef", err.Error())
+				return false
+			}
 			return true
 		case "prefix":
 			s.Prefix.Reset()
@@ -12870,8 +13767,11 @@ func (s *IoK8sAPICoreV1EnvFromSource) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "secretRef":
-			// Unsupported kind "pointer" for field "SecretRef".
-			i.Skip()
+			s.SecretRef.Reset()
+			if err := s.SecretRef.ReadJSON(i); err != nil {
+				i.ReportError("Field SecretRef", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -12892,7 +13792,10 @@ func (s IoK8sAPICoreV1EnvVar) WriteJSON(j *json.Stream) {
 		field.Write("value")
 		s.Value.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "ValueFrom".
+	if s.ValueFrom.Set {
+		field.Write("valueFrom")
+		s.ValueFrom.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -12933,8 +13836,11 @@ func (s *IoK8sAPICoreV1EnvVar) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "valueFrom":
-			// Unsupported kind "pointer" for field "ValueFrom".
-			i.Skip()
+			s.ValueFrom.Reset()
+			if err := s.ValueFrom.ReadJSON(i); err != nil {
+				i.ReportError("Field ValueFrom", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -12949,10 +13855,22 @@ func (s IoK8sAPICoreV1EnvVarSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "ConfigMapKeyRef".
-	// Unsupported kind "pointer" for field "FieldRef".
-	// Unsupported kind "pointer" for field "ResourceFieldRef".
-	// Unsupported kind "pointer" for field "SecretKeyRef".
+	if s.ConfigMapKeyRef.Set {
+		field.Write("configMapKeyRef")
+		s.ConfigMapKeyRef.WriteJSON(j)
+	}
+	if s.FieldRef.Set {
+		field.Write("fieldRef")
+		s.FieldRef.WriteJSON(j)
+	}
+	if s.ResourceFieldRef.Set {
+		field.Write("resourceFieldRef")
+		s.ResourceFieldRef.WriteJSON(j)
+	}
+	if s.SecretKeyRef.Set {
+		field.Write("secretKeyRef")
+		s.SecretKeyRef.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -12983,20 +13901,32 @@ func (s *IoK8sAPICoreV1EnvVarSource) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "configMapKeyRef":
-			// Unsupported kind "pointer" for field "ConfigMapKeyRef".
-			i.Skip()
+			s.ConfigMapKeyRef.Reset()
+			if err := s.ConfigMapKeyRef.ReadJSON(i); err != nil {
+				i.ReportError("Field ConfigMapKeyRef", err.Error())
+				return false
+			}
 			return true
 		case "fieldRef":
-			// Unsupported kind "pointer" for field "FieldRef".
-			i.Skip()
+			s.FieldRef.Reset()
+			if err := s.FieldRef.ReadJSON(i); err != nil {
+				i.ReportError("Field FieldRef", err.Error())
+				return false
+			}
 			return true
 		case "resourceFieldRef":
-			// Unsupported kind "pointer" for field "ResourceFieldRef".
-			i.Skip()
+			s.ResourceFieldRef.Reset()
+			if err := s.ResourceFieldRef.ReadJSON(i); err != nil {
+				i.ReportError("Field ResourceFieldRef", err.Error())
+				return false
+			}
 			return true
 		case "secretKeyRef":
-			// Unsupported kind "pointer" for field "SecretKeyRef".
-			i.Skip()
+			s.SecretKeyRef.Reset()
+			if err := s.SecretKeyRef.ReadJSON(i); err != nil {
+				i.ReportError("Field SecretKeyRef", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -13023,15 +13953,33 @@ func (s IoK8sAPICoreV1EphemeralContainer) WriteJSON(j *json.Stream) {
 		field.Write("imagePullPolicy")
 		s.ImagePullPolicy.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Lifecycle".
-	// Unsupported kind "pointer" for field "LivenessProbe".
+	if s.Lifecycle.Set {
+		field.Write("lifecycle")
+		s.Lifecycle.WriteJSON(j)
+	}
+	if s.LivenessProbe.Set {
+		field.Write("livenessProbe")
+		s.LivenessProbe.WriteJSON(j)
+	}
 	field.Write("name")
 	j.WriteString(s.Name)
 	// Unsupported kind "pointer" for field "Ports".
-	// Unsupported kind "pointer" for field "ReadinessProbe".
-	// Unsupported kind "pointer" for field "Resources".
-	// Unsupported kind "pointer" for field "SecurityContext".
-	// Unsupported kind "pointer" for field "StartupProbe".
+	if s.ReadinessProbe.Set {
+		field.Write("readinessProbe")
+		s.ReadinessProbe.WriteJSON(j)
+	}
+	if s.Resources.Set {
+		field.Write("resources")
+		s.Resources.WriteJSON(j)
+	}
+	if s.SecurityContext.Set {
+		field.Write("securityContext")
+		s.SecurityContext.WriteJSON(j)
+	}
+	if s.StartupProbe.Set {
+		field.Write("startupProbe")
+		s.StartupProbe.WriteJSON(j)
+	}
 	if s.Stdin.Set {
 		field.Write("stdin")
 		s.Stdin.WriteJSON(j)
@@ -13122,12 +14070,18 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "lifecycle":
-			// Unsupported kind "pointer" for field "Lifecycle".
-			i.Skip()
+			s.Lifecycle.Reset()
+			if err := s.Lifecycle.ReadJSON(i); err != nil {
+				i.ReportError("Field Lifecycle", err.Error())
+				return false
+			}
 			return true
 		case "livenessProbe":
-			// Unsupported kind "pointer" for field "LivenessProbe".
-			i.Skip()
+			s.LivenessProbe.Reset()
+			if err := s.LivenessProbe.ReadJSON(i); err != nil {
+				i.ReportError("Field LivenessProbe", err.Error())
+				return false
+			}
 			return true
 		case "name":
 			s.Name = i.ReadString()
@@ -13137,20 +14091,32 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "readinessProbe":
-			// Unsupported kind "pointer" for field "ReadinessProbe".
-			i.Skip()
+			s.ReadinessProbe.Reset()
+			if err := s.ReadinessProbe.ReadJSON(i); err != nil {
+				i.ReportError("Field ReadinessProbe", err.Error())
+				return false
+			}
 			return true
 		case "resources":
-			// Unsupported kind "pointer" for field "Resources".
-			i.Skip()
+			s.Resources.Reset()
+			if err := s.Resources.ReadJSON(i); err != nil {
+				i.ReportError("Field Resources", err.Error())
+				return false
+			}
 			return true
 		case "securityContext":
-			// Unsupported kind "pointer" for field "SecurityContext".
-			i.Skip()
+			s.SecurityContext.Reset()
+			if err := s.SecurityContext.ReadJSON(i); err != nil {
+				i.ReportError("Field SecurityContext", err.Error())
+				return false
+			}
 			return true
 		case "startupProbe":
-			// Unsupported kind "pointer" for field "StartupProbe".
-			i.Skip()
+			s.StartupProbe.Reset()
+			if err := s.StartupProbe.ReadJSON(i); err != nil {
+				i.ReportError("Field StartupProbe", err.Error())
+				return false
+			}
 			return true
 		case "stdin":
 			s.Stdin.Reset()
@@ -13222,7 +14188,10 @@ func (s IoK8sAPICoreV1EphemeralVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "VolumeClaimTemplate".
+	if s.VolumeClaimTemplate.Set {
+		field.Write("volumeClaimTemplate")
+		s.VolumeClaimTemplate.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -13253,8 +14222,11 @@ func (s *IoK8sAPICoreV1EphemeralVolumeSource) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "volumeClaimTemplate":
-			// Unsupported kind "pointer" for field "VolumeClaimTemplate".
-			i.Skip()
+			s.VolumeClaimTemplate.Reset()
+			if err := s.VolumeClaimTemplate.ReadJSON(i); err != nil {
+				i.ReportError("Field VolumeClaimTemplate", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -13300,7 +14272,10 @@ func (s IoK8sAPICoreV1Event) WriteJSON(j *json.Stream) {
 		field.Write("reason")
 		s.Reason.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Related".
+	if s.Related.Set {
+		field.Write("related")
+		s.Related.WriteJSON(j)
+	}
 	if s.ReportingComponent.Set {
 		field.Write("reportingComponent")
 		s.ReportingComponent.WriteJSON(j)
@@ -13309,8 +14284,14 @@ func (s IoK8sAPICoreV1Event) WriteJSON(j *json.Stream) {
 		field.Write("reportingInstance")
 		s.ReportingInstance.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Series".
-	// Unsupported kind "pointer" for field "Source".
+	if s.Series.Set {
+		field.Write("series")
+		s.Series.WriteJSON(j)
+	}
+	if s.Source.Set {
+		field.Write("source")
+		s.Source.WriteJSON(j)
+	}
 	if s.Type.Set {
 		field.Write("type")
 		s.Type.WriteJSON(j)
@@ -13411,8 +14392,11 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "related":
-			// Unsupported kind "pointer" for field "Related".
-			i.Skip()
+			s.Related.Reset()
+			if err := s.Related.ReadJSON(i); err != nil {
+				i.ReportError("Field Related", err.Error())
+				return false
+			}
 			return true
 		case "reportingComponent":
 			s.ReportingComponent.Reset()
@@ -13429,12 +14413,18 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "series":
-			// Unsupported kind "pointer" for field "Series".
-			i.Skip()
+			s.Series.Reset()
+			if err := s.Series.ReadJSON(i); err != nil {
+				i.ReportError("Field Series", err.Error())
+				return false
+			}
 			return true
 		case "source":
-			// Unsupported kind "pointer" for field "Source".
-			i.Skip()
+			s.Source.Reset()
+			if err := s.Source.ReadJSON(i); err != nil {
+				i.ReportError("Field Source", err.Error())
+				return false
+			}
 			return true
 		case "type":
 			s.Type.Reset()
@@ -13465,7 +14455,10 @@ func (s IoK8sAPICoreV1EventList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -13514,8 +14507,11 @@ func (s *IoK8sAPICoreV1EventList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -13795,7 +14791,10 @@ func (s IoK8sAPICoreV1FlexPersistentVolumeSource) WriteJSON(j *json.Stream) {
 		field.Write("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SecretRef".
+	if s.SecretRef.Set {
+		field.Write("secretRef")
+		s.SecretRef.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -13847,8 +14846,11 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) ReadJSON(i *json.Iterator) er
 			}
 			return true
 		case "secretRef":
-			// Unsupported kind "pointer" for field "SecretRef".
-			i.Skip()
+			s.SecretRef.Reset()
+			if err := s.SecretRef.ReadJSON(i); err != nil {
+				i.ReportError("Field SecretRef", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -13874,7 +14876,10 @@ func (s IoK8sAPICoreV1FlexVolumeSource) WriteJSON(j *json.Stream) {
 		field.Write("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SecretRef".
+	if s.SecretRef.Set {
+		field.Write("secretRef")
+		s.SecretRef.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -13926,8 +14931,11 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "secretRef":
-			// Unsupported kind "pointer" for field "SecretRef".
-			i.Skip()
+			s.SecretRef.Reset()
+			if err := s.SecretRef.ReadJSON(i); err != nil {
+				i.ReportError("Field SecretRef", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -14429,9 +15437,18 @@ func (s IoK8sAPICoreV1Handler) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Exec".
-	// Unsupported kind "pointer" for field "HttpGet".
-	// Unsupported kind "pointer" for field "TcpSocket".
+	if s.Exec.Set {
+		field.Write("exec")
+		s.Exec.WriteJSON(j)
+	}
+	if s.HttpGet.Set {
+		field.Write("httpGet")
+		s.HttpGet.WriteJSON(j)
+	}
+	if s.TcpSocket.Set {
+		field.Write("tcpSocket")
+		s.TcpSocket.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -14462,16 +15479,25 @@ func (s *IoK8sAPICoreV1Handler) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "exec":
-			// Unsupported kind "pointer" for field "Exec".
-			i.Skip()
+			s.Exec.Reset()
+			if err := s.Exec.ReadJSON(i); err != nil {
+				i.ReportError("Field Exec", err.Error())
+				return false
+			}
 			return true
 		case "httpGet":
-			// Unsupported kind "pointer" for field "HttpGet".
-			i.Skip()
+			s.HttpGet.Reset()
+			if err := s.HttpGet.ReadJSON(i); err != nil {
+				i.ReportError("Field HttpGet", err.Error())
+				return false
+			}
 			return true
 		case "tcpSocket":
-			// Unsupported kind "pointer" for field "TcpSocket".
-			i.Skip()
+			s.TcpSocket.Reset()
+			if err := s.TcpSocket.ReadJSON(i); err != nil {
+				i.ReportError("Field TcpSocket", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -14631,7 +15657,10 @@ func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) WriteJSON(j *json.Stream) {
 		field.Write("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SecretRef".
+	if s.SecretRef.Set {
+		field.Write("secretRef")
+		s.SecretRef.WriteJSON(j)
+	}
 	field.Write("targetPortal")
 	j.WriteString(s.TargetPortal)
 	j.WriteObjectEnd()
@@ -14716,8 +15745,11 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) ReadJSON(i *json.Iterator) e
 			}
 			return true
 		case "secretRef":
-			// Unsupported kind "pointer" for field "SecretRef".
-			i.Skip()
+			s.SecretRef.Reset()
+			if err := s.SecretRef.ReadJSON(i); err != nil {
+				i.ReportError("Field SecretRef", err.Error())
+				return false
+			}
 			return true
 		case "targetPortal":
 			s.TargetPortal = i.ReadString()
@@ -14764,7 +15796,10 @@ func (s IoK8sAPICoreV1ISCSIVolumeSource) WriteJSON(j *json.Stream) {
 		field.Write("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SecretRef".
+	if s.SecretRef.Set {
+		field.Write("secretRef")
+		s.SecretRef.WriteJSON(j)
+	}
 	field.Write("targetPortal")
 	j.WriteString(s.TargetPortal)
 	j.WriteObjectEnd()
@@ -14849,8 +15884,11 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "secretRef":
-			// Unsupported kind "pointer" for field "SecretRef".
-			i.Skip()
+			s.SecretRef.Reset()
+			if err := s.SecretRef.ReadJSON(i); err != nil {
+				i.ReportError("Field SecretRef", err.Error())
+				return false
+			}
 			return true
 		case "targetPortal":
 			s.TargetPortal = i.ReadString()
@@ -14931,8 +15969,14 @@ func (s IoK8sAPICoreV1Lifecycle) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "PostStart".
-	// Unsupported kind "pointer" for field "PreStop".
+	if s.PostStart.Set {
+		field.Write("postStart")
+		s.PostStart.WriteJSON(j)
+	}
+	if s.PreStop.Set {
+		field.Write("preStop")
+		s.PreStop.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -14963,12 +16007,18 @@ func (s *IoK8sAPICoreV1Lifecycle) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "postStart":
-			// Unsupported kind "pointer" for field "PostStart".
-			i.Skip()
+			s.PostStart.Reset()
+			if err := s.PostStart.ReadJSON(i); err != nil {
+				i.ReportError("Field PostStart", err.Error())
+				return false
+			}
 			return true
 		case "preStop":
-			// Unsupported kind "pointer" for field "PreStop".
-			i.Skip()
+			s.PreStop.Reset()
+			if err := s.PreStop.ReadJSON(i); err != nil {
+				i.ReportError("Field PreStop", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -14991,8 +16041,14 @@ func (s IoK8sAPICoreV1LimitRange) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -15037,12 +16093,18 @@ func (s *IoK8sAPICoreV1LimitRange) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -15138,7 +16200,10 @@ func (s IoK8sAPICoreV1LimitRangeList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -15187,8 +16252,11 @@ func (s *IoK8sAPICoreV1LimitRangeList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -15548,9 +16616,18 @@ func (s IoK8sAPICoreV1Namespace) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -15595,16 +16672,25 @@ func (s *IoK8sAPICoreV1Namespace) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -15707,7 +16793,10 @@ func (s IoK8sAPICoreV1NamespaceList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -15756,8 +16845,11 @@ func (s *IoK8sAPICoreV1NamespaceList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -15885,9 +16977,18 @@ func (s IoK8sAPICoreV1Node) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -15932,16 +17033,25 @@ func (s *IoK8sAPICoreV1Node) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -16009,7 +17119,10 @@ func (s IoK8sAPICoreV1NodeAffinity) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	// Unsupported kind "pointer" for field "PreferredDuringSchedulingIgnoredDuringExecution".
-	// Unsupported kind "pointer" for field "RequiredDuringSchedulingIgnoredDuringExecution".
+	if s.RequiredDuringSchedulingIgnoredDuringExecution.Set {
+		field.Write("requiredDuringSchedulingIgnoredDuringExecution")
+		s.RequiredDuringSchedulingIgnoredDuringExecution.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -16044,8 +17157,11 @@ func (s *IoK8sAPICoreV1NodeAffinity) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "requiredDuringSchedulingIgnoredDuringExecution":
-			// Unsupported kind "pointer" for field "RequiredDuringSchedulingIgnoredDuringExecution".
-			i.Skip()
+			s.RequiredDuringSchedulingIgnoredDuringExecution.Reset()
+			if err := s.RequiredDuringSchedulingIgnoredDuringExecution.ReadJSON(i); err != nil {
+				i.ReportError("Field RequiredDuringSchedulingIgnoredDuringExecution", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -16144,7 +17260,10 @@ func (s IoK8sAPICoreV1NodeConfigSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "ConfigMap".
+	if s.ConfigMap.Set {
+		field.Write("configMap")
+		s.ConfigMap.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -16175,8 +17294,11 @@ func (s *IoK8sAPICoreV1NodeConfigSource) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "configMap":
-			// Unsupported kind "pointer" for field "ConfigMap".
-			i.Skip()
+			s.ConfigMap.Reset()
+			if err := s.ConfigMap.ReadJSON(i); err != nil {
+				i.ReportError("Field ConfigMap", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -16191,13 +17313,22 @@ func (s IoK8sAPICoreV1NodeConfigStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Active".
-	// Unsupported kind "pointer" for field "Assigned".
+	if s.Active.Set {
+		field.Write("active")
+		s.Active.WriteJSON(j)
+	}
+	if s.Assigned.Set {
+		field.Write("assigned")
+		s.Assigned.WriteJSON(j)
+	}
 	if s.Error.Set {
 		field.Write("error")
 		s.Error.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "LastKnownGood".
+	if s.LastKnownGood.Set {
+		field.Write("lastKnownGood")
+		s.LastKnownGood.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -16228,12 +17359,18 @@ func (s *IoK8sAPICoreV1NodeConfigStatus) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "active":
-			// Unsupported kind "pointer" for field "Active".
-			i.Skip()
+			s.Active.Reset()
+			if err := s.Active.ReadJSON(i); err != nil {
+				i.ReportError("Field Active", err.Error())
+				return false
+			}
 			return true
 		case "assigned":
-			// Unsupported kind "pointer" for field "Assigned".
-			i.Skip()
+			s.Assigned.Reset()
+			if err := s.Assigned.ReadJSON(i); err != nil {
+				i.ReportError("Field Assigned", err.Error())
+				return false
+			}
 			return true
 		case "error":
 			s.Error.Reset()
@@ -16243,8 +17380,11 @@ func (s *IoK8sAPICoreV1NodeConfigStatus) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "lastKnownGood":
-			// Unsupported kind "pointer" for field "LastKnownGood".
-			i.Skip()
+			s.LastKnownGood.Reset()
+			if err := s.LastKnownGood.ReadJSON(i); err != nil {
+				i.ReportError("Field LastKnownGood", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -16259,7 +17399,10 @@ func (s IoK8sAPICoreV1NodeDaemonEndpoints) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "KubeletEndpoint".
+	if s.KubeletEndpoint.Set {
+		field.Write("kubeletEndpoint")
+		s.KubeletEndpoint.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -16290,8 +17433,11 @@ func (s *IoK8sAPICoreV1NodeDaemonEndpoints) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "kubeletEndpoint":
-			// Unsupported kind "pointer" for field "KubeletEndpoint".
-			i.Skip()
+			s.KubeletEndpoint.Reset()
+			if err := s.KubeletEndpoint.ReadJSON(i); err != nil {
+				i.ReportError("Field KubeletEndpoint", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -16315,7 +17461,10 @@ func (s IoK8sAPICoreV1NodeList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -16364,8 +17513,11 @@ func (s *IoK8sAPICoreV1NodeList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -16536,7 +17688,10 @@ func (s IoK8sAPICoreV1NodeSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "ConfigSource".
+	if s.ConfigSource.Set {
+		field.Write("configSource")
+		s.ConfigSource.WriteJSON(j)
+	}
 	if s.ExternalID.Set {
 		field.Write("externalID")
 		s.ExternalID.WriteJSON(j)
@@ -16585,8 +17740,11 @@ func (s *IoK8sAPICoreV1NodeSpec) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "configSource":
-			// Unsupported kind "pointer" for field "ConfigSource".
-			i.Skip()
+			s.ConfigSource.Reset()
+			if err := s.ConfigSource.ReadJSON(i); err != nil {
+				i.ReportError("Field ConfigSource", err.Error())
+				return false
+			}
 			return true
 		case "externalID":
 			s.ExternalID.Reset()
@@ -16641,10 +17799,19 @@ func (s IoK8sAPICoreV1NodeStatus) WriteJSON(j *json.Stream) {
 	// Unsupported kind "pointer" for field "Allocatable".
 	// Unsupported kind "pointer" for field "Capacity".
 	// Unsupported kind "pointer" for field "Conditions".
-	// Unsupported kind "pointer" for field "Config".
-	// Unsupported kind "pointer" for field "DaemonEndpoints".
+	if s.Config.Set {
+		field.Write("config")
+		s.Config.WriteJSON(j)
+	}
+	if s.DaemonEndpoints.Set {
+		field.Write("daemonEndpoints")
+		s.DaemonEndpoints.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Images".
-	// Unsupported kind "pointer" for field "NodeInfo".
+	if s.NodeInfo.Set {
+		field.Write("nodeInfo")
+		s.NodeInfo.WriteJSON(j)
+	}
 	if s.Phase.Set {
 		field.Write("phase")
 		s.Phase.WriteJSON(j)
@@ -16697,20 +17864,29 @@ func (s *IoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "config":
-			// Unsupported kind "pointer" for field "Config".
-			i.Skip()
+			s.Config.Reset()
+			if err := s.Config.ReadJSON(i); err != nil {
+				i.ReportError("Field Config", err.Error())
+				return false
+			}
 			return true
 		case "daemonEndpoints":
-			// Unsupported kind "pointer" for field "DaemonEndpoints".
-			i.Skip()
+			s.DaemonEndpoints.Reset()
+			if err := s.DaemonEndpoints.ReadJSON(i); err != nil {
+				i.ReportError("Field DaemonEndpoints", err.Error())
+				return false
+			}
 			return true
 		case "images":
 			// Unsupported kind "pointer" for field "Images".
 			i.Skip()
 			return true
 		case "nodeInfo":
-			// Unsupported kind "pointer" for field "NodeInfo".
-			i.Skip()
+			s.NodeInfo.Reset()
+			if err := s.NodeInfo.ReadJSON(i); err != nil {
+				i.ReportError("Field NodeInfo", err.Error())
+				return false
+			}
 			return true
 		case "phase":
 			s.Phase.Reset()
@@ -17017,9 +18193,18 @@ func (s IoK8sAPICoreV1PersistentVolume) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -17064,16 +18249,25 @@ func (s *IoK8sAPICoreV1PersistentVolume) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -17096,9 +18290,18 @@ func (s IoK8sAPICoreV1PersistentVolumeClaim) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -17143,16 +18346,25 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaim) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -17260,7 +18472,10 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -17309,8 +18524,11 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) ReadJSON(i *json.Iterator) err
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -17326,10 +18544,22 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	// Unsupported kind "pointer" for field "AccessModes".
-	// Unsupported kind "pointer" for field "DataSource".
-	// Unsupported kind "pointer" for field "DataSourceRef".
-	// Unsupported kind "pointer" for field "Resources".
-	// Unsupported kind "pointer" for field "Selector".
+	if s.DataSource.Set {
+		field.Write("dataSource")
+		s.DataSource.WriteJSON(j)
+	}
+	if s.DataSourceRef.Set {
+		field.Write("dataSourceRef")
+		s.DataSourceRef.WriteJSON(j)
+	}
+	if s.Resources.Set {
+		field.Write("resources")
+		s.Resources.WriteJSON(j)
+	}
+	if s.Selector.Set {
+		field.Write("selector")
+		s.Selector.WriteJSON(j)
+	}
 	if s.StorageClassName.Set {
 		field.Write("storageClassName")
 		s.StorageClassName.WriteJSON(j)
@@ -17376,20 +18606,32 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) ReadJSON(i *json.Iterator) err
 			i.Skip()
 			return true
 		case "dataSource":
-			// Unsupported kind "pointer" for field "DataSource".
-			i.Skip()
+			s.DataSource.Reset()
+			if err := s.DataSource.ReadJSON(i); err != nil {
+				i.ReportError("Field DataSource", err.Error())
+				return false
+			}
 			return true
 		case "dataSourceRef":
-			// Unsupported kind "pointer" for field "DataSourceRef".
-			i.Skip()
+			s.DataSourceRef.Reset()
+			if err := s.DataSourceRef.ReadJSON(i); err != nil {
+				i.ReportError("Field DataSourceRef", err.Error())
+				return false
+			}
 			return true
 		case "resources":
-			// Unsupported kind "pointer" for field "Resources".
-			i.Skip()
+			s.Resources.Reset()
+			if err := s.Resources.ReadJSON(i); err != nil {
+				i.ReportError("Field Resources", err.Error())
+				return false
+			}
 			return true
 		case "selector":
-			// Unsupported kind "pointer" for field "Selector".
-			i.Skip()
+			s.Selector.Reset()
+			if err := s.Selector.ReadJSON(i); err != nil {
+				i.ReportError("Field Selector", err.Error())
+				return false
+			}
 			return true
 		case "storageClassName":
 			s.StorageClassName.Reset()
@@ -17493,7 +18735,10 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimTemplate) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	field.Write("spec")
 	s.Spec.WriteJSON(j)
 	j.WriteObjectEnd()
@@ -17526,8 +18771,11 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimTemplate) ReadJSON(i *json.Iterator)
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
 			if err := s.Spec.ReadJSON(i); err != nil {
@@ -17615,7 +18863,10 @@ func (s IoK8sAPICoreV1PersistentVolumeList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -17664,8 +18915,11 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -17681,44 +18935,116 @@ func (s IoK8sAPICoreV1PersistentVolumeSpec) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	// Unsupported kind "pointer" for field "AccessModes".
-	// Unsupported kind "pointer" for field "AwsElasticBlockStore".
-	// Unsupported kind "pointer" for field "AzureDisk".
-	// Unsupported kind "pointer" for field "AzureFile".
+	if s.AwsElasticBlockStore.Set {
+		field.Write("awsElasticBlockStore")
+		s.AwsElasticBlockStore.WriteJSON(j)
+	}
+	if s.AzureDisk.Set {
+		field.Write("azureDisk")
+		s.AzureDisk.WriteJSON(j)
+	}
+	if s.AzureFile.Set {
+		field.Write("azureFile")
+		s.AzureFile.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Capacity".
-	// Unsupported kind "pointer" for field "Cephfs".
-	// Unsupported kind "pointer" for field "Cinder".
-	// Unsupported kind "pointer" for field "ClaimRef".
-	// Unsupported kind "pointer" for field "Csi".
-	// Unsupported kind "pointer" for field "Fc".
-	// Unsupported kind "pointer" for field "FlexVolume".
-	// Unsupported kind "pointer" for field "Flocker".
-	// Unsupported kind "pointer" for field "GcePersistentDisk".
-	// Unsupported kind "pointer" for field "Glusterfs".
-	// Unsupported kind "pointer" for field "HostPath".
-	// Unsupported kind "pointer" for field "Iscsi".
-	// Unsupported kind "pointer" for field "Local".
+	if s.Cephfs.Set {
+		field.Write("cephfs")
+		s.Cephfs.WriteJSON(j)
+	}
+	if s.Cinder.Set {
+		field.Write("cinder")
+		s.Cinder.WriteJSON(j)
+	}
+	if s.ClaimRef.Set {
+		field.Write("claimRef")
+		s.ClaimRef.WriteJSON(j)
+	}
+	if s.Csi.Set {
+		field.Write("csi")
+		s.Csi.WriteJSON(j)
+	}
+	if s.Fc.Set {
+		field.Write("fc")
+		s.Fc.WriteJSON(j)
+	}
+	if s.FlexVolume.Set {
+		field.Write("flexVolume")
+		s.FlexVolume.WriteJSON(j)
+	}
+	if s.Flocker.Set {
+		field.Write("flocker")
+		s.Flocker.WriteJSON(j)
+	}
+	if s.GcePersistentDisk.Set {
+		field.Write("gcePersistentDisk")
+		s.GcePersistentDisk.WriteJSON(j)
+	}
+	if s.Glusterfs.Set {
+		field.Write("glusterfs")
+		s.Glusterfs.WriteJSON(j)
+	}
+	if s.HostPath.Set {
+		field.Write("hostPath")
+		s.HostPath.WriteJSON(j)
+	}
+	if s.Iscsi.Set {
+		field.Write("iscsi")
+		s.Iscsi.WriteJSON(j)
+	}
+	if s.Local.Set {
+		field.Write("local")
+		s.Local.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "MountOptions".
-	// Unsupported kind "pointer" for field "Nfs".
-	// Unsupported kind "pointer" for field "NodeAffinity".
+	if s.Nfs.Set {
+		field.Write("nfs")
+		s.Nfs.WriteJSON(j)
+	}
+	if s.NodeAffinity.Set {
+		field.Write("nodeAffinity")
+		s.NodeAffinity.WriteJSON(j)
+	}
 	if s.PersistentVolumeReclaimPolicy.Set {
 		field.Write("persistentVolumeReclaimPolicy")
 		s.PersistentVolumeReclaimPolicy.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "PhotonPersistentDisk".
-	// Unsupported kind "pointer" for field "PortworxVolume".
-	// Unsupported kind "pointer" for field "Quobyte".
-	// Unsupported kind "pointer" for field "Rbd".
-	// Unsupported kind "pointer" for field "ScaleIO".
+	if s.PhotonPersistentDisk.Set {
+		field.Write("photonPersistentDisk")
+		s.PhotonPersistentDisk.WriteJSON(j)
+	}
+	if s.PortworxVolume.Set {
+		field.Write("portworxVolume")
+		s.PortworxVolume.WriteJSON(j)
+	}
+	if s.Quobyte.Set {
+		field.Write("quobyte")
+		s.Quobyte.WriteJSON(j)
+	}
+	if s.Rbd.Set {
+		field.Write("rbd")
+		s.Rbd.WriteJSON(j)
+	}
+	if s.ScaleIO.Set {
+		field.Write("scaleIO")
+		s.ScaleIO.WriteJSON(j)
+	}
 	if s.StorageClassName.Set {
 		field.Write("storageClassName")
 		s.StorageClassName.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Storageos".
+	if s.Storageos.Set {
+		field.Write("storageos")
+		s.Storageos.WriteJSON(j)
+	}
 	if s.VolumeMode.Set {
 		field.Write("volumeMode")
 		s.VolumeMode.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "VsphereVolume".
+	if s.VsphereVolume.Set {
+		field.Write("vsphereVolume")
+		s.VsphereVolume.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -17753,80 +19079,131 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "awsElasticBlockStore":
-			// Unsupported kind "pointer" for field "AwsElasticBlockStore".
-			i.Skip()
+			s.AwsElasticBlockStore.Reset()
+			if err := s.AwsElasticBlockStore.ReadJSON(i); err != nil {
+				i.ReportError("Field AwsElasticBlockStore", err.Error())
+				return false
+			}
 			return true
 		case "azureDisk":
-			// Unsupported kind "pointer" for field "AzureDisk".
-			i.Skip()
+			s.AzureDisk.Reset()
+			if err := s.AzureDisk.ReadJSON(i); err != nil {
+				i.ReportError("Field AzureDisk", err.Error())
+				return false
+			}
 			return true
 		case "azureFile":
-			// Unsupported kind "pointer" for field "AzureFile".
-			i.Skip()
+			s.AzureFile.Reset()
+			if err := s.AzureFile.ReadJSON(i); err != nil {
+				i.ReportError("Field AzureFile", err.Error())
+				return false
+			}
 			return true
 		case "capacity":
 			// Unsupported kind "pointer" for field "Capacity".
 			i.Skip()
 			return true
 		case "cephfs":
-			// Unsupported kind "pointer" for field "Cephfs".
-			i.Skip()
+			s.Cephfs.Reset()
+			if err := s.Cephfs.ReadJSON(i); err != nil {
+				i.ReportError("Field Cephfs", err.Error())
+				return false
+			}
 			return true
 		case "cinder":
-			// Unsupported kind "pointer" for field "Cinder".
-			i.Skip()
+			s.Cinder.Reset()
+			if err := s.Cinder.ReadJSON(i); err != nil {
+				i.ReportError("Field Cinder", err.Error())
+				return false
+			}
 			return true
 		case "claimRef":
-			// Unsupported kind "pointer" for field "ClaimRef".
-			i.Skip()
+			s.ClaimRef.Reset()
+			if err := s.ClaimRef.ReadJSON(i); err != nil {
+				i.ReportError("Field ClaimRef", err.Error())
+				return false
+			}
 			return true
 		case "csi":
-			// Unsupported kind "pointer" for field "Csi".
-			i.Skip()
+			s.Csi.Reset()
+			if err := s.Csi.ReadJSON(i); err != nil {
+				i.ReportError("Field Csi", err.Error())
+				return false
+			}
 			return true
 		case "fc":
-			// Unsupported kind "pointer" for field "Fc".
-			i.Skip()
+			s.Fc.Reset()
+			if err := s.Fc.ReadJSON(i); err != nil {
+				i.ReportError("Field Fc", err.Error())
+				return false
+			}
 			return true
 		case "flexVolume":
-			// Unsupported kind "pointer" for field "FlexVolume".
-			i.Skip()
+			s.FlexVolume.Reset()
+			if err := s.FlexVolume.ReadJSON(i); err != nil {
+				i.ReportError("Field FlexVolume", err.Error())
+				return false
+			}
 			return true
 		case "flocker":
-			// Unsupported kind "pointer" for field "Flocker".
-			i.Skip()
+			s.Flocker.Reset()
+			if err := s.Flocker.ReadJSON(i); err != nil {
+				i.ReportError("Field Flocker", err.Error())
+				return false
+			}
 			return true
 		case "gcePersistentDisk":
-			// Unsupported kind "pointer" for field "GcePersistentDisk".
-			i.Skip()
+			s.GcePersistentDisk.Reset()
+			if err := s.GcePersistentDisk.ReadJSON(i); err != nil {
+				i.ReportError("Field GcePersistentDisk", err.Error())
+				return false
+			}
 			return true
 		case "glusterfs":
-			// Unsupported kind "pointer" for field "Glusterfs".
-			i.Skip()
+			s.Glusterfs.Reset()
+			if err := s.Glusterfs.ReadJSON(i); err != nil {
+				i.ReportError("Field Glusterfs", err.Error())
+				return false
+			}
 			return true
 		case "hostPath":
-			// Unsupported kind "pointer" for field "HostPath".
-			i.Skip()
+			s.HostPath.Reset()
+			if err := s.HostPath.ReadJSON(i); err != nil {
+				i.ReportError("Field HostPath", err.Error())
+				return false
+			}
 			return true
 		case "iscsi":
-			// Unsupported kind "pointer" for field "Iscsi".
-			i.Skip()
+			s.Iscsi.Reset()
+			if err := s.Iscsi.ReadJSON(i); err != nil {
+				i.ReportError("Field Iscsi", err.Error())
+				return false
+			}
 			return true
 		case "local":
-			// Unsupported kind "pointer" for field "Local".
-			i.Skip()
+			s.Local.Reset()
+			if err := s.Local.ReadJSON(i); err != nil {
+				i.ReportError("Field Local", err.Error())
+				return false
+			}
 			return true
 		case "mountOptions":
 			// Unsupported kind "pointer" for field "MountOptions".
 			i.Skip()
 			return true
 		case "nfs":
-			// Unsupported kind "pointer" for field "Nfs".
-			i.Skip()
+			s.Nfs.Reset()
+			if err := s.Nfs.ReadJSON(i); err != nil {
+				i.ReportError("Field Nfs", err.Error())
+				return false
+			}
 			return true
 		case "nodeAffinity":
-			// Unsupported kind "pointer" for field "NodeAffinity".
-			i.Skip()
+			s.NodeAffinity.Reset()
+			if err := s.NodeAffinity.ReadJSON(i); err != nil {
+				i.ReportError("Field NodeAffinity", err.Error())
+				return false
+			}
 			return true
 		case "persistentVolumeReclaimPolicy":
 			s.PersistentVolumeReclaimPolicy.Reset()
@@ -17836,24 +19213,39 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "photonPersistentDisk":
-			// Unsupported kind "pointer" for field "PhotonPersistentDisk".
-			i.Skip()
+			s.PhotonPersistentDisk.Reset()
+			if err := s.PhotonPersistentDisk.ReadJSON(i); err != nil {
+				i.ReportError("Field PhotonPersistentDisk", err.Error())
+				return false
+			}
 			return true
 		case "portworxVolume":
-			// Unsupported kind "pointer" for field "PortworxVolume".
-			i.Skip()
+			s.PortworxVolume.Reset()
+			if err := s.PortworxVolume.ReadJSON(i); err != nil {
+				i.ReportError("Field PortworxVolume", err.Error())
+				return false
+			}
 			return true
 		case "quobyte":
-			// Unsupported kind "pointer" for field "Quobyte".
-			i.Skip()
+			s.Quobyte.Reset()
+			if err := s.Quobyte.ReadJSON(i); err != nil {
+				i.ReportError("Field Quobyte", err.Error())
+				return false
+			}
 			return true
 		case "rbd":
-			// Unsupported kind "pointer" for field "Rbd".
-			i.Skip()
+			s.Rbd.Reset()
+			if err := s.Rbd.ReadJSON(i); err != nil {
+				i.ReportError("Field Rbd", err.Error())
+				return false
+			}
 			return true
 		case "scaleIO":
-			// Unsupported kind "pointer" for field "ScaleIO".
-			i.Skip()
+			s.ScaleIO.Reset()
+			if err := s.ScaleIO.ReadJSON(i); err != nil {
+				i.ReportError("Field ScaleIO", err.Error())
+				return false
+			}
 			return true
 		case "storageClassName":
 			s.StorageClassName.Reset()
@@ -17863,8 +19255,11 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "storageos":
-			// Unsupported kind "pointer" for field "Storageos".
-			i.Skip()
+			s.Storageos.Reset()
+			if err := s.Storageos.ReadJSON(i); err != nil {
+				i.ReportError("Field Storageos", err.Error())
+				return false
+			}
 			return true
 		case "volumeMode":
 			s.VolumeMode.Reset()
@@ -17874,8 +19269,11 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "vsphereVolume":
-			// Unsupported kind "pointer" for field "VsphereVolume".
-			i.Skip()
+			s.VsphereVolume.Reset()
+			if err := s.VsphereVolume.ReadJSON(i); err != nil {
+				i.ReportError("Field VsphereVolume", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -18031,9 +19429,18 @@ func (s IoK8sAPICoreV1Pod) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -18078,16 +19485,25 @@ func (s *IoK8sAPICoreV1Pod) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -18154,8 +19570,14 @@ func (s IoK8sAPICoreV1PodAffinityTerm) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "LabelSelector".
-	// Unsupported kind "pointer" for field "NamespaceSelector".
+	if s.LabelSelector.Set {
+		field.Write("labelSelector")
+		s.LabelSelector.WriteJSON(j)
+	}
+	if s.NamespaceSelector.Set {
+		field.Write("namespaceSelector")
+		s.NamespaceSelector.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Namespaces".
 	field.Write("topologyKey")
 	j.WriteString(s.TopologyKey)
@@ -18189,12 +19611,18 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "labelSelector":
-			// Unsupported kind "pointer" for field "LabelSelector".
-			i.Skip()
+			s.LabelSelector.Reset()
+			if err := s.LabelSelector.ReadJSON(i); err != nil {
+				i.ReportError("Field LabelSelector", err.Error())
+				return false
+			}
 			return true
 		case "namespaceSelector":
-			// Unsupported kind "pointer" for field "NamespaceSelector".
-			i.Skip()
+			s.NamespaceSelector.Reset()
+			if err := s.NamespaceSelector.ReadJSON(i); err != nil {
+				i.ReportError("Field NamespaceSelector", err.Error())
+				return false
+			}
 			return true
 		case "namespaces":
 			// Unsupported kind "pointer" for field "Namespaces".
@@ -18535,7 +19963,10 @@ func (s IoK8sAPICoreV1PodList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -18584,8 +20015,11 @@ func (s *IoK8sAPICoreV1PodList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -18667,11 +20101,20 @@ func (s IoK8sAPICoreV1PodSecurityContext) WriteJSON(j *json.Stream) {
 		field.Write("runAsUser")
 		s.RunAsUser.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SeLinuxOptions".
-	// Unsupported kind "pointer" for field "SeccompProfile".
+	if s.SeLinuxOptions.Set {
+		field.Write("seLinuxOptions")
+		s.SeLinuxOptions.WriteJSON(j)
+	}
+	if s.SeccompProfile.Set {
+		field.Write("seccompProfile")
+		s.SeccompProfile.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "SupplementalGroups".
 	// Unsupported kind "pointer" for field "Sysctls".
-	// Unsupported kind "pointer" for field "WindowsOptions".
+	if s.WindowsOptions.Set {
+		field.Write("windowsOptions")
+		s.WindowsOptions.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -18737,12 +20180,18 @@ func (s *IoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "seLinuxOptions":
-			// Unsupported kind "pointer" for field "SeLinuxOptions".
-			i.Skip()
+			s.SeLinuxOptions.Reset()
+			if err := s.SeLinuxOptions.ReadJSON(i); err != nil {
+				i.ReportError("Field SeLinuxOptions", err.Error())
+				return false
+			}
 			return true
 		case "seccompProfile":
-			// Unsupported kind "pointer" for field "SeccompProfile".
-			i.Skip()
+			s.SeccompProfile.Reset()
+			if err := s.SeccompProfile.ReadJSON(i); err != nil {
+				i.ReportError("Field SeccompProfile", err.Error())
+				return false
+			}
 			return true
 		case "supplementalGroups":
 			// Unsupported kind "pointer" for field "SupplementalGroups".
@@ -18753,8 +20202,11 @@ func (s *IoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "windowsOptions":
-			// Unsupported kind "pointer" for field "WindowsOptions".
-			i.Skip()
+			s.WindowsOptions.Reset()
+			if err := s.WindowsOptions.ReadJSON(i); err != nil {
+				i.ReportError("Field WindowsOptions", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -18773,13 +20225,19 @@ func (s IoK8sAPICoreV1PodSpec) WriteJSON(j *json.Stream) {
 		field.Write("activeDeadlineSeconds")
 		s.ActiveDeadlineSeconds.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Affinity".
+	if s.Affinity.Set {
+		field.Write("affinity")
+		s.Affinity.WriteJSON(j)
+	}
 	if s.AutomountServiceAccountToken.Set {
 		field.Write("automountServiceAccountToken")
 		s.AutomountServiceAccountToken.WriteJSON(j)
 	}
 	// Unsupported kind "array" for field "Containers".
-	// Unsupported kind "pointer" for field "DnsConfig".
+	if s.DnsConfig.Set {
+		field.Write("dnsConfig")
+		s.DnsConfig.WriteJSON(j)
+	}
 	if s.DnsPolicy.Set {
 		field.Write("dnsPolicy")
 		s.DnsPolicy.WriteJSON(j)
@@ -18839,7 +20297,10 @@ func (s IoK8sAPICoreV1PodSpec) WriteJSON(j *json.Stream) {
 		field.Write("schedulerName")
 		s.SchedulerName.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SecurityContext".
+	if s.SecurityContext.Set {
+		field.Write("securityContext")
+		s.SecurityContext.WriteJSON(j)
+	}
 	if s.ServiceAccount.Set {
 		field.Write("serviceAccount")
 		s.ServiceAccount.WriteJSON(j)
@@ -18904,8 +20365,11 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "affinity":
-			// Unsupported kind "pointer" for field "Affinity".
-			i.Skip()
+			s.Affinity.Reset()
+			if err := s.Affinity.ReadJSON(i); err != nil {
+				i.ReportError("Field Affinity", err.Error())
+				return false
+			}
 			return true
 		case "automountServiceAccountToken":
 			s.AutomountServiceAccountToken.Reset()
@@ -18919,8 +20383,11 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "dnsConfig":
-			// Unsupported kind "pointer" for field "DnsConfig".
-			i.Skip()
+			s.DnsConfig.Reset()
+			if err := s.DnsConfig.ReadJSON(i); err != nil {
+				i.ReportError("Field DnsConfig", err.Error())
+				return false
+			}
 			return true
 		case "dnsPolicy":
 			s.DnsPolicy.Reset()
@@ -19042,8 +20509,11 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "securityContext":
-			// Unsupported kind "pointer" for field "SecurityContext".
-			i.Skip()
+			s.SecurityContext.Reset()
+			if err := s.SecurityContext.ReadJSON(i); err != nil {
+				i.ReportError("Field SecurityContext", err.Error())
+				return false
+			}
 			return true
 		case "serviceAccount":
 			s.ServiceAccount.Reset()
@@ -19269,8 +20739,14 @@ func (s IoK8sAPICoreV1PodTemplate) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Template".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Template.Set {
+		field.Write("template")
+		s.Template.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -19315,12 +20791,18 @@ func (s *IoK8sAPICoreV1PodTemplate) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "template":
-			// Unsupported kind "pointer" for field "Template".
-			i.Skip()
+			s.Template.Reset()
+			if err := s.Template.ReadJSON(i); err != nil {
+				i.ReportError("Field Template", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -19344,7 +20826,10 @@ func (s IoK8sAPICoreV1PodTemplateList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -19393,8 +20878,11 @@ func (s *IoK8sAPICoreV1PodTemplateList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -19409,8 +20897,14 @@ func (s IoK8sAPICoreV1PodTemplateSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -19441,12 +20935,18 @@ func (s *IoK8sAPICoreV1PodTemplateSpec) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -19648,12 +21148,18 @@ func (s IoK8sAPICoreV1Probe) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Exec".
+	if s.Exec.Set {
+		field.Write("exec")
+		s.Exec.WriteJSON(j)
+	}
 	if s.FailureThreshold.Set {
 		field.Write("failureThreshold")
 		s.FailureThreshold.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "HttpGet".
+	if s.HttpGet.Set {
+		field.Write("httpGet")
+		s.HttpGet.WriteJSON(j)
+	}
 	if s.InitialDelaySeconds.Set {
 		field.Write("initialDelaySeconds")
 		s.InitialDelaySeconds.WriteJSON(j)
@@ -19666,7 +21172,10 @@ func (s IoK8sAPICoreV1Probe) WriteJSON(j *json.Stream) {
 		field.Write("successThreshold")
 		s.SuccessThreshold.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "TcpSocket".
+	if s.TcpSocket.Set {
+		field.Write("tcpSocket")
+		s.TcpSocket.WriteJSON(j)
+	}
 	if s.TerminationGracePeriodSeconds.Set {
 		field.Write("terminationGracePeriodSeconds")
 		s.TerminationGracePeriodSeconds.WriteJSON(j)
@@ -19705,8 +21214,11 @@ func (s *IoK8sAPICoreV1Probe) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "exec":
-			// Unsupported kind "pointer" for field "Exec".
-			i.Skip()
+			s.Exec.Reset()
+			if err := s.Exec.ReadJSON(i); err != nil {
+				i.ReportError("Field Exec", err.Error())
+				return false
+			}
 			return true
 		case "failureThreshold":
 			s.FailureThreshold.Reset()
@@ -19716,8 +21228,11 @@ func (s *IoK8sAPICoreV1Probe) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "httpGet":
-			// Unsupported kind "pointer" for field "HttpGet".
-			i.Skip()
+			s.HttpGet.Reset()
+			if err := s.HttpGet.ReadJSON(i); err != nil {
+				i.ReportError("Field HttpGet", err.Error())
+				return false
+			}
 			return true
 		case "initialDelaySeconds":
 			s.InitialDelaySeconds.Reset()
@@ -19741,8 +21256,11 @@ func (s *IoK8sAPICoreV1Probe) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "tcpSocket":
-			// Unsupported kind "pointer" for field "TcpSocket".
-			i.Skip()
+			s.TcpSocket.Reset()
+			if err := s.TcpSocket.ReadJSON(i); err != nil {
+				i.ReportError("Field TcpSocket", err.Error())
+				return false
+			}
 			return true
 		case "terminationGracePeriodSeconds":
 			s.TerminationGracePeriodSeconds.Reset()
@@ -19944,7 +21462,10 @@ func (s IoK8sAPICoreV1RBDPersistentVolumeSource) WriteJSON(j *json.Stream) {
 		field.Write("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SecretRef".
+	if s.SecretRef.Set {
+		field.Write("secretRef")
+		s.SecretRef.WriteJSON(j)
+	}
 	if s.User.Set {
 		field.Write("user")
 		s.User.WriteJSON(j)
@@ -20014,8 +21535,11 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) ReadJSON(i *json.Iterator) err
 			}
 			return true
 		case "secretRef":
-			// Unsupported kind "pointer" for field "SecretRef".
-			i.Skip()
+			s.SecretRef.Reset()
+			if err := s.SecretRef.ReadJSON(i); err != nil {
+				i.ReportError("Field SecretRef", err.Error())
+				return false
+			}
 			return true
 		case "user":
 			s.User.Reset()
@@ -20056,7 +21580,10 @@ func (s IoK8sAPICoreV1RBDVolumeSource) WriteJSON(j *json.Stream) {
 		field.Write("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SecretRef".
+	if s.SecretRef.Set {
+		field.Write("secretRef")
+		s.SecretRef.WriteJSON(j)
+	}
 	if s.User.Set {
 		field.Write("user")
 		s.User.WriteJSON(j)
@@ -20126,8 +21653,11 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "secretRef":
-			// Unsupported kind "pointer" for field "SecretRef".
-			i.Skip()
+			s.SecretRef.Reset()
+			if err := s.SecretRef.ReadJSON(i); err != nil {
+				i.ReportError("Field SecretRef", err.Error())
+				return false
+			}
 			return true
 		case "user":
 			s.User.Reset()
@@ -20157,9 +21687,18 @@ func (s IoK8sAPICoreV1ReplicationController) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -20204,16 +21743,25 @@ func (s *IoK8sAPICoreV1ReplicationController) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -20316,7 +21864,10 @@ func (s IoK8sAPICoreV1ReplicationControllerList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -20365,8 +21916,11 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) ReadJSON(i *json.Iterator) err
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -20390,7 +21944,10 @@ func (s IoK8sAPICoreV1ReplicationControllerSpec) WriteJSON(j *json.Stream) {
 		s.Replicas.WriteJSON(j)
 	}
 	// Unsupported kind "pointer" for field "Selector".
-	// Unsupported kind "pointer" for field "Template".
+	if s.Template.Set {
+		field.Write("template")
+		s.Template.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -20439,8 +21996,11 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpec) ReadJSON(i *json.Iterator) err
 			i.Skip()
 			return true
 		case "template":
-			// Unsupported kind "pointer" for field "Template".
-			i.Skip()
+			s.Template.Reset()
+			if err := s.Template.ReadJSON(i); err != nil {
+				i.ReportError("Field Template", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -20622,9 +22182,18 @@ func (s IoK8sAPICoreV1ResourceQuota) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -20669,16 +22238,25 @@ func (s *IoK8sAPICoreV1ResourceQuota) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -20702,7 +22280,10 @@ func (s IoK8sAPICoreV1ResourceQuotaList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -20751,8 +22332,11 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -20768,7 +22352,10 @@ func (s IoK8sAPICoreV1ResourceQuotaSpec) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	// Unsupported kind "pointer" for field "Hard".
-	// Unsupported kind "pointer" for field "ScopeSelector".
+	if s.ScopeSelector.Set {
+		field.Write("scopeSelector")
+		s.ScopeSelector.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Scopes".
 	j.WriteObjectEnd()
 }
@@ -20804,8 +22391,11 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpec) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "scopeSelector":
-			// Unsupported kind "pointer" for field "ScopeSelector".
-			i.Skip()
+			s.ScopeSelector.Reset()
+			if err := s.ScopeSelector.ReadJSON(i); err != nil {
+				i.ReportError("Field ScopeSelector", err.Error())
+				return false
+			}
 			return true
 		case "scopes":
 			// Unsupported kind "pointer" for field "Scopes".
@@ -21463,7 +23053,10 @@ func (s IoK8sAPICoreV1Secret) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "StringData".
 	if s.Type.Set {
 		field.Write("type")
@@ -21524,8 +23117,11 @@ func (s *IoK8sAPICoreV1Secret) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "stringData":
 			// Unsupported kind "pointer" for field "StringData".
@@ -21693,7 +23289,10 @@ func (s IoK8sAPICoreV1SecretList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -21742,8 +23341,11 @@ func (s *IoK8sAPICoreV1SecretList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -21975,7 +23577,10 @@ func (s IoK8sAPICoreV1SecurityContext) WriteJSON(j *json.Stream) {
 		field.Write("allowPrivilegeEscalation")
 		s.AllowPrivilegeEscalation.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Capabilities".
+	if s.Capabilities.Set {
+		field.Write("capabilities")
+		s.Capabilities.WriteJSON(j)
+	}
 	if s.Privileged.Set {
 		field.Write("privileged")
 		s.Privileged.WriteJSON(j)
@@ -22000,9 +23605,18 @@ func (s IoK8sAPICoreV1SecurityContext) WriteJSON(j *json.Stream) {
 		field.Write("runAsUser")
 		s.RunAsUser.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SeLinuxOptions".
-	// Unsupported kind "pointer" for field "SeccompProfile".
-	// Unsupported kind "pointer" for field "WindowsOptions".
+	if s.SeLinuxOptions.Set {
+		field.Write("seLinuxOptions")
+		s.SeLinuxOptions.WriteJSON(j)
+	}
+	if s.SeccompProfile.Set {
+		field.Write("seccompProfile")
+		s.SeccompProfile.WriteJSON(j)
+	}
+	if s.WindowsOptions.Set {
+		field.Write("windowsOptions")
+		s.WindowsOptions.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -22040,8 +23654,11 @@ func (s *IoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "capabilities":
-			// Unsupported kind "pointer" for field "Capabilities".
-			i.Skip()
+			s.Capabilities.Reset()
+			if err := s.Capabilities.ReadJSON(i); err != nil {
+				i.ReportError("Field Capabilities", err.Error())
+				return false
+			}
 			return true
 		case "privileged":
 			s.Privileged.Reset()
@@ -22086,16 +23703,25 @@ func (s *IoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "seLinuxOptions":
-			// Unsupported kind "pointer" for field "SeLinuxOptions".
-			i.Skip()
+			s.SeLinuxOptions.Reset()
+			if err := s.SeLinuxOptions.ReadJSON(i); err != nil {
+				i.ReportError("Field SeLinuxOptions", err.Error())
+				return false
+			}
 			return true
 		case "seccompProfile":
-			// Unsupported kind "pointer" for field "SeccompProfile".
-			i.Skip()
+			s.SeccompProfile.Reset()
+			if err := s.SeccompProfile.ReadJSON(i); err != nil {
+				i.ReportError("Field SeccompProfile", err.Error())
+				return false
+			}
 			return true
 		case "windowsOptions":
-			// Unsupported kind "pointer" for field "WindowsOptions".
-			i.Skip()
+			s.WindowsOptions.Reset()
+			if err := s.WindowsOptions.ReadJSON(i); err != nil {
+				i.ReportError("Field WindowsOptions", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -22118,9 +23744,18 @@ func (s IoK8sAPICoreV1Service) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -22165,16 +23800,25 @@ func (s *IoK8sAPICoreV1Service) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -22202,7 +23846,10 @@ func (s IoK8sAPICoreV1ServiceAccount) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Secrets".
 	j.WriteObjectEnd()
 }
@@ -22259,8 +23906,11 @@ func (s *IoK8sAPICoreV1ServiceAccount) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "secrets":
 			// Unsupported kind "pointer" for field "Secrets".
@@ -22288,7 +23938,10 @@ func (s IoK8sAPICoreV1ServiceAccountList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -22337,8 +23990,11 @@ func (s *IoK8sAPICoreV1ServiceAccountList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -22431,7 +24087,10 @@ func (s IoK8sAPICoreV1ServiceList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -22480,8 +24139,11 @@ func (s *IoK8sAPICoreV1ServiceList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -22642,7 +24304,10 @@ func (s IoK8sAPICoreV1ServiceSpec) WriteJSON(j *json.Stream) {
 		field.Write("sessionAffinity")
 		s.SessionAffinity.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SessionAffinityConfig".
+	if s.SessionAffinityConfig.Set {
+		field.Write("sessionAffinityConfig")
+		s.SessionAffinityConfig.WriteJSON(j)
+	}
 	if s.Type.Set {
 		field.Write("type")
 		s.Type.WriteJSON(j)
@@ -22778,8 +24443,11 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "sessionAffinityConfig":
-			// Unsupported kind "pointer" for field "SessionAffinityConfig".
-			i.Skip()
+			s.SessionAffinityConfig.Reset()
+			if err := s.SessionAffinityConfig.ReadJSON(i); err != nil {
+				i.ReportError("Field SessionAffinityConfig", err.Error())
+				return false
+			}
 			return true
 		case "type":
 			s.Type.Reset()
@@ -22802,7 +24470,10 @@ func (s IoK8sAPICoreV1ServiceStatus) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	// Unsupported kind "pointer" for field "Conditions".
-	// Unsupported kind "pointer" for field "LoadBalancer".
+	if s.LoadBalancer.Set {
+		field.Write("loadBalancer")
+		s.LoadBalancer.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -22837,8 +24508,11 @@ func (s *IoK8sAPICoreV1ServiceStatus) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "loadBalancer":
-			// Unsupported kind "pointer" for field "LoadBalancer".
-			i.Skip()
+			s.LoadBalancer.Reset()
+			if err := s.LoadBalancer.ReadJSON(i); err != nil {
+				i.ReportError("Field LoadBalancer", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -22853,7 +24527,10 @@ func (s IoK8sAPICoreV1SessionAffinityConfig) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "ClientIP".
+	if s.ClientIP.Set {
+		field.Write("clientIP")
+		s.ClientIP.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -22884,8 +24561,11 @@ func (s *IoK8sAPICoreV1SessionAffinityConfig) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "clientIP":
-			// Unsupported kind "pointer" for field "ClientIP".
-			i.Skip()
+			s.ClientIP.Reset()
+			if err := s.ClientIP.ReadJSON(i); err != nil {
+				i.ReportError("Field ClientIP", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -22908,7 +24588,10 @@ func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) WriteJSON(j *json.Stream)
 		field.Write("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SecretRef".
+	if s.SecretRef.Set {
+		field.Write("secretRef")
+		s.SecretRef.WriteJSON(j)
+	}
 	if s.VolumeName.Set {
 		field.Write("volumeName")
 		s.VolumeName.WriteJSON(j)
@@ -22961,8 +24644,11 @@ func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) ReadJSON(i *json.Iterato
 			}
 			return true
 		case "secretRef":
-			// Unsupported kind "pointer" for field "SecretRef".
-			i.Skip()
+			s.SecretRef.Reset()
+			if err := s.SecretRef.ReadJSON(i); err != nil {
+				i.ReportError("Field SecretRef", err.Error())
+				return false
+			}
 			return true
 		case "volumeName":
 			s.VolumeName.Reset()
@@ -22999,7 +24685,10 @@ func (s IoK8sAPICoreV1StorageOSVolumeSource) WriteJSON(j *json.Stream) {
 		field.Write("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SecretRef".
+	if s.SecretRef.Set {
+		field.Write("secretRef")
+		s.SecretRef.WriteJSON(j)
+	}
 	if s.VolumeName.Set {
 		field.Write("volumeName")
 		s.VolumeName.WriteJSON(j)
@@ -23052,8 +24741,11 @@ func (s *IoK8sAPICoreV1StorageOSVolumeSource) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "secretRef":
-			// Unsupported kind "pointer" for field "SecretRef".
-			i.Skip()
+			s.SecretRef.Reset()
+			if err := s.SecretRef.ReadJSON(i); err != nil {
+				i.ReportError("Field SecretRef", err.Error())
+				return false
+			}
 			return true
 		case "volumeName":
 			s.VolumeName.Reset()
@@ -23456,7 +25148,10 @@ func (s IoK8sAPICoreV1TopologySpreadConstraint) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "LabelSelector".
+	if s.LabelSelector.Set {
+		field.Write("labelSelector")
+		s.LabelSelector.WriteJSON(j)
+	}
 	field.Write("maxSkew")
 	j.WriteInt32(s.MaxSkew)
 	field.Write("topologyKey")
@@ -23493,8 +25188,11 @@ func (s *IoK8sAPICoreV1TopologySpreadConstraint) ReadJSON(i *json.Iterator) erro
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "labelSelector":
-			// Unsupported kind "pointer" for field "LabelSelector".
-			i.Skip()
+			s.LabelSelector.Reset()
+			if err := s.LabelSelector.ReadJSON(i); err != nil {
+				i.ReportError("Field LabelSelector", err.Error())
+				return false
+			}
 			return true
 		case "maxSkew":
 			s.MaxSkew = i.ReadInt32()
@@ -23581,37 +25279,124 @@ func (s IoK8sAPICoreV1Volume) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "AwsElasticBlockStore".
-	// Unsupported kind "pointer" for field "AzureDisk".
-	// Unsupported kind "pointer" for field "AzureFile".
-	// Unsupported kind "pointer" for field "Cephfs".
-	// Unsupported kind "pointer" for field "Cinder".
-	// Unsupported kind "pointer" for field "ConfigMap".
-	// Unsupported kind "pointer" for field "Csi".
-	// Unsupported kind "pointer" for field "DownwardAPI".
-	// Unsupported kind "pointer" for field "EmptyDir".
-	// Unsupported kind "pointer" for field "Ephemeral".
-	// Unsupported kind "pointer" for field "Fc".
-	// Unsupported kind "pointer" for field "FlexVolume".
-	// Unsupported kind "pointer" for field "Flocker".
-	// Unsupported kind "pointer" for field "GcePersistentDisk".
-	// Unsupported kind "pointer" for field "GitRepo".
-	// Unsupported kind "pointer" for field "Glusterfs".
-	// Unsupported kind "pointer" for field "HostPath".
-	// Unsupported kind "pointer" for field "Iscsi".
+	if s.AwsElasticBlockStore.Set {
+		field.Write("awsElasticBlockStore")
+		s.AwsElasticBlockStore.WriteJSON(j)
+	}
+	if s.AzureDisk.Set {
+		field.Write("azureDisk")
+		s.AzureDisk.WriteJSON(j)
+	}
+	if s.AzureFile.Set {
+		field.Write("azureFile")
+		s.AzureFile.WriteJSON(j)
+	}
+	if s.Cephfs.Set {
+		field.Write("cephfs")
+		s.Cephfs.WriteJSON(j)
+	}
+	if s.Cinder.Set {
+		field.Write("cinder")
+		s.Cinder.WriteJSON(j)
+	}
+	if s.ConfigMap.Set {
+		field.Write("configMap")
+		s.ConfigMap.WriteJSON(j)
+	}
+	if s.Csi.Set {
+		field.Write("csi")
+		s.Csi.WriteJSON(j)
+	}
+	if s.DownwardAPI.Set {
+		field.Write("downwardAPI")
+		s.DownwardAPI.WriteJSON(j)
+	}
+	if s.EmptyDir.Set {
+		field.Write("emptyDir")
+		s.EmptyDir.WriteJSON(j)
+	}
+	if s.Ephemeral.Set {
+		field.Write("ephemeral")
+		s.Ephemeral.WriteJSON(j)
+	}
+	if s.Fc.Set {
+		field.Write("fc")
+		s.Fc.WriteJSON(j)
+	}
+	if s.FlexVolume.Set {
+		field.Write("flexVolume")
+		s.FlexVolume.WriteJSON(j)
+	}
+	if s.Flocker.Set {
+		field.Write("flocker")
+		s.Flocker.WriteJSON(j)
+	}
+	if s.GcePersistentDisk.Set {
+		field.Write("gcePersistentDisk")
+		s.GcePersistentDisk.WriteJSON(j)
+	}
+	if s.GitRepo.Set {
+		field.Write("gitRepo")
+		s.GitRepo.WriteJSON(j)
+	}
+	if s.Glusterfs.Set {
+		field.Write("glusterfs")
+		s.Glusterfs.WriteJSON(j)
+	}
+	if s.HostPath.Set {
+		field.Write("hostPath")
+		s.HostPath.WriteJSON(j)
+	}
+	if s.Iscsi.Set {
+		field.Write("iscsi")
+		s.Iscsi.WriteJSON(j)
+	}
 	field.Write("name")
 	j.WriteString(s.Name)
-	// Unsupported kind "pointer" for field "Nfs".
-	// Unsupported kind "pointer" for field "PersistentVolumeClaim".
-	// Unsupported kind "pointer" for field "PhotonPersistentDisk".
-	// Unsupported kind "pointer" for field "PortworxVolume".
-	// Unsupported kind "pointer" for field "Projected".
-	// Unsupported kind "pointer" for field "Quobyte".
-	// Unsupported kind "pointer" for field "Rbd".
-	// Unsupported kind "pointer" for field "ScaleIO".
-	// Unsupported kind "pointer" for field "Secret".
-	// Unsupported kind "pointer" for field "Storageos".
-	// Unsupported kind "pointer" for field "VsphereVolume".
+	if s.Nfs.Set {
+		field.Write("nfs")
+		s.Nfs.WriteJSON(j)
+	}
+	if s.PersistentVolumeClaim.Set {
+		field.Write("persistentVolumeClaim")
+		s.PersistentVolumeClaim.WriteJSON(j)
+	}
+	if s.PhotonPersistentDisk.Set {
+		field.Write("photonPersistentDisk")
+		s.PhotonPersistentDisk.WriteJSON(j)
+	}
+	if s.PortworxVolume.Set {
+		field.Write("portworxVolume")
+		s.PortworxVolume.WriteJSON(j)
+	}
+	if s.Projected.Set {
+		field.Write("projected")
+		s.Projected.WriteJSON(j)
+	}
+	if s.Quobyte.Set {
+		field.Write("quobyte")
+		s.Quobyte.WriteJSON(j)
+	}
+	if s.Rbd.Set {
+		field.Write("rbd")
+		s.Rbd.WriteJSON(j)
+	}
+	if s.ScaleIO.Set {
+		field.Write("scaleIO")
+		s.ScaleIO.WriteJSON(j)
+	}
+	if s.Secret.Set {
+		field.Write("secret")
+		s.Secret.WriteJSON(j)
+	}
+	if s.Storageos.Set {
+		field.Write("storageos")
+		s.Storageos.WriteJSON(j)
+	}
+	if s.VsphereVolume.Set {
+		field.Write("vsphereVolume")
+		s.VsphereVolume.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -23642,123 +25427,210 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "awsElasticBlockStore":
-			// Unsupported kind "pointer" for field "AwsElasticBlockStore".
-			i.Skip()
+			s.AwsElasticBlockStore.Reset()
+			if err := s.AwsElasticBlockStore.ReadJSON(i); err != nil {
+				i.ReportError("Field AwsElasticBlockStore", err.Error())
+				return false
+			}
 			return true
 		case "azureDisk":
-			// Unsupported kind "pointer" for field "AzureDisk".
-			i.Skip()
+			s.AzureDisk.Reset()
+			if err := s.AzureDisk.ReadJSON(i); err != nil {
+				i.ReportError("Field AzureDisk", err.Error())
+				return false
+			}
 			return true
 		case "azureFile":
-			// Unsupported kind "pointer" for field "AzureFile".
-			i.Skip()
+			s.AzureFile.Reset()
+			if err := s.AzureFile.ReadJSON(i); err != nil {
+				i.ReportError("Field AzureFile", err.Error())
+				return false
+			}
 			return true
 		case "cephfs":
-			// Unsupported kind "pointer" for field "Cephfs".
-			i.Skip()
+			s.Cephfs.Reset()
+			if err := s.Cephfs.ReadJSON(i); err != nil {
+				i.ReportError("Field Cephfs", err.Error())
+				return false
+			}
 			return true
 		case "cinder":
-			// Unsupported kind "pointer" for field "Cinder".
-			i.Skip()
+			s.Cinder.Reset()
+			if err := s.Cinder.ReadJSON(i); err != nil {
+				i.ReportError("Field Cinder", err.Error())
+				return false
+			}
 			return true
 		case "configMap":
-			// Unsupported kind "pointer" for field "ConfigMap".
-			i.Skip()
+			s.ConfigMap.Reset()
+			if err := s.ConfigMap.ReadJSON(i); err != nil {
+				i.ReportError("Field ConfigMap", err.Error())
+				return false
+			}
 			return true
 		case "csi":
-			// Unsupported kind "pointer" for field "Csi".
-			i.Skip()
+			s.Csi.Reset()
+			if err := s.Csi.ReadJSON(i); err != nil {
+				i.ReportError("Field Csi", err.Error())
+				return false
+			}
 			return true
 		case "downwardAPI":
-			// Unsupported kind "pointer" for field "DownwardAPI".
-			i.Skip()
+			s.DownwardAPI.Reset()
+			if err := s.DownwardAPI.ReadJSON(i); err != nil {
+				i.ReportError("Field DownwardAPI", err.Error())
+				return false
+			}
 			return true
 		case "emptyDir":
-			// Unsupported kind "pointer" for field "EmptyDir".
-			i.Skip()
+			s.EmptyDir.Reset()
+			if err := s.EmptyDir.ReadJSON(i); err != nil {
+				i.ReportError("Field EmptyDir", err.Error())
+				return false
+			}
 			return true
 		case "ephemeral":
-			// Unsupported kind "pointer" for field "Ephemeral".
-			i.Skip()
+			s.Ephemeral.Reset()
+			if err := s.Ephemeral.ReadJSON(i); err != nil {
+				i.ReportError("Field Ephemeral", err.Error())
+				return false
+			}
 			return true
 		case "fc":
-			// Unsupported kind "pointer" for field "Fc".
-			i.Skip()
+			s.Fc.Reset()
+			if err := s.Fc.ReadJSON(i); err != nil {
+				i.ReportError("Field Fc", err.Error())
+				return false
+			}
 			return true
 		case "flexVolume":
-			// Unsupported kind "pointer" for field "FlexVolume".
-			i.Skip()
+			s.FlexVolume.Reset()
+			if err := s.FlexVolume.ReadJSON(i); err != nil {
+				i.ReportError("Field FlexVolume", err.Error())
+				return false
+			}
 			return true
 		case "flocker":
-			// Unsupported kind "pointer" for field "Flocker".
-			i.Skip()
+			s.Flocker.Reset()
+			if err := s.Flocker.ReadJSON(i); err != nil {
+				i.ReportError("Field Flocker", err.Error())
+				return false
+			}
 			return true
 		case "gcePersistentDisk":
-			// Unsupported kind "pointer" for field "GcePersistentDisk".
-			i.Skip()
+			s.GcePersistentDisk.Reset()
+			if err := s.GcePersistentDisk.ReadJSON(i); err != nil {
+				i.ReportError("Field GcePersistentDisk", err.Error())
+				return false
+			}
 			return true
 		case "gitRepo":
-			// Unsupported kind "pointer" for field "GitRepo".
-			i.Skip()
+			s.GitRepo.Reset()
+			if err := s.GitRepo.ReadJSON(i); err != nil {
+				i.ReportError("Field GitRepo", err.Error())
+				return false
+			}
 			return true
 		case "glusterfs":
-			// Unsupported kind "pointer" for field "Glusterfs".
-			i.Skip()
+			s.Glusterfs.Reset()
+			if err := s.Glusterfs.ReadJSON(i); err != nil {
+				i.ReportError("Field Glusterfs", err.Error())
+				return false
+			}
 			return true
 		case "hostPath":
-			// Unsupported kind "pointer" for field "HostPath".
-			i.Skip()
+			s.HostPath.Reset()
+			if err := s.HostPath.ReadJSON(i); err != nil {
+				i.ReportError("Field HostPath", err.Error())
+				return false
+			}
 			return true
 		case "iscsi":
-			// Unsupported kind "pointer" for field "Iscsi".
-			i.Skip()
+			s.Iscsi.Reset()
+			if err := s.Iscsi.ReadJSON(i); err != nil {
+				i.ReportError("Field Iscsi", err.Error())
+				return false
+			}
 			return true
 		case "name":
 			s.Name = i.ReadString()
 			return i.Error == nil
 		case "nfs":
-			// Unsupported kind "pointer" for field "Nfs".
-			i.Skip()
+			s.Nfs.Reset()
+			if err := s.Nfs.ReadJSON(i); err != nil {
+				i.ReportError("Field Nfs", err.Error())
+				return false
+			}
 			return true
 		case "persistentVolumeClaim":
-			// Unsupported kind "pointer" for field "PersistentVolumeClaim".
-			i.Skip()
+			s.PersistentVolumeClaim.Reset()
+			if err := s.PersistentVolumeClaim.ReadJSON(i); err != nil {
+				i.ReportError("Field PersistentVolumeClaim", err.Error())
+				return false
+			}
 			return true
 		case "photonPersistentDisk":
-			// Unsupported kind "pointer" for field "PhotonPersistentDisk".
-			i.Skip()
+			s.PhotonPersistentDisk.Reset()
+			if err := s.PhotonPersistentDisk.ReadJSON(i); err != nil {
+				i.ReportError("Field PhotonPersistentDisk", err.Error())
+				return false
+			}
 			return true
 		case "portworxVolume":
-			// Unsupported kind "pointer" for field "PortworxVolume".
-			i.Skip()
+			s.PortworxVolume.Reset()
+			if err := s.PortworxVolume.ReadJSON(i); err != nil {
+				i.ReportError("Field PortworxVolume", err.Error())
+				return false
+			}
 			return true
 		case "projected":
-			// Unsupported kind "pointer" for field "Projected".
-			i.Skip()
+			s.Projected.Reset()
+			if err := s.Projected.ReadJSON(i); err != nil {
+				i.ReportError("Field Projected", err.Error())
+				return false
+			}
 			return true
 		case "quobyte":
-			// Unsupported kind "pointer" for field "Quobyte".
-			i.Skip()
+			s.Quobyte.Reset()
+			if err := s.Quobyte.ReadJSON(i); err != nil {
+				i.ReportError("Field Quobyte", err.Error())
+				return false
+			}
 			return true
 		case "rbd":
-			// Unsupported kind "pointer" for field "Rbd".
-			i.Skip()
+			s.Rbd.Reset()
+			if err := s.Rbd.ReadJSON(i); err != nil {
+				i.ReportError("Field Rbd", err.Error())
+				return false
+			}
 			return true
 		case "scaleIO":
-			// Unsupported kind "pointer" for field "ScaleIO".
-			i.Skip()
+			s.ScaleIO.Reset()
+			if err := s.ScaleIO.ReadJSON(i); err != nil {
+				i.ReportError("Field ScaleIO", err.Error())
+				return false
+			}
 			return true
 		case "secret":
-			// Unsupported kind "pointer" for field "Secret".
-			i.Skip()
+			s.Secret.Reset()
+			if err := s.Secret.ReadJSON(i); err != nil {
+				i.ReportError("Field Secret", err.Error())
+				return false
+			}
 			return true
 		case "storageos":
-			// Unsupported kind "pointer" for field "Storageos".
-			i.Skip()
+			s.Storageos.Reset()
+			if err := s.Storageos.ReadJSON(i); err != nil {
+				i.ReportError("Field Storageos", err.Error())
+				return false
+			}
 			return true
 		case "vsphereVolume":
-			// Unsupported kind "pointer" for field "VsphereVolume".
-			i.Skip()
+			s.VsphereVolume.Reset()
+			if err := s.VsphereVolume.ReadJSON(i); err != nil {
+				i.ReportError("Field VsphereVolume", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -23921,7 +25793,10 @@ func (s IoK8sAPICoreV1VolumeNodeAffinity) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Required".
+	if s.Required.Set {
+		field.Write("required")
+		s.Required.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -23952,8 +25827,11 @@ func (s *IoK8sAPICoreV1VolumeNodeAffinity) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "required":
-			// Unsupported kind "pointer" for field "Required".
-			i.Skip()
+			s.Required.Reset()
+			if err := s.Required.ReadJSON(i); err != nil {
+				i.ReportError("Field Required", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -23968,10 +25846,22 @@ func (s IoK8sAPICoreV1VolumeProjection) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "ConfigMap".
-	// Unsupported kind "pointer" for field "DownwardAPI".
-	// Unsupported kind "pointer" for field "Secret".
-	// Unsupported kind "pointer" for field "ServiceAccountToken".
+	if s.ConfigMap.Set {
+		field.Write("configMap")
+		s.ConfigMap.WriteJSON(j)
+	}
+	if s.DownwardAPI.Set {
+		field.Write("downwardAPI")
+		s.DownwardAPI.WriteJSON(j)
+	}
+	if s.Secret.Set {
+		field.Write("secret")
+		s.Secret.WriteJSON(j)
+	}
+	if s.ServiceAccountToken.Set {
+		field.Write("serviceAccountToken")
+		s.ServiceAccountToken.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -24002,20 +25892,32 @@ func (s *IoK8sAPICoreV1VolumeProjection) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "configMap":
-			// Unsupported kind "pointer" for field "ConfigMap".
-			i.Skip()
+			s.ConfigMap.Reset()
+			if err := s.ConfigMap.ReadJSON(i); err != nil {
+				i.ReportError("Field ConfigMap", err.Error())
+				return false
+			}
 			return true
 		case "downwardAPI":
-			// Unsupported kind "pointer" for field "DownwardAPI".
-			i.Skip()
+			s.DownwardAPI.Reset()
+			if err := s.DownwardAPI.ReadJSON(i); err != nil {
+				i.ReportError("Field DownwardAPI", err.Error())
+				return false
+			}
 			return true
 		case "secret":
-			// Unsupported kind "pointer" for field "Secret".
-			i.Skip()
+			s.Secret.Reset()
+			if err := s.Secret.ReadJSON(i); err != nil {
+				i.ReportError("Field Secret", err.Error())
+				return false
+			}
 			return true
 		case "serviceAccountToken":
-			// Unsupported kind "pointer" for field "ServiceAccountToken".
-			i.Skip()
+			s.ServiceAccountToken.Reset()
+			if err := s.ServiceAccountToken.ReadJSON(i); err != nil {
+				i.ReportError("Field ServiceAccountToken", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -24252,9 +26154,15 @@ func (s IoK8sAPIDiscoveryV1Endpoint) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	// Unsupported kind "array" for field "Addresses".
-	// Unsupported kind "pointer" for field "Conditions".
+	if s.Conditions.Set {
+		field.Write("conditions")
+		s.Conditions.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "DeprecatedTopology".
-	// Unsupported kind "pointer" for field "Hints".
+	if s.Hints.Set {
+		field.Write("hints")
+		s.Hints.WriteJSON(j)
+	}
 	if s.Hostname.Set {
 		field.Write("hostname")
 		s.Hostname.WriteJSON(j)
@@ -24263,7 +26171,10 @@ func (s IoK8sAPIDiscoveryV1Endpoint) WriteJSON(j *json.Stream) {
 		field.Write("nodeName")
 		s.NodeName.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "TargetRef".
+	if s.TargetRef.Set {
+		field.Write("targetRef")
+		s.TargetRef.WriteJSON(j)
+	}
 	if s.Zone.Set {
 		field.Write("zone")
 		s.Zone.WriteJSON(j)
@@ -24302,16 +26213,22 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
-			i.Skip()
+			s.Conditions.Reset()
+			if err := s.Conditions.ReadJSON(i); err != nil {
+				i.ReportError("Field Conditions", err.Error())
+				return false
+			}
 			return true
 		case "deprecatedTopology":
 			// Unsupported kind "pointer" for field "DeprecatedTopology".
 			i.Skip()
 			return true
 		case "hints":
-			// Unsupported kind "pointer" for field "Hints".
-			i.Skip()
+			s.Hints.Reset()
+			if err := s.Hints.ReadJSON(i); err != nil {
+				i.ReportError("Field Hints", err.Error())
+				return false
+			}
 			return true
 		case "hostname":
 			s.Hostname.Reset()
@@ -24328,8 +26245,11 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "targetRef":
-			// Unsupported kind "pointer" for field "TargetRef".
-			i.Skip()
+			s.TargetRef.Reset()
+			if err := s.TargetRef.ReadJSON(i); err != nil {
+				i.ReportError("Field TargetRef", err.Error())
+				return false
+			}
 			return true
 		case "zone":
 			s.Zone.Reset()
@@ -24570,7 +26490,10 @@ func (s IoK8sAPIDiscoveryV1EndpointSlice) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Ports".
 	j.WriteObjectEnd()
 }
@@ -24623,8 +26546,11 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "ports":
 			// Unsupported kind "pointer" for field "Ports".
@@ -24652,7 +26578,10 @@ func (s IoK8sAPIDiscoveryV1EndpointSliceList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -24701,8 +26630,11 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) ReadJSON(i *json.Iterator) error 
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -24765,8 +26697,14 @@ func (s IoK8sAPIDiscoveryV1beta1Endpoint) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	// Unsupported kind "array" for field "Addresses".
-	// Unsupported kind "pointer" for field "Conditions".
-	// Unsupported kind "pointer" for field "Hints".
+	if s.Conditions.Set {
+		field.Write("conditions")
+		s.Conditions.WriteJSON(j)
+	}
+	if s.Hints.Set {
+		field.Write("hints")
+		s.Hints.WriteJSON(j)
+	}
 	if s.Hostname.Set {
 		field.Write("hostname")
 		s.Hostname.WriteJSON(j)
@@ -24775,7 +26713,10 @@ func (s IoK8sAPIDiscoveryV1beta1Endpoint) WriteJSON(j *json.Stream) {
 		field.Write("nodeName")
 		s.NodeName.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "TargetRef".
+	if s.TargetRef.Set {
+		field.Write("targetRef")
+		s.TargetRef.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Topology".
 	j.WriteObjectEnd()
 }
@@ -24811,12 +26752,18 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
-			i.Skip()
+			s.Conditions.Reset()
+			if err := s.Conditions.ReadJSON(i); err != nil {
+				i.ReportError("Field Conditions", err.Error())
+				return false
+			}
 			return true
 		case "hints":
-			// Unsupported kind "pointer" for field "Hints".
-			i.Skip()
+			s.Hints.Reset()
+			if err := s.Hints.ReadJSON(i); err != nil {
+				i.ReportError("Field Hints", err.Error())
+				return false
+			}
 			return true
 		case "hostname":
 			s.Hostname.Reset()
@@ -24833,8 +26780,11 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "targetRef":
-			// Unsupported kind "pointer" for field "TargetRef".
-			i.Skip()
+			s.TargetRef.Reset()
+			if err := s.TargetRef.ReadJSON(i); err != nil {
+				i.ReportError("Field TargetRef", err.Error())
+				return false
+			}
 			return true
 		case "topology":
 			// Unsupported kind "pointer" for field "Topology".
@@ -25072,7 +27022,10 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Ports".
 	j.WriteObjectEnd()
 }
@@ -25125,8 +27078,11 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) ReadJSON(i *json.Iterator) error
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "ports":
 			// Unsupported kind "pointer" for field "Ports".
@@ -25154,7 +27110,10 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -25203,8 +27162,11 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) ReadJSON(i *json.Iterator) e
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -25280,13 +27242,19 @@ func (s IoK8sAPIEventsV1Event) WriteJSON(j *json.Stream) {
 	}
 	// Unsupported kind "pointer" for field "DeprecatedFirstTimestamp".
 	// Unsupported kind "pointer" for field "DeprecatedLastTimestamp".
-	// Unsupported kind "pointer" for field "DeprecatedSource".
+	if s.DeprecatedSource.Set {
+		field.Write("deprecatedSource")
+		s.DeprecatedSource.WriteJSON(j)
+	}
 	// Unsupported kind "alias" for field "EventTime".
 	if s.Kind.Set {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	if s.Note.Set {
 		field.Write("note")
 		s.Note.WriteJSON(j)
@@ -25295,8 +27263,14 @@ func (s IoK8sAPIEventsV1Event) WriteJSON(j *json.Stream) {
 		field.Write("reason")
 		s.Reason.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Regarding".
-	// Unsupported kind "pointer" for field "Related".
+	if s.Regarding.Set {
+		field.Write("regarding")
+		s.Regarding.WriteJSON(j)
+	}
+	if s.Related.Set {
+		field.Write("related")
+		s.Related.WriteJSON(j)
+	}
 	if s.ReportingController.Set {
 		field.Write("reportingController")
 		s.ReportingController.WriteJSON(j)
@@ -25305,7 +27279,10 @@ func (s IoK8sAPIEventsV1Event) WriteJSON(j *json.Stream) {
 		field.Write("reportingInstance")
 		s.ReportingInstance.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Series".
+	if s.Series.Set {
+		field.Write("series")
+		s.Series.WriteJSON(j)
+	}
 	if s.Type.Set {
 		field.Write("type")
 		s.Type.WriteJSON(j)
@@ -25369,8 +27346,11 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "deprecatedSource":
-			// Unsupported kind "pointer" for field "DeprecatedSource".
-			i.Skip()
+			s.DeprecatedSource.Reset()
+			if err := s.DeprecatedSource.ReadJSON(i); err != nil {
+				i.ReportError("Field DeprecatedSource", err.Error())
+				return false
+			}
 			return true
 		case "eventTime":
 			// Unsupported kind "alias" for field "EventTime".
@@ -25384,8 +27364,11 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "note":
 			s.Note.Reset()
@@ -25402,12 +27385,18 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "regarding":
-			// Unsupported kind "pointer" for field "Regarding".
-			i.Skip()
+			s.Regarding.Reset()
+			if err := s.Regarding.ReadJSON(i); err != nil {
+				i.ReportError("Field Regarding", err.Error())
+				return false
+			}
 			return true
 		case "related":
-			// Unsupported kind "pointer" for field "Related".
-			i.Skip()
+			s.Related.Reset()
+			if err := s.Related.ReadJSON(i); err != nil {
+				i.ReportError("Field Related", err.Error())
+				return false
+			}
 			return true
 		case "reportingController":
 			s.ReportingController.Reset()
@@ -25424,8 +27413,11 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "series":
-			// Unsupported kind "pointer" for field "Series".
-			i.Skip()
+			s.Series.Reset()
+			if err := s.Series.ReadJSON(i); err != nil {
+				i.ReportError("Field Series", err.Error())
+				return false
+			}
 			return true
 		case "type":
 			s.Type.Reset()
@@ -25456,7 +27448,10 @@ func (s IoK8sAPIEventsV1EventList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -25505,8 +27500,11 @@ func (s *IoK8sAPIEventsV1EventList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -25587,13 +27585,19 @@ func (s IoK8sAPIEventsV1beta1Event) WriteJSON(j *json.Stream) {
 	}
 	// Unsupported kind "pointer" for field "DeprecatedFirstTimestamp".
 	// Unsupported kind "pointer" for field "DeprecatedLastTimestamp".
-	// Unsupported kind "pointer" for field "DeprecatedSource".
+	if s.DeprecatedSource.Set {
+		field.Write("deprecatedSource")
+		s.DeprecatedSource.WriteJSON(j)
+	}
 	// Unsupported kind "alias" for field "EventTime".
 	if s.Kind.Set {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	if s.Note.Set {
 		field.Write("note")
 		s.Note.WriteJSON(j)
@@ -25602,8 +27606,14 @@ func (s IoK8sAPIEventsV1beta1Event) WriteJSON(j *json.Stream) {
 		field.Write("reason")
 		s.Reason.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Regarding".
-	// Unsupported kind "pointer" for field "Related".
+	if s.Regarding.Set {
+		field.Write("regarding")
+		s.Regarding.WriteJSON(j)
+	}
+	if s.Related.Set {
+		field.Write("related")
+		s.Related.WriteJSON(j)
+	}
 	if s.ReportingController.Set {
 		field.Write("reportingController")
 		s.ReportingController.WriteJSON(j)
@@ -25612,7 +27622,10 @@ func (s IoK8sAPIEventsV1beta1Event) WriteJSON(j *json.Stream) {
 		field.Write("reportingInstance")
 		s.ReportingInstance.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Series".
+	if s.Series.Set {
+		field.Write("series")
+		s.Series.WriteJSON(j)
+	}
 	if s.Type.Set {
 		field.Write("type")
 		s.Type.WriteJSON(j)
@@ -25676,8 +27689,11 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "deprecatedSource":
-			// Unsupported kind "pointer" for field "DeprecatedSource".
-			i.Skip()
+			s.DeprecatedSource.Reset()
+			if err := s.DeprecatedSource.ReadJSON(i); err != nil {
+				i.ReportError("Field DeprecatedSource", err.Error())
+				return false
+			}
 			return true
 		case "eventTime":
 			// Unsupported kind "alias" for field "EventTime".
@@ -25691,8 +27707,11 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "note":
 			s.Note.Reset()
@@ -25709,12 +27728,18 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "regarding":
-			// Unsupported kind "pointer" for field "Regarding".
-			i.Skip()
+			s.Regarding.Reset()
+			if err := s.Regarding.ReadJSON(i); err != nil {
+				i.ReportError("Field Regarding", err.Error())
+				return false
+			}
 			return true
 		case "related":
-			// Unsupported kind "pointer" for field "Related".
-			i.Skip()
+			s.Related.Reset()
+			if err := s.Related.ReadJSON(i); err != nil {
+				i.ReportError("Field Related", err.Error())
+				return false
+			}
 			return true
 		case "reportingController":
 			s.ReportingController.Reset()
@@ -25731,8 +27756,11 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "series":
-			// Unsupported kind "pointer" for field "Series".
-			i.Skip()
+			s.Series.Reset()
+			if err := s.Series.ReadJSON(i); err != nil {
+				i.ReportError("Field Series", err.Error())
+				return false
+			}
 			return true
 		case "type":
 			s.Type.Reset()
@@ -25763,7 +27791,10 @@ func (s IoK8sAPIEventsV1beta1EventList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -25812,8 +27843,11 @@ func (s *IoK8sAPIEventsV1beta1EventList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -25935,9 +27969,18 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -25982,16 +28025,25 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) ReadJSON(i *json.Iterator) error 
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -26106,7 +28158,10 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -26155,8 +28210,11 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) ReadJSON(i *json.Iterator) er
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -26171,7 +28229,10 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "DistinguisherMethod".
+	if s.DistinguisherMethod.Set {
+		field.Write("distinguisherMethod")
+		s.DistinguisherMethod.WriteJSON(j)
+	}
 	if s.MatchingPrecedence.Set {
 		field.Write("matchingPrecedence")
 		s.MatchingPrecedence.WriteJSON(j)
@@ -26209,8 +28270,11 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) ReadJSON(i *json.Iterator) er
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "distinguisherMethod":
-			// Unsupported kind "pointer" for field "DistinguisherMethod".
-			i.Skip()
+			s.DistinguisherMethod.Reset()
+			if err := s.DistinguisherMethod.ReadJSON(i); err != nil {
+				i.ReportError("Field DistinguisherMethod", err.Error())
+				return false
+			}
 			return true
 		case "matchingPrecedence":
 			s.MatchingPrecedence.Reset()
@@ -26336,7 +28400,10 @@ func (s IoK8sAPIFlowcontrolV1beta1LimitResponse) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Queuing".
+	if s.Queuing.Set {
+		field.Write("queuing")
+		s.Queuing.WriteJSON(j)
+	}
 	field.Write("type")
 	j.WriteString(s.Type)
 	j.WriteObjectEnd()
@@ -26369,8 +28436,11 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) ReadJSON(i *json.Iterator) err
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "queuing":
-			// Unsupported kind "pointer" for field "Queuing".
-			i.Skip()
+			s.Queuing.Reset()
+			if err := s.Queuing.ReadJSON(i); err != nil {
+				i.ReportError("Field Queuing", err.Error())
+				return false
+			}
 			return true
 		case "type":
 			s.Type = i.ReadString()
@@ -26392,7 +28462,10 @@ func (s IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) WriteJSON(j
 		field.Write("assuredConcurrencyShares")
 		s.AssuredConcurrencyShares.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "LimitResponse".
+	if s.LimitResponse.Set {
+		field.Write("limitResponse")
+		s.LimitResponse.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -26430,8 +28503,11 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) ReadJSON(i
 			}
 			return true
 		case "limitResponse":
-			// Unsupported kind "pointer" for field "LimitResponse".
-			i.Skip()
+			s.LimitResponse.Reset()
+			if err := s.LimitResponse.ReadJSON(i); err != nil {
+				i.ReportError("Field LimitResponse", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -26563,9 +28639,18 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) WriteJSON(j *json.
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -26610,16 +28695,25 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) ReadJSON(i *json.
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -26734,7 +28828,10 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) WriteJSON(j *j
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -26783,8 +28880,11 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) ReadJSON(i *j
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -26846,7 +28946,10 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) WriteJSON(j *j
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Limited".
+	if s.Limited.Set {
+		field.Write("limited")
+		s.Limited.WriteJSON(j)
+	}
 	field.Write("type")
 	j.WriteString(s.Type)
 	j.WriteObjectEnd()
@@ -26879,8 +28982,11 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) ReadJSON(i *j
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "limited":
-			// Unsupported kind "pointer" for field "Limited".
-			i.Skip()
+			s.Limited.Reset()
+			if err := s.Limited.ReadJSON(i); err != nil {
+				i.ReportError("Field Limited", err.Error())
+				return false
+			}
 			return true
 		case "type":
 			s.Type = i.ReadString()
@@ -27145,11 +29251,20 @@ func (s IoK8sAPIFlowcontrolV1beta1Subject) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Group".
+	if s.Group.Set {
+		field.Write("group")
+		s.Group.WriteJSON(j)
+	}
 	field.Write("kind")
 	j.WriteString(s.Kind)
-	// Unsupported kind "pointer" for field "ServiceAccount".
-	// Unsupported kind "pointer" for field "User".
+	if s.ServiceAccount.Set {
+		field.Write("serviceAccount")
+		s.ServiceAccount.WriteJSON(j)
+	}
+	if s.User.Set {
+		field.Write("user")
+		s.User.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -27180,19 +29295,28 @@ func (s *IoK8sAPIFlowcontrolV1beta1Subject) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "group":
-			// Unsupported kind "pointer" for field "Group".
-			i.Skip()
+			s.Group.Reset()
+			if err := s.Group.ReadJSON(i); err != nil {
+				i.ReportError("Field Group", err.Error())
+				return false
+			}
 			return true
 		case "kind":
 			s.Kind = i.ReadString()
 			return i.Error == nil
 		case "serviceAccount":
-			// Unsupported kind "pointer" for field "ServiceAccount".
-			i.Skip()
+			s.ServiceAccount.Reset()
+			if err := s.ServiceAccount.ReadJSON(i); err != nil {
+				i.ReportError("Field ServiceAccount", err.Error())
+				return false
+			}
 			return true
 		case "user":
-			// Unsupported kind "pointer" for field "User".
-			i.Skip()
+			s.User.Reset()
+			if err := s.User.ReadJSON(i); err != nil {
+				i.ReportError("Field User", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -27309,9 +29433,18 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -27356,16 +29489,25 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) ReadJSON(i *json.Iterator) error 
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -27480,7 +29622,10 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -27529,8 +29674,11 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) ReadJSON(i *json.Iterator) er
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -27545,7 +29693,10 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "DistinguisherMethod".
+	if s.DistinguisherMethod.Set {
+		field.Write("distinguisherMethod")
+		s.DistinguisherMethod.WriteJSON(j)
+	}
 	if s.MatchingPrecedence.Set {
 		field.Write("matchingPrecedence")
 		s.MatchingPrecedence.WriteJSON(j)
@@ -27583,8 +29734,11 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) ReadJSON(i *json.Iterator) er
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "distinguisherMethod":
-			// Unsupported kind "pointer" for field "DistinguisherMethod".
-			i.Skip()
+			s.DistinguisherMethod.Reset()
+			if err := s.DistinguisherMethod.ReadJSON(i); err != nil {
+				i.ReportError("Field DistinguisherMethod", err.Error())
+				return false
+			}
 			return true
 		case "matchingPrecedence":
 			s.MatchingPrecedence.Reset()
@@ -27710,7 +29864,10 @@ func (s IoK8sAPIFlowcontrolV1beta2LimitResponse) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Queuing".
+	if s.Queuing.Set {
+		field.Write("queuing")
+		s.Queuing.WriteJSON(j)
+	}
 	field.Write("type")
 	j.WriteString(s.Type)
 	j.WriteObjectEnd()
@@ -27743,8 +29900,11 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) ReadJSON(i *json.Iterator) err
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "queuing":
-			// Unsupported kind "pointer" for field "Queuing".
-			i.Skip()
+			s.Queuing.Reset()
+			if err := s.Queuing.ReadJSON(i); err != nil {
+				i.ReportError("Field Queuing", err.Error())
+				return false
+			}
 			return true
 		case "type":
 			s.Type = i.ReadString()
@@ -27766,7 +29926,10 @@ func (s IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) WriteJSON(j
 		field.Write("assuredConcurrencyShares")
 		s.AssuredConcurrencyShares.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "LimitResponse".
+	if s.LimitResponse.Set {
+		field.Write("limitResponse")
+		s.LimitResponse.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -27804,8 +29967,11 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) ReadJSON(i
 			}
 			return true
 		case "limitResponse":
-			// Unsupported kind "pointer" for field "LimitResponse".
-			i.Skip()
+			s.LimitResponse.Reset()
+			if err := s.LimitResponse.ReadJSON(i); err != nil {
+				i.ReportError("Field LimitResponse", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -27937,9 +30103,18 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) WriteJSON(j *json.
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -27984,16 +30159,25 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) ReadJSON(i *json.
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -28108,7 +30292,10 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) WriteJSON(j *j
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -28157,8 +30344,11 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) ReadJSON(i *j
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -28220,7 +30410,10 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) WriteJSON(j *j
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Limited".
+	if s.Limited.Set {
+		field.Write("limited")
+		s.Limited.WriteJSON(j)
+	}
 	field.Write("type")
 	j.WriteString(s.Type)
 	j.WriteObjectEnd()
@@ -28253,8 +30446,11 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) ReadJSON(i *j
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "limited":
-			// Unsupported kind "pointer" for field "Limited".
-			i.Skip()
+			s.Limited.Reset()
+			if err := s.Limited.ReadJSON(i); err != nil {
+				i.ReportError("Field Limited", err.Error())
+				return false
+			}
 			return true
 		case "type":
 			s.Type = i.ReadString()
@@ -28519,11 +30715,20 @@ func (s IoK8sAPIFlowcontrolV1beta2Subject) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Group".
+	if s.Group.Set {
+		field.Write("group")
+		s.Group.WriteJSON(j)
+	}
 	field.Write("kind")
 	j.WriteString(s.Kind)
-	// Unsupported kind "pointer" for field "ServiceAccount".
-	// Unsupported kind "pointer" for field "User".
+	if s.ServiceAccount.Set {
+		field.Write("serviceAccount")
+		s.ServiceAccount.WriteJSON(j)
+	}
+	if s.User.Set {
+		field.Write("user")
+		s.User.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -28554,19 +30759,28 @@ func (s *IoK8sAPIFlowcontrolV1beta2Subject) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "group":
-			// Unsupported kind "pointer" for field "Group".
-			i.Skip()
+			s.Group.Reset()
+			if err := s.Group.ReadJSON(i); err != nil {
+				i.ReportError("Field Group", err.Error())
+				return false
+			}
 			return true
 		case "kind":
 			s.Kind = i.ReadString()
 			return i.Error == nil
 		case "serviceAccount":
-			// Unsupported kind "pointer" for field "ServiceAccount".
-			i.Skip()
+			s.ServiceAccount.Reset()
+			if err := s.ServiceAccount.ReadJSON(i); err != nil {
+				i.ReportError("Field ServiceAccount", err.Error())
+				return false
+			}
 			return true
 		case "user":
-			// Unsupported kind "pointer" for field "User".
-			i.Skip()
+			s.User.Reset()
+			if err := s.User.ReadJSON(i); err != nil {
+				i.ReportError("Field User", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -28801,9 +31015,18 @@ func (s IoK8sAPINetworkingV1Ingress) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -28848,16 +31071,25 @@ func (s *IoK8sAPINetworkingV1Ingress) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -28872,8 +31104,14 @@ func (s IoK8sAPINetworkingV1IngressBackend) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Resource".
-	// Unsupported kind "pointer" for field "Service".
+	if s.Resource.Set {
+		field.Write("resource")
+		s.Resource.WriteJSON(j)
+	}
+	if s.Service.Set {
+		field.Write("service")
+		s.Service.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -28904,12 +31142,18 @@ func (s *IoK8sAPINetworkingV1IngressBackend) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "resource":
-			// Unsupported kind "pointer" for field "Resource".
-			i.Skip()
+			s.Resource.Reset()
+			if err := s.Resource.ReadJSON(i); err != nil {
+				i.ReportError("Field Resource", err.Error())
+				return false
+			}
 			return true
 		case "service":
-			// Unsupported kind "pointer" for field "Service".
-			i.Skip()
+			s.Service.Reset()
+			if err := s.Service.ReadJSON(i); err != nil {
+				i.ReportError("Field Service", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -28932,8 +31176,14 @@ func (s IoK8sAPINetworkingV1IngressClass) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -28978,12 +31228,18 @@ func (s *IoK8sAPINetworkingV1IngressClass) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -29007,7 +31263,10 @@ func (s IoK8sAPINetworkingV1IngressClassList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -29056,8 +31315,11 @@ func (s *IoK8sAPINetworkingV1IngressClassList) ReadJSON(i *json.Iterator) error 
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -29161,7 +31423,10 @@ func (s IoK8sAPINetworkingV1IngressClassSpec) WriteJSON(j *json.Stream) {
 		field.Write("controller")
 		s.Controller.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Parameters".
+	if s.Parameters.Set {
+		field.Write("parameters")
+		s.Parameters.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -29199,8 +31464,11 @@ func (s *IoK8sAPINetworkingV1IngressClassSpec) ReadJSON(i *json.Iterator) error 
 			}
 			return true
 		case "parameters":
-			// Unsupported kind "pointer" for field "Parameters".
-			i.Skip()
+			s.Parameters.Reset()
+			if err := s.Parameters.ReadJSON(i); err != nil {
+				i.ReportError("Field Parameters", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -29224,7 +31492,10 @@ func (s IoK8sAPINetworkingV1IngressList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -29273,8 +31544,11 @@ func (s *IoK8sAPINetworkingV1IngressList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -29289,7 +31563,10 @@ func (s IoK8sAPINetworkingV1IngressRule) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "HTTP".
+	if s.HTTP.Set {
+		field.Write("http")
+		s.HTTP.WriteJSON(j)
+	}
 	if s.Host.Set {
 		field.Write("host")
 		s.Host.WriteJSON(j)
@@ -29324,8 +31601,11 @@ func (s *IoK8sAPINetworkingV1IngressRule) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "http":
-			// Unsupported kind "pointer" for field "HTTP".
-			i.Skip()
+			s.HTTP.Reset()
+			if err := s.HTTP.ReadJSON(i); err != nil {
+				i.ReportError("Field HTTP", err.Error())
+				return false
+			}
 			return true
 		case "host":
 			s.Host.Reset()
@@ -29349,7 +31629,10 @@ func (s IoK8sAPINetworkingV1IngressServiceBackend) WriteJSON(j *json.Stream) {
 	defer field.Reset()
 	field.Write("name")
 	j.WriteString(s.Name)
-	// Unsupported kind "pointer" for field "Port".
+	if s.Port.Set {
+		field.Write("port")
+		s.Port.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -29383,8 +31666,11 @@ func (s *IoK8sAPINetworkingV1IngressServiceBackend) ReadJSON(i *json.Iterator) e
 			s.Name = i.ReadString()
 			return i.Error == nil
 		case "port":
-			// Unsupported kind "pointer" for field "Port".
-			i.Skip()
+			s.Port.Reset()
+			if err := s.Port.ReadJSON(i); err != nil {
+				i.ReportError("Field Port", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -29399,7 +31685,10 @@ func (s IoK8sAPINetworkingV1IngressSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "DefaultBackend".
+	if s.DefaultBackend.Set {
+		field.Write("defaultBackend")
+		s.DefaultBackend.WriteJSON(j)
+	}
 	if s.IngressClassName.Set {
 		field.Write("ingressClassName")
 		s.IngressClassName.WriteJSON(j)
@@ -29436,8 +31725,11 @@ func (s *IoK8sAPINetworkingV1IngressSpec) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "defaultBackend":
-			// Unsupported kind "pointer" for field "DefaultBackend".
-			i.Skip()
+			s.DefaultBackend.Reset()
+			if err := s.DefaultBackend.ReadJSON(i); err != nil {
+				i.ReportError("Field DefaultBackend", err.Error())
+				return false
+			}
 			return true
 		case "ingressClassName":
 			s.IngressClassName.Reset()
@@ -29467,7 +31759,10 @@ func (s IoK8sAPINetworkingV1IngressStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "LoadBalancer".
+	if s.LoadBalancer.Set {
+		field.Write("loadBalancer")
+		s.LoadBalancer.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -29498,8 +31793,11 @@ func (s *IoK8sAPINetworkingV1IngressStatus) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "loadBalancer":
-			// Unsupported kind "pointer" for field "LoadBalancer".
-			i.Skip()
+			s.LoadBalancer.Reset()
+			if err := s.LoadBalancer.ReadJSON(i); err != nil {
+				i.ReportError("Field LoadBalancer", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -29580,8 +31878,14 @@ func (s IoK8sAPINetworkingV1NetworkPolicy) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -29626,12 +31930,18 @@ func (s *IoK8sAPINetworkingV1NetworkPolicy) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -29759,7 +32069,10 @@ func (s IoK8sAPINetworkingV1NetworkPolicyList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -29808,8 +32121,11 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) ReadJSON(i *json.Iterator) error
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -29824,9 +32140,18 @@ func (s IoK8sAPINetworkingV1NetworkPolicyPeer) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "IpBlock".
-	// Unsupported kind "pointer" for field "NamespaceSelector".
-	// Unsupported kind "pointer" for field "PodSelector".
+	if s.IpBlock.Set {
+		field.Write("ipBlock")
+		s.IpBlock.WriteJSON(j)
+	}
+	if s.NamespaceSelector.Set {
+		field.Write("namespaceSelector")
+		s.NamespaceSelector.WriteJSON(j)
+	}
+	if s.PodSelector.Set {
+		field.Write("podSelector")
+		s.PodSelector.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -29857,16 +32182,25 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) ReadJSON(i *json.Iterator) error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "ipBlock":
-			// Unsupported kind "pointer" for field "IpBlock".
-			i.Skip()
+			s.IpBlock.Reset()
+			if err := s.IpBlock.ReadJSON(i); err != nil {
+				i.ReportError("Field IpBlock", err.Error())
+				return false
+			}
 			return true
 		case "namespaceSelector":
-			// Unsupported kind "pointer" for field "NamespaceSelector".
-			i.Skip()
+			s.NamespaceSelector.Reset()
+			if err := s.NamespaceSelector.ReadJSON(i); err != nil {
+				i.ReportError("Field NamespaceSelector", err.Error())
+				return false
+			}
 			return true
 		case "podSelector":
-			// Unsupported kind "pointer" for field "PodSelector".
-			i.Skip()
+			s.PodSelector.Reset()
+			if err := s.PodSelector.ReadJSON(i); err != nil {
+				i.ReportError("Field PodSelector", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -30136,9 +32470,18 @@ func (s IoK8sAPINodeV1RuntimeClass) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Overhead".
-	// Unsupported kind "pointer" for field "Scheduling".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Overhead.Set {
+		field.Write("overhead")
+		s.Overhead.WriteJSON(j)
+	}
+	if s.Scheduling.Set {
+		field.Write("scheduling")
+		s.Scheduling.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -30186,16 +32529,25 @@ func (s *IoK8sAPINodeV1RuntimeClass) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "overhead":
-			// Unsupported kind "pointer" for field "Overhead".
-			i.Skip()
+			s.Overhead.Reset()
+			if err := s.Overhead.ReadJSON(i); err != nil {
+				i.ReportError("Field Overhead", err.Error())
+				return false
+			}
 			return true
 		case "scheduling":
-			// Unsupported kind "pointer" for field "Scheduling".
-			i.Skip()
+			s.Scheduling.Reset()
+			if err := s.Scheduling.ReadJSON(i); err != nil {
+				i.ReportError("Field Scheduling", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -30219,7 +32571,10 @@ func (s IoK8sAPINodeV1RuntimeClassList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -30268,8 +32623,11 @@ func (s *IoK8sAPINodeV1RuntimeClassList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -30391,7 +32749,10 @@ func (s IoK8sAPINodeV1alpha1RuntimeClass) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	field.Write("spec")
 	s.Spec.WriteJSON(j)
 	j.WriteObjectEnd()
@@ -30438,8 +32799,11 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClass) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
 			if err := s.Spec.ReadJSON(i); err != nil {
@@ -30469,7 +32833,10 @@ func (s IoK8sAPINodeV1alpha1RuntimeClassList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -30518,8 +32885,11 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) ReadJSON(i *json.Iterator) error 
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -30534,10 +32904,16 @@ func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Overhead".
+	if s.Overhead.Set {
+		field.Write("overhead")
+		s.Overhead.WriteJSON(j)
+	}
 	field.Write("runtimeHandler")
 	j.WriteString(s.RuntimeHandler)
-	// Unsupported kind "pointer" for field "Scheduling".
+	if s.Scheduling.Set {
+		field.Write("scheduling")
+		s.Scheduling.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -30568,15 +32944,21 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) ReadJSON(i *json.Iterator) error 
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "overhead":
-			// Unsupported kind "pointer" for field "Overhead".
-			i.Skip()
+			s.Overhead.Reset()
+			if err := s.Overhead.ReadJSON(i); err != nil {
+				i.ReportError("Field Overhead", err.Error())
+				return false
+			}
 			return true
 		case "runtimeHandler":
 			s.RuntimeHandler = i.ReadString()
 			return i.Error == nil
 		case "scheduling":
-			// Unsupported kind "pointer" for field "Scheduling".
-			i.Skip()
+			s.Scheduling.Reset()
+			if err := s.Scheduling.ReadJSON(i); err != nil {
+				i.ReportError("Field Scheduling", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -30700,9 +33082,18 @@ func (s IoK8sAPINodeV1beta1RuntimeClass) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Overhead".
-	// Unsupported kind "pointer" for field "Scheduling".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Overhead.Set {
+		field.Write("overhead")
+		s.Overhead.WriteJSON(j)
+	}
+	if s.Scheduling.Set {
+		field.Write("scheduling")
+		s.Scheduling.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -30750,16 +33141,25 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "overhead":
-			// Unsupported kind "pointer" for field "Overhead".
-			i.Skip()
+			s.Overhead.Reset()
+			if err := s.Overhead.ReadJSON(i); err != nil {
+				i.ReportError("Field Overhead", err.Error())
+				return false
+			}
 			return true
 		case "scheduling":
-			// Unsupported kind "pointer" for field "Scheduling".
-			i.Skip()
+			s.Scheduling.Reset()
+			if err := s.Scheduling.ReadJSON(i); err != nil {
+				i.ReportError("Field Scheduling", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -30783,7 +33183,10 @@ func (s IoK8sAPINodeV1beta1RuntimeClassList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -30832,8 +33235,11 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -30908,9 +33314,18 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudget) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -30955,16 +33370,25 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudget) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -30988,7 +33412,10 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -31037,8 +33464,11 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) ReadJSON(i *json.Iterator) err
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -31055,7 +33485,10 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) WriteJSON(j *json.Stream) {
 	defer field.Reset()
 	// Unsupported kind "pointer" for field "MaxUnavailable".
 	// Unsupported kind "pointer" for field "MinAvailable".
-	// Unsupported kind "pointer" for field "Selector".
+	if s.Selector.Set {
+		field.Write("selector")
+		s.Selector.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -31094,8 +33527,11 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator) err
 			i.Skip()
 			return true
 		case "selector":
-			// Unsupported kind "pointer" for field "Selector".
-			i.Skip()
+			s.Selector.Reset()
+			if err := s.Selector.ReadJSON(i); err != nil {
+				i.ReportError("Field Selector", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -31521,9 +33957,18 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -31568,16 +34013,25 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) ReadJSON(i *json.Iterator) er
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -31601,7 +34055,10 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) WriteJSON(j *json.Stream) 
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -31650,8 +34107,11 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) ReadJSON(i *json.Iterator
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -31668,7 +34128,10 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) WriteJSON(j *json.Stream) 
 	defer field.Reset()
 	// Unsupported kind "pointer" for field "MaxUnavailable".
 	// Unsupported kind "pointer" for field "MinAvailable".
-	// Unsupported kind "pointer" for field "Selector".
+	if s.Selector.Set {
+		field.Write("selector")
+		s.Selector.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -31707,8 +34170,11 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator
 			i.Skip()
 			return true
 		case "selector":
-			// Unsupported kind "pointer" for field "Selector".
-			i.Skip()
+			s.Selector.Reset()
+			if err := s.Selector.ReadJSON(i); err != nil {
+				i.ReportError("Field Selector", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -31814,8 +34280,14 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -31860,12 +34332,18 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) ReadJSON(i *json.Iterator) erro
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -31889,7 +34367,10 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -31938,8 +34419,11 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) ReadJSON(i *json.Iterator) 
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -31994,10 +34478,16 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSON(j *json.Stream) {
 		s.ReadOnlyRootFilesystem.WriteJSON(j)
 	}
 	// Unsupported kind "pointer" for field "RequiredDropCapabilities".
-	// Unsupported kind "pointer" for field "RunAsGroup".
+	if s.RunAsGroup.Set {
+		field.Write("runAsGroup")
+		s.RunAsGroup.WriteJSON(j)
+	}
 	field.Write("runAsUser")
 	s.RunAsUser.WriteJSON(j)
-	// Unsupported kind "pointer" for field "RuntimeClass".
+	if s.RuntimeClass.Set {
+		field.Write("runtimeClass")
+		s.RuntimeClass.WriteJSON(j)
+	}
 	field.Write("seLinux")
 	s.SeLinux.WriteJSON(j)
 	field.Write("supplementalGroups")
@@ -32128,8 +34618,11 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			i.Skip()
 			return true
 		case "runAsGroup":
-			// Unsupported kind "pointer" for field "RunAsGroup".
-			i.Skip()
+			s.RunAsGroup.Reset()
+			if err := s.RunAsGroup.ReadJSON(i); err != nil {
+				i.ReportError("Field RunAsGroup", err.Error())
+				return false
+			}
 			return true
 		case "runAsUser":
 			if err := s.RunAsUser.ReadJSON(i); err != nil {
@@ -32138,8 +34631,11 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			}
 			return true
 		case "runtimeClass":
-			// Unsupported kind "pointer" for field "RuntimeClass".
-			i.Skip()
+			s.RuntimeClass.Reset()
+			if err := s.RuntimeClass.ReadJSON(i); err != nil {
+				i.ReportError("Field RuntimeClass", err.Error())
+				return false
+			}
 			return true
 		case "seLinux":
 			if err := s.SeLinux.ReadJSON(i); err != nil {
@@ -32334,7 +34830,10 @@ func (s IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) WriteJSON(j *json.Stream) {
 	defer field.Reset()
 	field.Write("rule")
 	j.WriteString(s.Rule)
-	// Unsupported kind "pointer" for field "SeLinuxOptions".
+	if s.SeLinuxOptions.Set {
+		field.Write("seLinuxOptions")
+		s.SeLinuxOptions.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -32368,8 +34867,11 @@ func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) ReadJSON(i *json.Iterator)
 			s.Rule = i.ReadString()
 			return i.Error == nil
 		case "seLinuxOptions":
-			// Unsupported kind "pointer" for field "SeLinuxOptions".
-			i.Skip()
+			s.SeLinuxOptions.Reset()
+			if err := s.SeLinuxOptions.ReadJSON(i); err != nil {
+				i.ReportError("Field SeLinuxOptions", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -32489,7 +34991,10 @@ func (s IoK8sAPIRbacV1ClusterRole) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "AggregationRule".
+	if s.AggregationRule.Set {
+		field.Write("aggregationRule")
+		s.AggregationRule.WriteJSON(j)
+	}
 	if s.ApiVersion.Set {
 		field.Write("apiVersion")
 		s.ApiVersion.WriteJSON(j)
@@ -32498,7 +35003,10 @@ func (s IoK8sAPIRbacV1ClusterRole) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Rules".
 	j.WriteObjectEnd()
 }
@@ -32530,8 +35038,11 @@ func (s *IoK8sAPIRbacV1ClusterRole) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "aggregationRule":
-			// Unsupported kind "pointer" for field "AggregationRule".
-			i.Skip()
+			s.AggregationRule.Reset()
+			if err := s.AggregationRule.ReadJSON(i); err != nil {
+				i.ReportError("Field AggregationRule", err.Error())
+				return false
+			}
 			return true
 		case "apiVersion":
 			s.ApiVersion.Reset()
@@ -32548,8 +35059,11 @@ func (s *IoK8sAPIRbacV1ClusterRole) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "rules":
 			// Unsupported kind "pointer" for field "Rules".
@@ -32576,7 +35090,10 @@ func (s IoK8sAPIRbacV1ClusterRoleBinding) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	field.Write("roleRef")
 	s.RoleRef.WriteJSON(j)
 	// Unsupported kind "pointer" for field "Subjects".
@@ -32624,8 +35141,11 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "roleRef":
 			if err := s.RoleRef.ReadJSON(i); err != nil {
@@ -32659,7 +35179,10 @@ func (s IoK8sAPIRbacV1ClusterRoleBindingList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -32708,8 +35231,11 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) ReadJSON(i *json.Iterator) error 
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -32733,7 +35259,10 @@ func (s IoK8sAPIRbacV1ClusterRoleList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -32782,8 +35311,11 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -32873,7 +35405,10 @@ func (s IoK8sAPIRbacV1Role) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Rules".
 	j.WriteObjectEnd()
 }
@@ -32919,8 +35454,11 @@ func (s *IoK8sAPIRbacV1Role) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "rules":
 			// Unsupported kind "pointer" for field "Rules".
@@ -32947,7 +35485,10 @@ func (s IoK8sAPIRbacV1RoleBinding) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	field.Write("roleRef")
 	s.RoleRef.WriteJSON(j)
 	// Unsupported kind "pointer" for field "Subjects".
@@ -32995,8 +35536,11 @@ func (s *IoK8sAPIRbacV1RoleBinding) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "roleRef":
 			if err := s.RoleRef.ReadJSON(i); err != nil {
@@ -33030,7 +35574,10 @@ func (s IoK8sAPIRbacV1RoleBindingList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -33079,8 +35626,11 @@ func (s *IoK8sAPIRbacV1RoleBindingList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -33104,7 +35654,10 @@ func (s IoK8sAPIRbacV1RoleList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -33153,8 +35706,11 @@ func (s *IoK8sAPIRbacV1RoleList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -33316,7 +35872,10 @@ func (s IoK8sAPISchedulingV1PriorityClass) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	if s.PreemptionPolicy.Set {
 		field.Write("preemptionPolicy")
 		s.PreemptionPolicy.WriteJSON(j)
@@ -33381,8 +35940,11 @@ func (s *IoK8sAPISchedulingV1PriorityClass) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "preemptionPolicy":
 			s.PreemptionPolicy.Reset()
@@ -33416,7 +35978,10 @@ func (s IoK8sAPISchedulingV1PriorityClassList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -33465,8 +36030,11 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) ReadJSON(i *json.Iterator) error
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -33489,7 +36057,10 @@ func (s IoK8sAPIStorageV1CSIDriver) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	field.Write("spec")
 	s.Spec.WriteJSON(j)
 	j.WriteObjectEnd()
@@ -33536,8 +36107,11 @@ func (s *IoK8sAPIStorageV1CSIDriver) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
 			if err := s.Spec.ReadJSON(i); err != nil {
@@ -33567,7 +36141,10 @@ func (s IoK8sAPIStorageV1CSIDriverList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -33616,8 +36193,11 @@ func (s *IoK8sAPIStorageV1CSIDriverList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -33747,7 +36327,10 @@ func (s IoK8sAPIStorageV1CSINode) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	field.Write("spec")
 	s.Spec.WriteJSON(j)
 	j.WriteObjectEnd()
@@ -33794,8 +36377,11 @@ func (s *IoK8sAPIStorageV1CSINode) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
 			if err := s.Spec.ReadJSON(i); err != nil {
@@ -33816,7 +36402,10 @@ func (s IoK8sAPIStorageV1CSINodeDriver) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Allocatable".
+	if s.Allocatable.Set {
+		field.Write("allocatable")
+		s.Allocatable.WriteJSON(j)
+	}
 	field.Write("name")
 	j.WriteString(s.Name)
 	field.Write("nodeID")
@@ -33852,8 +36441,11 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allocatable":
-			// Unsupported kind "pointer" for field "Allocatable".
-			i.Skip()
+			s.Allocatable.Reset()
+			if err := s.Allocatable.ReadJSON(i); err != nil {
+				i.ReportError("Field Allocatable", err.Error())
+				return false
+			}
 			return true
 		case "name":
 			s.Name = i.ReadString()
@@ -33887,7 +36479,10 @@ func (s IoK8sAPIStorageV1CSINodeList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -33936,8 +36531,11 @@ func (s *IoK8sAPIStorageV1CSINodeList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -34012,7 +36610,10 @@ func (s IoK8sAPIStorageV1StorageClass) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "MountOptions".
 	// Unsupported kind "pointer" for field "Parameters".
 	field.Write("provisioner")
@@ -34080,8 +36681,11 @@ func (s *IoK8sAPIStorageV1StorageClass) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "mountOptions":
 			// Unsupported kind "pointer" for field "MountOptions".
@@ -34130,7 +36734,10 @@ func (s IoK8sAPIStorageV1StorageClassList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -34179,8 +36786,11 @@ func (s *IoK8sAPIStorageV1StorageClassList) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -34261,10 +36871,16 @@ func (s IoK8sAPIStorageV1VolumeAttachment) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	field.Write("spec")
 	s.Spec.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Status".
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -34309,8 +36925,11 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
 			if err := s.Spec.ReadJSON(i); err != nil {
@@ -34319,8 +36938,11 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -34344,7 +36966,10 @@ func (s IoK8sAPIStorageV1VolumeAttachmentList) WriteJSON(j *json.Stream) {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -34393,8 +37018,11 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) ReadJSON(i *json.Iterator) error
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -34409,7 +37037,10 @@ func (s IoK8sAPIStorageV1VolumeAttachmentSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "InlineVolumeSpec".
+	if s.InlineVolumeSpec.Set {
+		field.Write("inlineVolumeSpec")
+		s.InlineVolumeSpec.WriteJSON(j)
+	}
 	if s.PersistentVolumeName.Set {
 		field.Write("persistentVolumeName")
 		s.PersistentVolumeName.WriteJSON(j)
@@ -34444,8 +37075,11 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSource) ReadJSON(i *json.Iterator) err
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "inlineVolumeSpec":
-			// Unsupported kind "pointer" for field "InlineVolumeSpec".
-			i.Skip()
+			s.InlineVolumeSpec.Reset()
+			if err := s.InlineVolumeSpec.ReadJSON(i); err != nil {
+				i.ReportError("Field InlineVolumeSpec", err.Error())
+				return false
+			}
 			return true
 		case "persistentVolumeName":
 			s.PersistentVolumeName.Reset()
@@ -34527,11 +37161,17 @@ func (s IoK8sAPIStorageV1VolumeAttachmentStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "AttachError".
+	if s.AttachError.Set {
+		field.Write("attachError")
+		s.AttachError.WriteJSON(j)
+	}
 	field.Write("attached")
 	j.WriteBool(s.Attached)
 	// Unsupported kind "pointer" for field "AttachmentMetadata".
-	// Unsupported kind "pointer" for field "DetachError".
+	if s.DetachError.Set {
+		field.Write("detachError")
+		s.DetachError.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -34562,8 +37202,11 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) ReadJSON(i *json.Iterator) err
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "attachError":
-			// Unsupported kind "pointer" for field "AttachError".
-			i.Skip()
+			s.AttachError.Reset()
+			if err := s.AttachError.ReadJSON(i); err != nil {
+				i.ReportError("Field AttachError", err.Error())
+				return false
+			}
 			return true
 		case "attached":
 			s.Attached = i.ReadBool()
@@ -34573,8 +37216,11 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) ReadJSON(i *json.Iterator) err
 			i.Skip()
 			return true
 		case "detachError":
-			// Unsupported kind "pointer" for field "DetachError".
-			i.Skip()
+			s.DetachError.Reset()
+			if err := s.DetachError.ReadJSON(i); err != nil {
+				i.ReportError("Field DetachError", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -34710,8 +37356,14 @@ func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) WriteJSON(j *json.Stream) {
 		s.Kind.WriteJSON(j)
 	}
 	// Unsupported kind "pointer" for field "MaximumVolumeSize".
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "NodeTopology".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.NodeTopology.Set {
+		field.Write("nodeTopology")
+		s.NodeTopology.WriteJSON(j)
+	}
 	field.Write("storageClassName")
 	j.WriteString(s.StorageClassName)
 	j.WriteObjectEnd()
@@ -34766,12 +37418,18 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) ReadJSON(i *json.Iterator) e
 			i.Skip()
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "nodeTopology":
-			// Unsupported kind "pointer" for field "NodeTopology".
-			i.Skip()
+			s.NodeTopology.Reset()
+			if err := s.NodeTopology.ReadJSON(i); err != nil {
+				i.ReportError("Field NodeTopology", err.Error())
+				return false
+			}
 			return true
 		case "storageClassName":
 			s.StorageClassName = i.ReadString()
@@ -34798,7 +37456,10 @@ func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) WriteJSON(j *json.Stream)
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -34847,8 +37508,11 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) ReadJSON(i *json.Iterato
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -34873,8 +37537,14 @@ func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) WriteJSON(j *json.Stream) {
 		s.Kind.WriteJSON(j)
 	}
 	// Unsupported kind "pointer" for field "MaximumVolumeSize".
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "NodeTopology".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.NodeTopology.Set {
+		field.Write("nodeTopology")
+		s.NodeTopology.WriteJSON(j)
+	}
 	field.Write("storageClassName")
 	j.WriteString(s.StorageClassName)
 	j.WriteObjectEnd()
@@ -34929,12 +37599,18 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) ReadJSON(i *json.Iterator) er
 			i.Skip()
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "nodeTopology":
-			// Unsupported kind "pointer" for field "NodeTopology".
-			i.Skip()
+			s.NodeTopology.Reset()
+			if err := s.NodeTopology.ReadJSON(i); err != nil {
+				i.ReportError("Field NodeTopology", err.Error())
+				return false
+			}
 			return true
 		case "storageClassName":
 			s.StorageClassName = i.ReadString()
@@ -34961,7 +37637,10 @@ func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) WriteJSON(j *json.Stream) 
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -35010,8 +37689,11 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) ReadJSON(i *json.Iterator
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -35118,7 +37800,10 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversio
 	defer field.Reset()
 	field.Write("strategy")
 	j.WriteString(s.Strategy)
-	// Unsupported kind "pointer" for field "Webhook".
+	if s.Webhook.Set {
+		field.Write("webhook")
+		s.Webhook.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -35152,8 +37837,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversi
 			s.Strategy = i.ReadString()
 			return i.Error == nil
 		case "webhook":
-			// Unsupported kind "pointer" for field "Webhook".
-			i.Skip()
+			s.Webhook.Reset()
+			if err := s.Webhook.ReadJSON(i); err != nil {
+				i.ReportError("Field Webhook", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -35176,10 +37864,16 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	field.Write("spec")
 	s.Spec.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Status".
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -35224,8 +37918,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
 			if err := s.Spec.ReadJSON(i); err != nil {
@@ -35234,8 +37931,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -35338,7 +38038,10 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -35387,8 +38090,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -35487,7 +38193,10 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Conversion".
+	if s.Conversion.Set {
+		field.Write("conversion")
+		s.Conversion.WriteJSON(j)
+	}
 	field.Write("group")
 	j.WriteString(s.Group)
 	field.Write("names")
@@ -35529,8 +38238,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "conversion":
-			// Unsupported kind "pointer" for field "Conversion".
-			i.Skip()
+			s.Conversion.Reset()
+			if err := s.Conversion.ReadJSON(i); err != nil {
+				i.ReportError("Field Conversion", err.Error())
+				return false
+			}
 			return true
 		case "group":
 			s.Group = i.ReadString()
@@ -35568,7 +38280,10 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "AcceptedNames".
+	if s.AcceptedNames.Set {
+		field.Write("acceptedNames")
+		s.AcceptedNames.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Conditions".
 	// Unsupported kind "pointer" for field "StoredVersions".
 	j.WriteObjectEnd()
@@ -35601,8 +38316,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "acceptedNames":
-			// Unsupported kind "pointer" for field "AcceptedNames".
-			i.Skip()
+			s.AcceptedNames.Reset()
+			if err := s.AcceptedNames.ReadJSON(i); err != nil {
+				i.ReportError("Field AcceptedNames", err.Error())
+				return false
+			}
 			return true
 		case "conditions":
 			// Unsupported kind "pointer" for field "Conditions".
@@ -35636,12 +38354,18 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 	}
 	field.Write("name")
 	j.WriteString(s.Name)
-	// Unsupported kind "pointer" for field "Schema".
+	if s.Schema.Set {
+		field.Write("schema")
+		s.Schema.WriteJSON(j)
+	}
 	field.Write("served")
 	j.WriteBool(s.Served)
 	field.Write("storage")
 	j.WriteBool(s.Storage)
-	// Unsupported kind "pointer" for field "Subresources".
+	if s.Subresources.Set {
+		field.Write("subresources")
+		s.Subresources.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -35693,8 +38417,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			s.Name = i.ReadString()
 			return i.Error == nil
 		case "schema":
-			// Unsupported kind "pointer" for field "Schema".
-			i.Skip()
+			s.Schema.Reset()
+			if err := s.Schema.ReadJSON(i); err != nil {
+				i.ReportError("Field Schema", err.Error())
+				return false
+			}
 			return true
 		case "served":
 			s.Served = i.ReadBool()
@@ -35703,8 +38430,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			s.Storage = i.ReadBool()
 			return i.Error == nil
 		case "subresources":
-			// Unsupported kind "pointer" for field "Subresources".
-			i.Skip()
+			s.Subresources.Reset()
+			if err := s.Subresources.ReadJSON(i); err != nil {
+				i.ReportError("Field Subresources", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -35782,7 +38512,10 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresour
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Scale".
+	if s.Scale.Set {
+		field.Write("scale")
+		s.Scale.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Status".
 	j.WriteObjectEnd()
 }
@@ -35814,8 +38547,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "scale":
-			// Unsupported kind "pointer" for field "Scale".
-			i.Skip()
+			s.Scale.Reset()
+			if err := s.Scale.ReadJSON(i); err != nil {
+				i.ReportError("Field Scale", err.Error())
+				return false
+			}
 			return true
 		case "status":
 			// Unsupported kind "pointer" for field "Status".
@@ -35834,7 +38570,10 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidatio
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "OpenAPIV3Schema".
+	if s.OpenAPIV3Schema.Set {
+		field.Write("openAPIV3Schema")
+		s.OpenAPIV3Schema.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -35865,8 +38604,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidati
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "openAPIV3Schema":
-			// Unsupported kind "pointer" for field "OpenAPIV3Schema".
-			i.Skip()
+			s.OpenAPIV3Schema.Reset()
+			if err := s.OpenAPIV3Schema.ReadJSON(i); err != nil {
+				i.ReportError("Field OpenAPIV3Schema", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -35966,7 +38708,10 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJ
 		field.Write("exclusiveMinimum")
 		s.ExclusiveMinimum.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "ExternalDocs".
+	if s.ExternalDocs.Set {
+		field.Write("externalDocs")
+		s.ExternalDocs.WriteJSON(j)
+	}
 	if s.Format.Set {
 		field.Write("format")
 		s.Format.WriteJSON(j)
@@ -36012,7 +38757,10 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJ
 		field.Write("multipleOf")
 		s.MultipleOf.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Not".
+	if s.Not.Set {
+		field.Write("not")
+		s.Not.WriteJSON(j)
+	}
 	if s.Nullable.Set {
 		field.Write("nullable")
 		s.Nullable.WriteJSON(j)
@@ -36153,8 +38901,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			}
 			return true
 		case "externalDocs":
-			// Unsupported kind "pointer" for field "ExternalDocs".
-			i.Skip()
+			s.ExternalDocs.Reset()
+			if err := s.ExternalDocs.ReadJSON(i); err != nil {
+				i.ReportError("Field ExternalDocs", err.Error())
+				return false
+			}
 			return true
 		case "format":
 			s.Format.Reset()
@@ -36238,8 +38989,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			}
 			return true
 		case "not":
-			// Unsupported kind "pointer" for field "Not".
-			i.Skip()
+			s.Not.Reset()
+			if err := s.Not.ReadJSON(i); err != nil {
+				i.ReportError("Field Not", err.Error())
+				return false
+			}
 			return true
 		case "nullable":
 			s.Nullable.Reset()
@@ -36433,7 +39187,10 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Wr
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	// Unsupported kind "pointer" for field "CaBundle".
-	// Unsupported kind "pointer" for field "Service".
+	if s.Service.Set {
+		field.Write("service")
+		s.Service.WriteJSON(j)
+	}
 	if s.URL.Set {
 		field.Write("url")
 		s.URL.WriteJSON(j)
@@ -36472,8 +39229,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) R
 			i.Skip()
 			return true
 		case "service":
-			// Unsupported kind "pointer" for field "Service".
-			i.Skip()
+			s.Service.Reset()
+			if err := s.Service.ReadJSON(i); err != nil {
+				i.ReportError("Field Service", err.Error())
+				return false
+			}
 			return true
 		case "url":
 			s.URL.Reset()
@@ -36495,7 +39255,10 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Writ
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "ClientConfig".
+	if s.ClientConfig.Set {
+		field.Write("clientConfig")
+		s.ClientConfig.WriteJSON(j)
+	}
 	// Unsupported kind "array" for field "ConversionReviewVersions".
 	j.WriteObjectEnd()
 }
@@ -36527,8 +39290,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Rea
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "clientConfig":
-			// Unsupported kind "pointer" for field "ClientConfig".
-			i.Skip()
+			s.ClientConfig.Reset()
+			if err := s.ClientConfig.ReadJSON(i); err != nil {
+				i.ReportError("Field ClientConfig", err.Error())
+				return false
+			}
 			return true
 		case "conversionReviewVersions":
 			// Unsupported kind "array" for field "ConversionReviewVersions".
@@ -36557,7 +39323,10 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroup) WriteJSON(j *json.Stream) {
 	}
 	field.Write("name")
 	j.WriteString(s.Name)
-	// Unsupported kind "pointer" for field "PreferredVersion".
+	if s.PreferredVersion.Set {
+		field.Write("preferredVersion")
+		s.PreferredVersion.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "ServerAddressByClientCIDRs".
 	// Unsupported kind "array" for field "Versions".
 	j.WriteObjectEnd()
@@ -36607,8 +39376,11 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) ReadJSON(i *json.Iterator) erro
 			s.Name = i.ReadString()
 			return i.Error == nil
 		case "preferredVersion":
-			// Unsupported kind "pointer" for field "PreferredVersion".
-			i.Skip()
+			s.PreferredVersion.Reset()
+			if err := s.PreferredVersion.ReadJSON(i); err != nil {
+				i.ReportError("Field PreferredVersion", err.Error())
+				return false
+			}
 			return true
 		case "serverAddressByClientCIDRs":
 			// Unsupported kind "pointer" for field "ServerAddressByClientCIDRs".
@@ -37053,7 +39825,10 @@ func (s IoK8sApimachineryPkgApisMetaV1DeleteOptions) WriteJSON(j *json.Stream) {
 		field.Write("orphanDependents")
 		s.OrphanDependents.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Preconditions".
+	if s.Preconditions.Set {
+		field.Write("preconditions")
+		s.Preconditions.WriteJSON(j)
+	}
 	if s.PropagationPolicy.Set {
 		field.Write("propagationPolicy")
 		s.PropagationPolicy.WriteJSON(j)
@@ -37120,8 +39895,11 @@ func (s *IoK8sApimachineryPkgApisMetaV1DeleteOptions) ReadJSON(i *json.Iterator)
 			}
 			return true
 		case "preconditions":
-			// Unsupported kind "pointer" for field "Preconditions".
-			i.Skip()
+			s.Preconditions.Reset()
+			if err := s.Preconditions.ReadJSON(i); err != nil {
+				i.ReportError("Field Preconditions", err.Error())
+				return false
+			}
 			return true
 		case "propagationPolicy":
 			s.PropagationPolicy.Reset()
@@ -37881,7 +40659,10 @@ func (s IoK8sApimachineryPkgApisMetaV1Status) WriteJSON(j *json.Stream) {
 		field.Write("code")
 		s.Code.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Details".
+	if s.Details.Set {
+		field.Write("details")
+		s.Details.WriteJSON(j)
+	}
 	if s.Kind.Set {
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
@@ -37890,7 +40671,10 @@ func (s IoK8sApimachineryPkgApisMetaV1Status) WriteJSON(j *json.Stream) {
 		field.Write("message")
 		s.Message.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	if s.Reason.Set {
 		field.Write("reason")
 		s.Reason.WriteJSON(j)
@@ -37943,8 +40727,11 @@ func (s *IoK8sApimachineryPkgApisMetaV1Status) ReadJSON(i *json.Iterator) error 
 			}
 			return true
 		case "details":
-			// Unsupported kind "pointer" for field "Details".
-			i.Skip()
+			s.Details.Reset()
+			if err := s.Details.ReadJSON(i); err != nil {
+				i.ReportError("Field Details", err.Error())
+				return false
+			}
 			return true
 		case "kind":
 			s.Kind.Reset()
@@ -37961,8 +40748,11 @@ func (s *IoK8sApimachineryPkgApisMetaV1Status) ReadJSON(i *json.Iterator) error 
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "reason":
 			s.Reason.Reset()
@@ -38315,9 +41105,18 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) WriteJSON(j *json
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "Spec".
-	// Unsupported kind "pointer" for field "Status".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.Spec.Set {
+		field.Write("spec")
+		s.Spec.WriteJSON(j)
+	}
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -38362,16 +41161,25 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) ReadJSON(i *json
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "spec":
-			// Unsupported kind "pointer" for field "Spec".
-			i.Skip()
+			s.Spec.Reset()
+			if err := s.Spec.ReadJSON(i); err != nil {
+				i.ReportError("Field Spec", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -38474,7 +41282,10 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) WriteJSON(j *
 		field.Write("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Metadata".
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -38523,8 +41334,11 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) ReadJSON(i *
 			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -38550,7 +41364,10 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) WriteJSON(j *
 		field.Write("insecureSkipTLSVerify")
 		s.InsecureSkipTLSVerify.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Service".
+	if s.Service.Set {
+		field.Write("service")
+		s.Service.WriteJSON(j)
+	}
 	if s.Version.Set {
 		field.Write("version")
 		s.Version.WriteJSON(j)
@@ -38608,8 +41425,11 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) ReadJSON(i *
 			}
 			return true
 		case "service":
-			// Unsupported kind "pointer" for field "Service".
-			i.Skip()
+			s.Service.Reset()
+			if err := s.Service.ReadJSON(i); err != nil {
+				i.ReportError("Field Service", err.Error())
+				return false
+			}
 			return true
 		case "version":
 			s.Version.Reset()
@@ -38749,4 +41569,4954 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) ReadJSON(i
 		}
 	})
 	return i.Error
+}
+
+// WriteJSON writes json value of bool to json stream.
+func (o OptionalBool) WriteJSON(j *json.Stream) {
+	j.WriteBool(bool(o.Value))
+}
+
+// ReadJSON reads json value of bool from json iterator.
+func (o *OptionalBool) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.BoolValue:
+		o.Set = true
+		o.Value = bool(i.ReadBool())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalBool", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of float64 to json stream.
+func (o OptionalFloat64) WriteJSON(j *json.Stream) {
+	j.WriteFloat64(float64(o.Value))
+}
+
+// ReadJSON reads json value of float64 from json iterator.
+func (o *OptionalFloat64) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.NumberValue:
+		o.Set = true
+		o.Value = float64(i.ReadFloat64())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalFloat64", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of int32 to json stream.
+func (o OptionalInt32) WriteJSON(j *json.Stream) {
+	j.WriteInt32(int32(o.Value))
+}
+
+// ReadJSON reads json value of int32 from json iterator.
+func (o *OptionalInt32) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.NumberValue:
+		o.Set = true
+		o.Value = int32(i.ReadInt32())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalInt32", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of int64 to json stream.
+func (o OptionalInt64) WriteJSON(j *json.Stream) {
+	j.WriteInt64(int64(o.Value))
+}
+
+// ReadJSON reads json value of int64 from json iterator.
+func (o *OptionalInt64) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.NumberValue:
+		o.Set = true
+		o.Value = int64(i.ReadInt64())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalInt64", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAdmissionregistrationV1ServiceReference to json stream.
+func (o OptionalIoK8sAPIAdmissionregistrationV1ServiceReference) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAdmissionregistrationV1ServiceReference from json iterator.
+func (o *OptionalIoK8sAPIAdmissionregistrationV1ServiceReference) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAdmissionregistrationV1ServiceReference", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAppsV1DaemonSetSpec to json stream.
+func (o OptionalIoK8sAPIAppsV1DaemonSetSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAppsV1DaemonSetSpec from json iterator.
+func (o *OptionalIoK8sAPIAppsV1DaemonSetSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1DaemonSetSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAppsV1DaemonSetStatus to json stream.
+func (o OptionalIoK8sAPIAppsV1DaemonSetStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAppsV1DaemonSetStatus from json iterator.
+func (o *OptionalIoK8sAPIAppsV1DaemonSetStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1DaemonSetStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAppsV1DaemonSetUpdateStrategy to json stream.
+func (o OptionalIoK8sAPIAppsV1DaemonSetUpdateStrategy) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAppsV1DaemonSetUpdateStrategy from json iterator.
+func (o *OptionalIoK8sAPIAppsV1DaemonSetUpdateStrategy) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1DaemonSetUpdateStrategy", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAppsV1DeploymentSpec to json stream.
+func (o OptionalIoK8sAPIAppsV1DeploymentSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAppsV1DeploymentSpec from json iterator.
+func (o *OptionalIoK8sAPIAppsV1DeploymentSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1DeploymentSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAppsV1DeploymentStatus to json stream.
+func (o OptionalIoK8sAPIAppsV1DeploymentStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAppsV1DeploymentStatus from json iterator.
+func (o *OptionalIoK8sAPIAppsV1DeploymentStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1DeploymentStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAppsV1DeploymentStrategy to json stream.
+func (o OptionalIoK8sAPIAppsV1DeploymentStrategy) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAppsV1DeploymentStrategy from json iterator.
+func (o *OptionalIoK8sAPIAppsV1DeploymentStrategy) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1DeploymentStrategy", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAppsV1ReplicaSetSpec to json stream.
+func (o OptionalIoK8sAPIAppsV1ReplicaSetSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAppsV1ReplicaSetSpec from json iterator.
+func (o *OptionalIoK8sAPIAppsV1ReplicaSetSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1ReplicaSetSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAppsV1ReplicaSetStatus to json stream.
+func (o OptionalIoK8sAPIAppsV1ReplicaSetStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAppsV1ReplicaSetStatus from json iterator.
+func (o *OptionalIoK8sAPIAppsV1ReplicaSetStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1ReplicaSetStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAppsV1RollingUpdateDaemonSet to json stream.
+func (o OptionalIoK8sAPIAppsV1RollingUpdateDaemonSet) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAppsV1RollingUpdateDaemonSet from json iterator.
+func (o *OptionalIoK8sAPIAppsV1RollingUpdateDaemonSet) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1RollingUpdateDaemonSet", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAppsV1RollingUpdateDeployment to json stream.
+func (o OptionalIoK8sAPIAppsV1RollingUpdateDeployment) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAppsV1RollingUpdateDeployment from json iterator.
+func (o *OptionalIoK8sAPIAppsV1RollingUpdateDeployment) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1RollingUpdateDeployment", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy to json stream.
+func (o OptionalIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy from json iterator.
+func (o *OptionalIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAppsV1StatefulSetSpec to json stream.
+func (o OptionalIoK8sAPIAppsV1StatefulSetSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAppsV1StatefulSetSpec from json iterator.
+func (o *OptionalIoK8sAPIAppsV1StatefulSetSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1StatefulSetSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAppsV1StatefulSetStatus to json stream.
+func (o OptionalIoK8sAPIAppsV1StatefulSetStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAppsV1StatefulSetStatus from json iterator.
+func (o *OptionalIoK8sAPIAppsV1StatefulSetStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1StatefulSetStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAppsV1StatefulSetUpdateStrategy to json stream.
+func (o OptionalIoK8sAPIAppsV1StatefulSetUpdateStrategy) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAppsV1StatefulSetUpdateStrategy from json iterator.
+func (o *OptionalIoK8sAPIAppsV1StatefulSetUpdateStrategy) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAppsV1StatefulSetUpdateStrategy", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAuthenticationV1TokenReviewStatus to json stream.
+func (o OptionalIoK8sAPIAuthenticationV1TokenReviewStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAuthenticationV1TokenReviewStatus from json iterator.
+func (o *OptionalIoK8sAPIAuthenticationV1TokenReviewStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAuthenticationV1TokenReviewStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAuthenticationV1UserInfo to json stream.
+func (o OptionalIoK8sAPIAuthenticationV1UserInfo) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAuthenticationV1UserInfo from json iterator.
+func (o *OptionalIoK8sAPIAuthenticationV1UserInfo) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAuthenticationV1UserInfo", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAuthorizationV1NonResourceAttributes to json stream.
+func (o OptionalIoK8sAPIAuthorizationV1NonResourceAttributes) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAuthorizationV1NonResourceAttributes from json iterator.
+func (o *OptionalIoK8sAPIAuthorizationV1NonResourceAttributes) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAuthorizationV1NonResourceAttributes", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAuthorizationV1ResourceAttributes to json stream.
+func (o OptionalIoK8sAPIAuthorizationV1ResourceAttributes) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAuthorizationV1ResourceAttributes from json iterator.
+func (o *OptionalIoK8sAPIAuthorizationV1ResourceAttributes) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAuthorizationV1ResourceAttributes", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAuthorizationV1SubjectAccessReviewStatus to json stream.
+func (o OptionalIoK8sAPIAuthorizationV1SubjectAccessReviewStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAuthorizationV1SubjectAccessReviewStatus from json iterator.
+func (o *OptionalIoK8sAPIAuthorizationV1SubjectAccessReviewStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAuthorizationV1SubjectAccessReviewStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAuthorizationV1SubjectRulesReviewStatus to json stream.
+func (o OptionalIoK8sAPIAuthorizationV1SubjectRulesReviewStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAuthorizationV1SubjectRulesReviewStatus from json iterator.
+func (o *OptionalIoK8sAPIAuthorizationV1SubjectRulesReviewStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAuthorizationV1SubjectRulesReviewStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec to json stream.
+func (o OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus to json stream.
+func (o OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1ExternalMetricSource to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ExternalMetricSource from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1ExternalMetricStatus to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ExternalMetricStatus from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1ExternalMetricStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1ObjectMetricSource to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ObjectMetricSource from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1ObjectMetricStatus to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ObjectMetricStatus from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1ObjectMetricStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1PodsMetricSource to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta1PodsMetricSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1PodsMetricSource from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta1PodsMetricSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1PodsMetricSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1PodsMetricStatus to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta1PodsMetricStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1PodsMetricStatus from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta1PodsMetricStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1PodsMetricStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1ResourceMetricSource to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ResourceMetricSource from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta1ResourceMetricStatus to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta1ResourceMetricStatus from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta1ResourceMetricStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2ExternalMetricSource to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ExternalMetricSource from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2ExternalMetricStatus to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ExternalMetricStatus from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2ExternalMetricStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2HPAScalingRules to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta2HPAScalingRules) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2HPAScalingRules from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta2HPAScalingRules) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2HPAScalingRules", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2ObjectMetricSource to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ObjectMetricSource from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2ObjectMetricStatus to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ObjectMetricStatus from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2ObjectMetricStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2PodsMetricSource to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta2PodsMetricSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2PodsMetricSource from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta2PodsMetricSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2PodsMetricSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2PodsMetricStatus to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta2PodsMetricStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2PodsMetricStatus from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta2PodsMetricStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2PodsMetricStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2ResourceMetricSource to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ResourceMetricSource from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIAutoscalingV2beta2ResourceMetricStatus to json stream.
+func (o OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIAutoscalingV2beta2ResourceMetricStatus from json iterator.
+func (o *OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIAutoscalingV2beta2ResourceMetricStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIBatchV1CronJobSpec to json stream.
+func (o OptionalIoK8sAPIBatchV1CronJobSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIBatchV1CronJobSpec from json iterator.
+func (o *OptionalIoK8sAPIBatchV1CronJobSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIBatchV1CronJobSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIBatchV1CronJobStatus to json stream.
+func (o OptionalIoK8sAPIBatchV1CronJobStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIBatchV1CronJobStatus from json iterator.
+func (o *OptionalIoK8sAPIBatchV1CronJobStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIBatchV1CronJobStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIBatchV1JobSpec to json stream.
+func (o OptionalIoK8sAPIBatchV1JobSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIBatchV1JobSpec from json iterator.
+func (o *OptionalIoK8sAPIBatchV1JobSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIBatchV1JobSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIBatchV1JobStatus to json stream.
+func (o OptionalIoK8sAPIBatchV1JobStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIBatchV1JobStatus from json iterator.
+func (o *OptionalIoK8sAPIBatchV1JobStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIBatchV1JobStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIBatchV1UncountedTerminatedPods to json stream.
+func (o OptionalIoK8sAPIBatchV1UncountedTerminatedPods) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIBatchV1UncountedTerminatedPods from json iterator.
+func (o *OptionalIoK8sAPIBatchV1UncountedTerminatedPods) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIBatchV1UncountedTerminatedPods", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIBatchV1beta1CronJobSpec to json stream.
+func (o OptionalIoK8sAPIBatchV1beta1CronJobSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIBatchV1beta1CronJobSpec from json iterator.
+func (o *OptionalIoK8sAPIBatchV1beta1CronJobSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIBatchV1beta1CronJobSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIBatchV1beta1CronJobStatus to json stream.
+func (o OptionalIoK8sAPIBatchV1beta1CronJobStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIBatchV1beta1CronJobStatus from json iterator.
+func (o *OptionalIoK8sAPIBatchV1beta1CronJobStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIBatchV1beta1CronJobStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICertificatesV1CertificateSigningRequestStatus to json stream.
+func (o OptionalIoK8sAPICertificatesV1CertificateSigningRequestStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICertificatesV1CertificateSigningRequestStatus from json iterator.
+func (o *OptionalIoK8sAPICertificatesV1CertificateSigningRequestStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICertificatesV1CertificateSigningRequestStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoordinationV1LeaseSpec to json stream.
+func (o OptionalIoK8sAPICoordinationV1LeaseSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoordinationV1LeaseSpec from json iterator.
+func (o *OptionalIoK8sAPICoordinationV1LeaseSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoordinationV1LeaseSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1Affinity to json stream.
+func (o OptionalIoK8sAPICoreV1Affinity) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1Affinity from json iterator.
+func (o *OptionalIoK8sAPICoreV1Affinity) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1Affinity", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1AzureDiskVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1AzureDiskVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1AzureDiskVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1AzureDiskVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1AzureDiskVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1AzureFilePersistentVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1AzureFilePersistentVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1AzureFilePersistentVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1AzureFilePersistentVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1AzureFilePersistentVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1AzureFileVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1AzureFileVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1AzureFileVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1AzureFileVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1AzureFileVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1CSIPersistentVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1CSIPersistentVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1CSIPersistentVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1CSIPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1CSIPersistentVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1CSIVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1CSIVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1CSIVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1CSIVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1CSIVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1Capabilities to json stream.
+func (o OptionalIoK8sAPICoreV1Capabilities) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1Capabilities from json iterator.
+func (o *OptionalIoK8sAPICoreV1Capabilities) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1Capabilities", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1CephFSPersistentVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1CephFSPersistentVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1CephFSPersistentVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1CephFSPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1CephFSPersistentVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1CephFSVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1CephFSVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1CephFSVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1CephFSVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1CephFSVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1CinderPersistentVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1CinderPersistentVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1CinderPersistentVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1CinderPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1CinderPersistentVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1CinderVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1CinderVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1CinderVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1CinderVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1CinderVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ClientIPConfig to json stream.
+func (o OptionalIoK8sAPICoreV1ClientIPConfig) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ClientIPConfig from json iterator.
+func (o *OptionalIoK8sAPICoreV1ClientIPConfig) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ClientIPConfig", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ConfigMapEnvSource to json stream.
+func (o OptionalIoK8sAPICoreV1ConfigMapEnvSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ConfigMapEnvSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1ConfigMapEnvSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ConfigMapEnvSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ConfigMapKeySelector to json stream.
+func (o OptionalIoK8sAPICoreV1ConfigMapKeySelector) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ConfigMapKeySelector from json iterator.
+func (o *OptionalIoK8sAPICoreV1ConfigMapKeySelector) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ConfigMapKeySelector", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ConfigMapNodeConfigSource to json stream.
+func (o OptionalIoK8sAPICoreV1ConfigMapNodeConfigSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ConfigMapNodeConfigSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1ConfigMapNodeConfigSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ConfigMapNodeConfigSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ConfigMapProjection to json stream.
+func (o OptionalIoK8sAPICoreV1ConfigMapProjection) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ConfigMapProjection from json iterator.
+func (o *OptionalIoK8sAPICoreV1ConfigMapProjection) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ConfigMapProjection", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ConfigMapVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1ConfigMapVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ConfigMapVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1ConfigMapVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ConfigMapVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ContainerState to json stream.
+func (o OptionalIoK8sAPICoreV1ContainerState) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ContainerState from json iterator.
+func (o *OptionalIoK8sAPICoreV1ContainerState) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ContainerState", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ContainerStateRunning to json stream.
+func (o OptionalIoK8sAPICoreV1ContainerStateRunning) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ContainerStateRunning from json iterator.
+func (o *OptionalIoK8sAPICoreV1ContainerStateRunning) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ContainerStateRunning", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ContainerStateTerminated to json stream.
+func (o OptionalIoK8sAPICoreV1ContainerStateTerminated) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ContainerStateTerminated from json iterator.
+func (o *OptionalIoK8sAPICoreV1ContainerStateTerminated) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ContainerStateTerminated", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ContainerStateWaiting to json stream.
+func (o OptionalIoK8sAPICoreV1ContainerStateWaiting) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ContainerStateWaiting from json iterator.
+func (o *OptionalIoK8sAPICoreV1ContainerStateWaiting) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ContainerStateWaiting", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1DaemonEndpoint to json stream.
+func (o OptionalIoK8sAPICoreV1DaemonEndpoint) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1DaemonEndpoint from json iterator.
+func (o *OptionalIoK8sAPICoreV1DaemonEndpoint) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1DaemonEndpoint", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1DownwardAPIProjection to json stream.
+func (o OptionalIoK8sAPICoreV1DownwardAPIProjection) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1DownwardAPIProjection from json iterator.
+func (o *OptionalIoK8sAPICoreV1DownwardAPIProjection) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1DownwardAPIProjection", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1DownwardAPIVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1DownwardAPIVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1DownwardAPIVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1DownwardAPIVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1DownwardAPIVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1EmptyDirVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1EmptyDirVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1EmptyDirVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1EmptyDirVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1EmptyDirVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1EnvVarSource to json stream.
+func (o OptionalIoK8sAPICoreV1EnvVarSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1EnvVarSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1EnvVarSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1EnvVarSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1EphemeralVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1EphemeralVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1EphemeralVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1EphemeralVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1EphemeralVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1EventSeries to json stream.
+func (o OptionalIoK8sAPICoreV1EventSeries) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1EventSeries from json iterator.
+func (o *OptionalIoK8sAPICoreV1EventSeries) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1EventSeries", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1EventSource to json stream.
+func (o OptionalIoK8sAPICoreV1EventSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1EventSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1EventSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1EventSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ExecAction to json stream.
+func (o OptionalIoK8sAPICoreV1ExecAction) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ExecAction from json iterator.
+func (o *OptionalIoK8sAPICoreV1ExecAction) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ExecAction", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1FCVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1FCVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1FCVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1FCVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1FCVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1FlexPersistentVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1FlexPersistentVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1FlexPersistentVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1FlexPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1FlexPersistentVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1FlexVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1FlexVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1FlexVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1FlexVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1FlexVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1FlockerVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1FlockerVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1FlockerVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1FlockerVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1FlockerVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1GCEPersistentDiskVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1GCEPersistentDiskVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1GCEPersistentDiskVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1GCEPersistentDiskVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1GCEPersistentDiskVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1GitRepoVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1GitRepoVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1GitRepoVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1GitRepoVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1GitRepoVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1GlusterfsPersistentVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1GlusterfsPersistentVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1GlusterfsPersistentVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1GlusterfsPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1GlusterfsPersistentVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1GlusterfsVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1GlusterfsVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1GlusterfsVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1GlusterfsVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1GlusterfsVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1HTTPGetAction to json stream.
+func (o OptionalIoK8sAPICoreV1HTTPGetAction) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1HTTPGetAction from json iterator.
+func (o *OptionalIoK8sAPICoreV1HTTPGetAction) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1HTTPGetAction", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1Handler to json stream.
+func (o OptionalIoK8sAPICoreV1Handler) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1Handler from json iterator.
+func (o *OptionalIoK8sAPICoreV1Handler) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1Handler", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1HostPathVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1HostPathVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1HostPathVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1HostPathVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1HostPathVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ISCSIPersistentVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1ISCSIPersistentVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ISCSIPersistentVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1ISCSIPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ISCSIPersistentVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ISCSIVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1ISCSIVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ISCSIVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1ISCSIVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ISCSIVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1Lifecycle to json stream.
+func (o OptionalIoK8sAPICoreV1Lifecycle) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1Lifecycle from json iterator.
+func (o *OptionalIoK8sAPICoreV1Lifecycle) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1Lifecycle", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1LimitRangeSpec to json stream.
+func (o OptionalIoK8sAPICoreV1LimitRangeSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1LimitRangeSpec from json iterator.
+func (o *OptionalIoK8sAPICoreV1LimitRangeSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1LimitRangeSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1LoadBalancerStatus to json stream.
+func (o OptionalIoK8sAPICoreV1LoadBalancerStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1LoadBalancerStatus from json iterator.
+func (o *OptionalIoK8sAPICoreV1LoadBalancerStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1LoadBalancerStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1LocalObjectReference to json stream.
+func (o OptionalIoK8sAPICoreV1LocalObjectReference) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1LocalObjectReference from json iterator.
+func (o *OptionalIoK8sAPICoreV1LocalObjectReference) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1LocalObjectReference", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1LocalVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1LocalVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1LocalVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1LocalVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1LocalVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1NFSVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1NFSVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1NFSVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1NFSVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NFSVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1NamespaceSpec to json stream.
+func (o OptionalIoK8sAPICoreV1NamespaceSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1NamespaceSpec from json iterator.
+func (o *OptionalIoK8sAPICoreV1NamespaceSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NamespaceSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1NamespaceStatus to json stream.
+func (o OptionalIoK8sAPICoreV1NamespaceStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1NamespaceStatus from json iterator.
+func (o *OptionalIoK8sAPICoreV1NamespaceStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NamespaceStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1NodeAffinity to json stream.
+func (o OptionalIoK8sAPICoreV1NodeAffinity) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1NodeAffinity from json iterator.
+func (o *OptionalIoK8sAPICoreV1NodeAffinity) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NodeAffinity", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1NodeConfigSource to json stream.
+func (o OptionalIoK8sAPICoreV1NodeConfigSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1NodeConfigSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1NodeConfigSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NodeConfigSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1NodeConfigStatus to json stream.
+func (o OptionalIoK8sAPICoreV1NodeConfigStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1NodeConfigStatus from json iterator.
+func (o *OptionalIoK8sAPICoreV1NodeConfigStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NodeConfigStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1NodeDaemonEndpoints to json stream.
+func (o OptionalIoK8sAPICoreV1NodeDaemonEndpoints) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1NodeDaemonEndpoints from json iterator.
+func (o *OptionalIoK8sAPICoreV1NodeDaemonEndpoints) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NodeDaemonEndpoints", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1NodeSelector to json stream.
+func (o OptionalIoK8sAPICoreV1NodeSelector) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1NodeSelector from json iterator.
+func (o *OptionalIoK8sAPICoreV1NodeSelector) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NodeSelector", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1NodeSpec to json stream.
+func (o OptionalIoK8sAPICoreV1NodeSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1NodeSpec from json iterator.
+func (o *OptionalIoK8sAPICoreV1NodeSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NodeSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1NodeStatus to json stream.
+func (o OptionalIoK8sAPICoreV1NodeStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1NodeStatus from json iterator.
+func (o *OptionalIoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NodeStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1NodeSystemInfo to json stream.
+func (o OptionalIoK8sAPICoreV1NodeSystemInfo) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1NodeSystemInfo from json iterator.
+func (o *OptionalIoK8sAPICoreV1NodeSystemInfo) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1NodeSystemInfo", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ObjectFieldSelector to json stream.
+func (o OptionalIoK8sAPICoreV1ObjectFieldSelector) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ObjectFieldSelector from json iterator.
+func (o *OptionalIoK8sAPICoreV1ObjectFieldSelector) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ObjectFieldSelector", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ObjectReference to json stream.
+func (o OptionalIoK8sAPICoreV1ObjectReference) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ObjectReference from json iterator.
+func (o *OptionalIoK8sAPICoreV1ObjectReference) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ObjectReference", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1PersistentVolumeClaimSpec to json stream.
+func (o OptionalIoK8sAPICoreV1PersistentVolumeClaimSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1PersistentVolumeClaimSpec from json iterator.
+func (o *OptionalIoK8sAPICoreV1PersistentVolumeClaimSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PersistentVolumeClaimSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1PersistentVolumeClaimStatus to json stream.
+func (o OptionalIoK8sAPICoreV1PersistentVolumeClaimStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1PersistentVolumeClaimStatus from json iterator.
+func (o *OptionalIoK8sAPICoreV1PersistentVolumeClaimStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PersistentVolumeClaimStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1PersistentVolumeClaimTemplate to json stream.
+func (o OptionalIoK8sAPICoreV1PersistentVolumeClaimTemplate) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1PersistentVolumeClaimTemplate from json iterator.
+func (o *OptionalIoK8sAPICoreV1PersistentVolumeClaimTemplate) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PersistentVolumeClaimTemplate", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1PersistentVolumeClaimVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1PersistentVolumeClaimVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PersistentVolumeClaimVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1PersistentVolumeSpec to json stream.
+func (o OptionalIoK8sAPICoreV1PersistentVolumeSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1PersistentVolumeSpec from json iterator.
+func (o *OptionalIoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PersistentVolumeSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1PersistentVolumeStatus to json stream.
+func (o OptionalIoK8sAPICoreV1PersistentVolumeStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1PersistentVolumeStatus from json iterator.
+func (o *OptionalIoK8sAPICoreV1PersistentVolumeStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PersistentVolumeStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1PhotonPersistentDiskVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1PhotonPersistentDiskVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PhotonPersistentDiskVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1PodAffinity to json stream.
+func (o OptionalIoK8sAPICoreV1PodAffinity) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1PodAffinity from json iterator.
+func (o *OptionalIoK8sAPICoreV1PodAffinity) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PodAffinity", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1PodAntiAffinity to json stream.
+func (o OptionalIoK8sAPICoreV1PodAntiAffinity) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1PodAntiAffinity from json iterator.
+func (o *OptionalIoK8sAPICoreV1PodAntiAffinity) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PodAntiAffinity", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1PodDNSConfig to json stream.
+func (o OptionalIoK8sAPICoreV1PodDNSConfig) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1PodDNSConfig from json iterator.
+func (o *OptionalIoK8sAPICoreV1PodDNSConfig) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PodDNSConfig", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1PodSecurityContext to json stream.
+func (o OptionalIoK8sAPICoreV1PodSecurityContext) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1PodSecurityContext from json iterator.
+func (o *OptionalIoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PodSecurityContext", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1PodSpec to json stream.
+func (o OptionalIoK8sAPICoreV1PodSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1PodSpec from json iterator.
+func (o *OptionalIoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PodSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1PodStatus to json stream.
+func (o OptionalIoK8sAPICoreV1PodStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1PodStatus from json iterator.
+func (o *OptionalIoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PodStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1PodTemplateSpec to json stream.
+func (o OptionalIoK8sAPICoreV1PodTemplateSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1PodTemplateSpec from json iterator.
+func (o *OptionalIoK8sAPICoreV1PodTemplateSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PodTemplateSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1PortworxVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1PortworxVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1PortworxVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1PortworxVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1PortworxVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1Probe to json stream.
+func (o OptionalIoK8sAPICoreV1Probe) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1Probe from json iterator.
+func (o *OptionalIoK8sAPICoreV1Probe) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1Probe", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ProjectedVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1ProjectedVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ProjectedVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1ProjectedVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ProjectedVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1QuobyteVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1QuobyteVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1QuobyteVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1QuobyteVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1QuobyteVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1RBDPersistentVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1RBDPersistentVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1RBDPersistentVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1RBDPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1RBDPersistentVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1RBDVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1RBDVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1RBDVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1RBDVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1RBDVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ReplicationControllerSpec to json stream.
+func (o OptionalIoK8sAPICoreV1ReplicationControllerSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ReplicationControllerSpec from json iterator.
+func (o *OptionalIoK8sAPICoreV1ReplicationControllerSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ReplicationControllerSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ReplicationControllerStatus to json stream.
+func (o OptionalIoK8sAPICoreV1ReplicationControllerStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ReplicationControllerStatus from json iterator.
+func (o *OptionalIoK8sAPICoreV1ReplicationControllerStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ReplicationControllerStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ResourceFieldSelector to json stream.
+func (o OptionalIoK8sAPICoreV1ResourceFieldSelector) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ResourceFieldSelector from json iterator.
+func (o *OptionalIoK8sAPICoreV1ResourceFieldSelector) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ResourceFieldSelector", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ResourceQuotaSpec to json stream.
+func (o OptionalIoK8sAPICoreV1ResourceQuotaSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ResourceQuotaSpec from json iterator.
+func (o *OptionalIoK8sAPICoreV1ResourceQuotaSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ResourceQuotaSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ResourceQuotaStatus to json stream.
+func (o OptionalIoK8sAPICoreV1ResourceQuotaStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ResourceQuotaStatus from json iterator.
+func (o *OptionalIoK8sAPICoreV1ResourceQuotaStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ResourceQuotaStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ResourceRequirements to json stream.
+func (o OptionalIoK8sAPICoreV1ResourceRequirements) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ResourceRequirements from json iterator.
+func (o *OptionalIoK8sAPICoreV1ResourceRequirements) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ResourceRequirements", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1SELinuxOptions to json stream.
+func (o OptionalIoK8sAPICoreV1SELinuxOptions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1SELinuxOptions from json iterator.
+func (o *OptionalIoK8sAPICoreV1SELinuxOptions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1SELinuxOptions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ScaleIOPersistentVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1ScaleIOPersistentVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ScaleIOPersistentVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1ScaleIOPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ScaleIOPersistentVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ScaleIOVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1ScaleIOVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ScaleIOVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1ScaleIOVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ScaleIOVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ScopeSelector to json stream.
+func (o OptionalIoK8sAPICoreV1ScopeSelector) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ScopeSelector from json iterator.
+func (o *OptionalIoK8sAPICoreV1ScopeSelector) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ScopeSelector", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1SeccompProfile to json stream.
+func (o OptionalIoK8sAPICoreV1SeccompProfile) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1SeccompProfile from json iterator.
+func (o *OptionalIoK8sAPICoreV1SeccompProfile) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1SeccompProfile", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1SecretEnvSource to json stream.
+func (o OptionalIoK8sAPICoreV1SecretEnvSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1SecretEnvSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1SecretEnvSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1SecretEnvSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1SecretKeySelector to json stream.
+func (o OptionalIoK8sAPICoreV1SecretKeySelector) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1SecretKeySelector from json iterator.
+func (o *OptionalIoK8sAPICoreV1SecretKeySelector) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1SecretKeySelector", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1SecretProjection to json stream.
+func (o OptionalIoK8sAPICoreV1SecretProjection) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1SecretProjection from json iterator.
+func (o *OptionalIoK8sAPICoreV1SecretProjection) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1SecretProjection", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1SecretReference to json stream.
+func (o OptionalIoK8sAPICoreV1SecretReference) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1SecretReference from json iterator.
+func (o *OptionalIoK8sAPICoreV1SecretReference) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1SecretReference", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1SecretVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1SecretVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1SecretVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1SecretVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1SecretVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1SecurityContext to json stream.
+func (o OptionalIoK8sAPICoreV1SecurityContext) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1SecurityContext from json iterator.
+func (o *OptionalIoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1SecurityContext", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ServiceAccountTokenProjection to json stream.
+func (o OptionalIoK8sAPICoreV1ServiceAccountTokenProjection) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ServiceAccountTokenProjection from json iterator.
+func (o *OptionalIoK8sAPICoreV1ServiceAccountTokenProjection) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ServiceAccountTokenProjection", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ServiceSpec to json stream.
+func (o OptionalIoK8sAPICoreV1ServiceSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ServiceSpec from json iterator.
+func (o *OptionalIoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ServiceSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1ServiceStatus to json stream.
+func (o OptionalIoK8sAPICoreV1ServiceStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1ServiceStatus from json iterator.
+func (o *OptionalIoK8sAPICoreV1ServiceStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1ServiceStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1SessionAffinityConfig to json stream.
+func (o OptionalIoK8sAPICoreV1SessionAffinityConfig) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1SessionAffinityConfig from json iterator.
+func (o *OptionalIoK8sAPICoreV1SessionAffinityConfig) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1SessionAffinityConfig", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1StorageOSPersistentVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1StorageOSPersistentVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1StorageOSPersistentVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1StorageOSPersistentVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1StorageOSPersistentVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1StorageOSVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1StorageOSVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1StorageOSVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1StorageOSVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1StorageOSVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1TCPSocketAction to json stream.
+func (o OptionalIoK8sAPICoreV1TCPSocketAction) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1TCPSocketAction from json iterator.
+func (o *OptionalIoK8sAPICoreV1TCPSocketAction) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1TCPSocketAction", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1TypedLocalObjectReference to json stream.
+func (o OptionalIoK8sAPICoreV1TypedLocalObjectReference) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1TypedLocalObjectReference from json iterator.
+func (o *OptionalIoK8sAPICoreV1TypedLocalObjectReference) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1TypedLocalObjectReference", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1VolumeNodeAffinity to json stream.
+func (o OptionalIoK8sAPICoreV1VolumeNodeAffinity) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1VolumeNodeAffinity from json iterator.
+func (o *OptionalIoK8sAPICoreV1VolumeNodeAffinity) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1VolumeNodeAffinity", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1VsphereVirtualDiskVolumeSource to json stream.
+func (o OptionalIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1VsphereVirtualDiskVolumeSource from json iterator.
+func (o *OptionalIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1VsphereVirtualDiskVolumeSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPICoreV1WindowsSecurityContextOptions to json stream.
+func (o OptionalIoK8sAPICoreV1WindowsSecurityContextOptions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPICoreV1WindowsSecurityContextOptions from json iterator.
+func (o *OptionalIoK8sAPICoreV1WindowsSecurityContextOptions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPICoreV1WindowsSecurityContextOptions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIDiscoveryV1EndpointConditions to json stream.
+func (o OptionalIoK8sAPIDiscoveryV1EndpointConditions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIDiscoveryV1EndpointConditions from json iterator.
+func (o *OptionalIoK8sAPIDiscoveryV1EndpointConditions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIDiscoveryV1EndpointConditions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIDiscoveryV1EndpointHints to json stream.
+func (o OptionalIoK8sAPIDiscoveryV1EndpointHints) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIDiscoveryV1EndpointHints from json iterator.
+func (o *OptionalIoK8sAPIDiscoveryV1EndpointHints) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIDiscoveryV1EndpointHints", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIDiscoveryV1beta1EndpointConditions to json stream.
+func (o OptionalIoK8sAPIDiscoveryV1beta1EndpointConditions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIDiscoveryV1beta1EndpointConditions from json iterator.
+func (o *OptionalIoK8sAPIDiscoveryV1beta1EndpointConditions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIDiscoveryV1beta1EndpointConditions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIDiscoveryV1beta1EndpointHints to json stream.
+func (o OptionalIoK8sAPIDiscoveryV1beta1EndpointHints) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIDiscoveryV1beta1EndpointHints from json iterator.
+func (o *OptionalIoK8sAPIDiscoveryV1beta1EndpointHints) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIDiscoveryV1beta1EndpointHints", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIEventsV1EventSeries to json stream.
+func (o OptionalIoK8sAPIEventsV1EventSeries) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIEventsV1EventSeries from json iterator.
+func (o *OptionalIoK8sAPIEventsV1EventSeries) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIEventsV1EventSeries", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIEventsV1beta1EventSeries to json stream.
+func (o OptionalIoK8sAPIEventsV1beta1EventSeries) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIEventsV1beta1EventSeries from json iterator.
+func (o *OptionalIoK8sAPIEventsV1beta1EventSeries) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIEventsV1beta1EventSeries", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1GroupSubject to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta1GroupSubject) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1GroupSubject from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta1GroupSubject) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1GroupSubject", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1LimitResponse to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta1LimitResponse) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1LimitResponse from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta1LimitResponse) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1LimitResponse", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1QueuingConfiguration to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1QueuingConfiguration from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1QueuingConfiguration", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta1UserSubject to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta1UserSubject) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta1UserSubject from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta1UserSubject) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta1UserSubject", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2GroupSubject to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta2GroupSubject) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2GroupSubject from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta2GroupSubject) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2GroupSubject", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2LimitResponse to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta2LimitResponse) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2LimitResponse from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta2LimitResponse) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2LimitResponse", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2QueuingConfiguration to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2QueuingConfiguration from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2QueuingConfiguration", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIFlowcontrolV1beta2UserSubject to json stream.
+func (o OptionalIoK8sAPIFlowcontrolV1beta2UserSubject) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIFlowcontrolV1beta2UserSubject from json iterator.
+func (o *OptionalIoK8sAPIFlowcontrolV1beta2UserSubject) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIFlowcontrolV1beta2UserSubject", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPINetworkingV1HTTPIngressRuleValue to json stream.
+func (o OptionalIoK8sAPINetworkingV1HTTPIngressRuleValue) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPINetworkingV1HTTPIngressRuleValue from json iterator.
+func (o *OptionalIoK8sAPINetworkingV1HTTPIngressRuleValue) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINetworkingV1HTTPIngressRuleValue", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPINetworkingV1IPBlock to json stream.
+func (o OptionalIoK8sAPINetworkingV1IPBlock) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPINetworkingV1IPBlock from json iterator.
+func (o *OptionalIoK8sAPINetworkingV1IPBlock) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINetworkingV1IPBlock", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPINetworkingV1IngressBackend to json stream.
+func (o OptionalIoK8sAPINetworkingV1IngressBackend) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPINetworkingV1IngressBackend from json iterator.
+func (o *OptionalIoK8sAPINetworkingV1IngressBackend) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINetworkingV1IngressBackend", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPINetworkingV1IngressClassParametersReference to json stream.
+func (o OptionalIoK8sAPINetworkingV1IngressClassParametersReference) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPINetworkingV1IngressClassParametersReference from json iterator.
+func (o *OptionalIoK8sAPINetworkingV1IngressClassParametersReference) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINetworkingV1IngressClassParametersReference", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPINetworkingV1IngressClassSpec to json stream.
+func (o OptionalIoK8sAPINetworkingV1IngressClassSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPINetworkingV1IngressClassSpec from json iterator.
+func (o *OptionalIoK8sAPINetworkingV1IngressClassSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINetworkingV1IngressClassSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPINetworkingV1IngressServiceBackend to json stream.
+func (o OptionalIoK8sAPINetworkingV1IngressServiceBackend) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPINetworkingV1IngressServiceBackend from json iterator.
+func (o *OptionalIoK8sAPINetworkingV1IngressServiceBackend) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINetworkingV1IngressServiceBackend", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPINetworkingV1IngressSpec to json stream.
+func (o OptionalIoK8sAPINetworkingV1IngressSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPINetworkingV1IngressSpec from json iterator.
+func (o *OptionalIoK8sAPINetworkingV1IngressSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINetworkingV1IngressSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPINetworkingV1IngressStatus to json stream.
+func (o OptionalIoK8sAPINetworkingV1IngressStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPINetworkingV1IngressStatus from json iterator.
+func (o *OptionalIoK8sAPINetworkingV1IngressStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINetworkingV1IngressStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPINetworkingV1NetworkPolicySpec to json stream.
+func (o OptionalIoK8sAPINetworkingV1NetworkPolicySpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPINetworkingV1NetworkPolicySpec from json iterator.
+func (o *OptionalIoK8sAPINetworkingV1NetworkPolicySpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINetworkingV1NetworkPolicySpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPINetworkingV1ServiceBackendPort to json stream.
+func (o OptionalIoK8sAPINetworkingV1ServiceBackendPort) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPINetworkingV1ServiceBackendPort from json iterator.
+func (o *OptionalIoK8sAPINetworkingV1ServiceBackendPort) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINetworkingV1ServiceBackendPort", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPINodeV1Overhead to json stream.
+func (o OptionalIoK8sAPINodeV1Overhead) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPINodeV1Overhead from json iterator.
+func (o *OptionalIoK8sAPINodeV1Overhead) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINodeV1Overhead", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPINodeV1Scheduling to json stream.
+func (o OptionalIoK8sAPINodeV1Scheduling) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPINodeV1Scheduling from json iterator.
+func (o *OptionalIoK8sAPINodeV1Scheduling) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINodeV1Scheduling", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPINodeV1alpha1Overhead to json stream.
+func (o OptionalIoK8sAPINodeV1alpha1Overhead) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPINodeV1alpha1Overhead from json iterator.
+func (o *OptionalIoK8sAPINodeV1alpha1Overhead) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINodeV1alpha1Overhead", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPINodeV1alpha1Scheduling to json stream.
+func (o OptionalIoK8sAPINodeV1alpha1Scheduling) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPINodeV1alpha1Scheduling from json iterator.
+func (o *OptionalIoK8sAPINodeV1alpha1Scheduling) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINodeV1alpha1Scheduling", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPINodeV1beta1Overhead to json stream.
+func (o OptionalIoK8sAPINodeV1beta1Overhead) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPINodeV1beta1Overhead from json iterator.
+func (o *OptionalIoK8sAPINodeV1beta1Overhead) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINodeV1beta1Overhead", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPINodeV1beta1Scheduling to json stream.
+func (o OptionalIoK8sAPINodeV1beta1Scheduling) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPINodeV1beta1Scheduling from json iterator.
+func (o *OptionalIoK8sAPINodeV1beta1Scheduling) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPINodeV1beta1Scheduling", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIPolicyV1PodDisruptionBudgetSpec to json stream.
+func (o OptionalIoK8sAPIPolicyV1PodDisruptionBudgetSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIPolicyV1PodDisruptionBudgetSpec from json iterator.
+func (o *OptionalIoK8sAPIPolicyV1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIPolicyV1PodDisruptionBudgetSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIPolicyV1PodDisruptionBudgetStatus to json stream.
+func (o OptionalIoK8sAPIPolicyV1PodDisruptionBudgetStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIPolicyV1PodDisruptionBudgetStatus from json iterator.
+func (o *OptionalIoK8sAPIPolicyV1PodDisruptionBudgetStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIPolicyV1PodDisruptionBudgetStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec to json stream.
+func (o OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec from json iterator.
+func (o *OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus to json stream.
+func (o OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus from json iterator.
+func (o *OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIPolicyV1beta1PodSecurityPolicySpec to json stream.
+func (o OptionalIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIPolicyV1beta1PodSecurityPolicySpec from json iterator.
+func (o *OptionalIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIPolicyV1beta1PodSecurityPolicySpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions to json stream.
+func (o OptionalIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions from json iterator.
+func (o *OptionalIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions to json stream.
+func (o OptionalIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions from json iterator.
+func (o *OptionalIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIRbacV1AggregationRule to json stream.
+func (o OptionalIoK8sAPIRbacV1AggregationRule) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIRbacV1AggregationRule from json iterator.
+func (o *OptionalIoK8sAPIRbacV1AggregationRule) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIRbacV1AggregationRule", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIStorageV1VolumeAttachmentStatus to json stream.
+func (o OptionalIoK8sAPIStorageV1VolumeAttachmentStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIStorageV1VolumeAttachmentStatus from json iterator.
+func (o *OptionalIoK8sAPIStorageV1VolumeAttachmentStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIStorageV1VolumeAttachmentStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIStorageV1VolumeError to json stream.
+func (o OptionalIoK8sAPIStorageV1VolumeError) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIStorageV1VolumeError from json iterator.
+func (o *OptionalIoK8sAPIStorageV1VolumeError) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIStorageV1VolumeError", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sAPIStorageV1VolumeNodeResources to json stream.
+func (o OptionalIoK8sAPIStorageV1VolumeNodeResources) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sAPIStorageV1VolumeNodeResources from json iterator.
+func (o *OptionalIoK8sAPIStorageV1VolumeNodeResources) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sAPIStorageV1VolumeNodeResources", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion to json stream.
+func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion from json iterator.
+func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames to json stream.
+func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames from json iterator.
+func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus to json stream.
+func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus from json iterator.
+func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale to json stream.
+func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale from json iterator.
+func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources to json stream.
+func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources from json iterator.
+func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation to json stream.
+func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation from json iterator.
+func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation to json stream.
+func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation from json iterator.
+func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps to json stream.
+func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps from json iterator.
+func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference to json stream.
+func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference from json iterator.
+func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig to json stream.
+func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig from json iterator.
+func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion to json stream.
+func (o OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion from json iterator.
+func (o *OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery to json stream.
+func (o OptionalIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery from json iterator.
+func (o *OptionalIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sApimachineryPkgApisMetaV1LabelSelector to json stream.
+func (o OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1LabelSelector from json iterator.
+func (o *OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApimachineryPkgApisMetaV1LabelSelector", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sApimachineryPkgApisMetaV1ListMeta to json stream.
+func (o OptionalIoK8sApimachineryPkgApisMetaV1ListMeta) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1ListMeta from json iterator.
+func (o *OptionalIoK8sApimachineryPkgApisMetaV1ListMeta) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApimachineryPkgApisMetaV1ListMeta", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sApimachineryPkgApisMetaV1ObjectMeta to json stream.
+func (o OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1ObjectMeta from json iterator.
+func (o *OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApimachineryPkgApisMetaV1ObjectMeta", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sApimachineryPkgApisMetaV1Preconditions to json stream.
+func (o OptionalIoK8sApimachineryPkgApisMetaV1Preconditions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1Preconditions from json iterator.
+func (o *OptionalIoK8sApimachineryPkgApisMetaV1Preconditions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApimachineryPkgApisMetaV1Preconditions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sApimachineryPkgApisMetaV1StatusDetails to json stream.
+func (o OptionalIoK8sApimachineryPkgApisMetaV1StatusDetails) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sApimachineryPkgApisMetaV1StatusDetails from json iterator.
+func (o *OptionalIoK8sApimachineryPkgApisMetaV1StatusDetails) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sApimachineryPkgApisMetaV1StatusDetails", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec to json stream.
+func (o OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec from json iterator.
+func (o *OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus to json stream.
+func (o OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus from json iterator.
+func (o *OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference to json stream.
+func (o OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference from json iterator.
+func (o *OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of string to json stream.
+func (o OptionalString) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of string from json iterator.
+func (o *OptionalString) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = string(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalString", i.WhatIsNext())
+	}
+	return nil
 }

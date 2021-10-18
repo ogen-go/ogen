@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"net"
 	"net/http"
+	"net/url"
 	"sort"
 	"strconv"
 	"strings"
@@ -18,6 +20,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -40,8 +43,11 @@ var (
 	_ = conv.ToInt32
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
+	_ = url.URL{}
 	_ = math.Mod
 	_ = validate.Int{}
+	_ = ht.NewRequest
+	_ = net.IP{}
 )
 
 type HTTPClient interface {
@@ -49,13 +55,17 @@ type HTTPClient interface {
 }
 
 type Client struct {
-	serverURL string
+	serverURL *url.URL
 	http      HTTPClient
 }
 
 func NewClient(serverURL string) *Client {
+	u, err := url.Parse(serverURL)
+	if err != nil {
+		panic(err) // TODO: fix
+	}
 	return &Client{
-		serverURL: serverURL,
+		serverURL: u,
 		http: &http.Client{
 			Timeout: time.Second * 15,
 		},
@@ -63,13 +73,11 @@ func NewClient(serverURL string) *Client {
 }
 
 func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceResponse, err error) {
-	path := c.serverURL
-	path += "/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -91,13 +99,11 @@ func (c *Client) CreateSyncAction(ctx context.Context, req InstanceActionInfo) (
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/actions"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/actions"
 
-	r, err := http.NewRequestWithContext(ctx, "PUT", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -116,13 +122,11 @@ func (c *Client) CreateSyncAction(ctx context.Context, req InstanceActionInfo) (
 }
 
 func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloonConfigResponse, err error) {
-	path := c.serverURL
-	path += "/balloon"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/balloon"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -144,13 +148,11 @@ func (c *Client) PutBalloon(ctx context.Context, req Balloon) (res PutBalloonRes
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/balloon"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/balloon"
 
-	r, err := http.NewRequestWithContext(ctx, "PUT", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -174,13 +176,11 @@ func (c *Client) PatchBalloon(ctx context.Context, req BalloonUpdate) (res Patch
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/balloon"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/balloon"
 
-	r, err := http.NewRequestWithContext(ctx, "PATCH", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PATCH", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -199,13 +199,11 @@ func (c *Client) PatchBalloon(ctx context.Context, req BalloonUpdate) (res Patch
 }
 
 func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonStatsResponse, err error) {
-	path := c.serverURL
-	path += "/balloon/statistics"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/balloon/statistics"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -227,13 +225,11 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, req BalloonStats
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/balloon/statistics"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/balloon/statistics"
 
-	r, err := http.NewRequestWithContext(ctx, "PATCH", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PATCH", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -257,13 +253,11 @@ func (c *Client) PutGuestBootSource(ctx context.Context, req BootSource) (res Pu
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/boot-source"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/boot-source"
 
-	r, err := http.NewRequestWithContext(ctx, "PUT", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -287,8 +281,8 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, req Drive, params PutGue
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/drives/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/drives/"
 	{
 		// Encode 'drive_id' parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -296,13 +290,11 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, req Drive, params PutGue
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		path += e.EncodeString(params.DriveID)
+		u.Path += e.EncodeString(params.DriveID)
 	}
 
-	r, err := http.NewRequestWithContext(ctx, "PUT", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -326,8 +318,8 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, req PartialDrive, para
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/drives/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/drives/"
 	{
 		// Encode 'drive_id' parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -335,13 +327,11 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, req PartialDrive, para
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		path += e.EncodeString(params.DriveID)
+		u.Path += e.EncodeString(params.DriveID)
 	}
 
-	r, err := http.NewRequestWithContext(ctx, "PATCH", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PATCH", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -365,13 +355,11 @@ func (c *Client) PutLogger(ctx context.Context, req Logger) (res PutLoggerRespon
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/logger"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/logger"
 
-	r, err := http.NewRequestWithContext(ctx, "PUT", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -390,13 +378,11 @@ func (c *Client) PutLogger(ctx context.Context, req Logger) (res PutLoggerRespon
 }
 
 func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineConfigurationResponse, err error) {
-	path := c.serverURL
-	path += "/machine-config"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/machine-config"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -418,13 +404,11 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, req *MachineConfig
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/machine-config"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/machine-config"
 
-	r, err := http.NewRequestWithContext(ctx, "PUT", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -448,13 +432,11 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, req *MachineConf
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/machine-config"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/machine-config"
 
-	r, err := http.NewRequestWithContext(ctx, "PATCH", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PATCH", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -478,13 +460,11 @@ func (c *Client) PutMetrics(ctx context.Context, req Metrics) (res PutMetricsRes
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/metrics"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/metrics"
 
-	r, err := http.NewRequestWithContext(ctx, "PUT", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -503,13 +483,11 @@ func (c *Client) PutMetrics(ctx context.Context, req Metrics) (res PutMetricsRes
 }
 
 func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetResponse, err error) {
-	path := c.serverURL
-	path += "/mmds"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/mmds"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -531,13 +509,11 @@ func (c *Client) MmdsPut(ctx context.Context, req *MmdsPutApplicationJSONRequest
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/mmds"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/mmds"
 
-	r, err := http.NewRequestWithContext(ctx, "PUT", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -561,13 +537,11 @@ func (c *Client) MmdsPatch(ctx context.Context, req *MmdsPatchApplicationJSONReq
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/mmds"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/mmds"
 
-	r, err := http.NewRequestWithContext(ctx, "PATCH", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PATCH", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -591,13 +565,11 @@ func (c *Client) MmdsConfigPut(ctx context.Context, req MmdsConfig) (res MmdsCon
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/mmds/config"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/mmds/config"
 
-	r, err := http.NewRequestWithContext(ctx, "PUT", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -621,8 +593,8 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkIn
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/network-interfaces/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/network-interfaces/"
 	{
 		// Encode 'iface_id' parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -630,13 +602,11 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, req NetworkIn
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		path += e.EncodeString(params.IfaceID)
+		u.Path += e.EncodeString(params.IfaceID)
 	}
 
-	r, err := http.NewRequestWithContext(ctx, "PUT", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -660,8 +630,8 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, req Partial
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/network-interfaces/"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/network-interfaces/"
 	{
 		// Encode 'iface_id' parameter.
 		e := uri.NewPathEncoder(uri.PathEncoderConfig{
@@ -669,13 +639,11 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, req Partial
 			Style:   uri.PathStyleSimple,
 			Explode: false,
 		})
-		path += e.EncodeString(params.IfaceID)
+		u.Path += e.EncodeString(params.IfaceID)
 	}
 
-	r, err := http.NewRequestWithContext(ctx, "PATCH", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PATCH", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -699,13 +667,11 @@ func (c *Client) CreateSnapshot(ctx context.Context, req SnapshotCreateParams) (
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/snapshot/create"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/snapshot/create"
 
-	r, err := http.NewRequestWithContext(ctx, "PUT", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -729,13 +695,11 @@ func (c *Client) LoadSnapshot(ctx context.Context, req SnapshotLoadParams) (res 
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/snapshot/load"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/snapshot/load"
 
-	r, err := http.NewRequestWithContext(ctx, "PUT", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -759,13 +723,11 @@ func (c *Client) PatchVm(ctx context.Context, req VM) (res PatchVmResponse, err 
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/vm"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/vm"
 
-	r, err := http.NewRequestWithContext(ctx, "PATCH", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PATCH", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 
@@ -784,13 +746,11 @@ func (c *Client) PatchVm(ctx context.Context, req VM) (res PatchVmResponse, err 
 }
 
 func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigResponse, err error) {
-	path := c.serverURL
-	path += "/vm/config"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/vm/config"
 
-	r, err := http.NewRequestWithContext(ctx, "GET", path, nil)
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
 
 	resp, err := c.http.Do(r)
 	if err != nil {
@@ -812,13 +772,11 @@ func (c *Client) PutGuestVsock(ctx context.Context, req Vsock) (res PutGuestVsoc
 		return res, err
 	}
 
-	path := c.serverURL
-	path += "/vsock"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/vsock"
 
-	r, err := http.NewRequestWithContext(ctx, "PUT", path, bytes.NewReader(body))
-	if err != nil {
-		return res, fmt.Errorf("create request: %w", err)
-	}
+	r := ht.NewRequest(ctx, "PUT", u, bytes.NewReader(body))
+	defer ht.PutRequest(r)
 
 	r.Header.Set("Content-Type", contentType)
 

@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"net"
 	"net/http"
+	"net/url"
 	"sort"
 	"strconv"
 	"strings"
@@ -18,6 +20,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -40,8 +43,11 @@ var (
 	_ = conv.ToInt32
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
+	_ = url.URL{}
 	_ = math.Mod
 	_ = validate.Int{}
+	_ = ht.NewRequest
+	_ = net.IP{}
 )
 
 // WriteJSON implements json.Marshaler.
@@ -57,7 +63,10 @@ func (s APIOverview) WriteJSON(j *json.Stream) {
 	// Unsupported kind "pointer" for field "Importer".
 	// Unsupported kind "pointer" for field "Packages".
 	// Unsupported kind "pointer" for field "Pages".
-	// Unsupported kind "pointer" for field "SSHKeyFingerprints".
+	if s.SSHKeyFingerprints.Set {
+		field.Write("ssh_key_fingerprints")
+		s.SSHKeyFingerprints.WriteJSON(j)
+	}
 	field.Write("verifiable_password_authentication")
 	j.WriteBool(s.VerifiablePasswordAuthentication)
 	// Unsupported kind "pointer" for field "Web".
@@ -123,8 +132,11 @@ func (s *APIOverview) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "ssh_key_fingerprints":
-			// Unsupported kind "pointer" for field "SSHKeyFingerprints".
-			i.Skip()
+			s.SSHKeyFingerprints.Reset()
+			if err := s.SSHKeyFingerprints.ReadJSON(i); err != nil {
+				i.ReportError("Field SSHKeyFingerprints", err.Error())
+				return false
+			}
 			return true
 		case "verifiable_password_authentication":
 			s.VerifiablePasswordAuthentication = i.ReadBool()
@@ -566,7 +578,10 @@ func (s ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest) WriteJSO
 	j.WriteString(s.Name)
 	// Unsupported kind "pointer" for field "Runners".
 	// Unsupported kind "pointer" for field "SelectedRepositoryIds".
-	// Unsupported kind "pointer" for field "Visibility".
+	if s.Visibility.Set {
+		field.Write("visibility")
+		s.Visibility.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -608,8 +623,11 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest) ReadJSO
 			i.Skip()
 			return true
 		case "visibility":
-			// Unsupported kind "pointer" for field "Visibility".
-			i.Skip()
+			s.Visibility.Reset()
+			if err := s.Visibility.ReadJSON(i); err != nil {
+				i.ReportError("Field Visibility", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -624,7 +642,10 @@ func (s ActionsEnterprisePermissions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "AllowedActions".
+	if s.AllowedActions.Set {
+		field.Write("allowed_actions")
+		s.AllowedActions.WriteJSON(j)
+	}
 	field.Write("enabled_organizations")
 	j.WriteString(s.EnabledOrganizations)
 	// Unsupported kind "pointer" for field "SelectedActionsURL".
@@ -662,8 +683,11 @@ func (s *ActionsEnterprisePermissions) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allowed_actions":
-			// Unsupported kind "pointer" for field "AllowedActions".
-			i.Skip()
+			s.AllowedActions.Reset()
+			if err := s.AllowedActions.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowedActions", err.Error())
+				return false
+			}
 			return true
 		case "enabled_organizations":
 			s.EnabledOrganizations = i.ReadString()
@@ -1368,7 +1392,10 @@ func (s ActionsOrganizationPermissions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "AllowedActions".
+	if s.AllowedActions.Set {
+		field.Write("allowed_actions")
+		s.AllowedActions.WriteJSON(j)
+	}
 	field.Write("enabled_repositories")
 	j.WriteString(s.EnabledRepositories)
 	// Unsupported kind "pointer" for field "SelectedActionsURL".
@@ -1406,8 +1433,11 @@ func (s *ActionsOrganizationPermissions) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allowed_actions":
-			// Unsupported kind "pointer" for field "AllowedActions".
-			i.Skip()
+			s.AllowedActions.Reset()
+			if err := s.AllowedActions.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowedActions", err.Error())
+				return false
+			}
 			return true
 		case "enabled_repositories":
 			s.EnabledRepositories = i.ReadString()
@@ -1532,7 +1562,10 @@ func (s ActionsRepositoryPermissions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "AllowedActions".
+	if s.AllowedActions.Set {
+		field.Write("allowed_actions")
+		s.AllowedActions.WriteJSON(j)
+	}
 	// Unsupported kind "alias" for field "Enabled".
 	// Unsupported kind "pointer" for field "SelectedActionsURL".
 	j.WriteObjectEnd()
@@ -1565,8 +1598,11 @@ func (s *ActionsRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allowed_actions":
-			// Unsupported kind "pointer" for field "AllowedActions".
-			i.Skip()
+			s.AllowedActions.Reset()
+			if err := s.AllowedActions.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowedActions", err.Error())
+				return false
+			}
 			return true
 		case "enabled":
 			// Unsupported kind "alias" for field "Enabled".
@@ -1713,7 +1749,10 @@ func (s ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest) Wr
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "AllowedActions".
+	if s.AllowedActions.Set {
+		field.Write("allowed_actions")
+		s.AllowedActions.WriteJSON(j)
+	}
 	field.Write("enabled_repositories")
 	j.WriteString(s.EnabledRepositories)
 	j.WriteObjectEnd()
@@ -1746,8 +1785,11 @@ func (s *ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest) R
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allowed_actions":
-			// Unsupported kind "pointer" for field "AllowedActions".
-			i.Skip()
+			s.AllowedActions.Reset()
+			if err := s.AllowedActions.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowedActions", err.Error())
+				return false
+			}
 			return true
 		case "enabled_repositories":
 			s.EnabledRepositories = i.ReadString()
@@ -1765,7 +1807,10 @@ func (s ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest) Writ
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "AllowedActions".
+	if s.AllowedActions.Set {
+		field.Write("allowed_actions")
+		s.AllowedActions.WriteJSON(j)
+	}
 	// Unsupported kind "alias" for field "Enabled".
 	j.WriteObjectEnd()
 }
@@ -1797,8 +1842,11 @@ func (s *ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest) Rea
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allowed_actions":
-			// Unsupported kind "pointer" for field "AllowedActions".
-			i.Skip()
+			s.AllowedActions.Reset()
+			if err := s.AllowedActions.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowedActions", err.Error())
+				return false
+			}
 			return true
 		case "enabled":
 			// Unsupported kind "alias" for field "Enabled".
@@ -2007,7 +2055,10 @@ func (s ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest) WriteJSO
 	defer field.Reset()
 	field.Write("name")
 	j.WriteString(s.Name)
-	// Unsupported kind "pointer" for field "Visibility".
+	if s.Visibility.Set {
+		field.Write("visibility")
+		s.Visibility.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -2041,8 +2092,11 @@ func (s *ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest) ReadJSO
 			s.Name = i.ReadString()
 			return i.Error == nil
 		case "visibility":
-			// Unsupported kind "pointer" for field "Visibility".
-			i.Skip()
+			s.Visibility.Reset()
+			if err := s.Visibility.ReadJSON(i); err != nil {
+				i.ReportError("Field Visibility", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -2409,7 +2463,7 @@ func (s Actor) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	field.Write("avatar_url")
-	j.WriteString(s.AvatarURL)
+	json.WriteURI(j, s.AvatarURL)
 	if s.DisplayLogin.Set {
 		field.Write("display_login")
 		s.DisplayLogin.WriteJSON(j)
@@ -2421,7 +2475,7 @@ func (s Actor) WriteJSON(j *json.Stream) {
 	field.Write("login")
 	j.WriteString(s.Login)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -2452,8 +2506,13 @@ func (s *Actor) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "avatar_url":
-			s.AvatarURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field AvatarURL", err.Error())
+				return false
+			}
+			s.AvatarURL = v
+			return true
 		case "display_login":
 			s.DisplayLogin.Reset()
 			if err := s.DisplayLogin.ReadJSON(i); err != nil {
@@ -2474,8 +2533,13 @@ func (s *Actor) ReadJSON(i *json.Iterator) error {
 			s.Login = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -2489,37 +2553,130 @@ func (s AppPermissions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Actions".
-	// Unsupported kind "pointer" for field "Administration".
-	// Unsupported kind "pointer" for field "Checks".
-	// Unsupported kind "pointer" for field "ContentReferences".
-	// Unsupported kind "pointer" for field "Contents".
-	// Unsupported kind "pointer" for field "Deployments".
-	// Unsupported kind "pointer" for field "Environments".
-	// Unsupported kind "pointer" for field "Issues".
-	// Unsupported kind "pointer" for field "Members".
-	// Unsupported kind "pointer" for field "Metadata".
-	// Unsupported kind "pointer" for field "OrganizationAdministration".
-	// Unsupported kind "pointer" for field "OrganizationHooks".
-	// Unsupported kind "pointer" for field "OrganizationPackages".
-	// Unsupported kind "pointer" for field "OrganizationPlan".
-	// Unsupported kind "pointer" for field "OrganizationProjects".
-	// Unsupported kind "pointer" for field "OrganizationSecrets".
-	// Unsupported kind "pointer" for field "OrganizationSelfHostedRunners".
-	// Unsupported kind "pointer" for field "OrganizationUserBlocking".
-	// Unsupported kind "pointer" for field "Packages".
-	// Unsupported kind "pointer" for field "Pages".
-	// Unsupported kind "pointer" for field "PullRequests".
-	// Unsupported kind "pointer" for field "RepositoryHooks".
-	// Unsupported kind "pointer" for field "RepositoryProjects".
-	// Unsupported kind "pointer" for field "SecretScanningAlerts".
-	// Unsupported kind "pointer" for field "Secrets".
-	// Unsupported kind "pointer" for field "SecurityEvents".
-	// Unsupported kind "pointer" for field "SingleFile".
-	// Unsupported kind "pointer" for field "Statuses".
-	// Unsupported kind "pointer" for field "TeamDiscussions".
-	// Unsupported kind "pointer" for field "VulnerabilityAlerts".
-	// Unsupported kind "pointer" for field "Workflows".
+	if s.Actions.Set {
+		field.Write("actions")
+		s.Actions.WriteJSON(j)
+	}
+	if s.Administration.Set {
+		field.Write("administration")
+		s.Administration.WriteJSON(j)
+	}
+	if s.Checks.Set {
+		field.Write("checks")
+		s.Checks.WriteJSON(j)
+	}
+	if s.ContentReferences.Set {
+		field.Write("content_references")
+		s.ContentReferences.WriteJSON(j)
+	}
+	if s.Contents.Set {
+		field.Write("contents")
+		s.Contents.WriteJSON(j)
+	}
+	if s.Deployments.Set {
+		field.Write("deployments")
+		s.Deployments.WriteJSON(j)
+	}
+	if s.Environments.Set {
+		field.Write("environments")
+		s.Environments.WriteJSON(j)
+	}
+	if s.Issues.Set {
+		field.Write("issues")
+		s.Issues.WriteJSON(j)
+	}
+	if s.Members.Set {
+		field.Write("members")
+		s.Members.WriteJSON(j)
+	}
+	if s.Metadata.Set {
+		field.Write("metadata")
+		s.Metadata.WriteJSON(j)
+	}
+	if s.OrganizationAdministration.Set {
+		field.Write("organization_administration")
+		s.OrganizationAdministration.WriteJSON(j)
+	}
+	if s.OrganizationHooks.Set {
+		field.Write("organization_hooks")
+		s.OrganizationHooks.WriteJSON(j)
+	}
+	if s.OrganizationPackages.Set {
+		field.Write("organization_packages")
+		s.OrganizationPackages.WriteJSON(j)
+	}
+	if s.OrganizationPlan.Set {
+		field.Write("organization_plan")
+		s.OrganizationPlan.WriteJSON(j)
+	}
+	if s.OrganizationProjects.Set {
+		field.Write("organization_projects")
+		s.OrganizationProjects.WriteJSON(j)
+	}
+	if s.OrganizationSecrets.Set {
+		field.Write("organization_secrets")
+		s.OrganizationSecrets.WriteJSON(j)
+	}
+	if s.OrganizationSelfHostedRunners.Set {
+		field.Write("organization_self_hosted_runners")
+		s.OrganizationSelfHostedRunners.WriteJSON(j)
+	}
+	if s.OrganizationUserBlocking.Set {
+		field.Write("organization_user_blocking")
+		s.OrganizationUserBlocking.WriteJSON(j)
+	}
+	if s.Packages.Set {
+		field.Write("packages")
+		s.Packages.WriteJSON(j)
+	}
+	if s.Pages.Set {
+		field.Write("pages")
+		s.Pages.WriteJSON(j)
+	}
+	if s.PullRequests.Set {
+		field.Write("pull_requests")
+		s.PullRequests.WriteJSON(j)
+	}
+	if s.RepositoryHooks.Set {
+		field.Write("repository_hooks")
+		s.RepositoryHooks.WriteJSON(j)
+	}
+	if s.RepositoryProjects.Set {
+		field.Write("repository_projects")
+		s.RepositoryProjects.WriteJSON(j)
+	}
+	if s.SecretScanningAlerts.Set {
+		field.Write("secret_scanning_alerts")
+		s.SecretScanningAlerts.WriteJSON(j)
+	}
+	if s.Secrets.Set {
+		field.Write("secrets")
+		s.Secrets.WriteJSON(j)
+	}
+	if s.SecurityEvents.Set {
+		field.Write("security_events")
+		s.SecurityEvents.WriteJSON(j)
+	}
+	if s.SingleFile.Set {
+		field.Write("single_file")
+		s.SingleFile.WriteJSON(j)
+	}
+	if s.Statuses.Set {
+		field.Write("statuses")
+		s.Statuses.WriteJSON(j)
+	}
+	if s.TeamDiscussions.Set {
+		field.Write("team_discussions")
+		s.TeamDiscussions.WriteJSON(j)
+	}
+	if s.VulnerabilityAlerts.Set {
+		field.Write("vulnerability_alerts")
+		s.VulnerabilityAlerts.WriteJSON(j)
+	}
+	if s.Workflows.Set {
+		field.Write("workflows")
+		s.Workflows.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -2550,128 +2707,221 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "actions":
-			// Unsupported kind "pointer" for field "Actions".
-			i.Skip()
+			s.Actions.Reset()
+			if err := s.Actions.ReadJSON(i); err != nil {
+				i.ReportError("Field Actions", err.Error())
+				return false
+			}
 			return true
 		case "administration":
-			// Unsupported kind "pointer" for field "Administration".
-			i.Skip()
+			s.Administration.Reset()
+			if err := s.Administration.ReadJSON(i); err != nil {
+				i.ReportError("Field Administration", err.Error())
+				return false
+			}
 			return true
 		case "checks":
-			// Unsupported kind "pointer" for field "Checks".
-			i.Skip()
+			s.Checks.Reset()
+			if err := s.Checks.ReadJSON(i); err != nil {
+				i.ReportError("Field Checks", err.Error())
+				return false
+			}
 			return true
 		case "content_references":
-			// Unsupported kind "pointer" for field "ContentReferences".
-			i.Skip()
+			s.ContentReferences.Reset()
+			if err := s.ContentReferences.ReadJSON(i); err != nil {
+				i.ReportError("Field ContentReferences", err.Error())
+				return false
+			}
 			return true
 		case "contents":
-			// Unsupported kind "pointer" for field "Contents".
-			i.Skip()
+			s.Contents.Reset()
+			if err := s.Contents.ReadJSON(i); err != nil {
+				i.ReportError("Field Contents", err.Error())
+				return false
+			}
 			return true
 		case "deployments":
-			// Unsupported kind "pointer" for field "Deployments".
-			i.Skip()
+			s.Deployments.Reset()
+			if err := s.Deployments.ReadJSON(i); err != nil {
+				i.ReportError("Field Deployments", err.Error())
+				return false
+			}
 			return true
 		case "environments":
-			// Unsupported kind "pointer" for field "Environments".
-			i.Skip()
+			s.Environments.Reset()
+			if err := s.Environments.ReadJSON(i); err != nil {
+				i.ReportError("Field Environments", err.Error())
+				return false
+			}
 			return true
 		case "issues":
-			// Unsupported kind "pointer" for field "Issues".
-			i.Skip()
+			s.Issues.Reset()
+			if err := s.Issues.ReadJSON(i); err != nil {
+				i.ReportError("Field Issues", err.Error())
+				return false
+			}
 			return true
 		case "members":
-			// Unsupported kind "pointer" for field "Members".
-			i.Skip()
+			s.Members.Reset()
+			if err := s.Members.ReadJSON(i); err != nil {
+				i.ReportError("Field Members", err.Error())
+				return false
+			}
 			return true
 		case "metadata":
-			// Unsupported kind "pointer" for field "Metadata".
-			i.Skip()
+			s.Metadata.Reset()
+			if err := s.Metadata.ReadJSON(i); err != nil {
+				i.ReportError("Field Metadata", err.Error())
+				return false
+			}
 			return true
 		case "organization_administration":
-			// Unsupported kind "pointer" for field "OrganizationAdministration".
-			i.Skip()
+			s.OrganizationAdministration.Reset()
+			if err := s.OrganizationAdministration.ReadJSON(i); err != nil {
+				i.ReportError("Field OrganizationAdministration", err.Error())
+				return false
+			}
 			return true
 		case "organization_hooks":
-			// Unsupported kind "pointer" for field "OrganizationHooks".
-			i.Skip()
+			s.OrganizationHooks.Reset()
+			if err := s.OrganizationHooks.ReadJSON(i); err != nil {
+				i.ReportError("Field OrganizationHooks", err.Error())
+				return false
+			}
 			return true
 		case "organization_packages":
-			// Unsupported kind "pointer" for field "OrganizationPackages".
-			i.Skip()
+			s.OrganizationPackages.Reset()
+			if err := s.OrganizationPackages.ReadJSON(i); err != nil {
+				i.ReportError("Field OrganizationPackages", err.Error())
+				return false
+			}
 			return true
 		case "organization_plan":
-			// Unsupported kind "pointer" for field "OrganizationPlan".
-			i.Skip()
+			s.OrganizationPlan.Reset()
+			if err := s.OrganizationPlan.ReadJSON(i); err != nil {
+				i.ReportError("Field OrganizationPlan", err.Error())
+				return false
+			}
 			return true
 		case "organization_projects":
-			// Unsupported kind "pointer" for field "OrganizationProjects".
-			i.Skip()
+			s.OrganizationProjects.Reset()
+			if err := s.OrganizationProjects.ReadJSON(i); err != nil {
+				i.ReportError("Field OrganizationProjects", err.Error())
+				return false
+			}
 			return true
 		case "organization_secrets":
-			// Unsupported kind "pointer" for field "OrganizationSecrets".
-			i.Skip()
+			s.OrganizationSecrets.Reset()
+			if err := s.OrganizationSecrets.ReadJSON(i); err != nil {
+				i.ReportError("Field OrganizationSecrets", err.Error())
+				return false
+			}
 			return true
 		case "organization_self_hosted_runners":
-			// Unsupported kind "pointer" for field "OrganizationSelfHostedRunners".
-			i.Skip()
+			s.OrganizationSelfHostedRunners.Reset()
+			if err := s.OrganizationSelfHostedRunners.ReadJSON(i); err != nil {
+				i.ReportError("Field OrganizationSelfHostedRunners", err.Error())
+				return false
+			}
 			return true
 		case "organization_user_blocking":
-			// Unsupported kind "pointer" for field "OrganizationUserBlocking".
-			i.Skip()
+			s.OrganizationUserBlocking.Reset()
+			if err := s.OrganizationUserBlocking.ReadJSON(i); err != nil {
+				i.ReportError("Field OrganizationUserBlocking", err.Error())
+				return false
+			}
 			return true
 		case "packages":
-			// Unsupported kind "pointer" for field "Packages".
-			i.Skip()
+			s.Packages.Reset()
+			if err := s.Packages.ReadJSON(i); err != nil {
+				i.ReportError("Field Packages", err.Error())
+				return false
+			}
 			return true
 		case "pages":
-			// Unsupported kind "pointer" for field "Pages".
-			i.Skip()
+			s.Pages.Reset()
+			if err := s.Pages.ReadJSON(i); err != nil {
+				i.ReportError("Field Pages", err.Error())
+				return false
+			}
 			return true
 		case "pull_requests":
-			// Unsupported kind "pointer" for field "PullRequests".
-			i.Skip()
+			s.PullRequests.Reset()
+			if err := s.PullRequests.ReadJSON(i); err != nil {
+				i.ReportError("Field PullRequests", err.Error())
+				return false
+			}
 			return true
 		case "repository_hooks":
-			// Unsupported kind "pointer" for field "RepositoryHooks".
-			i.Skip()
+			s.RepositoryHooks.Reset()
+			if err := s.RepositoryHooks.ReadJSON(i); err != nil {
+				i.ReportError("Field RepositoryHooks", err.Error())
+				return false
+			}
 			return true
 		case "repository_projects":
-			// Unsupported kind "pointer" for field "RepositoryProjects".
-			i.Skip()
+			s.RepositoryProjects.Reset()
+			if err := s.RepositoryProjects.ReadJSON(i); err != nil {
+				i.ReportError("Field RepositoryProjects", err.Error())
+				return false
+			}
 			return true
 		case "secret_scanning_alerts":
-			// Unsupported kind "pointer" for field "SecretScanningAlerts".
-			i.Skip()
+			s.SecretScanningAlerts.Reset()
+			if err := s.SecretScanningAlerts.ReadJSON(i); err != nil {
+				i.ReportError("Field SecretScanningAlerts", err.Error())
+				return false
+			}
 			return true
 		case "secrets":
-			// Unsupported kind "pointer" for field "Secrets".
-			i.Skip()
+			s.Secrets.Reset()
+			if err := s.Secrets.ReadJSON(i); err != nil {
+				i.ReportError("Field Secrets", err.Error())
+				return false
+			}
 			return true
 		case "security_events":
-			// Unsupported kind "pointer" for field "SecurityEvents".
-			i.Skip()
+			s.SecurityEvents.Reset()
+			if err := s.SecurityEvents.ReadJSON(i); err != nil {
+				i.ReportError("Field SecurityEvents", err.Error())
+				return false
+			}
 			return true
 		case "single_file":
-			// Unsupported kind "pointer" for field "SingleFile".
-			i.Skip()
+			s.SingleFile.Reset()
+			if err := s.SingleFile.ReadJSON(i); err != nil {
+				i.ReportError("Field SingleFile", err.Error())
+				return false
+			}
 			return true
 		case "statuses":
-			// Unsupported kind "pointer" for field "Statuses".
-			i.Skip()
+			s.Statuses.Reset()
+			if err := s.Statuses.ReadJSON(i); err != nil {
+				i.ReportError("Field Statuses", err.Error())
+				return false
+			}
 			return true
 		case "team_discussions":
-			// Unsupported kind "pointer" for field "TeamDiscussions".
-			i.Skip()
+			s.TeamDiscussions.Reset()
+			if err := s.TeamDiscussions.ReadJSON(i); err != nil {
+				i.ReportError("Field TeamDiscussions", err.Error())
+				return false
+			}
 			return true
 		case "vulnerability_alerts":
-			// Unsupported kind "pointer" for field "VulnerabilityAlerts".
-			i.Skip()
+			s.VulnerabilityAlerts.Reset()
+			if err := s.VulnerabilityAlerts.ReadJSON(i); err != nil {
+				i.ReportError("Field VulnerabilityAlerts", err.Error())
+				return false
+			}
 			return true
 		case "workflows":
-			// Unsupported kind "pointer" for field "Workflows".
-			i.Skip()
+			s.Workflows.Reset()
+			if err := s.Workflows.ReadJSON(i); err != nil {
+				i.ReportError("Field Workflows", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -2694,10 +2944,13 @@ func (s ApplicationGrant) WriteJSON(j *json.Stream) {
 	j.WriteInt(s.ID)
 	// Unsupported kind "array" for field "Scopes".
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
-	// Unsupported kind "pointer" for field "User".
+	if s.User.Set {
+		field.Write("user")
+		s.User.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -2749,8 +3002,13 @@ func (s *ApplicationGrant) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -2760,8 +3018,11 @@ func (s *ApplicationGrant) ReadJSON(i *json.Iterator) error {
 			s.UpdatedAt = v
 			return true
 		case "user":
-			// Unsupported kind "pointer" for field "User".
-			i.Skip()
+			s.User.Reset()
+			if err := s.User.ReadJSON(i); err != nil {
+				i.ReportError("Field User", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -2781,7 +3042,7 @@ func (s ApplicationGrantApp) WriteJSON(j *json.Stream) {
 	field.Write("name")
 	j.WriteString(s.Name)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -2818,8 +3079,13 @@ func (s *ApplicationGrantApp) ReadJSON(i *json.Iterator) error {
 			s.Name = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -2932,7 +3198,10 @@ func (s AppsCreateInstallationAccessTokenApplicationJSONRequest) WriteJSON(j *js
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Permissions".
+	if s.Permissions.Set {
+		field.Write("permissions")
+		s.Permissions.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Repositories".
 	// Unsupported kind "pointer" for field "RepositoryIds".
 	j.WriteObjectEnd()
@@ -2965,8 +3234,11 @@ func (s *AppsCreateInstallationAccessTokenApplicationJSONRequest) ReadJSON(i *js
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "permissions":
-			// Unsupported kind "pointer" for field "Permissions".
-			i.Skip()
+			s.Permissions.Reset()
+			if err := s.Permissions.ReadJSON(i); err != nil {
+				i.ReportError("Field Permissions", err.Error())
+				return false
+			}
 			return true
 		case "repositories":
 			// Unsupported kind "pointer" for field "Repositories".
@@ -3258,7 +3530,10 @@ func (s AppsScopeTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	defer field.Reset()
 	field.Write("access_token")
 	j.WriteString(s.AccessToken)
-	// Unsupported kind "pointer" for field "Permissions".
+	if s.Permissions.Set {
+		field.Write("permissions")
+		s.Permissions.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Repositories".
 	// Unsupported kind "pointer" for field "RepositoryIds".
 	if s.Target.Set {
@@ -3302,8 +3577,11 @@ func (s *AppsScopeTokenApplicationJSONRequest) ReadJSON(i *json.Iterator) error 
 			s.AccessToken = i.ReadString()
 			return i.Error == nil
 		case "permissions":
-			// Unsupported kind "pointer" for field "Permissions".
-			i.Skip()
+			s.Permissions.Reset()
+			if err := s.Permissions.ReadJSON(i); err != nil {
+				i.ReportError("Field Permissions", err.Error())
+				return false
+			}
 			return true
 		case "repositories":
 			// Unsupported kind "pointer" for field "Repositories".
@@ -3445,7 +3723,10 @@ func (s AuthenticationToken) WriteJSON(j *json.Stream) {
 	json.WriteDateTime(j, s.ExpiresAt)
 	// Unsupported kind "pointer" for field "Permissions".
 	// Unsupported kind "pointer" for field "Repositories".
-	// Unsupported kind "pointer" for field "RepositorySelection".
+	if s.RepositorySelection.Set {
+		field.Write("repository_selection")
+		s.RepositorySelection.WriteJSON(j)
+	}
 	if s.SingleFile.Set {
 		field.Write("single_file")
 		s.SingleFile.WriteJSON(j)
@@ -3498,8 +3779,11 @@ func (s *AuthenticationToken) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "repository_selection":
-			// Unsupported kind "pointer" for field "RepositorySelection".
-			i.Skip()
+			s.RepositorySelection.Reset()
+			if err := s.RepositorySelection.ReadJSON(i); err != nil {
+				i.ReportError("Field RepositorySelection", err.Error())
+				return false
+			}
 			return true
 		case "single_file":
 			s.SingleFile.Reset()
@@ -3536,7 +3820,10 @@ func (s Authorization) WriteJSON(j *json.Stream) {
 	s.HashedToken.WriteJSON(j)
 	field.Write("id")
 	j.WriteInt(s.ID)
-	// Unsupported kind "pointer" for field "Installation".
+	if s.Installation.Set {
+		field.Write("installation")
+		s.Installation.WriteJSON(j)
+	}
 	field.Write("note")
 	s.Note.WriteJSON(j)
 	field.Write("note_url")
@@ -3547,10 +3834,13 @@ func (s Authorization) WriteJSON(j *json.Stream) {
 	field.Write("token_last_eight")
 	s.TokenLastEight.WriteJSON(j)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
-	// Unsupported kind "pointer" for field "User".
+	if s.User.Set {
+		field.Write("user")
+		s.User.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -3616,8 +3906,11 @@ func (s *Authorization) ReadJSON(i *json.Iterator) error {
 			s.ID = i.ReadInt()
 			return i.Error == nil
 		case "installation":
-			// Unsupported kind "pointer" for field "Installation".
-			i.Skip()
+			s.Installation.Reset()
+			if err := s.Installation.ReadJSON(i); err != nil {
+				i.ReportError("Field Installation", err.Error())
+				return false
+			}
 			return true
 		case "note":
 			if err := s.Note.ReadJSON(i); err != nil {
@@ -3645,8 +3938,13 @@ func (s *Authorization) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -3656,8 +3954,11 @@ func (s *Authorization) ReadJSON(i *json.Iterator) error {
 			s.UpdatedAt = v
 			return true
 		case "user":
-			// Unsupported kind "pointer" for field "User".
-			i.Skip()
+			s.User.Reset()
+			if err := s.User.ReadJSON(i); err != nil {
+				i.ReportError("Field User", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -3677,7 +3978,7 @@ func (s AuthorizationApp) WriteJSON(j *json.Stream) {
 	field.Write("name")
 	j.WriteString(s.Name)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -3714,8 +4015,13 @@ func (s *AuthorizationApp) ReadJSON(i *json.Iterator) error {
 			s.Name = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -3854,9 +4160,9 @@ func (s BaseGist) WriteJSON(j *json.Stream) {
 	field.Write("comments")
 	j.WriteInt(s.Comments)
 	field.Write("comments_url")
-	j.WriteString(s.CommentsURL)
+	json.WriteURI(j, s.CommentsURL)
 	field.Write("commits_url")
-	j.WriteString(s.CommitsURL)
+	json.WriteURI(j, s.CommitsURL)
 	field.Write("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
 	field.Write("description")
@@ -3864,19 +4170,22 @@ func (s BaseGist) WriteJSON(j *json.Stream) {
 	// Unsupported kind "primitive" for field "Files".
 	// Unsupported kind "pointer" for field "Forks".
 	field.Write("forks_url")
-	j.WriteString(s.ForksURL)
+	json.WriteURI(j, s.ForksURL)
 	field.Write("git_pull_url")
-	j.WriteString(s.GitPullURL)
+	json.WriteURI(j, s.GitPullURL)
 	field.Write("git_push_url")
-	j.WriteString(s.GitPushURL)
+	json.WriteURI(j, s.GitPushURL)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	// Unsupported kind "pointer" for field "History".
 	field.Write("id")
 	j.WriteString(s.ID)
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
-	// Unsupported kind "pointer" for field "Owner".
+	if s.Owner.Set {
+		field.Write("owner")
+		s.Owner.WriteJSON(j)
+	}
 	field.Write("public")
 	j.WriteBool(s.Public)
 	if s.Truncated.Set {
@@ -3884,7 +4193,7 @@ func (s BaseGist) WriteJSON(j *json.Stream) {
 		s.Truncated.WriteJSON(j)
 	}
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	field.Write("user")
@@ -3922,11 +4231,21 @@ func (s *BaseGist) ReadJSON(i *json.Iterator) error {
 			s.Comments = i.ReadInt()
 			return i.Error == nil
 		case "comments_url":
-			s.CommentsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field CommentsURL", err.Error())
+				return false
+			}
+			s.CommentsURL = v
+			return true
 		case "commits_url":
-			s.CommitsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field CommitsURL", err.Error())
+				return false
+			}
+			s.CommitsURL = v
+			return true
 		case "created_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -3950,17 +4269,37 @@ func (s *BaseGist) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "forks_url":
-			s.ForksURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ForksURL", err.Error())
+				return false
+			}
+			s.ForksURL = v
+			return true
 		case "git_pull_url":
-			s.GitPullURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field GitPullURL", err.Error())
+				return false
+			}
+			s.GitPullURL = v
+			return true
 		case "git_push_url":
-			s.GitPushURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field GitPushURL", err.Error())
+				return false
+			}
+			s.GitPushURL = v
+			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "history":
 			// Unsupported kind "pointer" for field "History".
 			i.Skip()
@@ -3972,8 +4311,11 @@ func (s *BaseGist) ReadJSON(i *json.Iterator) error {
 			s.NodeID = i.ReadString()
 			return i.Error == nil
 		case "owner":
-			// Unsupported kind "pointer" for field "Owner".
-			i.Skip()
+			s.Owner.Reset()
+			if err := s.Owner.ReadJSON(i); err != nil {
+				i.ReportError("Field Owner", err.Error())
+				return false
+			}
 			return true
 		case "public":
 			s.Public = i.ReadBool()
@@ -3986,8 +4328,13 @@ func (s *BaseGist) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -4116,7 +4463,7 @@ func (s Blob) WriteJSON(j *json.Stream) {
 	field.Write("size")
 	s.Size.WriteJSON(j)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -4172,8 +4519,13 @@ func (s *Blob) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -4187,13 +4539,22 @@ func (s BranchProtection) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "AllowDeletions".
-	// Unsupported kind "pointer" for field "AllowForcePushes".
+	if s.AllowDeletions.Set {
+		field.Write("allow_deletions")
+		s.AllowDeletions.WriteJSON(j)
+	}
+	if s.AllowForcePushes.Set {
+		field.Write("allow_force_pushes")
+		s.AllowForcePushes.WriteJSON(j)
+	}
 	if s.Enabled.Set {
 		field.Write("enabled")
 		s.Enabled.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "EnforceAdmins".
+	if s.EnforceAdmins.Set {
+		field.Write("enforce_admins")
+		s.EnforceAdmins.WriteJSON(j)
+	}
 	if s.Name.Set {
 		field.Write("name")
 		s.Name.WriteJSON(j)
@@ -4202,12 +4563,30 @@ func (s BranchProtection) WriteJSON(j *json.Stream) {
 		field.Write("protection_url")
 		s.ProtectionURL.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "RequiredConversationResolution".
-	// Unsupported kind "pointer" for field "RequiredLinearHistory".
-	// Unsupported kind "pointer" for field "RequiredPullRequestReviews".
-	// Unsupported kind "pointer" for field "RequiredSignatures".
-	// Unsupported kind "pointer" for field "RequiredStatusChecks".
-	// Unsupported kind "pointer" for field "Restrictions".
+	if s.RequiredConversationResolution.Set {
+		field.Write("required_conversation_resolution")
+		s.RequiredConversationResolution.WriteJSON(j)
+	}
+	if s.RequiredLinearHistory.Set {
+		field.Write("required_linear_history")
+		s.RequiredLinearHistory.WriteJSON(j)
+	}
+	if s.RequiredPullRequestReviews.Set {
+		field.Write("required_pull_request_reviews")
+		s.RequiredPullRequestReviews.WriteJSON(j)
+	}
+	if s.RequiredSignatures.Set {
+		field.Write("required_signatures")
+		s.RequiredSignatures.WriteJSON(j)
+	}
+	if s.RequiredStatusChecks.Set {
+		field.Write("required_status_checks")
+		s.RequiredStatusChecks.WriteJSON(j)
+	}
+	if s.Restrictions.Set {
+		field.Write("restrictions")
+		s.Restrictions.WriteJSON(j)
+	}
 	if s.URL.Set {
 		field.Write("url")
 		s.URL.WriteJSON(j)
@@ -4242,12 +4621,18 @@ func (s *BranchProtection) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_deletions":
-			// Unsupported kind "pointer" for field "AllowDeletions".
-			i.Skip()
+			s.AllowDeletions.Reset()
+			if err := s.AllowDeletions.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowDeletions", err.Error())
+				return false
+			}
 			return true
 		case "allow_force_pushes":
-			// Unsupported kind "pointer" for field "AllowForcePushes".
-			i.Skip()
+			s.AllowForcePushes.Reset()
+			if err := s.AllowForcePushes.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowForcePushes", err.Error())
+				return false
+			}
 			return true
 		case "enabled":
 			s.Enabled.Reset()
@@ -4257,8 +4642,11 @@ func (s *BranchProtection) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "enforce_admins":
-			// Unsupported kind "pointer" for field "EnforceAdmins".
-			i.Skip()
+			s.EnforceAdmins.Reset()
+			if err := s.EnforceAdmins.ReadJSON(i); err != nil {
+				i.ReportError("Field EnforceAdmins", err.Error())
+				return false
+			}
 			return true
 		case "name":
 			s.Name.Reset()
@@ -4275,28 +4663,46 @@ func (s *BranchProtection) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "required_conversation_resolution":
-			// Unsupported kind "pointer" for field "RequiredConversationResolution".
-			i.Skip()
+			s.RequiredConversationResolution.Reset()
+			if err := s.RequiredConversationResolution.ReadJSON(i); err != nil {
+				i.ReportError("Field RequiredConversationResolution", err.Error())
+				return false
+			}
 			return true
 		case "required_linear_history":
-			// Unsupported kind "pointer" for field "RequiredLinearHistory".
-			i.Skip()
+			s.RequiredLinearHistory.Reset()
+			if err := s.RequiredLinearHistory.ReadJSON(i); err != nil {
+				i.ReportError("Field RequiredLinearHistory", err.Error())
+				return false
+			}
 			return true
 		case "required_pull_request_reviews":
-			// Unsupported kind "pointer" for field "RequiredPullRequestReviews".
-			i.Skip()
+			s.RequiredPullRequestReviews.Reset()
+			if err := s.RequiredPullRequestReviews.ReadJSON(i); err != nil {
+				i.ReportError("Field RequiredPullRequestReviews", err.Error())
+				return false
+			}
 			return true
 		case "required_signatures":
-			// Unsupported kind "pointer" for field "RequiredSignatures".
-			i.Skip()
+			s.RequiredSignatures.Reset()
+			if err := s.RequiredSignatures.ReadJSON(i); err != nil {
+				i.ReportError("Field RequiredSignatures", err.Error())
+				return false
+			}
 			return true
 		case "required_status_checks":
-			// Unsupported kind "pointer" for field "RequiredStatusChecks".
-			i.Skip()
+			s.RequiredStatusChecks.Reset()
+			if err := s.RequiredStatusChecks.ReadJSON(i); err != nil {
+				i.ReportError("Field RequiredStatusChecks", err.Error())
+				return false
+			}
 			return true
 		case "restrictions":
-			// Unsupported kind "pointer" for field "Restrictions".
-			i.Skip()
+			s.Restrictions.Reset()
+			if err := s.Restrictions.ReadJSON(i); err != nil {
+				i.ReportError("Field Restrictions", err.Error())
+				return false
+			}
 			return true
 		case "url":
 			s.URL.Reset()
@@ -4533,7 +4939,7 @@ func (s BranchProtectionRequiredSignatures) WriteJSON(j *json.Stream) {
 	field.Write("enabled")
 	j.WriteBool(s.Enabled)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -4567,8 +4973,13 @@ func (s *BranchProtectionRequiredSignatures) ReadJSON(i *json.Iterator) error {
 			s.Enabled = i.ReadBool()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -4675,15 +5086,15 @@ func (s BranchRestrictionPolicy) WriteJSON(j *json.Stream) {
 	defer field.Reset()
 	// Unsupported kind "array" for field "Apps".
 	field.Write("apps_url")
-	j.WriteString(s.AppsURL)
+	json.WriteURI(j, s.AppsURL)
 	// Unsupported kind "array" for field "Teams".
 	field.Write("teams_url")
-	j.WriteString(s.TeamsURL)
+	json.WriteURI(j, s.TeamsURL)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	// Unsupported kind "array" for field "Users".
 	field.Write("users_url")
-	j.WriteString(s.UsersURL)
+	json.WriteURI(j, s.UsersURL)
 	j.WriteObjectEnd()
 }
 
@@ -4718,25 +5129,45 @@ func (s *BranchRestrictionPolicy) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "apps_url":
-			s.AppsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field AppsURL", err.Error())
+				return false
+			}
+			s.AppsURL = v
+			return true
 		case "teams":
 			// Unsupported kind "array" for field "Teams".
 			i.Skip()
 			return true
 		case "teams_url":
-			s.TeamsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field TeamsURL", err.Error())
+				return false
+			}
+			s.TeamsURL = v
+			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "users":
 			// Unsupported kind "array" for field "Users".
 			i.Skip()
 			return true
 		case "users_url":
-			s.UsersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field UsersURL", err.Error())
+				return false
+			}
+			s.UsersURL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -4779,8 +5210,14 @@ func (s BranchRestrictionPolicyAppsItem) WriteJSON(j *json.Stream) {
 		field.Write("node_id")
 		s.NodeID.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Owner".
-	// Unsupported kind "pointer" for field "Permissions".
+	if s.Owner.Set {
+		field.Write("owner")
+		s.Owner.WriteJSON(j)
+	}
+	if s.Permissions.Set {
+		field.Write("permissions")
+		s.Permissions.WriteJSON(j)
+	}
 	if s.Slug.Set {
 		field.Write("slug")
 		s.Slug.WriteJSON(j)
@@ -4872,12 +5309,18 @@ func (s *BranchRestrictionPolicyAppsItem) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "owner":
-			// Unsupported kind "pointer" for field "Owner".
-			i.Skip()
+			s.Owner.Reset()
+			if err := s.Owner.ReadJSON(i); err != nil {
+				i.ReportError("Field Owner", err.Error())
+				return false
+			}
 			return true
 		case "permissions":
-			// Unsupported kind "pointer" for field "Permissions".
-			i.Skip()
+			s.Permissions.Reset()
+			if err := s.Permissions.ReadJSON(i); err != nil {
+				i.ReportError("Field Permissions", err.Error())
+				return false
+			}
 			return true
 		case "slug":
 			s.Slug.Reset()
@@ -5828,7 +6271,7 @@ func (s BranchWithProtection) WriteJSON(j *json.Stream) {
 	field.Write("protection")
 	s.Protection.WriteJSON(j)
 	field.Write("protection_url")
-	j.WriteString(s.ProtectionURL)
+	json.WriteURI(j, s.ProtectionURL)
 	if s.RequiredApprovingReviewCount.Set {
 		field.Write("required_approving_review_count")
 		s.RequiredApprovingReviewCount.WriteJSON(j)
@@ -5894,8 +6337,13 @@ func (s *BranchWithProtection) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "protection_url":
-			s.ProtectionURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ProtectionURL", err.Error())
+				return false
+			}
+			s.ProtectionURL = v
+			return true
 		case "required_approving_review_count":
 			s.RequiredApprovingReviewCount.Reset()
 			if err := s.RequiredApprovingReviewCount.ReadJSON(i); err != nil {
@@ -5919,7 +6367,7 @@ func (s BranchWithProtectionLinks) WriteJSON(j *json.Stream) {
 	field.Write("html")
 	j.WriteString(s.HTML)
 	field.Write("self")
-	j.WriteString(s.Self)
+	json.WriteURI(j, s.Self)
 	j.WriteObjectEnd()
 }
 
@@ -5953,8 +6401,13 @@ func (s *BranchWithProtectionLinks) ReadJSON(i *json.Iterator) error {
 			s.HTML = i.ReadString()
 			return i.Error == nil
 		case "self":
-			s.Self = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field Self", err.Error())
+				return false
+			}
+			s.Self = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -6085,8 +6538,11 @@ func (s CheckRun) WriteJSON(j *json.Stream) {
 	field.Write("completed_at")
 	s.CompletedAt.WriteJSON(j, json.WriteDateTime)
 	field.Write("conclusion")
-	j.WriteString(s.Conclusion)
-	// Unsupported kind "pointer" for field "Deployment".
+	s.Conclusion.WriteJSON(j)
+	if s.Deployment.Set {
+		field.Write("deployment")
+		s.Deployment.WriteJSON(j)
+	}
 	field.Write("details_url")
 	s.DetailsURL.WriteJSON(j)
 	field.Write("external_id")
@@ -6159,11 +6615,17 @@ func (s *CheckRun) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "conclusion":
-			s.Conclusion = i.ReadString()
-			return i.Error == nil
+			if err := s.Conclusion.ReadJSON(i); err != nil {
+				i.ReportError("Field Conclusion", err.Error())
+				return false
+			}
+			return true
 		case "deployment":
-			// Unsupported kind "pointer" for field "Deployment".
-			i.Skip()
+			s.Deployment.Reset()
+			if err := s.Deployment.ReadJSON(i); err != nil {
+				i.ReportError("Field Deployment", err.Error())
+				return false
+			}
 			return true
 		case "details_url":
 			if err := s.DetailsURL.ReadJSON(i); err != nil {
@@ -6279,7 +6741,7 @@ func (s CheckRunOutput) WriteJSON(j *json.Stream) {
 	field.Write("annotations_count")
 	j.WriteInt(s.AnnotationsCount)
 	field.Write("annotations_url")
-	j.WriteString(s.AnnotationsURL)
+	json.WriteURI(j, s.AnnotationsURL)
 	field.Write("summary")
 	s.Summary.WriteJSON(j)
 	field.Write("text")
@@ -6319,8 +6781,13 @@ func (s *CheckRunOutput) ReadJSON(i *json.Iterator) error {
 			s.AnnotationsCount = i.ReadInt()
 			return i.Error == nil
 		case "annotations_url":
-			s.AnnotationsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field AnnotationsURL", err.Error())
+				return false
+			}
+			s.AnnotationsURL = v
+			return true
 		case "summary":
 			if err := s.Summary.ReadJSON(i); err != nil {
 				i.ReportError("Field Summary", err.Error())
@@ -6361,7 +6828,7 @@ func (s CheckSuite) WriteJSON(j *json.Stream) {
 	field.Write("check_runs_url")
 	j.WriteString(s.CheckRunsURL)
 	field.Write("conclusion")
-	j.WriteString(s.Conclusion)
+	s.Conclusion.WriteJSON(j)
 	field.Write("created_at")
 	s.CreatedAt.WriteJSON(j, json.WriteDateTime)
 	field.Write("head_branch")
@@ -6380,7 +6847,7 @@ func (s CheckSuite) WriteJSON(j *json.Stream) {
 	field.Write("repository")
 	s.Repository.WriteJSON(j)
 	field.Write("status")
-	j.WriteString(s.Status)
+	s.Status.WriteJSON(j)
 	field.Write("url")
 	s.URL.WriteJSON(j)
 	field.Write("updated_at")
@@ -6436,8 +6903,11 @@ func (s *CheckSuite) ReadJSON(i *json.Iterator) error {
 			s.CheckRunsURL = i.ReadString()
 			return i.Error == nil
 		case "conclusion":
-			s.Conclusion = i.ReadString()
-			return i.Error == nil
+			if err := s.Conclusion.ReadJSON(i); err != nil {
+				i.ReportError("Field Conclusion", err.Error())
+				return false
+			}
+			return true
 		case "created_at":
 			if err := s.CreatedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 				i.ReportError("Field CreatedAt", err.Error())
@@ -6479,8 +6949,11 @@ func (s *CheckSuite) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "status":
-			s.Status = i.ReadString()
-			return i.Error == nil
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
+			return true
 		case "url":
 			if err := s.URL.ReadJSON(i); err != nil {
 				i.ReportError("Field URL", err.Error())
@@ -6872,7 +7345,7 @@ func (s CodeOfConduct) WriteJSON(j *json.Stream) {
 	field.Write("name")
 	j.WriteString(s.Name)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -6922,8 +7395,13 @@ func (s *CodeOfConduct) ReadJSON(i *json.Iterator) error {
 			s.Name = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -6944,7 +7422,7 @@ func (s CodeOfConductSimple) WriteJSON(j *json.Stream) {
 	field.Write("name")
 	j.WriteString(s.Name)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -6987,8 +7465,13 @@ func (s *CodeOfConductSimple) ReadJSON(i *json.Iterator) error {
 			s.Name = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -7139,10 +7622,19 @@ func (s CodeScanningAlertInstance) WriteJSON(j *json.Stream) {
 		field.Write("html_url")
 		s.HTMLURL.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Location".
-	// Unsupported kind "pointer" for field "Message".
+	if s.Location.Set {
+		field.Write("location")
+		s.Location.WriteJSON(j)
+	}
+	if s.Message.Set {
+		field.Write("message")
+		s.Message.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Ref".
-	// Unsupported kind "pointer" for field "State".
+	if s.State.Set {
+		field.Write("state")
+		s.State.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -7203,20 +7695,29 @@ func (s *CodeScanningAlertInstance) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "location":
-			// Unsupported kind "pointer" for field "Location".
-			i.Skip()
+			s.Location.Reset()
+			if err := s.Location.ReadJSON(i); err != nil {
+				i.ReportError("Field Location", err.Error())
+				return false
+			}
 			return true
 		case "message":
-			// Unsupported kind "pointer" for field "Message".
-			i.Skip()
+			s.Message.Reset()
+			if err := s.Message.ReadJSON(i); err != nil {
+				i.ReportError("Field Message", err.Error())
+				return false
+			}
 			return true
 		case "ref":
 			// Unsupported kind "pointer" for field "Ref".
 			i.Skip()
 			return true
 		case "state":
-			// Unsupported kind "pointer" for field "State".
-			i.Skip()
+			s.State.Reset()
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -7401,8 +7902,14 @@ func (s CodeScanningAlertRule) WriteJSON(j *json.Stream) {
 		field.Write("name")
 		s.Name.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SecuritySeverityLevel".
-	// Unsupported kind "pointer" for field "Severity".
+	if s.SecuritySeverityLevel.Set {
+		field.Write("security_severity_level")
+		s.SecuritySeverityLevel.WriteJSON(j)
+	}
+	if s.Severity.Set {
+		field.Write("severity")
+		s.Severity.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Tags".
 	j.WriteObjectEnd()
 }
@@ -7469,12 +7976,18 @@ func (s *CodeScanningAlertRule) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "security_severity_level":
-			// Unsupported kind "pointer" for field "SecuritySeverityLevel".
-			i.Skip()
+			s.SecuritySeverityLevel.Reset()
+			if err := s.SecuritySeverityLevel.ReadJSON(i); err != nil {
+				i.ReportError("Field SecuritySeverityLevel", err.Error())
+				return false
+			}
 			return true
 		case "severity":
-			// Unsupported kind "pointer" for field "Severity".
-			i.Skip()
+			s.Severity.Reset()
+			if err := s.Severity.ReadJSON(i); err != nil {
+				i.ReportError("Field Severity", err.Error())
+				return false
+			}
 			return true
 		case "tags":
 			// Unsupported kind "pointer" for field "Tags".
@@ -7801,7 +8314,10 @@ func (s CodeScanningSarifsStatus) WriteJSON(j *json.Stream) {
 		field.Write("analyses_url")
 		s.AnalysesURL.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "ProcessingStatus".
+	if s.ProcessingStatus.Set {
+		field.Write("processing_status")
+		s.ProcessingStatus.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -7839,8 +8355,11 @@ func (s *CodeScanningSarifsStatus) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "processing_status":
-			// Unsupported kind "pointer" for field "ProcessingStatus".
-			i.Skip()
+			s.ProcessingStatus.Reset()
+			if err := s.ProcessingStatus.ReadJSON(i); err != nil {
+				i.ReportError("Field ProcessingStatus", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -7855,7 +8374,10 @@ func (s CodeScanningUpdateAlertApplicationJSONRequest) WriteJSON(j *json.Stream)
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "DismissedReason".
+	if s.DismissedReason.Set {
+		field.Write("dismissed_reason")
+		s.DismissedReason.WriteJSON(j)
+	}
 	field.Write("state")
 	j.WriteString(s.State)
 	j.WriteObjectEnd()
@@ -7888,8 +8410,11 @@ func (s *CodeScanningUpdateAlertApplicationJSONRequest) ReadJSON(i *json.Iterato
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "dismissed_reason":
-			// Unsupported kind "pointer" for field "DismissedReason".
-			i.Skip()
+			s.DismissedReason.Reset()
+			if err := s.DismissedReason.ReadJSON(i); err != nil {
+				i.ReportError("Field DismissedReason", err.Error())
+				return false
+			}
 			return true
 		case "state":
 			s.State = i.ReadString()
@@ -8055,7 +8580,7 @@ func (s CombinedCommitStatus) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	field.Write("commit_url")
-	j.WriteString(s.CommitURL)
+	json.WriteURI(j, s.CommitURL)
 	field.Write("repository")
 	s.Repository.WriteJSON(j)
 	field.Write("sha")
@@ -8066,7 +8591,7 @@ func (s CombinedCommitStatus) WriteJSON(j *json.Stream) {
 	field.Write("total_count")
 	j.WriteInt(s.TotalCount)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -8097,8 +8622,13 @@ func (s *CombinedCommitStatus) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "commit_url":
-			s.CommitURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field CommitURL", err.Error())
+				return false
+			}
+			s.CommitURL = v
+			return true
 		case "repository":
 			if err := s.Repository.ReadJSON(i); err != nil {
 				i.ReportError("Field Repository", err.Error())
@@ -8119,8 +8649,13 @@ func (s *CombinedCommitStatus) ReadJSON(i *json.Iterator) error {
 			s.TotalCount = i.ReadInt()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -8137,22 +8672,25 @@ func (s Commit) WriteJSON(j *json.Stream) {
 	field.Write("author")
 	s.Author.WriteJSON(j)
 	field.Write("comments_url")
-	j.WriteString(s.CommentsURL)
+	json.WriteURI(j, s.CommentsURL)
 	field.Write("commit")
 	s.Commit.WriteJSON(j)
 	field.Write("committer")
 	s.Committer.WriteJSON(j)
 	// Unsupported kind "pointer" for field "Files".
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
 	// Unsupported kind "array" for field "Parents".
 	field.Write("sha")
 	j.WriteString(s.Sha)
-	// Unsupported kind "pointer" for field "Stats".
+	if s.Stats.Set {
+		field.Write("stats")
+		s.Stats.WriteJSON(j)
+	}
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -8189,8 +8727,13 @@ func (s *Commit) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "comments_url":
-			s.CommentsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field CommentsURL", err.Error())
+				return false
+			}
+			s.CommentsURL = v
+			return true
 		case "commit":
 			if err := s.Commit.ReadJSON(i); err != nil {
 				i.ReportError("Field Commit", err.Error())
@@ -8208,8 +8751,13 @@ func (s *Commit) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "node_id":
 			s.NodeID = i.ReadString()
 			return i.Error == nil
@@ -8221,12 +8769,20 @@ func (s *Commit) ReadJSON(i *json.Iterator) error {
 			s.Sha = i.ReadString()
 			return i.Error == nil
 		case "stats":
-			// Unsupported kind "pointer" for field "Stats".
-			i.Skip()
+			s.Stats.Reset()
+			if err := s.Stats.ReadJSON(i); err != nil {
+				i.ReportError("Field Stats", err.Error())
+				return false
+			}
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -8306,7 +8862,7 @@ func (s CommitComment) WriteJSON(j *json.Stream) {
 	field.Write("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	field.Write("line")
@@ -8317,9 +8873,12 @@ func (s CommitComment) WriteJSON(j *json.Stream) {
 	s.Path.WriteJSON(j)
 	field.Write("position")
 	s.Position.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Reactions".
+	if s.Reactions.Set {
+		field.Write("reactions")
+		s.Reactions.WriteJSON(j)
+	}
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	field.Write("user")
@@ -8371,8 +8930,13 @@ func (s *CommitComment) ReadJSON(i *json.Iterator) error {
 			s.CreatedAt = v
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -8398,12 +8962,20 @@ func (s *CommitComment) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "reactions":
-			// Unsupported kind "pointer" for field "Reactions".
-			i.Skip()
+			s.Reactions.Reset()
+			if err := s.Reactions.ReadJSON(i); err != nil {
+				i.ReportError("Field Reactions", err.Error())
+				return false
+			}
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -8442,8 +9014,11 @@ func (s CommitCommit) WriteJSON(j *json.Stream) {
 	field.Write("tree")
 	s.Tree.WriteJSON(j)
 	field.Write("url")
-	j.WriteString(s.URL)
-	// Unsupported kind "pointer" for field "Verification".
+	json.WriteURI(j, s.URL)
+	if s.Verification.Set {
+		field.Write("verification")
+		s.Verification.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -8498,11 +9073,19 @@ func (s *CommitCommit) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "verification":
-			// Unsupported kind "pointer" for field "Verification".
-			i.Skip()
+			s.Verification.Reset()
+			if err := s.Verification.ReadJSON(i); err != nil {
+				i.ReportError("Field Verification", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -8520,7 +9103,7 @@ func (s CommitCommitTree) WriteJSON(j *json.Stream) {
 	field.Write("sha")
 	j.WriteString(s.Sha)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -8554,8 +9137,13 @@ func (s *CommitCommitTree) ReadJSON(i *json.Iterator) error {
 			s.Sha = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -8577,22 +9165,22 @@ func (s CommitComparison) WriteJSON(j *json.Stream) {
 	j.WriteInt(s.BehindBy)
 	// Unsupported kind "array" for field "Commits".
 	field.Write("diff_url")
-	j.WriteString(s.DiffURL)
+	json.WriteURI(j, s.DiffURL)
 	// Unsupported kind "pointer" for field "Files".
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("merge_base_commit")
 	s.MergeBaseCommit.WriteJSON(j)
 	field.Write("patch_url")
-	j.WriteString(s.PatchURL)
+	json.WriteURI(j, s.PatchURL)
 	field.Write("permalink_url")
-	j.WriteString(s.PermalinkURL)
+	json.WriteURI(j, s.PermalinkURL)
 	field.Write("status")
 	j.WriteString(s.Status)
 	field.Write("total_commits")
 	j.WriteInt(s.TotalCommits)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -8639,15 +9227,25 @@ func (s *CommitComparison) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "diff_url":
-			s.DiffURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field DiffURL", err.Error())
+				return false
+			}
+			s.DiffURL = v
+			return true
 		case "files":
 			// Unsupported kind "pointer" for field "Files".
 			i.Skip()
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "merge_base_commit":
 			if err := s.MergeBaseCommit.ReadJSON(i); err != nil {
 				i.ReportError("Field MergeBaseCommit", err.Error())
@@ -8655,11 +9253,21 @@ func (s *CommitComparison) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "patch_url":
-			s.PatchURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field PatchURL", err.Error())
+				return false
+			}
+			s.PatchURL = v
+			return true
 		case "permalink_url":
-			s.PermalinkURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field PermalinkURL", err.Error())
+				return false
+			}
+			s.PermalinkURL = v
+			return true
 		case "status":
 			s.Status = i.ReadString()
 			return i.Error == nil
@@ -8667,8 +9275,13 @@ func (s *CommitComparison) ReadJSON(i *json.Iterator) error {
 			s.TotalCommits = i.ReadInt()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -8852,7 +9465,7 @@ func (s CommitParentsItem) WriteJSON(j *json.Stream) {
 	field.Write("sha")
 	j.WriteString(s.Sha)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -8893,8 +9506,13 @@ func (s *CommitParentsItem) ReadJSON(i *json.Iterator) error {
 			s.Sha = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -9202,7 +9820,7 @@ func (s ContentFile) WriteJSON(j *json.Stream) {
 	field.Write("type")
 	j.WriteString(s.Type)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -9292,8 +9910,13 @@ func (s *ContentFile) ReadJSON(i *json.Iterator) error {
 			s.Type = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -9312,7 +9935,7 @@ func (s ContentFileLinks) WriteJSON(j *json.Stream) {
 	field.Write("html")
 	s.HTML.WriteJSON(j)
 	field.Write("self")
-	j.WriteString(s.Self)
+	json.WriteURI(j, s.Self)
 	j.WriteObjectEnd()
 }
 
@@ -9355,8 +9978,13 @@ func (s *ContentFileLinks) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "self":
-			s.Self = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field Self", err.Error())
+				return false
+			}
+			s.Self = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -10188,15 +10816,18 @@ func (s DeploymentSimple) WriteJSON(j *json.Stream) {
 		field.Write("original_environment")
 		s.OriginalEnvironment.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "PerformedViaGithubApp".
+	if s.PerformedViaGithubApp.Set {
+		field.Write("performed_via_github_app")
+		s.PerformedViaGithubApp.WriteJSON(j)
+	}
 	if s.ProductionEnvironment.Set {
 		field.Write("production_environment")
 		s.ProductionEnvironment.WriteJSON(j)
 	}
 	field.Write("repository_url")
-	j.WriteString(s.RepositoryURL)
+	json.WriteURI(j, s.RepositoryURL)
 	field.Write("statuses_url")
-	j.WriteString(s.StatusesURL)
+	json.WriteURI(j, s.StatusesURL)
 	field.Write("task")
 	j.WriteString(s.Task)
 	if s.TransientEnvironment.Set {
@@ -10204,7 +10835,7 @@ func (s DeploymentSimple) WriteJSON(j *json.Stream) {
 		s.TransientEnvironment.WriteJSON(j)
 	}
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	j.WriteObjectEnd()
@@ -10267,8 +10898,11 @@ func (s *DeploymentSimple) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "performed_via_github_app":
-			// Unsupported kind "pointer" for field "PerformedViaGithubApp".
-			i.Skip()
+			s.PerformedViaGithubApp.Reset()
+			if err := s.PerformedViaGithubApp.ReadJSON(i); err != nil {
+				i.ReportError("Field PerformedViaGithubApp", err.Error())
+				return false
+			}
 			return true
 		case "production_environment":
 			s.ProductionEnvironment.Reset()
@@ -10278,11 +10912,21 @@ func (s *DeploymentSimple) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "repository_url":
-			s.RepositoryURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field RepositoryURL", err.Error())
+				return false
+			}
+			s.RepositoryURL = v
+			return true
 		case "statuses_url":
-			s.StatusesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field StatusesURL", err.Error())
+				return false
+			}
+			s.StatusesURL = v
+			return true
 		case "task":
 			s.Task = i.ReadString()
 			return i.Error == nil
@@ -10294,8 +10938,13 @@ func (s *DeploymentSimple) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -10322,7 +10971,7 @@ func (s DeploymentStatus) WriteJSON(j *json.Stream) {
 	field.Write("creator")
 	s.Creator.WriteJSON(j)
 	field.Write("deployment_url")
-	j.WriteString(s.DeploymentURL)
+	json.WriteURI(j, s.DeploymentURL)
 	field.Write("description")
 	j.WriteString(s.Description)
 	if s.Environment.Set {
@@ -10341,15 +10990,18 @@ func (s DeploymentStatus) WriteJSON(j *json.Stream) {
 	}
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
-	// Unsupported kind "pointer" for field "PerformedViaGithubApp".
+	if s.PerformedViaGithubApp.Set {
+		field.Write("performed_via_github_app")
+		s.PerformedViaGithubApp.WriteJSON(j)
+	}
 	field.Write("repository_url")
-	j.WriteString(s.RepositoryURL)
+	json.WriteURI(j, s.RepositoryURL)
 	field.Write("state")
 	j.WriteString(s.State)
 	field.Write("target_url")
-	j.WriteString(s.TargetURL)
+	json.WriteURI(j, s.TargetURL)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	j.WriteObjectEnd()
@@ -10396,8 +11048,13 @@ func (s *DeploymentStatus) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "deployment_url":
-			s.DeploymentURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field DeploymentURL", err.Error())
+				return false
+			}
+			s.DeploymentURL = v
+			return true
 		case "description":
 			s.Description = i.ReadString()
 			return i.Error == nil
@@ -10429,21 +11086,39 @@ func (s *DeploymentStatus) ReadJSON(i *json.Iterator) error {
 			s.NodeID = i.ReadString()
 			return i.Error == nil
 		case "performed_via_github_app":
-			// Unsupported kind "pointer" for field "PerformedViaGithubApp".
-			i.Skip()
+			s.PerformedViaGithubApp.Reset()
+			if err := s.PerformedViaGithubApp.ReadJSON(i); err != nil {
+				i.ReportError("Field PerformedViaGithubApp", err.Error())
+				return false
+			}
 			return true
 		case "repository_url":
-			s.RepositoryURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field RepositoryURL", err.Error())
+				return false
+			}
+			s.RepositoryURL = v
+			return true
 		case "state":
 			s.State = i.ReadString()
 			return i.Error == nil
 		case "target_url":
-			s.TargetURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field TargetURL", err.Error())
+				return false
+			}
+			s.TargetURL = v
+			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -10468,11 +11143,11 @@ func (s DiffEntry) WriteJSON(j *json.Stream) {
 	field.Write("additions")
 	j.WriteInt(s.Additions)
 	field.Write("blob_url")
-	j.WriteString(s.BlobURL)
+	json.WriteURI(j, s.BlobURL)
 	field.Write("changes")
 	j.WriteInt(s.Changes)
 	field.Write("contents_url")
-	j.WriteString(s.ContentsURL)
+	json.WriteURI(j, s.ContentsURL)
 	field.Write("deletions")
 	j.WriteInt(s.Deletions)
 	field.Write("filename")
@@ -10486,7 +11161,7 @@ func (s DiffEntry) WriteJSON(j *json.Stream) {
 		s.PreviousFilename.WriteJSON(j)
 	}
 	field.Write("raw_url")
-	j.WriteString(s.RawURL)
+	json.WriteURI(j, s.RawURL)
 	field.Write("sha")
 	j.WriteString(s.Sha)
 	field.Write("status")
@@ -10524,14 +11199,24 @@ func (s *DiffEntry) ReadJSON(i *json.Iterator) error {
 			s.Additions = i.ReadInt()
 			return i.Error == nil
 		case "blob_url":
-			s.BlobURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field BlobURL", err.Error())
+				return false
+			}
+			s.BlobURL = v
+			return true
 		case "changes":
 			s.Changes = i.ReadInt()
 			return i.Error == nil
 		case "contents_url":
-			s.ContentsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ContentsURL", err.Error())
+				return false
+			}
+			s.ContentsURL = v
+			return true
 		case "deletions":
 			s.Deletions = i.ReadInt()
 			return i.Error == nil
@@ -10553,8 +11238,13 @@ func (s *DiffEntry) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "raw_url":
-			s.RawURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field RawURL", err.Error())
+				return false
+			}
+			s.RawURL = v
+			return true
 		case "sha":
 			s.Sha = i.ReadString()
 			return i.Error == nil
@@ -10643,7 +11333,10 @@ func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRe
 	j.WriteString(s.Name)
 	// Unsupported kind "pointer" for field "Runners".
 	// Unsupported kind "pointer" for field "SelectedOrganizationIds".
-	// Unsupported kind "pointer" for field "Visibility".
+	if s.Visibility.Set {
+		field.Write("visibility")
+		s.Visibility.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -10685,8 +11378,11 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONR
 			i.Skip()
 			return true
 		case "visibility":
-			// Unsupported kind "pointer" for field "Visibility".
-			i.Skip()
+			s.Visibility.Reset()
+			if err := s.Visibility.ReadJSON(i); err != nil {
+				i.ReportError("Field Visibility", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -11303,7 +11999,10 @@ func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONReque
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "AllowedActions".
+	if s.AllowedActions.Set {
+		field.Write("allowed_actions")
+		s.AllowedActions.WriteJSON(j)
+	}
 	field.Write("enabled_organizations")
 	j.WriteString(s.EnabledOrganizations)
 	j.WriteObjectEnd()
@@ -11336,8 +12035,11 @@ func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequ
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allowed_actions":
-			// Unsupported kind "pointer" for field "AllowedActions".
-			i.Skip()
+			s.AllowedActions.Reset()
+			if err := s.AllowedActions.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowedActions", err.Error())
+				return false
+			}
 			return true
 		case "enabled_organizations":
 			s.EnabledOrganizations = i.ReadString()
@@ -11888,7 +12590,10 @@ func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRe
 		field.Write("name")
 		s.Name.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Visibility".
+	if s.Visibility.Set {
+		field.Write("visibility")
+		s.Visibility.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -11926,8 +12631,11 @@ func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONR
 			}
 			return true
 		case "visibility":
-			// Unsupported kind "pointer" for field "Visibility".
-			i.Skip()
+			s.Visibility.Reset()
+			if err := s.Visibility.ReadJSON(i); err != nil {
+				i.ReportError("Field Visibility", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -12132,7 +12840,10 @@ func (s Event) WriteJSON(j *json.Stream) {
 	s.CreatedAt.WriteJSON(j, json.WriteDateTime)
 	field.Write("id")
 	j.WriteString(s.ID)
-	// Unsupported kind "pointer" for field "Org".
+	if s.Org.Set {
+		field.Write("org")
+		s.Org.WriteJSON(j)
+	}
 	field.Write("payload")
 	s.Payload.WriteJSON(j)
 	field.Write("public")
@@ -12186,8 +12897,11 @@ func (s *Event) ReadJSON(i *json.Iterator) error {
 			s.ID = i.ReadString()
 			return i.Error == nil
 		case "org":
-			// Unsupported kind "pointer" for field "Org".
-			i.Skip()
+			s.Org.Reset()
+			if err := s.Org.ReadJSON(i); err != nil {
+				i.ReportError("Field Org", err.Error())
+				return false
+			}
 			return true
 		case "payload":
 			if err := s.Payload.ReadJSON(i); err != nil {
@@ -12227,8 +12941,14 @@ func (s EventPayload) WriteJSON(j *json.Stream) {
 		field.Write("action")
 		s.Action.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Comment".
-	// Unsupported kind "pointer" for field "Issue".
+	if s.Comment.Set {
+		field.Write("comment")
+		s.Comment.WriteJSON(j)
+	}
+	if s.Issue.Set {
+		field.Write("issue")
+		s.Issue.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Pages".
 	j.WriteObjectEnd()
 }
@@ -12267,12 +12987,18 @@ func (s *EventPayload) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "comment":
-			// Unsupported kind "pointer" for field "Comment".
-			i.Skip()
+			s.Comment.Reset()
+			if err := s.Comment.ReadJSON(i); err != nil {
+				i.ReportError("Field Comment", err.Error())
+				return false
+			}
 			return true
 		case "issue":
-			// Unsupported kind "pointer" for field "Issue".
-			i.Skip()
+			s.Issue.Reset()
+			if err := s.Issue.ReadJSON(i); err != nil {
+				i.ReportError("Field Issue", err.Error())
+				return false
+			}
 			return true
 		case "pages":
 			// Unsupported kind "pointer" for field "Pages".
@@ -12404,7 +13130,7 @@ func (s EventRepo) WriteJSON(j *json.Stream) {
 	field.Write("name")
 	j.WriteString(s.Name)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -12441,8 +13167,13 @@ func (s *EventRepo) ReadJSON(i *json.Iterator) error {
 			s.Name = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -12576,12 +13307,27 @@ func (s FeedLinks) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "CurrentUser".
-	// Unsupported kind "pointer" for field "CurrentUserActor".
-	// Unsupported kind "pointer" for field "CurrentUserOrganization".
+	if s.CurrentUser.Set {
+		field.Write("current_user")
+		s.CurrentUser.WriteJSON(j)
+	}
+	if s.CurrentUserActor.Set {
+		field.Write("current_user_actor")
+		s.CurrentUserActor.WriteJSON(j)
+	}
+	if s.CurrentUserOrganization.Set {
+		field.Write("current_user_organization")
+		s.CurrentUserOrganization.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "CurrentUserOrganizations".
-	// Unsupported kind "pointer" for field "CurrentUserPublic".
-	// Unsupported kind "pointer" for field "SecurityAdvisories".
+	if s.CurrentUserPublic.Set {
+		field.Write("current_user_public")
+		s.CurrentUserPublic.WriteJSON(j)
+	}
+	if s.SecurityAdvisories.Set {
+		field.Write("security_advisories")
+		s.SecurityAdvisories.WriteJSON(j)
+	}
 	field.Write("timeline")
 	s.Timeline.WriteJSON(j)
 	field.Write("user")
@@ -12616,28 +13362,43 @@ func (s *FeedLinks) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "current_user":
-			// Unsupported kind "pointer" for field "CurrentUser".
-			i.Skip()
+			s.CurrentUser.Reset()
+			if err := s.CurrentUser.ReadJSON(i); err != nil {
+				i.ReportError("Field CurrentUser", err.Error())
+				return false
+			}
 			return true
 		case "current_user_actor":
-			// Unsupported kind "pointer" for field "CurrentUserActor".
-			i.Skip()
+			s.CurrentUserActor.Reset()
+			if err := s.CurrentUserActor.ReadJSON(i); err != nil {
+				i.ReportError("Field CurrentUserActor", err.Error())
+				return false
+			}
 			return true
 		case "current_user_organization":
-			// Unsupported kind "pointer" for field "CurrentUserOrganization".
-			i.Skip()
+			s.CurrentUserOrganization.Reset()
+			if err := s.CurrentUserOrganization.ReadJSON(i); err != nil {
+				i.ReportError("Field CurrentUserOrganization", err.Error())
+				return false
+			}
 			return true
 		case "current_user_organizations":
 			// Unsupported kind "pointer" for field "CurrentUserOrganizations".
 			i.Skip()
 			return true
 		case "current_user_public":
-			// Unsupported kind "pointer" for field "CurrentUserPublic".
-			i.Skip()
+			s.CurrentUserPublic.Reset()
+			if err := s.CurrentUserPublic.ReadJSON(i); err != nil {
+				i.ReportError("Field CurrentUserPublic", err.Error())
+				return false
+			}
 			return true
 		case "security_advisories":
-			// Unsupported kind "pointer" for field "SecurityAdvisories".
-			i.Skip()
+			s.SecurityAdvisories.Reset()
+			if err := s.SecurityAdvisories.ReadJSON(i); err != nil {
+				i.ReportError("Field SecurityAdvisories", err.Error())
+				return false
+			}
 			return true
 		case "timeline":
 			if err := s.Timeline.ReadJSON(i); err != nil {
@@ -12722,8 +13483,14 @@ func (s FileCommitCommit) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Author".
-	// Unsupported kind "pointer" for field "Committer".
+	if s.Author.Set {
+		field.Write("author")
+		s.Author.WriteJSON(j)
+	}
+	if s.Committer.Set {
+		field.Write("committer")
+		s.Committer.WriteJSON(j)
+	}
 	if s.HTMLURL.Set {
 		field.Write("html_url")
 		s.HTMLURL.WriteJSON(j)
@@ -12741,12 +13508,18 @@ func (s FileCommitCommit) WriteJSON(j *json.Stream) {
 		field.Write("sha")
 		s.Sha.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Tree".
+	if s.Tree.Set {
+		field.Write("tree")
+		s.Tree.WriteJSON(j)
+	}
 	if s.URL.Set {
 		field.Write("url")
 		s.URL.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Verification".
+	if s.Verification.Set {
+		field.Write("verification")
+		s.Verification.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -12777,12 +13550,18 @@ func (s *FileCommitCommit) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "author":
-			// Unsupported kind "pointer" for field "Author".
-			i.Skip()
+			s.Author.Reset()
+			if err := s.Author.ReadJSON(i); err != nil {
+				i.ReportError("Field Author", err.Error())
+				return false
+			}
 			return true
 		case "committer":
-			// Unsupported kind "pointer" for field "Committer".
-			i.Skip()
+			s.Committer.Reset()
+			if err := s.Committer.ReadJSON(i); err != nil {
+				i.ReportError("Field Committer", err.Error())
+				return false
+			}
 			return true
 		case "html_url":
 			s.HTMLURL.Reset()
@@ -12817,8 +13596,11 @@ func (s *FileCommitCommit) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "tree":
-			// Unsupported kind "pointer" for field "Tree".
-			i.Skip()
+			s.Tree.Reset()
+			if err := s.Tree.ReadJSON(i); err != nil {
+				i.ReportError("Field Tree", err.Error())
+				return false
+			}
 			return true
 		case "url":
 			s.URL.Reset()
@@ -12828,8 +13610,11 @@ func (s *FileCommitCommit) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "verification":
-			// Unsupported kind "pointer" for field "Verification".
-			i.Skip()
+			s.Verification.Reset()
+			if err := s.Verification.ReadJSON(i); err != nil {
+				i.ReportError("Field Verification", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -13231,7 +14016,10 @@ func (s FileCommitContent) WriteJSON(j *json.Stream) {
 		field.Write("html_url")
 		s.HTMLURL.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Links".
+	if s.Links.Set {
+		field.Write("_links")
+		s.Links.WriteJSON(j)
+	}
 	if s.Name.Set {
 		field.Write("name")
 		s.Name.WriteJSON(j)
@@ -13307,8 +14095,11 @@ func (s *FileCommitContent) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "_links":
-			// Unsupported kind "pointer" for field "Links".
-			i.Skip()
+			s.Links.Reset()
+			if err := s.Links.ReadJSON(i); err != nil {
+				i.ReportError("Field Links", err.Error())
+				return false
+			}
 			return true
 		case "name":
 			s.Name.Reset()
@@ -13440,7 +14231,10 @@ func (s ForbiddenGist) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Block".
+	if s.Block.Set {
+		field.Write("block")
+		s.Block.WriteJSON(j)
+	}
 	if s.DocumentationURL.Set {
 		field.Write("documentation_url")
 		s.DocumentationURL.WriteJSON(j)
@@ -13479,8 +14273,11 @@ func (s *ForbiddenGist) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "block":
-			// Unsupported kind "pointer" for field "Block".
-			i.Skip()
+			s.Block.Reset()
+			if err := s.Block.ReadJSON(i); err != nil {
+				i.ReportError("Field Block", err.Error())
+				return false
+			}
 			return true
 		case "documentation_url":
 			s.DocumentationURL.Reset()
@@ -13620,7 +14417,10 @@ func (s FullRepository) WriteJSON(j *json.Stream) {
 	j.WriteString(s.BranchesURL)
 	field.Write("clone_url")
 	j.WriteString(s.CloneURL)
-	// Unsupported kind "pointer" for field "CodeOfConduct".
+	if s.CodeOfConduct.Set {
+		field.Write("code_of_conduct")
+		s.CodeOfConduct.WriteJSON(j)
+	}
 	field.Write("collaborators_url")
 	j.WriteString(s.CollaboratorsURL)
 	field.Write("comments_url")
@@ -13632,7 +14432,7 @@ func (s FullRepository) WriteJSON(j *json.Stream) {
 	field.Write("contents_url")
 	j.WriteString(s.ContentsURL)
 	field.Write("contributors_url")
-	j.WriteString(s.ContributorsURL)
+	json.WriteURI(j, s.ContributorsURL)
 	field.Write("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
 	field.Write("default_branch")
@@ -13642,15 +14442,15 @@ func (s FullRepository) WriteJSON(j *json.Stream) {
 		s.DeleteBranchOnMerge.WriteJSON(j)
 	}
 	field.Write("deployments_url")
-	j.WriteString(s.DeploymentsURL)
+	json.WriteURI(j, s.DeploymentsURL)
 	field.Write("description")
 	s.Description.WriteJSON(j)
 	field.Write("disabled")
 	j.WriteBool(s.Disabled)
 	field.Write("downloads_url")
-	j.WriteString(s.DownloadsURL)
+	json.WriteURI(j, s.DownloadsURL)
 	field.Write("events_url")
-	j.WriteString(s.EventsURL)
+	json.WriteURI(j, s.EventsURL)
 	field.Write("fork")
 	j.WriteBool(s.Fork)
 	field.Write("forks")
@@ -13658,7 +14458,7 @@ func (s FullRepository) WriteJSON(j *json.Stream) {
 	field.Write("forks_count")
 	j.WriteInt(s.ForksCount)
 	field.Write("forks_url")
-	j.WriteString(s.ForksURL)
+	json.WriteURI(j, s.ForksURL)
 	field.Write("full_name")
 	j.WriteString(s.FullName)
 	field.Write("git_commits_url")
@@ -13670,7 +14470,7 @@ func (s FullRepository) WriteJSON(j *json.Stream) {
 	field.Write("git_url")
 	j.WriteString(s.GitURL)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("has_downloads")
 	j.WriteBool(s.HasDownloads)
 	field.Write("has_issues")
@@ -13684,7 +14484,7 @@ func (s FullRepository) WriteJSON(j *json.Stream) {
 	field.Write("homepage")
 	s.Homepage.WriteJSON(j)
 	field.Write("hooks_url")
-	j.WriteString(s.HooksURL)
+	json.WriteURI(j, s.HooksURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	if s.IsTemplate.Set {
@@ -13704,7 +14504,7 @@ func (s FullRepository) WriteJSON(j *json.Stream) {
 	field.Write("language")
 	s.Language.WriteJSON(j)
 	field.Write("languages_url")
-	j.WriteString(s.LanguagesURL)
+	json.WriteURI(j, s.LanguagesURL)
 	field.Write("license")
 	s.License.WriteJSON(j)
 	if s.MasterBranch.Set {
@@ -13712,7 +14512,7 @@ func (s FullRepository) WriteJSON(j *json.Stream) {
 		s.MasterBranch.WriteJSON(j)
 	}
 	field.Write("merges_url")
-	j.WriteString(s.MergesURL)
+	json.WriteURI(j, s.MergesURL)
 	field.Write("milestones_url")
 	j.WriteString(s.MilestonesURL)
 	field.Write("mirror_url")
@@ -13729,11 +14529,20 @@ func (s FullRepository) WriteJSON(j *json.Stream) {
 	j.WriteInt(s.OpenIssues)
 	field.Write("open_issues_count")
 	j.WriteInt(s.OpenIssuesCount)
-	// Unsupported kind "pointer" for field "Organization".
+	if s.Organization.Set {
+		field.Write("organization")
+		s.Organization.WriteJSON(j)
+	}
 	field.Write("owner")
 	s.Owner.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Parent".
-	// Unsupported kind "pointer" for field "Permissions".
+	if s.Parent.Set {
+		field.Write("parent")
+		s.Parent.WriteJSON(j)
+	}
+	if s.Permissions.Set {
+		field.Write("permissions")
+		s.Permissions.WriteJSON(j)
+	}
 	field.Write("private")
 	j.WriteBool(s.Private)
 	field.Write("pulls_url")
@@ -13744,38 +14553,47 @@ func (s FullRepository) WriteJSON(j *json.Stream) {
 	j.WriteString(s.ReleasesURL)
 	field.Write("ssh_url")
 	j.WriteString(s.SSHURL)
-	// Unsupported kind "pointer" for field "SecurityAndAnalysis".
+	if s.SecurityAndAnalysis.Set {
+		field.Write("security_and_analysis")
+		s.SecurityAndAnalysis.WriteJSON(j)
+	}
 	field.Write("size")
 	j.WriteInt(s.Size)
-	// Unsupported kind "pointer" for field "Source".
+	if s.Source.Set {
+		field.Write("source")
+		s.Source.WriteJSON(j)
+	}
 	field.Write("stargazers_count")
 	j.WriteInt(s.StargazersCount)
 	field.Write("stargazers_url")
-	j.WriteString(s.StargazersURL)
+	json.WriteURI(j, s.StargazersURL)
 	field.Write("statuses_url")
 	j.WriteString(s.StatusesURL)
 	field.Write("subscribers_count")
 	j.WriteInt(s.SubscribersCount)
 	field.Write("subscribers_url")
-	j.WriteString(s.SubscribersURL)
+	json.WriteURI(j, s.SubscribersURL)
 	field.Write("subscription_url")
-	j.WriteString(s.SubscriptionURL)
+	json.WriteURI(j, s.SubscriptionURL)
 	field.Write("svn_url")
-	j.WriteString(s.SvnURL)
+	json.WriteURI(j, s.SvnURL)
 	field.Write("tags_url")
-	j.WriteString(s.TagsURL)
+	json.WriteURI(j, s.TagsURL)
 	field.Write("teams_url")
-	j.WriteString(s.TeamsURL)
+	json.WriteURI(j, s.TeamsURL)
 	if s.TempCloneToken.Set {
 		field.Write("temp_clone_token")
 		s.TempCloneToken.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "TemplateRepository".
+	if s.TemplateRepository.Set {
+		field.Write("template_repository")
+		s.TemplateRepository.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Topics".
 	field.Write("trees_url")
 	j.WriteString(s.TreesURL)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	if s.Visibility.Set {
@@ -13876,8 +14694,11 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			s.CloneURL = i.ReadString()
 			return i.Error == nil
 		case "code_of_conduct":
-			// Unsupported kind "pointer" for field "CodeOfConduct".
-			i.Skip()
+			s.CodeOfConduct.Reset()
+			if err := s.CodeOfConduct.ReadJSON(i); err != nil {
+				i.ReportError("Field CodeOfConduct", err.Error())
+				return false
+			}
 			return true
 		case "collaborators_url":
 			s.CollaboratorsURL = i.ReadString()
@@ -13895,8 +14716,13 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			s.ContentsURL = i.ReadString()
 			return i.Error == nil
 		case "contributors_url":
-			s.ContributorsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ContributorsURL", err.Error())
+				return false
+			}
+			s.ContributorsURL = v
+			return true
 		case "created_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -13916,8 +14742,13 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "deployments_url":
-			s.DeploymentsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field DeploymentsURL", err.Error())
+				return false
+			}
+			s.DeploymentsURL = v
+			return true
 		case "description":
 			if err := s.Description.ReadJSON(i); err != nil {
 				i.ReportError("Field Description", err.Error())
@@ -13928,11 +14759,21 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			s.Disabled = i.ReadBool()
 			return i.Error == nil
 		case "downloads_url":
-			s.DownloadsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field DownloadsURL", err.Error())
+				return false
+			}
+			s.DownloadsURL = v
+			return true
 		case "events_url":
-			s.EventsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field EventsURL", err.Error())
+				return false
+			}
+			s.EventsURL = v
+			return true
 		case "fork":
 			s.Fork = i.ReadBool()
 			return i.Error == nil
@@ -13943,8 +14784,13 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			s.ForksCount = i.ReadInt()
 			return i.Error == nil
 		case "forks_url":
-			s.ForksURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ForksURL", err.Error())
+				return false
+			}
+			s.ForksURL = v
+			return true
 		case "full_name":
 			s.FullName = i.ReadString()
 			return i.Error == nil
@@ -13961,8 +14807,13 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			s.GitURL = i.ReadString()
 			return i.Error == nil
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "has_downloads":
 			s.HasDownloads = i.ReadBool()
 			return i.Error == nil
@@ -13985,8 +14836,13 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "hooks_url":
-			s.HooksURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HooksURL", err.Error())
+				return false
+			}
+			s.HooksURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -14019,8 +14875,13 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "languages_url":
-			s.LanguagesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field LanguagesURL", err.Error())
+				return false
+			}
+			s.LanguagesURL = v
+			return true
 		case "license":
 			if err := s.License.ReadJSON(i); err != nil {
 				i.ReportError("Field License", err.Error())
@@ -14035,8 +14896,13 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "merges_url":
-			s.MergesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field MergesURL", err.Error())
+				return false
+			}
+			s.MergesURL = v
+			return true
 		case "milestones_url":
 			s.MilestonesURL = i.ReadString()
 			return i.Error == nil
@@ -14065,8 +14931,11 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			s.OpenIssuesCount = i.ReadInt()
 			return i.Error == nil
 		case "organization":
-			// Unsupported kind "pointer" for field "Organization".
-			i.Skip()
+			s.Organization.Reset()
+			if err := s.Organization.ReadJSON(i); err != nil {
+				i.ReportError("Field Organization", err.Error())
+				return false
+			}
 			return true
 		case "owner":
 			if err := s.Owner.ReadJSON(i); err != nil {
@@ -14075,12 +14944,18 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "parent":
-			// Unsupported kind "pointer" for field "Parent".
-			i.Skip()
+			s.Parent.Reset()
+			if err := s.Parent.ReadJSON(i); err != nil {
+				i.ReportError("Field Parent", err.Error())
+				return false
+			}
 			return true
 		case "permissions":
-			// Unsupported kind "pointer" for field "Permissions".
-			i.Skip()
+			s.Permissions.Reset()
+			if err := s.Permissions.ReadJSON(i); err != nil {
+				i.ReportError("Field Permissions", err.Error())
+				return false
+			}
 			return true
 		case "private":
 			s.Private = i.ReadBool()
@@ -14103,22 +14978,33 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			s.SSHURL = i.ReadString()
 			return i.Error == nil
 		case "security_and_analysis":
-			// Unsupported kind "pointer" for field "SecurityAndAnalysis".
-			i.Skip()
+			s.SecurityAndAnalysis.Reset()
+			if err := s.SecurityAndAnalysis.ReadJSON(i); err != nil {
+				i.ReportError("Field SecurityAndAnalysis", err.Error())
+				return false
+			}
 			return true
 		case "size":
 			s.Size = i.ReadInt()
 			return i.Error == nil
 		case "source":
-			// Unsupported kind "pointer" for field "Source".
-			i.Skip()
+			s.Source.Reset()
+			if err := s.Source.ReadJSON(i); err != nil {
+				i.ReportError("Field Source", err.Error())
+				return false
+			}
 			return true
 		case "stargazers_count":
 			s.StargazersCount = i.ReadInt()
 			return i.Error == nil
 		case "stargazers_url":
-			s.StargazersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field StargazersURL", err.Error())
+				return false
+			}
+			s.StargazersURL = v
+			return true
 		case "statuses_url":
 			s.StatusesURL = i.ReadString()
 			return i.Error == nil
@@ -14126,20 +15012,45 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			s.SubscribersCount = i.ReadInt()
 			return i.Error == nil
 		case "subscribers_url":
-			s.SubscribersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscribersURL", err.Error())
+				return false
+			}
+			s.SubscribersURL = v
+			return true
 		case "subscription_url":
-			s.SubscriptionURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscriptionURL", err.Error())
+				return false
+			}
+			s.SubscriptionURL = v
+			return true
 		case "svn_url":
-			s.SvnURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SvnURL", err.Error())
+				return false
+			}
+			s.SvnURL = v
+			return true
 		case "tags_url":
-			s.TagsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field TagsURL", err.Error())
+				return false
+			}
+			s.TagsURL = v
+			return true
 		case "teams_url":
-			s.TeamsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field TeamsURL", err.Error())
+				return false
+			}
+			s.TeamsURL = v
+			return true
 		case "temp_clone_token":
 			s.TempCloneToken.Reset()
 			if err := s.TempCloneToken.ReadJSON(i); err != nil {
@@ -14148,8 +15059,11 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "template_repository":
-			// Unsupported kind "pointer" for field "TemplateRepository".
-			i.Skip()
+			s.TemplateRepository.Reset()
+			if err := s.TemplateRepository.ReadJSON(i); err != nil {
+				i.ReportError("Field TemplateRepository", err.Error())
+				return false
+			}
 			return true
 		case "topics":
 			// Unsupported kind "pointer" for field "Topics".
@@ -14159,8 +15073,13 @@ func (s *FullRepository) ReadJSON(i *json.Iterator) error {
 			s.TreesURL = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -14274,8 +15193,14 @@ func (s FullRepositorySecurityAndAnalysis) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "AdvancedSecurity".
-	// Unsupported kind "pointer" for field "SecretScanning".
+	if s.AdvancedSecurity.Set {
+		field.Write("advanced_security")
+		s.AdvancedSecurity.WriteJSON(j)
+	}
+	if s.SecretScanning.Set {
+		field.Write("secret_scanning")
+		s.SecretScanning.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -14306,12 +15231,18 @@ func (s *FullRepositorySecurityAndAnalysis) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "advanced_security":
-			// Unsupported kind "pointer" for field "AdvancedSecurity".
-			i.Skip()
+			s.AdvancedSecurity.Reset()
+			if err := s.AdvancedSecurity.ReadJSON(i); err != nil {
+				i.ReportError("Field AdvancedSecurity", err.Error())
+				return false
+			}
 			return true
 		case "secret_scanning":
-			// Unsupported kind "pointer" for field "SecretScanning".
-			i.Skip()
+			s.SecretScanning.Reset()
+			if err := s.SecretScanning.ReadJSON(i); err != nil {
+				i.ReportError("Field SecretScanning", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -14326,7 +15257,10 @@ func (s FullRepositorySecurityAndAnalysisAdvancedSecurity) WriteJSON(j *json.Str
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Status".
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -14357,8 +15291,11 @@ func (s *FullRepositorySecurityAndAnalysisAdvancedSecurity) ReadJSON(i *json.Ite
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -14373,7 +15310,10 @@ func (s FullRepositorySecurityAndAnalysisSecretScanning) WriteJSON(j *json.Strea
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Status".
+	if s.Status.Set {
+		field.Write("status")
+		s.Status.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -14404,8 +15344,11 @@ func (s *FullRepositorySecurityAndAnalysisSecretScanning) ReadJSON(i *json.Itera
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "status":
-			// Unsupported kind "pointer" for field "Status".
-			i.Skip()
+			s.Status.Reset()
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -14431,7 +15374,7 @@ func (s GistComment) WriteJSON(j *json.Stream) {
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	field.Write("user")
@@ -14486,8 +15429,13 @@ func (s *GistComment) ReadJSON(i *json.Iterator) error {
 			s.NodeID = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -14520,7 +15468,7 @@ func (s GistCommit) WriteJSON(j *json.Stream) {
 	field.Write("committed_at")
 	json.WriteDateTime(j, s.CommittedAt)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("user")
 	s.User.WriteJSON(j)
 	field.Write("version")
@@ -14569,8 +15517,13 @@ func (s *GistCommit) ReadJSON(i *json.Iterator) error {
 			s.CommittedAt = v
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "user":
 			if err := s.User.ReadJSON(i); err != nil {
 				i.ReportError("Field User", err.Error())
@@ -14668,7 +15621,10 @@ func (s GistHistory) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "ChangeStatus".
+	if s.ChangeStatus.Set {
+		field.Write("change_status")
+		s.ChangeStatus.WriteJSON(j)
+	}
 	if s.CommittedAt.Set {
 		field.Write("committed_at")
 		s.CommittedAt.WriteJSON(j, json.WriteDateTime)
@@ -14677,7 +15633,10 @@ func (s GistHistory) WriteJSON(j *json.Stream) {
 		field.Write("url")
 		s.URL.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "User".
+	if s.User.Set {
+		field.Write("user")
+		s.User.WriteJSON(j)
+	}
 	if s.Version.Set {
 		field.Write("version")
 		s.Version.WriteJSON(j)
@@ -14712,8 +15671,11 @@ func (s *GistHistory) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "change_status":
-			// Unsupported kind "pointer" for field "ChangeStatus".
-			i.Skip()
+			s.ChangeStatus.Reset()
+			if err := s.ChangeStatus.ReadJSON(i); err != nil {
+				i.ReportError("Field ChangeStatus", err.Error())
+				return false
+			}
 			return true
 		case "committed_at":
 			s.CommittedAt.Reset()
@@ -14730,8 +15692,11 @@ func (s *GistHistory) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "user":
-			// Unsupported kind "pointer" for field "User".
-			i.Skip()
+			s.User.Reset()
+			if err := s.User.ReadJSON(i); err != nil {
+				i.ReportError("Field User", err.Error())
+				return false
+			}
 			return true
 		case "version":
 			s.Version.Reset()
@@ -14849,7 +15814,10 @@ func (s GistSimple) WriteJSON(j *json.Stream) {
 		s.Description.WriteJSON(j)
 	}
 	// Unsupported kind "pointer" for field "Files".
-	// Unsupported kind "pointer" for field "ForkOf".
+	if s.ForkOf.Set {
+		field.Write("fork_of")
+		s.ForkOf.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Forks".
 	if s.ForksURL.Set {
 		field.Write("forks_url")
@@ -14876,7 +15844,10 @@ func (s GistSimple) WriteJSON(j *json.Stream) {
 		field.Write("node_id")
 		s.NodeID.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Owner".
+	if s.Owner.Set {
+		field.Write("owner")
+		s.Owner.WriteJSON(j)
+	}
 	if s.Public.Set {
 		field.Write("public")
 		s.Public.WriteJSON(j)
@@ -14966,8 +15937,11 @@ func (s *GistSimple) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "fork_of":
-			// Unsupported kind "pointer" for field "ForkOf".
-			i.Skip()
+			s.ForkOf.Reset()
+			if err := s.ForkOf.ReadJSON(i); err != nil {
+				i.ReportError("Field ForkOf", err.Error())
+				return false
+			}
 			return true
 		case "forks":
 			// Unsupported kind "pointer" for field "Forks".
@@ -15020,8 +15994,11 @@ func (s *GistSimple) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "owner":
-			// Unsupported kind "pointer" for field "Owner".
-			i.Skip()
+			s.Owner.Reset()
+			if err := s.Owner.ReadJSON(i); err != nil {
+				i.ReportError("Field Owner", err.Error())
+				return false
+			}
 			return true
 		case "public":
 			s.Public.Reset()
@@ -15074,9 +16051,9 @@ func (s GistSimpleForkOf) WriteJSON(j *json.Stream) {
 	field.Write("comments")
 	j.WriteInt(s.Comments)
 	field.Write("comments_url")
-	j.WriteString(s.CommentsURL)
+	json.WriteURI(j, s.CommentsURL)
 	field.Write("commits_url")
-	j.WriteString(s.CommitsURL)
+	json.WriteURI(j, s.CommitsURL)
 	field.Write("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
 	field.Write("description")
@@ -15084,19 +16061,22 @@ func (s GistSimpleForkOf) WriteJSON(j *json.Stream) {
 	// Unsupported kind "primitive" for field "Files".
 	// Unsupported kind "pointer" for field "Forks".
 	field.Write("forks_url")
-	j.WriteString(s.ForksURL)
+	json.WriteURI(j, s.ForksURL)
 	field.Write("git_pull_url")
-	j.WriteString(s.GitPullURL)
+	json.WriteURI(j, s.GitPullURL)
 	field.Write("git_push_url")
-	j.WriteString(s.GitPushURL)
+	json.WriteURI(j, s.GitPushURL)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	// Unsupported kind "pointer" for field "History".
 	field.Write("id")
 	j.WriteString(s.ID)
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
-	// Unsupported kind "pointer" for field "Owner".
+	if s.Owner.Set {
+		field.Write("owner")
+		s.Owner.WriteJSON(j)
+	}
 	field.Write("public")
 	j.WriteBool(s.Public)
 	if s.Truncated.Set {
@@ -15104,7 +16084,7 @@ func (s GistSimpleForkOf) WriteJSON(j *json.Stream) {
 		s.Truncated.WriteJSON(j)
 	}
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	field.Write("user")
@@ -15142,11 +16122,21 @@ func (s *GistSimpleForkOf) ReadJSON(i *json.Iterator) error {
 			s.Comments = i.ReadInt()
 			return i.Error == nil
 		case "comments_url":
-			s.CommentsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field CommentsURL", err.Error())
+				return false
+			}
+			s.CommentsURL = v
+			return true
 		case "commits_url":
-			s.CommitsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field CommitsURL", err.Error())
+				return false
+			}
+			s.CommitsURL = v
+			return true
 		case "created_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -15170,17 +16160,37 @@ func (s *GistSimpleForkOf) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "forks_url":
-			s.ForksURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ForksURL", err.Error())
+				return false
+			}
+			s.ForksURL = v
+			return true
 		case "git_pull_url":
-			s.GitPullURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field GitPullURL", err.Error())
+				return false
+			}
+			s.GitPullURL = v
+			return true
 		case "git_push_url":
-			s.GitPushURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field GitPushURL", err.Error())
+				return false
+			}
+			s.GitPushURL = v
+			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "history":
 			// Unsupported kind "pointer" for field "History".
 			i.Skip()
@@ -15192,8 +16202,11 @@ func (s *GistSimpleForkOf) ReadJSON(i *json.Iterator) error {
 			s.NodeID = i.ReadString()
 			return i.Error == nil
 		case "owner":
-			// Unsupported kind "pointer" for field "Owner".
-			i.Skip()
+			s.Owner.Reset()
+			if err := s.Owner.ReadJSON(i); err != nil {
+				i.ReportError("Field Owner", err.Error())
+				return false
+			}
 			return true
 		case "public":
 			s.Public = i.ReadBool()
@@ -15206,8 +16219,13 @@ func (s *GistSimpleForkOf) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -15251,7 +16269,10 @@ func (s GistSimpleForksItem) WriteJSON(j *json.Stream) {
 		field.Write("updated_at")
 		s.UpdatedAt.WriteJSON(j, json.WriteDateTime)
 	}
-	// Unsupported kind "pointer" for field "User".
+	if s.User.Set {
+		field.Write("user")
+		s.User.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -15310,8 +16331,11 @@ func (s *GistSimpleForksItem) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "user":
-			// Unsupported kind "pointer" for field "User".
-			i.Skip()
+			s.User.Reset()
+			if err := s.User.ReadJSON(i); err != nil {
+				i.ReportError("Field User", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -15425,7 +16449,7 @@ func (s GitCommit) WriteJSON(j *json.Stream) {
 	field.Write("committer")
 	s.Committer.WriteJSON(j)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("message")
 	j.WriteString(s.Message)
 	field.Write("node_id")
@@ -15436,7 +16460,7 @@ func (s GitCommit) WriteJSON(j *json.Stream) {
 	field.Write("tree")
 	s.Tree.WriteJSON(j)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("verification")
 	s.Verification.WriteJSON(j)
 	j.WriteObjectEnd()
@@ -15481,8 +16505,13 @@ func (s *GitCommit) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "message":
 			s.Message = i.ReadString()
 			return i.Error == nil
@@ -15503,8 +16532,13 @@ func (s *GitCommit) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "verification":
 			if err := s.Verification.ReadJSON(i); err != nil {
 				i.ReportError("Field Verification", err.Error())
@@ -15649,11 +16683,11 @@ func (s GitCommitParentsItem) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("sha")
 	j.WriteString(s.Sha)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -15684,14 +16718,24 @@ func (s *GitCommitParentsItem) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "sha":
 			s.Sha = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -15708,7 +16752,7 @@ func (s GitCommitTree) WriteJSON(j *json.Stream) {
 	field.Write("sha")
 	j.WriteString(s.Sha)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -15742,8 +16786,13 @@ func (s *GitCommitTree) ReadJSON(i *json.Iterator) error {
 			s.Sha = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -15883,8 +16932,14 @@ func (s GitCreateCommitApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Author".
-	// Unsupported kind "pointer" for field "Committer".
+	if s.Author.Set {
+		field.Write("author")
+		s.Author.WriteJSON(j)
+	}
+	if s.Committer.Set {
+		field.Write("committer")
+		s.Committer.WriteJSON(j)
+	}
 	field.Write("message")
 	j.WriteString(s.Message)
 	// Unsupported kind "pointer" for field "Parents".
@@ -15924,12 +16979,18 @@ func (s *GitCreateCommitApplicationJSONRequest) ReadJSON(i *json.Iterator) error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "author":
-			// Unsupported kind "pointer" for field "Author".
-			i.Skip()
+			s.Author.Reset()
+			if err := s.Author.ReadJSON(i); err != nil {
+				i.ReportError("Field Author", err.Error())
+				return false
+			}
 			return true
 		case "committer":
-			// Unsupported kind "pointer" for field "Committer".
-			i.Skip()
+			s.Committer.Reset()
+			if err := s.Committer.ReadJSON(i); err != nil {
+				i.ReportError("Field Committer", err.Error())
+				return false
+			}
 			return true
 		case "message":
 			s.Message = i.ReadString()
@@ -16168,7 +17229,10 @@ func (s GitCreateTagApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteString(s.Object)
 	field.Write("tag")
 	j.WriteString(s.Tag)
-	// Unsupported kind "pointer" for field "Tagger".
+	if s.Tagger.Set {
+		field.Write("tagger")
+		s.Tagger.WriteJSON(j)
+	}
 	field.Write("type")
 	j.WriteString(s.Type)
 	j.WriteObjectEnd()
@@ -16210,8 +17274,11 @@ func (s *GitCreateTagApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 			s.Tag = i.ReadString()
 			return i.Error == nil
 		case "tagger":
-			// Unsupported kind "pointer" for field "Tagger".
-			i.Skip()
+			s.Tagger.Reset()
+			if err := s.Tagger.ReadJSON(i); err != nil {
+				i.ReportError("Field Tagger", err.Error())
+				return false
+			}
 			return true
 		case "type":
 			s.Type = i.ReadString()
@@ -16354,7 +17421,10 @@ func (s GitCreateTreeApplicationJSONRequestTreeItem) WriteJSON(j *json.Stream) {
 		field.Write("content")
 		s.Content.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Mode".
+	if s.Mode.Set {
+		field.Write("mode")
+		s.Mode.WriteJSON(j)
+	}
 	if s.Path.Set {
 		field.Write("path")
 		s.Path.WriteJSON(j)
@@ -16363,7 +17433,10 @@ func (s GitCreateTreeApplicationJSONRequestTreeItem) WriteJSON(j *json.Stream) {
 		field.Write("sha")
 		s.Sha.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Type".
+	if s.Type.Set {
+		field.Write("type")
+		s.Type.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -16401,8 +17474,11 @@ func (s *GitCreateTreeApplicationJSONRequestTreeItem) ReadJSON(i *json.Iterator)
 			}
 			return true
 		case "mode":
-			// Unsupported kind "pointer" for field "Mode".
-			i.Skip()
+			s.Mode.Reset()
+			if err := s.Mode.ReadJSON(i); err != nil {
+				i.ReportError("Field Mode", err.Error())
+				return false
+			}
 			return true
 		case "path":
 			s.Path.Reset()
@@ -16419,8 +17495,11 @@ func (s *GitCreateTreeApplicationJSONRequestTreeItem) ReadJSON(i *json.Iterator)
 			}
 			return true
 		case "type":
-			// Unsupported kind "pointer" for field "Type".
-			i.Skip()
+			s.Type.Reset()
+			if err := s.Type.ReadJSON(i); err != nil {
+				i.ReportError("Field Type", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -16442,7 +17521,7 @@ func (s GitRef) WriteJSON(j *json.Stream) {
 	field.Write("ref")
 	j.WriteString(s.Ref)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -16485,8 +17564,13 @@ func (s *GitRef) ReadJSON(i *json.Iterator) error {
 			s.Ref = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -16505,7 +17589,7 @@ func (s GitRefObject) WriteJSON(j *json.Stream) {
 	field.Write("type")
 	j.WriteString(s.Type)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -16542,8 +17626,13 @@ func (s *GitRefObject) ReadJSON(i *json.Iterator) error {
 			s.Type = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -16570,8 +17659,11 @@ func (s GitTag) WriteJSON(j *json.Stream) {
 	field.Write("tagger")
 	s.Tagger.WriteJSON(j)
 	field.Write("url")
-	j.WriteString(s.URL)
-	// Unsupported kind "pointer" for field "Verification".
+	json.WriteURI(j, s.URL)
+	if s.Verification.Set {
+		field.Write("verification")
+		s.Verification.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -16626,11 +17718,19 @@ func (s *GitTag) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "verification":
-			// Unsupported kind "pointer" for field "Verification".
-			i.Skip()
+			s.Verification.Reset()
+			if err := s.Verification.ReadJSON(i); err != nil {
+				i.ReportError("Field Verification", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -16650,7 +17750,7 @@ func (s GitTagObject) WriteJSON(j *json.Stream) {
 	field.Write("type")
 	j.WriteString(s.Type)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -16687,8 +17787,13 @@ func (s *GitTagObject) ReadJSON(i *json.Iterator) error {
 			s.Type = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -16765,7 +17870,7 @@ func (s GitTree) WriteJSON(j *json.Stream) {
 	field.Write("truncated")
 	j.WriteBool(s.Truncated)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -16806,8 +17911,13 @@ func (s *GitTree) ReadJSON(i *json.Iterator) error {
 			s.Truncated = i.ReadBool()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -17884,7 +18994,7 @@ func (s Import) WriteJSON(j *json.Stream) {
 		s.AuthorsCount.WriteJSON(j)
 	}
 	field.Write("authors_url")
-	j.WriteString(s.AuthorsURL)
+	json.WriteURI(j, s.AuthorsURL)
 	if s.CommitCount.Set {
 		field.Write("commit_count")
 		s.CommitCount.WriteJSON(j)
@@ -17898,7 +19008,7 @@ func (s Import) WriteJSON(j *json.Stream) {
 		s.FailedStep.WriteJSON(j)
 	}
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	if s.HasLargeFiles.Set {
 		field.Write("has_large_files")
 		s.HasLargeFiles.WriteJSON(j)
@@ -17925,7 +19035,7 @@ func (s Import) WriteJSON(j *json.Stream) {
 		s.PushPercent.WriteJSON(j)
 	}
 	field.Write("repository_url")
-	j.WriteString(s.RepositoryURL)
+	json.WriteURI(j, s.RepositoryURL)
 	field.Write("status")
 	j.WriteString(s.Status)
 	if s.StatusText.Set {
@@ -17945,7 +19055,7 @@ func (s Import) WriteJSON(j *json.Stream) {
 		s.TfvcProject.WriteJSON(j)
 	}
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	if s.UseLfs.Set {
 		field.Write("use_lfs")
 		s.UseLfs.WriteJSON(j)
@@ -17991,8 +19101,13 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "authors_url":
-			s.AuthorsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field AuthorsURL", err.Error())
+				return false
+			}
+			s.AuthorsURL = v
+			return true
 		case "commit_count":
 			s.CommitCount.Reset()
 			if err := s.CommitCount.ReadJSON(i); err != nil {
@@ -18015,8 +19130,13 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "has_large_files":
 			s.HasLargeFiles.Reset()
 			if err := s.HasLargeFiles.ReadJSON(i); err != nil {
@@ -18064,8 +19184,13 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "repository_url":
-			s.RepositoryURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field RepositoryURL", err.Error())
+				return false
+			}
+			s.RepositoryURL = v
+			return true
 		case "status":
 			s.Status = i.ReadString()
 			return i.Error == nil
@@ -18098,8 +19223,13 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "use_lfs":
 			s.UseLfs.Reset()
 			if err := s.UseLfs.ReadJSON(i); err != nil {
@@ -18210,9 +19340,15 @@ func (s InstallationToken) WriteJSON(j *json.Stream) {
 		field.Write("has_multiple_single_files")
 		s.HasMultipleSingleFiles.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Permissions".
+	if s.Permissions.Set {
+		field.Write("permissions")
+		s.Permissions.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Repositories".
-	// Unsupported kind "pointer" for field "RepositorySelection".
+	if s.RepositorySelection.Set {
+		field.Write("repository_selection")
+		s.RepositorySelection.WriteJSON(j)
+	}
 	if s.SingleFile.Set {
 		field.Write("single_file")
 		s.SingleFile.WriteJSON(j)
@@ -18260,16 +19396,22 @@ func (s *InstallationToken) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "permissions":
-			// Unsupported kind "pointer" for field "Permissions".
-			i.Skip()
+			s.Permissions.Reset()
+			if err := s.Permissions.ReadJSON(i); err != nil {
+				i.ReportError("Field Permissions", err.Error())
+				return false
+			}
 			return true
 		case "repositories":
 			// Unsupported kind "pointer" for field "Repositories".
 			i.Skip()
 			return true
 		case "repository_selection":
-			// Unsupported kind "pointer" for field "RepositorySelection".
-			i.Skip()
+			s.RepositorySelection.Reset()
+			if err := s.RepositorySelection.ReadJSON(i); err != nil {
+				i.ReportError("Field RepositorySelection", err.Error())
+				return false
+			}
 			return true
 		case "single_file":
 			s.SingleFile.Reset()
@@ -18312,9 +19454,9 @@ func (s Integration) WriteJSON(j *json.Stream) {
 	s.Description.WriteJSON(j)
 	// Unsupported kind "array" for field "Events".
 	field.Write("external_url")
-	j.WriteString(s.ExternalURL)
+	json.WriteURI(j, s.ExternalURL)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	if s.InstallationsCount.Set {
@@ -18405,11 +19547,21 @@ func (s *Integration) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "external_url":
-			s.ExternalURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ExternalURL", err.Error())
+				return false
+			}
+			s.ExternalURL = v
+			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -18577,7 +19729,10 @@ func (s InteractionLimit) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Expiry".
+	if s.Expiry.Set {
+		field.Write("expiry")
+		s.Expiry.WriteJSON(j)
+	}
 	field.Write("limit")
 	j.WriteString(s.Limit)
 	j.WriteObjectEnd()
@@ -18610,8 +19765,11 @@ func (s *InteractionLimit) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "expiry":
-			// Unsupported kind "pointer" for field "Expiry".
-			i.Skip()
+			s.Expiry.Reset()
+			if err := s.Expiry.ReadJSON(i); err != nil {
+				i.ReportError("Field Expiry", err.Error())
+				return false
+			}
 			return true
 		case "limit":
 			s.Limit = i.ReadString()
@@ -18708,17 +19866,23 @@ func (s IssueComment) WriteJSON(j *json.Stream) {
 	field.Write("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	field.Write("issue_url")
-	j.WriteString(s.IssueURL)
+	json.WriteURI(j, s.IssueURL)
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
-	// Unsupported kind "pointer" for field "PerformedViaGithubApp".
-	// Unsupported kind "pointer" for field "Reactions".
+	if s.PerformedViaGithubApp.Set {
+		field.Write("performed_via_github_app")
+		s.PerformedViaGithubApp.WriteJSON(j)
+	}
+	if s.Reactions.Set {
+		field.Write("reactions")
+		s.Reactions.WriteJSON(j)
+	}
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	field.Write("user")
@@ -18785,28 +19949,49 @@ func (s *IssueComment) ReadJSON(i *json.Iterator) error {
 			s.CreatedAt = v
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
 		case "issue_url":
-			s.IssueURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field IssueURL", err.Error())
+				return false
+			}
+			s.IssueURL = v
+			return true
 		case "node_id":
 			s.NodeID = i.ReadString()
 			return i.Error == nil
 		case "performed_via_github_app":
-			// Unsupported kind "pointer" for field "PerformedViaGithubApp".
-			i.Skip()
+			s.PerformedViaGithubApp.Reset()
+			if err := s.PerformedViaGithubApp.ReadJSON(i); err != nil {
+				i.ReportError("Field PerformedViaGithubApp", err.Error())
+				return false
+			}
 			return true
 		case "reactions":
-			// Unsupported kind "pointer" for field "Reactions".
-			i.Skip()
+			s.Reactions.Reset()
+			if err := s.Reactions.ReadJSON(i); err != nil {
+				i.ReportError("Field Reactions", err.Error())
+				return false
+			}
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -18836,37 +20021,76 @@ func (s IssueEvent) WriteJSON(j *json.Stream) {
 	defer field.Reset()
 	field.Write("actor")
 	s.Actor.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Assignee".
-	// Unsupported kind "pointer" for field "Assigner".
-	// Unsupported kind "pointer" for field "AuthorAssociation".
+	if s.Assignee.Set {
+		field.Write("assignee")
+		s.Assignee.WriteJSON(j)
+	}
+	if s.Assigner.Set {
+		field.Write("assigner")
+		s.Assigner.WriteJSON(j)
+	}
+	if s.AuthorAssociation.Set {
+		field.Write("author_association")
+		s.AuthorAssociation.WriteJSON(j)
+	}
 	field.Write("commit_id")
 	s.CommitID.WriteJSON(j)
 	field.Write("commit_url")
 	s.CommitURL.WriteJSON(j)
 	field.Write("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
-	// Unsupported kind "pointer" for field "DismissedReview".
+	if s.DismissedReview.Set {
+		field.Write("dismissed_review")
+		s.DismissedReview.WriteJSON(j)
+	}
 	field.Write("event")
 	j.WriteString(s.Event)
 	field.Write("id")
 	j.WriteInt(s.ID)
-	// Unsupported kind "pointer" for field "Issue".
-	// Unsupported kind "pointer" for field "Label".
+	if s.Issue.Set {
+		field.Write("issue")
+		s.Issue.WriteJSON(j)
+	}
+	if s.Label.Set {
+		field.Write("label")
+		s.Label.WriteJSON(j)
+	}
 	if s.LockReason.Set {
 		field.Write("lock_reason")
 		s.LockReason.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Milestone".
+	if s.Milestone.Set {
+		field.Write("milestone")
+		s.Milestone.WriteJSON(j)
+	}
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
-	// Unsupported kind "pointer" for field "PerformedViaGithubApp".
-	// Unsupported kind "pointer" for field "ProjectCard".
-	// Unsupported kind "pointer" for field "Rename".
-	// Unsupported kind "pointer" for field "RequestedReviewer".
-	// Unsupported kind "pointer" for field "RequestedTeam".
-	// Unsupported kind "pointer" for field "ReviewRequester".
+	if s.PerformedViaGithubApp.Set {
+		field.Write("performed_via_github_app")
+		s.PerformedViaGithubApp.WriteJSON(j)
+	}
+	if s.ProjectCard.Set {
+		field.Write("project_card")
+		s.ProjectCard.WriteJSON(j)
+	}
+	if s.Rename.Set {
+		field.Write("rename")
+		s.Rename.WriteJSON(j)
+	}
+	if s.RequestedReviewer.Set {
+		field.Write("requested_reviewer")
+		s.RequestedReviewer.WriteJSON(j)
+	}
+	if s.RequestedTeam.Set {
+		field.Write("requested_team")
+		s.RequestedTeam.WriteJSON(j)
+	}
+	if s.ReviewRequester.Set {
+		field.Write("review_requester")
+		s.ReviewRequester.WriteJSON(j)
+	}
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -18903,16 +20127,25 @@ func (s *IssueEvent) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "assignee":
-			// Unsupported kind "pointer" for field "Assignee".
-			i.Skip()
+			s.Assignee.Reset()
+			if err := s.Assignee.ReadJSON(i); err != nil {
+				i.ReportError("Field Assignee", err.Error())
+				return false
+			}
 			return true
 		case "assigner":
-			// Unsupported kind "pointer" for field "Assigner".
-			i.Skip()
+			s.Assigner.Reset()
+			if err := s.Assigner.ReadJSON(i); err != nil {
+				i.ReportError("Field Assigner", err.Error())
+				return false
+			}
 			return true
 		case "author_association":
-			// Unsupported kind "pointer" for field "AuthorAssociation".
-			i.Skip()
+			s.AuthorAssociation.Reset()
+			if err := s.AuthorAssociation.ReadJSON(i); err != nil {
+				i.ReportError("Field AuthorAssociation", err.Error())
+				return false
+			}
 			return true
 		case "commit_id":
 			if err := s.CommitID.ReadJSON(i); err != nil {
@@ -18935,8 +20168,11 @@ func (s *IssueEvent) ReadJSON(i *json.Iterator) error {
 			s.CreatedAt = v
 			return true
 		case "dismissed_review":
-			// Unsupported kind "pointer" for field "DismissedReview".
-			i.Skip()
+			s.DismissedReview.Reset()
+			if err := s.DismissedReview.ReadJSON(i); err != nil {
+				i.ReportError("Field DismissedReview", err.Error())
+				return false
+			}
 			return true
 		case "event":
 			s.Event = i.ReadString()
@@ -18945,12 +20181,18 @@ func (s *IssueEvent) ReadJSON(i *json.Iterator) error {
 			s.ID = i.ReadInt()
 			return i.Error == nil
 		case "issue":
-			// Unsupported kind "pointer" for field "Issue".
-			i.Skip()
+			s.Issue.Reset()
+			if err := s.Issue.ReadJSON(i); err != nil {
+				i.ReportError("Field Issue", err.Error())
+				return false
+			}
 			return true
 		case "label":
-			// Unsupported kind "pointer" for field "Label".
-			i.Skip()
+			s.Label.Reset()
+			if err := s.Label.ReadJSON(i); err != nil {
+				i.ReportError("Field Label", err.Error())
+				return false
+			}
 			return true
 		case "lock_reason":
 			s.LockReason.Reset()
@@ -18960,39 +20202,65 @@ func (s *IssueEvent) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "milestone":
-			// Unsupported kind "pointer" for field "Milestone".
-			i.Skip()
+			s.Milestone.Reset()
+			if err := s.Milestone.ReadJSON(i); err != nil {
+				i.ReportError("Field Milestone", err.Error())
+				return false
+			}
 			return true
 		case "node_id":
 			s.NodeID = i.ReadString()
 			return i.Error == nil
 		case "performed_via_github_app":
-			// Unsupported kind "pointer" for field "PerformedViaGithubApp".
-			i.Skip()
+			s.PerformedViaGithubApp.Reset()
+			if err := s.PerformedViaGithubApp.ReadJSON(i); err != nil {
+				i.ReportError("Field PerformedViaGithubApp", err.Error())
+				return false
+			}
 			return true
 		case "project_card":
-			// Unsupported kind "pointer" for field "ProjectCard".
-			i.Skip()
+			s.ProjectCard.Reset()
+			if err := s.ProjectCard.ReadJSON(i); err != nil {
+				i.ReportError("Field ProjectCard", err.Error())
+				return false
+			}
 			return true
 		case "rename":
-			// Unsupported kind "pointer" for field "Rename".
-			i.Skip()
+			s.Rename.Reset()
+			if err := s.Rename.ReadJSON(i); err != nil {
+				i.ReportError("Field Rename", err.Error())
+				return false
+			}
 			return true
 		case "requested_reviewer":
-			// Unsupported kind "pointer" for field "RequestedReviewer".
-			i.Skip()
+			s.RequestedReviewer.Reset()
+			if err := s.RequestedReviewer.ReadJSON(i); err != nil {
+				i.ReportError("Field RequestedReviewer", err.Error())
+				return false
+			}
 			return true
 		case "requested_team":
-			// Unsupported kind "pointer" for field "RequestedTeam".
-			i.Skip()
+			s.RequestedTeam.Reset()
+			if err := s.RequestedTeam.ReadJSON(i); err != nil {
+				i.ReportError("Field RequestedTeam", err.Error())
+				return false
+			}
 			return true
 		case "review_requester":
-			// Unsupported kind "pointer" for field "ReviewRequester".
-			i.Skip()
+			s.ReviewRequester.Reset()
+			if err := s.ReviewRequester.ReadJSON(i); err != nil {
+				i.ReportError("Field ReviewRequester", err.Error())
+				return false
+			}
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -19193,9 +20461,9 @@ func (s IssueEventProjectCard) WriteJSON(j *json.Stream) {
 	field.Write("project_id")
 	j.WriteInt(s.ProjectID)
 	field.Write("project_url")
-	j.WriteString(s.ProjectURL)
+	json.WriteURI(j, s.ProjectURL)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -19242,11 +20510,21 @@ func (s *IssueEventProjectCard) ReadJSON(i *json.Iterator) error {
 			s.ProjectID = i.ReadInt()
 			return i.Error == nil
 		case "project_url":
-			s.ProjectURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ProjectURL", err.Error())
+				return false
+			}
+			s.ProjectURL = v
+			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -19338,13 +20616,13 @@ func (s IssueSimple) WriteJSON(j *json.Stream) {
 	field.Write("comments")
 	j.WriteInt(s.Comments)
 	field.Write("comments_url")
-	j.WriteString(s.CommentsURL)
+	json.WriteURI(j, s.CommentsURL)
 	field.Write("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
 	field.Write("events_url")
-	j.WriteString(s.EventsURL)
+	json.WriteURI(j, s.EventsURL)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	// Unsupported kind "array" for field "Labels".
@@ -19358,11 +20636,20 @@ func (s IssueSimple) WriteJSON(j *json.Stream) {
 	j.WriteString(s.NodeID)
 	field.Write("number")
 	j.WriteInt(s.Number)
-	// Unsupported kind "pointer" for field "PerformedViaGithubApp".
-	// Unsupported kind "pointer" for field "PullRequest".
-	// Unsupported kind "pointer" for field "Repository".
+	if s.PerformedViaGithubApp.Set {
+		field.Write("performed_via_github_app")
+		s.PerformedViaGithubApp.WriteJSON(j)
+	}
+	if s.PullRequest.Set {
+		field.Write("pull_request")
+		s.PullRequest.WriteJSON(j)
+	}
+	if s.Repository.Set {
+		field.Write("repository")
+		s.Repository.WriteJSON(j)
+	}
 	field.Write("repository_url")
-	j.WriteString(s.RepositoryURL)
+	json.WriteURI(j, s.RepositoryURL)
 	field.Write("state")
 	j.WriteString(s.State)
 	if s.TimelineURL.Set {
@@ -19372,7 +20659,7 @@ func (s IssueSimple) WriteJSON(j *json.Stream) {
 	field.Write("title")
 	j.WriteString(s.Title)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	field.Write("user")
@@ -19457,8 +20744,13 @@ func (s *IssueSimple) ReadJSON(i *json.Iterator) error {
 			s.Comments = i.ReadInt()
 			return i.Error == nil
 		case "comments_url":
-			s.CommentsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field CommentsURL", err.Error())
+				return false
+			}
+			s.CommentsURL = v
+			return true
 		case "created_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -19468,11 +20760,21 @@ func (s *IssueSimple) ReadJSON(i *json.Iterator) error {
 			s.CreatedAt = v
 			return true
 		case "events_url":
-			s.EventsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field EventsURL", err.Error())
+				return false
+			}
+			s.EventsURL = v
+			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -19499,20 +20801,34 @@ func (s *IssueSimple) ReadJSON(i *json.Iterator) error {
 			s.Number = i.ReadInt()
 			return i.Error == nil
 		case "performed_via_github_app":
-			// Unsupported kind "pointer" for field "PerformedViaGithubApp".
-			i.Skip()
+			s.PerformedViaGithubApp.Reset()
+			if err := s.PerformedViaGithubApp.ReadJSON(i); err != nil {
+				i.ReportError("Field PerformedViaGithubApp", err.Error())
+				return false
+			}
 			return true
 		case "pull_request":
-			// Unsupported kind "pointer" for field "PullRequest".
-			i.Skip()
+			s.PullRequest.Reset()
+			if err := s.PullRequest.ReadJSON(i); err != nil {
+				i.ReportError("Field PullRequest", err.Error())
+				return false
+			}
 			return true
 		case "repository":
-			// Unsupported kind "pointer" for field "Repository".
-			i.Skip()
+			s.Repository.Reset()
+			if err := s.Repository.ReadJSON(i); err != nil {
+				i.ReportError("Field Repository", err.Error())
+				return false
+			}
 			return true
 		case "repository_url":
-			s.RepositoryURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field RepositoryURL", err.Error())
+				return false
+			}
+			s.RepositoryURL = v
+			return true
 		case "state":
 			s.State = i.ReadString()
 			return i.Error == nil
@@ -19527,8 +20843,13 @@ func (s *IssueSimple) ReadJSON(i *json.Iterator) error {
 			s.Title = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -19812,7 +21133,10 @@ func (s IssuesCreateMilestoneApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		field.Write("due_on")
 		s.DueOn.WriteJSON(j, json.WriteDateTime)
 	}
-	// Unsupported kind "pointer" for field "State".
+	if s.State.Set {
+		field.Write("state")
+		s.State.WriteJSON(j)
+	}
 	field.Write("title")
 	j.WriteString(s.Title)
 	j.WriteObjectEnd()
@@ -19859,8 +21183,11 @@ func (s *IssuesCreateMilestoneApplicationJSONRequest) ReadJSON(i *json.Iterator)
 			}
 			return true
 		case "state":
-			// Unsupported kind "pointer" for field "State".
-			i.Skip()
+			s.State.Reset()
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
 			return true
 		case "title":
 			s.Title = i.ReadString()
@@ -19878,7 +21205,10 @@ func (s IssuesLockApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "LockReason".
+	if s.LockReason.Set {
+		field.Write("lock_reason")
+		s.LockReason.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -19909,8 +21239,11 @@ func (s *IssuesLockApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "lock_reason":
-			// Unsupported kind "pointer" for field "LockReason".
-			i.Skip()
+			s.LockReason.Reset()
+			if err := s.LockReason.ReadJSON(i); err != nil {
+				i.ReportError("Field LockReason", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -20102,7 +21435,10 @@ func (s IssuesUpdateMilestoneApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		field.Write("due_on")
 		s.DueOn.WriteJSON(j, json.WriteDateTime)
 	}
-	// Unsupported kind "pointer" for field "State".
+	if s.State.Set {
+		field.Write("state")
+		s.State.WriteJSON(j)
+	}
 	if s.Title.Set {
 		field.Write("title")
 		s.Title.WriteJSON(j)
@@ -20151,8 +21487,11 @@ func (s *IssuesUpdateMilestoneApplicationJSONRequest) ReadJSON(i *json.Iterator)
 			}
 			return true
 		case "state":
-			// Unsupported kind "pointer" for field "State".
-			i.Skip()
+			s.State.Reset()
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
 			return true
 		case "title":
 			s.Title.Reset()
@@ -20534,7 +21873,7 @@ func (s Label) WriteJSON(j *json.Stream) {
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -20586,8 +21925,13 @@ func (s *Label) ReadJSON(i *json.Iterator) error {
 			s.NodeID = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -20609,7 +21953,7 @@ func (s License) WriteJSON(j *json.Stream) {
 	field.Write("featured")
 	j.WriteBool(s.Featured)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("implementation")
 	j.WriteString(s.Implementation)
 	field.Write("key")
@@ -20667,8 +22011,13 @@ func (s *License) ReadJSON(i *json.Iterator) error {
 			s.Featured = i.ReadBool()
 			return i.Error == nil
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "implementation":
 			s.Implementation = i.ReadString()
 			return i.Error == nil
@@ -20739,7 +22088,7 @@ func (s LicenseContent) WriteJSON(j *json.Stream) {
 	field.Write("type")
 	j.WriteString(s.Type)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -20821,8 +22170,13 @@ func (s *LicenseContent) ReadJSON(i *json.Iterator) error {
 			s.Type = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -20841,7 +22195,7 @@ func (s LicenseContentLinks) WriteJSON(j *json.Stream) {
 	field.Write("html")
 	s.HTML.WriteJSON(j)
 	field.Write("self")
-	j.WriteString(s.Self)
+	json.WriteURI(j, s.Self)
 	j.WriteObjectEnd()
 }
 
@@ -20884,8 +22238,13 @@ func (s *LicenseContentLinks) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "self":
-			s.Self = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field Self", err.Error())
+				return false
+			}
+			s.Self = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -21086,7 +22445,10 @@ func (s MarkdownRenderApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		field.Write("context")
 		s.Context.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Mode".
+	if s.Mode.Set {
+		field.Write("mode")
+		s.Mode.WriteJSON(j)
+	}
 	field.Write("text")
 	j.WriteString(s.Text)
 	j.WriteObjectEnd()
@@ -21126,8 +22488,11 @@ func (s *MarkdownRenderApplicationJSONRequest) ReadJSON(i *json.Iterator) error 
 			}
 			return true
 		case "mode":
-			// Unsupported kind "pointer" for field "Mode".
-			i.Skip()
+			s.Mode.Reset()
+			if err := s.Mode.ReadJSON(i); err != nil {
+				i.ReportError("Field Mode", err.Error())
+				return false
+			}
 			return true
 		case "text":
 			s.Text = i.ReadString()
@@ -21164,7 +22529,7 @@ func (s MarketplaceAccount) WriteJSON(j *json.Stream) {
 	field.Write("type")
 	j.WriteString(s.Type)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -21225,8 +22590,13 @@ func (s *MarketplaceAccount) ReadJSON(i *json.Iterator) error {
 			s.Type = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -21241,7 +22611,7 @@ func (s MarketplaceListingPlan) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	field.Write("accounts_url")
-	j.WriteString(s.AccountsURL)
+	json.WriteURI(j, s.AccountsURL)
 	// Unsupported kind "array" for field "Bullets".
 	field.Write("description")
 	j.WriteString(s.Description)
@@ -21260,7 +22630,7 @@ func (s MarketplaceListingPlan) WriteJSON(j *json.Stream) {
 	field.Write("state")
 	j.WriteString(s.State)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("unit_name")
 	s.UnitName.WriteJSON(j)
 	field.Write("yearly_price_in_cents")
@@ -21295,8 +22665,13 @@ func (s *MarketplaceListingPlan) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "accounts_url":
-			s.AccountsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field AccountsURL", err.Error())
+				return false
+			}
+			s.AccountsURL = v
+			return true
 		case "bullets":
 			// Unsupported kind "array" for field "Bullets".
 			i.Skip()
@@ -21326,8 +22701,13 @@ func (s *MarketplaceListingPlan) ReadJSON(i *json.Iterator) error {
 			s.State = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "unit_name":
 			if err := s.UnitName.ReadJSON(i); err != nil {
 				i.ReportError("Field UnitName", err.Error())
@@ -21358,7 +22738,10 @@ func (s MarketplacePurchase) WriteJSON(j *json.Stream) {
 	j.WriteInt(s.ID)
 	field.Write("login")
 	j.WriteString(s.Login)
-	// Unsupported kind "pointer" for field "MarketplacePendingChange".
+	if s.MarketplacePendingChange.Set {
+		field.Write("marketplace_pending_change")
+		s.MarketplacePendingChange.WriteJSON(j)
+	}
 	field.Write("marketplace_purchase")
 	s.MarketplacePurchase.WriteJSON(j)
 	if s.OrganizationBillingEmail.Set {
@@ -21412,8 +22795,11 @@ func (s *MarketplacePurchase) ReadJSON(i *json.Iterator) error {
 			s.Login = i.ReadString()
 			return i.Error == nil
 		case "marketplace_pending_change":
-			// Unsupported kind "pointer" for field "MarketplacePendingChange".
-			i.Skip()
+			s.MarketplacePendingChange.Reset()
+			if err := s.MarketplacePendingChange.ReadJSON(i); err != nil {
+				i.ReportError("Field MarketplacePendingChange", err.Error())
+				return false
+			}
 			return true
 		case "marketplace_purchase":
 			if err := s.MarketplacePurchase.ReadJSON(i); err != nil {
@@ -21459,7 +22845,10 @@ func (s MarketplacePurchaseMarketplacePendingChange) WriteJSON(j *json.Stream) {
 		field.Write("is_installed")
 		s.IsInstalled.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Plan".
+	if s.Plan.Set {
+		field.Write("plan")
+		s.Plan.WriteJSON(j)
+	}
 	if s.UnitCount.Set {
 		field.Write("unit_count")
 		s.UnitCount.WriteJSON(j)
@@ -21515,8 +22904,11 @@ func (s *MarketplacePurchaseMarketplacePendingChange) ReadJSON(i *json.Iterator)
 			}
 			return true
 		case "plan":
-			// Unsupported kind "pointer" for field "Plan".
-			i.Skip()
+			s.Plan.Reset()
+			if err := s.Plan.ReadJSON(i); err != nil {
+				i.ReportError("Field Plan", err.Error())
+				return false
+			}
 			return true
 		case "unit_count":
 			s.UnitCount.Reset()
@@ -21558,7 +22950,10 @@ func (s MarketplacePurchaseMarketplacePurchase) WriteJSON(j *json.Stream) {
 		field.Write("on_free_trial")
 		s.OnFreeTrial.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Plan".
+	if s.Plan.Set {
+		field.Write("plan")
+		s.Plan.WriteJSON(j)
+	}
 	if s.UnitCount.Set {
 		field.Write("unit_count")
 		s.UnitCount.WriteJSON(j)
@@ -21632,8 +23027,11 @@ func (s *MarketplacePurchaseMarketplacePurchase) ReadJSON(i *json.Iterator) erro
 			}
 			return true
 		case "plan":
-			// Unsupported kind "pointer" for field "Plan".
-			i.Skip()
+			s.Plan.Reset()
+			if err := s.Plan.ReadJSON(i); err != nil {
+				i.ReportError("Field Plan", err.Error())
+				return false
+			}
 			return true
 		case "unit_count":
 			s.UnitCount.Reset()
@@ -21666,7 +23064,10 @@ func (s MergedUpstream) WriteJSON(j *json.Stream) {
 		field.Write("base_branch")
 		s.BaseBranch.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "MergeType".
+	if s.MergeType.Set {
+		field.Write("merge_type")
+		s.MergeType.WriteJSON(j)
+	}
 	if s.Message.Set {
 		field.Write("message")
 		s.Message.WriteJSON(j)
@@ -21708,8 +23109,11 @@ func (s *MergedUpstream) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "merge_type":
-			// Unsupported kind "pointer" for field "MergeType".
-			i.Skip()
+			s.MergeType.Reset()
+			if err := s.MergeType.ReadJSON(i); err != nil {
+				i.ReportError("Field MergeType", err.Error())
+				return false
+			}
 			return true
 		case "message":
 			s.Message.Reset()
@@ -21975,7 +23379,7 @@ func (s Migration) WriteJSON(j *json.Stream) {
 	field.Write("state")
 	j.WriteString(s.State)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	j.WriteObjectEnd()
@@ -22067,8 +23471,13 @@ func (s *Migration) ReadJSON(i *json.Iterator) error {
 			s.State = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -22397,7 +23806,10 @@ func (s MigrationsStartImportApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		field.Write("tfvc_project")
 		s.TfvcProject.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Vcs".
+	if s.Vcs.Set {
+		field.Write("vcs")
+		s.Vcs.WriteJSON(j)
+	}
 	if s.VcsPassword.Set {
 		field.Write("vcs_password")
 		s.VcsPassword.WriteJSON(j)
@@ -22445,8 +23857,11 @@ func (s *MigrationsStartImportApplicationJSONRequest) ReadJSON(i *json.Iterator)
 			}
 			return true
 		case "vcs":
-			// Unsupported kind "pointer" for field "Vcs".
-			i.Skip()
+			s.Vcs.Reset()
+			if err := s.Vcs.ReadJSON(i); err != nil {
+				i.ReportError("Field Vcs", err.Error())
+				return false
+			}
 			return true
 		case "vcs_password":
 			s.VcsPassword.Reset()
@@ -22577,11 +23992,11 @@ func (s Milestone) WriteJSON(j *json.Stream) {
 	field.Write("due_on")
 	s.DueOn.WriteJSON(j, json.WriteDateTime)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	field.Write("labels_url")
-	j.WriteString(s.LabelsURL)
+	json.WriteURI(j, s.LabelsURL)
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
 	field.Write("number")
@@ -22593,7 +24008,7 @@ func (s Milestone) WriteJSON(j *json.Stream) {
 	field.Write("title")
 	j.WriteString(s.Title)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	j.WriteObjectEnd()
@@ -22661,14 +24076,24 @@ func (s *Milestone) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
 		case "labels_url":
-			s.LabelsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field LabelsURL", err.Error())
+				return false
+			}
+			s.LabelsURL = v
+			return true
 		case "node_id":
 			s.NodeID = i.ReadString()
 			return i.Error == nil
@@ -22685,8 +24110,13 @@ func (s *Milestone) ReadJSON(i *json.Iterator) error {
 			s.Title = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -22728,7 +24158,10 @@ func (s MinimalRepository) WriteJSON(j *json.Stream) {
 		field.Write("clone_url")
 		s.CloneURL.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "CodeOfConduct".
+	if s.CodeOfConduct.Set {
+		field.Write("code_of_conduct")
+		s.CodeOfConduct.WriteJSON(j)
+	}
 	field.Write("collaborators_url")
 	j.WriteString(s.CollaboratorsURL)
 	field.Write("comments_url")
@@ -22740,7 +24173,7 @@ func (s MinimalRepository) WriteJSON(j *json.Stream) {
 	field.Write("contents_url")
 	j.WriteString(s.ContentsURL)
 	field.Write("contributors_url")
-	j.WriteString(s.ContributorsURL)
+	json.WriteURI(j, s.ContributorsURL)
 	if s.CreatedAt.Set {
 		field.Write("created_at")
 		s.CreatedAt.WriteJSON(j, json.WriteDateTime)
@@ -22754,7 +24187,7 @@ func (s MinimalRepository) WriteJSON(j *json.Stream) {
 		s.DeleteBranchOnMerge.WriteJSON(j)
 	}
 	field.Write("deployments_url")
-	j.WriteString(s.DeploymentsURL)
+	json.WriteURI(j, s.DeploymentsURL)
 	field.Write("description")
 	s.Description.WriteJSON(j)
 	if s.Disabled.Set {
@@ -22762,9 +24195,9 @@ func (s MinimalRepository) WriteJSON(j *json.Stream) {
 		s.Disabled.WriteJSON(j)
 	}
 	field.Write("downloads_url")
-	j.WriteString(s.DownloadsURL)
+	json.WriteURI(j, s.DownloadsURL)
 	field.Write("events_url")
-	j.WriteString(s.EventsURL)
+	json.WriteURI(j, s.EventsURL)
 	field.Write("fork")
 	j.WriteBool(s.Fork)
 	if s.Forks.Set {
@@ -22776,7 +24209,7 @@ func (s MinimalRepository) WriteJSON(j *json.Stream) {
 		s.ForksCount.WriteJSON(j)
 	}
 	field.Write("forks_url")
-	j.WriteString(s.ForksURL)
+	json.WriteURI(j, s.ForksURL)
 	field.Write("full_name")
 	j.WriteString(s.FullName)
 	field.Write("git_commits_url")
@@ -22790,7 +24223,7 @@ func (s MinimalRepository) WriteJSON(j *json.Stream) {
 		s.GitURL.WriteJSON(j)
 	}
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	if s.HasDownloads.Set {
 		field.Write("has_downloads")
 		s.HasDownloads.WriteJSON(j)
@@ -22816,7 +24249,7 @@ func (s MinimalRepository) WriteJSON(j *json.Stream) {
 		s.Homepage.WriteJSON(j)
 	}
 	field.Write("hooks_url")
-	j.WriteString(s.HooksURL)
+	json.WriteURI(j, s.HooksURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	if s.IsTemplate.Set {
@@ -22838,10 +24271,13 @@ func (s MinimalRepository) WriteJSON(j *json.Stream) {
 		s.Language.WriteJSON(j)
 	}
 	field.Write("languages_url")
-	j.WriteString(s.LanguagesURL)
-	// Unsupported kind "pointer" for field "License".
+	json.WriteURI(j, s.LanguagesURL)
+	if s.License.Set {
+		field.Write("license")
+		s.License.WriteJSON(j)
+	}
 	field.Write("merges_url")
-	j.WriteString(s.MergesURL)
+	json.WriteURI(j, s.MergesURL)
 	field.Write("milestones_url")
 	j.WriteString(s.MilestonesURL)
 	if s.MirrorURL.Set {
@@ -22868,7 +24304,10 @@ func (s MinimalRepository) WriteJSON(j *json.Stream) {
 	}
 	field.Write("owner")
 	s.Owner.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Permissions".
+	if s.Permissions.Set {
+		field.Write("permissions")
+		s.Permissions.WriteJSON(j)
+	}
 	field.Write("private")
 	j.WriteBool(s.Private)
 	field.Write("pulls_url")
@@ -22892,7 +24331,7 @@ func (s MinimalRepository) WriteJSON(j *json.Stream) {
 		s.StargazersCount.WriteJSON(j)
 	}
 	field.Write("stargazers_url")
-	j.WriteString(s.StargazersURL)
+	json.WriteURI(j, s.StargazersURL)
 	field.Write("statuses_url")
 	j.WriteString(s.StatusesURL)
 	if s.SubscribersCount.Set {
@@ -22900,27 +24339,30 @@ func (s MinimalRepository) WriteJSON(j *json.Stream) {
 		s.SubscribersCount.WriteJSON(j)
 	}
 	field.Write("subscribers_url")
-	j.WriteString(s.SubscribersURL)
+	json.WriteURI(j, s.SubscribersURL)
 	field.Write("subscription_url")
-	j.WriteString(s.SubscriptionURL)
+	json.WriteURI(j, s.SubscriptionURL)
 	if s.SvnURL.Set {
 		field.Write("svn_url")
 		s.SvnURL.WriteJSON(j)
 	}
 	field.Write("tags_url")
-	j.WriteString(s.TagsURL)
+	json.WriteURI(j, s.TagsURL)
 	field.Write("teams_url")
-	j.WriteString(s.TeamsURL)
+	json.WriteURI(j, s.TeamsURL)
 	if s.TempCloneToken.Set {
 		field.Write("temp_clone_token")
 		s.TempCloneToken.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "TemplateRepository".
+	if s.TemplateRepository.Set {
+		field.Write("template_repository")
+		s.TemplateRepository.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Topics".
 	field.Write("trees_url")
 	j.WriteString(s.TreesURL)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	if s.UpdatedAt.Set {
 		field.Write("updated_at")
 		s.UpdatedAt.WriteJSON(j, json.WriteDateTime)
@@ -23000,8 +24442,11 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "code_of_conduct":
-			// Unsupported kind "pointer" for field "CodeOfConduct".
-			i.Skip()
+			s.CodeOfConduct.Reset()
+			if err := s.CodeOfConduct.ReadJSON(i); err != nil {
+				i.ReportError("Field CodeOfConduct", err.Error())
+				return false
+			}
 			return true
 		case "collaborators_url":
 			s.CollaboratorsURL = i.ReadString()
@@ -23019,8 +24464,13 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			s.ContentsURL = i.ReadString()
 			return i.Error == nil
 		case "contributors_url":
-			s.ContributorsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ContributorsURL", err.Error())
+				return false
+			}
+			s.ContributorsURL = v
+			return true
 		case "created_at":
 			s.CreatedAt.Reset()
 			if err := s.CreatedAt.ReadJSON(i, json.ReadDateTime); err != nil {
@@ -23043,8 +24493,13 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "deployments_url":
-			s.DeploymentsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field DeploymentsURL", err.Error())
+				return false
+			}
+			s.DeploymentsURL = v
+			return true
 		case "description":
 			if err := s.Description.ReadJSON(i); err != nil {
 				i.ReportError("Field Description", err.Error())
@@ -23059,11 +24514,21 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "downloads_url":
-			s.DownloadsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field DownloadsURL", err.Error())
+				return false
+			}
+			s.DownloadsURL = v
+			return true
 		case "events_url":
-			s.EventsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field EventsURL", err.Error())
+				return false
+			}
+			s.EventsURL = v
+			return true
 		case "fork":
 			s.Fork = i.ReadBool()
 			return i.Error == nil
@@ -23082,8 +24547,13 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "forks_url":
-			s.ForksURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ForksURL", err.Error())
+				return false
+			}
+			s.ForksURL = v
+			return true
 		case "full_name":
 			s.FullName = i.ReadString()
 			return i.Error == nil
@@ -23104,8 +24574,13 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "has_downloads":
 			s.HasDownloads.Reset()
 			if err := s.HasDownloads.ReadJSON(i); err != nil {
@@ -23149,8 +24624,13 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "hooks_url":
-			s.HooksURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HooksURL", err.Error())
+				return false
+			}
+			s.HooksURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -23184,15 +24664,28 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "languages_url":
-			s.LanguagesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field LanguagesURL", err.Error())
+				return false
+			}
+			s.LanguagesURL = v
+			return true
 		case "license":
-			// Unsupported kind "pointer" for field "License".
-			i.Skip()
+			s.License.Reset()
+			if err := s.License.ReadJSON(i); err != nil {
+				i.ReportError("Field License", err.Error())
+				return false
+			}
 			return true
 		case "merges_url":
-			s.MergesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field MergesURL", err.Error())
+				return false
+			}
+			s.MergesURL = v
+			return true
 		case "milestones_url":
 			s.MilestonesURL = i.ReadString()
 			return i.Error == nil
@@ -23240,8 +24733,11 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "permissions":
-			// Unsupported kind "pointer" for field "Permissions".
-			i.Skip()
+			s.Permissions.Reset()
+			if err := s.Permissions.ReadJSON(i); err != nil {
+				i.ReportError("Field Permissions", err.Error())
+				return false
+			}
 			return true
 		case "private":
 			s.Private = i.ReadBool()
@@ -23281,8 +24777,13 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "stargazers_url":
-			s.StargazersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field StargazersURL", err.Error())
+				return false
+			}
+			s.StargazersURL = v
+			return true
 		case "statuses_url":
 			s.StatusesURL = i.ReadString()
 			return i.Error == nil
@@ -23294,11 +24795,21 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "subscribers_url":
-			s.SubscribersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscribersURL", err.Error())
+				return false
+			}
+			s.SubscribersURL = v
+			return true
 		case "subscription_url":
-			s.SubscriptionURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscriptionURL", err.Error())
+				return false
+			}
+			s.SubscriptionURL = v
+			return true
 		case "svn_url":
 			s.SvnURL.Reset()
 			if err := s.SvnURL.ReadJSON(i); err != nil {
@@ -23307,11 +24818,21 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "tags_url":
-			s.TagsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field TagsURL", err.Error())
+				return false
+			}
+			s.TagsURL = v
+			return true
 		case "teams_url":
-			s.TeamsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field TeamsURL", err.Error())
+				return false
+			}
+			s.TeamsURL = v
+			return true
 		case "temp_clone_token":
 			s.TempCloneToken.Reset()
 			if err := s.TempCloneToken.ReadJSON(i); err != nil {
@@ -23320,8 +24841,11 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "template_repository":
-			// Unsupported kind "pointer" for field "TemplateRepository".
-			i.Skip()
+			s.TemplateRepository.Reset()
+			if err := s.TemplateRepository.ReadJSON(i); err != nil {
+				i.ReportError("Field TemplateRepository", err.Error())
+				return false
+			}
 			return true
 		case "topics":
 			// Unsupported kind "pointer" for field "Topics".
@@ -23331,8 +24855,13 @@ func (s *MinimalRepository) ReadJSON(i *json.Iterator) error {
 			s.TreesURL = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			s.UpdatedAt.Reset()
 			if err := s.UpdatedAt.ReadJSON(i, json.ReadDateTime); err != nil {
@@ -23563,6 +25092,596 @@ func (s *MinimalRepositoryPermissions) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
+// WriteJSON writes json value of bool to json stream.
+func (o NilBool) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	j.WriteBool(bool(o.Value))
+}
+
+// ReadJSON reads json value of bool from json iterator.
+func (o *NilBool) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.BoolValue:
+		o.Null = false
+		o.Value = bool(i.ReadBool())
+		return i.Error
+	case json.NilValue:
+		var v bool
+		o.Value = v
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilBool", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of CheckRunCheckSuite to json stream.
+func (o NilCheckRunCheckSuite) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of CheckRunCheckSuite from json iterator.
+func (o *NilCheckRunCheckSuite) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Null = false
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	case json.NilValue:
+		var v CheckRunCheckSuite
+		o.Value = v
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilCheckRunCheckSuite", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of CheckRunConclusion to json stream.
+func (o NilCheckRunConclusion) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of CheckRunConclusion from json iterator.
+func (o *NilCheckRunConclusion) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Null = false
+		o.Value = CheckRunConclusion(i.ReadString())
+		return i.Error
+	case json.NilValue:
+		var v CheckRunConclusion
+		o.Value = v
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilCheckRunConclusion", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of CheckSuiteConclusion to json stream.
+func (o NilCheckSuiteConclusion) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of CheckSuiteConclusion from json iterator.
+func (o *NilCheckSuiteConclusion) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Null = false
+		o.Value = CheckSuiteConclusion(i.ReadString())
+		return i.Error
+	case json.NilValue:
+		var v CheckSuiteConclusion
+		o.Value = v
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilCheckSuiteConclusion", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of CheckSuiteStatus to json stream.
+func (o NilCheckSuiteStatus) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of CheckSuiteStatus from json iterator.
+func (o *NilCheckSuiteStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Null = false
+		o.Value = CheckSuiteStatus(i.ReadString())
+		return i.Error
+	case json.NilValue:
+		var v CheckSuiteStatus
+		o.Value = v
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilCheckSuiteStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of FileCommitContent to json stream.
+func (o NilFileCommitContent) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of FileCommitContent from json iterator.
+func (o *NilFileCommitContent) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Null = false
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	case json.NilValue:
+		var v FileCommitContent
+		o.Value = v
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilFileCommitContent", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of int to json stream.
+func (o NilInt) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	j.WriteInt(int(o.Value))
+}
+
+// ReadJSON reads json value of int from json iterator.
+func (o *NilInt) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.NumberValue:
+		o.Null = false
+		o.Value = int(i.ReadInt())
+		return i.Error
+	case json.NilValue:
+		var v int
+		o.Value = v
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilInt", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of NullableSimpleCommitAuthor to json stream.
+func (o NilNullableSimpleCommitAuthor) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of NullableSimpleCommitAuthor from json iterator.
+func (o *NilNullableSimpleCommitAuthor) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Null = false
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	case json.NilValue:
+		var v NullableSimpleCommitAuthor
+		o.Value = v
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilNullableSimpleCommitAuthor", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of NullableSimpleCommitCommitter to json stream.
+func (o NilNullableSimpleCommitCommitter) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of NullableSimpleCommitCommitter from json iterator.
+func (o *NilNullableSimpleCommitCommitter) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Null = false
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	case json.NilValue:
+		var v NullableSimpleCommitCommitter
+		o.Value = v
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilNullableSimpleCommitCommitter", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of PageStatus to json stream.
+func (o NilPageStatus) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of PageStatus from json iterator.
+func (o *NilPageStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Null = false
+		o.Value = PageStatus(i.ReadString())
+		return i.Error
+	case json.NilValue:
+		var v PageStatus
+		o.Value = v
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilPageStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of PullRequestHeadRepo to json stream.
+func (o NilPullRequestHeadRepo) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of PullRequestHeadRepo from json iterator.
+func (o *NilPullRequestHeadRepo) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Null = false
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	case json.NilValue:
+		var v PullRequestHeadRepo
+		o.Value = v
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilPullRequestHeadRepo", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of PullRequestHeadRepoLicense to json stream.
+func (o NilPullRequestHeadRepoLicense) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of PullRequestHeadRepoLicense from json iterator.
+func (o *NilPullRequestHeadRepoLicense) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Null = false
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	case json.NilValue:
+		var v PullRequestHeadRepoLicense
+		o.Value = v
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilPullRequestHeadRepoLicense", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews to json stream.
+func (o NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews from json iterator.
+func (o *NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Null = false
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	case json.NilValue:
+		var v ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews
+		o.Value = v
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks to json stream.
+func (o NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks from json iterator.
+func (o *NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Null = false
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	case json.NilValue:
+		var v ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks
+		o.Value = v
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReposUpdateBranchProtectionApplicationJSONRequestRestrictions to json stream.
+func (o NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ReposUpdateBranchProtectionApplicationJSONRequestRestrictions from json iterator.
+func (o *NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Null = false
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	case json.NilValue:
+		var v ReposUpdateBranchProtectionApplicationJSONRequestRestrictions
+		o.Value = v
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of SimpleCommitAuthor to json stream.
+func (o NilSimpleCommitAuthor) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of SimpleCommitAuthor from json iterator.
+func (o *NilSimpleCommitAuthor) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Null = false
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	case json.NilValue:
+		var v SimpleCommitAuthor
+		o.Value = v
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilSimpleCommitAuthor", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of SimpleCommitCommitter to json stream.
+func (o NilSimpleCommitCommitter) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of SimpleCommitCommitter from json iterator.
+func (o *NilSimpleCommitCommitter) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Null = false
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	case json.NilValue:
+		var v SimpleCommitCommitter
+		o.Value = v
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilSimpleCommitCommitter", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of string to json stream.
+func (o NilString) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of string from json iterator.
+func (o *NilString) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Null = false
+		o.Value = string(i.ReadString())
+		return i.Error
+	case json.NilValue:
+		var v string
+		o.Value = v
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilString", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of time.Time to json stream.
+func (o NilTime) WriteJSON(j *json.Stream, format func(*json.Stream, time.Time)) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	format(j, o.Value)
+}
+
+// ReadJSON reads json value of time.Time from json iterator.
+func (o *NilTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (time.Time, error)) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Null = false
+		v, err := format(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	case json.NilValue:
+		var v time.Time
+		o.Value = v
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilTime", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of url.URL to json stream.
+func (o NilURL) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	json.WriteURI(j, o.Value)
+}
+
+// ReadJSON reads json value of url.URL from json iterator.
+func (o *NilURL) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Null = false
+		v, err := json.ReadURI(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	case json.NilValue:
+		var v url.URL
+		o.Value = v
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading NilURL", i.WhatIsNext())
+	}
+	return nil
+}
+
 // WriteJSON implements json.Marshaler.
 func (s NullableCodeOfConductSimple) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
@@ -23575,7 +25694,7 @@ func (s NullableCodeOfConductSimple) WriteJSON(j *json.Stream) {
 	field.Write("name")
 	j.WriteString(s.Name)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -23618,8 +25737,13 @@ func (s *NullableCodeOfConductSimple) ReadJSON(i *json.Iterator) error {
 			s.Name = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -23634,9 +25758,9 @@ func (s NullableCommunityHealthFile) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -23667,11 +25791,21 @@ func (s *NullableCommunityHealthFile) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -23774,9 +25908,9 @@ func (s NullableIntegration) WriteJSON(j *json.Stream) {
 	s.Description.WriteJSON(j)
 	// Unsupported kind "array" for field "Events".
 	field.Write("external_url")
-	j.WriteString(s.ExternalURL)
+	json.WriteURI(j, s.ExternalURL)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	if s.InstallationsCount.Set {
@@ -23867,11 +26001,21 @@ func (s *NullableIntegration) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "external_url":
-			s.ExternalURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ExternalURL", err.Error())
+				return false
+			}
+			s.ExternalURL = v
+			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -24136,11 +26280,11 @@ func (s NullableMilestone) WriteJSON(j *json.Stream) {
 	field.Write("due_on")
 	s.DueOn.WriteJSON(j, json.WriteDateTime)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	field.Write("labels_url")
-	j.WriteString(s.LabelsURL)
+	json.WriteURI(j, s.LabelsURL)
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
 	field.Write("number")
@@ -24152,7 +26296,7 @@ func (s NullableMilestone) WriteJSON(j *json.Stream) {
 	field.Write("title")
 	j.WriteString(s.Title)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	j.WriteObjectEnd()
@@ -24220,14 +26364,24 @@ func (s *NullableMilestone) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
 		case "labels_url":
-			s.LabelsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field LabelsURL", err.Error())
+				return false
+			}
+			s.LabelsURL = v
+			return true
 		case "node_id":
 			s.NodeID = i.ReadString()
 			return i.Error == nil
@@ -24244,8 +26398,13 @@ func (s *NullableMilestone) ReadJSON(i *json.Iterator) error {
 			s.Title = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -24310,7 +26469,7 @@ func (s NullableRepository) WriteJSON(j *json.Stream) {
 	field.Write("contents_url")
 	j.WriteString(s.ContentsURL)
 	field.Write("contributors_url")
-	j.WriteString(s.ContributorsURL)
+	json.WriteURI(j, s.ContributorsURL)
 	field.Write("created_at")
 	s.CreatedAt.WriteJSON(j, json.WriteDateTime)
 	field.Write("default_branch")
@@ -24320,15 +26479,15 @@ func (s NullableRepository) WriteJSON(j *json.Stream) {
 		s.DeleteBranchOnMerge.WriteJSON(j)
 	}
 	field.Write("deployments_url")
-	j.WriteString(s.DeploymentsURL)
+	json.WriteURI(j, s.DeploymentsURL)
 	field.Write("description")
 	s.Description.WriteJSON(j)
 	field.Write("disabled")
 	j.WriteBool(s.Disabled)
 	field.Write("downloads_url")
-	j.WriteString(s.DownloadsURL)
+	json.WriteURI(j, s.DownloadsURL)
 	field.Write("events_url")
-	j.WriteString(s.EventsURL)
+	json.WriteURI(j, s.EventsURL)
 	field.Write("fork")
 	j.WriteBool(s.Fork)
 	field.Write("forks")
@@ -24336,7 +26495,7 @@ func (s NullableRepository) WriteJSON(j *json.Stream) {
 	field.Write("forks_count")
 	j.WriteInt(s.ForksCount)
 	field.Write("forks_url")
-	j.WriteString(s.ForksURL)
+	json.WriteURI(j, s.ForksURL)
 	field.Write("full_name")
 	j.WriteString(s.FullName)
 	field.Write("git_commits_url")
@@ -24348,7 +26507,7 @@ func (s NullableRepository) WriteJSON(j *json.Stream) {
 	field.Write("git_url")
 	j.WriteString(s.GitURL)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("has_downloads")
 	j.WriteBool(s.HasDownloads)
 	field.Write("has_issues")
@@ -24362,7 +26521,7 @@ func (s NullableRepository) WriteJSON(j *json.Stream) {
 	field.Write("homepage")
 	s.Homepage.WriteJSON(j)
 	field.Write("hooks_url")
-	j.WriteString(s.HooksURL)
+	json.WriteURI(j, s.HooksURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	if s.IsTemplate.Set {
@@ -24382,7 +26541,7 @@ func (s NullableRepository) WriteJSON(j *json.Stream) {
 	field.Write("language")
 	s.Language.WriteJSON(j)
 	field.Write("languages_url")
-	j.WriteString(s.LanguagesURL)
+	json.WriteURI(j, s.LanguagesURL)
 	field.Write("license")
 	s.License.WriteJSON(j)
 	if s.MasterBranch.Set {
@@ -24390,7 +26549,7 @@ func (s NullableRepository) WriteJSON(j *json.Stream) {
 		s.MasterBranch.WriteJSON(j)
 	}
 	field.Write("merges_url")
-	j.WriteString(s.MergesURL)
+	json.WriteURI(j, s.MergesURL)
 	field.Write("milestones_url")
 	j.WriteString(s.MilestonesURL)
 	field.Write("mirror_url")
@@ -24409,10 +26568,16 @@ func (s NullableRepository) WriteJSON(j *json.Stream) {
 	j.WriteInt(s.OpenIssues)
 	field.Write("open_issues_count")
 	j.WriteInt(s.OpenIssuesCount)
-	// Unsupported kind "pointer" for field "Organization".
+	if s.Organization.Set {
+		field.Write("organization")
+		s.Organization.WriteJSON(j)
+	}
 	field.Write("owner")
 	s.Owner.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Permissions".
+	if s.Permissions.Set {
+		field.Write("permissions")
+		s.Permissions.WriteJSON(j)
+	}
 	field.Write("private")
 	j.WriteBool(s.Private)
 	field.Write("pulls_url")
@@ -24428,7 +26593,7 @@ func (s NullableRepository) WriteJSON(j *json.Stream) {
 	field.Write("stargazers_count")
 	j.WriteInt(s.StargazersCount)
 	field.Write("stargazers_url")
-	j.WriteString(s.StargazersURL)
+	json.WriteURI(j, s.StargazersURL)
 	if s.StarredAt.Set {
 		field.Write("starred_at")
 		s.StarredAt.WriteJSON(j)
@@ -24440,25 +26605,28 @@ func (s NullableRepository) WriteJSON(j *json.Stream) {
 		s.SubscribersCount.WriteJSON(j)
 	}
 	field.Write("subscribers_url")
-	j.WriteString(s.SubscribersURL)
+	json.WriteURI(j, s.SubscribersURL)
 	field.Write("subscription_url")
-	j.WriteString(s.SubscriptionURL)
+	json.WriteURI(j, s.SubscriptionURL)
 	field.Write("svn_url")
-	j.WriteString(s.SvnURL)
+	json.WriteURI(j, s.SvnURL)
 	field.Write("tags_url")
-	j.WriteString(s.TagsURL)
+	json.WriteURI(j, s.TagsURL)
 	field.Write("teams_url")
-	j.WriteString(s.TeamsURL)
+	json.WriteURI(j, s.TeamsURL)
 	if s.TempCloneToken.Set {
 		field.Write("temp_clone_token")
 		s.TempCloneToken.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "TemplateRepository".
+	if s.TemplateRepository.Set {
+		field.Write("template_repository")
+		s.TemplateRepository.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Topics".
 	field.Write("trees_url")
 	j.WriteString(s.TreesURL)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	s.UpdatedAt.WriteJSON(j, json.WriteDateTime)
 	if s.Visibility.Set {
@@ -24567,8 +26735,13 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			s.ContentsURL = i.ReadString()
 			return i.Error == nil
 		case "contributors_url":
-			s.ContributorsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ContributorsURL", err.Error())
+				return false
+			}
+			s.ContributorsURL = v
+			return true
 		case "created_at":
 			if err := s.CreatedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 				i.ReportError("Field CreatedAt", err.Error())
@@ -24586,8 +26759,13 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "deployments_url":
-			s.DeploymentsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field DeploymentsURL", err.Error())
+				return false
+			}
+			s.DeploymentsURL = v
+			return true
 		case "description":
 			if err := s.Description.ReadJSON(i); err != nil {
 				i.ReportError("Field Description", err.Error())
@@ -24598,11 +26776,21 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			s.Disabled = i.ReadBool()
 			return i.Error == nil
 		case "downloads_url":
-			s.DownloadsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field DownloadsURL", err.Error())
+				return false
+			}
+			s.DownloadsURL = v
+			return true
 		case "events_url":
-			s.EventsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field EventsURL", err.Error())
+				return false
+			}
+			s.EventsURL = v
+			return true
 		case "fork":
 			s.Fork = i.ReadBool()
 			return i.Error == nil
@@ -24613,8 +26801,13 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			s.ForksCount = i.ReadInt()
 			return i.Error == nil
 		case "forks_url":
-			s.ForksURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ForksURL", err.Error())
+				return false
+			}
+			s.ForksURL = v
+			return true
 		case "full_name":
 			s.FullName = i.ReadString()
 			return i.Error == nil
@@ -24631,8 +26824,13 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			s.GitURL = i.ReadString()
 			return i.Error == nil
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "has_downloads":
 			s.HasDownloads = i.ReadBool()
 			return i.Error == nil
@@ -24655,8 +26853,13 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "hooks_url":
-			s.HooksURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HooksURL", err.Error())
+				return false
+			}
+			s.HooksURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -24689,8 +26892,13 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "languages_url":
-			s.LanguagesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field LanguagesURL", err.Error())
+				return false
+			}
+			s.LanguagesURL = v
+			return true
 		case "license":
 			if err := s.License.ReadJSON(i); err != nil {
 				i.ReportError("Field License", err.Error())
@@ -24705,8 +26913,13 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "merges_url":
-			s.MergesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field MergesURL", err.Error())
+				return false
+			}
+			s.MergesURL = v
+			return true
 		case "milestones_url":
 			s.MilestonesURL = i.ReadString()
 			return i.Error == nil
@@ -24739,8 +26952,11 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			s.OpenIssuesCount = i.ReadInt()
 			return i.Error == nil
 		case "organization":
-			// Unsupported kind "pointer" for field "Organization".
-			i.Skip()
+			s.Organization.Reset()
+			if err := s.Organization.ReadJSON(i); err != nil {
+				i.ReportError("Field Organization", err.Error())
+				return false
+			}
 			return true
 		case "owner":
 			if err := s.Owner.ReadJSON(i); err != nil {
@@ -24749,8 +26965,11 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "permissions":
-			// Unsupported kind "pointer" for field "Permissions".
-			i.Skip()
+			s.Permissions.Reset()
+			if err := s.Permissions.ReadJSON(i); err != nil {
+				i.ReportError("Field Permissions", err.Error())
+				return false
+			}
 			return true
 		case "private":
 			s.Private = i.ReadBool()
@@ -24777,8 +26996,13 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			s.StargazersCount = i.ReadInt()
 			return i.Error == nil
 		case "stargazers_url":
-			s.StargazersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field StargazersURL", err.Error())
+				return false
+			}
+			s.StargazersURL = v
+			return true
 		case "starred_at":
 			s.StarredAt.Reset()
 			if err := s.StarredAt.ReadJSON(i); err != nil {
@@ -24797,20 +27021,45 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "subscribers_url":
-			s.SubscribersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscribersURL", err.Error())
+				return false
+			}
+			s.SubscribersURL = v
+			return true
 		case "subscription_url":
-			s.SubscriptionURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscriptionURL", err.Error())
+				return false
+			}
+			s.SubscriptionURL = v
+			return true
 		case "svn_url":
-			s.SvnURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SvnURL", err.Error())
+				return false
+			}
+			s.SvnURL = v
+			return true
 		case "tags_url":
-			s.TagsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field TagsURL", err.Error())
+				return false
+			}
+			s.TagsURL = v
+			return true
 		case "teams_url":
-			s.TeamsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field TeamsURL", err.Error())
+				return false
+			}
+			s.TeamsURL = v
+			return true
 		case "temp_clone_token":
 			s.TempCloneToken.Reset()
 			if err := s.TempCloneToken.ReadJSON(i); err != nil {
@@ -24819,8 +27068,11 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "template_repository":
-			// Unsupported kind "pointer" for field "TemplateRepository".
-			i.Skip()
+			s.TemplateRepository.Reset()
+			if err := s.TemplateRepository.ReadJSON(i); err != nil {
+				i.ReportError("Field TemplateRepository", err.Error())
+				return false
+			}
 			return true
 		case "topics":
 			// Unsupported kind "pointer" for field "Topics".
@@ -24830,8 +27082,13 @@ func (s *NullableRepository) ReadJSON(i *json.Iterator) error {
 			s.TreesURL = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			if err := s.UpdatedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 				i.ReportError("Field UpdatedAt", err.Error())
@@ -25171,8 +27428,14 @@ func (s NullableRepositoryTemplateRepository) WriteJSON(j *json.Stream) {
 		field.Write("open_issues_count")
 		s.OpenIssuesCount.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Owner".
-	// Unsupported kind "pointer" for field "Permissions".
+	if s.Owner.Set {
+		field.Write("owner")
+		s.Owner.WriteJSON(j)
+	}
+	if s.Permissions.Set {
+		field.Write("permissions")
+		s.Permissions.WriteJSON(j)
+	}
 	if s.Private.Set {
 		field.Write("private")
 		s.Private.WriteJSON(j)
@@ -25687,12 +27950,18 @@ func (s *NullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error 
 			}
 			return true
 		case "owner":
-			// Unsupported kind "pointer" for field "Owner".
-			i.Skip()
+			s.Owner.Reset()
+			if err := s.Owner.ReadJSON(i); err != nil {
+				i.ReportError("Field Owner", err.Error())
+				return false
+			}
 			return true
 		case "permissions":
-			// Unsupported kind "pointer" for field "Permissions".
-			i.Skip()
+			s.Permissions.Reset()
+			if err := s.Permissions.ReadJSON(i); err != nil {
+				i.ReportError("Field Permissions", err.Error())
+				return false
+			}
 			return true
 		case "private":
 			s.Private.Reset()
@@ -26204,7 +28473,7 @@ func (s NullableScopedInstallation) WriteJSON(j *json.Stream) {
 	field.Write("permissions")
 	s.Permissions.WriteJSON(j)
 	field.Write("repositories_url")
-	j.WriteString(s.RepositoriesURL)
+	json.WriteURI(j, s.RepositoriesURL)
 	field.Write("repository_selection")
 	j.WriteString(s.RepositorySelection)
 	field.Write("single_file_name")
@@ -26259,8 +28528,13 @@ func (s *NullableScopedInstallation) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "repositories_url":
-			s.RepositoriesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field RepositoriesURL", err.Error())
+				return false
+			}
+			s.RepositoriesURL = v
+			return true
 		case "repository_selection":
 			s.RepositorySelection = i.ReadString()
 			return i.Error == nil
@@ -26475,7 +28749,7 @@ func (s NullableSimpleUser) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	field.Write("avatar_url")
-	j.WriteString(s.AvatarURL)
+	json.WriteURI(j, s.AvatarURL)
 	if s.Email.Set {
 		field.Write("email")
 		s.Email.WriteJSON(j)
@@ -26483,7 +28757,7 @@ func (s NullableSimpleUser) WriteJSON(j *json.Stream) {
 	field.Write("events_url")
 	j.WriteString(s.EventsURL)
 	field.Write("followers_url")
-	j.WriteString(s.FollowersURL)
+	json.WriteURI(j, s.FollowersURL)
 	field.Write("following_url")
 	j.WriteString(s.FollowingURL)
 	field.Write("gists_url")
@@ -26491,7 +28765,7 @@ func (s NullableSimpleUser) WriteJSON(j *json.Stream) {
 	field.Write("gravatar_id")
 	s.GravatarID.WriteJSON(j)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	field.Write("login")
@@ -26503,11 +28777,11 @@ func (s NullableSimpleUser) WriteJSON(j *json.Stream) {
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
 	field.Write("organizations_url")
-	j.WriteString(s.OrganizationsURL)
+	json.WriteURI(j, s.OrganizationsURL)
 	field.Write("received_events_url")
-	j.WriteString(s.ReceivedEventsURL)
+	json.WriteURI(j, s.ReceivedEventsURL)
 	field.Write("repos_url")
-	j.WriteString(s.ReposURL)
+	json.WriteURI(j, s.ReposURL)
 	field.Write("site_admin")
 	j.WriteBool(s.SiteAdmin)
 	if s.StarredAt.Set {
@@ -26517,11 +28791,11 @@ func (s NullableSimpleUser) WriteJSON(j *json.Stream) {
 	field.Write("starred_url")
 	j.WriteString(s.StarredURL)
 	field.Write("subscriptions_url")
-	j.WriteString(s.SubscriptionsURL)
+	json.WriteURI(j, s.SubscriptionsURL)
 	field.Write("type")
 	j.WriteString(s.Type)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -26552,8 +28826,13 @@ func (s *NullableSimpleUser) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "avatar_url":
-			s.AvatarURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field AvatarURL", err.Error())
+				return false
+			}
+			s.AvatarURL = v
+			return true
 		case "email":
 			s.Email.Reset()
 			if err := s.Email.ReadJSON(i); err != nil {
@@ -26565,8 +28844,13 @@ func (s *NullableSimpleUser) ReadJSON(i *json.Iterator) error {
 			s.EventsURL = i.ReadString()
 			return i.Error == nil
 		case "followers_url":
-			s.FollowersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field FollowersURL", err.Error())
+				return false
+			}
+			s.FollowersURL = v
+			return true
 		case "following_url":
 			s.FollowingURL = i.ReadString()
 			return i.Error == nil
@@ -26580,8 +28864,13 @@ func (s *NullableSimpleUser) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -26599,14 +28888,29 @@ func (s *NullableSimpleUser) ReadJSON(i *json.Iterator) error {
 			s.NodeID = i.ReadString()
 			return i.Error == nil
 		case "organizations_url":
-			s.OrganizationsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field OrganizationsURL", err.Error())
+				return false
+			}
+			s.OrganizationsURL = v
+			return true
 		case "received_events_url":
-			s.ReceivedEventsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ReceivedEventsURL", err.Error())
+				return false
+			}
+			s.ReceivedEventsURL = v
+			return true
 		case "repos_url":
-			s.ReposURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ReposURL", err.Error())
+				return false
+			}
+			s.ReposURL = v
+			return true
 		case "site_admin":
 			s.SiteAdmin = i.ReadBool()
 			return i.Error == nil
@@ -26621,14 +28925,24 @@ func (s *NullableSimpleUser) ReadJSON(i *json.Iterator) error {
 			s.StarredURL = i.ReadString()
 			return i.Error == nil
 		case "subscriptions_url":
-			s.SubscriptionsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscriptionsURL", err.Error())
+				return false
+			}
+			s.SubscriptionsURL = v
+			return true
 		case "type":
 			s.Type = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -26645,7 +28959,7 @@ func (s NullableTeamSimple) WriteJSON(j *json.Stream) {
 	field.Write("description")
 	s.Description.WriteJSON(j)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	if s.LdapDn.Set {
@@ -26665,11 +28979,11 @@ func (s NullableTeamSimple) WriteJSON(j *json.Stream) {
 		s.Privacy.WriteJSON(j)
 	}
 	field.Write("repositories_url")
-	j.WriteString(s.RepositoriesURL)
+	json.WriteURI(j, s.RepositoriesURL)
 	field.Write("slug")
 	j.WriteString(s.Slug)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -26706,8 +29020,13 @@ func (s *NullableTeamSimple) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -26738,14 +29057,24 @@ func (s *NullableTeamSimple) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "repositories_url":
-			s.RepositoriesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field RepositoriesURL", err.Error())
+				return false
+			}
+			s.RepositoriesURL = v
+			return true
 		case "slug":
 			s.Slug = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -27105,6 +29434,4404 @@ func (s *OAuthAuthorizationsUpdateAuthorizationApplicationJSONRequest) ReadJSON(
 	return i.Error
 }
 
+// WriteJSON writes json value of APIOverviewSSHKeyFingerprints to json stream.
+func (o OptionalAPIOverviewSSHKeyFingerprints) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of APIOverviewSSHKeyFingerprints from json iterator.
+func (o *OptionalAPIOverviewSSHKeyFingerprints) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAPIOverviewSSHKeyFingerprints", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility to json stream.
+func (o OptionalActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility from json iterator.
+func (o *OptionalActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility to json stream.
+func (o OptionalActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility from json iterator.
+func (o *OptionalActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of Actor to json stream.
+func (o OptionalActor) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of Actor from json iterator.
+func (o *OptionalActor) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalActor", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AllowedActions to json stream.
+func (o OptionalAllowedActions) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AllowedActions from json iterator.
+func (o *OptionalAllowedActions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AllowedActions(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAllowedActions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissions to json stream.
+func (o OptionalAppPermissions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of AppPermissions from json iterator.
+func (o *OptionalAppPermissions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsActions to json stream.
+func (o OptionalAppPermissionsActions) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsActions from json iterator.
+func (o *OptionalAppPermissionsActions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsActions(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsActions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsAdministration to json stream.
+func (o OptionalAppPermissionsAdministration) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsAdministration from json iterator.
+func (o *OptionalAppPermissionsAdministration) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsAdministration(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsAdministration", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsChecks to json stream.
+func (o OptionalAppPermissionsChecks) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsChecks from json iterator.
+func (o *OptionalAppPermissionsChecks) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsChecks(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsChecks", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsContentReferences to json stream.
+func (o OptionalAppPermissionsContentReferences) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsContentReferences from json iterator.
+func (o *OptionalAppPermissionsContentReferences) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsContentReferences(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsContentReferences", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsContents to json stream.
+func (o OptionalAppPermissionsContents) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsContents from json iterator.
+func (o *OptionalAppPermissionsContents) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsContents(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsContents", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsDeployments to json stream.
+func (o OptionalAppPermissionsDeployments) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsDeployments from json iterator.
+func (o *OptionalAppPermissionsDeployments) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsDeployments(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsDeployments", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsEnvironments to json stream.
+func (o OptionalAppPermissionsEnvironments) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsEnvironments from json iterator.
+func (o *OptionalAppPermissionsEnvironments) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsEnvironments(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsEnvironments", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsIssues to json stream.
+func (o OptionalAppPermissionsIssues) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsIssues from json iterator.
+func (o *OptionalAppPermissionsIssues) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsIssues(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsIssues", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsMembers to json stream.
+func (o OptionalAppPermissionsMembers) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsMembers from json iterator.
+func (o *OptionalAppPermissionsMembers) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsMembers(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsMembers", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsMetadata to json stream.
+func (o OptionalAppPermissionsMetadata) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsMetadata from json iterator.
+func (o *OptionalAppPermissionsMetadata) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsMetadata(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsMetadata", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsOrganizationAdministration to json stream.
+func (o OptionalAppPermissionsOrganizationAdministration) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsOrganizationAdministration from json iterator.
+func (o *OptionalAppPermissionsOrganizationAdministration) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsOrganizationAdministration(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsOrganizationAdministration", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsOrganizationHooks to json stream.
+func (o OptionalAppPermissionsOrganizationHooks) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsOrganizationHooks from json iterator.
+func (o *OptionalAppPermissionsOrganizationHooks) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsOrganizationHooks(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsOrganizationHooks", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsOrganizationPackages to json stream.
+func (o OptionalAppPermissionsOrganizationPackages) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsOrganizationPackages from json iterator.
+func (o *OptionalAppPermissionsOrganizationPackages) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsOrganizationPackages(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsOrganizationPackages", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsOrganizationPlan to json stream.
+func (o OptionalAppPermissionsOrganizationPlan) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsOrganizationPlan from json iterator.
+func (o *OptionalAppPermissionsOrganizationPlan) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsOrganizationPlan(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsOrganizationPlan", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsOrganizationProjects to json stream.
+func (o OptionalAppPermissionsOrganizationProjects) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsOrganizationProjects from json iterator.
+func (o *OptionalAppPermissionsOrganizationProjects) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsOrganizationProjects(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsOrganizationProjects", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsOrganizationSecrets to json stream.
+func (o OptionalAppPermissionsOrganizationSecrets) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsOrganizationSecrets from json iterator.
+func (o *OptionalAppPermissionsOrganizationSecrets) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsOrganizationSecrets(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsOrganizationSecrets", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsOrganizationSelfHostedRunners to json stream.
+func (o OptionalAppPermissionsOrganizationSelfHostedRunners) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsOrganizationSelfHostedRunners from json iterator.
+func (o *OptionalAppPermissionsOrganizationSelfHostedRunners) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsOrganizationSelfHostedRunners(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsOrganizationSelfHostedRunners", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsOrganizationUserBlocking to json stream.
+func (o OptionalAppPermissionsOrganizationUserBlocking) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsOrganizationUserBlocking from json iterator.
+func (o *OptionalAppPermissionsOrganizationUserBlocking) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsOrganizationUserBlocking(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsOrganizationUserBlocking", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsPackages to json stream.
+func (o OptionalAppPermissionsPackages) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsPackages from json iterator.
+func (o *OptionalAppPermissionsPackages) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsPackages(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsPackages", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsPages to json stream.
+func (o OptionalAppPermissionsPages) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsPages from json iterator.
+func (o *OptionalAppPermissionsPages) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsPages(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsPages", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsPullRequests to json stream.
+func (o OptionalAppPermissionsPullRequests) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsPullRequests from json iterator.
+func (o *OptionalAppPermissionsPullRequests) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsPullRequests(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsPullRequests", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsRepositoryHooks to json stream.
+func (o OptionalAppPermissionsRepositoryHooks) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsRepositoryHooks from json iterator.
+func (o *OptionalAppPermissionsRepositoryHooks) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsRepositoryHooks(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsRepositoryHooks", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsRepositoryProjects to json stream.
+func (o OptionalAppPermissionsRepositoryProjects) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsRepositoryProjects from json iterator.
+func (o *OptionalAppPermissionsRepositoryProjects) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsRepositoryProjects(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsRepositoryProjects", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsSecretScanningAlerts to json stream.
+func (o OptionalAppPermissionsSecretScanningAlerts) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsSecretScanningAlerts from json iterator.
+func (o *OptionalAppPermissionsSecretScanningAlerts) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsSecretScanningAlerts(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsSecretScanningAlerts", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsSecrets to json stream.
+func (o OptionalAppPermissionsSecrets) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsSecrets from json iterator.
+func (o *OptionalAppPermissionsSecrets) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsSecrets(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsSecrets", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsSecurityEvents to json stream.
+func (o OptionalAppPermissionsSecurityEvents) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsSecurityEvents from json iterator.
+func (o *OptionalAppPermissionsSecurityEvents) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsSecurityEvents(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsSecurityEvents", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsSingleFile to json stream.
+func (o OptionalAppPermissionsSingleFile) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsSingleFile from json iterator.
+func (o *OptionalAppPermissionsSingleFile) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsSingleFile(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsSingleFile", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsStatuses to json stream.
+func (o OptionalAppPermissionsStatuses) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsStatuses from json iterator.
+func (o *OptionalAppPermissionsStatuses) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsStatuses(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsStatuses", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsTeamDiscussions to json stream.
+func (o OptionalAppPermissionsTeamDiscussions) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsTeamDiscussions from json iterator.
+func (o *OptionalAppPermissionsTeamDiscussions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsTeamDiscussions(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsTeamDiscussions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsVulnerabilityAlerts to json stream.
+func (o OptionalAppPermissionsVulnerabilityAlerts) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsVulnerabilityAlerts from json iterator.
+func (o *OptionalAppPermissionsVulnerabilityAlerts) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsVulnerabilityAlerts(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsVulnerabilityAlerts", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AppPermissionsWorkflows to json stream.
+func (o OptionalAppPermissionsWorkflows) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AppPermissionsWorkflows from json iterator.
+func (o *OptionalAppPermissionsWorkflows) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AppPermissionsWorkflows(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAppPermissionsWorkflows", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AuthenticationTokenRepositorySelection to json stream.
+func (o OptionalAuthenticationTokenRepositorySelection) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AuthenticationTokenRepositorySelection from json iterator.
+func (o *OptionalAuthenticationTokenRepositorySelection) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AuthenticationTokenRepositorySelection(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAuthenticationTokenRepositorySelection", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of AuthorAssociation to json stream.
+func (o OptionalAuthorAssociation) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of AuthorAssociation from json iterator.
+func (o *OptionalAuthorAssociation) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = AuthorAssociation(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalAuthorAssociation", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of bool to json stream.
+func (o OptionalBool) WriteJSON(j *json.Stream) {
+	j.WriteBool(bool(o.Value))
+}
+
+// ReadJSON reads json value of bool from json iterator.
+func (o *OptionalBool) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.BoolValue:
+		o.Set = true
+		o.Value = bool(i.ReadBool())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalBool", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of BranchProtection to json stream.
+func (o OptionalBranchProtection) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of BranchProtection from json iterator.
+func (o *OptionalBranchProtection) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalBranchProtection", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of BranchProtectionAllowDeletions to json stream.
+func (o OptionalBranchProtectionAllowDeletions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of BranchProtectionAllowDeletions from json iterator.
+func (o *OptionalBranchProtectionAllowDeletions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalBranchProtectionAllowDeletions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of BranchProtectionAllowForcePushes to json stream.
+func (o OptionalBranchProtectionAllowForcePushes) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of BranchProtectionAllowForcePushes from json iterator.
+func (o *OptionalBranchProtectionAllowForcePushes) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalBranchProtectionAllowForcePushes", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of BranchProtectionRequiredConversationResolution to json stream.
+func (o OptionalBranchProtectionRequiredConversationResolution) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of BranchProtectionRequiredConversationResolution from json iterator.
+func (o *OptionalBranchProtectionRequiredConversationResolution) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalBranchProtectionRequiredConversationResolution", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of BranchProtectionRequiredLinearHistory to json stream.
+func (o OptionalBranchProtectionRequiredLinearHistory) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of BranchProtectionRequiredLinearHistory from json iterator.
+func (o *OptionalBranchProtectionRequiredLinearHistory) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalBranchProtectionRequiredLinearHistory", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of BranchProtectionRequiredSignatures to json stream.
+func (o OptionalBranchProtectionRequiredSignatures) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of BranchProtectionRequiredSignatures from json iterator.
+func (o *OptionalBranchProtectionRequiredSignatures) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalBranchProtectionRequiredSignatures", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of BranchProtectionRequiredStatusChecks to json stream.
+func (o OptionalBranchProtectionRequiredStatusChecks) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of BranchProtectionRequiredStatusChecks from json iterator.
+func (o *OptionalBranchProtectionRequiredStatusChecks) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalBranchProtectionRequiredStatusChecks", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of BranchRestrictionPolicy to json stream.
+func (o OptionalBranchRestrictionPolicy) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of BranchRestrictionPolicy from json iterator.
+func (o *OptionalBranchRestrictionPolicy) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalBranchRestrictionPolicy", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of BranchRestrictionPolicyAppsItemOwner to json stream.
+func (o OptionalBranchRestrictionPolicyAppsItemOwner) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of BranchRestrictionPolicyAppsItemOwner from json iterator.
+func (o *OptionalBranchRestrictionPolicyAppsItemOwner) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalBranchRestrictionPolicyAppsItemOwner", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of BranchRestrictionPolicyAppsItemPermissions to json stream.
+func (o OptionalBranchRestrictionPolicyAppsItemPermissions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of BranchRestrictionPolicyAppsItemPermissions from json iterator.
+func (o *OptionalBranchRestrictionPolicyAppsItemPermissions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalBranchRestrictionPolicyAppsItemPermissions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of CodeOfConduct to json stream.
+func (o OptionalCodeOfConduct) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of CodeOfConduct from json iterator.
+func (o *OptionalCodeOfConduct) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalCodeOfConduct", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of CodeOfConductSimple to json stream.
+func (o OptionalCodeOfConductSimple) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of CodeOfConductSimple from json iterator.
+func (o *OptionalCodeOfConductSimple) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalCodeOfConductSimple", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of CodeScanningAlertDismissedReason to json stream.
+func (o OptionalCodeScanningAlertDismissedReason) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of CodeScanningAlertDismissedReason from json iterator.
+func (o *OptionalCodeScanningAlertDismissedReason) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = CodeScanningAlertDismissedReason(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalCodeScanningAlertDismissedReason", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of CodeScanningAlertInstanceMessage to json stream.
+func (o OptionalCodeScanningAlertInstanceMessage) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of CodeScanningAlertInstanceMessage from json iterator.
+func (o *OptionalCodeScanningAlertInstanceMessage) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalCodeScanningAlertInstanceMessage", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of CodeScanningAlertLocation to json stream.
+func (o OptionalCodeScanningAlertLocation) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of CodeScanningAlertLocation from json iterator.
+func (o *OptionalCodeScanningAlertLocation) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalCodeScanningAlertLocation", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of CodeScanningAlertState to json stream.
+func (o OptionalCodeScanningAlertState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of CodeScanningAlertState from json iterator.
+func (o *OptionalCodeScanningAlertState) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = CodeScanningAlertState(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalCodeScanningAlertState", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of CodeScanningSarifsStatusProcessingStatus to json stream.
+func (o OptionalCodeScanningSarifsStatusProcessingStatus) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of CodeScanningSarifsStatusProcessingStatus from json iterator.
+func (o *OptionalCodeScanningSarifsStatusProcessingStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = CodeScanningSarifsStatusProcessingStatus(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalCodeScanningSarifsStatusProcessingStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of CommitStats to json stream.
+func (o OptionalCommitStats) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of CommitStats from json iterator.
+func (o *OptionalCommitStats) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalCommitStats", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of DeploymentBranchPolicy to json stream.
+func (o OptionalDeploymentBranchPolicy) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of DeploymentBranchPolicy from json iterator.
+func (o *OptionalDeploymentBranchPolicy) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalDeploymentBranchPolicy", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of DeploymentReviewerType to json stream.
+func (o OptionalDeploymentReviewerType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of DeploymentReviewerType from json iterator.
+func (o *OptionalDeploymentReviewerType) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = DeploymentReviewerType(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalDeploymentReviewerType", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of DeploymentSimple to json stream.
+func (o OptionalDeploymentSimple) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of DeploymentSimple from json iterator.
+func (o *OptionalDeploymentSimple) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalDeploymentSimple", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility to json stream.
+func (o OptionalEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility from json iterator.
+func (o *OptionalEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility to json stream.
+func (o OptionalEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility from json iterator.
+func (o *OptionalEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of FileCommitCommitAuthor to json stream.
+func (o OptionalFileCommitCommitAuthor) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of FileCommitCommitAuthor from json iterator.
+func (o *OptionalFileCommitCommitAuthor) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalFileCommitCommitAuthor", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of FileCommitCommitCommitter to json stream.
+func (o OptionalFileCommitCommitCommitter) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of FileCommitCommitCommitter from json iterator.
+func (o *OptionalFileCommitCommitCommitter) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalFileCommitCommitCommitter", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of FileCommitCommitTree to json stream.
+func (o OptionalFileCommitCommitTree) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of FileCommitCommitTree from json iterator.
+func (o *OptionalFileCommitCommitTree) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalFileCommitCommitTree", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of FileCommitCommitVerification to json stream.
+func (o OptionalFileCommitCommitVerification) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of FileCommitCommitVerification from json iterator.
+func (o *OptionalFileCommitCommitVerification) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalFileCommitCommitVerification", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of FileCommitContentLinks to json stream.
+func (o OptionalFileCommitContentLinks) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of FileCommitContentLinks from json iterator.
+func (o *OptionalFileCommitContentLinks) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalFileCommitContentLinks", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of float64 to json stream.
+func (o OptionalFloat64) WriteJSON(j *json.Stream) {
+	j.WriteFloat64(float64(o.Value))
+}
+
+// ReadJSON reads json value of float64 from json iterator.
+func (o *OptionalFloat64) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.NumberValue:
+		o.Set = true
+		o.Value = float64(i.ReadFloat64())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalFloat64", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ForbiddenGistBlock to json stream.
+func (o OptionalForbiddenGistBlock) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ForbiddenGistBlock from json iterator.
+func (o *OptionalForbiddenGistBlock) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalForbiddenGistBlock", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of FullRepositoryPermissions to json stream.
+func (o OptionalFullRepositoryPermissions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of FullRepositoryPermissions from json iterator.
+func (o *OptionalFullRepositoryPermissions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalFullRepositoryPermissions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of FullRepositorySecurityAndAnalysisAdvancedSecurity to json stream.
+func (o OptionalFullRepositorySecurityAndAnalysisAdvancedSecurity) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of FullRepositorySecurityAndAnalysisAdvancedSecurity from json iterator.
+func (o *OptionalFullRepositorySecurityAndAnalysisAdvancedSecurity) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalFullRepositorySecurityAndAnalysisAdvancedSecurity", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of FullRepositorySecurityAndAnalysisAdvancedSecurityStatus to json stream.
+func (o OptionalFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of FullRepositorySecurityAndAnalysisAdvancedSecurityStatus from json iterator.
+func (o *OptionalFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = FullRepositorySecurityAndAnalysisAdvancedSecurityStatus(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalFullRepositorySecurityAndAnalysisAdvancedSecurityStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of FullRepositorySecurityAndAnalysisSecretScanning to json stream.
+func (o OptionalFullRepositorySecurityAndAnalysisSecretScanning) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of FullRepositorySecurityAndAnalysisSecretScanning from json iterator.
+func (o *OptionalFullRepositorySecurityAndAnalysisSecretScanning) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalFullRepositorySecurityAndAnalysisSecretScanning", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of FullRepositorySecurityAndAnalysisSecretScanningStatus to json stream.
+func (o OptionalFullRepositorySecurityAndAnalysisSecretScanningStatus) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of FullRepositorySecurityAndAnalysisSecretScanningStatus from json iterator.
+func (o *OptionalFullRepositorySecurityAndAnalysisSecretScanningStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = FullRepositorySecurityAndAnalysisSecretScanningStatus(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalFullRepositorySecurityAndAnalysisSecretScanningStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of GistHistoryChangeStatus to json stream.
+func (o OptionalGistHistoryChangeStatus) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of GistHistoryChangeStatus from json iterator.
+func (o *OptionalGistHistoryChangeStatus) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalGistHistoryChangeStatus", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of GitCreateCommitApplicationJSONRequestAuthor to json stream.
+func (o OptionalGitCreateCommitApplicationJSONRequestAuthor) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of GitCreateCommitApplicationJSONRequestAuthor from json iterator.
+func (o *OptionalGitCreateCommitApplicationJSONRequestAuthor) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalGitCreateCommitApplicationJSONRequestAuthor", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of GitCreateCommitApplicationJSONRequestCommitter to json stream.
+func (o OptionalGitCreateCommitApplicationJSONRequestCommitter) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of GitCreateCommitApplicationJSONRequestCommitter from json iterator.
+func (o *OptionalGitCreateCommitApplicationJSONRequestCommitter) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalGitCreateCommitApplicationJSONRequestCommitter", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of GitCreateTagApplicationJSONRequestTagger to json stream.
+func (o OptionalGitCreateTagApplicationJSONRequestTagger) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of GitCreateTagApplicationJSONRequestTagger from json iterator.
+func (o *OptionalGitCreateTagApplicationJSONRequestTagger) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalGitCreateTagApplicationJSONRequestTagger", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of GitCreateTreeApplicationJSONRequestTreeItemMode to json stream.
+func (o OptionalGitCreateTreeApplicationJSONRequestTreeItemMode) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of GitCreateTreeApplicationJSONRequestTreeItemMode from json iterator.
+func (o *OptionalGitCreateTreeApplicationJSONRequestTreeItemMode) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = GitCreateTreeApplicationJSONRequestTreeItemMode(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalGitCreateTreeApplicationJSONRequestTreeItemMode", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of GitCreateTreeApplicationJSONRequestTreeItemType to json stream.
+func (o OptionalGitCreateTreeApplicationJSONRequestTreeItemType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of GitCreateTreeApplicationJSONRequestTreeItemType from json iterator.
+func (o *OptionalGitCreateTreeApplicationJSONRequestTreeItemType) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = GitCreateTreeApplicationJSONRequestTreeItemType(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalGitCreateTreeApplicationJSONRequestTreeItemType", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of InstallationTokenRepositorySelection to json stream.
+func (o OptionalInstallationTokenRepositorySelection) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of InstallationTokenRepositorySelection from json iterator.
+func (o *OptionalInstallationTokenRepositorySelection) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = InstallationTokenRepositorySelection(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalInstallationTokenRepositorySelection", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of int to json stream.
+func (o OptionalInt) WriteJSON(j *json.Stream) {
+	j.WriteInt(int(o.Value))
+}
+
+// ReadJSON reads json value of int from json iterator.
+func (o *OptionalInt) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.NumberValue:
+		o.Set = true
+		o.Value = int(i.ReadInt())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalInt", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of int64 to json stream.
+func (o OptionalInt64) WriteJSON(j *json.Stream) {
+	j.WriteInt64(int64(o.Value))
+}
+
+// ReadJSON reads json value of int64 from json iterator.
+func (o *OptionalInt64) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.NumberValue:
+		o.Set = true
+		o.Value = int64(i.ReadInt64())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalInt64", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of InteractionExpiry to json stream.
+func (o OptionalInteractionExpiry) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of InteractionExpiry from json iterator.
+func (o *OptionalInteractionExpiry) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = InteractionExpiry(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalInteractionExpiry", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IssueComment to json stream.
+func (o OptionalIssueComment) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IssueComment from json iterator.
+func (o *OptionalIssueComment) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIssueComment", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IssueEventDismissedReview to json stream.
+func (o OptionalIssueEventDismissedReview) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IssueEventDismissedReview from json iterator.
+func (o *OptionalIssueEventDismissedReview) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIssueEventDismissedReview", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IssueEventLabel to json stream.
+func (o OptionalIssueEventLabel) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IssueEventLabel from json iterator.
+func (o *OptionalIssueEventLabel) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIssueEventLabel", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IssueEventMilestone to json stream.
+func (o OptionalIssueEventMilestone) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IssueEventMilestone from json iterator.
+func (o *OptionalIssueEventMilestone) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIssueEventMilestone", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IssueEventProjectCard to json stream.
+func (o OptionalIssueEventProjectCard) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IssueEventProjectCard from json iterator.
+func (o *OptionalIssueEventProjectCard) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIssueEventProjectCard", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IssueEventRename to json stream.
+func (o OptionalIssueEventRename) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IssueEventRename from json iterator.
+func (o *OptionalIssueEventRename) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIssueEventRename", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IssueSimple to json stream.
+func (o OptionalIssueSimple) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IssueSimple from json iterator.
+func (o *OptionalIssueSimple) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIssueSimple", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IssueSimplePullRequest to json stream.
+func (o OptionalIssueSimplePullRequest) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of IssueSimplePullRequest from json iterator.
+func (o *OptionalIssueSimplePullRequest) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIssueSimplePullRequest", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IssuesCreateMilestoneApplicationJSONRequestState to json stream.
+func (o OptionalIssuesCreateMilestoneApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of IssuesCreateMilestoneApplicationJSONRequestState from json iterator.
+func (o *OptionalIssuesCreateMilestoneApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = IssuesCreateMilestoneApplicationJSONRequestState(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIssuesCreateMilestoneApplicationJSONRequestState", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IssuesLockApplicationJSONRequestLockReason to json stream.
+func (o OptionalIssuesLockApplicationJSONRequestLockReason) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of IssuesLockApplicationJSONRequestLockReason from json iterator.
+func (o *OptionalIssuesLockApplicationJSONRequestLockReason) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = IssuesLockApplicationJSONRequestLockReason(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIssuesLockApplicationJSONRequestLockReason", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of IssuesUpdateMilestoneApplicationJSONRequestState to json stream.
+func (o OptionalIssuesUpdateMilestoneApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of IssuesUpdateMilestoneApplicationJSONRequestState from json iterator.
+func (o *OptionalIssuesUpdateMilestoneApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = IssuesUpdateMilestoneApplicationJSONRequestState(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalIssuesUpdateMilestoneApplicationJSONRequestState", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of LinkWithType to json stream.
+func (o OptionalLinkWithType) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of LinkWithType from json iterator.
+func (o *OptionalLinkWithType) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalLinkWithType", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of MarkdownRenderApplicationJSONRequestMode to json stream.
+func (o OptionalMarkdownRenderApplicationJSONRequestMode) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of MarkdownRenderApplicationJSONRequestMode from json iterator.
+func (o *OptionalMarkdownRenderApplicationJSONRequestMode) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = MarkdownRenderApplicationJSONRequestMode(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalMarkdownRenderApplicationJSONRequestMode", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of MarketplaceListingPlan to json stream.
+func (o OptionalMarketplaceListingPlan) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of MarketplaceListingPlan from json iterator.
+func (o *OptionalMarketplaceListingPlan) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalMarketplaceListingPlan", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of MergedUpstreamMergeType to json stream.
+func (o OptionalMergedUpstreamMergeType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of MergedUpstreamMergeType from json iterator.
+func (o *OptionalMergedUpstreamMergeType) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = MergedUpstreamMergeType(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalMergedUpstreamMergeType", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of MigrationsStartImportApplicationJSONRequestVcs to json stream.
+func (o OptionalMigrationsStartImportApplicationJSONRequestVcs) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of MigrationsStartImportApplicationJSONRequestVcs from json iterator.
+func (o *OptionalMigrationsStartImportApplicationJSONRequestVcs) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = MigrationsStartImportApplicationJSONRequestVcs(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalMigrationsStartImportApplicationJSONRequestVcs", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of MinimalRepositoryPermissions to json stream.
+func (o OptionalMinimalRepositoryPermissions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of MinimalRepositoryPermissions from json iterator.
+func (o *OptionalMinimalRepositoryPermissions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalMinimalRepositoryPermissions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of bool to json stream.
+func (o OptionalNilBool) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	j.WriteBool(bool(o.Value))
+}
+
+// ReadJSON reads json value of bool from json iterator.
+func (o *OptionalNilBool) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.BoolValue:
+		o.Set = true
+		o.Null = false
+		o.Value = bool(i.ReadBool())
+		return i.Error
+	case json.NilValue:
+		var v bool
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilBool", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of CodeScanningAlertRuleSecuritySeverityLevel to json stream.
+func (o OptionalNilCodeScanningAlertRuleSecuritySeverityLevel) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of CodeScanningAlertRuleSecuritySeverityLevel from json iterator.
+func (o *OptionalNilCodeScanningAlertRuleSecuritySeverityLevel) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Null = false
+		o.Value = CodeScanningAlertRuleSecuritySeverityLevel(i.ReadString())
+		return i.Error
+	case json.NilValue:
+		var v CodeScanningAlertRuleSecuritySeverityLevel
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilCodeScanningAlertRuleSecuritySeverityLevel", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of CodeScanningAlertRuleSeverity to json stream.
+func (o OptionalNilCodeScanningAlertRuleSeverity) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of CodeScanningAlertRuleSeverity from json iterator.
+func (o *OptionalNilCodeScanningAlertRuleSeverity) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Null = false
+		o.Value = CodeScanningAlertRuleSeverity(i.ReadString())
+		return i.Error
+	case json.NilValue:
+		var v CodeScanningAlertRuleSeverity
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilCodeScanningAlertRuleSeverity", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of FullRepositorySecurityAndAnalysis to json stream.
+func (o OptionalNilFullRepositorySecurityAndAnalysis) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of FullRepositorySecurityAndAnalysis from json iterator.
+func (o *OptionalNilFullRepositorySecurityAndAnalysis) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		o.Null = false
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	case json.NilValue:
+		var v FullRepositorySecurityAndAnalysis
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilFullRepositorySecurityAndAnalysis", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of GistSimpleForkOf to json stream.
+func (o OptionalNilGistSimpleForkOf) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of GistSimpleForkOf from json iterator.
+func (o *OptionalNilGistSimpleForkOf) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		o.Null = false
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	case json.NilValue:
+		var v GistSimpleForkOf
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilGistSimpleForkOf", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of int to json stream.
+func (o OptionalNilInt) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	j.WriteInt(int(o.Value))
+}
+
+// ReadJSON reads json value of int from json iterator.
+func (o *OptionalNilInt) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.NumberValue:
+		o.Set = true
+		o.Null = false
+		o.Value = int(i.ReadInt())
+		return i.Error
+	case json.NilValue:
+		var v int
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilInt", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of MarketplacePurchaseMarketplacePendingChange to json stream.
+func (o OptionalNilMarketplacePurchaseMarketplacePendingChange) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of MarketplacePurchaseMarketplacePendingChange from json iterator.
+func (o *OptionalNilMarketplacePurchaseMarketplacePendingChange) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		o.Null = false
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	case json.NilValue:
+		var v MarketplacePurchaseMarketplacePendingChange
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilMarketplacePurchaseMarketplacePendingChange", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of MinimalRepositoryLicense to json stream.
+func (o OptionalNilMinimalRepositoryLicense) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of MinimalRepositoryLicense from json iterator.
+func (o *OptionalNilMinimalRepositoryLicense) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		o.Null = false
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	case json.NilValue:
+		var v MinimalRepositoryLicense
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilMinimalRepositoryLicense", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of NullableRepositoryTemplateRepository to json stream.
+func (o OptionalNilNullableRepositoryTemplateRepository) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of NullableRepositoryTemplateRepository from json iterator.
+func (o *OptionalNilNullableRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		o.Null = false
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	case json.NilValue:
+		var v NullableRepositoryTemplateRepository
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilNullableRepositoryTemplateRepository", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of PageProtectedDomainState to json stream.
+func (o OptionalNilPageProtectedDomainState) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of PageProtectedDomainState from json iterator.
+func (o *OptionalNilPageProtectedDomainState) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Null = false
+		o.Value = PageProtectedDomainState(i.ReadString())
+		return i.Error
+	case json.NilValue:
+		var v PageProtectedDomainState
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilPageProtectedDomainState", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of PagesHealthCheckAltDomain to json stream.
+func (o OptionalNilPagesHealthCheckAltDomain) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of PagesHealthCheckAltDomain from json iterator.
+func (o *OptionalNilPagesHealthCheckAltDomain) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		o.Null = false
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	case json.NilValue:
+		var v PagesHealthCheckAltDomain
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilPagesHealthCheckAltDomain", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of PullRequestReviewCommentStartSide to json stream.
+func (o OptionalNilPullRequestReviewCommentStartSide) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of PullRequestReviewCommentStartSide from json iterator.
+func (o *OptionalNilPullRequestReviewCommentStartSide) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Null = false
+		o.Value = PullRequestReviewCommentStartSide(i.ReadString())
+		return i.Error
+	case json.NilValue:
+		var v PullRequestReviewCommentStartSide
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilPullRequestReviewCommentStartSide", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReposUpdateApplicationJSONRequestSecurityAndAnalysis to json stream.
+func (o OptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ReposUpdateApplicationJSONRequestSecurityAndAnalysis from json iterator.
+func (o *OptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		o.Null = false
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	case json.NilValue:
+		var v ReposUpdateApplicationJSONRequestSecurityAndAnalysis
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilReposUpdateApplicationJSONRequestSecurityAndAnalysis", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of RepositoryTemplateRepository to json stream.
+func (o OptionalNilRepositoryTemplateRepository) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of RepositoryTemplateRepository from json iterator.
+func (o *OptionalNilRepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		o.Null = false
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	case json.NilValue:
+		var v RepositoryTemplateRepository
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilRepositoryTemplateRepository", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReviewCommentStartSide to json stream.
+func (o OptionalNilReviewCommentStartSide) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of ReviewCommentStartSide from json iterator.
+func (o *OptionalNilReviewCommentStartSide) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Null = false
+		o.Value = ReviewCommentStartSide(i.ReadString())
+		return i.Error
+	case json.NilValue:
+		var v ReviewCommentStartSide
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilReviewCommentStartSide", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of string to json stream.
+func (o OptionalNilString) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of string from json iterator.
+func (o *OptionalNilString) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Null = false
+		o.Value = string(i.ReadString())
+		return i.Error
+	case json.NilValue:
+		var v string
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilString", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of time.Time to json stream.
+func (o OptionalNilTime) WriteJSON(j *json.Stream, format func(*json.Stream, time.Time)) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	format(j, o.Value)
+}
+
+// ReadJSON reads json value of time.Time from json iterator.
+func (o *OptionalNilTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (time.Time, error)) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Null = false
+		v, err := format(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	case json.NilValue:
+		var v time.Time
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilTime", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of url.URL to json stream.
+func (o OptionalNilURL) WriteJSON(j *json.Stream) {
+	if o.Null {
+		j.WriteNil()
+		return
+	}
+	json.WriteURI(j, o.Value)
+}
+
+// ReadJSON reads json value of url.URL from json iterator.
+func (o *OptionalNilURL) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Null = false
+		v, err := json.ReadURI(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	case json.NilValue:
+		var v url.URL
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		i.Skip()
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNilURL", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of NullableIntegration to json stream.
+func (o OptionalNullableIntegration) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of NullableIntegration from json iterator.
+func (o *OptionalNullableIntegration) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNullableIntegration", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of NullableRepository to json stream.
+func (o OptionalNullableRepository) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of NullableRepository from json iterator.
+func (o *OptionalNullableRepository) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNullableRepository", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of NullableRepositoryPermissions to json stream.
+func (o OptionalNullableRepositoryPermissions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of NullableRepositoryPermissions from json iterator.
+func (o *OptionalNullableRepositoryPermissions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNullableRepositoryPermissions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of NullableRepositoryTemplateRepositoryOwner to json stream.
+func (o OptionalNullableRepositoryTemplateRepositoryOwner) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of NullableRepositoryTemplateRepositoryOwner from json iterator.
+func (o *OptionalNullableRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNullableRepositoryTemplateRepositoryOwner", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of NullableRepositoryTemplateRepositoryPermissions to json stream.
+func (o OptionalNullableRepositoryTemplateRepositoryPermissions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of NullableRepositoryTemplateRepositoryPermissions from json iterator.
+func (o *OptionalNullableRepositoryTemplateRepositoryPermissions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNullableRepositoryTemplateRepositoryPermissions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of NullableScopedInstallation to json stream.
+func (o OptionalNullableScopedInstallation) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of NullableScopedInstallation from json iterator.
+func (o *OptionalNullableScopedInstallation) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNullableScopedInstallation", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of NullableSimpleUser to json stream.
+func (o OptionalNullableSimpleUser) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of NullableSimpleUser from json iterator.
+func (o *OptionalNullableSimpleUser) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNullableSimpleUser", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of NullableTeamSimple to json stream.
+func (o OptionalNullableTeamSimple) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of NullableTeamSimple from json iterator.
+func (o *OptionalNullableTeamSimple) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalNullableTeamSimple", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of OrgMembershipPermissions to json stream.
+func (o OptionalOrgMembershipPermissions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of OrgMembershipPermissions from json iterator.
+func (o *OptionalOrgMembershipPermissions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalOrgMembershipPermissions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of OrganizationFullPlan to json stream.
+func (o OptionalOrganizationFullPlan) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of OrganizationFullPlan from json iterator.
+func (o *OptionalOrganizationFullPlan) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalOrganizationFullPlan", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of OrgsCreateInvitationApplicationJSONRequestRole to json stream.
+func (o OptionalOrgsCreateInvitationApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of OrgsCreateInvitationApplicationJSONRequestRole from json iterator.
+func (o *OptionalOrgsCreateInvitationApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = OrgsCreateInvitationApplicationJSONRequestRole(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalOrgsCreateInvitationApplicationJSONRequestRole", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of OrgsSetMembershipForUserApplicationJSONRequestRole to json stream.
+func (o OptionalOrgsSetMembershipForUserApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of OrgsSetMembershipForUserApplicationJSONRequestRole from json iterator.
+func (o *OptionalOrgsSetMembershipForUserApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = OrgsSetMembershipForUserApplicationJSONRequestRole(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalOrgsSetMembershipForUserApplicationJSONRequestRole", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission to json stream.
+func (o OptionalOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission from json iterator.
+func (o *OptionalOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType to json stream.
+func (o OptionalOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType from json iterator.
+func (o *OptionalOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of PagesHTTPSCertificate to json stream.
+func (o OptionalPagesHTTPSCertificate) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of PagesHTTPSCertificate from json iterator.
+func (o *OptionalPagesHTTPSCertificate) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalPagesHTTPSCertificate", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of PagesHealthCheckDomain to json stream.
+func (o OptionalPagesHealthCheckDomain) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of PagesHealthCheckDomain from json iterator.
+func (o *OptionalPagesHealthCheckDomain) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalPagesHealthCheckDomain", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of PagesSourceHash to json stream.
+func (o OptionalPagesSourceHash) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of PagesSourceHash from json iterator.
+func (o *OptionalPagesSourceHash) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalPagesSourceHash", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of PrivateUserPlan to json stream.
+func (o OptionalPrivateUserPlan) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of PrivateUserPlan from json iterator.
+func (o *OptionalPrivateUserPlan) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalPrivateUserPlan", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ProjectOrganizationPermission to json stream.
+func (o OptionalProjectOrganizationPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of ProjectOrganizationPermission from json iterator.
+func (o *OptionalProjectOrganizationPermission) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = ProjectOrganizationPermission(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalProjectOrganizationPermission", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ProjectsAddCollaboratorApplicationJSONRequestPermission to json stream.
+func (o OptionalProjectsAddCollaboratorApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of ProjectsAddCollaboratorApplicationJSONRequestPermission from json iterator.
+func (o *OptionalProjectsAddCollaboratorApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = ProjectsAddCollaboratorApplicationJSONRequestPermission(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalProjectsAddCollaboratorApplicationJSONRequestPermission", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ProjectsUpdateApplicationJSONRequestOrganizationPermission to json stream.
+func (o OptionalProjectsUpdateApplicationJSONRequestOrganizationPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of ProjectsUpdateApplicationJSONRequestOrganizationPermission from json iterator.
+func (o *OptionalProjectsUpdateApplicationJSONRequestOrganizationPermission) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = ProjectsUpdateApplicationJSONRequestOrganizationPermission(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalProjectsUpdateApplicationJSONRequestOrganizationPermission", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ProtectedBranchAdminEnforced to json stream.
+func (o OptionalProtectedBranchAdminEnforced) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ProtectedBranchAdminEnforced from json iterator.
+func (o *OptionalProtectedBranchAdminEnforced) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchAdminEnforced", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ProtectedBranchAllowDeletions to json stream.
+func (o OptionalProtectedBranchAllowDeletions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ProtectedBranchAllowDeletions from json iterator.
+func (o *OptionalProtectedBranchAllowDeletions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchAllowDeletions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ProtectedBranchAllowForcePushes to json stream.
+func (o OptionalProtectedBranchAllowForcePushes) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ProtectedBranchAllowForcePushes from json iterator.
+func (o *OptionalProtectedBranchAllowForcePushes) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchAllowForcePushes", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ProtectedBranchEnforceAdmins to json stream.
+func (o OptionalProtectedBranchEnforceAdmins) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ProtectedBranchEnforceAdmins from json iterator.
+func (o *OptionalProtectedBranchEnforceAdmins) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchEnforceAdmins", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ProtectedBranchPullRequestReview to json stream.
+func (o OptionalProtectedBranchPullRequestReview) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ProtectedBranchPullRequestReview from json iterator.
+func (o *OptionalProtectedBranchPullRequestReview) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchPullRequestReview", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ProtectedBranchPullRequestReviewDismissalRestrictions to json stream.
+func (o OptionalProtectedBranchPullRequestReviewDismissalRestrictions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ProtectedBranchPullRequestReviewDismissalRestrictions from json iterator.
+func (o *OptionalProtectedBranchPullRequestReviewDismissalRestrictions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchPullRequestReviewDismissalRestrictions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ProtectedBranchRequiredConversationResolution to json stream.
+func (o OptionalProtectedBranchRequiredConversationResolution) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ProtectedBranchRequiredConversationResolution from json iterator.
+func (o *OptionalProtectedBranchRequiredConversationResolution) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchRequiredConversationResolution", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ProtectedBranchRequiredLinearHistory to json stream.
+func (o OptionalProtectedBranchRequiredLinearHistory) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ProtectedBranchRequiredLinearHistory from json iterator.
+func (o *OptionalProtectedBranchRequiredLinearHistory) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchRequiredLinearHistory", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ProtectedBranchRequiredPullRequestReviews to json stream.
+func (o OptionalProtectedBranchRequiredPullRequestReviews) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ProtectedBranchRequiredPullRequestReviews from json iterator.
+func (o *OptionalProtectedBranchRequiredPullRequestReviews) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchRequiredPullRequestReviews", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions to json stream.
+func (o OptionalProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions from json iterator.
+func (o *OptionalProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchRequiredPullRequestReviewsDismissalRestrictions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ProtectedBranchRequiredSignatures to json stream.
+func (o OptionalProtectedBranchRequiredSignatures) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ProtectedBranchRequiredSignatures from json iterator.
+func (o *OptionalProtectedBranchRequiredSignatures) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalProtectedBranchRequiredSignatures", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of PublicUser to json stream.
+func (o OptionalPublicUser) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of PublicUser from json iterator.
+func (o *OptionalPublicUser) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalPublicUser", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of PublicUserPlan to json stream.
+func (o OptionalPublicUserPlan) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of PublicUserPlan from json iterator.
+func (o *OptionalPublicUserPlan) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalPublicUserPlan", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of PullRequestBaseRepoPermissions to json stream.
+func (o OptionalPullRequestBaseRepoPermissions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of PullRequestBaseRepoPermissions from json iterator.
+func (o *OptionalPullRequestBaseRepoPermissions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalPullRequestBaseRepoPermissions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of PullRequestHeadRepoPermissions to json stream.
+func (o OptionalPullRequestHeadRepoPermissions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of PullRequestHeadRepoPermissions from json iterator.
+func (o *OptionalPullRequestHeadRepoPermissions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalPullRequestHeadRepoPermissions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of PullRequestReviewCommentSide to json stream.
+func (o OptionalPullRequestReviewCommentSide) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of PullRequestReviewCommentSide from json iterator.
+func (o *OptionalPullRequestReviewCommentSide) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = PullRequestReviewCommentSide(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalPullRequestReviewCommentSide", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of PullsCreateReviewApplicationJSONRequestEvent to json stream.
+func (o OptionalPullsCreateReviewApplicationJSONRequestEvent) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of PullsCreateReviewApplicationJSONRequestEvent from json iterator.
+func (o *OptionalPullsCreateReviewApplicationJSONRequestEvent) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = PullsCreateReviewApplicationJSONRequestEvent(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalPullsCreateReviewApplicationJSONRequestEvent", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of PullsCreateReviewCommentApplicationJSONRequestSide to json stream.
+func (o OptionalPullsCreateReviewCommentApplicationJSONRequestSide) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of PullsCreateReviewCommentApplicationJSONRequestSide from json iterator.
+func (o *OptionalPullsCreateReviewCommentApplicationJSONRequestSide) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = PullsCreateReviewCommentApplicationJSONRequestSide(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalPullsCreateReviewCommentApplicationJSONRequestSide", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of PullsCreateReviewCommentApplicationJSONRequestStartSide to json stream.
+func (o OptionalPullsCreateReviewCommentApplicationJSONRequestStartSide) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of PullsCreateReviewCommentApplicationJSONRequestStartSide from json iterator.
+func (o *OptionalPullsCreateReviewCommentApplicationJSONRequestStartSide) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = PullsCreateReviewCommentApplicationJSONRequestStartSide(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalPullsCreateReviewCommentApplicationJSONRequestStartSide", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of PullsMergeApplicationJSONRequestMergeMethod to json stream.
+func (o OptionalPullsMergeApplicationJSONRequestMergeMethod) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of PullsMergeApplicationJSONRequestMergeMethod from json iterator.
+func (o *OptionalPullsMergeApplicationJSONRequestMergeMethod) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = PullsMergeApplicationJSONRequestMergeMethod(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalPullsMergeApplicationJSONRequestMergeMethod", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of PullsUpdateApplicationJSONRequestState to json stream.
+func (o OptionalPullsUpdateApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of PullsUpdateApplicationJSONRequestState from json iterator.
+func (o *OptionalPullsUpdateApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = PullsUpdateApplicationJSONRequestState(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalPullsUpdateApplicationJSONRequestState", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of RateLimit to json stream.
+func (o OptionalRateLimit) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of RateLimit from json iterator.
+func (o *OptionalRateLimit) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalRateLimit", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReactionRollup to json stream.
+func (o OptionalReactionRollup) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ReactionRollup from json iterator.
+func (o *OptionalReactionRollup) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalReactionRollup", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReposAddCollaboratorApplicationJSONRequestPermission to json stream.
+func (o OptionalReposAddCollaboratorApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of ReposAddCollaboratorApplicationJSONRequestPermission from json iterator.
+func (o *OptionalReposAddCollaboratorApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = ReposAddCollaboratorApplicationJSONRequestPermission(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalReposAddCollaboratorApplicationJSONRequestPermission", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReposCreateDeploymentStatusApplicationJSONRequestEnvironment to json stream.
+func (o OptionalReposCreateDeploymentStatusApplicationJSONRequestEnvironment) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of ReposCreateDeploymentStatusApplicationJSONRequestEnvironment from json iterator.
+func (o *OptionalReposCreateDeploymentStatusApplicationJSONRequestEnvironment) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = ReposCreateDeploymentStatusApplicationJSONRequestEnvironment(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalReposCreateDeploymentStatusApplicationJSONRequestEnvironment", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReposCreateInOrgApplicationJSONRequestVisibility to json stream.
+func (o OptionalReposCreateInOrgApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of ReposCreateInOrgApplicationJSONRequestVisibility from json iterator.
+func (o *OptionalReposCreateInOrgApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = ReposCreateInOrgApplicationJSONRequestVisibility(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalReposCreateInOrgApplicationJSONRequestVisibility", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor to json stream.
+func (o OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor from json iterator.
+func (o *OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter to json stream.
+func (o OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter from json iterator.
+func (o *OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReposCreatePagesSiteApplicationJSONRequestSourcePath to json stream.
+func (o OptionalReposCreatePagesSiteApplicationJSONRequestSourcePath) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of ReposCreatePagesSiteApplicationJSONRequestSourcePath from json iterator.
+func (o *OptionalReposCreatePagesSiteApplicationJSONRequestSourcePath) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = ReposCreatePagesSiteApplicationJSONRequestSourcePath(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalReposCreatePagesSiteApplicationJSONRequestSourcePath", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReposDeleteFileApplicationJSONRequestAuthor to json stream.
+func (o OptionalReposDeleteFileApplicationJSONRequestAuthor) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ReposDeleteFileApplicationJSONRequestAuthor from json iterator.
+func (o *OptionalReposDeleteFileApplicationJSONRequestAuthor) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalReposDeleteFileApplicationJSONRequestAuthor", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReposDeleteFileApplicationJSONRequestCommitter to json stream.
+func (o OptionalReposDeleteFileApplicationJSONRequestCommitter) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ReposDeleteFileApplicationJSONRequestCommitter from json iterator.
+func (o *OptionalReposDeleteFileApplicationJSONRequestCommitter) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalReposDeleteFileApplicationJSONRequestCommitter", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity to json stream.
+func (o OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity from json iterator.
+func (o *OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning to json stream.
+func (o OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning from json iterator.
+func (o *OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReposUpdateApplicationJSONRequestVisibility to json stream.
+func (o OptionalReposUpdateApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of ReposUpdateApplicationJSONRequestVisibility from json iterator.
+func (o *OptionalReposUpdateApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = ReposUpdateApplicationJSONRequestVisibility(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalReposUpdateApplicationJSONRequestVisibility", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions to json stream.
+func (o OptionalReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions from json iterator.
+func (o *OptionalReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReposUpdateInvitationApplicationJSONRequestPermissions to json stream.
+func (o OptionalReposUpdateInvitationApplicationJSONRequestPermissions) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of ReposUpdateInvitationApplicationJSONRequestPermissions from json iterator.
+func (o *OptionalReposUpdateInvitationApplicationJSONRequestPermissions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = ReposUpdateInvitationApplicationJSONRequestPermissions(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalReposUpdateInvitationApplicationJSONRequestPermissions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions to json stream.
+func (o OptionalReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions from json iterator.
+func (o *OptionalReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of Repository to json stream.
+func (o OptionalRepository) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of Repository from json iterator.
+func (o *OptionalRepository) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalRepository", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of RepositoryPermissions to json stream.
+func (o OptionalRepositoryPermissions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of RepositoryPermissions from json iterator.
+func (o *OptionalRepositoryPermissions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalRepositoryPermissions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of RepositoryTemplateRepositoryOwner to json stream.
+func (o OptionalRepositoryTemplateRepositoryOwner) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of RepositoryTemplateRepositoryOwner from json iterator.
+func (o *OptionalRepositoryTemplateRepositoryOwner) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalRepositoryTemplateRepositoryOwner", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of RepositoryTemplateRepositoryPermissions to json stream.
+func (o OptionalRepositoryTemplateRepositoryPermissions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of RepositoryTemplateRepositoryPermissions from json iterator.
+func (o *OptionalRepositoryTemplateRepositoryPermissions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalRepositoryTemplateRepositoryPermissions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ReviewCommentSide to json stream.
+func (o OptionalReviewCommentSide) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of ReviewCommentSide from json iterator.
+func (o *OptionalReviewCommentSide) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = ReviewCommentSide(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalReviewCommentSide", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of RunnerLabelsItemType to json stream.
+func (o OptionalRunnerLabelsItemType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of RunnerLabelsItemType from json iterator.
+func (o *OptionalRunnerLabelsItemType) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = RunnerLabelsItemType(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalRunnerLabelsItemType", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ScimEnterpriseGroupMeta to json stream.
+func (o OptionalScimEnterpriseGroupMeta) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ScimEnterpriseGroupMeta from json iterator.
+func (o *OptionalScimEnterpriseGroupMeta) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalScimEnterpriseGroupMeta", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ScimEnterpriseUserMeta to json stream.
+func (o OptionalScimEnterpriseUserMeta) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ScimEnterpriseUserMeta from json iterator.
+func (o *OptionalScimEnterpriseUserMeta) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalScimEnterpriseUserMeta", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ScimEnterpriseUserName to json stream.
+func (o OptionalScimEnterpriseUserName) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ScimEnterpriseUserName from json iterator.
+func (o *OptionalScimEnterpriseUserName) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalScimEnterpriseUserName", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ScimGroupListEnterpriseResourcesItemMeta to json stream.
+func (o OptionalScimGroupListEnterpriseResourcesItemMeta) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ScimGroupListEnterpriseResourcesItemMeta from json iterator.
+func (o *OptionalScimGroupListEnterpriseResourcesItemMeta) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalScimGroupListEnterpriseResourcesItemMeta", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ScimUserListEnterpriseResourcesItemMeta to json stream.
+func (o OptionalScimUserListEnterpriseResourcesItemMeta) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ScimUserListEnterpriseResourcesItemMeta from json iterator.
+func (o *OptionalScimUserListEnterpriseResourcesItemMeta) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalScimUserListEnterpriseResourcesItemMeta", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of ScimUserListEnterpriseResourcesItemName to json stream.
+func (o OptionalScimUserListEnterpriseResourcesItemName) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of ScimUserListEnterpriseResourcesItemName from json iterator.
+func (o *OptionalScimUserListEnterpriseResourcesItemName) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalScimUserListEnterpriseResourcesItemName", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of SecretScanningAlertResolution to json stream.
+func (o OptionalSecretScanningAlertResolution) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of SecretScanningAlertResolution from json iterator.
+func (o *OptionalSecretScanningAlertResolution) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = SecretScanningAlertResolution(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalSecretScanningAlertResolution", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of SecretScanningAlertState to json stream.
+func (o OptionalSecretScanningAlertState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of SecretScanningAlertState from json iterator.
+func (o *OptionalSecretScanningAlertState) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = SecretScanningAlertState(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalSecretScanningAlertState", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of SimpleUser to json stream.
+func (o OptionalSimpleUser) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of SimpleUser from json iterator.
+func (o *OptionalSimpleUser) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalSimpleUser", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of StatusCheckPolicy to json stream.
+func (o OptionalStatusCheckPolicy) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of StatusCheckPolicy from json iterator.
+func (o *OptionalStatusCheckPolicy) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalStatusCheckPolicy", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of string to json stream.
+func (o OptionalString) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of string from json iterator.
+func (o *OptionalString) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = string(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalString", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of Team to json stream.
+func (o OptionalTeam) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of Team from json iterator.
+func (o *OptionalTeam) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTeam", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of TeamFullPrivacy to json stream.
+func (o OptionalTeamFullPrivacy) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of TeamFullPrivacy from json iterator.
+func (o *OptionalTeamFullPrivacy) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = TeamFullPrivacy(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTeamFullPrivacy", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of TeamPermissions to json stream.
+func (o OptionalTeamPermissions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of TeamPermissions from json iterator.
+func (o *OptionalTeamPermissions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTeamPermissions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of TeamRepositoryPermissions to json stream.
+func (o OptionalTeamRepositoryPermissions) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of TeamRepositoryPermissions from json iterator.
+func (o *OptionalTeamRepositoryPermissions) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTeamRepositoryPermissions", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole to json stream.
+func (o OptionalTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole from json iterator.
+func (o *OptionalTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole to json stream.
+func (o OptionalTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole from json iterator.
+func (o *OptionalTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission to json stream.
+func (o OptionalTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission from json iterator.
+func (o *OptionalTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission to json stream.
+func (o OptionalTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission from json iterator.
+func (o *OptionalTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission to json stream.
+func (o OptionalTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission from json iterator.
+func (o *OptionalTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission to json stream.
+func (o OptionalTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission from json iterator.
+func (o *OptionalTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of TeamsCreateApplicationJSONRequestPermission to json stream.
+func (o OptionalTeamsCreateApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of TeamsCreateApplicationJSONRequestPermission from json iterator.
+func (o *OptionalTeamsCreateApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = TeamsCreateApplicationJSONRequestPermission(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTeamsCreateApplicationJSONRequestPermission", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of TeamsCreateApplicationJSONRequestPrivacy to json stream.
+func (o OptionalTeamsCreateApplicationJSONRequestPrivacy) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of TeamsCreateApplicationJSONRequestPrivacy from json iterator.
+func (o *OptionalTeamsCreateApplicationJSONRequestPrivacy) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = TeamsCreateApplicationJSONRequestPrivacy(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTeamsCreateApplicationJSONRequestPrivacy", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of TeamsUpdateInOrgApplicationJSONRequestPermission to json stream.
+func (o OptionalTeamsUpdateInOrgApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of TeamsUpdateInOrgApplicationJSONRequestPermission from json iterator.
+func (o *OptionalTeamsUpdateInOrgApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = TeamsUpdateInOrgApplicationJSONRequestPermission(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTeamsUpdateInOrgApplicationJSONRequestPermission", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of TeamsUpdateInOrgApplicationJSONRequestPrivacy to json stream.
+func (o OptionalTeamsUpdateInOrgApplicationJSONRequestPrivacy) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of TeamsUpdateInOrgApplicationJSONRequestPrivacy from json iterator.
+func (o *OptionalTeamsUpdateInOrgApplicationJSONRequestPrivacy) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = TeamsUpdateInOrgApplicationJSONRequestPrivacy(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTeamsUpdateInOrgApplicationJSONRequestPrivacy", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of TeamsUpdateLegacyApplicationJSONRequestPermission to json stream.
+func (o OptionalTeamsUpdateLegacyApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of TeamsUpdateLegacyApplicationJSONRequestPermission from json iterator.
+func (o *OptionalTeamsUpdateLegacyApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = TeamsUpdateLegacyApplicationJSONRequestPermission(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTeamsUpdateLegacyApplicationJSONRequestPermission", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of TeamsUpdateLegacyApplicationJSONRequestPrivacy to json stream.
+func (o OptionalTeamsUpdateLegacyApplicationJSONRequestPrivacy) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of TeamsUpdateLegacyApplicationJSONRequestPrivacy from json iterator.
+func (o *OptionalTeamsUpdateLegacyApplicationJSONRequestPrivacy) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = TeamsUpdateLegacyApplicationJSONRequestPrivacy(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTeamsUpdateLegacyApplicationJSONRequestPrivacy", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of time.Time to json stream.
+func (o OptionalTime) WriteJSON(j *json.Stream, format func(*json.Stream, time.Time)) {
+	format(j, o.Value)
+}
+
+// ReadJSON reads json value of time.Time from json iterator.
+func (o *OptionalTime) ReadJSON(i *json.Iterator, format func(*json.Iterator) (time.Time, error)) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		v, err := format(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTime", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of TopicSearchResultItemAliasesItemTopicRelation to json stream.
+func (o OptionalTopicSearchResultItemAliasesItemTopicRelation) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of TopicSearchResultItemAliasesItemTopicRelation from json iterator.
+func (o *OptionalTopicSearchResultItemAliasesItemTopicRelation) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTopicSearchResultItemAliasesItemTopicRelation", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of TopicSearchResultItemRelatedItemTopicRelation to json stream.
+func (o OptionalTopicSearchResultItemRelatedItemTopicRelation) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of TopicSearchResultItemRelatedItemTopicRelation from json iterator.
+func (o *OptionalTopicSearchResultItemRelatedItemTopicRelation) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTopicSearchResultItemRelatedItemTopicRelation", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of url.URL to json stream.
+func (o OptionalURL) WriteJSON(j *json.Stream) {
+	json.WriteURI(j, o.Value)
+}
+
+// ReadJSON reads json value of url.URL from json iterator.
+func (o *OptionalURL) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		v, err := json.ReadURI(i)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalURL", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of Verification to json stream.
+func (o OptionalVerification) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of Verification from json iterator.
+func (o *OptionalVerification) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalVerification", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of WorkflowRunUsageBillableMACOS to json stream.
+func (o OptionalWorkflowRunUsageBillableMACOS) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of WorkflowRunUsageBillableMACOS from json iterator.
+func (o *OptionalWorkflowRunUsageBillableMACOS) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalWorkflowRunUsageBillableMACOS", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of WorkflowRunUsageBillableUBUNTU to json stream.
+func (o OptionalWorkflowRunUsageBillableUBUNTU) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of WorkflowRunUsageBillableUBUNTU from json iterator.
+func (o *OptionalWorkflowRunUsageBillableUBUNTU) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalWorkflowRunUsageBillableUBUNTU", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of WorkflowRunUsageBillableWINDOWS to json stream.
+func (o OptionalWorkflowRunUsageBillableWINDOWS) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of WorkflowRunUsageBillableWINDOWS from json iterator.
+func (o *OptionalWorkflowRunUsageBillableWINDOWS) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalWorkflowRunUsageBillableWINDOWS", i.WhatIsNext())
+	}
+	return nil
+}
+
 // WriteJSON implements json.Marshaler.
 func (s OrgHook) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
@@ -27126,11 +33853,11 @@ func (s OrgHook) WriteJSON(j *json.Stream) {
 	field.Write("name")
 	j.WriteString(s.Name)
 	field.Write("ping_url")
-	j.WriteString(s.PingURL)
+	json.WriteURI(j, s.PingURL)
 	field.Write("type")
 	j.WriteString(s.Type)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	j.WriteObjectEnd()
@@ -27197,14 +33924,24 @@ func (s *OrgHook) ReadJSON(i *json.Iterator) error {
 			s.Name = i.ReadString()
 			return i.Error == nil
 		case "ping_url":
-			s.PingURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field PingURL", err.Error())
+				return false
+			}
+			s.PingURL = v
+			return true
 		case "type":
 			s.Type = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -27315,14 +34052,17 @@ func (s OrgMembership) WriteJSON(j *json.Stream) {
 	field.Write("organization")
 	s.Organization.WriteJSON(j)
 	field.Write("organization_url")
-	j.WriteString(s.OrganizationURL)
-	// Unsupported kind "pointer" for field "Permissions".
+	json.WriteURI(j, s.OrganizationURL)
+	if s.Permissions.Set {
+		field.Write("permissions")
+		s.Permissions.WriteJSON(j)
+	}
 	field.Write("role")
 	j.WriteString(s.Role)
 	field.Write("state")
 	j.WriteString(s.State)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("user")
 	s.User.WriteJSON(j)
 	j.WriteObjectEnd()
@@ -27361,11 +34101,19 @@ func (s *OrgMembership) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "organization_url":
-			s.OrganizationURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field OrganizationURL", err.Error())
+				return false
+			}
+			s.OrganizationURL = v
+			return true
 		case "permissions":
-			// Unsupported kind "pointer" for field "Permissions".
-			i.Skip()
+			s.Permissions.Reset()
+			if err := s.Permissions.ReadJSON(i); err != nil {
+				i.ReportError("Field Permissions", err.Error())
+				return false
+			}
 			return true
 		case "role":
 			s.Role = i.ReadString()
@@ -27374,8 +34122,13 @@ func (s *OrgMembership) ReadJSON(i *json.Iterator) error {
 			s.State = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "user":
 			if err := s.User.ReadJSON(i); err != nil {
 				i.ReportError("Field User", err.Error())
@@ -27560,13 +34313,13 @@ func (s OrganizationFull) WriteJSON(j *json.Stream) {
 		s.Email.WriteJSON(j)
 	}
 	field.Write("events_url")
-	j.WriteString(s.EventsURL)
+	json.WriteURI(j, s.EventsURL)
 	field.Write("followers")
 	j.WriteInt(s.Followers)
 	field.Write("following")
 	j.WriteInt(s.Following)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("has_organization_projects")
 	j.WriteBool(s.HasOrganizationProjects)
 	field.Write("has_repository_projects")
@@ -27631,7 +34384,10 @@ func (s OrganizationFull) WriteJSON(j *json.Stream) {
 		field.Write("owned_private_repos")
 		s.OwnedPrivateRepos.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Plan".
+	if s.Plan.Set {
+		field.Write("plan")
+		s.Plan.WriteJSON(j)
+	}
 	if s.PrivateGists.Set {
 		field.Write("private_gists")
 		s.PrivateGists.WriteJSON(j)
@@ -27643,7 +34399,7 @@ func (s OrganizationFull) WriteJSON(j *json.Stream) {
 	field.Write("public_repos")
 	j.WriteInt(s.PublicRepos)
 	field.Write("repos_url")
-	j.WriteString(s.ReposURL)
+	json.WriteURI(j, s.ReposURL)
 	if s.TotalPrivateRepos.Set {
 		field.Write("total_private_repos")
 		s.TotalPrivateRepos.WriteJSON(j)
@@ -27659,7 +34415,7 @@ func (s OrganizationFull) WriteJSON(j *json.Stream) {
 	field.Write("type")
 	j.WriteString(s.Type)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	j.WriteObjectEnd()
@@ -27758,8 +34514,13 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "events_url":
-			s.EventsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field EventsURL", err.Error())
+				return false
+			}
+			s.EventsURL = v
+			return true
 		case "followers":
 			s.Followers = i.ReadInt()
 			return i.Error == nil
@@ -27767,8 +34528,13 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			s.Following = i.ReadInt()
 			return i.Error == nil
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "has_organization_projects":
 			s.HasOrganizationProjects = i.ReadBool()
 			return i.Error == nil
@@ -27878,8 +34644,11 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "plan":
-			// Unsupported kind "pointer" for field "Plan".
-			i.Skip()
+			s.Plan.Reset()
+			if err := s.Plan.ReadJSON(i); err != nil {
+				i.ReportError("Field Plan", err.Error())
+				return false
+			}
 			return true
 		case "private_gists":
 			s.PrivateGists.Reset()
@@ -27898,8 +34667,13 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			s.PublicRepos = i.ReadInt()
 			return i.Error == nil
 		case "repos_url":
-			s.ReposURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ReposURL", err.Error())
+				return false
+			}
+			s.ReposURL = v
+			return true
 		case "total_private_repos":
 			s.TotalPrivateRepos.Reset()
 			if err := s.TotalPrivateRepos.ReadJSON(i); err != nil {
@@ -27925,8 +34699,13 @@ func (s *OrganizationFull) ReadJSON(i *json.Iterator) error {
 			s.Type = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -28150,7 +34929,7 @@ func (s OrganizationSimple) WriteJSON(j *json.Stream) {
 	field.Write("description")
 	s.Description.WriteJSON(j)
 	field.Write("events_url")
-	j.WriteString(s.EventsURL)
+	json.WriteURI(j, s.EventsURL)
 	field.Write("hooks_url")
 	j.WriteString(s.HooksURL)
 	field.Write("id")
@@ -28166,9 +34945,9 @@ func (s OrganizationSimple) WriteJSON(j *json.Stream) {
 	field.Write("public_members_url")
 	j.WriteString(s.PublicMembersURL)
 	field.Write("repos_url")
-	j.WriteString(s.ReposURL)
+	json.WriteURI(j, s.ReposURL)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -28208,8 +34987,13 @@ func (s *OrganizationSimple) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "events_url":
-			s.EventsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field EventsURL", err.Error())
+				return false
+			}
+			s.EventsURL = v
+			return true
 		case "hooks_url":
 			s.HooksURL = i.ReadString()
 			return i.Error == nil
@@ -28232,11 +35016,21 @@ func (s *OrganizationSimple) ReadJSON(i *json.Iterator) error {
 			s.PublicMembersURL = i.ReadString()
 			return i.Error == nil
 		case "repos_url":
-			s.ReposURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ReposURL", err.Error())
+				return false
+			}
+			s.ReposURL = v
+			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -28258,7 +35052,10 @@ func (s OrgsCreateInvitationApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		field.Write("invitee_id")
 		s.InviteeID.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Role".
+	if s.Role.Set {
+		field.Write("role")
+		s.Role.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "TeamIds".
 	j.WriteObjectEnd()
 }
@@ -28304,8 +35101,11 @@ func (s *OrgsCreateInvitationApplicationJSONRequest) ReadJSON(i *json.Iterator) 
 			}
 			return true
 		case "role":
-			// Unsupported kind "pointer" for field "Role".
-			i.Skip()
+			s.Role.Reset()
+			if err := s.Role.ReadJSON(i); err != nil {
+				i.ReportError("Field Role", err.Error())
+				return false
+			}
 			return true
 		case "team_ids":
 			// Unsupported kind "pointer" for field "TeamIds".
@@ -28388,7 +35188,10 @@ func (s OrgsSetMembershipForUserApplicationJSONRequest) WriteJSON(j *json.Stream
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Role".
+	if s.Role.Set {
+		field.Write("role")
+		s.Role.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -28419,8 +35222,11 @@ func (s *OrgsSetMembershipForUserApplicationJSONRequest) ReadJSON(i *json.Iterat
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "role":
-			// Unsupported kind "pointer" for field "Role".
-			i.Skip()
+			s.Role.Reset()
+			if err := s.Role.ReadJSON(i); err != nil {
+				i.ReportError("Field Role", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -28447,7 +35253,10 @@ func (s OrgsUpdateApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		field.Write("company")
 		s.Company.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "DefaultRepositoryPermission".
+	if s.DefaultRepositoryPermission.Set {
+		field.Write("default_repository_permission")
+		s.DefaultRepositoryPermission.WriteJSON(j)
+	}
 	if s.Description.Set {
 		field.Write("description")
 		s.Description.WriteJSON(j)
@@ -28468,7 +35277,10 @@ func (s OrgsUpdateApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		field.Write("location")
 		s.Location.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "MembersAllowedRepositoryCreationType".
+	if s.MembersAllowedRepositoryCreationType.Set {
+		field.Write("members_allowed_repository_creation_type")
+		s.MembersAllowedRepositoryCreationType.WriteJSON(j)
+	}
 	if s.MembersCanCreateInternalRepositories.Set {
 		field.Write("members_can_create_internal_repositories")
 		s.MembersCanCreateInternalRepositories.WriteJSON(j)
@@ -28556,8 +35368,11 @@ func (s *OrgsUpdateApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "default_repository_permission":
-			// Unsupported kind "pointer" for field "DefaultRepositoryPermission".
-			i.Skip()
+			s.DefaultRepositoryPermission.Reset()
+			if err := s.DefaultRepositoryPermission.ReadJSON(i); err != nil {
+				i.ReportError("Field DefaultRepositoryPermission", err.Error())
+				return false
+			}
 			return true
 		case "description":
 			s.Description.Reset()
@@ -28595,8 +35410,11 @@ func (s *OrgsUpdateApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "members_allowed_repository_creation_type":
-			// Unsupported kind "pointer" for field "MembersAllowedRepositoryCreationType".
-			i.Skip()
+			s.MembersAllowedRepositoryCreationType.Reset()
+			if err := s.MembersAllowedRepositoryCreationType.ReadJSON(i); err != nil {
+				i.ReportError("Field MembersAllowedRepositoryCreationType", err.Error())
+				return false
+			}
 			return true
 		case "members_can_create_internal_repositories":
 			s.MembersCanCreateInternalRepositories.Reset()
@@ -28786,7 +35604,10 @@ func (s Page) WriteJSON(j *json.Stream) {
 		field.Write("html_url")
 		s.HTMLURL.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "HTTPSCertificate".
+	if s.HTTPSCertificate.Set {
+		field.Write("https_certificate")
+		s.HTTPSCertificate.WriteJSON(j)
+	}
 	if s.HTTPSEnforced.Set {
 		field.Write("https_enforced")
 		s.HTTPSEnforced.WriteJSON(j)
@@ -28795,14 +35616,20 @@ func (s Page) WriteJSON(j *json.Stream) {
 		field.Write("pending_domain_unverified_at")
 		s.PendingDomainUnverifiedAt.WriteJSON(j, json.WriteDateTime)
 	}
-	// Unsupported kind "pointer" for field "ProtectedDomainState".
+	if s.ProtectedDomainState.Set {
+		field.Write("protected_domain_state")
+		s.ProtectedDomainState.WriteJSON(j)
+	}
 	field.Write("public")
 	j.WriteBool(s.Public)
-	// Unsupported kind "pointer" for field "Source".
+	if s.Source.Set {
+		field.Write("source")
+		s.Source.WriteJSON(j)
+	}
 	field.Write("status")
-	j.WriteString(s.Status)
+	s.Status.WriteJSON(j)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -28849,8 +35676,11 @@ func (s *Page) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "https_certificate":
-			// Unsupported kind "pointer" for field "HTTPSCertificate".
-			i.Skip()
+			s.HTTPSCertificate.Reset()
+			if err := s.HTTPSCertificate.ReadJSON(i); err != nil {
+				i.ReportError("Field HTTPSCertificate", err.Error())
+				return false
+			}
 			return true
 		case "https_enforced":
 			s.HTTPSEnforced.Reset()
@@ -28867,22 +35697,36 @@ func (s *Page) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "protected_domain_state":
-			// Unsupported kind "pointer" for field "ProtectedDomainState".
-			i.Skip()
+			s.ProtectedDomainState.Reset()
+			if err := s.ProtectedDomainState.ReadJSON(i); err != nil {
+				i.ReportError("Field ProtectedDomainState", err.Error())
+				return false
+			}
 			return true
 		case "public":
 			s.Public = i.ReadBool()
 			return i.Error == nil
 		case "source":
-			// Unsupported kind "pointer" for field "Source".
-			i.Skip()
+			s.Source.Reset()
+			if err := s.Source.ReadJSON(i); err != nil {
+				i.ReportError("Field Source", err.Error())
+				return false
+			}
 			return true
 		case "status":
-			s.Status = i.ReadString()
-			return i.Error == nil
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
+			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -28909,7 +35753,7 @@ func (s PageBuild) WriteJSON(j *json.Stream) {
 	field.Write("status")
 	j.WriteString(s.Status)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	j.WriteObjectEnd()
@@ -28971,8 +35815,13 @@ func (s *PageBuild) ReadJSON(i *json.Iterator) error {
 			s.Status = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -29047,7 +35896,7 @@ func (s PageBuildStatus) WriteJSON(j *json.Stream) {
 	field.Write("status")
 	j.WriteString(s.Status)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -29081,8 +35930,13 @@ func (s *PageBuildStatus) ReadJSON(i *json.Iterator) error {
 			s.Status = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -29164,8 +36018,14 @@ func (s PagesHealthCheck) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "AltDomain".
-	// Unsupported kind "pointer" for field "Domain".
+	if s.AltDomain.Set {
+		field.Write("alt_domain")
+		s.AltDomain.WriteJSON(j)
+	}
+	if s.Domain.Set {
+		field.Write("domain")
+		s.Domain.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -29196,12 +36056,18 @@ func (s *PagesHealthCheck) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "alt_domain":
-			// Unsupported kind "pointer" for field "AltDomain".
-			i.Skip()
+			s.AltDomain.Reset()
+			if err := s.AltDomain.ReadJSON(i); err != nil {
+				i.ReportError("Field AltDomain", err.Error())
+				return false
+			}
 			return true
 		case "domain":
-			// Unsupported kind "pointer" for field "Domain".
-			i.Skip()
+			s.Domain.Reset()
+			if err := s.Domain.ReadJSON(i); err != nil {
+				i.ReportError("Field Domain", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -30025,7 +36891,7 @@ func (s PorterAuthor) WriteJSON(j *json.Stream) {
 	field.Write("id")
 	j.WriteInt(s.ID)
 	field.Write("import_url")
-	j.WriteString(s.ImportURL)
+	json.WriteURI(j, s.ImportURL)
 	field.Write("name")
 	j.WriteString(s.Name)
 	field.Write("remote_id")
@@ -30033,7 +36899,7 @@ func (s PorterAuthor) WriteJSON(j *json.Stream) {
 	field.Write("remote_name")
 	j.WriteString(s.RemoteName)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -30070,8 +36936,13 @@ func (s *PorterAuthor) ReadJSON(i *json.Iterator) error {
 			s.ID = i.ReadInt()
 			return i.Error == nil
 		case "import_url":
-			s.ImportURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ImportURL", err.Error())
+				return false
+			}
+			s.ImportURL = v
+			return true
 		case "name":
 			s.Name = i.ReadString()
 			return i.Error == nil
@@ -30082,8 +36953,13 @@ func (s *PorterAuthor) ReadJSON(i *json.Iterator) error {
 			s.RemoteName = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -30212,7 +37088,7 @@ func (s PrivateUser) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	field.Write("avatar_url")
-	j.WriteString(s.AvatarURL)
+	json.WriteURI(j, s.AvatarURL)
 	field.Write("bio")
 	s.Bio.WriteJSON(j)
 	field.Write("blog")
@@ -30236,7 +37112,7 @@ func (s PrivateUser) WriteJSON(j *json.Stream) {
 	field.Write("followers")
 	j.WriteInt(s.Followers)
 	field.Write("followers_url")
-	j.WriteString(s.FollowersURL)
+	json.WriteURI(j, s.FollowersURL)
 	field.Write("following")
 	j.WriteInt(s.Following)
 	field.Write("following_url")
@@ -30246,7 +37122,7 @@ func (s PrivateUser) WriteJSON(j *json.Stream) {
 	field.Write("gravatar_id")
 	s.GravatarID.WriteJSON(j)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("hireable")
 	s.Hireable.WriteJSON(j)
 	field.Write("id")
@@ -30264,10 +37140,13 @@ func (s PrivateUser) WriteJSON(j *json.Stream) {
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
 	field.Write("organizations_url")
-	j.WriteString(s.OrganizationsURL)
+	json.WriteURI(j, s.OrganizationsURL)
 	field.Write("owned_private_repos")
 	j.WriteInt(s.OwnedPrivateRepos)
-	// Unsupported kind "pointer" for field "Plan".
+	if s.Plan.Set {
+		field.Write("plan")
+		s.Plan.WriteJSON(j)
+	}
 	field.Write("private_gists")
 	j.WriteInt(s.PrivateGists)
 	field.Write("public_gists")
@@ -30275,15 +37154,15 @@ func (s PrivateUser) WriteJSON(j *json.Stream) {
 	field.Write("public_repos")
 	j.WriteInt(s.PublicRepos)
 	field.Write("received_events_url")
-	j.WriteString(s.ReceivedEventsURL)
+	json.WriteURI(j, s.ReceivedEventsURL)
 	field.Write("repos_url")
-	j.WriteString(s.ReposURL)
+	json.WriteURI(j, s.ReposURL)
 	field.Write("site_admin")
 	j.WriteBool(s.SiteAdmin)
 	field.Write("starred_url")
 	j.WriteString(s.StarredURL)
 	field.Write("subscriptions_url")
-	j.WriteString(s.SubscriptionsURL)
+	json.WriteURI(j, s.SubscriptionsURL)
 	if s.SuspendedAt.Set {
 		field.Write("suspended_at")
 		s.SuspendedAt.WriteJSON(j, json.WriteDateTime)
@@ -30299,7 +37178,7 @@ func (s PrivateUser) WriteJSON(j *json.Stream) {
 	field.Write("type")
 	j.WriteString(s.Type)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	j.WriteObjectEnd()
@@ -30332,8 +37211,13 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "avatar_url":
-			s.AvatarURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field AvatarURL", err.Error())
+				return false
+			}
+			s.AvatarURL = v
+			return true
 		case "bio":
 			if err := s.Bio.ReadJSON(i); err != nil {
 				i.ReportError("Field Bio", err.Error())
@@ -30386,8 +37270,13 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 			s.Followers = i.ReadInt()
 			return i.Error == nil
 		case "followers_url":
-			s.FollowersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field FollowersURL", err.Error())
+				return false
+			}
+			s.FollowersURL = v
+			return true
 		case "following":
 			s.Following = i.ReadInt()
 			return i.Error == nil
@@ -30404,8 +37293,13 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "hireable":
 			if err := s.Hireable.ReadJSON(i); err != nil {
 				i.ReportError("Field Hireable", err.Error())
@@ -30441,14 +37335,22 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 			s.NodeID = i.ReadString()
 			return i.Error == nil
 		case "organizations_url":
-			s.OrganizationsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field OrganizationsURL", err.Error())
+				return false
+			}
+			s.OrganizationsURL = v
+			return true
 		case "owned_private_repos":
 			s.OwnedPrivateRepos = i.ReadInt()
 			return i.Error == nil
 		case "plan":
-			// Unsupported kind "pointer" for field "Plan".
-			i.Skip()
+			s.Plan.Reset()
+			if err := s.Plan.ReadJSON(i); err != nil {
+				i.ReportError("Field Plan", err.Error())
+				return false
+			}
 			return true
 		case "private_gists":
 			s.PrivateGists = i.ReadInt()
@@ -30460,11 +37362,21 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 			s.PublicRepos = i.ReadInt()
 			return i.Error == nil
 		case "received_events_url":
-			s.ReceivedEventsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ReceivedEventsURL", err.Error())
+				return false
+			}
+			s.ReceivedEventsURL = v
+			return true
 		case "repos_url":
-			s.ReposURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ReposURL", err.Error())
+				return false
+			}
+			s.ReposURL = v
+			return true
 		case "site_admin":
 			s.SiteAdmin = i.ReadBool()
 			return i.Error == nil
@@ -30472,8 +37384,13 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 			s.StarredURL = i.ReadString()
 			return i.Error == nil
 		case "subscriptions_url":
-			s.SubscriptionsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscriptionsURL", err.Error())
+				return false
+			}
+			s.SubscriptionsURL = v
+			return true
 		case "suspended_at":
 			s.SuspendedAt.Reset()
 			if err := s.SuspendedAt.ReadJSON(i, json.ReadDateTime); err != nil {
@@ -30498,8 +37415,13 @@ func (s *PrivateUser) ReadJSON(i *json.Iterator) error {
 			s.Type = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -30586,13 +37508,13 @@ func (s Project) WriteJSON(j *json.Stream) {
 	field.Write("body")
 	s.Body.WriteJSON(j)
 	field.Write("columns_url")
-	j.WriteString(s.ColumnsURL)
+	json.WriteURI(j, s.ColumnsURL)
 	field.Write("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
 	field.Write("creator")
 	s.Creator.WriteJSON(j)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	field.Write("name")
@@ -30601,9 +37523,12 @@ func (s Project) WriteJSON(j *json.Stream) {
 	j.WriteString(s.NodeID)
 	field.Write("number")
 	j.WriteInt(s.Number)
-	// Unsupported kind "pointer" for field "OrganizationPermission".
+	if s.OrganizationPermission.Set {
+		field.Write("organization_permission")
+		s.OrganizationPermission.WriteJSON(j)
+	}
 	field.Write("owner_url")
-	j.WriteString(s.OwnerURL)
+	json.WriteURI(j, s.OwnerURL)
 	if s.Private.Set {
 		field.Write("private")
 		s.Private.WriteJSON(j)
@@ -30611,7 +37536,7 @@ func (s Project) WriteJSON(j *json.Stream) {
 	field.Write("state")
 	j.WriteString(s.State)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	j.WriteObjectEnd()
@@ -30650,8 +37575,13 @@ func (s *Project) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "columns_url":
-			s.ColumnsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ColumnsURL", err.Error())
+				return false
+			}
+			s.ColumnsURL = v
+			return true
 		case "created_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -30667,8 +37597,13 @@ func (s *Project) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -30682,12 +37617,20 @@ func (s *Project) ReadJSON(i *json.Iterator) error {
 			s.Number = i.ReadInt()
 			return i.Error == nil
 		case "organization_permission":
-			// Unsupported kind "pointer" for field "OrganizationPermission".
-			i.Skip()
+			s.OrganizationPermission.Reset()
+			if err := s.OrganizationPermission.ReadJSON(i); err != nil {
+				i.ReportError("Field OrganizationPermission", err.Error())
+				return false
+			}
 			return true
 		case "owner_url":
-			s.OwnerURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field OwnerURL", err.Error())
+				return false
+			}
+			s.OwnerURL = v
+			return true
 		case "private":
 			s.Private.Reset()
 			if err := s.Private.ReadJSON(i); err != nil {
@@ -30699,8 +37642,13 @@ func (s *Project) ReadJSON(i *json.Iterator) error {
 			s.State = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -30731,7 +37679,7 @@ func (s ProjectCard) WriteJSON(j *json.Stream) {
 		s.ColumnName.WriteJSON(j)
 	}
 	field.Write("column_url")
-	j.WriteString(s.ColumnURL)
+	json.WriteURI(j, s.ColumnURL)
 	if s.ContentURL.Set {
 		field.Write("content_url")
 		s.ContentURL.WriteJSON(j)
@@ -30751,9 +37699,9 @@ func (s ProjectCard) WriteJSON(j *json.Stream) {
 		s.ProjectID.WriteJSON(j)
 	}
 	field.Write("project_url")
-	j.WriteString(s.ProjectURL)
+	json.WriteURI(j, s.ProjectURL)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	j.WriteObjectEnd()
@@ -30800,8 +37748,13 @@ func (s *ProjectCard) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "column_url":
-			s.ColumnURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ColumnURL", err.Error())
+				return false
+			}
+			s.ColumnURL = v
+			return true
 		case "content_url":
 			s.ContentURL.Reset()
 			if err := s.ContentURL.ReadJSON(i); err != nil {
@@ -30843,11 +37796,21 @@ func (s *ProjectCard) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "project_url":
-			s.ProjectURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ProjectURL", err.Error())
+				return false
+			}
+			s.ProjectURL = v
+			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -30870,7 +37833,7 @@ func (s ProjectColumn) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	field.Write("cards_url")
-	j.WriteString(s.CardsURL)
+	json.WriteURI(j, s.CardsURL)
 	field.Write("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
 	field.Write("id")
@@ -30880,9 +37843,9 @@ func (s ProjectColumn) WriteJSON(j *json.Stream) {
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
 	field.Write("project_url")
-	j.WriteString(s.ProjectURL)
+	json.WriteURI(j, s.ProjectURL)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	j.WriteObjectEnd()
@@ -30915,8 +37878,13 @@ func (s *ProjectColumn) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "cards_url":
-			s.CardsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field CardsURL", err.Error())
+				return false
+			}
+			s.CardsURL = v
+			return true
 		case "created_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -30935,11 +37903,21 @@ func (s *ProjectColumn) ReadJSON(i *json.Iterator) error {
 			s.NodeID = i.ReadString()
 			return i.Error == nil
 		case "project_url":
-			s.ProjectURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ProjectURL", err.Error())
+				return false
+			}
+			s.ProjectURL = v
+			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -30961,7 +37939,10 @@ func (s ProjectsAddCollaboratorApplicationJSONRequest) WriteJSON(j *json.Stream)
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Permission".
+	if s.Permission.Set {
+		field.Write("permission")
+		s.Permission.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -30992,8 +37973,11 @@ func (s *ProjectsAddCollaboratorApplicationJSONRequest) ReadJSON(i *json.Iterato
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "permission":
-			// Unsupported kind "pointer" for field "Permission".
-			i.Skip()
+			s.Permission.Reset()
+			if err := s.Permission.ReadJSON(i); err != nil {
+				i.ReportError("Field Permission", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -31635,7 +38619,10 @@ func (s ProjectsUpdateApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		field.Write("name")
 		s.Name.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "OrganizationPermission".
+	if s.OrganizationPermission.Set {
+		field.Write("organization_permission")
+		s.OrganizationPermission.WriteJSON(j)
+	}
 	if s.Private.Set {
 		field.Write("private")
 		s.Private.WriteJSON(j)
@@ -31688,8 +38675,11 @@ func (s *ProjectsUpdateApplicationJSONRequest) ReadJSON(i *json.Iterator) error 
 			}
 			return true
 		case "organization_permission":
-			// Unsupported kind "pointer" for field "OrganizationPermission".
-			i.Skip()
+			s.OrganizationPermission.Reset()
+			if err := s.OrganizationPermission.ReadJSON(i); err != nil {
+				i.ReportError("Field OrganizationPermission", err.Error())
+				return false
+			}
 			return true
 		case "private":
 			s.Private.Reset()
@@ -31898,17 +38888,44 @@ func (s ProtectedBranch) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "AllowDeletions".
-	// Unsupported kind "pointer" for field "AllowForcePushes".
-	// Unsupported kind "pointer" for field "EnforceAdmins".
-	// Unsupported kind "pointer" for field "RequiredConversationResolution".
-	// Unsupported kind "pointer" for field "RequiredLinearHistory".
-	// Unsupported kind "pointer" for field "RequiredPullRequestReviews".
-	// Unsupported kind "pointer" for field "RequiredSignatures".
-	// Unsupported kind "pointer" for field "RequiredStatusChecks".
-	// Unsupported kind "pointer" for field "Restrictions".
+	if s.AllowDeletions.Set {
+		field.Write("allow_deletions")
+		s.AllowDeletions.WriteJSON(j)
+	}
+	if s.AllowForcePushes.Set {
+		field.Write("allow_force_pushes")
+		s.AllowForcePushes.WriteJSON(j)
+	}
+	if s.EnforceAdmins.Set {
+		field.Write("enforce_admins")
+		s.EnforceAdmins.WriteJSON(j)
+	}
+	if s.RequiredConversationResolution.Set {
+		field.Write("required_conversation_resolution")
+		s.RequiredConversationResolution.WriteJSON(j)
+	}
+	if s.RequiredLinearHistory.Set {
+		field.Write("required_linear_history")
+		s.RequiredLinearHistory.WriteJSON(j)
+	}
+	if s.RequiredPullRequestReviews.Set {
+		field.Write("required_pull_request_reviews")
+		s.RequiredPullRequestReviews.WriteJSON(j)
+	}
+	if s.RequiredSignatures.Set {
+		field.Write("required_signatures")
+		s.RequiredSignatures.WriteJSON(j)
+	}
+	if s.RequiredStatusChecks.Set {
+		field.Write("required_status_checks")
+		s.RequiredStatusChecks.WriteJSON(j)
+	}
+	if s.Restrictions.Set {
+		field.Write("restrictions")
+		s.Restrictions.WriteJSON(j)
+	}
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -31939,44 +38956,76 @@ func (s *ProtectedBranch) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_deletions":
-			// Unsupported kind "pointer" for field "AllowDeletions".
-			i.Skip()
+			s.AllowDeletions.Reset()
+			if err := s.AllowDeletions.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowDeletions", err.Error())
+				return false
+			}
 			return true
 		case "allow_force_pushes":
-			// Unsupported kind "pointer" for field "AllowForcePushes".
-			i.Skip()
+			s.AllowForcePushes.Reset()
+			if err := s.AllowForcePushes.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowForcePushes", err.Error())
+				return false
+			}
 			return true
 		case "enforce_admins":
-			// Unsupported kind "pointer" for field "EnforceAdmins".
-			i.Skip()
+			s.EnforceAdmins.Reset()
+			if err := s.EnforceAdmins.ReadJSON(i); err != nil {
+				i.ReportError("Field EnforceAdmins", err.Error())
+				return false
+			}
 			return true
 		case "required_conversation_resolution":
-			// Unsupported kind "pointer" for field "RequiredConversationResolution".
-			i.Skip()
+			s.RequiredConversationResolution.Reset()
+			if err := s.RequiredConversationResolution.ReadJSON(i); err != nil {
+				i.ReportError("Field RequiredConversationResolution", err.Error())
+				return false
+			}
 			return true
 		case "required_linear_history":
-			// Unsupported kind "pointer" for field "RequiredLinearHistory".
-			i.Skip()
+			s.RequiredLinearHistory.Reset()
+			if err := s.RequiredLinearHistory.ReadJSON(i); err != nil {
+				i.ReportError("Field RequiredLinearHistory", err.Error())
+				return false
+			}
 			return true
 		case "required_pull_request_reviews":
-			// Unsupported kind "pointer" for field "RequiredPullRequestReviews".
-			i.Skip()
+			s.RequiredPullRequestReviews.Reset()
+			if err := s.RequiredPullRequestReviews.ReadJSON(i); err != nil {
+				i.ReportError("Field RequiredPullRequestReviews", err.Error())
+				return false
+			}
 			return true
 		case "required_signatures":
-			// Unsupported kind "pointer" for field "RequiredSignatures".
-			i.Skip()
+			s.RequiredSignatures.Reset()
+			if err := s.RequiredSignatures.ReadJSON(i); err != nil {
+				i.ReportError("Field RequiredSignatures", err.Error())
+				return false
+			}
 			return true
 		case "required_status_checks":
-			// Unsupported kind "pointer" for field "RequiredStatusChecks".
-			i.Skip()
+			s.RequiredStatusChecks.Reset()
+			if err := s.RequiredStatusChecks.ReadJSON(i); err != nil {
+				i.ReportError("Field RequiredStatusChecks", err.Error())
+				return false
+			}
 			return true
 		case "restrictions":
-			// Unsupported kind "pointer" for field "Restrictions".
-			i.Skip()
+			s.Restrictions.Reset()
+			if err := s.Restrictions.ReadJSON(i); err != nil {
+				i.ReportError("Field Restrictions", err.Error())
+				return false
+			}
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -31993,7 +39042,7 @@ func (s ProtectedBranchAdminEnforced) WriteJSON(j *json.Stream) {
 	field.Write("enabled")
 	j.WriteBool(s.Enabled)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -32027,8 +39076,13 @@ func (s *ProtectedBranchAdminEnforced) ReadJSON(i *json.Iterator) error {
 			s.Enabled = i.ReadBool()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -32139,7 +39193,7 @@ func (s ProtectedBranchEnforceAdmins) WriteJSON(j *json.Stream) {
 	field.Write("enabled")
 	j.WriteBool(s.Enabled)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -32173,8 +39227,13 @@ func (s *ProtectedBranchEnforceAdmins) ReadJSON(i *json.Iterator) error {
 			s.Enabled = i.ReadBool()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -32190,7 +39249,10 @@ func (s ProtectedBranchPullRequestReview) WriteJSON(j *json.Stream) {
 	defer field.Reset()
 	field.Write("dismiss_stale_reviews")
 	j.WriteBool(s.DismissStaleReviews)
-	// Unsupported kind "pointer" for field "DismissalRestrictions".
+	if s.DismissalRestrictions.Set {
+		field.Write("dismissal_restrictions")
+		s.DismissalRestrictions.WriteJSON(j)
+	}
 	field.Write("require_code_owner_reviews")
 	j.WriteBool(s.RequireCodeOwnerReviews)
 	if s.RequiredApprovingReviewCount.Set {
@@ -32234,8 +39296,11 @@ func (s *ProtectedBranchPullRequestReview) ReadJSON(i *json.Iterator) error {
 			s.DismissStaleReviews = i.ReadBool()
 			return i.Error == nil
 		case "dismissal_restrictions":
-			// Unsupported kind "pointer" for field "DismissalRestrictions".
-			i.Skip()
+			s.DismissalRestrictions.Reset()
+			if err := s.DismissalRestrictions.ReadJSON(i); err != nil {
+				i.ReportError("Field DismissalRestrictions", err.Error())
+				return false
+			}
 			return true
 		case "require_code_owner_reviews":
 			s.RequireCodeOwnerReviews = i.ReadBool()
@@ -32456,7 +39521,10 @@ func (s ProtectedBranchRequiredPullRequestReviews) WriteJSON(j *json.Stream) {
 		field.Write("dismiss_stale_reviews")
 		s.DismissStaleReviews.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "DismissalRestrictions".
+	if s.DismissalRestrictions.Set {
+		field.Write("dismissal_restrictions")
+		s.DismissalRestrictions.WriteJSON(j)
+	}
 	if s.RequireCodeOwnerReviews.Set {
 		field.Write("require_code_owner_reviews")
 		s.RequireCodeOwnerReviews.WriteJSON(j)
@@ -32466,7 +39534,7 @@ func (s ProtectedBranchRequiredPullRequestReviews) WriteJSON(j *json.Stream) {
 		s.RequiredApprovingReviewCount.WriteJSON(j)
 	}
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -32504,8 +39572,11 @@ func (s *ProtectedBranchRequiredPullRequestReviews) ReadJSON(i *json.Iterator) e
 			}
 			return true
 		case "dismissal_restrictions":
-			// Unsupported kind "pointer" for field "DismissalRestrictions".
-			i.Skip()
+			s.DismissalRestrictions.Reset()
+			if err := s.DismissalRestrictions.ReadJSON(i); err != nil {
+				i.ReportError("Field DismissalRestrictions", err.Error())
+				return false
+			}
 			return true
 		case "require_code_owner_reviews":
 			s.RequireCodeOwnerReviews.Reset()
@@ -32522,8 +39593,13 @@ func (s *ProtectedBranchRequiredPullRequestReviews) ReadJSON(i *json.Iterator) e
 			}
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -32539,12 +39615,12 @@ func (s ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) WriteJSO
 	defer field.Reset()
 	// Unsupported kind "array" for field "Teams".
 	field.Write("teams_url")
-	j.WriteString(s.TeamsURL)
+	json.WriteURI(j, s.TeamsURL)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	// Unsupported kind "array" for field "Users".
 	field.Write("users_url")
-	j.WriteString(s.UsersURL)
+	json.WriteURI(j, s.UsersURL)
 	j.WriteObjectEnd()
 }
 
@@ -32579,18 +39655,33 @@ func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) ReadJSO
 			i.Skip()
 			return true
 		case "teams_url":
-			s.TeamsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field TeamsURL", err.Error())
+				return false
+			}
+			s.TeamsURL = v
+			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "users":
 			// Unsupported kind "array" for field "Users".
 			i.Skip()
 			return true
 		case "users_url":
-			s.UsersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field UsersURL", err.Error())
+				return false
+			}
+			s.UsersURL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -32607,7 +39698,7 @@ func (s ProtectedBranchRequiredSignatures) WriteJSON(j *json.Stream) {
 	field.Write("enabled")
 	j.WriteBool(s.Enabled)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -32641,8 +39732,13 @@ func (s *ProtectedBranchRequiredSignatures) ReadJSON(i *json.Iterator) error {
 			s.Enabled = i.ReadBool()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -32657,7 +39753,7 @@ func (s PublicUser) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	field.Write("avatar_url")
-	j.WriteString(s.AvatarURL)
+	json.WriteURI(j, s.AvatarURL)
 	field.Write("bio")
 	s.Bio.WriteJSON(j)
 	field.Write("blog")
@@ -32681,7 +39777,7 @@ func (s PublicUser) WriteJSON(j *json.Stream) {
 	field.Write("followers")
 	j.WriteInt(s.Followers)
 	field.Write("followers_url")
-	j.WriteString(s.FollowersURL)
+	json.WriteURI(j, s.FollowersURL)
 	field.Write("following")
 	j.WriteInt(s.Following)
 	field.Write("following_url")
@@ -32691,7 +39787,7 @@ func (s PublicUser) WriteJSON(j *json.Stream) {
 	field.Write("gravatar_id")
 	s.GravatarID.WriteJSON(j)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("hireable")
 	s.Hireable.WriteJSON(j)
 	field.Write("id")
@@ -32705,12 +39801,15 @@ func (s PublicUser) WriteJSON(j *json.Stream) {
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
 	field.Write("organizations_url")
-	j.WriteString(s.OrganizationsURL)
+	json.WriteURI(j, s.OrganizationsURL)
 	if s.OwnedPrivateRepos.Set {
 		field.Write("owned_private_repos")
 		s.OwnedPrivateRepos.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Plan".
+	if s.Plan.Set {
+		field.Write("plan")
+		s.Plan.WriteJSON(j)
+	}
 	if s.PrivateGists.Set {
 		field.Write("private_gists")
 		s.PrivateGists.WriteJSON(j)
@@ -32720,15 +39819,15 @@ func (s PublicUser) WriteJSON(j *json.Stream) {
 	field.Write("public_repos")
 	j.WriteInt(s.PublicRepos)
 	field.Write("received_events_url")
-	j.WriteString(s.ReceivedEventsURL)
+	json.WriteURI(j, s.ReceivedEventsURL)
 	field.Write("repos_url")
-	j.WriteString(s.ReposURL)
+	json.WriteURI(j, s.ReposURL)
 	field.Write("site_admin")
 	j.WriteBool(s.SiteAdmin)
 	field.Write("starred_url")
 	j.WriteString(s.StarredURL)
 	field.Write("subscriptions_url")
-	j.WriteString(s.SubscriptionsURL)
+	json.WriteURI(j, s.SubscriptionsURL)
 	if s.SuspendedAt.Set {
 		field.Write("suspended_at")
 		s.SuspendedAt.WriteJSON(j, json.WriteDateTime)
@@ -32744,7 +39843,7 @@ func (s PublicUser) WriteJSON(j *json.Stream) {
 	field.Write("type")
 	j.WriteString(s.Type)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	j.WriteObjectEnd()
@@ -32777,8 +39876,13 @@ func (s *PublicUser) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "avatar_url":
-			s.AvatarURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field AvatarURL", err.Error())
+				return false
+			}
+			s.AvatarURL = v
+			return true
 		case "bio":
 			if err := s.Bio.ReadJSON(i); err != nil {
 				i.ReportError("Field Bio", err.Error())
@@ -32832,8 +39936,13 @@ func (s *PublicUser) ReadJSON(i *json.Iterator) error {
 			s.Followers = i.ReadInt()
 			return i.Error == nil
 		case "followers_url":
-			s.FollowersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field FollowersURL", err.Error())
+				return false
+			}
+			s.FollowersURL = v
+			return true
 		case "following":
 			s.Following = i.ReadInt()
 			return i.Error == nil
@@ -32850,8 +39959,13 @@ func (s *PublicUser) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "hireable":
 			if err := s.Hireable.ReadJSON(i); err != nil {
 				i.ReportError("Field Hireable", err.Error())
@@ -32880,8 +39994,13 @@ func (s *PublicUser) ReadJSON(i *json.Iterator) error {
 			s.NodeID = i.ReadString()
 			return i.Error == nil
 		case "organizations_url":
-			s.OrganizationsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field OrganizationsURL", err.Error())
+				return false
+			}
+			s.OrganizationsURL = v
+			return true
 		case "owned_private_repos":
 			s.OwnedPrivateRepos.Reset()
 			if err := s.OwnedPrivateRepos.ReadJSON(i); err != nil {
@@ -32890,8 +40009,11 @@ func (s *PublicUser) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "plan":
-			// Unsupported kind "pointer" for field "Plan".
-			i.Skip()
+			s.Plan.Reset()
+			if err := s.Plan.ReadJSON(i); err != nil {
+				i.ReportError("Field Plan", err.Error())
+				return false
+			}
 			return true
 		case "private_gists":
 			s.PrivateGists.Reset()
@@ -32907,11 +40029,21 @@ func (s *PublicUser) ReadJSON(i *json.Iterator) error {
 			s.PublicRepos = i.ReadInt()
 			return i.Error == nil
 		case "received_events_url":
-			s.ReceivedEventsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ReceivedEventsURL", err.Error())
+				return false
+			}
+			s.ReceivedEventsURL = v
+			return true
 		case "repos_url":
-			s.ReposURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ReposURL", err.Error())
+				return false
+			}
+			s.ReposURL = v
+			return true
 		case "site_admin":
 			s.SiteAdmin = i.ReadBool()
 			return i.Error == nil
@@ -32919,8 +40051,13 @@ func (s *PublicUser) ReadJSON(i *json.Iterator) error {
 			s.StarredURL = i.ReadString()
 			return i.Error == nil
 		case "subscriptions_url":
-			s.SubscriptionsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscriptionsURL", err.Error())
+				return false
+			}
+			s.SubscriptionsURL = v
+			return true
 		case "suspended_at":
 			s.SuspendedAt.Reset()
 			if err := s.SuspendedAt.ReadJSON(i, json.ReadDateTime); err != nil {
@@ -32946,8 +40083,13 @@ func (s *PublicUser) ReadJSON(i *json.Iterator) error {
 			s.Type = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -33055,29 +40197,29 @@ func (s PullRequest) WriteJSON(j *json.Stream) {
 	field.Write("comments")
 	j.WriteInt(s.Comments)
 	field.Write("comments_url")
-	j.WriteString(s.CommentsURL)
+	json.WriteURI(j, s.CommentsURL)
 	field.Write("commits")
 	j.WriteInt(s.Commits)
 	field.Write("commits_url")
-	j.WriteString(s.CommitsURL)
+	json.WriteURI(j, s.CommitsURL)
 	field.Write("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
 	field.Write("deletions")
 	j.WriteInt(s.Deletions)
 	field.Write("diff_url")
-	j.WriteString(s.DiffURL)
+	json.WriteURI(j, s.DiffURL)
 	if s.Draft.Set {
 		field.Write("draft")
 		s.Draft.WriteJSON(j)
 	}
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("head")
 	s.Head.WriteJSON(j)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	field.Write("issue_url")
-	j.WriteString(s.IssueURL)
+	json.WriteURI(j, s.IssueURL)
 	// Unsupported kind "array" for field "Labels".
 	field.Write("_links")
 	s.Links.WriteJSON(j)
@@ -33104,7 +40246,7 @@ func (s PullRequest) WriteJSON(j *json.Stream) {
 	field.Write("number")
 	j.WriteInt(s.Number)
 	field.Write("patch_url")
-	j.WriteString(s.PatchURL)
+	json.WriteURI(j, s.PatchURL)
 	if s.Rebaseable.Set {
 		field.Write("rebaseable")
 		s.Rebaseable.WriteJSON(j)
@@ -33116,15 +40258,15 @@ func (s PullRequest) WriteJSON(j *json.Stream) {
 	field.Write("review_comments")
 	j.WriteInt(s.ReviewComments)
 	field.Write("review_comments_url")
-	j.WriteString(s.ReviewCommentsURL)
+	json.WriteURI(j, s.ReviewCommentsURL)
 	field.Write("state")
 	j.WriteString(s.State)
 	field.Write("statuses_url")
-	j.WriteString(s.StatusesURL)
+	json.WriteURI(j, s.StatusesURL)
 	field.Write("title")
 	j.WriteString(s.Title)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	field.Write("user")
@@ -33212,14 +40354,24 @@ func (s *PullRequest) ReadJSON(i *json.Iterator) error {
 			s.Comments = i.ReadInt()
 			return i.Error == nil
 		case "comments_url":
-			s.CommentsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field CommentsURL", err.Error())
+				return false
+			}
+			s.CommentsURL = v
+			return true
 		case "commits":
 			s.Commits = i.ReadInt()
 			return i.Error == nil
 		case "commits_url":
-			s.CommitsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field CommitsURL", err.Error())
+				return false
+			}
+			s.CommitsURL = v
+			return true
 		case "created_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -33232,8 +40384,13 @@ func (s *PullRequest) ReadJSON(i *json.Iterator) error {
 			s.Deletions = i.ReadInt()
 			return i.Error == nil
 		case "diff_url":
-			s.DiffURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field DiffURL", err.Error())
+				return false
+			}
+			s.DiffURL = v
+			return true
 		case "draft":
 			s.Draft.Reset()
 			if err := s.Draft.ReadJSON(i); err != nil {
@@ -33242,8 +40399,13 @@ func (s *PullRequest) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "head":
 			if err := s.Head.ReadJSON(i); err != nil {
 				i.ReportError("Field Head", err.Error())
@@ -33254,8 +40416,13 @@ func (s *PullRequest) ReadJSON(i *json.Iterator) error {
 			s.ID = i.ReadInt()
 			return i.Error == nil
 		case "issue_url":
-			s.IssueURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field IssueURL", err.Error())
+				return false
+			}
+			s.IssueURL = v
+			return true
 		case "labels":
 			// Unsupported kind "array" for field "Labels".
 			i.Skip()
@@ -33315,8 +40482,13 @@ func (s *PullRequest) ReadJSON(i *json.Iterator) error {
 			s.Number = i.ReadInt()
 			return i.Error == nil
 		case "patch_url":
-			s.PatchURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field PatchURL", err.Error())
+				return false
+			}
+			s.PatchURL = v
+			return true
 		case "rebaseable":
 			s.Rebaseable.Reset()
 			if err := s.Rebaseable.ReadJSON(i); err != nil {
@@ -33339,20 +40511,35 @@ func (s *PullRequest) ReadJSON(i *json.Iterator) error {
 			s.ReviewComments = i.ReadInt()
 			return i.Error == nil
 		case "review_comments_url":
-			s.ReviewCommentsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ReviewCommentsURL", err.Error())
+				return false
+			}
+			s.ReviewCommentsURL = v
+			return true
 		case "state":
 			s.State = i.ReadString()
 			return i.Error == nil
 		case "statuses_url":
-			s.StatusesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field StatusesURL", err.Error())
+				return false
+			}
+			s.StatusesURL = v
+			return true
 		case "title":
 			s.Title = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -33492,21 +40679,21 @@ func (s PullRequestBaseRepo) WriteJSON(j *json.Stream) {
 	field.Write("contents_url")
 	j.WriteString(s.ContentsURL)
 	field.Write("contributors_url")
-	j.WriteString(s.ContributorsURL)
+	json.WriteURI(j, s.ContributorsURL)
 	field.Write("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
 	field.Write("default_branch")
 	j.WriteString(s.DefaultBranch)
 	field.Write("deployments_url")
-	j.WriteString(s.DeploymentsURL)
+	json.WriteURI(j, s.DeploymentsURL)
 	field.Write("description")
 	s.Description.WriteJSON(j)
 	field.Write("disabled")
 	j.WriteBool(s.Disabled)
 	field.Write("downloads_url")
-	j.WriteString(s.DownloadsURL)
+	json.WriteURI(j, s.DownloadsURL)
 	field.Write("events_url")
-	j.WriteString(s.EventsURL)
+	json.WriteURI(j, s.EventsURL)
 	field.Write("fork")
 	j.WriteBool(s.Fork)
 	field.Write("forks")
@@ -33514,7 +40701,7 @@ func (s PullRequestBaseRepo) WriteJSON(j *json.Stream) {
 	field.Write("forks_count")
 	j.WriteInt(s.ForksCount)
 	field.Write("forks_url")
-	j.WriteString(s.ForksURL)
+	json.WriteURI(j, s.ForksURL)
 	field.Write("full_name")
 	j.WriteString(s.FullName)
 	field.Write("git_commits_url")
@@ -33526,7 +40713,7 @@ func (s PullRequestBaseRepo) WriteJSON(j *json.Stream) {
 	field.Write("git_url")
 	j.WriteString(s.GitURL)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("has_downloads")
 	j.WriteBool(s.HasDownloads)
 	field.Write("has_issues")
@@ -33540,7 +40727,7 @@ func (s PullRequestBaseRepo) WriteJSON(j *json.Stream) {
 	field.Write("homepage")
 	s.Homepage.WriteJSON(j)
 	field.Write("hooks_url")
-	j.WriteString(s.HooksURL)
+	json.WriteURI(j, s.HooksURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	field.Write("issue_comment_url")
@@ -33556,7 +40743,7 @@ func (s PullRequestBaseRepo) WriteJSON(j *json.Stream) {
 	field.Write("language")
 	s.Language.WriteJSON(j)
 	field.Write("languages_url")
-	j.WriteString(s.LanguagesURL)
+	json.WriteURI(j, s.LanguagesURL)
 	field.Write("license")
 	s.License.WriteJSON(j)
 	if s.MasterBranch.Set {
@@ -33564,7 +40751,7 @@ func (s PullRequestBaseRepo) WriteJSON(j *json.Stream) {
 		s.MasterBranch.WriteJSON(j)
 	}
 	field.Write("merges_url")
-	j.WriteString(s.MergesURL)
+	json.WriteURI(j, s.MergesURL)
 	field.Write("milestones_url")
 	j.WriteString(s.MilestonesURL)
 	field.Write("mirror_url")
@@ -33581,7 +40768,10 @@ func (s PullRequestBaseRepo) WriteJSON(j *json.Stream) {
 	j.WriteInt(s.OpenIssuesCount)
 	field.Write("owner")
 	s.Owner.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Permissions".
+	if s.Permissions.Set {
+		field.Write("permissions")
+		s.Permissions.WriteJSON(j)
+	}
 	field.Write("private")
 	j.WriteBool(s.Private)
 	field.Write("pulls_url")
@@ -33597,19 +40787,19 @@ func (s PullRequestBaseRepo) WriteJSON(j *json.Stream) {
 	field.Write("stargazers_count")
 	j.WriteInt(s.StargazersCount)
 	field.Write("stargazers_url")
-	j.WriteString(s.StargazersURL)
+	json.WriteURI(j, s.StargazersURL)
 	field.Write("statuses_url")
 	j.WriteString(s.StatusesURL)
 	field.Write("subscribers_url")
-	j.WriteString(s.SubscribersURL)
+	json.WriteURI(j, s.SubscribersURL)
 	field.Write("subscription_url")
-	j.WriteString(s.SubscriptionURL)
+	json.WriteURI(j, s.SubscriptionURL)
 	field.Write("svn_url")
-	j.WriteString(s.SvnURL)
+	json.WriteURI(j, s.SvnURL)
 	field.Write("tags_url")
-	j.WriteString(s.TagsURL)
+	json.WriteURI(j, s.TagsURL)
 	field.Write("teams_url")
-	j.WriteString(s.TeamsURL)
+	json.WriteURI(j, s.TeamsURL)
 	if s.TempCloneToken.Set {
 		field.Write("temp_clone_token")
 		s.TempCloneToken.WriteJSON(j)
@@ -33618,7 +40808,7 @@ func (s PullRequestBaseRepo) WriteJSON(j *json.Stream) {
 	field.Write("trees_url")
 	j.WriteString(s.TreesURL)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	field.Write("watchers")
@@ -33716,8 +40906,13 @@ func (s *PullRequestBaseRepo) ReadJSON(i *json.Iterator) error {
 			s.ContentsURL = i.ReadString()
 			return i.Error == nil
 		case "contributors_url":
-			s.ContributorsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ContributorsURL", err.Error())
+				return false
+			}
+			s.ContributorsURL = v
+			return true
 		case "created_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -33730,8 +40925,13 @@ func (s *PullRequestBaseRepo) ReadJSON(i *json.Iterator) error {
 			s.DefaultBranch = i.ReadString()
 			return i.Error == nil
 		case "deployments_url":
-			s.DeploymentsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field DeploymentsURL", err.Error())
+				return false
+			}
+			s.DeploymentsURL = v
+			return true
 		case "description":
 			if err := s.Description.ReadJSON(i); err != nil {
 				i.ReportError("Field Description", err.Error())
@@ -33742,11 +40942,21 @@ func (s *PullRequestBaseRepo) ReadJSON(i *json.Iterator) error {
 			s.Disabled = i.ReadBool()
 			return i.Error == nil
 		case "downloads_url":
-			s.DownloadsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field DownloadsURL", err.Error())
+				return false
+			}
+			s.DownloadsURL = v
+			return true
 		case "events_url":
-			s.EventsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field EventsURL", err.Error())
+				return false
+			}
+			s.EventsURL = v
+			return true
 		case "fork":
 			s.Fork = i.ReadBool()
 			return i.Error == nil
@@ -33757,8 +40967,13 @@ func (s *PullRequestBaseRepo) ReadJSON(i *json.Iterator) error {
 			s.ForksCount = i.ReadInt()
 			return i.Error == nil
 		case "forks_url":
-			s.ForksURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ForksURL", err.Error())
+				return false
+			}
+			s.ForksURL = v
+			return true
 		case "full_name":
 			s.FullName = i.ReadString()
 			return i.Error == nil
@@ -33775,8 +40990,13 @@ func (s *PullRequestBaseRepo) ReadJSON(i *json.Iterator) error {
 			s.GitURL = i.ReadString()
 			return i.Error == nil
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "has_downloads":
 			s.HasDownloads = i.ReadBool()
 			return i.Error == nil
@@ -33799,8 +41019,13 @@ func (s *PullRequestBaseRepo) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "hooks_url":
-			s.HooksURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HooksURL", err.Error())
+				return false
+			}
+			s.HooksURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -33826,8 +41051,13 @@ func (s *PullRequestBaseRepo) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "languages_url":
-			s.LanguagesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field LanguagesURL", err.Error())
+				return false
+			}
+			s.LanguagesURL = v
+			return true
 		case "license":
 			if err := s.License.ReadJSON(i); err != nil {
 				i.ReportError("Field License", err.Error())
@@ -33842,8 +41072,13 @@ func (s *PullRequestBaseRepo) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "merges_url":
-			s.MergesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field MergesURL", err.Error())
+				return false
+			}
+			s.MergesURL = v
+			return true
 		case "milestones_url":
 			s.MilestonesURL = i.ReadString()
 			return i.Error == nil
@@ -33875,8 +41110,11 @@ func (s *PullRequestBaseRepo) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "permissions":
-			// Unsupported kind "pointer" for field "Permissions".
-			i.Skip()
+			s.Permissions.Reset()
+			if err := s.Permissions.ReadJSON(i); err != nil {
+				i.ReportError("Field Permissions", err.Error())
+				return false
+			}
 			return true
 		case "private":
 			s.Private = i.ReadBool()
@@ -33905,26 +41143,56 @@ func (s *PullRequestBaseRepo) ReadJSON(i *json.Iterator) error {
 			s.StargazersCount = i.ReadInt()
 			return i.Error == nil
 		case "stargazers_url":
-			s.StargazersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field StargazersURL", err.Error())
+				return false
+			}
+			s.StargazersURL = v
+			return true
 		case "statuses_url":
 			s.StatusesURL = i.ReadString()
 			return i.Error == nil
 		case "subscribers_url":
-			s.SubscribersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscribersURL", err.Error())
+				return false
+			}
+			s.SubscribersURL = v
+			return true
 		case "subscription_url":
-			s.SubscriptionURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscriptionURL", err.Error())
+				return false
+			}
+			s.SubscriptionURL = v
+			return true
 		case "svn_url":
-			s.SvnURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SvnURL", err.Error())
+				return false
+			}
+			s.SvnURL = v
+			return true
 		case "tags_url":
-			s.TagsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field TagsURL", err.Error())
+				return false
+			}
+			s.TagsURL = v
+			return true
 		case "teams_url":
-			s.TeamsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field TeamsURL", err.Error())
+				return false
+			}
+			s.TeamsURL = v
+			return true
 		case "temp_clone_token":
 			s.TempCloneToken.Reset()
 			if err := s.TempCloneToken.ReadJSON(i); err != nil {
@@ -33940,8 +41208,13 @@ func (s *PullRequestBaseRepo) ReadJSON(i *json.Iterator) error {
 			s.TreesURL = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -33970,11 +41243,11 @@ func (s PullRequestBaseRepoOwner) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	field.Write("avatar_url")
-	j.WriteString(s.AvatarURL)
+	json.WriteURI(j, s.AvatarURL)
 	field.Write("events_url")
 	j.WriteString(s.EventsURL)
 	field.Write("followers_url")
-	j.WriteString(s.FollowersURL)
+	json.WriteURI(j, s.FollowersURL)
 	field.Write("following_url")
 	j.WriteString(s.FollowingURL)
 	field.Write("gists_url")
@@ -33982,7 +41255,7 @@ func (s PullRequestBaseRepoOwner) WriteJSON(j *json.Stream) {
 	field.Write("gravatar_id")
 	s.GravatarID.WriteJSON(j)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	field.Write("login")
@@ -33990,21 +41263,21 @@ func (s PullRequestBaseRepoOwner) WriteJSON(j *json.Stream) {
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
 	field.Write("organizations_url")
-	j.WriteString(s.OrganizationsURL)
+	json.WriteURI(j, s.OrganizationsURL)
 	field.Write("received_events_url")
-	j.WriteString(s.ReceivedEventsURL)
+	json.WriteURI(j, s.ReceivedEventsURL)
 	field.Write("repos_url")
-	j.WriteString(s.ReposURL)
+	json.WriteURI(j, s.ReposURL)
 	field.Write("site_admin")
 	j.WriteBool(s.SiteAdmin)
 	field.Write("starred_url")
 	j.WriteString(s.StarredURL)
 	field.Write("subscriptions_url")
-	j.WriteString(s.SubscriptionsURL)
+	json.WriteURI(j, s.SubscriptionsURL)
 	field.Write("type")
 	j.WriteString(s.Type)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -34035,14 +41308,24 @@ func (s *PullRequestBaseRepoOwner) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "avatar_url":
-			s.AvatarURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field AvatarURL", err.Error())
+				return false
+			}
+			s.AvatarURL = v
+			return true
 		case "events_url":
 			s.EventsURL = i.ReadString()
 			return i.Error == nil
 		case "followers_url":
-			s.FollowersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field FollowersURL", err.Error())
+				return false
+			}
+			s.FollowersURL = v
+			return true
 		case "following_url":
 			s.FollowingURL = i.ReadString()
 			return i.Error == nil
@@ -34056,8 +41339,13 @@ func (s *PullRequestBaseRepoOwner) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -34068,14 +41356,29 @@ func (s *PullRequestBaseRepoOwner) ReadJSON(i *json.Iterator) error {
 			s.NodeID = i.ReadString()
 			return i.Error == nil
 		case "organizations_url":
-			s.OrganizationsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field OrganizationsURL", err.Error())
+				return false
+			}
+			s.OrganizationsURL = v
+			return true
 		case "received_events_url":
-			s.ReceivedEventsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ReceivedEventsURL", err.Error())
+				return false
+			}
+			s.ReceivedEventsURL = v
+			return true
 		case "repos_url":
-			s.ReposURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ReposURL", err.Error())
+				return false
+			}
+			s.ReposURL = v
+			return true
 		case "site_admin":
 			s.SiteAdmin = i.ReadBool()
 			return i.Error == nil
@@ -34083,14 +41386,24 @@ func (s *PullRequestBaseRepoOwner) ReadJSON(i *json.Iterator) error {
 			s.StarredURL = i.ReadString()
 			return i.Error == nil
 		case "subscriptions_url":
-			s.SubscriptionsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscriptionsURL", err.Error())
+				return false
+			}
+			s.SubscriptionsURL = v
+			return true
 		case "type":
 			s.Type = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -34184,11 +41497,11 @@ func (s PullRequestBaseUser) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	field.Write("avatar_url")
-	j.WriteString(s.AvatarURL)
+	json.WriteURI(j, s.AvatarURL)
 	field.Write("events_url")
 	j.WriteString(s.EventsURL)
 	field.Write("followers_url")
-	j.WriteString(s.FollowersURL)
+	json.WriteURI(j, s.FollowersURL)
 	field.Write("following_url")
 	j.WriteString(s.FollowingURL)
 	field.Write("gists_url")
@@ -34196,7 +41509,7 @@ func (s PullRequestBaseUser) WriteJSON(j *json.Stream) {
 	field.Write("gravatar_id")
 	s.GravatarID.WriteJSON(j)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	field.Write("login")
@@ -34204,21 +41517,21 @@ func (s PullRequestBaseUser) WriteJSON(j *json.Stream) {
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
 	field.Write("organizations_url")
-	j.WriteString(s.OrganizationsURL)
+	json.WriteURI(j, s.OrganizationsURL)
 	field.Write("received_events_url")
-	j.WriteString(s.ReceivedEventsURL)
+	json.WriteURI(j, s.ReceivedEventsURL)
 	field.Write("repos_url")
-	j.WriteString(s.ReposURL)
+	json.WriteURI(j, s.ReposURL)
 	field.Write("site_admin")
 	j.WriteBool(s.SiteAdmin)
 	field.Write("starred_url")
 	j.WriteString(s.StarredURL)
 	field.Write("subscriptions_url")
-	j.WriteString(s.SubscriptionsURL)
+	json.WriteURI(j, s.SubscriptionsURL)
 	field.Write("type")
 	j.WriteString(s.Type)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -34249,14 +41562,24 @@ func (s *PullRequestBaseUser) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "avatar_url":
-			s.AvatarURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field AvatarURL", err.Error())
+				return false
+			}
+			s.AvatarURL = v
+			return true
 		case "events_url":
 			s.EventsURL = i.ReadString()
 			return i.Error == nil
 		case "followers_url":
-			s.FollowersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field FollowersURL", err.Error())
+				return false
+			}
+			s.FollowersURL = v
+			return true
 		case "following_url":
 			s.FollowingURL = i.ReadString()
 			return i.Error == nil
@@ -34270,8 +41593,13 @@ func (s *PullRequestBaseUser) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -34282,14 +41610,29 @@ func (s *PullRequestBaseUser) ReadJSON(i *json.Iterator) error {
 			s.NodeID = i.ReadString()
 			return i.Error == nil
 		case "organizations_url":
-			s.OrganizationsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field OrganizationsURL", err.Error())
+				return false
+			}
+			s.OrganizationsURL = v
+			return true
 		case "received_events_url":
-			s.ReceivedEventsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ReceivedEventsURL", err.Error())
+				return false
+			}
+			s.ReceivedEventsURL = v
+			return true
 		case "repos_url":
-			s.ReposURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ReposURL", err.Error())
+				return false
+			}
+			s.ReposURL = v
+			return true
 		case "site_admin":
 			s.SiteAdmin = i.ReadBool()
 			return i.Error == nil
@@ -34297,14 +41640,24 @@ func (s *PullRequestBaseUser) ReadJSON(i *json.Iterator) error {
 			s.StarredURL = i.ReadString()
 			return i.Error == nil
 		case "subscriptions_url":
-			s.SubscriptionsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscriptionsURL", err.Error())
+				return false
+			}
+			s.SubscriptionsURL = v
+			return true
 		case "type":
 			s.Type = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -34430,21 +41783,21 @@ func (s PullRequestHeadRepo) WriteJSON(j *json.Stream) {
 	field.Write("contents_url")
 	j.WriteString(s.ContentsURL)
 	field.Write("contributors_url")
-	j.WriteString(s.ContributorsURL)
+	json.WriteURI(j, s.ContributorsURL)
 	field.Write("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
 	field.Write("default_branch")
 	j.WriteString(s.DefaultBranch)
 	field.Write("deployments_url")
-	j.WriteString(s.DeploymentsURL)
+	json.WriteURI(j, s.DeploymentsURL)
 	field.Write("description")
 	s.Description.WriteJSON(j)
 	field.Write("disabled")
 	j.WriteBool(s.Disabled)
 	field.Write("downloads_url")
-	j.WriteString(s.DownloadsURL)
+	json.WriteURI(j, s.DownloadsURL)
 	field.Write("events_url")
-	j.WriteString(s.EventsURL)
+	json.WriteURI(j, s.EventsURL)
 	field.Write("fork")
 	j.WriteBool(s.Fork)
 	field.Write("forks")
@@ -34452,7 +41805,7 @@ func (s PullRequestHeadRepo) WriteJSON(j *json.Stream) {
 	field.Write("forks_count")
 	j.WriteInt(s.ForksCount)
 	field.Write("forks_url")
-	j.WriteString(s.ForksURL)
+	json.WriteURI(j, s.ForksURL)
 	field.Write("full_name")
 	j.WriteString(s.FullName)
 	field.Write("git_commits_url")
@@ -34464,7 +41817,7 @@ func (s PullRequestHeadRepo) WriteJSON(j *json.Stream) {
 	field.Write("git_url")
 	j.WriteString(s.GitURL)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("has_downloads")
 	j.WriteBool(s.HasDownloads)
 	field.Write("has_issues")
@@ -34478,7 +41831,7 @@ func (s PullRequestHeadRepo) WriteJSON(j *json.Stream) {
 	field.Write("homepage")
 	s.Homepage.WriteJSON(j)
 	field.Write("hooks_url")
-	j.WriteString(s.HooksURL)
+	json.WriteURI(j, s.HooksURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	field.Write("issue_comment_url")
@@ -34494,7 +41847,7 @@ func (s PullRequestHeadRepo) WriteJSON(j *json.Stream) {
 	field.Write("language")
 	s.Language.WriteJSON(j)
 	field.Write("languages_url")
-	j.WriteString(s.LanguagesURL)
+	json.WriteURI(j, s.LanguagesURL)
 	field.Write("license")
 	s.License.WriteJSON(j)
 	if s.MasterBranch.Set {
@@ -34502,7 +41855,7 @@ func (s PullRequestHeadRepo) WriteJSON(j *json.Stream) {
 		s.MasterBranch.WriteJSON(j)
 	}
 	field.Write("merges_url")
-	j.WriteString(s.MergesURL)
+	json.WriteURI(j, s.MergesURL)
 	field.Write("milestones_url")
 	j.WriteString(s.MilestonesURL)
 	field.Write("mirror_url")
@@ -34519,7 +41872,10 @@ func (s PullRequestHeadRepo) WriteJSON(j *json.Stream) {
 	j.WriteInt(s.OpenIssuesCount)
 	field.Write("owner")
 	s.Owner.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Permissions".
+	if s.Permissions.Set {
+		field.Write("permissions")
+		s.Permissions.WriteJSON(j)
+	}
 	field.Write("private")
 	j.WriteBool(s.Private)
 	field.Write("pulls_url")
@@ -34535,19 +41891,19 @@ func (s PullRequestHeadRepo) WriteJSON(j *json.Stream) {
 	field.Write("stargazers_count")
 	j.WriteInt(s.StargazersCount)
 	field.Write("stargazers_url")
-	j.WriteString(s.StargazersURL)
+	json.WriteURI(j, s.StargazersURL)
 	field.Write("statuses_url")
 	j.WriteString(s.StatusesURL)
 	field.Write("subscribers_url")
-	j.WriteString(s.SubscribersURL)
+	json.WriteURI(j, s.SubscribersURL)
 	field.Write("subscription_url")
-	j.WriteString(s.SubscriptionURL)
+	json.WriteURI(j, s.SubscriptionURL)
 	field.Write("svn_url")
-	j.WriteString(s.SvnURL)
+	json.WriteURI(j, s.SvnURL)
 	field.Write("tags_url")
-	j.WriteString(s.TagsURL)
+	json.WriteURI(j, s.TagsURL)
 	field.Write("teams_url")
-	j.WriteString(s.TeamsURL)
+	json.WriteURI(j, s.TeamsURL)
 	if s.TempCloneToken.Set {
 		field.Write("temp_clone_token")
 		s.TempCloneToken.WriteJSON(j)
@@ -34556,7 +41912,7 @@ func (s PullRequestHeadRepo) WriteJSON(j *json.Stream) {
 	field.Write("trees_url")
 	j.WriteString(s.TreesURL)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	field.Write("watchers")
@@ -34654,8 +42010,13 @@ func (s *PullRequestHeadRepo) ReadJSON(i *json.Iterator) error {
 			s.ContentsURL = i.ReadString()
 			return i.Error == nil
 		case "contributors_url":
-			s.ContributorsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ContributorsURL", err.Error())
+				return false
+			}
+			s.ContributorsURL = v
+			return true
 		case "created_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -34668,8 +42029,13 @@ func (s *PullRequestHeadRepo) ReadJSON(i *json.Iterator) error {
 			s.DefaultBranch = i.ReadString()
 			return i.Error == nil
 		case "deployments_url":
-			s.DeploymentsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field DeploymentsURL", err.Error())
+				return false
+			}
+			s.DeploymentsURL = v
+			return true
 		case "description":
 			if err := s.Description.ReadJSON(i); err != nil {
 				i.ReportError("Field Description", err.Error())
@@ -34680,11 +42046,21 @@ func (s *PullRequestHeadRepo) ReadJSON(i *json.Iterator) error {
 			s.Disabled = i.ReadBool()
 			return i.Error == nil
 		case "downloads_url":
-			s.DownloadsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field DownloadsURL", err.Error())
+				return false
+			}
+			s.DownloadsURL = v
+			return true
 		case "events_url":
-			s.EventsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field EventsURL", err.Error())
+				return false
+			}
+			s.EventsURL = v
+			return true
 		case "fork":
 			s.Fork = i.ReadBool()
 			return i.Error == nil
@@ -34695,8 +42071,13 @@ func (s *PullRequestHeadRepo) ReadJSON(i *json.Iterator) error {
 			s.ForksCount = i.ReadInt()
 			return i.Error == nil
 		case "forks_url":
-			s.ForksURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ForksURL", err.Error())
+				return false
+			}
+			s.ForksURL = v
+			return true
 		case "full_name":
 			s.FullName = i.ReadString()
 			return i.Error == nil
@@ -34713,8 +42094,13 @@ func (s *PullRequestHeadRepo) ReadJSON(i *json.Iterator) error {
 			s.GitURL = i.ReadString()
 			return i.Error == nil
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "has_downloads":
 			s.HasDownloads = i.ReadBool()
 			return i.Error == nil
@@ -34737,8 +42123,13 @@ func (s *PullRequestHeadRepo) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "hooks_url":
-			s.HooksURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HooksURL", err.Error())
+				return false
+			}
+			s.HooksURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -34764,8 +42155,13 @@ func (s *PullRequestHeadRepo) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "languages_url":
-			s.LanguagesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field LanguagesURL", err.Error())
+				return false
+			}
+			s.LanguagesURL = v
+			return true
 		case "license":
 			if err := s.License.ReadJSON(i); err != nil {
 				i.ReportError("Field License", err.Error())
@@ -34780,8 +42176,13 @@ func (s *PullRequestHeadRepo) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "merges_url":
-			s.MergesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field MergesURL", err.Error())
+				return false
+			}
+			s.MergesURL = v
+			return true
 		case "milestones_url":
 			s.MilestonesURL = i.ReadString()
 			return i.Error == nil
@@ -34813,8 +42214,11 @@ func (s *PullRequestHeadRepo) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "permissions":
-			// Unsupported kind "pointer" for field "Permissions".
-			i.Skip()
+			s.Permissions.Reset()
+			if err := s.Permissions.ReadJSON(i); err != nil {
+				i.ReportError("Field Permissions", err.Error())
+				return false
+			}
 			return true
 		case "private":
 			s.Private = i.ReadBool()
@@ -34843,26 +42247,56 @@ func (s *PullRequestHeadRepo) ReadJSON(i *json.Iterator) error {
 			s.StargazersCount = i.ReadInt()
 			return i.Error == nil
 		case "stargazers_url":
-			s.StargazersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field StargazersURL", err.Error())
+				return false
+			}
+			s.StargazersURL = v
+			return true
 		case "statuses_url":
 			s.StatusesURL = i.ReadString()
 			return i.Error == nil
 		case "subscribers_url":
-			s.SubscribersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscribersURL", err.Error())
+				return false
+			}
+			s.SubscribersURL = v
+			return true
 		case "subscription_url":
-			s.SubscriptionURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscriptionURL", err.Error())
+				return false
+			}
+			s.SubscriptionURL = v
+			return true
 		case "svn_url":
-			s.SvnURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SvnURL", err.Error())
+				return false
+			}
+			s.SvnURL = v
+			return true
 		case "tags_url":
-			s.TagsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field TagsURL", err.Error())
+				return false
+			}
+			s.TagsURL = v
+			return true
 		case "teams_url":
-			s.TeamsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field TeamsURL", err.Error())
+				return false
+			}
+			s.TeamsURL = v
+			return true
 		case "temp_clone_token":
 			s.TempCloneToken.Reset()
 			if err := s.TempCloneToken.ReadJSON(i); err != nil {
@@ -34878,8 +42312,13 @@ func (s *PullRequestHeadRepo) ReadJSON(i *json.Iterator) error {
 			s.TreesURL = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -34981,11 +42420,11 @@ func (s PullRequestHeadRepoOwner) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	field.Write("avatar_url")
-	j.WriteString(s.AvatarURL)
+	json.WriteURI(j, s.AvatarURL)
 	field.Write("events_url")
 	j.WriteString(s.EventsURL)
 	field.Write("followers_url")
-	j.WriteString(s.FollowersURL)
+	json.WriteURI(j, s.FollowersURL)
 	field.Write("following_url")
 	j.WriteString(s.FollowingURL)
 	field.Write("gists_url")
@@ -34993,7 +42432,7 @@ func (s PullRequestHeadRepoOwner) WriteJSON(j *json.Stream) {
 	field.Write("gravatar_id")
 	s.GravatarID.WriteJSON(j)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	field.Write("login")
@@ -35001,21 +42440,21 @@ func (s PullRequestHeadRepoOwner) WriteJSON(j *json.Stream) {
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
 	field.Write("organizations_url")
-	j.WriteString(s.OrganizationsURL)
+	json.WriteURI(j, s.OrganizationsURL)
 	field.Write("received_events_url")
-	j.WriteString(s.ReceivedEventsURL)
+	json.WriteURI(j, s.ReceivedEventsURL)
 	field.Write("repos_url")
-	j.WriteString(s.ReposURL)
+	json.WriteURI(j, s.ReposURL)
 	field.Write("site_admin")
 	j.WriteBool(s.SiteAdmin)
 	field.Write("starred_url")
 	j.WriteString(s.StarredURL)
 	field.Write("subscriptions_url")
-	j.WriteString(s.SubscriptionsURL)
+	json.WriteURI(j, s.SubscriptionsURL)
 	field.Write("type")
 	j.WriteString(s.Type)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -35046,14 +42485,24 @@ func (s *PullRequestHeadRepoOwner) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "avatar_url":
-			s.AvatarURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field AvatarURL", err.Error())
+				return false
+			}
+			s.AvatarURL = v
+			return true
 		case "events_url":
 			s.EventsURL = i.ReadString()
 			return i.Error == nil
 		case "followers_url":
-			s.FollowersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field FollowersURL", err.Error())
+				return false
+			}
+			s.FollowersURL = v
+			return true
 		case "following_url":
 			s.FollowingURL = i.ReadString()
 			return i.Error == nil
@@ -35067,8 +42516,13 @@ func (s *PullRequestHeadRepoOwner) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -35079,14 +42533,29 @@ func (s *PullRequestHeadRepoOwner) ReadJSON(i *json.Iterator) error {
 			s.NodeID = i.ReadString()
 			return i.Error == nil
 		case "organizations_url":
-			s.OrganizationsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field OrganizationsURL", err.Error())
+				return false
+			}
+			s.OrganizationsURL = v
+			return true
 		case "received_events_url":
-			s.ReceivedEventsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ReceivedEventsURL", err.Error())
+				return false
+			}
+			s.ReceivedEventsURL = v
+			return true
 		case "repos_url":
-			s.ReposURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ReposURL", err.Error())
+				return false
+			}
+			s.ReposURL = v
+			return true
 		case "site_admin":
 			s.SiteAdmin = i.ReadBool()
 			return i.Error == nil
@@ -35094,14 +42563,24 @@ func (s *PullRequestHeadRepoOwner) ReadJSON(i *json.Iterator) error {
 			s.StarredURL = i.ReadString()
 			return i.Error == nil
 		case "subscriptions_url":
-			s.SubscriptionsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscriptionsURL", err.Error())
+				return false
+			}
+			s.SubscriptionsURL = v
+			return true
 		case "type":
 			s.Type = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -35195,11 +42674,11 @@ func (s PullRequestHeadUser) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	field.Write("avatar_url")
-	j.WriteString(s.AvatarURL)
+	json.WriteURI(j, s.AvatarURL)
 	field.Write("events_url")
 	j.WriteString(s.EventsURL)
 	field.Write("followers_url")
-	j.WriteString(s.FollowersURL)
+	json.WriteURI(j, s.FollowersURL)
 	field.Write("following_url")
 	j.WriteString(s.FollowingURL)
 	field.Write("gists_url")
@@ -35207,7 +42686,7 @@ func (s PullRequestHeadUser) WriteJSON(j *json.Stream) {
 	field.Write("gravatar_id")
 	s.GravatarID.WriteJSON(j)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	field.Write("login")
@@ -35215,21 +42694,21 @@ func (s PullRequestHeadUser) WriteJSON(j *json.Stream) {
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
 	field.Write("organizations_url")
-	j.WriteString(s.OrganizationsURL)
+	json.WriteURI(j, s.OrganizationsURL)
 	field.Write("received_events_url")
-	j.WriteString(s.ReceivedEventsURL)
+	json.WriteURI(j, s.ReceivedEventsURL)
 	field.Write("repos_url")
-	j.WriteString(s.ReposURL)
+	json.WriteURI(j, s.ReposURL)
 	field.Write("site_admin")
 	j.WriteBool(s.SiteAdmin)
 	field.Write("starred_url")
 	j.WriteString(s.StarredURL)
 	field.Write("subscriptions_url")
-	j.WriteString(s.SubscriptionsURL)
+	json.WriteURI(j, s.SubscriptionsURL)
 	field.Write("type")
 	j.WriteString(s.Type)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -35260,14 +42739,24 @@ func (s *PullRequestHeadUser) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "avatar_url":
-			s.AvatarURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field AvatarURL", err.Error())
+				return false
+			}
+			s.AvatarURL = v
+			return true
 		case "events_url":
 			s.EventsURL = i.ReadString()
 			return i.Error == nil
 		case "followers_url":
-			s.FollowersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field FollowersURL", err.Error())
+				return false
+			}
+			s.FollowersURL = v
+			return true
 		case "following_url":
 			s.FollowingURL = i.ReadString()
 			return i.Error == nil
@@ -35281,8 +42770,13 @@ func (s *PullRequestHeadUser) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -35293,14 +42787,29 @@ func (s *PullRequestHeadUser) ReadJSON(i *json.Iterator) error {
 			s.NodeID = i.ReadString()
 			return i.Error == nil
 		case "organizations_url":
-			s.OrganizationsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field OrganizationsURL", err.Error())
+				return false
+			}
+			s.OrganizationsURL = v
+			return true
 		case "received_events_url":
-			s.ReceivedEventsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ReceivedEventsURL", err.Error())
+				return false
+			}
+			s.ReceivedEventsURL = v
+			return true
 		case "repos_url":
-			s.ReposURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ReposURL", err.Error())
+				return false
+			}
+			s.ReposURL = v
+			return true
 		case "site_admin":
 			s.SiteAdmin = i.ReadBool()
 			return i.Error == nil
@@ -35308,14 +42817,24 @@ func (s *PullRequestHeadUser) ReadJSON(i *json.Iterator) error {
 			s.StarredURL = i.ReadString()
 			return i.Error == nil
 		case "subscriptions_url":
-			s.SubscriptionsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscriptionsURL", err.Error())
+				return false
+			}
+			s.SubscriptionsURL = v
+			return true
 		case "type":
 			s.Type = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -35933,7 +43452,7 @@ func (s PullRequestReview) WriteJSON(j *json.Stream) {
 	field.Write("commit_id")
 	j.WriteString(s.CommitID)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	field.Write("_links")
@@ -35941,7 +43460,7 @@ func (s PullRequestReview) WriteJSON(j *json.Stream) {
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
 	field.Write("pull_request_url")
-	j.WriteString(s.PullRequestURL)
+	json.WriteURI(j, s.PullRequestURL)
 	field.Write("state")
 	j.WriteString(s.State)
 	if s.SubmittedAt.Set {
@@ -36003,8 +43522,13 @@ func (s *PullRequestReview) ReadJSON(i *json.Iterator) error {
 			s.CommitID = i.ReadString()
 			return i.Error == nil
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -36018,8 +43542,13 @@ func (s *PullRequestReview) ReadJSON(i *json.Iterator) error {
 			s.NodeID = i.ReadString()
 			return i.Error == nil
 		case "pull_request_url":
-			s.PullRequestURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field PullRequestURL", err.Error())
+				return false
+			}
+			s.PullRequestURL = v
+			return true
 		case "state":
 			s.State = i.ReadString()
 			return i.Error == nil
@@ -36068,7 +43597,7 @@ func (s PullRequestReviewComment) WriteJSON(j *json.Stream) {
 	field.Write("diff_hunk")
 	j.WriteString(s.DiffHunk)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	if s.InReplyToID.Set {
@@ -36102,14 +43631,23 @@ func (s PullRequestReviewComment) WriteJSON(j *json.Stream) {
 	field.Write("pull_request_review_id")
 	s.PullRequestReviewID.WriteJSON(j)
 	field.Write("pull_request_url")
-	j.WriteString(s.PullRequestURL)
-	// Unsupported kind "pointer" for field "Reactions".
-	// Unsupported kind "pointer" for field "Side".
+	json.WriteURI(j, s.PullRequestURL)
+	if s.Reactions.Set {
+		field.Write("reactions")
+		s.Reactions.WriteJSON(j)
+	}
+	if s.Side.Set {
+		field.Write("side")
+		s.Side.WriteJSON(j)
+	}
 	if s.StartLine.Set {
 		field.Write("start_line")
 		s.StartLine.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "StartSide".
+	if s.StartSide.Set {
+		field.Write("start_side")
+		s.StartSide.WriteJSON(j)
+	}
 	field.Write("url")
 	j.WriteString(s.URL)
 	field.Write("updated_at")
@@ -36180,8 +43718,13 @@ func (s *PullRequestReviewComment) ReadJSON(i *json.Iterator) error {
 			s.DiffHunk = i.ReadString()
 			return i.Error == nil
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -36241,15 +43784,26 @@ func (s *PullRequestReviewComment) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "pull_request_url":
-			s.PullRequestURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field PullRequestURL", err.Error())
+				return false
+			}
+			s.PullRequestURL = v
+			return true
 		case "reactions":
-			// Unsupported kind "pointer" for field "Reactions".
-			i.Skip()
+			s.Reactions.Reset()
+			if err := s.Reactions.ReadJSON(i); err != nil {
+				i.ReportError("Field Reactions", err.Error())
+				return false
+			}
 			return true
 		case "side":
-			// Unsupported kind "pointer" for field "Side".
-			i.Skip()
+			s.Side.Reset()
+			if err := s.Side.ReadJSON(i); err != nil {
+				i.ReportError("Field Side", err.Error())
+				return false
+			}
 			return true
 		case "start_line":
 			s.StartLine.Reset()
@@ -36259,8 +43813,11 @@ func (s *PullRequestReviewComment) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "start_side":
-			// Unsupported kind "pointer" for field "StartSide".
-			i.Skip()
+			s.StartSide.Reset()
+			if err := s.StartSide.ReadJSON(i); err != nil {
+				i.ReportError("Field StartSide", err.Error())
+				return false
+			}
 			return true
 		case "url":
 			s.URL = i.ReadString()
@@ -36359,7 +43916,7 @@ func (s PullRequestReviewCommentLinksHTML) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	field.Write("href")
-	j.WriteString(s.Href)
+	json.WriteURI(j, s.Href)
 	j.WriteObjectEnd()
 }
 
@@ -36390,8 +43947,13 @@ func (s *PullRequestReviewCommentLinksHTML) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "href":
-			s.Href = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field Href", err.Error())
+				return false
+			}
+			s.Href = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -36406,7 +43968,7 @@ func (s PullRequestReviewCommentLinksPullRequest) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	field.Write("href")
-	j.WriteString(s.Href)
+	json.WriteURI(j, s.Href)
 	j.WriteObjectEnd()
 }
 
@@ -36437,8 +43999,13 @@ func (s *PullRequestReviewCommentLinksPullRequest) ReadJSON(i *json.Iterator) er
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "href":
-			s.Href = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field Href", err.Error())
+				return false
+			}
+			s.Href = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -36453,7 +44020,7 @@ func (s PullRequestReviewCommentLinksSelf) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	field.Write("href")
-	j.WriteString(s.Href)
+	json.WriteURI(j, s.Href)
 	j.WriteObjectEnd()
 }
 
@@ -36484,8 +44051,13 @@ func (s *PullRequestReviewCommentLinksSelf) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "href":
-			s.Href = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field Href", err.Error())
+				return false
+			}
+			s.Href = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -36721,25 +44293,25 @@ func (s PullRequestSimple) WriteJSON(j *json.Stream) {
 	field.Write("closed_at")
 	s.ClosedAt.WriteJSON(j, json.WriteDateTime)
 	field.Write("comments_url")
-	j.WriteString(s.CommentsURL)
+	json.WriteURI(j, s.CommentsURL)
 	field.Write("commits_url")
-	j.WriteString(s.CommitsURL)
+	json.WriteURI(j, s.CommitsURL)
 	field.Write("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
 	field.Write("diff_url")
-	j.WriteString(s.DiffURL)
+	json.WriteURI(j, s.DiffURL)
 	if s.Draft.Set {
 		field.Write("draft")
 		s.Draft.WriteJSON(j)
 	}
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("head")
 	s.Head.WriteJSON(j)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	field.Write("issue_url")
-	j.WriteString(s.IssueURL)
+	json.WriteURI(j, s.IssueURL)
 	// Unsupported kind "array" for field "Labels".
 	field.Write("_links")
 	s.Links.WriteJSON(j)
@@ -36756,21 +44328,21 @@ func (s PullRequestSimple) WriteJSON(j *json.Stream) {
 	field.Write("number")
 	j.WriteInt(s.Number)
 	field.Write("patch_url")
-	j.WriteString(s.PatchURL)
+	json.WriteURI(j, s.PatchURL)
 	// Unsupported kind "pointer" for field "RequestedReviewers".
 	// Unsupported kind "pointer" for field "RequestedTeams".
 	field.Write("review_comment_url")
 	j.WriteString(s.ReviewCommentURL)
 	field.Write("review_comments_url")
-	j.WriteString(s.ReviewCommentsURL)
+	json.WriteURI(j, s.ReviewCommentsURL)
 	field.Write("state")
 	j.WriteString(s.State)
 	field.Write("statuses_url")
-	j.WriteString(s.StatusesURL)
+	json.WriteURI(j, s.StatusesURL)
 	field.Write("title")
 	j.WriteString(s.Title)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	field.Write("user")
@@ -36849,11 +44421,21 @@ func (s *PullRequestSimple) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "comments_url":
-			s.CommentsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field CommentsURL", err.Error())
+				return false
+			}
+			s.CommentsURL = v
+			return true
 		case "commits_url":
-			s.CommitsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field CommitsURL", err.Error())
+				return false
+			}
+			s.CommitsURL = v
+			return true
 		case "created_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -36863,8 +44445,13 @@ func (s *PullRequestSimple) ReadJSON(i *json.Iterator) error {
 			s.CreatedAt = v
 			return true
 		case "diff_url":
-			s.DiffURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field DiffURL", err.Error())
+				return false
+			}
+			s.DiffURL = v
+			return true
 		case "draft":
 			s.Draft.Reset()
 			if err := s.Draft.ReadJSON(i); err != nil {
@@ -36873,8 +44460,13 @@ func (s *PullRequestSimple) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "head":
 			if err := s.Head.ReadJSON(i); err != nil {
 				i.ReportError("Field Head", err.Error())
@@ -36885,8 +44477,13 @@ func (s *PullRequestSimple) ReadJSON(i *json.Iterator) error {
 			s.ID = i.ReadInt()
 			return i.Error == nil
 		case "issue_url":
-			s.IssueURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field IssueURL", err.Error())
+				return false
+			}
+			s.IssueURL = v
+			return true
 		case "labels":
 			// Unsupported kind "array" for field "Labels".
 			i.Skip()
@@ -36925,8 +44522,13 @@ func (s *PullRequestSimple) ReadJSON(i *json.Iterator) error {
 			s.Number = i.ReadInt()
 			return i.Error == nil
 		case "patch_url":
-			s.PatchURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field PatchURL", err.Error())
+				return false
+			}
+			s.PatchURL = v
+			return true
 		case "requested_reviewers":
 			// Unsupported kind "pointer" for field "RequestedReviewers".
 			i.Skip()
@@ -36939,20 +44541,35 @@ func (s *PullRequestSimple) ReadJSON(i *json.Iterator) error {
 			s.ReviewCommentURL = i.ReadString()
 			return i.Error == nil
 		case "review_comments_url":
-			s.ReviewCommentsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ReviewCommentsURL", err.Error())
+				return false
+			}
+			s.ReviewCommentsURL = v
+			return true
 		case "state":
 			s.State = i.ReadString()
 			return i.Error == nil
 		case "statuses_url":
-			s.StatusesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field StatusesURL", err.Error())
+				return false
+			}
+			s.StatusesURL = v
+			return true
 		case "title":
 			s.Title = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -37514,7 +45131,10 @@ func (s PullsCreateReviewApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		field.Write("commit_id")
 		s.CommitID.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Event".
+	if s.Event.Set {
+		field.Write("event")
+		s.Event.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -37563,8 +45183,11 @@ func (s *PullsCreateReviewApplicationJSONRequest) ReadJSON(i *json.Iterator) err
 			}
 			return true
 		case "event":
-			// Unsupported kind "pointer" for field "Event".
-			i.Skip()
+			s.Event.Reset()
+			if err := s.Event.ReadJSON(i); err != nil {
+				i.ReportError("Field Event", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -37708,12 +45331,18 @@ func (s PullsCreateReviewCommentApplicationJSONRequest) WriteJSON(j *json.Stream
 		field.Write("position")
 		s.Position.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Side".
+	if s.Side.Set {
+		field.Write("side")
+		s.Side.WriteJSON(j)
+	}
 	if s.StartLine.Set {
 		field.Write("start_line")
 		s.StartLine.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "StartSide".
+	if s.StartSide.Set {
+		field.Write("start_side")
+		s.StartSide.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -37782,8 +45411,11 @@ func (s *PullsCreateReviewCommentApplicationJSONRequest) ReadJSON(i *json.Iterat
 			}
 			return true
 		case "side":
-			// Unsupported kind "pointer" for field "Side".
-			i.Skip()
+			s.Side.Reset()
+			if err := s.Side.ReadJSON(i); err != nil {
+				i.ReportError("Field Side", err.Error())
+				return false
+			}
 			return true
 		case "start_line":
 			s.StartLine.Reset()
@@ -37793,8 +45425,11 @@ func (s *PullsCreateReviewCommentApplicationJSONRequest) ReadJSON(i *json.Iterat
 			}
 			return true
 		case "start_side":
-			// Unsupported kind "pointer" for field "StartSide".
-			i.Skip()
+			s.StartSide.Reset()
+			if err := s.StartSide.ReadJSON(i); err != nil {
+				i.ReportError("Field StartSide", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -37875,7 +45510,10 @@ func (s PullsMergeApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		field.Write("commit_title")
 		s.CommitTitle.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "MergeMethod".
+	if s.MergeMethod.Set {
+		field.Write("merge_method")
+		s.MergeMethod.WriteJSON(j)
+	}
 	if s.Sha.Set {
 		field.Write("sha")
 		s.Sha.WriteJSON(j)
@@ -37924,8 +45562,11 @@ func (s *PullsMergeApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "merge_method":
-			// Unsupported kind "pointer" for field "MergeMethod".
-			i.Skip()
+			s.MergeMethod.Reset()
+			if err := s.MergeMethod.ReadJSON(i); err != nil {
+				i.ReportError("Field MergeMethod", err.Error())
+				return false
+			}
 			return true
 		case "sha":
 			s.Sha.Reset()
@@ -38197,7 +45838,10 @@ func (s PullsUpdateApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		field.Write("maintainer_can_modify")
 		s.MaintainerCanModify.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "State".
+	if s.State.Set {
+		field.Write("state")
+		s.State.WriteJSON(j)
+	}
 	if s.Title.Set {
 		field.Write("title")
 		s.Title.WriteJSON(j)
@@ -38253,8 +45897,11 @@ func (s *PullsUpdateApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "state":
-			// Unsupported kind "pointer" for field "State".
-			i.Skip()
+			s.State.Reset()
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
 			return true
 		case "title":
 			s.Title.Reset()
@@ -38607,15 +46254,30 @@ func (s RateLimitOverviewResources) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "ActionsRunnerRegistration".
-	// Unsupported kind "pointer" for field "CodeScanningUpload".
+	if s.ActionsRunnerRegistration.Set {
+		field.Write("actions_runner_registration")
+		s.ActionsRunnerRegistration.WriteJSON(j)
+	}
+	if s.CodeScanningUpload.Set {
+		field.Write("code_scanning_upload")
+		s.CodeScanningUpload.WriteJSON(j)
+	}
 	field.Write("core")
 	s.Core.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Graphql".
-	// Unsupported kind "pointer" for field "IntegrationManifest".
+	if s.Graphql.Set {
+		field.Write("graphql")
+		s.Graphql.WriteJSON(j)
+	}
+	if s.IntegrationManifest.Set {
+		field.Write("integration_manifest")
+		s.IntegrationManifest.WriteJSON(j)
+	}
 	field.Write("search")
 	s.Search.WriteJSON(j)
-	// Unsupported kind "pointer" for field "SourceImport".
+	if s.SourceImport.Set {
+		field.Write("source_import")
+		s.SourceImport.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -38646,12 +46308,18 @@ func (s *RateLimitOverviewResources) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "actions_runner_registration":
-			// Unsupported kind "pointer" for field "ActionsRunnerRegistration".
-			i.Skip()
+			s.ActionsRunnerRegistration.Reset()
+			if err := s.ActionsRunnerRegistration.ReadJSON(i); err != nil {
+				i.ReportError("Field ActionsRunnerRegistration", err.Error())
+				return false
+			}
 			return true
 		case "code_scanning_upload":
-			// Unsupported kind "pointer" for field "CodeScanningUpload".
-			i.Skip()
+			s.CodeScanningUpload.Reset()
+			if err := s.CodeScanningUpload.ReadJSON(i); err != nil {
+				i.ReportError("Field CodeScanningUpload", err.Error())
+				return false
+			}
 			return true
 		case "core":
 			if err := s.Core.ReadJSON(i); err != nil {
@@ -38660,12 +46328,18 @@ func (s *RateLimitOverviewResources) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "graphql":
-			// Unsupported kind "pointer" for field "Graphql".
-			i.Skip()
+			s.Graphql.Reset()
+			if err := s.Graphql.ReadJSON(i); err != nil {
+				i.ReportError("Field Graphql", err.Error())
+				return false
+			}
 			return true
 		case "integration_manifest":
-			// Unsupported kind "pointer" for field "IntegrationManifest".
-			i.Skip()
+			s.IntegrationManifest.Reset()
+			if err := s.IntegrationManifest.ReadJSON(i); err != nil {
+				i.ReportError("Field IntegrationManifest", err.Error())
+				return false
+			}
 			return true
 		case "search":
 			if err := s.Search.ReadJSON(i); err != nil {
@@ -38674,8 +46348,11 @@ func (s *RateLimitOverviewResources) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "source_import":
-			// Unsupported kind "pointer" for field "SourceImport".
-			i.Skip()
+			s.SourceImport.Reset()
+			if err := s.SourceImport.ReadJSON(i); err != nil {
+				i.ReportError("Field SourceImport", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -38784,7 +46461,7 @@ func (s ReactionRollup) WriteJSON(j *json.Stream) {
 	field.Write("total_count")
 	j.WriteInt(s.TotalCount)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -38842,8 +46519,13 @@ func (s *ReactionRollup) ReadJSON(i *json.Iterator) error {
 			s.TotalCount = i.ReadInt()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -39339,7 +47021,7 @@ func (s Release) WriteJSON(j *json.Stream) {
 	defer field.Reset()
 	// Unsupported kind "array" for field "Assets".
 	field.Write("assets_url")
-	j.WriteString(s.AssetsURL)
+	json.WriteURI(j, s.AssetsURL)
 	field.Write("author")
 	s.Author.WriteJSON(j)
 	if s.Body.Set {
@@ -39363,7 +47045,7 @@ func (s Release) WriteJSON(j *json.Stream) {
 	field.Write("draft")
 	j.WriteBool(s.Draft)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	if s.MentionsCount.Set {
@@ -39378,7 +47060,10 @@ func (s Release) WriteJSON(j *json.Stream) {
 	j.WriteBool(s.Prerelease)
 	field.Write("published_at")
 	s.PublishedAt.WriteJSON(j, json.WriteDateTime)
-	// Unsupported kind "pointer" for field "Reactions".
+	if s.Reactions.Set {
+		field.Write("reactions")
+		s.Reactions.WriteJSON(j)
+	}
 	field.Write("tag_name")
 	j.WriteString(s.TagName)
 	field.Write("tarball_url")
@@ -39386,7 +47071,7 @@ func (s Release) WriteJSON(j *json.Stream) {
 	field.Write("target_commitish")
 	j.WriteString(s.TargetCommitish)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("upload_url")
 	j.WriteString(s.UploadURL)
 	field.Write("zipball_url")
@@ -39425,8 +47110,13 @@ func (s *Release) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "assets_url":
-			s.AssetsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field AssetsURL", err.Error())
+				return false
+			}
+			s.AssetsURL = v
+			return true
 		case "author":
 			if err := s.Author.ReadJSON(i); err != nil {
 				i.ReportError("Field Author", err.Error())
@@ -39473,8 +47163,13 @@ func (s *Release) ReadJSON(i *json.Iterator) error {
 			s.Draft = i.ReadBool()
 			return i.Error == nil
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -39504,8 +47199,11 @@ func (s *Release) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "reactions":
-			// Unsupported kind "pointer" for field "Reactions".
-			i.Skip()
+			s.Reactions.Reset()
+			if err := s.Reactions.ReadJSON(i); err != nil {
+				i.ReportError("Field Reactions", err.Error())
+				return false
+			}
 			return true
 		case "tag_name":
 			s.TagName = i.ReadString()
@@ -39520,8 +47218,13 @@ func (s *Release) ReadJSON(i *json.Iterator) error {
 			s.TargetCommitish = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "upload_url":
 			s.UploadURL = i.ReadString()
 			return i.Error == nil
@@ -39545,7 +47248,7 @@ func (s ReleaseAsset) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	field.Write("browser_download_url")
-	j.WriteString(s.BrowserDownloadURL)
+	json.WriteURI(j, s.BrowserDownloadURL)
 	field.Write("content_type")
 	j.WriteString(s.ContentType)
 	field.Write("created_at")
@@ -39565,7 +47268,7 @@ func (s ReleaseAsset) WriteJSON(j *json.Stream) {
 	field.Write("state")
 	j.WriteString(s.State)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	field.Write("uploader")
@@ -39600,8 +47303,13 @@ func (s *ReleaseAsset) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "browser_download_url":
-			s.BrowserDownloadURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field BrowserDownloadURL", err.Error())
+				return false
+			}
+			s.BrowserDownloadURL = v
+			return true
 		case "content_type":
 			s.ContentType = i.ReadString()
 			return i.Error == nil
@@ -39638,8 +47346,13 @@ func (s *ReleaseAsset) ReadJSON(i *json.Iterator) error {
 			s.State = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -39667,7 +47380,10 @@ func (s ReposAddCollaboratorApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Permission".
+	if s.Permission.Set {
+		field.Write("permission")
+		s.Permission.WriteJSON(j)
+	}
 	if s.Permissions.Set {
 		field.Write("permissions")
 		s.Permissions.WriteJSON(j)
@@ -39702,8 +47418,11 @@ func (s *ReposAddCollaboratorApplicationJSONRequest) ReadJSON(i *json.Iterator) 
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "permission":
-			// Unsupported kind "pointer" for field "Permission".
-			i.Skip()
+			s.Permission.Reset()
+			if err := s.Permission.ReadJSON(i); err != nil {
+				i.ReportError("Field Permission", err.Error())
+				return false
+			}
 			return true
 		case "permissions":
 			s.Permissions.Reset()
@@ -40014,7 +47733,10 @@ func (s ReposCreateDeploymentStatusApplicationJSONRequest) WriteJSON(j *json.Str
 		field.Write("description")
 		s.Description.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Environment".
+	if s.Environment.Set {
+		field.Write("environment")
+		s.Environment.WriteJSON(j)
+	}
 	if s.EnvironmentURL.Set {
 		field.Write("environment_url")
 		s.EnvironmentURL.WriteJSON(j)
@@ -40073,8 +47795,11 @@ func (s *ReposCreateDeploymentStatusApplicationJSONRequest) ReadJSON(i *json.Ite
 			}
 			return true
 		case "environment":
-			// Unsupported kind "pointer" for field "Environment".
-			i.Skip()
+			s.Environment.Reset()
+			if err := s.Environment.ReadJSON(i); err != nil {
+				i.ReportError("Field Environment", err.Error())
+				return false
+			}
 			return true
 		case "environment_url":
 			s.EnvironmentURL.Reset()
@@ -40518,7 +48243,10 @@ func (s ReposCreateInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		field.Write("team_id")
 		s.TeamID.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Visibility".
+	if s.Visibility.Set {
+		field.Write("visibility")
+		s.Visibility.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -40664,8 +48392,11 @@ func (s *ReposCreateInOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) erro
 			}
 			return true
 		case "visibility":
-			// Unsupported kind "pointer" for field "Visibility".
-			i.Skip()
+			s.Visibility.Reset()
+			if err := s.Visibility.ReadJSON(i); err != nil {
+				i.ReportError("Field Visibility", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -40680,7 +48411,10 @@ func (s ReposCreateOrUpdateEnvironmentApplicationJSONRequest) WriteJSON(j *json.
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "DeploymentBranchPolicy".
+	if s.DeploymentBranchPolicy.Set {
+		field.Write("deployment_branch_policy")
+		s.DeploymentBranchPolicy.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Reviewers".
 	// Unsupported kind "pointer" for field "WaitTimer".
 	j.WriteObjectEnd()
@@ -40713,8 +48447,11 @@ func (s *ReposCreateOrUpdateEnvironmentApplicationJSONRequest) ReadJSON(i *json.
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "deployment_branch_policy":
-			// Unsupported kind "pointer" for field "DeploymentBranchPolicy".
-			i.Skip()
+			s.DeploymentBranchPolicy.Reset()
+			if err := s.DeploymentBranchPolicy.ReadJSON(i); err != nil {
+				i.ReportError("Field DeploymentBranchPolicy", err.Error())
+				return false
+			}
 			return true
 		case "reviewers":
 			// Unsupported kind "pointer" for field "Reviewers".
@@ -40741,7 +48478,10 @@ func (s ReposCreateOrUpdateEnvironmentApplicationJSONRequestReviewersItem) Write
 		field.Write("id")
 		s.ID.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Type".
+	if s.Type.Set {
+		field.Write("type")
+		s.Type.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -40779,8 +48519,11 @@ func (s *ReposCreateOrUpdateEnvironmentApplicationJSONRequestReviewersItem) Read
 			}
 			return true
 		case "type":
-			// Unsupported kind "pointer" for field "Type".
-			i.Skip()
+			s.Type.Reset()
+			if err := s.Type.ReadJSON(i); err != nil {
+				i.ReportError("Field Type", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -40795,12 +48538,18 @@ func (s ReposCreateOrUpdateFileContentsApplicationJSONRequest) WriteJSON(j *json
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Author".
+	if s.Author.Set {
+		field.Write("author")
+		s.Author.WriteJSON(j)
+	}
 	if s.Branch.Set {
 		field.Write("branch")
 		s.Branch.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Committer".
+	if s.Committer.Set {
+		field.Write("committer")
+		s.Committer.WriteJSON(j)
+	}
 	field.Write("content")
 	j.WriteString(s.Content)
 	field.Write("message")
@@ -40839,8 +48588,11 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONRequest) ReadJSON(i *json
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "author":
-			// Unsupported kind "pointer" for field "Author".
-			i.Skip()
+			s.Author.Reset()
+			if err := s.Author.ReadJSON(i); err != nil {
+				i.ReportError("Field Author", err.Error())
+				return false
+			}
 			return true
 		case "branch":
 			s.Branch.Reset()
@@ -40850,8 +48602,11 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONRequest) ReadJSON(i *json
 			}
 			return true
 		case "committer":
-			// Unsupported kind "pointer" for field "Committer".
-			i.Skip()
+			s.Committer.Reset()
+			if err := s.Committer.ReadJSON(i); err != nil {
+				i.ReportError("Field Committer", err.Error())
+				return false
+			}
 			return true
 		case "content":
 			s.Content = i.ReadString()
@@ -41057,7 +48812,10 @@ func (s ReposCreatePagesSiteApplicationJSONRequestSource) WriteJSON(j *json.Stre
 	defer field.Reset()
 	field.Write("branch")
 	j.WriteString(s.Branch)
-	// Unsupported kind "pointer" for field "Path".
+	if s.Path.Set {
+		field.Write("path")
+		s.Path.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -41091,8 +48849,11 @@ func (s *ReposCreatePagesSiteApplicationJSONRequestSource) ReadJSON(i *json.Iter
 			s.Branch = i.ReadString()
 			return i.Error == nil
 		case "path":
-			// Unsupported kind "pointer" for field "Path".
-			i.Skip()
+			s.Path.Reset()
+			if err := s.Path.ReadJSON(i); err != nil {
+				i.ReportError("Field Path", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -41311,12 +49072,18 @@ func (s ReposDeleteFileApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Author".
+	if s.Author.Set {
+		field.Write("author")
+		s.Author.WriteJSON(j)
+	}
 	if s.Branch.Set {
 		field.Write("branch")
 		s.Branch.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Committer".
+	if s.Committer.Set {
+		field.Write("committer")
+		s.Committer.WriteJSON(j)
+	}
 	field.Write("message")
 	j.WriteString(s.Message)
 	field.Write("sha")
@@ -41351,8 +49118,11 @@ func (s *ReposDeleteFileApplicationJSONRequest) ReadJSON(i *json.Iterator) error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "author":
-			// Unsupported kind "pointer" for field "Author".
-			i.Skip()
+			s.Author.Reset()
+			if err := s.Author.ReadJSON(i); err != nil {
+				i.ReportError("Field Author", err.Error())
+				return false
+			}
 			return true
 		case "branch":
 			s.Branch.Reset()
@@ -41362,8 +49132,11 @@ func (s *ReposDeleteFileApplicationJSONRequest) ReadJSON(i *json.Iterator) error
 			}
 			return true
 		case "committer":
-			// Unsupported kind "pointer" for field "Committer".
-			i.Skip()
+			s.Committer.Reset()
+			if err := s.Committer.ReadJSON(i); err != nil {
+				i.ReportError("Field Committer", err.Error())
+				return false
+			}
 			return true
 		case "message":
 			s.Message = i.ReadString()
@@ -41896,8 +49669,14 @@ func (s ReposUpdateApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		field.Write("private")
 		s.Private.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SecurityAndAnalysis".
-	// Unsupported kind "pointer" for field "Visibility".
+	if s.SecurityAndAnalysis.Set {
+		field.Write("security_and_analysis")
+		s.SecurityAndAnalysis.WriteJSON(j)
+	}
+	if s.Visibility.Set {
+		field.Write("visibility")
+		s.Visibility.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -42040,12 +49819,18 @@ func (s *ReposUpdateApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "security_and_analysis":
-			// Unsupported kind "pointer" for field "SecurityAndAnalysis".
-			i.Skip()
+			s.SecurityAndAnalysis.Reset()
+			if err := s.SecurityAndAnalysis.ReadJSON(i); err != nil {
+				i.ReportError("Field SecurityAndAnalysis", err.Error())
+				return false
+			}
 			return true
 		case "visibility":
-			// Unsupported kind "pointer" for field "Visibility".
-			i.Skip()
+			s.Visibility.Reset()
+			if err := s.Visibility.ReadJSON(i); err != nil {
+				i.ReportError("Field Visibility", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -42060,8 +49845,14 @@ func (s ReposUpdateApplicationJSONRequestSecurityAndAnalysis) WriteJSON(j *json.
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "AdvancedSecurity".
-	// Unsupported kind "pointer" for field "SecretScanning".
+	if s.AdvancedSecurity.Set {
+		field.Write("advanced_security")
+		s.AdvancedSecurity.WriteJSON(j)
+	}
+	if s.SecretScanning.Set {
+		field.Write("secret_scanning")
+		s.SecretScanning.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -42092,12 +49883,18 @@ func (s *ReposUpdateApplicationJSONRequestSecurityAndAnalysis) ReadJSON(i *json.
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "advanced_security":
-			// Unsupported kind "pointer" for field "AdvancedSecurity".
-			i.Skip()
+			s.AdvancedSecurity.Reset()
+			if err := s.AdvancedSecurity.ReadJSON(i); err != nil {
+				i.ReportError("Field AdvancedSecurity", err.Error())
+				return false
+			}
 			return true
 		case "secret_scanning":
-			// Unsupported kind "pointer" for field "SecretScanning".
-			i.Skip()
+			s.SecretScanning.Reset()
+			if err := s.SecretScanning.ReadJSON(i); err != nil {
+				i.ReportError("Field SecretScanning", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -42340,7 +50137,10 @@ func (s ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestRevi
 		field.Write("dismiss_stale_reviews")
 		s.DismissStaleReviews.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "DismissalRestrictions".
+	if s.DismissalRestrictions.Set {
+		field.Write("dismissal_restrictions")
+		s.DismissalRestrictions.WriteJSON(j)
+	}
 	if s.RequireCodeOwnerReviews.Set {
 		field.Write("require_code_owner_reviews")
 		s.RequireCodeOwnerReviews.WriteJSON(j)
@@ -42386,8 +50186,11 @@ func (s *ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestRev
 			}
 			return true
 		case "dismissal_restrictions":
-			// Unsupported kind "pointer" for field "DismissalRestrictions".
-			i.Skip()
+			s.DismissalRestrictions.Reset()
+			if err := s.DismissalRestrictions.ReadJSON(i); err != nil {
+				i.ReportError("Field DismissalRestrictions", err.Error())
+				return false
+			}
 			return true
 		case "require_code_owner_reviews":
 			s.RequireCodeOwnerReviews.Reset()
@@ -42624,7 +50427,10 @@ func (s ReposUpdateInvitationApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Permissions".
+	if s.Permissions.Set {
+		field.Write("permissions")
+		s.Permissions.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -42655,8 +50461,11 @@ func (s *ReposUpdateInvitationApplicationJSONRequest) ReadJSON(i *json.Iterator)
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "permissions":
-			// Unsupported kind "pointer" for field "Permissions".
-			i.Skip()
+			s.Permissions.Reset()
+			if err := s.Permissions.ReadJSON(i); err != nil {
+				i.ReportError("Field Permissions", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -42675,7 +50484,10 @@ func (s ReposUpdatePullRequestReviewProtectionApplicationJSONRequest) WriteJSON(
 		field.Write("dismiss_stale_reviews")
 		s.DismissStaleReviews.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "DismissalRestrictions".
+	if s.DismissalRestrictions.Set {
+		field.Write("dismissal_restrictions")
+		s.DismissalRestrictions.WriteJSON(j)
+	}
 	if s.RequireCodeOwnerReviews.Set {
 		field.Write("require_code_owner_reviews")
 		s.RequireCodeOwnerReviews.WriteJSON(j)
@@ -42721,8 +50533,11 @@ func (s *ReposUpdatePullRequestReviewProtectionApplicationJSONRequest) ReadJSON(
 			}
 			return true
 		case "dismissal_restrictions":
-			// Unsupported kind "pointer" for field "DismissalRestrictions".
-			i.Skip()
+			s.DismissalRestrictions.Reset()
+			if err := s.DismissalRestrictions.ReadJSON(i); err != nil {
+				i.ReportError("Field DismissalRestrictions", err.Error())
+				return false
+			}
 			return true
 		case "require_code_owner_reviews":
 			s.RequireCodeOwnerReviews.Reset()
@@ -43098,7 +50913,7 @@ func (s Repository) WriteJSON(j *json.Stream) {
 	field.Write("contents_url")
 	j.WriteString(s.ContentsURL)
 	field.Write("contributors_url")
-	j.WriteString(s.ContributorsURL)
+	json.WriteURI(j, s.ContributorsURL)
 	field.Write("created_at")
 	s.CreatedAt.WriteJSON(j, json.WriteDateTime)
 	field.Write("default_branch")
@@ -43108,15 +50923,15 @@ func (s Repository) WriteJSON(j *json.Stream) {
 		s.DeleteBranchOnMerge.WriteJSON(j)
 	}
 	field.Write("deployments_url")
-	j.WriteString(s.DeploymentsURL)
+	json.WriteURI(j, s.DeploymentsURL)
 	field.Write("description")
 	s.Description.WriteJSON(j)
 	field.Write("disabled")
 	j.WriteBool(s.Disabled)
 	field.Write("downloads_url")
-	j.WriteString(s.DownloadsURL)
+	json.WriteURI(j, s.DownloadsURL)
 	field.Write("events_url")
-	j.WriteString(s.EventsURL)
+	json.WriteURI(j, s.EventsURL)
 	field.Write("fork")
 	j.WriteBool(s.Fork)
 	field.Write("forks")
@@ -43124,7 +50939,7 @@ func (s Repository) WriteJSON(j *json.Stream) {
 	field.Write("forks_count")
 	j.WriteInt(s.ForksCount)
 	field.Write("forks_url")
-	j.WriteString(s.ForksURL)
+	json.WriteURI(j, s.ForksURL)
 	field.Write("full_name")
 	j.WriteString(s.FullName)
 	field.Write("git_commits_url")
@@ -43136,7 +50951,7 @@ func (s Repository) WriteJSON(j *json.Stream) {
 	field.Write("git_url")
 	j.WriteString(s.GitURL)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("has_downloads")
 	j.WriteBool(s.HasDownloads)
 	field.Write("has_issues")
@@ -43150,7 +50965,7 @@ func (s Repository) WriteJSON(j *json.Stream) {
 	field.Write("homepage")
 	s.Homepage.WriteJSON(j)
 	field.Write("hooks_url")
-	j.WriteString(s.HooksURL)
+	json.WriteURI(j, s.HooksURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	if s.IsTemplate.Set {
@@ -43170,7 +50985,7 @@ func (s Repository) WriteJSON(j *json.Stream) {
 	field.Write("language")
 	s.Language.WriteJSON(j)
 	field.Write("languages_url")
-	j.WriteString(s.LanguagesURL)
+	json.WriteURI(j, s.LanguagesURL)
 	field.Write("license")
 	s.License.WriteJSON(j)
 	if s.MasterBranch.Set {
@@ -43178,7 +50993,7 @@ func (s Repository) WriteJSON(j *json.Stream) {
 		s.MasterBranch.WriteJSON(j)
 	}
 	field.Write("merges_url")
-	j.WriteString(s.MergesURL)
+	json.WriteURI(j, s.MergesURL)
 	field.Write("milestones_url")
 	j.WriteString(s.MilestonesURL)
 	field.Write("mirror_url")
@@ -43197,10 +51012,16 @@ func (s Repository) WriteJSON(j *json.Stream) {
 	j.WriteInt(s.OpenIssues)
 	field.Write("open_issues_count")
 	j.WriteInt(s.OpenIssuesCount)
-	// Unsupported kind "pointer" for field "Organization".
+	if s.Organization.Set {
+		field.Write("organization")
+		s.Organization.WriteJSON(j)
+	}
 	field.Write("owner")
 	s.Owner.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Permissions".
+	if s.Permissions.Set {
+		field.Write("permissions")
+		s.Permissions.WriteJSON(j)
+	}
 	field.Write("private")
 	j.WriteBool(s.Private)
 	field.Write("pulls_url")
@@ -43216,7 +51037,7 @@ func (s Repository) WriteJSON(j *json.Stream) {
 	field.Write("stargazers_count")
 	j.WriteInt(s.StargazersCount)
 	field.Write("stargazers_url")
-	j.WriteString(s.StargazersURL)
+	json.WriteURI(j, s.StargazersURL)
 	if s.StarredAt.Set {
 		field.Write("starred_at")
 		s.StarredAt.WriteJSON(j)
@@ -43228,25 +51049,28 @@ func (s Repository) WriteJSON(j *json.Stream) {
 		s.SubscribersCount.WriteJSON(j)
 	}
 	field.Write("subscribers_url")
-	j.WriteString(s.SubscribersURL)
+	json.WriteURI(j, s.SubscribersURL)
 	field.Write("subscription_url")
-	j.WriteString(s.SubscriptionURL)
+	json.WriteURI(j, s.SubscriptionURL)
 	field.Write("svn_url")
-	j.WriteString(s.SvnURL)
+	json.WriteURI(j, s.SvnURL)
 	field.Write("tags_url")
-	j.WriteString(s.TagsURL)
+	json.WriteURI(j, s.TagsURL)
 	field.Write("teams_url")
-	j.WriteString(s.TeamsURL)
+	json.WriteURI(j, s.TeamsURL)
 	if s.TempCloneToken.Set {
 		field.Write("temp_clone_token")
 		s.TempCloneToken.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "TemplateRepository".
+	if s.TemplateRepository.Set {
+		field.Write("template_repository")
+		s.TemplateRepository.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Topics".
 	field.Write("trees_url")
 	j.WriteString(s.TreesURL)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	s.UpdatedAt.WriteJSON(j, json.WriteDateTime)
 	if s.Visibility.Set {
@@ -43355,8 +51179,13 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			s.ContentsURL = i.ReadString()
 			return i.Error == nil
 		case "contributors_url":
-			s.ContributorsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ContributorsURL", err.Error())
+				return false
+			}
+			s.ContributorsURL = v
+			return true
 		case "created_at":
 			if err := s.CreatedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 				i.ReportError("Field CreatedAt", err.Error())
@@ -43374,8 +51203,13 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "deployments_url":
-			s.DeploymentsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field DeploymentsURL", err.Error())
+				return false
+			}
+			s.DeploymentsURL = v
+			return true
 		case "description":
 			if err := s.Description.ReadJSON(i); err != nil {
 				i.ReportError("Field Description", err.Error())
@@ -43386,11 +51220,21 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			s.Disabled = i.ReadBool()
 			return i.Error == nil
 		case "downloads_url":
-			s.DownloadsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field DownloadsURL", err.Error())
+				return false
+			}
+			s.DownloadsURL = v
+			return true
 		case "events_url":
-			s.EventsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field EventsURL", err.Error())
+				return false
+			}
+			s.EventsURL = v
+			return true
 		case "fork":
 			s.Fork = i.ReadBool()
 			return i.Error == nil
@@ -43401,8 +51245,13 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			s.ForksCount = i.ReadInt()
 			return i.Error == nil
 		case "forks_url":
-			s.ForksURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ForksURL", err.Error())
+				return false
+			}
+			s.ForksURL = v
+			return true
 		case "full_name":
 			s.FullName = i.ReadString()
 			return i.Error == nil
@@ -43419,8 +51268,13 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			s.GitURL = i.ReadString()
 			return i.Error == nil
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "has_downloads":
 			s.HasDownloads = i.ReadBool()
 			return i.Error == nil
@@ -43443,8 +51297,13 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "hooks_url":
-			s.HooksURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HooksURL", err.Error())
+				return false
+			}
+			s.HooksURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -43477,8 +51336,13 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "languages_url":
-			s.LanguagesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field LanguagesURL", err.Error())
+				return false
+			}
+			s.LanguagesURL = v
+			return true
 		case "license":
 			if err := s.License.ReadJSON(i); err != nil {
 				i.ReportError("Field License", err.Error())
@@ -43493,8 +51357,13 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "merges_url":
-			s.MergesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field MergesURL", err.Error())
+				return false
+			}
+			s.MergesURL = v
+			return true
 		case "milestones_url":
 			s.MilestonesURL = i.ReadString()
 			return i.Error == nil
@@ -43527,8 +51396,11 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			s.OpenIssuesCount = i.ReadInt()
 			return i.Error == nil
 		case "organization":
-			// Unsupported kind "pointer" for field "Organization".
-			i.Skip()
+			s.Organization.Reset()
+			if err := s.Organization.ReadJSON(i); err != nil {
+				i.ReportError("Field Organization", err.Error())
+				return false
+			}
 			return true
 		case "owner":
 			if err := s.Owner.ReadJSON(i); err != nil {
@@ -43537,8 +51409,11 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "permissions":
-			// Unsupported kind "pointer" for field "Permissions".
-			i.Skip()
+			s.Permissions.Reset()
+			if err := s.Permissions.ReadJSON(i); err != nil {
+				i.ReportError("Field Permissions", err.Error())
+				return false
+			}
 			return true
 		case "private":
 			s.Private = i.ReadBool()
@@ -43565,8 +51440,13 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			s.StargazersCount = i.ReadInt()
 			return i.Error == nil
 		case "stargazers_url":
-			s.StargazersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field StargazersURL", err.Error())
+				return false
+			}
+			s.StargazersURL = v
+			return true
 		case "starred_at":
 			s.StarredAt.Reset()
 			if err := s.StarredAt.ReadJSON(i); err != nil {
@@ -43585,20 +51465,45 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "subscribers_url":
-			s.SubscribersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscribersURL", err.Error())
+				return false
+			}
+			s.SubscribersURL = v
+			return true
 		case "subscription_url":
-			s.SubscriptionURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscriptionURL", err.Error())
+				return false
+			}
+			s.SubscriptionURL = v
+			return true
 		case "svn_url":
-			s.SvnURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SvnURL", err.Error())
+				return false
+			}
+			s.SvnURL = v
+			return true
 		case "tags_url":
-			s.TagsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field TagsURL", err.Error())
+				return false
+			}
+			s.TagsURL = v
+			return true
 		case "teams_url":
-			s.TeamsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field TeamsURL", err.Error())
+				return false
+			}
+			s.TeamsURL = v
+			return true
 		case "temp_clone_token":
 			s.TempCloneToken.Reset()
 			if err := s.TempCloneToken.ReadJSON(i); err != nil {
@@ -43607,8 +51512,11 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "template_repository":
-			// Unsupported kind "pointer" for field "TemplateRepository".
-			i.Skip()
+			s.TemplateRepository.Reset()
+			if err := s.TemplateRepository.ReadJSON(i); err != nil {
+				i.ReportError("Field TemplateRepository", err.Error())
+				return false
+			}
 			return true
 		case "topics":
 			// Unsupported kind "pointer" for field "Topics".
@@ -43618,8 +51526,13 @@ func (s *Repository) ReadJSON(i *json.Iterator) error {
 			s.TreesURL = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			if err := s.UpdatedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 				i.ReportError("Field UpdatedAt", err.Error())
@@ -43905,11 +51818,11 @@ func (s RepositorySubscription) WriteJSON(j *json.Stream) {
 	field.Write("reason")
 	s.Reason.WriteJSON(j)
 	field.Write("repository_url")
-	j.WriteString(s.RepositoryURL)
+	json.WriteURI(j, s.RepositoryURL)
 	field.Write("subscribed")
 	j.WriteBool(s.Subscribed)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -43957,14 +51870,24 @@ func (s *RepositorySubscription) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "repository_url":
-			s.RepositoryURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field RepositoryURL", err.Error())
+				return false
+			}
+			s.RepositoryURL = v
+			return true
 		case "subscribed":
 			s.Subscribed = i.ReadBool()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -44206,8 +52129,14 @@ func (s RepositoryTemplateRepository) WriteJSON(j *json.Stream) {
 		field.Write("open_issues_count")
 		s.OpenIssuesCount.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Owner".
-	// Unsupported kind "pointer" for field "Permissions".
+	if s.Owner.Set {
+		field.Write("owner")
+		s.Owner.WriteJSON(j)
+	}
+	if s.Permissions.Set {
+		field.Write("permissions")
+		s.Permissions.WriteJSON(j)
+	}
 	if s.Private.Set {
 		field.Write("private")
 		s.Private.WriteJSON(j)
@@ -44722,12 +52651,18 @@ func (s *RepositoryTemplateRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "owner":
-			// Unsupported kind "pointer" for field "Owner".
-			i.Skip()
+			s.Owner.Reset()
+			if err := s.Owner.ReadJSON(i); err != nil {
+				i.ReportError("Field Owner", err.Error())
+				return false
+			}
 			return true
 		case "permissions":
-			// Unsupported kind "pointer" for field "Permissions".
-			i.Skip()
+			s.Permissions.Reset()
+			if err := s.Permissions.ReadJSON(i); err != nil {
+				i.ReportError("Field Permissions", err.Error())
+				return false
+			}
 			return true
 		case "private":
 			s.Private.Reset()
@@ -45249,7 +53184,7 @@ func (s ReviewComment) WriteJSON(j *json.Stream) {
 	field.Write("diff_hunk")
 	j.WriteString(s.DiffHunk)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	if s.InReplyToID.Set {
@@ -45283,16 +53218,25 @@ func (s ReviewComment) WriteJSON(j *json.Stream) {
 	field.Write("pull_request_review_id")
 	s.PullRequestReviewID.WriteJSON(j)
 	field.Write("pull_request_url")
-	j.WriteString(s.PullRequestURL)
-	// Unsupported kind "pointer" for field "Reactions".
-	// Unsupported kind "pointer" for field "Side".
+	json.WriteURI(j, s.PullRequestURL)
+	if s.Reactions.Set {
+		field.Write("reactions")
+		s.Reactions.WriteJSON(j)
+	}
+	if s.Side.Set {
+		field.Write("side")
+		s.Side.WriteJSON(j)
+	}
 	if s.StartLine.Set {
 		field.Write("start_line")
 		s.StartLine.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "StartSide".
+	if s.StartSide.Set {
+		field.Write("start_side")
+		s.StartSide.WriteJSON(j)
+	}
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	field.Write("user")
@@ -45361,8 +53305,13 @@ func (s *ReviewComment) ReadJSON(i *json.Iterator) error {
 			s.DiffHunk = i.ReadString()
 			return i.Error == nil
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -45425,15 +53374,26 @@ func (s *ReviewComment) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "pull_request_url":
-			s.PullRequestURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field PullRequestURL", err.Error())
+				return false
+			}
+			s.PullRequestURL = v
+			return true
 		case "reactions":
-			// Unsupported kind "pointer" for field "Reactions".
-			i.Skip()
+			s.Reactions.Reset()
+			if err := s.Reactions.ReadJSON(i); err != nil {
+				i.ReportError("Field Reactions", err.Error())
+				return false
+			}
 			return true
 		case "side":
-			// Unsupported kind "pointer" for field "Side".
-			i.Skip()
+			s.Side.Reset()
+			if err := s.Side.ReadJSON(i); err != nil {
+				i.ReportError("Field Side", err.Error())
+				return false
+			}
 			return true
 		case "start_line":
 			s.StartLine.Reset()
@@ -45443,12 +53403,20 @@ func (s *ReviewComment) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "start_side":
-			// Unsupported kind "pointer" for field "StartSide".
-			i.Skip()
+			s.StartSide.Reset()
+			if err := s.StartSide.ReadJSON(i); err != nil {
+				i.ReportError("Field StartSide", err.Error())
+				return false
+			}
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -45888,7 +53856,10 @@ func (s RunnerLabelsItem) WriteJSON(j *json.Stream) {
 		field.Write("name")
 		s.Name.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Type".
+	if s.Type.Set {
+		field.Write("type")
+		s.Type.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -45933,8 +53904,11 @@ func (s *RunnerLabelsItem) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "type":
-			// Unsupported kind "pointer" for field "Type".
-			i.Skip()
+			s.Type.Reset()
+			if err := s.Type.ReadJSON(i); err != nil {
+				i.ReportError("Field Type", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -45960,7 +53934,10 @@ func (s ScimEnterpriseGroup) WriteJSON(j *json.Stream) {
 	field.Write("id")
 	j.WriteString(s.ID)
 	// Unsupported kind "pointer" for field "Members".
-	// Unsupported kind "pointer" for field "Meta".
+	if s.Meta.Set {
+		field.Write("meta")
+		s.Meta.WriteJSON(j)
+	}
 	// Unsupported kind "array" for field "Schemas".
 	j.WriteObjectEnd()
 }
@@ -46013,8 +53990,11 @@ func (s *ScimEnterpriseGroup) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "meta":
-			// Unsupported kind "pointer" for field "Meta".
-			i.Skip()
+			s.Meta.Reset()
+			if err := s.Meta.ReadJSON(i); err != nil {
+				i.ReportError("Field Meta", err.Error())
+				return false
+			}
 			return true
 		case "schemas":
 			// Unsupported kind "array" for field "Schemas".
@@ -46206,8 +54186,14 @@ func (s ScimEnterpriseUser) WriteJSON(j *json.Stream) {
 	// Unsupported kind "pointer" for field "Groups".
 	field.Write("id")
 	j.WriteString(s.ID)
-	// Unsupported kind "pointer" for field "Meta".
-	// Unsupported kind "pointer" for field "Name".
+	if s.Meta.Set {
+		field.Write("meta")
+		s.Meta.WriteJSON(j)
+	}
+	if s.Name.Set {
+		field.Write("name")
+		s.Name.WriteJSON(j)
+	}
 	// Unsupported kind "array" for field "Schemas".
 	if s.UserName.Set {
 		field.Write("userName")
@@ -46268,12 +54254,18 @@ func (s *ScimEnterpriseUser) ReadJSON(i *json.Iterator) error {
 			s.ID = i.ReadString()
 			return i.Error == nil
 		case "meta":
-			// Unsupported kind "pointer" for field "Meta".
-			i.Skip()
+			s.Meta.Reset()
+			if err := s.Meta.ReadJSON(i); err != nil {
+				i.ReportError("Field Meta", err.Error())
+				return false
+			}
 			return true
 		case "name":
-			// Unsupported kind "pointer" for field "Name".
-			i.Skip()
+			s.Name.Reset()
+			if err := s.Name.ReadJSON(i); err != nil {
+				i.ReportError("Field Name", err.Error())
+				return false
+			}
 			return true
 		case "schemas":
 			// Unsupported kind "array" for field "Schemas".
@@ -46757,7 +54749,10 @@ func (s ScimGroupListEnterpriseResourcesItem) WriteJSON(j *json.Stream) {
 	field.Write("id")
 	j.WriteString(s.ID)
 	// Unsupported kind "pointer" for field "Members".
-	// Unsupported kind "pointer" for field "Meta".
+	if s.Meta.Set {
+		field.Write("meta")
+		s.Meta.WriteJSON(j)
+	}
 	// Unsupported kind "array" for field "Schemas".
 	j.WriteObjectEnd()
 }
@@ -46810,8 +54805,11 @@ func (s *ScimGroupListEnterpriseResourcesItem) ReadJSON(i *json.Iterator) error 
 			i.Skip()
 			return true
 		case "meta":
-			// Unsupported kind "pointer" for field "Meta".
-			i.Skip()
+			s.Meta.Reset()
+			if err := s.Meta.ReadJSON(i); err != nil {
+				i.ReportError("Field Meta", err.Error())
+				return false
+			}
 			return true
 		case "schemas":
 			// Unsupported kind "array" for field "Schemas".
@@ -47540,8 +55538,14 @@ func (s ScimUserListEnterpriseResourcesItem) WriteJSON(j *json.Stream) {
 	// Unsupported kind "pointer" for field "Groups".
 	field.Write("id")
 	j.WriteString(s.ID)
-	// Unsupported kind "pointer" for field "Meta".
-	// Unsupported kind "pointer" for field "Name".
+	if s.Meta.Set {
+		field.Write("meta")
+		s.Meta.WriteJSON(j)
+	}
+	if s.Name.Set {
+		field.Write("name")
+		s.Name.WriteJSON(j)
+	}
 	// Unsupported kind "array" for field "Schemas".
 	if s.UserName.Set {
 		field.Write("userName")
@@ -47602,12 +55606,18 @@ func (s *ScimUserListEnterpriseResourcesItem) ReadJSON(i *json.Iterator) error {
 			s.ID = i.ReadString()
 			return i.Error == nil
 		case "meta":
-			// Unsupported kind "pointer" for field "Meta".
-			i.Skip()
+			s.Meta.Reset()
+			if err := s.Meta.ReadJSON(i); err != nil {
+				i.ReportError("Field Meta", err.Error())
+				return false
+			}
 			return true
 		case "name":
-			// Unsupported kind "pointer" for field "Name".
-			i.Skip()
+			s.Name.Reset()
+			if err := s.Name.ReadJSON(i); err != nil {
+				i.ReportError("Field Name", err.Error())
+				return false
+			}
 			return true
 		case "schemas":
 			// Unsupported kind "array" for field "Schemas".
@@ -48124,12 +56134,18 @@ func (s SecretScanningAlert) WriteJSON(j *json.Stream) {
 		s.LocationsURL.WriteJSON(j)
 	}
 	// Unsupported kind "pointer" for field "Number".
-	// Unsupported kind "pointer" for field "Resolution".
+	if s.Resolution.Set {
+		field.Write("resolution")
+		s.Resolution.WriteJSON(j)
+	}
 	if s.ResolvedAt.Set {
 		field.Write("resolved_at")
 		s.ResolvedAt.WriteJSON(j, json.WriteDateTime)
 	}
-	// Unsupported kind "pointer" for field "ResolvedBy".
+	if s.ResolvedBy.Set {
+		field.Write("resolved_by")
+		s.ResolvedBy.WriteJSON(j)
+	}
 	if s.Secret.Set {
 		field.Write("secret")
 		s.Secret.WriteJSON(j)
@@ -48138,7 +56154,10 @@ func (s SecretScanningAlert) WriteJSON(j *json.Stream) {
 		field.Write("secret_type")
 		s.SecretType.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "State".
+	if s.State.Set {
+		field.Write("state")
+		s.State.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "URL".
 	j.WriteObjectEnd()
 }
@@ -48189,8 +56208,11 @@ func (s *SecretScanningAlert) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "resolution":
-			// Unsupported kind "pointer" for field "Resolution".
-			i.Skip()
+			s.Resolution.Reset()
+			if err := s.Resolution.ReadJSON(i); err != nil {
+				i.ReportError("Field Resolution", err.Error())
+				return false
+			}
 			return true
 		case "resolved_at":
 			s.ResolvedAt.Reset()
@@ -48200,8 +56222,11 @@ func (s *SecretScanningAlert) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "resolved_by":
-			// Unsupported kind "pointer" for field "ResolvedBy".
-			i.Skip()
+			s.ResolvedBy.Reset()
+			if err := s.ResolvedBy.ReadJSON(i); err != nil {
+				i.ReportError("Field ResolvedBy", err.Error())
+				return false
+			}
 			return true
 		case "secret":
 			s.Secret.Reset()
@@ -48218,8 +56243,11 @@ func (s *SecretScanningAlert) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "state":
-			// Unsupported kind "pointer" for field "State".
-			i.Skip()
+			s.State.Reset()
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
 			return true
 		case "url":
 			// Unsupported kind "pointer" for field "URL".
@@ -48238,7 +56266,10 @@ func (s SecretScanningUpdateAlertApplicationJSONRequest) WriteJSON(j *json.Strea
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Resolution".
+	if s.Resolution.Set {
+		field.Write("resolution")
+		s.Resolution.WriteJSON(j)
+	}
 	field.Write("state")
 	j.WriteString(s.State)
 	j.WriteObjectEnd()
@@ -48271,8 +56302,11 @@ func (s *SecretScanningUpdateAlertApplicationJSONRequest) ReadJSON(i *json.Itera
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "resolution":
-			// Unsupported kind "pointer" for field "Resolution".
-			i.Skip()
+			s.Resolution.Reset()
+			if err := s.Resolution.ReadJSON(i); err != nil {
+				i.ReportError("Field Resolution", err.Error())
+				return false
+			}
 			return true
 		case "state":
 			s.State = i.ReadString()
@@ -48492,7 +56526,10 @@ func (s ShortBranch) WriteJSON(j *json.Stream) {
 	j.WriteString(s.Name)
 	field.Write("protected")
 	j.WriteBool(s.Protected)
-	// Unsupported kind "pointer" for field "Protection".
+	if s.Protection.Set {
+		field.Write("protection")
+		s.Protection.WriteJSON(j)
+	}
 	if s.ProtectionURL.Set {
 		field.Write("protection_url")
 		s.ProtectionURL.WriteJSON(j)
@@ -48539,8 +56576,11 @@ func (s *ShortBranch) ReadJSON(i *json.Iterator) error {
 			s.Protected = i.ReadBool()
 			return i.Error == nil
 		case "protection":
-			// Unsupported kind "pointer" for field "Protection".
-			i.Skip()
+			s.Protection.Reset()
+			if err := s.Protection.ReadJSON(i); err != nil {
+				i.ReportError("Field Protection", err.Error())
+				return false
+			}
 			return true
 		case "protection_url":
 			s.ProtectionURL.Reset()
@@ -48565,7 +56605,7 @@ func (s ShortBranchCommit) WriteJSON(j *json.Stream) {
 	field.Write("sha")
 	j.WriteString(s.Sha)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -48599,8 +56639,13 @@ func (s *ShortBranchCommit) ReadJSON(i *json.Iterator) error {
 			s.Sha = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -48820,9 +56865,9 @@ func (s SimpleCommitStatus) WriteJSON(j *json.Stream) {
 	field.Write("state")
 	j.WriteString(s.State)
 	field.Write("target_url")
-	j.WriteString(s.TargetURL)
+	json.WriteURI(j, s.TargetURL)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	j.WriteObjectEnd()
@@ -48894,11 +56939,21 @@ func (s *SimpleCommitStatus) ReadJSON(i *json.Iterator) error {
 			s.State = i.ReadString()
 			return i.Error == nil
 		case "target_url":
-			s.TargetURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field TargetURL", err.Error())
+				return false
+			}
+			s.TargetURL = v
+			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -48921,7 +56976,7 @@ func (s SimpleUser) WriteJSON(j *json.Stream) {
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
 	field.Write("avatar_url")
-	j.WriteString(s.AvatarURL)
+	json.WriteURI(j, s.AvatarURL)
 	if s.Email.Set {
 		field.Write("email")
 		s.Email.WriteJSON(j)
@@ -48929,7 +56984,7 @@ func (s SimpleUser) WriteJSON(j *json.Stream) {
 	field.Write("events_url")
 	j.WriteString(s.EventsURL)
 	field.Write("followers_url")
-	j.WriteString(s.FollowersURL)
+	json.WriteURI(j, s.FollowersURL)
 	field.Write("following_url")
 	j.WriteString(s.FollowingURL)
 	field.Write("gists_url")
@@ -48937,7 +56992,7 @@ func (s SimpleUser) WriteJSON(j *json.Stream) {
 	field.Write("gravatar_id")
 	s.GravatarID.WriteJSON(j)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	field.Write("login")
@@ -48949,11 +57004,11 @@ func (s SimpleUser) WriteJSON(j *json.Stream) {
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
 	field.Write("organizations_url")
-	j.WriteString(s.OrganizationsURL)
+	json.WriteURI(j, s.OrganizationsURL)
 	field.Write("received_events_url")
-	j.WriteString(s.ReceivedEventsURL)
+	json.WriteURI(j, s.ReceivedEventsURL)
 	field.Write("repos_url")
-	j.WriteString(s.ReposURL)
+	json.WriteURI(j, s.ReposURL)
 	field.Write("site_admin")
 	j.WriteBool(s.SiteAdmin)
 	if s.StarredAt.Set {
@@ -48963,11 +57018,11 @@ func (s SimpleUser) WriteJSON(j *json.Stream) {
 	field.Write("starred_url")
 	j.WriteString(s.StarredURL)
 	field.Write("subscriptions_url")
-	j.WriteString(s.SubscriptionsURL)
+	json.WriteURI(j, s.SubscriptionsURL)
 	field.Write("type")
 	j.WriteString(s.Type)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -48998,8 +57053,13 @@ func (s *SimpleUser) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "avatar_url":
-			s.AvatarURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field AvatarURL", err.Error())
+				return false
+			}
+			s.AvatarURL = v
+			return true
 		case "email":
 			s.Email.Reset()
 			if err := s.Email.ReadJSON(i); err != nil {
@@ -49011,8 +57071,13 @@ func (s *SimpleUser) ReadJSON(i *json.Iterator) error {
 			s.EventsURL = i.ReadString()
 			return i.Error == nil
 		case "followers_url":
-			s.FollowersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field FollowersURL", err.Error())
+				return false
+			}
+			s.FollowersURL = v
+			return true
 		case "following_url":
 			s.FollowingURL = i.ReadString()
 			return i.Error == nil
@@ -49026,8 +57091,13 @@ func (s *SimpleUser) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -49045,14 +57115,29 @@ func (s *SimpleUser) ReadJSON(i *json.Iterator) error {
 			s.NodeID = i.ReadString()
 			return i.Error == nil
 		case "organizations_url":
-			s.OrganizationsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field OrganizationsURL", err.Error())
+				return false
+			}
+			s.OrganizationsURL = v
+			return true
 		case "received_events_url":
-			s.ReceivedEventsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ReceivedEventsURL", err.Error())
+				return false
+			}
+			s.ReceivedEventsURL = v
+			return true
 		case "repos_url":
-			s.ReposURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ReposURL", err.Error())
+				return false
+			}
+			s.ReposURL = v
+			return true
 		case "site_admin":
 			s.SiteAdmin = i.ReadBool()
 			return i.Error == nil
@@ -49067,14 +57152,24 @@ func (s *SimpleUser) ReadJSON(i *json.Iterator) error {
 			s.StarredURL = i.ReadString()
 			return i.Error == nil
 		case "subscriptions_url":
-			s.SubscriptionsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscriptionsURL", err.Error())
+				return false
+			}
+			s.SubscriptionsURL = v
+			return true
 		case "type":
 			s.Type = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -49193,11 +57288,11 @@ func (s StatusCheckPolicy) WriteJSON(j *json.Stream) {
 	defer field.Reset()
 	// Unsupported kind "array" for field "Contexts".
 	field.Write("contexts_url")
-	j.WriteString(s.ContextsURL)
+	json.WriteURI(j, s.ContextsURL)
 	field.Write("strict")
 	j.WriteBool(s.Strict)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -49232,14 +57327,24 @@ func (s *StatusCheckPolicy) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "contexts_url":
-			s.ContextsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ContextsURL", err.Error())
+				return false
+			}
+			s.ContextsURL = v
+			return true
 		case "strict":
 			s.Strict = i.ReadBool()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -49260,9 +57365,9 @@ func (s Tag) WriteJSON(j *json.Stream) {
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
 	field.Write("tarball_url")
-	j.WriteString(s.TarballURL)
+	json.WriteURI(j, s.TarballURL)
 	field.Write("zipball_url")
-	j.WriteString(s.ZipballURL)
+	json.WriteURI(j, s.ZipballURL)
 	j.WriteObjectEnd()
 }
 
@@ -49305,11 +57410,21 @@ func (s *Tag) ReadJSON(i *json.Iterator) error {
 			s.NodeID = i.ReadString()
 			return i.Error == nil
 		case "tarball_url":
-			s.TarballURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field TarballURL", err.Error())
+				return false
+			}
+			s.TarballURL = v
+			return true
 		case "zipball_url":
-			s.ZipballURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ZipballURL", err.Error())
+				return false
+			}
+			s.ZipballURL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -49326,7 +57441,7 @@ func (s TagCommit) WriteJSON(j *json.Stream) {
 	field.Write("sha")
 	j.WriteString(s.Sha)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -49360,8 +57475,13 @@ func (s *TagCommit) ReadJSON(i *json.Iterator) error {
 			s.Sha = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -49378,7 +57498,7 @@ func (s Team) WriteJSON(j *json.Stream) {
 	field.Write("description")
 	s.Description.WriteJSON(j)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	field.Write("members_url")
@@ -49391,17 +57511,20 @@ func (s Team) WriteJSON(j *json.Stream) {
 	s.Parent.WriteJSON(j)
 	field.Write("permission")
 	j.WriteString(s.Permission)
-	// Unsupported kind "pointer" for field "Permissions".
+	if s.Permissions.Set {
+		field.Write("permissions")
+		s.Permissions.WriteJSON(j)
+	}
 	if s.Privacy.Set {
 		field.Write("privacy")
 		s.Privacy.WriteJSON(j)
 	}
 	field.Write("repositories_url")
-	j.WriteString(s.RepositoriesURL)
+	json.WriteURI(j, s.RepositoriesURL)
 	field.Write("slug")
 	j.WriteString(s.Slug)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -49438,8 +57561,13 @@ func (s *Team) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -49462,8 +57590,11 @@ func (s *Team) ReadJSON(i *json.Iterator) error {
 			s.Permission = i.ReadString()
 			return i.Error == nil
 		case "permissions":
-			// Unsupported kind "pointer" for field "Permissions".
-			i.Skip()
+			s.Permissions.Reset()
+			if err := s.Permissions.ReadJSON(i); err != nil {
+				i.ReportError("Field Permissions", err.Error())
+				return false
+			}
 			return true
 		case "privacy":
 			s.Privacy.Reset()
@@ -49473,14 +57604,24 @@ func (s *Team) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "repositories_url":
-			s.RepositoriesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field RepositoriesURL", err.Error())
+				return false
+			}
+			s.RepositoriesURL = v
+			return true
 		case "slug":
 			s.Slug = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -49505,11 +57646,11 @@ func (s TeamDiscussion) WriteJSON(j *json.Stream) {
 	field.Write("comments_count")
 	j.WriteInt(s.CommentsCount)
 	field.Write("comments_url")
-	j.WriteString(s.CommentsURL)
+	json.WriteURI(j, s.CommentsURL)
 	field.Write("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("last_edited_at")
 	s.LastEditedAt.WriteJSON(j, json.WriteDateTime)
 	field.Write("node_id")
@@ -49520,13 +57661,16 @@ func (s TeamDiscussion) WriteJSON(j *json.Stream) {
 	j.WriteBool(s.Pinned)
 	field.Write("private")
 	j.WriteBool(s.Private)
-	// Unsupported kind "pointer" for field "Reactions".
+	if s.Reactions.Set {
+		field.Write("reactions")
+		s.Reactions.WriteJSON(j)
+	}
 	field.Write("team_url")
-	j.WriteString(s.TeamURL)
+	json.WriteURI(j, s.TeamURL)
 	field.Write("title")
 	j.WriteString(s.Title)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	j.WriteObjectEnd()
@@ -49577,8 +57721,13 @@ func (s *TeamDiscussion) ReadJSON(i *json.Iterator) error {
 			s.CommentsCount = i.ReadInt()
 			return i.Error == nil
 		case "comments_url":
-			s.CommentsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field CommentsURL", err.Error())
+				return false
+			}
+			s.CommentsURL = v
+			return true
 		case "created_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -49588,8 +57737,13 @@ func (s *TeamDiscussion) ReadJSON(i *json.Iterator) error {
 			s.CreatedAt = v
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "last_edited_at":
 			if err := s.LastEditedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 				i.ReportError("Field LastEditedAt", err.Error())
@@ -49609,18 +57763,31 @@ func (s *TeamDiscussion) ReadJSON(i *json.Iterator) error {
 			s.Private = i.ReadBool()
 			return i.Error == nil
 		case "reactions":
-			// Unsupported kind "pointer" for field "Reactions".
-			i.Skip()
+			s.Reactions.Reset()
+			if err := s.Reactions.ReadJSON(i); err != nil {
+				i.ReportError("Field Reactions", err.Error())
+				return false
+			}
 			return true
 		case "team_url":
-			s.TeamURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field TeamURL", err.Error())
+				return false
+			}
+			s.TeamURL = v
+			return true
 		case "title":
 			s.Title = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -49653,18 +57820,21 @@ func (s TeamDiscussionComment) WriteJSON(j *json.Stream) {
 	field.Write("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
 	field.Write("discussion_url")
-	j.WriteString(s.DiscussionURL)
+	json.WriteURI(j, s.DiscussionURL)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("last_edited_at")
 	s.LastEditedAt.WriteJSON(j, json.WriteDateTime)
 	field.Write("node_id")
 	j.WriteString(s.NodeID)
 	field.Write("number")
 	j.WriteInt(s.Number)
-	// Unsupported kind "pointer" for field "Reactions".
+	if s.Reactions.Set {
+		field.Write("reactions")
+		s.Reactions.WriteJSON(j)
+	}
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	j.WriteObjectEnd()
@@ -49720,11 +57890,21 @@ func (s *TeamDiscussionComment) ReadJSON(i *json.Iterator) error {
 			s.CreatedAt = v
 			return true
 		case "discussion_url":
-			s.DiscussionURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field DiscussionURL", err.Error())
+				return false
+			}
+			s.DiscussionURL = v
+			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "last_edited_at":
 			if err := s.LastEditedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 				i.ReportError("Field LastEditedAt", err.Error())
@@ -49738,12 +57918,20 @@ func (s *TeamDiscussionComment) ReadJSON(i *json.Iterator) error {
 			s.Number = i.ReadInt()
 			return i.Error == nil
 		case "reactions":
-			// Unsupported kind "pointer" for field "Reactions".
-			i.Skip()
+			s.Reactions.Reset()
+			if err := s.Reactions.ReadJSON(i); err != nil {
+				i.ReportError("Field Reactions", err.Error())
+				return false
+			}
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -49770,7 +57958,7 @@ func (s TeamFull) WriteJSON(j *json.Stream) {
 	field.Write("description")
 	s.Description.WriteJSON(j)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	if s.LdapDn.Set {
@@ -49787,18 +57975,24 @@ func (s TeamFull) WriteJSON(j *json.Stream) {
 	j.WriteString(s.NodeID)
 	field.Write("organization")
 	s.Organization.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Parent".
+	if s.Parent.Set {
+		field.Write("parent")
+		s.Parent.WriteJSON(j)
+	}
 	field.Write("permission")
 	j.WriteString(s.Permission)
-	// Unsupported kind "pointer" for field "Privacy".
+	if s.Privacy.Set {
+		field.Write("privacy")
+		s.Privacy.WriteJSON(j)
+	}
 	field.Write("repos_count")
 	j.WriteInt(s.ReposCount)
 	field.Write("repositories_url")
-	j.WriteString(s.RepositoriesURL)
+	json.WriteURI(j, s.RepositoriesURL)
 	field.Write("slug")
 	j.WriteString(s.Slug)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	json.WriteDateTime(j, s.UpdatedAt)
 	j.WriteObjectEnd()
@@ -49845,8 +58039,13 @@ func (s *TeamFull) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -49876,28 +58075,44 @@ func (s *TeamFull) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "parent":
-			// Unsupported kind "pointer" for field "Parent".
-			i.Skip()
+			s.Parent.Reset()
+			if err := s.Parent.ReadJSON(i); err != nil {
+				i.ReportError("Field Parent", err.Error())
+				return false
+			}
 			return true
 		case "permission":
 			s.Permission = i.ReadString()
 			return i.Error == nil
 		case "privacy":
-			// Unsupported kind "pointer" for field "Privacy".
-			i.Skip()
+			s.Privacy.Reset()
+			if err := s.Privacy.ReadJSON(i); err != nil {
+				i.ReportError("Field Privacy", err.Error())
+				return false
+			}
 			return true
 		case "repos_count":
 			s.ReposCount = i.ReadInt()
 			return i.Error == nil
 		case "repositories_url":
-			s.RepositoriesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field RepositoriesURL", err.Error())
+				return false
+			}
+			s.RepositoriesURL = v
+			return true
 		case "slug":
 			s.Slug = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -49924,7 +58139,7 @@ func (s TeamMembership) WriteJSON(j *json.Stream) {
 	field.Write("state")
 	j.WriteString(s.State)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -49961,8 +58176,13 @@ func (s *TeamMembership) ReadJSON(i *json.Iterator) error {
 			s.State = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -50286,7 +58506,7 @@ func (s TeamRepository) WriteJSON(j *json.Stream) {
 	field.Write("contents_url")
 	j.WriteString(s.ContentsURL)
 	field.Write("contributors_url")
-	j.WriteString(s.ContributorsURL)
+	json.WriteURI(j, s.ContributorsURL)
 	field.Write("created_at")
 	s.CreatedAt.WriteJSON(j, json.WriteDateTime)
 	field.Write("default_branch")
@@ -50296,15 +58516,15 @@ func (s TeamRepository) WriteJSON(j *json.Stream) {
 		s.DeleteBranchOnMerge.WriteJSON(j)
 	}
 	field.Write("deployments_url")
-	j.WriteString(s.DeploymentsURL)
+	json.WriteURI(j, s.DeploymentsURL)
 	field.Write("description")
 	s.Description.WriteJSON(j)
 	field.Write("disabled")
 	j.WriteBool(s.Disabled)
 	field.Write("downloads_url")
-	j.WriteString(s.DownloadsURL)
+	json.WriteURI(j, s.DownloadsURL)
 	field.Write("events_url")
-	j.WriteString(s.EventsURL)
+	json.WriteURI(j, s.EventsURL)
 	field.Write("fork")
 	j.WriteBool(s.Fork)
 	field.Write("forks")
@@ -50312,7 +58532,7 @@ func (s TeamRepository) WriteJSON(j *json.Stream) {
 	field.Write("forks_count")
 	j.WriteInt(s.ForksCount)
 	field.Write("forks_url")
-	j.WriteString(s.ForksURL)
+	json.WriteURI(j, s.ForksURL)
 	field.Write("full_name")
 	j.WriteString(s.FullName)
 	field.Write("git_commits_url")
@@ -50324,7 +58544,7 @@ func (s TeamRepository) WriteJSON(j *json.Stream) {
 	field.Write("git_url")
 	j.WriteString(s.GitURL)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("has_downloads")
 	j.WriteBool(s.HasDownloads)
 	field.Write("has_issues")
@@ -50338,7 +58558,7 @@ func (s TeamRepository) WriteJSON(j *json.Stream) {
 	field.Write("homepage")
 	s.Homepage.WriteJSON(j)
 	field.Write("hooks_url")
-	j.WriteString(s.HooksURL)
+	json.WriteURI(j, s.HooksURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	if s.IsTemplate.Set {
@@ -50358,7 +58578,7 @@ func (s TeamRepository) WriteJSON(j *json.Stream) {
 	field.Write("language")
 	s.Language.WriteJSON(j)
 	field.Write("languages_url")
-	j.WriteString(s.LanguagesURL)
+	json.WriteURI(j, s.LanguagesURL)
 	field.Write("license")
 	s.License.WriteJSON(j)
 	if s.MasterBranch.Set {
@@ -50366,7 +58586,7 @@ func (s TeamRepository) WriteJSON(j *json.Stream) {
 		s.MasterBranch.WriteJSON(j)
 	}
 	field.Write("merges_url")
-	j.WriteString(s.MergesURL)
+	json.WriteURI(j, s.MergesURL)
 	field.Write("milestones_url")
 	j.WriteString(s.MilestonesURL)
 	field.Write("mirror_url")
@@ -50387,7 +58607,10 @@ func (s TeamRepository) WriteJSON(j *json.Stream) {
 	j.WriteInt(s.OpenIssuesCount)
 	field.Write("owner")
 	s.Owner.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Permissions".
+	if s.Permissions.Set {
+		field.Write("permissions")
+		s.Permissions.WriteJSON(j)
+	}
 	field.Write("private")
 	j.WriteBool(s.Private)
 	field.Write("pulls_url")
@@ -50403,7 +58626,7 @@ func (s TeamRepository) WriteJSON(j *json.Stream) {
 	field.Write("stargazers_count")
 	j.WriteInt(s.StargazersCount)
 	field.Write("stargazers_url")
-	j.WriteString(s.StargazersURL)
+	json.WriteURI(j, s.StargazersURL)
 	field.Write("statuses_url")
 	j.WriteString(s.StatusesURL)
 	if s.SubscribersCount.Set {
@@ -50411,25 +58634,28 @@ func (s TeamRepository) WriteJSON(j *json.Stream) {
 		s.SubscribersCount.WriteJSON(j)
 	}
 	field.Write("subscribers_url")
-	j.WriteString(s.SubscribersURL)
+	json.WriteURI(j, s.SubscribersURL)
 	field.Write("subscription_url")
-	j.WriteString(s.SubscriptionURL)
+	json.WriteURI(j, s.SubscriptionURL)
 	field.Write("svn_url")
-	j.WriteString(s.SvnURL)
+	json.WriteURI(j, s.SvnURL)
 	field.Write("tags_url")
-	j.WriteString(s.TagsURL)
+	json.WriteURI(j, s.TagsURL)
 	field.Write("teams_url")
-	j.WriteString(s.TeamsURL)
+	json.WriteURI(j, s.TeamsURL)
 	if s.TempCloneToken.Set {
 		field.Write("temp_clone_token")
 		s.TempCloneToken.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "TemplateRepository".
+	if s.TemplateRepository.Set {
+		field.Write("template_repository")
+		s.TemplateRepository.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "Topics".
 	field.Write("trees_url")
 	j.WriteString(s.TreesURL)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	field.Write("updated_at")
 	s.UpdatedAt.WriteJSON(j, json.WriteDateTime)
 	if s.Visibility.Set {
@@ -50538,8 +58764,13 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			s.ContentsURL = i.ReadString()
 			return i.Error == nil
 		case "contributors_url":
-			s.ContributorsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ContributorsURL", err.Error())
+				return false
+			}
+			s.ContributorsURL = v
+			return true
 		case "created_at":
 			if err := s.CreatedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 				i.ReportError("Field CreatedAt", err.Error())
@@ -50557,8 +58788,13 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "deployments_url":
-			s.DeploymentsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field DeploymentsURL", err.Error())
+				return false
+			}
+			s.DeploymentsURL = v
+			return true
 		case "description":
 			if err := s.Description.ReadJSON(i); err != nil {
 				i.ReportError("Field Description", err.Error())
@@ -50569,11 +58805,21 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			s.Disabled = i.ReadBool()
 			return i.Error == nil
 		case "downloads_url":
-			s.DownloadsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field DownloadsURL", err.Error())
+				return false
+			}
+			s.DownloadsURL = v
+			return true
 		case "events_url":
-			s.EventsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field EventsURL", err.Error())
+				return false
+			}
+			s.EventsURL = v
+			return true
 		case "fork":
 			s.Fork = i.ReadBool()
 			return i.Error == nil
@@ -50584,8 +58830,13 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			s.ForksCount = i.ReadInt()
 			return i.Error == nil
 		case "forks_url":
-			s.ForksURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field ForksURL", err.Error())
+				return false
+			}
+			s.ForksURL = v
+			return true
 		case "full_name":
 			s.FullName = i.ReadString()
 			return i.Error == nil
@@ -50602,8 +58853,13 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			s.GitURL = i.ReadString()
 			return i.Error == nil
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "has_downloads":
 			s.HasDownloads = i.ReadBool()
 			return i.Error == nil
@@ -50626,8 +58882,13 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "hooks_url":
-			s.HooksURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HooksURL", err.Error())
+				return false
+			}
+			s.HooksURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -50660,8 +58921,13 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "languages_url":
-			s.LanguagesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field LanguagesURL", err.Error())
+				return false
+			}
+			s.LanguagesURL = v
+			return true
 		case "license":
 			if err := s.License.ReadJSON(i); err != nil {
 				i.ReportError("Field License", err.Error())
@@ -50676,8 +58942,13 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "merges_url":
-			s.MergesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field MergesURL", err.Error())
+				return false
+			}
+			s.MergesURL = v
+			return true
 		case "milestones_url":
 			s.MilestonesURL = i.ReadString()
 			return i.Error == nil
@@ -50716,8 +58987,11 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "permissions":
-			// Unsupported kind "pointer" for field "Permissions".
-			i.Skip()
+			s.Permissions.Reset()
+			if err := s.Permissions.ReadJSON(i); err != nil {
+				i.ReportError("Field Permissions", err.Error())
+				return false
+			}
 			return true
 		case "private":
 			s.Private = i.ReadBool()
@@ -50744,8 +59018,13 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			s.StargazersCount = i.ReadInt()
 			return i.Error == nil
 		case "stargazers_url":
-			s.StargazersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field StargazersURL", err.Error())
+				return false
+			}
+			s.StargazersURL = v
+			return true
 		case "statuses_url":
 			s.StatusesURL = i.ReadString()
 			return i.Error == nil
@@ -50757,20 +59036,45 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "subscribers_url":
-			s.SubscribersURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscribersURL", err.Error())
+				return false
+			}
+			s.SubscribersURL = v
+			return true
 		case "subscription_url":
-			s.SubscriptionURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SubscriptionURL", err.Error())
+				return false
+			}
+			s.SubscriptionURL = v
+			return true
 		case "svn_url":
-			s.SvnURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field SvnURL", err.Error())
+				return false
+			}
+			s.SvnURL = v
+			return true
 		case "tags_url":
-			s.TagsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field TagsURL", err.Error())
+				return false
+			}
+			s.TagsURL = v
+			return true
 		case "teams_url":
-			s.TeamsURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field TeamsURL", err.Error())
+				return false
+			}
+			s.TeamsURL = v
+			return true
 		case "temp_clone_token":
 			s.TempCloneToken.Reset()
 			if err := s.TempCloneToken.ReadJSON(i); err != nil {
@@ -50779,8 +59083,11 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "template_repository":
-			// Unsupported kind "pointer" for field "TemplateRepository".
-			i.Skip()
+			s.TemplateRepository.Reset()
+			if err := s.TemplateRepository.ReadJSON(i); err != nil {
+				i.ReportError("Field TemplateRepository", err.Error())
+				return false
+			}
 			return true
 		case "topics":
 			// Unsupported kind "pointer" for field "Topics".
@@ -50790,8 +59097,13 @@ func (s *TeamRepository) ReadJSON(i *json.Iterator) error {
 			s.TreesURL = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		case "updated_at":
 			if err := s.UpdatedAt.ReadJSON(i, json.ReadDateTime); err != nil {
 				i.ReportError("Field UpdatedAt", err.Error())
@@ -50906,7 +59218,7 @@ func (s TeamSimple) WriteJSON(j *json.Stream) {
 	field.Write("description")
 	s.Description.WriteJSON(j)
 	field.Write("html_url")
-	j.WriteString(s.HTMLURL)
+	json.WriteURI(j, s.HTMLURL)
 	field.Write("id")
 	j.WriteInt(s.ID)
 	if s.LdapDn.Set {
@@ -50926,11 +59238,11 @@ func (s TeamSimple) WriteJSON(j *json.Stream) {
 		s.Privacy.WriteJSON(j)
 	}
 	field.Write("repositories_url")
-	j.WriteString(s.RepositoriesURL)
+	json.WriteURI(j, s.RepositoriesURL)
 	field.Write("slug")
 	j.WriteString(s.Slug)
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -50967,8 +59279,13 @@ func (s *TeamSimple) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "html_url":
-			s.HTMLURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field HTMLURL", err.Error())
+				return false
+			}
+			s.HTMLURL = v
+			return true
 		case "id":
 			s.ID = i.ReadInt()
 			return i.Error == nil
@@ -50999,14 +59316,24 @@ func (s *TeamSimple) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "repositories_url":
-			s.RepositoriesURL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field RepositoriesURL", err.Error())
+				return false
+			}
+			s.RepositoriesURL = v
+			return true
 		case "slug":
 			s.Slug = i.ReadString()
 			return i.Error == nil
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -51020,7 +59347,10 @@ func (s TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest) WriteJSON(
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Role".
+	if s.Role.Set {
+		field.Write("role")
+		s.Role.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -51051,8 +59381,11 @@ func (s *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest) ReadJSON(
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "role":
-			// Unsupported kind "pointer" for field "Role".
-			i.Skip()
+			s.Role.Reset()
+			if err := s.Role.ReadJSON(i); err != nil {
+				i.ReportError("Field Role", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -51067,7 +59400,10 @@ func (s TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest) WriteJSON
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Role".
+	if s.Role.Set {
+		field.Write("role")
+		s.Role.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -51098,8 +59434,11 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest) ReadJSON
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "role":
-			// Unsupported kind "pointer" for field "Role".
-			i.Skip()
+			s.Role.Reset()
+			if err := s.Role.ReadJSON(i); err != nil {
+				i.ReportError("Field Role", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -51114,7 +59453,10 @@ func (s TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest) WriteJSON
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Permission".
+	if s.Permission.Set {
+		field.Write("permission")
+		s.Permission.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -51145,8 +59487,11 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest) ReadJSON
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "permission":
-			// Unsupported kind "pointer" for field "Permission".
-			i.Skip()
+			s.Permission.Reset()
+			if err := s.Permission.ReadJSON(i); err != nil {
+				i.ReportError("Field Permission", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -51225,7 +59570,10 @@ func (s TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest) WriteJSO
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Permission".
+	if s.Permission.Set {
+		field.Write("permission")
+		s.Permission.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -51256,8 +59604,11 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest) ReadJSO
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "permission":
-			// Unsupported kind "pointer" for field "Permission".
-			i.Skip()
+			s.Permission.Reset()
+			if err := s.Permission.ReadJSON(i); err != nil {
+				i.ReportError("Field Permission", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -51336,7 +59687,10 @@ func (s TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest) WriteJSON(j 
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Permission".
+	if s.Permission.Set {
+		field.Write("permission")
+		s.Permission.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -51367,8 +59721,11 @@ func (s *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest) ReadJSON(i 
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "permission":
-			// Unsupported kind "pointer" for field "Permission".
-			i.Skip()
+			s.Permission.Reset()
+			if err := s.Permission.ReadJSON(i); err != nil {
+				i.ReportError("Field Permission", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -51383,7 +59740,10 @@ func (s TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest) WriteJSON(j
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Permission".
+	if s.Permission.Set {
+		field.Write("permission")
+		s.Permission.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -51414,8 +59774,11 @@ func (s *TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest) ReadJSON(i
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "permission":
-			// Unsupported kind "pointer" for field "Permission".
-			i.Skip()
+			s.Permission.Reset()
+			if err := s.Permission.ReadJSON(i); err != nil {
+				i.ReportError("Field Permission", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -51441,8 +59804,14 @@ func (s TeamsCreateApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		field.Write("parent_team_id")
 		s.ParentTeamID.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Permission".
-	// Unsupported kind "pointer" for field "Privacy".
+	if s.Permission.Set {
+		field.Write("permission")
+		s.Permission.WriteJSON(j)
+	}
+	if s.Privacy.Set {
+		field.Write("privacy")
+		s.Privacy.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "RepoNames".
 	j.WriteObjectEnd()
 }
@@ -51495,12 +59864,18 @@ func (s *TeamsCreateApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "permission":
-			// Unsupported kind "pointer" for field "Permission".
-			i.Skip()
+			s.Permission.Reset()
+			if err := s.Permission.ReadJSON(i); err != nil {
+				i.ReportError("Field Permission", err.Error())
+				return false
+			}
 			return true
 		case "privacy":
-			// Unsupported kind "pointer" for field "Privacy".
-			i.Skip()
+			s.Privacy.Reset()
+			if err := s.Privacy.ReadJSON(i); err != nil {
+				i.ReportError("Field Privacy", err.Error())
+				return false
+			}
 			return true
 		case "repo_names":
 			// Unsupported kind "pointer" for field "RepoNames".
@@ -52225,8 +60600,14 @@ func (s TeamsUpdateInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		field.Write("parent_team_id")
 		s.ParentTeamID.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Permission".
-	// Unsupported kind "pointer" for field "Privacy".
+	if s.Permission.Set {
+		field.Write("permission")
+		s.Permission.WriteJSON(j)
+	}
+	if s.Privacy.Set {
+		field.Write("privacy")
+		s.Privacy.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -52278,12 +60659,18 @@ func (s *TeamsUpdateInOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) erro
 			}
 			return true
 		case "permission":
-			// Unsupported kind "pointer" for field "Permission".
-			i.Skip()
+			s.Permission.Reset()
+			if err := s.Permission.ReadJSON(i); err != nil {
+				i.ReportError("Field Permission", err.Error())
+				return false
+			}
 			return true
 		case "privacy":
-			// Unsupported kind "pointer" for field "Privacy".
-			i.Skip()
+			s.Privacy.Reset()
+			if err := s.Privacy.ReadJSON(i); err != nil {
+				i.ReportError("Field Privacy", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -52308,8 +60695,14 @@ func (s TeamsUpdateLegacyApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		field.Write("parent_team_id")
 		s.ParentTeamID.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Permission".
-	// Unsupported kind "pointer" for field "Privacy".
+	if s.Permission.Set {
+		field.Write("permission")
+		s.Permission.WriteJSON(j)
+	}
+	if s.Privacy.Set {
+		field.Write("privacy")
+		s.Privacy.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -52357,12 +60750,18 @@ func (s *TeamsUpdateLegacyApplicationJSONRequest) ReadJSON(i *json.Iterator) err
 			}
 			return true
 		case "permission":
-			// Unsupported kind "pointer" for field "Permission".
-			i.Skip()
+			s.Permission.Reset()
+			if err := s.Permission.ReadJSON(i); err != nil {
+				i.ReportError("Field Permission", err.Error())
+				return false
+			}
 			return true
 		case "privacy":
-			// Unsupported kind "pointer" for field "Privacy".
-			i.Skip()
+			s.Privacy.Reset()
+			if err := s.Privacy.ReadJSON(i); err != nil {
+				i.ReportError("Field Privacy", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -52552,7 +60951,7 @@ func (s ThreadSubscription) WriteJSON(j *json.Stream) {
 		s.ThreadURL.WriteJSON(j)
 	}
 	field.Write("url")
-	j.WriteString(s.URL)
+	json.WriteURI(j, s.URL)
 	j.WriteObjectEnd()
 }
 
@@ -52615,8 +61014,13 @@ func (s *ThreadSubscription) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			v, err := json.ReadURI(i)
+			if err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			s.URL = v
+			return true
 		default:
 			i.Skip()
 			return true
@@ -52836,7 +61240,10 @@ func (s TopicSearchResultItemAliasesItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "TopicRelation".
+	if s.TopicRelation.Set {
+		field.Write("topic_relation")
+		s.TopicRelation.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -52867,8 +61274,11 @@ func (s *TopicSearchResultItemAliasesItem) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "topic_relation":
-			// Unsupported kind "pointer" for field "TopicRelation".
-			i.Skip()
+			s.TopicRelation.Reset()
+			if err := s.TopicRelation.ReadJSON(i); err != nil {
+				i.ReportError("Field TopicRelation", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -52969,7 +61379,10 @@ func (s TopicSearchResultItemRelatedItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "TopicRelation".
+	if s.TopicRelation.Set {
+		field.Write("topic_relation")
+		s.TopicRelation.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -53000,8 +61413,11 @@ func (s *TopicSearchResultItemRelatedItem) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "topic_relation":
-			// Unsupported kind "pointer" for field "TopicRelation".
-			i.Skip()
+			s.TopicRelation.Reset()
+			if err := s.TopicRelation.ReadJSON(i); err != nil {
+				i.ReportError("Field TopicRelation", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -54039,9 +62455,18 @@ func (s WorkflowRunUsageBillable) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "MACOS".
-	// Unsupported kind "pointer" for field "UBUNTU".
-	// Unsupported kind "pointer" for field "WINDOWS".
+	if s.MACOS.Set {
+		field.Write("MACOS")
+		s.MACOS.WriteJSON(j)
+	}
+	if s.UBUNTU.Set {
+		field.Write("UBUNTU")
+		s.UBUNTU.WriteJSON(j)
+	}
+	if s.WINDOWS.Set {
+		field.Write("WINDOWS")
+		s.WINDOWS.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -54072,16 +62497,25 @@ func (s *WorkflowRunUsageBillable) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "MACOS":
-			// Unsupported kind "pointer" for field "MACOS".
-			i.Skip()
+			s.MACOS.Reset()
+			if err := s.MACOS.ReadJSON(i); err != nil {
+				i.ReportError("Field MACOS", err.Error())
+				return false
+			}
 			return true
 		case "UBUNTU":
-			// Unsupported kind "pointer" for field "UBUNTU".
-			i.Skip()
+			s.UBUNTU.Reset()
+			if err := s.UBUNTU.ReadJSON(i); err != nil {
+				i.ReportError("Field UBUNTU", err.Error())
+				return false
+			}
 			return true
 		case "WINDOWS":
-			// Unsupported kind "pointer" for field "WINDOWS".
-			i.Skip()
+			s.WINDOWS.Reset()
+			if err := s.WINDOWS.ReadJSON(i); err != nil {
+				i.ReportError("Field WINDOWS", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()

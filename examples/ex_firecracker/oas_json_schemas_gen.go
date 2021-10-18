@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"net"
 	"net/http"
+	"net/url"
 	"sort"
 	"strconv"
 	"strings"
@@ -18,6 +20,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -40,8 +43,11 @@ var (
 	_ = conv.ToInt32
 	_ = uuid.UUID{}
 	_ = uri.PathEncoder{}
+	_ = url.URL{}
 	_ = math.Mod
 	_ = validate.Int{}
+	_ = ht.NewRequest
+	_ = net.IP{}
 )
 
 // WriteJSON implements json.Marshaler.
@@ -463,7 +469,10 @@ func (s Drive) WriteJSON(j *json.Stream) {
 	}
 	field.Write("path_on_host")
 	j.WriteString(s.PathOnHost)
-	// Unsupported kind "pointer" for field "RateLimiter".
+	if s.RateLimiter.Set {
+		field.Write("rate_limiter")
+		s.RateLimiter.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -520,8 +529,11 @@ func (s *Drive) ReadJSON(i *json.Iterator) error {
 			s.PathOnHost = i.ReadString()
 			return i.Error == nil
 		case "rate_limiter":
-			// Unsupported kind "pointer" for field "RateLimiter".
-			i.Skip()
+			s.RateLimiter.Reset()
+			if err := s.RateLimiter.ReadJSON(i); err != nil {
+				i.ReportError("Field RateLimiter", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -631,15 +643,36 @@ func (s FullVmConfiguration) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "BalloonDevice".
+	if s.BalloonDevice.Set {
+		field.Write("balloon_device")
+		s.BalloonDevice.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "BlockDevices".
-	// Unsupported kind "pointer" for field "BootSource".
-	// Unsupported kind "pointer" for field "Logger".
-	// Unsupported kind "pointer" for field "MachineConfig".
-	// Unsupported kind "pointer" for field "Metrics".
-	// Unsupported kind "pointer" for field "MmdsConfig".
+	if s.BootSource.Set {
+		field.Write("boot_source")
+		s.BootSource.WriteJSON(j)
+	}
+	if s.Logger.Set {
+		field.Write("logger")
+		s.Logger.WriteJSON(j)
+	}
+	if s.MachineConfig.Set {
+		field.Write("machine_config")
+		s.MachineConfig.WriteJSON(j)
+	}
+	if s.Metrics.Set {
+		field.Write("metrics")
+		s.Metrics.WriteJSON(j)
+	}
+	if s.MmdsConfig.Set {
+		field.Write("mmds_config")
+		s.MmdsConfig.WriteJSON(j)
+	}
 	// Unsupported kind "pointer" for field "NetDevices".
-	// Unsupported kind "pointer" for field "VsockDevice".
+	if s.VsockDevice.Set {
+		field.Write("vsock_device")
+		s.VsockDevice.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -670,40 +703,61 @@ func (s *FullVmConfiguration) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "balloon_device":
-			// Unsupported kind "pointer" for field "BalloonDevice".
-			i.Skip()
+			s.BalloonDevice.Reset()
+			if err := s.BalloonDevice.ReadJSON(i); err != nil {
+				i.ReportError("Field BalloonDevice", err.Error())
+				return false
+			}
 			return true
 		case "block_devices":
 			// Unsupported kind "pointer" for field "BlockDevices".
 			i.Skip()
 			return true
 		case "boot_source":
-			// Unsupported kind "pointer" for field "BootSource".
-			i.Skip()
+			s.BootSource.Reset()
+			if err := s.BootSource.ReadJSON(i); err != nil {
+				i.ReportError("Field BootSource", err.Error())
+				return false
+			}
 			return true
 		case "logger":
-			// Unsupported kind "pointer" for field "Logger".
-			i.Skip()
+			s.Logger.Reset()
+			if err := s.Logger.ReadJSON(i); err != nil {
+				i.ReportError("Field Logger", err.Error())
+				return false
+			}
 			return true
 		case "machine_config":
-			// Unsupported kind "pointer" for field "MachineConfig".
-			i.Skip()
+			s.MachineConfig.Reset()
+			if err := s.MachineConfig.ReadJSON(i); err != nil {
+				i.ReportError("Field MachineConfig", err.Error())
+				return false
+			}
 			return true
 		case "metrics":
-			// Unsupported kind "pointer" for field "Metrics".
-			i.Skip()
+			s.Metrics.Reset()
+			if err := s.Metrics.ReadJSON(i); err != nil {
+				i.ReportError("Field Metrics", err.Error())
+				return false
+			}
 			return true
 		case "mmds_config":
-			// Unsupported kind "pointer" for field "MmdsConfig".
-			i.Skip()
+			s.MmdsConfig.Reset()
+			if err := s.MmdsConfig.ReadJSON(i); err != nil {
+				i.ReportError("Field MmdsConfig", err.Error())
+				return false
+			}
 			return true
 		case "net_devices":
 			// Unsupported kind "pointer" for field "NetDevices".
 			i.Skip()
 			return true
 		case "vsock_device":
-			// Unsupported kind "pointer" for field "VsockDevice".
-			i.Skip()
+			s.VsockDevice.Reset()
+			if err := s.VsockDevice.ReadJSON(i); err != nil {
+				i.ReportError("Field VsockDevice", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -827,7 +881,10 @@ func (s Logger) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Level".
+	if s.Level.Set {
+		field.Write("level")
+		s.Level.WriteJSON(j)
+	}
 	field.Write("log_path")
 	j.WriteString(s.LogPath)
 	if s.ShowLevel.Set {
@@ -868,8 +925,11 @@ func (s *Logger) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "level":
-			// Unsupported kind "pointer" for field "Level".
-			i.Skip()
+			s.Level.Reset()
+			if err := s.Level.ReadJSON(i); err != nil {
+				i.ReportError("Field Level", err.Error())
+				return false
+			}
 			return true
 		case "log_path":
 			s.LogPath = i.ReadString()
@@ -901,7 +961,10 @@ func (s MachineConfiguration) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "CPUTemplate".
+	if s.CPUTemplate.Set {
+		field.Write("cpu_template")
+		s.CPUTemplate.WriteJSON(j)
+	}
 	field.Write("ht_enabled")
 	j.WriteBool(s.HtEnabled)
 	field.Write("mem_size_mib")
@@ -942,8 +1005,11 @@ func (s *MachineConfiguration) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "cpu_template":
-			// Unsupported kind "pointer" for field "CPUTemplate".
-			i.Skip()
+			s.CPUTemplate.Reset()
+			if err := s.CPUTemplate.ReadJSON(i); err != nil {
+				i.ReportError("Field CPUTemplate", err.Error())
+				return false
+			}
 			return true
 		case "ht_enabled":
 			s.HtEnabled = i.ReadBool()
@@ -1086,8 +1152,14 @@ func (s NetworkInterface) WriteJSON(j *json.Stream) {
 	j.WriteString(s.HostDevName)
 	field.Write("iface_id")
 	j.WriteString(s.IfaceID)
-	// Unsupported kind "pointer" for field "RxRateLimiter".
-	// Unsupported kind "pointer" for field "TxRateLimiter".
+	if s.RxRateLimiter.Set {
+		field.Write("rx_rate_limiter")
+		s.RxRateLimiter.WriteJSON(j)
+	}
+	if s.TxRateLimiter.Set {
+		field.Write("tx_rate_limiter")
+		s.TxRateLimiter.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -1138,12 +1210,18 @@ func (s *NetworkInterface) ReadJSON(i *json.Iterator) error {
 			s.IfaceID = i.ReadString()
 			return i.Error == nil
 		case "rx_rate_limiter":
-			// Unsupported kind "pointer" for field "RxRateLimiter".
-			i.Skip()
+			s.RxRateLimiter.Reset()
+			if err := s.RxRateLimiter.ReadJSON(i); err != nil {
+				i.ReportError("Field RxRateLimiter", err.Error())
+				return false
+			}
 			return true
 		case "tx_rate_limiter":
-			// Unsupported kind "pointer" for field "TxRateLimiter".
-			i.Skip()
+			s.TxRateLimiter.Reset()
+			if err := s.TxRateLimiter.ReadJSON(i); err != nil {
+				i.ReportError("Field TxRateLimiter", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -1151,6 +1229,312 @@ func (s *NetworkInterface) ReadJSON(i *json.Iterator) error {
 		}
 	})
 	return i.Error
+}
+
+// WriteJSON writes json value of Balloon to json stream.
+func (o OptionalBalloon) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of Balloon from json iterator.
+func (o *OptionalBalloon) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalBalloon", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of bool to json stream.
+func (o OptionalBool) WriteJSON(j *json.Stream) {
+	j.WriteBool(bool(o.Value))
+}
+
+// ReadJSON reads json value of bool from json iterator.
+func (o *OptionalBool) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.BoolValue:
+		o.Set = true
+		o.Value = bool(i.ReadBool())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalBool", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of BootSource to json stream.
+func (o OptionalBootSource) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of BootSource from json iterator.
+func (o *OptionalBootSource) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalBootSource", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of CpuTemplate to json stream.
+func (o OptionalCpuTemplate) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of CpuTemplate from json iterator.
+func (o *OptionalCpuTemplate) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = CpuTemplate(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalCpuTemplate", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of int to json stream.
+func (o OptionalInt) WriteJSON(j *json.Stream) {
+	j.WriteInt(int(o.Value))
+}
+
+// ReadJSON reads json value of int from json iterator.
+func (o *OptionalInt) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.NumberValue:
+		o.Set = true
+		o.Value = int(i.ReadInt())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalInt", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of int64 to json stream.
+func (o OptionalInt64) WriteJSON(j *json.Stream) {
+	j.WriteInt64(int64(o.Value))
+}
+
+// ReadJSON reads json value of int64 from json iterator.
+func (o *OptionalInt64) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.NumberValue:
+		o.Set = true
+		o.Value = int64(i.ReadInt64())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalInt64", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of Logger to json stream.
+func (o OptionalLogger) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of Logger from json iterator.
+func (o *OptionalLogger) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalLogger", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of LoggerLevel to json stream.
+func (o OptionalLoggerLevel) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of LoggerLevel from json iterator.
+func (o *OptionalLoggerLevel) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = LoggerLevel(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalLoggerLevel", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of MachineConfiguration to json stream.
+func (o OptionalMachineConfiguration) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of MachineConfiguration from json iterator.
+func (o *OptionalMachineConfiguration) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalMachineConfiguration", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of Metrics to json stream.
+func (o OptionalMetrics) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of Metrics from json iterator.
+func (o *OptionalMetrics) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalMetrics", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of MmdsConfig to json stream.
+func (o OptionalMmdsConfig) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of MmdsConfig from json iterator.
+func (o *OptionalMmdsConfig) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalMmdsConfig", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of RateLimiter to json stream.
+func (o OptionalRateLimiter) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of RateLimiter from json iterator.
+func (o *OptionalRateLimiter) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalRateLimiter", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of SnapshotCreateParamsSnapshotType to json stream.
+func (o OptionalSnapshotCreateParamsSnapshotType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of SnapshotCreateParamsSnapshotType from json iterator.
+func (o *OptionalSnapshotCreateParamsSnapshotType) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = SnapshotCreateParamsSnapshotType(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalSnapshotCreateParamsSnapshotType", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of string to json stream.
+func (o OptionalString) WriteJSON(j *json.Stream) {
+	j.WriteString(string(o.Value))
+}
+
+// ReadJSON reads json value of string from json iterator.
+func (o *OptionalString) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.StringValue:
+		o.Set = true
+		o.Value = string(i.ReadString())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalString", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of TokenBucket to json stream.
+func (o OptionalTokenBucket) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of TokenBucket from json iterator.
+func (o *OptionalTokenBucket) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalTokenBucket", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of Vsock to json stream.
+func (o OptionalVsock) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of Vsock from json iterator.
+func (o *OptionalVsock) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalVsock", i.WhatIsNext())
+	}
+	return nil
 }
 
 // WriteJSON implements json.Marshaler.
@@ -1164,7 +1548,10 @@ func (s PartialDrive) WriteJSON(j *json.Stream) {
 		field.Write("path_on_host")
 		s.PathOnHost.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "RateLimiter".
+	if s.RateLimiter.Set {
+		field.Write("rate_limiter")
+		s.RateLimiter.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -1205,8 +1592,11 @@ func (s *PartialDrive) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "rate_limiter":
-			// Unsupported kind "pointer" for field "RateLimiter".
-			i.Skip()
+			s.RateLimiter.Reset()
+			if err := s.RateLimiter.ReadJSON(i); err != nil {
+				i.ReportError("Field RateLimiter", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -1223,8 +1613,14 @@ func (s PartialNetworkInterface) WriteJSON(j *json.Stream) {
 	defer field.Reset()
 	field.Write("iface_id")
 	j.WriteString(s.IfaceID)
-	// Unsupported kind "pointer" for field "RxRateLimiter".
-	// Unsupported kind "pointer" for field "TxRateLimiter".
+	if s.RxRateLimiter.Set {
+		field.Write("rx_rate_limiter")
+		s.RxRateLimiter.WriteJSON(j)
+	}
+	if s.TxRateLimiter.Set {
+		field.Write("tx_rate_limiter")
+		s.TxRateLimiter.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -1258,12 +1654,18 @@ func (s *PartialNetworkInterface) ReadJSON(i *json.Iterator) error {
 			s.IfaceID = i.ReadString()
 			return i.Error == nil
 		case "rx_rate_limiter":
-			// Unsupported kind "pointer" for field "RxRateLimiter".
-			i.Skip()
+			s.RxRateLimiter.Reset()
+			if err := s.RxRateLimiter.ReadJSON(i); err != nil {
+				i.ReportError("Field RxRateLimiter", err.Error())
+				return false
+			}
 			return true
 		case "tx_rate_limiter":
-			// Unsupported kind "pointer" for field "TxRateLimiter".
-			i.Skip()
+			s.TxRateLimiter.Reset()
+			if err := s.TxRateLimiter.ReadJSON(i); err != nil {
+				i.ReportError("Field TxRateLimiter", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -1278,8 +1680,14 @@ func (s RateLimiter) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
 	defer field.Reset()
-	// Unsupported kind "pointer" for field "Bandwidth".
-	// Unsupported kind "pointer" for field "Ops".
+	if s.Bandwidth.Set {
+		field.Write("bandwidth")
+		s.Bandwidth.WriteJSON(j)
+	}
+	if s.Ops.Set {
+		field.Write("ops")
+		s.Ops.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -1310,12 +1718,18 @@ func (s *RateLimiter) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "bandwidth":
-			// Unsupported kind "pointer" for field "Bandwidth".
-			i.Skip()
+			s.Bandwidth.Reset()
+			if err := s.Bandwidth.ReadJSON(i); err != nil {
+				i.ReportError("Field Bandwidth", err.Error())
+				return false
+			}
 			return true
 		case "ops":
-			// Unsupported kind "pointer" for field "Ops".
-			i.Skip()
+			s.Ops.Reset()
+			if err := s.Ops.ReadJSON(i); err != nil {
+				i.ReportError("Field Ops", err.Error())
+				return false
+			}
 			return true
 		default:
 			i.Skip()
@@ -1334,7 +1748,10 @@ func (s SnapshotCreateParams) WriteJSON(j *json.Stream) {
 	j.WriteString(s.MemFilePath)
 	field.Write("snapshot_path")
 	j.WriteString(s.SnapshotPath)
-	// Unsupported kind "pointer" for field "SnapshotType".
+	if s.SnapshotType.Set {
+		field.Write("snapshot_type")
+		s.SnapshotType.WriteJSON(j)
+	}
 	if s.Version.Set {
 		field.Write("version")
 		s.Version.WriteJSON(j)
@@ -1375,8 +1792,11 @@ func (s *SnapshotCreateParams) ReadJSON(i *json.Iterator) error {
 			s.SnapshotPath = i.ReadString()
 			return i.Error == nil
 		case "snapshot_type":
-			// Unsupported kind "pointer" for field "SnapshotType".
-			i.Skip()
+			s.SnapshotType.Reset()
+			if err := s.SnapshotType.ReadJSON(i); err != nil {
+				i.ReportError("Field SnapshotType", err.Error())
+				return false
+			}
 			return true
 		case "version":
 			s.Version.Reset()
