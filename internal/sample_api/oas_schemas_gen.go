@@ -50,6 +50,11 @@ var (
 	_ = net.IP{}
 )
 
+// Data describes #/components/schemas/Data.
+type Data struct {
+	Description OptionalString `json:"description"`
+}
+
 type Error struct {
 	Code    int64  `json:"code"`
 	Message string `json:"message"`
@@ -463,6 +468,44 @@ func (o *OptionalBool) SetTo(v bool) {
 
 // Get returns value and boolean that denotes whether value was set.
 func (o OptionalBool) Get() (v bool, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// New returns new OptionalData with value set to v.
+func NewOptionalData(v Data) OptionalData {
+	return OptionalData{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptionalData is generic valiant of Data.
+type OptionalData struct {
+	Value Data
+	Set   bool
+}
+
+// IsSet returns true if OptionalData was set.
+func (o OptionalData) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptionalData) Reset() {
+	var v Data
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptionalData) SetTo(v Data) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptionalData) Get() (v Data, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -1498,6 +1541,7 @@ type Pet struct {
 	IPV4         net.IP            `json:"ip_v4"`
 	IPV6         net.IP            `json:"ip_v6"`
 	Name         string            `json:"name"`
+	Next         OptionalData      `json:"next"`
 	Nickname     NilString         `json:"nickname"`
 	NullStr      OptionalNilString `json:"nullStr"`
 	Rate         time.Duration     `json:"rate"`

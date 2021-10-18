@@ -161,18 +161,16 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 				Nullable: propSchema.Nullable,
 				Optional: optional(propName),
 			}
-			if genericVariant.Any() {
-				if prop.Is(ast.KindEnum) || prop.CanGeneric() {
-					prop.Format = propSchema.Format
-					prop = ast.Generic(
-						genericPostfix(prop.Type()),
-						prop,
-						genericVariant,
-					)
-					g.side = append(g.side, prop)
-				} else {
-					prop = ast.Pointer(prop)
-				}
+			if genericVariant.Any() && prop.CanGeneric() {
+				prop.Format = propSchema.Format
+				prop = ast.Generic(
+					genericPostfix(prop.Type()),
+					prop,
+					genericVariant,
+				)
+				g.side = append(g.side, prop)
+			} else if genericVariant.Optional {
+				prop = ast.Pointer(prop)
 			}
 
 			s.Fields = append(s.Fields, ast.SchemaField{

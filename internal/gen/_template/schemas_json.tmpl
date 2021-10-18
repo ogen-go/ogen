@@ -132,6 +132,8 @@ func (o {{ $s.Name }}) WriteJSON(j *json.Stream{{ if $g.FormatCustom }}, format 
     json.Write{{ $g.JSONHelper }}(j, o.Value)
 {{- else if $g.JSONWrite }}
     j.{{ $g.JSONWrite }}({{ $g.Primitive }}(o.Value))
+{{- else if $g.IsStruct }}
+    o.Value.WriteJSON(j)
 {{- end }}
 }
 
@@ -154,13 +156,15 @@ func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if $g.FormatCustom }}, forma
     {{- else if $g.JSONHelper }}
         v, err := json.Read{{ $g.JSONHelper }}(i)
         if err != nil {
-        return err
+            return err
         }
         o.Value = v
     {{- else if $g.JSONRead }}
         o.Value = {{ $g.Type }}(i.{{ $g.JSONRead }}())
-    {{- else }}
-        panic("Not supported {{ $g.Type }}")
+    {{- else if $g.IsStruct }}
+        if err := o.Value.ReadJSON(i); err != nil {
+            return err
+        }
     {{- end }}
         return i.Error
     {{- if $s.GenericVariant.Nullable }}

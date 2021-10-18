@@ -25,5 +25,6 @@ func GetIterator() *Iterator {
 func PutIterator(i *Iterator) {
 	i.Reset(nil)
 	i.ResetBytes(nil)
+	i.Error = nil
 	iterPool.Put(i)
 }

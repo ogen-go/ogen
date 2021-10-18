@@ -51,6 +51,59 @@ var (
 )
 
 // WriteJSON implements json.Marshaler.
+func (s Data) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	field := json.NewFieldWriter(j)
+	defer field.Reset()
+	if s.Description.Set {
+		field.Write("description")
+		s.Description.WriteJSON(j)
+	}
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes Data json value to io.Writer.
+func (s Data) WriteJSONTo(w io.Writer) error {
+	j := json.NewStream(w)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads Data json value from io.Reader.
+func (s *Data) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads Data from json stream.
+func (s *Data) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		case "description":
+			s.Description.Reset()
+			if err := s.Description.ReadJSON(i); err != nil {
+				i.ReportError("Field Description", err.Error())
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s Error) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	field := json.NewFieldWriter(j)
@@ -556,6 +609,26 @@ func (o *OptionalBool) ReadJSON(i *json.Iterator) error {
 		return i.Error
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptionalBool", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of Data to json stream.
+func (o OptionalData) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of Data from json iterator.
+func (o *OptionalData) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptionalData", i.WhatIsNext())
 	}
 	return nil
 }
@@ -1194,6 +1267,10 @@ func (s Pet) WriteJSON(j *json.Stream) {
 	json.WriteIP(j, s.IPV6)
 	field.Write("name")
 	j.WriteString(s.Name)
+	if s.Next.Set {
+		field.Write("next")
+		s.Next.WriteJSON(j)
+	}
 	field.Write("nickname")
 	s.Nickname.WriteJSON(j)
 	if s.NullStr.Set {
@@ -1310,6 +1387,13 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 		case "name":
 			s.Name = i.ReadString()
 			return i.Error == nil
+		case "next":
+			s.Next.Reset()
+			if err := s.Next.ReadJSON(i); err != nil {
+				i.ReportError("Field Next", err.Error())
+				return false
+			}
+			return true
 		case "nickname":
 			if err := s.Nickname.ReadJSON(i); err != nil {
 				i.ReportError("Field Nickname", err.Error())

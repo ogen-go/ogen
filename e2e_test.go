@@ -109,6 +109,7 @@ func TestIntegration(t *testing.T) {
 			IP:           net.IPv4(127, 0, 0, 1),
 			IPV4:         net.IPv4(127, 0, 0, 1),
 			IPV6:         net.ParseIP("2001:0db8:85a3:0000:0000:8a2e:0370:7334"),
+			Next:         api.NewOptionalData(api.Data{Description: api.NewOptionalString("Foo")}),
 		}
 
 		// Can't use assert.Equal due to time.Time type equality checks.
@@ -145,6 +146,8 @@ func TestIntegration(t *testing.T) {
 			a.True(pet.IPV6.Equal(got.IPV6), "IPV6")
 
 			a.Equal(pet.URI.String(), got.URI.String(), "URI")
+
+			a.Equal(pet.Next, got.Next, "Next")
 		}
 
 		t.Run("PetCreate", func(t *testing.T) {

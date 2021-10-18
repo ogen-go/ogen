@@ -223,6 +223,14 @@
   },
   "components": {
     "schemas": {
+      "Data": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          }
+        }
+      },
       "Pet": {
         "description": "cute and lovely creature",
         "type": "object",
@@ -288,6 +296,9 @@
               "$ref": "#/components/schemas/Pet"
             },
             "maxItems": 255
+          },
+          "next": {
+            "$ref": "#/components/schemas/Data"
           },
           "testInteger1": {
             "type": "integer",

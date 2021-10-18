@@ -62,18 +62,10 @@ func (s Schema) IsGeneric() bool {
 }
 
 func (s Schema) CanGeneric() bool {
-	if !s.Is(KindPrimitive) {
+	if s.Primitive == "[]byte" || s.Type() == "struct{}" {
 		return false
 	}
-	if s.IsNumeric() {
-		return true
-	}
-	switch s.Primitive {
-	case "bool", "string", "time.Time", "time.Duration", "uuid.UUID":
-		return true
-	default:
-		return false
-	}
+	return s.Is(KindPrimitive, KindEnum, KindStruct)
 }
 
 type Schema struct {
