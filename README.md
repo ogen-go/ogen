@@ -145,7 +145,6 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
       * Cookie
     * Templating
     * Encoding/Decoding
-      * JSON
       * MessagePack
       * ProtoBuff
   * String interning
