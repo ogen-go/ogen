@@ -48,6 +48,6 @@ func main() {
 		buf := json.GetBuffer()
 		defer json.PutBuffer(buf)
 		_ = res.WriteJSONTo(buf)
-		ctx.Write(buf.Bytes())
+		_, _ = ctx.Write(buf.Bytes())
 	}))
 }
