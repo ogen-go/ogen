@@ -32,7 +32,7 @@ go get github.com/ogen-go/ogen
 * Convenient support for optional, nullable and optional nullable fields
   * No more pointer madness
   * Generated Optional[T] or OptionalNullable[T] wrappers with helpers
-  * Special case for array handling with semantics `nil` value that are relevant to scheme
+  * Special case for array handling with `nil` semantics relevant to specification
     * When array is optional, `nil` denotes absence of value
     * When nullable, `nil` denotes that value is `nil`
     * When required, `nil` currently the same as `[]`, but is actually invalid
