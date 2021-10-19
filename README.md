@@ -20,6 +20,23 @@ go get github.com/ogen-go/ogen
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema schema.json --target target/dir -package api --clean
 ```
 
+# Features
+
+* No reflection or `interface{}`
+* No more boilerplate
+  * Structures are generated from OpenAPI v3 specification
+  * Arguments, headers, url queries are parsed according to specification into structures
+  * String formats like `uuid`, `date`, `date-time`, `uri` are represented by go types directly
+* Statically typed client and server
+* Convenient support for optional, nullable and optional nullable fields
+  * No more pointer madness
+  * Generated Optional[T] or OptionalNullable[T] wrappers with helpers
+  * Special case for array handling with semantics `nil` value that are relevant to scheme
+    * When array is optional, `nil` denotes absence of value
+    * When nullable, `nil` denotes that value is `nil`
+    * When required, `nil` currently the same as `[]`, but is actually invalid
+    * If both nullable and required, wrapper will be generated (TODO)
+
 # Draft Roadmap
 
 * Handle unexpected json keys
