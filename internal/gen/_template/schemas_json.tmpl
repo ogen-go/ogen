@@ -96,9 +96,10 @@ func (s *{{ $s.Name }}) ReadJSON(i *json.Iterator) error {
 }
 {{- else if $s.IsGeneric }}
 {{ $g := $s.GenericOf }}
+{{ $v := $s.GenericVariant }}
 // WriteJSON writes json value of {{ $g.Type }} to json stream.
 func (o {{ $s.Name }}) WriteJSON(j *json.Stream{{ if $g.FormatCustom }}, format func(*json.Stream, {{ $g.Type }}){{ end }}) {
-{{- if $s.GenericVariant.Nullable }}
+{{- if $v.Nullable }}
     if o.Null {
         j.WriteNil()
         return
@@ -119,10 +120,10 @@ func (o {{ $s.Name }}) WriteJSON(j *json.Stream{{ if $g.FormatCustom }}, format 
 func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if $g.FormatCustom }}, format func(*json.Iterator) ({{ $g.Type }}, error){{ end }}) error {
     switch i.WhatIsNext() {
     case json.{{ $g.JSONType }}:
-    {{- if $s.GenericVariant.Optional }}
+    {{- if $v.Optional }}
         o.Set = true
     {{- end }}
-    {{- if $s.GenericVariant.Nullable }}
+    {{- if $v.Nullable }}
         o.Null = false
     {{- end }}
     {{- if $g.FormatCustom }}
@@ -145,11 +146,11 @@ func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if $g.FormatCustom }}, forma
         }
     {{- end }}
         return i.Error
-    {{- if $s.GenericVariant.Nullable }}
+    {{- if $v.Nullable }}
     case json.NilValue:
         var v {{ $g.Type }}
         o.Value = v
-        {{- if $s.GenericVariant.Optional }}
+        {{- if $v.Optional }}
         o.Set = true
         {{- end }}
         o.Null = true
