@@ -51,8 +51,9 @@ var (
 )
 
 func (s *Pet) Validate() error {
+	var failures []validate.FieldError
 	{
-		// Validate 'ID' field.
+		// Validate 'id' field.
 		validator := validate.Int{
 			MinSet:       true,
 			Min:          0,
@@ -62,11 +63,11 @@ func (s *Pet) Validate() error {
 			MaxExclusive: false,
 		}
 		if err := validator.Validate(s.ID); err != nil {
-			return fmt.Errorf("field ID: %w", err)
+			failures = append(failures, validate.FieldError{Name: "id", Error: err})
 		}
 	}
 	{
-		// Validate 'Name' field.
+		// Validate 'name' field.
 		validator := validate.String{
 			MinLength:    4,
 			MinLengthSet: true,
@@ -74,8 +75,11 @@ func (s *Pet) Validate() error {
 			MaxLengthSet: true,
 		}
 		if err := validator.Validate(s.Name); err != nil {
-			return err
+			failures = append(failures, validate.FieldError{Name: "name", Error: err})
 		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
 	}
 	return nil
 }

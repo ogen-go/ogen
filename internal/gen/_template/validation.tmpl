@@ -8,13 +8,14 @@
 {{- if $s.NeedValidation }}{{/*Need validation*/}}
 {{- if $s.IsStruct }}{{/*If struct*/}}
 func (s *{{ $s.Name }}) Validate() error {
+    var failures []validate.FieldError
     {{- range $f := $s.Fields }}{{/*Range fields*/}}
     {{- if $f.Type.NeedValidation }}
         {{- $fieldName := $f.Name }}
         {{- if $f.Type.GenericOf }}{{ $fieldName = sprintf "%s.Value" $fieldName }}{{ end }}
         {{- if $f.Type.Validators.String.Set }}
         {
-            // Validate '{{ $f.Name }}' field.
+            // Validate '{{ $f.Tag }}' field.
             validator := validate.String{
                 MinLength:    {{ $f.Type.Validators.String.MinLength }},
                 MinLengthSet: {{ $f.Type.Validators.String.MinLengthSet }},
@@ -22,13 +23,13 @@ func (s *{{ $s.Name }}) Validate() error {
                 MaxLengthSet: {{ $f.Type.Validators.String.MaxLengthSet }},
             }
             if err := validator.Validate(s.{{ $fieldName }}); err != nil {
-                return err
+                failures = append(failures, validate.FieldError{Name: "{{ $f.Tag }}", Error: err})
             }
         }
         {{- end }}
         {{- if $f.Type.Validators.Int.Set }}
         {
-            // Validate '{{ $f.Name }}' field.
+            // Validate '{{ $f.Tag }}' field.
             validator := validate.Int{
                 MinSet:         {{ $f.Type.Validators.Int.MinSet }},
                 Min:            {{ $f.Type.Validators.Int.Min }},
@@ -38,12 +39,15 @@ func (s *{{ $s.Name }}) Validate() error {
                 MaxExclusive:   {{ $f.Type.Validators.Int.MaxExclusive }},
             }
             if err := validator.Validate(s.{{ $fieldName }}); err != nil {
-                return fmt.Errorf("field {{ $fieldName }}: %w", err)
+                failures = append(failures, validate.FieldError{Name: "{{ $f.Tag }}", Error: err})
             }
         }
         {{- end }}
     {{- end }}
     {{- end }}{{/*Range fields*/}}
+    if len(failures) > 0 {
+        return &validate.Error{Fields: failures}
+    }
     return nil
 }
 {{- end }}{{/*If struct*/}}

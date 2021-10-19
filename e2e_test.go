@@ -19,6 +19,7 @@ import (
 	"github.com/ogen-go/ogen/conv"
 	api "github.com/ogen-go/ogen/internal/sample_api"
 	"github.com/ogen-go/ogen/internal/techempower"
+	"github.com/ogen-go/ogen/validate"
 )
 
 type techEmpowerServer struct{}
@@ -87,6 +88,19 @@ var petTestData string
 
 func TestIntegration(t *testing.T) {
 	t.Run("Sample", func(t *testing.T) {
+		t.Run("Validate", func(t *testing.T) {
+			badPet := api.Pet{
+				Name: "k",
+				ID:   -1,
+			}
+			err := badPet.Validate()
+			require.Error(t, err)
+			var validateErr *validate.Error
+			require.ErrorAs(t, err, &validateErr)
+			require.Len(t, validateErr.Fields, 2)
+			require.Equal(t, "validation failed: id (value -1 less than 0), name (len 1 less than minimum 4)", validateErr.Error())
+		})
+
 		mux := chi.NewRouter()
 		api.Register(mux, &sampleAPIServer{})
 		s := httptest.NewServer(mux)

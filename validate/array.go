@@ -25,10 +25,10 @@ func (t *Array) SetMinLength(v int) {
 // ValidateLength returns error if array length v is invalid.
 func (t Array) ValidateLength(v int) error {
 	if t.MaxLengthSet && v > t.MaxLength {
-		return fmt.Errorf("max: %d", t.MaxLength)
+		return fmt.Errorf("len %d greater than maximum %d", v, t.MaxLength)
 	}
 	if t.MinLengthSet && v < t.MinLength {
-		return fmt.Errorf("min: %d", t.MinLength)
+		return fmt.Errorf("len %d less than minimum %d", v, t.MinLength)
 	}
 
 	return nil

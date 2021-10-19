@@ -46,10 +46,10 @@ func (t *Int) SetMinimum(v int64) {
 // Validate returns error if v does not match validation rules.
 func (t Int) Validate(v int64) error {
 	if t.MinSet && (v < t.Min || t.MinExclusive && v == t.Min) {
-		return fmt.Errorf("%d < %d (min)", v, t.Min)
+		return fmt.Errorf("value %d less than %d", v, t.Min)
 	}
 	if t.MaxSet && (v > t.Max || t.MaxExclusive && v == t.Max) {
-		return fmt.Errorf("%d > %d (max)", v, t.Min)
+		return fmt.Errorf("value %d greater than %d", v, t.Min)
 	}
 	if t.MultipleOfSet && (v%int64(t.MultipleOf)) != 0 {
 		return fmt.Errorf("%d is not multiple of %d", v, t.MultipleOf)

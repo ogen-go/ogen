@@ -35,6 +35,19 @@ func newLocalListener() net.Listener {
 	return l
 }
 
+func BenchmarkValidation(b *testing.B) {
+	pet := &api.Pet{
+		Name: "Foo Bar",
+	}
+
+	b.ReportAllocs()
+	for i := 0; i < b.N; i++ {
+		if err := pet.Validate(); err != nil {
+			b.Fatal(err)
+		}
+	}
+}
+
 func BenchmarkIntegration(b *testing.B) {
 	b.Run("Baseline", func(b *testing.B) {
 		// Use baseline implementation to measure framework overhead.

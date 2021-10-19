@@ -11,7 +11,7 @@ generate:
 .PHONY: generate
 
 examples:
-	@cd examples && go generate
+	cd examples && go generate
 .PHONY: examples
 
 logo:

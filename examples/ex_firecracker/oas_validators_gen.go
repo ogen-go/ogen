@@ -51,23 +51,44 @@ var (
 )
 
 func (s *Drive) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
 	return nil
 }
 func (s *FullVmConfiguration) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
 	return nil
 }
 func (s *InstanceActionInfo) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
 	return nil
 }
 func (s *InstanceInfo) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
 	return nil
 }
 func (s *Logger) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
 	return nil
 }
 func (s *MachineConfiguration) Validate() error {
+	var failures []validate.FieldError
 	{
-		// Validate 'VcpuCount' field.
+		// Validate 'vcpu_count' field.
 		validator := validate.Int{
 			MinSet:       true,
 			Min:          1,
@@ -77,29 +98,53 @@ func (s *MachineConfiguration) Validate() error {
 			MaxExclusive: false,
 		}
 		if err := validator.Validate(s.VcpuCount); err != nil {
-			return fmt.Errorf("field VcpuCount: %w", err)
+			failures = append(failures, validate.FieldError{Name: "vcpu_count", Error: err})
 		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
 func (s *NetworkInterface) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
 	return nil
 }
 func (s *PartialDrive) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
 	return nil
 }
 func (s *PartialNetworkInterface) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
 	return nil
 }
 func (s *RateLimiter) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
 	return nil
 }
 func (s *SnapshotCreateParams) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
 	return nil
 }
 func (s *TokenBucket) Validate() error {
+	var failures []validate.FieldError
 	{
-		// Validate 'RefillTime' field.
+		// Validate 'refill_time' field.
 		validator := validate.Int{
 			MinSet:       true,
 			Min:          0,
@@ -109,11 +154,11 @@ func (s *TokenBucket) Validate() error {
 			MaxExclusive: false,
 		}
 		if err := validator.Validate(s.RefillTime); err != nil {
-			return fmt.Errorf("field RefillTime: %w", err)
+			failures = append(failures, validate.FieldError{Name: "refill_time", Error: err})
 		}
 	}
 	{
-		// Validate 'Size' field.
+		// Validate 'size' field.
 		validator := validate.Int{
 			MinSet:       true,
 			Min:          0,
@@ -123,17 +168,25 @@ func (s *TokenBucket) Validate() error {
 			MaxExclusive: false,
 		}
 		if err := validator.Validate(s.Size); err != nil {
-			return fmt.Errorf("field Size: %w", err)
+			failures = append(failures, validate.FieldError{Name: "size", Error: err})
 		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
 func (s *VM) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
 	return nil
 }
 func (s *Vsock) Validate() error {
+	var failures []validate.FieldError
 	{
-		// Validate 'GuestCid' field.
+		// Validate 'guest_cid' field.
 		validator := validate.Int{
 			MinSet:       true,
 			Min:          3,
@@ -143,8 +196,11 @@ func (s *Vsock) Validate() error {
 			MaxExclusive: false,
 		}
 		if err := validator.Validate(s.GuestCid); err != nil {
-			return fmt.Errorf("field GuestCid: %w", err)
+			failures = append(failures, validate.FieldError{Name: "guest_cid", Error: err})
 		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
 	}
 	return nil
 }
