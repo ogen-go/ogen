@@ -30,7 +30,7 @@ go get github.com/ogen-go/ogen
   * String formats like `uuid`, `date`, `date-time`, `uri` are represented by go types directly
 * Statically typed client and server
 * Convenient support for optional, nullable and optional nullable fields
-  * No more pointer madness
+  * No more pointers
   * Generated Optional[T] or OptionalNullable[T] wrappers with helpers
   * Special case for array handling with `nil` semantics relevant to specification
     * When array is optional, `nil` denotes absence of value
