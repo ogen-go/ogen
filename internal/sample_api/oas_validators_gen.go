@@ -50,7 +50,7 @@ var (
 	_ = net.IP{}
 )
 
-func (s *Pet) validate() error {
+func (s *Pet) Validate() error {
 	{
 		// Validate 'ID' field.
 		validator := validate.Int{

@@ -57,7 +57,7 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r *http.R
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -102,7 +102,7 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r *htt
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -119,7 +119,7 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r *htt
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -164,7 +164,7 @@ func decodeGistsCreateCommentRequest(r *http.Request) (req GistsCreateCommentApp
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -181,7 +181,7 @@ func decodeGistsUpdateCommentRequest(r *http.Request) (req GistsUpdateCommentApp
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -198,7 +198,7 @@ func decodeMarkdownRenderRequest(r *http.Request) (req MarkdownRenderApplication
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -258,7 +258,7 @@ func decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *http.Request
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -303,7 +303,7 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.Request) (req
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -320,7 +320,7 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.Request) (req
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -365,7 +365,7 @@ func decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request) (req ActionsCr
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -410,7 +410,7 @@ func decodeTeamsUpdateInOrgRequest(r *http.Request) (req *TeamsUpdateInOrgApplic
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -483,7 +483,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *http.Request) 
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -500,7 +500,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Request) (req Re
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -517,7 +517,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Request) (req *
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -534,7 +534,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Request) (req 
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -551,7 +551,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Request) (req *Te
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -624,7 +624,7 @@ func decodeProjectsUpdateRequest(r *http.Request) (req *ProjectsUpdateApplicatio
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -655,7 +655,7 @@ func decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *http.Request) 
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -742,7 +742,7 @@ func decodeCodeScanningUploadSarifRequest(r *http.Request) (req CodeScanningUplo
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -787,7 +787,7 @@ func decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request) (req Inter
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -804,7 +804,7 @@ func decodeReposUpdateInvitationRequest(r *http.Request) (req *ReposUpdateInvita
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -849,7 +849,7 @@ func decodeIssuesUpdateMilestoneRequest(r *http.Request) (req *IssuesUpdateMiles
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -922,7 +922,7 @@ func decodePullsCreateReviewRequest(r *http.Request) (req *PullsCreateReviewAppl
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -967,7 +967,7 @@ func decodePullsSubmitReviewRequest(r *http.Request) (req PullsSubmitReviewAppli
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -1023,7 +1023,7 @@ func decodeSecretScanningUpdateAlertRequest(r *http.Request) (req SecretScanning
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -1040,7 +1040,7 @@ func decodeReposCreateCommitStatusRequest(r *http.Request) (req ReposCreateCommi
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -1253,7 +1253,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *http.Request)
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -1270,7 +1270,7 @@ func decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Request) (req R
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -1287,7 +1287,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Request) (req 
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 

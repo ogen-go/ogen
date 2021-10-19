@@ -57,7 +57,7 @@ func decodeCreateSyncActionRequest(r *http.Request) (req InstanceActionInfo, err
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -130,7 +130,7 @@ func decodePutGuestDriveByIDRequest(r *http.Request) (req Drive, err error) {
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -147,7 +147,7 @@ func decodePatchGuestDriveByIDRequest(r *http.Request) (req PartialDrive, err er
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -164,7 +164,7 @@ func decodePutLoggerRequest(r *http.Request) (req Logger, err error) {
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -181,7 +181,7 @@ func decodePutMachineConfigurationRequest(r *http.Request) (req *MachineConfigur
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -198,7 +198,7 @@ func decodePatchMachineConfigurationRequest(r *http.Request) (req *MachineConfig
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -271,7 +271,7 @@ func decodePutGuestNetworkInterfaceByIDRequest(r *http.Request) (req NetworkInte
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -288,7 +288,7 @@ func decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request) (req PartialNe
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -305,7 +305,7 @@ func decodeCreateSnapshotRequest(r *http.Request) (req SnapshotCreateParams, err
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -336,7 +336,7 @@ func decodePatchVmRequest(r *http.Request) (req VM, err error) {
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -353,7 +353,7 @@ func decodePutGuestVsockRequest(r *http.Request) (req Vsock, err error) {
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 

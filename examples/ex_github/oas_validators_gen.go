@@ -50,52 +50,52 @@ var (
 	_ = net.IP{}
 )
 
-func (s *ActionsCreateOrUpdateOrgSecretApplicationJSONRequest) validate() error {
+func (s *ActionsCreateOrUpdateOrgSecretApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest) validate() error {
+func (s *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ActionsEnterprisePermissions) validate() error {
+func (s *ActionsEnterprisePermissions) Validate() error {
 	return nil
 }
-func (s *ActionsListOrgSecrets) validate() error {
+func (s *ActionsListOrgSecrets) Validate() error {
 	return nil
 }
-func (s *ActionsListRepoWorkflows) validate() error {
+func (s *ActionsListRepoWorkflows) Validate() error {
 	return nil
 }
-func (s *ActionsListSelfHostedRunnersForOrg) validate() error {
+func (s *ActionsListSelfHostedRunnersForOrg) Validate() error {
 	return nil
 }
-func (s *ActionsListSelfHostedRunnersForRepo) validate() error {
+func (s *ActionsListSelfHostedRunnersForRepo) Validate() error {
 	return nil
 }
-func (s *ActionsListSelfHostedRunnersInGroupForOrg) validate() error {
+func (s *ActionsListSelfHostedRunnersInGroupForOrg) Validate() error {
 	return nil
 }
-func (s *ActionsOrganizationPermissions) validate() error {
+func (s *ActionsOrganizationPermissions) Validate() error {
 	return nil
 }
-func (s *ActionsRepositoryPermissions) validate() error {
+func (s *ActionsRepositoryPermissions) Validate() error {
 	return nil
 }
-func (s *ActionsReviewPendingDeploymentsForRunApplicationJSONRequest) validate() error {
+func (s *ActionsReviewPendingDeploymentsForRunApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest) validate() error {
+func (s *ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest) validate() error {
+func (s *ActionsSetGithubActionsPermissionsRepositoryApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest) validate() error {
+func (s *ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *AppPermissions) validate() error {
+func (s *AppPermissions) Validate() error {
 	return nil
 }
-func (s *AppsCreateContentAttachmentApplicationJSONRequest) validate() error {
+func (s *AppsCreateContentAttachmentApplicationJSONRequest) Validate() error {
 	{
 		// Validate 'Body' field.
 		validator := validate.String{
@@ -122,55 +122,55 @@ func (s *AppsCreateContentAttachmentApplicationJSONRequest) validate() error {
 	}
 	return nil
 }
-func (s *AppsCreateInstallationAccessTokenApplicationJSONRequest) validate() error {
+func (s *AppsCreateInstallationAccessTokenApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *AppsScopeTokenApplicationJSONRequest) validate() error {
+func (s *AppsScopeTokenApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *AuthenticationToken) validate() error {
+func (s *AuthenticationToken) Validate() error {
 	return nil
 }
-func (s *Authorization) validate() error {
+func (s *Authorization) Validate() error {
 	return nil
 }
-func (s *BranchProtection) validate() error {
+func (s *BranchProtection) Validate() error {
 	return nil
 }
-func (s *BranchWithProtection) validate() error {
+func (s *BranchWithProtection) Validate() error {
 	return nil
 }
-func (s *CheckRun) validate() error {
+func (s *CheckRun) Validate() error {
 	return nil
 }
-func (s *CheckSuite) validate() error {
+func (s *CheckSuite) Validate() error {
 	return nil
 }
-func (s *ChecksListSuitesForRef) validate() error {
+func (s *ChecksListSuitesForRef) Validate() error {
 	return nil
 }
-func (s *CodeScanningAlertInstance) validate() error {
+func (s *CodeScanningAlertInstance) Validate() error {
 	return nil
 }
-func (s *CodeScanningAnalysis) validate() error {
+func (s *CodeScanningAnalysis) Validate() error {
 	return nil
 }
-func (s *CodeScanningSarifsStatus) validate() error {
+func (s *CodeScanningSarifsStatus) Validate() error {
 	return nil
 }
-func (s *CodeScanningUpdateAlertApplicationJSONRequest) validate() error {
+func (s *CodeScanningUpdateAlertApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *CodeScanningUploadSarifApplicationJSONRequest) validate() error {
+func (s *CodeScanningUploadSarifApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *CommitComment) validate() error {
+func (s *CommitComment) Validate() error {
 	return nil
 }
-func (s *CommitComparison) validate() error {
+func (s *CommitComparison) Validate() error {
 	return nil
 }
-func (s *ContentReferenceAttachment) validate() error {
+func (s *ContentReferenceAttachment) Validate() error {
 	{
 		// Validate 'Body' field.
 		validator := validate.String{
@@ -197,7 +197,7 @@ func (s *ContentReferenceAttachment) validate() error {
 	}
 	return nil
 }
-func (s *DeploymentStatus) validate() error {
+func (s *DeploymentStatus) Validate() error {
 	{
 		// Validate 'Description' field.
 		validator := validate.String{
@@ -212,40 +212,40 @@ func (s *DeploymentStatus) validate() error {
 	}
 	return nil
 }
-func (s *DiffEntry) validate() error {
+func (s *DiffEntry) Validate() error {
 	return nil
 }
-func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest) validate() error {
+func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *EnterpriseAdminListSelfHostedRunnersForEnterprise) validate() error {
+func (s *EnterpriseAdminListSelfHostedRunnersForEnterprise) Validate() error {
 	return nil
 }
-func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise) validate() error {
+func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise) Validate() error {
 	return nil
 }
-func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequest) validate() error {
+func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest) validate() error {
+func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *EnvironmentApprovals) validate() error {
+func (s *EnvironmentApprovals) Validate() error {
 	return nil
 }
-func (s *FullRepository) validate() error {
+func (s *FullRepository) Validate() error {
 	return nil
 }
-func (s *FullRepositorySecurityAndAnalysis) validate() error {
+func (s *FullRepositorySecurityAndAnalysis) Validate() error {
 	return nil
 }
-func (s *FullRepositorySecurityAndAnalysisAdvancedSecurity) validate() error {
+func (s *FullRepositorySecurityAndAnalysisAdvancedSecurity) Validate() error {
 	return nil
 }
-func (s *FullRepositorySecurityAndAnalysisSecretScanning) validate() error {
+func (s *FullRepositorySecurityAndAnalysisSecretScanning) Validate() error {
 	return nil
 }
-func (s *GistComment) validate() error {
+func (s *GistComment) Validate() error {
 	{
 		// Validate 'Body' field.
 		validator := validate.String{
@@ -260,7 +260,7 @@ func (s *GistComment) validate() error {
 	}
 	return nil
 }
-func (s *GistsCreateCommentApplicationJSONRequest) validate() error {
+func (s *GistsCreateCommentApplicationJSONRequest) Validate() error {
 	{
 		// Validate 'Body' field.
 		validator := validate.String{
@@ -275,7 +275,7 @@ func (s *GistsCreateCommentApplicationJSONRequest) validate() error {
 	}
 	return nil
 }
-func (s *GistsUpdateCommentApplicationJSONRequest) validate() error {
+func (s *GistsUpdateCommentApplicationJSONRequest) Validate() error {
 	{
 		// Validate 'Body' field.
 		validator := validate.String{
@@ -290,19 +290,19 @@ func (s *GistsUpdateCommentApplicationJSONRequest) validate() error {
 	}
 	return nil
 }
-func (s *GitCreateTagApplicationJSONRequest) validate() error {
+func (s *GitCreateTagApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *GitCreateTreeApplicationJSONRequest) validate() error {
+func (s *GitCreateTreeApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *GitCreateTreeApplicationJSONRequestTreeItem) validate() error {
+func (s *GitCreateTreeApplicationJSONRequestTreeItem) Validate() error {
 	return nil
 }
-func (s *GitRef) validate() error {
+func (s *GitRef) Validate() error {
 	return nil
 }
-func (s *GitRefObject) validate() error {
+func (s *GitRefObject) Validate() error {
 	{
 		// Validate 'Sha' field.
 		validator := validate.String{
@@ -317,163 +317,163 @@ func (s *GitRefObject) validate() error {
 	}
 	return nil
 }
-func (s *Import) validate() error {
+func (s *Import) Validate() error {
 	return nil
 }
-func (s *InstallationToken) validate() error {
+func (s *InstallationToken) Validate() error {
 	return nil
 }
-func (s *InteractionLimit) validate() error {
+func (s *InteractionLimit) Validate() error {
 	return nil
 }
-func (s *InteractionLimitResponse) validate() error {
+func (s *InteractionLimitResponse) Validate() error {
 	return nil
 }
-func (s *IssueComment) validate() error {
+func (s *IssueComment) Validate() error {
 	return nil
 }
-func (s *IssuesCreateMilestoneApplicationJSONRequest) validate() error {
+func (s *IssuesCreateMilestoneApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *IssuesLockApplicationJSONRequest) validate() error {
+func (s *IssuesLockApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *IssuesUpdateMilestoneApplicationJSONRequest) validate() error {
+func (s *IssuesUpdateMilestoneApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *Job) validate() error {
+func (s *Job) Validate() error {
 	return nil
 }
-func (s *JobStepsItem) validate() error {
+func (s *JobStepsItem) Validate() error {
 	return nil
 }
-func (s *MarkdownRenderApplicationJSONRequest) validate() error {
+func (s *MarkdownRenderApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *MergedUpstream) validate() error {
+func (s *MergedUpstream) Validate() error {
 	return nil
 }
-func (s *MigrationsSetLfsPreferenceApplicationJSONRequest) validate() error {
+func (s *MigrationsSetLfsPreferenceApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *MigrationsStartForAuthenticatedUserApplicationJSONRequest) validate() error {
+func (s *MigrationsStartForAuthenticatedUserApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *MigrationsStartForOrgApplicationJSONRequest) validate() error {
+func (s *MigrationsStartForOrgApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *MigrationsStartImportApplicationJSONRequest) validate() error {
+func (s *MigrationsStartImportApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *Milestone) validate() error {
+func (s *Milestone) Validate() error {
 	return nil
 }
-func (s *NullableScopedInstallation) validate() error {
+func (s *NullableScopedInstallation) Validate() error {
 	return nil
 }
-func (s *OrgMembership) validate() error {
+func (s *OrgMembership) Validate() error {
 	return nil
 }
-func (s *OrganizationActionsSecret) validate() error {
+func (s *OrganizationActionsSecret) Validate() error {
 	return nil
 }
-func (s *OrgsCreateInvitationApplicationJSONRequest) validate() error {
+func (s *OrgsCreateInvitationApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *OrgsSetMembershipForUserApplicationJSONRequest) validate() error {
+func (s *OrgsSetMembershipForUserApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *OrgsUpdateApplicationJSONRequest) validate() error {
+func (s *OrgsUpdateApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest) validate() error {
+func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *Page) validate() error {
+func (s *Page) Validate() error {
 	return nil
 }
-func (s *PagesHTTPSCertificate) validate() error {
+func (s *PagesHTTPSCertificate) Validate() error {
 	return nil
 }
-func (s *Project) validate() error {
+func (s *Project) Validate() error {
 	return nil
 }
-func (s *ProjectsAddCollaboratorApplicationJSONRequest) validate() error {
+func (s *ProjectsAddCollaboratorApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ProjectsUpdateApplicationJSONRequest) validate() error {
+func (s *ProjectsUpdateApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ProtectedBranchPullRequestReview) validate() error {
+func (s *ProtectedBranchPullRequestReview) Validate() error {
 	return nil
 }
-func (s *PullRequestReview) validate() error {
+func (s *PullRequestReview) Validate() error {
 	return nil
 }
-func (s *PullRequestReviewComment) validate() error {
+func (s *PullRequestReviewComment) Validate() error {
 	return nil
 }
-func (s *PullsCreateReviewApplicationJSONRequest) validate() error {
+func (s *PullsCreateReviewApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *PullsCreateReviewCommentApplicationJSONRequest) validate() error {
+func (s *PullsCreateReviewCommentApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *PullsMergeApplicationJSONRequest) validate() error {
+func (s *PullsMergeApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *PullsSubmitReviewApplicationJSONRequest) validate() error {
+func (s *PullsSubmitReviewApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *PullsUpdateApplicationJSONRequest) validate() error {
+func (s *PullsUpdateApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *Reaction) validate() error {
+func (s *Reaction) Validate() error {
 	return nil
 }
-func (s *ReactionsCreateForCommitCommentApplicationJSONRequest) validate() error {
+func (s *ReactionsCreateForCommitCommentApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ReactionsCreateForIssueApplicationJSONRequest) validate() error {
+func (s *ReactionsCreateForIssueApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ReactionsCreateForIssueCommentApplicationJSONRequest) validate() error {
+func (s *ReactionsCreateForIssueCommentApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest) validate() error {
+func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ReactionsCreateForReleaseApplicationJSONRequest) validate() error {
+func (s *ReactionsCreateForReleaseApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest) validate() error {
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest) validate() error {
+func (s *ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest) validate() error {
+func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest) validate() error {
+func (s *ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *Release) validate() error {
+func (s *Release) Validate() error {
 	return nil
 }
-func (s *ReleaseAsset) validate() error {
+func (s *ReleaseAsset) Validate() error {
 	return nil
 }
-func (s *ReposAddCollaboratorApplicationJSONRequest) validate() error {
+func (s *ReposAddCollaboratorApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ReposCreateCommitStatusApplicationJSONRequest) validate() error {
+func (s *ReposCreateCommitStatusApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ReposCreateDeploymentStatusApplicationJSONRequest) validate() error {
+func (s *ReposCreateDeploymentStatusApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ReposCreateDispatchEventApplicationJSONRequest) validate() error {
+func (s *ReposCreateDispatchEventApplicationJSONRequest) Validate() error {
 	{
 		// Validate 'EventType' field.
 		validator := validate.String{
@@ -488,84 +488,84 @@ func (s *ReposCreateDispatchEventApplicationJSONRequest) validate() error {
 	}
 	return nil
 }
-func (s *ReposCreateInOrgApplicationJSONRequest) validate() error {
+func (s *ReposCreateInOrgApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ReposCreatePagesSiteApplicationJSONRequest) validate() error {
+func (s *ReposCreatePagesSiteApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ReposCreatePagesSiteApplicationJSONRequestSource) validate() error {
+func (s *ReposCreatePagesSiteApplicationJSONRequestSource) Validate() error {
 	return nil
 }
-func (s *ReposUpdateApplicationJSONRequest) validate() error {
+func (s *ReposUpdateApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ReposUpdateInvitationApplicationJSONRequest) validate() error {
+func (s *ReposUpdateInvitationApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *RepositoryInvitation) validate() error {
+func (s *RepositoryInvitation) Validate() error {
 	return nil
 }
-func (s *ReviewComment) validate() error {
+func (s *ReviewComment) Validate() error {
 	return nil
 }
-func (s *Runner) validate() error {
+func (s *Runner) Validate() error {
 	return nil
 }
-func (s *RunnerLabelsItem) validate() error {
+func (s *RunnerLabelsItem) Validate() error {
 	return nil
 }
-func (s *ScimProvisionAndInviteUserApplicationJSONRequest) validate() error {
+func (s *ScimProvisionAndInviteUserApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ScimSetInformationForProvisionedUserApplicationJSONRequest) validate() error {
+func (s *ScimSetInformationForProvisionedUserApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *SecretScanningAlert) validate() error {
+func (s *SecretScanningAlert) Validate() error {
 	return nil
 }
-func (s *SecretScanningUpdateAlertApplicationJSONRequest) validate() error {
+func (s *SecretScanningUpdateAlertApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *ShortBranch) validate() error {
+func (s *ShortBranch) Validate() error {
 	return nil
 }
-func (s *TeamFull) validate() error {
+func (s *TeamFull) Validate() error {
 	return nil
 }
-func (s *TeamMembership) validate() error {
+func (s *TeamMembership) Validate() error {
 	return nil
 }
-func (s *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest) validate() error {
+func (s *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest) validate() error {
+func (s *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest) validate() error {
+func (s *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest) validate() error {
+func (s *TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest) validate() error {
+func (s *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest) validate() error {
+func (s *TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *TeamsCreateApplicationJSONRequest) validate() error {
+func (s *TeamsCreateApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *TeamsUpdateInOrgApplicationJSONRequest) validate() error {
+func (s *TeamsUpdateInOrgApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *TeamsUpdateLegacyApplicationJSONRequest) validate() error {
+func (s *TeamsUpdateLegacyApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest) validate() error {
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest) Validate() error {
 	return nil
 }
-func (s *Workflow) validate() error {
+func (s *Workflow) Validate() error {
 	return nil
 }

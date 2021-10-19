@@ -7,7 +7,7 @@
 {{- range $s := $.Schemas }}{{/*Range schemas*/}}
 {{- if $s.NeedValidation }}{{/*Need validation*/}}
 {{- if $s.IsStruct }}{{/*If struct*/}}
-func (s *{{ $s.Name }}) validate() error {
+func (s *{{ $s.Name }}) Validate() error {
     {{- range $f := $s.Fields }}{{/*Range fields*/}}
     {{- if $f.Type.NeedValidation }}
         {{- $fieldName := $f.Name }}

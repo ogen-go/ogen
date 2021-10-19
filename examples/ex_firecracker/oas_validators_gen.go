@@ -50,22 +50,22 @@ var (
 	_ = net.IP{}
 )
 
-func (s *Drive) validate() error {
+func (s *Drive) Validate() error {
 	return nil
 }
-func (s *FullVmConfiguration) validate() error {
+func (s *FullVmConfiguration) Validate() error {
 	return nil
 }
-func (s *InstanceActionInfo) validate() error {
+func (s *InstanceActionInfo) Validate() error {
 	return nil
 }
-func (s *InstanceInfo) validate() error {
+func (s *InstanceInfo) Validate() error {
 	return nil
 }
-func (s *Logger) validate() error {
+func (s *Logger) Validate() error {
 	return nil
 }
-func (s *MachineConfiguration) validate() error {
+func (s *MachineConfiguration) Validate() error {
 	{
 		// Validate 'VcpuCount' field.
 		validator := validate.Int{
@@ -82,22 +82,22 @@ func (s *MachineConfiguration) validate() error {
 	}
 	return nil
 }
-func (s *NetworkInterface) validate() error {
+func (s *NetworkInterface) Validate() error {
 	return nil
 }
-func (s *PartialDrive) validate() error {
+func (s *PartialDrive) Validate() error {
 	return nil
 }
-func (s *PartialNetworkInterface) validate() error {
+func (s *PartialNetworkInterface) Validate() error {
 	return nil
 }
-func (s *RateLimiter) validate() error {
+func (s *RateLimiter) Validate() error {
 	return nil
 }
-func (s *SnapshotCreateParams) validate() error {
+func (s *SnapshotCreateParams) Validate() error {
 	return nil
 }
-func (s *TokenBucket) validate() error {
+func (s *TokenBucket) Validate() error {
 	{
 		// Validate 'RefillTime' field.
 		validator := validate.Int{
@@ -128,10 +128,10 @@ func (s *TokenBucket) validate() error {
 	}
 	return nil
 }
-func (s *VM) validate() error {
+func (s *VM) Validate() error {
 	return nil
 }
-func (s *Vsock) validate() error {
+func (s *Vsock) Validate() error {
 	{
 		// Validate 'GuestCid' field.
 		validator := validate.Int{

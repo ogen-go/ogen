@@ -18,7 +18,7 @@ func decode{{ $m.Name }}Request(r *http.Request) (req {{ $m.RequestType.Type }},
             return req, fmt.Errorf("json: %w", err)
         }
         {{- if $schema.NeedValidation }}
-        if err := request.validate(); err != nil {
+        if err := request.Validate(); err != nil {
             return req, fmt.Errorf("validate: %w", err)
         }
         {{- end }}

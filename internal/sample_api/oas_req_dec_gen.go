@@ -57,7 +57,7 @@ func decodeFoobarPostRequest(r *http.Request) (req *Pet, err error) {
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
@@ -74,7 +74,7 @@ func decodePetCreateRequest(r *http.Request) (req PetCreateRequest, err error) {
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
-		if err := request.validate(); err != nil {
+		if err := request.Validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
 		}
 
