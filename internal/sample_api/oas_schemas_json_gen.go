@@ -66,7 +66,8 @@ func (s Data) WriteJSON(j *json.Stream) {
 
 // WriteJSONTo writes Data json value to io.Writer.
 func (s Data) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -124,7 +125,8 @@ func (s Error) WriteJSON(j *json.Stream) {
 
 // WriteJSONTo writes Error json value to io.Writer.
 func (s Error) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -172,7 +174,8 @@ func (s ErrorStatusCode) WriteJSON(j *json.Stream) {
 
 // WriteJSONTo writes ErrorStatusCode json value to io.Writer.
 func (s ErrorStatusCode) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -214,7 +217,8 @@ func (s FoobarPutDefault) WriteJSON(j *json.Stream) {
 
 // WriteJSONTo writes FoobarPutDefault json value to io.Writer.
 func (s FoobarPutDefault) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -609,7 +613,8 @@ func (s Pet) WriteJSON(j *json.Stream) {
 
 // WriteJSONTo writes Pet json value to io.Writer.
 func (s Pet) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -802,7 +807,8 @@ func (s PetGetDefault) WriteJSON(j *json.Stream) {
 
 // WriteJSONTo writes PetGetDefault json value to io.Writer.
 func (s PetGetDefault) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -847,7 +853,8 @@ func (s PetGetDefaultStatusCode) WriteJSON(j *json.Stream) {
 
 // WriteJSONTo writes PetGetDefaultStatusCode json value to io.Writer.
 func (s PetGetDefaultStatusCode) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }

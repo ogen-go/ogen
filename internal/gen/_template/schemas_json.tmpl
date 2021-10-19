@@ -19,7 +19,8 @@ func (s {{ $s.Name }}) WriteJSON(j *json.Stream) {
 
 // WriteJSONTo writes {{ $s.Name }} json value to io.Writer.
 func (s {{ $s.Name }}) WriteJSONTo(w io.Writer) error {
-    j := json.NewStream(w)
+    j := json.GetStream(w)
+    defer json.PutStream(j)
     s.WriteJSON(j)
     return j.Flush()
 }

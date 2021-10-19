@@ -65,7 +65,8 @@ func (s HelloWorld) WriteJSON(j *json.Stream) {
 
 // WriteJSONTo writes HelloWorld json value to io.Writer.
 func (s HelloWorld) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -119,7 +120,8 @@ func (s WorldObject) WriteJSON(j *json.Stream) {
 
 // WriteJSONTo writes WorldObject json value to io.Writer.
 func (s WorldObject) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
