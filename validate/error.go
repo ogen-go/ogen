@@ -11,7 +11,7 @@ type Error struct {
 
 func (e *Error) Error() string {
 	var b strings.Builder
-	b.WriteString("validation failed:")
+	b.WriteString("invalid:")
 	for i, f := range e.Fields {
 		if i != 0 {
 			b.WriteRune(',')
