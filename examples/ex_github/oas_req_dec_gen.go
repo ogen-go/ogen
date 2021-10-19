@@ -735,23 +735,6 @@ func decodeChecksSetSuitesPreferencesRequest(r *http.Request) (req ChecksSetSuit
 	}
 }
 
-func decodeCodeScanningUpdateAlertRequest(r *http.Request) (req CodeScanningUpdateAlertApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request CodeScanningUpdateAlertApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-		if err := request.validate(); err != nil {
-			return req, fmt.Errorf("validate: %w", err)
-		}
-
-		return request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
 func decodeCodeScanningUploadSarifRequest(r *http.Request) (req CodeScanningUploadSarifApplicationJSONRequest, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
@@ -823,34 +806,6 @@ func decodeReposUpdateInvitationRequest(r *http.Request) (req *ReposUpdateInvita
 		}
 		if err := request.validate(); err != nil {
 			return req, fmt.Errorf("validate: %w", err)
-		}
-
-		return &request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeIssuesAddAssigneesRequest(r *http.Request) (req *IssuesAddAssigneesApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request IssuesAddAssigneesApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
-		}
-
-		return &request, nil
-	default:
-		return req, fmt.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
-	}
-}
-
-func decodeIssuesRemoveAssigneesRequest(r *http.Request) (req *IssuesRemoveAssigneesApplicationJSONRequest, err error) {
-	switch r.Header.Get("Content-Type") {
-	case "application/json":
-		var request IssuesRemoveAssigneesApplicationJSONRequest
-		if err := request.ReadJSONFrom(r.Body); err != nil {
-			return req, fmt.Errorf("json: %w", err)
 		}
 
 		return &request, nil

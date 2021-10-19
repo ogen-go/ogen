@@ -142,16 +142,12 @@ type Server interface {
 	BillingGetGithubPackagesBillingGhe(ctx context.Context, params BillingGetGithubPackagesBillingGheParams) (PackagesBillingUsage, error)
 	// BillingGetSharedStorageBillingGhe implements billing/get-shared-storage-billing-ghe operation.
 	BillingGetSharedStorageBillingGhe(ctx context.Context, params BillingGetSharedStorageBillingGheParams) (CombinedBillingUsage, error)
-	// ActivityListPublicEvents implements activity/list-public-events operation.
-	ActivityListPublicEvents(ctx context.Context, params ActivityListPublicEventsParams) (ActivityListPublicEventsResponse, error)
 	// ActivityGetFeeds implements activity/get-feeds operation.
 	ActivityGetFeeds(ctx context.Context) (Feed, error)
 	// GistsList implements gists/list operation.
 	GistsList(ctx context.Context, params GistsListParams) (GistsListResponse, error)
 	// GistsListStarred implements gists/list-starred operation.
 	GistsListStarred(ctx context.Context, params GistsListStarredParams) (GistsListStarredResponse, error)
-	// GistsGet implements gists/get operation.
-	GistsGet(ctx context.Context, params GistsGetParams) (GistsGetResponse, error)
 	// GistsDelete implements gists/delete operation.
 	GistsDelete(ctx context.Context, params GistsDeleteParams) (GistsDeleteResponse, error)
 	// GistsListComments implements gists/list-comments operation.
@@ -166,8 +162,6 @@ type Server interface {
 	GistsUpdateComment(ctx context.Context, req GistsUpdateCommentApplicationJSONRequest, params GistsUpdateCommentParams) (GistsUpdateCommentResponse, error)
 	// GistsListCommits implements gists/list-commits operation.
 	GistsListCommits(ctx context.Context, params GistsListCommitsParams) (GistsListCommitsResponse, error)
-	// GistsListForks implements gists/list-forks operation.
-	GistsListForks(ctx context.Context, params GistsListForksParams) (GistsListForksResponse, error)
 	// GistsCheckIsStarred implements gists/check-is-starred operation.
 	GistsCheckIsStarred(ctx context.Context, params GistsCheckIsStarredParams) (GistsCheckIsStarredResponse, error)
 	// GistsStar implements gists/star operation.
@@ -200,8 +194,6 @@ type Server interface {
 	AppsListPlansStubbed(ctx context.Context, params AppsListPlansStubbedParams) (AppsListPlansStubbedResponse, error)
 	// MetaGet implements meta/get operation.
 	MetaGet(ctx context.Context) (MetaGetResponse, error)
-	// ActivityListPublicEventsForRepoNetwork implements activity/list-public-events-for-repo-network operation.
-	ActivityListPublicEventsForRepoNetwork(ctx context.Context, params ActivityListPublicEventsForRepoNetworkParams) (ActivityListPublicEventsForRepoNetworkResponse, error)
 	// ActivityMarkNotificationsAsRead implements activity/mark-notifications-as-read operation.
 	ActivityMarkNotificationsAsRead(ctx context.Context, req *ActivityMarkNotificationsAsReadApplicationJSONRequest) (ActivityMarkNotificationsAsReadResponse, error)
 	// ActivityGetThread implements activity/get-thread operation.
@@ -302,8 +294,6 @@ type Server interface {
 	OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsListSamlSSOAuthorizationsParams) ([]CredentialAuthorization, error)
 	// OrgsRemoveSamlSSOAuthorization implements orgs/remove-saml-sso-authorization operation.
 	OrgsRemoveSamlSSOAuthorization(ctx context.Context, params OrgsRemoveSamlSSOAuthorizationParams) (OrgsRemoveSamlSSOAuthorizationResponse, error)
-	// ActivityListPublicOrgEvents implements activity/list-public-org-events operation.
-	ActivityListPublicOrgEvents(ctx context.Context, params ActivityListPublicOrgEventsParams) ([]Event, error)
 	// OrgsListFailedInvitations implements orgs/list-failed-invitations operation.
 	OrgsListFailedInvitations(ctx context.Context, params OrgsListFailedInvitationsParams) (OrgsListFailedInvitationsResponse, error)
 	// OrgsListWebhooks implements orgs/list-webhooks operation.
@@ -586,10 +576,6 @@ type Server interface {
 	ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams) (CheckSuite, error)
 	// ChecksRerequestSuite implements checks/rerequest-suite operation.
 	ChecksRerequestSuite(ctx context.Context, params ChecksRerequestSuiteParams) (ChecksRerequestSuite, error)
-	// CodeScanningGetAlert implements code-scanning/get-alert operation.
-	CodeScanningGetAlert(ctx context.Context, params CodeScanningGetAlertParams) (CodeScanningGetAlertResponse, error)
-	// CodeScanningUpdateAlert implements code-scanning/update-alert operation.
-	CodeScanningUpdateAlert(ctx context.Context, req CodeScanningUpdateAlertApplicationJSONRequest, params CodeScanningUpdateAlertParams) (CodeScanningUpdateAlertResponse, error)
 	// CodeScanningListAlertInstances implements code-scanning/list-alert-instances operation.
 	CodeScanningListAlertInstances(ctx context.Context, params CodeScanningListAlertInstancesParams) (CodeScanningListAlertInstancesResponse, error)
 	// CodeScanningListRecentAnalyses implements code-scanning/list-recent-analyses operation.
@@ -622,8 +608,6 @@ type Server interface {
 	ReposListCommits(ctx context.Context, params ReposListCommitsParams) (ReposListCommitsResponse, error)
 	// ReposListCommentsForCommit implements repos/list-comments-for-commit operation.
 	ReposListCommentsForCommit(ctx context.Context, params ReposListCommentsForCommitParams) ([]CommitComment, error)
-	// ReposListPullRequestsAssociatedWithCommit implements repos/list-pull-requests-associated-with-commit operation.
-	ReposListPullRequestsAssociatedWithCommit(ctx context.Context, params ReposListPullRequestsAssociatedWithCommitParams) ([]PullRequestSimple, error)
 	// ChecksListSuitesForRef implements checks/list-suites-for-ref operation.
 	ChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (ChecksListSuitesForRef, error)
 	// ReposGetCombinedStatusForRef implements repos/get-combined-status-for-ref operation.
@@ -644,8 +628,6 @@ type Server interface {
 	ReposGetDeploymentStatus(ctx context.Context, params ReposGetDeploymentStatusParams) (ReposGetDeploymentStatusResponse, error)
 	// ReposDeleteAnEnvironment implements repos/delete-an-environment operation.
 	ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) (ReposDeleteAnEnvironment, error)
-	// ActivityListRepoEvents implements activity/list-repo-events operation.
-	ActivityListRepoEvents(ctx context.Context, params ActivityListRepoEventsParams) ([]Event, error)
 	// GitGetCommit implements git/get-commit operation.
 	GitGetCommit(ctx context.Context, params GitGetCommitParams) (GitGetCommitResponse, error)
 	// GitListMatchingRefs implements git/list-matching-refs operation.
@@ -686,12 +668,6 @@ type Server interface {
 	IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) (IssuesDeleteComment, error)
 	// ReactionsDeleteForIssueComment implements reactions/delete-for-issue-comment operation.
 	ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) (ReactionsDeleteForIssueComment, error)
-	// IssuesGetEvent implements issues/get-event operation.
-	IssuesGetEvent(ctx context.Context, params IssuesGetEventParams) (IssuesGetEventResponse, error)
-	// IssuesAddAssignees implements issues/add-assignees operation.
-	IssuesAddAssignees(ctx context.Context, req *IssuesAddAssigneesApplicationJSONRequest, params IssuesAddAssigneesParams) (IssueSimple, error)
-	// IssuesRemoveAssignees implements issues/remove-assignees operation.
-	IssuesRemoveAssignees(ctx context.Context, req *IssuesRemoveAssigneesApplicationJSONRequest, params IssuesRemoveAssigneesParams) (IssueSimple, error)
 	// IssuesListComments implements issues/list-comments operation.
 	IssuesListComments(ctx context.Context, params IssuesListCommentsParams) (IssuesListCommentsResponse, error)
 	// IssuesListLabelsOnIssue implements issues/list-labels-on-issue operation.
@@ -762,8 +738,6 @@ type Server interface {
 	PullsUpdateReviewComment(ctx context.Context, req PullsUpdateReviewCommentApplicationJSONRequest, params PullsUpdateReviewCommentParams) (PullRequestReviewComment, error)
 	// ReactionsDeleteForPullRequestComment implements reactions/delete-for-pull-request-comment operation.
 	ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) (ReactionsDeleteForPullRequestComment, error)
-	// PullsGet implements pulls/get operation.
-	PullsGet(ctx context.Context, params PullsGetParams) (PullsGetResponse, error)
 	// PullsCreateReplyForReviewComment implements pulls/create-reply-for-review-comment operation.
 	PullsCreateReplyForReviewComment(ctx context.Context, req PullsCreateReplyForReviewCommentApplicationJSONRequest, params PullsCreateReplyForReviewCommentParams) (PullsCreateReplyForReviewCommentResponse, error)
 	// PullsListCommits implements pulls/list-commits operation.
@@ -894,8 +868,6 @@ type Server interface {
 	EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Context, req EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest, params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) (ScimEnterpriseUser, error)
 	// ScimDeleteUserFromOrg implements scim/delete-user-from-org operation.
 	ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUserFromOrgParams) (ScimDeleteUserFromOrgResponse, error)
-	// SearchTopics implements search/topics operation.
-	SearchTopics(ctx context.Context, params SearchTopicsParams) (SearchTopicsResponse, error)
 	// TeamsGetLegacy implements teams/get-legacy operation.
 	TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams) (TeamsGetLegacyResponse, error)
 	// TeamsCreateDiscussionLegacy implements teams/create-discussion-legacy operation.
@@ -1022,12 +994,6 @@ type Server interface {
 	TeamsListForAuthenticatedUser(ctx context.Context, params TeamsListForAuthenticatedUserParams) (TeamsListForAuthenticatedUserResponse, error)
 	// UsersList implements users/list operation.
 	UsersList(ctx context.Context, params UsersListParams) (UsersListResponse, error)
-	// ActivityListEventsForAuthenticatedUser implements activity/list-events-for-authenticated-user operation.
-	ActivityListEventsForAuthenticatedUser(ctx context.Context, params ActivityListEventsForAuthenticatedUserParams) ([]Event, error)
-	// ActivityListOrgEventsForAuthenticatedUser implements activity/list-org-events-for-authenticated-user operation.
-	ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, params ActivityListOrgEventsForAuthenticatedUserParams) ([]Event, error)
-	// ActivityListPublicEventsForUser implements activity/list-public-events-for-user operation.
-	ActivityListPublicEventsForUser(ctx context.Context, params ActivityListPublicEventsForUserParams) ([]Event, error)
 	// UsersListFollowersForUser implements users/list-followers-for-user operation.
 	UsersListFollowersForUser(ctx context.Context, params UsersListFollowersForUserParams) ([]SimpleUser, error)
 	// UsersListFollowingForUser implements users/list-following-for-user operation.
@@ -1040,10 +1006,6 @@ type Server interface {
 	UsersListPublicKeysForUser(ctx context.Context, params UsersListPublicKeysForUserParams) ([]KeySimple, error)
 	// OrgsListForUser implements orgs/list-for-user operation.
 	OrgsListForUser(ctx context.Context, params OrgsListForUserParams) ([]OrganizationSimple, error)
-	// ActivityListReceivedEventsForUser implements activity/list-received-events-for-user operation.
-	ActivityListReceivedEventsForUser(ctx context.Context, params ActivityListReceivedEventsForUserParams) ([]Event, error)
-	// ActivityListReceivedPublicEventsForUser implements activity/list-received-public-events-for-user operation.
-	ActivityListReceivedPublicEventsForUser(ctx context.Context, params ActivityListReceivedPublicEventsForUserParams) ([]Event, error)
 	// BillingGetGithubActionsBillingUser implements billing/get-github-actions-billing-user operation.
 	BillingGetGithubActionsBillingUser(ctx context.Context, params BillingGetGithubActionsBillingUserParams) (ActionsBillingUsage, error)
 	// BillingGetGithubPackagesBillingUser implements billing/get-github-packages-billing-user operation.

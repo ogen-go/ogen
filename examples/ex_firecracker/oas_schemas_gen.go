@@ -186,13 +186,13 @@ func (*ErrorStatusCode) putMetricsResponse()                     {}
 // FullVmConfiguration describes #/components/schemas/FullVmConfiguration.
 type FullVmConfiguration struct {
 	BalloonDevice OptBalloon              `json:"balloon_device"`
-	BlockDevices  *[]Drive                `json:"block_devices"`
+	BlockDevices  []Drive                 `json:"block_devices"`
 	BootSource    OptBootSource           `json:"boot_source"`
 	Logger        OptLogger               `json:"logger"`
 	MachineConfig OptMachineConfiguration `json:"machine_config"`
 	Metrics       OptMetrics              `json:"metrics"`
 	MmdsConfig    OptMmdsConfig           `json:"mmds_config"`
-	NetDevices    *[]NetworkInterface     `json:"net_devices"`
+	NetDevices    []NetworkInterface      `json:"net_devices"`
 	VsockDevice   OptVsock                `json:"vsock_device"`
 }
 
@@ -301,7 +301,7 @@ type NetworkInterface struct {
 	TxRateLimiter     OptRateLimiter `json:"tx_rate_limiter"`
 }
 
-// New returns new OptBalloon with value set to v.
+// NewOptBalloon returns new OptBalloon with value set to v.
 func NewOptBalloon(v Balloon) OptBalloon {
 	return OptBalloon{
 		Value: v,
@@ -309,7 +309,7 @@ func NewOptBalloon(v Balloon) OptBalloon {
 	}
 }
 
-// OptBalloon is generic valiant of Balloon.
+// OptBalloon is optional Balloon.
 type OptBalloon struct {
 	Value Balloon
 	Set   bool
@@ -339,7 +339,7 @@ func (o OptBalloon) Get() (v Balloon, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptBool with value set to v.
+// NewOptBool returns new OptBool with value set to v.
 func NewOptBool(v bool) OptBool {
 	return OptBool{
 		Value: v,
@@ -347,7 +347,7 @@ func NewOptBool(v bool) OptBool {
 	}
 }
 
-// OptBool is generic valiant of bool.
+// OptBool is optional bool.
 type OptBool struct {
 	Value bool
 	Set   bool
@@ -377,7 +377,7 @@ func (o OptBool) Get() (v bool, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptBootSource with value set to v.
+// NewOptBootSource returns new OptBootSource with value set to v.
 func NewOptBootSource(v BootSource) OptBootSource {
 	return OptBootSource{
 		Value: v,
@@ -385,7 +385,7 @@ func NewOptBootSource(v BootSource) OptBootSource {
 	}
 }
 
-// OptBootSource is generic valiant of BootSource.
+// OptBootSource is optional BootSource.
 type OptBootSource struct {
 	Value BootSource
 	Set   bool
@@ -415,7 +415,7 @@ func (o OptBootSource) Get() (v BootSource, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptCpuTemplate with value set to v.
+// NewOptCpuTemplate returns new OptCpuTemplate with value set to v.
 func NewOptCpuTemplate(v CpuTemplate) OptCpuTemplate {
 	return OptCpuTemplate{
 		Value: v,
@@ -423,7 +423,7 @@ func NewOptCpuTemplate(v CpuTemplate) OptCpuTemplate {
 	}
 }
 
-// OptCpuTemplate is generic valiant of CpuTemplate.
+// OptCpuTemplate is optional CpuTemplate.
 type OptCpuTemplate struct {
 	Value CpuTemplate
 	Set   bool
@@ -453,7 +453,7 @@ func (o OptCpuTemplate) Get() (v CpuTemplate, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptInt with value set to v.
+// NewOptInt returns new OptInt with value set to v.
 func NewOptInt(v int) OptInt {
 	return OptInt{
 		Value: v,
@@ -461,7 +461,7 @@ func NewOptInt(v int) OptInt {
 	}
 }
 
-// OptInt is generic valiant of int.
+// OptInt is optional int.
 type OptInt struct {
 	Value int
 	Set   bool
@@ -491,7 +491,7 @@ func (o OptInt) Get() (v int, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptInt64 with value set to v.
+// NewOptInt64 returns new OptInt64 with value set to v.
 func NewOptInt64(v int64) OptInt64 {
 	return OptInt64{
 		Value: v,
@@ -499,7 +499,7 @@ func NewOptInt64(v int64) OptInt64 {
 	}
 }
 
-// OptInt64 is generic valiant of int64.
+// OptInt64 is optional int64.
 type OptInt64 struct {
 	Value int64
 	Set   bool
@@ -529,7 +529,7 @@ func (o OptInt64) Get() (v int64, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptLogger with value set to v.
+// NewOptLogger returns new OptLogger with value set to v.
 func NewOptLogger(v Logger) OptLogger {
 	return OptLogger{
 		Value: v,
@@ -537,7 +537,7 @@ func NewOptLogger(v Logger) OptLogger {
 	}
 }
 
-// OptLogger is generic valiant of Logger.
+// OptLogger is optional Logger.
 type OptLogger struct {
 	Value Logger
 	Set   bool
@@ -567,7 +567,7 @@ func (o OptLogger) Get() (v Logger, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptLoggerLevel with value set to v.
+// NewOptLoggerLevel returns new OptLoggerLevel with value set to v.
 func NewOptLoggerLevel(v LoggerLevel) OptLoggerLevel {
 	return OptLoggerLevel{
 		Value: v,
@@ -575,7 +575,7 @@ func NewOptLoggerLevel(v LoggerLevel) OptLoggerLevel {
 	}
 }
 
-// OptLoggerLevel is generic valiant of LoggerLevel.
+// OptLoggerLevel is optional LoggerLevel.
 type OptLoggerLevel struct {
 	Value LoggerLevel
 	Set   bool
@@ -605,7 +605,7 @@ func (o OptLoggerLevel) Get() (v LoggerLevel, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptMachineConfiguration with value set to v.
+// NewOptMachineConfiguration returns new OptMachineConfiguration with value set to v.
 func NewOptMachineConfiguration(v MachineConfiguration) OptMachineConfiguration {
 	return OptMachineConfiguration{
 		Value: v,
@@ -613,7 +613,7 @@ func NewOptMachineConfiguration(v MachineConfiguration) OptMachineConfiguration 
 	}
 }
 
-// OptMachineConfiguration is generic valiant of MachineConfiguration.
+// OptMachineConfiguration is optional MachineConfiguration.
 type OptMachineConfiguration struct {
 	Value MachineConfiguration
 	Set   bool
@@ -643,7 +643,7 @@ func (o OptMachineConfiguration) Get() (v MachineConfiguration, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptMetrics with value set to v.
+// NewOptMetrics returns new OptMetrics with value set to v.
 func NewOptMetrics(v Metrics) OptMetrics {
 	return OptMetrics{
 		Value: v,
@@ -651,7 +651,7 @@ func NewOptMetrics(v Metrics) OptMetrics {
 	}
 }
 
-// OptMetrics is generic valiant of Metrics.
+// OptMetrics is optional Metrics.
 type OptMetrics struct {
 	Value Metrics
 	Set   bool
@@ -681,7 +681,7 @@ func (o OptMetrics) Get() (v Metrics, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptMmdsConfig with value set to v.
+// NewOptMmdsConfig returns new OptMmdsConfig with value set to v.
 func NewOptMmdsConfig(v MmdsConfig) OptMmdsConfig {
 	return OptMmdsConfig{
 		Value: v,
@@ -689,7 +689,7 @@ func NewOptMmdsConfig(v MmdsConfig) OptMmdsConfig {
 	}
 }
 
-// OptMmdsConfig is generic valiant of MmdsConfig.
+// OptMmdsConfig is optional MmdsConfig.
 type OptMmdsConfig struct {
 	Value MmdsConfig
 	Set   bool
@@ -719,7 +719,7 @@ func (o OptMmdsConfig) Get() (v MmdsConfig, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptRateLimiter with value set to v.
+// NewOptRateLimiter returns new OptRateLimiter with value set to v.
 func NewOptRateLimiter(v RateLimiter) OptRateLimiter {
 	return OptRateLimiter{
 		Value: v,
@@ -727,7 +727,7 @@ func NewOptRateLimiter(v RateLimiter) OptRateLimiter {
 	}
 }
 
-// OptRateLimiter is generic valiant of RateLimiter.
+// OptRateLimiter is optional RateLimiter.
 type OptRateLimiter struct {
 	Value RateLimiter
 	Set   bool
@@ -757,7 +757,7 @@ func (o OptRateLimiter) Get() (v RateLimiter, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptSnapshotCreateParamsSnapshotType with value set to v.
+// NewOptSnapshotCreateParamsSnapshotType returns new OptSnapshotCreateParamsSnapshotType with value set to v.
 func NewOptSnapshotCreateParamsSnapshotType(v SnapshotCreateParamsSnapshotType) OptSnapshotCreateParamsSnapshotType {
 	return OptSnapshotCreateParamsSnapshotType{
 		Value: v,
@@ -765,7 +765,7 @@ func NewOptSnapshotCreateParamsSnapshotType(v SnapshotCreateParamsSnapshotType) 
 	}
 }
 
-// OptSnapshotCreateParamsSnapshotType is generic valiant of SnapshotCreateParamsSnapshotType.
+// OptSnapshotCreateParamsSnapshotType is optional SnapshotCreateParamsSnapshotType.
 type OptSnapshotCreateParamsSnapshotType struct {
 	Value SnapshotCreateParamsSnapshotType
 	Set   bool
@@ -795,7 +795,7 @@ func (o OptSnapshotCreateParamsSnapshotType) Get() (v SnapshotCreateParamsSnapsh
 	return o.Value, true
 }
 
-// New returns new OptString with value set to v.
+// NewOptString returns new OptString with value set to v.
 func NewOptString(v string) OptString {
 	return OptString{
 		Value: v,
@@ -803,7 +803,7 @@ func NewOptString(v string) OptString {
 	}
 }
 
-// OptString is generic valiant of string.
+// OptString is optional string.
 type OptString struct {
 	Value string
 	Set   bool
@@ -833,7 +833,7 @@ func (o OptString) Get() (v string, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptTokenBucket with value set to v.
+// NewOptTokenBucket returns new OptTokenBucket with value set to v.
 func NewOptTokenBucket(v TokenBucket) OptTokenBucket {
 	return OptTokenBucket{
 		Value: v,
@@ -841,7 +841,7 @@ func NewOptTokenBucket(v TokenBucket) OptTokenBucket {
 	}
 }
 
-// OptTokenBucket is generic valiant of TokenBucket.
+// OptTokenBucket is optional TokenBucket.
 type OptTokenBucket struct {
 	Value TokenBucket
 	Set   bool
@@ -871,7 +871,7 @@ func (o OptTokenBucket) Get() (v TokenBucket, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptVsock with value set to v.
+// NewOptVsock returns new OptVsock with value set to v.
 func NewOptVsock(v Vsock) OptVsock {
 	return OptVsock{
 		Value: v,
@@ -879,7 +879,7 @@ func NewOptVsock(v Vsock) OptVsock {
 	}
 }
 
-// OptVsock is generic valiant of Vsock.
+// OptVsock is optional Vsock.
 type OptVsock struct {
 	Value Vsock
 	Set   bool

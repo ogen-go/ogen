@@ -134,9 +134,6 @@ func (s *AuthenticationToken) validate() error {
 func (s *Authorization) validate() error {
 	return nil
 }
-func (s *AutoMerge) validate() error {
-	return nil
-}
 func (s *BranchProtection) validate() error {
 	return nil
 }
@@ -152,13 +149,7 @@ func (s *CheckSuite) validate() error {
 func (s *ChecksListSuitesForRef) validate() error {
 	return nil
 }
-func (s *CodeScanningAlert) validate() error {
-	return nil
-}
 func (s *CodeScanningAlertInstance) validate() error {
-	return nil
-}
-func (s *CodeScanningAlertRule) validate() error {
 	return nil
 }
 func (s *CodeScanningAnalysis) validate() error {
@@ -240,12 +231,6 @@ func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONR
 	return nil
 }
 func (s *EnvironmentApprovals) validate() error {
-	return nil
-}
-func (s *Event) validate() error {
-	return nil
-}
-func (s *EventPayload) validate() error {
 	return nil
 }
 func (s *FullRepository) validate() error {
@@ -347,12 +332,6 @@ func (s *InteractionLimitResponse) validate() error {
 func (s *IssueComment) validate() error {
 	return nil
 }
-func (s *IssueEvent) validate() error {
-	return nil
-}
-func (s *IssueSimple) validate() error {
-	return nil
-}
 func (s *IssuesCreateMilestoneApplicationJSONRequest) validate() error {
 	return nil
 }
@@ -389,43 +368,7 @@ func (s *MigrationsStartImportApplicationJSONRequest) validate() error {
 func (s *Milestone) validate() error {
 	return nil
 }
-func (s *NullableMilestone) validate() error {
-	return nil
-}
 func (s *NullableScopedInstallation) validate() error {
-	return nil
-}
-func (s *OAuthAuthorizationsCreateAuthorizationApplicationJSONRequest) validate() error {
-	return nil
-}
-func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONRequest) validate() error {
-	{
-		// Validate 'ClientSecret' field.
-		validator := validate.String{
-			MinLength:    0,
-			MinLengthSet: false,
-			MaxLength:    40,
-			MaxLengthSet: true,
-		}
-		if err := validator.Validate(s.ClientSecret); err != nil {
-			return err
-		}
-	}
-	return nil
-}
-func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONRequest) validate() error {
-	{
-		// Validate 'ClientSecret' field.
-		validator := validate.String{
-			MinLength:    0,
-			MinLengthSet: false,
-			MaxLength:    40,
-			MaxLengthSet: true,
-		}
-		if err := validator.Validate(s.ClientSecret); err != nil {
-			return err
-		}
-	}
 	return nil
 }
 func (s *OrgMembership) validate() error {
@@ -464,16 +407,10 @@ func (s *ProjectsUpdateApplicationJSONRequest) validate() error {
 func (s *ProtectedBranchPullRequestReview) validate() error {
 	return nil
 }
-func (s *PullRequest) validate() error {
-	return nil
-}
 func (s *PullRequestReview) validate() error {
 	return nil
 }
 func (s *PullRequestReviewComment) validate() error {
-	return nil
-}
-func (s *PullRequestSimple) validate() error {
 	return nil
 }
 func (s *PullsCreateReviewApplicationJSONRequest) validate() error {
@@ -552,12 +489,6 @@ func (s *ReposCreateDispatchEventApplicationJSONRequest) validate() error {
 	return nil
 }
 func (s *ReposCreateInOrgApplicationJSONRequest) validate() error {
-	return nil
-}
-func (s *ReposCreateOrUpdateEnvironmentApplicationJSONRequest) validate() error {
-	return nil
-}
-func (s *ReposCreateOrUpdateEnvironmentApplicationJSONRequestReviewersItem) validate() error {
 	return nil
 }
 func (s *ReposCreatePagesSiteApplicationJSONRequest) validate() error {

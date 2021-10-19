@@ -631,37 +631,6 @@ func encodeBillingGetSharedStorageBillingGheResponse(response CombinedBillingUsa
 	return nil
 }
 
-func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ActivityListPublicEventsOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *NotModified:
-		w.WriteHeader(304)
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/events: unexpected response type: %T", response)
-	}
-}
-
 func encodeActivityGetFeedsResponse(response Feed, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -723,37 +692,6 @@ func encodeGistsListStarredResponse(response GistsListStarredResponse, w http.Re
 		return nil
 	default:
 		return fmt.Errorf("/gists/starred: unexpected response type: %T", response)
-	}
-}
-
-func encodeGistsGetResponse(response GistsGetResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *GistSimple:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *NotModified:
-		w.WriteHeader(304)
-		return nil
-	case *ForbiddenGist:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *BasicError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/gists/{gist_id}: unexpected response type: %T", response)
 	}
 }
 
@@ -953,37 +891,6 @@ func encodeGistsListCommitsResponse(response GistsListCommitsResponse, w http.Re
 		return nil
 	default:
 		return fmt.Errorf("/gists/{gist_id}/commits: unexpected response type: %T", response)
-	}
-}
-
-func encodeGistsListForksResponse(response GistsListForksResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *GistsListForksOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *NotModified:
-		w.WriteHeader(304)
-		return nil
-	case *GistsListForksApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *GistsListForksApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/gists/{gist_id}/forks: unexpected response type: %T", response)
 	}
 }
 
@@ -1329,44 +1236,6 @@ func encodeMetaGetResponse(response MetaGetResponse, w http.ResponseWriter) erro
 		return nil
 	default:
 		return fmt.Errorf("/meta: unexpected response type: %T", response)
-	}
-}
-
-func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListPublicEventsForRepoNetworkResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *ActivityListPublicEventsForRepoNetworkOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(301)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *NotModified:
-		w.WriteHeader(304)
-		return nil
-	case *ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/networks/{owner}/{repo}/events: unexpected response type: %T", response)
 	}
 }
 
@@ -1953,24 +1822,6 @@ func encodeOrgsRemoveSamlSSOAuthorizationResponse(response OrgsRemoveSamlSSOAuth
 	default:
 		return fmt.Errorf("/orgs/{org}/credential-authorizations/{credential_id}: unexpected response type: %T", response)
 	}
-}
-
-func encodeActivityListPublicOrgEventsResponse(response []Event, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
-	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
-		return err
-	}
-	return nil
 }
 
 func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsResponse, w http.ResponseWriter) error {
@@ -4274,76 +4125,6 @@ func encodeChecksRerequestSuiteResponse(response ChecksRerequestSuite, w http.Re
 	return nil
 }
 
-func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *CodeScanningAlert:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *CodeScanningGetAlertApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *CodeScanningGetAlertApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}: unexpected response type: %T", response)
-	}
-}
-
-func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *CodeScanningAlert:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *CodeScanningUpdateAlertApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *CodeScanningUpdateAlertApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *ServiceUnavailable:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(503)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}: unexpected response type: %T", response)
-	}
-}
-
 func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlertInstancesResponse, w http.ResponseWriter) error {
 	switch response := response.(type) {
 	case *CodeScanningListAlertInstancesOK:
@@ -4756,24 +4537,6 @@ func encodeReposListCommentsForCommitResponse(response []CommitComment, w http.R
 	return nil
 }
 
-func encodeReposListPullRequestsAssociatedWithCommitResponse(response []PullRequestSimple, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
-	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRef, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -4968,24 +4731,6 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 
 func encodeReposDeleteAnEnvironmentResponse(response ReposDeleteAnEnvironment, w http.ResponseWriter) error {
 	w.WriteHeader(204)
-	return nil
-}
-
-func encodeActivityListRepoEventsResponse(response []Event, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
-	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
-		return err
-	}
 	return nil
 }
 
@@ -5285,59 +5030,6 @@ func encodeIssuesDeleteCommentResponse(response IssuesDeleteComment, w http.Resp
 
 func encodeReactionsDeleteForIssueCommentResponse(response ReactionsDeleteForIssueComment, w http.ResponseWriter) error {
 	w.WriteHeader(204)
-	return nil
-}
-
-func encodeIssuesGetEventResponse(response IssuesGetEventResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *IssueEvent:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *IssuesGetEventApplicationJSONForbidden:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(403)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *IssuesGetEventApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *IssuesGetEventApplicationJSONGone:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(410)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/issues/events/{event_id}: unexpected response type: %T", response)
-	}
-}
-
-func encodeIssuesAddAssigneesResponse(response IssueSimple, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(201)
-	if err := response.WriteJSONTo(w); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeIssuesRemoveAssigneesResponse(response IssueSimple, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	if err := response.WriteJSONTo(w); err != nil {
-		return err
-	}
 	return nil
 }
 
@@ -5923,37 +5615,6 @@ func encodePullsUpdateReviewCommentResponse(response PullRequestReviewComment, w
 func encodeReactionsDeleteForPullRequestCommentResponse(response ReactionsDeleteForPullRequestComment, w http.ResponseWriter) error {
 	w.WriteHeader(204)
 	return nil
-}
-
-func encodePullsGetResponse(response PullsGetResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *PullRequest:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *NotModified:
-		w.WriteHeader(304)
-		return nil
-	case *PullsGetApplicationJSONNotFound:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(404)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *PullsGetApplicationJSONInternalServerError:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(500)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}: unexpected response type: %T", response)
-	}
 }
 
 func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyForReviewCommentResponse, w http.ResponseWriter) error {
@@ -6977,30 +6638,6 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgResponse,
 		return fmt.Errorf("application/scim+json encoder not implemented")
 	default:
 		return fmt.Errorf("/scim/v2/organizations/{org}/Users/{scim_user_id}: unexpected response type: %T", response)
-	}
-}
-
-func encodeSearchTopicsResponse(response SearchTopicsResponse, w http.ResponseWriter) error {
-	switch response := response.(type) {
-	case *SearchTopicsOK:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	case *NotModified:
-		w.WriteHeader(304)
-		return nil
-	case *PreviewHeaderMissing:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(415)
-		if err := response.WriteJSONTo(w); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return fmt.Errorf("/search/topics: unexpected response type: %T", response)
 	}
 }
 
@@ -8607,60 +8244,6 @@ func encodeUsersListResponse(response UsersListResponse, w http.ResponseWriter) 
 	}
 }
 
-func encodeActivityListEventsForAuthenticatedUserResponse(response []Event, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
-	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeActivityListOrgEventsForAuthenticatedUserResponse(response []Event, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
-	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeActivityListPublicEventsForUserResponse(response []Event, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
-	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
 func encodeUsersListFollowersForUserResponse(response []SimpleUser, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -8747,42 +8330,6 @@ func encodeUsersListPublicKeysForUserResponse(response []KeySimple, w http.Respo
 }
 
 func encodeOrgsListForUserResponse(response []OrganizationSimple, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
-	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeActivityListReceivedEventsForUserResponse(response []Event, w http.ResponseWriter) error {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(200)
-	js := json.NewStream(w)
-	js.WriteArrayStart()
-	for i, elem := range response {
-		elem.WriteJSON(js)
-		if i != len(response)-1 {
-			js.WriteMore()
-		}
-	}
-	js.WriteArrayEnd()
-	if err := js.Flush(); err != nil {
-		return err
-	}
-	return nil
-}
-
-func encodeActivityListReceivedPublicEventsForUserResponse(response []Event, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	js := json.NewStream(w)

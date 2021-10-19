@@ -247,11 +247,6 @@ type BillingGetSharedStorageBillingGheParams struct {
 	Enterprise string
 }
 
-type ActivityListPublicEventsParams struct {
-	PerPage int
-	Page    int
-}
-
 type GistsListParams struct {
 	Since   time.Time
 	PerPage int
@@ -262,10 +257,6 @@ type GistsListStarredParams struct {
 	Since   time.Time
 	PerPage int
 	Page    int
-}
-
-type GistsGetParams struct {
-	GistID string
 }
 
 type GistsDeleteParams struct {
@@ -298,12 +289,6 @@ type GistsUpdateCommentParams struct {
 }
 
 type GistsListCommitsParams struct {
-	GistID  string
-	PerPage int
-	Page    int
-}
-
-type GistsListForksParams struct {
 	GistID  string
 	PerPage int
 	Page    int
@@ -354,13 +339,6 @@ type AppsGetSubscriptionPlanForAccountStubbedParams struct {
 }
 
 type AppsListPlansStubbedParams struct {
-	PerPage int
-	Page    int
-}
-
-type ActivityListPublicEventsForRepoNetworkParams struct {
-	Owner   string
-	Repo    string
 	PerPage int
 	Page    int
 }
@@ -605,12 +583,6 @@ type OrgsListSamlSSOAuthorizationsParams struct {
 type OrgsRemoveSamlSSOAuthorizationParams struct {
 	Org          string
 	CredentialID int
-}
-
-type ActivityListPublicOrgEventsParams struct {
-	Org     string
-	PerPage int
-	Page    int
 }
 
 type OrgsListFailedInvitationsParams struct {
@@ -1413,18 +1385,6 @@ type ChecksRerequestSuiteParams struct {
 	CheckSuiteID int
 }
 
-type CodeScanningGetAlertParams struct {
-	Owner       string
-	Repo        string
-	AlertNumber int
-}
-
-type CodeScanningUpdateAlertParams struct {
-	Owner       string
-	Repo        string
-	AlertNumber int
-}
-
 type CodeScanningListAlertInstancesParams struct {
 	Owner       string
 	Repo        string
@@ -1539,14 +1499,6 @@ type ReposListCommentsForCommitParams struct {
 	Page      int
 }
 
-type ReposListPullRequestsAssociatedWithCommitParams struct {
-	Owner     string
-	Repo      string
-	CommitSha string
-	PerPage   int
-	Page      int
-}
-
 type ChecksListSuitesForRefParams struct {
 	Owner     string
 	Repo      string
@@ -1619,13 +1571,6 @@ type ReposDeleteAnEnvironmentParams struct {
 	Owner           string
 	Repo            string
 	EnvironmentName string
-}
-
-type ActivityListRepoEventsParams struct {
-	Owner   string
-	Repo    string
-	PerPage int
-	Page    int
 }
 
 type GitGetCommitParams struct {
@@ -1744,24 +1689,6 @@ type ReactionsDeleteForIssueCommentParams struct {
 	Repo       string
 	CommentID  int
 	ReactionID int
-}
-
-type IssuesGetEventParams struct {
-	Owner   string
-	Repo    string
-	EventID int
-}
-
-type IssuesAddAssigneesParams struct {
-	Owner       string
-	Repo        string
-	IssueNumber int
-}
-
-type IssuesRemoveAssigneesParams struct {
-	Owner       string
-	Repo        string
-	IssueNumber int
 }
 
 type IssuesListCommentsParams struct {
@@ -1979,12 +1906,6 @@ type ReactionsDeleteForPullRequestCommentParams struct {
 	Repo       string
 	CommentID  int
 	ReactionID int
-}
-
-type PullsGetParams struct {
-	Owner      string
-	Repo       string
-	PullNumber int
 }
 
 type PullsCreateReplyForReviewCommentParams struct {
@@ -2376,12 +2297,6 @@ type ScimDeleteUserFromOrgParams struct {
 	ScimUserID string
 }
 
-type SearchTopicsParams struct {
-	Q       string
-	PerPage int
-	Page    int
-}
-
 type TeamsGetLegacyParams struct {
 	TeamID int
 }
@@ -2677,25 +2592,6 @@ type UsersListParams struct {
 	PerPage int
 }
 
-type ActivityListEventsForAuthenticatedUserParams struct {
-	Username string
-	PerPage  int
-	Page     int
-}
-
-type ActivityListOrgEventsForAuthenticatedUserParams struct {
-	Username string
-	Org      string
-	PerPage  int
-	Page     int
-}
-
-type ActivityListPublicEventsForUserParams struct {
-	Username string
-	PerPage  int
-	Page     int
-}
-
 type UsersListFollowersForUserParams struct {
 	Username string
 	PerPage  int
@@ -2726,18 +2622,6 @@ type UsersListPublicKeysForUserParams struct {
 }
 
 type OrgsListForUserParams struct {
-	Username string
-	PerPage  int
-	Page     int
-}
-
-type ActivityListReceivedEventsForUserParams struct {
-	Username string
-	PerPage  int
-	Page     int
-}
-
-type ActivityListReceivedPublicEventsForUserParams struct {
 	Username string
 	PerPage  int
 	Page     int

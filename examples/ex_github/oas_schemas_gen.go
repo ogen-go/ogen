@@ -52,17 +52,17 @@ var (
 
 // APIOverview describes #/components/schemas/api-overview.
 type APIOverview struct {
-	API                              *[]string                        `json:"api"`
-	Actions                          *[]string                        `json:"actions"`
-	Dependabot                       *[]string                        `json:"dependabot"`
-	Git                              *[]string                        `json:"git"`
-	Hooks                            *[]string                        `json:"hooks"`
-	Importer                         *[]string                        `json:"importer"`
-	Packages                         *[]string                        `json:"packages"`
-	Pages                            *[]string                        `json:"pages"`
+	API                              []string                         `json:"api"`
+	Actions                          []string                         `json:"actions"`
+	Dependabot                       []string                         `json:"dependabot"`
+	Git                              []string                         `json:"git"`
+	Hooks                            []string                         `json:"hooks"`
+	Importer                         []string                         `json:"importer"`
+	Packages                         []string                         `json:"packages"`
+	Pages                            []string                         `json:"pages"`
 	SSHKeyFingerprints               OptAPIOverviewSSHKeyFingerprints `json:"ssh_key_fingerprints"`
 	VerifiablePasswordAuthentication bool                             `json:"verifiable_password_authentication"`
-	Web                              *[]string                        `json:"web"`
+	Web                              []string                         `json:"web"`
 }
 
 func (*APIOverview) metaGetResponse() {}
@@ -130,7 +130,7 @@ func (*ActionsCreateOrUpdateEnvironmentSecretNoContent) actionsCreateOrUpdateEnv
 type ActionsCreateOrUpdateOrgSecretApplicationJSONRequest struct {
 	EncryptedValue        OptString                                                      `json:"encrypted_value"`
 	KeyID                 OptString                                                      `json:"key_id"`
-	SelectedRepositoryIds *[]string                                                      `json:"selected_repository_ids"`
+	SelectedRepositoryIds []string                                                       `json:"selected_repository_ids"`
 	Visibility            ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibility `json:"visibility"`
 }
 
@@ -161,8 +161,8 @@ func (*ActionsCreateOrUpdateRepoSecretNoContent) actionsCreateOrUpdateRepoSecret
 
 type ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest struct {
 	Name                  string                                                                      `json:"name"`
-	Runners               *[]int                                                                      `json:"runners"`
-	SelectedRepositoryIds *[]int                                                                      `json:"selected_repository_ids"`
+	Runners               []int                                                                       `json:"runners"`
+	SelectedRepositoryIds []int                                                                       `json:"selected_repository_ids"`
 	Visibility            OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility `json:"visibility"`
 }
 
@@ -458,29 +458,6 @@ func (*ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthori
 
 type ActivityListNotificationsForAuthenticatedUserOK []Thread
 
-type ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden BasicError
-
-func (*ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden) activityListPublicEventsForRepoNetworkResponse() {
-}
-
-type ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently BasicError
-
-func (*ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently) activityListPublicEventsForRepoNetworkResponse() {
-}
-
-type ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound BasicError
-
-func (*ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) activityListPublicEventsForRepoNetworkResponse() {
-}
-
-type ActivityListPublicEventsForRepoNetworkOK []Event
-
-func (*ActivityListPublicEventsForRepoNetworkOK) activityListPublicEventsForRepoNetworkResponse() {}
-
-type ActivityListPublicEventsOK []Event
-
-func (*ActivityListPublicEventsOK) activityListPublicEventsResponse() {}
-
 type ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden BasicError
 
 func (*ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden) activityListWatchedReposForAuthenticatedUserResponse() {
@@ -600,21 +577,9 @@ type ActivityUnstarRepoForAuthenticatedUserNoContent struct{}
 func (*ActivityUnstarRepoForAuthenticatedUserNoContent) activityUnstarRepoForAuthenticatedUserResponse() {
 }
 
-// Actor describes #/components/schemas/actor.
-type Actor struct {
-	AvatarURL    url.URL   `json:"avatar_url"`
-	DisplayLogin OptString `json:"display_login"`
-	GravatarID   NilString `json:"gravatar_id"`
-	ID           int       `json:"id"`
-	Login        string    `json:"login"`
-	URL          url.URL   `json:"url"`
-}
-
 type AlertCreatedAt time.Time
 
 type AlertHTMLURL url.URL
-
-type AlertInstancesURL url.URL
 
 type AlertNumber int
 
@@ -929,8 +894,8 @@ func (*AppsCreateFromManifestApplicationJSONRequest) appsCreateFromManifestReque
 
 type AppsCreateInstallationAccessTokenApplicationJSONRequest struct {
 	Permissions   OptAppPermissions `json:"permissions"`
-	Repositories  *[]string         `json:"repositories"`
-	RepositoryIds *[]int            `json:"repository_ids"`
+	Repositories  []string          `json:"repositories"`
+	RepositoryIds []int             `json:"repository_ids"`
 }
 
 func (*AppsCreateInstallationAccessTokenApplicationJSONRequest) appsCreateInstallationAccessTokenRequest() {
@@ -1079,8 +1044,8 @@ type AppsRevokeInstallationAccessToken struct{}
 type AppsScopeTokenApplicationJSONRequest struct {
 	AccessToken   string            `json:"access_token"`
 	Permissions   OptAppPermissions `json:"permissions"`
-	Repositories  *[]string         `json:"repositories"`
-	RepositoryIds *[]int            `json:"repository_ids"`
+	Repositories  []string          `json:"repositories"`
+	RepositoryIds []int             `json:"repository_ids"`
 	Target        OptString         `json:"target"`
 	TargetID      OptInt            `json:"target_id"`
 }
@@ -1113,7 +1078,7 @@ type Artifact struct {
 type AuthenticationToken struct {
 	ExpiresAt           time.Time                                 `json:"expires_at"`
 	Permissions         *struct{}                                 `json:"permissions"`
-	Repositories        *[]Repository                             `json:"repositories"`
+	Repositories        []Repository                              `json:"repositories"`
 	RepositorySelection OptAuthenticationTokenRepositorySelection `json:"repository_selection"`
 	SingleFile          OptNilString                              `json:"single_file"`
 	Token               string                                    `json:"token"`
@@ -1166,22 +1131,6 @@ type AuthorizationApp struct {
 	URL      url.URL `json:"url"`
 }
 
-// AutoMerge describes #/components/schemas/auto_merge.
-type AutoMerge struct {
-	CommitMessage string               `json:"commit_message"`
-	CommitTitle   string               `json:"commit_title"`
-	EnabledBy     SimpleUser           `json:"enabled_by"`
-	MergeMethod   AutoMergeMergeMethod `json:"merge_method"`
-}
-
-type AutoMergeMergeMethod string
-
-const (
-	AutoMergeMergeMethodMerge  AutoMergeMergeMethod = "merge"
-	AutoMergeMergeMethodSquash AutoMergeMergeMethod = "squash"
-	AutoMergeMergeMethodRebase AutoMergeMergeMethod = "rebase"
-)
-
 // Autolink describes #/components/schemas/autolink.
 type Autolink struct {
 	ID          int    `json:"id"`
@@ -1199,12 +1148,12 @@ type BaseGist struct {
 	CreatedAt   time.Time          `json:"created_at"`
 	Description NilString          `json:"description"`
 	Files       struct{}           `json:"files"`
-	Forks       *[]string          `json:"forks"`
+	Forks       []string           `json:"forks"`
 	ForksURL    url.URL            `json:"forks_url"`
 	GitPullURL  url.URL            `json:"git_pull_url"`
 	GitPushURL  url.URL            `json:"git_push_url"`
 	HTMLURL     url.URL            `json:"html_url"`
-	History     *[]string          `json:"history"`
+	History     []string           `json:"history"`
 	ID          string             `json:"id"`
 	NodeID      string             `json:"node_id"`
 	Owner       OptSimpleUser      `json:"owner"`
@@ -1224,7 +1173,6 @@ type BasicError struct {
 }
 
 func (*BasicError) activityGetRepoSubscriptionResponse()                      {}
-func (*BasicError) activityListPublicEventsResponse()                         {}
 func (*BasicError) activityMarkThreadAsReadResponse()                         {}
 func (*BasicError) appsDeleteInstallationResponse()                           {}
 func (*BasicError) appsGetSubscriptionPlanForAccountStubbedResponse()         {}
@@ -1236,7 +1184,6 @@ func (*BasicError) codeScanningGetSarifResponse()                             {}
 func (*BasicError) codesOfConductGetConductCodeResponse()                     {}
 func (*BasicError) gistsCheckIsStarredResponse()                              {}
 func (*BasicError) gistsGetCommentResponse()                                  {}
-func (*BasicError) gistsGetResponse()                                         {}
 func (*BasicError) gistsListResponse()                                        {}
 func (*BasicError) gistsUpdateCommentResponse()                               {}
 func (*BasicError) gitGetCommitResponse()                                     {}
@@ -1405,7 +1352,7 @@ func (*BranchRestrictionPolicy) reposGetAccessRestrictionsResponse() {}
 type BranchRestrictionPolicyAppsItem struct {
 	CreatedAt   OptString                                     `json:"created_at"`
 	Description OptString                                     `json:"description"`
-	Events      *[]string                                     `json:"events"`
+	Events      []string                                      `json:"events"`
 	ExternalURL OptString                                     `json:"external_url"`
 	HTMLURL     OptString                                     `json:"html_url"`
 	ID          OptInt                                        `json:"id"`
@@ -1624,7 +1571,7 @@ type CheckSuitePreference struct {
 }
 
 type CheckSuitePreferencePreferences struct {
-	AutoTriggerChecks *[]CheckSuitePreferencePreferencesAutoTriggerChecksItem `json:"auto_trigger_checks"`
+	AutoTriggerChecks []CheckSuitePreferencePreferencesAutoTriggerChecksItem `json:"auto_trigger_checks"`
 }
 
 type CheckSuitePreferencePreferencesAutoTriggerChecksItem struct {
@@ -1660,7 +1607,7 @@ type ChecksListSuitesForRef struct {
 type ChecksRerequestSuite struct{}
 
 type ChecksSetSuitesPreferencesApplicationJSONRequest struct {
-	AutoTriggerChecks *[]ChecksSetSuitesPreferencesApplicationJSONRequestAutoTriggerChecksItem `json:"auto_trigger_checks"`
+	AutoTriggerChecks []ChecksSetSuitesPreferencesApplicationJSONRequestAutoTriggerChecksItem `json:"auto_trigger_checks"`
 }
 
 type ChecksSetSuitesPreferencesApplicationJSONRequestAutoTriggerChecksItem struct {
@@ -1689,26 +1636,6 @@ type CodeOfConductSimple struct {
 	URL     url.URL `json:"url"`
 }
 
-// CodeScanningAlert describes #/components/schemas/code-scanning-alert.
-type CodeScanningAlert struct {
-	CreatedAt          AlertCreatedAt                   `json:"created_at"`
-	DismissedAt        CodeScanningAlertDismissedAt     `json:"dismissed_at"`
-	DismissedBy        NullableSimpleUser               `json:"dismissed_by"`
-	DismissedReason    CodeScanningAlertDismissedReason `json:"dismissed_reason"`
-	HTMLURL            AlertHTMLURL                     `json:"html_url"`
-	Instances          OptString                        `json:"instances"`
-	InstancesURL       AlertInstancesURL                `json:"instances_url"`
-	MostRecentInstance CodeScanningAlertInstance        `json:"most_recent_instance"`
-	Number             AlertNumber                      `json:"number"`
-	Rule               CodeScanningAlertRule            `json:"rule"`
-	State              CodeScanningAlertState           `json:"state"`
-	Tool               CodeScanningAnalysisTool         `json:"tool"`
-	URL                AlertURL                         `json:"url"`
-}
-
-func (*CodeScanningAlert) codeScanningGetAlertResponse()    {}
-func (*CodeScanningAlert) codeScanningUpdateAlertResponse() {}
-
 type CodeScanningAlertClassification string
 
 const (
@@ -1717,8 +1644,6 @@ const (
 	CodeScanningAlertClassificationTest      CodeScanningAlertClassification = "test"
 	CodeScanningAlertClassificationLibrary   CodeScanningAlertClassification = "library"
 )
-
-type CodeScanningAlertDismissedAt time.Time
 
 type CodeScanningAlertDismissedReason string
 
@@ -1734,7 +1659,7 @@ type CodeScanningAlertEnvironment string
 type CodeScanningAlertInstance struct {
 	AnalysisKey     *CodeScanningAnalysisAnalysisKey    `json:"analysis_key"`
 	Category        *CodeScanningAnalysisCategory       `json:"category"`
-	Classifications *[]CodeScanningAlertClassification  `json:"classifications"`
+	Classifications []CodeScanningAlertClassification   `json:"classifications"`
 	CommitSha       OptString                           `json:"commit_sha"`
 	Environment     *CodeScanningAlertEnvironment       `json:"environment"`
 	HTMLURL         OptString                           `json:"html_url"`
@@ -1756,36 +1681,6 @@ type CodeScanningAlertLocation struct {
 	StartColumn OptInt    `json:"start_column"`
 	StartLine   OptInt    `json:"start_line"`
 }
-
-// CodeScanningAlertRule describes #/components/schemas/code-scanning-alert-rule.
-type CodeScanningAlertRule struct {
-	Description           OptString                                        `json:"description"`
-	FullDescription       OptString                                        `json:"full_description"`
-	Help                  OptNilString                                     `json:"help"`
-	ID                    OptNilString                                     `json:"id"`
-	Name                  OptString                                        `json:"name"`
-	SecuritySeverityLevel OptNilCodeScanningAlertRuleSecuritySeverityLevel `json:"security_severity_level"`
-	Severity              OptNilCodeScanningAlertRuleSeverity              `json:"severity"`
-	Tags                  *[]string                                        `json:"tags"`
-}
-
-type CodeScanningAlertRuleSecuritySeverityLevel string
-
-const (
-	CodeScanningAlertRuleSecuritySeverityLevelLow      CodeScanningAlertRuleSecuritySeverityLevel = "low"
-	CodeScanningAlertRuleSecuritySeverityLevelMedium   CodeScanningAlertRuleSecuritySeverityLevel = "medium"
-	CodeScanningAlertRuleSecuritySeverityLevelHigh     CodeScanningAlertRuleSecuritySeverityLevel = "high"
-	CodeScanningAlertRuleSecuritySeverityLevelCritical CodeScanningAlertRuleSecuritySeverityLevel = "critical"
-)
-
-type CodeScanningAlertRuleSeverity string
-
-const (
-	CodeScanningAlertRuleSeverityNone    CodeScanningAlertRuleSeverity = "none"
-	CodeScanningAlertRuleSeverityNote    CodeScanningAlertRuleSeverity = "note"
-	CodeScanningAlertRuleSeverityWarning CodeScanningAlertRuleSeverity = "warning"
-	CodeScanningAlertRuleSeverityError   CodeScanningAlertRuleSeverity = "error"
-)
 
 type CodeScanningAlertSetState string
 
@@ -1874,14 +1769,6 @@ type CodeScanningDeleteAnalysisApplicationJSONNotFound BasicError
 
 func (*CodeScanningDeleteAnalysisApplicationJSONNotFound) codeScanningDeleteAnalysisResponse() {}
 
-type CodeScanningGetAlertApplicationJSONForbidden BasicError
-
-func (*CodeScanningGetAlertApplicationJSONForbidden) codeScanningGetAlertResponse() {}
-
-type CodeScanningGetAlertApplicationJSONNotFound BasicError
-
-func (*CodeScanningGetAlertApplicationJSONNotFound) codeScanningGetAlertResponse() {}
-
 type CodeScanningGetAnalysisApplicationJSONForbidden BasicError
 
 func (*CodeScanningGetAnalysisApplicationJSONForbidden) codeScanningGetAnalysisResponse() {}
@@ -1951,18 +1838,12 @@ const (
 	CodeScanningSarifsStatusProcessingStatusComplete CodeScanningSarifsStatusProcessingStatus = "complete"
 )
 
-type CodeScanningUpdateAlertApplicationJSONForbidden BasicError
-
-func (*CodeScanningUpdateAlertApplicationJSONForbidden) codeScanningUpdateAlertResponse() {}
-
-type CodeScanningUpdateAlertApplicationJSONNotFound BasicError
-
-func (*CodeScanningUpdateAlertApplicationJSONNotFound) codeScanningUpdateAlertResponse() {}
-
 type CodeScanningUpdateAlertApplicationJSONRequest struct {
 	DismissedReason OptCodeScanningAlertDismissedReason `json:"dismissed_reason"`
 	State           CodeScanningAlertSetState           `json:"state"`
 }
+
+func (*CodeScanningUpdateAlertApplicationJSONRequest) codeScanningUpdateAlertRequest() {}
 
 type CodeScanningUploadSarifApplicationJSONForbidden BasicError
 
@@ -2019,7 +1900,7 @@ type Commit struct {
 	CommentsURL url.URL             `json:"comments_url"`
 	Commit      CommitCommit        `json:"commit"`
 	Committer   NullableSimpleUser  `json:"committer"`
-	Files       *[]CommitFilesItem  `json:"files"`
+	Files       []CommitFilesItem   `json:"files"`
 	HTMLURL     url.URL             `json:"html_url"`
 	NodeID      string              `json:"node_id"`
 	Parents     []CommitParentsItem `json:"parents"`
@@ -2078,7 +1959,7 @@ type CommitComparison struct {
 	BehindBy        int                    `json:"behind_by"`
 	Commits         []Commit               `json:"commits"`
 	DiffURL         url.URL                `json:"diff_url"`
-	Files           *[]DiffEntry           `json:"files"`
+	Files           []DiffEntry            `json:"files"`
 	HTMLURL         url.URL                `json:"html_url"`
 	MergeBaseCommit Commit                 `json:"merge_base_commit"`
 	PatchURL        url.URL                `json:"patch_url"`
@@ -2235,7 +2116,7 @@ type CredentialAuthorization struct {
 	CredentialType            string       `json:"credential_type"`
 	Fingerprint               OptString    `json:"fingerprint"`
 	Login                     string       `json:"login"`
-	Scopes                    *[]string    `json:"scopes"`
+	Scopes                    []string     `json:"scopes"`
 	TokenLastEight            OptString    `json:"token_last_eight"`
 }
 
@@ -2251,19 +2132,6 @@ type DeployKey struct {
 }
 
 func (*DeployKey) reposGetDeployKeyResponse() {}
-
-// DeploymentBranchPolicy describes #/components/schemas/deployment_branch_policy.
-type DeploymentBranchPolicy struct {
-	CustomBranchPolicies bool `json:"custom_branch_policies"`
-	ProtectedBranches    bool `json:"protected_branches"`
-}
-
-type DeploymentReviewerType string
-
-const (
-	DeploymentReviewerTypeUser DeploymentReviewerType = "User"
-	DeploymentReviewerTypeTeam DeploymentReviewerType = "Team"
-)
 
 // DeploymentSimple describes #/components/schemas/deployment-simple.
 type DeploymentSimple struct {
@@ -2384,8 +2252,8 @@ type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise struct{}
 
 type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequest struct {
 	Name                    string                                                                                     `json:"name"`
-	Runners                 *[]int                                                                                     `json:"runners"`
-	SelectedOrganizationIds *[]int                                                                                     `json:"selected_organization_ids"`
+	Runners                 []int                                                                                      `json:"runners"`
+	SelectedOrganizationIds []int                                                                                      `json:"selected_organization_ids"`
 	Visibility              OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility `json:"visibility"`
 }
 
@@ -2424,7 +2292,7 @@ type EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise struct {
 }
 
 type EnterpriseAdminListSelfHostedRunnersForEnterprise struct {
-	Runners    *[]Runner  `json:"runners"`
+	Runners    []Runner   `json:"runners"`
 	TotalCount OptFloat64 `json:"total_count"`
 }
 
@@ -2434,9 +2302,9 @@ type EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise struct {
 }
 
 type EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest struct {
-	DisplayName string                                                                               `json:"displayName"`
-	Members     *[]EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestMembersItem `json:"members"`
-	Schemas     []string                                                                             `json:"schemas"`
+	DisplayName string                                                                              `json:"displayName"`
+	Members     []EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestMembersItem `json:"members"`
+	Schemas     []string                                                                            `json:"schemas"`
 }
 
 type EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestMembersItem struct {
@@ -2444,11 +2312,11 @@ type EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestMembe
 }
 
 type EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest struct {
-	Emails   []EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestEmailsItem  `json:"emails"`
-	Groups   *[]EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestGroupsItem `json:"groups"`
-	Name     EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestName          `json:"name"`
-	Schemas  []string                                                                           `json:"schemas"`
-	UserName string                                                                             `json:"userName"`
+	Emails   []EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestEmailsItem `json:"emails"`
+	Groups   []EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestGroupsItem `json:"groups"`
+	Name     EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestName         `json:"name"`
+	Schemas  []string                                                                          `json:"schemas"`
+	UserName string                                                                            `json:"userName"`
 }
 
 type EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestEmailsItem struct {
@@ -2480,9 +2348,9 @@ type EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequest 
 }
 
 type EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequest struct {
-	DisplayName string                                                                                         `json:"displayName"`
-	Members     *[]EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequestMembersItem `json:"members"`
-	Schemas     []string                                                                                       `json:"schemas"`
+	DisplayName string                                                                                        `json:"displayName"`
+	Members     []EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequestMembersItem `json:"members"`
+	Schemas     []string                                                                                      `json:"schemas"`
 }
 
 type EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequestMembersItem struct {
@@ -2490,11 +2358,11 @@ type EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRe
 }
 
 type EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequest struct {
-	Emails   []EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestEmailsItem  `json:"emails"`
-	Groups   *[]EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestGroupsItem `json:"groups"`
-	Name     EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestName          `json:"name"`
-	Schemas  []string                                                                                     `json:"schemas"`
-	UserName string                                                                                       `json:"userName"`
+	Emails   []EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestEmailsItem `json:"emails"`
+	Groups   []EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestGroupsItem `json:"groups"`
+	Name     EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestName         `json:"name"`
+	Schemas  []string                                                                                    `json:"schemas"`
+	UserName string                                                                                      `json:"userName"`
 }
 
 type EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSONRequestEmailsItem struct {
@@ -2572,58 +2440,24 @@ const (
 	EnvironmentApprovalsStateRejected EnvironmentApprovalsState = "rejected"
 )
 
-// Event describes #/components/schemas/event.
-type Event struct {
-	Actor     Actor        `json:"actor"`
-	CreatedAt NilTime      `json:"created_at"`
-	ID        string       `json:"id"`
-	Org       OptActor     `json:"org"`
-	Payload   EventPayload `json:"payload"`
-	Public    bool         `json:"public"`
-	Repo      EventRepo    `json:"repo"`
-	Type      NilString    `json:"type"`
-}
-
-type EventPayload struct {
-	Action  OptString                `json:"action"`
-	Comment OptIssueComment          `json:"comment"`
-	Issue   OptIssueSimple           `json:"issue"`
-	Pages   *[]EventPayloadPagesItem `json:"pages"`
-}
-
-type EventPayloadPagesItem struct {
-	Action   OptString    `json:"action"`
-	HTMLURL  OptString    `json:"html_url"`
-	PageName OptString    `json:"page_name"`
-	Sha      OptString    `json:"sha"`
-	Summary  OptNilString `json:"summary"`
-	Title    OptString    `json:"title"`
-}
-
-type EventRepo struct {
-	ID   int     `json:"id"`
-	Name string  `json:"name"`
-	URL  url.URL `json:"url"`
-}
-
 // Feed describes #/components/schemas/feed.
 type Feed struct {
-	CurrentUserActorURL         OptString  `json:"current_user_actor_url"`
-	CurrentUserOrganizationURL  OptString  `json:"current_user_organization_url"`
-	CurrentUserOrganizationUrls *[]url.URL `json:"current_user_organization_urls"`
-	CurrentUserPublicURL        OptString  `json:"current_user_public_url"`
-	CurrentUserURL              OptString  `json:"current_user_url"`
-	Links                       FeedLinks  `json:"_links"`
-	SecurityAdvisoriesURL       OptString  `json:"security_advisories_url"`
-	TimelineURL                 string     `json:"timeline_url"`
-	UserURL                     string     `json:"user_url"`
+	CurrentUserActorURL         OptString `json:"current_user_actor_url"`
+	CurrentUserOrganizationURL  OptString `json:"current_user_organization_url"`
+	CurrentUserOrganizationUrls []url.URL `json:"current_user_organization_urls"`
+	CurrentUserPublicURL        OptString `json:"current_user_public_url"`
+	CurrentUserURL              OptString `json:"current_user_url"`
+	Links                       FeedLinks `json:"_links"`
+	SecurityAdvisoriesURL       OptString `json:"security_advisories_url"`
+	TimelineURL                 string    `json:"timeline_url"`
+	UserURL                     string    `json:"user_url"`
 }
 
 type FeedLinks struct {
 	CurrentUser              OptLinkWithType `json:"current_user"`
 	CurrentUserActor         OptLinkWithType `json:"current_user_actor"`
 	CurrentUserOrganization  OptLinkWithType `json:"current_user_organization"`
-	CurrentUserOrganizations *[]LinkWithType `json:"current_user_organizations"`
+	CurrentUserOrganizations []LinkWithType  `json:"current_user_organizations"`
 	CurrentUserPublic        OptLinkWithType `json:"current_user_public"`
 	SecurityAdvisories       OptLinkWithType `json:"security_advisories"`
 	Timeline                 LinkWithType    `json:"timeline"`
@@ -2642,7 +2476,7 @@ type FileCommitCommit struct {
 	HTMLURL      OptString                       `json:"html_url"`
 	Message      OptString                       `json:"message"`
 	NodeID       OptString                       `json:"node_id"`
-	Parents      *[]FileCommitCommitParentsItem  `json:"parents"`
+	Parents      []FileCommitCommitParentsItem   `json:"parents"`
 	Sha          OptString                       `json:"sha"`
 	Tree         OptFileCommitCommitTree         `json:"tree"`
 	URL          OptString                       `json:"url"`
@@ -2705,7 +2539,6 @@ type ForbiddenGist struct {
 }
 
 func (*ForbiddenGist) gistsGetCommentResponse() {}
-func (*ForbiddenGist) gistsGetResponse()        {}
 
 type ForbiddenGistBlock struct {
 	CreatedAt OptString    `json:"created_at"`
@@ -2806,7 +2639,7 @@ type FullRepository struct {
 	TeamsURL               url.URL                                 `json:"teams_url"`
 	TempCloneToken         OptNilString                            `json:"temp_clone_token"`
 	TemplateRepository     OptNullableRepository                   `json:"template_repository"`
-	Topics                 *[]string                               `json:"topics"`
+	Topics                 []string                                `json:"topics"`
 	TreesURL               string                                  `json:"trees_url"`
 	URL                    url.URL                                 `json:"url"`
 	UpdatedAt              time.Time                               `json:"updated_at"`
@@ -2883,79 +2716,6 @@ type GistCommitChangeStatus struct {
 	Total     OptInt `json:"total"`
 }
 
-// GistHistory describes #/components/schemas/gist-history.
-type GistHistory struct {
-	ChangeStatus OptGistHistoryChangeStatus `json:"change_status"`
-	CommittedAt  OptTime                    `json:"committed_at"`
-	URL          OptURL                     `json:"url"`
-	User         OptNullableSimpleUser      `json:"user"`
-	Version      OptString                  `json:"version"`
-}
-
-type GistHistoryChangeStatus struct {
-	Additions OptInt `json:"additions"`
-	Deletions OptInt `json:"deletions"`
-	Total     OptInt `json:"total"`
-}
-
-// GistSimple describes #/components/schemas/gist-simple.
-type GistSimple struct {
-	Comments    OptInt                 `json:"comments"`
-	CommentsURL OptString              `json:"comments_url"`
-	CommitsURL  OptString              `json:"commits_url"`
-	CreatedAt   OptString              `json:"created_at"`
-	Description OptNilString           `json:"description"`
-	Files       *struct{}              `json:"files"`
-	ForkOf      OptNilGistSimpleForkOf `json:"fork_of"`
-	Forks       *[]GistSimpleForksItem `json:"forks"`
-	ForksURL    OptString              `json:"forks_url"`
-	GitPullURL  OptString              `json:"git_pull_url"`
-	GitPushURL  OptString              `json:"git_push_url"`
-	HTMLURL     OptString              `json:"html_url"`
-	History     *[]GistHistory         `json:"history"`
-	ID          OptString              `json:"id"`
-	NodeID      OptString              `json:"node_id"`
-	Owner       OptSimpleUser          `json:"owner"`
-	Public      OptBool                `json:"public"`
-	Truncated   OptBool                `json:"truncated"`
-	URL         OptString              `json:"url"`
-	UpdatedAt   OptString              `json:"updated_at"`
-	User        OptNilString           `json:"user"`
-}
-
-func (*GistSimple) gistsGetResponse() {}
-
-type GistSimpleForkOf struct {
-	Comments    int                   `json:"comments"`
-	CommentsURL url.URL               `json:"comments_url"`
-	CommitsURL  url.URL               `json:"commits_url"`
-	CreatedAt   time.Time             `json:"created_at"`
-	Description NilString             `json:"description"`
-	Files       struct{}              `json:"files"`
-	Forks       *[]string             `json:"forks"`
-	ForksURL    url.URL               `json:"forks_url"`
-	GitPullURL  url.URL               `json:"git_pull_url"`
-	GitPushURL  url.URL               `json:"git_push_url"`
-	HTMLURL     url.URL               `json:"html_url"`
-	History     *[]string             `json:"history"`
-	ID          string                `json:"id"`
-	NodeID      string                `json:"node_id"`
-	Owner       OptNullableSimpleUser `json:"owner"`
-	Public      bool                  `json:"public"`
-	Truncated   OptBool               `json:"truncated"`
-	URL         url.URL               `json:"url"`
-	UpdatedAt   time.Time             `json:"updated_at"`
-	User        NullableSimpleUser    `json:"user"`
-}
-
-type GistSimpleForksItem struct {
-	CreatedAt OptTime       `json:"created_at"`
-	ID        OptString     `json:"id"`
-	URL       OptURL        `json:"url"`
-	UpdatedAt OptTime       `json:"updated_at"`
-	User      OptPublicUser `json:"user"`
-}
-
 type GistsCheckIsStarredNoContent struct{}
 
 func (*GistsCheckIsStarredNoContent) gistsCheckIsStarredResponse() {}
@@ -3025,18 +2785,6 @@ type GistsListCommitsOK []GistCommit
 func (*GistsListCommitsOK) gistsListCommitsResponse() {}
 
 type GistsListForUserOK []BaseGist
-
-type GistsListForksApplicationJSONForbidden BasicError
-
-func (*GistsListForksApplicationJSONForbidden) gistsListForksResponse() {}
-
-type GistsListForksApplicationJSONNotFound BasicError
-
-func (*GistsListForksApplicationJSONNotFound) gistsListForksResponse() {}
-
-type GistsListForksOK []GistSimple
-
-func (*GistsListForksOK) gistsListForksResponse() {}
 
 type GistsListOK []BaseGist
 
@@ -3141,7 +2889,7 @@ type GitCreateCommitApplicationJSONRequest struct {
 	Author    OptGitCreateCommitApplicationJSONRequestAuthor    `json:"author"`
 	Committer OptGitCreateCommitApplicationJSONRequestCommitter `json:"committer"`
 	Message   string                                            `json:"message"`
-	Parents   *[]string                                         `json:"parents"`
+	Parents   []string                                          `json:"parents"`
 	Signature OptString                                         `json:"signature"`
 	Tree      string                                            `json:"tree"`
 }
@@ -3335,19 +3083,19 @@ type GpgKeySubkeysItem struct {
 	CanEncryptStorage OptBool      `json:"can_encrypt_storage"`
 	CanSign           OptBool      `json:"can_sign"`
 	CreatedAt         OptString    `json:"created_at"`
-	Emails            *[]string    `json:"emails"`
+	Emails            []string     `json:"emails"`
 	ExpiresAt         OptNilString `json:"expires_at"`
 	ID                OptInt       `json:"id"`
 	KeyID             OptString    `json:"key_id"`
 	PrimaryKeyID      OptInt       `json:"primary_key_id"`
 	PublicKey         OptString    `json:"public_key"`
 	RawKey            OptNilString `json:"raw_key"`
-	Subkeys           *[]string    `json:"subkeys"`
+	Subkeys           []string     `json:"subkeys"`
 }
 
 // GroupMapping describes #/components/schemas/group-mapping.
 type GroupMapping struct {
-	Groups *[]GroupMappingGroupsItem `json:"groups"`
+	Groups []GroupMappingGroupsItem `json:"groups"`
 }
 
 func (*GroupMapping) teamsListIdpGroupsForLegacyResponse() {}
@@ -3358,24 +3106,6 @@ type GroupMappingGroupsItem struct {
 	GroupName        string       `json:"group_name"`
 	Status           OptString    `json:"status"`
 	SyncedAt         OptNilString `json:"synced_at"`
-}
-
-// HookDelivery describes #/components/schemas/hook-delivery.
-type HookDelivery struct {
-	Action         NilString            `json:"action"`
-	DeliveredAt    time.Time            `json:"delivered_at"`
-	Duration       float64              `json:"duration"`
-	Event          string               `json:"event"`
-	GUID           string               `json:"guid"`
-	ID             int                  `json:"id"`
-	InstallationID NilInt               `json:"installation_id"`
-	Redelivery     bool                 `json:"redelivery"`
-	RepositoryID   NilInt               `json:"repository_id"`
-	Request        HookDeliveryRequest  `json:"request"`
-	Response       HookDeliveryResponse `json:"response"`
-	Status         string               `json:"status"`
-	StatusCode     int                  `json:"status_code"`
-	URL            OptString            `json:"url"`
 }
 
 // HookDeliveryItem describes #/components/schemas/hook-delivery-item.
@@ -3393,41 +3123,31 @@ type HookDeliveryItem struct {
 	StatusCode     int       `json:"status_code"`
 }
 
-type HookDeliveryRequest struct {
-	Headers struct{} `json:"headers"`
-	Payload struct{} `json:"payload"`
-}
-
-type HookDeliveryResponse struct {
-	Headers struct{}  `json:"headers"`
-	Payload NilString `json:"payload"`
-}
-
 // Import describes #/components/schemas/import.
 type Import struct {
-	AuthorsCount    OptNilInt                   `json:"authors_count"`
-	AuthorsURL      url.URL                     `json:"authors_url"`
-	CommitCount     OptNilInt                   `json:"commit_count"`
-	ErrorMessage    OptNilString                `json:"error_message"`
-	FailedStep      OptNilString                `json:"failed_step"`
-	HTMLURL         url.URL                     `json:"html_url"`
-	HasLargeFiles   OptBool                     `json:"has_large_files"`
-	ImportPercent   OptNilInt                   `json:"import_percent"`
-	LargeFilesCount OptInt                      `json:"large_files_count"`
-	LargeFilesSize  OptInt                      `json:"large_files_size"`
-	Message         OptString                   `json:"message"`
-	ProjectChoices  *[]ImportProjectChoicesItem `json:"project_choices"`
-	PushPercent     OptNilInt                   `json:"push_percent"`
-	RepositoryURL   url.URL                     `json:"repository_url"`
-	Status          ImportStatus                `json:"status"`
-	StatusText      OptNilString                `json:"status_text"`
-	SvcRoot         OptString                   `json:"svc_root"`
-	SvnRoot         OptString                   `json:"svn_root"`
-	TfvcProject     OptString                   `json:"tfvc_project"`
-	URL             url.URL                     `json:"url"`
-	UseLfs          OptBool                     `json:"use_lfs"`
-	Vcs             NilString                   `json:"vcs"`
-	VcsURL          string                      `json:"vcs_url"`
+	AuthorsCount    OptNilInt                  `json:"authors_count"`
+	AuthorsURL      url.URL                    `json:"authors_url"`
+	CommitCount     OptNilInt                  `json:"commit_count"`
+	ErrorMessage    OptNilString               `json:"error_message"`
+	FailedStep      OptNilString               `json:"failed_step"`
+	HTMLURL         url.URL                    `json:"html_url"`
+	HasLargeFiles   OptBool                    `json:"has_large_files"`
+	ImportPercent   OptNilInt                  `json:"import_percent"`
+	LargeFilesCount OptInt                     `json:"large_files_count"`
+	LargeFilesSize  OptInt                     `json:"large_files_size"`
+	Message         OptString                  `json:"message"`
+	ProjectChoices  []ImportProjectChoicesItem `json:"project_choices"`
+	PushPercent     OptNilInt                  `json:"push_percent"`
+	RepositoryURL   url.URL                    `json:"repository_url"`
+	Status          ImportStatus               `json:"status"`
+	StatusText      OptNilString               `json:"status_text"`
+	SvcRoot         OptString                  `json:"svc_root"`
+	SvnRoot         OptString                  `json:"svn_root"`
+	TfvcProject     OptString                  `json:"tfvc_project"`
+	URL             url.URL                    `json:"url"`
+	UseLfs          OptBool                    `json:"use_lfs"`
+	Vcs             NilString                  `json:"vcs"`
+	VcsURL          string                     `json:"vcs_url"`
 }
 
 func (*Import) migrationsGetImportStatusResponse() {}
@@ -3464,10 +3184,10 @@ type InstallationToken struct {
 	ExpiresAt              string                                  `json:"expires_at"`
 	HasMultipleSingleFiles OptBool                                 `json:"has_multiple_single_files"`
 	Permissions            OptAppPermissions                       `json:"permissions"`
-	Repositories           *[]Repository                           `json:"repositories"`
+	Repositories           []Repository                            `json:"repositories"`
 	RepositorySelection    OptInstallationTokenRepositorySelection `json:"repository_selection"`
 	SingleFile             OptString                               `json:"single_file"`
-	SingleFilePaths        *[]string                               `json:"single_file_paths"`
+	SingleFilePaths        []string                                `json:"single_file_paths"`
 	Token                  string                                  `json:"token"`
 }
 
@@ -3583,114 +3303,11 @@ type IssueComment struct {
 
 func (*IssueComment) issuesGetCommentResponse() {}
 
-// IssueEvent describes #/components/schemas/issue-event.
-type IssueEvent struct {
-	Actor                 NullableSimpleUser           `json:"actor"`
-	Assignee              OptNullableSimpleUser        `json:"assignee"`
-	Assigner              OptNullableSimpleUser        `json:"assigner"`
-	AuthorAssociation     OptAuthorAssociation         `json:"author_association"`
-	CommitID              NilString                    `json:"commit_id"`
-	CommitURL             NilString                    `json:"commit_url"`
-	CreatedAt             time.Time                    `json:"created_at"`
-	DismissedReview       OptIssueEventDismissedReview `json:"dismissed_review"`
-	Event                 string                       `json:"event"`
-	ID                    int                          `json:"id"`
-	Issue                 OptIssueSimple               `json:"issue"`
-	Label                 OptIssueEventLabel           `json:"label"`
-	LockReason            OptNilString                 `json:"lock_reason"`
-	Milestone             OptIssueEventMilestone       `json:"milestone"`
-	NodeID                string                       `json:"node_id"`
-	PerformedViaGithubApp OptNullableIntegration       `json:"performed_via_github_app"`
-	ProjectCard           OptIssueEventProjectCard     `json:"project_card"`
-	Rename                OptIssueEventRename          `json:"rename"`
-	RequestedReviewer     OptNullableSimpleUser        `json:"requested_reviewer"`
-	RequestedTeam         OptTeam                      `json:"requested_team"`
-	ReviewRequester       OptNullableSimpleUser        `json:"review_requester"`
-	URL                   url.URL                      `json:"url"`
-}
-
-func (*IssueEvent) issuesGetEventResponse() {}
-
-// IssueEventDismissedReview describes #/components/schemas/issue-event-dismissed-review.
-type IssueEventDismissedReview struct {
-	DismissalCommitID OptNilString `json:"dismissal_commit_id"`
-	DismissalMessage  NilString    `json:"dismissal_message"`
-	ReviewID          int          `json:"review_id"`
-	State             string       `json:"state"`
-}
-
-// IssueEventLabel describes #/components/schemas/issue-event-label.
-type IssueEventLabel struct {
-	Color NilString `json:"color"`
-	Name  NilString `json:"name"`
-}
-
-// IssueEventMilestone describes #/components/schemas/issue-event-milestone.
-type IssueEventMilestone struct {
-	Title string `json:"title"`
-}
-
-// IssueEventProjectCard describes #/components/schemas/issue-event-project-card.
-type IssueEventProjectCard struct {
-	ColumnName         string    `json:"column_name"`
-	ID                 int       `json:"id"`
-	PreviousColumnName OptString `json:"previous_column_name"`
-	ProjectID          int       `json:"project_id"`
-	ProjectURL         url.URL   `json:"project_url"`
-	URL                url.URL   `json:"url"`
-}
-
-// IssueEventRename describes #/components/schemas/issue-event-rename.
-type IssueEventRename struct {
-	From string `json:"from"`
-	To   string `json:"to"`
-}
-
-// IssueSimple describes #/components/schemas/issue-simple.
-type IssueSimple struct {
-	ActiveLockReason      OptNilString              `json:"active_lock_reason"`
-	Assignee              NullableSimpleUser        `json:"assignee"`
-	Assignees             *[]SimpleUser             `json:"assignees"`
-	AuthorAssociation     AuthorAssociation         `json:"author_association"`
-	Body                  OptString                 `json:"body"`
-	BodyHTML              OptString                 `json:"body_html"`
-	BodyText              OptString                 `json:"body_text"`
-	ClosedAt              NilTime                   `json:"closed_at"`
-	Comments              int                       `json:"comments"`
-	CommentsURL           url.URL                   `json:"comments_url"`
-	CreatedAt             time.Time                 `json:"created_at"`
-	EventsURL             url.URL                   `json:"events_url"`
-	HTMLURL               url.URL                   `json:"html_url"`
-	ID                    int                       `json:"id"`
-	Labels                []Label                   `json:"labels"`
-	LabelsURL             string                    `json:"labels_url"`
-	Locked                bool                      `json:"locked"`
-	Milestone             NullableMilestone         `json:"milestone"`
-	NodeID                string                    `json:"node_id"`
-	Number                int                       `json:"number"`
-	PerformedViaGithubApp OptNullableIntegration    `json:"performed_via_github_app"`
-	PullRequest           OptIssueSimplePullRequest `json:"pull_request"`
-	Repository            OptRepository             `json:"repository"`
-	RepositoryURL         url.URL                   `json:"repository_url"`
-	State                 string                    `json:"state"`
-	TimelineURL           OptURL                    `json:"timeline_url"`
-	Title                 string                    `json:"title"`
-	URL                   url.URL                   `json:"url"`
-	UpdatedAt             time.Time                 `json:"updated_at"`
-	User                  NullableSimpleUser        `json:"user"`
-}
-
-type IssueSimplePullRequest struct {
-	DiffURL  NilURL     `json:"diff_url"`
-	HTMLURL  NilURL     `json:"html_url"`
-	MergedAt OptNilTime `json:"merged_at"`
-	PatchURL NilURL     `json:"patch_url"`
-	URL      NilURL     `json:"url"`
-}
-
 type IssuesAddAssigneesApplicationJSONRequest struct {
-	Assignees *[]string `json:"assignees"`
+	Assignees []string `json:"assignees"`
 }
+
+func (*IssuesAddAssigneesApplicationJSONRequest) issuesAddAssigneesRequest() {}
 
 type IssuesCheckUserCanBeAssignedNoContent struct{}
 
@@ -3734,18 +3351,6 @@ type IssuesDeleteMilestoneNoContent struct{}
 
 func (*IssuesDeleteMilestoneNoContent) issuesDeleteMilestoneResponse() {}
 
-type IssuesGetEventApplicationJSONForbidden BasicError
-
-func (*IssuesGetEventApplicationJSONForbidden) issuesGetEventResponse() {}
-
-type IssuesGetEventApplicationJSONGone BasicError
-
-func (*IssuesGetEventApplicationJSONGone) issuesGetEventResponse() {}
-
-type IssuesGetEventApplicationJSONNotFound BasicError
-
-func (*IssuesGetEventApplicationJSONNotFound) issuesGetEventResponse() {}
-
 type IssuesListAssigneesOK []SimpleUser
 
 func (*IssuesListAssigneesOK) issuesListAssigneesResponse() {}
@@ -3761,8 +3366,6 @@ func (*IssuesListCommentsApplicationJSONNotFound) issuesListCommentsResponse() {
 type IssuesListCommentsOK []IssueComment
 
 func (*IssuesListCommentsOK) issuesListCommentsResponse() {}
-
-type IssuesListEventsForRepoOK []IssueEvent
 
 type IssuesListLabelsForRepoOK []Label
 
@@ -3794,8 +3397,10 @@ type IssuesRemoveAllLabelsNoContent struct{}
 func (*IssuesRemoveAllLabelsNoContent) issuesRemoveAllLabelsResponse() {}
 
 type IssuesRemoveAssigneesApplicationJSONRequest struct {
-	Assignees *[]string `json:"assignees"`
+	Assignees []string `json:"assignees"`
 }
+
+func (*IssuesRemoveAssigneesApplicationJSONRequest) issuesRemoveAssigneesRequest() {}
 
 type IssuesRemoveLabelApplicationJSONGone BasicError
 
@@ -3849,20 +3454,20 @@ const (
 
 // Job describes #/components/schemas/job.
 type Job struct {
-	CheckRunURL string          `json:"check_run_url"`
-	CompletedAt NilTime         `json:"completed_at"`
-	Conclusion  NilString       `json:"conclusion"`
-	HTMLURL     NilString       `json:"html_url"`
-	HeadSha     string          `json:"head_sha"`
-	ID          int             `json:"id"`
-	Name        string          `json:"name"`
-	NodeID      string          `json:"node_id"`
-	RunID       int             `json:"run_id"`
-	RunURL      string          `json:"run_url"`
-	StartedAt   time.Time       `json:"started_at"`
-	Status      JobStatus       `json:"status"`
-	Steps       *[]JobStepsItem `json:"steps"`
-	URL         string          `json:"url"`
+	CheckRunURL string         `json:"check_run_url"`
+	CompletedAt NilTime        `json:"completed_at"`
+	Conclusion  NilString      `json:"conclusion"`
+	HTMLURL     NilString      `json:"html_url"`
+	HeadSha     string         `json:"head_sha"`
+	ID          int            `json:"id"`
+	Name        string         `json:"name"`
+	NodeID      string         `json:"node_id"`
+	RunID       int            `json:"run_id"`
+	RunURL      string         `json:"run_url"`
+	StartedAt   time.Time      `json:"started_at"`
+	Status      JobStatus      `json:"status"`
+	Steps       []JobStepsItem `json:"steps"`
+	URL         string         `json:"url"`
 }
 
 type JobStatus string
@@ -4147,7 +3752,7 @@ type MetaRoot struct {
 type Migration struct {
 	ArchiveURL           OptURL             `json:"archive_url"`
 	CreatedAt            time.Time          `json:"created_at"`
-	Exclude              *[]string          `json:"exclude"`
+	Exclude              []string           `json:"exclude"`
 	ExcludeAttachments   bool               `json:"exclude_attachments"`
 	ExcludeGitData       bool               `json:"exclude_git_data"`
 	ExcludeMetadata      bool               `json:"exclude_metadata"`
@@ -4285,12 +3890,12 @@ const (
 )
 
 type MigrationsStartForAuthenticatedUserApplicationJSONRequest struct {
-	Exclude              *[]MigrationsStartForAuthenticatedUserApplicationJSONRequestExcludeItem `json:"exclude"`
-	ExcludeAttachments   OptBool                                                                 `json:"exclude_attachments"`
-	ExcludeOwnerProjects OptBool                                                                 `json:"exclude_owner_projects"`
-	ExcludeReleases      OptBool                                                                 `json:"exclude_releases"`
-	LockRepositories     OptBool                                                                 `json:"lock_repositories"`
-	Repositories         []string                                                                `json:"repositories"`
+	Exclude              []MigrationsStartForAuthenticatedUserApplicationJSONRequestExcludeItem `json:"exclude"`
+	ExcludeAttachments   OptBool                                                                `json:"exclude_attachments"`
+	ExcludeOwnerProjects OptBool                                                                `json:"exclude_owner_projects"`
+	ExcludeReleases      OptBool                                                                `json:"exclude_releases"`
+	LockRepositories     OptBool                                                                `json:"lock_repositories"`
+	Repositories         []string                                                               `json:"repositories"`
 }
 
 func (*MigrationsStartForAuthenticatedUserApplicationJSONRequest) migrationsStartForAuthenticatedUserRequest() {
@@ -4303,12 +3908,12 @@ const (
 )
 
 type MigrationsStartForOrgApplicationJSONRequest struct {
-	Exclude              *[]MigrationsStartForOrgApplicationJSONRequestExcludeItem `json:"exclude"`
-	ExcludeAttachments   OptBool                                                   `json:"exclude_attachments"`
-	ExcludeOwnerProjects OptBool                                                   `json:"exclude_owner_projects"`
-	ExcludeReleases      OptBool                                                   `json:"exclude_releases"`
-	LockRepositories     OptBool                                                   `json:"lock_repositories"`
-	Repositories         []string                                                  `json:"repositories"`
+	Exclude              []MigrationsStartForOrgApplicationJSONRequestExcludeItem `json:"exclude"`
+	ExcludeAttachments   OptBool                                                  `json:"exclude_attachments"`
+	ExcludeOwnerProjects OptBool                                                  `json:"exclude_owner_projects"`
+	ExcludeReleases      OptBool                                                  `json:"exclude_releases"`
+	LockRepositories     OptBool                                                  `json:"lock_repositories"`
+	Repositories         []string                                                 `json:"repositories"`
 }
 
 func (*MigrationsStartForOrgApplicationJSONRequest) migrationsStartForOrgRequest() {}
@@ -4477,7 +4082,7 @@ type MinimalRepository struct {
 	TeamsURL            url.URL                         `json:"teams_url"`
 	TempCloneToken      OptString                       `json:"temp_clone_token"`
 	TemplateRepository  OptNullableRepository           `json:"template_repository"`
-	Topics              *[]string                       `json:"topics"`
+	Topics              []string                        `json:"topics"`
 	TreesURL            string                          `json:"trees_url"`
 	URL                 url.URL                         `json:"url"`
 	UpdatedAt           OptNilTime                      `json:"updated_at"`
@@ -4502,14 +4107,14 @@ type MinimalRepositoryPermissions struct {
 	Triage   OptBool `json:"triage"`
 }
 
-// New returns new NilBool with value set to v.
+// NewNilBool returns new NilBool with value set to v.
 func NewNilBool(v bool) NilBool {
 	return NilBool{
 		Value: v,
 	}
 }
 
-// NilBool is generic valiant of bool.
+// NilBool is nullable bool.
 type NilBool struct {
 	Value bool
 	Null  bool
@@ -4532,14 +4137,14 @@ func (o NilBool) Get() (v bool, ok bool) {
 	return o.Value, true
 }
 
-// New returns new NilCheckRunCheckSuite with value set to v.
+// NewNilCheckRunCheckSuite returns new NilCheckRunCheckSuite with value set to v.
 func NewNilCheckRunCheckSuite(v CheckRunCheckSuite) NilCheckRunCheckSuite {
 	return NilCheckRunCheckSuite{
 		Value: v,
 	}
 }
 
-// NilCheckRunCheckSuite is generic valiant of CheckRunCheckSuite.
+// NilCheckRunCheckSuite is nullable CheckRunCheckSuite.
 type NilCheckRunCheckSuite struct {
 	Value CheckRunCheckSuite
 	Null  bool
@@ -4562,14 +4167,14 @@ func (o NilCheckRunCheckSuite) Get() (v CheckRunCheckSuite, ok bool) {
 	return o.Value, true
 }
 
-// New returns new NilCheckRunConclusion with value set to v.
+// NewNilCheckRunConclusion returns new NilCheckRunConclusion with value set to v.
 func NewNilCheckRunConclusion(v CheckRunConclusion) NilCheckRunConclusion {
 	return NilCheckRunConclusion{
 		Value: v,
 	}
 }
 
-// NilCheckRunConclusion is generic valiant of CheckRunConclusion.
+// NilCheckRunConclusion is nullable CheckRunConclusion.
 type NilCheckRunConclusion struct {
 	Value CheckRunConclusion
 	Null  bool
@@ -4592,14 +4197,14 @@ func (o NilCheckRunConclusion) Get() (v CheckRunConclusion, ok bool) {
 	return o.Value, true
 }
 
-// New returns new NilCheckSuiteConclusion with value set to v.
+// NewNilCheckSuiteConclusion returns new NilCheckSuiteConclusion with value set to v.
 func NewNilCheckSuiteConclusion(v CheckSuiteConclusion) NilCheckSuiteConclusion {
 	return NilCheckSuiteConclusion{
 		Value: v,
 	}
 }
 
-// NilCheckSuiteConclusion is generic valiant of CheckSuiteConclusion.
+// NilCheckSuiteConclusion is nullable CheckSuiteConclusion.
 type NilCheckSuiteConclusion struct {
 	Value CheckSuiteConclusion
 	Null  bool
@@ -4622,14 +4227,14 @@ func (o NilCheckSuiteConclusion) Get() (v CheckSuiteConclusion, ok bool) {
 	return o.Value, true
 }
 
-// New returns new NilCheckSuiteStatus with value set to v.
+// NewNilCheckSuiteStatus returns new NilCheckSuiteStatus with value set to v.
 func NewNilCheckSuiteStatus(v CheckSuiteStatus) NilCheckSuiteStatus {
 	return NilCheckSuiteStatus{
 		Value: v,
 	}
 }
 
-// NilCheckSuiteStatus is generic valiant of CheckSuiteStatus.
+// NilCheckSuiteStatus is nullable CheckSuiteStatus.
 type NilCheckSuiteStatus struct {
 	Value CheckSuiteStatus
 	Null  bool
@@ -4652,14 +4257,14 @@ func (o NilCheckSuiteStatus) Get() (v CheckSuiteStatus, ok bool) {
 	return o.Value, true
 }
 
-// New returns new NilFileCommitContent with value set to v.
+// NewNilFileCommitContent returns new NilFileCommitContent with value set to v.
 func NewNilFileCommitContent(v FileCommitContent) NilFileCommitContent {
 	return NilFileCommitContent{
 		Value: v,
 	}
 }
 
-// NilFileCommitContent is generic valiant of FileCommitContent.
+// NilFileCommitContent is nullable FileCommitContent.
 type NilFileCommitContent struct {
 	Value FileCommitContent
 	Null  bool
@@ -4682,14 +4287,14 @@ func (o NilFileCommitContent) Get() (v FileCommitContent, ok bool) {
 	return o.Value, true
 }
 
-// New returns new NilInt with value set to v.
+// NewNilInt returns new NilInt with value set to v.
 func NewNilInt(v int) NilInt {
 	return NilInt{
 		Value: v,
 	}
 }
 
-// NilInt is generic valiant of int.
+// NilInt is nullable int.
 type NilInt struct {
 	Value int
 	Null  bool
@@ -4712,14 +4317,14 @@ func (o NilInt) Get() (v int, ok bool) {
 	return o.Value, true
 }
 
-// New returns new NilNullableSimpleCommitAuthor with value set to v.
+// NewNilNullableSimpleCommitAuthor returns new NilNullableSimpleCommitAuthor with value set to v.
 func NewNilNullableSimpleCommitAuthor(v NullableSimpleCommitAuthor) NilNullableSimpleCommitAuthor {
 	return NilNullableSimpleCommitAuthor{
 		Value: v,
 	}
 }
 
-// NilNullableSimpleCommitAuthor is generic valiant of NullableSimpleCommitAuthor.
+// NilNullableSimpleCommitAuthor is nullable NullableSimpleCommitAuthor.
 type NilNullableSimpleCommitAuthor struct {
 	Value NullableSimpleCommitAuthor
 	Null  bool
@@ -4742,14 +4347,14 @@ func (o NilNullableSimpleCommitAuthor) Get() (v NullableSimpleCommitAuthor, ok b
 	return o.Value, true
 }
 
-// New returns new NilNullableSimpleCommitCommitter with value set to v.
+// NewNilNullableSimpleCommitCommitter returns new NilNullableSimpleCommitCommitter with value set to v.
 func NewNilNullableSimpleCommitCommitter(v NullableSimpleCommitCommitter) NilNullableSimpleCommitCommitter {
 	return NilNullableSimpleCommitCommitter{
 		Value: v,
 	}
 }
 
-// NilNullableSimpleCommitCommitter is generic valiant of NullableSimpleCommitCommitter.
+// NilNullableSimpleCommitCommitter is nullable NullableSimpleCommitCommitter.
 type NilNullableSimpleCommitCommitter struct {
 	Value NullableSimpleCommitCommitter
 	Null  bool
@@ -4772,14 +4377,14 @@ func (o NilNullableSimpleCommitCommitter) Get() (v NullableSimpleCommitCommitter
 	return o.Value, true
 }
 
-// New returns new NilPageStatus with value set to v.
+// NewNilPageStatus returns new NilPageStatus with value set to v.
 func NewNilPageStatus(v PageStatus) NilPageStatus {
 	return NilPageStatus{
 		Value: v,
 	}
 }
 
-// NilPageStatus is generic valiant of PageStatus.
+// NilPageStatus is nullable PageStatus.
 type NilPageStatus struct {
 	Value PageStatus
 	Null  bool
@@ -4802,74 +4407,14 @@ func (o NilPageStatus) Get() (v PageStatus, ok bool) {
 	return o.Value, true
 }
 
-// New returns new NilPullRequestHeadRepo with value set to v.
-func NewNilPullRequestHeadRepo(v PullRequestHeadRepo) NilPullRequestHeadRepo {
-	return NilPullRequestHeadRepo{
-		Value: v,
-	}
-}
-
-// NilPullRequestHeadRepo is generic valiant of PullRequestHeadRepo.
-type NilPullRequestHeadRepo struct {
-	Value PullRequestHeadRepo
-	Null  bool
-}
-
-// SetTo sets value to v.
-func (o *NilPullRequestHeadRepo) SetTo(v PullRequestHeadRepo) {
-	o.Null = false
-	o.Value = v
-}
-
-// IsSet returns true if value is Null.
-func (o NilPullRequestHeadRepo) IsNull() bool { return o.Null }
-
-// Get returns value and boolean that denotes whether value was set.
-func (o NilPullRequestHeadRepo) Get() (v PullRequestHeadRepo, ok bool) {
-	if o.Null {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new NilPullRequestHeadRepoLicense with value set to v.
-func NewNilPullRequestHeadRepoLicense(v PullRequestHeadRepoLicense) NilPullRequestHeadRepoLicense {
-	return NilPullRequestHeadRepoLicense{
-		Value: v,
-	}
-}
-
-// NilPullRequestHeadRepoLicense is generic valiant of PullRequestHeadRepoLicense.
-type NilPullRequestHeadRepoLicense struct {
-	Value PullRequestHeadRepoLicense
-	Null  bool
-}
-
-// SetTo sets value to v.
-func (o *NilPullRequestHeadRepoLicense) SetTo(v PullRequestHeadRepoLicense) {
-	o.Null = false
-	o.Value = v
-}
-
-// IsSet returns true if value is Null.
-func (o NilPullRequestHeadRepoLicense) IsNull() bool { return o.Null }
-
-// Get returns value and boolean that denotes whether value was set.
-func (o NilPullRequestHeadRepoLicense) Get() (v PullRequestHeadRepoLicense, ok bool) {
-	if o.Null {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews with value set to v.
+// NewNilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews returns new NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews with value set to v.
 func NewNilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews(v ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews) NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews {
 	return NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews{
 		Value: v,
 	}
 }
 
-// NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews is generic valiant of ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews.
+// NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews is nullable ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews.
 type NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews struct {
 	Value ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews
 	Null  bool
@@ -4894,14 +4439,14 @@ func (o NilReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestR
 	return o.Value, true
 }
 
-// New returns new NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks with value set to v.
+// NewNilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks returns new NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks with value set to v.
 func NewNilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks(v ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks) NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks {
 	return NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks{
 		Value: v,
 	}
 }
 
-// NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks is generic valiant of ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks.
+// NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks is nullable ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks.
 type NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks struct {
 	Value ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks
 	Null  bool
@@ -4926,14 +4471,14 @@ func (o NilReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks
 	return o.Value, true
 }
 
-// New returns new NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions with value set to v.
+// NewNilReposUpdateBranchProtectionApplicationJSONRequestRestrictions returns new NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions with value set to v.
 func NewNilReposUpdateBranchProtectionApplicationJSONRequestRestrictions(v ReposUpdateBranchProtectionApplicationJSONRequestRestrictions) NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions {
 	return NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions{
 		Value: v,
 	}
 }
 
-// NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions is generic valiant of ReposUpdateBranchProtectionApplicationJSONRequestRestrictions.
+// NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions is nullable ReposUpdateBranchProtectionApplicationJSONRequestRestrictions.
 type NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions struct {
 	Value ReposUpdateBranchProtectionApplicationJSONRequestRestrictions
 	Null  bool
@@ -4958,14 +4503,14 @@ func (o NilReposUpdateBranchProtectionApplicationJSONRequestRestrictions) Get() 
 	return o.Value, true
 }
 
-// New returns new NilSimpleCommitAuthor with value set to v.
+// NewNilSimpleCommitAuthor returns new NilSimpleCommitAuthor with value set to v.
 func NewNilSimpleCommitAuthor(v SimpleCommitAuthor) NilSimpleCommitAuthor {
 	return NilSimpleCommitAuthor{
 		Value: v,
 	}
 }
 
-// NilSimpleCommitAuthor is generic valiant of SimpleCommitAuthor.
+// NilSimpleCommitAuthor is nullable SimpleCommitAuthor.
 type NilSimpleCommitAuthor struct {
 	Value SimpleCommitAuthor
 	Null  bool
@@ -4988,14 +4533,14 @@ func (o NilSimpleCommitAuthor) Get() (v SimpleCommitAuthor, ok bool) {
 	return o.Value, true
 }
 
-// New returns new NilSimpleCommitCommitter with value set to v.
+// NewNilSimpleCommitCommitter returns new NilSimpleCommitCommitter with value set to v.
 func NewNilSimpleCommitCommitter(v SimpleCommitCommitter) NilSimpleCommitCommitter {
 	return NilSimpleCommitCommitter{
 		Value: v,
 	}
 }
 
-// NilSimpleCommitCommitter is generic valiant of SimpleCommitCommitter.
+// NilSimpleCommitCommitter is nullable SimpleCommitCommitter.
 type NilSimpleCommitCommitter struct {
 	Value SimpleCommitCommitter
 	Null  bool
@@ -5018,14 +4563,14 @@ func (o NilSimpleCommitCommitter) Get() (v SimpleCommitCommitter, ok bool) {
 	return o.Value, true
 }
 
-// New returns new NilString with value set to v.
+// NewNilString returns new NilString with value set to v.
 func NewNilString(v string) NilString {
 	return NilString{
 		Value: v,
 	}
 }
 
-// NilString is generic valiant of string.
+// NilString is nullable string.
 type NilString struct {
 	Value string
 	Null  bool
@@ -5048,14 +4593,14 @@ func (o NilString) Get() (v string, ok bool) {
 	return o.Value, true
 }
 
-// New returns new NilTime with value set to v.
+// NewNilTime returns new NilTime with value set to v.
 func NewNilTime(v time.Time) NilTime {
 	return NilTime{
 		Value: v,
 	}
 }
 
-// NilTime is generic valiant of time.Time.
+// NilTime is nullable time.Time.
 type NilTime struct {
 	Value time.Time
 	Null  bool
@@ -5078,14 +4623,14 @@ func (o NilTime) Get() (v time.Time, ok bool) {
 	return o.Value, true
 }
 
-// New returns new NilURL with value set to v.
+// NewNilURL returns new NilURL with value set to v.
 func NewNilURL(v url.URL) NilURL {
 	return NilURL{
 		Value: v,
 	}
 }
 
-// NilURL is generic valiant of url.URL.
+// NilURL is nullable url.URL.
 type NilURL struct {
 	Value url.URL
 	Null  bool
@@ -5121,8 +4666,6 @@ func (*NotModified) activityCheckRepoIsStarredByAuthenticatedUserResponse()     
 func (*NotModified) activityDeleteThreadSubscriptionResponse()                  {}
 func (*NotModified) activityGetThreadResponse()                                 {}
 func (*NotModified) activityGetThreadSubscriptionForAuthenticatedUserResponse() {}
-func (*NotModified) activityListPublicEventsForRepoNetworkResponse()            {}
-func (*NotModified) activityListPublicEventsResponse()                          {}
 func (*NotModified) activityListWatchedReposForAuthenticatedUserResponse()      {}
 func (*NotModified) activityMarkNotificationsAsReadResponse()                   {}
 func (*NotModified) activityMarkThreadAsReadResponse()                          {}
@@ -5143,10 +4686,8 @@ func (*NotModified) gistsCreateCommentResponse()                                
 func (*NotModified) gistsDeleteCommentResponse()                                {}
 func (*NotModified) gistsDeleteResponse()                                       {}
 func (*NotModified) gistsGetCommentResponse()                                   {}
-func (*NotModified) gistsGetResponse()                                          {}
 func (*NotModified) gistsListCommentsResponse()                                 {}
 func (*NotModified) gistsListCommitsResponse()                                  {}
-func (*NotModified) gistsListForksResponse()                                    {}
 func (*NotModified) gistsListResponse()                                         {}
 func (*NotModified) gistsListStarredResponse()                                  {}
 func (*NotModified) gistsStarResponse()                                         {}
@@ -5184,14 +4725,12 @@ func (*NotModified) projectsMoveColumnResponse()                                
 func (*NotModified) projectsUpdateCardResponse()                                {}
 func (*NotModified) projectsUpdateColumnResponse()                              {}
 func (*NotModified) projectsUpdateResponse()                                    {}
-func (*NotModified) pullsGetResponse()                                          {}
 func (*NotModified) rateLimitGetResponse()                                      {}
 func (*NotModified) reactionsDeleteLegacyResponse()                             {}
 func (*NotModified) reposAcceptInvitationResponse()                             {}
 func (*NotModified) reposDeclineInvitationResponse()                            {}
 func (*NotModified) reposListInvitationsForAuthenticatedUserResponse()          {}
 func (*NotModified) scimDeleteUserFromOrgResponse()                             {}
-func (*NotModified) searchTopicsResponse()                                      {}
 func (*NotModified) teamsListForAuthenticatedUserResponse()                     {}
 func (*NotModified) usersCheckBlockedResponse()                                 {}
 func (*NotModified) usersCheckPersonIsFollowedByAuthenticatedResponse()         {}
@@ -5269,33 +4808,6 @@ type NullableLicenseSimple struct {
 	SpdxID  NilString `json:"spdx_id"`
 	URL     NilURL    `json:"url"`
 }
-
-// NullableMilestone describes #/components/schemas/nullable-milestone.
-type NullableMilestone struct {
-	ClosedAt     NilTime                `json:"closed_at"`
-	ClosedIssues int                    `json:"closed_issues"`
-	CreatedAt    time.Time              `json:"created_at"`
-	Creator      NullableSimpleUser     `json:"creator"`
-	Description  NilString              `json:"description"`
-	DueOn        NilTime                `json:"due_on"`
-	HTMLURL      url.URL                `json:"html_url"`
-	ID           int                    `json:"id"`
-	LabelsURL    url.URL                `json:"labels_url"`
-	NodeID       string                 `json:"node_id"`
-	Number       int                    `json:"number"`
-	OpenIssues   int                    `json:"open_issues"`
-	State        NullableMilestoneState `json:"state"`
-	Title        string                 `json:"title"`
-	URL          url.URL                `json:"url"`
-	UpdatedAt    time.Time              `json:"updated_at"`
-}
-
-type NullableMilestoneState string
-
-const (
-	NullableMilestoneStateOpen   NullableMilestoneState = "open"
-	NullableMilestoneStateClosed NullableMilestoneState = "closed"
-)
 
 // NullableRepository describes #/components/schemas/nullable-repository.
 type NullableRepository struct {
@@ -5382,7 +4894,7 @@ type NullableRepository struct {
 	TeamsURL            url.URL                                    `json:"teams_url"`
 	TempCloneToken      OptString                                  `json:"temp_clone_token"`
 	TemplateRepository  OptNilNullableRepositoryTemplateRepository `json:"template_repository"`
-	Topics              *[]string                                  `json:"topics"`
+	Topics              []string                                   `json:"topics"`
 	TreesURL            string                                     `json:"trees_url"`
 	URL                 url.URL                                    `json:"url"`
 	UpdatedAt           NilTime                                    `json:"updated_at"`
@@ -5475,7 +4987,7 @@ type NullableRepositoryTemplateRepository struct {
 	TagsURL             OptString                                          `json:"tags_url"`
 	TeamsURL            OptString                                          `json:"teams_url"`
 	TempCloneToken      OptString                                          `json:"temp_clone_token"`
-	Topics              *[]string                                          `json:"topics"`
+	Topics              []string                                           `json:"topics"`
 	TreesURL            OptString                                          `json:"trees_url"`
 	URL                 OptString                                          `json:"url"`
 	UpdatedAt           OptString                                          `json:"updated_at"`
@@ -5520,7 +5032,7 @@ type NullableScopedInstallation struct {
 	RepositoriesURL        url.URL                                       `json:"repositories_url"`
 	RepositorySelection    NullableScopedInstallationRepositorySelection `json:"repository_selection"`
 	SingleFileName         NilString                                     `json:"single_file_name"`
-	SingleFilePaths        *[]string                                     `json:"single_file_paths"`
+	SingleFilePaths        []string                                      `json:"single_file_paths"`
 }
 
 type NullableScopedInstallationRepositorySelection string
@@ -5591,18 +5103,6 @@ type NullableTeamSimple struct {
 	URL             url.URL   `json:"url"`
 }
 
-type OAuthAuthorizationsCreateAuthorizationApplicationJSONRequest struct {
-	ClientID     OptString `json:"client_id"`
-	ClientSecret OptString `json:"client_secret"`
-	Fingerprint  OptString `json:"fingerprint"`
-	Note         OptString `json:"note"`
-	NoteURL      OptString `json:"note_url"`
-	Scopes       *[]string `json:"scopes"`
-}
-
-func (*OAuthAuthorizationsCreateAuthorizationApplicationJSONRequest) oAuthAuthorizationsCreateAuthorizationRequest() {
-}
-
 type OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden BasicError
 
 func (*OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden) oAuthAuthorizationsDeleteAuthorizationResponse() {
@@ -5651,27 +5151,6 @@ type OAuthAuthorizationsGetGrantApplicationJSONUnauthorized BasicError
 func (*OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) oAuthAuthorizationsGetGrantResponse() {
 }
 
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONRequest struct {
-	ClientSecret string    `json:"client_secret"`
-	Note         OptString `json:"note"`
-	NoteURL      OptString `json:"note_url"`
-	Scopes       *[]string `json:"scopes"`
-}
-
-func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONRequest) oAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest() {
-}
-
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONRequest struct {
-	ClientSecret string    `json:"client_secret"`
-	Fingerprint  OptString `json:"fingerprint"`
-	Note         OptString `json:"note"`
-	NoteURL      OptString `json:"note_url"`
-	Scopes       *[]string `json:"scopes"`
-}
-
-func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONRequest) oAuthAuthorizationsGetOrCreateAuthorizationForAppRequest() {
-}
-
 type OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden BasicError
 
 func (*OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden) oAuthAuthorizationsListAuthorizationsResponse() {
@@ -5710,19 +5189,7 @@ type OAuthAuthorizationsListGrantsOK []ApplicationGrant
 
 func (*OAuthAuthorizationsListGrantsOK) oAuthAuthorizationsListGrantsResponse() {}
 
-type OAuthAuthorizationsUpdateAuthorizationApplicationJSONRequest struct {
-	AddScopes    *[]string `json:"add_scopes"`
-	Fingerprint  OptString `json:"fingerprint"`
-	Note         OptString `json:"note"`
-	NoteURL      OptString `json:"note_url"`
-	RemoveScopes *[]string `json:"remove_scopes"`
-	Scopes       *[]string `json:"scopes"`
-}
-
-func (*OAuthAuthorizationsUpdateAuthorizationApplicationJSONRequest) oAuthAuthorizationsUpdateAuthorizationRequest() {
-}
-
-// New returns new OptAPIOverviewSSHKeyFingerprints with value set to v.
+// NewOptAPIOverviewSSHKeyFingerprints returns new OptAPIOverviewSSHKeyFingerprints with value set to v.
 func NewOptAPIOverviewSSHKeyFingerprints(v APIOverviewSSHKeyFingerprints) OptAPIOverviewSSHKeyFingerprints {
 	return OptAPIOverviewSSHKeyFingerprints{
 		Value: v,
@@ -5730,7 +5197,7 @@ func NewOptAPIOverviewSSHKeyFingerprints(v APIOverviewSSHKeyFingerprints) OptAPI
 	}
 }
 
-// OptAPIOverviewSSHKeyFingerprints is generic valiant of APIOverviewSSHKeyFingerprints.
+// OptAPIOverviewSSHKeyFingerprints is optional APIOverviewSSHKeyFingerprints.
 type OptAPIOverviewSSHKeyFingerprints struct {
 	Value APIOverviewSSHKeyFingerprints
 	Set   bool
@@ -5760,7 +5227,7 @@ func (o OptAPIOverviewSSHKeyFingerprints) Get() (v APIOverviewSSHKeyFingerprints
 	return o.Value, true
 }
 
-// New returns new OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility with value set to v.
+// NewOptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility returns new OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility with value set to v.
 func NewOptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility(v ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility {
 	return OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility{
 		Value: v,
@@ -5768,7 +5235,7 @@ func NewOptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibil
 	}
 }
 
-// OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility is generic valiant of ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility.
+// OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility is optional ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility.
 type OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility struct {
 	Value ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility
 	Set   bool
@@ -5800,7 +5267,7 @@ func (o OptActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibil
 	return o.Value, true
 }
 
-// New returns new OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility with value set to v.
+// NewOptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility returns new OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility with value set to v.
 func NewOptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility(v ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility {
 	return OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility{
 		Value: v,
@@ -5808,7 +5275,7 @@ func NewOptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibil
 	}
 }
 
-// OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility is generic valiant of ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility.
+// OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility is optional ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility.
 type OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility struct {
 	Value ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility
 	Set   bool
@@ -5840,45 +5307,7 @@ func (o OptActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibil
 	return o.Value, true
 }
 
-// New returns new OptActor with value set to v.
-func NewOptActor(v Actor) OptActor {
-	return OptActor{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptActor is generic valiant of Actor.
-type OptActor struct {
-	Value Actor
-	Set   bool
-}
-
-// IsSet returns true if OptActor was set.
-func (o OptActor) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptActor) Reset() {
-	var v Actor
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptActor) SetTo(v Actor) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptActor) Get() (v Actor, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptAllowedActions with value set to v.
+// NewOptAllowedActions returns new OptAllowedActions with value set to v.
 func NewOptAllowedActions(v AllowedActions) OptAllowedActions {
 	return OptAllowedActions{
 		Value: v,
@@ -5886,7 +5315,7 @@ func NewOptAllowedActions(v AllowedActions) OptAllowedActions {
 	}
 }
 
-// OptAllowedActions is generic valiant of AllowedActions.
+// OptAllowedActions is optional AllowedActions.
 type OptAllowedActions struct {
 	Value AllowedActions
 	Set   bool
@@ -5916,7 +5345,7 @@ func (o OptAllowedActions) Get() (v AllowedActions, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptAppPermissions with value set to v.
+// NewOptAppPermissions returns new OptAppPermissions with value set to v.
 func NewOptAppPermissions(v AppPermissions) OptAppPermissions {
 	return OptAppPermissions{
 		Value: v,
@@ -5924,7 +5353,7 @@ func NewOptAppPermissions(v AppPermissions) OptAppPermissions {
 	}
 }
 
-// OptAppPermissions is generic valiant of AppPermissions.
+// OptAppPermissions is optional AppPermissions.
 type OptAppPermissions struct {
 	Value AppPermissions
 	Set   bool
@@ -5954,7 +5383,7 @@ func (o OptAppPermissions) Get() (v AppPermissions, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsActions with value set to v.
+// NewOptAppPermissionsActions returns new OptAppPermissionsActions with value set to v.
 func NewOptAppPermissionsActions(v AppPermissionsActions) OptAppPermissionsActions {
 	return OptAppPermissionsActions{
 		Value: v,
@@ -5962,7 +5391,7 @@ func NewOptAppPermissionsActions(v AppPermissionsActions) OptAppPermissionsActio
 	}
 }
 
-// OptAppPermissionsActions is generic valiant of AppPermissionsActions.
+// OptAppPermissionsActions is optional AppPermissionsActions.
 type OptAppPermissionsActions struct {
 	Value AppPermissionsActions
 	Set   bool
@@ -5992,7 +5421,7 @@ func (o OptAppPermissionsActions) Get() (v AppPermissionsActions, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsAdministration with value set to v.
+// NewOptAppPermissionsAdministration returns new OptAppPermissionsAdministration with value set to v.
 func NewOptAppPermissionsAdministration(v AppPermissionsAdministration) OptAppPermissionsAdministration {
 	return OptAppPermissionsAdministration{
 		Value: v,
@@ -6000,7 +5429,7 @@ func NewOptAppPermissionsAdministration(v AppPermissionsAdministration) OptAppPe
 	}
 }
 
-// OptAppPermissionsAdministration is generic valiant of AppPermissionsAdministration.
+// OptAppPermissionsAdministration is optional AppPermissionsAdministration.
 type OptAppPermissionsAdministration struct {
 	Value AppPermissionsAdministration
 	Set   bool
@@ -6030,7 +5459,7 @@ func (o OptAppPermissionsAdministration) Get() (v AppPermissionsAdministration, 
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsChecks with value set to v.
+// NewOptAppPermissionsChecks returns new OptAppPermissionsChecks with value set to v.
 func NewOptAppPermissionsChecks(v AppPermissionsChecks) OptAppPermissionsChecks {
 	return OptAppPermissionsChecks{
 		Value: v,
@@ -6038,7 +5467,7 @@ func NewOptAppPermissionsChecks(v AppPermissionsChecks) OptAppPermissionsChecks 
 	}
 }
 
-// OptAppPermissionsChecks is generic valiant of AppPermissionsChecks.
+// OptAppPermissionsChecks is optional AppPermissionsChecks.
 type OptAppPermissionsChecks struct {
 	Value AppPermissionsChecks
 	Set   bool
@@ -6068,7 +5497,7 @@ func (o OptAppPermissionsChecks) Get() (v AppPermissionsChecks, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsContentReferences with value set to v.
+// NewOptAppPermissionsContentReferences returns new OptAppPermissionsContentReferences with value set to v.
 func NewOptAppPermissionsContentReferences(v AppPermissionsContentReferences) OptAppPermissionsContentReferences {
 	return OptAppPermissionsContentReferences{
 		Value: v,
@@ -6076,7 +5505,7 @@ func NewOptAppPermissionsContentReferences(v AppPermissionsContentReferences) Op
 	}
 }
 
-// OptAppPermissionsContentReferences is generic valiant of AppPermissionsContentReferences.
+// OptAppPermissionsContentReferences is optional AppPermissionsContentReferences.
 type OptAppPermissionsContentReferences struct {
 	Value AppPermissionsContentReferences
 	Set   bool
@@ -6106,7 +5535,7 @@ func (o OptAppPermissionsContentReferences) Get() (v AppPermissionsContentRefere
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsContents with value set to v.
+// NewOptAppPermissionsContents returns new OptAppPermissionsContents with value set to v.
 func NewOptAppPermissionsContents(v AppPermissionsContents) OptAppPermissionsContents {
 	return OptAppPermissionsContents{
 		Value: v,
@@ -6114,7 +5543,7 @@ func NewOptAppPermissionsContents(v AppPermissionsContents) OptAppPermissionsCon
 	}
 }
 
-// OptAppPermissionsContents is generic valiant of AppPermissionsContents.
+// OptAppPermissionsContents is optional AppPermissionsContents.
 type OptAppPermissionsContents struct {
 	Value AppPermissionsContents
 	Set   bool
@@ -6144,7 +5573,7 @@ func (o OptAppPermissionsContents) Get() (v AppPermissionsContents, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsDeployments with value set to v.
+// NewOptAppPermissionsDeployments returns new OptAppPermissionsDeployments with value set to v.
 func NewOptAppPermissionsDeployments(v AppPermissionsDeployments) OptAppPermissionsDeployments {
 	return OptAppPermissionsDeployments{
 		Value: v,
@@ -6152,7 +5581,7 @@ func NewOptAppPermissionsDeployments(v AppPermissionsDeployments) OptAppPermissi
 	}
 }
 
-// OptAppPermissionsDeployments is generic valiant of AppPermissionsDeployments.
+// OptAppPermissionsDeployments is optional AppPermissionsDeployments.
 type OptAppPermissionsDeployments struct {
 	Value AppPermissionsDeployments
 	Set   bool
@@ -6182,7 +5611,7 @@ func (o OptAppPermissionsDeployments) Get() (v AppPermissionsDeployments, ok boo
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsEnvironments with value set to v.
+// NewOptAppPermissionsEnvironments returns new OptAppPermissionsEnvironments with value set to v.
 func NewOptAppPermissionsEnvironments(v AppPermissionsEnvironments) OptAppPermissionsEnvironments {
 	return OptAppPermissionsEnvironments{
 		Value: v,
@@ -6190,7 +5619,7 @@ func NewOptAppPermissionsEnvironments(v AppPermissionsEnvironments) OptAppPermis
 	}
 }
 
-// OptAppPermissionsEnvironments is generic valiant of AppPermissionsEnvironments.
+// OptAppPermissionsEnvironments is optional AppPermissionsEnvironments.
 type OptAppPermissionsEnvironments struct {
 	Value AppPermissionsEnvironments
 	Set   bool
@@ -6220,7 +5649,7 @@ func (o OptAppPermissionsEnvironments) Get() (v AppPermissionsEnvironments, ok b
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsIssues with value set to v.
+// NewOptAppPermissionsIssues returns new OptAppPermissionsIssues with value set to v.
 func NewOptAppPermissionsIssues(v AppPermissionsIssues) OptAppPermissionsIssues {
 	return OptAppPermissionsIssues{
 		Value: v,
@@ -6228,7 +5657,7 @@ func NewOptAppPermissionsIssues(v AppPermissionsIssues) OptAppPermissionsIssues 
 	}
 }
 
-// OptAppPermissionsIssues is generic valiant of AppPermissionsIssues.
+// OptAppPermissionsIssues is optional AppPermissionsIssues.
 type OptAppPermissionsIssues struct {
 	Value AppPermissionsIssues
 	Set   bool
@@ -6258,7 +5687,7 @@ func (o OptAppPermissionsIssues) Get() (v AppPermissionsIssues, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsMembers with value set to v.
+// NewOptAppPermissionsMembers returns new OptAppPermissionsMembers with value set to v.
 func NewOptAppPermissionsMembers(v AppPermissionsMembers) OptAppPermissionsMembers {
 	return OptAppPermissionsMembers{
 		Value: v,
@@ -6266,7 +5695,7 @@ func NewOptAppPermissionsMembers(v AppPermissionsMembers) OptAppPermissionsMembe
 	}
 }
 
-// OptAppPermissionsMembers is generic valiant of AppPermissionsMembers.
+// OptAppPermissionsMembers is optional AppPermissionsMembers.
 type OptAppPermissionsMembers struct {
 	Value AppPermissionsMembers
 	Set   bool
@@ -6296,7 +5725,7 @@ func (o OptAppPermissionsMembers) Get() (v AppPermissionsMembers, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsMetadata with value set to v.
+// NewOptAppPermissionsMetadata returns new OptAppPermissionsMetadata with value set to v.
 func NewOptAppPermissionsMetadata(v AppPermissionsMetadata) OptAppPermissionsMetadata {
 	return OptAppPermissionsMetadata{
 		Value: v,
@@ -6304,7 +5733,7 @@ func NewOptAppPermissionsMetadata(v AppPermissionsMetadata) OptAppPermissionsMet
 	}
 }
 
-// OptAppPermissionsMetadata is generic valiant of AppPermissionsMetadata.
+// OptAppPermissionsMetadata is optional AppPermissionsMetadata.
 type OptAppPermissionsMetadata struct {
 	Value AppPermissionsMetadata
 	Set   bool
@@ -6334,7 +5763,7 @@ func (o OptAppPermissionsMetadata) Get() (v AppPermissionsMetadata, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsOrganizationAdministration with value set to v.
+// NewOptAppPermissionsOrganizationAdministration returns new OptAppPermissionsOrganizationAdministration with value set to v.
 func NewOptAppPermissionsOrganizationAdministration(v AppPermissionsOrganizationAdministration) OptAppPermissionsOrganizationAdministration {
 	return OptAppPermissionsOrganizationAdministration{
 		Value: v,
@@ -6342,7 +5771,7 @@ func NewOptAppPermissionsOrganizationAdministration(v AppPermissionsOrganization
 	}
 }
 
-// OptAppPermissionsOrganizationAdministration is generic valiant of AppPermissionsOrganizationAdministration.
+// OptAppPermissionsOrganizationAdministration is optional AppPermissionsOrganizationAdministration.
 type OptAppPermissionsOrganizationAdministration struct {
 	Value AppPermissionsOrganizationAdministration
 	Set   bool
@@ -6372,7 +5801,7 @@ func (o OptAppPermissionsOrganizationAdministration) Get() (v AppPermissionsOrga
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsOrganizationHooks with value set to v.
+// NewOptAppPermissionsOrganizationHooks returns new OptAppPermissionsOrganizationHooks with value set to v.
 func NewOptAppPermissionsOrganizationHooks(v AppPermissionsOrganizationHooks) OptAppPermissionsOrganizationHooks {
 	return OptAppPermissionsOrganizationHooks{
 		Value: v,
@@ -6380,7 +5809,7 @@ func NewOptAppPermissionsOrganizationHooks(v AppPermissionsOrganizationHooks) Op
 	}
 }
 
-// OptAppPermissionsOrganizationHooks is generic valiant of AppPermissionsOrganizationHooks.
+// OptAppPermissionsOrganizationHooks is optional AppPermissionsOrganizationHooks.
 type OptAppPermissionsOrganizationHooks struct {
 	Value AppPermissionsOrganizationHooks
 	Set   bool
@@ -6410,7 +5839,7 @@ func (o OptAppPermissionsOrganizationHooks) Get() (v AppPermissionsOrganizationH
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsOrganizationPackages with value set to v.
+// NewOptAppPermissionsOrganizationPackages returns new OptAppPermissionsOrganizationPackages with value set to v.
 func NewOptAppPermissionsOrganizationPackages(v AppPermissionsOrganizationPackages) OptAppPermissionsOrganizationPackages {
 	return OptAppPermissionsOrganizationPackages{
 		Value: v,
@@ -6418,7 +5847,7 @@ func NewOptAppPermissionsOrganizationPackages(v AppPermissionsOrganizationPackag
 	}
 }
 
-// OptAppPermissionsOrganizationPackages is generic valiant of AppPermissionsOrganizationPackages.
+// OptAppPermissionsOrganizationPackages is optional AppPermissionsOrganizationPackages.
 type OptAppPermissionsOrganizationPackages struct {
 	Value AppPermissionsOrganizationPackages
 	Set   bool
@@ -6448,7 +5877,7 @@ func (o OptAppPermissionsOrganizationPackages) Get() (v AppPermissionsOrganizati
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsOrganizationPlan with value set to v.
+// NewOptAppPermissionsOrganizationPlan returns new OptAppPermissionsOrganizationPlan with value set to v.
 func NewOptAppPermissionsOrganizationPlan(v AppPermissionsOrganizationPlan) OptAppPermissionsOrganizationPlan {
 	return OptAppPermissionsOrganizationPlan{
 		Value: v,
@@ -6456,7 +5885,7 @@ func NewOptAppPermissionsOrganizationPlan(v AppPermissionsOrganizationPlan) OptA
 	}
 }
 
-// OptAppPermissionsOrganizationPlan is generic valiant of AppPermissionsOrganizationPlan.
+// OptAppPermissionsOrganizationPlan is optional AppPermissionsOrganizationPlan.
 type OptAppPermissionsOrganizationPlan struct {
 	Value AppPermissionsOrganizationPlan
 	Set   bool
@@ -6486,7 +5915,7 @@ func (o OptAppPermissionsOrganizationPlan) Get() (v AppPermissionsOrganizationPl
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsOrganizationProjects with value set to v.
+// NewOptAppPermissionsOrganizationProjects returns new OptAppPermissionsOrganizationProjects with value set to v.
 func NewOptAppPermissionsOrganizationProjects(v AppPermissionsOrganizationProjects) OptAppPermissionsOrganizationProjects {
 	return OptAppPermissionsOrganizationProjects{
 		Value: v,
@@ -6494,7 +5923,7 @@ func NewOptAppPermissionsOrganizationProjects(v AppPermissionsOrganizationProjec
 	}
 }
 
-// OptAppPermissionsOrganizationProjects is generic valiant of AppPermissionsOrganizationProjects.
+// OptAppPermissionsOrganizationProjects is optional AppPermissionsOrganizationProjects.
 type OptAppPermissionsOrganizationProjects struct {
 	Value AppPermissionsOrganizationProjects
 	Set   bool
@@ -6524,7 +5953,7 @@ func (o OptAppPermissionsOrganizationProjects) Get() (v AppPermissionsOrganizati
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsOrganizationSecrets with value set to v.
+// NewOptAppPermissionsOrganizationSecrets returns new OptAppPermissionsOrganizationSecrets with value set to v.
 func NewOptAppPermissionsOrganizationSecrets(v AppPermissionsOrganizationSecrets) OptAppPermissionsOrganizationSecrets {
 	return OptAppPermissionsOrganizationSecrets{
 		Value: v,
@@ -6532,7 +5961,7 @@ func NewOptAppPermissionsOrganizationSecrets(v AppPermissionsOrganizationSecrets
 	}
 }
 
-// OptAppPermissionsOrganizationSecrets is generic valiant of AppPermissionsOrganizationSecrets.
+// OptAppPermissionsOrganizationSecrets is optional AppPermissionsOrganizationSecrets.
 type OptAppPermissionsOrganizationSecrets struct {
 	Value AppPermissionsOrganizationSecrets
 	Set   bool
@@ -6562,7 +5991,7 @@ func (o OptAppPermissionsOrganizationSecrets) Get() (v AppPermissionsOrganizatio
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsOrganizationSelfHostedRunners with value set to v.
+// NewOptAppPermissionsOrganizationSelfHostedRunners returns new OptAppPermissionsOrganizationSelfHostedRunners with value set to v.
 func NewOptAppPermissionsOrganizationSelfHostedRunners(v AppPermissionsOrganizationSelfHostedRunners) OptAppPermissionsOrganizationSelfHostedRunners {
 	return OptAppPermissionsOrganizationSelfHostedRunners{
 		Value: v,
@@ -6570,7 +5999,7 @@ func NewOptAppPermissionsOrganizationSelfHostedRunners(v AppPermissionsOrganizat
 	}
 }
 
-// OptAppPermissionsOrganizationSelfHostedRunners is generic valiant of AppPermissionsOrganizationSelfHostedRunners.
+// OptAppPermissionsOrganizationSelfHostedRunners is optional AppPermissionsOrganizationSelfHostedRunners.
 type OptAppPermissionsOrganizationSelfHostedRunners struct {
 	Value AppPermissionsOrganizationSelfHostedRunners
 	Set   bool
@@ -6600,7 +6029,7 @@ func (o OptAppPermissionsOrganizationSelfHostedRunners) Get() (v AppPermissionsO
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsOrganizationUserBlocking with value set to v.
+// NewOptAppPermissionsOrganizationUserBlocking returns new OptAppPermissionsOrganizationUserBlocking with value set to v.
 func NewOptAppPermissionsOrganizationUserBlocking(v AppPermissionsOrganizationUserBlocking) OptAppPermissionsOrganizationUserBlocking {
 	return OptAppPermissionsOrganizationUserBlocking{
 		Value: v,
@@ -6608,7 +6037,7 @@ func NewOptAppPermissionsOrganizationUserBlocking(v AppPermissionsOrganizationUs
 	}
 }
 
-// OptAppPermissionsOrganizationUserBlocking is generic valiant of AppPermissionsOrganizationUserBlocking.
+// OptAppPermissionsOrganizationUserBlocking is optional AppPermissionsOrganizationUserBlocking.
 type OptAppPermissionsOrganizationUserBlocking struct {
 	Value AppPermissionsOrganizationUserBlocking
 	Set   bool
@@ -6638,7 +6067,7 @@ func (o OptAppPermissionsOrganizationUserBlocking) Get() (v AppPermissionsOrgani
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsPackages with value set to v.
+// NewOptAppPermissionsPackages returns new OptAppPermissionsPackages with value set to v.
 func NewOptAppPermissionsPackages(v AppPermissionsPackages) OptAppPermissionsPackages {
 	return OptAppPermissionsPackages{
 		Value: v,
@@ -6646,7 +6075,7 @@ func NewOptAppPermissionsPackages(v AppPermissionsPackages) OptAppPermissionsPac
 	}
 }
 
-// OptAppPermissionsPackages is generic valiant of AppPermissionsPackages.
+// OptAppPermissionsPackages is optional AppPermissionsPackages.
 type OptAppPermissionsPackages struct {
 	Value AppPermissionsPackages
 	Set   bool
@@ -6676,7 +6105,7 @@ func (o OptAppPermissionsPackages) Get() (v AppPermissionsPackages, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsPages with value set to v.
+// NewOptAppPermissionsPages returns new OptAppPermissionsPages with value set to v.
 func NewOptAppPermissionsPages(v AppPermissionsPages) OptAppPermissionsPages {
 	return OptAppPermissionsPages{
 		Value: v,
@@ -6684,7 +6113,7 @@ func NewOptAppPermissionsPages(v AppPermissionsPages) OptAppPermissionsPages {
 	}
 }
 
-// OptAppPermissionsPages is generic valiant of AppPermissionsPages.
+// OptAppPermissionsPages is optional AppPermissionsPages.
 type OptAppPermissionsPages struct {
 	Value AppPermissionsPages
 	Set   bool
@@ -6714,7 +6143,7 @@ func (o OptAppPermissionsPages) Get() (v AppPermissionsPages, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsPullRequests with value set to v.
+// NewOptAppPermissionsPullRequests returns new OptAppPermissionsPullRequests with value set to v.
 func NewOptAppPermissionsPullRequests(v AppPermissionsPullRequests) OptAppPermissionsPullRequests {
 	return OptAppPermissionsPullRequests{
 		Value: v,
@@ -6722,7 +6151,7 @@ func NewOptAppPermissionsPullRequests(v AppPermissionsPullRequests) OptAppPermis
 	}
 }
 
-// OptAppPermissionsPullRequests is generic valiant of AppPermissionsPullRequests.
+// OptAppPermissionsPullRequests is optional AppPermissionsPullRequests.
 type OptAppPermissionsPullRequests struct {
 	Value AppPermissionsPullRequests
 	Set   bool
@@ -6752,7 +6181,7 @@ func (o OptAppPermissionsPullRequests) Get() (v AppPermissionsPullRequests, ok b
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsRepositoryHooks with value set to v.
+// NewOptAppPermissionsRepositoryHooks returns new OptAppPermissionsRepositoryHooks with value set to v.
 func NewOptAppPermissionsRepositoryHooks(v AppPermissionsRepositoryHooks) OptAppPermissionsRepositoryHooks {
 	return OptAppPermissionsRepositoryHooks{
 		Value: v,
@@ -6760,7 +6189,7 @@ func NewOptAppPermissionsRepositoryHooks(v AppPermissionsRepositoryHooks) OptApp
 	}
 }
 
-// OptAppPermissionsRepositoryHooks is generic valiant of AppPermissionsRepositoryHooks.
+// OptAppPermissionsRepositoryHooks is optional AppPermissionsRepositoryHooks.
 type OptAppPermissionsRepositoryHooks struct {
 	Value AppPermissionsRepositoryHooks
 	Set   bool
@@ -6790,7 +6219,7 @@ func (o OptAppPermissionsRepositoryHooks) Get() (v AppPermissionsRepositoryHooks
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsRepositoryProjects with value set to v.
+// NewOptAppPermissionsRepositoryProjects returns new OptAppPermissionsRepositoryProjects with value set to v.
 func NewOptAppPermissionsRepositoryProjects(v AppPermissionsRepositoryProjects) OptAppPermissionsRepositoryProjects {
 	return OptAppPermissionsRepositoryProjects{
 		Value: v,
@@ -6798,7 +6227,7 @@ func NewOptAppPermissionsRepositoryProjects(v AppPermissionsRepositoryProjects) 
 	}
 }
 
-// OptAppPermissionsRepositoryProjects is generic valiant of AppPermissionsRepositoryProjects.
+// OptAppPermissionsRepositoryProjects is optional AppPermissionsRepositoryProjects.
 type OptAppPermissionsRepositoryProjects struct {
 	Value AppPermissionsRepositoryProjects
 	Set   bool
@@ -6828,7 +6257,7 @@ func (o OptAppPermissionsRepositoryProjects) Get() (v AppPermissionsRepositoryPr
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsSecretScanningAlerts with value set to v.
+// NewOptAppPermissionsSecretScanningAlerts returns new OptAppPermissionsSecretScanningAlerts with value set to v.
 func NewOptAppPermissionsSecretScanningAlerts(v AppPermissionsSecretScanningAlerts) OptAppPermissionsSecretScanningAlerts {
 	return OptAppPermissionsSecretScanningAlerts{
 		Value: v,
@@ -6836,7 +6265,7 @@ func NewOptAppPermissionsSecretScanningAlerts(v AppPermissionsSecretScanningAler
 	}
 }
 
-// OptAppPermissionsSecretScanningAlerts is generic valiant of AppPermissionsSecretScanningAlerts.
+// OptAppPermissionsSecretScanningAlerts is optional AppPermissionsSecretScanningAlerts.
 type OptAppPermissionsSecretScanningAlerts struct {
 	Value AppPermissionsSecretScanningAlerts
 	Set   bool
@@ -6866,7 +6295,7 @@ func (o OptAppPermissionsSecretScanningAlerts) Get() (v AppPermissionsSecretScan
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsSecrets with value set to v.
+// NewOptAppPermissionsSecrets returns new OptAppPermissionsSecrets with value set to v.
 func NewOptAppPermissionsSecrets(v AppPermissionsSecrets) OptAppPermissionsSecrets {
 	return OptAppPermissionsSecrets{
 		Value: v,
@@ -6874,7 +6303,7 @@ func NewOptAppPermissionsSecrets(v AppPermissionsSecrets) OptAppPermissionsSecre
 	}
 }
 
-// OptAppPermissionsSecrets is generic valiant of AppPermissionsSecrets.
+// OptAppPermissionsSecrets is optional AppPermissionsSecrets.
 type OptAppPermissionsSecrets struct {
 	Value AppPermissionsSecrets
 	Set   bool
@@ -6904,7 +6333,7 @@ func (o OptAppPermissionsSecrets) Get() (v AppPermissionsSecrets, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsSecurityEvents with value set to v.
+// NewOptAppPermissionsSecurityEvents returns new OptAppPermissionsSecurityEvents with value set to v.
 func NewOptAppPermissionsSecurityEvents(v AppPermissionsSecurityEvents) OptAppPermissionsSecurityEvents {
 	return OptAppPermissionsSecurityEvents{
 		Value: v,
@@ -6912,7 +6341,7 @@ func NewOptAppPermissionsSecurityEvents(v AppPermissionsSecurityEvents) OptAppPe
 	}
 }
 
-// OptAppPermissionsSecurityEvents is generic valiant of AppPermissionsSecurityEvents.
+// OptAppPermissionsSecurityEvents is optional AppPermissionsSecurityEvents.
 type OptAppPermissionsSecurityEvents struct {
 	Value AppPermissionsSecurityEvents
 	Set   bool
@@ -6942,7 +6371,7 @@ func (o OptAppPermissionsSecurityEvents) Get() (v AppPermissionsSecurityEvents, 
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsSingleFile with value set to v.
+// NewOptAppPermissionsSingleFile returns new OptAppPermissionsSingleFile with value set to v.
 func NewOptAppPermissionsSingleFile(v AppPermissionsSingleFile) OptAppPermissionsSingleFile {
 	return OptAppPermissionsSingleFile{
 		Value: v,
@@ -6950,7 +6379,7 @@ func NewOptAppPermissionsSingleFile(v AppPermissionsSingleFile) OptAppPermission
 	}
 }
 
-// OptAppPermissionsSingleFile is generic valiant of AppPermissionsSingleFile.
+// OptAppPermissionsSingleFile is optional AppPermissionsSingleFile.
 type OptAppPermissionsSingleFile struct {
 	Value AppPermissionsSingleFile
 	Set   bool
@@ -6980,7 +6409,7 @@ func (o OptAppPermissionsSingleFile) Get() (v AppPermissionsSingleFile, ok bool)
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsStatuses with value set to v.
+// NewOptAppPermissionsStatuses returns new OptAppPermissionsStatuses with value set to v.
 func NewOptAppPermissionsStatuses(v AppPermissionsStatuses) OptAppPermissionsStatuses {
 	return OptAppPermissionsStatuses{
 		Value: v,
@@ -6988,7 +6417,7 @@ func NewOptAppPermissionsStatuses(v AppPermissionsStatuses) OptAppPermissionsSta
 	}
 }
 
-// OptAppPermissionsStatuses is generic valiant of AppPermissionsStatuses.
+// OptAppPermissionsStatuses is optional AppPermissionsStatuses.
 type OptAppPermissionsStatuses struct {
 	Value AppPermissionsStatuses
 	Set   bool
@@ -7018,7 +6447,7 @@ func (o OptAppPermissionsStatuses) Get() (v AppPermissionsStatuses, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsTeamDiscussions with value set to v.
+// NewOptAppPermissionsTeamDiscussions returns new OptAppPermissionsTeamDiscussions with value set to v.
 func NewOptAppPermissionsTeamDiscussions(v AppPermissionsTeamDiscussions) OptAppPermissionsTeamDiscussions {
 	return OptAppPermissionsTeamDiscussions{
 		Value: v,
@@ -7026,7 +6455,7 @@ func NewOptAppPermissionsTeamDiscussions(v AppPermissionsTeamDiscussions) OptApp
 	}
 }
 
-// OptAppPermissionsTeamDiscussions is generic valiant of AppPermissionsTeamDiscussions.
+// OptAppPermissionsTeamDiscussions is optional AppPermissionsTeamDiscussions.
 type OptAppPermissionsTeamDiscussions struct {
 	Value AppPermissionsTeamDiscussions
 	Set   bool
@@ -7056,7 +6485,7 @@ func (o OptAppPermissionsTeamDiscussions) Get() (v AppPermissionsTeamDiscussions
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsVulnerabilityAlerts with value set to v.
+// NewOptAppPermissionsVulnerabilityAlerts returns new OptAppPermissionsVulnerabilityAlerts with value set to v.
 func NewOptAppPermissionsVulnerabilityAlerts(v AppPermissionsVulnerabilityAlerts) OptAppPermissionsVulnerabilityAlerts {
 	return OptAppPermissionsVulnerabilityAlerts{
 		Value: v,
@@ -7064,7 +6493,7 @@ func NewOptAppPermissionsVulnerabilityAlerts(v AppPermissionsVulnerabilityAlerts
 	}
 }
 
-// OptAppPermissionsVulnerabilityAlerts is generic valiant of AppPermissionsVulnerabilityAlerts.
+// OptAppPermissionsVulnerabilityAlerts is optional AppPermissionsVulnerabilityAlerts.
 type OptAppPermissionsVulnerabilityAlerts struct {
 	Value AppPermissionsVulnerabilityAlerts
 	Set   bool
@@ -7094,7 +6523,7 @@ func (o OptAppPermissionsVulnerabilityAlerts) Get() (v AppPermissionsVulnerabili
 	return o.Value, true
 }
 
-// New returns new OptAppPermissionsWorkflows with value set to v.
+// NewOptAppPermissionsWorkflows returns new OptAppPermissionsWorkflows with value set to v.
 func NewOptAppPermissionsWorkflows(v AppPermissionsWorkflows) OptAppPermissionsWorkflows {
 	return OptAppPermissionsWorkflows{
 		Value: v,
@@ -7102,7 +6531,7 @@ func NewOptAppPermissionsWorkflows(v AppPermissionsWorkflows) OptAppPermissionsW
 	}
 }
 
-// OptAppPermissionsWorkflows is generic valiant of AppPermissionsWorkflows.
+// OptAppPermissionsWorkflows is optional AppPermissionsWorkflows.
 type OptAppPermissionsWorkflows struct {
 	Value AppPermissionsWorkflows
 	Set   bool
@@ -7132,7 +6561,7 @@ func (o OptAppPermissionsWorkflows) Get() (v AppPermissionsWorkflows, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptAuthenticationTokenRepositorySelection with value set to v.
+// NewOptAuthenticationTokenRepositorySelection returns new OptAuthenticationTokenRepositorySelection with value set to v.
 func NewOptAuthenticationTokenRepositorySelection(v AuthenticationTokenRepositorySelection) OptAuthenticationTokenRepositorySelection {
 	return OptAuthenticationTokenRepositorySelection{
 		Value: v,
@@ -7140,7 +6569,7 @@ func NewOptAuthenticationTokenRepositorySelection(v AuthenticationTokenRepositor
 	}
 }
 
-// OptAuthenticationTokenRepositorySelection is generic valiant of AuthenticationTokenRepositorySelection.
+// OptAuthenticationTokenRepositorySelection is optional AuthenticationTokenRepositorySelection.
 type OptAuthenticationTokenRepositorySelection struct {
 	Value AuthenticationTokenRepositorySelection
 	Set   bool
@@ -7170,45 +6599,7 @@ func (o OptAuthenticationTokenRepositorySelection) Get() (v AuthenticationTokenR
 	return o.Value, true
 }
 
-// New returns new OptAuthorAssociation with value set to v.
-func NewOptAuthorAssociation(v AuthorAssociation) OptAuthorAssociation {
-	return OptAuthorAssociation{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptAuthorAssociation is generic valiant of AuthorAssociation.
-type OptAuthorAssociation struct {
-	Value AuthorAssociation
-	Set   bool
-}
-
-// IsSet returns true if OptAuthorAssociation was set.
-func (o OptAuthorAssociation) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptAuthorAssociation) Reset() {
-	var v AuthorAssociation
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptAuthorAssociation) SetTo(v AuthorAssociation) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptAuthorAssociation) Get() (v AuthorAssociation, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptBool with value set to v.
+// NewOptBool returns new OptBool with value set to v.
 func NewOptBool(v bool) OptBool {
 	return OptBool{
 		Value: v,
@@ -7216,7 +6607,7 @@ func NewOptBool(v bool) OptBool {
 	}
 }
 
-// OptBool is generic valiant of bool.
+// OptBool is optional bool.
 type OptBool struct {
 	Value bool
 	Set   bool
@@ -7246,7 +6637,7 @@ func (o OptBool) Get() (v bool, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptBranchProtection with value set to v.
+// NewOptBranchProtection returns new OptBranchProtection with value set to v.
 func NewOptBranchProtection(v BranchProtection) OptBranchProtection {
 	return OptBranchProtection{
 		Value: v,
@@ -7254,7 +6645,7 @@ func NewOptBranchProtection(v BranchProtection) OptBranchProtection {
 	}
 }
 
-// OptBranchProtection is generic valiant of BranchProtection.
+// OptBranchProtection is optional BranchProtection.
 type OptBranchProtection struct {
 	Value BranchProtection
 	Set   bool
@@ -7284,7 +6675,7 @@ func (o OptBranchProtection) Get() (v BranchProtection, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptBranchProtectionAllowDeletions with value set to v.
+// NewOptBranchProtectionAllowDeletions returns new OptBranchProtectionAllowDeletions with value set to v.
 func NewOptBranchProtectionAllowDeletions(v BranchProtectionAllowDeletions) OptBranchProtectionAllowDeletions {
 	return OptBranchProtectionAllowDeletions{
 		Value: v,
@@ -7292,7 +6683,7 @@ func NewOptBranchProtectionAllowDeletions(v BranchProtectionAllowDeletions) OptB
 	}
 }
 
-// OptBranchProtectionAllowDeletions is generic valiant of BranchProtectionAllowDeletions.
+// OptBranchProtectionAllowDeletions is optional BranchProtectionAllowDeletions.
 type OptBranchProtectionAllowDeletions struct {
 	Value BranchProtectionAllowDeletions
 	Set   bool
@@ -7322,7 +6713,7 @@ func (o OptBranchProtectionAllowDeletions) Get() (v BranchProtectionAllowDeletio
 	return o.Value, true
 }
 
-// New returns new OptBranchProtectionAllowForcePushes with value set to v.
+// NewOptBranchProtectionAllowForcePushes returns new OptBranchProtectionAllowForcePushes with value set to v.
 func NewOptBranchProtectionAllowForcePushes(v BranchProtectionAllowForcePushes) OptBranchProtectionAllowForcePushes {
 	return OptBranchProtectionAllowForcePushes{
 		Value: v,
@@ -7330,7 +6721,7 @@ func NewOptBranchProtectionAllowForcePushes(v BranchProtectionAllowForcePushes) 
 	}
 }
 
-// OptBranchProtectionAllowForcePushes is generic valiant of BranchProtectionAllowForcePushes.
+// OptBranchProtectionAllowForcePushes is optional BranchProtectionAllowForcePushes.
 type OptBranchProtectionAllowForcePushes struct {
 	Value BranchProtectionAllowForcePushes
 	Set   bool
@@ -7360,7 +6751,7 @@ func (o OptBranchProtectionAllowForcePushes) Get() (v BranchProtectionAllowForce
 	return o.Value, true
 }
 
-// New returns new OptBranchProtectionRequiredConversationResolution with value set to v.
+// NewOptBranchProtectionRequiredConversationResolution returns new OptBranchProtectionRequiredConversationResolution with value set to v.
 func NewOptBranchProtectionRequiredConversationResolution(v BranchProtectionRequiredConversationResolution) OptBranchProtectionRequiredConversationResolution {
 	return OptBranchProtectionRequiredConversationResolution{
 		Value: v,
@@ -7368,7 +6759,7 @@ func NewOptBranchProtectionRequiredConversationResolution(v BranchProtectionRequ
 	}
 }
 
-// OptBranchProtectionRequiredConversationResolution is generic valiant of BranchProtectionRequiredConversationResolution.
+// OptBranchProtectionRequiredConversationResolution is optional BranchProtectionRequiredConversationResolution.
 type OptBranchProtectionRequiredConversationResolution struct {
 	Value BranchProtectionRequiredConversationResolution
 	Set   bool
@@ -7398,7 +6789,7 @@ func (o OptBranchProtectionRequiredConversationResolution) Get() (v BranchProtec
 	return o.Value, true
 }
 
-// New returns new OptBranchProtectionRequiredLinearHistory with value set to v.
+// NewOptBranchProtectionRequiredLinearHistory returns new OptBranchProtectionRequiredLinearHistory with value set to v.
 func NewOptBranchProtectionRequiredLinearHistory(v BranchProtectionRequiredLinearHistory) OptBranchProtectionRequiredLinearHistory {
 	return OptBranchProtectionRequiredLinearHistory{
 		Value: v,
@@ -7406,7 +6797,7 @@ func NewOptBranchProtectionRequiredLinearHistory(v BranchProtectionRequiredLinea
 	}
 }
 
-// OptBranchProtectionRequiredLinearHistory is generic valiant of BranchProtectionRequiredLinearHistory.
+// OptBranchProtectionRequiredLinearHistory is optional BranchProtectionRequiredLinearHistory.
 type OptBranchProtectionRequiredLinearHistory struct {
 	Value BranchProtectionRequiredLinearHistory
 	Set   bool
@@ -7436,7 +6827,7 @@ func (o OptBranchProtectionRequiredLinearHistory) Get() (v BranchProtectionRequi
 	return o.Value, true
 }
 
-// New returns new OptBranchProtectionRequiredSignatures with value set to v.
+// NewOptBranchProtectionRequiredSignatures returns new OptBranchProtectionRequiredSignatures with value set to v.
 func NewOptBranchProtectionRequiredSignatures(v BranchProtectionRequiredSignatures) OptBranchProtectionRequiredSignatures {
 	return OptBranchProtectionRequiredSignatures{
 		Value: v,
@@ -7444,7 +6835,7 @@ func NewOptBranchProtectionRequiredSignatures(v BranchProtectionRequiredSignatur
 	}
 }
 
-// OptBranchProtectionRequiredSignatures is generic valiant of BranchProtectionRequiredSignatures.
+// OptBranchProtectionRequiredSignatures is optional BranchProtectionRequiredSignatures.
 type OptBranchProtectionRequiredSignatures struct {
 	Value BranchProtectionRequiredSignatures
 	Set   bool
@@ -7474,7 +6865,7 @@ func (o OptBranchProtectionRequiredSignatures) Get() (v BranchProtectionRequired
 	return o.Value, true
 }
 
-// New returns new OptBranchProtectionRequiredStatusChecks with value set to v.
+// NewOptBranchProtectionRequiredStatusChecks returns new OptBranchProtectionRequiredStatusChecks with value set to v.
 func NewOptBranchProtectionRequiredStatusChecks(v BranchProtectionRequiredStatusChecks) OptBranchProtectionRequiredStatusChecks {
 	return OptBranchProtectionRequiredStatusChecks{
 		Value: v,
@@ -7482,7 +6873,7 @@ func NewOptBranchProtectionRequiredStatusChecks(v BranchProtectionRequiredStatus
 	}
 }
 
-// OptBranchProtectionRequiredStatusChecks is generic valiant of BranchProtectionRequiredStatusChecks.
+// OptBranchProtectionRequiredStatusChecks is optional BranchProtectionRequiredStatusChecks.
 type OptBranchProtectionRequiredStatusChecks struct {
 	Value BranchProtectionRequiredStatusChecks
 	Set   bool
@@ -7512,7 +6903,7 @@ func (o OptBranchProtectionRequiredStatusChecks) Get() (v BranchProtectionRequir
 	return o.Value, true
 }
 
-// New returns new OptBranchRestrictionPolicy with value set to v.
+// NewOptBranchRestrictionPolicy returns new OptBranchRestrictionPolicy with value set to v.
 func NewOptBranchRestrictionPolicy(v BranchRestrictionPolicy) OptBranchRestrictionPolicy {
 	return OptBranchRestrictionPolicy{
 		Value: v,
@@ -7520,7 +6911,7 @@ func NewOptBranchRestrictionPolicy(v BranchRestrictionPolicy) OptBranchRestricti
 	}
 }
 
-// OptBranchRestrictionPolicy is generic valiant of BranchRestrictionPolicy.
+// OptBranchRestrictionPolicy is optional BranchRestrictionPolicy.
 type OptBranchRestrictionPolicy struct {
 	Value BranchRestrictionPolicy
 	Set   bool
@@ -7550,7 +6941,7 @@ func (o OptBranchRestrictionPolicy) Get() (v BranchRestrictionPolicy, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptBranchRestrictionPolicyAppsItemOwner with value set to v.
+// NewOptBranchRestrictionPolicyAppsItemOwner returns new OptBranchRestrictionPolicyAppsItemOwner with value set to v.
 func NewOptBranchRestrictionPolicyAppsItemOwner(v BranchRestrictionPolicyAppsItemOwner) OptBranchRestrictionPolicyAppsItemOwner {
 	return OptBranchRestrictionPolicyAppsItemOwner{
 		Value: v,
@@ -7558,7 +6949,7 @@ func NewOptBranchRestrictionPolicyAppsItemOwner(v BranchRestrictionPolicyAppsIte
 	}
 }
 
-// OptBranchRestrictionPolicyAppsItemOwner is generic valiant of BranchRestrictionPolicyAppsItemOwner.
+// OptBranchRestrictionPolicyAppsItemOwner is optional BranchRestrictionPolicyAppsItemOwner.
 type OptBranchRestrictionPolicyAppsItemOwner struct {
 	Value BranchRestrictionPolicyAppsItemOwner
 	Set   bool
@@ -7588,7 +6979,7 @@ func (o OptBranchRestrictionPolicyAppsItemOwner) Get() (v BranchRestrictionPolic
 	return o.Value, true
 }
 
-// New returns new OptBranchRestrictionPolicyAppsItemPermissions with value set to v.
+// NewOptBranchRestrictionPolicyAppsItemPermissions returns new OptBranchRestrictionPolicyAppsItemPermissions with value set to v.
 func NewOptBranchRestrictionPolicyAppsItemPermissions(v BranchRestrictionPolicyAppsItemPermissions) OptBranchRestrictionPolicyAppsItemPermissions {
 	return OptBranchRestrictionPolicyAppsItemPermissions{
 		Value: v,
@@ -7596,7 +6987,7 @@ func NewOptBranchRestrictionPolicyAppsItemPermissions(v BranchRestrictionPolicyA
 	}
 }
 
-// OptBranchRestrictionPolicyAppsItemPermissions is generic valiant of BranchRestrictionPolicyAppsItemPermissions.
+// OptBranchRestrictionPolicyAppsItemPermissions is optional BranchRestrictionPolicyAppsItemPermissions.
 type OptBranchRestrictionPolicyAppsItemPermissions struct {
 	Value BranchRestrictionPolicyAppsItemPermissions
 	Set   bool
@@ -7626,7 +7017,7 @@ func (o OptBranchRestrictionPolicyAppsItemPermissions) Get() (v BranchRestrictio
 	return o.Value, true
 }
 
-// New returns new OptCodeOfConduct with value set to v.
+// NewOptCodeOfConduct returns new OptCodeOfConduct with value set to v.
 func NewOptCodeOfConduct(v CodeOfConduct) OptCodeOfConduct {
 	return OptCodeOfConduct{
 		Value: v,
@@ -7634,7 +7025,7 @@ func NewOptCodeOfConduct(v CodeOfConduct) OptCodeOfConduct {
 	}
 }
 
-// OptCodeOfConduct is generic valiant of CodeOfConduct.
+// OptCodeOfConduct is optional CodeOfConduct.
 type OptCodeOfConduct struct {
 	Value CodeOfConduct
 	Set   bool
@@ -7664,7 +7055,7 @@ func (o OptCodeOfConduct) Get() (v CodeOfConduct, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptCodeOfConductSimple with value set to v.
+// NewOptCodeOfConductSimple returns new OptCodeOfConductSimple with value set to v.
 func NewOptCodeOfConductSimple(v CodeOfConductSimple) OptCodeOfConductSimple {
 	return OptCodeOfConductSimple{
 		Value: v,
@@ -7672,7 +7063,7 @@ func NewOptCodeOfConductSimple(v CodeOfConductSimple) OptCodeOfConductSimple {
 	}
 }
 
-// OptCodeOfConductSimple is generic valiant of CodeOfConductSimple.
+// OptCodeOfConductSimple is optional CodeOfConductSimple.
 type OptCodeOfConductSimple struct {
 	Value CodeOfConductSimple
 	Set   bool
@@ -7702,7 +7093,7 @@ func (o OptCodeOfConductSimple) Get() (v CodeOfConductSimple, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptCodeScanningAlertDismissedReason with value set to v.
+// NewOptCodeScanningAlertDismissedReason returns new OptCodeScanningAlertDismissedReason with value set to v.
 func NewOptCodeScanningAlertDismissedReason(v CodeScanningAlertDismissedReason) OptCodeScanningAlertDismissedReason {
 	return OptCodeScanningAlertDismissedReason{
 		Value: v,
@@ -7710,7 +7101,7 @@ func NewOptCodeScanningAlertDismissedReason(v CodeScanningAlertDismissedReason) 
 	}
 }
 
-// OptCodeScanningAlertDismissedReason is generic valiant of CodeScanningAlertDismissedReason.
+// OptCodeScanningAlertDismissedReason is optional CodeScanningAlertDismissedReason.
 type OptCodeScanningAlertDismissedReason struct {
 	Value CodeScanningAlertDismissedReason
 	Set   bool
@@ -7740,7 +7131,7 @@ func (o OptCodeScanningAlertDismissedReason) Get() (v CodeScanningAlertDismissed
 	return o.Value, true
 }
 
-// New returns new OptCodeScanningAlertInstanceMessage with value set to v.
+// NewOptCodeScanningAlertInstanceMessage returns new OptCodeScanningAlertInstanceMessage with value set to v.
 func NewOptCodeScanningAlertInstanceMessage(v CodeScanningAlertInstanceMessage) OptCodeScanningAlertInstanceMessage {
 	return OptCodeScanningAlertInstanceMessage{
 		Value: v,
@@ -7748,7 +7139,7 @@ func NewOptCodeScanningAlertInstanceMessage(v CodeScanningAlertInstanceMessage) 
 	}
 }
 
-// OptCodeScanningAlertInstanceMessage is generic valiant of CodeScanningAlertInstanceMessage.
+// OptCodeScanningAlertInstanceMessage is optional CodeScanningAlertInstanceMessage.
 type OptCodeScanningAlertInstanceMessage struct {
 	Value CodeScanningAlertInstanceMessage
 	Set   bool
@@ -7778,7 +7169,7 @@ func (o OptCodeScanningAlertInstanceMessage) Get() (v CodeScanningAlertInstanceM
 	return o.Value, true
 }
 
-// New returns new OptCodeScanningAlertLocation with value set to v.
+// NewOptCodeScanningAlertLocation returns new OptCodeScanningAlertLocation with value set to v.
 func NewOptCodeScanningAlertLocation(v CodeScanningAlertLocation) OptCodeScanningAlertLocation {
 	return OptCodeScanningAlertLocation{
 		Value: v,
@@ -7786,7 +7177,7 @@ func NewOptCodeScanningAlertLocation(v CodeScanningAlertLocation) OptCodeScannin
 	}
 }
 
-// OptCodeScanningAlertLocation is generic valiant of CodeScanningAlertLocation.
+// OptCodeScanningAlertLocation is optional CodeScanningAlertLocation.
 type OptCodeScanningAlertLocation struct {
 	Value CodeScanningAlertLocation
 	Set   bool
@@ -7816,7 +7207,7 @@ func (o OptCodeScanningAlertLocation) Get() (v CodeScanningAlertLocation, ok boo
 	return o.Value, true
 }
 
-// New returns new OptCodeScanningAlertState with value set to v.
+// NewOptCodeScanningAlertState returns new OptCodeScanningAlertState with value set to v.
 func NewOptCodeScanningAlertState(v CodeScanningAlertState) OptCodeScanningAlertState {
 	return OptCodeScanningAlertState{
 		Value: v,
@@ -7824,7 +7215,7 @@ func NewOptCodeScanningAlertState(v CodeScanningAlertState) OptCodeScanningAlert
 	}
 }
 
-// OptCodeScanningAlertState is generic valiant of CodeScanningAlertState.
+// OptCodeScanningAlertState is optional CodeScanningAlertState.
 type OptCodeScanningAlertState struct {
 	Value CodeScanningAlertState
 	Set   bool
@@ -7854,7 +7245,7 @@ func (o OptCodeScanningAlertState) Get() (v CodeScanningAlertState, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptCodeScanningSarifsStatusProcessingStatus with value set to v.
+// NewOptCodeScanningSarifsStatusProcessingStatus returns new OptCodeScanningSarifsStatusProcessingStatus with value set to v.
 func NewOptCodeScanningSarifsStatusProcessingStatus(v CodeScanningSarifsStatusProcessingStatus) OptCodeScanningSarifsStatusProcessingStatus {
 	return OptCodeScanningSarifsStatusProcessingStatus{
 		Value: v,
@@ -7862,7 +7253,7 @@ func NewOptCodeScanningSarifsStatusProcessingStatus(v CodeScanningSarifsStatusPr
 	}
 }
 
-// OptCodeScanningSarifsStatusProcessingStatus is generic valiant of CodeScanningSarifsStatusProcessingStatus.
+// OptCodeScanningSarifsStatusProcessingStatus is optional CodeScanningSarifsStatusProcessingStatus.
 type OptCodeScanningSarifsStatusProcessingStatus struct {
 	Value CodeScanningSarifsStatusProcessingStatus
 	Set   bool
@@ -7892,7 +7283,7 @@ func (o OptCodeScanningSarifsStatusProcessingStatus) Get() (v CodeScanningSarifs
 	return o.Value, true
 }
 
-// New returns new OptCommitStats with value set to v.
+// NewOptCommitStats returns new OptCommitStats with value set to v.
 func NewOptCommitStats(v CommitStats) OptCommitStats {
 	return OptCommitStats{
 		Value: v,
@@ -7900,7 +7291,7 @@ func NewOptCommitStats(v CommitStats) OptCommitStats {
 	}
 }
 
-// OptCommitStats is generic valiant of CommitStats.
+// OptCommitStats is optional CommitStats.
 type OptCommitStats struct {
 	Value CommitStats
 	Set   bool
@@ -7930,83 +7321,7 @@ func (o OptCommitStats) Get() (v CommitStats, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptDeploymentBranchPolicy with value set to v.
-func NewOptDeploymentBranchPolicy(v DeploymentBranchPolicy) OptDeploymentBranchPolicy {
-	return OptDeploymentBranchPolicy{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptDeploymentBranchPolicy is generic valiant of DeploymentBranchPolicy.
-type OptDeploymentBranchPolicy struct {
-	Value DeploymentBranchPolicy
-	Set   bool
-}
-
-// IsSet returns true if OptDeploymentBranchPolicy was set.
-func (o OptDeploymentBranchPolicy) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptDeploymentBranchPolicy) Reset() {
-	var v DeploymentBranchPolicy
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptDeploymentBranchPolicy) SetTo(v DeploymentBranchPolicy) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptDeploymentBranchPolicy) Get() (v DeploymentBranchPolicy, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptDeploymentReviewerType with value set to v.
-func NewOptDeploymentReviewerType(v DeploymentReviewerType) OptDeploymentReviewerType {
-	return OptDeploymentReviewerType{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptDeploymentReviewerType is generic valiant of DeploymentReviewerType.
-type OptDeploymentReviewerType struct {
-	Value DeploymentReviewerType
-	Set   bool
-}
-
-// IsSet returns true if OptDeploymentReviewerType was set.
-func (o OptDeploymentReviewerType) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptDeploymentReviewerType) Reset() {
-	var v DeploymentReviewerType
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptDeploymentReviewerType) SetTo(v DeploymentReviewerType) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptDeploymentReviewerType) Get() (v DeploymentReviewerType, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptDeploymentSimple with value set to v.
+// NewOptDeploymentSimple returns new OptDeploymentSimple with value set to v.
 func NewOptDeploymentSimple(v DeploymentSimple) OptDeploymentSimple {
 	return OptDeploymentSimple{
 		Value: v,
@@ -8014,7 +7329,7 @@ func NewOptDeploymentSimple(v DeploymentSimple) OptDeploymentSimple {
 	}
 }
 
-// OptDeploymentSimple is generic valiant of DeploymentSimple.
+// OptDeploymentSimple is optional DeploymentSimple.
 type OptDeploymentSimple struct {
 	Value DeploymentSimple
 	Set   bool
@@ -8044,7 +7359,7 @@ func (o OptDeploymentSimple) Get() (v DeploymentSimple, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility with value set to v.
+// NewOptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility returns new OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility with value set to v.
 func NewOptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility(v EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility {
 	return OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility{
 		Value: v,
@@ -8052,7 +7367,7 @@ func NewOptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSO
 	}
 }
 
-// OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility is generic valiant of EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility.
+// OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility is optional EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility.
 type OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility struct {
 	Value EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility
 	Set   bool
@@ -8084,7 +7399,7 @@ func (o OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSO
 	return o.Value, true
 }
 
-// New returns new OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility with value set to v.
+// NewOptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility returns new OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility with value set to v.
 func NewOptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility(v EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility {
 	return OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility{
 		Value: v,
@@ -8092,7 +7407,7 @@ func NewOptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSO
 	}
 }
 
-// OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility is generic valiant of EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility.
+// OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility is optional EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility.
 type OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility struct {
 	Value EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility
 	Set   bool
@@ -8124,7 +7439,7 @@ func (o OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSO
 	return o.Value, true
 }
 
-// New returns new OptFileCommitCommitAuthor with value set to v.
+// NewOptFileCommitCommitAuthor returns new OptFileCommitCommitAuthor with value set to v.
 func NewOptFileCommitCommitAuthor(v FileCommitCommitAuthor) OptFileCommitCommitAuthor {
 	return OptFileCommitCommitAuthor{
 		Value: v,
@@ -8132,7 +7447,7 @@ func NewOptFileCommitCommitAuthor(v FileCommitCommitAuthor) OptFileCommitCommitA
 	}
 }
 
-// OptFileCommitCommitAuthor is generic valiant of FileCommitCommitAuthor.
+// OptFileCommitCommitAuthor is optional FileCommitCommitAuthor.
 type OptFileCommitCommitAuthor struct {
 	Value FileCommitCommitAuthor
 	Set   bool
@@ -8162,7 +7477,7 @@ func (o OptFileCommitCommitAuthor) Get() (v FileCommitCommitAuthor, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptFileCommitCommitCommitter with value set to v.
+// NewOptFileCommitCommitCommitter returns new OptFileCommitCommitCommitter with value set to v.
 func NewOptFileCommitCommitCommitter(v FileCommitCommitCommitter) OptFileCommitCommitCommitter {
 	return OptFileCommitCommitCommitter{
 		Value: v,
@@ -8170,7 +7485,7 @@ func NewOptFileCommitCommitCommitter(v FileCommitCommitCommitter) OptFileCommitC
 	}
 }
 
-// OptFileCommitCommitCommitter is generic valiant of FileCommitCommitCommitter.
+// OptFileCommitCommitCommitter is optional FileCommitCommitCommitter.
 type OptFileCommitCommitCommitter struct {
 	Value FileCommitCommitCommitter
 	Set   bool
@@ -8200,7 +7515,7 @@ func (o OptFileCommitCommitCommitter) Get() (v FileCommitCommitCommitter, ok boo
 	return o.Value, true
 }
 
-// New returns new OptFileCommitCommitTree with value set to v.
+// NewOptFileCommitCommitTree returns new OptFileCommitCommitTree with value set to v.
 func NewOptFileCommitCommitTree(v FileCommitCommitTree) OptFileCommitCommitTree {
 	return OptFileCommitCommitTree{
 		Value: v,
@@ -8208,7 +7523,7 @@ func NewOptFileCommitCommitTree(v FileCommitCommitTree) OptFileCommitCommitTree 
 	}
 }
 
-// OptFileCommitCommitTree is generic valiant of FileCommitCommitTree.
+// OptFileCommitCommitTree is optional FileCommitCommitTree.
 type OptFileCommitCommitTree struct {
 	Value FileCommitCommitTree
 	Set   bool
@@ -8238,7 +7553,7 @@ func (o OptFileCommitCommitTree) Get() (v FileCommitCommitTree, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptFileCommitCommitVerification with value set to v.
+// NewOptFileCommitCommitVerification returns new OptFileCommitCommitVerification with value set to v.
 func NewOptFileCommitCommitVerification(v FileCommitCommitVerification) OptFileCommitCommitVerification {
 	return OptFileCommitCommitVerification{
 		Value: v,
@@ -8246,7 +7561,7 @@ func NewOptFileCommitCommitVerification(v FileCommitCommitVerification) OptFileC
 	}
 }
 
-// OptFileCommitCommitVerification is generic valiant of FileCommitCommitVerification.
+// OptFileCommitCommitVerification is optional FileCommitCommitVerification.
 type OptFileCommitCommitVerification struct {
 	Value FileCommitCommitVerification
 	Set   bool
@@ -8276,7 +7591,7 @@ func (o OptFileCommitCommitVerification) Get() (v FileCommitCommitVerification, 
 	return o.Value, true
 }
 
-// New returns new OptFileCommitContentLinks with value set to v.
+// NewOptFileCommitContentLinks returns new OptFileCommitContentLinks with value set to v.
 func NewOptFileCommitContentLinks(v FileCommitContentLinks) OptFileCommitContentLinks {
 	return OptFileCommitContentLinks{
 		Value: v,
@@ -8284,7 +7599,7 @@ func NewOptFileCommitContentLinks(v FileCommitContentLinks) OptFileCommitContent
 	}
 }
 
-// OptFileCommitContentLinks is generic valiant of FileCommitContentLinks.
+// OptFileCommitContentLinks is optional FileCommitContentLinks.
 type OptFileCommitContentLinks struct {
 	Value FileCommitContentLinks
 	Set   bool
@@ -8314,7 +7629,7 @@ func (o OptFileCommitContentLinks) Get() (v FileCommitContentLinks, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptFloat64 with value set to v.
+// NewOptFloat64 returns new OptFloat64 with value set to v.
 func NewOptFloat64(v float64) OptFloat64 {
 	return OptFloat64{
 		Value: v,
@@ -8322,7 +7637,7 @@ func NewOptFloat64(v float64) OptFloat64 {
 	}
 }
 
-// OptFloat64 is generic valiant of float64.
+// OptFloat64 is optional float64.
 type OptFloat64 struct {
 	Value float64
 	Set   bool
@@ -8352,7 +7667,7 @@ func (o OptFloat64) Get() (v float64, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptForbiddenGistBlock with value set to v.
+// NewOptForbiddenGistBlock returns new OptForbiddenGistBlock with value set to v.
 func NewOptForbiddenGistBlock(v ForbiddenGistBlock) OptForbiddenGistBlock {
 	return OptForbiddenGistBlock{
 		Value: v,
@@ -8360,7 +7675,7 @@ func NewOptForbiddenGistBlock(v ForbiddenGistBlock) OptForbiddenGistBlock {
 	}
 }
 
-// OptForbiddenGistBlock is generic valiant of ForbiddenGistBlock.
+// OptForbiddenGistBlock is optional ForbiddenGistBlock.
 type OptForbiddenGistBlock struct {
 	Value ForbiddenGistBlock
 	Set   bool
@@ -8390,7 +7705,7 @@ func (o OptForbiddenGistBlock) Get() (v ForbiddenGistBlock, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptFullRepositoryPermissions with value set to v.
+// NewOptFullRepositoryPermissions returns new OptFullRepositoryPermissions with value set to v.
 func NewOptFullRepositoryPermissions(v FullRepositoryPermissions) OptFullRepositoryPermissions {
 	return OptFullRepositoryPermissions{
 		Value: v,
@@ -8398,7 +7713,7 @@ func NewOptFullRepositoryPermissions(v FullRepositoryPermissions) OptFullReposit
 	}
 }
 
-// OptFullRepositoryPermissions is generic valiant of FullRepositoryPermissions.
+// OptFullRepositoryPermissions is optional FullRepositoryPermissions.
 type OptFullRepositoryPermissions struct {
 	Value FullRepositoryPermissions
 	Set   bool
@@ -8428,7 +7743,7 @@ func (o OptFullRepositoryPermissions) Get() (v FullRepositoryPermissions, ok boo
 	return o.Value, true
 }
 
-// New returns new OptFullRepositorySecurityAndAnalysisAdvancedSecurity with value set to v.
+// NewOptFullRepositorySecurityAndAnalysisAdvancedSecurity returns new OptFullRepositorySecurityAndAnalysisAdvancedSecurity with value set to v.
 func NewOptFullRepositorySecurityAndAnalysisAdvancedSecurity(v FullRepositorySecurityAndAnalysisAdvancedSecurity) OptFullRepositorySecurityAndAnalysisAdvancedSecurity {
 	return OptFullRepositorySecurityAndAnalysisAdvancedSecurity{
 		Value: v,
@@ -8436,7 +7751,7 @@ func NewOptFullRepositorySecurityAndAnalysisAdvancedSecurity(v FullRepositorySec
 	}
 }
 
-// OptFullRepositorySecurityAndAnalysisAdvancedSecurity is generic valiant of FullRepositorySecurityAndAnalysisAdvancedSecurity.
+// OptFullRepositorySecurityAndAnalysisAdvancedSecurity is optional FullRepositorySecurityAndAnalysisAdvancedSecurity.
 type OptFullRepositorySecurityAndAnalysisAdvancedSecurity struct {
 	Value FullRepositorySecurityAndAnalysisAdvancedSecurity
 	Set   bool
@@ -8466,7 +7781,7 @@ func (o OptFullRepositorySecurityAndAnalysisAdvancedSecurity) Get() (v FullRepos
 	return o.Value, true
 }
 
-// New returns new OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus with value set to v.
+// NewOptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus returns new OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus with value set to v.
 func NewOptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus(v FullRepositorySecurityAndAnalysisAdvancedSecurityStatus) OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus {
 	return OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus{
 		Value: v,
@@ -8474,7 +7789,7 @@ func NewOptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus(v FullReposit
 	}
 }
 
-// OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus is generic valiant of FullRepositorySecurityAndAnalysisAdvancedSecurityStatus.
+// OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus is optional FullRepositorySecurityAndAnalysisAdvancedSecurityStatus.
 type OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus struct {
 	Value FullRepositorySecurityAndAnalysisAdvancedSecurityStatus
 	Set   bool
@@ -8504,7 +7819,7 @@ func (o OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) Get() (v Ful
 	return o.Value, true
 }
 
-// New returns new OptFullRepositorySecurityAndAnalysisSecretScanning with value set to v.
+// NewOptFullRepositorySecurityAndAnalysisSecretScanning returns new OptFullRepositorySecurityAndAnalysisSecretScanning with value set to v.
 func NewOptFullRepositorySecurityAndAnalysisSecretScanning(v FullRepositorySecurityAndAnalysisSecretScanning) OptFullRepositorySecurityAndAnalysisSecretScanning {
 	return OptFullRepositorySecurityAndAnalysisSecretScanning{
 		Value: v,
@@ -8512,7 +7827,7 @@ func NewOptFullRepositorySecurityAndAnalysisSecretScanning(v FullRepositorySecur
 	}
 }
 
-// OptFullRepositorySecurityAndAnalysisSecretScanning is generic valiant of FullRepositorySecurityAndAnalysisSecretScanning.
+// OptFullRepositorySecurityAndAnalysisSecretScanning is optional FullRepositorySecurityAndAnalysisSecretScanning.
 type OptFullRepositorySecurityAndAnalysisSecretScanning struct {
 	Value FullRepositorySecurityAndAnalysisSecretScanning
 	Set   bool
@@ -8542,7 +7857,7 @@ func (o OptFullRepositorySecurityAndAnalysisSecretScanning) Get() (v FullReposit
 	return o.Value, true
 }
 
-// New returns new OptFullRepositorySecurityAndAnalysisSecretScanningStatus with value set to v.
+// NewOptFullRepositorySecurityAndAnalysisSecretScanningStatus returns new OptFullRepositorySecurityAndAnalysisSecretScanningStatus with value set to v.
 func NewOptFullRepositorySecurityAndAnalysisSecretScanningStatus(v FullRepositorySecurityAndAnalysisSecretScanningStatus) OptFullRepositorySecurityAndAnalysisSecretScanningStatus {
 	return OptFullRepositorySecurityAndAnalysisSecretScanningStatus{
 		Value: v,
@@ -8550,7 +7865,7 @@ func NewOptFullRepositorySecurityAndAnalysisSecretScanningStatus(v FullRepositor
 	}
 }
 
-// OptFullRepositorySecurityAndAnalysisSecretScanningStatus is generic valiant of FullRepositorySecurityAndAnalysisSecretScanningStatus.
+// OptFullRepositorySecurityAndAnalysisSecretScanningStatus is optional FullRepositorySecurityAndAnalysisSecretScanningStatus.
 type OptFullRepositorySecurityAndAnalysisSecretScanningStatus struct {
 	Value FullRepositorySecurityAndAnalysisSecretScanningStatus
 	Set   bool
@@ -8580,45 +7895,7 @@ func (o OptFullRepositorySecurityAndAnalysisSecretScanningStatus) Get() (v FullR
 	return o.Value, true
 }
 
-// New returns new OptGistHistoryChangeStatus with value set to v.
-func NewOptGistHistoryChangeStatus(v GistHistoryChangeStatus) OptGistHistoryChangeStatus {
-	return OptGistHistoryChangeStatus{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptGistHistoryChangeStatus is generic valiant of GistHistoryChangeStatus.
-type OptGistHistoryChangeStatus struct {
-	Value GistHistoryChangeStatus
-	Set   bool
-}
-
-// IsSet returns true if OptGistHistoryChangeStatus was set.
-func (o OptGistHistoryChangeStatus) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptGistHistoryChangeStatus) Reset() {
-	var v GistHistoryChangeStatus
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptGistHistoryChangeStatus) SetTo(v GistHistoryChangeStatus) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptGistHistoryChangeStatus) Get() (v GistHistoryChangeStatus, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptGitCreateCommitApplicationJSONRequestAuthor with value set to v.
+// NewOptGitCreateCommitApplicationJSONRequestAuthor returns new OptGitCreateCommitApplicationJSONRequestAuthor with value set to v.
 func NewOptGitCreateCommitApplicationJSONRequestAuthor(v GitCreateCommitApplicationJSONRequestAuthor) OptGitCreateCommitApplicationJSONRequestAuthor {
 	return OptGitCreateCommitApplicationJSONRequestAuthor{
 		Value: v,
@@ -8626,7 +7903,7 @@ func NewOptGitCreateCommitApplicationJSONRequestAuthor(v GitCreateCommitApplicat
 	}
 }
 
-// OptGitCreateCommitApplicationJSONRequestAuthor is generic valiant of GitCreateCommitApplicationJSONRequestAuthor.
+// OptGitCreateCommitApplicationJSONRequestAuthor is optional GitCreateCommitApplicationJSONRequestAuthor.
 type OptGitCreateCommitApplicationJSONRequestAuthor struct {
 	Value GitCreateCommitApplicationJSONRequestAuthor
 	Set   bool
@@ -8656,7 +7933,7 @@ func (o OptGitCreateCommitApplicationJSONRequestAuthor) Get() (v GitCreateCommit
 	return o.Value, true
 }
 
-// New returns new OptGitCreateCommitApplicationJSONRequestCommitter with value set to v.
+// NewOptGitCreateCommitApplicationJSONRequestCommitter returns new OptGitCreateCommitApplicationJSONRequestCommitter with value set to v.
 func NewOptGitCreateCommitApplicationJSONRequestCommitter(v GitCreateCommitApplicationJSONRequestCommitter) OptGitCreateCommitApplicationJSONRequestCommitter {
 	return OptGitCreateCommitApplicationJSONRequestCommitter{
 		Value: v,
@@ -8664,7 +7941,7 @@ func NewOptGitCreateCommitApplicationJSONRequestCommitter(v GitCreateCommitAppli
 	}
 }
 
-// OptGitCreateCommitApplicationJSONRequestCommitter is generic valiant of GitCreateCommitApplicationJSONRequestCommitter.
+// OptGitCreateCommitApplicationJSONRequestCommitter is optional GitCreateCommitApplicationJSONRequestCommitter.
 type OptGitCreateCommitApplicationJSONRequestCommitter struct {
 	Value GitCreateCommitApplicationJSONRequestCommitter
 	Set   bool
@@ -8694,7 +7971,7 @@ func (o OptGitCreateCommitApplicationJSONRequestCommitter) Get() (v GitCreateCom
 	return o.Value, true
 }
 
-// New returns new OptGitCreateTagApplicationJSONRequestTagger with value set to v.
+// NewOptGitCreateTagApplicationJSONRequestTagger returns new OptGitCreateTagApplicationJSONRequestTagger with value set to v.
 func NewOptGitCreateTagApplicationJSONRequestTagger(v GitCreateTagApplicationJSONRequestTagger) OptGitCreateTagApplicationJSONRequestTagger {
 	return OptGitCreateTagApplicationJSONRequestTagger{
 		Value: v,
@@ -8702,7 +7979,7 @@ func NewOptGitCreateTagApplicationJSONRequestTagger(v GitCreateTagApplicationJSO
 	}
 }
 
-// OptGitCreateTagApplicationJSONRequestTagger is generic valiant of GitCreateTagApplicationJSONRequestTagger.
+// OptGitCreateTagApplicationJSONRequestTagger is optional GitCreateTagApplicationJSONRequestTagger.
 type OptGitCreateTagApplicationJSONRequestTagger struct {
 	Value GitCreateTagApplicationJSONRequestTagger
 	Set   bool
@@ -8732,7 +8009,7 @@ func (o OptGitCreateTagApplicationJSONRequestTagger) Get() (v GitCreateTagApplic
 	return o.Value, true
 }
 
-// New returns new OptGitCreateTreeApplicationJSONRequestTreeItemMode with value set to v.
+// NewOptGitCreateTreeApplicationJSONRequestTreeItemMode returns new OptGitCreateTreeApplicationJSONRequestTreeItemMode with value set to v.
 func NewOptGitCreateTreeApplicationJSONRequestTreeItemMode(v GitCreateTreeApplicationJSONRequestTreeItemMode) OptGitCreateTreeApplicationJSONRequestTreeItemMode {
 	return OptGitCreateTreeApplicationJSONRequestTreeItemMode{
 		Value: v,
@@ -8740,7 +8017,7 @@ func NewOptGitCreateTreeApplicationJSONRequestTreeItemMode(v GitCreateTreeApplic
 	}
 }
 
-// OptGitCreateTreeApplicationJSONRequestTreeItemMode is generic valiant of GitCreateTreeApplicationJSONRequestTreeItemMode.
+// OptGitCreateTreeApplicationJSONRequestTreeItemMode is optional GitCreateTreeApplicationJSONRequestTreeItemMode.
 type OptGitCreateTreeApplicationJSONRequestTreeItemMode struct {
 	Value GitCreateTreeApplicationJSONRequestTreeItemMode
 	Set   bool
@@ -8770,7 +8047,7 @@ func (o OptGitCreateTreeApplicationJSONRequestTreeItemMode) Get() (v GitCreateTr
 	return o.Value, true
 }
 
-// New returns new OptGitCreateTreeApplicationJSONRequestTreeItemType with value set to v.
+// NewOptGitCreateTreeApplicationJSONRequestTreeItemType returns new OptGitCreateTreeApplicationJSONRequestTreeItemType with value set to v.
 func NewOptGitCreateTreeApplicationJSONRequestTreeItemType(v GitCreateTreeApplicationJSONRequestTreeItemType) OptGitCreateTreeApplicationJSONRequestTreeItemType {
 	return OptGitCreateTreeApplicationJSONRequestTreeItemType{
 		Value: v,
@@ -8778,7 +8055,7 @@ func NewOptGitCreateTreeApplicationJSONRequestTreeItemType(v GitCreateTreeApplic
 	}
 }
 
-// OptGitCreateTreeApplicationJSONRequestTreeItemType is generic valiant of GitCreateTreeApplicationJSONRequestTreeItemType.
+// OptGitCreateTreeApplicationJSONRequestTreeItemType is optional GitCreateTreeApplicationJSONRequestTreeItemType.
 type OptGitCreateTreeApplicationJSONRequestTreeItemType struct {
 	Value GitCreateTreeApplicationJSONRequestTreeItemType
 	Set   bool
@@ -8808,7 +8085,7 @@ func (o OptGitCreateTreeApplicationJSONRequestTreeItemType) Get() (v GitCreateTr
 	return o.Value, true
 }
 
-// New returns new OptInstallationTokenRepositorySelection with value set to v.
+// NewOptInstallationTokenRepositorySelection returns new OptInstallationTokenRepositorySelection with value set to v.
 func NewOptInstallationTokenRepositorySelection(v InstallationTokenRepositorySelection) OptInstallationTokenRepositorySelection {
 	return OptInstallationTokenRepositorySelection{
 		Value: v,
@@ -8816,7 +8093,7 @@ func NewOptInstallationTokenRepositorySelection(v InstallationTokenRepositorySel
 	}
 }
 
-// OptInstallationTokenRepositorySelection is generic valiant of InstallationTokenRepositorySelection.
+// OptInstallationTokenRepositorySelection is optional InstallationTokenRepositorySelection.
 type OptInstallationTokenRepositorySelection struct {
 	Value InstallationTokenRepositorySelection
 	Set   bool
@@ -8846,7 +8123,7 @@ func (o OptInstallationTokenRepositorySelection) Get() (v InstallationTokenRepos
 	return o.Value, true
 }
 
-// New returns new OptInt with value set to v.
+// NewOptInt returns new OptInt with value set to v.
 func NewOptInt(v int) OptInt {
 	return OptInt{
 		Value: v,
@@ -8854,7 +8131,7 @@ func NewOptInt(v int) OptInt {
 	}
 }
 
-// OptInt is generic valiant of int.
+// OptInt is optional int.
 type OptInt struct {
 	Value int
 	Set   bool
@@ -8884,45 +8161,7 @@ func (o OptInt) Get() (v int, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptInt64 with value set to v.
-func NewOptInt64(v int64) OptInt64 {
-	return OptInt64{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptInt64 is generic valiant of int64.
-type OptInt64 struct {
-	Value int64
-	Set   bool
-}
-
-// IsSet returns true if OptInt64 was set.
-func (o OptInt64) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptInt64) Reset() {
-	var v int64
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptInt64) SetTo(v int64) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptInt64) Get() (v int64, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptInteractionExpiry with value set to v.
+// NewOptInteractionExpiry returns new OptInteractionExpiry with value set to v.
 func NewOptInteractionExpiry(v InteractionExpiry) OptInteractionExpiry {
 	return OptInteractionExpiry{
 		Value: v,
@@ -8930,7 +8169,7 @@ func NewOptInteractionExpiry(v InteractionExpiry) OptInteractionExpiry {
 	}
 }
 
-// OptInteractionExpiry is generic valiant of InteractionExpiry.
+// OptInteractionExpiry is optional InteractionExpiry.
 type OptInteractionExpiry struct {
 	Value InteractionExpiry
 	Set   bool
@@ -8960,311 +8199,7 @@ func (o OptInteractionExpiry) Get() (v InteractionExpiry, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptIssueComment with value set to v.
-func NewOptIssueComment(v IssueComment) OptIssueComment {
-	return OptIssueComment{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptIssueComment is generic valiant of IssueComment.
-type OptIssueComment struct {
-	Value IssueComment
-	Set   bool
-}
-
-// IsSet returns true if OptIssueComment was set.
-func (o OptIssueComment) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptIssueComment) Reset() {
-	var v IssueComment
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptIssueComment) SetTo(v IssueComment) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptIssueComment) Get() (v IssueComment, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptIssueEventDismissedReview with value set to v.
-func NewOptIssueEventDismissedReview(v IssueEventDismissedReview) OptIssueEventDismissedReview {
-	return OptIssueEventDismissedReview{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptIssueEventDismissedReview is generic valiant of IssueEventDismissedReview.
-type OptIssueEventDismissedReview struct {
-	Value IssueEventDismissedReview
-	Set   bool
-}
-
-// IsSet returns true if OptIssueEventDismissedReview was set.
-func (o OptIssueEventDismissedReview) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptIssueEventDismissedReview) Reset() {
-	var v IssueEventDismissedReview
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptIssueEventDismissedReview) SetTo(v IssueEventDismissedReview) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptIssueEventDismissedReview) Get() (v IssueEventDismissedReview, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptIssueEventLabel with value set to v.
-func NewOptIssueEventLabel(v IssueEventLabel) OptIssueEventLabel {
-	return OptIssueEventLabel{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptIssueEventLabel is generic valiant of IssueEventLabel.
-type OptIssueEventLabel struct {
-	Value IssueEventLabel
-	Set   bool
-}
-
-// IsSet returns true if OptIssueEventLabel was set.
-func (o OptIssueEventLabel) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptIssueEventLabel) Reset() {
-	var v IssueEventLabel
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptIssueEventLabel) SetTo(v IssueEventLabel) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptIssueEventLabel) Get() (v IssueEventLabel, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptIssueEventMilestone with value set to v.
-func NewOptIssueEventMilestone(v IssueEventMilestone) OptIssueEventMilestone {
-	return OptIssueEventMilestone{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptIssueEventMilestone is generic valiant of IssueEventMilestone.
-type OptIssueEventMilestone struct {
-	Value IssueEventMilestone
-	Set   bool
-}
-
-// IsSet returns true if OptIssueEventMilestone was set.
-func (o OptIssueEventMilestone) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptIssueEventMilestone) Reset() {
-	var v IssueEventMilestone
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptIssueEventMilestone) SetTo(v IssueEventMilestone) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptIssueEventMilestone) Get() (v IssueEventMilestone, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptIssueEventProjectCard with value set to v.
-func NewOptIssueEventProjectCard(v IssueEventProjectCard) OptIssueEventProjectCard {
-	return OptIssueEventProjectCard{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptIssueEventProjectCard is generic valiant of IssueEventProjectCard.
-type OptIssueEventProjectCard struct {
-	Value IssueEventProjectCard
-	Set   bool
-}
-
-// IsSet returns true if OptIssueEventProjectCard was set.
-func (o OptIssueEventProjectCard) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptIssueEventProjectCard) Reset() {
-	var v IssueEventProjectCard
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptIssueEventProjectCard) SetTo(v IssueEventProjectCard) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptIssueEventProjectCard) Get() (v IssueEventProjectCard, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptIssueEventRename with value set to v.
-func NewOptIssueEventRename(v IssueEventRename) OptIssueEventRename {
-	return OptIssueEventRename{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptIssueEventRename is generic valiant of IssueEventRename.
-type OptIssueEventRename struct {
-	Value IssueEventRename
-	Set   bool
-}
-
-// IsSet returns true if OptIssueEventRename was set.
-func (o OptIssueEventRename) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptIssueEventRename) Reset() {
-	var v IssueEventRename
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptIssueEventRename) SetTo(v IssueEventRename) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptIssueEventRename) Get() (v IssueEventRename, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptIssueSimple with value set to v.
-func NewOptIssueSimple(v IssueSimple) OptIssueSimple {
-	return OptIssueSimple{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptIssueSimple is generic valiant of IssueSimple.
-type OptIssueSimple struct {
-	Value IssueSimple
-	Set   bool
-}
-
-// IsSet returns true if OptIssueSimple was set.
-func (o OptIssueSimple) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptIssueSimple) Reset() {
-	var v IssueSimple
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptIssueSimple) SetTo(v IssueSimple) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptIssueSimple) Get() (v IssueSimple, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptIssueSimplePullRequest with value set to v.
-func NewOptIssueSimplePullRequest(v IssueSimplePullRequest) OptIssueSimplePullRequest {
-	return OptIssueSimplePullRequest{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptIssueSimplePullRequest is generic valiant of IssueSimplePullRequest.
-type OptIssueSimplePullRequest struct {
-	Value IssueSimplePullRequest
-	Set   bool
-}
-
-// IsSet returns true if OptIssueSimplePullRequest was set.
-func (o OptIssueSimplePullRequest) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptIssueSimplePullRequest) Reset() {
-	var v IssueSimplePullRequest
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptIssueSimplePullRequest) SetTo(v IssueSimplePullRequest) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptIssueSimplePullRequest) Get() (v IssueSimplePullRequest, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptIssuesCreateMilestoneApplicationJSONRequestState with value set to v.
+// NewOptIssuesCreateMilestoneApplicationJSONRequestState returns new OptIssuesCreateMilestoneApplicationJSONRequestState with value set to v.
 func NewOptIssuesCreateMilestoneApplicationJSONRequestState(v IssuesCreateMilestoneApplicationJSONRequestState) OptIssuesCreateMilestoneApplicationJSONRequestState {
 	return OptIssuesCreateMilestoneApplicationJSONRequestState{
 		Value: v,
@@ -9272,7 +8207,7 @@ func NewOptIssuesCreateMilestoneApplicationJSONRequestState(v IssuesCreateMilest
 	}
 }
 
-// OptIssuesCreateMilestoneApplicationJSONRequestState is generic valiant of IssuesCreateMilestoneApplicationJSONRequestState.
+// OptIssuesCreateMilestoneApplicationJSONRequestState is optional IssuesCreateMilestoneApplicationJSONRequestState.
 type OptIssuesCreateMilestoneApplicationJSONRequestState struct {
 	Value IssuesCreateMilestoneApplicationJSONRequestState
 	Set   bool
@@ -9302,7 +8237,7 @@ func (o OptIssuesCreateMilestoneApplicationJSONRequestState) Get() (v IssuesCrea
 	return o.Value, true
 }
 
-// New returns new OptIssuesLockApplicationJSONRequestLockReason with value set to v.
+// NewOptIssuesLockApplicationJSONRequestLockReason returns new OptIssuesLockApplicationJSONRequestLockReason with value set to v.
 func NewOptIssuesLockApplicationJSONRequestLockReason(v IssuesLockApplicationJSONRequestLockReason) OptIssuesLockApplicationJSONRequestLockReason {
 	return OptIssuesLockApplicationJSONRequestLockReason{
 		Value: v,
@@ -9310,7 +8245,7 @@ func NewOptIssuesLockApplicationJSONRequestLockReason(v IssuesLockApplicationJSO
 	}
 }
 
-// OptIssuesLockApplicationJSONRequestLockReason is generic valiant of IssuesLockApplicationJSONRequestLockReason.
+// OptIssuesLockApplicationJSONRequestLockReason is optional IssuesLockApplicationJSONRequestLockReason.
 type OptIssuesLockApplicationJSONRequestLockReason struct {
 	Value IssuesLockApplicationJSONRequestLockReason
 	Set   bool
@@ -9340,7 +8275,7 @@ func (o OptIssuesLockApplicationJSONRequestLockReason) Get() (v IssuesLockApplic
 	return o.Value, true
 }
 
-// New returns new OptIssuesUpdateMilestoneApplicationJSONRequestState with value set to v.
+// NewOptIssuesUpdateMilestoneApplicationJSONRequestState returns new OptIssuesUpdateMilestoneApplicationJSONRequestState with value set to v.
 func NewOptIssuesUpdateMilestoneApplicationJSONRequestState(v IssuesUpdateMilestoneApplicationJSONRequestState) OptIssuesUpdateMilestoneApplicationJSONRequestState {
 	return OptIssuesUpdateMilestoneApplicationJSONRequestState{
 		Value: v,
@@ -9348,7 +8283,7 @@ func NewOptIssuesUpdateMilestoneApplicationJSONRequestState(v IssuesUpdateMilest
 	}
 }
 
-// OptIssuesUpdateMilestoneApplicationJSONRequestState is generic valiant of IssuesUpdateMilestoneApplicationJSONRequestState.
+// OptIssuesUpdateMilestoneApplicationJSONRequestState is optional IssuesUpdateMilestoneApplicationJSONRequestState.
 type OptIssuesUpdateMilestoneApplicationJSONRequestState struct {
 	Value IssuesUpdateMilestoneApplicationJSONRequestState
 	Set   bool
@@ -9378,7 +8313,7 @@ func (o OptIssuesUpdateMilestoneApplicationJSONRequestState) Get() (v IssuesUpda
 	return o.Value, true
 }
 
-// New returns new OptLinkWithType with value set to v.
+// NewOptLinkWithType returns new OptLinkWithType with value set to v.
 func NewOptLinkWithType(v LinkWithType) OptLinkWithType {
 	return OptLinkWithType{
 		Value: v,
@@ -9386,7 +8321,7 @@ func NewOptLinkWithType(v LinkWithType) OptLinkWithType {
 	}
 }
 
-// OptLinkWithType is generic valiant of LinkWithType.
+// OptLinkWithType is optional LinkWithType.
 type OptLinkWithType struct {
 	Value LinkWithType
 	Set   bool
@@ -9416,7 +8351,7 @@ func (o OptLinkWithType) Get() (v LinkWithType, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptMarkdownRenderApplicationJSONRequestMode with value set to v.
+// NewOptMarkdownRenderApplicationJSONRequestMode returns new OptMarkdownRenderApplicationJSONRequestMode with value set to v.
 func NewOptMarkdownRenderApplicationJSONRequestMode(v MarkdownRenderApplicationJSONRequestMode) OptMarkdownRenderApplicationJSONRequestMode {
 	return OptMarkdownRenderApplicationJSONRequestMode{
 		Value: v,
@@ -9424,7 +8359,7 @@ func NewOptMarkdownRenderApplicationJSONRequestMode(v MarkdownRenderApplicationJ
 	}
 }
 
-// OptMarkdownRenderApplicationJSONRequestMode is generic valiant of MarkdownRenderApplicationJSONRequestMode.
+// OptMarkdownRenderApplicationJSONRequestMode is optional MarkdownRenderApplicationJSONRequestMode.
 type OptMarkdownRenderApplicationJSONRequestMode struct {
 	Value MarkdownRenderApplicationJSONRequestMode
 	Set   bool
@@ -9454,7 +8389,7 @@ func (o OptMarkdownRenderApplicationJSONRequestMode) Get() (v MarkdownRenderAppl
 	return o.Value, true
 }
 
-// New returns new OptMarketplaceListingPlan with value set to v.
+// NewOptMarketplaceListingPlan returns new OptMarketplaceListingPlan with value set to v.
 func NewOptMarketplaceListingPlan(v MarketplaceListingPlan) OptMarketplaceListingPlan {
 	return OptMarketplaceListingPlan{
 		Value: v,
@@ -9462,7 +8397,7 @@ func NewOptMarketplaceListingPlan(v MarketplaceListingPlan) OptMarketplaceListin
 	}
 }
 
-// OptMarketplaceListingPlan is generic valiant of MarketplaceListingPlan.
+// OptMarketplaceListingPlan is optional MarketplaceListingPlan.
 type OptMarketplaceListingPlan struct {
 	Value MarketplaceListingPlan
 	Set   bool
@@ -9492,7 +8427,7 @@ func (o OptMarketplaceListingPlan) Get() (v MarketplaceListingPlan, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptMergedUpstreamMergeType with value set to v.
+// NewOptMergedUpstreamMergeType returns new OptMergedUpstreamMergeType with value set to v.
 func NewOptMergedUpstreamMergeType(v MergedUpstreamMergeType) OptMergedUpstreamMergeType {
 	return OptMergedUpstreamMergeType{
 		Value: v,
@@ -9500,7 +8435,7 @@ func NewOptMergedUpstreamMergeType(v MergedUpstreamMergeType) OptMergedUpstreamM
 	}
 }
 
-// OptMergedUpstreamMergeType is generic valiant of MergedUpstreamMergeType.
+// OptMergedUpstreamMergeType is optional MergedUpstreamMergeType.
 type OptMergedUpstreamMergeType struct {
 	Value MergedUpstreamMergeType
 	Set   bool
@@ -9530,7 +8465,7 @@ func (o OptMergedUpstreamMergeType) Get() (v MergedUpstreamMergeType, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptMigrationsStartImportApplicationJSONRequestVcs with value set to v.
+// NewOptMigrationsStartImportApplicationJSONRequestVcs returns new OptMigrationsStartImportApplicationJSONRequestVcs with value set to v.
 func NewOptMigrationsStartImportApplicationJSONRequestVcs(v MigrationsStartImportApplicationJSONRequestVcs) OptMigrationsStartImportApplicationJSONRequestVcs {
 	return OptMigrationsStartImportApplicationJSONRequestVcs{
 		Value: v,
@@ -9538,7 +8473,7 @@ func NewOptMigrationsStartImportApplicationJSONRequestVcs(v MigrationsStartImpor
 	}
 }
 
-// OptMigrationsStartImportApplicationJSONRequestVcs is generic valiant of MigrationsStartImportApplicationJSONRequestVcs.
+// OptMigrationsStartImportApplicationJSONRequestVcs is optional MigrationsStartImportApplicationJSONRequestVcs.
 type OptMigrationsStartImportApplicationJSONRequestVcs struct {
 	Value MigrationsStartImportApplicationJSONRequestVcs
 	Set   bool
@@ -9568,7 +8503,7 @@ func (o OptMigrationsStartImportApplicationJSONRequestVcs) Get() (v MigrationsSt
 	return o.Value, true
 }
 
-// New returns new OptMinimalRepositoryPermissions with value set to v.
+// NewOptMinimalRepositoryPermissions returns new OptMinimalRepositoryPermissions with value set to v.
 func NewOptMinimalRepositoryPermissions(v MinimalRepositoryPermissions) OptMinimalRepositoryPermissions {
 	return OptMinimalRepositoryPermissions{
 		Value: v,
@@ -9576,7 +8511,7 @@ func NewOptMinimalRepositoryPermissions(v MinimalRepositoryPermissions) OptMinim
 	}
 }
 
-// OptMinimalRepositoryPermissions is generic valiant of MinimalRepositoryPermissions.
+// OptMinimalRepositoryPermissions is optional MinimalRepositoryPermissions.
 type OptMinimalRepositoryPermissions struct {
 	Value MinimalRepositoryPermissions
 	Set   bool
@@ -9606,7 +8541,7 @@ func (o OptMinimalRepositoryPermissions) Get() (v MinimalRepositoryPermissions, 
 	return o.Value, true
 }
 
-// New returns new OptNilBool with value set to v.
+// NewOptNilBool returns new OptNilBool with value set to v.
 func NewOptNilBool(v bool) OptNilBool {
 	return OptNilBool{
 		Value: v,
@@ -9614,7 +8549,7 @@ func NewOptNilBool(v bool) OptNilBool {
 	}
 }
 
-// OptNilBool is generic valiant of bool.
+// OptNilBool is optional nullable bool.
 type OptNilBool struct {
 	Value bool
 	Set   bool
@@ -9653,101 +8588,7 @@ func (o OptNilBool) Get() (v bool, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptNilCodeScanningAlertRuleSecuritySeverityLevel with value set to v.
-func NewOptNilCodeScanningAlertRuleSecuritySeverityLevel(v CodeScanningAlertRuleSecuritySeverityLevel) OptNilCodeScanningAlertRuleSecuritySeverityLevel {
-	return OptNilCodeScanningAlertRuleSecuritySeverityLevel{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptNilCodeScanningAlertRuleSecuritySeverityLevel is generic valiant of CodeScanningAlertRuleSecuritySeverityLevel.
-type OptNilCodeScanningAlertRuleSecuritySeverityLevel struct {
-	Value CodeScanningAlertRuleSecuritySeverityLevel
-	Set   bool
-	Null  bool
-}
-
-// IsSet returns true if OptNilCodeScanningAlertRuleSecuritySeverityLevel was set.
-func (o OptNilCodeScanningAlertRuleSecuritySeverityLevel) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptNilCodeScanningAlertRuleSecuritySeverityLevel) Reset() {
-	var v CodeScanningAlertRuleSecuritySeverityLevel
-	o.Value = v
-	o.Set = false
-	o.Null = false
-}
-
-// SetTo sets value to v.
-func (o *OptNilCodeScanningAlertRuleSecuritySeverityLevel) SetTo(v CodeScanningAlertRuleSecuritySeverityLevel) {
-	o.Set = true
-	o.Null = false
-	o.Value = v
-}
-
-// IsSet returns true if value is Null.
-func (o OptNilCodeScanningAlertRuleSecuritySeverityLevel) IsNull() bool { return o.Null }
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptNilCodeScanningAlertRuleSecuritySeverityLevel) Get() (v CodeScanningAlertRuleSecuritySeverityLevel, ok bool) {
-	if o.Null {
-		return v, false
-	}
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptNilCodeScanningAlertRuleSeverity with value set to v.
-func NewOptNilCodeScanningAlertRuleSeverity(v CodeScanningAlertRuleSeverity) OptNilCodeScanningAlertRuleSeverity {
-	return OptNilCodeScanningAlertRuleSeverity{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptNilCodeScanningAlertRuleSeverity is generic valiant of CodeScanningAlertRuleSeverity.
-type OptNilCodeScanningAlertRuleSeverity struct {
-	Value CodeScanningAlertRuleSeverity
-	Set   bool
-	Null  bool
-}
-
-// IsSet returns true if OptNilCodeScanningAlertRuleSeverity was set.
-func (o OptNilCodeScanningAlertRuleSeverity) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptNilCodeScanningAlertRuleSeverity) Reset() {
-	var v CodeScanningAlertRuleSeverity
-	o.Value = v
-	o.Set = false
-	o.Null = false
-}
-
-// SetTo sets value to v.
-func (o *OptNilCodeScanningAlertRuleSeverity) SetTo(v CodeScanningAlertRuleSeverity) {
-	o.Set = true
-	o.Null = false
-	o.Value = v
-}
-
-// IsSet returns true if value is Null.
-func (o OptNilCodeScanningAlertRuleSeverity) IsNull() bool { return o.Null }
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptNilCodeScanningAlertRuleSeverity) Get() (v CodeScanningAlertRuleSeverity, ok bool) {
-	if o.Null {
-		return v, false
-	}
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptNilFullRepositorySecurityAndAnalysis with value set to v.
+// NewOptNilFullRepositorySecurityAndAnalysis returns new OptNilFullRepositorySecurityAndAnalysis with value set to v.
 func NewOptNilFullRepositorySecurityAndAnalysis(v FullRepositorySecurityAndAnalysis) OptNilFullRepositorySecurityAndAnalysis {
 	return OptNilFullRepositorySecurityAndAnalysis{
 		Value: v,
@@ -9755,7 +8596,7 @@ func NewOptNilFullRepositorySecurityAndAnalysis(v FullRepositorySecurityAndAnaly
 	}
 }
 
-// OptNilFullRepositorySecurityAndAnalysis is generic valiant of FullRepositorySecurityAndAnalysis.
+// OptNilFullRepositorySecurityAndAnalysis is optional nullable FullRepositorySecurityAndAnalysis.
 type OptNilFullRepositorySecurityAndAnalysis struct {
 	Value FullRepositorySecurityAndAnalysis
 	Set   bool
@@ -9794,54 +8635,7 @@ func (o OptNilFullRepositorySecurityAndAnalysis) Get() (v FullRepositorySecurity
 	return o.Value, true
 }
 
-// New returns new OptNilGistSimpleForkOf with value set to v.
-func NewOptNilGistSimpleForkOf(v GistSimpleForkOf) OptNilGistSimpleForkOf {
-	return OptNilGistSimpleForkOf{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptNilGistSimpleForkOf is generic valiant of GistSimpleForkOf.
-type OptNilGistSimpleForkOf struct {
-	Value GistSimpleForkOf
-	Set   bool
-	Null  bool
-}
-
-// IsSet returns true if OptNilGistSimpleForkOf was set.
-func (o OptNilGistSimpleForkOf) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptNilGistSimpleForkOf) Reset() {
-	var v GistSimpleForkOf
-	o.Value = v
-	o.Set = false
-	o.Null = false
-}
-
-// SetTo sets value to v.
-func (o *OptNilGistSimpleForkOf) SetTo(v GistSimpleForkOf) {
-	o.Set = true
-	o.Null = false
-	o.Value = v
-}
-
-// IsSet returns true if value is Null.
-func (o OptNilGistSimpleForkOf) IsNull() bool { return o.Null }
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptNilGistSimpleForkOf) Get() (v GistSimpleForkOf, ok bool) {
-	if o.Null {
-		return v, false
-	}
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptNilInt with value set to v.
+// NewOptNilInt returns new OptNilInt with value set to v.
 func NewOptNilInt(v int) OptNilInt {
 	return OptNilInt{
 		Value: v,
@@ -9849,7 +8643,7 @@ func NewOptNilInt(v int) OptNilInt {
 	}
 }
 
-// OptNilInt is generic valiant of int.
+// OptNilInt is optional nullable int.
 type OptNilInt struct {
 	Value int
 	Set   bool
@@ -9888,7 +8682,7 @@ func (o OptNilInt) Get() (v int, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptNilMarketplacePurchaseMarketplacePendingChange with value set to v.
+// NewOptNilMarketplacePurchaseMarketplacePendingChange returns new OptNilMarketplacePurchaseMarketplacePendingChange with value set to v.
 func NewOptNilMarketplacePurchaseMarketplacePendingChange(v MarketplacePurchaseMarketplacePendingChange) OptNilMarketplacePurchaseMarketplacePendingChange {
 	return OptNilMarketplacePurchaseMarketplacePendingChange{
 		Value: v,
@@ -9896,7 +8690,7 @@ func NewOptNilMarketplacePurchaseMarketplacePendingChange(v MarketplacePurchaseM
 	}
 }
 
-// OptNilMarketplacePurchaseMarketplacePendingChange is generic valiant of MarketplacePurchaseMarketplacePendingChange.
+// OptNilMarketplacePurchaseMarketplacePendingChange is optional nullable MarketplacePurchaseMarketplacePendingChange.
 type OptNilMarketplacePurchaseMarketplacePendingChange struct {
 	Value MarketplacePurchaseMarketplacePendingChange
 	Set   bool
@@ -9935,7 +8729,7 @@ func (o OptNilMarketplacePurchaseMarketplacePendingChange) Get() (v MarketplaceP
 	return o.Value, true
 }
 
-// New returns new OptNilMinimalRepositoryLicense with value set to v.
+// NewOptNilMinimalRepositoryLicense returns new OptNilMinimalRepositoryLicense with value set to v.
 func NewOptNilMinimalRepositoryLicense(v MinimalRepositoryLicense) OptNilMinimalRepositoryLicense {
 	return OptNilMinimalRepositoryLicense{
 		Value: v,
@@ -9943,7 +8737,7 @@ func NewOptNilMinimalRepositoryLicense(v MinimalRepositoryLicense) OptNilMinimal
 	}
 }
 
-// OptNilMinimalRepositoryLicense is generic valiant of MinimalRepositoryLicense.
+// OptNilMinimalRepositoryLicense is optional nullable MinimalRepositoryLicense.
 type OptNilMinimalRepositoryLicense struct {
 	Value MinimalRepositoryLicense
 	Set   bool
@@ -9982,7 +8776,7 @@ func (o OptNilMinimalRepositoryLicense) Get() (v MinimalRepositoryLicense, ok bo
 	return o.Value, true
 }
 
-// New returns new OptNilNullableRepositoryTemplateRepository with value set to v.
+// NewOptNilNullableRepositoryTemplateRepository returns new OptNilNullableRepositoryTemplateRepository with value set to v.
 func NewOptNilNullableRepositoryTemplateRepository(v NullableRepositoryTemplateRepository) OptNilNullableRepositoryTemplateRepository {
 	return OptNilNullableRepositoryTemplateRepository{
 		Value: v,
@@ -9990,7 +8784,7 @@ func NewOptNilNullableRepositoryTemplateRepository(v NullableRepositoryTemplateR
 	}
 }
 
-// OptNilNullableRepositoryTemplateRepository is generic valiant of NullableRepositoryTemplateRepository.
+// OptNilNullableRepositoryTemplateRepository is optional nullable NullableRepositoryTemplateRepository.
 type OptNilNullableRepositoryTemplateRepository struct {
 	Value NullableRepositoryTemplateRepository
 	Set   bool
@@ -10029,7 +8823,7 @@ func (o OptNilNullableRepositoryTemplateRepository) Get() (v NullableRepositoryT
 	return o.Value, true
 }
 
-// New returns new OptNilPageProtectedDomainState with value set to v.
+// NewOptNilPageProtectedDomainState returns new OptNilPageProtectedDomainState with value set to v.
 func NewOptNilPageProtectedDomainState(v PageProtectedDomainState) OptNilPageProtectedDomainState {
 	return OptNilPageProtectedDomainState{
 		Value: v,
@@ -10037,7 +8831,7 @@ func NewOptNilPageProtectedDomainState(v PageProtectedDomainState) OptNilPagePro
 	}
 }
 
-// OptNilPageProtectedDomainState is generic valiant of PageProtectedDomainState.
+// OptNilPageProtectedDomainState is optional nullable PageProtectedDomainState.
 type OptNilPageProtectedDomainState struct {
 	Value PageProtectedDomainState
 	Set   bool
@@ -10076,7 +8870,7 @@ func (o OptNilPageProtectedDomainState) Get() (v PageProtectedDomainState, ok bo
 	return o.Value, true
 }
 
-// New returns new OptNilPagesHealthCheckAltDomain with value set to v.
+// NewOptNilPagesHealthCheckAltDomain returns new OptNilPagesHealthCheckAltDomain with value set to v.
 func NewOptNilPagesHealthCheckAltDomain(v PagesHealthCheckAltDomain) OptNilPagesHealthCheckAltDomain {
 	return OptNilPagesHealthCheckAltDomain{
 		Value: v,
@@ -10084,7 +8878,7 @@ func NewOptNilPagesHealthCheckAltDomain(v PagesHealthCheckAltDomain) OptNilPages
 	}
 }
 
-// OptNilPagesHealthCheckAltDomain is generic valiant of PagesHealthCheckAltDomain.
+// OptNilPagesHealthCheckAltDomain is optional nullable PagesHealthCheckAltDomain.
 type OptNilPagesHealthCheckAltDomain struct {
 	Value PagesHealthCheckAltDomain
 	Set   bool
@@ -10123,7 +8917,7 @@ func (o OptNilPagesHealthCheckAltDomain) Get() (v PagesHealthCheckAltDomain, ok 
 	return o.Value, true
 }
 
-// New returns new OptNilPullRequestReviewCommentStartSide with value set to v.
+// NewOptNilPullRequestReviewCommentStartSide returns new OptNilPullRequestReviewCommentStartSide with value set to v.
 func NewOptNilPullRequestReviewCommentStartSide(v PullRequestReviewCommentStartSide) OptNilPullRequestReviewCommentStartSide {
 	return OptNilPullRequestReviewCommentStartSide{
 		Value: v,
@@ -10131,7 +8925,7 @@ func NewOptNilPullRequestReviewCommentStartSide(v PullRequestReviewCommentStartS
 	}
 }
 
-// OptNilPullRequestReviewCommentStartSide is generic valiant of PullRequestReviewCommentStartSide.
+// OptNilPullRequestReviewCommentStartSide is optional nullable PullRequestReviewCommentStartSide.
 type OptNilPullRequestReviewCommentStartSide struct {
 	Value PullRequestReviewCommentStartSide
 	Set   bool
@@ -10170,7 +8964,7 @@ func (o OptNilPullRequestReviewCommentStartSide) Get() (v PullRequestReviewComme
 	return o.Value, true
 }
 
-// New returns new OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis with value set to v.
+// NewOptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis returns new OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis with value set to v.
 func NewOptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis(v ReposUpdateApplicationJSONRequestSecurityAndAnalysis) OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis {
 	return OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis{
 		Value: v,
@@ -10178,7 +8972,7 @@ func NewOptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis(v ReposUpdate
 	}
 }
 
-// OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis is generic valiant of ReposUpdateApplicationJSONRequestSecurityAndAnalysis.
+// OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis is optional nullable ReposUpdateApplicationJSONRequestSecurityAndAnalysis.
 type OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis struct {
 	Value ReposUpdateApplicationJSONRequestSecurityAndAnalysis
 	Set   bool
@@ -10217,7 +9011,7 @@ func (o OptNilReposUpdateApplicationJSONRequestSecurityAndAnalysis) Get() (v Rep
 	return o.Value, true
 }
 
-// New returns new OptNilRepositoryTemplateRepository with value set to v.
+// NewOptNilRepositoryTemplateRepository returns new OptNilRepositoryTemplateRepository with value set to v.
 func NewOptNilRepositoryTemplateRepository(v RepositoryTemplateRepository) OptNilRepositoryTemplateRepository {
 	return OptNilRepositoryTemplateRepository{
 		Value: v,
@@ -10225,7 +9019,7 @@ func NewOptNilRepositoryTemplateRepository(v RepositoryTemplateRepository) OptNi
 	}
 }
 
-// OptNilRepositoryTemplateRepository is generic valiant of RepositoryTemplateRepository.
+// OptNilRepositoryTemplateRepository is optional nullable RepositoryTemplateRepository.
 type OptNilRepositoryTemplateRepository struct {
 	Value RepositoryTemplateRepository
 	Set   bool
@@ -10264,7 +9058,7 @@ func (o OptNilRepositoryTemplateRepository) Get() (v RepositoryTemplateRepositor
 	return o.Value, true
 }
 
-// New returns new OptNilReviewCommentStartSide with value set to v.
+// NewOptNilReviewCommentStartSide returns new OptNilReviewCommentStartSide with value set to v.
 func NewOptNilReviewCommentStartSide(v ReviewCommentStartSide) OptNilReviewCommentStartSide {
 	return OptNilReviewCommentStartSide{
 		Value: v,
@@ -10272,7 +9066,7 @@ func NewOptNilReviewCommentStartSide(v ReviewCommentStartSide) OptNilReviewComme
 	}
 }
 
-// OptNilReviewCommentStartSide is generic valiant of ReviewCommentStartSide.
+// OptNilReviewCommentStartSide is optional nullable ReviewCommentStartSide.
 type OptNilReviewCommentStartSide struct {
 	Value ReviewCommentStartSide
 	Set   bool
@@ -10311,7 +9105,7 @@ func (o OptNilReviewCommentStartSide) Get() (v ReviewCommentStartSide, ok bool) 
 	return o.Value, true
 }
 
-// New returns new OptNilString with value set to v.
+// NewOptNilString returns new OptNilString with value set to v.
 func NewOptNilString(v string) OptNilString {
 	return OptNilString{
 		Value: v,
@@ -10319,7 +9113,7 @@ func NewOptNilString(v string) OptNilString {
 	}
 }
 
-// OptNilString is generic valiant of string.
+// OptNilString is optional nullable string.
 type OptNilString struct {
 	Value string
 	Set   bool
@@ -10358,7 +9152,7 @@ func (o OptNilString) Get() (v string, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptNilTime with value set to v.
+// NewOptNilTime returns new OptNilTime with value set to v.
 func NewOptNilTime(v time.Time) OptNilTime {
 	return OptNilTime{
 		Value: v,
@@ -10366,7 +9160,7 @@ func NewOptNilTime(v time.Time) OptNilTime {
 	}
 }
 
-// OptNilTime is generic valiant of time.Time.
+// OptNilTime is optional nullable time.Time.
 type OptNilTime struct {
 	Value time.Time
 	Set   bool
@@ -10405,7 +9199,7 @@ func (o OptNilTime) Get() (v time.Time, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptNilURL with value set to v.
+// NewOptNilURL returns new OptNilURL with value set to v.
 func NewOptNilURL(v url.URL) OptNilURL {
 	return OptNilURL{
 		Value: v,
@@ -10413,7 +9207,7 @@ func NewOptNilURL(v url.URL) OptNilURL {
 	}
 }
 
-// OptNilURL is generic valiant of url.URL.
+// OptNilURL is optional nullable url.URL.
 type OptNilURL struct {
 	Value url.URL
 	Set   bool
@@ -10452,7 +9246,7 @@ func (o OptNilURL) Get() (v url.URL, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptNullableIntegration with value set to v.
+// NewOptNullableIntegration returns new OptNullableIntegration with value set to v.
 func NewOptNullableIntegration(v NullableIntegration) OptNullableIntegration {
 	return OptNullableIntegration{
 		Value: v,
@@ -10460,7 +9254,7 @@ func NewOptNullableIntegration(v NullableIntegration) OptNullableIntegration {
 	}
 }
 
-// OptNullableIntegration is generic valiant of NullableIntegration.
+// OptNullableIntegration is optional NullableIntegration.
 type OptNullableIntegration struct {
 	Value NullableIntegration
 	Set   bool
@@ -10490,7 +9284,7 @@ func (o OptNullableIntegration) Get() (v NullableIntegration, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptNullableRepository with value set to v.
+// NewOptNullableRepository returns new OptNullableRepository with value set to v.
 func NewOptNullableRepository(v NullableRepository) OptNullableRepository {
 	return OptNullableRepository{
 		Value: v,
@@ -10498,7 +9292,7 @@ func NewOptNullableRepository(v NullableRepository) OptNullableRepository {
 	}
 }
 
-// OptNullableRepository is generic valiant of NullableRepository.
+// OptNullableRepository is optional NullableRepository.
 type OptNullableRepository struct {
 	Value NullableRepository
 	Set   bool
@@ -10528,7 +9322,7 @@ func (o OptNullableRepository) Get() (v NullableRepository, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptNullableRepositoryPermissions with value set to v.
+// NewOptNullableRepositoryPermissions returns new OptNullableRepositoryPermissions with value set to v.
 func NewOptNullableRepositoryPermissions(v NullableRepositoryPermissions) OptNullableRepositoryPermissions {
 	return OptNullableRepositoryPermissions{
 		Value: v,
@@ -10536,7 +9330,7 @@ func NewOptNullableRepositoryPermissions(v NullableRepositoryPermissions) OptNul
 	}
 }
 
-// OptNullableRepositoryPermissions is generic valiant of NullableRepositoryPermissions.
+// OptNullableRepositoryPermissions is optional NullableRepositoryPermissions.
 type OptNullableRepositoryPermissions struct {
 	Value NullableRepositoryPermissions
 	Set   bool
@@ -10566,7 +9360,7 @@ func (o OptNullableRepositoryPermissions) Get() (v NullableRepositoryPermissions
 	return o.Value, true
 }
 
-// New returns new OptNullableRepositoryTemplateRepositoryOwner with value set to v.
+// NewOptNullableRepositoryTemplateRepositoryOwner returns new OptNullableRepositoryTemplateRepositoryOwner with value set to v.
 func NewOptNullableRepositoryTemplateRepositoryOwner(v NullableRepositoryTemplateRepositoryOwner) OptNullableRepositoryTemplateRepositoryOwner {
 	return OptNullableRepositoryTemplateRepositoryOwner{
 		Value: v,
@@ -10574,7 +9368,7 @@ func NewOptNullableRepositoryTemplateRepositoryOwner(v NullableRepositoryTemplat
 	}
 }
 
-// OptNullableRepositoryTemplateRepositoryOwner is generic valiant of NullableRepositoryTemplateRepositoryOwner.
+// OptNullableRepositoryTemplateRepositoryOwner is optional NullableRepositoryTemplateRepositoryOwner.
 type OptNullableRepositoryTemplateRepositoryOwner struct {
 	Value NullableRepositoryTemplateRepositoryOwner
 	Set   bool
@@ -10604,7 +9398,7 @@ func (o OptNullableRepositoryTemplateRepositoryOwner) Get() (v NullableRepositor
 	return o.Value, true
 }
 
-// New returns new OptNullableRepositoryTemplateRepositoryPermissions with value set to v.
+// NewOptNullableRepositoryTemplateRepositoryPermissions returns new OptNullableRepositoryTemplateRepositoryPermissions with value set to v.
 func NewOptNullableRepositoryTemplateRepositoryPermissions(v NullableRepositoryTemplateRepositoryPermissions) OptNullableRepositoryTemplateRepositoryPermissions {
 	return OptNullableRepositoryTemplateRepositoryPermissions{
 		Value: v,
@@ -10612,7 +9406,7 @@ func NewOptNullableRepositoryTemplateRepositoryPermissions(v NullableRepositoryT
 	}
 }
 
-// OptNullableRepositoryTemplateRepositoryPermissions is generic valiant of NullableRepositoryTemplateRepositoryPermissions.
+// OptNullableRepositoryTemplateRepositoryPermissions is optional NullableRepositoryTemplateRepositoryPermissions.
 type OptNullableRepositoryTemplateRepositoryPermissions struct {
 	Value NullableRepositoryTemplateRepositoryPermissions
 	Set   bool
@@ -10642,7 +9436,7 @@ func (o OptNullableRepositoryTemplateRepositoryPermissions) Get() (v NullableRep
 	return o.Value, true
 }
 
-// New returns new OptNullableScopedInstallation with value set to v.
+// NewOptNullableScopedInstallation returns new OptNullableScopedInstallation with value set to v.
 func NewOptNullableScopedInstallation(v NullableScopedInstallation) OptNullableScopedInstallation {
 	return OptNullableScopedInstallation{
 		Value: v,
@@ -10650,7 +9444,7 @@ func NewOptNullableScopedInstallation(v NullableScopedInstallation) OptNullableS
 	}
 }
 
-// OptNullableScopedInstallation is generic valiant of NullableScopedInstallation.
+// OptNullableScopedInstallation is optional NullableScopedInstallation.
 type OptNullableScopedInstallation struct {
 	Value NullableScopedInstallation
 	Set   bool
@@ -10680,7 +9474,7 @@ func (o OptNullableScopedInstallation) Get() (v NullableScopedInstallation, ok b
 	return o.Value, true
 }
 
-// New returns new OptNullableSimpleUser with value set to v.
+// NewOptNullableSimpleUser returns new OptNullableSimpleUser with value set to v.
 func NewOptNullableSimpleUser(v NullableSimpleUser) OptNullableSimpleUser {
 	return OptNullableSimpleUser{
 		Value: v,
@@ -10688,7 +9482,7 @@ func NewOptNullableSimpleUser(v NullableSimpleUser) OptNullableSimpleUser {
 	}
 }
 
-// OptNullableSimpleUser is generic valiant of NullableSimpleUser.
+// OptNullableSimpleUser is optional NullableSimpleUser.
 type OptNullableSimpleUser struct {
 	Value NullableSimpleUser
 	Set   bool
@@ -10718,7 +9512,7 @@ func (o OptNullableSimpleUser) Get() (v NullableSimpleUser, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptNullableTeamSimple with value set to v.
+// NewOptNullableTeamSimple returns new OptNullableTeamSimple with value set to v.
 func NewOptNullableTeamSimple(v NullableTeamSimple) OptNullableTeamSimple {
 	return OptNullableTeamSimple{
 		Value: v,
@@ -10726,7 +9520,7 @@ func NewOptNullableTeamSimple(v NullableTeamSimple) OptNullableTeamSimple {
 	}
 }
 
-// OptNullableTeamSimple is generic valiant of NullableTeamSimple.
+// OptNullableTeamSimple is optional NullableTeamSimple.
 type OptNullableTeamSimple struct {
 	Value NullableTeamSimple
 	Set   bool
@@ -10756,7 +9550,7 @@ func (o OptNullableTeamSimple) Get() (v NullableTeamSimple, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptOrgMembershipPermissions with value set to v.
+// NewOptOrgMembershipPermissions returns new OptOrgMembershipPermissions with value set to v.
 func NewOptOrgMembershipPermissions(v OrgMembershipPermissions) OptOrgMembershipPermissions {
 	return OptOrgMembershipPermissions{
 		Value: v,
@@ -10764,7 +9558,7 @@ func NewOptOrgMembershipPermissions(v OrgMembershipPermissions) OptOrgMembership
 	}
 }
 
-// OptOrgMembershipPermissions is generic valiant of OrgMembershipPermissions.
+// OptOrgMembershipPermissions is optional OrgMembershipPermissions.
 type OptOrgMembershipPermissions struct {
 	Value OrgMembershipPermissions
 	Set   bool
@@ -10794,7 +9588,7 @@ func (o OptOrgMembershipPermissions) Get() (v OrgMembershipPermissions, ok bool)
 	return o.Value, true
 }
 
-// New returns new OptOrganizationFullPlan with value set to v.
+// NewOptOrganizationFullPlan returns new OptOrganizationFullPlan with value set to v.
 func NewOptOrganizationFullPlan(v OrganizationFullPlan) OptOrganizationFullPlan {
 	return OptOrganizationFullPlan{
 		Value: v,
@@ -10802,7 +9596,7 @@ func NewOptOrganizationFullPlan(v OrganizationFullPlan) OptOrganizationFullPlan 
 	}
 }
 
-// OptOrganizationFullPlan is generic valiant of OrganizationFullPlan.
+// OptOrganizationFullPlan is optional OrganizationFullPlan.
 type OptOrganizationFullPlan struct {
 	Value OrganizationFullPlan
 	Set   bool
@@ -10832,7 +9626,7 @@ func (o OptOrganizationFullPlan) Get() (v OrganizationFullPlan, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptOrgsCreateInvitationApplicationJSONRequestRole with value set to v.
+// NewOptOrgsCreateInvitationApplicationJSONRequestRole returns new OptOrgsCreateInvitationApplicationJSONRequestRole with value set to v.
 func NewOptOrgsCreateInvitationApplicationJSONRequestRole(v OrgsCreateInvitationApplicationJSONRequestRole) OptOrgsCreateInvitationApplicationJSONRequestRole {
 	return OptOrgsCreateInvitationApplicationJSONRequestRole{
 		Value: v,
@@ -10840,7 +9634,7 @@ func NewOptOrgsCreateInvitationApplicationJSONRequestRole(v OrgsCreateInvitation
 	}
 }
 
-// OptOrgsCreateInvitationApplicationJSONRequestRole is generic valiant of OrgsCreateInvitationApplicationJSONRequestRole.
+// OptOrgsCreateInvitationApplicationJSONRequestRole is optional OrgsCreateInvitationApplicationJSONRequestRole.
 type OptOrgsCreateInvitationApplicationJSONRequestRole struct {
 	Value OrgsCreateInvitationApplicationJSONRequestRole
 	Set   bool
@@ -10870,7 +9664,7 @@ func (o OptOrgsCreateInvitationApplicationJSONRequestRole) Get() (v OrgsCreateIn
 	return o.Value, true
 }
 
-// New returns new OptOrgsSetMembershipForUserApplicationJSONRequestRole with value set to v.
+// NewOptOrgsSetMembershipForUserApplicationJSONRequestRole returns new OptOrgsSetMembershipForUserApplicationJSONRequestRole with value set to v.
 func NewOptOrgsSetMembershipForUserApplicationJSONRequestRole(v OrgsSetMembershipForUserApplicationJSONRequestRole) OptOrgsSetMembershipForUserApplicationJSONRequestRole {
 	return OptOrgsSetMembershipForUserApplicationJSONRequestRole{
 		Value: v,
@@ -10878,7 +9672,7 @@ func NewOptOrgsSetMembershipForUserApplicationJSONRequestRole(v OrgsSetMembershi
 	}
 }
 
-// OptOrgsSetMembershipForUserApplicationJSONRequestRole is generic valiant of OrgsSetMembershipForUserApplicationJSONRequestRole.
+// OptOrgsSetMembershipForUserApplicationJSONRequestRole is optional OrgsSetMembershipForUserApplicationJSONRequestRole.
 type OptOrgsSetMembershipForUserApplicationJSONRequestRole struct {
 	Value OrgsSetMembershipForUserApplicationJSONRequestRole
 	Set   bool
@@ -10908,7 +9702,7 @@ func (o OptOrgsSetMembershipForUserApplicationJSONRequestRole) Get() (v OrgsSetM
 	return o.Value, true
 }
 
-// New returns new OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission with value set to v.
+// NewOptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission returns new OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission with value set to v.
 func NewOptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission(v OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission {
 	return OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission{
 		Value: v,
@@ -10916,7 +9710,7 @@ func NewOptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission(v OrgsUpd
 	}
 }
 
-// OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission is generic valiant of OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission.
+// OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission is optional OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission.
 type OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission struct {
 	Value OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission
 	Set   bool
@@ -10946,7 +9740,7 @@ func (o OptOrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) Get() (v
 	return o.Value, true
 }
 
-// New returns new OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType with value set to v.
+// NewOptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType returns new OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType with value set to v.
 func NewOptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType(v OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType {
 	return OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType{
 		Value: v,
@@ -10954,7 +9748,7 @@ func NewOptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType(
 	}
 }
 
-// OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType is generic valiant of OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType.
+// OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType is optional OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType.
 type OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType struct {
 	Value OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType
 	Set   bool
@@ -10986,7 +9780,7 @@ func (o OptOrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType)
 	return o.Value, true
 }
 
-// New returns new OptPagesHTTPSCertificate with value set to v.
+// NewOptPagesHTTPSCertificate returns new OptPagesHTTPSCertificate with value set to v.
 func NewOptPagesHTTPSCertificate(v PagesHTTPSCertificate) OptPagesHTTPSCertificate {
 	return OptPagesHTTPSCertificate{
 		Value: v,
@@ -10994,7 +9788,7 @@ func NewOptPagesHTTPSCertificate(v PagesHTTPSCertificate) OptPagesHTTPSCertifica
 	}
 }
 
-// OptPagesHTTPSCertificate is generic valiant of PagesHTTPSCertificate.
+// OptPagesHTTPSCertificate is optional PagesHTTPSCertificate.
 type OptPagesHTTPSCertificate struct {
 	Value PagesHTTPSCertificate
 	Set   bool
@@ -11024,7 +9818,7 @@ func (o OptPagesHTTPSCertificate) Get() (v PagesHTTPSCertificate, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptPagesHealthCheckDomain with value set to v.
+// NewOptPagesHealthCheckDomain returns new OptPagesHealthCheckDomain with value set to v.
 func NewOptPagesHealthCheckDomain(v PagesHealthCheckDomain) OptPagesHealthCheckDomain {
 	return OptPagesHealthCheckDomain{
 		Value: v,
@@ -11032,7 +9826,7 @@ func NewOptPagesHealthCheckDomain(v PagesHealthCheckDomain) OptPagesHealthCheckD
 	}
 }
 
-// OptPagesHealthCheckDomain is generic valiant of PagesHealthCheckDomain.
+// OptPagesHealthCheckDomain is optional PagesHealthCheckDomain.
 type OptPagesHealthCheckDomain struct {
 	Value PagesHealthCheckDomain
 	Set   bool
@@ -11062,7 +9856,7 @@ func (o OptPagesHealthCheckDomain) Get() (v PagesHealthCheckDomain, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptPagesSourceHash with value set to v.
+// NewOptPagesSourceHash returns new OptPagesSourceHash with value set to v.
 func NewOptPagesSourceHash(v PagesSourceHash) OptPagesSourceHash {
 	return OptPagesSourceHash{
 		Value: v,
@@ -11070,7 +9864,7 @@ func NewOptPagesSourceHash(v PagesSourceHash) OptPagesSourceHash {
 	}
 }
 
-// OptPagesSourceHash is generic valiant of PagesSourceHash.
+// OptPagesSourceHash is optional PagesSourceHash.
 type OptPagesSourceHash struct {
 	Value PagesSourceHash
 	Set   bool
@@ -11100,7 +9894,7 @@ func (o OptPagesSourceHash) Get() (v PagesSourceHash, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptPrivateUserPlan with value set to v.
+// NewOptPrivateUserPlan returns new OptPrivateUserPlan with value set to v.
 func NewOptPrivateUserPlan(v PrivateUserPlan) OptPrivateUserPlan {
 	return OptPrivateUserPlan{
 		Value: v,
@@ -11108,7 +9902,7 @@ func NewOptPrivateUserPlan(v PrivateUserPlan) OptPrivateUserPlan {
 	}
 }
 
-// OptPrivateUserPlan is generic valiant of PrivateUserPlan.
+// OptPrivateUserPlan is optional PrivateUserPlan.
 type OptPrivateUserPlan struct {
 	Value PrivateUserPlan
 	Set   bool
@@ -11138,7 +9932,7 @@ func (o OptPrivateUserPlan) Get() (v PrivateUserPlan, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptProjectOrganizationPermission with value set to v.
+// NewOptProjectOrganizationPermission returns new OptProjectOrganizationPermission with value set to v.
 func NewOptProjectOrganizationPermission(v ProjectOrganizationPermission) OptProjectOrganizationPermission {
 	return OptProjectOrganizationPermission{
 		Value: v,
@@ -11146,7 +9940,7 @@ func NewOptProjectOrganizationPermission(v ProjectOrganizationPermission) OptPro
 	}
 }
 
-// OptProjectOrganizationPermission is generic valiant of ProjectOrganizationPermission.
+// OptProjectOrganizationPermission is optional ProjectOrganizationPermission.
 type OptProjectOrganizationPermission struct {
 	Value ProjectOrganizationPermission
 	Set   bool
@@ -11176,7 +9970,7 @@ func (o OptProjectOrganizationPermission) Get() (v ProjectOrganizationPermission
 	return o.Value, true
 }
 
-// New returns new OptProjectsAddCollaboratorApplicationJSONRequestPermission with value set to v.
+// NewOptProjectsAddCollaboratorApplicationJSONRequestPermission returns new OptProjectsAddCollaboratorApplicationJSONRequestPermission with value set to v.
 func NewOptProjectsAddCollaboratorApplicationJSONRequestPermission(v ProjectsAddCollaboratorApplicationJSONRequestPermission) OptProjectsAddCollaboratorApplicationJSONRequestPermission {
 	return OptProjectsAddCollaboratorApplicationJSONRequestPermission{
 		Value: v,
@@ -11184,7 +9978,7 @@ func NewOptProjectsAddCollaboratorApplicationJSONRequestPermission(v ProjectsAdd
 	}
 }
 
-// OptProjectsAddCollaboratorApplicationJSONRequestPermission is generic valiant of ProjectsAddCollaboratorApplicationJSONRequestPermission.
+// OptProjectsAddCollaboratorApplicationJSONRequestPermission is optional ProjectsAddCollaboratorApplicationJSONRequestPermission.
 type OptProjectsAddCollaboratorApplicationJSONRequestPermission struct {
 	Value ProjectsAddCollaboratorApplicationJSONRequestPermission
 	Set   bool
@@ -11214,7 +10008,7 @@ func (o OptProjectsAddCollaboratorApplicationJSONRequestPermission) Get() (v Pro
 	return o.Value, true
 }
 
-// New returns new OptProjectsUpdateApplicationJSONRequestOrganizationPermission with value set to v.
+// NewOptProjectsUpdateApplicationJSONRequestOrganizationPermission returns new OptProjectsUpdateApplicationJSONRequestOrganizationPermission with value set to v.
 func NewOptProjectsUpdateApplicationJSONRequestOrganizationPermission(v ProjectsUpdateApplicationJSONRequestOrganizationPermission) OptProjectsUpdateApplicationJSONRequestOrganizationPermission {
 	return OptProjectsUpdateApplicationJSONRequestOrganizationPermission{
 		Value: v,
@@ -11222,7 +10016,7 @@ func NewOptProjectsUpdateApplicationJSONRequestOrganizationPermission(v Projects
 	}
 }
 
-// OptProjectsUpdateApplicationJSONRequestOrganizationPermission is generic valiant of ProjectsUpdateApplicationJSONRequestOrganizationPermission.
+// OptProjectsUpdateApplicationJSONRequestOrganizationPermission is optional ProjectsUpdateApplicationJSONRequestOrganizationPermission.
 type OptProjectsUpdateApplicationJSONRequestOrganizationPermission struct {
 	Value ProjectsUpdateApplicationJSONRequestOrganizationPermission
 	Set   bool
@@ -11252,7 +10046,7 @@ func (o OptProjectsUpdateApplicationJSONRequestOrganizationPermission) Get() (v 
 	return o.Value, true
 }
 
-// New returns new OptProtectedBranchAdminEnforced with value set to v.
+// NewOptProtectedBranchAdminEnforced returns new OptProtectedBranchAdminEnforced with value set to v.
 func NewOptProtectedBranchAdminEnforced(v ProtectedBranchAdminEnforced) OptProtectedBranchAdminEnforced {
 	return OptProtectedBranchAdminEnforced{
 		Value: v,
@@ -11260,7 +10054,7 @@ func NewOptProtectedBranchAdminEnforced(v ProtectedBranchAdminEnforced) OptProte
 	}
 }
 
-// OptProtectedBranchAdminEnforced is generic valiant of ProtectedBranchAdminEnforced.
+// OptProtectedBranchAdminEnforced is optional ProtectedBranchAdminEnforced.
 type OptProtectedBranchAdminEnforced struct {
 	Value ProtectedBranchAdminEnforced
 	Set   bool
@@ -11290,7 +10084,7 @@ func (o OptProtectedBranchAdminEnforced) Get() (v ProtectedBranchAdminEnforced, 
 	return o.Value, true
 }
 
-// New returns new OptProtectedBranchAllowDeletions with value set to v.
+// NewOptProtectedBranchAllowDeletions returns new OptProtectedBranchAllowDeletions with value set to v.
 func NewOptProtectedBranchAllowDeletions(v ProtectedBranchAllowDeletions) OptProtectedBranchAllowDeletions {
 	return OptProtectedBranchAllowDeletions{
 		Value: v,
@@ -11298,7 +10092,7 @@ func NewOptProtectedBranchAllowDeletions(v ProtectedBranchAllowDeletions) OptPro
 	}
 }
 
-// OptProtectedBranchAllowDeletions is generic valiant of ProtectedBranchAllowDeletions.
+// OptProtectedBranchAllowDeletions is optional ProtectedBranchAllowDeletions.
 type OptProtectedBranchAllowDeletions struct {
 	Value ProtectedBranchAllowDeletions
 	Set   bool
@@ -11328,7 +10122,7 @@ func (o OptProtectedBranchAllowDeletions) Get() (v ProtectedBranchAllowDeletions
 	return o.Value, true
 }
 
-// New returns new OptProtectedBranchAllowForcePushes with value set to v.
+// NewOptProtectedBranchAllowForcePushes returns new OptProtectedBranchAllowForcePushes with value set to v.
 func NewOptProtectedBranchAllowForcePushes(v ProtectedBranchAllowForcePushes) OptProtectedBranchAllowForcePushes {
 	return OptProtectedBranchAllowForcePushes{
 		Value: v,
@@ -11336,7 +10130,7 @@ func NewOptProtectedBranchAllowForcePushes(v ProtectedBranchAllowForcePushes) Op
 	}
 }
 
-// OptProtectedBranchAllowForcePushes is generic valiant of ProtectedBranchAllowForcePushes.
+// OptProtectedBranchAllowForcePushes is optional ProtectedBranchAllowForcePushes.
 type OptProtectedBranchAllowForcePushes struct {
 	Value ProtectedBranchAllowForcePushes
 	Set   bool
@@ -11366,7 +10160,7 @@ func (o OptProtectedBranchAllowForcePushes) Get() (v ProtectedBranchAllowForcePu
 	return o.Value, true
 }
 
-// New returns new OptProtectedBranchEnforceAdmins with value set to v.
+// NewOptProtectedBranchEnforceAdmins returns new OptProtectedBranchEnforceAdmins with value set to v.
 func NewOptProtectedBranchEnforceAdmins(v ProtectedBranchEnforceAdmins) OptProtectedBranchEnforceAdmins {
 	return OptProtectedBranchEnforceAdmins{
 		Value: v,
@@ -11374,7 +10168,7 @@ func NewOptProtectedBranchEnforceAdmins(v ProtectedBranchEnforceAdmins) OptProte
 	}
 }
 
-// OptProtectedBranchEnforceAdmins is generic valiant of ProtectedBranchEnforceAdmins.
+// OptProtectedBranchEnforceAdmins is optional ProtectedBranchEnforceAdmins.
 type OptProtectedBranchEnforceAdmins struct {
 	Value ProtectedBranchEnforceAdmins
 	Set   bool
@@ -11404,7 +10198,7 @@ func (o OptProtectedBranchEnforceAdmins) Get() (v ProtectedBranchEnforceAdmins, 
 	return o.Value, true
 }
 
-// New returns new OptProtectedBranchPullRequestReview with value set to v.
+// NewOptProtectedBranchPullRequestReview returns new OptProtectedBranchPullRequestReview with value set to v.
 func NewOptProtectedBranchPullRequestReview(v ProtectedBranchPullRequestReview) OptProtectedBranchPullRequestReview {
 	return OptProtectedBranchPullRequestReview{
 		Value: v,
@@ -11412,7 +10206,7 @@ func NewOptProtectedBranchPullRequestReview(v ProtectedBranchPullRequestReview) 
 	}
 }
 
-// OptProtectedBranchPullRequestReview is generic valiant of ProtectedBranchPullRequestReview.
+// OptProtectedBranchPullRequestReview is optional ProtectedBranchPullRequestReview.
 type OptProtectedBranchPullRequestReview struct {
 	Value ProtectedBranchPullRequestReview
 	Set   bool
@@ -11442,7 +10236,7 @@ func (o OptProtectedBranchPullRequestReview) Get() (v ProtectedBranchPullRequest
 	return o.Value, true
 }
 
-// New returns new OptProtectedBranchPullRequestReviewDismissalRestrictions with value set to v.
+// NewOptProtectedBranchPullRequestReviewDismissalRestrictions returns new OptProtectedBranchPullRequestReviewDismissalRestrictions with value set to v.
 func NewOptProtectedBranchPullRequestReviewDismissalRestrictions(v ProtectedBranchPullRequestReviewDismissalRestrictions) OptProtectedBranchPullRequestReviewDismissalRestrictions {
 	return OptProtectedBranchPullRequestReviewDismissalRestrictions{
 		Value: v,
@@ -11450,7 +10244,7 @@ func NewOptProtectedBranchPullRequestReviewDismissalRestrictions(v ProtectedBran
 	}
 }
 
-// OptProtectedBranchPullRequestReviewDismissalRestrictions is generic valiant of ProtectedBranchPullRequestReviewDismissalRestrictions.
+// OptProtectedBranchPullRequestReviewDismissalRestrictions is optional ProtectedBranchPullRequestReviewDismissalRestrictions.
 type OptProtectedBranchPullRequestReviewDismissalRestrictions struct {
 	Value ProtectedBranchPullRequestReviewDismissalRestrictions
 	Set   bool
@@ -11480,7 +10274,7 @@ func (o OptProtectedBranchPullRequestReviewDismissalRestrictions) Get() (v Prote
 	return o.Value, true
 }
 
-// New returns new OptProtectedBranchRequiredConversationResolution with value set to v.
+// NewOptProtectedBranchRequiredConversationResolution returns new OptProtectedBranchRequiredConversationResolution with value set to v.
 func NewOptProtectedBranchRequiredConversationResolution(v ProtectedBranchRequiredConversationResolution) OptProtectedBranchRequiredConversationResolution {
 	return OptProtectedBranchRequiredConversationResolution{
 		Value: v,
@@ -11488,7 +10282,7 @@ func NewOptProtectedBranchRequiredConversationResolution(v ProtectedBranchRequir
 	}
 }
 
-// OptProtectedBranchRequiredConversationResolution is generic valiant of ProtectedBranchRequiredConversationResolution.
+// OptProtectedBranchRequiredConversationResolution is optional ProtectedBranchRequiredConversationResolution.
 type OptProtectedBranchRequiredConversationResolution struct {
 	Value ProtectedBranchRequiredConversationResolution
 	Set   bool
@@ -11518,7 +10312,7 @@ func (o OptProtectedBranchRequiredConversationResolution) Get() (v ProtectedBran
 	return o.Value, true
 }
 
-// New returns new OptProtectedBranchRequiredLinearHistory with value set to v.
+// NewOptProtectedBranchRequiredLinearHistory returns new OptProtectedBranchRequiredLinearHistory with value set to v.
 func NewOptProtectedBranchRequiredLinearHistory(v ProtectedBranchRequiredLinearHistory) OptProtectedBranchRequiredLinearHistory {
 	return OptProtectedBranchRequiredLinearHistory{
 		Value: v,
@@ -11526,7 +10320,7 @@ func NewOptProtectedBranchRequiredLinearHistory(v ProtectedBranchRequiredLinearH
 	}
 }
 
-// OptProtectedBranchRequiredLinearHistory is generic valiant of ProtectedBranchRequiredLinearHistory.
+// OptProtectedBranchRequiredLinearHistory is optional ProtectedBranchRequiredLinearHistory.
 type OptProtectedBranchRequiredLinearHistory struct {
 	Value ProtectedBranchRequiredLinearHistory
 	Set   bool
@@ -11556,7 +10350,7 @@ func (o OptProtectedBranchRequiredLinearHistory) Get() (v ProtectedBranchRequire
 	return o.Value, true
 }
 
-// New returns new OptProtectedBranchRequiredPullRequestReviews with value set to v.
+// NewOptProtectedBranchRequiredPullRequestReviews returns new OptProtectedBranchRequiredPullRequestReviews with value set to v.
 func NewOptProtectedBranchRequiredPullRequestReviews(v ProtectedBranchRequiredPullRequestReviews) OptProtectedBranchRequiredPullRequestReviews {
 	return OptProtectedBranchRequiredPullRequestReviews{
 		Value: v,
@@ -11564,7 +10358,7 @@ func NewOptProtectedBranchRequiredPullRequestReviews(v ProtectedBranchRequiredPu
 	}
 }
 
-// OptProtectedBranchRequiredPullRequestReviews is generic valiant of ProtectedBranchRequiredPullRequestReviews.
+// OptProtectedBranchRequiredPullRequestReviews is optional ProtectedBranchRequiredPullRequestReviews.
 type OptProtectedBranchRequiredPullRequestReviews struct {
 	Value ProtectedBranchRequiredPullRequestReviews
 	Set   bool
@@ -11594,7 +10388,7 @@ func (o OptProtectedBranchRequiredPullRequestReviews) Get() (v ProtectedBranchRe
 	return o.Value, true
 }
 
-// New returns new OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions with value set to v.
+// NewOptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions returns new OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions with value set to v.
 func NewOptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions(v ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions {
 	return OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions{
 		Value: v,
@@ -11602,7 +10396,7 @@ func NewOptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions(v Prot
 	}
 }
 
-// OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions is generic valiant of ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions.
+// OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions is optional ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions.
 type OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions struct {
 	Value ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions
 	Set   bool
@@ -11632,7 +10426,7 @@ func (o OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Get()
 	return o.Value, true
 }
 
-// New returns new OptProtectedBranchRequiredSignatures with value set to v.
+// NewOptProtectedBranchRequiredSignatures returns new OptProtectedBranchRequiredSignatures with value set to v.
 func NewOptProtectedBranchRequiredSignatures(v ProtectedBranchRequiredSignatures) OptProtectedBranchRequiredSignatures {
 	return OptProtectedBranchRequiredSignatures{
 		Value: v,
@@ -11640,7 +10434,7 @@ func NewOptProtectedBranchRequiredSignatures(v ProtectedBranchRequiredSignatures
 	}
 }
 
-// OptProtectedBranchRequiredSignatures is generic valiant of ProtectedBranchRequiredSignatures.
+// OptProtectedBranchRequiredSignatures is optional ProtectedBranchRequiredSignatures.
 type OptProtectedBranchRequiredSignatures struct {
 	Value ProtectedBranchRequiredSignatures
 	Set   bool
@@ -11670,159 +10464,7 @@ func (o OptProtectedBranchRequiredSignatures) Get() (v ProtectedBranchRequiredSi
 	return o.Value, true
 }
 
-// New returns new OptPublicUser with value set to v.
-func NewOptPublicUser(v PublicUser) OptPublicUser {
-	return OptPublicUser{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptPublicUser is generic valiant of PublicUser.
-type OptPublicUser struct {
-	Value PublicUser
-	Set   bool
-}
-
-// IsSet returns true if OptPublicUser was set.
-func (o OptPublicUser) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptPublicUser) Reset() {
-	var v PublicUser
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptPublicUser) SetTo(v PublicUser) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptPublicUser) Get() (v PublicUser, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptPublicUserPlan with value set to v.
-func NewOptPublicUserPlan(v PublicUserPlan) OptPublicUserPlan {
-	return OptPublicUserPlan{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptPublicUserPlan is generic valiant of PublicUserPlan.
-type OptPublicUserPlan struct {
-	Value PublicUserPlan
-	Set   bool
-}
-
-// IsSet returns true if OptPublicUserPlan was set.
-func (o OptPublicUserPlan) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptPublicUserPlan) Reset() {
-	var v PublicUserPlan
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptPublicUserPlan) SetTo(v PublicUserPlan) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptPublicUserPlan) Get() (v PublicUserPlan, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptPullRequestBaseRepoPermissions with value set to v.
-func NewOptPullRequestBaseRepoPermissions(v PullRequestBaseRepoPermissions) OptPullRequestBaseRepoPermissions {
-	return OptPullRequestBaseRepoPermissions{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptPullRequestBaseRepoPermissions is generic valiant of PullRequestBaseRepoPermissions.
-type OptPullRequestBaseRepoPermissions struct {
-	Value PullRequestBaseRepoPermissions
-	Set   bool
-}
-
-// IsSet returns true if OptPullRequestBaseRepoPermissions was set.
-func (o OptPullRequestBaseRepoPermissions) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptPullRequestBaseRepoPermissions) Reset() {
-	var v PullRequestBaseRepoPermissions
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptPullRequestBaseRepoPermissions) SetTo(v PullRequestBaseRepoPermissions) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptPullRequestBaseRepoPermissions) Get() (v PullRequestBaseRepoPermissions, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptPullRequestHeadRepoPermissions with value set to v.
-func NewOptPullRequestHeadRepoPermissions(v PullRequestHeadRepoPermissions) OptPullRequestHeadRepoPermissions {
-	return OptPullRequestHeadRepoPermissions{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptPullRequestHeadRepoPermissions is generic valiant of PullRequestHeadRepoPermissions.
-type OptPullRequestHeadRepoPermissions struct {
-	Value PullRequestHeadRepoPermissions
-	Set   bool
-}
-
-// IsSet returns true if OptPullRequestHeadRepoPermissions was set.
-func (o OptPullRequestHeadRepoPermissions) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptPullRequestHeadRepoPermissions) Reset() {
-	var v PullRequestHeadRepoPermissions
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptPullRequestHeadRepoPermissions) SetTo(v PullRequestHeadRepoPermissions) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptPullRequestHeadRepoPermissions) Get() (v PullRequestHeadRepoPermissions, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptPullRequestReviewCommentSide with value set to v.
+// NewOptPullRequestReviewCommentSide returns new OptPullRequestReviewCommentSide with value set to v.
 func NewOptPullRequestReviewCommentSide(v PullRequestReviewCommentSide) OptPullRequestReviewCommentSide {
 	return OptPullRequestReviewCommentSide{
 		Value: v,
@@ -11830,7 +10472,7 @@ func NewOptPullRequestReviewCommentSide(v PullRequestReviewCommentSide) OptPullR
 	}
 }
 
-// OptPullRequestReviewCommentSide is generic valiant of PullRequestReviewCommentSide.
+// OptPullRequestReviewCommentSide is optional PullRequestReviewCommentSide.
 type OptPullRequestReviewCommentSide struct {
 	Value PullRequestReviewCommentSide
 	Set   bool
@@ -11860,7 +10502,7 @@ func (o OptPullRequestReviewCommentSide) Get() (v PullRequestReviewCommentSide, 
 	return o.Value, true
 }
 
-// New returns new OptPullsCreateReviewApplicationJSONRequestEvent with value set to v.
+// NewOptPullsCreateReviewApplicationJSONRequestEvent returns new OptPullsCreateReviewApplicationJSONRequestEvent with value set to v.
 func NewOptPullsCreateReviewApplicationJSONRequestEvent(v PullsCreateReviewApplicationJSONRequestEvent) OptPullsCreateReviewApplicationJSONRequestEvent {
 	return OptPullsCreateReviewApplicationJSONRequestEvent{
 		Value: v,
@@ -11868,7 +10510,7 @@ func NewOptPullsCreateReviewApplicationJSONRequestEvent(v PullsCreateReviewAppli
 	}
 }
 
-// OptPullsCreateReviewApplicationJSONRequestEvent is generic valiant of PullsCreateReviewApplicationJSONRequestEvent.
+// OptPullsCreateReviewApplicationJSONRequestEvent is optional PullsCreateReviewApplicationJSONRequestEvent.
 type OptPullsCreateReviewApplicationJSONRequestEvent struct {
 	Value PullsCreateReviewApplicationJSONRequestEvent
 	Set   bool
@@ -11898,7 +10540,7 @@ func (o OptPullsCreateReviewApplicationJSONRequestEvent) Get() (v PullsCreateRev
 	return o.Value, true
 }
 
-// New returns new OptPullsCreateReviewCommentApplicationJSONRequestSide with value set to v.
+// NewOptPullsCreateReviewCommentApplicationJSONRequestSide returns new OptPullsCreateReviewCommentApplicationJSONRequestSide with value set to v.
 func NewOptPullsCreateReviewCommentApplicationJSONRequestSide(v PullsCreateReviewCommentApplicationJSONRequestSide) OptPullsCreateReviewCommentApplicationJSONRequestSide {
 	return OptPullsCreateReviewCommentApplicationJSONRequestSide{
 		Value: v,
@@ -11906,7 +10548,7 @@ func NewOptPullsCreateReviewCommentApplicationJSONRequestSide(v PullsCreateRevie
 	}
 }
 
-// OptPullsCreateReviewCommentApplicationJSONRequestSide is generic valiant of PullsCreateReviewCommentApplicationJSONRequestSide.
+// OptPullsCreateReviewCommentApplicationJSONRequestSide is optional PullsCreateReviewCommentApplicationJSONRequestSide.
 type OptPullsCreateReviewCommentApplicationJSONRequestSide struct {
 	Value PullsCreateReviewCommentApplicationJSONRequestSide
 	Set   bool
@@ -11936,7 +10578,7 @@ func (o OptPullsCreateReviewCommentApplicationJSONRequestSide) Get() (v PullsCre
 	return o.Value, true
 }
 
-// New returns new OptPullsCreateReviewCommentApplicationJSONRequestStartSide with value set to v.
+// NewOptPullsCreateReviewCommentApplicationJSONRequestStartSide returns new OptPullsCreateReviewCommentApplicationJSONRequestStartSide with value set to v.
 func NewOptPullsCreateReviewCommentApplicationJSONRequestStartSide(v PullsCreateReviewCommentApplicationJSONRequestStartSide) OptPullsCreateReviewCommentApplicationJSONRequestStartSide {
 	return OptPullsCreateReviewCommentApplicationJSONRequestStartSide{
 		Value: v,
@@ -11944,7 +10586,7 @@ func NewOptPullsCreateReviewCommentApplicationJSONRequestStartSide(v PullsCreate
 	}
 }
 
-// OptPullsCreateReviewCommentApplicationJSONRequestStartSide is generic valiant of PullsCreateReviewCommentApplicationJSONRequestStartSide.
+// OptPullsCreateReviewCommentApplicationJSONRequestStartSide is optional PullsCreateReviewCommentApplicationJSONRequestStartSide.
 type OptPullsCreateReviewCommentApplicationJSONRequestStartSide struct {
 	Value PullsCreateReviewCommentApplicationJSONRequestStartSide
 	Set   bool
@@ -11974,7 +10616,7 @@ func (o OptPullsCreateReviewCommentApplicationJSONRequestStartSide) Get() (v Pul
 	return o.Value, true
 }
 
-// New returns new OptPullsMergeApplicationJSONRequestMergeMethod with value set to v.
+// NewOptPullsMergeApplicationJSONRequestMergeMethod returns new OptPullsMergeApplicationJSONRequestMergeMethod with value set to v.
 func NewOptPullsMergeApplicationJSONRequestMergeMethod(v PullsMergeApplicationJSONRequestMergeMethod) OptPullsMergeApplicationJSONRequestMergeMethod {
 	return OptPullsMergeApplicationJSONRequestMergeMethod{
 		Value: v,
@@ -11982,7 +10624,7 @@ func NewOptPullsMergeApplicationJSONRequestMergeMethod(v PullsMergeApplicationJS
 	}
 }
 
-// OptPullsMergeApplicationJSONRequestMergeMethod is generic valiant of PullsMergeApplicationJSONRequestMergeMethod.
+// OptPullsMergeApplicationJSONRequestMergeMethod is optional PullsMergeApplicationJSONRequestMergeMethod.
 type OptPullsMergeApplicationJSONRequestMergeMethod struct {
 	Value PullsMergeApplicationJSONRequestMergeMethod
 	Set   bool
@@ -12012,7 +10654,7 @@ func (o OptPullsMergeApplicationJSONRequestMergeMethod) Get() (v PullsMergeAppli
 	return o.Value, true
 }
 
-// New returns new OptPullsUpdateApplicationJSONRequestState with value set to v.
+// NewOptPullsUpdateApplicationJSONRequestState returns new OptPullsUpdateApplicationJSONRequestState with value set to v.
 func NewOptPullsUpdateApplicationJSONRequestState(v PullsUpdateApplicationJSONRequestState) OptPullsUpdateApplicationJSONRequestState {
 	return OptPullsUpdateApplicationJSONRequestState{
 		Value: v,
@@ -12020,7 +10662,7 @@ func NewOptPullsUpdateApplicationJSONRequestState(v PullsUpdateApplicationJSONRe
 	}
 }
 
-// OptPullsUpdateApplicationJSONRequestState is generic valiant of PullsUpdateApplicationJSONRequestState.
+// OptPullsUpdateApplicationJSONRequestState is optional PullsUpdateApplicationJSONRequestState.
 type OptPullsUpdateApplicationJSONRequestState struct {
 	Value PullsUpdateApplicationJSONRequestState
 	Set   bool
@@ -12050,7 +10692,7 @@ func (o OptPullsUpdateApplicationJSONRequestState) Get() (v PullsUpdateApplicati
 	return o.Value, true
 }
 
-// New returns new OptRateLimit with value set to v.
+// NewOptRateLimit returns new OptRateLimit with value set to v.
 func NewOptRateLimit(v RateLimit) OptRateLimit {
 	return OptRateLimit{
 		Value: v,
@@ -12058,7 +10700,7 @@ func NewOptRateLimit(v RateLimit) OptRateLimit {
 	}
 }
 
-// OptRateLimit is generic valiant of RateLimit.
+// OptRateLimit is optional RateLimit.
 type OptRateLimit struct {
 	Value RateLimit
 	Set   bool
@@ -12088,7 +10730,7 @@ func (o OptRateLimit) Get() (v RateLimit, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptReactionRollup with value set to v.
+// NewOptReactionRollup returns new OptReactionRollup with value set to v.
 func NewOptReactionRollup(v ReactionRollup) OptReactionRollup {
 	return OptReactionRollup{
 		Value: v,
@@ -12096,7 +10738,7 @@ func NewOptReactionRollup(v ReactionRollup) OptReactionRollup {
 	}
 }
 
-// OptReactionRollup is generic valiant of ReactionRollup.
+// OptReactionRollup is optional ReactionRollup.
 type OptReactionRollup struct {
 	Value ReactionRollup
 	Set   bool
@@ -12126,7 +10768,7 @@ func (o OptReactionRollup) Get() (v ReactionRollup, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptReposAddCollaboratorApplicationJSONRequestPermission with value set to v.
+// NewOptReposAddCollaboratorApplicationJSONRequestPermission returns new OptReposAddCollaboratorApplicationJSONRequestPermission with value set to v.
 func NewOptReposAddCollaboratorApplicationJSONRequestPermission(v ReposAddCollaboratorApplicationJSONRequestPermission) OptReposAddCollaboratorApplicationJSONRequestPermission {
 	return OptReposAddCollaboratorApplicationJSONRequestPermission{
 		Value: v,
@@ -12134,7 +10776,7 @@ func NewOptReposAddCollaboratorApplicationJSONRequestPermission(v ReposAddCollab
 	}
 }
 
-// OptReposAddCollaboratorApplicationJSONRequestPermission is generic valiant of ReposAddCollaboratorApplicationJSONRequestPermission.
+// OptReposAddCollaboratorApplicationJSONRequestPermission is optional ReposAddCollaboratorApplicationJSONRequestPermission.
 type OptReposAddCollaboratorApplicationJSONRequestPermission struct {
 	Value ReposAddCollaboratorApplicationJSONRequestPermission
 	Set   bool
@@ -12164,7 +10806,7 @@ func (o OptReposAddCollaboratorApplicationJSONRequestPermission) Get() (v ReposA
 	return o.Value, true
 }
 
-// New returns new OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment with value set to v.
+// NewOptReposCreateDeploymentStatusApplicationJSONRequestEnvironment returns new OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment with value set to v.
 func NewOptReposCreateDeploymentStatusApplicationJSONRequestEnvironment(v ReposCreateDeploymentStatusApplicationJSONRequestEnvironment) OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment {
 	return OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment{
 		Value: v,
@@ -12172,7 +10814,7 @@ func NewOptReposCreateDeploymentStatusApplicationJSONRequestEnvironment(v ReposC
 	}
 }
 
-// OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment is generic valiant of ReposCreateDeploymentStatusApplicationJSONRequestEnvironment.
+// OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment is optional ReposCreateDeploymentStatusApplicationJSONRequestEnvironment.
 type OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment struct {
 	Value ReposCreateDeploymentStatusApplicationJSONRequestEnvironment
 	Set   bool
@@ -12202,7 +10844,7 @@ func (o OptReposCreateDeploymentStatusApplicationJSONRequestEnvironment) Get() (
 	return o.Value, true
 }
 
-// New returns new OptReposCreateInOrgApplicationJSONRequestVisibility with value set to v.
+// NewOptReposCreateInOrgApplicationJSONRequestVisibility returns new OptReposCreateInOrgApplicationJSONRequestVisibility with value set to v.
 func NewOptReposCreateInOrgApplicationJSONRequestVisibility(v ReposCreateInOrgApplicationJSONRequestVisibility) OptReposCreateInOrgApplicationJSONRequestVisibility {
 	return OptReposCreateInOrgApplicationJSONRequestVisibility{
 		Value: v,
@@ -12210,7 +10852,7 @@ func NewOptReposCreateInOrgApplicationJSONRequestVisibility(v ReposCreateInOrgAp
 	}
 }
 
-// OptReposCreateInOrgApplicationJSONRequestVisibility is generic valiant of ReposCreateInOrgApplicationJSONRequestVisibility.
+// OptReposCreateInOrgApplicationJSONRequestVisibility is optional ReposCreateInOrgApplicationJSONRequestVisibility.
 type OptReposCreateInOrgApplicationJSONRequestVisibility struct {
 	Value ReposCreateInOrgApplicationJSONRequestVisibility
 	Set   bool
@@ -12240,7 +10882,7 @@ func (o OptReposCreateInOrgApplicationJSONRequestVisibility) Get() (v ReposCreat
 	return o.Value, true
 }
 
-// New returns new OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor with value set to v.
+// NewOptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor returns new OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor with value set to v.
 func NewOptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor(v ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor {
 	return OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor{
 		Value: v,
@@ -12248,7 +10890,7 @@ func NewOptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor(v ReposCr
 	}
 }
 
-// OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor is generic valiant of ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor.
+// OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor is optional ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor.
 type OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor struct {
 	Value ReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor
 	Set   bool
@@ -12278,7 +10920,7 @@ func (o OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor) Get() (v
 	return o.Value, true
 }
 
-// New returns new OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter with value set to v.
+// NewOptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter returns new OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter with value set to v.
 func NewOptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter(v ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter {
 	return OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter{
 		Value: v,
@@ -12286,7 +10928,7 @@ func NewOptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter(v Repo
 	}
 }
 
-// OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter is generic valiant of ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter.
+// OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter is optional ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter.
 type OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter struct {
 	Value ReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter
 	Set   bool
@@ -12316,7 +10958,7 @@ func (o OptReposCreateOrUpdateFileContentsApplicationJSONRequestCommitter) Get()
 	return o.Value, true
 }
 
-// New returns new OptReposCreatePagesSiteApplicationJSONRequestSourcePath with value set to v.
+// NewOptReposCreatePagesSiteApplicationJSONRequestSourcePath returns new OptReposCreatePagesSiteApplicationJSONRequestSourcePath with value set to v.
 func NewOptReposCreatePagesSiteApplicationJSONRequestSourcePath(v ReposCreatePagesSiteApplicationJSONRequestSourcePath) OptReposCreatePagesSiteApplicationJSONRequestSourcePath {
 	return OptReposCreatePagesSiteApplicationJSONRequestSourcePath{
 		Value: v,
@@ -12324,7 +10966,7 @@ func NewOptReposCreatePagesSiteApplicationJSONRequestSourcePath(v ReposCreatePag
 	}
 }
 
-// OptReposCreatePagesSiteApplicationJSONRequestSourcePath is generic valiant of ReposCreatePagesSiteApplicationJSONRequestSourcePath.
+// OptReposCreatePagesSiteApplicationJSONRequestSourcePath is optional ReposCreatePagesSiteApplicationJSONRequestSourcePath.
 type OptReposCreatePagesSiteApplicationJSONRequestSourcePath struct {
 	Value ReposCreatePagesSiteApplicationJSONRequestSourcePath
 	Set   bool
@@ -12354,7 +10996,7 @@ func (o OptReposCreatePagesSiteApplicationJSONRequestSourcePath) Get() (v ReposC
 	return o.Value, true
 }
 
-// New returns new OptReposDeleteFileApplicationJSONRequestAuthor with value set to v.
+// NewOptReposDeleteFileApplicationJSONRequestAuthor returns new OptReposDeleteFileApplicationJSONRequestAuthor with value set to v.
 func NewOptReposDeleteFileApplicationJSONRequestAuthor(v ReposDeleteFileApplicationJSONRequestAuthor) OptReposDeleteFileApplicationJSONRequestAuthor {
 	return OptReposDeleteFileApplicationJSONRequestAuthor{
 		Value: v,
@@ -12362,7 +11004,7 @@ func NewOptReposDeleteFileApplicationJSONRequestAuthor(v ReposDeleteFileApplicat
 	}
 }
 
-// OptReposDeleteFileApplicationJSONRequestAuthor is generic valiant of ReposDeleteFileApplicationJSONRequestAuthor.
+// OptReposDeleteFileApplicationJSONRequestAuthor is optional ReposDeleteFileApplicationJSONRequestAuthor.
 type OptReposDeleteFileApplicationJSONRequestAuthor struct {
 	Value ReposDeleteFileApplicationJSONRequestAuthor
 	Set   bool
@@ -12392,7 +11034,7 @@ func (o OptReposDeleteFileApplicationJSONRequestAuthor) Get() (v ReposDeleteFile
 	return o.Value, true
 }
 
-// New returns new OptReposDeleteFileApplicationJSONRequestCommitter with value set to v.
+// NewOptReposDeleteFileApplicationJSONRequestCommitter returns new OptReposDeleteFileApplicationJSONRequestCommitter with value set to v.
 func NewOptReposDeleteFileApplicationJSONRequestCommitter(v ReposDeleteFileApplicationJSONRequestCommitter) OptReposDeleteFileApplicationJSONRequestCommitter {
 	return OptReposDeleteFileApplicationJSONRequestCommitter{
 		Value: v,
@@ -12400,7 +11042,7 @@ func NewOptReposDeleteFileApplicationJSONRequestCommitter(v ReposDeleteFileAppli
 	}
 }
 
-// OptReposDeleteFileApplicationJSONRequestCommitter is generic valiant of ReposDeleteFileApplicationJSONRequestCommitter.
+// OptReposDeleteFileApplicationJSONRequestCommitter is optional ReposDeleteFileApplicationJSONRequestCommitter.
 type OptReposDeleteFileApplicationJSONRequestCommitter struct {
 	Value ReposDeleteFileApplicationJSONRequestCommitter
 	Set   bool
@@ -12430,7 +11072,7 @@ func (o OptReposDeleteFileApplicationJSONRequestCommitter) Get() (v ReposDeleteF
 	return o.Value, true
 }
 
-// New returns new OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity with value set to v.
+// NewOptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity returns new OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity with value set to v.
 func NewOptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity(v ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity) OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity {
 	return OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity{
 		Value: v,
@@ -12438,7 +11080,7 @@ func NewOptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity(
 	}
 }
 
-// OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity is generic valiant of ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity.
+// OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity is optional ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity.
 type OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity struct {
 	Value ReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity
 	Set   bool
@@ -12470,7 +11112,7 @@ func (o OptReposUpdateApplicationJSONRequestSecurityAndAnalysisAdvancedSecurity)
 	return o.Value, true
 }
 
-// New returns new OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning with value set to v.
+// NewOptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning returns new OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning with value set to v.
 func NewOptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning(v ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning {
 	return OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning{
 		Value: v,
@@ -12478,7 +11120,7 @@ func NewOptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning(v 
 	}
 }
 
-// OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning is generic valiant of ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning.
+// OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning is optional ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning.
 type OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning struct {
 	Value ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning
 	Set   bool
@@ -12510,7 +11152,7 @@ func (o OptReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) G
 	return o.Value, true
 }
 
-// New returns new OptReposUpdateApplicationJSONRequestVisibility with value set to v.
+// NewOptReposUpdateApplicationJSONRequestVisibility returns new OptReposUpdateApplicationJSONRequestVisibility with value set to v.
 func NewOptReposUpdateApplicationJSONRequestVisibility(v ReposUpdateApplicationJSONRequestVisibility) OptReposUpdateApplicationJSONRequestVisibility {
 	return OptReposUpdateApplicationJSONRequestVisibility{
 		Value: v,
@@ -12518,7 +11160,7 @@ func NewOptReposUpdateApplicationJSONRequestVisibility(v ReposUpdateApplicationJ
 	}
 }
 
-// OptReposUpdateApplicationJSONRequestVisibility is generic valiant of ReposUpdateApplicationJSONRequestVisibility.
+// OptReposUpdateApplicationJSONRequestVisibility is optional ReposUpdateApplicationJSONRequestVisibility.
 type OptReposUpdateApplicationJSONRequestVisibility struct {
 	Value ReposUpdateApplicationJSONRequestVisibility
 	Set   bool
@@ -12548,7 +11190,7 @@ func (o OptReposUpdateApplicationJSONRequestVisibility) Get() (v ReposUpdateAppl
 	return o.Value, true
 }
 
-// New returns new OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions with value set to v.
+// NewOptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions returns new OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions with value set to v.
 func NewOptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions(v ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions) OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions {
 	return OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions{
 		Value: v,
@@ -12556,7 +11198,7 @@ func NewOptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestR
 	}
 }
 
-// OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions is generic valiant of ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions.
+// OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions is optional ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions.
 type OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions struct {
 	Value ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions
 	Set   bool
@@ -12588,7 +11230,7 @@ func (o OptReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestR
 	return o.Value, true
 }
 
-// New returns new OptReposUpdateInvitationApplicationJSONRequestPermissions with value set to v.
+// NewOptReposUpdateInvitationApplicationJSONRequestPermissions returns new OptReposUpdateInvitationApplicationJSONRequestPermissions with value set to v.
 func NewOptReposUpdateInvitationApplicationJSONRequestPermissions(v ReposUpdateInvitationApplicationJSONRequestPermissions) OptReposUpdateInvitationApplicationJSONRequestPermissions {
 	return OptReposUpdateInvitationApplicationJSONRequestPermissions{
 		Value: v,
@@ -12596,7 +11238,7 @@ func NewOptReposUpdateInvitationApplicationJSONRequestPermissions(v ReposUpdateI
 	}
 }
 
-// OptReposUpdateInvitationApplicationJSONRequestPermissions is generic valiant of ReposUpdateInvitationApplicationJSONRequestPermissions.
+// OptReposUpdateInvitationApplicationJSONRequestPermissions is optional ReposUpdateInvitationApplicationJSONRequestPermissions.
 type OptReposUpdateInvitationApplicationJSONRequestPermissions struct {
 	Value ReposUpdateInvitationApplicationJSONRequestPermissions
 	Set   bool
@@ -12626,7 +11268,7 @@ func (o OptReposUpdateInvitationApplicationJSONRequestPermissions) Get() (v Repo
 	return o.Value, true
 }
 
-// New returns new OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions with value set to v.
+// NewOptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions returns new OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions with value set to v.
 func NewOptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions(v ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions) OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions {
 	return OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions{
 		Value: v,
@@ -12634,7 +11276,7 @@ func NewOptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissal
 	}
 }
 
-// OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions is generic valiant of ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions.
+// OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions is optional ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions.
 type OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions struct {
 	Value ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions
 	Set   bool
@@ -12666,7 +11308,7 @@ func (o OptReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissal
 	return o.Value, true
 }
 
-// New returns new OptRepository with value set to v.
+// NewOptRepository returns new OptRepository with value set to v.
 func NewOptRepository(v Repository) OptRepository {
 	return OptRepository{
 		Value: v,
@@ -12674,7 +11316,7 @@ func NewOptRepository(v Repository) OptRepository {
 	}
 }
 
-// OptRepository is generic valiant of Repository.
+// OptRepository is optional Repository.
 type OptRepository struct {
 	Value Repository
 	Set   bool
@@ -12704,7 +11346,7 @@ func (o OptRepository) Get() (v Repository, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptRepositoryPermissions with value set to v.
+// NewOptRepositoryPermissions returns new OptRepositoryPermissions with value set to v.
 func NewOptRepositoryPermissions(v RepositoryPermissions) OptRepositoryPermissions {
 	return OptRepositoryPermissions{
 		Value: v,
@@ -12712,7 +11354,7 @@ func NewOptRepositoryPermissions(v RepositoryPermissions) OptRepositoryPermissio
 	}
 }
 
-// OptRepositoryPermissions is generic valiant of RepositoryPermissions.
+// OptRepositoryPermissions is optional RepositoryPermissions.
 type OptRepositoryPermissions struct {
 	Value RepositoryPermissions
 	Set   bool
@@ -12742,7 +11384,7 @@ func (o OptRepositoryPermissions) Get() (v RepositoryPermissions, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptRepositoryTemplateRepositoryOwner with value set to v.
+// NewOptRepositoryTemplateRepositoryOwner returns new OptRepositoryTemplateRepositoryOwner with value set to v.
 func NewOptRepositoryTemplateRepositoryOwner(v RepositoryTemplateRepositoryOwner) OptRepositoryTemplateRepositoryOwner {
 	return OptRepositoryTemplateRepositoryOwner{
 		Value: v,
@@ -12750,7 +11392,7 @@ func NewOptRepositoryTemplateRepositoryOwner(v RepositoryTemplateRepositoryOwner
 	}
 }
 
-// OptRepositoryTemplateRepositoryOwner is generic valiant of RepositoryTemplateRepositoryOwner.
+// OptRepositoryTemplateRepositoryOwner is optional RepositoryTemplateRepositoryOwner.
 type OptRepositoryTemplateRepositoryOwner struct {
 	Value RepositoryTemplateRepositoryOwner
 	Set   bool
@@ -12780,7 +11422,7 @@ func (o OptRepositoryTemplateRepositoryOwner) Get() (v RepositoryTemplateReposit
 	return o.Value, true
 }
 
-// New returns new OptRepositoryTemplateRepositoryPermissions with value set to v.
+// NewOptRepositoryTemplateRepositoryPermissions returns new OptRepositoryTemplateRepositoryPermissions with value set to v.
 func NewOptRepositoryTemplateRepositoryPermissions(v RepositoryTemplateRepositoryPermissions) OptRepositoryTemplateRepositoryPermissions {
 	return OptRepositoryTemplateRepositoryPermissions{
 		Value: v,
@@ -12788,7 +11430,7 @@ func NewOptRepositoryTemplateRepositoryPermissions(v RepositoryTemplateRepositor
 	}
 }
 
-// OptRepositoryTemplateRepositoryPermissions is generic valiant of RepositoryTemplateRepositoryPermissions.
+// OptRepositoryTemplateRepositoryPermissions is optional RepositoryTemplateRepositoryPermissions.
 type OptRepositoryTemplateRepositoryPermissions struct {
 	Value RepositoryTemplateRepositoryPermissions
 	Set   bool
@@ -12818,7 +11460,7 @@ func (o OptRepositoryTemplateRepositoryPermissions) Get() (v RepositoryTemplateR
 	return o.Value, true
 }
 
-// New returns new OptReviewCommentSide with value set to v.
+// NewOptReviewCommentSide returns new OptReviewCommentSide with value set to v.
 func NewOptReviewCommentSide(v ReviewCommentSide) OptReviewCommentSide {
 	return OptReviewCommentSide{
 		Value: v,
@@ -12826,7 +11468,7 @@ func NewOptReviewCommentSide(v ReviewCommentSide) OptReviewCommentSide {
 	}
 }
 
-// OptReviewCommentSide is generic valiant of ReviewCommentSide.
+// OptReviewCommentSide is optional ReviewCommentSide.
 type OptReviewCommentSide struct {
 	Value ReviewCommentSide
 	Set   bool
@@ -12856,7 +11498,7 @@ func (o OptReviewCommentSide) Get() (v ReviewCommentSide, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptRunnerLabelsItemType with value set to v.
+// NewOptRunnerLabelsItemType returns new OptRunnerLabelsItemType with value set to v.
 func NewOptRunnerLabelsItemType(v RunnerLabelsItemType) OptRunnerLabelsItemType {
 	return OptRunnerLabelsItemType{
 		Value: v,
@@ -12864,7 +11506,7 @@ func NewOptRunnerLabelsItemType(v RunnerLabelsItemType) OptRunnerLabelsItemType 
 	}
 }
 
-// OptRunnerLabelsItemType is generic valiant of RunnerLabelsItemType.
+// OptRunnerLabelsItemType is optional RunnerLabelsItemType.
 type OptRunnerLabelsItemType struct {
 	Value RunnerLabelsItemType
 	Set   bool
@@ -12894,7 +11536,7 @@ func (o OptRunnerLabelsItemType) Get() (v RunnerLabelsItemType, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptScimEnterpriseGroupMeta with value set to v.
+// NewOptScimEnterpriseGroupMeta returns new OptScimEnterpriseGroupMeta with value set to v.
 func NewOptScimEnterpriseGroupMeta(v ScimEnterpriseGroupMeta) OptScimEnterpriseGroupMeta {
 	return OptScimEnterpriseGroupMeta{
 		Value: v,
@@ -12902,7 +11544,7 @@ func NewOptScimEnterpriseGroupMeta(v ScimEnterpriseGroupMeta) OptScimEnterpriseG
 	}
 }
 
-// OptScimEnterpriseGroupMeta is generic valiant of ScimEnterpriseGroupMeta.
+// OptScimEnterpriseGroupMeta is optional ScimEnterpriseGroupMeta.
 type OptScimEnterpriseGroupMeta struct {
 	Value ScimEnterpriseGroupMeta
 	Set   bool
@@ -12932,7 +11574,7 @@ func (o OptScimEnterpriseGroupMeta) Get() (v ScimEnterpriseGroupMeta, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptScimEnterpriseUserMeta with value set to v.
+// NewOptScimEnterpriseUserMeta returns new OptScimEnterpriseUserMeta with value set to v.
 func NewOptScimEnterpriseUserMeta(v ScimEnterpriseUserMeta) OptScimEnterpriseUserMeta {
 	return OptScimEnterpriseUserMeta{
 		Value: v,
@@ -12940,7 +11582,7 @@ func NewOptScimEnterpriseUserMeta(v ScimEnterpriseUserMeta) OptScimEnterpriseUse
 	}
 }
 
-// OptScimEnterpriseUserMeta is generic valiant of ScimEnterpriseUserMeta.
+// OptScimEnterpriseUserMeta is optional ScimEnterpriseUserMeta.
 type OptScimEnterpriseUserMeta struct {
 	Value ScimEnterpriseUserMeta
 	Set   bool
@@ -12970,7 +11612,7 @@ func (o OptScimEnterpriseUserMeta) Get() (v ScimEnterpriseUserMeta, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptScimEnterpriseUserName with value set to v.
+// NewOptScimEnterpriseUserName returns new OptScimEnterpriseUserName with value set to v.
 func NewOptScimEnterpriseUserName(v ScimEnterpriseUserName) OptScimEnterpriseUserName {
 	return OptScimEnterpriseUserName{
 		Value: v,
@@ -12978,7 +11620,7 @@ func NewOptScimEnterpriseUserName(v ScimEnterpriseUserName) OptScimEnterpriseUse
 	}
 }
 
-// OptScimEnterpriseUserName is generic valiant of ScimEnterpriseUserName.
+// OptScimEnterpriseUserName is optional ScimEnterpriseUserName.
 type OptScimEnterpriseUserName struct {
 	Value ScimEnterpriseUserName
 	Set   bool
@@ -13008,7 +11650,7 @@ func (o OptScimEnterpriseUserName) Get() (v ScimEnterpriseUserName, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptScimGroupListEnterpriseResourcesItemMeta with value set to v.
+// NewOptScimGroupListEnterpriseResourcesItemMeta returns new OptScimGroupListEnterpriseResourcesItemMeta with value set to v.
 func NewOptScimGroupListEnterpriseResourcesItemMeta(v ScimGroupListEnterpriseResourcesItemMeta) OptScimGroupListEnterpriseResourcesItemMeta {
 	return OptScimGroupListEnterpriseResourcesItemMeta{
 		Value: v,
@@ -13016,7 +11658,7 @@ func NewOptScimGroupListEnterpriseResourcesItemMeta(v ScimGroupListEnterpriseRes
 	}
 }
 
-// OptScimGroupListEnterpriseResourcesItemMeta is generic valiant of ScimGroupListEnterpriseResourcesItemMeta.
+// OptScimGroupListEnterpriseResourcesItemMeta is optional ScimGroupListEnterpriseResourcesItemMeta.
 type OptScimGroupListEnterpriseResourcesItemMeta struct {
 	Value ScimGroupListEnterpriseResourcesItemMeta
 	Set   bool
@@ -13046,7 +11688,7 @@ func (o OptScimGroupListEnterpriseResourcesItemMeta) Get() (v ScimGroupListEnter
 	return o.Value, true
 }
 
-// New returns new OptScimUserListEnterpriseResourcesItemMeta with value set to v.
+// NewOptScimUserListEnterpriseResourcesItemMeta returns new OptScimUserListEnterpriseResourcesItemMeta with value set to v.
 func NewOptScimUserListEnterpriseResourcesItemMeta(v ScimUserListEnterpriseResourcesItemMeta) OptScimUserListEnterpriseResourcesItemMeta {
 	return OptScimUserListEnterpriseResourcesItemMeta{
 		Value: v,
@@ -13054,7 +11696,7 @@ func NewOptScimUserListEnterpriseResourcesItemMeta(v ScimUserListEnterpriseResou
 	}
 }
 
-// OptScimUserListEnterpriseResourcesItemMeta is generic valiant of ScimUserListEnterpriseResourcesItemMeta.
+// OptScimUserListEnterpriseResourcesItemMeta is optional ScimUserListEnterpriseResourcesItemMeta.
 type OptScimUserListEnterpriseResourcesItemMeta struct {
 	Value ScimUserListEnterpriseResourcesItemMeta
 	Set   bool
@@ -13084,7 +11726,7 @@ func (o OptScimUserListEnterpriseResourcesItemMeta) Get() (v ScimUserListEnterpr
 	return o.Value, true
 }
 
-// New returns new OptScimUserListEnterpriseResourcesItemName with value set to v.
+// NewOptScimUserListEnterpriseResourcesItemName returns new OptScimUserListEnterpriseResourcesItemName with value set to v.
 func NewOptScimUserListEnterpriseResourcesItemName(v ScimUserListEnterpriseResourcesItemName) OptScimUserListEnterpriseResourcesItemName {
 	return OptScimUserListEnterpriseResourcesItemName{
 		Value: v,
@@ -13092,7 +11734,7 @@ func NewOptScimUserListEnterpriseResourcesItemName(v ScimUserListEnterpriseResou
 	}
 }
 
-// OptScimUserListEnterpriseResourcesItemName is generic valiant of ScimUserListEnterpriseResourcesItemName.
+// OptScimUserListEnterpriseResourcesItemName is optional ScimUserListEnterpriseResourcesItemName.
 type OptScimUserListEnterpriseResourcesItemName struct {
 	Value ScimUserListEnterpriseResourcesItemName
 	Set   bool
@@ -13122,7 +11764,7 @@ func (o OptScimUserListEnterpriseResourcesItemName) Get() (v ScimUserListEnterpr
 	return o.Value, true
 }
 
-// New returns new OptSecretScanningAlertResolution with value set to v.
+// NewOptSecretScanningAlertResolution returns new OptSecretScanningAlertResolution with value set to v.
 func NewOptSecretScanningAlertResolution(v SecretScanningAlertResolution) OptSecretScanningAlertResolution {
 	return OptSecretScanningAlertResolution{
 		Value: v,
@@ -13130,7 +11772,7 @@ func NewOptSecretScanningAlertResolution(v SecretScanningAlertResolution) OptSec
 	}
 }
 
-// OptSecretScanningAlertResolution is generic valiant of SecretScanningAlertResolution.
+// OptSecretScanningAlertResolution is optional SecretScanningAlertResolution.
 type OptSecretScanningAlertResolution struct {
 	Value SecretScanningAlertResolution
 	Set   bool
@@ -13160,7 +11802,7 @@ func (o OptSecretScanningAlertResolution) Get() (v SecretScanningAlertResolution
 	return o.Value, true
 }
 
-// New returns new OptSecretScanningAlertState with value set to v.
+// NewOptSecretScanningAlertState returns new OptSecretScanningAlertState with value set to v.
 func NewOptSecretScanningAlertState(v SecretScanningAlertState) OptSecretScanningAlertState {
 	return OptSecretScanningAlertState{
 		Value: v,
@@ -13168,7 +11810,7 @@ func NewOptSecretScanningAlertState(v SecretScanningAlertState) OptSecretScannin
 	}
 }
 
-// OptSecretScanningAlertState is generic valiant of SecretScanningAlertState.
+// OptSecretScanningAlertState is optional SecretScanningAlertState.
 type OptSecretScanningAlertState struct {
 	Value SecretScanningAlertState
 	Set   bool
@@ -13198,7 +11840,7 @@ func (o OptSecretScanningAlertState) Get() (v SecretScanningAlertState, ok bool)
 	return o.Value, true
 }
 
-// New returns new OptSimpleUser with value set to v.
+// NewOptSimpleUser returns new OptSimpleUser with value set to v.
 func NewOptSimpleUser(v SimpleUser) OptSimpleUser {
 	return OptSimpleUser{
 		Value: v,
@@ -13206,7 +11848,7 @@ func NewOptSimpleUser(v SimpleUser) OptSimpleUser {
 	}
 }
 
-// OptSimpleUser is generic valiant of SimpleUser.
+// OptSimpleUser is optional SimpleUser.
 type OptSimpleUser struct {
 	Value SimpleUser
 	Set   bool
@@ -13236,7 +11878,7 @@ func (o OptSimpleUser) Get() (v SimpleUser, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptStatusCheckPolicy with value set to v.
+// NewOptStatusCheckPolicy returns new OptStatusCheckPolicy with value set to v.
 func NewOptStatusCheckPolicy(v StatusCheckPolicy) OptStatusCheckPolicy {
 	return OptStatusCheckPolicy{
 		Value: v,
@@ -13244,7 +11886,7 @@ func NewOptStatusCheckPolicy(v StatusCheckPolicy) OptStatusCheckPolicy {
 	}
 }
 
-// OptStatusCheckPolicy is generic valiant of StatusCheckPolicy.
+// OptStatusCheckPolicy is optional StatusCheckPolicy.
 type OptStatusCheckPolicy struct {
 	Value StatusCheckPolicy
 	Set   bool
@@ -13274,7 +11916,7 @@ func (o OptStatusCheckPolicy) Get() (v StatusCheckPolicy, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptString with value set to v.
+// NewOptString returns new OptString with value set to v.
 func NewOptString(v string) OptString {
 	return OptString{
 		Value: v,
@@ -13282,7 +11924,7 @@ func NewOptString(v string) OptString {
 	}
 }
 
-// OptString is generic valiant of string.
+// OptString is optional string.
 type OptString struct {
 	Value string
 	Set   bool
@@ -13312,45 +11954,7 @@ func (o OptString) Get() (v string, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptTeam with value set to v.
-func NewOptTeam(v Team) OptTeam {
-	return OptTeam{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptTeam is generic valiant of Team.
-type OptTeam struct {
-	Value Team
-	Set   bool
-}
-
-// IsSet returns true if OptTeam was set.
-func (o OptTeam) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptTeam) Reset() {
-	var v Team
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptTeam) SetTo(v Team) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptTeam) Get() (v Team, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptTeamFullPrivacy with value set to v.
+// NewOptTeamFullPrivacy returns new OptTeamFullPrivacy with value set to v.
 func NewOptTeamFullPrivacy(v TeamFullPrivacy) OptTeamFullPrivacy {
 	return OptTeamFullPrivacy{
 		Value: v,
@@ -13358,7 +11962,7 @@ func NewOptTeamFullPrivacy(v TeamFullPrivacy) OptTeamFullPrivacy {
 	}
 }
 
-// OptTeamFullPrivacy is generic valiant of TeamFullPrivacy.
+// OptTeamFullPrivacy is optional TeamFullPrivacy.
 type OptTeamFullPrivacy struct {
 	Value TeamFullPrivacy
 	Set   bool
@@ -13388,7 +11992,7 @@ func (o OptTeamFullPrivacy) Get() (v TeamFullPrivacy, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptTeamPermissions with value set to v.
+// NewOptTeamPermissions returns new OptTeamPermissions with value set to v.
 func NewOptTeamPermissions(v TeamPermissions) OptTeamPermissions {
 	return OptTeamPermissions{
 		Value: v,
@@ -13396,7 +12000,7 @@ func NewOptTeamPermissions(v TeamPermissions) OptTeamPermissions {
 	}
 }
 
-// OptTeamPermissions is generic valiant of TeamPermissions.
+// OptTeamPermissions is optional TeamPermissions.
 type OptTeamPermissions struct {
 	Value TeamPermissions
 	Set   bool
@@ -13426,7 +12030,7 @@ func (o OptTeamPermissions) Get() (v TeamPermissions, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptTeamRepositoryPermissions with value set to v.
+// NewOptTeamRepositoryPermissions returns new OptTeamRepositoryPermissions with value set to v.
 func NewOptTeamRepositoryPermissions(v TeamRepositoryPermissions) OptTeamRepositoryPermissions {
 	return OptTeamRepositoryPermissions{
 		Value: v,
@@ -13434,7 +12038,7 @@ func NewOptTeamRepositoryPermissions(v TeamRepositoryPermissions) OptTeamReposit
 	}
 }
 
-// OptTeamRepositoryPermissions is generic valiant of TeamRepositoryPermissions.
+// OptTeamRepositoryPermissions is optional TeamRepositoryPermissions.
 type OptTeamRepositoryPermissions struct {
 	Value TeamRepositoryPermissions
 	Set   bool
@@ -13464,7 +12068,7 @@ func (o OptTeamRepositoryPermissions) Get() (v TeamRepositoryPermissions, ok boo
 	return o.Value, true
 }
 
-// New returns new OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole with value set to v.
+// NewOptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole returns new OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole with value set to v.
 func NewOptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole(v TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole {
 	return OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole{
 		Value: v,
@@ -13472,7 +12076,7 @@ func NewOptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole(v Te
 	}
 }
 
-// OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole is generic valiant of TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole.
+// OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole is optional TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole.
 type OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole struct {
 	Value TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole
 	Set   bool
@@ -13504,7 +12108,7 @@ func (o OptTeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) Get
 	return o.Value, true
 }
 
-// New returns new OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole with value set to v.
+// NewOptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole returns new OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole with value set to v.
 func NewOptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole(v TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole {
 	return OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole{
 		Value: v,
@@ -13512,7 +12116,7 @@ func NewOptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole(v T
 	}
 }
 
-// OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole is generic valiant of TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole.
+// OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole is optional TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole.
 type OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole struct {
 	Value TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole
 	Set   bool
@@ -13544,7 +12148,7 @@ func (o OptTeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) Ge
 	return o.Value, true
 }
 
-// New returns new OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission with value set to v.
+// NewOptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission returns new OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission with value set to v.
 func NewOptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission(v TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission {
 	return OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission{
 		Value: v,
@@ -13552,7 +12156,7 @@ func NewOptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermissi
 	}
 }
 
-// OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission is generic valiant of TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission.
+// OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission is optional TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission.
 type OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission struct {
 	Value TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission
 	Set   bool
@@ -13584,7 +12188,7 @@ func (o OptTeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermissi
 	return o.Value, true
 }
 
-// New returns new OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission with value set to v.
+// NewOptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission returns new OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission with value set to v.
 func NewOptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission(v TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission {
 	return OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission{
 		Value: v,
@@ -13592,7 +12196,7 @@ func NewOptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermiss
 	}
 }
 
-// OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission is generic valiant of TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission.
+// OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission is optional TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission.
 type OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission struct {
 	Value TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission
 	Set   bool
@@ -13624,7 +12228,7 @@ func (o OptTeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermiss
 	return o.Value, true
 }
 
-// New returns new OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission with value set to v.
+// NewOptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission returns new OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission with value set to v.
 func NewOptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission(v TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission {
 	return OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission{
 		Value: v,
@@ -13632,7 +12236,7 @@ func NewOptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission(
 	}
 }
 
-// OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission is generic valiant of TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission.
+// OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission is optional TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission.
 type OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission struct {
 	Value TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission
 	Set   bool
@@ -13664,7 +12268,7 @@ func (o OptTeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission)
 	return o.Value, true
 }
 
-// New returns new OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission with value set to v.
+// NewOptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission returns new OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission with value set to v.
 func NewOptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission(v TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission {
 	return OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission{
 		Value: v,
@@ -13672,7 +12276,7 @@ func NewOptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission
 	}
 }
 
-// OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission is generic valiant of TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission.
+// OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission is optional TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission.
 type OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission struct {
 	Value TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission
 	Set   bool
@@ -13704,7 +12308,7 @@ func (o OptTeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission
 	return o.Value, true
 }
 
-// New returns new OptTeamsCreateApplicationJSONRequestPermission with value set to v.
+// NewOptTeamsCreateApplicationJSONRequestPermission returns new OptTeamsCreateApplicationJSONRequestPermission with value set to v.
 func NewOptTeamsCreateApplicationJSONRequestPermission(v TeamsCreateApplicationJSONRequestPermission) OptTeamsCreateApplicationJSONRequestPermission {
 	return OptTeamsCreateApplicationJSONRequestPermission{
 		Value: v,
@@ -13712,7 +12316,7 @@ func NewOptTeamsCreateApplicationJSONRequestPermission(v TeamsCreateApplicationJ
 	}
 }
 
-// OptTeamsCreateApplicationJSONRequestPermission is generic valiant of TeamsCreateApplicationJSONRequestPermission.
+// OptTeamsCreateApplicationJSONRequestPermission is optional TeamsCreateApplicationJSONRequestPermission.
 type OptTeamsCreateApplicationJSONRequestPermission struct {
 	Value TeamsCreateApplicationJSONRequestPermission
 	Set   bool
@@ -13742,7 +12346,7 @@ func (o OptTeamsCreateApplicationJSONRequestPermission) Get() (v TeamsCreateAppl
 	return o.Value, true
 }
 
-// New returns new OptTeamsCreateApplicationJSONRequestPrivacy with value set to v.
+// NewOptTeamsCreateApplicationJSONRequestPrivacy returns new OptTeamsCreateApplicationJSONRequestPrivacy with value set to v.
 func NewOptTeamsCreateApplicationJSONRequestPrivacy(v TeamsCreateApplicationJSONRequestPrivacy) OptTeamsCreateApplicationJSONRequestPrivacy {
 	return OptTeamsCreateApplicationJSONRequestPrivacy{
 		Value: v,
@@ -13750,7 +12354,7 @@ func NewOptTeamsCreateApplicationJSONRequestPrivacy(v TeamsCreateApplicationJSON
 	}
 }
 
-// OptTeamsCreateApplicationJSONRequestPrivacy is generic valiant of TeamsCreateApplicationJSONRequestPrivacy.
+// OptTeamsCreateApplicationJSONRequestPrivacy is optional TeamsCreateApplicationJSONRequestPrivacy.
 type OptTeamsCreateApplicationJSONRequestPrivacy struct {
 	Value TeamsCreateApplicationJSONRequestPrivacy
 	Set   bool
@@ -13780,7 +12384,7 @@ func (o OptTeamsCreateApplicationJSONRequestPrivacy) Get() (v TeamsCreateApplica
 	return o.Value, true
 }
 
-// New returns new OptTeamsUpdateInOrgApplicationJSONRequestPermission with value set to v.
+// NewOptTeamsUpdateInOrgApplicationJSONRequestPermission returns new OptTeamsUpdateInOrgApplicationJSONRequestPermission with value set to v.
 func NewOptTeamsUpdateInOrgApplicationJSONRequestPermission(v TeamsUpdateInOrgApplicationJSONRequestPermission) OptTeamsUpdateInOrgApplicationJSONRequestPermission {
 	return OptTeamsUpdateInOrgApplicationJSONRequestPermission{
 		Value: v,
@@ -13788,7 +12392,7 @@ func NewOptTeamsUpdateInOrgApplicationJSONRequestPermission(v TeamsUpdateInOrgAp
 	}
 }
 
-// OptTeamsUpdateInOrgApplicationJSONRequestPermission is generic valiant of TeamsUpdateInOrgApplicationJSONRequestPermission.
+// OptTeamsUpdateInOrgApplicationJSONRequestPermission is optional TeamsUpdateInOrgApplicationJSONRequestPermission.
 type OptTeamsUpdateInOrgApplicationJSONRequestPermission struct {
 	Value TeamsUpdateInOrgApplicationJSONRequestPermission
 	Set   bool
@@ -13818,7 +12422,7 @@ func (o OptTeamsUpdateInOrgApplicationJSONRequestPermission) Get() (v TeamsUpdat
 	return o.Value, true
 }
 
-// New returns new OptTeamsUpdateInOrgApplicationJSONRequestPrivacy with value set to v.
+// NewOptTeamsUpdateInOrgApplicationJSONRequestPrivacy returns new OptTeamsUpdateInOrgApplicationJSONRequestPrivacy with value set to v.
 func NewOptTeamsUpdateInOrgApplicationJSONRequestPrivacy(v TeamsUpdateInOrgApplicationJSONRequestPrivacy) OptTeamsUpdateInOrgApplicationJSONRequestPrivacy {
 	return OptTeamsUpdateInOrgApplicationJSONRequestPrivacy{
 		Value: v,
@@ -13826,7 +12430,7 @@ func NewOptTeamsUpdateInOrgApplicationJSONRequestPrivacy(v TeamsUpdateInOrgAppli
 	}
 }
 
-// OptTeamsUpdateInOrgApplicationJSONRequestPrivacy is generic valiant of TeamsUpdateInOrgApplicationJSONRequestPrivacy.
+// OptTeamsUpdateInOrgApplicationJSONRequestPrivacy is optional TeamsUpdateInOrgApplicationJSONRequestPrivacy.
 type OptTeamsUpdateInOrgApplicationJSONRequestPrivacy struct {
 	Value TeamsUpdateInOrgApplicationJSONRequestPrivacy
 	Set   bool
@@ -13856,7 +12460,7 @@ func (o OptTeamsUpdateInOrgApplicationJSONRequestPrivacy) Get() (v TeamsUpdateIn
 	return o.Value, true
 }
 
-// New returns new OptTeamsUpdateLegacyApplicationJSONRequestPermission with value set to v.
+// NewOptTeamsUpdateLegacyApplicationJSONRequestPermission returns new OptTeamsUpdateLegacyApplicationJSONRequestPermission with value set to v.
 func NewOptTeamsUpdateLegacyApplicationJSONRequestPermission(v TeamsUpdateLegacyApplicationJSONRequestPermission) OptTeamsUpdateLegacyApplicationJSONRequestPermission {
 	return OptTeamsUpdateLegacyApplicationJSONRequestPermission{
 		Value: v,
@@ -13864,7 +12468,7 @@ func NewOptTeamsUpdateLegacyApplicationJSONRequestPermission(v TeamsUpdateLegacy
 	}
 }
 
-// OptTeamsUpdateLegacyApplicationJSONRequestPermission is generic valiant of TeamsUpdateLegacyApplicationJSONRequestPermission.
+// OptTeamsUpdateLegacyApplicationJSONRequestPermission is optional TeamsUpdateLegacyApplicationJSONRequestPermission.
 type OptTeamsUpdateLegacyApplicationJSONRequestPermission struct {
 	Value TeamsUpdateLegacyApplicationJSONRequestPermission
 	Set   bool
@@ -13894,7 +12498,7 @@ func (o OptTeamsUpdateLegacyApplicationJSONRequestPermission) Get() (v TeamsUpda
 	return o.Value, true
 }
 
-// New returns new OptTeamsUpdateLegacyApplicationJSONRequestPrivacy with value set to v.
+// NewOptTeamsUpdateLegacyApplicationJSONRequestPrivacy returns new OptTeamsUpdateLegacyApplicationJSONRequestPrivacy with value set to v.
 func NewOptTeamsUpdateLegacyApplicationJSONRequestPrivacy(v TeamsUpdateLegacyApplicationJSONRequestPrivacy) OptTeamsUpdateLegacyApplicationJSONRequestPrivacy {
 	return OptTeamsUpdateLegacyApplicationJSONRequestPrivacy{
 		Value: v,
@@ -13902,7 +12506,7 @@ func NewOptTeamsUpdateLegacyApplicationJSONRequestPrivacy(v TeamsUpdateLegacyApp
 	}
 }
 
-// OptTeamsUpdateLegacyApplicationJSONRequestPrivacy is generic valiant of TeamsUpdateLegacyApplicationJSONRequestPrivacy.
+// OptTeamsUpdateLegacyApplicationJSONRequestPrivacy is optional TeamsUpdateLegacyApplicationJSONRequestPrivacy.
 type OptTeamsUpdateLegacyApplicationJSONRequestPrivacy struct {
 	Value TeamsUpdateLegacyApplicationJSONRequestPrivacy
 	Set   bool
@@ -13932,7 +12536,7 @@ func (o OptTeamsUpdateLegacyApplicationJSONRequestPrivacy) Get() (v TeamsUpdateL
 	return o.Value, true
 }
 
-// New returns new OptTime with value set to v.
+// NewOptTime returns new OptTime with value set to v.
 func NewOptTime(v time.Time) OptTime {
 	return OptTime{
 		Value: v,
@@ -13940,7 +12544,7 @@ func NewOptTime(v time.Time) OptTime {
 	}
 }
 
-// OptTime is generic valiant of time.Time.
+// OptTime is optional time.Time.
 type OptTime struct {
 	Value time.Time
 	Set   bool
@@ -13970,83 +12574,7 @@ func (o OptTime) Get() (v time.Time, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptTopicSearchResultItemAliasesItemTopicRelation with value set to v.
-func NewOptTopicSearchResultItemAliasesItemTopicRelation(v TopicSearchResultItemAliasesItemTopicRelation) OptTopicSearchResultItemAliasesItemTopicRelation {
-	return OptTopicSearchResultItemAliasesItemTopicRelation{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptTopicSearchResultItemAliasesItemTopicRelation is generic valiant of TopicSearchResultItemAliasesItemTopicRelation.
-type OptTopicSearchResultItemAliasesItemTopicRelation struct {
-	Value TopicSearchResultItemAliasesItemTopicRelation
-	Set   bool
-}
-
-// IsSet returns true if OptTopicSearchResultItemAliasesItemTopicRelation was set.
-func (o OptTopicSearchResultItemAliasesItemTopicRelation) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptTopicSearchResultItemAliasesItemTopicRelation) Reset() {
-	var v TopicSearchResultItemAliasesItemTopicRelation
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptTopicSearchResultItemAliasesItemTopicRelation) SetTo(v TopicSearchResultItemAliasesItemTopicRelation) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptTopicSearchResultItemAliasesItemTopicRelation) Get() (v TopicSearchResultItemAliasesItemTopicRelation, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptTopicSearchResultItemRelatedItemTopicRelation with value set to v.
-func NewOptTopicSearchResultItemRelatedItemTopicRelation(v TopicSearchResultItemRelatedItemTopicRelation) OptTopicSearchResultItemRelatedItemTopicRelation {
-	return OptTopicSearchResultItemRelatedItemTopicRelation{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptTopicSearchResultItemRelatedItemTopicRelation is generic valiant of TopicSearchResultItemRelatedItemTopicRelation.
-type OptTopicSearchResultItemRelatedItemTopicRelation struct {
-	Value TopicSearchResultItemRelatedItemTopicRelation
-	Set   bool
-}
-
-// IsSet returns true if OptTopicSearchResultItemRelatedItemTopicRelation was set.
-func (o OptTopicSearchResultItemRelatedItemTopicRelation) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptTopicSearchResultItemRelatedItemTopicRelation) Reset() {
-	var v TopicSearchResultItemRelatedItemTopicRelation
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptTopicSearchResultItemRelatedItemTopicRelation) SetTo(v TopicSearchResultItemRelatedItemTopicRelation) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptTopicSearchResultItemRelatedItemTopicRelation) Get() (v TopicSearchResultItemRelatedItemTopicRelation, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// New returns new OptURL with value set to v.
+// NewOptURL returns new OptURL with value set to v.
 func NewOptURL(v url.URL) OptURL {
 	return OptURL{
 		Value: v,
@@ -14054,7 +12582,7 @@ func NewOptURL(v url.URL) OptURL {
 	}
 }
 
-// OptURL is generic valiant of url.URL.
+// OptURL is optional url.URL.
 type OptURL struct {
 	Value url.URL
 	Set   bool
@@ -14084,7 +12612,7 @@ func (o OptURL) Get() (v url.URL, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptVerification with value set to v.
+// NewOptVerification returns new OptVerification with value set to v.
 func NewOptVerification(v Verification) OptVerification {
 	return OptVerification{
 		Value: v,
@@ -14092,7 +12620,7 @@ func NewOptVerification(v Verification) OptVerification {
 	}
 }
 
-// OptVerification is generic valiant of Verification.
+// OptVerification is optional Verification.
 type OptVerification struct {
 	Value Verification
 	Set   bool
@@ -14122,7 +12650,7 @@ func (o OptVerification) Get() (v Verification, ok bool) {
 	return o.Value, true
 }
 
-// New returns new OptWorkflowRunUsageBillableMACOS with value set to v.
+// NewOptWorkflowRunUsageBillableMACOS returns new OptWorkflowRunUsageBillableMACOS with value set to v.
 func NewOptWorkflowRunUsageBillableMACOS(v WorkflowRunUsageBillableMACOS) OptWorkflowRunUsageBillableMACOS {
 	return OptWorkflowRunUsageBillableMACOS{
 		Value: v,
@@ -14130,7 +12658,7 @@ func NewOptWorkflowRunUsageBillableMACOS(v WorkflowRunUsageBillableMACOS) OptWor
 	}
 }
 
-// OptWorkflowRunUsageBillableMACOS is generic valiant of WorkflowRunUsageBillableMACOS.
+// OptWorkflowRunUsageBillableMACOS is optional WorkflowRunUsageBillableMACOS.
 type OptWorkflowRunUsageBillableMACOS struct {
 	Value WorkflowRunUsageBillableMACOS
 	Set   bool
@@ -14160,7 +12688,7 @@ func (o OptWorkflowRunUsageBillableMACOS) Get() (v WorkflowRunUsageBillableMACOS
 	return o.Value, true
 }
 
-// New returns new OptWorkflowRunUsageBillableUBUNTU with value set to v.
+// NewOptWorkflowRunUsageBillableUBUNTU returns new OptWorkflowRunUsageBillableUBUNTU with value set to v.
 func NewOptWorkflowRunUsageBillableUBUNTU(v WorkflowRunUsageBillableUBUNTU) OptWorkflowRunUsageBillableUBUNTU {
 	return OptWorkflowRunUsageBillableUBUNTU{
 		Value: v,
@@ -14168,7 +12696,7 @@ func NewOptWorkflowRunUsageBillableUBUNTU(v WorkflowRunUsageBillableUBUNTU) OptW
 	}
 }
 
-// OptWorkflowRunUsageBillableUBUNTU is generic valiant of WorkflowRunUsageBillableUBUNTU.
+// OptWorkflowRunUsageBillableUBUNTU is optional WorkflowRunUsageBillableUBUNTU.
 type OptWorkflowRunUsageBillableUBUNTU struct {
 	Value WorkflowRunUsageBillableUBUNTU
 	Set   bool
@@ -14198,7 +12726,7 @@ func (o OptWorkflowRunUsageBillableUBUNTU) Get() (v WorkflowRunUsageBillableUBUN
 	return o.Value, true
 }
 
-// New returns new OptWorkflowRunUsageBillableWINDOWS with value set to v.
+// NewOptWorkflowRunUsageBillableWINDOWS returns new OptWorkflowRunUsageBillableWINDOWS with value set to v.
 func NewOptWorkflowRunUsageBillableWINDOWS(v WorkflowRunUsageBillableWINDOWS) OptWorkflowRunUsageBillableWINDOWS {
 	return OptWorkflowRunUsageBillableWINDOWS{
 		Value: v,
@@ -14206,7 +12734,7 @@ func NewOptWorkflowRunUsageBillableWINDOWS(v WorkflowRunUsageBillableWINDOWS) Op
 	}
 }
 
-// OptWorkflowRunUsageBillableWINDOWS is generic valiant of WorkflowRunUsageBillableWINDOWS.
+// OptWorkflowRunUsageBillableWINDOWS is optional WorkflowRunUsageBillableWINDOWS.
 type OptWorkflowRunUsageBillableWINDOWS struct {
 	Value WorkflowRunUsageBillableWINDOWS
 	Set   bool
@@ -14448,7 +12976,7 @@ type OrgsCreateInvitationApplicationJSONRequest struct {
 	Email     OptString                                         `json:"email"`
 	InviteeID OptInt                                            `json:"invitee_id"`
 	Role      OptOrgsCreateInvitationApplicationJSONRequestRole `json:"role"`
-	TeamIds   *[]int                                            `json:"team_ids"`
+	TeamIds   []int                                             `json:"team_ids"`
 }
 
 func (*OrgsCreateInvitationApplicationJSONRequest) orgsCreateInvitationRequest() {}
@@ -14837,7 +13365,6 @@ func (*PreviewHeaderMissing) reposGetBranchResponse()                     {}
 func (*PreviewHeaderMissing) reposGetDeploymentStatusResponse()           {}
 func (*PreviewHeaderMissing) reposGetReleaseAssetResponse()               {}
 func (*PreviewHeaderMissing) reposReplaceAllTopicsResponse()              {}
-func (*PreviewHeaderMissing) searchTopicsResponse()                       {}
 func (*PreviewHeaderMissing) usersListBlockedByAuthenticatedResponse()    {}
 
 // PrivateUser describes #/components/schemas/private-user.
@@ -15070,7 +13597,7 @@ func (*ProjectsDeleteCardApplicationJSONUnauthorized) projectsDeleteCardResponse
 
 type ProjectsDeleteCardForbidden struct {
 	DocumentationURL OptString `json:"documentation_url"`
-	Errors           *[]string `json:"errors"`
+	Errors           []string  `json:"errors"`
 	Message          OptString `json:"message"`
 }
 
@@ -15094,7 +13621,7 @@ func (*ProjectsDeleteColumnNoContent) projectsDeleteColumnResponse() {}
 
 type ProjectsDeleteForbidden struct {
 	DocumentationURL OptString `json:"documentation_url"`
-	Errors           *[]string `json:"errors"`
+	Errors           []string  `json:"errors"`
 	Message          OptString `json:"message"`
 }
 
@@ -15158,9 +13685,9 @@ func (*ProjectsMoveCardApplicationJSONRequest) projectsMoveCardRequest() {}
 type ProjectsMoveCardCreated struct{}
 
 type ProjectsMoveCardForbidden struct {
-	DocumentationURL OptString                              `json:"documentation_url"`
-	Errors           *[]ProjectsMoveCardForbiddenErrorsItem `json:"errors"`
-	Message          OptString                              `json:"message"`
+	DocumentationURL OptString                             `json:"documentation_url"`
+	Errors           []ProjectsMoveCardForbiddenErrorsItem `json:"errors"`
+	Message          OptString                             `json:"message"`
 }
 
 type ProjectsMoveCardForbiddenErrorsItem struct {
@@ -15244,7 +13771,7 @@ func (*ProjectsUpdateColumnApplicationJSONUnauthorized) projectsUpdateColumnResp
 
 type ProjectsUpdateForbidden struct {
 	DocumentationURL OptString `json:"documentation_url"`
-	Errors           *[]string `json:"errors"`
+	Errors           []string  `json:"errors"`
 	Message          OptString `json:"message"`
 }
 
@@ -15302,11 +13829,11 @@ type ProtectedBranchPullRequestReview struct {
 }
 
 type ProtectedBranchPullRequestReviewDismissalRestrictions struct {
-	Teams    *[]Team       `json:"teams"`
-	TeamsURL OptString     `json:"teams_url"`
-	URL      OptString     `json:"url"`
-	Users    *[]SimpleUser `json:"users"`
-	UsersURL OptString     `json:"users_url"`
+	Teams    []Team       `json:"teams"`
+	TeamsURL OptString    `json:"teams_url"`
+	URL      OptString    `json:"url"`
+	Users    []SimpleUser `json:"users"`
+	UsersURL OptString    `json:"users_url"`
 }
 
 type ProtectedBranchRequiredConversationResolution struct {
@@ -15336,423 +13863,6 @@ type ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions struct {
 type ProtectedBranchRequiredSignatures struct {
 	Enabled bool    `json:"enabled"`
 	URL     url.URL `json:"url"`
-}
-
-// PublicUser describes #/components/schemas/public-user.
-type PublicUser struct {
-	AvatarURL         url.URL           `json:"avatar_url"`
-	Bio               NilString         `json:"bio"`
-	Blog              NilString         `json:"blog"`
-	Collaborators     OptInt            `json:"collaborators"`
-	Company           NilString         `json:"company"`
-	CreatedAt         time.Time         `json:"created_at"`
-	DiskUsage         OptInt            `json:"disk_usage"`
-	Email             NilString         `json:"email"`
-	EventsURL         string            `json:"events_url"`
-	Followers         int               `json:"followers"`
-	FollowersURL      url.URL           `json:"followers_url"`
-	Following         int               `json:"following"`
-	FollowingURL      string            `json:"following_url"`
-	GistsURL          string            `json:"gists_url"`
-	GravatarID        NilString         `json:"gravatar_id"`
-	HTMLURL           url.URL           `json:"html_url"`
-	Hireable          NilBool           `json:"hireable"`
-	ID                int               `json:"id"`
-	Location          NilString         `json:"location"`
-	Login             string            `json:"login"`
-	Name              NilString         `json:"name"`
-	NodeID            string            `json:"node_id"`
-	OrganizationsURL  url.URL           `json:"organizations_url"`
-	OwnedPrivateRepos OptInt            `json:"owned_private_repos"`
-	Plan              OptPublicUserPlan `json:"plan"`
-	PrivateGists      OptInt            `json:"private_gists"`
-	PublicGists       int               `json:"public_gists"`
-	PublicRepos       int               `json:"public_repos"`
-	ReceivedEventsURL url.URL           `json:"received_events_url"`
-	ReposURL          url.URL           `json:"repos_url"`
-	SiteAdmin         bool              `json:"site_admin"`
-	StarredURL        string            `json:"starred_url"`
-	SubscriptionsURL  url.URL           `json:"subscriptions_url"`
-	SuspendedAt       OptNilTime        `json:"suspended_at"`
-	TotalPrivateRepos OptInt            `json:"total_private_repos"`
-	TwitterUsername   OptNilString      `json:"twitter_username"`
-	Type              string            `json:"type"`
-	URL               url.URL           `json:"url"`
-	UpdatedAt         time.Time         `json:"updated_at"`
-}
-
-type PublicUserPlan struct {
-	Collaborators int    `json:"collaborators"`
-	Name          string `json:"name"`
-	PrivateRepos  int    `json:"private_repos"`
-	Space         int    `json:"space"`
-}
-
-// PullRequest describes #/components/schemas/pull-request.
-type PullRequest struct {
-	ActiveLockReason    OptNilString            `json:"active_lock_reason"`
-	Additions           int                     `json:"additions"`
-	Assignee            NullableSimpleUser      `json:"assignee"`
-	Assignees           *[]SimpleUser           `json:"assignees"`
-	AuthorAssociation   AuthorAssociation       `json:"author_association"`
-	AutoMerge           AutoMerge               `json:"auto_merge"`
-	Base                PullRequestBase         `json:"base"`
-	Body                NilString               `json:"body"`
-	ChangedFiles        int                     `json:"changed_files"`
-	ClosedAt            NilTime                 `json:"closed_at"`
-	Comments            int                     `json:"comments"`
-	CommentsURL         url.URL                 `json:"comments_url"`
-	Commits             int                     `json:"commits"`
-	CommitsURL          url.URL                 `json:"commits_url"`
-	CreatedAt           time.Time               `json:"created_at"`
-	Deletions           int                     `json:"deletions"`
-	DiffURL             url.URL                 `json:"diff_url"`
-	Draft               OptBool                 `json:"draft"`
-	HTMLURL             url.URL                 `json:"html_url"`
-	Head                PullRequestHead         `json:"head"`
-	ID                  int                     `json:"id"`
-	IssueURL            url.URL                 `json:"issue_url"`
-	Labels              []PullRequestLabelsItem `json:"labels"`
-	Links               PullRequestLinks        `json:"_links"`
-	Locked              bool                    `json:"locked"`
-	MaintainerCanModify bool                    `json:"maintainer_can_modify"`
-	MergeCommitSha      NilString               `json:"merge_commit_sha"`
-	Mergeable           NilBool                 `json:"mergeable"`
-	MergeableState      string                  `json:"mergeable_state"`
-	Merged              bool                    `json:"merged"`
-	MergedAt            NilTime                 `json:"merged_at"`
-	MergedBy            NullableSimpleUser      `json:"merged_by"`
-	Milestone           NullableMilestone       `json:"milestone"`
-	NodeID              string                  `json:"node_id"`
-	Number              int                     `json:"number"`
-	PatchURL            url.URL                 `json:"patch_url"`
-	Rebaseable          OptNilBool              `json:"rebaseable"`
-	RequestedReviewers  *[]SimpleUser           `json:"requested_reviewers"`
-	RequestedTeams      *[]TeamSimple           `json:"requested_teams"`
-	ReviewCommentURL    string                  `json:"review_comment_url"`
-	ReviewComments      int                     `json:"review_comments"`
-	ReviewCommentsURL   url.URL                 `json:"review_comments_url"`
-	State               PullRequestState        `json:"state"`
-	StatusesURL         url.URL                 `json:"statuses_url"`
-	Title               string                  `json:"title"`
-	URL                 url.URL                 `json:"url"`
-	UpdatedAt           time.Time               `json:"updated_at"`
-	User                NullableSimpleUser      `json:"user"`
-}
-
-func (*PullRequest) pullsGetResponse() {}
-
-type PullRequestBase struct {
-	Label string              `json:"label"`
-	Ref   string              `json:"ref"`
-	Repo  PullRequestBaseRepo `json:"repo"`
-	Sha   string              `json:"sha"`
-	User  PullRequestBaseUser `json:"user"`
-}
-
-type PullRequestBaseRepo struct {
-	AllowForking     OptBool                           `json:"allow_forking"`
-	AllowMergeCommit OptBool                           `json:"allow_merge_commit"`
-	AllowRebaseMerge OptBool                           `json:"allow_rebase_merge"`
-	AllowSquashMerge OptBool                           `json:"allow_squash_merge"`
-	ArchiveURL       string                            `json:"archive_url"`
-	Archived         bool                              `json:"archived"`
-	AssigneesURL     string                            `json:"assignees_url"`
-	BlobsURL         string                            `json:"blobs_url"`
-	BranchesURL      string                            `json:"branches_url"`
-	CloneURL         string                            `json:"clone_url"`
-	CollaboratorsURL string                            `json:"collaborators_url"`
-	CommentsURL      string                            `json:"comments_url"`
-	CommitsURL       string                            `json:"commits_url"`
-	CompareURL       string                            `json:"compare_url"`
-	ContentsURL      string                            `json:"contents_url"`
-	ContributorsURL  url.URL                           `json:"contributors_url"`
-	CreatedAt        time.Time                         `json:"created_at"`
-	DefaultBranch    string                            `json:"default_branch"`
-	DeploymentsURL   url.URL                           `json:"deployments_url"`
-	Description      NilString                         `json:"description"`
-	Disabled         bool                              `json:"disabled"`
-	DownloadsURL     url.URL                           `json:"downloads_url"`
-	EventsURL        url.URL                           `json:"events_url"`
-	Fork             bool                              `json:"fork"`
-	Forks            int                               `json:"forks"`
-	ForksCount       int                               `json:"forks_count"`
-	ForksURL         url.URL                           `json:"forks_url"`
-	FullName         string                            `json:"full_name"`
-	GitCommitsURL    string                            `json:"git_commits_url"`
-	GitRefsURL       string                            `json:"git_refs_url"`
-	GitTagsURL       string                            `json:"git_tags_url"`
-	GitURL           string                            `json:"git_url"`
-	HTMLURL          url.URL                           `json:"html_url"`
-	HasDownloads     bool                              `json:"has_downloads"`
-	HasIssues        bool                              `json:"has_issues"`
-	HasPages         bool                              `json:"has_pages"`
-	HasProjects      bool                              `json:"has_projects"`
-	HasWiki          bool                              `json:"has_wiki"`
-	Homepage         NilURL                            `json:"homepage"`
-	HooksURL         url.URL                           `json:"hooks_url"`
-	ID               int                               `json:"id"`
-	IssueCommentURL  string                            `json:"issue_comment_url"`
-	IssueEventsURL   string                            `json:"issue_events_url"`
-	IssuesURL        string                            `json:"issues_url"`
-	KeysURL          string                            `json:"keys_url"`
-	LabelsURL        string                            `json:"labels_url"`
-	Language         NilString                         `json:"language"`
-	LanguagesURL     url.URL                           `json:"languages_url"`
-	License          NullableLicenseSimple             `json:"license"`
-	MasterBranch     OptString                         `json:"master_branch"`
-	MergesURL        url.URL                           `json:"merges_url"`
-	MilestonesURL    string                            `json:"milestones_url"`
-	MirrorURL        NilURL                            `json:"mirror_url"`
-	Name             string                            `json:"name"`
-	NodeID           string                            `json:"node_id"`
-	NotificationsURL string                            `json:"notifications_url"`
-	OpenIssues       int                               `json:"open_issues"`
-	OpenIssuesCount  int                               `json:"open_issues_count"`
-	Owner            PullRequestBaseRepoOwner          `json:"owner"`
-	Permissions      OptPullRequestBaseRepoPermissions `json:"permissions"`
-	Private          bool                              `json:"private"`
-	PullsURL         string                            `json:"pulls_url"`
-	PushedAt         time.Time                         `json:"pushed_at"`
-	ReleasesURL      string                            `json:"releases_url"`
-	SSHURL           string                            `json:"ssh_url"`
-	Size             int                               `json:"size"`
-	StargazersCount  int                               `json:"stargazers_count"`
-	StargazersURL    url.URL                           `json:"stargazers_url"`
-	StatusesURL      string                            `json:"statuses_url"`
-	SubscribersURL   url.URL                           `json:"subscribers_url"`
-	SubscriptionURL  url.URL                           `json:"subscription_url"`
-	SvnURL           url.URL                           `json:"svn_url"`
-	TagsURL          url.URL                           `json:"tags_url"`
-	TeamsURL         url.URL                           `json:"teams_url"`
-	TempCloneToken   OptString                         `json:"temp_clone_token"`
-	Topics           *[]string                         `json:"topics"`
-	TreesURL         string                            `json:"trees_url"`
-	URL              url.URL                           `json:"url"`
-	UpdatedAt        time.Time                         `json:"updated_at"`
-	Watchers         int                               `json:"watchers"`
-	WatchersCount    int                               `json:"watchers_count"`
-}
-
-type PullRequestBaseRepoOwner struct {
-	AvatarURL         url.URL   `json:"avatar_url"`
-	EventsURL         string    `json:"events_url"`
-	FollowersURL      url.URL   `json:"followers_url"`
-	FollowingURL      string    `json:"following_url"`
-	GistsURL          string    `json:"gists_url"`
-	GravatarID        NilString `json:"gravatar_id"`
-	HTMLURL           url.URL   `json:"html_url"`
-	ID                int       `json:"id"`
-	Login             string    `json:"login"`
-	NodeID            string    `json:"node_id"`
-	OrganizationsURL  url.URL   `json:"organizations_url"`
-	ReceivedEventsURL url.URL   `json:"received_events_url"`
-	ReposURL          url.URL   `json:"repos_url"`
-	SiteAdmin         bool      `json:"site_admin"`
-	StarredURL        string    `json:"starred_url"`
-	SubscriptionsURL  url.URL   `json:"subscriptions_url"`
-	Type              string    `json:"type"`
-	URL               url.URL   `json:"url"`
-}
-
-type PullRequestBaseRepoPermissions struct {
-	Admin    bool    `json:"admin"`
-	Maintain OptBool `json:"maintain"`
-	Pull     bool    `json:"pull"`
-	Push     bool    `json:"push"`
-	Triage   OptBool `json:"triage"`
-}
-
-type PullRequestBaseUser struct {
-	AvatarURL         url.URL   `json:"avatar_url"`
-	EventsURL         string    `json:"events_url"`
-	FollowersURL      url.URL   `json:"followers_url"`
-	FollowingURL      string    `json:"following_url"`
-	GistsURL          string    `json:"gists_url"`
-	GravatarID        NilString `json:"gravatar_id"`
-	HTMLURL           url.URL   `json:"html_url"`
-	ID                int       `json:"id"`
-	Login             string    `json:"login"`
-	NodeID            string    `json:"node_id"`
-	OrganizationsURL  url.URL   `json:"organizations_url"`
-	ReceivedEventsURL url.URL   `json:"received_events_url"`
-	ReposURL          url.URL   `json:"repos_url"`
-	SiteAdmin         bool      `json:"site_admin"`
-	StarredURL        string    `json:"starred_url"`
-	SubscriptionsURL  url.URL   `json:"subscriptions_url"`
-	Type              string    `json:"type"`
-	URL               url.URL   `json:"url"`
-}
-
-type PullRequestHead struct {
-	Label string                 `json:"label"`
-	Ref   string                 `json:"ref"`
-	Repo  NilPullRequestHeadRepo `json:"repo"`
-	Sha   string                 `json:"sha"`
-	User  PullRequestHeadUser    `json:"user"`
-}
-
-type PullRequestHeadRepo struct {
-	AllowForking     OptBool                           `json:"allow_forking"`
-	AllowMergeCommit OptBool                           `json:"allow_merge_commit"`
-	AllowRebaseMerge OptBool                           `json:"allow_rebase_merge"`
-	AllowSquashMerge OptBool                           `json:"allow_squash_merge"`
-	ArchiveURL       string                            `json:"archive_url"`
-	Archived         bool                              `json:"archived"`
-	AssigneesURL     string                            `json:"assignees_url"`
-	BlobsURL         string                            `json:"blobs_url"`
-	BranchesURL      string                            `json:"branches_url"`
-	CloneURL         string                            `json:"clone_url"`
-	CollaboratorsURL string                            `json:"collaborators_url"`
-	CommentsURL      string                            `json:"comments_url"`
-	CommitsURL       string                            `json:"commits_url"`
-	CompareURL       string                            `json:"compare_url"`
-	ContentsURL      string                            `json:"contents_url"`
-	ContributorsURL  url.URL                           `json:"contributors_url"`
-	CreatedAt        time.Time                         `json:"created_at"`
-	DefaultBranch    string                            `json:"default_branch"`
-	DeploymentsURL   url.URL                           `json:"deployments_url"`
-	Description      NilString                         `json:"description"`
-	Disabled         bool                              `json:"disabled"`
-	DownloadsURL     url.URL                           `json:"downloads_url"`
-	EventsURL        url.URL                           `json:"events_url"`
-	Fork             bool                              `json:"fork"`
-	Forks            int                               `json:"forks"`
-	ForksCount       int                               `json:"forks_count"`
-	ForksURL         url.URL                           `json:"forks_url"`
-	FullName         string                            `json:"full_name"`
-	GitCommitsURL    string                            `json:"git_commits_url"`
-	GitRefsURL       string                            `json:"git_refs_url"`
-	GitTagsURL       string                            `json:"git_tags_url"`
-	GitURL           string                            `json:"git_url"`
-	HTMLURL          url.URL                           `json:"html_url"`
-	HasDownloads     bool                              `json:"has_downloads"`
-	HasIssues        bool                              `json:"has_issues"`
-	HasPages         bool                              `json:"has_pages"`
-	HasProjects      bool                              `json:"has_projects"`
-	HasWiki          bool                              `json:"has_wiki"`
-	Homepage         NilURL                            `json:"homepage"`
-	HooksURL         url.URL                           `json:"hooks_url"`
-	ID               int                               `json:"id"`
-	IssueCommentURL  string                            `json:"issue_comment_url"`
-	IssueEventsURL   string                            `json:"issue_events_url"`
-	IssuesURL        string                            `json:"issues_url"`
-	KeysURL          string                            `json:"keys_url"`
-	LabelsURL        string                            `json:"labels_url"`
-	Language         NilString                         `json:"language"`
-	LanguagesURL     url.URL                           `json:"languages_url"`
-	License          NilPullRequestHeadRepoLicense     `json:"license"`
-	MasterBranch     OptString                         `json:"master_branch"`
-	MergesURL        url.URL                           `json:"merges_url"`
-	MilestonesURL    string                            `json:"milestones_url"`
-	MirrorURL        NilURL                            `json:"mirror_url"`
-	Name             string                            `json:"name"`
-	NodeID           string                            `json:"node_id"`
-	NotificationsURL string                            `json:"notifications_url"`
-	OpenIssues       int                               `json:"open_issues"`
-	OpenIssuesCount  int                               `json:"open_issues_count"`
-	Owner            PullRequestHeadRepoOwner          `json:"owner"`
-	Permissions      OptPullRequestHeadRepoPermissions `json:"permissions"`
-	Private          bool                              `json:"private"`
-	PullsURL         string                            `json:"pulls_url"`
-	PushedAt         time.Time                         `json:"pushed_at"`
-	ReleasesURL      string                            `json:"releases_url"`
-	SSHURL           string                            `json:"ssh_url"`
-	Size             int                               `json:"size"`
-	StargazersCount  int                               `json:"stargazers_count"`
-	StargazersURL    url.URL                           `json:"stargazers_url"`
-	StatusesURL      string                            `json:"statuses_url"`
-	SubscribersURL   url.URL                           `json:"subscribers_url"`
-	SubscriptionURL  url.URL                           `json:"subscription_url"`
-	SvnURL           url.URL                           `json:"svn_url"`
-	TagsURL          url.URL                           `json:"tags_url"`
-	TeamsURL         url.URL                           `json:"teams_url"`
-	TempCloneToken   OptString                         `json:"temp_clone_token"`
-	Topics           *[]string                         `json:"topics"`
-	TreesURL         string                            `json:"trees_url"`
-	URL              url.URL                           `json:"url"`
-	UpdatedAt        time.Time                         `json:"updated_at"`
-	Watchers         int                               `json:"watchers"`
-	WatchersCount    int                               `json:"watchers_count"`
-}
-
-type PullRequestHeadRepoLicense struct {
-	Key    string    `json:"key"`
-	Name   string    `json:"name"`
-	NodeID string    `json:"node_id"`
-	SpdxID NilString `json:"spdx_id"`
-	URL    NilURL    `json:"url"`
-}
-
-type PullRequestHeadRepoOwner struct {
-	AvatarURL         url.URL   `json:"avatar_url"`
-	EventsURL         string    `json:"events_url"`
-	FollowersURL      url.URL   `json:"followers_url"`
-	FollowingURL      string    `json:"following_url"`
-	GistsURL          string    `json:"gists_url"`
-	GravatarID        NilString `json:"gravatar_id"`
-	HTMLURL           url.URL   `json:"html_url"`
-	ID                int       `json:"id"`
-	Login             string    `json:"login"`
-	NodeID            string    `json:"node_id"`
-	OrganizationsURL  url.URL   `json:"organizations_url"`
-	ReceivedEventsURL url.URL   `json:"received_events_url"`
-	ReposURL          url.URL   `json:"repos_url"`
-	SiteAdmin         bool      `json:"site_admin"`
-	StarredURL        string    `json:"starred_url"`
-	SubscriptionsURL  url.URL   `json:"subscriptions_url"`
-	Type              string    `json:"type"`
-	URL               url.URL   `json:"url"`
-}
-
-type PullRequestHeadRepoPermissions struct {
-	Admin    bool    `json:"admin"`
-	Maintain OptBool `json:"maintain"`
-	Pull     bool    `json:"pull"`
-	Push     bool    `json:"push"`
-	Triage   OptBool `json:"triage"`
-}
-
-type PullRequestHeadUser struct {
-	AvatarURL         url.URL   `json:"avatar_url"`
-	EventsURL         string    `json:"events_url"`
-	FollowersURL      url.URL   `json:"followers_url"`
-	FollowingURL      string    `json:"following_url"`
-	GistsURL          string    `json:"gists_url"`
-	GravatarID        NilString `json:"gravatar_id"`
-	HTMLURL           url.URL   `json:"html_url"`
-	ID                int       `json:"id"`
-	Login             string    `json:"login"`
-	NodeID            string    `json:"node_id"`
-	OrganizationsURL  url.URL   `json:"organizations_url"`
-	ReceivedEventsURL url.URL   `json:"received_events_url"`
-	ReposURL          url.URL   `json:"repos_url"`
-	SiteAdmin         bool      `json:"site_admin"`
-	StarredURL        string    `json:"starred_url"`
-	SubscriptionsURL  url.URL   `json:"subscriptions_url"`
-	Type              string    `json:"type"`
-	URL               url.URL   `json:"url"`
-}
-
-type PullRequestLabelsItem struct {
-	Color       OptString    `json:"color"`
-	Default     OptBool      `json:"default"`
-	Description OptNilString `json:"description"`
-	ID          OptInt64     `json:"id"`
-	Name        OptString    `json:"name"`
-	NodeID      OptString    `json:"node_id"`
-	URL         OptString    `json:"url"`
-}
-
-type PullRequestLinks struct {
-	Comments       Link `json:"comments"`
-	Commits        Link `json:"commits"`
-	HTML           Link `json:"html"`
-	Issue          Link `json:"issue"`
-	ReviewComment  Link `json:"review_comment"`
-	ReviewComments Link `json:"review_comments"`
-	Self           Link `json:"self"`
-	Statuses       Link `json:"statuses"`
 }
 
 // PullRequestMergeResult describes #/components/schemas/pull-request-merge-result.
@@ -15905,90 +14015,6 @@ type PullRequestReviewRequest struct {
 	Users []SimpleUser `json:"users"`
 }
 
-// PullRequestSimple describes #/components/schemas/pull-request-simple.
-type PullRequestSimple struct {
-	ActiveLockReason   OptNilString                  `json:"active_lock_reason"`
-	Assignee           NullableSimpleUser            `json:"assignee"`
-	Assignees          *[]SimpleUser                 `json:"assignees"`
-	AuthorAssociation  AuthorAssociation             `json:"author_association"`
-	AutoMerge          AutoMerge                     `json:"auto_merge"`
-	Base               PullRequestSimpleBase         `json:"base"`
-	Body               NilString                     `json:"body"`
-	ClosedAt           NilTime                       `json:"closed_at"`
-	CommentsURL        url.URL                       `json:"comments_url"`
-	CommitsURL         url.URL                       `json:"commits_url"`
-	CreatedAt          time.Time                     `json:"created_at"`
-	DiffURL            url.URL                       `json:"diff_url"`
-	Draft              OptBool                       `json:"draft"`
-	HTMLURL            url.URL                       `json:"html_url"`
-	Head               PullRequestSimpleHead         `json:"head"`
-	ID                 int                           `json:"id"`
-	IssueURL           url.URL                       `json:"issue_url"`
-	Labels             []PullRequestSimpleLabelsItem `json:"labels"`
-	Links              PullRequestSimpleLinks        `json:"_links"`
-	Locked             bool                          `json:"locked"`
-	MergeCommitSha     NilString                     `json:"merge_commit_sha"`
-	MergedAt           NilTime                       `json:"merged_at"`
-	Milestone          NullableMilestone             `json:"milestone"`
-	NodeID             string                        `json:"node_id"`
-	Number             int                           `json:"number"`
-	PatchURL           url.URL                       `json:"patch_url"`
-	RequestedReviewers *[]SimpleUser                 `json:"requested_reviewers"`
-	RequestedTeams     *[]Team                       `json:"requested_teams"`
-	ReviewCommentURL   string                        `json:"review_comment_url"`
-	ReviewCommentsURL  url.URL                       `json:"review_comments_url"`
-	State              string                        `json:"state"`
-	StatusesURL        url.URL                       `json:"statuses_url"`
-	Title              string                        `json:"title"`
-	URL                url.URL                       `json:"url"`
-	UpdatedAt          time.Time                     `json:"updated_at"`
-	User               NullableSimpleUser            `json:"user"`
-}
-
-type PullRequestSimpleBase struct {
-	Label string             `json:"label"`
-	Ref   string             `json:"ref"`
-	Repo  Repository         `json:"repo"`
-	Sha   string             `json:"sha"`
-	User  NullableSimpleUser `json:"user"`
-}
-
-type PullRequestSimpleHead struct {
-	Label string             `json:"label"`
-	Ref   string             `json:"ref"`
-	Repo  Repository         `json:"repo"`
-	Sha   string             `json:"sha"`
-	User  NullableSimpleUser `json:"user"`
-}
-
-type PullRequestSimpleLabelsItem struct {
-	Color       OptString `json:"color"`
-	Default     OptBool   `json:"default"`
-	Description OptString `json:"description"`
-	ID          OptInt64  `json:"id"`
-	Name        OptString `json:"name"`
-	NodeID      OptString `json:"node_id"`
-	URL         OptString `json:"url"`
-}
-
-type PullRequestSimpleLinks struct {
-	Comments       Link `json:"comments"`
-	Commits        Link `json:"commits"`
-	HTML           Link `json:"html"`
-	Issue          Link `json:"issue"`
-	ReviewComment  Link `json:"review_comment"`
-	ReviewComments Link `json:"review_comments"`
-	Self           Link `json:"self"`
-	Statuses       Link `json:"statuses"`
-}
-
-type PullRequestState string
-
-const (
-	PullRequestStateOpen   PullRequestState = "open"
-	PullRequestStateClosed PullRequestState = "closed"
-)
-
 type PullsCheckIfMergedNoContent struct{}
 
 func (*PullsCheckIfMergedNoContent) pullsCheckIfMergedResponse() {}
@@ -16014,10 +14040,10 @@ type PullsCreateReplyForReviewCommentApplicationJSONRequest struct {
 }
 
 type PullsCreateReviewApplicationJSONRequest struct {
-	Body     OptString                                              `json:"body"`
-	Comments *[]PullsCreateReviewApplicationJSONRequestCommentsItem `json:"comments"`
-	CommitID OptString                                              `json:"commit_id"`
-	Event    OptPullsCreateReviewApplicationJSONRequestEvent        `json:"event"`
+	Body     OptString                                             `json:"body"`
+	Comments []PullsCreateReviewApplicationJSONRequestCommentsItem `json:"comments"`
+	CommitID OptString                                             `json:"commit_id"`
+	Event    OptPullsCreateReviewApplicationJSONRequestEvent       `json:"event"`
 }
 
 type PullsCreateReviewApplicationJSONRequestCommentsItem struct {
@@ -16076,14 +14102,6 @@ type PullsDismissReviewApplicationJSONRequest struct {
 	Message string    `json:"message"`
 }
 
-type PullsGetApplicationJSONInternalServerError BasicError
-
-func (*PullsGetApplicationJSONInternalServerError) pullsGetResponse() {}
-
-type PullsGetApplicationJSONNotFound BasicError
-
-func (*PullsGetApplicationJSONNotFound) pullsGetResponse() {}
-
 type PullsListCommentsForReviewOK []ReviewComment
 
 func (*PullsListCommentsForReviewOK) pullsListCommentsForReviewResponse() {}
@@ -16118,8 +14136,8 @@ type PullsMergeMethodNotAllowed struct {
 }
 
 type PullsRemoveRequestedReviewersApplicationJSONRequest struct {
-	Reviewers     []string  `json:"reviewers"`
-	TeamReviewers *[]string `json:"team_reviewers"`
+	Reviewers     []string `json:"reviewers"`
+	TeamReviewers []string `json:"team_reviewers"`
 }
 
 func (*PullsRemoveRequestedReviewersApplicationJSONRequest) pullsRemoveRequestedReviewersRequest() {}
@@ -16721,20 +14739,6 @@ const (
 	ReposCreateInOrgApplicationJSONRequestVisibilityInternal   ReposCreateInOrgApplicationJSONRequestVisibility = "internal"
 )
 
-type ReposCreateOrUpdateEnvironmentApplicationJSONRequest struct {
-	DeploymentBranchPolicy OptDeploymentBranchPolicy                                            `json:"deployment_branch_policy"`
-	Reviewers              *[]ReposCreateOrUpdateEnvironmentApplicationJSONRequestReviewersItem `json:"reviewers"`
-	WaitTimer              *WaitTimer                                                           `json:"wait_timer"`
-}
-
-func (*ReposCreateOrUpdateEnvironmentApplicationJSONRequest) reposCreateOrUpdateEnvironmentRequest() {
-}
-
-type ReposCreateOrUpdateEnvironmentApplicationJSONRequestReviewersItem struct {
-	ID   OptInt                    `json:"id"`
-	Type OptDeploymentReviewerType `json:"type"`
-}
-
 type ReposCreateOrUpdateFileContentsApplicationJSONRequest struct {
 	Author    OptReposCreateOrUpdateFileContentsApplicationJSONRequestAuthor    `json:"author"`
 	Branch    OptString                                                         `json:"branch"`
@@ -17116,7 +15120,7 @@ func (*ReposTestPushWebhookNoContent) reposTestPushWebhookResponse() {}
 
 type ReposTransferApplicationJSONRequest struct {
 	NewOwner string `json:"new_owner"`
-	TeamIds  *[]int `json:"team_ids"`
+	TeamIds  []int  `json:"team_ids"`
 }
 
 type ReposUpdateApplicationJSONRequest struct {
@@ -17191,8 +15195,8 @@ type ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviews
 }
 
 type ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestReviewsDismissalRestrictions struct {
-	Teams *[]string `json:"teams"`
-	Users *[]string `json:"users"`
+	Teams []string `json:"teams"`
+	Users []string `json:"users"`
 }
 
 type ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks struct {
@@ -17201,9 +15205,9 @@ type ReposUpdateBranchProtectionApplicationJSONRequestRequiredStatusChecks struc
 }
 
 type ReposUpdateBranchProtectionApplicationJSONRequestRestrictions struct {
-	Apps  *[]string `json:"apps"`
-	Teams []string  `json:"teams"`
-	Users []string  `json:"users"`
+	Apps  []string `json:"apps"`
+	Teams []string `json:"teams"`
+	Users []string `json:"users"`
 }
 
 type ReposUpdateCommitCommentApplicationJSONRequest struct {
@@ -17235,8 +15239,8 @@ func (*ReposUpdatePullRequestReviewProtectionApplicationJSONRequest) reposUpdate
 }
 
 type ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRestrictions struct {
-	Teams *[]string `json:"teams"`
-	Users *[]string `json:"users"`
+	Teams []string `json:"teams"`
+	Users []string `json:"users"`
 }
 
 type ReposUpdateReleaseApplicationJSONRequest struct {
@@ -17256,8 +15260,8 @@ type ReposUpdateReleaseAssetApplicationJSONRequest struct {
 }
 
 type ReposUpdateStatusCheckProtectionApplicationJSONRequest struct {
-	Contexts *[]string `json:"contexts"`
-	Strict   OptBool   `json:"strict"`
+	Contexts []string `json:"contexts"`
+	Strict   OptBool  `json:"strict"`
 }
 
 func (*ReposUpdateStatusCheckProtectionApplicationJSONRequest) reposUpdateStatusCheckProtectionRequest() {
@@ -17348,7 +15352,7 @@ type Repository struct {
 	TeamsURL            url.URL                            `json:"teams_url"`
 	TempCloneToken      OptString                          `json:"temp_clone_token"`
 	TemplateRepository  OptNilRepositoryTemplateRepository `json:"template_repository"`
-	Topics              *[]string                          `json:"topics"`
+	Topics              []string                           `json:"topics"`
 	TreesURL            string                             `json:"trees_url"`
 	URL                 url.URL                            `json:"url"`
 	UpdatedAt           NilTime                            `json:"updated_at"`
@@ -17485,7 +15489,7 @@ type RepositoryTemplateRepository struct {
 	TagsURL             OptString                                  `json:"tags_url"`
 	TeamsURL            OptString                                  `json:"teams_url"`
 	TempCloneToken      OptString                                  `json:"temp_clone_token"`
-	Topics              *[]string                                  `json:"topics"`
+	Topics              []string                                   `json:"topics"`
 	TreesURL            OptString                                  `json:"trees_url"`
 	URL                 OptString                                  `json:"url"`
 	UpdatedAt           OptString                                  `json:"updated_at"`
@@ -17653,12 +15657,12 @@ func (*ScimDeleteUserFromOrgNoContent) scimDeleteUserFromOrgResponse() {}
 
 // ScimEnterpriseGroup describes #/components/schemas/scim-enterprise-group.
 type ScimEnterpriseGroup struct {
-	DisplayName OptString                         `json:"displayName"`
-	ExternalId  OptNilString                      `json:"externalId"`
-	ID          string                            `json:"id"`
-	Members     *[]ScimEnterpriseGroupMembersItem `json:"members"`
-	Meta        OptScimEnterpriseGroupMeta        `json:"meta"`
-	Schemas     []string                          `json:"schemas"`
+	DisplayName OptString                        `json:"displayName"`
+	ExternalId  OptNilString                     `json:"externalId"`
+	ID          string                           `json:"id"`
+	Members     []ScimEnterpriseGroupMembersItem `json:"members"`
+	Meta        OptScimEnterpriseGroupMeta       `json:"meta"`
+	Schemas     []string                         `json:"schemas"`
 }
 
 type ScimEnterpriseGroupMembersItem struct {
@@ -17676,15 +15680,15 @@ type ScimEnterpriseGroupMeta struct {
 
 // ScimEnterpriseUser describes #/components/schemas/scim-enterprise-user.
 type ScimEnterpriseUser struct {
-	Active     OptBool                         `json:"active"`
-	Emails     *[]ScimEnterpriseUserEmailsItem `json:"emails"`
-	ExternalId OptString                       `json:"externalId"`
-	Groups     *[]ScimEnterpriseUserGroupsItem `json:"groups"`
-	ID         string                          `json:"id"`
-	Meta       OptScimEnterpriseUserMeta       `json:"meta"`
-	Name       OptScimEnterpriseUserName       `json:"name"`
-	Schemas    []string                        `json:"schemas"`
-	UserName   OptString                       `json:"userName"`
+	Active     OptBool                        `json:"active"`
+	Emails     []ScimEnterpriseUserEmailsItem `json:"emails"`
+	ExternalId OptString                      `json:"externalId"`
+	Groups     []ScimEnterpriseUserGroupsItem `json:"groups"`
+	ID         string                         `json:"id"`
+	Meta       OptScimEnterpriseUserMeta      `json:"meta"`
+	Name       OptScimEnterpriseUserName      `json:"name"`
+	Schemas    []string                       `json:"schemas"`
+	UserName   OptString                      `json:"userName"`
 }
 
 type ScimEnterpriseUserEmailsItem struct {
@@ -17714,7 +15718,7 @@ type ScimError struct {
 	Detail           OptNilString `json:"detail"`
 	DocumentationURL OptNilString `json:"documentation_url"`
 	Message          OptNilString `json:"message"`
-	Schemas          *[]string    `json:"schemas"`
+	Schemas          []string     `json:"schemas"`
 	ScimType         OptNilString `json:"scimType"`
 	Status           OptInt       `json:"status"`
 }
@@ -17732,12 +15736,12 @@ type ScimGroupListEnterprise struct {
 }
 
 type ScimGroupListEnterpriseResourcesItem struct {
-	DisplayName OptString                                          `json:"displayName"`
-	ExternalId  OptNilString                                       `json:"externalId"`
-	ID          string                                             `json:"id"`
-	Members     *[]ScimGroupListEnterpriseResourcesItemMembersItem `json:"members"`
-	Meta        OptScimGroupListEnterpriseResourcesItemMeta        `json:"meta"`
-	Schemas     []string                                           `json:"schemas"`
+	DisplayName OptString                                         `json:"displayName"`
+	ExternalId  OptNilString                                      `json:"externalId"`
+	ID          string                                            `json:"id"`
+	Members     []ScimGroupListEnterpriseResourcesItemMembersItem `json:"members"`
+	Meta        OptScimGroupListEnterpriseResourcesItemMeta       `json:"meta"`
+	Schemas     []string                                          `json:"schemas"`
 }
 
 type ScimGroupListEnterpriseResourcesItemMembersItem struct {
@@ -17758,9 +15762,9 @@ type ScimProvisionAndInviteUserApplicationJSONRequest struct {
 	DisplayName OptString                                                    `json:"displayName"`
 	Emails      []ScimProvisionAndInviteUserApplicationJSONRequestEmailsItem `json:"emails"`
 	ExternalId  OptString                                                    `json:"externalId"`
-	Groups      *[]string                                                    `json:"groups"`
+	Groups      []string                                                     `json:"groups"`
 	Name        ScimProvisionAndInviteUserApplicationJSONRequestName         `json:"name"`
-	Schemas     *[]string                                                    `json:"schemas"`
+	Schemas     []string                                                     `json:"schemas"`
 	UserName    string                                                       `json:"userName"`
 }
 
@@ -17783,9 +15787,9 @@ type ScimSetInformationForProvisionedUserApplicationJSONRequest struct {
 	DisplayName OptString                                                              `json:"displayName"`
 	Emails      []ScimSetInformationForProvisionedUserApplicationJSONRequestEmailsItem `json:"emails"`
 	ExternalId  OptString                                                              `json:"externalId"`
-	Groups      *[]string                                                              `json:"groups"`
+	Groups      []string                                                               `json:"groups"`
 	Name        ScimSetInformationForProvisionedUserApplicationJSONRequestName         `json:"name"`
-	Schemas     *[]string                                                              `json:"schemas"`
+	Schemas     []string                                                               `json:"schemas"`
 	UserName    string                                                                 `json:"userName"`
 }
 
@@ -17814,15 +15818,15 @@ type ScimUserListEnterprise struct {
 }
 
 type ScimUserListEnterpriseResourcesItem struct {
-	Active     OptBool                                          `json:"active"`
-	Emails     *[]ScimUserListEnterpriseResourcesItemEmailsItem `json:"emails"`
-	ExternalId OptString                                        `json:"externalId"`
-	Groups     *[]ScimUserListEnterpriseResourcesItemGroupsItem `json:"groups"`
-	ID         string                                           `json:"id"`
-	Meta       OptScimUserListEnterpriseResourcesItemMeta       `json:"meta"`
-	Name       OptScimUserListEnterpriseResourcesItemName       `json:"name"`
-	Schemas    []string                                         `json:"schemas"`
-	UserName   OptString                                        `json:"userName"`
+	Active     OptBool                                         `json:"active"`
+	Emails     []ScimUserListEnterpriseResourcesItemEmailsItem `json:"emails"`
+	ExternalId OptString                                       `json:"externalId"`
+	Groups     []ScimUserListEnterpriseResourcesItemGroupsItem `json:"groups"`
+	ID         string                                          `json:"id"`
+	Meta       OptScimUserListEnterpriseResourcesItemMeta      `json:"meta"`
+	Name       OptScimUserListEnterpriseResourcesItemName      `json:"name"`
+	Schemas    []string                                        `json:"schemas"`
+	UserName   OptString                                       `json:"userName"`
 }
 
 type ScimUserListEnterpriseResourcesItemEmailsItem struct {
@@ -17846,29 +15850,6 @@ type ScimUserListEnterpriseResourcesItemName struct {
 	FamilyName OptString `json:"familyName"`
 	GivenName  OptString `json:"givenName"`
 }
-
-type SearchResultTextMatches []SearchResultTextMatchesItem
-
-type SearchResultTextMatchesItem struct {
-	Fragment   OptString                                 `json:"fragment"`
-	Matches    *[]SearchResultTextMatchesItemMatchesItem `json:"matches"`
-	ObjectType OptNilString                              `json:"object_type"`
-	ObjectURL  OptString                                 `json:"object_url"`
-	Property   OptString                                 `json:"property"`
-}
-
-type SearchResultTextMatchesItemMatchesItem struct {
-	Indices *[]int    `json:"indices"`
-	Text    OptString `json:"text"`
-}
-
-type SearchTopicsOK struct {
-	IncompleteResults bool                    `json:"incomplete_results"`
-	Items             []TopicSearchResultItem `json:"items"`
-	TotalCount        int                     `json:"total_count"`
-}
-
-func (*SearchTopicsOK) searchTopicsResponse() {}
 
 // SecretScanningAlert describes #/components/schemas/secret-scanning-alert.
 type SecretScanningAlert struct {
@@ -17923,9 +15904,9 @@ func (*SecretScanningUpdateAlertUnprocessableEntity) secretScanningUpdateAlertRe
 
 // SelectedActions describes #/components/schemas/selected-actions.
 type SelectedActions struct {
-	GithubOwnedAllowed OptBool   `json:"github_owned_allowed"`
-	PatternsAllowed    *[]string `json:"patterns_allowed"`
-	VerifiedAllowed    OptBool   `json:"verified_allowed"`
+	GithubOwnedAllowed OptBool  `json:"github_owned_allowed"`
+	PatternsAllowed    []string `json:"patterns_allowed"`
+	VerifiedAllowed    OptBool  `json:"verified_allowed"`
 }
 
 type SelectedActionsURL string
@@ -17936,14 +15917,11 @@ type ServiceUnavailable struct {
 	Message          OptString `json:"message"`
 }
 
-func (*ServiceUnavailable) activityListPublicEventsResponse()       {}
 func (*ServiceUnavailable) codeScanningDeleteAnalysisResponse()     {}
-func (*ServiceUnavailable) codeScanningGetAlertResponse()           {}
 func (*ServiceUnavailable) codeScanningGetAnalysisResponse()        {}
 func (*ServiceUnavailable) codeScanningGetSarifResponse()           {}
 func (*ServiceUnavailable) codeScanningListAlertInstancesResponse() {}
 func (*ServiceUnavailable) codeScanningListRecentAnalysesResponse() {}
-func (*ServiceUnavailable) codeScanningUpdateAlertResponse()        {}
 func (*ServiceUnavailable) codeScanningUploadSarifResponse()        {}
 func (*ServiceUnavailable) secretScanningGetAlertResponse()         {}
 func (*ServiceUnavailable) secretScanningUpdateAlertResponse()      {}
@@ -18301,7 +16279,7 @@ type TeamRepository struct {
 	TeamsURL            url.URL                      `json:"teams_url"`
 	TempCloneToken      OptString                    `json:"temp_clone_token"`
 	TemplateRepository  OptNullableRepository        `json:"template_repository"`
-	Topics              *[]string                    `json:"topics"`
+	Topics              []string                     `json:"topics"`
 	TreesURL            string                       `json:"trees_url"`
 	URL                 url.URL                      `json:"url"`
 	UpdatedAt           NilTime                      `json:"updated_at"`
@@ -18319,22 +16297,6 @@ type TeamRepositoryPermissions struct {
 	Pull     bool    `json:"pull"`
 	Push     bool    `json:"push"`
 	Triage   OptBool `json:"triage"`
-}
-
-// TeamSimple describes #/components/schemas/team-simple.
-type TeamSimple struct {
-	Description     NilString `json:"description"`
-	HTMLURL         url.URL   `json:"html_url"`
-	ID              int       `json:"id"`
-	LdapDn          OptString `json:"ldap_dn"`
-	MembersURL      string    `json:"members_url"`
-	Name            string    `json:"name"`
-	NodeID          string    `json:"node_id"`
-	Permission      string    `json:"permission"`
-	Privacy         OptString `json:"privacy"`
-	RepositoriesURL url.URL   `json:"repositories_url"`
-	Slug            string    `json:"slug"`
-	URL             url.URL   `json:"url"`
 }
 
 type TeamsAddMemberLegacyNoContent struct{}
@@ -18498,12 +16460,12 @@ func (*TeamsCheckPermissionsForRepoLegacyNotFound) teamsCheckPermissionsForRepoL
 
 type TeamsCreateApplicationJSONRequest struct {
 	Description  OptString                                      `json:"description"`
-	Maintainers  *[]string                                      `json:"maintainers"`
+	Maintainers  []string                                       `json:"maintainers"`
 	Name         string                                         `json:"name"`
 	ParentTeamID OptInt                                         `json:"parent_team_id"`
 	Permission   OptTeamsCreateApplicationJSONRequestPermission `json:"permission"`
 	Privacy      OptTeamsCreateApplicationJSONRequestPrivacy    `json:"privacy"`
-	RepoNames    *[]string                                      `json:"repo_names"`
+	RepoNames    []string                                       `json:"repo_names"`
 }
 
 func (*TeamsCreateApplicationJSONRequest) teamsCreateRequest() {}
@@ -18544,7 +16506,7 @@ type TeamsCreateDiscussionLegacyApplicationJSONRequest struct {
 }
 
 type TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequest struct {
-	Groups *[]TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequestGroupsItem `json:"groups"`
+	Groups []TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequestGroupsItem `json:"groups"`
 }
 
 type TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequestGroupsItem struct {
@@ -18771,48 +16733,6 @@ type Topic struct {
 
 func (*Topic) reposGetAllTopicsResponse()     {}
 func (*Topic) reposReplaceAllTopicsResponse() {}
-
-// TopicSearchResultItem describes #/components/schemas/topic-search-result-item.
-type TopicSearchResultItem struct {
-	Aliases          *[]TopicSearchResultItemAliasesItem `json:"aliases"`
-	CreatedAt        time.Time                           `json:"created_at"`
-	CreatedBy        NilString                           `json:"created_by"`
-	Curated          bool                                `json:"curated"`
-	Description      NilString                           `json:"description"`
-	DisplayName      NilString                           `json:"display_name"`
-	Featured         bool                                `json:"featured"`
-	LogoURL          OptNilURL                           `json:"logo_url"`
-	Name             string                              `json:"name"`
-	Related          *[]TopicSearchResultItemRelatedItem `json:"related"`
-	Released         NilString                           `json:"released"`
-	RepositoryCount  OptNilInt                           `json:"repository_count"`
-	Score            float64                             `json:"score"`
-	ShortDescription NilString                           `json:"short_description"`
-	TextMatches      *SearchResultTextMatches            `json:"text_matches"`
-	UpdatedAt        time.Time                           `json:"updated_at"`
-}
-
-type TopicSearchResultItemAliasesItem struct {
-	TopicRelation OptTopicSearchResultItemAliasesItemTopicRelation `json:"topic_relation"`
-}
-
-type TopicSearchResultItemAliasesItemTopicRelation struct {
-	ID           OptInt    `json:"id"`
-	Name         OptString `json:"name"`
-	RelationType OptString `json:"relation_type"`
-	TopicID      OptInt    `json:"topic_id"`
-}
-
-type TopicSearchResultItemRelatedItem struct {
-	TopicRelation OptTopicSearchResultItemRelatedItemTopicRelation `json:"topic_relation"`
-}
-
-type TopicSearchResultItemRelatedItemTopicRelation struct {
-	ID           OptInt    `json:"id"`
-	Name         OptString `json:"name"`
-	RelationType OptString `json:"relation_type"`
-	TopicID      OptInt    `json:"topic_id"`
-}
 
 // UserMarketplacePurchase describes #/components/schemas/user-marketplace-purchase.
 type UserMarketplacePurchase struct {
@@ -19145,9 +17065,9 @@ func (*UsersUpdateAuthenticatedApplicationJSONRequest) usersUpdateAuthenticatedR
 
 // ValidationErrorSimple describes #/components/schemas/validation-error-simple.
 type ValidationErrorSimple struct {
-	DocumentationURL string    `json:"documentation_url"`
-	Errors           *[]string `json:"errors"`
-	Message          string    `json:"message"`
+	DocumentationURL string   `json:"documentation_url"`
+	Errors           []string `json:"errors"`
+	Message          string   `json:"message"`
 }
 
 func (*ValidationErrorSimple) projectsCreateColumnResponse()               {}
@@ -19173,8 +17093,6 @@ type Verification struct {
 	Signature NilString `json:"signature"`
 	Verified  bool      `json:"verified"`
 }
-
-type WaitTimer int
 
 // Workflow describes #/components/schemas/workflow.
 type Workflow struct {

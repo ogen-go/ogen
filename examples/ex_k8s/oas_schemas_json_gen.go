@@ -53,46 +53,88 @@ var (
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "array" for field "AdmissionReviewVersions".
-	field.Write("clientConfig")
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("admissionReviewVersions")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.AdmissionReviewVersions {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
+	more.More()
+	j.WriteObjectField("clientConfig")
 	s.ClientConfig.WriteJSON(j)
+
 	if s.FailurePolicy.Set {
-		field.Write("failurePolicy")
+		more.More()
+		j.WriteObjectField("failurePolicy")
 		s.FailurePolicy.WriteJSON(j)
 	}
+
 	if s.MatchPolicy.Set {
-		field.Write("matchPolicy")
+		more.More()
+		j.WriteObjectField("matchPolicy")
 		s.MatchPolicy.WriteJSON(j)
 	}
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	if s.NamespaceSelector.Set {
-		field.Write("namespaceSelector")
+		more.More()
+		j.WriteObjectField("namespaceSelector")
 		s.NamespaceSelector.WriteJSON(j)
 	}
+
 	if s.ObjectSelector.Set {
-		field.Write("objectSelector")
+		more.More()
+		j.WriteObjectField("objectSelector")
 		s.ObjectSelector.WriteJSON(j)
 	}
+
 	if s.ReinvocationPolicy.Set {
-		field.Write("reinvocationPolicy")
+		more.More()
+		j.WriteObjectField("reinvocationPolicy")
 		s.ReinvocationPolicy.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Rules".
-	field.Write("sideEffects")
+
+	if s.Rules != nil {
+		more.More()
+		j.WriteObjectField("rules")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Rules {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("sideEffects")
 	j.WriteString(s.SideEffects)
+
 	if s.TimeoutSeconds.Set {
-		field.Write("timeoutSeconds")
+		more.More()
+		j.WriteObjectField("timeoutSeconds")
 		s.TimeoutSeconds.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAdmissionregistrationV1MutatingWebhook json value to io.Writer.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -165,7 +207,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) ReadJSON(i *json.Iterat
 			}
 			return true
 		case "rules":
-			// Unsupported kind "pointer" for field "Rules".
+			// Unsupported kind "array" for field "Rules".
 			i.Skip()
 			return true
 		case "sideEffects":
@@ -189,27 +231,47 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) ReadJSON(i *json.Iterat
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Webhooks".
+
+	if s.Webhooks != nil {
+		more.More()
+		j.WriteObjectField("webhooks")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Webhooks {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration json value to io.Writer.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -255,7 +317,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) ReadJSON(i
 			}
 			return true
 		case "webhooks":
-			// Unsupported kind "pointer" for field "Webhooks".
+			// Unsupported kind "array" for field "Webhooks".
 			i.Skip()
 			return true
 		default:
@@ -269,27 +331,44 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) ReadJSON(i
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList json value to io.Writer.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -349,22 +428,77 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) ReadJS
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "ApiGroups".
-	// Unsupported kind "pointer" for field "ApiVersions".
-	// Unsupported kind "pointer" for field "Operations".
-	// Unsupported kind "pointer" for field "Resources".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.ApiGroups != nil {
+		more.More()
+		j.WriteObjectField("apiGroups")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ApiGroups {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.ApiVersions != nil {
+		more.More()
+		j.WriteObjectField("apiVersions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ApiVersions {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.Operations != nil {
+		more.More()
+		j.WriteObjectField("operations")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Operations {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.Resources != nil {
+		more.More()
+		j.WriteObjectField("resources")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Resources {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Scope.Set {
-		field.Write("scope")
+		more.More()
+		j.WriteObjectField("scope")
 		s.Scope.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAdmissionregistrationV1RuleWithOperations json value to io.Writer.
 func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -389,19 +523,19 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) ReadJSON(i *json.Ite
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "apiGroups":
-			// Unsupported kind "pointer" for field "ApiGroups".
+			// Unsupported kind "array" for field "ApiGroups".
 			i.Skip()
 			return true
 		case "apiVersions":
-			// Unsupported kind "pointer" for field "ApiVersions".
+			// Unsupported kind "array" for field "ApiVersions".
 			i.Skip()
 			return true
 		case "operations":
-			// Unsupported kind "pointer" for field "Operations".
+			// Unsupported kind "array" for field "Operations".
 			i.Skip()
 			return true
 		case "resources":
-			// Unsupported kind "pointer" for field "Resources".
+			// Unsupported kind "array" for field "Resources".
 			i.Skip()
 			return true
 		case "scope":
@@ -422,26 +556,36 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) ReadJSON(i *json.Ite
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1ServiceReference) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-	field.Write("namespace")
+
+	more.More()
+	j.WriteObjectField("namespace")
 	j.WriteString(s.Namespace)
+
 	if s.Path.Set {
-		field.Write("path")
+		more.More()
+		j.WriteObjectField("path")
 		s.Path.WriteJSON(j)
 	}
+
 	if s.Port.Set {
-		field.Write("port")
+		more.More()
+		j.WriteObjectField("port")
 		s.Port.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAdmissionregistrationV1ServiceReference json value to io.Writer.
 func (s IoK8sAPIAdmissionregistrationV1ServiceReference) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -496,42 +640,82 @@ func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) ReadJSON(i *json.Itera
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "array" for field "AdmissionReviewVersions".
-	field.Write("clientConfig")
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("admissionReviewVersions")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.AdmissionReviewVersions {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
+	more.More()
+	j.WriteObjectField("clientConfig")
 	s.ClientConfig.WriteJSON(j)
+
 	if s.FailurePolicy.Set {
-		field.Write("failurePolicy")
+		more.More()
+		j.WriteObjectField("failurePolicy")
 		s.FailurePolicy.WriteJSON(j)
 	}
+
 	if s.MatchPolicy.Set {
-		field.Write("matchPolicy")
+		more.More()
+		j.WriteObjectField("matchPolicy")
 		s.MatchPolicy.WriteJSON(j)
 	}
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	if s.NamespaceSelector.Set {
-		field.Write("namespaceSelector")
+		more.More()
+		j.WriteObjectField("namespaceSelector")
 		s.NamespaceSelector.WriteJSON(j)
 	}
+
 	if s.ObjectSelector.Set {
-		field.Write("objectSelector")
+		more.More()
+		j.WriteObjectField("objectSelector")
 		s.ObjectSelector.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Rules".
-	field.Write("sideEffects")
+
+	if s.Rules != nil {
+		more.More()
+		j.WriteObjectField("rules")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Rules {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("sideEffects")
 	j.WriteString(s.SideEffects)
+
 	if s.TimeoutSeconds.Set {
-		field.Write("timeoutSeconds")
+		more.More()
+		j.WriteObjectField("timeoutSeconds")
 		s.TimeoutSeconds.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAdmissionregistrationV1ValidatingWebhook json value to io.Writer.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -597,7 +781,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) ReadJSON(i *json.Iter
 			}
 			return true
 		case "rules":
-			// Unsupported kind "pointer" for field "Rules".
+			// Unsupported kind "array" for field "Rules".
 			i.Skip()
 			return true
 		case "sideEffects":
@@ -621,27 +805,47 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) ReadJSON(i *json.Iter
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Webhooks".
+
+	if s.Webhooks != nil {
+		more.More()
+		j.WriteObjectField("webhooks")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Webhooks {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration json value to io.Writer.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -687,7 +891,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) ReadJSON
 			}
 			return true
 		case "webhooks":
-			// Unsupported kind "pointer" for field "Webhooks".
+			// Unsupported kind "array" for field "Webhooks".
 			i.Skip()
 			return true
 		default:
@@ -701,27 +905,44 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) ReadJSON
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList json value to io.Writer.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -781,23 +1002,30 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Read
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "CaBundle".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "caBundle".
+
 	if s.Service.Set {
-		field.Write("service")
+		more.More()
+		j.WriteObjectField("service")
 		s.Service.WriteJSON(j)
 	}
+
 	if s.URL.Set {
-		field.Write("url")
+		more.More()
+		j.WriteObjectField("url")
 		s.URL.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAdmissionregistrationV1WebhookClientConfig json value to io.Writer.
 func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -850,23 +1078,41 @@ func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) ReadJSON(i *json.It
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiServerID.Set {
-		field.Write("apiServerID")
+		more.More()
+		j.WriteObjectField("apiServerID")
 		s.ApiServerID.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "DecodableVersions".
+
+	if s.DecodableVersions != nil {
+		more.More()
+		j.WriteObjectField("decodableVersions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.DecodableVersions {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.EncodingVersion.Set {
-		field.Write("encodingVersion")
+		more.More()
+		j.WriteObjectField("encodingVersion")
 		s.EncodingVersion.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion json value to io.Writer.
 func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -898,7 +1144,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) ReadJSON(i *json
 			}
 			return true
 		case "decodableVersions":
-			// Unsupported kind "pointer" for field "DecodableVersions".
+			// Unsupported kind "array" for field "DecodableVersions".
 			i.Skip()
 			return true
 		case "encodingVersion":
@@ -919,29 +1165,39 @@ func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) ReadJSON(i *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	// Unsupported kind "alias" for field "Spec".
-	field.Write("status")
+
+	// Unsupported kind "alias" for field "spec".
+
+	more.More()
+	j.WriteObjectField("status")
 	s.Status.WriteJSON(j)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIApiserverinternalV1alpha1StorageVersion json value to io.Writer.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1007,29 +1263,42 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) ReadJSON(i *json.Itera
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "LastTransitionTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "lastTransitionTime".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.ObservedGeneration.Set {
-		field.Write("observedGeneration")
+		more.More()
+		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
-	field.Write("reason")
+
+	more.More()
+	j.WriteObjectField("reason")
 	j.WriteString(s.Reason)
-	field.Write("status")
+
+	more.More()
+	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition json value to io.Writer.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1091,27 +1360,44 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) ReadJSON(i *j
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIApiserverinternalV1alpha1StorageVersionList json value to io.Writer.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1171,20 +1457,49 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) ReadJSON(i *json.I
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.CommonEncodingVersion.Set {
-		field.Write("commonEncodingVersion")
+		more.More()
+		j.WriteObjectField("commonEncodingVersion")
 		s.CommonEncodingVersion.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Conditions".
-	// Unsupported kind "pointer" for field "StorageVersions".
+
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.StorageVersions != nil {
+		more.More()
+		j.WriteObjectField("storageVersions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.StorageVersions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus json value to io.Writer.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1216,11 +1531,11 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) ReadJSON(i *json
 			}
 			return true
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		case "storageVersions":
-			// Unsupported kind "pointer" for field "StorageVersions".
+			// Unsupported kind "array" for field "StorageVersions".
 			i.Skip()
 			return true
 		default:
@@ -1234,29 +1549,39 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) ReadJSON(i *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1ControllerRevision) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Data".
+
+	// Unsupported kind "pointer" for field "data".
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	field.Write("revision")
+
+	more.More()
+	j.WriteObjectField("revision")
 	j.WriteInt64(s.Revision)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1ControllerRevision json value to io.Writer.
 func (s IoK8sAPIAppsV1ControllerRevision) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1319,27 +1644,44 @@ func (s *IoK8sAPIAppsV1ControllerRevision) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1ControllerRevisionList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1ControllerRevisionList json value to io.Writer.
 func (s IoK8sAPIAppsV1ControllerRevisionList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1399,34 +1741,45 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) ReadJSON(i *json.Iterator) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSet) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1DaemonSet json value to io.Writer.
 func (s IoK8sAPIAppsV1DaemonSet) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1496,27 +1849,38 @@ func (s *IoK8sAPIAppsV1DaemonSet) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "LastTransitionTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "lastTransitionTime".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-	field.Write("status")
+
+	more.More()
+	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1DaemonSetCondition json value to io.Writer.
 func (s IoK8sAPIAppsV1DaemonSetCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1575,27 +1939,44 @@ func (s *IoK8sAPIAppsV1DaemonSetCondition) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1DaemonSetList json value to io.Writer.
 func (s IoK8sAPIAppsV1DaemonSetList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1655,30 +2036,41 @@ func (s *IoK8sAPIAppsV1DaemonSetList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.MinReadySeconds.Set {
-		field.Write("minReadySeconds")
+		more.More()
+		j.WriteObjectField("minReadySeconds")
 		s.MinReadySeconds.WriteJSON(j)
 	}
+
 	if s.RevisionHistoryLimit.Set {
-		field.Write("revisionHistoryLimit")
+		more.More()
+		j.WriteObjectField("revisionHistoryLimit")
 		s.RevisionHistoryLimit.WriteJSON(j)
 	}
-	field.Write("selector")
+
+	more.More()
+	j.WriteObjectField("selector")
 	s.Selector.WriteJSON(j)
-	field.Write("template")
+
+	more.More()
+	j.WriteObjectField("template")
 	s.Template.WriteJSON(j)
+
 	if s.UpdateStrategy.Set {
-		field.Write("updateStrategy")
+		more.More()
+		j.WriteObjectField("updateStrategy")
 		s.UpdateStrategy.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1DaemonSetSpec json value to io.Writer.
 func (s IoK8sAPIAppsV1DaemonSetSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1746,43 +2138,75 @@ func (s *IoK8sAPIAppsV1DaemonSetSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.CollisionCount.Set {
-		field.Write("collisionCount")
+		more.More()
+		j.WriteObjectField("collisionCount")
 		s.CollisionCount.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Conditions".
-	field.Write("currentNumberScheduled")
+
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("currentNumberScheduled")
 	j.WriteInt32(s.CurrentNumberScheduled)
-	field.Write("desiredNumberScheduled")
+
+	more.More()
+	j.WriteObjectField("desiredNumberScheduled")
 	j.WriteInt32(s.DesiredNumberScheduled)
+
 	if s.NumberAvailable.Set {
-		field.Write("numberAvailable")
+		more.More()
+		j.WriteObjectField("numberAvailable")
 		s.NumberAvailable.WriteJSON(j)
 	}
-	field.Write("numberMisscheduled")
+
+	more.More()
+	j.WriteObjectField("numberMisscheduled")
 	j.WriteInt32(s.NumberMisscheduled)
-	field.Write("numberReady")
+
+	more.More()
+	j.WriteObjectField("numberReady")
 	j.WriteInt32(s.NumberReady)
+
 	if s.NumberUnavailable.Set {
-		field.Write("numberUnavailable")
+		more.More()
+		j.WriteObjectField("numberUnavailable")
 		s.NumberUnavailable.WriteJSON(j)
 	}
+
 	if s.ObservedGeneration.Set {
-		field.Write("observedGeneration")
+		more.More()
+		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
+
 	if s.UpdatedNumberScheduled.Set {
-		field.Write("updatedNumberScheduled")
+		more.More()
+		j.WriteObjectField("updatedNumberScheduled")
 		s.UpdatedNumberScheduled.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1DaemonSetStatus json value to io.Writer.
 func (s IoK8sAPIAppsV1DaemonSetStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1814,7 +2238,7 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		case "currentNumberScheduled":
@@ -1868,22 +2292,27 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetUpdateStrategy) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.RollingUpdate.Set {
-		field.Write("rollingUpdate")
+		more.More()
+		j.WriteObjectField("rollingUpdate")
 		s.RollingUpdate.WriteJSON(j)
 	}
+
 	if s.Type.Set {
-		field.Write("type")
+		more.More()
+		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1DaemonSetUpdateStrategy json value to io.Writer.
 func (s IoK8sAPIAppsV1DaemonSetUpdateStrategy) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1932,34 +2361,45 @@ func (s *IoK8sAPIAppsV1DaemonSetUpdateStrategy) ReadJSON(i *json.Iterator) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1Deployment) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1Deployment json value to io.Writer.
 func (s IoK8sAPIAppsV1Deployment) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -2029,28 +2469,40 @@ func (s *IoK8sAPIAppsV1Deployment) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "LastTransitionTime".
-	// Unsupported kind "pointer" for field "LastUpdateTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "lastTransitionTime".
+
+	// Unsupported kind "pointer" for field "lastUpdateTime".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-	field.Write("status")
+
+	more.More()
+	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1DeploymentCondition json value to io.Writer.
 func (s IoK8sAPIAppsV1DeploymentCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -2113,27 +2565,44 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1DeploymentList json value to io.Writer.
 func (s IoK8sAPIAppsV1DeploymentList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -2193,42 +2662,59 @@ func (s *IoK8sAPIAppsV1DeploymentList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.MinReadySeconds.Set {
-		field.Write("minReadySeconds")
+		more.More()
+		j.WriteObjectField("minReadySeconds")
 		s.MinReadySeconds.WriteJSON(j)
 	}
+
 	if s.Paused.Set {
-		field.Write("paused")
+		more.More()
+		j.WriteObjectField("paused")
 		s.Paused.WriteJSON(j)
 	}
+
 	if s.ProgressDeadlineSeconds.Set {
-		field.Write("progressDeadlineSeconds")
+		more.More()
+		j.WriteObjectField("progressDeadlineSeconds")
 		s.ProgressDeadlineSeconds.WriteJSON(j)
 	}
+
 	if s.Replicas.Set {
-		field.Write("replicas")
+		more.More()
+		j.WriteObjectField("replicas")
 		s.Replicas.WriteJSON(j)
 	}
+
 	if s.RevisionHistoryLimit.Set {
-		field.Write("revisionHistoryLimit")
+		more.More()
+		j.WriteObjectField("revisionHistoryLimit")
 		s.RevisionHistoryLimit.WriteJSON(j)
 	}
-	field.Write("selector")
+
+	more.More()
+	j.WriteObjectField("selector")
 	s.Selector.WriteJSON(j)
+
 	if s.Strategy.Set {
-		field.Write("strategy")
+		more.More()
+		j.WriteObjectField("strategy")
 		s.Strategy.WriteJSON(j)
 	}
-	field.Write("template")
+
+	more.More()
+	j.WriteObjectField("template")
 	s.Template.WriteJSON(j)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1DeploymentSpec json value to io.Writer.
 func (s IoK8sAPIAppsV1DeploymentSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -2317,43 +2803,71 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AvailableReplicas.Set {
-		field.Write("availableReplicas")
+		more.More()
+		j.WriteObjectField("availableReplicas")
 		s.AvailableReplicas.WriteJSON(j)
 	}
+
 	if s.CollisionCount.Set {
-		field.Write("collisionCount")
+		more.More()
+		j.WriteObjectField("collisionCount")
 		s.CollisionCount.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Conditions".
+
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.ObservedGeneration.Set {
-		field.Write("observedGeneration")
+		more.More()
+		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
+
 	if s.ReadyReplicas.Set {
-		field.Write("readyReplicas")
+		more.More()
+		j.WriteObjectField("readyReplicas")
 		s.ReadyReplicas.WriteJSON(j)
 	}
+
 	if s.Replicas.Set {
-		field.Write("replicas")
+		more.More()
+		j.WriteObjectField("replicas")
 		s.Replicas.WriteJSON(j)
 	}
+
 	if s.UnavailableReplicas.Set {
-		field.Write("unavailableReplicas")
+		more.More()
+		j.WriteObjectField("unavailableReplicas")
 		s.UnavailableReplicas.WriteJSON(j)
 	}
+
 	if s.UpdatedReplicas.Set {
-		field.Write("updatedReplicas")
+		more.More()
+		j.WriteObjectField("updatedReplicas")
 		s.UpdatedReplicas.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1DeploymentStatus json value to io.Writer.
 func (s IoK8sAPIAppsV1DeploymentStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -2392,7 +2906,7 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		case "observedGeneration":
@@ -2441,22 +2955,27 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentStrategy) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.RollingUpdate.Set {
-		field.Write("rollingUpdate")
+		more.More()
+		j.WriteObjectField("rollingUpdate")
 		s.RollingUpdate.WriteJSON(j)
 	}
+
 	if s.Type.Set {
-		field.Write("type")
+		more.More()
+		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1DeploymentStrategy json value to io.Writer.
 func (s IoK8sAPIAppsV1DeploymentStrategy) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -2505,34 +3024,45 @@ func (s *IoK8sAPIAppsV1DeploymentStrategy) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSet) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1ReplicaSet json value to io.Writer.
 func (s IoK8sAPIAppsV1ReplicaSet) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -2602,27 +3132,38 @@ func (s *IoK8sAPIAppsV1ReplicaSet) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSetCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "LastTransitionTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "lastTransitionTime".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-	field.Write("status")
+
+	more.More()
+	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1ReplicaSetCondition json value to io.Writer.
 func (s IoK8sAPIAppsV1ReplicaSetCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -2681,27 +3222,44 @@ func (s *IoK8sAPIAppsV1ReplicaSetCondition) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSetList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1ReplicaSetList json value to io.Writer.
 func (s IoK8sAPIAppsV1ReplicaSetList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -2761,28 +3319,37 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSetSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.MinReadySeconds.Set {
-		field.Write("minReadySeconds")
+		more.More()
+		j.WriteObjectField("minReadySeconds")
 		s.MinReadySeconds.WriteJSON(j)
 	}
+
 	if s.Replicas.Set {
-		field.Write("replicas")
+		more.More()
+		j.WriteObjectField("replicas")
 		s.Replicas.WriteJSON(j)
 	}
-	field.Write("selector")
+
+	more.More()
+	j.WriteObjectField("selector")
 	s.Selector.WriteJSON(j)
+
 	if s.Template.Set {
-		field.Write("template")
+		more.More()
+		j.WriteObjectField("template")
 		s.Template.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1ReplicaSetSpec json value to io.Writer.
 func (s IoK8sAPIAppsV1ReplicaSetSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -2844,33 +3411,57 @@ func (s *IoK8sAPIAppsV1ReplicaSetSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSetStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AvailableReplicas.Set {
-		field.Write("availableReplicas")
+		more.More()
+		j.WriteObjectField("availableReplicas")
 		s.AvailableReplicas.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Conditions".
+
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.FullyLabeledReplicas.Set {
-		field.Write("fullyLabeledReplicas")
+		more.More()
+		j.WriteObjectField("fullyLabeledReplicas")
 		s.FullyLabeledReplicas.WriteJSON(j)
 	}
+
 	if s.ObservedGeneration.Set {
-		field.Write("observedGeneration")
+		more.More()
+		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
+
 	if s.ReadyReplicas.Set {
-		field.Write("readyReplicas")
+		more.More()
+		j.WriteObjectField("readyReplicas")
 		s.ReadyReplicas.WriteJSON(j)
 	}
-	field.Write("replicas")
+
+	more.More()
+	j.WriteObjectField("replicas")
 	j.WriteInt32(s.Replicas)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1ReplicaSetStatus json value to io.Writer.
 func (s IoK8sAPIAppsV1ReplicaSetStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -2902,7 +3493,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		case "fullyLabeledReplicas":
@@ -2940,16 +3531,20 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1RollingUpdateDaemonSet) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "MaxSurge".
-	// Unsupported kind "pointer" for field "MaxUnavailable".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "maxSurge".
+
+	// Unsupported kind "pointer" for field "maxUnavailable".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1RollingUpdateDaemonSet json value to io.Writer.
 func (s IoK8sAPIAppsV1RollingUpdateDaemonSet) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -2992,16 +3587,20 @@ func (s *IoK8sAPIAppsV1RollingUpdateDaemonSet) ReadJSON(i *json.Iterator) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1RollingUpdateDeployment) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "MaxSurge".
-	// Unsupported kind "pointer" for field "MaxUnavailable".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "maxSurge".
+
+	// Unsupported kind "pointer" for field "maxUnavailable".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1RollingUpdateDeployment json value to io.Writer.
 func (s IoK8sAPIAppsV1RollingUpdateDeployment) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -3044,18 +3643,21 @@ func (s *IoK8sAPIAppsV1RollingUpdateDeployment) ReadJSON(i *json.Iterator) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Partition.Set {
-		field.Write("partition")
+		more.More()
+		j.WriteObjectField("partition")
 		s.Partition.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy json value to io.Writer.
 func (s IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -3097,34 +3699,45 @@ func (s *IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) ReadJSON(i *json.Iterat
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSet) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1StatefulSet json value to io.Writer.
 func (s IoK8sAPIAppsV1StatefulSet) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -3194,27 +3807,38 @@ func (s *IoK8sAPIAppsV1StatefulSet) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "LastTransitionTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "lastTransitionTime".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-	field.Write("status")
+
+	more.More()
+	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1StatefulSetCondition json value to io.Writer.
 func (s IoK8sAPIAppsV1StatefulSetCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -3273,27 +3897,44 @@ func (s *IoK8sAPIAppsV1StatefulSetCondition) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1StatefulSetList json value to io.Writer.
 func (s IoK8sAPIAppsV1StatefulSetList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -3353,41 +3994,71 @@ func (s *IoK8sAPIAppsV1StatefulSetList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.MinReadySeconds.Set {
-		field.Write("minReadySeconds")
+		more.More()
+		j.WriteObjectField("minReadySeconds")
 		s.MinReadySeconds.WriteJSON(j)
 	}
+
 	if s.PodManagementPolicy.Set {
-		field.Write("podManagementPolicy")
+		more.More()
+		j.WriteObjectField("podManagementPolicy")
 		s.PodManagementPolicy.WriteJSON(j)
 	}
+
 	if s.Replicas.Set {
-		field.Write("replicas")
+		more.More()
+		j.WriteObjectField("replicas")
 		s.Replicas.WriteJSON(j)
 	}
+
 	if s.RevisionHistoryLimit.Set {
-		field.Write("revisionHistoryLimit")
+		more.More()
+		j.WriteObjectField("revisionHistoryLimit")
 		s.RevisionHistoryLimit.WriteJSON(j)
 	}
-	field.Write("selector")
+
+	more.More()
+	j.WriteObjectField("selector")
 	s.Selector.WriteJSON(j)
-	field.Write("serviceName")
+
+	more.More()
+	j.WriteObjectField("serviceName")
 	j.WriteString(s.ServiceName)
-	field.Write("template")
+
+	more.More()
+	j.WriteObjectField("template")
 	s.Template.WriteJSON(j)
+
 	if s.UpdateStrategy.Set {
-		field.Write("updateStrategy")
+		more.More()
+		j.WriteObjectField("updateStrategy")
 		s.UpdateStrategy.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "VolumeClaimTemplates".
+
+	if s.VolumeClaimTemplates != nil {
+		more.More()
+		j.WriteObjectField("volumeClaimTemplates")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.VolumeClaimTemplates {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1StatefulSetSpec json value to io.Writer.
 func (s IoK8sAPIAppsV1StatefulSetSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -3462,7 +4133,7 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "volumeClaimTemplates":
-			// Unsupported kind "pointer" for field "VolumeClaimTemplates".
+			// Unsupported kind "array" for field "VolumeClaimTemplates".
 			i.Skip()
 			return true
 		default:
@@ -3476,47 +4147,80 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("availableReplicas")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("availableReplicas")
 	j.WriteInt32(s.AvailableReplicas)
+
 	if s.CollisionCount.Set {
-		field.Write("collisionCount")
+		more.More()
+		j.WriteObjectField("collisionCount")
 		s.CollisionCount.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Conditions".
+
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.CurrentReplicas.Set {
-		field.Write("currentReplicas")
+		more.More()
+		j.WriteObjectField("currentReplicas")
 		s.CurrentReplicas.WriteJSON(j)
 	}
+
 	if s.CurrentRevision.Set {
-		field.Write("currentRevision")
+		more.More()
+		j.WriteObjectField("currentRevision")
 		s.CurrentRevision.WriteJSON(j)
 	}
+
 	if s.ObservedGeneration.Set {
-		field.Write("observedGeneration")
+		more.More()
+		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
+
 	if s.ReadyReplicas.Set {
-		field.Write("readyReplicas")
+		more.More()
+		j.WriteObjectField("readyReplicas")
 		s.ReadyReplicas.WriteJSON(j)
 	}
-	field.Write("replicas")
+
+	more.More()
+	j.WriteObjectField("replicas")
 	j.WriteInt32(s.Replicas)
+
 	if s.UpdateRevision.Set {
-		field.Write("updateRevision")
+		more.More()
+		j.WriteObjectField("updateRevision")
 		s.UpdateRevision.WriteJSON(j)
 	}
+
 	if s.UpdatedReplicas.Set {
-		field.Write("updatedReplicas")
+		more.More()
+		j.WriteObjectField("updatedReplicas")
 		s.UpdatedReplicas.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1StatefulSetStatus json value to io.Writer.
 func (s IoK8sAPIAppsV1StatefulSetStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -3551,7 +4255,7 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		case "currentReplicas":
@@ -3610,22 +4314,27 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetUpdateStrategy) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.RollingUpdate.Set {
-		field.Write("rollingUpdate")
+		more.More()
+		j.WriteObjectField("rollingUpdate")
 		s.RollingUpdate.WriteJSON(j)
 	}
+
 	if s.Type.Set {
-		field.Write("type")
+		more.More()
+		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAppsV1StatefulSetUpdateStrategy json value to io.Writer.
 func (s IoK8sAPIAppsV1StatefulSetUpdateStrategy) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -3674,32 +4383,43 @@ func (s *IoK8sAPIAppsV1StatefulSetUpdateStrategy) ReadJSON(i *json.Iterator) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAuthenticationV1TokenReview) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	field.Write("spec")
+
+	more.More()
+	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAuthenticationV1TokenReview json value to io.Writer.
 func (s IoK8sAPIAuthenticationV1TokenReview) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -3768,19 +4488,35 @@ func (s *IoK8sAPIAuthenticationV1TokenReview) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAuthenticationV1TokenReviewSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Audiences".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Audiences != nil {
+		more.More()
+		j.WriteObjectField("audiences")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Audiences {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Token.Set {
-		field.Write("token")
+		more.More()
+		j.WriteObjectField("token")
 		s.Token.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAuthenticationV1TokenReviewSpec json value to io.Writer.
 func (s IoK8sAPIAuthenticationV1TokenReviewSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -3805,7 +4541,7 @@ func (s *IoK8sAPIAuthenticationV1TokenReviewSpec) ReadJSON(i *json.Iterator) err
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "audiences":
-			// Unsupported kind "pointer" for field "Audiences".
+			// Unsupported kind "array" for field "Audiences".
 			i.Skip()
 			return true
 		case "token":
@@ -3826,27 +4562,47 @@ func (s *IoK8sAPIAuthenticationV1TokenReviewSpec) ReadJSON(i *json.Iterator) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAuthenticationV1TokenReviewStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Audiences".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Audiences != nil {
+		more.More()
+		j.WriteObjectField("audiences")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Audiences {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Authenticated.Set {
-		field.Write("authenticated")
+		more.More()
+		j.WriteObjectField("authenticated")
 		s.Authenticated.WriteJSON(j)
 	}
+
 	if s.Error.Set {
-		field.Write("error")
+		more.More()
+		j.WriteObjectField("error")
 		s.Error.WriteJSON(j)
 	}
+
 	if s.User.Set {
-		field.Write("user")
+		more.More()
+		j.WriteObjectField("user")
 		s.User.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAuthenticationV1TokenReviewStatus json value to io.Writer.
 func (s IoK8sAPIAuthenticationV1TokenReviewStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -3871,7 +4627,7 @@ func (s *IoK8sAPIAuthenticationV1TokenReviewStatus) ReadJSON(i *json.Iterator) e
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "audiences":
-			// Unsupported kind "pointer" for field "Audiences".
+			// Unsupported kind "array" for field "Audiences".
 			i.Skip()
 			return true
 		case "authenticated":
@@ -3906,24 +4662,44 @@ func (s *IoK8sAPIAuthenticationV1TokenReviewStatus) ReadJSON(i *json.Iterator) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAuthenticationV1UserInfo) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Extra".
-	// Unsupported kind "pointer" for field "Groups".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "extra".
+
+	if s.Groups != nil {
+		more.More()
+		j.WriteObjectField("groups")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Groups {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.UID.Set {
-		field.Write("uid")
+		more.More()
+		j.WriteObjectField("uid")
 		s.UID.WriteJSON(j)
 	}
+
 	if s.Username.Set {
-		field.Write("username")
+		more.More()
+		j.WriteObjectField("username")
 		s.Username.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAuthenticationV1UserInfo json value to io.Writer.
 func (s IoK8sAPIAuthenticationV1UserInfo) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -3952,7 +4728,7 @@ func (s *IoK8sAPIAuthenticationV1UserInfo) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "groups":
-			// Unsupported kind "pointer" for field "Groups".
+			// Unsupported kind "array" for field "Groups".
 			i.Skip()
 			return true
 		case "uid":
@@ -3980,22 +4756,27 @@ func (s *IoK8sAPIAuthenticationV1UserInfo) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAuthorizationV1NonResourceAttributes) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Path.Set {
-		field.Write("path")
+		more.More()
+		j.WriteObjectField("path")
 		s.Path.WriteJSON(j)
 	}
+
 	if s.Verb.Set {
-		field.Write("verb")
+		more.More()
+		j.WriteObjectField("verb")
 		s.Verb.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAuthorizationV1NonResourceAttributes json value to io.Writer.
 func (s IoK8sAPIAuthorizationV1NonResourceAttributes) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -4044,16 +4825,40 @@ func (s *IoK8sAPIAuthorizationV1NonResourceAttributes) ReadJSON(i *json.Iterator
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAuthorizationV1NonResourceRule) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "NonResourceURLs".
-	// Unsupported kind "array" for field "Verbs".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.NonResourceURLs != nil {
+		more.More()
+		j.WriteObjectField("nonResourceURLs")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.NonResourceURLs {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("verbs")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Verbs {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAuthorizationV1NonResourceRule json value to io.Writer.
 func (s IoK8sAPIAuthorizationV1NonResourceRule) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -4078,7 +4883,7 @@ func (s *IoK8sAPIAuthorizationV1NonResourceRule) ReadJSON(i *json.Iterator) erro
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "nonResourceURLs":
-			// Unsupported kind "pointer" for field "NonResourceURLs".
+			// Unsupported kind "array" for field "NonResourceURLs".
 			i.Skip()
 			return true
 		case "verbs":
@@ -4096,42 +4901,57 @@ func (s *IoK8sAPIAuthorizationV1NonResourceRule) ReadJSON(i *json.Iterator) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAuthorizationV1ResourceAttributes) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Group.Set {
-		field.Write("group")
+		more.More()
+		j.WriteObjectField("group")
 		s.Group.WriteJSON(j)
 	}
+
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
+
 	if s.Namespace.Set {
-		field.Write("namespace")
+		more.More()
+		j.WriteObjectField("namespace")
 		s.Namespace.WriteJSON(j)
 	}
+
 	if s.Resource.Set {
-		field.Write("resource")
+		more.More()
+		j.WriteObjectField("resource")
 		s.Resource.WriteJSON(j)
 	}
+
 	if s.Subresource.Set {
-		field.Write("subresource")
+		more.More()
+		j.WriteObjectField("subresource")
 		s.Subresource.WriteJSON(j)
 	}
+
 	if s.Verb.Set {
-		field.Write("verb")
+		more.More()
+		j.WriteObjectField("verb")
 		s.Verb.WriteJSON(j)
 	}
+
 	if s.Version.Set {
-		field.Write("version")
+		more.More()
+		j.WriteObjectField("version")
 		s.Version.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAuthorizationV1ResourceAttributes json value to io.Writer.
 func (s IoK8sAPIAuthorizationV1ResourceAttributes) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -4215,18 +5035,68 @@ func (s *IoK8sAPIAuthorizationV1ResourceAttributes) ReadJSON(i *json.Iterator) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAuthorizationV1ResourceRule) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "ApiGroups".
-	// Unsupported kind "pointer" for field "ResourceNames".
-	// Unsupported kind "pointer" for field "Resources".
-	// Unsupported kind "array" for field "Verbs".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.ApiGroups != nil {
+		more.More()
+		j.WriteObjectField("apiGroups")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ApiGroups {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.ResourceNames != nil {
+		more.More()
+		j.WriteObjectField("resourceNames")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ResourceNames {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.Resources != nil {
+		more.More()
+		j.WriteObjectField("resources")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Resources {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("verbs")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Verbs {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAuthorizationV1ResourceRule json value to io.Writer.
 func (s IoK8sAPIAuthorizationV1ResourceRule) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -4251,15 +5121,15 @@ func (s *IoK8sAPIAuthorizationV1ResourceRule) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "apiGroups":
-			// Unsupported kind "pointer" for field "ApiGroups".
+			// Unsupported kind "array" for field "ApiGroups".
 			i.Skip()
 			return true
 		case "resourceNames":
-			// Unsupported kind "pointer" for field "ResourceNames".
+			// Unsupported kind "array" for field "ResourceNames".
 			i.Skip()
 			return true
 		case "resources":
-			// Unsupported kind "pointer" for field "Resources".
+			// Unsupported kind "array" for field "Resources".
 			i.Skip()
 			return true
 		case "verbs":
@@ -4277,32 +5147,43 @@ func (s *IoK8sAPIAuthorizationV1ResourceRule) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAuthorizationV1SelfSubjectAccessReview) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	field.Write("spec")
+
+	more.More()
+	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAuthorizationV1SelfSubjectAccessReview json value to io.Writer.
 func (s IoK8sAPIAuthorizationV1SelfSubjectAccessReview) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -4371,22 +5252,27 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectAccessReview) ReadJSON(i *json.Iterat
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAuthorizationV1SelfSubjectAccessReviewSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.NonResourceAttributes.Set {
-		field.Write("nonResourceAttributes")
+		more.More()
+		j.WriteObjectField("nonResourceAttributes")
 		s.NonResourceAttributes.WriteJSON(j)
 	}
+
 	if s.ResourceAttributes.Set {
-		field.Write("resourceAttributes")
+		more.More()
+		j.WriteObjectField("resourceAttributes")
 		s.ResourceAttributes.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAuthorizationV1SelfSubjectAccessReviewSpec json value to io.Writer.
 func (s IoK8sAPIAuthorizationV1SelfSubjectAccessReviewSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -4435,32 +5321,43 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectAccessReviewSpec) ReadJSON(i *json.It
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAuthorizationV1SelfSubjectRulesReview) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	field.Write("spec")
+
+	more.More()
+	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAuthorizationV1SelfSubjectRulesReview json value to io.Writer.
 func (s IoK8sAPIAuthorizationV1SelfSubjectRulesReview) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -4529,18 +5426,21 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectRulesReview) ReadJSON(i *json.Iterato
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAuthorizationV1SelfSubjectRulesReviewSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Namespace.Set {
-		field.Write("namespace")
+		more.More()
+		j.WriteObjectField("namespace")
 		s.Namespace.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAuthorizationV1SelfSubjectRulesReviewSpec json value to io.Writer.
 func (s IoK8sAPIAuthorizationV1SelfSubjectRulesReviewSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -4582,32 +5482,43 @@ func (s *IoK8sAPIAuthorizationV1SelfSubjectRulesReviewSpec) ReadJSON(i *json.Ite
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAuthorizationV1SubjectAccessReview) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	field.Write("spec")
+
+	more.More()
+	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAuthorizationV1SubjectAccessReview json value to io.Writer.
 func (s IoK8sAPIAuthorizationV1SubjectAccessReview) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -4676,32 +5587,56 @@ func (s *IoK8sAPIAuthorizationV1SubjectAccessReview) ReadJSON(i *json.Iterator) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAuthorizationV1SubjectAccessReviewSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Extra".
-	// Unsupported kind "pointer" for field "Groups".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "extra".
+
+	if s.Groups != nil {
+		more.More()
+		j.WriteObjectField("groups")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Groups {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.NonResourceAttributes.Set {
-		field.Write("nonResourceAttributes")
+		more.More()
+		j.WriteObjectField("nonResourceAttributes")
 		s.NonResourceAttributes.WriteJSON(j)
 	}
+
 	if s.ResourceAttributes.Set {
-		field.Write("resourceAttributes")
+		more.More()
+		j.WriteObjectField("resourceAttributes")
 		s.ResourceAttributes.WriteJSON(j)
 	}
+
 	if s.UID.Set {
-		field.Write("uid")
+		more.More()
+		j.WriteObjectField("uid")
 		s.UID.WriteJSON(j)
 	}
+
 	if s.User.Set {
-		field.Write("user")
+		more.More()
+		j.WriteObjectField("user")
 		s.User.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAuthorizationV1SubjectAccessReviewSpec json value to io.Writer.
 func (s IoK8sAPIAuthorizationV1SubjectAccessReviewSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -4730,7 +5665,7 @@ func (s *IoK8sAPIAuthorizationV1SubjectAccessReviewSpec) ReadJSON(i *json.Iterat
 			i.Skip()
 			return true
 		case "groups":
-			// Unsupported kind "pointer" for field "Groups".
+			// Unsupported kind "array" for field "Groups".
 			i.Skip()
 			return true
 		case "nonResourceAttributes":
@@ -4772,28 +5707,38 @@ func (s *IoK8sAPIAuthorizationV1SubjectAccessReviewSpec) ReadJSON(i *json.Iterat
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAuthorizationV1SubjectAccessReviewStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("allowed")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("allowed")
 	j.WriteBool(s.Allowed)
+
 	if s.Denied.Set {
-		field.Write("denied")
+		more.More()
+		j.WriteObjectField("denied")
 		s.Denied.WriteJSON(j)
 	}
+
 	if s.EvaluationError.Set {
-		field.Write("evaluationError")
+		more.More()
+		j.WriteObjectField("evaluationError")
 		s.EvaluationError.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAuthorizationV1SubjectAccessReviewStatus json value to io.Writer.
 func (s IoK8sAPIAuthorizationV1SubjectAccessReviewStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -4852,22 +5797,47 @@ func (s *IoK8sAPIAuthorizationV1SubjectAccessReviewStatus) ReadJSON(i *json.Iter
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.EvaluationError.Set {
-		field.Write("evaluationError")
+		more.More()
+		j.WriteObjectField("evaluationError")
 		s.EvaluationError.WriteJSON(j)
 	}
-	field.Write("incomplete")
+
+	more.More()
+	j.WriteObjectField("incomplete")
 	j.WriteBool(s.Incomplete)
-	// Unsupported kind "array" for field "NonResourceRules".
-	// Unsupported kind "array" for field "ResourceRules".
+
+	more.More()
+	j.WriteObjectField("nonResourceRules")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.NonResourceRules {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
+	more.More()
+	j.WriteObjectField("resourceRules")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.ResourceRules {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAuthorizationV1SubjectRulesReviewStatus json value to io.Writer.
 func (s IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -4920,22 +5890,29 @@ func (s *IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) ReadJSON(i *json.Itera
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	field.Write("kind")
+
+	more.More()
+	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV1CrossVersionObjectReference json value to io.Writer.
 func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -4983,34 +5960,45 @@ func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) ReadJSON(i *json.Iter
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV1HorizontalPodAutoscaler json value to io.Writer.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -5080,27 +6068,44 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) ReadJSON(i *json.Iterator
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList json value to io.Writer.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -5160,26 +6165,36 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) ReadJSON(i *json.Iter
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("maxReplicas")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("maxReplicas")
 	j.WriteInt32(s.MaxReplicas)
+
 	if s.MinReplicas.Set {
-		field.Write("minReplicas")
+		more.More()
+		j.WriteObjectField("minReplicas")
 		s.MinReplicas.WriteJSON(j)
 	}
-	field.Write("scaleTargetRef")
+
+	more.More()
+	j.WriteObjectField("scaleTargetRef")
 	s.ScaleTargetRef.WriteJSON(j)
+
 	if s.TargetCPUUtilizationPercentage.Set {
-		field.Write("targetCPUUtilizationPercentage")
+		more.More()
+		j.WriteObjectField("targetCPUUtilizationPercentage")
 		s.TargetCPUUtilizationPercentage.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec json value to io.Writer.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -5237,27 +6252,37 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) ReadJSON(i *json.Iter
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.CurrentCPUUtilizationPercentage.Set {
-		field.Write("currentCPUUtilizationPercentage")
+		more.More()
+		j.WriteObjectField("currentCPUUtilizationPercentage")
 		s.CurrentCPUUtilizationPercentage.WriteJSON(j)
 	}
-	field.Write("currentReplicas")
+
+	more.More()
+	j.WriteObjectField("currentReplicas")
 	j.WriteInt32(s.CurrentReplicas)
-	field.Write("desiredReplicas")
+
+	more.More()
+	j.WriteObjectField("desiredReplicas")
 	j.WriteInt32(s.DesiredReplicas)
-	// Unsupported kind "pointer" for field "LastScaleTime".
+
+	// Unsupported kind "pointer" for field "lastScaleTime".
+
 	if s.ObservedGeneration.Set {
-		field.Write("observedGeneration")
+		more.More()
+		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus json value to io.Writer.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -5316,23 +6341,32 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) ReadJSON(i *json.It
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("container")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("container")
 	j.WriteString(s.Container)
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	if s.TargetAverageUtilization.Set {
-		field.Write("targetAverageUtilization")
+		more.More()
+		j.WriteObjectField("targetAverageUtilization")
 		s.TargetAverageUtilization.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "TargetAverageValue".
+
+	// Unsupported kind "pointer" for field "targetAverageValue".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -5384,23 +6418,32 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) ReadJSON(i *js
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("container")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("container")
 	j.WriteString(s.Container)
+
 	if s.CurrentAverageUtilization.Set {
-		field.Write("currentAverageUtilization")
+		more.More()
+		j.WriteObjectField("currentAverageUtilization")
 		s.CurrentAverageUtilization.WriteJSON(j)
 	}
-	// Unsupported kind "alias" for field "CurrentAverageValue".
-	field.Write("name")
+
+	// Unsupported kind "alias" for field "currentAverageValue".
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -5452,22 +6495,29 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) ReadJSON(i *js
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	field.Write("kind")
+
+	more.More()
+	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -5515,22 +6565,30 @@ func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) ReadJSON(i *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("metricName")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("metricName")
 	j.WriteString(s.MetricName)
+
 	if s.MetricSelector.Set {
-		field.Write("metricSelector")
+		more.More()
+		j.WriteObjectField("metricSelector")
 		s.MetricSelector.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "TargetAverageValue".
-	// Unsupported kind "pointer" for field "TargetValue".
+
+	// Unsupported kind "pointer" for field "targetAverageValue".
+
+	// Unsupported kind "pointer" for field "targetValue".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta1ExternalMetricSource json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -5583,22 +6641,30 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) ReadJSON(i *json.Iterat
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "CurrentAverageValue".
-	// Unsupported kind "alias" for field "CurrentValue".
-	field.Write("metricName")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "currentAverageValue".
+
+	// Unsupported kind "alias" for field "currentValue".
+
+	more.More()
+	j.WriteObjectField("metricName")
 	j.WriteString(s.MetricName)
+
 	if s.MetricSelector.Set {
-		field.Write("metricSelector")
+		more.More()
+		j.WriteObjectField("metricSelector")
 		s.MetricSelector.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta1ExternalMetricStatus json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -5651,34 +6717,45 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) ReadJSON(i *json.Iterat
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -5748,27 +6825,38 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) ReadJSON(i *json.Ite
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "LastTransitionTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "lastTransitionTime".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-	field.Write("status")
+
+	more.More()
+	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -5827,27 +6915,44 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) ReadJSON(i 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -5907,23 +7012,44 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) ReadJSON(i *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("maxReplicas")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("maxReplicas")
 	j.WriteInt32(s.MaxReplicas)
-	// Unsupported kind "pointer" for field "Metrics".
+
+	if s.Metrics != nil {
+		more.More()
+		j.WriteObjectField("metrics")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Metrics {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.MinReplicas.Set {
-		field.Write("minReplicas")
+		more.More()
+		j.WriteObjectField("minReplicas")
 		s.MinReplicas.WriteJSON(j)
 	}
-	field.Write("scaleTargetRef")
+
+	more.More()
+	j.WriteObjectField("scaleTargetRef")
 	s.ScaleTargetRef.WriteJSON(j)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -5951,7 +7077,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) ReadJSON(i *json
 			s.MaxReplicas = i.ReadInt32()
 			return i.Error == nil
 		case "metrics":
-			// Unsupported kind "pointer" for field "Metrics".
+			// Unsupported kind "array" for field "Metrics".
 			i.Skip()
 			return true
 		case "minReplicas":
@@ -5978,25 +7104,56 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) ReadJSON(i *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "array" for field "Conditions".
-	// Unsupported kind "pointer" for field "CurrentMetrics".
-	field.Write("currentReplicas")
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("conditions")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Conditions {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
+	if s.CurrentMetrics != nil {
+		more.More()
+		j.WriteObjectField("currentMetrics")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.CurrentMetrics {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("currentReplicas")
 	j.WriteInt32(s.CurrentReplicas)
-	field.Write("desiredReplicas")
+
+	more.More()
+	j.WriteObjectField("desiredReplicas")
 	j.WriteInt32(s.DesiredReplicas)
-	// Unsupported kind "pointer" for field "LastScaleTime".
+
+	// Unsupported kind "pointer" for field "lastScaleTime".
+
 	if s.ObservedGeneration.Set {
-		field.Write("observedGeneration")
+		more.More()
+		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -6025,7 +7182,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) ReadJSON(i *js
 			i.Skip()
 			return true
 		case "currentMetrics":
-			// Unsupported kind "pointer" for field "CurrentMetrics".
+			// Unsupported kind "array" for field "CurrentMetrics".
 			i.Skip()
 			return true
 		case "currentReplicas":
@@ -6056,36 +7213,49 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) ReadJSON(i *js
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1MetricSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ContainerResource.Set {
-		field.Write("containerResource")
+		more.More()
+		j.WriteObjectField("containerResource")
 		s.ContainerResource.WriteJSON(j)
 	}
+
 	if s.External.Set {
-		field.Write("external")
+		more.More()
+		j.WriteObjectField("external")
 		s.External.WriteJSON(j)
 	}
+
 	if s.Object.Set {
-		field.Write("object")
+		more.More()
+		j.WriteObjectField("object")
 		s.Object.WriteJSON(j)
 	}
+
 	if s.Pods.Set {
-		field.Write("pods")
+		more.More()
+		j.WriteObjectField("pods")
 		s.Pods.WriteJSON(j)
 	}
+
 	if s.Resource.Set {
-		field.Write("resource")
+		more.More()
+		j.WriteObjectField("resource")
 		s.Resource.WriteJSON(j)
 	}
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta1MetricSpec json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta1MetricSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -6158,36 +7328,49 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) ReadJSON(i *json.Iterator) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1MetricStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ContainerResource.Set {
-		field.Write("containerResource")
+		more.More()
+		j.WriteObjectField("containerResource")
 		s.ContainerResource.WriteJSON(j)
 	}
+
 	if s.External.Set {
-		field.Write("external")
+		more.More()
+		j.WriteObjectField("external")
 		s.External.WriteJSON(j)
 	}
+
 	if s.Object.Set {
-		field.Write("object")
+		more.More()
+		j.WriteObjectField("object")
 		s.Object.WriteJSON(j)
 	}
+
 	if s.Pods.Set {
-		field.Write("pods")
+		more.More()
+		j.WriteObjectField("pods")
 		s.Pods.WriteJSON(j)
 	}
+
 	if s.Resource.Set {
-		field.Write("resource")
+		more.More()
+		j.WriteObjectField("resource")
 		s.Resource.WriteJSON(j)
 	}
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta1MetricStatus json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta1MetricStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -6260,24 +7443,34 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) ReadJSON(i *json.Iterator) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "AverageValue".
-	field.Write("metricName")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "averageValue".
+
+	more.More()
+	j.WriteObjectField("metricName")
 	j.WriteString(s.MetricName)
+
 	if s.Selector.Set {
-		field.Write("selector")
+		more.More()
+		j.WriteObjectField("selector")
 		s.Selector.WriteJSON(j)
 	}
-	field.Write("target")
+
+	more.More()
+	j.WriteObjectField("target")
 	s.Target.WriteJSON(j)
-	// Unsupported kind "alias" for field "TargetValue".
+
+	// Unsupported kind "alias" for field "targetValue".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta1ObjectMetricSource json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -6336,24 +7529,34 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) ReadJSON(i *json.Iterator
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "AverageValue".
-	// Unsupported kind "alias" for field "CurrentValue".
-	field.Write("metricName")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "averageValue".
+
+	// Unsupported kind "alias" for field "currentValue".
+
+	more.More()
+	j.WriteObjectField("metricName")
 	j.WriteString(s.MetricName)
+
 	if s.Selector.Set {
-		field.Write("selector")
+		more.More()
+		j.WriteObjectField("selector")
 		s.Selector.WriteJSON(j)
 	}
-	field.Write("target")
+
+	more.More()
+	j.WriteObjectField("target")
 	s.Target.WriteJSON(j)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta1ObjectMetricStatus json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -6412,21 +7615,28 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) ReadJSON(i *json.Iterator
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("metricName")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("metricName")
 	j.WriteString(s.MetricName)
+
 	if s.Selector.Set {
-		field.Write("selector")
+		more.More()
+		j.WriteObjectField("selector")
 		s.Selector.WriteJSON(j)
 	}
-	// Unsupported kind "alias" for field "TargetAverageValue".
+
+	// Unsupported kind "alias" for field "targetAverageValue".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta1PodsMetricSource json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -6475,21 +7685,28 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) ReadJSON(i *json.Iterator) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "alias" for field "CurrentAverageValue".
-	field.Write("metricName")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "alias" for field "currentAverageValue".
+
+	more.More()
+	j.WriteObjectField("metricName")
 	j.WriteString(s.MetricName)
+
 	if s.Selector.Set {
-		field.Write("selector")
+		more.More()
+		j.WriteObjectField("selector")
 		s.Selector.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta1PodsMetricStatus json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -6538,21 +7755,28 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) ReadJSON(i *json.Iterator) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	if s.TargetAverageUtilization.Set {
-		field.Write("targetAverageUtilization")
+		more.More()
+		j.WriteObjectField("targetAverageUtilization")
 		s.TargetAverageUtilization.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "TargetAverageValue".
+
+	// Unsupported kind "pointer" for field "targetAverageValue".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta1ResourceMetricSource json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -6601,21 +7825,27 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) ReadJSON(i *json.Iterat
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.CurrentAverageUtilization.Set {
-		field.Write("currentAverageUtilization")
+		more.More()
+		j.WriteObjectField("currentAverageUtilization")
 		s.CurrentAverageUtilization.WriteJSON(j)
 	}
-	// Unsupported kind "alias" for field "CurrentAverageValue".
-	field.Write("name")
+
+	// Unsupported kind "alias" for field "currentAverageValue".
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta1ResourceMetricStatus json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -6664,20 +7894,28 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) ReadJSON(i *json.Iterat
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("container")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("container")
 	j.WriteString(s.Container)
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-	field.Write("target")
+
+	more.More()
+	j.WriteObjectField("target")
 	s.Target.WriteJSON(j)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -6724,20 +7962,28 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) ReadJSON(i *js
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("container")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("container")
 	j.WriteString(s.Container)
-	field.Write("current")
+
+	more.More()
+	j.WriteObjectField("current")
 	s.Current.WriteJSON(j)
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -6784,22 +8030,29 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) ReadJSON(i *js
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	field.Write("kind")
+
+	more.More()
+	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -6847,18 +8100,23 @@ func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) ReadJSON(i *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ExternalMetricSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("metric")
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("metric")
 	s.Metric.WriteJSON(j)
-	field.Write("target")
+
+	more.More()
+	j.WriteObjectField("target")
 	s.Target.WriteJSON(j)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2ExternalMetricSource json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2ExternalMetricSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -6905,18 +8163,23 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricSource) ReadJSON(i *json.Iterat
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("current")
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("current")
 	s.Current.WriteJSON(j)
-	field.Write("metric")
+
+	more.More()
+	j.WriteObjectField("metric")
 	s.Metric.WriteJSON(j)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2ExternalMetricStatus json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -6963,20 +8226,28 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) ReadJSON(i *json.Iterat
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("periodSeconds")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("periodSeconds")
 	j.WriteInt32(s.PeriodSeconds)
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-	field.Write("value")
+
+	more.More()
+	j.WriteObjectField("value")
 	j.WriteInt32(s.Value)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2HPAScalingPolicy json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -7020,23 +8291,41 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) ReadJSON(i *json.Iterator) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Policies".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Policies != nil {
+		more.More()
+		j.WriteObjectField("policies")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Policies {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.SelectPolicy.Set {
-		field.Write("selectPolicy")
+		more.More()
+		j.WriteObjectField("selectPolicy")
 		s.SelectPolicy.WriteJSON(j)
 	}
+
 	if s.StabilizationWindowSeconds.Set {
-		field.Write("stabilizationWindowSeconds")
+		more.More()
+		j.WriteObjectField("stabilizationWindowSeconds")
 		s.StabilizationWindowSeconds.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2HPAScalingRules json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -7061,7 +8350,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) ReadJSON(i *json.Iterator) e
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "policies":
-			// Unsupported kind "pointer" for field "Policies".
+			// Unsupported kind "array" for field "Policies".
 			i.Skip()
 			return true
 		case "selectPolicy":
@@ -7089,34 +8378,45 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) ReadJSON(i *json.Iterator) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -7186,22 +8486,27 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) ReadJSON(i *json.Ite
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ScaleDown.Set {
-		field.Write("scaleDown")
+		more.More()
+		j.WriteObjectField("scaleDown")
 		s.ScaleDown.WriteJSON(j)
 	}
+
 	if s.ScaleUp.Set {
-		field.Write("scaleUp")
+		more.More()
+		j.WriteObjectField("scaleUp")
 		s.ScaleUp.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -7250,27 +8555,38 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) ReadJSON(i *
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "LastTransitionTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "lastTransitionTime".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-	field.Write("status")
+
+	more.More()
+	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -7329,27 +8645,44 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) ReadJSON(i 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -7409,27 +8742,49 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) ReadJSON(i *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Behavior.Set {
-		field.Write("behavior")
+		more.More()
+		j.WriteObjectField("behavior")
 		s.Behavior.WriteJSON(j)
 	}
-	field.Write("maxReplicas")
+
+	more.More()
+	j.WriteObjectField("maxReplicas")
 	j.WriteInt32(s.MaxReplicas)
-	// Unsupported kind "pointer" for field "Metrics".
+
+	if s.Metrics != nil {
+		more.More()
+		j.WriteObjectField("metrics")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Metrics {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.MinReplicas.Set {
-		field.Write("minReplicas")
+		more.More()
+		j.WriteObjectField("minReplicas")
 		s.MinReplicas.WriteJSON(j)
 	}
-	field.Write("scaleTargetRef")
+
+	more.More()
+	j.WriteObjectField("scaleTargetRef")
 	s.ScaleTargetRef.WriteJSON(j)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -7464,7 +8819,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) ReadJSON(i *json
 			s.MaxReplicas = i.ReadInt32()
 			return i.Error == nil
 		case "metrics":
-			// Unsupported kind "pointer" for field "Metrics".
+			// Unsupported kind "array" for field "Metrics".
 			i.Skip()
 			return true
 		case "minReplicas":
@@ -7491,25 +8846,56 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) ReadJSON(i *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "array" for field "Conditions".
-	// Unsupported kind "pointer" for field "CurrentMetrics".
-	field.Write("currentReplicas")
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("conditions")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Conditions {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
+	if s.CurrentMetrics != nil {
+		more.More()
+		j.WriteObjectField("currentMetrics")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.CurrentMetrics {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("currentReplicas")
 	j.WriteInt32(s.CurrentReplicas)
-	field.Write("desiredReplicas")
+
+	more.More()
+	j.WriteObjectField("desiredReplicas")
 	j.WriteInt32(s.DesiredReplicas)
-	// Unsupported kind "pointer" for field "LastScaleTime".
+
+	// Unsupported kind "pointer" for field "lastScaleTime".
+
 	if s.ObservedGeneration.Set {
-		field.Write("observedGeneration")
+		more.More()
+		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -7538,7 +8924,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) ReadJSON(i *js
 			i.Skip()
 			return true
 		case "currentMetrics":
-			// Unsupported kind "pointer" for field "CurrentMetrics".
+			// Unsupported kind "array" for field "CurrentMetrics".
 			i.Skip()
 			return true
 		case "currentReplicas":
@@ -7569,20 +8955,26 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) ReadJSON(i *js
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricIdentifier) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	if s.Selector.Set {
-		field.Write("selector")
+		more.More()
+		j.WriteObjectField("selector")
 		s.Selector.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2MetricIdentifier json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2MetricIdentifier) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -7627,36 +9019,49 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) ReadJSON(i *json.Iterator) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ContainerResource.Set {
-		field.Write("containerResource")
+		more.More()
+		j.WriteObjectField("containerResource")
 		s.ContainerResource.WriteJSON(j)
 	}
+
 	if s.External.Set {
-		field.Write("external")
+		more.More()
+		j.WriteObjectField("external")
 		s.External.WriteJSON(j)
 	}
+
 	if s.Object.Set {
-		field.Write("object")
+		more.More()
+		j.WriteObjectField("object")
 		s.Object.WriteJSON(j)
 	}
+
 	if s.Pods.Set {
-		field.Write("pods")
+		more.More()
+		j.WriteObjectField("pods")
 		s.Pods.WriteJSON(j)
 	}
+
 	if s.Resource.Set {
-		field.Write("resource")
+		more.More()
+		j.WriteObjectField("resource")
 		s.Resource.WriteJSON(j)
 	}
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2MetricSpec json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2MetricSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -7729,36 +9134,49 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) ReadJSON(i *json.Iterator) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ContainerResource.Set {
-		field.Write("containerResource")
+		more.More()
+		j.WriteObjectField("containerResource")
 		s.ContainerResource.WriteJSON(j)
 	}
+
 	if s.External.Set {
-		field.Write("external")
+		more.More()
+		j.WriteObjectField("external")
 		s.External.WriteJSON(j)
 	}
+
 	if s.Object.Set {
-		field.Write("object")
+		more.More()
+		j.WriteObjectField("object")
 		s.Object.WriteJSON(j)
 	}
+
 	if s.Pods.Set {
-		field.Write("pods")
+		more.More()
+		j.WriteObjectField("pods")
 		s.Pods.WriteJSON(j)
 	}
+
 	if s.Resource.Set {
-		field.Write("resource")
+		more.More()
+		j.WriteObjectField("resource")
 		s.Resource.WriteJSON(j)
 	}
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2MetricStatus json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2MetricStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -7831,22 +9249,29 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) ReadJSON(i *json.Iterator) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricTarget) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AverageUtilization.Set {
-		field.Write("averageUtilization")
+		more.More()
+		j.WriteObjectField("averageUtilization")
 		s.AverageUtilization.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "AverageValue".
-	field.Write("type")
+
+	// Unsupported kind "pointer" for field "averageValue".
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-	// Unsupported kind "pointer" for field "Value".
+
+	// Unsupported kind "pointer" for field "value".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2MetricTarget json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2MetricTarget) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -7899,20 +9324,25 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) ReadJSON(i *json.Iterator) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AverageUtilization.Set {
-		field.Write("averageUtilization")
+		more.More()
+		j.WriteObjectField("averageUtilization")
 		s.AverageUtilization.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "AverageValue".
-	// Unsupported kind "pointer" for field "Value".
+
+	// Unsupported kind "pointer" for field "averageValue".
+
+	// Unsupported kind "pointer" for field "value".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2MetricValueStatus json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -7962,20 +9392,27 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) ReadJSON(i *json.Iterator)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("describedObject")
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("describedObject")
 	s.DescribedObject.WriteJSON(j)
-	field.Write("metric")
+
+	more.More()
+	j.WriteObjectField("metric")
 	s.Metric.WriteJSON(j)
-	field.Write("target")
+
+	more.More()
+	j.WriteObjectField("target")
 	s.Target.WriteJSON(j)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2ObjectMetricSource json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -8028,20 +9465,27 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricSource) ReadJSON(i *json.Iterator
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("current")
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("current")
 	s.Current.WriteJSON(j)
-	field.Write("describedObject")
+
+	more.More()
+	j.WriteObjectField("describedObject")
 	s.DescribedObject.WriteJSON(j)
-	field.Write("metric")
+
+	more.More()
+	j.WriteObjectField("metric")
 	s.Metric.WriteJSON(j)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2ObjectMetricStatus json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -8094,18 +9538,23 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) ReadJSON(i *json.Iterator
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2PodsMetricSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("metric")
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("metric")
 	s.Metric.WriteJSON(j)
-	field.Write("target")
+
+	more.More()
+	j.WriteObjectField("target")
 	s.Target.WriteJSON(j)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2PodsMetricSource json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2PodsMetricSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -8152,18 +9601,23 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricSource) ReadJSON(i *json.Iterator) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2PodsMetricStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("current")
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("current")
 	s.Current.WriteJSON(j)
-	field.Write("metric")
+
+	more.More()
+	j.WriteObjectField("metric")
 	s.Metric.WriteJSON(j)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2PodsMetricStatus json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2PodsMetricStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -8210,18 +9664,24 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricStatus) ReadJSON(i *json.Iterator) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ResourceMetricSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-	field.Write("target")
+
+	more.More()
+	j.WriteObjectField("target")
 	s.Target.WriteJSON(j)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2ResourceMetricSource json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2ResourceMetricSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -8265,18 +9725,23 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricSource) ReadJSON(i *json.Iterat
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("current")
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("current")
 	s.Current.WriteJSON(j)
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIAutoscalingV2beta2ResourceMetricStatus json value to io.Writer.
 func (s IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -8320,34 +9785,45 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) ReadJSON(i *json.Iterat
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1CronJob) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIBatchV1CronJob json value to io.Writer.
 func (s IoK8sAPIBatchV1CronJob) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -8417,27 +9893,44 @@ func (s *IoK8sAPIBatchV1CronJob) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1CronJobList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIBatchV1CronJobList json value to io.Writer.
 func (s IoK8sAPIBatchV1CronJobList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -8497,38 +9990,53 @@ func (s *IoK8sAPIBatchV1CronJobList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1CronJobSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ConcurrencyPolicy.Set {
-		field.Write("concurrencyPolicy")
+		more.More()
+		j.WriteObjectField("concurrencyPolicy")
 		s.ConcurrencyPolicy.WriteJSON(j)
 	}
+
 	if s.FailedJobsHistoryLimit.Set {
-		field.Write("failedJobsHistoryLimit")
+		more.More()
+		j.WriteObjectField("failedJobsHistoryLimit")
 		s.FailedJobsHistoryLimit.WriteJSON(j)
 	}
-	field.Write("jobTemplate")
+
+	more.More()
+	j.WriteObjectField("jobTemplate")
 	s.JobTemplate.WriteJSON(j)
-	field.Write("schedule")
+
+	more.More()
+	j.WriteObjectField("schedule")
 	j.WriteString(s.Schedule)
+
 	if s.StartingDeadlineSeconds.Set {
-		field.Write("startingDeadlineSeconds")
+		more.More()
+		j.WriteObjectField("startingDeadlineSeconds")
 		s.StartingDeadlineSeconds.WriteJSON(j)
 	}
+
 	if s.SuccessfulJobsHistoryLimit.Set {
-		field.Write("successfulJobsHistoryLimit")
+		more.More()
+		j.WriteObjectField("successfulJobsHistoryLimit")
 		s.SuccessfulJobsHistoryLimit.WriteJSON(j)
 	}
+
 	if s.Suspend.Set {
-		field.Write("suspend")
+		more.More()
+		j.WriteObjectField("suspend")
 		s.Suspend.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIBatchV1CronJobSpec json value to io.Writer.
 func (s IoK8sAPIBatchV1CronJobSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -8607,17 +10115,33 @@ func (s *IoK8sAPIBatchV1CronJobSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1CronJobStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Active".
-	// Unsupported kind "pointer" for field "LastScheduleTime".
-	// Unsupported kind "pointer" for field "LastSuccessfulTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Active != nil {
+		more.More()
+		j.WriteObjectField("active")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Active {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	// Unsupported kind "pointer" for field "lastScheduleTime".
+
+	// Unsupported kind "pointer" for field "lastSuccessfulTime".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIBatchV1CronJobStatus json value to io.Writer.
 func (s IoK8sAPIBatchV1CronJobStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -8642,7 +10166,7 @@ func (s *IoK8sAPIBatchV1CronJobStatus) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "active":
-			// Unsupported kind "pointer" for field "Active".
+			// Unsupported kind "array" for field "Active".
 			i.Skip()
 			return true
 		case "lastScheduleTime":
@@ -8664,34 +10188,45 @@ func (s *IoK8sAPIBatchV1CronJobStatus) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1Job) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIBatchV1Job json value to io.Writer.
 func (s IoK8sAPIBatchV1Job) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -8761,28 +10296,40 @@ func (s *IoK8sAPIBatchV1Job) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "LastProbeTime".
-	// Unsupported kind "pointer" for field "LastTransitionTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "lastProbeTime".
+
+	// Unsupported kind "pointer" for field "lastTransitionTime".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-	field.Write("status")
+
+	more.More()
+	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIBatchV1JobCondition json value to io.Writer.
 func (s IoK8sAPIBatchV1JobCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -8845,27 +10392,44 @@ func (s *IoK8sAPIBatchV1JobCondition) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIBatchV1JobList json value to io.Writer.
 func (s IoK8sAPIBatchV1JobList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -8925,52 +10489,73 @@ func (s *IoK8sAPIBatchV1JobList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ActiveDeadlineSeconds.Set {
-		field.Write("activeDeadlineSeconds")
+		more.More()
+		j.WriteObjectField("activeDeadlineSeconds")
 		s.ActiveDeadlineSeconds.WriteJSON(j)
 	}
+
 	if s.BackoffLimit.Set {
-		field.Write("backoffLimit")
+		more.More()
+		j.WriteObjectField("backoffLimit")
 		s.BackoffLimit.WriteJSON(j)
 	}
+
 	if s.CompletionMode.Set {
-		field.Write("completionMode")
+		more.More()
+		j.WriteObjectField("completionMode")
 		s.CompletionMode.WriteJSON(j)
 	}
+
 	if s.Completions.Set {
-		field.Write("completions")
+		more.More()
+		j.WriteObjectField("completions")
 		s.Completions.WriteJSON(j)
 	}
+
 	if s.ManualSelector.Set {
-		field.Write("manualSelector")
+		more.More()
+		j.WriteObjectField("manualSelector")
 		s.ManualSelector.WriteJSON(j)
 	}
+
 	if s.Parallelism.Set {
-		field.Write("parallelism")
+		more.More()
+		j.WriteObjectField("parallelism")
 		s.Parallelism.WriteJSON(j)
 	}
+
 	if s.Selector.Set {
-		field.Write("selector")
+		more.More()
+		j.WriteObjectField("selector")
 		s.Selector.WriteJSON(j)
 	}
+
 	if s.Suspend.Set {
-		field.Write("suspend")
+		more.More()
+		j.WriteObjectField("suspend")
 		s.Suspend.WriteJSON(j)
 	}
-	field.Write("template")
+
+	more.More()
+	j.WriteObjectField("template")
 	s.Template.WriteJSON(j)
+
 	if s.TtlSecondsAfterFinished.Set {
-		field.Write("ttlSecondsAfterFinished")
+		more.More()
+		j.WriteObjectField("ttlSecondsAfterFinished")
 		s.TtlSecondsAfterFinished.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIBatchV1JobSpec json value to io.Writer.
 func (s IoK8sAPIBatchV1JobSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -9074,37 +10659,63 @@ func (s *IoK8sAPIBatchV1JobSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Active.Set {
-		field.Write("active")
+		more.More()
+		j.WriteObjectField("active")
 		s.Active.WriteJSON(j)
 	}
+
 	if s.CompletedIndexes.Set {
-		field.Write("completedIndexes")
+		more.More()
+		j.WriteObjectField("completedIndexes")
 		s.CompletedIndexes.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "CompletionTime".
-	// Unsupported kind "pointer" for field "Conditions".
+
+	// Unsupported kind "pointer" for field "completionTime".
+
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Failed.Set {
-		field.Write("failed")
+		more.More()
+		j.WriteObjectField("failed")
 		s.Failed.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "StartTime".
+
+	// Unsupported kind "pointer" for field "startTime".
+
 	if s.Succeeded.Set {
-		field.Write("succeeded")
+		more.More()
+		j.WriteObjectField("succeeded")
 		s.Succeeded.WriteJSON(j)
 	}
+
 	if s.UncountedTerminatedPods.Set {
-		field.Write("uncountedTerminatedPods")
+		more.More()
+		j.WriteObjectField("uncountedTerminatedPods")
 		s.UncountedTerminatedPods.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIBatchV1JobStatus json value to io.Writer.
 func (s IoK8sAPIBatchV1JobStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -9147,7 +10758,7 @@ func (s *IoK8sAPIBatchV1JobStatus) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		case "failed":
@@ -9186,22 +10797,27 @@ func (s *IoK8sAPIBatchV1JobStatus) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobTemplateSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIBatchV1JobTemplateSpec json value to io.Writer.
 func (s IoK8sAPIBatchV1JobTemplateSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -9250,16 +10866,43 @@ func (s *IoK8sAPIBatchV1JobTemplateSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1UncountedTerminatedPods) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Failed".
-	// Unsupported kind "pointer" for field "Succeeded".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Failed != nil {
+		more.More()
+		j.WriteObjectField("failed")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Failed {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.Succeeded != nil {
+		more.More()
+		j.WriteObjectField("succeeded")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Succeeded {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIBatchV1UncountedTerminatedPods json value to io.Writer.
 func (s IoK8sAPIBatchV1UncountedTerminatedPods) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -9284,11 +10927,11 @@ func (s *IoK8sAPIBatchV1UncountedTerminatedPods) ReadJSON(i *json.Iterator) erro
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "failed":
-			// Unsupported kind "pointer" for field "Failed".
+			// Unsupported kind "array" for field "Failed".
 			i.Skip()
 			return true
 		case "succeeded":
-			// Unsupported kind "pointer" for field "Succeeded".
+			// Unsupported kind "array" for field "Succeeded".
 			i.Skip()
 			return true
 		default:
@@ -9302,34 +10945,45 @@ func (s *IoK8sAPIBatchV1UncountedTerminatedPods) ReadJSON(i *json.Iterator) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1CronJob) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIBatchV1beta1CronJob json value to io.Writer.
 func (s IoK8sAPIBatchV1beta1CronJob) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -9399,27 +11053,44 @@ func (s *IoK8sAPIBatchV1beta1CronJob) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1CronJobList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIBatchV1beta1CronJobList json value to io.Writer.
 func (s IoK8sAPIBatchV1beta1CronJobList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -9479,38 +11150,53 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1CronJobSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ConcurrencyPolicy.Set {
-		field.Write("concurrencyPolicy")
+		more.More()
+		j.WriteObjectField("concurrencyPolicy")
 		s.ConcurrencyPolicy.WriteJSON(j)
 	}
+
 	if s.FailedJobsHistoryLimit.Set {
-		field.Write("failedJobsHistoryLimit")
+		more.More()
+		j.WriteObjectField("failedJobsHistoryLimit")
 		s.FailedJobsHistoryLimit.WriteJSON(j)
 	}
-	field.Write("jobTemplate")
+
+	more.More()
+	j.WriteObjectField("jobTemplate")
 	s.JobTemplate.WriteJSON(j)
-	field.Write("schedule")
+
+	more.More()
+	j.WriteObjectField("schedule")
 	j.WriteString(s.Schedule)
+
 	if s.StartingDeadlineSeconds.Set {
-		field.Write("startingDeadlineSeconds")
+		more.More()
+		j.WriteObjectField("startingDeadlineSeconds")
 		s.StartingDeadlineSeconds.WriteJSON(j)
 	}
+
 	if s.SuccessfulJobsHistoryLimit.Set {
-		field.Write("successfulJobsHistoryLimit")
+		more.More()
+		j.WriteObjectField("successfulJobsHistoryLimit")
 		s.SuccessfulJobsHistoryLimit.WriteJSON(j)
 	}
+
 	if s.Suspend.Set {
-		field.Write("suspend")
+		more.More()
+		j.WriteObjectField("suspend")
 		s.Suspend.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIBatchV1beta1CronJobSpec json value to io.Writer.
 func (s IoK8sAPIBatchV1beta1CronJobSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -9589,17 +11275,33 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1CronJobStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Active".
-	// Unsupported kind "pointer" for field "LastScheduleTime".
-	// Unsupported kind "pointer" for field "LastSuccessfulTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Active != nil {
+		more.More()
+		j.WriteObjectField("active")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Active {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	// Unsupported kind "pointer" for field "lastScheduleTime".
+
+	// Unsupported kind "pointer" for field "lastSuccessfulTime".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIBatchV1beta1CronJobStatus json value to io.Writer.
 func (s IoK8sAPIBatchV1beta1CronJobStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -9624,7 +11326,7 @@ func (s *IoK8sAPIBatchV1beta1CronJobStatus) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "active":
-			// Unsupported kind "pointer" for field "Active".
+			// Unsupported kind "array" for field "Active".
 			i.Skip()
 			return true
 		case "lastScheduleTime":
@@ -9646,22 +11348,27 @@ func (s *IoK8sAPIBatchV1beta1CronJobStatus) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1JobTemplateSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIBatchV1beta1JobTemplateSpec json value to io.Writer.
 func (s IoK8sAPIBatchV1beta1JobTemplateSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -9710,32 +11417,43 @@ func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	field.Write("spec")
+
+	more.More()
+	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICertificatesV1CertificateSigningRequest json value to io.Writer.
 func (s IoK8sAPICertificatesV1CertificateSigningRequest) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -9804,28 +11522,40 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) ReadJSON(i *json.Itera
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "LastTransitionTime".
-	// Unsupported kind "pointer" for field "LastUpdateTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "lastTransitionTime".
+
+	// Unsupported kind "pointer" for field "lastUpdateTime".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-	field.Write("status")
+
+	more.More()
+	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICertificatesV1CertificateSigningRequestCondition json value to io.Writer.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -9888,27 +11618,44 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) ReadJSON(i *j
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICertificatesV1CertificateSigningRequestList json value to io.Writer.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -9968,32 +11715,69 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) ReadJSON(i *json.I
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ExpirationSeconds.Set {
-		field.Write("expirationSeconds")
+		more.More()
+		j.WriteObjectField("expirationSeconds")
 		s.ExpirationSeconds.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Extra".
-	// Unsupported kind "pointer" for field "Groups".
-	// Unsupported kind "primitive" for field "Request".
-	field.Write("signerName")
+
+	// Unsupported kind "pointer" for field "extra".
+
+	if s.Groups != nil {
+		more.More()
+		j.WriteObjectField("groups")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Groups {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	// Unsupported kind "primitive" for field "request".
+
+	more.More()
+	j.WriteObjectField("signerName")
 	j.WriteString(s.SignerName)
+
 	if s.UID.Set {
-		field.Write("uid")
+		more.More()
+		j.WriteObjectField("uid")
 		s.UID.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Usages".
+
+	if s.Usages != nil {
+		more.More()
+		j.WriteObjectField("usages")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Usages {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Username.Set {
-		field.Write("username")
+		more.More()
+		j.WriteObjectField("username")
 		s.Username.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICertificatesV1CertificateSigningRequestSpec json value to io.Writer.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -10029,7 +11813,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) ReadJSON(i *json.I
 			i.Skip()
 			return true
 		case "groups":
-			// Unsupported kind "pointer" for field "Groups".
+			// Unsupported kind "array" for field "Groups".
 			i.Skip()
 			return true
 		case "request":
@@ -10047,7 +11831,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) ReadJSON(i *json.I
 			}
 			return true
 		case "usages":
-			// Unsupported kind "pointer" for field "Usages".
+			// Unsupported kind "array" for field "Usages".
 			i.Skip()
 			return true
 		case "username":
@@ -10068,16 +11852,32 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) ReadJSON(i *json.I
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Certificate".
-	// Unsupported kind "pointer" for field "Conditions".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "certificate".
+
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICertificatesV1CertificateSigningRequestStatus json value to io.Writer.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -10106,7 +11906,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) ReadJSON(i *json
 			i.Skip()
 			return true
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		default:
@@ -10120,30 +11920,39 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) ReadJSON(i *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoordinationV1Lease) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoordinationV1Lease json value to io.Writer.
 func (s IoK8sAPICoordinationV1Lease) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -10206,27 +12015,44 @@ func (s *IoK8sAPICoordinationV1Lease) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoordinationV1LeaseList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoordinationV1LeaseList json value to io.Writer.
 func (s IoK8sAPICoordinationV1LeaseList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -10286,28 +12112,38 @@ func (s *IoK8sAPICoordinationV1LeaseList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoordinationV1LeaseSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "AcquireTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "acquireTime".
+
 	if s.HolderIdentity.Set {
-		field.Write("holderIdentity")
+		more.More()
+		j.WriteObjectField("holderIdentity")
 		s.HolderIdentity.WriteJSON(j)
 	}
+
 	if s.LeaseDurationSeconds.Set {
-		field.Write("leaseDurationSeconds")
+		more.More()
+		j.WriteObjectField("leaseDurationSeconds")
 		s.LeaseDurationSeconds.WriteJSON(j)
 	}
+
 	if s.LeaseTransitions.Set {
-		field.Write("leaseTransitions")
+		more.More()
+		j.WriteObjectField("leaseTransitions")
 		s.LeaseTransitions.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "RenewTime".
+
+	// Unsupported kind "pointer" for field "renewTime".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoordinationV1LeaseSpec json value to io.Writer.
 func (s IoK8sAPICoordinationV1LeaseSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -10371,28 +12207,37 @@ func (s *IoK8sAPICoordinationV1LeaseSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
+
 	if s.Partition.Set {
-		field.Write("partition")
+		more.More()
+		j.WriteObjectField("partition")
 		s.Partition.WriteJSON(j)
 	}
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	field.Write("volumeID")
+
+	more.More()
+	j.WriteObjectField("volumeID")
 	j.WriteString(s.VolumeID)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -10451,26 +12296,33 @@ func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) ReadJSON(i *json.Iterat
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Affinity) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.NodeAffinity.Set {
-		field.Write("nodeAffinity")
+		more.More()
+		j.WriteObjectField("nodeAffinity")
 		s.NodeAffinity.WriteJSON(j)
 	}
+
 	if s.PodAffinity.Set {
-		field.Write("podAffinity")
+		more.More()
+		j.WriteObjectField("podAffinity")
 		s.PodAffinity.WriteJSON(j)
 	}
+
 	if s.PodAntiAffinity.Set {
-		field.Write("podAntiAffinity")
+		more.More()
+		j.WriteObjectField("podAntiAffinity")
 		s.PodAntiAffinity.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1Affinity json value to io.Writer.
 func (s IoK8sAPICoreV1Affinity) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -10526,18 +12378,24 @@ func (s *IoK8sAPICoreV1Affinity) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1AttachedVolume) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("devicePath")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("devicePath")
 	j.WriteString(s.DevicePath)
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1AttachedVolume json value to io.Writer.
 func (s IoK8sAPICoreV1AttachedVolume) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -10578,34 +12436,47 @@ func (s *IoK8sAPICoreV1AttachedVolume) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1AzureDiskVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.CachingMode.Set {
-		field.Write("cachingMode")
+		more.More()
+		j.WriteObjectField("cachingMode")
 		s.CachingMode.WriteJSON(j)
 	}
-	field.Write("diskName")
+
+	more.More()
+	j.WriteObjectField("diskName")
 	j.WriteString(s.DiskName)
-	field.Write("diskURI")
+
+	more.More()
+	j.WriteObjectField("diskURI")
 	j.WriteString(s.DiskURI)
+
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1AzureDiskVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1AzureDiskVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -10674,26 +12545,35 @@ func (s *IoK8sAPICoreV1AzureDiskVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	field.Write("secretName")
+
+	more.More()
+	j.WriteObjectField("secretName")
 	j.WriteString(s.SecretName)
+
 	if s.SecretNamespace.Set {
-		field.Write("secretNamespace")
+		more.More()
+		j.WriteObjectField("secretNamespace")
 		s.SecretNamespace.WriteJSON(j)
 	}
-	field.Write("shareName")
+
+	more.More()
+	j.WriteObjectField("shareName")
 	j.WriteString(s.ShareName)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1AzureFilePersistentVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -10748,22 +12628,29 @@ func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) ReadJSON(i *json.Iterato
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1AzureFileVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	field.Write("secretName")
+
+	more.More()
+	j.WriteObjectField("secretName")
 	j.WriteString(s.SecretName)
-	field.Write("shareName")
+
+	more.More()
+	j.WriteObjectField("shareName")
 	j.WriteString(s.ShareName)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1AzureFileVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1AzureFileVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -10811,43 +12698,61 @@ func (s *IoK8sAPICoreV1AzureFileVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1CSIPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ControllerExpandSecretRef.Set {
-		field.Write("controllerExpandSecretRef")
+		more.More()
+		j.WriteObjectField("controllerExpandSecretRef")
 		s.ControllerExpandSecretRef.WriteJSON(j)
 	}
+
 	if s.ControllerPublishSecretRef.Set {
-		field.Write("controllerPublishSecretRef")
+		more.More()
+		j.WriteObjectField("controllerPublishSecretRef")
 		s.ControllerPublishSecretRef.WriteJSON(j)
 	}
-	field.Write("driver")
+
+	more.More()
+	j.WriteObjectField("driver")
 	j.WriteString(s.Driver)
+
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
+
 	if s.NodePublishSecretRef.Set {
-		field.Write("nodePublishSecretRef")
+		more.More()
+		j.WriteObjectField("nodePublishSecretRef")
 		s.NodePublishSecretRef.WriteJSON(j)
 	}
+
 	if s.NodeStageSecretRef.Set {
-		field.Write("nodeStageSecretRef")
+		more.More()
+		j.WriteObjectField("nodeStageSecretRef")
 		s.NodeStageSecretRef.WriteJSON(j)
 	}
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "VolumeAttributes".
-	field.Write("volumeHandle")
+
+	// Unsupported kind "pointer" for field "volumeAttributes".
+
+	more.More()
+	j.WriteObjectField("volumeHandle")
 	j.WriteString(s.VolumeHandle)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1CSIPersistentVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1CSIPersistentVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -10934,29 +12839,40 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) ReadJSON(i *json.Iterator) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1CSIVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("driver")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("driver")
 	j.WriteString(s.Driver)
+
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
+
 	if s.NodePublishSecretRef.Set {
-		field.Write("nodePublishSecretRef")
+		more.More()
+		j.WriteObjectField("nodePublishSecretRef")
 		s.NodePublishSecretRef.WriteJSON(j)
 	}
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "VolumeAttributes".
+
+	// Unsupported kind "pointer" for field "volumeAttributes".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1CSIVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1CSIVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -11019,16 +12935,43 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Capabilities) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Add".
-	// Unsupported kind "pointer" for field "Drop".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Add != nil {
+		more.More()
+		j.WriteObjectField("add")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Add {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.Drop != nil {
+		more.More()
+		j.WriteObjectField("drop")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Drop {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1Capabilities json value to io.Writer.
 func (s IoK8sAPICoreV1Capabilities) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -11053,11 +12996,11 @@ func (s *IoK8sAPICoreV1Capabilities) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "add":
-			// Unsupported kind "pointer" for field "Add".
+			// Unsupported kind "array" for field "Add".
 			i.Skip()
 			return true
 		case "drop":
-			// Unsupported kind "pointer" for field "Drop".
+			// Unsupported kind "array" for field "Drop".
 			i.Skip()
 			return true
 		default:
@@ -11071,35 +13014,56 @@ func (s *IoK8sAPICoreV1Capabilities) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "array" for field "Monitors".
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("monitors")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Monitors {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Path.Set {
-		field.Write("path")
+		more.More()
+		j.WriteObjectField("path")
 		s.Path.WriteJSON(j)
 	}
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
+
 	if s.SecretFile.Set {
-		field.Write("secretFile")
+		more.More()
+		j.WriteObjectField("secretFile")
 		s.SecretFile.WriteJSON(j)
 	}
+
 	if s.SecretRef.Set {
-		field.Write("secretRef")
+		more.More()
+		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
+
 	if s.User.Set {
-		field.Write("user")
+		more.More()
+		j.WriteObjectField("user")
 		s.User.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1CephFSPersistentVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -11173,35 +13137,56 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) ReadJSON(i *json.Iterator) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1CephFSVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "array" for field "Monitors".
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("monitors")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Monitors {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Path.Set {
-		field.Write("path")
+		more.More()
+		j.WriteObjectField("path")
 		s.Path.WriteJSON(j)
 	}
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
+
 	if s.SecretFile.Set {
-		field.Write("secretFile")
+		more.More()
+		j.WriteObjectField("secretFile")
 		s.SecretFile.WriteJSON(j)
 	}
+
 	if s.SecretRef.Set {
-		field.Write("secretRef")
+		more.More()
+		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
+
 	if s.User.Set {
-		field.Write("user")
+		more.More()
+		j.WriteObjectField("user")
 		s.User.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1CephFSVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1CephFSVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -11275,28 +13260,37 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1CinderPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
+
 	if s.SecretRef.Set {
-		field.Write("secretRef")
+		more.More()
+		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
-	field.Write("volumeID")
+
+	more.More()
+	j.WriteObjectField("volumeID")
 	j.WriteString(s.VolumeID)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1CinderPersistentVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1CinderPersistentVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -11355,28 +13349,37 @@ func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) ReadJSON(i *json.Iterator) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1CinderVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
+
 	if s.SecretRef.Set {
-		field.Write("secretRef")
+		more.More()
+		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
-	field.Write("volumeID")
+
+	more.More()
+	j.WriteObjectField("volumeID")
 	j.WriteString(s.VolumeID)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1CinderVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1CinderVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -11435,18 +13438,21 @@ func (s *IoK8sAPICoreV1CinderVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ClientIPConfig) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.TimeoutSeconds.Set {
-		field.Write("timeoutSeconds")
+		more.More()
+		j.WriteObjectField("timeoutSeconds")
 		s.TimeoutSeconds.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ClientIPConfig json value to io.Writer.
 func (s IoK8sAPICoreV1ClientIPConfig) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -11488,26 +13494,35 @@ func (s *IoK8sAPICoreV1ClientIPConfig) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ComponentCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Error.Set {
-		field.Write("error")
+		more.More()
+		j.WriteObjectField("error")
 		s.Error.WriteJSON(j)
 	}
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-	field.Write("status")
+
+	more.More()
+	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ComponentCondition json value to io.Writer.
 func (s IoK8sAPICoreV1ComponentCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -11562,27 +13577,47 @@ func (s *IoK8sAPICoreV1ComponentCondition) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ComponentStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Conditions".
+
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ComponentStatus json value to io.Writer.
 func (s IoK8sAPICoreV1ComponentStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -11614,7 +13649,7 @@ func (s *IoK8sAPICoreV1ComponentStatus) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		case "kind":
@@ -11642,27 +13677,44 @@ func (s *IoK8sAPICoreV1ComponentStatus) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ComponentStatusList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ComponentStatusList json value to io.Writer.
 func (s IoK8sAPICoreV1ComponentStatusList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -11722,32 +13774,43 @@ func (s *IoK8sAPICoreV1ComponentStatusList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMap) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "BinaryData".
-	// Unsupported kind "pointer" for field "Data".
+
+	// Unsupported kind "pointer" for field "binaryData".
+
+	// Unsupported kind "pointer" for field "data".
+
 	if s.Immutable.Set {
-		field.Write("immutable")
+		more.More()
+		j.WriteObjectField("immutable")
 		s.Immutable.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ConfigMap json value to io.Writer.
 func (s IoK8sAPICoreV1ConfigMap) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -11818,22 +13881,27 @@ func (s *IoK8sAPICoreV1ConfigMap) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapEnvSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
+
 	if s.Optional.Set {
-		field.Write("optional")
+		more.More()
+		j.WriteObjectField("optional")
 		s.Optional.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ConfigMapEnvSource json value to io.Writer.
 func (s IoK8sAPICoreV1ConfigMapEnvSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -11882,24 +13950,32 @@ func (s *IoK8sAPICoreV1ConfigMapEnvSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapKeySelector) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("key")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("key")
 	j.WriteString(s.Key)
+
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
+
 	if s.Optional.Set {
-		field.Write("optional")
+		more.More()
+		j.WriteObjectField("optional")
 		s.Optional.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ConfigMapKeySelector json value to io.Writer.
 func (s IoK8sAPICoreV1ConfigMapKeySelector) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -11951,27 +14027,44 @@ func (s *IoK8sAPICoreV1ConfigMapKeySelector) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ConfigMapList json value to io.Writer.
 func (s IoK8sAPICoreV1ConfigMapList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -12031,28 +14124,40 @@ func (s *IoK8sAPICoreV1ConfigMapList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("kubeletConfigKey")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("kubeletConfigKey")
 	j.WriteString(s.KubeletConfigKey)
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-	field.Write("namespace")
+
+	more.More()
+	j.WriteObjectField("namespace")
 	j.WriteString(s.Namespace)
+
 	if s.ResourceVersion.Set {
-		field.Write("resourceVersion")
+		more.More()
+		j.WriteObjectField("resourceVersion")
 		s.ResourceVersion.WriteJSON(j)
 	}
+
 	if s.UID.Set {
-		field.Write("uid")
+		more.More()
+		j.WriteObjectField("uid")
 		s.UID.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ConfigMapNodeConfigSource json value to io.Writer.
 func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -12110,23 +14215,41 @@ func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) ReadJSON(i *json.Iterator) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapProjection) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Items".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Items != nil {
+		more.More()
+		j.WriteObjectField("items")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Items {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
+
 	if s.Optional.Set {
-		field.Write("optional")
+		more.More()
+		j.WriteObjectField("optional")
 		s.Optional.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ConfigMapProjection json value to io.Writer.
 func (s IoK8sAPICoreV1ConfigMapProjection) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -12151,7 +14274,7 @@ func (s *IoK8sAPICoreV1ConfigMapProjection) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "items":
-			// Unsupported kind "pointer" for field "Items".
+			// Unsupported kind "array" for field "Items".
 			i.Skip()
 			return true
 		case "name":
@@ -12179,27 +14302,47 @@ func (s *IoK8sAPICoreV1ConfigMapProjection) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.DefaultMode.Set {
-		field.Write("defaultMode")
+		more.More()
+		j.WriteObjectField("defaultMode")
 		s.DefaultMode.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Items".
+
+	if s.Items != nil {
+		more.More()
+		j.WriteObjectField("items")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Items {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
+
 	if s.Optional.Set {
-		field.Write("optional")
+		more.More()
+		j.WriteObjectField("optional")
 		s.Optional.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ConfigMapVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1ConfigMapVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -12231,7 +14374,7 @@ func (s *IoK8sAPICoreV1ConfigMapVolumeSource) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "items":
-			// Unsupported kind "pointer" for field "Items".
+			// Unsupported kind "array" for field "Items".
 			i.Skip()
 			return true
 		case "name":
@@ -12259,79 +14402,201 @@ func (s *IoK8sAPICoreV1ConfigMapVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Container) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Args".
-	// Unsupported kind "pointer" for field "Command".
-	// Unsupported kind "pointer" for field "Env".
-	// Unsupported kind "pointer" for field "EnvFrom".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Args != nil {
+		more.More()
+		j.WriteObjectField("args")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Args {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.Command != nil {
+		more.More()
+		j.WriteObjectField("command")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Command {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.Env != nil {
+		more.More()
+		j.WriteObjectField("env")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Env {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.EnvFrom != nil {
+		more.More()
+		j.WriteObjectField("envFrom")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.EnvFrom {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Image.Set {
-		field.Write("image")
+		more.More()
+		j.WriteObjectField("image")
 		s.Image.WriteJSON(j)
 	}
+
 	if s.ImagePullPolicy.Set {
-		field.Write("imagePullPolicy")
+		more.More()
+		j.WriteObjectField("imagePullPolicy")
 		s.ImagePullPolicy.WriteJSON(j)
 	}
+
 	if s.Lifecycle.Set {
-		field.Write("lifecycle")
+		more.More()
+		j.WriteObjectField("lifecycle")
 		s.Lifecycle.WriteJSON(j)
 	}
+
 	if s.LivenessProbe.Set {
-		field.Write("livenessProbe")
+		more.More()
+		j.WriteObjectField("livenessProbe")
 		s.LivenessProbe.WriteJSON(j)
 	}
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-	// Unsupported kind "pointer" for field "Ports".
+
+	if s.Ports != nil {
+		more.More()
+		j.WriteObjectField("ports")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Ports {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.ReadinessProbe.Set {
-		field.Write("readinessProbe")
+		more.More()
+		j.WriteObjectField("readinessProbe")
 		s.ReadinessProbe.WriteJSON(j)
 	}
+
 	if s.Resources.Set {
-		field.Write("resources")
+		more.More()
+		j.WriteObjectField("resources")
 		s.Resources.WriteJSON(j)
 	}
+
 	if s.SecurityContext.Set {
-		field.Write("securityContext")
+		more.More()
+		j.WriteObjectField("securityContext")
 		s.SecurityContext.WriteJSON(j)
 	}
+
 	if s.StartupProbe.Set {
-		field.Write("startupProbe")
+		more.More()
+		j.WriteObjectField("startupProbe")
 		s.StartupProbe.WriteJSON(j)
 	}
+
 	if s.Stdin.Set {
-		field.Write("stdin")
+		more.More()
+		j.WriteObjectField("stdin")
 		s.Stdin.WriteJSON(j)
 	}
+
 	if s.StdinOnce.Set {
-		field.Write("stdinOnce")
+		more.More()
+		j.WriteObjectField("stdinOnce")
 		s.StdinOnce.WriteJSON(j)
 	}
+
 	if s.TerminationMessagePath.Set {
-		field.Write("terminationMessagePath")
+		more.More()
+		j.WriteObjectField("terminationMessagePath")
 		s.TerminationMessagePath.WriteJSON(j)
 	}
+
 	if s.TerminationMessagePolicy.Set {
-		field.Write("terminationMessagePolicy")
+		more.More()
+		j.WriteObjectField("terminationMessagePolicy")
 		s.TerminationMessagePolicy.WriteJSON(j)
 	}
+
 	if s.Tty.Set {
-		field.Write("tty")
+		more.More()
+		j.WriteObjectField("tty")
 		s.Tty.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "VolumeDevices".
-	// Unsupported kind "pointer" for field "VolumeMounts".
+
+	if s.VolumeDevices != nil {
+		more.More()
+		j.WriteObjectField("volumeDevices")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.VolumeDevices {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.VolumeMounts != nil {
+		more.More()
+		j.WriteObjectField("volumeMounts")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.VolumeMounts {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.WorkingDir.Set {
-		field.Write("workingDir")
+		more.More()
+		j.WriteObjectField("workingDir")
 		s.WorkingDir.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1Container json value to io.Writer.
 func (s IoK8sAPICoreV1Container) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -12356,19 +14621,19 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "args":
-			// Unsupported kind "pointer" for field "Args".
+			// Unsupported kind "array" for field "Args".
 			i.Skip()
 			return true
 		case "command":
-			// Unsupported kind "pointer" for field "Command".
+			// Unsupported kind "array" for field "Command".
 			i.Skip()
 			return true
 		case "env":
-			// Unsupported kind "pointer" for field "Env".
+			// Unsupported kind "array" for field "Env".
 			i.Skip()
 			return true
 		case "envFrom":
-			// Unsupported kind "pointer" for field "EnvFrom".
+			// Unsupported kind "array" for field "EnvFrom".
 			i.Skip()
 			return true
 		case "image":
@@ -12403,7 +14668,7 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			s.Name = i.ReadString()
 			return i.Error == nil
 		case "ports":
-			// Unsupported kind "pointer" for field "Ports".
+			// Unsupported kind "array" for field "Ports".
 			i.Skip()
 			return true
 		case "readinessProbe":
@@ -12470,11 +14735,11 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "volumeDevices":
-			// Unsupported kind "pointer" for field "VolumeDevices".
+			// Unsupported kind "array" for field "VolumeDevices".
 			i.Skip()
 			return true
 		case "volumeMounts":
-			// Unsupported kind "pointer" for field "VolumeMounts".
+			// Unsupported kind "array" for field "VolumeMounts".
 			i.Skip()
 			return true
 		case "workingDir":
@@ -12495,19 +14760,35 @@ func (s *IoK8sAPICoreV1Container) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerImage) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Names".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Names != nil {
+		more.More()
+		j.WriteObjectField("names")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Names {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.SizeBytes.Set {
-		field.Write("sizeBytes")
+		more.More()
+		j.WriteObjectField("sizeBytes")
 		s.SizeBytes.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ContainerImage json value to io.Writer.
 func (s IoK8sAPICoreV1ContainerImage) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -12532,7 +14813,7 @@ func (s *IoK8sAPICoreV1ContainerImage) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "names":
-			// Unsupported kind "pointer" for field "Names".
+			// Unsupported kind "array" for field "Names".
 			i.Skip()
 			return true
 		case "sizeBytes":
@@ -12553,32 +14834,44 @@ func (s *IoK8sAPICoreV1ContainerImage) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerPort) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("containerPort")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("containerPort")
 	j.WriteInt32(s.ContainerPort)
+
 	if s.HostIP.Set {
-		field.Write("hostIP")
+		more.More()
+		j.WriteObjectField("hostIP")
 		s.HostIP.WriteJSON(j)
 	}
+
 	if s.HostPort.Set {
-		field.Write("hostPort")
+		more.More()
+		j.WriteObjectField("hostPort")
 		s.HostPort.WriteJSON(j)
 	}
+
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
+
 	if s.Protocol.Set {
-		field.Write("protocol")
+		more.More()
+		j.WriteObjectField("protocol")
 		s.Protocol.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ContainerPort json value to io.Writer.
 func (s IoK8sAPICoreV1ContainerPort) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -12644,26 +14937,33 @@ func (s *IoK8sAPICoreV1ContainerPort) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerState) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Running.Set {
-		field.Write("running")
+		more.More()
+		j.WriteObjectField("running")
 		s.Running.WriteJSON(j)
 	}
+
 	if s.Terminated.Set {
-		field.Write("terminated")
+		more.More()
+		j.WriteObjectField("terminated")
 		s.Terminated.WriteJSON(j)
 	}
+
 	if s.Waiting.Set {
-		field.Write("waiting")
+		more.More()
+		j.WriteObjectField("waiting")
 		s.Waiting.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ContainerState json value to io.Writer.
 func (s IoK8sAPICoreV1ContainerState) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -12719,15 +15019,18 @@ func (s *IoK8sAPICoreV1ContainerState) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerStateRunning) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "StartedAt".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "startedAt".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ContainerStateRunning json value to io.Writer.
 func (s IoK8sAPICoreV1ContainerStateRunning) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -12766,34 +15069,47 @@ func (s *IoK8sAPICoreV1ContainerStateRunning) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerStateTerminated) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ContainerID.Set {
-		field.Write("containerID")
+		more.More()
+		j.WriteObjectField("containerID")
 		s.ContainerID.WriteJSON(j)
 	}
-	field.Write("exitCode")
+
+	more.More()
+	j.WriteObjectField("exitCode")
 	j.WriteInt32(s.ExitCode)
-	// Unsupported kind "pointer" for field "FinishedAt".
+
+	// Unsupported kind "pointer" for field "finishedAt".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
+
 	if s.Signal.Set {
-		field.Write("signal")
+		more.More()
+		j.WriteObjectField("signal")
 		s.Signal.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "StartedAt".
+
+	// Unsupported kind "pointer" for field "startedAt".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ContainerStateTerminated json value to io.Writer.
 func (s IoK8sAPICoreV1ContainerStateTerminated) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -12867,22 +15183,27 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) ReadJSON(i *json.Iterator) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerStateWaiting) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ContainerStateWaiting json value to io.Writer.
 func (s IoK8sAPICoreV1ContainerStateWaiting) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -12931,40 +15252,59 @@ func (s *IoK8sAPICoreV1ContainerStateWaiting) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ContainerID.Set {
-		field.Write("containerID")
+		more.More()
+		j.WriteObjectField("containerID")
 		s.ContainerID.WriteJSON(j)
 	}
-	field.Write("image")
+
+	more.More()
+	j.WriteObjectField("image")
 	j.WriteString(s.Image)
-	field.Write("imageID")
+
+	more.More()
+	j.WriteObjectField("imageID")
 	j.WriteString(s.ImageID)
+
 	if s.LastState.Set {
-		field.Write("lastState")
+		more.More()
+		j.WriteObjectField("lastState")
 		s.LastState.WriteJSON(j)
 	}
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-	field.Write("ready")
+
+	more.More()
+	j.WriteObjectField("ready")
 	j.WriteBool(s.Ready)
-	field.Write("restartCount")
+
+	more.More()
+	j.WriteObjectField("restartCount")
 	j.WriteInt32(s.RestartCount)
+
 	if s.Started.Set {
-		field.Write("started")
+		more.More()
+		j.WriteObjectField("started")
 		s.Started.WriteJSON(j)
 	}
+
 	if s.State.Set {
-		field.Write("state")
+		more.More()
+		j.WriteObjectField("state")
 		s.State.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ContainerStatus json value to io.Writer.
 func (s IoK8sAPICoreV1ContainerStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -13042,16 +15382,20 @@ func (s *IoK8sAPICoreV1ContainerStatus) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1DaemonEndpoint) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("Port")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("Port")
 	j.WriteInt32(s.Port)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1DaemonEndpoint json value to io.Writer.
 func (s IoK8sAPICoreV1DaemonEndpoint) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -13089,15 +15433,29 @@ func (s *IoK8sAPICoreV1DaemonEndpoint) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1DownwardAPIProjection) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Items".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Items != nil {
+		more.More()
+		j.WriteObjectField("items")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Items {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1DownwardAPIProjection json value to io.Writer.
 func (s IoK8sAPICoreV1DownwardAPIProjection) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -13122,7 +15480,7 @@ func (s *IoK8sAPICoreV1DownwardAPIProjection) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "items":
-			// Unsupported kind "pointer" for field "Items".
+			// Unsupported kind "array" for field "Items".
 			i.Skip()
 			return true
 		default:
@@ -13136,28 +15494,37 @@ func (s *IoK8sAPICoreV1DownwardAPIProjection) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1DownwardAPIVolumeFile) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.FieldRef.Set {
-		field.Write("fieldRef")
+		more.More()
+		j.WriteObjectField("fieldRef")
 		s.FieldRef.WriteJSON(j)
 	}
+
 	if s.Mode.Set {
-		field.Write("mode")
+		more.More()
+		j.WriteObjectField("mode")
 		s.Mode.WriteJSON(j)
 	}
-	field.Write("path")
+
+	more.More()
+	j.WriteObjectField("path")
 	j.WriteString(s.Path)
+
 	if s.ResourceFieldRef.Set {
-		field.Write("resourceFieldRef")
+		more.More()
+		j.WriteObjectField("resourceFieldRef")
 		s.ResourceFieldRef.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1DownwardAPIVolumeFile json value to io.Writer.
 func (s IoK8sAPICoreV1DownwardAPIVolumeFile) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -13216,19 +15583,35 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1DownwardAPIVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.DefaultMode.Set {
-		field.Write("defaultMode")
+		more.More()
+		j.WriteObjectField("defaultMode")
 		s.DefaultMode.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Items".
+
+	if s.Items != nil {
+		more.More()
+		j.WriteObjectField("items")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Items {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1DownwardAPIVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1DownwardAPIVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -13260,7 +15643,7 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeSource) ReadJSON(i *json.Iterator) error
 			}
 			return true
 		case "items":
-			// Unsupported kind "pointer" for field "Items".
+			// Unsupported kind "array" for field "Items".
 			i.Skip()
 			return true
 		default:
@@ -13274,19 +15657,23 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeSource) ReadJSON(i *json.Iterator) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EmptyDirVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Medium.Set {
-		field.Write("medium")
+		more.More()
+		j.WriteObjectField("medium")
 		s.Medium.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SizeLimit".
+
+	// Unsupported kind "pointer" for field "sizeLimit".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1EmptyDirVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1EmptyDirVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -13332,28 +15719,37 @@ func (s *IoK8sAPICoreV1EmptyDirVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EndpointAddress) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Hostname.Set {
-		field.Write("hostname")
+		more.More()
+		j.WriteObjectField("hostname")
 		s.Hostname.WriteJSON(j)
 	}
-	field.Write("ip")
+
+	more.More()
+	j.WriteObjectField("ip")
 	j.WriteString(s.IP)
+
 	if s.NodeName.Set {
-		field.Write("nodeName")
+		more.More()
+		j.WriteObjectField("nodeName")
 		s.NodeName.WriteJSON(j)
 	}
+
 	if s.TargetRef.Set {
-		field.Write("targetRef")
+		more.More()
+		j.WriteObjectField("targetRef")
 		s.TargetRef.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1EndpointAddress json value to io.Writer.
 func (s IoK8sAPICoreV1EndpointAddress) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -13412,28 +15808,37 @@ func (s *IoK8sAPICoreV1EndpointAddress) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EndpointPort) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AppProtocol.Set {
-		field.Write("appProtocol")
+		more.More()
+		j.WriteObjectField("appProtocol")
 		s.AppProtocol.WriteJSON(j)
 	}
+
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-	field.Write("port")
+
+	more.More()
+	j.WriteObjectField("port")
 	j.WriteInt32(s.Port)
+
 	if s.Protocol.Set {
-		field.Write("protocol")
+		more.More()
+		j.WriteObjectField("protocol")
 		s.Protocol.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1EndpointPort json value to io.Writer.
 func (s IoK8sAPICoreV1EndpointPort) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -13492,17 +15897,57 @@ func (s *IoK8sAPICoreV1EndpointPort) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EndpointSubset) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Addresses".
-	// Unsupported kind "pointer" for field "NotReadyAddresses".
-	// Unsupported kind "pointer" for field "Ports".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Addresses != nil {
+		more.More()
+		j.WriteObjectField("addresses")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Addresses {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.NotReadyAddresses != nil {
+		more.More()
+		j.WriteObjectField("notReadyAddresses")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.NotReadyAddresses {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.Ports != nil {
+		more.More()
+		j.WriteObjectField("ports")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Ports {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1EndpointSubset json value to io.Writer.
 func (s IoK8sAPICoreV1EndpointSubset) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -13527,15 +15972,15 @@ func (s *IoK8sAPICoreV1EndpointSubset) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "addresses":
-			// Unsupported kind "pointer" for field "Addresses".
+			// Unsupported kind "array" for field "Addresses".
 			i.Skip()
 			return true
 		case "notReadyAddresses":
-			// Unsupported kind "pointer" for field "NotReadyAddresses".
+			// Unsupported kind "array" for field "NotReadyAddresses".
 			i.Skip()
 			return true
 		case "ports":
-			// Unsupported kind "pointer" for field "Ports".
+			// Unsupported kind "array" for field "Ports".
 			i.Skip()
 			return true
 		default:
@@ -13549,27 +15994,47 @@ func (s *IoK8sAPICoreV1EndpointSubset) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Endpoints) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Subsets".
+
+	if s.Subsets != nil {
+		more.More()
+		j.WriteObjectField("subsets")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Subsets {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1Endpoints json value to io.Writer.
 func (s IoK8sAPICoreV1Endpoints) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -13615,7 +16080,7 @@ func (s *IoK8sAPICoreV1Endpoints) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "subsets":
-			// Unsupported kind "pointer" for field "Subsets".
+			// Unsupported kind "array" for field "Subsets".
 			i.Skip()
 			return true
 		default:
@@ -13629,27 +16094,44 @@ func (s *IoK8sAPICoreV1Endpoints) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EndpointsList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1EndpointsList json value to io.Writer.
 func (s IoK8sAPICoreV1EndpointsList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -13709,26 +16191,33 @@ func (s *IoK8sAPICoreV1EndpointsList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EnvFromSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ConfigMapRef.Set {
-		field.Write("configMapRef")
+		more.More()
+		j.WriteObjectField("configMapRef")
 		s.ConfigMapRef.WriteJSON(j)
 	}
+
 	if s.Prefix.Set {
-		field.Write("prefix")
+		more.More()
+		j.WriteObjectField("prefix")
 		s.Prefix.WriteJSON(j)
 	}
+
 	if s.SecretRef.Set {
-		field.Write("secretRef")
+		more.More()
+		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1EnvFromSource json value to io.Writer.
 func (s IoK8sAPICoreV1EnvFromSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -13784,24 +16273,32 @@ func (s *IoK8sAPICoreV1EnvFromSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EnvVar) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	if s.Value.Set {
-		field.Write("value")
+		more.More()
+		j.WriteObjectField("value")
 		s.Value.WriteJSON(j)
 	}
+
 	if s.ValueFrom.Set {
-		field.Write("valueFrom")
+		more.More()
+		j.WriteObjectField("valueFrom")
 		s.ValueFrom.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1EnvVar json value to io.Writer.
 func (s IoK8sAPICoreV1EnvVar) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -13853,30 +16350,39 @@ func (s *IoK8sAPICoreV1EnvVar) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EnvVarSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ConfigMapKeyRef.Set {
-		field.Write("configMapKeyRef")
+		more.More()
+		j.WriteObjectField("configMapKeyRef")
 		s.ConfigMapKeyRef.WriteJSON(j)
 	}
+
 	if s.FieldRef.Set {
-		field.Write("fieldRef")
+		more.More()
+		j.WriteObjectField("fieldRef")
 		s.FieldRef.WriteJSON(j)
 	}
+
 	if s.ResourceFieldRef.Set {
-		field.Write("resourceFieldRef")
+		more.More()
+		j.WriteObjectField("resourceFieldRef")
 		s.ResourceFieldRef.WriteJSON(j)
 	}
+
 	if s.SecretKeyRef.Set {
-		field.Write("secretKeyRef")
+		more.More()
+		j.WriteObjectField("secretKeyRef")
 		s.SecretKeyRef.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1EnvVarSource json value to io.Writer.
 func (s IoK8sAPICoreV1EnvVarSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -13939,83 +16445,207 @@ func (s *IoK8sAPICoreV1EnvVarSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EphemeralContainer) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Args".
-	// Unsupported kind "pointer" for field "Command".
-	// Unsupported kind "pointer" for field "Env".
-	// Unsupported kind "pointer" for field "EnvFrom".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Args != nil {
+		more.More()
+		j.WriteObjectField("args")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Args {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.Command != nil {
+		more.More()
+		j.WriteObjectField("command")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Command {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.Env != nil {
+		more.More()
+		j.WriteObjectField("env")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Env {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.EnvFrom != nil {
+		more.More()
+		j.WriteObjectField("envFrom")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.EnvFrom {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Image.Set {
-		field.Write("image")
+		more.More()
+		j.WriteObjectField("image")
 		s.Image.WriteJSON(j)
 	}
+
 	if s.ImagePullPolicy.Set {
-		field.Write("imagePullPolicy")
+		more.More()
+		j.WriteObjectField("imagePullPolicy")
 		s.ImagePullPolicy.WriteJSON(j)
 	}
+
 	if s.Lifecycle.Set {
-		field.Write("lifecycle")
+		more.More()
+		j.WriteObjectField("lifecycle")
 		s.Lifecycle.WriteJSON(j)
 	}
+
 	if s.LivenessProbe.Set {
-		field.Write("livenessProbe")
+		more.More()
+		j.WriteObjectField("livenessProbe")
 		s.LivenessProbe.WriteJSON(j)
 	}
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-	// Unsupported kind "pointer" for field "Ports".
+
+	if s.Ports != nil {
+		more.More()
+		j.WriteObjectField("ports")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Ports {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.ReadinessProbe.Set {
-		field.Write("readinessProbe")
+		more.More()
+		j.WriteObjectField("readinessProbe")
 		s.ReadinessProbe.WriteJSON(j)
 	}
+
 	if s.Resources.Set {
-		field.Write("resources")
+		more.More()
+		j.WriteObjectField("resources")
 		s.Resources.WriteJSON(j)
 	}
+
 	if s.SecurityContext.Set {
-		field.Write("securityContext")
+		more.More()
+		j.WriteObjectField("securityContext")
 		s.SecurityContext.WriteJSON(j)
 	}
+
 	if s.StartupProbe.Set {
-		field.Write("startupProbe")
+		more.More()
+		j.WriteObjectField("startupProbe")
 		s.StartupProbe.WriteJSON(j)
 	}
+
 	if s.Stdin.Set {
-		field.Write("stdin")
+		more.More()
+		j.WriteObjectField("stdin")
 		s.Stdin.WriteJSON(j)
 	}
+
 	if s.StdinOnce.Set {
-		field.Write("stdinOnce")
+		more.More()
+		j.WriteObjectField("stdinOnce")
 		s.StdinOnce.WriteJSON(j)
 	}
+
 	if s.TargetContainerName.Set {
-		field.Write("targetContainerName")
+		more.More()
+		j.WriteObjectField("targetContainerName")
 		s.TargetContainerName.WriteJSON(j)
 	}
+
 	if s.TerminationMessagePath.Set {
-		field.Write("terminationMessagePath")
+		more.More()
+		j.WriteObjectField("terminationMessagePath")
 		s.TerminationMessagePath.WriteJSON(j)
 	}
+
 	if s.TerminationMessagePolicy.Set {
-		field.Write("terminationMessagePolicy")
+		more.More()
+		j.WriteObjectField("terminationMessagePolicy")
 		s.TerminationMessagePolicy.WriteJSON(j)
 	}
+
 	if s.Tty.Set {
-		field.Write("tty")
+		more.More()
+		j.WriteObjectField("tty")
 		s.Tty.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "VolumeDevices".
-	// Unsupported kind "pointer" for field "VolumeMounts".
+
+	if s.VolumeDevices != nil {
+		more.More()
+		j.WriteObjectField("volumeDevices")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.VolumeDevices {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.VolumeMounts != nil {
+		more.More()
+		j.WriteObjectField("volumeMounts")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.VolumeMounts {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.WorkingDir.Set {
-		field.Write("workingDir")
+		more.More()
+		j.WriteObjectField("workingDir")
 		s.WorkingDir.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1EphemeralContainer json value to io.Writer.
 func (s IoK8sAPICoreV1EphemeralContainer) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -14040,19 +16670,19 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "args":
-			// Unsupported kind "pointer" for field "Args".
+			// Unsupported kind "array" for field "Args".
 			i.Skip()
 			return true
 		case "command":
-			// Unsupported kind "pointer" for field "Command".
+			// Unsupported kind "array" for field "Command".
 			i.Skip()
 			return true
 		case "env":
-			// Unsupported kind "pointer" for field "Env".
+			// Unsupported kind "array" for field "Env".
 			i.Skip()
 			return true
 		case "envFrom":
-			// Unsupported kind "pointer" for field "EnvFrom".
+			// Unsupported kind "array" for field "EnvFrom".
 			i.Skip()
 			return true
 		case "image":
@@ -14087,7 +16717,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			s.Name = i.ReadString()
 			return i.Error == nil
 		case "ports":
-			// Unsupported kind "pointer" for field "Ports".
+			// Unsupported kind "array" for field "Ports".
 			i.Skip()
 			return true
 		case "readinessProbe":
@@ -14161,11 +16791,11 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "volumeDevices":
-			// Unsupported kind "pointer" for field "VolumeDevices".
+			// Unsupported kind "array" for field "VolumeDevices".
 			i.Skip()
 			return true
 		case "volumeMounts":
-			// Unsupported kind "pointer" for field "VolumeMounts".
+			// Unsupported kind "array" for field "VolumeMounts".
 			i.Skip()
 			return true
 		case "workingDir":
@@ -14186,18 +16816,21 @@ func (s *IoK8sAPICoreV1EphemeralContainer) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EphemeralVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.VolumeClaimTemplate.Set {
-		field.Write("volumeClaimTemplate")
+		more.More()
+		j.WriteObjectField("volumeClaimTemplate")
 		s.VolumeClaimTemplate.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1EphemeralVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1EphemeralVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -14239,69 +16872,101 @@ func (s *IoK8sAPICoreV1EphemeralVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Event) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Action.Set {
-		field.Write("action")
+		more.More()
+		j.WriteObjectField("action")
 		s.Action.WriteJSON(j)
 	}
+
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Count.Set {
-		field.Write("count")
+		more.More()
+		j.WriteObjectField("count")
 		s.Count.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "EventTime".
-	// Unsupported kind "pointer" for field "FirstTimestamp".
-	field.Write("involvedObject")
+
+	// Unsupported kind "pointer" for field "eventTime".
+
+	// Unsupported kind "pointer" for field "firstTimestamp".
+
+	more.More()
+	j.WriteObjectField("involvedObject")
 	s.InvolvedObject.WriteJSON(j)
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "LastTimestamp".
+
+	// Unsupported kind "pointer" for field "lastTimestamp".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-	field.Write("metadata")
+
+	more.More()
+	j.WriteObjectField("metadata")
 	s.Metadata.WriteJSON(j)
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
+
 	if s.Related.Set {
-		field.Write("related")
+		more.More()
+		j.WriteObjectField("related")
 		s.Related.WriteJSON(j)
 	}
+
 	if s.ReportingComponent.Set {
-		field.Write("reportingComponent")
+		more.More()
+		j.WriteObjectField("reportingComponent")
 		s.ReportingComponent.WriteJSON(j)
 	}
+
 	if s.ReportingInstance.Set {
-		field.Write("reportingInstance")
+		more.More()
+		j.WriteObjectField("reportingInstance")
 		s.ReportingInstance.WriteJSON(j)
 	}
+
 	if s.Series.Set {
-		field.Write("series")
+		more.More()
+		j.WriteObjectField("series")
 		s.Series.WriteJSON(j)
 	}
+
 	if s.Source.Set {
-		field.Write("source")
+		more.More()
+		j.WriteObjectField("source")
 		s.Source.WriteJSON(j)
 	}
+
 	if s.Type.Set {
-		field.Write("type")
+		more.More()
+		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1Event json value to io.Writer.
 func (s IoK8sAPICoreV1Event) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -14444,27 +17109,44 @@ func (s *IoK8sAPICoreV1Event) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EventList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1EventList json value to io.Writer.
 func (s IoK8sAPICoreV1EventList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -14524,19 +17206,23 @@ func (s *IoK8sAPICoreV1EventList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EventSeries) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Count.Set {
-		field.Write("count")
+		more.More()
+		j.WriteObjectField("count")
 		s.Count.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "LastObservedTime".
+
+	// Unsupported kind "pointer" for field "lastObservedTime".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1EventSeries json value to io.Writer.
 func (s IoK8sAPICoreV1EventSeries) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -14582,22 +17268,27 @@ func (s *IoK8sAPICoreV1EventSeries) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1EventSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Component.Set {
-		field.Write("component")
+		more.More()
+		j.WriteObjectField("component")
 		s.Component.WriteJSON(j)
 	}
+
 	if s.Host.Set {
-		field.Write("host")
+		more.More()
+		j.WriteObjectField("host")
 		s.Host.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1EventSource json value to io.Writer.
 func (s IoK8sAPICoreV1EventSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -14646,15 +17337,29 @@ func (s *IoK8sAPICoreV1EventSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ExecAction) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Command".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Command != nil {
+		more.More()
+		j.WriteObjectField("command")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Command {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ExecAction json value to io.Writer.
 func (s IoK8sAPICoreV1ExecAction) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -14679,7 +17384,7 @@ func (s *IoK8sAPICoreV1ExecAction) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "command":
-			// Unsupported kind "pointer" for field "Command".
+			// Unsupported kind "array" for field "Command".
 			i.Skip()
 			return true
 		default:
@@ -14693,28 +17398,61 @@ func (s *IoK8sAPICoreV1ExecAction) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1FCVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
+
 	if s.Lun.Set {
-		field.Write("lun")
+		more.More()
+		j.WriteObjectField("lun")
 		s.Lun.WriteJSON(j)
 	}
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "TargetWWNs".
-	// Unsupported kind "pointer" for field "Wwids".
+
+	if s.TargetWWNs != nil {
+		more.More()
+		j.WriteObjectField("targetWWNs")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.TargetWWNs {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.Wwids != nil {
+		more.More()
+		j.WriteObjectField("wwids")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Wwids {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1FCVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1FCVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -14760,11 +17498,11 @@ func (s *IoK8sAPICoreV1FCVolumeSource) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "targetWWNs":
-			// Unsupported kind "pointer" for field "TargetWWNs".
+			// Unsupported kind "array" for field "TargetWWNs".
 			i.Skip()
 			return true
 		case "wwids":
-			// Unsupported kind "pointer" for field "Wwids".
+			// Unsupported kind "array" for field "Wwids".
 			i.Skip()
 			return true
 		default:
@@ -14778,29 +17516,40 @@ func (s *IoK8sAPICoreV1FCVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1FlexPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("driver")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("driver")
 	j.WriteString(s.Driver)
+
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Options".
+
+	// Unsupported kind "pointer" for field "options".
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
+
 	if s.SecretRef.Set {
-		field.Write("secretRef")
+		more.More()
+		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1FlexPersistentVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1FlexPersistentVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -14863,29 +17612,40 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) ReadJSON(i *json.Iterator) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1FlexVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("driver")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("driver")
 	j.WriteString(s.Driver)
+
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Options".
+
+	// Unsupported kind "pointer" for field "options".
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
+
 	if s.SecretRef.Set {
-		field.Write("secretRef")
+		more.More()
+		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1FlexVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1FlexVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -14948,22 +17708,27 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1FlockerVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.DatasetName.Set {
-		field.Write("datasetName")
+		more.More()
+		j.WriteObjectField("datasetName")
 		s.DatasetName.WriteJSON(j)
 	}
+
 	if s.DatasetUUID.Set {
-		field.Write("datasetUUID")
+		more.More()
+		j.WriteObjectField("datasetUUID")
 		s.DatasetUUID.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1FlockerVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1FlockerVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -15012,28 +17777,37 @@ func (s *IoK8sAPICoreV1FlockerVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
+
 	if s.Partition.Set {
-		field.Write("partition")
+		more.More()
+		j.WriteObjectField("partition")
 		s.Partition.WriteJSON(j)
 	}
-	field.Write("pdName")
+
+	more.More()
+	j.WriteObjectField("pdName")
 	j.WriteString(s.PdName)
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1GCEPersistentDiskVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -15092,24 +17866,31 @@ func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) ReadJSON(i *json.Iterator)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1GitRepoVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Directory.Set {
-		field.Write("directory")
+		more.More()
+		j.WriteObjectField("directory")
 		s.Directory.WriteJSON(j)
 	}
-	field.Write("repository")
+
+	more.More()
+	j.WriteObjectField("repository")
 	j.WriteString(s.Repository)
+
 	if s.Revision.Set {
-		field.Write("revision")
+		more.More()
+		j.WriteObjectField("revision")
 		s.Revision.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1GitRepoVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1GitRepoVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -15161,26 +17942,36 @@ func (s *IoK8sAPICoreV1GitRepoVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("endpoints")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("endpoints")
 	j.WriteString(s.Endpoints)
+
 	if s.EndpointsNamespace.Set {
-		field.Write("endpointsNamespace")
+		more.More()
+		j.WriteObjectField("endpointsNamespace")
 		s.EndpointsNamespace.WriteJSON(j)
 	}
-	field.Write("path")
+
+	more.More()
+	j.WriteObjectField("path")
 	j.WriteString(s.Path)
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1GlusterfsPersistentVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -15235,22 +18026,30 @@ func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) ReadJSON(i *json.Iterato
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1GlusterfsVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("endpoints")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("endpoints")
 	j.WriteString(s.Endpoints)
-	field.Write("path")
+
+	more.More()
+	j.WriteObjectField("path")
 	j.WriteString(s.Path)
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1GlusterfsVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1GlusterfsVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -15298,28 +18097,49 @@ func (s *IoK8sAPICoreV1GlusterfsVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1HTTPGetAction) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Host.Set {
-		field.Write("host")
+		more.More()
+		j.WriteObjectField("host")
 		s.Host.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "HttpHeaders".
+
+	if s.HttpHeaders != nil {
+		more.More()
+		j.WriteObjectField("httpHeaders")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.HttpHeaders {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Path.Set {
-		field.Write("path")
+		more.More()
+		j.WriteObjectField("path")
 		s.Path.WriteJSON(j)
 	}
-	// Unsupported kind "alias" for field "Port".
+
+	// Unsupported kind "alias" for field "port".
+
 	if s.Scheme.Set {
-		field.Write("scheme")
+		more.More()
+		j.WriteObjectField("scheme")
 		s.Scheme.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1HTTPGetAction json value to io.Writer.
 func (s IoK8sAPICoreV1HTTPGetAction) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -15351,7 +18171,7 @@ func (s *IoK8sAPICoreV1HTTPGetAction) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "httpHeaders":
-			// Unsupported kind "pointer" for field "HttpHeaders".
+			// Unsupported kind "array" for field "HttpHeaders".
 			i.Skip()
 			return true
 		case "path":
@@ -15383,18 +18203,24 @@ func (s *IoK8sAPICoreV1HTTPGetAction) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1HTTPHeader) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-	field.Write("value")
+
+	more.More()
+	j.WriteObjectField("value")
 	j.WriteString(s.Value)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1HTTPHeader json value to io.Writer.
 func (s IoK8sAPICoreV1HTTPHeader) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -15435,26 +18261,33 @@ func (s *IoK8sAPICoreV1HTTPHeader) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Handler) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Exec.Set {
-		field.Write("exec")
+		more.More()
+		j.WriteObjectField("exec")
 		s.Exec.WriteJSON(j)
 	}
+
 	if s.HttpGet.Set {
-		field.Write("httpGet")
+		more.More()
+		j.WriteObjectField("httpGet")
 		s.HttpGet.WriteJSON(j)
 	}
+
 	if s.TcpSocket.Set {
-		field.Write("tcpSocket")
+		more.More()
+		j.WriteObjectField("tcpSocket")
 		s.TcpSocket.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1Handler json value to io.Writer.
 func (s IoK8sAPICoreV1Handler) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -15510,19 +18343,35 @@ func (s *IoK8sAPICoreV1Handler) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1HostAlias) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Hostnames".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Hostnames != nil {
+		more.More()
+		j.WriteObjectField("hostnames")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Hostnames {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.IP.Set {
-		field.Write("ip")
+		more.More()
+		j.WriteObjectField("ip")
 		s.IP.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1HostAlias json value to io.Writer.
 func (s IoK8sAPICoreV1HostAlias) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -15547,7 +18396,7 @@ func (s *IoK8sAPICoreV1HostAlias) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "hostnames":
-			// Unsupported kind "pointer" for field "Hostnames".
+			// Unsupported kind "array" for field "Hostnames".
 			i.Skip()
 			return true
 		case "ip":
@@ -15568,20 +18417,26 @@ func (s *IoK8sAPICoreV1HostAlias) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1HostPathVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("path")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("path")
 	j.WriteString(s.Path)
+
 	if s.Type.Set {
-		field.Write("type")
+		more.More()
+		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1HostPathVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1HostPathVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -15626,49 +18481,83 @@ func (s *IoK8sAPICoreV1HostPathVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ChapAuthDiscovery.Set {
-		field.Write("chapAuthDiscovery")
+		more.More()
+		j.WriteObjectField("chapAuthDiscovery")
 		s.ChapAuthDiscovery.WriteJSON(j)
 	}
+
 	if s.ChapAuthSession.Set {
-		field.Write("chapAuthSession")
+		more.More()
+		j.WriteObjectField("chapAuthSession")
 		s.ChapAuthSession.WriteJSON(j)
 	}
+
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
+
 	if s.InitiatorName.Set {
-		field.Write("initiatorName")
+		more.More()
+		j.WriteObjectField("initiatorName")
 		s.InitiatorName.WriteJSON(j)
 	}
-	field.Write("iqn")
+
+	more.More()
+	j.WriteObjectField("iqn")
 	j.WriteString(s.Iqn)
+
 	if s.IscsiInterface.Set {
-		field.Write("iscsiInterface")
+		more.More()
+		j.WriteObjectField("iscsiInterface")
 		s.IscsiInterface.WriteJSON(j)
 	}
-	field.Write("lun")
+
+	more.More()
+	j.WriteObjectField("lun")
 	j.WriteInt32(s.Lun)
-	// Unsupported kind "pointer" for field "Portals".
+
+	if s.Portals != nil {
+		more.More()
+		j.WriteObjectField("portals")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Portals {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
+
 	if s.SecretRef.Set {
-		field.Write("secretRef")
+		more.More()
+		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
-	field.Write("targetPortal")
+
+	more.More()
+	j.WriteObjectField("targetPortal")
 	j.WriteString(s.TargetPortal)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ISCSIPersistentVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -15734,7 +18623,7 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) ReadJSON(i *json.Iterator) e
 			s.Lun = i.ReadInt32()
 			return i.Error == nil
 		case "portals":
-			// Unsupported kind "pointer" for field "Portals".
+			// Unsupported kind "array" for field "Portals".
 			i.Skip()
 			return true
 		case "readOnly":
@@ -15765,49 +18654,83 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) ReadJSON(i *json.Iterator) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ISCSIVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ChapAuthDiscovery.Set {
-		field.Write("chapAuthDiscovery")
+		more.More()
+		j.WriteObjectField("chapAuthDiscovery")
 		s.ChapAuthDiscovery.WriteJSON(j)
 	}
+
 	if s.ChapAuthSession.Set {
-		field.Write("chapAuthSession")
+		more.More()
+		j.WriteObjectField("chapAuthSession")
 		s.ChapAuthSession.WriteJSON(j)
 	}
+
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
+
 	if s.InitiatorName.Set {
-		field.Write("initiatorName")
+		more.More()
+		j.WriteObjectField("initiatorName")
 		s.InitiatorName.WriteJSON(j)
 	}
-	field.Write("iqn")
+
+	more.More()
+	j.WriteObjectField("iqn")
 	j.WriteString(s.Iqn)
+
 	if s.IscsiInterface.Set {
-		field.Write("iscsiInterface")
+		more.More()
+		j.WriteObjectField("iscsiInterface")
 		s.IscsiInterface.WriteJSON(j)
 	}
-	field.Write("lun")
+
+	more.More()
+	j.WriteObjectField("lun")
 	j.WriteInt32(s.Lun)
-	// Unsupported kind "pointer" for field "Portals".
+
+	if s.Portals != nil {
+		more.More()
+		j.WriteObjectField("portals")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Portals {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
+
 	if s.SecretRef.Set {
-		field.Write("secretRef")
+		more.More()
+		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
-	field.Write("targetPortal")
+
+	more.More()
+	j.WriteObjectField("targetPortal")
 	j.WriteString(s.TargetPortal)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ISCSIVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1ISCSIVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -15873,7 +18796,7 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) ReadJSON(i *json.Iterator) error {
 			s.Lun = i.ReadInt32()
 			return i.Error == nil
 		case "portals":
-			// Unsupported kind "pointer" for field "Portals".
+			// Unsupported kind "array" for field "Portals".
 			i.Skip()
 			return true
 		case "readOnly":
@@ -15904,22 +18827,30 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1KeyToPath) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("key")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("key")
 	j.WriteString(s.Key)
+
 	if s.Mode.Set {
-		field.Write("mode")
+		more.More()
+		j.WriteObjectField("mode")
 		s.Mode.WriteJSON(j)
 	}
-	field.Write("path")
+
+	more.More()
+	j.WriteObjectField("path")
 	j.WriteString(s.Path)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1KeyToPath json value to io.Writer.
 func (s IoK8sAPICoreV1KeyToPath) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -15967,22 +18898,27 @@ func (s *IoK8sAPICoreV1KeyToPath) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Lifecycle) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.PostStart.Set {
-		field.Write("postStart")
+		more.More()
+		j.WriteObjectField("postStart")
 		s.PostStart.WriteJSON(j)
 	}
+
 	if s.PreStop.Set {
-		field.Write("preStop")
+		more.More()
+		j.WriteObjectField("preStop")
 		s.PreStop.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1Lifecycle json value to io.Writer.
 func (s IoK8sAPICoreV1Lifecycle) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -16031,30 +18967,39 @@ func (s *IoK8sAPICoreV1Lifecycle) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRange) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1LimitRange json value to io.Writer.
 func (s IoK8sAPICoreV1LimitRange) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -16117,21 +19062,30 @@ func (s *IoK8sAPICoreV1LimitRange) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Default".
-	// Unsupported kind "pointer" for field "DefaultRequest".
-	// Unsupported kind "pointer" for field "Max".
-	// Unsupported kind "pointer" for field "MaxLimitRequestRatio".
-	// Unsupported kind "pointer" for field "Min".
-	field.Write("type")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "default".
+
+	// Unsupported kind "pointer" for field "defaultRequest".
+
+	// Unsupported kind "pointer" for field "max".
+
+	// Unsupported kind "pointer" for field "maxLimitRequestRatio".
+
+	// Unsupported kind "pointer" for field "min".
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1LimitRangeItem json value to io.Writer.
 func (s IoK8sAPICoreV1LimitRangeItem) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -16189,27 +19143,44 @@ func (s *IoK8sAPICoreV1LimitRangeItem) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1LimitRangeList json value to io.Writer.
 func (s IoK8sAPICoreV1LimitRangeList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -16269,15 +19240,26 @@ func (s *IoK8sAPICoreV1LimitRangeList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "array" for field "Limits".
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("limits")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Limits {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1LimitRangeSpec json value to io.Writer.
 func (s IoK8sAPICoreV1LimitRangeSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -16316,23 +19298,41 @@ func (s *IoK8sAPICoreV1LimitRangeSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LoadBalancerIngress) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Hostname.Set {
-		field.Write("hostname")
+		more.More()
+		j.WriteObjectField("hostname")
 		s.Hostname.WriteJSON(j)
 	}
+
 	if s.IP.Set {
-		field.Write("ip")
+		more.More()
+		j.WriteObjectField("ip")
 		s.IP.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Ports".
+
+	if s.Ports != nil {
+		more.More()
+		j.WriteObjectField("ports")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Ports {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1LoadBalancerIngress json value to io.Writer.
 func (s IoK8sAPICoreV1LoadBalancerIngress) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -16371,7 +19371,7 @@ func (s *IoK8sAPICoreV1LoadBalancerIngress) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "ports":
-			// Unsupported kind "pointer" for field "Ports".
+			// Unsupported kind "array" for field "Ports".
 			i.Skip()
 			return true
 		default:
@@ -16385,15 +19385,29 @@ func (s *IoK8sAPICoreV1LoadBalancerIngress) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LoadBalancerStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Ingress".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Ingress != nil {
+		more.More()
+		j.WriteObjectField("ingress")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Ingress {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1LoadBalancerStatus json value to io.Writer.
 func (s IoK8sAPICoreV1LoadBalancerStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -16418,7 +19432,7 @@ func (s *IoK8sAPICoreV1LoadBalancerStatus) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "ingress":
-			// Unsupported kind "pointer" for field "Ingress".
+			// Unsupported kind "array" for field "Ingress".
 			i.Skip()
 			return true
 		default:
@@ -16432,18 +19446,21 @@ func (s *IoK8sAPICoreV1LoadBalancerStatus) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LocalObjectReference) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1LocalObjectReference json value to io.Writer.
 func (s IoK8sAPICoreV1LocalObjectReference) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -16485,20 +19502,25 @@ func (s *IoK8sAPICoreV1LocalObjectReference) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1LocalVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-	field.Write("path")
+
+	more.More()
+	j.WriteObjectField("path")
 	j.WriteString(s.Path)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1LocalVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1LocalVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -16543,22 +19565,30 @@ func (s *IoK8sAPICoreV1LocalVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NFSVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("path")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("path")
 	j.WriteString(s.Path)
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	field.Write("server")
+
+	more.More()
+	j.WriteObjectField("server")
 	j.WriteString(s.Server)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1NFSVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1NFSVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -16606,34 +19636,45 @@ func (s *IoK8sAPICoreV1NFSVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Namespace) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1Namespace json value to io.Writer.
 func (s IoK8sAPICoreV1Namespace) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -16703,27 +19744,38 @@ func (s *IoK8sAPICoreV1Namespace) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NamespaceCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "LastTransitionTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "lastTransitionTime".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-	field.Write("status")
+
+	more.More()
+	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1NamespaceCondition json value to io.Writer.
 func (s IoK8sAPICoreV1NamespaceCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -16782,27 +19834,44 @@ func (s *IoK8sAPICoreV1NamespaceCondition) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NamespaceList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1NamespaceList json value to io.Writer.
 func (s IoK8sAPICoreV1NamespaceList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -16862,15 +19931,29 @@ func (s *IoK8sAPICoreV1NamespaceList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NamespaceSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Finalizers".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Finalizers != nil {
+		more.More()
+		j.WriteObjectField("finalizers")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Finalizers {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1NamespaceSpec json value to io.Writer.
 func (s IoK8sAPICoreV1NamespaceSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -16895,7 +19978,7 @@ func (s *IoK8sAPICoreV1NamespaceSpec) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "finalizers":
-			// Unsupported kind "pointer" for field "Finalizers".
+			// Unsupported kind "array" for field "Finalizers".
 			i.Skip()
 			return true
 		default:
@@ -16909,19 +19992,35 @@ func (s *IoK8sAPICoreV1NamespaceSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NamespaceStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Conditions".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Phase.Set {
-		field.Write("phase")
+		more.More()
+		j.WriteObjectField("phase")
 		s.Phase.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1NamespaceStatus json value to io.Writer.
 func (s IoK8sAPICoreV1NamespaceStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -16946,7 +20045,7 @@ func (s *IoK8sAPICoreV1NamespaceStatus) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		case "phase":
@@ -16967,34 +20066,45 @@ func (s *IoK8sAPICoreV1NamespaceStatus) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Node) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1Node json value to io.Writer.
 func (s IoK8sAPICoreV1Node) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -17064,18 +20174,24 @@ func (s *IoK8sAPICoreV1Node) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeAddress) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("address")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("address")
 	j.WriteString(s.Address)
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1NodeAddress json value to io.Writer.
 func (s IoK8sAPICoreV1NodeAddress) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -17116,19 +20232,35 @@ func (s *IoK8sAPICoreV1NodeAddress) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeAffinity) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "PreferredDuringSchedulingIgnoredDuringExecution".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
+		more.More()
+		j.WriteObjectField("preferredDuringSchedulingIgnoredDuringExecution")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.PreferredDuringSchedulingIgnoredDuringExecution {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.RequiredDuringSchedulingIgnoredDuringExecution.Set {
-		field.Write("requiredDuringSchedulingIgnoredDuringExecution")
+		more.More()
+		j.WriteObjectField("requiredDuringSchedulingIgnoredDuringExecution")
 		s.RequiredDuringSchedulingIgnoredDuringExecution.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1NodeAffinity json value to io.Writer.
 func (s IoK8sAPICoreV1NodeAffinity) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -17153,7 +20285,7 @@ func (s *IoK8sAPICoreV1NodeAffinity) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "preferredDuringSchedulingIgnoredDuringExecution":
-			// Unsupported kind "pointer" for field "PreferredDuringSchedulingIgnoredDuringExecution".
+			// Unsupported kind "array" for field "PreferredDuringSchedulingIgnoredDuringExecution".
 			i.Skip()
 			return true
 		case "requiredDuringSchedulingIgnoredDuringExecution":
@@ -17174,28 +20306,40 @@ func (s *IoK8sAPICoreV1NodeAffinity) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "LastHeartbeatTime".
-	// Unsupported kind "pointer" for field "LastTransitionTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "lastHeartbeatTime".
+
+	// Unsupported kind "pointer" for field "lastTransitionTime".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-	field.Write("status")
+
+	more.More()
+	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1NodeCondition json value to io.Writer.
 func (s IoK8sAPICoreV1NodeCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -17258,18 +20402,21 @@ func (s *IoK8sAPICoreV1NodeCondition) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeConfigSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ConfigMap.Set {
-		field.Write("configMap")
+		more.More()
+		j.WriteObjectField("configMap")
 		s.ConfigMap.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1NodeConfigSource json value to io.Writer.
 func (s IoK8sAPICoreV1NodeConfigSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -17311,30 +20458,39 @@ func (s *IoK8sAPICoreV1NodeConfigSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeConfigStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Active.Set {
-		field.Write("active")
+		more.More()
+		j.WriteObjectField("active")
 		s.Active.WriteJSON(j)
 	}
+
 	if s.Assigned.Set {
-		field.Write("assigned")
+		more.More()
+		j.WriteObjectField("assigned")
 		s.Assigned.WriteJSON(j)
 	}
+
 	if s.Error.Set {
-		field.Write("error")
+		more.More()
+		j.WriteObjectField("error")
 		s.Error.WriteJSON(j)
 	}
+
 	if s.LastKnownGood.Set {
-		field.Write("lastKnownGood")
+		more.More()
+		j.WriteObjectField("lastKnownGood")
 		s.LastKnownGood.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1NodeConfigStatus json value to io.Writer.
 func (s IoK8sAPICoreV1NodeConfigStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -17397,18 +20553,21 @@ func (s *IoK8sAPICoreV1NodeConfigStatus) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeDaemonEndpoints) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.KubeletEndpoint.Set {
-		field.Write("kubeletEndpoint")
+		more.More()
+		j.WriteObjectField("kubeletEndpoint")
 		s.KubeletEndpoint.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1NodeDaemonEndpoints json value to io.Writer.
 func (s IoK8sAPICoreV1NodeDaemonEndpoints) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -17450,27 +20609,44 @@ func (s *IoK8sAPICoreV1NodeDaemonEndpoints) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1NodeList json value to io.Writer.
 func (s IoK8sAPICoreV1NodeList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -17530,15 +20706,26 @@ func (s *IoK8sAPICoreV1NodeList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSelector) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "array" for field "NodeSelectorTerms".
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("nodeSelectorTerms")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.NodeSelectorTerms {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1NodeSelector json value to io.Writer.
 func (s IoK8sAPICoreV1NodeSelector) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -17577,19 +20764,38 @@ func (s *IoK8sAPICoreV1NodeSelector) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSelectorRequirement) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("key")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("key")
 	j.WriteString(s.Key)
-	field.Write("operator")
+
+	more.More()
+	j.WriteObjectField("operator")
 	j.WriteString(s.Operator)
-	// Unsupported kind "pointer" for field "Values".
+
+	if s.Values != nil {
+		more.More()
+		j.WriteObjectField("values")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Values {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1NodeSelectorRequirement json value to io.Writer.
 func (s IoK8sAPICoreV1NodeSelectorRequirement) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -17620,7 +20826,7 @@ func (s *IoK8sAPICoreV1NodeSelectorRequirement) ReadJSON(i *json.Iterator) error
 			s.Operator = i.ReadString()
 			return i.Error == nil
 		case "values":
-			// Unsupported kind "pointer" for field "Values".
+			// Unsupported kind "array" for field "Values".
 			i.Skip()
 			return true
 		default:
@@ -17634,16 +20840,43 @@ func (s *IoK8sAPICoreV1NodeSelectorRequirement) ReadJSON(i *json.Iterator) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSelectorTerm) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "MatchExpressions".
-	// Unsupported kind "pointer" for field "MatchFields".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.MatchExpressions != nil {
+		more.More()
+		j.WriteObjectField("matchExpressions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.MatchExpressions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.MatchFields != nil {
+		more.More()
+		j.WriteObjectField("matchFields")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.MatchFields {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1NodeSelectorTerm json value to io.Writer.
 func (s IoK8sAPICoreV1NodeSelectorTerm) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -17668,11 +20901,11 @@ func (s *IoK8sAPICoreV1NodeSelectorTerm) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "matchExpressions":
-			// Unsupported kind "pointer" for field "MatchExpressions".
+			// Unsupported kind "array" for field "MatchExpressions".
 			i.Skip()
 			return true
 		case "matchFields":
-			// Unsupported kind "pointer" for field "MatchFields".
+			// Unsupported kind "array" for field "MatchFields".
 			i.Skip()
 			return true
 		default:
@@ -17686,36 +20919,73 @@ func (s *IoK8sAPICoreV1NodeSelectorTerm) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ConfigSource.Set {
-		field.Write("configSource")
+		more.More()
+		j.WriteObjectField("configSource")
 		s.ConfigSource.WriteJSON(j)
 	}
+
 	if s.ExternalID.Set {
-		field.Write("externalID")
+		more.More()
+		j.WriteObjectField("externalID")
 		s.ExternalID.WriteJSON(j)
 	}
+
 	if s.PodCIDR.Set {
-		field.Write("podCIDR")
+		more.More()
+		j.WriteObjectField("podCIDR")
 		s.PodCIDR.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "PodCIDRs".
+
+	if s.PodCIDRs != nil {
+		more.More()
+		j.WriteObjectField("podCIDRs")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.PodCIDRs {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.ProviderID.Set {
-		field.Write("providerID")
+		more.More()
+		j.WriteObjectField("providerID")
 		s.ProviderID.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Taints".
+
+	if s.Taints != nil {
+		more.More()
+		j.WriteObjectField("taints")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Taints {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Unschedulable.Set {
-		field.Write("unschedulable")
+		more.More()
+		j.WriteObjectField("unschedulable")
 		s.Unschedulable.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1NodeSpec json value to io.Writer.
 func (s IoK8sAPICoreV1NodeSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -17761,7 +21031,7 @@ func (s *IoK8sAPICoreV1NodeSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "podCIDRs":
-			// Unsupported kind "pointer" for field "PodCIDRs".
+			// Unsupported kind "array" for field "PodCIDRs".
 			i.Skip()
 			return true
 		case "providerID":
@@ -17772,7 +21042,7 @@ func (s *IoK8sAPICoreV1NodeSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "taints":
-			// Unsupported kind "pointer" for field "Taints".
+			// Unsupported kind "array" for field "Taints".
 			i.Skip()
 			return true
 		case "unschedulable":
@@ -17793,37 +21063,113 @@ func (s *IoK8sAPICoreV1NodeSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Addresses".
-	// Unsupported kind "pointer" for field "Allocatable".
-	// Unsupported kind "pointer" for field "Capacity".
-	// Unsupported kind "pointer" for field "Conditions".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Addresses != nil {
+		more.More()
+		j.WriteObjectField("addresses")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Addresses {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	// Unsupported kind "pointer" for field "allocatable".
+
+	// Unsupported kind "pointer" for field "capacity".
+
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Config.Set {
-		field.Write("config")
+		more.More()
+		j.WriteObjectField("config")
 		s.Config.WriteJSON(j)
 	}
+
 	if s.DaemonEndpoints.Set {
-		field.Write("daemonEndpoints")
+		more.More()
+		j.WriteObjectField("daemonEndpoints")
 		s.DaemonEndpoints.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Images".
+
+	if s.Images != nil {
+		more.More()
+		j.WriteObjectField("images")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Images {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.NodeInfo.Set {
-		field.Write("nodeInfo")
+		more.More()
+		j.WriteObjectField("nodeInfo")
 		s.NodeInfo.WriteJSON(j)
 	}
+
 	if s.Phase.Set {
-		field.Write("phase")
+		more.More()
+		j.WriteObjectField("phase")
 		s.Phase.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "VolumesAttached".
-	// Unsupported kind "pointer" for field "VolumesInUse".
+
+	if s.VolumesAttached != nil {
+		more.More()
+		j.WriteObjectField("volumesAttached")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.VolumesAttached {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.VolumesInUse != nil {
+		more.More()
+		j.WriteObjectField("volumesInUse")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.VolumesInUse {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1NodeStatus json value to io.Writer.
 func (s IoK8sAPICoreV1NodeStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -17848,7 +21194,7 @@ func (s *IoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "addresses":
-			// Unsupported kind "pointer" for field "Addresses".
+			// Unsupported kind "array" for field "Addresses".
 			i.Skip()
 			return true
 		case "allocatable":
@@ -17860,7 +21206,7 @@ func (s *IoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		case "config":
@@ -17878,7 +21224,7 @@ func (s *IoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "images":
-			// Unsupported kind "pointer" for field "Images".
+			// Unsupported kind "array" for field "Images".
 			i.Skip()
 			return true
 		case "nodeInfo":
@@ -17896,11 +21242,11 @@ func (s *IoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "volumesAttached":
-			// Unsupported kind "pointer" for field "VolumesAttached".
+			// Unsupported kind "array" for field "VolumesAttached".
 			i.Skip()
 			return true
 		case "volumesInUse":
-			// Unsupported kind "pointer" for field "VolumesInUse".
+			// Unsupported kind "array" for field "VolumesInUse".
 			i.Skip()
 			return true
 		default:
@@ -17914,34 +21260,56 @@ func (s *IoK8sAPICoreV1NodeStatus) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSystemInfo) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("architecture")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("architecture")
 	j.WriteString(s.Architecture)
-	field.Write("bootID")
+
+	more.More()
+	j.WriteObjectField("bootID")
 	j.WriteString(s.BootID)
-	field.Write("containerRuntimeVersion")
+
+	more.More()
+	j.WriteObjectField("containerRuntimeVersion")
 	j.WriteString(s.ContainerRuntimeVersion)
-	field.Write("kernelVersion")
+
+	more.More()
+	j.WriteObjectField("kernelVersion")
 	j.WriteString(s.KernelVersion)
-	field.Write("kubeProxyVersion")
+
+	more.More()
+	j.WriteObjectField("kubeProxyVersion")
 	j.WriteString(s.KubeProxyVersion)
-	field.Write("kubeletVersion")
+
+	more.More()
+	j.WriteObjectField("kubeletVersion")
 	j.WriteString(s.KubeletVersion)
-	field.Write("machineID")
+
+	more.More()
+	j.WriteObjectField("machineID")
 	j.WriteString(s.MachineID)
-	field.Write("operatingSystem")
+
+	more.More()
+	j.WriteObjectField("operatingSystem")
 	j.WriteString(s.OperatingSystem)
-	field.Write("osImage")
+
+	more.More()
+	j.WriteObjectField("osImage")
 	j.WriteString(s.OsImage)
-	field.Write("systemUUID")
+
+	more.More()
+	j.WriteObjectField("systemUUID")
 	j.WriteString(s.SystemUUID)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1NodeSystemInfo json value to io.Writer.
 func (s IoK8sAPICoreV1NodeSystemInfo) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -18006,20 +21374,25 @@ func (s *IoK8sAPICoreV1NodeSystemInfo) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ObjectFieldSelector) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	field.Write("fieldPath")
+
+	more.More()
+	j.WriteObjectField("fieldPath")
 	j.WriteString(s.FieldPath)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ObjectFieldSelector json value to io.Writer.
 func (s IoK8sAPICoreV1ObjectFieldSelector) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -18064,42 +21437,57 @@ func (s *IoK8sAPICoreV1ObjectFieldSelector) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ObjectReference) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.FieldPath.Set {
-		field.Write("fieldPath")
+		more.More()
+		j.WriteObjectField("fieldPath")
 		s.FieldPath.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
+
 	if s.Namespace.Set {
-		field.Write("namespace")
+		more.More()
+		j.WriteObjectField("namespace")
 		s.Namespace.WriteJSON(j)
 	}
+
 	if s.ResourceVersion.Set {
-		field.Write("resourceVersion")
+		more.More()
+		j.WriteObjectField("resourceVersion")
 		s.ResourceVersion.WriteJSON(j)
 	}
+
 	if s.UID.Set {
-		field.Write("uid")
+		more.More()
+		j.WriteObjectField("uid")
 		s.UID.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ObjectReference json value to io.Writer.
 func (s IoK8sAPICoreV1ObjectReference) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -18183,34 +21571,45 @@ func (s *IoK8sAPICoreV1ObjectReference) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolume) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PersistentVolume json value to io.Writer.
 func (s IoK8sAPICoreV1PersistentVolume) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -18280,34 +21679,45 @@ func (s *IoK8sAPICoreV1PersistentVolume) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaim) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PersistentVolumeClaim json value to io.Writer.
 func (s IoK8sAPICoreV1PersistentVolumeClaim) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -18377,28 +21787,40 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaim) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "LastProbeTime".
-	// Unsupported kind "pointer" for field "LastTransitionTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "lastProbeTime".
+
+	// Unsupported kind "pointer" for field "lastTransitionTime".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-	field.Write("status")
+
+	more.More()
+	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PersistentVolumeClaimCondition json value to io.Writer.
 func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -18461,27 +21883,44 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) ReadJSON(i *json.Iterator
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PersistentVolumeClaimList json value to io.Writer.
 func (s IoK8sAPICoreV1PersistentVolumeClaimList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -18541,43 +21980,71 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) ReadJSON(i *json.Iterator) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "AccessModes".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.AccessModes != nil {
+		more.More()
+		j.WriteObjectField("accessModes")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.AccessModes {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.DataSource.Set {
-		field.Write("dataSource")
+		more.More()
+		j.WriteObjectField("dataSource")
 		s.DataSource.WriteJSON(j)
 	}
+
 	if s.DataSourceRef.Set {
-		field.Write("dataSourceRef")
+		more.More()
+		j.WriteObjectField("dataSourceRef")
 		s.DataSourceRef.WriteJSON(j)
 	}
+
 	if s.Resources.Set {
-		field.Write("resources")
+		more.More()
+		j.WriteObjectField("resources")
 		s.Resources.WriteJSON(j)
 	}
+
 	if s.Selector.Set {
-		field.Write("selector")
+		more.More()
+		j.WriteObjectField("selector")
 		s.Selector.WriteJSON(j)
 	}
+
 	if s.StorageClassName.Set {
-		field.Write("storageClassName")
+		more.More()
+		j.WriteObjectField("storageClassName")
 		s.StorageClassName.WriteJSON(j)
 	}
+
 	if s.VolumeMode.Set {
-		field.Write("volumeMode")
+		more.More()
+		j.WriteObjectField("volumeMode")
 		s.VolumeMode.WriteJSON(j)
 	}
+
 	if s.VolumeName.Set {
-		field.Write("volumeName")
+		more.More()
+		j.WriteObjectField("volumeName")
 		s.VolumeName.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PersistentVolumeClaimSpec json value to io.Writer.
 func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -18602,7 +22069,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) ReadJSON(i *json.Iterator) err
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "accessModes":
-			// Unsupported kind "pointer" for field "AccessModes".
+			// Unsupported kind "array" for field "AccessModes".
 			i.Skip()
 			return true
 		case "dataSource":
@@ -18665,21 +22132,51 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) ReadJSON(i *json.Iterator) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "AccessModes".
-	// Unsupported kind "pointer" for field "Capacity".
-	// Unsupported kind "pointer" for field "Conditions".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.AccessModes != nil {
+		more.More()
+		j.WriteObjectField("accessModes")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.AccessModes {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	// Unsupported kind "pointer" for field "capacity".
+
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Phase.Set {
-		field.Write("phase")
+		more.More()
+		j.WriteObjectField("phase")
 		s.Phase.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PersistentVolumeClaimStatus json value to io.Writer.
 func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -18704,7 +22201,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) ReadJSON(i *json.Iterator) e
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "accessModes":
-			// Unsupported kind "pointer" for field "AccessModes".
+			// Unsupported kind "array" for field "AccessModes".
 			i.Skip()
 			return true
 		case "capacity":
@@ -18712,7 +22209,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) ReadJSON(i *json.Iterator) e
 			i.Skip()
 			return true
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		case "phase":
@@ -18733,20 +22230,25 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) ReadJSON(i *json.Iterator) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimTemplate) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	field.Write("spec")
+
+	more.More()
+	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PersistentVolumeClaimTemplate json value to io.Writer.
 func (s IoK8sAPICoreV1PersistentVolumeClaimTemplate) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -18794,20 +22296,26 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimTemplate) ReadJSON(i *json.Iterator)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("claimName")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("claimName")
 	j.WriteString(s.ClaimName)
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PersistentVolumeClaimVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -18852,27 +22360,44 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) ReadJSON(i *json.Itera
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PersistentVolumeList json value to io.Writer.
 func (s IoK8sAPICoreV1PersistentVolumeList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -18932,125 +22457,207 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "AccessModes".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.AccessModes != nil {
+		more.More()
+		j.WriteObjectField("accessModes")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.AccessModes {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.AwsElasticBlockStore.Set {
-		field.Write("awsElasticBlockStore")
+		more.More()
+		j.WriteObjectField("awsElasticBlockStore")
 		s.AwsElasticBlockStore.WriteJSON(j)
 	}
+
 	if s.AzureDisk.Set {
-		field.Write("azureDisk")
+		more.More()
+		j.WriteObjectField("azureDisk")
 		s.AzureDisk.WriteJSON(j)
 	}
+
 	if s.AzureFile.Set {
-		field.Write("azureFile")
+		more.More()
+		j.WriteObjectField("azureFile")
 		s.AzureFile.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Capacity".
+
+	// Unsupported kind "pointer" for field "capacity".
+
 	if s.Cephfs.Set {
-		field.Write("cephfs")
+		more.More()
+		j.WriteObjectField("cephfs")
 		s.Cephfs.WriteJSON(j)
 	}
+
 	if s.Cinder.Set {
-		field.Write("cinder")
+		more.More()
+		j.WriteObjectField("cinder")
 		s.Cinder.WriteJSON(j)
 	}
+
 	if s.ClaimRef.Set {
-		field.Write("claimRef")
+		more.More()
+		j.WriteObjectField("claimRef")
 		s.ClaimRef.WriteJSON(j)
 	}
+
 	if s.Csi.Set {
-		field.Write("csi")
+		more.More()
+		j.WriteObjectField("csi")
 		s.Csi.WriteJSON(j)
 	}
+
 	if s.Fc.Set {
-		field.Write("fc")
+		more.More()
+		j.WriteObjectField("fc")
 		s.Fc.WriteJSON(j)
 	}
+
 	if s.FlexVolume.Set {
-		field.Write("flexVolume")
+		more.More()
+		j.WriteObjectField("flexVolume")
 		s.FlexVolume.WriteJSON(j)
 	}
+
 	if s.Flocker.Set {
-		field.Write("flocker")
+		more.More()
+		j.WriteObjectField("flocker")
 		s.Flocker.WriteJSON(j)
 	}
+
 	if s.GcePersistentDisk.Set {
-		field.Write("gcePersistentDisk")
+		more.More()
+		j.WriteObjectField("gcePersistentDisk")
 		s.GcePersistentDisk.WriteJSON(j)
 	}
+
 	if s.Glusterfs.Set {
-		field.Write("glusterfs")
+		more.More()
+		j.WriteObjectField("glusterfs")
 		s.Glusterfs.WriteJSON(j)
 	}
+
 	if s.HostPath.Set {
-		field.Write("hostPath")
+		more.More()
+		j.WriteObjectField("hostPath")
 		s.HostPath.WriteJSON(j)
 	}
+
 	if s.Iscsi.Set {
-		field.Write("iscsi")
+		more.More()
+		j.WriteObjectField("iscsi")
 		s.Iscsi.WriteJSON(j)
 	}
+
 	if s.Local.Set {
-		field.Write("local")
+		more.More()
+		j.WriteObjectField("local")
 		s.Local.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "MountOptions".
+
+	if s.MountOptions != nil {
+		more.More()
+		j.WriteObjectField("mountOptions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.MountOptions {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Nfs.Set {
-		field.Write("nfs")
+		more.More()
+		j.WriteObjectField("nfs")
 		s.Nfs.WriteJSON(j)
 	}
+
 	if s.NodeAffinity.Set {
-		field.Write("nodeAffinity")
+		more.More()
+		j.WriteObjectField("nodeAffinity")
 		s.NodeAffinity.WriteJSON(j)
 	}
+
 	if s.PersistentVolumeReclaimPolicy.Set {
-		field.Write("persistentVolumeReclaimPolicy")
+		more.More()
+		j.WriteObjectField("persistentVolumeReclaimPolicy")
 		s.PersistentVolumeReclaimPolicy.WriteJSON(j)
 	}
+
 	if s.PhotonPersistentDisk.Set {
-		field.Write("photonPersistentDisk")
+		more.More()
+		j.WriteObjectField("photonPersistentDisk")
 		s.PhotonPersistentDisk.WriteJSON(j)
 	}
+
 	if s.PortworxVolume.Set {
-		field.Write("portworxVolume")
+		more.More()
+		j.WriteObjectField("portworxVolume")
 		s.PortworxVolume.WriteJSON(j)
 	}
+
 	if s.Quobyte.Set {
-		field.Write("quobyte")
+		more.More()
+		j.WriteObjectField("quobyte")
 		s.Quobyte.WriteJSON(j)
 	}
+
 	if s.Rbd.Set {
-		field.Write("rbd")
+		more.More()
+		j.WriteObjectField("rbd")
 		s.Rbd.WriteJSON(j)
 	}
+
 	if s.ScaleIO.Set {
-		field.Write("scaleIO")
+		more.More()
+		j.WriteObjectField("scaleIO")
 		s.ScaleIO.WriteJSON(j)
 	}
+
 	if s.StorageClassName.Set {
-		field.Write("storageClassName")
+		more.More()
+		j.WriteObjectField("storageClassName")
 		s.StorageClassName.WriteJSON(j)
 	}
+
 	if s.Storageos.Set {
-		field.Write("storageos")
+		more.More()
+		j.WriteObjectField("storageos")
 		s.Storageos.WriteJSON(j)
 	}
+
 	if s.VolumeMode.Set {
-		field.Write("volumeMode")
+		more.More()
+		j.WriteObjectField("volumeMode")
 		s.VolumeMode.WriteJSON(j)
 	}
+
 	if s.VsphereVolume.Set {
-		field.Write("vsphereVolume")
+		more.More()
+		j.WriteObjectField("vsphereVolume")
 		s.VsphereVolume.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PersistentVolumeSpec json value to io.Writer.
 func (s IoK8sAPICoreV1PersistentVolumeSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -19075,7 +22682,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "accessModes":
-			// Unsupported kind "pointer" for field "AccessModes".
+			// Unsupported kind "array" for field "AccessModes".
 			i.Skip()
 			return true
 		case "awsElasticBlockStore":
@@ -19188,7 +22795,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "mountOptions":
-			// Unsupported kind "pointer" for field "MountOptions".
+			// Unsupported kind "array" for field "MountOptions".
 			i.Skip()
 			return true
 		case "nfs":
@@ -19286,26 +22893,33 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Phase.Set {
-		field.Write("phase")
+		more.More()
+		j.WriteObjectField("phase")
 		s.Phase.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PersistentVolumeStatus json value to io.Writer.
 func (s IoK8sAPICoreV1PersistentVolumeStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -19361,20 +22975,25 @@ func (s *IoK8sAPICoreV1PersistentVolumeStatus) ReadJSON(i *json.Iterator) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-	field.Write("pdID")
+
+	more.More()
+	j.WriteObjectField("pdID")
 	j.WriteString(s.PdID)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PhotonPersistentDiskVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -19419,34 +23038,45 @@ func (s *IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) ReadJSON(i *json.Iterat
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Pod) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1Pod json value to io.Writer.
 func (s IoK8sAPICoreV1Pod) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -19516,16 +23146,43 @@ func (s *IoK8sAPICoreV1Pod) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodAffinity) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "PreferredDuringSchedulingIgnoredDuringExecution".
-	// Unsupported kind "pointer" for field "RequiredDuringSchedulingIgnoredDuringExecution".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
+		more.More()
+		j.WriteObjectField("preferredDuringSchedulingIgnoredDuringExecution")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.PreferredDuringSchedulingIgnoredDuringExecution {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.RequiredDuringSchedulingIgnoredDuringExecution != nil {
+		more.More()
+		j.WriteObjectField("requiredDuringSchedulingIgnoredDuringExecution")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.RequiredDuringSchedulingIgnoredDuringExecution {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PodAffinity json value to io.Writer.
 func (s IoK8sAPICoreV1PodAffinity) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -19550,11 +23207,11 @@ func (s *IoK8sAPICoreV1PodAffinity) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "preferredDuringSchedulingIgnoredDuringExecution":
-			// Unsupported kind "pointer" for field "PreferredDuringSchedulingIgnoredDuringExecution".
+			// Unsupported kind "array" for field "PreferredDuringSchedulingIgnoredDuringExecution".
 			i.Skip()
 			return true
 		case "requiredDuringSchedulingIgnoredDuringExecution":
-			// Unsupported kind "pointer" for field "RequiredDuringSchedulingIgnoredDuringExecution".
+			// Unsupported kind "array" for field "RequiredDuringSchedulingIgnoredDuringExecution".
 			i.Skip()
 			return true
 		default:
@@ -19568,25 +23225,45 @@ func (s *IoK8sAPICoreV1PodAffinity) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodAffinityTerm) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.LabelSelector.Set {
-		field.Write("labelSelector")
+		more.More()
+		j.WriteObjectField("labelSelector")
 		s.LabelSelector.WriteJSON(j)
 	}
+
 	if s.NamespaceSelector.Set {
-		field.Write("namespaceSelector")
+		more.More()
+		j.WriteObjectField("namespaceSelector")
 		s.NamespaceSelector.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Namespaces".
-	field.Write("topologyKey")
+
+	if s.Namespaces != nil {
+		more.More()
+		j.WriteObjectField("namespaces")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Namespaces {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("topologyKey")
 	j.WriteString(s.TopologyKey)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PodAffinityTerm json value to io.Writer.
 func (s IoK8sAPICoreV1PodAffinityTerm) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -19625,7 +23302,7 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "namespaces":
-			// Unsupported kind "pointer" for field "Namespaces".
+			// Unsupported kind "array" for field "Namespaces".
 			i.Skip()
 			return true
 		case "topologyKey":
@@ -19642,16 +23319,43 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodAntiAffinity) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "PreferredDuringSchedulingIgnoredDuringExecution".
-	// Unsupported kind "pointer" for field "RequiredDuringSchedulingIgnoredDuringExecution".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
+		more.More()
+		j.WriteObjectField("preferredDuringSchedulingIgnoredDuringExecution")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.PreferredDuringSchedulingIgnoredDuringExecution {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.RequiredDuringSchedulingIgnoredDuringExecution != nil {
+		more.More()
+		j.WriteObjectField("requiredDuringSchedulingIgnoredDuringExecution")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.RequiredDuringSchedulingIgnoredDuringExecution {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PodAntiAffinity json value to io.Writer.
 func (s IoK8sAPICoreV1PodAntiAffinity) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -19676,11 +23380,11 @@ func (s *IoK8sAPICoreV1PodAntiAffinity) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "preferredDuringSchedulingIgnoredDuringExecution":
-			// Unsupported kind "pointer" for field "PreferredDuringSchedulingIgnoredDuringExecution".
+			// Unsupported kind "array" for field "PreferredDuringSchedulingIgnoredDuringExecution".
 			i.Skip()
 			return true
 		case "requiredDuringSchedulingIgnoredDuringExecution":
-			// Unsupported kind "pointer" for field "RequiredDuringSchedulingIgnoredDuringExecution".
+			// Unsupported kind "array" for field "RequiredDuringSchedulingIgnoredDuringExecution".
 			i.Skip()
 			return true
 		default:
@@ -19694,28 +23398,40 @@ func (s *IoK8sAPICoreV1PodAntiAffinity) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "LastProbeTime".
-	// Unsupported kind "pointer" for field "LastTransitionTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "lastProbeTime".
+
+	// Unsupported kind "pointer" for field "lastTransitionTime".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-	field.Write("status")
+
+	more.More()
+	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PodCondition json value to io.Writer.
 func (s IoK8sAPICoreV1PodCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -19778,17 +23494,57 @@ func (s *IoK8sAPICoreV1PodCondition) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodDNSConfig) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Nameservers".
-	// Unsupported kind "pointer" for field "Options".
-	// Unsupported kind "pointer" for field "Searches".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Nameservers != nil {
+		more.More()
+		j.WriteObjectField("nameservers")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Nameservers {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.Options != nil {
+		more.More()
+		j.WriteObjectField("options")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Options {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.Searches != nil {
+		more.More()
+		j.WriteObjectField("searches")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Searches {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PodDNSConfig json value to io.Writer.
 func (s IoK8sAPICoreV1PodDNSConfig) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -19813,15 +23569,15 @@ func (s *IoK8sAPICoreV1PodDNSConfig) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "nameservers":
-			// Unsupported kind "pointer" for field "Nameservers".
+			// Unsupported kind "array" for field "Nameservers".
 			i.Skip()
 			return true
 		case "options":
-			// Unsupported kind "pointer" for field "Options".
+			// Unsupported kind "array" for field "Options".
 			i.Skip()
 			return true
 		case "searches":
-			// Unsupported kind "pointer" for field "Searches".
+			// Unsupported kind "array" for field "Searches".
 			i.Skip()
 			return true
 		default:
@@ -19835,22 +23591,27 @@ func (s *IoK8sAPICoreV1PodDNSConfig) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodDNSConfigOption) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
+
 	if s.Value.Set {
-		field.Write("value")
+		more.More()
+		j.WriteObjectField("value")
 		s.Value.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PodDNSConfigOption json value to io.Writer.
 func (s IoK8sAPICoreV1PodDNSConfigOption) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -19899,18 +23660,21 @@ func (s *IoK8sAPICoreV1PodDNSConfigOption) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodIP) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.IP.Set {
-		field.Write("ip")
+		more.More()
+		j.WriteObjectField("ip")
 		s.IP.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PodIP json value to io.Writer.
 func (s IoK8sAPICoreV1PodIP) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -19952,27 +23716,44 @@ func (s *IoK8sAPICoreV1PodIP) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PodList json value to io.Writer.
 func (s IoK8sAPICoreV1PodList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -20032,16 +23813,20 @@ func (s *IoK8sAPICoreV1PodList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodReadinessGate) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("conditionType")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("conditionType")
 	j.WriteString(s.ConditionType)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PodReadinessGate json value to io.Writer.
 func (s IoK8sAPICoreV1PodReadinessGate) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -20079,48 +23864,91 @@ func (s *IoK8sAPICoreV1PodReadinessGate) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodSecurityContext) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.FsGroup.Set {
-		field.Write("fsGroup")
+		more.More()
+		j.WriteObjectField("fsGroup")
 		s.FsGroup.WriteJSON(j)
 	}
+
 	if s.FsGroupChangePolicy.Set {
-		field.Write("fsGroupChangePolicy")
+		more.More()
+		j.WriteObjectField("fsGroupChangePolicy")
 		s.FsGroupChangePolicy.WriteJSON(j)
 	}
+
 	if s.RunAsGroup.Set {
-		field.Write("runAsGroup")
+		more.More()
+		j.WriteObjectField("runAsGroup")
 		s.RunAsGroup.WriteJSON(j)
 	}
+
 	if s.RunAsNonRoot.Set {
-		field.Write("runAsNonRoot")
+		more.More()
+		j.WriteObjectField("runAsNonRoot")
 		s.RunAsNonRoot.WriteJSON(j)
 	}
+
 	if s.RunAsUser.Set {
-		field.Write("runAsUser")
+		more.More()
+		j.WriteObjectField("runAsUser")
 		s.RunAsUser.WriteJSON(j)
 	}
+
 	if s.SeLinuxOptions.Set {
-		field.Write("seLinuxOptions")
+		more.More()
+		j.WriteObjectField("seLinuxOptions")
 		s.SeLinuxOptions.WriteJSON(j)
 	}
+
 	if s.SeccompProfile.Set {
-		field.Write("seccompProfile")
+		more.More()
+		j.WriteObjectField("seccompProfile")
 		s.SeccompProfile.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "SupplementalGroups".
-	// Unsupported kind "pointer" for field "Sysctls".
+
+	if s.SupplementalGroups != nil {
+		more.More()
+		j.WriteObjectField("supplementalGroups")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.SupplementalGroups {
+			more.More()
+			j.WriteInt64(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.Sysctls != nil {
+		more.More()
+		j.WriteObjectField("sysctls")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Sysctls {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.WindowsOptions.Set {
-		field.Write("windowsOptions")
+		more.More()
+		j.WriteObjectField("windowsOptions")
 		s.WindowsOptions.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PodSecurityContext json value to io.Writer.
 func (s IoK8sAPICoreV1PodSecurityContext) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -20194,11 +24022,11 @@ func (s *IoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "supplementalGroups":
-			// Unsupported kind "pointer" for field "SupplementalGroups".
+			// Unsupported kind "array" for field "SupplementalGroups".
 			i.Skip()
 			return true
 		case "sysctls":
-			// Unsupported kind "pointer" for field "Sysctls".
+			// Unsupported kind "array" for field "Sysctls".
 			i.Skip()
 			return true
 		case "windowsOptions":
@@ -20219,121 +24047,286 @@ func (s *IoK8sAPICoreV1PodSecurityContext) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ActiveDeadlineSeconds.Set {
-		field.Write("activeDeadlineSeconds")
+		more.More()
+		j.WriteObjectField("activeDeadlineSeconds")
 		s.ActiveDeadlineSeconds.WriteJSON(j)
 	}
+
 	if s.Affinity.Set {
-		field.Write("affinity")
+		more.More()
+		j.WriteObjectField("affinity")
 		s.Affinity.WriteJSON(j)
 	}
+
 	if s.AutomountServiceAccountToken.Set {
-		field.Write("automountServiceAccountToken")
+		more.More()
+		j.WriteObjectField("automountServiceAccountToken")
 		s.AutomountServiceAccountToken.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Containers".
+
+	more.More()
+	j.WriteObjectField("containers")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Containers {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.DnsConfig.Set {
-		field.Write("dnsConfig")
+		more.More()
+		j.WriteObjectField("dnsConfig")
 		s.DnsConfig.WriteJSON(j)
 	}
+
 	if s.DnsPolicy.Set {
-		field.Write("dnsPolicy")
+		more.More()
+		j.WriteObjectField("dnsPolicy")
 		s.DnsPolicy.WriteJSON(j)
 	}
+
 	if s.EnableServiceLinks.Set {
-		field.Write("enableServiceLinks")
+		more.More()
+		j.WriteObjectField("enableServiceLinks")
 		s.EnableServiceLinks.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "EphemeralContainers".
-	// Unsupported kind "pointer" for field "HostAliases".
+
+	if s.EphemeralContainers != nil {
+		more.More()
+		j.WriteObjectField("ephemeralContainers")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.EphemeralContainers {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.HostAliases != nil {
+		more.More()
+		j.WriteObjectField("hostAliases")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.HostAliases {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.HostIPC.Set {
-		field.Write("hostIPC")
+		more.More()
+		j.WriteObjectField("hostIPC")
 		s.HostIPC.WriteJSON(j)
 	}
+
 	if s.HostNetwork.Set {
-		field.Write("hostNetwork")
+		more.More()
+		j.WriteObjectField("hostNetwork")
 		s.HostNetwork.WriteJSON(j)
 	}
+
 	if s.HostPID.Set {
-		field.Write("hostPID")
+		more.More()
+		j.WriteObjectField("hostPID")
 		s.HostPID.WriteJSON(j)
 	}
+
 	if s.Hostname.Set {
-		field.Write("hostname")
+		more.More()
+		j.WriteObjectField("hostname")
 		s.Hostname.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "ImagePullSecrets".
-	// Unsupported kind "pointer" for field "InitContainers".
+
+	if s.ImagePullSecrets != nil {
+		more.More()
+		j.WriteObjectField("imagePullSecrets")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ImagePullSecrets {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.InitContainers != nil {
+		more.More()
+		j.WriteObjectField("initContainers")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.InitContainers {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.NodeName.Set {
-		field.Write("nodeName")
+		more.More()
+		j.WriteObjectField("nodeName")
 		s.NodeName.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "NodeSelector".
-	// Unsupported kind "pointer" for field "Overhead".
+
+	// Unsupported kind "pointer" for field "nodeSelector".
+
+	// Unsupported kind "pointer" for field "overhead".
+
 	if s.PreemptionPolicy.Set {
-		field.Write("preemptionPolicy")
+		more.More()
+		j.WriteObjectField("preemptionPolicy")
 		s.PreemptionPolicy.WriteJSON(j)
 	}
+
 	if s.Priority.Set {
-		field.Write("priority")
+		more.More()
+		j.WriteObjectField("priority")
 		s.Priority.WriteJSON(j)
 	}
+
 	if s.PriorityClassName.Set {
-		field.Write("priorityClassName")
+		more.More()
+		j.WriteObjectField("priorityClassName")
 		s.PriorityClassName.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "ReadinessGates".
+
+	if s.ReadinessGates != nil {
+		more.More()
+		j.WriteObjectField("readinessGates")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ReadinessGates {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.RestartPolicy.Set {
-		field.Write("restartPolicy")
+		more.More()
+		j.WriteObjectField("restartPolicy")
 		s.RestartPolicy.WriteJSON(j)
 	}
+
 	if s.RuntimeClassName.Set {
-		field.Write("runtimeClassName")
+		more.More()
+		j.WriteObjectField("runtimeClassName")
 		s.RuntimeClassName.WriteJSON(j)
 	}
+
 	if s.SchedulerName.Set {
-		field.Write("schedulerName")
+		more.More()
+		j.WriteObjectField("schedulerName")
 		s.SchedulerName.WriteJSON(j)
 	}
+
 	if s.SecurityContext.Set {
-		field.Write("securityContext")
+		more.More()
+		j.WriteObjectField("securityContext")
 		s.SecurityContext.WriteJSON(j)
 	}
+
 	if s.ServiceAccount.Set {
-		field.Write("serviceAccount")
+		more.More()
+		j.WriteObjectField("serviceAccount")
 		s.ServiceAccount.WriteJSON(j)
 	}
+
 	if s.ServiceAccountName.Set {
-		field.Write("serviceAccountName")
+		more.More()
+		j.WriteObjectField("serviceAccountName")
 		s.ServiceAccountName.WriteJSON(j)
 	}
+
 	if s.SetHostnameAsFQDN.Set {
-		field.Write("setHostnameAsFQDN")
+		more.More()
+		j.WriteObjectField("setHostnameAsFQDN")
 		s.SetHostnameAsFQDN.WriteJSON(j)
 	}
+
 	if s.ShareProcessNamespace.Set {
-		field.Write("shareProcessNamespace")
+		more.More()
+		j.WriteObjectField("shareProcessNamespace")
 		s.ShareProcessNamespace.WriteJSON(j)
 	}
+
 	if s.Subdomain.Set {
-		field.Write("subdomain")
+		more.More()
+		j.WriteObjectField("subdomain")
 		s.Subdomain.WriteJSON(j)
 	}
+
 	if s.TerminationGracePeriodSeconds.Set {
-		field.Write("terminationGracePeriodSeconds")
+		more.More()
+		j.WriteObjectField("terminationGracePeriodSeconds")
 		s.TerminationGracePeriodSeconds.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Tolerations".
-	// Unsupported kind "pointer" for field "TopologySpreadConstraints".
-	// Unsupported kind "pointer" for field "Volumes".
+
+	if s.Tolerations != nil {
+		more.More()
+		j.WriteObjectField("tolerations")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Tolerations {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.TopologySpreadConstraints != nil {
+		more.More()
+		j.WriteObjectField("topologySpreadConstraints")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.TopologySpreadConstraints {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.Volumes != nil {
+		more.More()
+		j.WriteObjectField("volumes")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Volumes {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PodSpec json value to io.Writer.
 func (s IoK8sAPICoreV1PodSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -20404,11 +24397,11 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "ephemeralContainers":
-			// Unsupported kind "pointer" for field "EphemeralContainers".
+			// Unsupported kind "array" for field "EphemeralContainers".
 			i.Skip()
 			return true
 		case "hostAliases":
-			// Unsupported kind "pointer" for field "HostAliases".
+			// Unsupported kind "array" for field "HostAliases".
 			i.Skip()
 			return true
 		case "hostIPC":
@@ -20440,11 +24433,11 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "imagePullSecrets":
-			// Unsupported kind "pointer" for field "ImagePullSecrets".
+			// Unsupported kind "array" for field "ImagePullSecrets".
 			i.Skip()
 			return true
 		case "initContainers":
-			// Unsupported kind "pointer" for field "InitContainers".
+			// Unsupported kind "array" for field "InitContainers".
 			i.Skip()
 			return true
 		case "nodeName":
@@ -20484,7 +24477,7 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "readinessGates":
-			// Unsupported kind "pointer" for field "ReadinessGates".
+			// Unsupported kind "array" for field "ReadinessGates".
 			i.Skip()
 			return true
 		case "restartPolicy":
@@ -20558,15 +24551,15 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "tolerations":
-			// Unsupported kind "pointer" for field "Tolerations".
+			// Unsupported kind "array" for field "Tolerations".
 			i.Skip()
 			return true
 		case "topologySpreadConstraints":
-			// Unsupported kind "pointer" for field "TopologySpreadConstraints".
+			// Unsupported kind "array" for field "TopologySpreadConstraints".
 			i.Skip()
 			return true
 		case "volumes":
-			// Unsupported kind "pointer" for field "Volumes".
+			// Unsupported kind "array" for field "Volumes".
 			i.Skip()
 			return true
 		default:
@@ -20580,48 +24573,129 @@ func (s *IoK8sAPICoreV1PodSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Conditions".
-	// Unsupported kind "pointer" for field "ContainerStatuses".
-	// Unsupported kind "pointer" for field "EphemeralContainerStatuses".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.ContainerStatuses != nil {
+		more.More()
+		j.WriteObjectField("containerStatuses")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ContainerStatuses {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.EphemeralContainerStatuses != nil {
+		more.More()
+		j.WriteObjectField("ephemeralContainerStatuses")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.EphemeralContainerStatuses {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.HostIP.Set {
-		field.Write("hostIP")
+		more.More()
+		j.WriteObjectField("hostIP")
 		s.HostIP.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "InitContainerStatuses".
+
+	if s.InitContainerStatuses != nil {
+		more.More()
+		j.WriteObjectField("initContainerStatuses")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.InitContainerStatuses {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.NominatedNodeName.Set {
-		field.Write("nominatedNodeName")
+		more.More()
+		j.WriteObjectField("nominatedNodeName")
 		s.NominatedNodeName.WriteJSON(j)
 	}
+
 	if s.Phase.Set {
-		field.Write("phase")
+		more.More()
+		j.WriteObjectField("phase")
 		s.Phase.WriteJSON(j)
 	}
+
 	if s.PodIP.Set {
-		field.Write("podIP")
+		more.More()
+		j.WriteObjectField("podIP")
 		s.PodIP.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "PodIPs".
+
+	if s.PodIPs != nil {
+		more.More()
+		j.WriteObjectField("podIPs")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.PodIPs {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.QosClass.Set {
-		field.Write("qosClass")
+		more.More()
+		j.WriteObjectField("qosClass")
 		s.QosClass.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "StartTime".
+
+	// Unsupported kind "pointer" for field "startTime".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PodStatus json value to io.Writer.
 func (s IoK8sAPICoreV1PodStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -20646,15 +24720,15 @@ func (s *IoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		case "containerStatuses":
-			// Unsupported kind "pointer" for field "ContainerStatuses".
+			// Unsupported kind "array" for field "ContainerStatuses".
 			i.Skip()
 			return true
 		case "ephemeralContainerStatuses":
-			// Unsupported kind "pointer" for field "EphemeralContainerStatuses".
+			// Unsupported kind "array" for field "EphemeralContainerStatuses".
 			i.Skip()
 			return true
 		case "hostIP":
@@ -20665,7 +24739,7 @@ func (s *IoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "initContainerStatuses":
-			// Unsupported kind "pointer" for field "InitContainerStatuses".
+			// Unsupported kind "array" for field "InitContainerStatuses".
 			i.Skip()
 			return true
 		case "message":
@@ -20697,7 +24771,7 @@ func (s *IoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "podIPs":
-			// Unsupported kind "pointer" for field "PodIPs".
+			// Unsupported kind "array" for field "PodIPs".
 			i.Skip()
 			return true
 		case "qosClass":
@@ -20729,30 +24803,39 @@ func (s *IoK8sAPICoreV1PodStatus) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodTemplate) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Template.Set {
-		field.Write("template")
+		more.More()
+		j.WriteObjectField("template")
 		s.Template.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PodTemplate json value to io.Writer.
 func (s IoK8sAPICoreV1PodTemplate) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -20815,27 +24898,44 @@ func (s *IoK8sAPICoreV1PodTemplate) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodTemplateList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PodTemplateList json value to io.Writer.
 func (s IoK8sAPICoreV1PodTemplateList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -20895,22 +24995,27 @@ func (s *IoK8sAPICoreV1PodTemplateList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PodTemplateSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PodTemplateSpec json value to io.Writer.
 func (s IoK8sAPICoreV1PodTemplateSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -20959,22 +25064,29 @@ func (s *IoK8sAPICoreV1PodTemplateSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PortStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Error.Set {
-		field.Write("error")
+		more.More()
+		j.WriteObjectField("error")
 		s.Error.WriteJSON(j)
 	}
-	field.Write("port")
+
+	more.More()
+	j.WriteObjectField("port")
 	j.WriteInt32(s.Port)
-	field.Write("protocol")
+
+	more.More()
+	j.WriteObjectField("protocol")
 	j.WriteString(s.Protocol)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PortStatus json value to io.Writer.
 func (s IoK8sAPICoreV1PortStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -21022,24 +25134,31 @@ func (s *IoK8sAPICoreV1PortStatus) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PortworxVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	field.Write("volumeID")
+
+	more.More()
+	j.WriteObjectField("volumeID")
 	j.WriteString(s.VolumeID)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PortworxVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1PortworxVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -21091,18 +25210,23 @@ func (s *IoK8sAPICoreV1PortworxVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1PreferredSchedulingTerm) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("preference")
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("preference")
 	s.Preference.WriteJSON(j)
-	field.Write("weight")
+
+	more.More()
+	j.WriteObjectField("weight")
 	j.WriteInt32(s.Weight)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1PreferredSchedulingTerm json value to io.Writer.
 func (s IoK8sAPICoreV1PreferredSchedulingTerm) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -21146,50 +25270,69 @@ func (s *IoK8sAPICoreV1PreferredSchedulingTerm) ReadJSON(i *json.Iterator) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Probe) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Exec.Set {
-		field.Write("exec")
+		more.More()
+		j.WriteObjectField("exec")
 		s.Exec.WriteJSON(j)
 	}
+
 	if s.FailureThreshold.Set {
-		field.Write("failureThreshold")
+		more.More()
+		j.WriteObjectField("failureThreshold")
 		s.FailureThreshold.WriteJSON(j)
 	}
+
 	if s.HttpGet.Set {
-		field.Write("httpGet")
+		more.More()
+		j.WriteObjectField("httpGet")
 		s.HttpGet.WriteJSON(j)
 	}
+
 	if s.InitialDelaySeconds.Set {
-		field.Write("initialDelaySeconds")
+		more.More()
+		j.WriteObjectField("initialDelaySeconds")
 		s.InitialDelaySeconds.WriteJSON(j)
 	}
+
 	if s.PeriodSeconds.Set {
-		field.Write("periodSeconds")
+		more.More()
+		j.WriteObjectField("periodSeconds")
 		s.PeriodSeconds.WriteJSON(j)
 	}
+
 	if s.SuccessThreshold.Set {
-		field.Write("successThreshold")
+		more.More()
+		j.WriteObjectField("successThreshold")
 		s.SuccessThreshold.WriteJSON(j)
 	}
+
 	if s.TcpSocket.Set {
-		field.Write("tcpSocket")
+		more.More()
+		j.WriteObjectField("tcpSocket")
 		s.TcpSocket.WriteJSON(j)
 	}
+
 	if s.TerminationGracePeriodSeconds.Set {
-		field.Write("terminationGracePeriodSeconds")
+		more.More()
+		j.WriteObjectField("terminationGracePeriodSeconds")
 		s.TerminationGracePeriodSeconds.WriteJSON(j)
 	}
+
 	if s.TimeoutSeconds.Set {
-		field.Write("timeoutSeconds")
+		more.More()
+		j.WriteObjectField("timeoutSeconds")
 		s.TimeoutSeconds.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1Probe json value to io.Writer.
 func (s IoK8sAPICoreV1Probe) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -21287,19 +25430,35 @@ func (s *IoK8sAPICoreV1Probe) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ProjectedVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.DefaultMode.Set {
-		field.Write("defaultMode")
+		more.More()
+		j.WriteObjectField("defaultMode")
 		s.DefaultMode.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Sources".
+
+	if s.Sources != nil {
+		more.More()
+		j.WriteObjectField("sources")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Sources {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ProjectedVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1ProjectedVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -21331,7 +25490,7 @@ func (s *IoK8sAPICoreV1ProjectedVolumeSource) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "sources":
-			// Unsupported kind "pointer" for field "Sources".
+			// Unsupported kind "array" for field "Sources".
 			i.Skip()
 			return true
 		default:
@@ -21345,34 +25504,47 @@ func (s *IoK8sAPICoreV1ProjectedVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1QuobyteVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Group.Set {
-		field.Write("group")
+		more.More()
+		j.WriteObjectField("group")
 		s.Group.WriteJSON(j)
 	}
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	field.Write("registry")
+
+	more.More()
+	j.WriteObjectField("registry")
 	j.WriteString(s.Registry)
+
 	if s.Tenant.Set {
-		field.Write("tenant")
+		more.More()
+		j.WriteObjectField("tenant")
 		s.Tenant.WriteJSON(j)
 	}
+
 	if s.User.Set {
-		field.Write("user")
+		more.More()
+		j.WriteObjectField("user")
 		s.User.WriteJSON(j)
 	}
-	field.Write("volume")
+
+	more.More()
+	j.WriteObjectField("volume")
 	j.WriteString(s.Volume)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1QuobyteVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1QuobyteVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -21441,41 +25613,66 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1RBDPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-	field.Write("image")
+
+	more.More()
+	j.WriteObjectField("image")
 	j.WriteString(s.Image)
+
 	if s.Keyring.Set {
-		field.Write("keyring")
+		more.More()
+		j.WriteObjectField("keyring")
 		s.Keyring.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Monitors".
+
+	more.More()
+	j.WriteObjectField("monitors")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Monitors {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Pool.Set {
-		field.Write("pool")
+		more.More()
+		j.WriteObjectField("pool")
 		s.Pool.WriteJSON(j)
 	}
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
+
 	if s.SecretRef.Set {
-		field.Write("secretRef")
+		more.More()
+		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
+
 	if s.User.Set {
-		field.Write("user")
+		more.More()
+		j.WriteObjectField("user")
 		s.User.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1RBDPersistentVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1RBDPersistentVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -21559,41 +25756,66 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) ReadJSON(i *json.Iterator) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1RBDVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-	field.Write("image")
+
+	more.More()
+	j.WriteObjectField("image")
 	j.WriteString(s.Image)
+
 	if s.Keyring.Set {
-		field.Write("keyring")
+		more.More()
+		j.WriteObjectField("keyring")
 		s.Keyring.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Monitors".
+
+	more.More()
+	j.WriteObjectField("monitors")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Monitors {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Pool.Set {
-		field.Write("pool")
+		more.More()
+		j.WriteObjectField("pool")
 		s.Pool.WriteJSON(j)
 	}
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
+
 	if s.SecretRef.Set {
-		field.Write("secretRef")
+		more.More()
+		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
+
 	if s.User.Set {
-		field.Write("user")
+		more.More()
+		j.WriteObjectField("user")
 		s.User.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1RBDVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1RBDVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -21677,34 +25899,45 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationController) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ReplicationController json value to io.Writer.
 func (s IoK8sAPICoreV1ReplicationController) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -21774,27 +26007,38 @@ func (s *IoK8sAPICoreV1ReplicationController) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "LastTransitionTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "lastTransitionTime".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-	field.Write("status")
+
+	more.More()
+	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ReplicationControllerCondition json value to io.Writer.
 func (s IoK8sAPICoreV1ReplicationControllerCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -21853,27 +26097,44 @@ func (s *IoK8sAPICoreV1ReplicationControllerCondition) ReadJSON(i *json.Iterator
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ReplicationControllerList json value to io.Writer.
 func (s IoK8sAPICoreV1ReplicationControllerList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -21933,27 +26194,35 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) ReadJSON(i *json.Iterator) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.MinReadySeconds.Set {
-		field.Write("minReadySeconds")
+		more.More()
+		j.WriteObjectField("minReadySeconds")
 		s.MinReadySeconds.WriteJSON(j)
 	}
+
 	if s.Replicas.Set {
-		field.Write("replicas")
+		more.More()
+		j.WriteObjectField("replicas")
 		s.Replicas.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Selector".
+
+	// Unsupported kind "pointer" for field "selector".
+
 	if s.Template.Set {
-		field.Write("template")
+		more.More()
+		j.WriteObjectField("template")
 		s.Template.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ReplicationControllerSpec json value to io.Writer.
 func (s IoK8sAPICoreV1ReplicationControllerSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -22013,33 +26282,57 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpec) ReadJSON(i *json.Iterator) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AvailableReplicas.Set {
-		field.Write("availableReplicas")
+		more.More()
+		j.WriteObjectField("availableReplicas")
 		s.AvailableReplicas.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Conditions".
+
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.FullyLabeledReplicas.Set {
-		field.Write("fullyLabeledReplicas")
+		more.More()
+		j.WriteObjectField("fullyLabeledReplicas")
 		s.FullyLabeledReplicas.WriteJSON(j)
 	}
+
 	if s.ObservedGeneration.Set {
-		field.Write("observedGeneration")
+		more.More()
+		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
+
 	if s.ReadyReplicas.Set {
-		field.Write("readyReplicas")
+		more.More()
+		j.WriteObjectField("readyReplicas")
 		s.ReadyReplicas.WriteJSON(j)
 	}
-	field.Write("replicas")
+
+	more.More()
+	j.WriteObjectField("replicas")
 	j.WriteInt32(s.Replicas)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ReplicationControllerStatus json value to io.Writer.
 func (s IoK8sAPICoreV1ReplicationControllerStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -22071,7 +26364,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) ReadJSON(i *json.Iterator) e
 			}
 			return true
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		case "fullyLabeledReplicas":
@@ -22109,21 +26402,27 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) ReadJSON(i *json.Iterator) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceFieldSelector) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ContainerName.Set {
-		field.Write("containerName")
+		more.More()
+		j.WriteObjectField("containerName")
 		s.ContainerName.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Divisor".
-	field.Write("resource")
+
+	// Unsupported kind "pointer" for field "divisor".
+
+	more.More()
+	j.WriteObjectField("resource")
 	j.WriteString(s.Resource)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ResourceFieldSelector json value to io.Writer.
 func (s IoK8sAPICoreV1ResourceFieldSelector) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -22172,34 +26471,45 @@ func (s *IoK8sAPICoreV1ResourceFieldSelector) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuota) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ResourceQuota json value to io.Writer.
 func (s IoK8sAPICoreV1ResourceQuota) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -22269,27 +26579,44 @@ func (s *IoK8sAPICoreV1ResourceQuota) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ResourceQuotaList json value to io.Writer.
 func (s IoK8sAPICoreV1ResourceQuotaList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -22349,20 +26676,38 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Hard".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "hard".
+
 	if s.ScopeSelector.Set {
-		field.Write("scopeSelector")
+		more.More()
+		j.WriteObjectField("scopeSelector")
 		s.ScopeSelector.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Scopes".
+
+	if s.Scopes != nil {
+		more.More()
+		j.WriteObjectField("scopes")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Scopes {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ResourceQuotaSpec json value to io.Writer.
 func (s IoK8sAPICoreV1ResourceQuotaSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -22398,7 +26743,7 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "scopes":
-			// Unsupported kind "pointer" for field "Scopes".
+			// Unsupported kind "array" for field "Scopes".
 			i.Skip()
 			return true
 		default:
@@ -22412,16 +26757,20 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Hard".
-	// Unsupported kind "pointer" for field "Used".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "hard".
+
+	// Unsupported kind "pointer" for field "used".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ResourceQuotaStatus json value to io.Writer.
 func (s IoK8sAPICoreV1ResourceQuotaStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -22464,16 +26813,20 @@ func (s *IoK8sAPICoreV1ResourceQuotaStatus) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceRequirements) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Limits".
-	// Unsupported kind "pointer" for field "Requests".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "limits".
+
+	// Unsupported kind "pointer" for field "requests".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ResourceRequirements json value to io.Writer.
 func (s IoK8sAPICoreV1ResourceRequirements) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -22516,30 +26869,39 @@ func (s *IoK8sAPICoreV1ResourceRequirements) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SELinuxOptions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Level.Set {
-		field.Write("level")
+		more.More()
+		j.WriteObjectField("level")
 		s.Level.WriteJSON(j)
 	}
+
 	if s.Role.Set {
-		field.Write("role")
+		more.More()
+		j.WriteObjectField("role")
 		s.Role.WriteJSON(j)
 	}
+
 	if s.Type.Set {
-		field.Write("type")
+		more.More()
+		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
+
 	if s.User.Set {
-		field.Write("user")
+		more.More()
+		j.WriteObjectField("user")
 		s.User.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1SELinuxOptions json value to io.Writer.
 func (s IoK8sAPICoreV1SELinuxOptions) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -22602,48 +26964,69 @@ func (s *IoK8sAPICoreV1SELinuxOptions) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-	field.Write("gateway")
+
+	more.More()
+	j.WriteObjectField("gateway")
 	j.WriteString(s.Gateway)
+
 	if s.ProtectionDomain.Set {
-		field.Write("protectionDomain")
+		more.More()
+		j.WriteObjectField("protectionDomain")
 		s.ProtectionDomain.WriteJSON(j)
 	}
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	field.Write("secretRef")
+
+	more.More()
+	j.WriteObjectField("secretRef")
 	s.SecretRef.WriteJSON(j)
+
 	if s.SslEnabled.Set {
-		field.Write("sslEnabled")
+		more.More()
+		j.WriteObjectField("sslEnabled")
 		s.SslEnabled.WriteJSON(j)
 	}
+
 	if s.StorageMode.Set {
-		field.Write("storageMode")
+		more.More()
+		j.WriteObjectField("storageMode")
 		s.StorageMode.WriteJSON(j)
 	}
+
 	if s.StoragePool.Set {
-		field.Write("storagePool")
+		more.More()
+		j.WriteObjectField("storagePool")
 		s.StoragePool.WriteJSON(j)
 	}
-	field.Write("system")
+
+	more.More()
+	j.WriteObjectField("system")
 	j.WriteString(s.System)
+
 	if s.VolumeName.Set {
-		field.Write("volumeName")
+		more.More()
+		j.WriteObjectField("volumeName")
 		s.VolumeName.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ScaleIOPersistentVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -22739,48 +27122,69 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) ReadJSON(i *json.Iterator)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ScaleIOVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-	field.Write("gateway")
+
+	more.More()
+	j.WriteObjectField("gateway")
 	j.WriteString(s.Gateway)
+
 	if s.ProtectionDomain.Set {
-		field.Write("protectionDomain")
+		more.More()
+		j.WriteObjectField("protectionDomain")
 		s.ProtectionDomain.WriteJSON(j)
 	}
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-	field.Write("secretRef")
+
+	more.More()
+	j.WriteObjectField("secretRef")
 	s.SecretRef.WriteJSON(j)
+
 	if s.SslEnabled.Set {
-		field.Write("sslEnabled")
+		more.More()
+		j.WriteObjectField("sslEnabled")
 		s.SslEnabled.WriteJSON(j)
 	}
+
 	if s.StorageMode.Set {
-		field.Write("storageMode")
+		more.More()
+		j.WriteObjectField("storageMode")
 		s.StorageMode.WriteJSON(j)
 	}
+
 	if s.StoragePool.Set {
-		field.Write("storagePool")
+		more.More()
+		j.WriteObjectField("storagePool")
 		s.StoragePool.WriteJSON(j)
 	}
-	field.Write("system")
+
+	more.More()
+	j.WriteObjectField("system")
 	j.WriteString(s.System)
+
 	if s.VolumeName.Set {
-		field.Write("volumeName")
+		more.More()
+		j.WriteObjectField("volumeName")
 		s.VolumeName.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ScaleIOVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1ScaleIOVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -22876,15 +27280,29 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ScopeSelector) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "MatchExpressions".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.MatchExpressions != nil {
+		more.More()
+		j.WriteObjectField("matchExpressions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.MatchExpressions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ScopeSelector json value to io.Writer.
 func (s IoK8sAPICoreV1ScopeSelector) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -22909,7 +27327,7 @@ func (s *IoK8sAPICoreV1ScopeSelector) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "matchExpressions":
-			// Unsupported kind "pointer" for field "MatchExpressions".
+			// Unsupported kind "array" for field "MatchExpressions".
 			i.Skip()
 			return true
 		default:
@@ -22923,19 +27341,38 @@ func (s *IoK8sAPICoreV1ScopeSelector) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("operator")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("operator")
 	j.WriteString(s.Operator)
-	field.Write("scopeName")
+
+	more.More()
+	j.WriteObjectField("scopeName")
 	j.WriteString(s.ScopeName)
-	// Unsupported kind "pointer" for field "Values".
+
+	if s.Values != nil {
+		more.More()
+		j.WriteObjectField("values")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Values {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ScopedResourceSelectorRequirement json value to io.Writer.
 func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -22966,7 +27403,7 @@ func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) ReadJSON(i *json.Itera
 			s.ScopeName = i.ReadString()
 			return i.Error == nil
 		case "values":
-			// Unsupported kind "pointer" for field "Values".
+			// Unsupported kind "array" for field "Values".
 			i.Skip()
 			return true
 		default:
@@ -22980,20 +27417,25 @@ func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) ReadJSON(i *json.Itera
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SeccompProfile) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.LocalhostProfile.Set {
-		field.Write("localhostProfile")
+		more.More()
+		j.WriteObjectField("localhostProfile")
 		s.LocalhostProfile.WriteJSON(j)
 	}
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1SeccompProfile json value to io.Writer.
 func (s IoK8sAPICoreV1SeccompProfile) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -23038,36 +27480,49 @@ func (s *IoK8sAPICoreV1SeccompProfile) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Secret) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Data".
+
+	// Unsupported kind "pointer" for field "data".
+
 	if s.Immutable.Set {
-		field.Write("immutable")
+		more.More()
+		j.WriteObjectField("immutable")
 		s.Immutable.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "StringData".
+
+	// Unsupported kind "pointer" for field "stringData".
+
 	if s.Type.Set {
-		field.Write("type")
+		more.More()
+		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1Secret json value to io.Writer.
 func (s IoK8sAPICoreV1Secret) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -23145,22 +27600,27 @@ func (s *IoK8sAPICoreV1Secret) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretEnvSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
+
 	if s.Optional.Set {
-		field.Write("optional")
+		more.More()
+		j.WriteObjectField("optional")
 		s.Optional.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1SecretEnvSource json value to io.Writer.
 func (s IoK8sAPICoreV1SecretEnvSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -23209,24 +27669,32 @@ func (s *IoK8sAPICoreV1SecretEnvSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretKeySelector) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("key")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("key")
 	j.WriteString(s.Key)
+
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
+
 	if s.Optional.Set {
-		field.Write("optional")
+		more.More()
+		j.WriteObjectField("optional")
 		s.Optional.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1SecretKeySelector json value to io.Writer.
 func (s IoK8sAPICoreV1SecretKeySelector) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -23278,27 +27746,44 @@ func (s *IoK8sAPICoreV1SecretKeySelector) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1SecretList json value to io.Writer.
 func (s IoK8sAPICoreV1SecretList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -23358,23 +27843,41 @@ func (s *IoK8sAPICoreV1SecretList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretProjection) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Items".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Items != nil {
+		more.More()
+		j.WriteObjectField("items")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Items {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
+
 	if s.Optional.Set {
-		field.Write("optional")
+		more.More()
+		j.WriteObjectField("optional")
 		s.Optional.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1SecretProjection json value to io.Writer.
 func (s IoK8sAPICoreV1SecretProjection) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -23399,7 +27902,7 @@ func (s *IoK8sAPICoreV1SecretProjection) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "items":
-			// Unsupported kind "pointer" for field "Items".
+			// Unsupported kind "array" for field "Items".
 			i.Skip()
 			return true
 		case "name":
@@ -23427,22 +27930,27 @@ func (s *IoK8sAPICoreV1SecretProjection) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretReference) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
+
 	if s.Namespace.Set {
-		field.Write("namespace")
+		more.More()
+		j.WriteObjectField("namespace")
 		s.Namespace.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1SecretReference json value to io.Writer.
 func (s IoK8sAPICoreV1SecretReference) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -23491,27 +27999,47 @@ func (s *IoK8sAPICoreV1SecretReference) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.DefaultMode.Set {
-		field.Write("defaultMode")
+		more.More()
+		j.WriteObjectField("defaultMode")
 		s.DefaultMode.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Items".
+
+	if s.Items != nil {
+		more.More()
+		j.WriteObjectField("items")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Items {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Optional.Set {
-		field.Write("optional")
+		more.More()
+		j.WriteObjectField("optional")
 		s.Optional.WriteJSON(j)
 	}
+
 	if s.SecretName.Set {
-		field.Write("secretName")
+		more.More()
+		j.WriteObjectField("secretName")
 		s.SecretName.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1SecretVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1SecretVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -23543,7 +28071,7 @@ func (s *IoK8sAPICoreV1SecretVolumeSource) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "items":
-			// Unsupported kind "pointer" for field "Items".
+			// Unsupported kind "array" for field "Items".
 			i.Skip()
 			return true
 		case "optional":
@@ -23571,58 +28099,81 @@ func (s *IoK8sAPICoreV1SecretVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SecurityContext) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AllowPrivilegeEscalation.Set {
-		field.Write("allowPrivilegeEscalation")
+		more.More()
+		j.WriteObjectField("allowPrivilegeEscalation")
 		s.AllowPrivilegeEscalation.WriteJSON(j)
 	}
+
 	if s.Capabilities.Set {
-		field.Write("capabilities")
+		more.More()
+		j.WriteObjectField("capabilities")
 		s.Capabilities.WriteJSON(j)
 	}
+
 	if s.Privileged.Set {
-		field.Write("privileged")
+		more.More()
+		j.WriteObjectField("privileged")
 		s.Privileged.WriteJSON(j)
 	}
+
 	if s.ProcMount.Set {
-		field.Write("procMount")
+		more.More()
+		j.WriteObjectField("procMount")
 		s.ProcMount.WriteJSON(j)
 	}
+
 	if s.ReadOnlyRootFilesystem.Set {
-		field.Write("readOnlyRootFilesystem")
+		more.More()
+		j.WriteObjectField("readOnlyRootFilesystem")
 		s.ReadOnlyRootFilesystem.WriteJSON(j)
 	}
+
 	if s.RunAsGroup.Set {
-		field.Write("runAsGroup")
+		more.More()
+		j.WriteObjectField("runAsGroup")
 		s.RunAsGroup.WriteJSON(j)
 	}
+
 	if s.RunAsNonRoot.Set {
-		field.Write("runAsNonRoot")
+		more.More()
+		j.WriteObjectField("runAsNonRoot")
 		s.RunAsNonRoot.WriteJSON(j)
 	}
+
 	if s.RunAsUser.Set {
-		field.Write("runAsUser")
+		more.More()
+		j.WriteObjectField("runAsUser")
 		s.RunAsUser.WriteJSON(j)
 	}
+
 	if s.SeLinuxOptions.Set {
-		field.Write("seLinuxOptions")
+		more.More()
+		j.WriteObjectField("seLinuxOptions")
 		s.SeLinuxOptions.WriteJSON(j)
 	}
+
 	if s.SeccompProfile.Set {
-		field.Write("seccompProfile")
+		more.More()
+		j.WriteObjectField("seccompProfile")
 		s.SeccompProfile.WriteJSON(j)
 	}
+
 	if s.WindowsOptions.Set {
-		field.Write("windowsOptions")
+		more.More()
+		j.WriteObjectField("windowsOptions")
 		s.WindowsOptions.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1SecurityContext json value to io.Writer.
 func (s IoK8sAPICoreV1SecurityContext) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -23734,34 +28285,45 @@ func (s *IoK8sAPICoreV1SecurityContext) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Service) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1Service json value to io.Writer.
 func (s IoK8sAPICoreV1Service) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -23831,32 +28393,67 @@ func (s *IoK8sAPICoreV1Service) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceAccount) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.AutomountServiceAccountToken.Set {
-		field.Write("automountServiceAccountToken")
+		more.More()
+		j.WriteObjectField("automountServiceAccountToken")
 		s.AutomountServiceAccountToken.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "ImagePullSecrets".
+
+	if s.ImagePullSecrets != nil {
+		more.More()
+		j.WriteObjectField("imagePullSecrets")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ImagePullSecrets {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Secrets".
+
+	if s.Secrets != nil {
+		more.More()
+		j.WriteObjectField("secrets")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Secrets {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ServiceAccount json value to io.Writer.
 func (s IoK8sAPICoreV1ServiceAccount) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -23895,7 +28492,7 @@ func (s *IoK8sAPICoreV1ServiceAccount) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "imagePullSecrets":
-			// Unsupported kind "pointer" for field "ImagePullSecrets".
+			// Unsupported kind "array" for field "ImagePullSecrets".
 			i.Skip()
 			return true
 		case "kind":
@@ -23913,7 +28510,7 @@ func (s *IoK8sAPICoreV1ServiceAccount) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "secrets":
-			// Unsupported kind "pointer" for field "Secrets".
+			// Unsupported kind "array" for field "Secrets".
 			i.Skip()
 			return true
 		default:
@@ -23927,27 +28524,44 @@ func (s *IoK8sAPICoreV1ServiceAccount) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceAccountList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ServiceAccountList json value to io.Writer.
 func (s IoK8sAPICoreV1ServiceAccountList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -24007,24 +28621,31 @@ func (s *IoK8sAPICoreV1ServiceAccountList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceAccountTokenProjection) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Audience.Set {
-		field.Write("audience")
+		more.More()
+		j.WriteObjectField("audience")
 		s.Audience.WriteJSON(j)
 	}
+
 	if s.ExpirationSeconds.Set {
-		field.Write("expirationSeconds")
+		more.More()
+		j.WriteObjectField("expirationSeconds")
 		s.ExpirationSeconds.WriteJSON(j)
 	}
-	field.Write("path")
+
+	more.More()
+	j.WriteObjectField("path")
 	j.WriteString(s.Path)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ServiceAccountTokenProjection json value to io.Writer.
 func (s IoK8sAPICoreV1ServiceAccountTokenProjection) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -24076,27 +28697,44 @@ func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) ReadJSON(i *json.Iterator)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ServiceList json value to io.Writer.
 func (s IoK8sAPICoreV1ServiceList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -24156,33 +28794,45 @@ func (s *IoK8sAPICoreV1ServiceList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ServicePort) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AppProtocol.Set {
-		field.Write("appProtocol")
+		more.More()
+		j.WriteObjectField("appProtocol")
 		s.AppProtocol.WriteJSON(j)
 	}
+
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
+
 	if s.NodePort.Set {
-		field.Write("nodePort")
+		more.More()
+		j.WriteObjectField("nodePort")
 		s.NodePort.WriteJSON(j)
 	}
-	field.Write("port")
+
+	more.More()
+	j.WriteObjectField("port")
 	j.WriteInt32(s.Port)
+
 	if s.Protocol.Set {
-		field.Write("protocol")
+		more.More()
+		j.WriteObjectField("protocol")
 		s.Protocol.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "TargetPort".
+
+	// Unsupported kind "pointer" for field "targetPort".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ServicePort json value to io.Writer.
 func (s IoK8sAPICoreV1ServicePort) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -24252,72 +28902,165 @@ func (s *IoK8sAPICoreV1ServicePort) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AllocateLoadBalancerNodePorts.Set {
-		field.Write("allocateLoadBalancerNodePorts")
+		more.More()
+		j.WriteObjectField("allocateLoadBalancerNodePorts")
 		s.AllocateLoadBalancerNodePorts.WriteJSON(j)
 	}
+
 	if s.ClusterIP.Set {
-		field.Write("clusterIP")
+		more.More()
+		j.WriteObjectField("clusterIP")
 		s.ClusterIP.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "ClusterIPs".
-	// Unsupported kind "pointer" for field "ExternalIPs".
+
+	if s.ClusterIPs != nil {
+		more.More()
+		j.WriteObjectField("clusterIPs")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ClusterIPs {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.ExternalIPs != nil {
+		more.More()
+		j.WriteObjectField("externalIPs")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ExternalIPs {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.ExternalName.Set {
-		field.Write("externalName")
+		more.More()
+		j.WriteObjectField("externalName")
 		s.ExternalName.WriteJSON(j)
 	}
+
 	if s.ExternalTrafficPolicy.Set {
-		field.Write("externalTrafficPolicy")
+		more.More()
+		j.WriteObjectField("externalTrafficPolicy")
 		s.ExternalTrafficPolicy.WriteJSON(j)
 	}
+
 	if s.HealthCheckNodePort.Set {
-		field.Write("healthCheckNodePort")
+		more.More()
+		j.WriteObjectField("healthCheckNodePort")
 		s.HealthCheckNodePort.WriteJSON(j)
 	}
+
 	if s.InternalTrafficPolicy.Set {
-		field.Write("internalTrafficPolicy")
+		more.More()
+		j.WriteObjectField("internalTrafficPolicy")
 		s.InternalTrafficPolicy.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "IpFamilies".
+
+	if s.IpFamilies != nil {
+		more.More()
+		j.WriteObjectField("ipFamilies")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.IpFamilies {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.IpFamilyPolicy.Set {
-		field.Write("ipFamilyPolicy")
+		more.More()
+		j.WriteObjectField("ipFamilyPolicy")
 		s.IpFamilyPolicy.WriteJSON(j)
 	}
+
 	if s.LoadBalancerClass.Set {
-		field.Write("loadBalancerClass")
+		more.More()
+		j.WriteObjectField("loadBalancerClass")
 		s.LoadBalancerClass.WriteJSON(j)
 	}
+
 	if s.LoadBalancerIP.Set {
-		field.Write("loadBalancerIP")
+		more.More()
+		j.WriteObjectField("loadBalancerIP")
 		s.LoadBalancerIP.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "LoadBalancerSourceRanges".
-	// Unsupported kind "pointer" for field "Ports".
+
+	if s.LoadBalancerSourceRanges != nil {
+		more.More()
+		j.WriteObjectField("loadBalancerSourceRanges")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.LoadBalancerSourceRanges {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.Ports != nil {
+		more.More()
+		j.WriteObjectField("ports")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Ports {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.PublishNotReadyAddresses.Set {
-		field.Write("publishNotReadyAddresses")
+		more.More()
+		j.WriteObjectField("publishNotReadyAddresses")
 		s.PublishNotReadyAddresses.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Selector".
+
+	// Unsupported kind "pointer" for field "selector".
+
 	if s.SessionAffinity.Set {
-		field.Write("sessionAffinity")
+		more.More()
+		j.WriteObjectField("sessionAffinity")
 		s.SessionAffinity.WriteJSON(j)
 	}
+
 	if s.SessionAffinityConfig.Set {
-		field.Write("sessionAffinityConfig")
+		more.More()
+		j.WriteObjectField("sessionAffinityConfig")
 		s.SessionAffinityConfig.WriteJSON(j)
 	}
+
 	if s.Type.Set {
-		field.Write("type")
+		more.More()
+		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ServiceSpec json value to io.Writer.
 func (s IoK8sAPICoreV1ServiceSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -24356,11 +29099,11 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "clusterIPs":
-			// Unsupported kind "pointer" for field "ClusterIPs".
+			// Unsupported kind "array" for field "ClusterIPs".
 			i.Skip()
 			return true
 		case "externalIPs":
-			// Unsupported kind "pointer" for field "ExternalIPs".
+			// Unsupported kind "array" for field "ExternalIPs".
 			i.Skip()
 			return true
 		case "externalName":
@@ -24392,7 +29135,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "ipFamilies":
-			// Unsupported kind "pointer" for field "IpFamilies".
+			// Unsupported kind "array" for field "IpFamilies".
 			i.Skip()
 			return true
 		case "ipFamilyPolicy":
@@ -24417,11 +29160,11 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "loadBalancerSourceRanges":
-			// Unsupported kind "pointer" for field "LoadBalancerSourceRanges".
+			// Unsupported kind "array" for field "LoadBalancerSourceRanges".
 			i.Skip()
 			return true
 		case "ports":
-			// Unsupported kind "pointer" for field "Ports".
+			// Unsupported kind "array" for field "Ports".
 			i.Skip()
 			return true
 		case "publishNotReadyAddresses":
@@ -24467,19 +29210,35 @@ func (s *IoK8sAPICoreV1ServiceSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Conditions".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.LoadBalancer.Set {
-		field.Write("loadBalancer")
+		more.More()
+		j.WriteObjectField("loadBalancer")
 		s.LoadBalancer.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1ServiceStatus json value to io.Writer.
 func (s IoK8sAPICoreV1ServiceStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -24504,7 +29263,7 @@ func (s *IoK8sAPICoreV1ServiceStatus) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		case "loadBalancer":
@@ -24525,18 +29284,21 @@ func (s *IoK8sAPICoreV1ServiceStatus) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1SessionAffinityConfig) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ClientIP.Set {
-		field.Write("clientIP")
+		more.More()
+		j.WriteObjectField("clientIP")
 		s.ClientIP.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1SessionAffinityConfig json value to io.Writer.
 func (s IoK8sAPICoreV1SessionAffinityConfig) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -24578,34 +29340,45 @@ func (s *IoK8sAPICoreV1SessionAffinityConfig) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
+
 	if s.SecretRef.Set {
-		field.Write("secretRef")
+		more.More()
+		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
+
 	if s.VolumeName.Set {
-		field.Write("volumeName")
+		more.More()
+		j.WriteObjectField("volumeName")
 		s.VolumeName.WriteJSON(j)
 	}
+
 	if s.VolumeNamespace.Set {
-		field.Write("volumeNamespace")
+		more.More()
+		j.WriteObjectField("volumeNamespace")
 		s.VolumeNamespace.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1StorageOSPersistentVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -24675,34 +29448,45 @@ func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) ReadJSON(i *json.Iterato
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1StorageOSVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
+
 	if s.SecretRef.Set {
-		field.Write("secretRef")
+		more.More()
+		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
+
 	if s.VolumeName.Set {
-		field.Write("volumeName")
+		more.More()
+		j.WriteObjectField("volumeName")
 		s.VolumeName.WriteJSON(j)
 	}
+
 	if s.VolumeNamespace.Set {
-		field.Write("volumeNamespace")
+		more.More()
+		j.WriteObjectField("volumeNamespace")
 		s.VolumeNamespace.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1StorageOSVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1StorageOSVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -24772,18 +29556,24 @@ func (s *IoK8sAPICoreV1StorageOSVolumeSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Sysctl) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-	field.Write("value")
+
+	more.More()
+	j.WriteObjectField("value")
 	j.WriteString(s.Value)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1Sysctl json value to io.Writer.
 func (s IoK8sAPICoreV1Sysctl) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -24824,19 +29614,23 @@ func (s *IoK8sAPICoreV1Sysctl) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1TCPSocketAction) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Host.Set {
-		field.Write("host")
+		more.More()
+		j.WriteObjectField("host")
 		s.Host.WriteJSON(j)
 	}
-	// Unsupported kind "alias" for field "Port".
+
+	// Unsupported kind "alias" for field "port".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1TCPSocketAction json value to io.Writer.
 func (s IoK8sAPICoreV1TCPSocketAction) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -24882,23 +29676,32 @@ func (s *IoK8sAPICoreV1TCPSocketAction) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Taint) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("effect")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("effect")
 	j.WriteString(s.Effect)
-	field.Write("key")
+
+	more.More()
+	j.WriteObjectField("key")
 	j.WriteString(s.Key)
-	// Unsupported kind "pointer" for field "TimeAdded".
+
+	// Unsupported kind "pointer" for field "timeAdded".
+
 	if s.Value.Set {
-		field.Write("value")
+		more.More()
+		j.WriteObjectField("value")
 		s.Value.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1Taint json value to io.Writer.
 func (s IoK8sAPICoreV1Taint) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -24950,34 +29753,45 @@ func (s *IoK8sAPICoreV1Taint) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Toleration) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Effect.Set {
-		field.Write("effect")
+		more.More()
+		j.WriteObjectField("effect")
 		s.Effect.WriteJSON(j)
 	}
+
 	if s.Key.Set {
-		field.Write("key")
+		more.More()
+		j.WriteObjectField("key")
 		s.Key.WriteJSON(j)
 	}
+
 	if s.Operator.Set {
-		field.Write("operator")
+		more.More()
+		j.WriteObjectField("operator")
 		s.Operator.WriteJSON(j)
 	}
+
 	if s.TolerationSeconds.Set {
-		field.Write("tolerationSeconds")
+		more.More()
+		j.WriteObjectField("tolerationSeconds")
 		s.TolerationSeconds.WriteJSON(j)
 	}
+
 	if s.Value.Set {
-		field.Write("value")
+		more.More()
+		j.WriteObjectField("value")
 		s.Value.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1Toleration json value to io.Writer.
 func (s IoK8sAPICoreV1Toleration) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -25047,17 +29861,31 @@ func (s *IoK8sAPICoreV1Toleration) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("key")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("key")
 	j.WriteString(s.Key)
-	// Unsupported kind "array" for field "Values".
+
+	more.More()
+	j.WriteObjectField("values")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Values {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1TopologySelectorLabelRequirement json value to io.Writer.
 func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -25099,15 +29927,29 @@ func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) ReadJSON(i *json.Iterat
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1TopologySelectorTerm) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "MatchLabelExpressions".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.MatchLabelExpressions != nil {
+		more.More()
+		j.WriteObjectField("matchLabelExpressions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.MatchLabelExpressions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1TopologySelectorTerm json value to io.Writer.
 func (s IoK8sAPICoreV1TopologySelectorTerm) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -25132,7 +29974,7 @@ func (s *IoK8sAPICoreV1TopologySelectorTerm) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "matchLabelExpressions":
-			// Unsupported kind "pointer" for field "MatchLabelExpressions".
+			// Unsupported kind "array" for field "MatchLabelExpressions".
 			i.Skip()
 			return true
 		default:
@@ -25146,24 +29988,33 @@ func (s *IoK8sAPICoreV1TopologySelectorTerm) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1TopologySpreadConstraint) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.LabelSelector.Set {
-		field.Write("labelSelector")
+		more.More()
+		j.WriteObjectField("labelSelector")
 		s.LabelSelector.WriteJSON(j)
 	}
-	field.Write("maxSkew")
+
+	more.More()
+	j.WriteObjectField("maxSkew")
 	j.WriteInt32(s.MaxSkew)
-	field.Write("topologyKey")
+
+	more.More()
+	j.WriteObjectField("topologyKey")
 	j.WriteString(s.TopologyKey)
-	field.Write("whenUnsatisfiable")
+
+	more.More()
+	j.WriteObjectField("whenUnsatisfiable")
 	j.WriteString(s.WhenUnsatisfiable)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1TopologySpreadConstraint json value to io.Writer.
 func (s IoK8sAPICoreV1TopologySpreadConstraint) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -25214,22 +30065,29 @@ func (s *IoK8sAPICoreV1TopologySpreadConstraint) ReadJSON(i *json.Iterator) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1TypedLocalObjectReference) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiGroup.Set {
-		field.Write("apiGroup")
+		more.More()
+		j.WriteObjectField("apiGroup")
 		s.ApiGroup.WriteJSON(j)
 	}
-	field.Write("kind")
+
+	more.More()
+	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1TypedLocalObjectReference json value to io.Writer.
 func (s IoK8sAPICoreV1TypedLocalObjectReference) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -25277,132 +30135,193 @@ func (s *IoK8sAPICoreV1TypedLocalObjectReference) ReadJSON(i *json.Iterator) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1Volume) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AwsElasticBlockStore.Set {
-		field.Write("awsElasticBlockStore")
+		more.More()
+		j.WriteObjectField("awsElasticBlockStore")
 		s.AwsElasticBlockStore.WriteJSON(j)
 	}
+
 	if s.AzureDisk.Set {
-		field.Write("azureDisk")
+		more.More()
+		j.WriteObjectField("azureDisk")
 		s.AzureDisk.WriteJSON(j)
 	}
+
 	if s.AzureFile.Set {
-		field.Write("azureFile")
+		more.More()
+		j.WriteObjectField("azureFile")
 		s.AzureFile.WriteJSON(j)
 	}
+
 	if s.Cephfs.Set {
-		field.Write("cephfs")
+		more.More()
+		j.WriteObjectField("cephfs")
 		s.Cephfs.WriteJSON(j)
 	}
+
 	if s.Cinder.Set {
-		field.Write("cinder")
+		more.More()
+		j.WriteObjectField("cinder")
 		s.Cinder.WriteJSON(j)
 	}
+
 	if s.ConfigMap.Set {
-		field.Write("configMap")
+		more.More()
+		j.WriteObjectField("configMap")
 		s.ConfigMap.WriteJSON(j)
 	}
+
 	if s.Csi.Set {
-		field.Write("csi")
+		more.More()
+		j.WriteObjectField("csi")
 		s.Csi.WriteJSON(j)
 	}
+
 	if s.DownwardAPI.Set {
-		field.Write("downwardAPI")
+		more.More()
+		j.WriteObjectField("downwardAPI")
 		s.DownwardAPI.WriteJSON(j)
 	}
+
 	if s.EmptyDir.Set {
-		field.Write("emptyDir")
+		more.More()
+		j.WriteObjectField("emptyDir")
 		s.EmptyDir.WriteJSON(j)
 	}
+
 	if s.Ephemeral.Set {
-		field.Write("ephemeral")
+		more.More()
+		j.WriteObjectField("ephemeral")
 		s.Ephemeral.WriteJSON(j)
 	}
+
 	if s.Fc.Set {
-		field.Write("fc")
+		more.More()
+		j.WriteObjectField("fc")
 		s.Fc.WriteJSON(j)
 	}
+
 	if s.FlexVolume.Set {
-		field.Write("flexVolume")
+		more.More()
+		j.WriteObjectField("flexVolume")
 		s.FlexVolume.WriteJSON(j)
 	}
+
 	if s.Flocker.Set {
-		field.Write("flocker")
+		more.More()
+		j.WriteObjectField("flocker")
 		s.Flocker.WriteJSON(j)
 	}
+
 	if s.GcePersistentDisk.Set {
-		field.Write("gcePersistentDisk")
+		more.More()
+		j.WriteObjectField("gcePersistentDisk")
 		s.GcePersistentDisk.WriteJSON(j)
 	}
+
 	if s.GitRepo.Set {
-		field.Write("gitRepo")
+		more.More()
+		j.WriteObjectField("gitRepo")
 		s.GitRepo.WriteJSON(j)
 	}
+
 	if s.Glusterfs.Set {
-		field.Write("glusterfs")
+		more.More()
+		j.WriteObjectField("glusterfs")
 		s.Glusterfs.WriteJSON(j)
 	}
+
 	if s.HostPath.Set {
-		field.Write("hostPath")
+		more.More()
+		j.WriteObjectField("hostPath")
 		s.HostPath.WriteJSON(j)
 	}
+
 	if s.Iscsi.Set {
-		field.Write("iscsi")
+		more.More()
+		j.WriteObjectField("iscsi")
 		s.Iscsi.WriteJSON(j)
 	}
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	if s.Nfs.Set {
-		field.Write("nfs")
+		more.More()
+		j.WriteObjectField("nfs")
 		s.Nfs.WriteJSON(j)
 	}
+
 	if s.PersistentVolumeClaim.Set {
-		field.Write("persistentVolumeClaim")
+		more.More()
+		j.WriteObjectField("persistentVolumeClaim")
 		s.PersistentVolumeClaim.WriteJSON(j)
 	}
+
 	if s.PhotonPersistentDisk.Set {
-		field.Write("photonPersistentDisk")
+		more.More()
+		j.WriteObjectField("photonPersistentDisk")
 		s.PhotonPersistentDisk.WriteJSON(j)
 	}
+
 	if s.PortworxVolume.Set {
-		field.Write("portworxVolume")
+		more.More()
+		j.WriteObjectField("portworxVolume")
 		s.PortworxVolume.WriteJSON(j)
 	}
+
 	if s.Projected.Set {
-		field.Write("projected")
+		more.More()
+		j.WriteObjectField("projected")
 		s.Projected.WriteJSON(j)
 	}
+
 	if s.Quobyte.Set {
-		field.Write("quobyte")
+		more.More()
+		j.WriteObjectField("quobyte")
 		s.Quobyte.WriteJSON(j)
 	}
+
 	if s.Rbd.Set {
-		field.Write("rbd")
+		more.More()
+		j.WriteObjectField("rbd")
 		s.Rbd.WriteJSON(j)
 	}
+
 	if s.ScaleIO.Set {
-		field.Write("scaleIO")
+		more.More()
+		j.WriteObjectField("scaleIO")
 		s.ScaleIO.WriteJSON(j)
 	}
+
 	if s.Secret.Set {
-		field.Write("secret")
+		more.More()
+		j.WriteObjectField("secret")
 		s.Secret.WriteJSON(j)
 	}
+
 	if s.Storageos.Set {
-		field.Write("storageos")
+		more.More()
+		j.WriteObjectField("storageos")
 		s.Storageos.WriteJSON(j)
 	}
+
 	if s.VsphereVolume.Set {
-		field.Write("vsphereVolume")
+		more.More()
+		j.WriteObjectField("vsphereVolume")
 		s.VsphereVolume.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1Volume json value to io.Writer.
 func (s IoK8sAPICoreV1Volume) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -25643,18 +30562,24 @@ func (s *IoK8sAPICoreV1Volume) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1VolumeDevice) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("devicePath")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("devicePath")
 	j.WriteString(s.DevicePath)
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1VolumeDevice json value to io.Writer.
 func (s IoK8sAPICoreV1VolumeDevice) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -25695,34 +30620,48 @@ func (s *IoK8sAPICoreV1VolumeDevice) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1VolumeMount) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("mountPath")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("mountPath")
 	j.WriteString(s.MountPath)
+
 	if s.MountPropagation.Set {
-		field.Write("mountPropagation")
+		more.More()
+		j.WriteObjectField("mountPropagation")
 		s.MountPropagation.WriteJSON(j)
 	}
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
+
 	if s.SubPath.Set {
-		field.Write("subPath")
+		more.More()
+		j.WriteObjectField("subPath")
 		s.SubPath.WriteJSON(j)
 	}
+
 	if s.SubPathExpr.Set {
-		field.Write("subPathExpr")
+		more.More()
+		j.WriteObjectField("subPathExpr")
 		s.SubPathExpr.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1VolumeMount json value to io.Writer.
 func (s IoK8sAPICoreV1VolumeMount) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -25791,18 +30730,21 @@ func (s *IoK8sAPICoreV1VolumeMount) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1VolumeNodeAffinity) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Required.Set {
-		field.Write("required")
+		more.More()
+		j.WriteObjectField("required")
 		s.Required.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1VolumeNodeAffinity json value to io.Writer.
 func (s IoK8sAPICoreV1VolumeNodeAffinity) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -25844,30 +30786,39 @@ func (s *IoK8sAPICoreV1VolumeNodeAffinity) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1VolumeProjection) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ConfigMap.Set {
-		field.Write("configMap")
+		more.More()
+		j.WriteObjectField("configMap")
 		s.ConfigMap.WriteJSON(j)
 	}
+
 	if s.DownwardAPI.Set {
-		field.Write("downwardAPI")
+		more.More()
+		j.WriteObjectField("downwardAPI")
 		s.DownwardAPI.WriteJSON(j)
 	}
+
 	if s.Secret.Set {
-		field.Write("secret")
+		more.More()
+		j.WriteObjectField("secret")
 		s.Secret.WriteJSON(j)
 	}
+
 	if s.ServiceAccountToken.Set {
-		field.Write("serviceAccountToken")
+		more.More()
+		j.WriteObjectField("serviceAccountToken")
 		s.ServiceAccountToken.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1VolumeProjection json value to io.Writer.
 func (s IoK8sAPICoreV1VolumeProjection) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -25930,28 +30881,37 @@ func (s *IoK8sAPICoreV1VolumeProjection) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.FsType.Set {
-		field.Write("fsType")
+		more.More()
+		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
+
 	if s.StoragePolicyID.Set {
-		field.Write("storagePolicyID")
+		more.More()
+		j.WriteObjectField("storagePolicyID")
 		s.StoragePolicyID.WriteJSON(j)
 	}
+
 	if s.StoragePolicyName.Set {
-		field.Write("storagePolicyName")
+		more.More()
+		j.WriteObjectField("storagePolicyName")
 		s.StoragePolicyName.WriteJSON(j)
 	}
-	field.Write("volumePath")
+
+	more.More()
+	j.WriteObjectField("volumePath")
 	j.WriteString(s.VolumePath)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1VsphereVirtualDiskVolumeSource json value to io.Writer.
 func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -26010,18 +30970,23 @@ func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) ReadJSON(i *json.Iterator
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1WeightedPodAffinityTerm) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("podAffinityTerm")
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("podAffinityTerm")
 	s.PodAffinityTerm.WriteJSON(j)
-	field.Write("weight")
+
+	more.More()
+	j.WriteObjectField("weight")
 	j.WriteInt32(s.Weight)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1WeightedPodAffinityTerm json value to io.Writer.
 func (s IoK8sAPICoreV1WeightedPodAffinityTerm) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -26065,30 +31030,39 @@ func (s *IoK8sAPICoreV1WeightedPodAffinityTerm) ReadJSON(i *json.Iterator) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPICoreV1WindowsSecurityContextOptions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.GmsaCredentialSpec.Set {
-		field.Write("gmsaCredentialSpec")
+		more.More()
+		j.WriteObjectField("gmsaCredentialSpec")
 		s.GmsaCredentialSpec.WriteJSON(j)
 	}
+
 	if s.GmsaCredentialSpecName.Set {
-		field.Write("gmsaCredentialSpecName")
+		more.More()
+		j.WriteObjectField("gmsaCredentialSpecName")
 		s.GmsaCredentialSpecName.WriteJSON(j)
 	}
+
 	if s.HostProcess.Set {
-		field.Write("hostProcess")
+		more.More()
+		j.WriteObjectField("hostProcess")
 		s.HostProcess.WriteJSON(j)
 	}
+
 	if s.RunAsUserName.Set {
-		field.Write("runAsUserName")
+		more.More()
+		j.WriteObjectField("runAsUserName")
 		s.RunAsUserName.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPICoreV1WindowsSecurityContextOptions json value to io.Writer.
 func (s IoK8sAPICoreV1WindowsSecurityContextOptions) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -26151,40 +31125,64 @@ func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) ReadJSON(i *json.Iterator)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1Endpoint) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "array" for field "Addresses".
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("addresses")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Addresses {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Conditions.Set {
-		field.Write("conditions")
+		more.More()
+		j.WriteObjectField("conditions")
 		s.Conditions.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "DeprecatedTopology".
+
+	// Unsupported kind "pointer" for field "deprecatedTopology".
+
 	if s.Hints.Set {
-		field.Write("hints")
+		more.More()
+		j.WriteObjectField("hints")
 		s.Hints.WriteJSON(j)
 	}
+
 	if s.Hostname.Set {
-		field.Write("hostname")
+		more.More()
+		j.WriteObjectField("hostname")
 		s.Hostname.WriteJSON(j)
 	}
+
 	if s.NodeName.Set {
-		field.Write("nodeName")
+		more.More()
+		j.WriteObjectField("nodeName")
 		s.NodeName.WriteJSON(j)
 	}
+
 	if s.TargetRef.Set {
-		field.Write("targetRef")
+		more.More()
+		j.WriteObjectField("targetRef")
 		s.TargetRef.WriteJSON(j)
 	}
+
 	if s.Zone.Set {
-		field.Write("zone")
+		more.More()
+		j.WriteObjectField("zone")
 		s.Zone.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIDiscoveryV1Endpoint json value to io.Writer.
 func (s IoK8sAPIDiscoveryV1Endpoint) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -26269,26 +31267,33 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointConditions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Ready.Set {
-		field.Write("ready")
+		more.More()
+		j.WriteObjectField("ready")
 		s.Ready.WriteJSON(j)
 	}
+
 	if s.Serving.Set {
-		field.Write("serving")
+		more.More()
+		j.WriteObjectField("serving")
 		s.Serving.WriteJSON(j)
 	}
+
 	if s.Terminating.Set {
-		field.Write("terminating")
+		more.More()
+		j.WriteObjectField("terminating")
 		s.Terminating.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIDiscoveryV1EndpointConditions json value to io.Writer.
 func (s IoK8sAPIDiscoveryV1EndpointConditions) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -26344,15 +31349,29 @@ func (s *IoK8sAPIDiscoveryV1EndpointConditions) ReadJSON(i *json.Iterator) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointHints) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "ForZones".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.ForZones != nil {
+		more.More()
+		j.WriteObjectField("forZones")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ForZones {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIDiscoveryV1EndpointHints json value to io.Writer.
 func (s IoK8sAPIDiscoveryV1EndpointHints) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -26377,7 +31396,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointHints) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "forZones":
-			// Unsupported kind "pointer" for field "ForZones".
+			// Unsupported kind "array" for field "ForZones".
 			i.Skip()
 			return true
 		default:
@@ -26391,30 +31410,39 @@ func (s *IoK8sAPIDiscoveryV1EndpointHints) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointPort) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AppProtocol.Set {
-		field.Write("appProtocol")
+		more.More()
+		j.WriteObjectField("appProtocol")
 		s.AppProtocol.WriteJSON(j)
 	}
+
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
+
 	if s.Port.Set {
-		field.Write("port")
+		more.More()
+		j.WriteObjectField("port")
 		s.Port.WriteJSON(j)
 	}
+
 	if s.Protocol.Set {
-		field.Write("protocol")
+		more.More()
+		j.WriteObjectField("protocol")
 		s.Protocol.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIDiscoveryV1EndpointPort json value to io.Writer.
 func (s IoK8sAPIDiscoveryV1EndpointPort) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -26477,30 +31505,63 @@ func (s *IoK8sAPIDiscoveryV1EndpointPort) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointSlice) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("addressType")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("addressType")
 	j.WriteString(s.AddressType)
+
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Endpoints".
+
+	more.More()
+	j.WriteObjectField("endpoints")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Endpoints {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Ports".
+
+	if s.Ports != nil {
+		more.More()
+		j.WriteObjectField("ports")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Ports {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIDiscoveryV1EndpointSlice json value to io.Writer.
 func (s IoK8sAPIDiscoveryV1EndpointSlice) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -26553,7 +31614,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "ports":
-			// Unsupported kind "pointer" for field "Ports".
+			// Unsupported kind "array" for field "Ports".
 			i.Skip()
 			return true
 		default:
@@ -26567,27 +31628,44 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointSliceList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIDiscoveryV1EndpointSliceList json value to io.Writer.
 func (s IoK8sAPIDiscoveryV1EndpointSliceList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -26647,16 +31725,20 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) ReadJSON(i *json.Iterator) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1ForZone) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIDiscoveryV1ForZone json value to io.Writer.
 func (s IoK8sAPIDiscoveryV1ForZone) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -26694,36 +31776,58 @@ func (s *IoK8sAPIDiscoveryV1ForZone) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1Endpoint) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "array" for field "Addresses".
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("addresses")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Addresses {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Conditions.Set {
-		field.Write("conditions")
+		more.More()
+		j.WriteObjectField("conditions")
 		s.Conditions.WriteJSON(j)
 	}
+
 	if s.Hints.Set {
-		field.Write("hints")
+		more.More()
+		j.WriteObjectField("hints")
 		s.Hints.WriteJSON(j)
 	}
+
 	if s.Hostname.Set {
-		field.Write("hostname")
+		more.More()
+		j.WriteObjectField("hostname")
 		s.Hostname.WriteJSON(j)
 	}
+
 	if s.NodeName.Set {
-		field.Write("nodeName")
+		more.More()
+		j.WriteObjectField("nodeName")
 		s.NodeName.WriteJSON(j)
 	}
+
 	if s.TargetRef.Set {
-		field.Write("targetRef")
+		more.More()
+		j.WriteObjectField("targetRef")
 		s.TargetRef.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Topology".
+
+	// Unsupported kind "pointer" for field "topology".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIDiscoveryV1beta1Endpoint json value to io.Writer.
 func (s IoK8sAPIDiscoveryV1beta1Endpoint) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -26801,26 +31905,33 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Ready.Set {
-		field.Write("ready")
+		more.More()
+		j.WriteObjectField("ready")
 		s.Ready.WriteJSON(j)
 	}
+
 	if s.Serving.Set {
-		field.Write("serving")
+		more.More()
+		j.WriteObjectField("serving")
 		s.Serving.WriteJSON(j)
 	}
+
 	if s.Terminating.Set {
-		field.Write("terminating")
+		more.More()
+		j.WriteObjectField("terminating")
 		s.Terminating.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIDiscoveryV1beta1EndpointConditions json value to io.Writer.
 func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -26876,15 +31987,29 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) ReadJSON(i *json.Iterator) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointHints) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "ForZones".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.ForZones != nil {
+		more.More()
+		j.WriteObjectField("forZones")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ForZones {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIDiscoveryV1beta1EndpointHints json value to io.Writer.
 func (s IoK8sAPIDiscoveryV1beta1EndpointHints) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -26909,7 +32034,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointHints) ReadJSON(i *json.Iterator) error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "forZones":
-			// Unsupported kind "pointer" for field "ForZones".
+			// Unsupported kind "array" for field "ForZones".
 			i.Skip()
 			return true
 		default:
@@ -26923,30 +32048,39 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointHints) ReadJSON(i *json.Iterator) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointPort) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AppProtocol.Set {
-		field.Write("appProtocol")
+		more.More()
+		j.WriteObjectField("appProtocol")
 		s.AppProtocol.WriteJSON(j)
 	}
+
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
+
 	if s.Port.Set {
-		field.Write("port")
+		more.More()
+		j.WriteObjectField("port")
 		s.Port.WriteJSON(j)
 	}
+
 	if s.Protocol.Set {
-		field.Write("protocol")
+		more.More()
+		j.WriteObjectField("protocol")
 		s.Protocol.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIDiscoveryV1beta1EndpointPort json value to io.Writer.
 func (s IoK8sAPIDiscoveryV1beta1EndpointPort) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -27009,30 +32143,63 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) ReadJSON(i *json.Iterator) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("addressType")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("addressType")
 	j.WriteString(s.AddressType)
+
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Endpoints".
+
+	more.More()
+	j.WriteObjectField("endpoints")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Endpoints {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Ports".
+
+	if s.Ports != nil {
+		more.More()
+		j.WriteObjectField("ports")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Ports {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIDiscoveryV1beta1EndpointSlice json value to io.Writer.
 func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -27085,7 +32252,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) ReadJSON(i *json.Iterator) error
 			}
 			return true
 		case "ports":
-			// Unsupported kind "pointer" for field "Ports".
+			// Unsupported kind "array" for field "Ports".
 			i.Skip()
 			return true
 		default:
@@ -27099,27 +32266,44 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) ReadJSON(i *json.Iterator) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIDiscoveryV1beta1EndpointSliceList json value to io.Writer.
 func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -27179,16 +32363,20 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) ReadJSON(i *json.Iterator) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1ForZone) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIDiscoveryV1beta1ForZone json value to io.Writer.
 func (s IoK8sAPIDiscoveryV1beta1ForZone) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -27226,73 +32414,105 @@ func (s *IoK8sAPIDiscoveryV1beta1ForZone) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIEventsV1Event) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Action.Set {
-		field.Write("action")
+		more.More()
+		j.WriteObjectField("action")
 		s.Action.WriteJSON(j)
 	}
+
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.DeprecatedCount.Set {
-		field.Write("deprecatedCount")
+		more.More()
+		j.WriteObjectField("deprecatedCount")
 		s.DeprecatedCount.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "DeprecatedFirstTimestamp".
-	// Unsupported kind "pointer" for field "DeprecatedLastTimestamp".
+
+	// Unsupported kind "pointer" for field "deprecatedFirstTimestamp".
+
+	// Unsupported kind "pointer" for field "deprecatedLastTimestamp".
+
 	if s.DeprecatedSource.Set {
-		field.Write("deprecatedSource")
+		more.More()
+		j.WriteObjectField("deprecatedSource")
 		s.DeprecatedSource.WriteJSON(j)
 	}
-	// Unsupported kind "alias" for field "EventTime".
+
+	// Unsupported kind "alias" for field "eventTime".
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Note.Set {
-		field.Write("note")
+		more.More()
+		j.WriteObjectField("note")
 		s.Note.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
+
 	if s.Regarding.Set {
-		field.Write("regarding")
+		more.More()
+		j.WriteObjectField("regarding")
 		s.Regarding.WriteJSON(j)
 	}
+
 	if s.Related.Set {
-		field.Write("related")
+		more.More()
+		j.WriteObjectField("related")
 		s.Related.WriteJSON(j)
 	}
+
 	if s.ReportingController.Set {
-		field.Write("reportingController")
+		more.More()
+		j.WriteObjectField("reportingController")
 		s.ReportingController.WriteJSON(j)
 	}
+
 	if s.ReportingInstance.Set {
-		field.Write("reportingInstance")
+		more.More()
+		j.WriteObjectField("reportingInstance")
 		s.ReportingInstance.WriteJSON(j)
 	}
+
 	if s.Series.Set {
-		field.Write("series")
+		more.More()
+		j.WriteObjectField("series")
 		s.Series.WriteJSON(j)
 	}
+
 	if s.Type.Set {
-		field.Write("type")
+		more.More()
+		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIEventsV1Event json value to io.Writer.
 func (s IoK8sAPIEventsV1Event) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -27437,27 +32657,44 @@ func (s *IoK8sAPIEventsV1Event) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIEventsV1EventList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIEventsV1EventList json value to io.Writer.
 func (s IoK8sAPIEventsV1EventList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -27517,17 +32754,22 @@ func (s *IoK8sAPIEventsV1EventList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIEventsV1EventSeries) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("count")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("count")
 	j.WriteInt32(s.Count)
-	// Unsupported kind "alias" for field "LastObservedTime".
+
+	// Unsupported kind "alias" for field "lastObservedTime".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIEventsV1EventSeries json value to io.Writer.
 func (s IoK8sAPIEventsV1EventSeries) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -27569,73 +32811,105 @@ func (s *IoK8sAPIEventsV1EventSeries) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIEventsV1beta1Event) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Action.Set {
-		field.Write("action")
+		more.More()
+		j.WriteObjectField("action")
 		s.Action.WriteJSON(j)
 	}
+
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.DeprecatedCount.Set {
-		field.Write("deprecatedCount")
+		more.More()
+		j.WriteObjectField("deprecatedCount")
 		s.DeprecatedCount.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "DeprecatedFirstTimestamp".
-	// Unsupported kind "pointer" for field "DeprecatedLastTimestamp".
+
+	// Unsupported kind "pointer" for field "deprecatedFirstTimestamp".
+
+	// Unsupported kind "pointer" for field "deprecatedLastTimestamp".
+
 	if s.DeprecatedSource.Set {
-		field.Write("deprecatedSource")
+		more.More()
+		j.WriteObjectField("deprecatedSource")
 		s.DeprecatedSource.WriteJSON(j)
 	}
-	// Unsupported kind "alias" for field "EventTime".
+
+	// Unsupported kind "alias" for field "eventTime".
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Note.Set {
-		field.Write("note")
+		more.More()
+		j.WriteObjectField("note")
 		s.Note.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
+
 	if s.Regarding.Set {
-		field.Write("regarding")
+		more.More()
+		j.WriteObjectField("regarding")
 		s.Regarding.WriteJSON(j)
 	}
+
 	if s.Related.Set {
-		field.Write("related")
+		more.More()
+		j.WriteObjectField("related")
 		s.Related.WriteJSON(j)
 	}
+
 	if s.ReportingController.Set {
-		field.Write("reportingController")
+		more.More()
+		j.WriteObjectField("reportingController")
 		s.ReportingController.WriteJSON(j)
 	}
+
 	if s.ReportingInstance.Set {
-		field.Write("reportingInstance")
+		more.More()
+		j.WriteObjectField("reportingInstance")
 		s.ReportingInstance.WriteJSON(j)
 	}
+
 	if s.Series.Set {
-		field.Write("series")
+		more.More()
+		j.WriteObjectField("series")
 		s.Series.WriteJSON(j)
 	}
+
 	if s.Type.Set {
-		field.Write("type")
+		more.More()
+		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIEventsV1beta1Event json value to io.Writer.
 func (s IoK8sAPIEventsV1beta1Event) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -27780,27 +33054,44 @@ func (s *IoK8sAPIEventsV1beta1Event) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIEventsV1beta1EventList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIEventsV1beta1EventList json value to io.Writer.
 func (s IoK8sAPIEventsV1beta1EventList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -27860,17 +33151,22 @@ func (s *IoK8sAPIEventsV1beta1EventList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIEventsV1beta1EventSeries) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("count")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("count")
 	j.WriteInt32(s.Count)
-	// Unsupported kind "alias" for field "LastObservedTime".
+
+	// Unsupported kind "alias" for field "lastObservedTime".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIEventsV1beta1EventSeries json value to io.Writer.
 func (s IoK8sAPIEventsV1beta1EventSeries) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -27912,16 +33208,20 @@ func (s *IoK8sAPIEventsV1beta1EventSeries) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("type")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -27959,34 +33259,45 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) ReadJSON(i *json.Ite
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1FlowSchema json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -28056,31 +33367,42 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) ReadJSON(i *json.Iterator) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "LastTransitionTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "lastTransitionTime".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	if s.Type.Set {
-		field.Write("type")
+		more.More()
+		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -28147,27 +33469,44 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) ReadJSON(i *json.Iterato
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1FlowSchemaList json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -28227,25 +33566,45 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) ReadJSON(i *json.Iterator) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.DistinguisherMethod.Set {
-		field.Write("distinguisherMethod")
+		more.More()
+		j.WriteObjectField("distinguisherMethod")
 		s.DistinguisherMethod.WriteJSON(j)
 	}
+
 	if s.MatchingPrecedence.Set {
-		field.Write("matchingPrecedence")
+		more.More()
+		j.WriteObjectField("matchingPrecedence")
 		s.MatchingPrecedence.WriteJSON(j)
 	}
-	field.Write("priorityLevelConfiguration")
+
+	more.More()
+	j.WriteObjectField("priorityLevelConfiguration")
 	s.PriorityLevelConfiguration.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Rules".
+
+	if s.Rules != nil {
+		more.More()
+		j.WriteObjectField("rules")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Rules {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -28290,7 +33649,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) ReadJSON(i *json.Iterator) er
 			}
 			return true
 		case "rules":
-			// Unsupported kind "pointer" for field "Rules".
+			// Unsupported kind "array" for field "Rules".
 			i.Skip()
 			return true
 		default:
@@ -28304,15 +33663,29 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) ReadJSON(i *json.Iterator) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Conditions".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -28337,7 +33710,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) ReadJSON(i *json.Iterator) 
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		default:
@@ -28351,16 +33724,20 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) ReadJSON(i *json.Iterator) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1GroupSubject) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1GroupSubject json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1GroupSubject) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -28398,20 +33775,25 @@ func (s *IoK8sAPIFlowcontrolV1beta1GroupSubject) ReadJSON(i *json.Iterator) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1LimitResponse) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Queuing.Set {
-		field.Write("queuing")
+		more.More()
+		j.WriteObjectField("queuing")
 		s.Queuing.WriteJSON(j)
 	}
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1LimitResponse json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1LimitResponse) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -28456,22 +33838,27 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) ReadJSON(i *json.Iterator) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AssuredConcurrencyShares.Set {
-		field.Write("assuredConcurrencyShares")
+		more.More()
+		j.WriteObjectField("assuredConcurrencyShares")
 		s.AssuredConcurrencyShares.WriteJSON(j)
 	}
+
 	if s.LimitResponse.Set {
-		field.Write("limitResponse")
+		more.More()
+		j.WriteObjectField("limitResponse")
 		s.LimitResponse.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -28520,16 +33907,37 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) ReadJSON(i
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "array" for field "NonResourceURLs".
-	// Unsupported kind "array" for field "Verbs".
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("nonResourceURLs")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.NonResourceURLs {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
+	more.More()
+	j.WriteObjectField("verbs")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Verbs {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -28572,17 +33980,54 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) ReadJSON(i *json.Itera
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "NonResourceRules".
-	// Unsupported kind "pointer" for field "ResourceRules".
-	// Unsupported kind "array" for field "Subjects".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.NonResourceRules != nil {
+		more.More()
+		j.WriteObjectField("nonResourceRules")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.NonResourceRules {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.ResourceRules != nil {
+		more.More()
+		j.WriteObjectField("resourceRules")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ResourceRules {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("subjects")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Subjects {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -28607,11 +34052,11 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) ReadJSON(i *json.Ite
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "nonResourceRules":
-			// Unsupported kind "pointer" for field "NonResourceRules".
+			// Unsupported kind "array" for field "NonResourceRules".
 			i.Skip()
 			return true
 		case "resourceRules":
-			// Unsupported kind "pointer" for field "ResourceRules".
+			// Unsupported kind "array" for field "ResourceRules".
 			i.Skip()
 			return true
 		case "subjects":
@@ -28629,34 +34074,45 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) ReadJSON(i *json.Ite
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -28726,31 +34182,42 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) ReadJSON(i *json.
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "LastTransitionTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "lastTransitionTime".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	if s.Type.Set {
-		field.Write("type")
+		more.More()
+		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -28817,27 +34284,44 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) ReadJSON
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -28897,16 +34381,20 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) ReadJSON(i *j
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -28944,20 +34432,25 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) ReadJSON
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Limited.Set {
-		field.Write("limited")
+		more.More()
+		j.WriteObjectField("limited")
 		s.Limited.WriteJSON(j)
 	}
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -29002,15 +34495,29 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) ReadJSON(i *j
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Conditions".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -29035,7 +34542,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) ReadJSON(i 
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		default:
@@ -29049,26 +34556,33 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) ReadJSON(i 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.HandSize.Set {
-		field.Write("handSize")
+		more.More()
+		j.WriteObjectField("handSize")
 		s.HandSize.WriteJSON(j)
 	}
+
 	if s.QueueLengthLimit.Set {
-		field.Write("queueLengthLimit")
+		more.More()
+		j.WriteObjectField("queueLengthLimit")
 		s.QueueLengthLimit.WriteJSON(j)
 	}
+
 	if s.Queues.Set {
-		field.Write("queues")
+		more.More()
+		j.WriteObjectField("queues")
 		s.Queues.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1QueuingConfiguration json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -29124,22 +34638,68 @@ func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) ReadJSON(i *json.Iterat
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "array" for field "ApiGroups".
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("apiGroups")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.ApiGroups {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.ClusterScope.Set {
-		field.Write("clusterScope")
+		more.More()
+		j.WriteObjectField("clusterScope")
 		s.ClusterScope.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Namespaces".
-	// Unsupported kind "array" for field "Resources".
-	// Unsupported kind "array" for field "Verbs".
+
+	if s.Namespaces != nil {
+		more.More()
+		j.WriteObjectField("namespaces")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Namespaces {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("resources")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Resources {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
+	more.More()
+	j.WriteObjectField("verbs")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Verbs {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -29175,7 +34735,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) ReadJSON(i *json.Iterator
 			}
 			return true
 		case "namespaces":
-			// Unsupported kind "pointer" for field "Namespaces".
+			// Unsupported kind "array" for field "Namespaces".
 			i.Skip()
 			return true
 		case "resources":
@@ -29197,18 +34757,24 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) ReadJSON(i *json.Iterator
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-	field.Write("namespace")
+
+	more.More()
+	j.WriteObjectField("namespace")
 	j.WriteString(s.Namespace)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -29249,28 +34815,37 @@ func (s *IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) ReadJSON(i *json.Itera
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1Subject) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Group.Set {
-		field.Write("group")
+		more.More()
+		j.WriteObjectField("group")
 		s.Group.WriteJSON(j)
 	}
-	field.Write("kind")
+
+	more.More()
+	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
+
 	if s.ServiceAccount.Set {
-		field.Write("serviceAccount")
+		more.More()
+		j.WriteObjectField("serviceAccount")
 		s.ServiceAccount.WriteJSON(j)
 	}
+
 	if s.User.Set {
-		field.Write("user")
+		more.More()
+		j.WriteObjectField("user")
 		s.User.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1Subject json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1Subject) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -29329,16 +34904,20 @@ func (s *IoK8sAPIFlowcontrolV1beta1Subject) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1UserSubject) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta1UserSubject json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta1UserSubject) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -29376,16 +34955,20 @@ func (s *IoK8sAPIFlowcontrolV1beta1UserSubject) ReadJSON(i *json.Iterator) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("type")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -29423,34 +35006,45 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) ReadJSON(i *json.Ite
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2FlowSchema json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -29520,31 +35114,42 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) ReadJSON(i *json.Iterator) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "LastTransitionTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "lastTransitionTime".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	if s.Type.Set {
-		field.Write("type")
+		more.More()
+		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -29611,27 +35216,44 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) ReadJSON(i *json.Iterato
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2FlowSchemaList json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -29691,25 +35313,45 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) ReadJSON(i *json.Iterator) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.DistinguisherMethod.Set {
-		field.Write("distinguisherMethod")
+		more.More()
+		j.WriteObjectField("distinguisherMethod")
 		s.DistinguisherMethod.WriteJSON(j)
 	}
+
 	if s.MatchingPrecedence.Set {
-		field.Write("matchingPrecedence")
+		more.More()
+		j.WriteObjectField("matchingPrecedence")
 		s.MatchingPrecedence.WriteJSON(j)
 	}
-	field.Write("priorityLevelConfiguration")
+
+	more.More()
+	j.WriteObjectField("priorityLevelConfiguration")
 	s.PriorityLevelConfiguration.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Rules".
+
+	if s.Rules != nil {
+		more.More()
+		j.WriteObjectField("rules")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Rules {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -29754,7 +35396,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) ReadJSON(i *json.Iterator) er
 			}
 			return true
 		case "rules":
-			// Unsupported kind "pointer" for field "Rules".
+			// Unsupported kind "array" for field "Rules".
 			i.Skip()
 			return true
 		default:
@@ -29768,15 +35410,29 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) ReadJSON(i *json.Iterator) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Conditions".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -29801,7 +35457,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) ReadJSON(i *json.Iterator) 
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		default:
@@ -29815,16 +35471,20 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) ReadJSON(i *json.Iterator) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2GroupSubject) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2GroupSubject json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2GroupSubject) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -29862,20 +35522,25 @@ func (s *IoK8sAPIFlowcontrolV1beta2GroupSubject) ReadJSON(i *json.Iterator) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2LimitResponse) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Queuing.Set {
-		field.Write("queuing")
+		more.More()
+		j.WriteObjectField("queuing")
 		s.Queuing.WriteJSON(j)
 	}
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2LimitResponse json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2LimitResponse) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -29920,22 +35585,27 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) ReadJSON(i *json.Iterator) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AssuredConcurrencyShares.Set {
-		field.Write("assuredConcurrencyShares")
+		more.More()
+		j.WriteObjectField("assuredConcurrencyShares")
 		s.AssuredConcurrencyShares.WriteJSON(j)
 	}
+
 	if s.LimitResponse.Set {
-		field.Write("limitResponse")
+		more.More()
+		j.WriteObjectField("limitResponse")
 		s.LimitResponse.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -29984,16 +35654,37 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) ReadJSON(i
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "array" for field "NonResourceURLs".
-	// Unsupported kind "array" for field "Verbs".
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("nonResourceURLs")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.NonResourceURLs {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
+	more.More()
+	j.WriteObjectField("verbs")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Verbs {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -30036,17 +35727,54 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) ReadJSON(i *json.Itera
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "NonResourceRules".
-	// Unsupported kind "pointer" for field "ResourceRules".
-	// Unsupported kind "array" for field "Subjects".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.NonResourceRules != nil {
+		more.More()
+		j.WriteObjectField("nonResourceRules")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.NonResourceRules {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.ResourceRules != nil {
+		more.More()
+		j.WriteObjectField("resourceRules")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ResourceRules {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("subjects")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Subjects {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -30071,11 +35799,11 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) ReadJSON(i *json.Ite
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "nonResourceRules":
-			// Unsupported kind "pointer" for field "NonResourceRules".
+			// Unsupported kind "array" for field "NonResourceRules".
 			i.Skip()
 			return true
 		case "resourceRules":
-			// Unsupported kind "pointer" for field "ResourceRules".
+			// Unsupported kind "array" for field "ResourceRules".
 			i.Skip()
 			return true
 		case "subjects":
@@ -30093,34 +35821,45 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) ReadJSON(i *json.Ite
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -30190,31 +35929,42 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) ReadJSON(i *json.
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "LastTransitionTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "lastTransitionTime".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	if s.Type.Set {
-		field.Write("type")
+		more.More()
+		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -30281,27 +36031,44 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) ReadJSON
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -30361,16 +36128,20 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) ReadJSON(i *j
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -30408,20 +36179,25 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) ReadJSON
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Limited.Set {
-		field.Write("limited")
+		more.More()
+		j.WriteObjectField("limited")
 		s.Limited.WriteJSON(j)
 	}
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -30466,15 +36242,29 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) ReadJSON(i *j
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Conditions".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -30499,7 +36289,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) ReadJSON(i 
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		default:
@@ -30513,26 +36303,33 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) ReadJSON(i 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.HandSize.Set {
-		field.Write("handSize")
+		more.More()
+		j.WriteObjectField("handSize")
 		s.HandSize.WriteJSON(j)
 	}
+
 	if s.QueueLengthLimit.Set {
-		field.Write("queueLengthLimit")
+		more.More()
+		j.WriteObjectField("queueLengthLimit")
 		s.QueueLengthLimit.WriteJSON(j)
 	}
+
 	if s.Queues.Set {
-		field.Write("queues")
+		more.More()
+		j.WriteObjectField("queues")
 		s.Queues.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2QueuingConfiguration json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -30588,22 +36385,68 @@ func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) ReadJSON(i *json.Iterat
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "array" for field "ApiGroups".
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("apiGroups")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.ApiGroups {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.ClusterScope.Set {
-		field.Write("clusterScope")
+		more.More()
+		j.WriteObjectField("clusterScope")
 		s.ClusterScope.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Namespaces".
-	// Unsupported kind "array" for field "Resources".
-	// Unsupported kind "array" for field "Verbs".
+
+	if s.Namespaces != nil {
+		more.More()
+		j.WriteObjectField("namespaces")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Namespaces {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("resources")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Resources {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
+	more.More()
+	j.WriteObjectField("verbs")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Verbs {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -30639,7 +36482,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) ReadJSON(i *json.Iterator
 			}
 			return true
 		case "namespaces":
-			// Unsupported kind "pointer" for field "Namespaces".
+			// Unsupported kind "array" for field "Namespaces".
 			i.Skip()
 			return true
 		case "resources":
@@ -30661,18 +36504,24 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) ReadJSON(i *json.Iterator
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-	field.Write("namespace")
+
+	more.More()
+	j.WriteObjectField("namespace")
 	j.WriteString(s.Namespace)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -30713,28 +36562,37 @@ func (s *IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) ReadJSON(i *json.Itera
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2Subject) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Group.Set {
-		field.Write("group")
+		more.More()
+		j.WriteObjectField("group")
 		s.Group.WriteJSON(j)
 	}
-	field.Write("kind")
+
+	more.More()
+	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
+
 	if s.ServiceAccount.Set {
-		field.Write("serviceAccount")
+		more.More()
+		j.WriteObjectField("serviceAccount")
 		s.ServiceAccount.WriteJSON(j)
 	}
+
 	if s.User.Set {
-		field.Write("user")
+		more.More()
+		j.WriteObjectField("user")
 		s.User.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2Subject json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2Subject) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -30793,16 +36651,20 @@ func (s *IoK8sAPIFlowcontrolV1beta2Subject) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2UserSubject) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIFlowcontrolV1beta2UserSubject json value to io.Writer.
 func (s IoK8sAPIFlowcontrolV1beta2UserSubject) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -30840,22 +36702,29 @@ func (s *IoK8sAPIFlowcontrolV1beta2UserSubject) ReadJSON(i *json.Iterator) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1HTTPIngressPath) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("backend")
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("backend")
 	s.Backend.WriteJSON(j)
+
 	if s.Path.Set {
-		field.Write("path")
+		more.More()
+		j.WriteObjectField("path")
 		s.Path.WriteJSON(j)
 	}
-	field.Write("pathType")
+
+	more.More()
+	j.WriteObjectField("pathType")
 	j.WriteString(s.PathType)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1HTTPIngressPath json value to io.Writer.
 func (s IoK8sAPINetworkingV1HTTPIngressPath) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -30906,15 +36775,26 @@ func (s *IoK8sAPINetworkingV1HTTPIngressPath) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "array" for field "Paths".
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("paths")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Paths {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1HTTPIngressRuleValue json value to io.Writer.
 func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -30953,17 +36833,34 @@ func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) ReadJSON(i *json.Iterator) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IPBlock) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("cidr")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("cidr")
 	j.WriteString(s.Cidr)
-	// Unsupported kind "pointer" for field "Except".
+
+	if s.Except != nil {
+		more.More()
+		j.WriteObjectField("except")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Except {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1IPBlock json value to io.Writer.
 func (s IoK8sAPINetworkingV1IPBlock) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -30991,7 +36888,7 @@ func (s *IoK8sAPINetworkingV1IPBlock) ReadJSON(i *json.Iterator) error {
 			s.Cidr = i.ReadString()
 			return i.Error == nil
 		case "except":
-			// Unsupported kind "pointer" for field "Except".
+			// Unsupported kind "array" for field "Except".
 			i.Skip()
 			return true
 		default:
@@ -31005,34 +36902,45 @@ func (s *IoK8sAPINetworkingV1IPBlock) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1Ingress) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1Ingress json value to io.Writer.
 func (s IoK8sAPINetworkingV1Ingress) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -31102,22 +37010,27 @@ func (s *IoK8sAPINetworkingV1Ingress) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressBackend) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Resource.Set {
-		field.Write("resource")
+		more.More()
+		j.WriteObjectField("resource")
 		s.Resource.WriteJSON(j)
 	}
+
 	if s.Service.Set {
-		field.Write("service")
+		more.More()
+		j.WriteObjectField("service")
 		s.Service.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1IngressBackend json value to io.Writer.
 func (s IoK8sAPINetworkingV1IngressBackend) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -31166,30 +37079,39 @@ func (s *IoK8sAPINetworkingV1IngressBackend) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressClass) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1IngressClass json value to io.Writer.
 func (s IoK8sAPINetworkingV1IngressClass) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -31252,27 +37174,44 @@ func (s *IoK8sAPINetworkingV1IngressClass) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressClassList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1IngressClassList json value to io.Writer.
 func (s IoK8sAPINetworkingV1IngressClassList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -31332,30 +37271,41 @@ func (s *IoK8sAPINetworkingV1IngressClassList) ReadJSON(i *json.Iterator) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressClassParametersReference) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiGroup.Set {
-		field.Write("apiGroup")
+		more.More()
+		j.WriteObjectField("apiGroup")
 		s.ApiGroup.WriteJSON(j)
 	}
-	field.Write("kind")
+
+	more.More()
+	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	if s.Namespace.Set {
-		field.Write("namespace")
+		more.More()
+		j.WriteObjectField("namespace")
 		s.Namespace.WriteJSON(j)
 	}
+
 	if s.Scope.Set {
-		field.Write("scope")
+		more.More()
+		j.WriteObjectField("scope")
 		s.Scope.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1IngressClassParametersReference json value to io.Writer.
 func (s IoK8sAPINetworkingV1IngressClassParametersReference) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -31417,22 +37367,27 @@ func (s *IoK8sAPINetworkingV1IngressClassParametersReference) ReadJSON(i *json.I
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressClassSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Controller.Set {
-		field.Write("controller")
+		more.More()
+		j.WriteObjectField("controller")
 		s.Controller.WriteJSON(j)
 	}
+
 	if s.Parameters.Set {
-		field.Write("parameters")
+		more.More()
+		j.WriteObjectField("parameters")
 		s.Parameters.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1IngressClassSpec json value to io.Writer.
 func (s IoK8sAPINetworkingV1IngressClassSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -31481,27 +37436,44 @@ func (s *IoK8sAPINetworkingV1IngressClassSpec) ReadJSON(i *json.Iterator) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1IngressList json value to io.Writer.
 func (s IoK8sAPINetworkingV1IngressList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -31561,22 +37533,27 @@ func (s *IoK8sAPINetworkingV1IngressList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressRule) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.HTTP.Set {
-		field.Write("http")
+		more.More()
+		j.WriteObjectField("http")
 		s.HTTP.WriteJSON(j)
 	}
+
 	if s.Host.Set {
-		field.Write("host")
+		more.More()
+		j.WriteObjectField("host")
 		s.Host.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1IngressRule json value to io.Writer.
 func (s IoK8sAPINetworkingV1IngressRule) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -31625,20 +37602,26 @@ func (s *IoK8sAPINetworkingV1IngressRule) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressServiceBackend) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	if s.Port.Set {
-		field.Write("port")
+		more.More()
+		j.WriteObjectField("port")
 		s.Port.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1IngressServiceBackend json value to io.Writer.
 func (s IoK8sAPINetworkingV1IngressServiceBackend) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -31683,24 +37666,55 @@ func (s *IoK8sAPINetworkingV1IngressServiceBackend) ReadJSON(i *json.Iterator) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.DefaultBackend.Set {
-		field.Write("defaultBackend")
+		more.More()
+		j.WriteObjectField("defaultBackend")
 		s.DefaultBackend.WriteJSON(j)
 	}
+
 	if s.IngressClassName.Set {
-		field.Write("ingressClassName")
+		more.More()
+		j.WriteObjectField("ingressClassName")
 		s.IngressClassName.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Rules".
-	// Unsupported kind "pointer" for field "TLS".
+
+	if s.Rules != nil {
+		more.More()
+		j.WriteObjectField("rules")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Rules {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.TLS != nil {
+		more.More()
+		j.WriteObjectField("tls")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.TLS {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1IngressSpec json value to io.Writer.
 func (s IoK8sAPINetworkingV1IngressSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -31739,11 +37753,11 @@ func (s *IoK8sAPINetworkingV1IngressSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "rules":
-			// Unsupported kind "pointer" for field "Rules".
+			// Unsupported kind "array" for field "Rules".
 			i.Skip()
 			return true
 		case "tls":
-			// Unsupported kind "pointer" for field "TLS".
+			// Unsupported kind "array" for field "TLS".
 			i.Skip()
 			return true
 		default:
@@ -31757,18 +37771,21 @@ func (s *IoK8sAPINetworkingV1IngressSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.LoadBalancer.Set {
-		field.Write("loadBalancer")
+		more.More()
+		j.WriteObjectField("loadBalancer")
 		s.LoadBalancer.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1IngressStatus json value to io.Writer.
 func (s IoK8sAPINetworkingV1IngressStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -31810,19 +37827,35 @@ func (s *IoK8sAPINetworkingV1IngressStatus) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressTLS) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Hosts".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Hosts != nil {
+		more.More()
+		j.WriteObjectField("hosts")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Hosts {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.SecretName.Set {
-		field.Write("secretName")
+		more.More()
+		j.WriteObjectField("secretName")
 		s.SecretName.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1IngressTLS json value to io.Writer.
 func (s IoK8sAPINetworkingV1IngressTLS) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -31847,7 +37880,7 @@ func (s *IoK8sAPINetworkingV1IngressTLS) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "hosts":
-			// Unsupported kind "pointer" for field "Hosts".
+			// Unsupported kind "array" for field "Hosts".
 			i.Skip()
 			return true
 		case "secretName":
@@ -31868,30 +37901,39 @@ func (s *IoK8sAPINetworkingV1IngressTLS) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicy) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1NetworkPolicy json value to io.Writer.
 func (s IoK8sAPINetworkingV1NetworkPolicy) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -31954,16 +37996,43 @@ func (s *IoK8sAPINetworkingV1NetworkPolicy) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Ports".
-	// Unsupported kind "pointer" for field "To".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Ports != nil {
+		more.More()
+		j.WriteObjectField("ports")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Ports {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.To != nil {
+		more.More()
+		j.WriteObjectField("to")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.To {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1NetworkPolicyEgressRule json value to io.Writer.
 func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -31988,11 +38057,11 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) ReadJSON(i *json.Iterator)
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "ports":
-			// Unsupported kind "pointer" for field "Ports".
+			// Unsupported kind "array" for field "Ports".
 			i.Skip()
 			return true
 		case "to":
-			// Unsupported kind "pointer" for field "To".
+			// Unsupported kind "array" for field "To".
 			i.Skip()
 			return true
 		default:
@@ -32006,16 +38075,43 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) ReadJSON(i *json.Iterator)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "From".
-	// Unsupported kind "pointer" for field "Ports".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.From != nil {
+		more.More()
+		j.WriteObjectField("from")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.From {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.Ports != nil {
+		more.More()
+		j.WriteObjectField("ports")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Ports {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1NetworkPolicyIngressRule json value to io.Writer.
 func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -32040,11 +38136,11 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) ReadJSON(i *json.Iterator
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "from":
-			// Unsupported kind "pointer" for field "From".
+			// Unsupported kind "array" for field "From".
 			i.Skip()
 			return true
 		case "ports":
-			// Unsupported kind "pointer" for field "Ports".
+			// Unsupported kind "array" for field "Ports".
 			i.Skip()
 			return true
 		default:
@@ -32058,27 +38154,44 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) ReadJSON(i *json.Iterator
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1NetworkPolicyList json value to io.Writer.
 func (s IoK8sAPINetworkingV1NetworkPolicyList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -32138,26 +38251,33 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) ReadJSON(i *json.Iterator) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyPeer) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.IpBlock.Set {
-		field.Write("ipBlock")
+		more.More()
+		j.WriteObjectField("ipBlock")
 		s.IpBlock.WriteJSON(j)
 	}
+
 	if s.NamespaceSelector.Set {
-		field.Write("namespaceSelector")
+		more.More()
+		j.WriteObjectField("namespaceSelector")
 		s.NamespaceSelector.WriteJSON(j)
 	}
+
 	if s.PodSelector.Set {
-		field.Write("podSelector")
+		more.More()
+		j.WriteObjectField("podSelector")
 		s.PodSelector.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1NetworkPolicyPeer json value to io.Writer.
 func (s IoK8sAPINetworkingV1NetworkPolicyPeer) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -32213,23 +38333,29 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) ReadJSON(i *json.Iterator) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyPort) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.EndPort.Set {
-		field.Write("endPort")
+		more.More()
+		j.WriteObjectField("endPort")
 		s.EndPort.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Port".
+
+	// Unsupported kind "pointer" for field "port".
+
 	if s.Protocol.Set {
-		field.Write("protocol")
+		more.More()
+		j.WriteObjectField("protocol")
 		s.Protocol.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1NetworkPolicyPort json value to io.Writer.
 func (s IoK8sAPINetworkingV1NetworkPolicyPort) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -32282,19 +38408,61 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPort) ReadJSON(i *json.Iterator) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicySpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Egress".
-	// Unsupported kind "pointer" for field "Ingress".
-	field.Write("podSelector")
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Egress != nil {
+		more.More()
+		j.WriteObjectField("egress")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Egress {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.Ingress != nil {
+		more.More()
+		j.WriteObjectField("ingress")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Ingress {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("podSelector")
 	s.PodSelector.WriteJSON(j)
-	// Unsupported kind "pointer" for field "PolicyTypes".
+
+	if s.PolicyTypes != nil {
+		more.More()
+		j.WriteObjectField("policyTypes")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.PolicyTypes {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1NetworkPolicySpec json value to io.Writer.
 func (s IoK8sAPINetworkingV1NetworkPolicySpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -32319,11 +38487,11 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) ReadJSON(i *json.Iterator) error
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "egress":
-			// Unsupported kind "pointer" for field "Egress".
+			// Unsupported kind "array" for field "Egress".
 			i.Skip()
 			return true
 		case "ingress":
-			// Unsupported kind "pointer" for field "Ingress".
+			// Unsupported kind "array" for field "Ingress".
 			i.Skip()
 			return true
 		case "podSelector":
@@ -32333,7 +38501,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) ReadJSON(i *json.Iterator) error
 			}
 			return true
 		case "policyTypes":
-			// Unsupported kind "pointer" for field "PolicyTypes".
+			// Unsupported kind "array" for field "PolicyTypes".
 			i.Skip()
 			return true
 		default:
@@ -32347,22 +38515,27 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) ReadJSON(i *json.Iterator) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINetworkingV1ServiceBackendPort) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
+
 	if s.Number.Set {
-		field.Write("number")
+		more.More()
+		j.WriteObjectField("number")
 		s.Number.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINetworkingV1ServiceBackendPort json value to io.Writer.
 func (s IoK8sAPINetworkingV1ServiceBackendPort) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -32411,15 +38584,18 @@ func (s *IoK8sAPINetworkingV1ServiceBackendPort) ReadJSON(i *json.Iterator) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1Overhead) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "PodFixed".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "podFixed".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINodeV1Overhead json value to io.Writer.
 func (s IoK8sAPINodeV1Overhead) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -32458,36 +38634,49 @@ func (s *IoK8sAPINodeV1Overhead) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1RuntimeClass) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	field.Write("handler")
+
+	more.More()
+	j.WriteObjectField("handler")
 	j.WriteString(s.Handler)
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Overhead.Set {
-		field.Write("overhead")
+		more.More()
+		j.WriteObjectField("overhead")
 		s.Overhead.WriteJSON(j)
 	}
+
 	if s.Scheduling.Set {
-		field.Write("scheduling")
+		more.More()
+		j.WriteObjectField("scheduling")
 		s.Scheduling.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINodeV1RuntimeClass json value to io.Writer.
 func (s IoK8sAPINodeV1RuntimeClass) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -32560,27 +38749,44 @@ func (s *IoK8sAPINodeV1RuntimeClass) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1RuntimeClassList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINodeV1RuntimeClassList json value to io.Writer.
 func (s IoK8sAPINodeV1RuntimeClassList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -32640,16 +38846,32 @@ func (s *IoK8sAPINodeV1RuntimeClassList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1Scheduling) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "NodeSelector".
-	// Unsupported kind "pointer" for field "Tolerations".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "nodeSelector".
+
+	if s.Tolerations != nil {
+		more.More()
+		j.WriteObjectField("tolerations")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Tolerations {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINodeV1Scheduling json value to io.Writer.
 func (s IoK8sAPINodeV1Scheduling) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -32678,7 +38900,7 @@ func (s *IoK8sAPINodeV1Scheduling) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "tolerations":
-			// Unsupported kind "pointer" for field "Tolerations".
+			// Unsupported kind "array" for field "Tolerations".
 			i.Skip()
 			return true
 		default:
@@ -32692,15 +38914,18 @@ func (s *IoK8sAPINodeV1Scheduling) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1Overhead) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "PodFixed".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "podFixed".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINodeV1alpha1Overhead json value to io.Writer.
 func (s IoK8sAPINodeV1alpha1Overhead) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -32739,28 +38964,37 @@ func (s *IoK8sAPINodeV1alpha1Overhead) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1RuntimeClass) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	field.Write("spec")
+
+	more.More()
+	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINodeV1alpha1RuntimeClass json value to io.Writer.
 func (s IoK8sAPINodeV1alpha1RuntimeClass) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -32822,27 +39056,44 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClass) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1RuntimeClassList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINodeV1alpha1RuntimeClassList json value to io.Writer.
 func (s IoK8sAPINodeV1alpha1RuntimeClassList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -32902,24 +39153,31 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) ReadJSON(i *json.Iterator) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Overhead.Set {
-		field.Write("overhead")
+		more.More()
+		j.WriteObjectField("overhead")
 		s.Overhead.WriteJSON(j)
 	}
-	field.Write("runtimeHandler")
+
+	more.More()
+	j.WriteObjectField("runtimeHandler")
 	j.WriteString(s.RuntimeHandler)
+
 	if s.Scheduling.Set {
-		field.Write("scheduling")
+		more.More()
+		j.WriteObjectField("scheduling")
 		s.Scheduling.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINodeV1alpha1RuntimeClassSpec json value to io.Writer.
 func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -32971,16 +39229,32 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) ReadJSON(i *json.Iterator) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1Scheduling) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "NodeSelector".
-	// Unsupported kind "pointer" for field "Tolerations".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "nodeSelector".
+
+	if s.Tolerations != nil {
+		more.More()
+		j.WriteObjectField("tolerations")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Tolerations {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINodeV1alpha1Scheduling json value to io.Writer.
 func (s IoK8sAPINodeV1alpha1Scheduling) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -33009,7 +39283,7 @@ func (s *IoK8sAPINodeV1alpha1Scheduling) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "tolerations":
-			// Unsupported kind "pointer" for field "Tolerations".
+			// Unsupported kind "array" for field "Tolerations".
 			i.Skip()
 			return true
 		default:
@@ -33023,15 +39297,18 @@ func (s *IoK8sAPINodeV1alpha1Scheduling) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1Overhead) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "PodFixed".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "podFixed".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINodeV1beta1Overhead json value to io.Writer.
 func (s IoK8sAPINodeV1beta1Overhead) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -33070,36 +39347,49 @@ func (s *IoK8sAPINodeV1beta1Overhead) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1RuntimeClass) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	field.Write("handler")
+
+	more.More()
+	j.WriteObjectField("handler")
 	j.WriteString(s.Handler)
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Overhead.Set {
-		field.Write("overhead")
+		more.More()
+		j.WriteObjectField("overhead")
 		s.Overhead.WriteJSON(j)
 	}
+
 	if s.Scheduling.Set {
-		field.Write("scheduling")
+		more.More()
+		j.WriteObjectField("scheduling")
 		s.Scheduling.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINodeV1beta1RuntimeClass json value to io.Writer.
 func (s IoK8sAPINodeV1beta1RuntimeClass) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -33172,27 +39462,44 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1RuntimeClassList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINodeV1beta1RuntimeClassList json value to io.Writer.
 func (s IoK8sAPINodeV1beta1RuntimeClassList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -33252,16 +39559,32 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1Scheduling) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "NodeSelector".
-	// Unsupported kind "pointer" for field "Tolerations".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "nodeSelector".
+
+	if s.Tolerations != nil {
+		more.More()
+		j.WriteObjectField("tolerations")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Tolerations {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPINodeV1beta1Scheduling json value to io.Writer.
 func (s IoK8sAPINodeV1beta1Scheduling) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -33290,7 +39613,7 @@ func (s *IoK8sAPINodeV1beta1Scheduling) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "tolerations":
-			// Unsupported kind "pointer" for field "Tolerations".
+			// Unsupported kind "array" for field "Tolerations".
 			i.Skip()
 			return true
 		default:
@@ -33304,34 +39627,45 @@ func (s *IoK8sAPINodeV1beta1Scheduling) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudget) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1PodDisruptionBudget json value to io.Writer.
 func (s IoK8sAPIPolicyV1PodDisruptionBudget) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -33401,27 +39735,44 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudget) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1PodDisruptionBudgetList json value to io.Writer.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -33481,20 +39832,26 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) ReadJSON(i *json.Iterator) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "MaxUnavailable".
-	// Unsupported kind "pointer" for field "MinAvailable".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "maxUnavailable".
+
+	// Unsupported kind "pointer" for field "minAvailable".
+
 	if s.Selector.Set {
-		field.Write("selector")
+		more.More()
+		j.WriteObjectField("selector")
 		s.Selector.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1PodDisruptionBudgetSpec json value to io.Writer.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -33544,28 +39901,53 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Conditions".
-	field.Write("currentHealthy")
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("currentHealthy")
 	j.WriteInt32(s.CurrentHealthy)
-	field.Write("desiredHealthy")
+
+	more.More()
+	j.WriteObjectField("desiredHealthy")
 	j.WriteInt32(s.DesiredHealthy)
-	// Unsupported kind "pointer" for field "DisruptedPods".
-	field.Write("disruptionsAllowed")
+
+	// Unsupported kind "pointer" for field "disruptedPods".
+
+	more.More()
+	j.WriteObjectField("disruptionsAllowed")
 	j.WriteInt32(s.DisruptionsAllowed)
-	field.Write("expectedPods")
+
+	more.More()
+	j.WriteObjectField("expectedPods")
 	j.WriteInt32(s.ExpectedPods)
+
 	if s.ObservedGeneration.Set {
-		field.Write("observedGeneration")
+		more.More()
+		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1PodDisruptionBudgetStatus json value to io.Writer.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -33590,7 +39972,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) ReadJSON(i *json.Iterator) e
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		case "currentHealthy":
@@ -33627,16 +40009,20 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) ReadJSON(i *json.Iterator) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1AllowedCSIDriver) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1beta1AllowedCSIDriver json value to io.Writer.
 func (s IoK8sAPIPolicyV1beta1AllowedCSIDriver) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -33674,16 +40060,20 @@ func (s *IoK8sAPIPolicyV1beta1AllowedCSIDriver) ReadJSON(i *json.Iterator) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1AllowedFlexVolume) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("driver")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("driver")
 	j.WriteString(s.Driver)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1beta1AllowedFlexVolume json value to io.Writer.
 func (s IoK8sAPIPolicyV1beta1AllowedFlexVolume) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -33721,22 +40111,27 @@ func (s *IoK8sAPIPolicyV1beta1AllowedFlexVolume) ReadJSON(i *json.Iterator) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1AllowedHostPath) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.PathPrefix.Set {
-		field.Write("pathPrefix")
+		more.More()
+		j.WriteObjectField("pathPrefix")
 		s.PathPrefix.WriteJSON(j)
 	}
+
 	if s.ReadOnly.Set {
-		field.Write("readOnly")
+		more.More()
+		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1beta1AllowedHostPath json value to io.Writer.
 func (s IoK8sAPIPolicyV1beta1AllowedHostPath) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -33785,19 +40180,35 @@ func (s *IoK8sAPIPolicyV1beta1AllowedHostPath) ReadJSON(i *json.Iterator) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Ranges".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Ranges != nil {
+		more.More()
+		j.WriteObjectField("ranges")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Ranges {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Rule.Set {
-		field.Write("rule")
+		more.More()
+		j.WriteObjectField("rule")
 		s.Rule.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1beta1FSGroupStrategyOptions json value to io.Writer.
 func (s IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -33822,7 +40233,7 @@ func (s *IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) ReadJSON(i *json.Iterator)
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "ranges":
-			// Unsupported kind "pointer" for field "Ranges".
+			// Unsupported kind "array" for field "Ranges".
 			i.Skip()
 			return true
 		case "rule":
@@ -33843,18 +40254,24 @@ func (s *IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) ReadJSON(i *json.Iterator)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1HostPortRange) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("max")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("max")
 	j.WriteInt32(s.Max)
-	field.Write("min")
+
+	more.More()
+	j.WriteObjectField("min")
 	j.WriteInt32(s.Min)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1beta1HostPortRange json value to io.Writer.
 func (s IoK8sAPIPolicyV1beta1HostPortRange) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -33895,18 +40312,24 @@ func (s *IoK8sAPIPolicyV1beta1HostPortRange) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1IDRange) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("max")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("max")
 	j.WriteInt64(s.Max)
-	field.Write("min")
+
+	more.More()
+	j.WriteObjectField("min")
 	j.WriteInt64(s.Min)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1beta1IDRange json value to io.Writer.
 func (s IoK8sAPIPolicyV1beta1IDRange) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -33947,34 +40370,45 @@ func (s *IoK8sAPIPolicyV1beta1IDRange) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1beta1PodDisruptionBudget json value to io.Writer.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -34044,27 +40478,44 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) ReadJSON(i *json.Iterator) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1beta1PodDisruptionBudgetList json value to io.Writer.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -34124,20 +40575,26 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) ReadJSON(i *json.Iterator
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "MaxUnavailable".
-	// Unsupported kind "pointer" for field "MinAvailable".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "maxUnavailable".
+
+	// Unsupported kind "pointer" for field "minAvailable".
+
 	if s.Selector.Set {
-		field.Write("selector")
+		more.More()
+		j.WriteObjectField("selector")
 		s.Selector.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec json value to io.Writer.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -34187,28 +40644,53 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) ReadJSON(i *json.Iterator
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Conditions".
-	field.Write("currentHealthy")
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("currentHealthy")
 	j.WriteInt32(s.CurrentHealthy)
-	field.Write("desiredHealthy")
+
+	more.More()
+	j.WriteObjectField("desiredHealthy")
 	j.WriteInt32(s.DesiredHealthy)
-	// Unsupported kind "pointer" for field "DisruptedPods".
-	field.Write("disruptionsAllowed")
+
+	// Unsupported kind "pointer" for field "disruptedPods".
+
+	more.More()
+	j.WriteObjectField("disruptionsAllowed")
 	j.WriteInt32(s.DisruptionsAllowed)
-	field.Write("expectedPods")
+
+	more.More()
+	j.WriteObjectField("expectedPods")
 	j.WriteInt32(s.ExpectedPods)
+
 	if s.ObservedGeneration.Set {
-		field.Write("observedGeneration")
+		more.More()
+		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus json value to io.Writer.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -34233,7 +40715,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) ReadJSON(i *json.Iterat
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		case "currentHealthy":
@@ -34270,30 +40752,39 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) ReadJSON(i *json.Iterat
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1beta1PodSecurityPolicy json value to io.Writer.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -34356,27 +40847,44 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) ReadJSON(i *json.Iterator) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1beta1PodSecurityPolicyList json value to io.Writer.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -34436,69 +40944,239 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) ReadJSON(i *json.Iterator) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AllowPrivilegeEscalation.Set {
-		field.Write("allowPrivilegeEscalation")
+		more.More()
+		j.WriteObjectField("allowPrivilegeEscalation")
 		s.AllowPrivilegeEscalation.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "AllowedCSIDrivers".
-	// Unsupported kind "pointer" for field "AllowedCapabilities".
-	// Unsupported kind "pointer" for field "AllowedFlexVolumes".
-	// Unsupported kind "pointer" for field "AllowedHostPaths".
-	// Unsupported kind "pointer" for field "AllowedProcMountTypes".
-	// Unsupported kind "pointer" for field "AllowedUnsafeSysctls".
-	// Unsupported kind "pointer" for field "DefaultAddCapabilities".
+
+	if s.AllowedCSIDrivers != nil {
+		more.More()
+		j.WriteObjectField("allowedCSIDrivers")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.AllowedCSIDrivers {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.AllowedCapabilities != nil {
+		more.More()
+		j.WriteObjectField("allowedCapabilities")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.AllowedCapabilities {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.AllowedFlexVolumes != nil {
+		more.More()
+		j.WriteObjectField("allowedFlexVolumes")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.AllowedFlexVolumes {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.AllowedHostPaths != nil {
+		more.More()
+		j.WriteObjectField("allowedHostPaths")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.AllowedHostPaths {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.AllowedProcMountTypes != nil {
+		more.More()
+		j.WriteObjectField("allowedProcMountTypes")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.AllowedProcMountTypes {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.AllowedUnsafeSysctls != nil {
+		more.More()
+		j.WriteObjectField("allowedUnsafeSysctls")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.AllowedUnsafeSysctls {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.DefaultAddCapabilities != nil {
+		more.More()
+		j.WriteObjectField("defaultAddCapabilities")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.DefaultAddCapabilities {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.DefaultAllowPrivilegeEscalation.Set {
-		field.Write("defaultAllowPrivilegeEscalation")
+		more.More()
+		j.WriteObjectField("defaultAllowPrivilegeEscalation")
 		s.DefaultAllowPrivilegeEscalation.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "ForbiddenSysctls".
-	field.Write("fsGroup")
+
+	if s.ForbiddenSysctls != nil {
+		more.More()
+		j.WriteObjectField("forbiddenSysctls")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ForbiddenSysctls {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("fsGroup")
 	s.FsGroup.WriteJSON(j)
+
 	if s.HostIPC.Set {
-		field.Write("hostIPC")
+		more.More()
+		j.WriteObjectField("hostIPC")
 		s.HostIPC.WriteJSON(j)
 	}
+
 	if s.HostNetwork.Set {
-		field.Write("hostNetwork")
+		more.More()
+		j.WriteObjectField("hostNetwork")
 		s.HostNetwork.WriteJSON(j)
 	}
+
 	if s.HostPID.Set {
-		field.Write("hostPID")
+		more.More()
+		j.WriteObjectField("hostPID")
 		s.HostPID.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "HostPorts".
+
+	if s.HostPorts != nil {
+		more.More()
+		j.WriteObjectField("hostPorts")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.HostPorts {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Privileged.Set {
-		field.Write("privileged")
+		more.More()
+		j.WriteObjectField("privileged")
 		s.Privileged.WriteJSON(j)
 	}
+
 	if s.ReadOnlyRootFilesystem.Set {
-		field.Write("readOnlyRootFilesystem")
+		more.More()
+		j.WriteObjectField("readOnlyRootFilesystem")
 		s.ReadOnlyRootFilesystem.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "RequiredDropCapabilities".
+
+	if s.RequiredDropCapabilities != nil {
+		more.More()
+		j.WriteObjectField("requiredDropCapabilities")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.RequiredDropCapabilities {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.RunAsGroup.Set {
-		field.Write("runAsGroup")
+		more.More()
+		j.WriteObjectField("runAsGroup")
 		s.RunAsGroup.WriteJSON(j)
 	}
-	field.Write("runAsUser")
+
+	more.More()
+	j.WriteObjectField("runAsUser")
 	s.RunAsUser.WriteJSON(j)
+
 	if s.RuntimeClass.Set {
-		field.Write("runtimeClass")
+		more.More()
+		j.WriteObjectField("runtimeClass")
 		s.RuntimeClass.WriteJSON(j)
 	}
-	field.Write("seLinux")
+
+	more.More()
+	j.WriteObjectField("seLinux")
 	s.SeLinux.WriteJSON(j)
-	field.Write("supplementalGroups")
+
+	more.More()
+	j.WriteObjectField("supplementalGroups")
 	s.SupplementalGroups.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Volumes".
+
+	if s.Volumes != nil {
+		more.More()
+		j.WriteObjectField("volumes")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Volumes {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1beta1PodSecurityPolicySpec json value to io.Writer.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -34530,31 +41208,31 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			}
 			return true
 		case "allowedCSIDrivers":
-			// Unsupported kind "pointer" for field "AllowedCSIDrivers".
+			// Unsupported kind "array" for field "AllowedCSIDrivers".
 			i.Skip()
 			return true
 		case "allowedCapabilities":
-			// Unsupported kind "pointer" for field "AllowedCapabilities".
+			// Unsupported kind "array" for field "AllowedCapabilities".
 			i.Skip()
 			return true
 		case "allowedFlexVolumes":
-			// Unsupported kind "pointer" for field "AllowedFlexVolumes".
+			// Unsupported kind "array" for field "AllowedFlexVolumes".
 			i.Skip()
 			return true
 		case "allowedHostPaths":
-			// Unsupported kind "pointer" for field "AllowedHostPaths".
+			// Unsupported kind "array" for field "AllowedHostPaths".
 			i.Skip()
 			return true
 		case "allowedProcMountTypes":
-			// Unsupported kind "pointer" for field "AllowedProcMountTypes".
+			// Unsupported kind "array" for field "AllowedProcMountTypes".
 			i.Skip()
 			return true
 		case "allowedUnsafeSysctls":
-			// Unsupported kind "pointer" for field "AllowedUnsafeSysctls".
+			// Unsupported kind "array" for field "AllowedUnsafeSysctls".
 			i.Skip()
 			return true
 		case "defaultAddCapabilities":
-			// Unsupported kind "pointer" for field "DefaultAddCapabilities".
+			// Unsupported kind "array" for field "DefaultAddCapabilities".
 			i.Skip()
 			return true
 		case "defaultAllowPrivilegeEscalation":
@@ -34565,7 +41243,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			}
 			return true
 		case "forbiddenSysctls":
-			// Unsupported kind "pointer" for field "ForbiddenSysctls".
+			// Unsupported kind "array" for field "ForbiddenSysctls".
 			i.Skip()
 			return true
 		case "fsGroup":
@@ -34596,7 +41274,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			}
 			return true
 		case "hostPorts":
-			// Unsupported kind "pointer" for field "HostPorts".
+			// Unsupported kind "array" for field "HostPorts".
 			i.Skip()
 			return true
 		case "privileged":
@@ -34614,7 +41292,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			}
 			return true
 		case "requiredDropCapabilities":
-			// Unsupported kind "pointer" for field "RequiredDropCapabilities".
+			// Unsupported kind "array" for field "RequiredDropCapabilities".
 			i.Skip()
 			return true
 		case "runAsGroup":
@@ -34650,7 +41328,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 			}
 			return true
 		case "volumes":
-			// Unsupported kind "pointer" for field "Volumes".
+			// Unsupported kind "array" for field "Volumes".
 			i.Skip()
 			return true
 		default:
@@ -34664,17 +41342,33 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) ReadJSON(i *json.Iterator) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Ranges".
-	field.Write("rule")
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Ranges != nil {
+		more.More()
+		j.WriteObjectField("ranges")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Ranges {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("rule")
 	j.WriteString(s.Rule)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions json value to io.Writer.
 func (s IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -34699,7 +41393,7 @@ func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) ReadJSON(i *json.Iterat
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "ranges":
-			// Unsupported kind "pointer" for field "Ranges".
+			// Unsupported kind "array" for field "Ranges".
 			i.Skip()
 			return true
 		case "rule":
@@ -34716,17 +41410,33 @@ func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) ReadJSON(i *json.Iterat
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Ranges".
-	field.Write("rule")
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Ranges != nil {
+		more.More()
+		j.WriteObjectField("ranges")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Ranges {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("rule")
 	j.WriteString(s.Rule)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions json value to io.Writer.
 func (s IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -34751,7 +41461,7 @@ func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) ReadJSON(i *json.Iterato
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "ranges":
-			// Unsupported kind "pointer" for field "Ranges".
+			// Unsupported kind "array" for field "Ranges".
 			i.Skip()
 			return true
 		case "rule":
@@ -34768,19 +41478,32 @@ func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) ReadJSON(i *json.Iterato
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "array" for field "AllowedRuntimeClassNames".
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("allowedRuntimeClassNames")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.AllowedRuntimeClassNames {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.DefaultRuntimeClassName.Set {
-		field.Write("defaultRuntimeClassName")
+		more.More()
+		j.WriteObjectField("defaultRuntimeClassName")
 		s.DefaultRuntimeClassName.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions json value to io.Writer.
 func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -34826,20 +41549,26 @@ func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) ReadJSON(i *json.Iter
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("rule")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("rule")
 	j.WriteString(s.Rule)
+
 	if s.SeLinuxOptions.Set {
-		field.Write("seLinuxOptions")
+		more.More()
+		j.WriteObjectField("seLinuxOptions")
 		s.SeLinuxOptions.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1beta1SELinuxStrategyOptions json value to io.Writer.
 func (s IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -34884,19 +41613,35 @@ func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) ReadJSON(i *json.Iterator)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Ranges".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Ranges != nil {
+		more.More()
+		j.WriteObjectField("ranges")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Ranges {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Rule.Set {
-		field.Write("rule")
+		more.More()
+		j.WriteObjectField("rule")
 		s.Rule.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions json value to io.Writer.
 func (s IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -34921,7 +41666,7 @@ func (s *IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) ReadJSON(i *jso
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "ranges":
-			// Unsupported kind "pointer" for field "Ranges".
+			// Unsupported kind "array" for field "Ranges".
 			i.Skip()
 			return true
 		case "rule":
@@ -34942,15 +41687,29 @@ func (s *IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) ReadJSON(i *jso
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1AggregationRule) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "ClusterRoleSelectors".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.ClusterRoleSelectors != nil {
+		more.More()
+		j.WriteObjectField("clusterRoleSelectors")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ClusterRoleSelectors {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIRbacV1AggregationRule json value to io.Writer.
 func (s IoK8sAPIRbacV1AggregationRule) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -34975,7 +41734,7 @@ func (s *IoK8sAPIRbacV1AggregationRule) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "clusterRoleSelectors":
-			// Unsupported kind "pointer" for field "ClusterRoleSelectors".
+			// Unsupported kind "array" for field "ClusterRoleSelectors".
 			i.Skip()
 			return true
 		default:
@@ -34989,31 +41748,53 @@ func (s *IoK8sAPIRbacV1AggregationRule) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1ClusterRole) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AggregationRule.Set {
-		field.Write("aggregationRule")
+		more.More()
+		j.WriteObjectField("aggregationRule")
 		s.AggregationRule.WriteJSON(j)
 	}
+
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Rules".
+
+	if s.Rules != nil {
+		more.More()
+		j.WriteObjectField("rules")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Rules {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIRbacV1ClusterRole json value to io.Writer.
 func (s IoK8sAPIRbacV1ClusterRole) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -35066,7 +41847,7 @@ func (s *IoK8sAPIRbacV1ClusterRole) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "rules":
-			// Unsupported kind "pointer" for field "Rules".
+			// Unsupported kind "array" for field "Rules".
 			i.Skip()
 			return true
 		default:
@@ -35080,29 +41861,51 @@ func (s *IoK8sAPIRbacV1ClusterRole) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1ClusterRoleBinding) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	field.Write("roleRef")
+
+	more.More()
+	j.WriteObjectField("roleRef")
 	s.RoleRef.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Subjects".
+
+	if s.Subjects != nil {
+		more.More()
+		j.WriteObjectField("subjects")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Subjects {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIRbacV1ClusterRoleBinding json value to io.Writer.
 func (s IoK8sAPIRbacV1ClusterRoleBinding) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -35154,7 +41957,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "subjects":
-			// Unsupported kind "pointer" for field "Subjects".
+			// Unsupported kind "array" for field "Subjects".
 			i.Skip()
 			return true
 		default:
@@ -35168,27 +41971,44 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1ClusterRoleBindingList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIRbacV1ClusterRoleBindingList json value to io.Writer.
 func (s IoK8sAPIRbacV1ClusterRoleBindingList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -35248,27 +42068,44 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) ReadJSON(i *json.Iterator) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1ClusterRoleList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIRbacV1ClusterRoleList json value to io.Writer.
 func (s IoK8sAPIRbacV1ClusterRoleList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -35328,19 +42165,82 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1PolicyRule) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "ApiGroups".
-	// Unsupported kind "pointer" for field "NonResourceURLs".
-	// Unsupported kind "pointer" for field "ResourceNames".
-	// Unsupported kind "pointer" for field "Resources".
-	// Unsupported kind "array" for field "Verbs".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.ApiGroups != nil {
+		more.More()
+		j.WriteObjectField("apiGroups")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ApiGroups {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.NonResourceURLs != nil {
+		more.More()
+		j.WriteObjectField("nonResourceURLs")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.NonResourceURLs {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.ResourceNames != nil {
+		more.More()
+		j.WriteObjectField("resourceNames")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ResourceNames {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.Resources != nil {
+		more.More()
+		j.WriteObjectField("resources")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Resources {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("verbs")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Verbs {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIRbacV1PolicyRule json value to io.Writer.
 func (s IoK8sAPIRbacV1PolicyRule) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -35365,19 +42265,19 @@ func (s *IoK8sAPIRbacV1PolicyRule) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "apiGroups":
-			// Unsupported kind "pointer" for field "ApiGroups".
+			// Unsupported kind "array" for field "ApiGroups".
 			i.Skip()
 			return true
 		case "nonResourceURLs":
-			// Unsupported kind "pointer" for field "NonResourceURLs".
+			// Unsupported kind "array" for field "NonResourceURLs".
 			i.Skip()
 			return true
 		case "resourceNames":
-			// Unsupported kind "pointer" for field "ResourceNames".
+			// Unsupported kind "array" for field "ResourceNames".
 			i.Skip()
 			return true
 		case "resources":
-			// Unsupported kind "pointer" for field "Resources".
+			// Unsupported kind "array" for field "Resources".
 			i.Skip()
 			return true
 		case "verbs":
@@ -35395,27 +42295,47 @@ func (s *IoK8sAPIRbacV1PolicyRule) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1Role) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Rules".
+
+	if s.Rules != nil {
+		more.More()
+		j.WriteObjectField("rules")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Rules {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIRbacV1Role json value to io.Writer.
 func (s IoK8sAPIRbacV1Role) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -35461,7 +42381,7 @@ func (s *IoK8sAPIRbacV1Role) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "rules":
-			// Unsupported kind "pointer" for field "Rules".
+			// Unsupported kind "array" for field "Rules".
 			i.Skip()
 			return true
 		default:
@@ -35475,29 +42395,51 @@ func (s *IoK8sAPIRbacV1Role) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1RoleBinding) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	field.Write("roleRef")
+
+	more.More()
+	j.WriteObjectField("roleRef")
 	s.RoleRef.WriteJSON(j)
-	// Unsupported kind "pointer" for field "Subjects".
+
+	if s.Subjects != nil {
+		more.More()
+		j.WriteObjectField("subjects")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Subjects {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIRbacV1RoleBinding json value to io.Writer.
 func (s IoK8sAPIRbacV1RoleBinding) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -35549,7 +42491,7 @@ func (s *IoK8sAPIRbacV1RoleBinding) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "subjects":
-			// Unsupported kind "pointer" for field "Subjects".
+			// Unsupported kind "array" for field "Subjects".
 			i.Skip()
 			return true
 		default:
@@ -35563,27 +42505,44 @@ func (s *IoK8sAPIRbacV1RoleBinding) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1RoleBindingList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIRbacV1RoleBindingList json value to io.Writer.
 func (s IoK8sAPIRbacV1RoleBindingList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -35643,27 +42602,44 @@ func (s *IoK8sAPIRbacV1RoleBindingList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1RoleList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIRbacV1RoleList json value to io.Writer.
 func (s IoK8sAPIRbacV1RoleList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -35723,20 +42699,28 @@ func (s *IoK8sAPIRbacV1RoleList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1RoleRef) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("apiGroup")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("apiGroup")
 	j.WriteString(s.ApiGroup)
-	field.Write("kind")
+
+	more.More()
+	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIRbacV1RoleRef json value to io.Writer.
 func (s IoK8sAPIRbacV1RoleRef) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -35780,26 +42764,35 @@ func (s *IoK8sAPIRbacV1RoleRef) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIRbacV1Subject) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiGroup.Set {
-		field.Write("apiGroup")
+		more.More()
+		j.WriteObjectField("apiGroup")
 		s.ApiGroup.WriteJSON(j)
 	}
-	field.Write("kind")
+
+	more.More()
+	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	if s.Namespace.Set {
-		field.Write("namespace")
+		more.More()
+		j.WriteObjectField("namespace")
 		s.Namespace.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIRbacV1Subject json value to io.Writer.
 func (s IoK8sAPIRbacV1Subject) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -35854,40 +42847,55 @@ func (s *IoK8sAPIRbacV1Subject) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPISchedulingV1PriorityClass) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Description.Set {
-		field.Write("description")
+		more.More()
+		j.WriteObjectField("description")
 		s.Description.WriteJSON(j)
 	}
+
 	if s.GlobalDefault.Set {
-		field.Write("globalDefault")
+		more.More()
+		j.WriteObjectField("globalDefault")
 		s.GlobalDefault.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.PreemptionPolicy.Set {
-		field.Write("preemptionPolicy")
+		more.More()
+		j.WriteObjectField("preemptionPolicy")
 		s.PreemptionPolicy.WriteJSON(j)
 	}
-	field.Write("value")
+
+	more.More()
+	j.WriteObjectField("value")
 	j.WriteInt32(s.Value)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPISchedulingV1PriorityClass json value to io.Writer.
 func (s IoK8sAPISchedulingV1PriorityClass) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -35967,27 +42975,44 @@ func (s *IoK8sAPISchedulingV1PriorityClass) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPISchedulingV1PriorityClassList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPISchedulingV1PriorityClassList json value to io.Writer.
 func (s IoK8sAPISchedulingV1PriorityClassList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -36047,28 +43072,37 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) ReadJSON(i *json.Iterator) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSIDriver) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	field.Write("spec")
+
+	more.More()
+	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1CSIDriver json value to io.Writer.
 func (s IoK8sAPIStorageV1CSIDriver) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -36130,27 +43164,44 @@ func (s *IoK8sAPIStorageV1CSIDriver) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSIDriverList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1CSIDriverList json value to io.Writer.
 func (s IoK8sAPIStorageV1CSIDriverList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -36210,36 +43261,73 @@ func (s *IoK8sAPIStorageV1CSIDriverList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSIDriverSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AttachRequired.Set {
-		field.Write("attachRequired")
+		more.More()
+		j.WriteObjectField("attachRequired")
 		s.AttachRequired.WriteJSON(j)
 	}
+
 	if s.FsGroupPolicy.Set {
-		field.Write("fsGroupPolicy")
+		more.More()
+		j.WriteObjectField("fsGroupPolicy")
 		s.FsGroupPolicy.WriteJSON(j)
 	}
+
 	if s.PodInfoOnMount.Set {
-		field.Write("podInfoOnMount")
+		more.More()
+		j.WriteObjectField("podInfoOnMount")
 		s.PodInfoOnMount.WriteJSON(j)
 	}
+
 	if s.RequiresRepublish.Set {
-		field.Write("requiresRepublish")
+		more.More()
+		j.WriteObjectField("requiresRepublish")
 		s.RequiresRepublish.WriteJSON(j)
 	}
+
 	if s.StorageCapacity.Set {
-		field.Write("storageCapacity")
+		more.More()
+		j.WriteObjectField("storageCapacity")
 		s.StorageCapacity.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "TokenRequests".
-	// Unsupported kind "pointer" for field "VolumeLifecycleModes".
+
+	if s.TokenRequests != nil {
+		more.More()
+		j.WriteObjectField("tokenRequests")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.TokenRequests {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.VolumeLifecycleModes != nil {
+		more.More()
+		j.WriteObjectField("volumeLifecycleModes")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.VolumeLifecycleModes {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1CSIDriverSpec json value to io.Writer.
 func (s IoK8sAPIStorageV1CSIDriverSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -36299,11 +43387,11 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "tokenRequests":
-			// Unsupported kind "pointer" for field "TokenRequests".
+			// Unsupported kind "array" for field "TokenRequests".
 			i.Skip()
 			return true
 		case "volumeLifecycleModes":
-			// Unsupported kind "pointer" for field "VolumeLifecycleModes".
+			// Unsupported kind "array" for field "VolumeLifecycleModes".
 			i.Skip()
 			return true
 		default:
@@ -36317,28 +43405,37 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSINode) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	field.Write("spec")
+
+	more.More()
+	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1CSINode json value to io.Writer.
 func (s IoK8sAPIStorageV1CSINode) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -36400,23 +43497,43 @@ func (s *IoK8sAPIStorageV1CSINode) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSINodeDriver) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Allocatable.Set {
-		field.Write("allocatable")
+		more.More()
+		j.WriteObjectField("allocatable")
 		s.Allocatable.WriteJSON(j)
 	}
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-	field.Write("nodeID")
+
+	more.More()
+	j.WriteObjectField("nodeID")
 	j.WriteString(s.NodeID)
-	// Unsupported kind "pointer" for field "TopologyKeys".
+
+	if s.TopologyKeys != nil {
+		more.More()
+		j.WriteObjectField("topologyKeys")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.TopologyKeys {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1CSINodeDriver json value to io.Writer.
 func (s IoK8sAPIStorageV1CSINodeDriver) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -36454,7 +43571,7 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) ReadJSON(i *json.Iterator) error {
 			s.NodeID = i.ReadString()
 			return i.Error == nil
 		case "topologyKeys":
-			// Unsupported kind "pointer" for field "TopologyKeys".
+			// Unsupported kind "array" for field "TopologyKeys".
 			i.Skip()
 			return true
 		default:
@@ -36468,27 +43585,44 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSINodeList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1CSINodeList json value to io.Writer.
 func (s IoK8sAPIStorageV1CSINodeList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -36548,15 +43682,26 @@ func (s *IoK8sAPIStorageV1CSINodeList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSINodeSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "array" for field "Drivers".
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("drivers")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Drivers {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1CSINodeSpec json value to io.Writer.
 func (s IoK8sAPIStorageV1CSINodeSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -36595,43 +43740,85 @@ func (s *IoK8sAPIStorageV1CSINodeSpec) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1StorageClass) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AllowVolumeExpansion.Set {
-		field.Write("allowVolumeExpansion")
+		more.More()
+		j.WriteObjectField("allowVolumeExpansion")
 		s.AllowVolumeExpansion.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "AllowedTopologies".
+
+	if s.AllowedTopologies != nil {
+		more.More()
+		j.WriteObjectField("allowedTopologies")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.AllowedTopologies {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "MountOptions".
-	// Unsupported kind "pointer" for field "Parameters".
-	field.Write("provisioner")
+
+	if s.MountOptions != nil {
+		more.More()
+		j.WriteObjectField("mountOptions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.MountOptions {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	// Unsupported kind "pointer" for field "parameters".
+
+	more.More()
+	j.WriteObjectField("provisioner")
 	j.WriteString(s.Provisioner)
+
 	if s.ReclaimPolicy.Set {
-		field.Write("reclaimPolicy")
+		more.More()
+		j.WriteObjectField("reclaimPolicy")
 		s.ReclaimPolicy.WriteJSON(j)
 	}
+
 	if s.VolumeBindingMode.Set {
-		field.Write("volumeBindingMode")
+		more.More()
+		j.WriteObjectField("volumeBindingMode")
 		s.VolumeBindingMode.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1StorageClass json value to io.Writer.
 func (s IoK8sAPIStorageV1StorageClass) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -36663,7 +43850,7 @@ func (s *IoK8sAPIStorageV1StorageClass) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "allowedTopologies":
-			// Unsupported kind "pointer" for field "AllowedTopologies".
+			// Unsupported kind "array" for field "AllowedTopologies".
 			i.Skip()
 			return true
 		case "apiVersion":
@@ -36688,7 +43875,7 @@ func (s *IoK8sAPIStorageV1StorageClass) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "mountOptions":
-			// Unsupported kind "pointer" for field "MountOptions".
+			// Unsupported kind "array" for field "MountOptions".
 			i.Skip()
 			return true
 		case "parameters":
@@ -36723,27 +43910,44 @@ func (s *IoK8sAPIStorageV1StorageClass) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1StorageClassList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1StorageClassList json value to io.Writer.
 func (s IoK8sAPIStorageV1StorageClassList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -36803,20 +44007,26 @@ func (s *IoK8sAPIStorageV1StorageClassList) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1TokenRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("audience")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("audience")
 	j.WriteString(s.Audience)
+
 	if s.ExpirationSeconds.Set {
-		field.Write("expirationSeconds")
+		more.More()
+		j.WriteObjectField("expirationSeconds")
 		s.ExpirationSeconds.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1TokenRequest json value to io.Writer.
 func (s IoK8sAPIStorageV1TokenRequest) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -36861,32 +44071,43 @@ func (s *IoK8sAPIStorageV1TokenRequest) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachment) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	field.Write("spec")
+
+	more.More()
+	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1VolumeAttachment json value to io.Writer.
 func (s IoK8sAPIStorageV1VolumeAttachment) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -36955,27 +44176,44 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1VolumeAttachmentList json value to io.Writer.
 func (s IoK8sAPIStorageV1VolumeAttachmentList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -37035,22 +44273,27 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) ReadJSON(i *json.Iterator) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.InlineVolumeSpec.Set {
-		field.Write("inlineVolumeSpec")
+		more.More()
+		j.WriteObjectField("inlineVolumeSpec")
 		s.InlineVolumeSpec.WriteJSON(j)
 	}
+
 	if s.PersistentVolumeName.Set {
-		field.Write("persistentVolumeName")
+		more.More()
+		j.WriteObjectField("persistentVolumeName")
 		s.PersistentVolumeName.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1VolumeAttachmentSource json value to io.Writer.
 func (s IoK8sAPIStorageV1VolumeAttachmentSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -37099,20 +44342,28 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSource) ReadJSON(i *json.Iterator) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("attacher")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("attacher")
 	j.WriteString(s.Attacher)
-	field.Write("nodeName")
+
+	more.More()
+	j.WriteObjectField("nodeName")
 	j.WriteString(s.NodeName)
-	field.Write("source")
+
+	more.More()
+	j.WriteObjectField("source")
 	s.Source.WriteJSON(j)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1VolumeAttachmentSpec json value to io.Writer.
 func (s IoK8sAPIStorageV1VolumeAttachmentSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -37159,25 +44410,33 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) ReadJSON(i *json.Iterator) error
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AttachError.Set {
-		field.Write("attachError")
+		more.More()
+		j.WriteObjectField("attachError")
 		s.AttachError.WriteJSON(j)
 	}
-	field.Write("attached")
+
+	more.More()
+	j.WriteObjectField("attached")
 	j.WriteBool(s.Attached)
-	// Unsupported kind "pointer" for field "AttachmentMetadata".
+
+	// Unsupported kind "pointer" for field "attachmentMetadata".
+
 	if s.DetachError.Set {
-		field.Write("detachError")
+		more.More()
+		j.WriteObjectField("detachError")
 		s.DetachError.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1VolumeAttachmentStatus json value to io.Writer.
 func (s IoK8sAPIStorageV1VolumeAttachmentStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -37233,19 +44492,23 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) ReadJSON(i *json.Iterator) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeError) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Time".
+
+	// Unsupported kind "pointer" for field "time".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1VolumeError json value to io.Writer.
 func (s IoK8sAPIStorageV1VolumeError) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -37291,18 +44554,21 @@ func (s *IoK8sAPIStorageV1VolumeError) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeNodeResources) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Count.Set {
-		field.Write("count")
+		more.More()
+		j.WriteObjectField("count")
 		s.Count.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1VolumeNodeResources json value to io.Writer.
 func (s IoK8sAPIStorageV1VolumeNodeResources) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -37344,34 +44610,47 @@ func (s *IoK8sAPIStorageV1VolumeNodeResources) ReadJSON(i *json.Iterator) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Capacity".
+
+	// Unsupported kind "pointer" for field "capacity".
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "MaximumVolumeSize".
+
+	// Unsupported kind "pointer" for field "maximumVolumeSize".
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.NodeTopology.Set {
-		field.Write("nodeTopology")
+		more.More()
+		j.WriteObjectField("nodeTopology")
 		s.NodeTopology.WriteJSON(j)
 	}
-	field.Write("storageClassName")
+
+	more.More()
+	j.WriteObjectField("storageClassName")
 	j.WriteString(s.StorageClassName)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1alpha1CSIStorageCapacity json value to io.Writer.
 func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -37445,27 +44724,44 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) ReadJSON(i *json.Iterator) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1alpha1CSIStorageCapacityList json value to io.Writer.
 func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -37525,34 +44821,47 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) ReadJSON(i *json.Iterato
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Capacity".
+
+	// Unsupported kind "pointer" for field "capacity".
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "MaximumVolumeSize".
+
+	// Unsupported kind "pointer" for field "maximumVolumeSize".
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.NodeTopology.Set {
-		field.Write("nodeTopology")
+		more.More()
+		j.WriteObjectField("nodeTopology")
 		s.NodeTopology.WriteJSON(j)
 	}
-	field.Write("storageClassName")
+
+	more.More()
+	j.WriteObjectField("storageClassName")
 	j.WriteString(s.StorageClassName)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1beta1CSIStorageCapacity json value to io.Writer.
 func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -37626,27 +44935,44 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) ReadJSON(i *json.Iterator) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sAPIStorageV1beta1CSIStorageCapacityList json value to io.Writer.
 func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -37706,32 +45032,45 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) ReadJSON(i *json.Iterator
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Description.Set {
-		field.Write("description")
+		more.More()
+		j.WriteObjectField("description")
 		s.Description.WriteJSON(j)
 	}
+
 	if s.Format.Set {
-		field.Write("format")
+		more.More()
+		j.WriteObjectField("format")
 		s.Format.WriteJSON(j)
 	}
-	field.Write("jsonPath")
+
+	more.More()
+	j.WriteObjectField("jsonPath")
 	j.WriteString(s.JsonPath)
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	if s.Priority.Set {
-		field.Write("priority")
+		more.More()
+		j.WriteObjectField("priority")
 		s.Priority.WriteJSON(j)
 	}
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition json value to io.Writer.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -37796,20 +45135,26 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("strategy")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("strategy")
 	j.WriteString(s.Strategy)
+
 	if s.Webhook.Set {
-		field.Write("webhook")
+		more.More()
+		j.WriteObjectField("webhook")
 		s.Webhook.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion json value to io.Writer.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -37854,32 +45199,43 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversi
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-	field.Write("spec")
+
+	more.More()
+	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition json value to io.Writer.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -37948,27 +45304,38 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "LastTransitionTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "lastTransitionTime".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-	field.Write("status")
+
+	more.More()
+	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition json value to io.Writer.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -38027,27 +45394,44 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList json value to io.Writer.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -38107,28 +45491,63 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Categories".
-	field.Write("kind")
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Categories != nil {
+		more.More()
+		j.WriteObjectField("categories")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Categories {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
+
 	if s.ListKind.Set {
-		field.Write("listKind")
+		more.More()
+		j.WriteObjectField("listKind")
 		s.ListKind.WriteJSON(j)
 	}
-	field.Write("plural")
+
+	more.More()
+	j.WriteObjectField("plural")
 	j.WriteString(s.Plural)
-	// Unsupported kind "pointer" for field "ShortNames".
+
+	if s.ShortNames != nil {
+		more.More()
+		j.WriteObjectField("shortNames")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ShortNames {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Singular.Set {
-		field.Write("singular")
+		more.More()
+		j.WriteObjectField("singular")
 		s.Singular.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames json value to io.Writer.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -38153,7 +45572,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "categories":
-			// Unsupported kind "pointer" for field "Categories".
+			// Unsupported kind "array" for field "Categories".
 			i.Skip()
 			return true
 		case "kind":
@@ -38170,7 +45589,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			s.Plural = i.ReadString()
 			return i.Error == nil
 		case "shortNames":
-			// Unsupported kind "pointer" for field "ShortNames".
+			// Unsupported kind "array" for field "ShortNames".
 			i.Skip()
 			return true
 		case "singular":
@@ -38191,29 +45610,50 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Conversion.Set {
-		field.Write("conversion")
+		more.More()
+		j.WriteObjectField("conversion")
 		s.Conversion.WriteJSON(j)
 	}
-	field.Write("group")
+
+	more.More()
+	j.WriteObjectField("group")
 	j.WriteString(s.Group)
-	field.Write("names")
+
+	more.More()
+	j.WriteObjectField("names")
 	s.Names.WriteJSON(j)
+
 	if s.PreserveUnknownFields.Set {
-		field.Write("preserveUnknownFields")
+		more.More()
+		j.WriteObjectField("preserveUnknownFields")
 		s.PreserveUnknownFields.WriteJSON(j)
 	}
-	field.Write("scope")
+
+	more.More()
+	j.WriteObjectField("scope")
 	j.WriteString(s.Scope)
-	// Unsupported kind "array" for field "Versions".
+
+	more.More()
+	j.WriteObjectField("versions")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Versions {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec json value to io.Writer.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -38278,20 +45718,49 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AcceptedNames.Set {
-		field.Write("acceptedNames")
+		more.More()
+		j.WriteObjectField("acceptedNames")
 		s.AcceptedNames.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Conditions".
-	// Unsupported kind "pointer" for field "StoredVersions".
+
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.StoredVersions != nil {
+		more.More()
+		j.WriteObjectField("storedVersions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.StoredVersions {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus json value to io.Writer.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -38323,11 +45792,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 			return true
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		case "storedVersions":
-			// Unsupported kind "pointer" for field "StoredVersions".
+			// Unsupported kind "array" for field "StoredVersions".
 			i.Skip()
 			return true
 		default:
@@ -38341,37 +45810,65 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "AdditionalPrinterColumns".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.AdditionalPrinterColumns != nil {
+		more.More()
+		j.WriteObjectField("additionalPrinterColumns")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.AdditionalPrinterColumns {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Deprecated.Set {
-		field.Write("deprecated")
+		more.More()
+		j.WriteObjectField("deprecated")
 		s.Deprecated.WriteJSON(j)
 	}
+
 	if s.DeprecationWarning.Set {
-		field.Write("deprecationWarning")
+		more.More()
+		j.WriteObjectField("deprecationWarning")
 		s.DeprecationWarning.WriteJSON(j)
 	}
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	if s.Schema.Set {
-		field.Write("schema")
+		more.More()
+		j.WriteObjectField("schema")
 		s.Schema.WriteJSON(j)
 	}
-	field.Write("served")
+
+	more.More()
+	j.WriteObjectField("served")
 	j.WriteBool(s.Served)
-	field.Write("storage")
+
+	more.More()
+	j.WriteObjectField("storage")
 	j.WriteBool(s.Storage)
+
 	if s.Subresources.Set {
-		field.Write("subresources")
+		more.More()
+		j.WriteObjectField("subresources")
 		s.Subresources.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion json value to io.Writer.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -38396,7 +45893,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "additionalPrinterColumns":
-			// Unsupported kind "pointer" for field "AdditionalPrinterColumns".
+			// Unsupported kind "array" for field "AdditionalPrinterColumns".
 			i.Skip()
 			return true
 		case "deprecated":
@@ -38447,22 +45944,29 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.LabelSelectorPath.Set {
-		field.Write("labelSelectorPath")
+		more.More()
+		j.WriteObjectField("labelSelectorPath")
 		s.LabelSelectorPath.WriteJSON(j)
 	}
-	field.Write("specReplicasPath")
+
+	more.More()
+	j.WriteObjectField("specReplicasPath")
 	j.WriteString(s.SpecReplicasPath)
-	field.Write("statusReplicasPath")
+
+	more.More()
+	j.WriteObjectField("statusReplicasPath")
 	j.WriteString(s.StatusReplicasPath)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale json value to io.Writer.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -38510,19 +46014,23 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Scale.Set {
-		field.Write("scale")
+		more.More()
+		j.WriteObjectField("scale")
 		s.Scale.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Status".
+
+	// Unsupported kind "pointer" for field "status".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources json value to io.Writer.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -38568,18 +46076,21 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.OpenAPIV3Schema.Set {
-		field.Write("openAPIV3Schema")
+		more.More()
+		j.WriteObjectField("openAPIV3Schema")
 		s.OpenAPIV3Schema.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation json value to io.Writer.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -38621,22 +46132,27 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidati
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Description.Set {
-		field.Write("description")
+		more.More()
+		j.WriteObjectField("description")
 		s.Description.WriteJSON(j)
 	}
+
 	if s.URL.Set {
-		field.Write("url")
+		more.More()
+		j.WriteObjectField("url")
 		s.URL.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation json value to io.Writer.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -38685,141 +46201,285 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "AdditionalItems".
-	// Unsupported kind "pointer" for field "AdditionalProperties".
-	// Unsupported kind "pointer" for field "AllOf".
-	// Unsupported kind "pointer" for field "AnyOf".
-	// Unsupported kind "pointer" for field "Default".
-	// Unsupported kind "pointer" for field "Definitions".
-	// Unsupported kind "pointer" for field "Dependencies".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "additionalItems".
+
+	// Unsupported kind "pointer" for field "additionalProperties".
+
+	if s.AllOf != nil {
+		more.More()
+		j.WriteObjectField("allOf")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.AllOf {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	if s.AnyOf != nil {
+		more.More()
+		j.WriteObjectField("anyOf")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.AnyOf {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	// Unsupported kind "pointer" for field "default".
+
+	// Unsupported kind "pointer" for field "definitions".
+
+	// Unsupported kind "pointer" for field "dependencies".
+
 	if s.Description.Set {
-		field.Write("description")
+		more.More()
+		j.WriteObjectField("description")
 		s.Description.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Enum".
-	// Unsupported kind "pointer" for field "Example".
+
+	if s.Enum != nil {
+		more.More()
+		j.WriteObjectField("enum")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Enum {
+			// Unsupported kind "alias" for field "".
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	// Unsupported kind "pointer" for field "example".
+
 	if s.ExclusiveMaximum.Set {
-		field.Write("exclusiveMaximum")
+		more.More()
+		j.WriteObjectField("exclusiveMaximum")
 		s.ExclusiveMaximum.WriteJSON(j)
 	}
+
 	if s.ExclusiveMinimum.Set {
-		field.Write("exclusiveMinimum")
+		more.More()
+		j.WriteObjectField("exclusiveMinimum")
 		s.ExclusiveMinimum.WriteJSON(j)
 	}
+
 	if s.ExternalDocs.Set {
-		field.Write("externalDocs")
+		more.More()
+		j.WriteObjectField("externalDocs")
 		s.ExternalDocs.WriteJSON(j)
 	}
+
 	if s.Format.Set {
-		field.Write("format")
+		more.More()
+		j.WriteObjectField("format")
 		s.Format.WriteJSON(j)
 	}
+
 	if s.ID.Set {
-		field.Write("id")
+		more.More()
+		j.WriteObjectField("id")
 		s.ID.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Items".
+
+	// Unsupported kind "pointer" for field "items".
+
 	if s.MaxItems.Set {
-		field.Write("maxItems")
+		more.More()
+		j.WriteObjectField("maxItems")
 		s.MaxItems.WriteJSON(j)
 	}
+
 	if s.MaxLength.Set {
-		field.Write("maxLength")
+		more.More()
+		j.WriteObjectField("maxLength")
 		s.MaxLength.WriteJSON(j)
 	}
+
 	if s.MaxProperties.Set {
-		field.Write("maxProperties")
+		more.More()
+		j.WriteObjectField("maxProperties")
 		s.MaxProperties.WriteJSON(j)
 	}
+
 	if s.Maximum.Set {
-		field.Write("maximum")
+		more.More()
+		j.WriteObjectField("maximum")
 		s.Maximum.WriteJSON(j)
 	}
+
 	if s.MinItems.Set {
-		field.Write("minItems")
+		more.More()
+		j.WriteObjectField("minItems")
 		s.MinItems.WriteJSON(j)
 	}
+
 	if s.MinLength.Set {
-		field.Write("minLength")
+		more.More()
+		j.WriteObjectField("minLength")
 		s.MinLength.WriteJSON(j)
 	}
+
 	if s.MinProperties.Set {
-		field.Write("minProperties")
+		more.More()
+		j.WriteObjectField("minProperties")
 		s.MinProperties.WriteJSON(j)
 	}
+
 	if s.Minimum.Set {
-		field.Write("minimum")
+		more.More()
+		j.WriteObjectField("minimum")
 		s.Minimum.WriteJSON(j)
 	}
+
 	if s.MultipleOf.Set {
-		field.Write("multipleOf")
+		more.More()
+		j.WriteObjectField("multipleOf")
 		s.MultipleOf.WriteJSON(j)
 	}
+
 	if s.Not.Set {
-		field.Write("not")
+		more.More()
+		j.WriteObjectField("not")
 		s.Not.WriteJSON(j)
 	}
+
 	if s.Nullable.Set {
-		field.Write("nullable")
+		more.More()
+		j.WriteObjectField("nullable")
 		s.Nullable.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "OneOf".
+
+	if s.OneOf != nil {
+		more.More()
+		j.WriteObjectField("oneOf")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.OneOf {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Pattern.Set {
-		field.Write("pattern")
+		more.More()
+		j.WriteObjectField("pattern")
 		s.Pattern.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "PatternProperties".
-	// Unsupported kind "pointer" for field "Properties".
+
+	// Unsupported kind "pointer" for field "patternProperties".
+
+	// Unsupported kind "pointer" for field "properties".
+
 	if s.Ref.Set {
-		field.Write("$ref")
+		more.More()
+		j.WriteObjectField("$ref")
 		s.Ref.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Required".
+
+	if s.Required != nil {
+		more.More()
+		j.WriteObjectField("required")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Required {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Schema.Set {
-		field.Write("$schema")
+		more.More()
+		j.WriteObjectField("$schema")
 		s.Schema.WriteJSON(j)
 	}
+
 	if s.Title.Set {
-		field.Write("title")
+		more.More()
+		j.WriteObjectField("title")
 		s.Title.WriteJSON(j)
 	}
+
 	if s.Type.Set {
-		field.Write("type")
+		more.More()
+		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
+
 	if s.UniqueItems.Set {
-		field.Write("uniqueItems")
+		more.More()
+		j.WriteObjectField("uniqueItems")
 		s.UniqueItems.WriteJSON(j)
 	}
+
 	if s.XMinusKubernetesMinusEmbeddedMinusResource.Set {
-		field.Write("x-kubernetes-embedded-resource")
+		more.More()
+		j.WriteObjectField("x-kubernetes-embedded-resource")
 		s.XMinusKubernetesMinusEmbeddedMinusResource.WriteJSON(j)
 	}
+
 	if s.XMinusKubernetesMinusIntMinusOrMinusString.Set {
-		field.Write("x-kubernetes-int-or-string")
+		more.More()
+		j.WriteObjectField("x-kubernetes-int-or-string")
 		s.XMinusKubernetesMinusIntMinusOrMinusString.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "XMinusKubernetesMinusListMinusMapMinusKeys".
+
+	if s.XMinusKubernetesMinusListMinusMapMinusKeys != nil {
+		more.More()
+		j.WriteObjectField("x-kubernetes-list-map-keys")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.XMinusKubernetesMinusListMinusMapMinusKeys {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.XMinusKubernetesMinusListMinusType.Set {
-		field.Write("x-kubernetes-list-type")
+		more.More()
+		j.WriteObjectField("x-kubernetes-list-type")
 		s.XMinusKubernetesMinusListMinusType.WriteJSON(j)
 	}
+
 	if s.XMinusKubernetesMinusMapMinusType.Set {
-		field.Write("x-kubernetes-map-type")
+		more.More()
+		j.WriteObjectField("x-kubernetes-map-type")
 		s.XMinusKubernetesMinusMapMinusType.WriteJSON(j)
 	}
+
 	if s.XMinusKubernetesMinusPreserveMinusUnknownMinusFields.Set {
-		field.Write("x-kubernetes-preserve-unknown-fields")
+		more.More()
+		j.WriteObjectField("x-kubernetes-preserve-unknown-fields")
 		s.XMinusKubernetesMinusPreserveMinusUnknownMinusFields.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps json value to io.Writer.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -38852,11 +46512,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			i.Skip()
 			return true
 		case "allOf":
-			// Unsupported kind "pointer" for field "AllOf".
+			// Unsupported kind "array" for field "AllOf".
 			i.Skip()
 			return true
 		case "anyOf":
-			// Unsupported kind "pointer" for field "AnyOf".
+			// Unsupported kind "array" for field "AnyOf".
 			i.Skip()
 			return true
 		case "default":
@@ -38879,7 +46539,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			}
 			return true
 		case "enum":
-			// Unsupported kind "pointer" for field "Enum".
+			// Unsupported kind "array" for field "Enum".
 			i.Skip()
 			return true
 		case "example":
@@ -39003,7 +46663,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			}
 			return true
 		case "oneOf":
-			// Unsupported kind "pointer" for field "OneOf".
+			// Unsupported kind "array" for field "OneOf".
 			i.Skip()
 			return true
 		case "pattern":
@@ -39029,7 +46689,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			}
 			return true
 		case "required":
-			// Unsupported kind "pointer" for field "Required".
+			// Unsupported kind "array" for field "Required".
 			i.Skip()
 			return true
 		case "$schema":
@@ -39075,7 +46735,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			}
 			return true
 		case "x-kubernetes-list-map-keys":
-			// Unsupported kind "pointer" for field "XMinusKubernetesMinusListMinusMapMinusKeys".
+			// Unsupported kind "array" for field "XMinusKubernetesMinusListMinusMapMinusKeys".
 			i.Skip()
 			return true
 		case "x-kubernetes-list-type":
@@ -39110,26 +46770,36 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-	field.Write("namespace")
+
+	more.More()
+	j.WriteObjectField("namespace")
 	j.WriteString(s.Namespace)
+
 	if s.Path.Set {
-		field.Write("path")
+		more.More()
+		j.WriteObjectField("path")
 		s.Path.WriteJSON(j)
 	}
+
 	if s.Port.Set {
-		field.Write("port")
+		more.More()
+		j.WriteObjectField("port")
 		s.Port.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference json value to io.Writer.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -39184,23 +46854,30 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Read
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "CaBundle".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "caBundle".
+
 	if s.Service.Set {
-		field.Write("service")
+		more.More()
+		j.WriteObjectField("service")
 		s.Service.WriteJSON(j)
 	}
+
 	if s.URL.Set {
-		field.Write("url")
+		more.More()
+		j.WriteObjectField("url")
 		s.URL.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig json value to io.Writer.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -39253,19 +46930,32 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) R
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ClientConfig.Set {
-		field.Write("clientConfig")
+		more.More()
+		j.WriteObjectField("clientConfig")
 		s.ClientConfig.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "ConversionReviewVersions".
+
+	more.More()
+	j.WriteObjectField("conversionReviewVersions")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.ConversionReviewVersions {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion json value to io.Writer.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -39311,30 +47001,62 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Rea
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIGroup) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
+
 	if s.PreferredVersion.Set {
-		field.Write("preferredVersion")
+		more.More()
+		j.WriteObjectField("preferredVersion")
 		s.PreferredVersion.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "ServerAddressByClientCIDRs".
-	// Unsupported kind "array" for field "Versions".
+
+	if s.ServerAddressByClientCIDRs != nil {
+		more.More()
+		j.WriteObjectField("serverAddressByClientCIDRs")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ServerAddressByClientCIDRs {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("versions")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Versions {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1APIGroup json value to io.Writer.
 func (s IoK8sApimachineryPkgApisMetaV1APIGroup) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -39383,7 +47105,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) ReadJSON(i *json.Iterator) erro
 			}
 			return true
 		case "serverAddressByClientCIDRs":
-			// Unsupported kind "pointer" for field "ServerAddressByClientCIDRs".
+			// Unsupported kind "array" for field "ServerAddressByClientCIDRs".
 			i.Skip()
 			return true
 		case "versions":
@@ -39401,23 +47123,38 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) ReadJSON(i *json.Iterator) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Groups".
+
+	more.More()
+	j.WriteObjectField("groups")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Groups {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1APIGroupList json value to io.Writer.
 func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -39470,37 +47207,88 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) ReadJSON(i *json.Iterator) 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIResource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Categories".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Categories != nil {
+		more.More()
+		j.WriteObjectField("categories")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Categories {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Group.Set {
-		field.Write("group")
+		more.More()
+		j.WriteObjectField("group")
 		s.Group.WriteJSON(j)
 	}
-	field.Write("kind")
+
+	more.More()
+	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-	field.Write("namespaced")
+
+	more.More()
+	j.WriteObjectField("namespaced")
 	j.WriteBool(s.Namespaced)
-	// Unsupported kind "pointer" for field "ShortNames".
-	field.Write("singularName")
+
+	if s.ShortNames != nil {
+		more.More()
+		j.WriteObjectField("shortNames")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ShortNames {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	more.More()
+	j.WriteObjectField("singularName")
 	j.WriteString(s.SingularName)
+
 	if s.StorageVersionHash.Set {
-		field.Write("storageVersionHash")
+		more.More()
+		j.WriteObjectField("storageVersionHash")
 		s.StorageVersionHash.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Verbs".
+
+	more.More()
+	j.WriteObjectField("verbs")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Verbs {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Version.Set {
-		field.Write("version")
+		more.More()
+		j.WriteObjectField("version")
 		s.Version.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1APIResource json value to io.Writer.
 func (s IoK8sApimachineryPkgApisMetaV1APIResource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -39525,7 +47313,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) ReadJSON(i *json.Iterator) e
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "categories":
-			// Unsupported kind "pointer" for field "Categories".
+			// Unsupported kind "array" for field "Categories".
 			i.Skip()
 			return true
 		case "group":
@@ -39545,7 +47333,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) ReadJSON(i *json.Iterator) e
 			s.Namespaced = i.ReadBool()
 			return i.Error == nil
 		case "shortNames":
-			// Unsupported kind "pointer" for field "ShortNames".
+			// Unsupported kind "array" for field "ShortNames".
 			i.Skip()
 			return true
 		case "singularName":
@@ -39580,25 +47368,42 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) ReadJSON(i *json.Iterator) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	field.Write("groupVersion")
+
+	more.More()
+	j.WriteObjectField("groupVersion")
 	j.WriteString(s.GroupVersion)
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Resources".
+
+	more.More()
+	j.WriteObjectField("resources")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Resources {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1APIResourceList json value to io.Writer.
 func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -39654,24 +47459,49 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) ReadJSON(i *json.Iterato
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIVersions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "ServerAddressByClientCIDRs".
-	// Unsupported kind "array" for field "Versions".
+
+	more.More()
+	j.WriteObjectField("serverAddressByClientCIDRs")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.ServerAddressByClientCIDRs {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
+	more.More()
+	j.WriteObjectField("versions")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Versions {
+		more.More()
+		j.WriteString(elem)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1APIVersions json value to io.Writer.
 func (s IoK8sApimachineryPkgApisMetaV1APIVersions) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -39728,27 +47558,40 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) ReadJSON(i *json.Iterator) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1Condition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "alias" for field "LastTransitionTime".
-	field.Write("message")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "alias" for field "lastTransitionTime".
+
+	more.More()
+	j.WriteObjectField("message")
 	j.WriteString(s.Message)
+
 	if s.ObservedGeneration.Set {
-		field.Write("observedGeneration")
+		more.More()
+		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
-	field.Write("reason")
+
+	more.More()
+	j.WriteObjectField("reason")
 	j.WriteString(s.Reason)
-	field.Write("status")
+
+	more.More()
+	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1Condition json value to io.Writer.
 func (s IoK8sApimachineryPkgApisMetaV1Condition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -39806,39 +47649,65 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) ReadJSON(i *json.Iterator) err
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1DeleteOptions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "DryRun".
+
+	if s.DryRun != nil {
+		more.More()
+		j.WriteObjectField("dryRun")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.DryRun {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.GracePeriodSeconds.Set {
-		field.Write("gracePeriodSeconds")
+		more.More()
+		j.WriteObjectField("gracePeriodSeconds")
 		s.GracePeriodSeconds.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.OrphanDependents.Set {
-		field.Write("orphanDependents")
+		more.More()
+		j.WriteObjectField("orphanDependents")
 		s.OrphanDependents.WriteJSON(j)
 	}
+
 	if s.Preconditions.Set {
-		field.Write("preconditions")
+		more.More()
+		j.WriteObjectField("preconditions")
 		s.Preconditions.WriteJSON(j)
 	}
+
 	if s.PropagationPolicy.Set {
-		field.Write("propagationPolicy")
+		more.More()
+		j.WriteObjectField("propagationPolicy")
 		s.PropagationPolicy.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1DeleteOptions json value to io.Writer.
 func (s IoK8sApimachineryPkgApisMetaV1DeleteOptions) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -39870,7 +47739,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1DeleteOptions) ReadJSON(i *json.Iterator)
 			}
 			return true
 		case "dryRun":
-			// Unsupported kind "pointer" for field "DryRun".
+			// Unsupported kind "array" for field "DryRun".
 			i.Skip()
 			return true
 		case "gracePeriodSeconds":
@@ -39919,18 +47788,24 @@ func (s *IoK8sApimachineryPkgApisMetaV1DeleteOptions) ReadJSON(i *json.Iterator)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("groupVersion")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("groupVersion")
 	j.WriteString(s.GroupVersion)
-	field.Write("version")
+
+	more.More()
+	j.WriteObjectField("version")
 	j.WriteString(s.Version)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery json value to io.Writer.
 func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -39971,16 +47846,31 @@ func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) ReadJSON(i *jso
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "MatchExpressions".
-	// Unsupported kind "pointer" for field "MatchLabels".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.MatchExpressions != nil {
+		more.More()
+		j.WriteObjectField("matchExpressions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.MatchExpressions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
+	// Unsupported kind "pointer" for field "matchLabels".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1LabelSelector json value to io.Writer.
 func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -40005,7 +47895,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) ReadJSON(i *json.Iterator)
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "matchExpressions":
-			// Unsupported kind "pointer" for field "MatchExpressions".
+			// Unsupported kind "array" for field "MatchExpressions".
 			i.Skip()
 			return true
 		case "matchLabels":
@@ -40023,19 +47913,38 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) ReadJSON(i *json.Iterator)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("key")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("key")
 	j.WriteString(s.Key)
-	field.Write("operator")
+
+	more.More()
+	j.WriteObjectField("operator")
 	j.WriteString(s.Operator)
-	// Unsupported kind "pointer" for field "Values".
+
+	if s.Values != nil {
+		more.More()
+		j.WriteObjectField("values")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Values {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement json value to io.Writer.
 func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -40066,7 +47975,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) ReadJSON(i *jso
 			s.Operator = i.ReadString()
 			return i.Error == nil
 		case "values":
-			// Unsupported kind "pointer" for field "Values".
+			// Unsupported kind "array" for field "Values".
 			i.Skip()
 			return true
 		default:
@@ -40080,30 +47989,39 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) ReadJSON(i *jso
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ListMeta) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Continue.Set {
-		field.Write("continue")
+		more.More()
+		j.WriteObjectField("continue")
 		s.Continue.WriteJSON(j)
 	}
+
 	if s.RemainingItemCount.Set {
-		field.Write("remainingItemCount")
+		more.More()
+		j.WriteObjectField("remainingItemCount")
 		s.RemainingItemCount.WriteJSON(j)
 	}
+
 	if s.ResourceVersion.Set {
-		field.Write("resourceVersion")
+		more.More()
+		j.WriteObjectField("resourceVersion")
 		s.ResourceVersion.WriteJSON(j)
 	}
+
 	if s.SelfLink.Set {
-		field.Write("selfLink")
+		more.More()
+		j.WriteObjectField("selfLink")
 		s.SelfLink.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1ListMeta json value to io.Writer.
 func (s IoK8sApimachineryPkgApisMetaV1ListMeta) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -40166,36 +48084,49 @@ func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) ReadJSON(i *json.Iterator) erro
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.FieldsType.Set {
-		field.Write("fieldsType")
+		more.More()
+		j.WriteObjectField("fieldsType")
 		s.FieldsType.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "FieldsV1".
+
+	// Unsupported kind "pointer" for field "fieldsV1".
+
 	if s.Manager.Set {
-		field.Write("manager")
+		more.More()
+		j.WriteObjectField("manager")
 		s.Manager.WriteJSON(j)
 	}
+
 	if s.Operation.Set {
-		field.Write("operation")
+		more.More()
+		j.WriteObjectField("operation")
 		s.Operation.WriteJSON(j)
 	}
+
 	if s.Subresource.Set {
-		field.Write("subresource")
+		more.More()
+		j.WriteObjectField("subresource")
 		s.Subresource.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Time".
+
+	// Unsupported kind "pointer" for field "time".
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry json value to io.Writer.
 func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -40273,57 +48204,120 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) ReadJSON(i *json.Iter
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Annotations".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "annotations".
+
 	if s.ClusterName.Set {
-		field.Write("clusterName")
+		more.More()
+		j.WriteObjectField("clusterName")
 		s.ClusterName.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "CreationTimestamp".
+
+	// Unsupported kind "pointer" for field "creationTimestamp".
+
 	if s.DeletionGracePeriodSeconds.Set {
-		field.Write("deletionGracePeriodSeconds")
+		more.More()
+		j.WriteObjectField("deletionGracePeriodSeconds")
 		s.DeletionGracePeriodSeconds.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "DeletionTimestamp".
-	// Unsupported kind "pointer" for field "Finalizers".
+
+	// Unsupported kind "pointer" for field "deletionTimestamp".
+
+	if s.Finalizers != nil {
+		more.More()
+		j.WriteObjectField("finalizers")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Finalizers {
+			more.More()
+			j.WriteString(elem)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.GenerateName.Set {
-		field.Write("generateName")
+		more.More()
+		j.WriteObjectField("generateName")
 		s.GenerateName.WriteJSON(j)
 	}
+
 	if s.Generation.Set {
-		field.Write("generation")
+		more.More()
+		j.WriteObjectField("generation")
 		s.Generation.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "Labels".
-	// Unsupported kind "pointer" for field "ManagedFields".
+
+	// Unsupported kind "pointer" for field "labels".
+
+	if s.ManagedFields != nil {
+		more.More()
+		j.WriteObjectField("managedFields")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.ManagedFields {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
+
 	if s.Namespace.Set {
-		field.Write("namespace")
+		more.More()
+		j.WriteObjectField("namespace")
 		s.Namespace.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "OwnerReferences".
+
+	if s.OwnerReferences != nil {
+		more.More()
+		j.WriteObjectField("ownerReferences")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.OwnerReferences {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.ResourceVersion.Set {
-		field.Write("resourceVersion")
+		more.More()
+		j.WriteObjectField("resourceVersion")
 		s.ResourceVersion.WriteJSON(j)
 	}
+
 	if s.SelfLink.Set {
-		field.Write("selfLink")
+		more.More()
+		j.WriteObjectField("selfLink")
 		s.SelfLink.WriteJSON(j)
 	}
+
 	if s.UID.Set {
-		field.Write("uid")
+		more.More()
+		j.WriteObjectField("uid")
 		s.UID.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1ObjectMeta json value to io.Writer.
 func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -40374,7 +48368,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) er
 			i.Skip()
 			return true
 		case "finalizers":
-			// Unsupported kind "pointer" for field "Finalizers".
+			// Unsupported kind "array" for field "Finalizers".
 			i.Skip()
 			return true
 		case "generateName":
@@ -40396,7 +48390,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) er
 			i.Skip()
 			return true
 		case "managedFields":
-			// Unsupported kind "pointer" for field "ManagedFields".
+			// Unsupported kind "array" for field "ManagedFields".
 			i.Skip()
 			return true
 		case "name":
@@ -40414,7 +48408,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) er
 			}
 			return true
 		case "ownerReferences":
-			// Unsupported kind "pointer" for field "OwnerReferences".
+			// Unsupported kind "array" for field "OwnerReferences".
 			i.Skip()
 			return true
 		case "resourceVersion":
@@ -40449,30 +48443,44 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) ReadJSON(i *json.Iterator) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("apiVersion")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("apiVersion")
 	j.WriteString(s.ApiVersion)
+
 	if s.BlockOwnerDeletion.Set {
-		field.Write("blockOwnerDeletion")
+		more.More()
+		j.WriteObjectField("blockOwnerDeletion")
 		s.BlockOwnerDeletion.WriteJSON(j)
 	}
+
 	if s.Controller.Set {
-		field.Write("controller")
+		more.More()
+		j.WriteObjectField("controller")
 		s.Controller.WriteJSON(j)
 	}
-	field.Write("kind")
+
+	more.More()
+	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-	field.Write("name")
+
+	more.More()
+	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-	field.Write("uid")
+
+	more.More()
+	j.WriteObjectField("uid")
 	j.WriteString(s.UID)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1OwnerReference json value to io.Writer.
 func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -40533,22 +48541,27 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) ReadJSON(i *json.Iterator
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1Preconditions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ResourceVersion.Set {
-		field.Write("resourceVersion")
+		more.More()
+		j.WriteObjectField("resourceVersion")
 		s.ResourceVersion.WriteJSON(j)
 	}
+
 	if s.UID.Set {
-		field.Write("uid")
+		more.More()
+		j.WriteObjectField("uid")
 		s.UID.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1Preconditions json value to io.Writer.
 func (s IoK8sApimachineryPkgApisMetaV1Preconditions) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -40597,18 +48610,24 @@ func (s *IoK8sApimachineryPkgApisMetaV1Preconditions) ReadJSON(i *json.Iterator)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("clientCIDR")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("clientCIDR")
 	j.WriteString(s.ClientCIDR)
-	field.Write("serverAddress")
+
+	more.More()
+	j.WriteObjectField("serverAddress")
 	j.WriteString(s.ServerAddress)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR json value to io.Writer.
 func (s IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -40649,46 +48668,63 @@ func (s *IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) ReadJSON(i *js
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1Status) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Code.Set {
-		field.Write("code")
+		more.More()
+		j.WriteObjectField("code")
 		s.Code.WriteJSON(j)
 	}
+
 	if s.Details.Set {
-		field.Write("details")
+		more.More()
+		j.WriteObjectField("details")
 		s.Details.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1Status json value to io.Writer.
 func (s IoK8sApimachineryPkgApisMetaV1Status) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -40779,26 +48815,33 @@ func (s *IoK8sApimachineryPkgApisMetaV1Status) ReadJSON(i *json.Iterator) error 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1StatusCause) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Field.Set {
-		field.Write("field")
+		more.More()
+		j.WriteObjectField("field")
 		s.Field.WriteJSON(j)
 	}
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1StatusCause json value to io.Writer.
 func (s IoK8sApimachineryPkgApisMetaV1StatusCause) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -40854,35 +48897,59 @@ func (s *IoK8sApimachineryPkgApisMetaV1StatusCause) ReadJSON(i *json.Iterator) e
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1StatusDetails) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Causes".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Causes != nil {
+		more.More()
+		j.WriteObjectField("causes")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Causes {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.Group.Set {
-		field.Write("group")
+		more.More()
+		j.WriteObjectField("group")
 		s.Group.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
+
 	if s.RetryAfterSeconds.Set {
-		field.Write("retryAfterSeconds")
+		more.More()
+		j.WriteObjectField("retryAfterSeconds")
 		s.RetryAfterSeconds.WriteJSON(j)
 	}
+
 	if s.UID.Set {
-		field.Write("uid")
+		more.More()
+		j.WriteObjectField("uid")
 		s.UID.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1StatusDetails json value to io.Writer.
 func (s IoK8sApimachineryPkgApisMetaV1StatusDetails) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -40907,7 +48974,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1StatusDetails) ReadJSON(i *json.Iterator)
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "causes":
-			// Unsupported kind "pointer" for field "Causes".
+			// Unsupported kind "array" for field "Causes".
 			i.Skip()
 			return true
 		case "group":
@@ -40956,17 +49023,22 @@ func (s *IoK8sApimachineryPkgApisMetaV1StatusDetails) ReadJSON(i *json.Iterator)
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "alias" for field "Object".
-	field.Write("type")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "alias" for field "object".
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgApisMetaV1WatchEvent json value to io.Writer.
 func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -41008,32 +49080,52 @@ func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) ReadJSON(i *json.Iterator) er
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgVersionInfo) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("buildDate")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("buildDate")
 	j.WriteString(s.BuildDate)
-	field.Write("compiler")
+
+	more.More()
+	j.WriteObjectField("compiler")
 	j.WriteString(s.Compiler)
-	field.Write("gitCommit")
+
+	more.More()
+	j.WriteObjectField("gitCommit")
 	j.WriteString(s.GitCommit)
-	field.Write("gitTreeState")
+
+	more.More()
+	j.WriteObjectField("gitTreeState")
 	j.WriteString(s.GitTreeState)
-	field.Write("gitVersion")
+
+	more.More()
+	j.WriteObjectField("gitVersion")
 	j.WriteString(s.GitVersion)
-	field.Write("goVersion")
+
+	more.More()
+	j.WriteObjectField("goVersion")
 	j.WriteString(s.GoVersion)
-	field.Write("major")
+
+	more.More()
+	j.WriteObjectField("major")
 	j.WriteString(s.Major)
-	field.Write("minor")
+
+	more.More()
+	j.WriteObjectField("minor")
 	j.WriteString(s.Minor)
-	field.Write("platform")
+
+	more.More()
+	j.WriteObjectField("platform")
 	j.WriteString(s.Platform)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sApimachineryPkgVersionInfo json value to io.Writer.
 func (s IoK8sApimachineryPkgVersionInfo) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -41095,34 +49187,45 @@ func (s *IoK8sApimachineryPkgVersionInfo) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	if s.Spec.Set {
-		field.Write("spec")
+		more.More()
+		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
+
 	if s.Status.Set {
-		field.Write("status")
+		more.More()
+		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sKubeAggregatorPkgApisApiregistrationV1APIService json value to io.Writer.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -41192,27 +49295,38 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) ReadJSON(i *json
 // WriteJSON implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "LastTransitionTime".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "lastTransitionTime".
+
 	if s.Message.Set {
-		field.Write("message")
+		more.More()
+		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
+
 	if s.Reason.Set {
-		field.Write("reason")
+		more.More()
+		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-	field.Write("status")
+
+	more.More()
+	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-	field.Write("type")
+
+	more.More()
+	j.WriteObjectField("type")
 	j.WriteString(s.Type)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition json value to io.Writer.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -41271,27 +49385,44 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) ReadJSO
 // WriteJSON implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.ApiVersion.Set {
-		field.Write("apiVersion")
+		more.More()
+		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-	// Unsupported kind "array" for field "Items".
+
+	more.More()
+	j.WriteObjectField("items")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Items {
+		more.More()
+		elem.WriteJSON(j)
+	}
+	j.WriteArrayEnd()
+	more.Up()
+
 	if s.Kind.Set {
-		field.Write("kind")
+		more.More()
+		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
+
 	if s.Metadata.Set {
-		field.Write("metadata")
+		more.More()
+		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList json value to io.Writer.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -41351,35 +49482,50 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) ReadJSON(i *
 // WriteJSON implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "CaBundle".
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	// Unsupported kind "pointer" for field "caBundle".
+
 	if s.Group.Set {
-		field.Write("group")
+		more.More()
+		j.WriteObjectField("group")
 		s.Group.WriteJSON(j)
 	}
-	field.Write("groupPriorityMinimum")
+
+	more.More()
+	j.WriteObjectField("groupPriorityMinimum")
 	j.WriteInt32(s.GroupPriorityMinimum)
+
 	if s.InsecureSkipTLSVerify.Set {
-		field.Write("insecureSkipTLSVerify")
+		more.More()
+		j.WriteObjectField("insecureSkipTLSVerify")
 		s.InsecureSkipTLSVerify.WriteJSON(j)
 	}
+
 	if s.Service.Set {
-		field.Write("service")
+		more.More()
+		j.WriteObjectField("service")
 		s.Service.WriteJSON(j)
 	}
+
 	if s.Version.Set {
-		field.Write("version")
+		more.More()
+		j.WriteObjectField("version")
 		s.Version.WriteJSON(j)
 	}
-	field.Write("versionPriority")
+
+	more.More()
+	j.WriteObjectField("versionPriority")
 	j.WriteInt32(s.VersionPriority)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec json value to io.Writer.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -41452,15 +49598,29 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) ReadJSON(i *
 // WriteJSON implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	// Unsupported kind "pointer" for field "Conditions".
+	more := json.NewMore(j)
+	defer more.Reset()
+	if s.Conditions != nil {
+		more.More()
+		j.WriteObjectField("conditions")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Conditions {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus json value to io.Writer.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -41485,7 +49645,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) ReadJSON(i
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "conditions":
-			// Unsupported kind "pointer" for field "Conditions".
+			// Unsupported kind "array" for field "Conditions".
 			i.Skip()
 			return true
 		default:
@@ -41499,26 +49659,33 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) ReadJSON(i
 // WriteJSON implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Name.Set {
-		field.Write("name")
+		more.More()
+		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
+
 	if s.Namespace.Set {
-		field.Write("namespace")
+		more.More()
+		j.WriteObjectField("namespace")
 		s.Namespace.WriteJSON(j)
 	}
+
 	if s.Port.Set {
-		field.Write("port")
+		more.More()
+		j.WriteObjectField("port")
 		s.Port.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference json value to io.Writer.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }

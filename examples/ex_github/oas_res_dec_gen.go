@@ -1006,51 +1006,6 @@ func decodeBillingGetSharedStorageBillingGheResponse(resp *http.Response) (res C
 	}
 }
 
-func decodeActivityListPublicEventsResponse(resp *http.Response) (res ActivityListPublicEventsResponse, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ActivityListPublicEventsOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 304:
-		return &NotModified{}, nil
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 503:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ServiceUnavailable
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
 func decodeActivityGetFeedsResponse(resp *http.Response) (res Feed, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -1135,51 +1090,6 @@ func decodeGistsListStarredResponse(resp *http.Response) (res GistsListStarredRe
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response GistsListStarredApplicationJSONForbidden
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeGistsGetResponse(resp *http.Response) (res GistsGetResponse, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response GistSimple
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 304:
-		return &NotModified{}, nil
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ForbiddenGist
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response BasicError
 			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
@@ -1461,51 +1371,6 @@ func decodeGistsListCommitsResponse(resp *http.Response) (res GistsListCommitsRe
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
 			var response GistsListCommitsApplicationJSONNotFound
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeGistsListForksResponse(resp *http.Response) (res GistsListForksResponse, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response GistsListForksOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 304:
-		return &NotModified{}, nil
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response GistsListForksApplicationJSONForbidden
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response GistsListForksApplicationJSONNotFound
 			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
@@ -1984,63 +1849,6 @@ func decodeMetaGetResponse(resp *http.Response) (res MetaGetResponse, err error)
 		}
 	case 304:
 		return &NotModified{}, nil
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response) (res ActivityListPublicEventsForRepoNetworkResponse, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ActivityListPublicEventsForRepoNetworkOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 301:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 304:
-		return &NotModified{}, nil
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -2987,36 +2795,6 @@ func decodeOrgsRemoveSamlSSOAuthorizationResponse(resp *http.Response) (res Orgs
 			}
 
 			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeActivityListPublicOrgEventsResponse(resp *http.Response) (res []Event, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []Event
-			i := json.NewIterator()
-			i.Reset(resp.Body)
-			i.ReadArrayCB(func(i *json.Iterator) bool {
-				var elem Event
-				if err := elem.ReadJSON(i); err != nil {
-					i.ReportError("ReadArray", err.Error())
-					return false
-				}
-				response = append(response, elem)
-				return true
-			})
-			if err := i.Error; err != nil {
-				return res, err
-			}
-
-			return response, nil
 		default:
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -6603,116 +6381,6 @@ func decodeChecksRerequestSuiteResponse(resp *http.Response) (res ChecksRereques
 	}
 }
 
-func decodeCodeScanningGetAlertResponse(resp *http.Response) (res CodeScanningGetAlertResponse, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response CodeScanningAlert
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response CodeScanningGetAlertApplicationJSONForbidden
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response CodeScanningGetAlertApplicationJSONNotFound
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 503:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ServiceUnavailable
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeCodeScanningUpdateAlertResponse(resp *http.Response) (res CodeScanningUpdateAlertResponse, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response CodeScanningAlert
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response CodeScanningUpdateAlertApplicationJSONForbidden
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response CodeScanningUpdateAlertApplicationJSONNotFound
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 503:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response ServiceUnavailable
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
 func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (res CodeScanningListAlertInstancesResponse, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -7325,36 +6993,6 @@ func decodeReposListCommentsForCommitResponse(resp *http.Response) (res []Commit
 	}
 }
 
-func decodeReposListPullRequestsAssociatedWithCommitResponse(resp *http.Response) (res []PullRequestSimple, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []PullRequestSimple
-			i := json.NewIterator()
-			i.Reset(resp.Body)
-			i.ReadArrayCB(func(i *json.Iterator) bool {
-				var elem PullRequestSimple
-				if err := elem.ReadJSON(i); err != nil {
-					i.ReportError("ReadArray", err.Error())
-					return false
-				}
-				response = append(response, elem)
-				return true
-			})
-			if err := i.Error; err != nil {
-				return res, err
-			}
-
-			return response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
 func decodeChecksListSuitesForRefResponse(resp *http.Response) (res ChecksListSuitesForRef, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -7654,36 +7292,6 @@ func decodeReposDeleteAnEnvironmentResponse(resp *http.Response) (res ReposDelet
 	switch resp.StatusCode {
 	case 204:
 		return ReposDeleteAnEnvironment{}, nil
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeActivityListRepoEventsResponse(resp *http.Response) (res []Event, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []Event
-			i := json.NewIterator()
-			i.Reset(resp.Body)
-			i.ReadArrayCB(func(i *json.Iterator) bool {
-				var elem Event
-				if err := elem.ReadJSON(i); err != nil {
-					i.ReportError("ReadArray", err.Error())
-					return false
-				}
-				response = append(response, elem)
-				return true
-			})
-			if err := i.Error; err != nil {
-				return res, err
-			}
-
-			return response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -8129,99 +7737,6 @@ func decodeReactionsDeleteForIssueCommentResponse(resp *http.Response) (res Reac
 	switch resp.StatusCode {
 	case 204:
 		return ReactionsDeleteForIssueComment{}, nil
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeIssuesGetEventResponse(resp *http.Response) (res IssuesGetEventResponse, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response IssueEvent
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 403:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response IssuesGetEventApplicationJSONForbidden
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response IssuesGetEventApplicationJSONNotFound
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 410:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response IssuesGetEventApplicationJSONGone
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeIssuesAddAssigneesResponse(resp *http.Response) (res IssueSimple, err error) {
-	switch resp.StatusCode {
-	case 201:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response IssueSimple
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeIssuesRemoveAssigneesResponse(resp *http.Response) (res IssueSimple, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response IssueSimple
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -9129,51 +8644,6 @@ func decodeReactionsDeleteForPullRequestCommentResponse(resp *http.Response) (re
 	switch resp.StatusCode {
 	case 204:
 		return ReactionsDeleteForPullRequestComment{}, nil
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodePullsGetResponse(resp *http.Response) (res PullsGetResponse, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PullRequest
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 304:
-		return &NotModified{}, nil
-	case 404:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PullsGetApplicationJSONNotFound
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 500:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PullsGetApplicationJSONInternalServerError
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
 	default:
 		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
 	}
@@ -10792,39 +10262,6 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response) (res ScimDeleteUse
 			return &response, nil
 		case "application/scim+json":
 			return res, fmt.Errorf("application/scim+json decoder not implemented")
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeSearchTopicsResponse(resp *http.Response) (res SearchTopicsResponse, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response SearchTopicsOK
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	case 304:
-		return &NotModified{}, nil
-	case 415:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response PreviewHeaderMissing
-			if err := response.ReadJSONFrom(resp.Body); err != nil {
-				return res, err
-			}
-
-			return &response, nil
 		default:
 			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
 		}
@@ -13153,96 +12590,6 @@ func decodeUsersListResponse(resp *http.Response) (res UsersListResponse, err er
 	}
 }
 
-func decodeActivityListEventsForAuthenticatedUserResponse(resp *http.Response) (res []Event, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []Event
-			i := json.NewIterator()
-			i.Reset(resp.Body)
-			i.ReadArrayCB(func(i *json.Iterator) bool {
-				var elem Event
-				if err := elem.ReadJSON(i); err != nil {
-					i.ReportError("ReadArray", err.Error())
-					return false
-				}
-				response = append(response, elem)
-				return true
-			})
-			if err := i.Error; err != nil {
-				return res, err
-			}
-
-			return response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeActivityListOrgEventsForAuthenticatedUserResponse(resp *http.Response) (res []Event, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []Event
-			i := json.NewIterator()
-			i.Reset(resp.Body)
-			i.ReadArrayCB(func(i *json.Iterator) bool {
-				var elem Event
-				if err := elem.ReadJSON(i); err != nil {
-					i.ReportError("ReadArray", err.Error())
-					return false
-				}
-				response = append(response, elem)
-				return true
-			})
-			if err := i.Error; err != nil {
-				return res, err
-			}
-
-			return response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeActivityListPublicEventsForUserResponse(resp *http.Response) (res []Event, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []Event
-			i := json.NewIterator()
-			i.Reset(resp.Body)
-			i.ReadArrayCB(func(i *json.Iterator) bool {
-				var elem Event
-				if err := elem.ReadJSON(i); err != nil {
-					i.ReportError("ReadArray", err.Error())
-					return false
-				}
-				response = append(response, elem)
-				return true
-			})
-			if err := i.Error; err != nil {
-				return res, err
-			}
-
-			return response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
 func decodeUsersListFollowersForUserResponse(resp *http.Response) (res []SimpleUser, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -13384,66 +12731,6 @@ func decodeOrgsListForUserResponse(resp *http.Response) (res []OrganizationSimpl
 			i.Reset(resp.Body)
 			i.ReadArrayCB(func(i *json.Iterator) bool {
 				var elem OrganizationSimple
-				if err := elem.ReadJSON(i); err != nil {
-					i.ReportError("ReadArray", err.Error())
-					return false
-				}
-				response = append(response, elem)
-				return true
-			})
-			if err := i.Error; err != nil {
-				return res, err
-			}
-
-			return response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeActivityListReceivedEventsForUserResponse(resp *http.Response) (res []Event, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []Event
-			i := json.NewIterator()
-			i.Reset(resp.Body)
-			i.ReadArrayCB(func(i *json.Iterator) bool {
-				var elem Event
-				if err := elem.ReadJSON(i); err != nil {
-					i.ReportError("ReadArray", err.Error())
-					return false
-				}
-				response = append(response, elem)
-				return true
-			})
-			if err := i.Error; err != nil {
-				return res, err
-			}
-
-			return response, nil
-		default:
-			return res, fmt.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
-		}
-	default:
-		return res, fmt.Errorf("unexpected statusCode: %d", resp.StatusCode)
-	}
-}
-
-func decodeActivityListReceivedPublicEventsForUserResponse(resp *http.Response) (res []Event, err error) {
-	switch resp.StatusCode {
-	case 200:
-		switch resp.Header.Get("Content-Type") {
-		case "application/json":
-			var response []Event
-			i := json.NewIterator()
-			i.Reset(resp.Body)
-			i.ReadArrayCB(func(i *json.Iterator) bool {
-				var elem Event
 				if err := elem.ReadJSON(i); err != nil {
 					i.ReportError("ReadArray", err.Error())
 					return false

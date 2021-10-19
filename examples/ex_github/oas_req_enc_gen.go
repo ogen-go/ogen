@@ -237,10 +237,6 @@ func encodeChecksSetSuitesPreferencesRequest(req ChecksSetSuitesPreferencesAppli
 	return json.Encode(req), "application/json", nil
 }
 
-func encodeCodeScanningUpdateAlertRequest(req CodeScanningUpdateAlertApplicationJSONRequest) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
 func encodeCodeScanningUploadSarifRequest(req CodeScanningUploadSarifApplicationJSONRequest) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
@@ -258,14 +254,6 @@ func encodeInteractionsSetRestrictionsForRepoRequest(req InteractionLimit) (data
 }
 
 func encodeReposUpdateInvitationRequest(req *ReposUpdateInvitationApplicationJSONRequest) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeIssuesAddAssigneesRequest(req *IssuesAddAssigneesApplicationJSONRequest) (data []byte, contentType string, err error) {
-	return json.Encode(req), "application/json", nil
-}
-
-func encodeIssuesRemoveAssigneesRequest(req *IssuesRemoveAssigneesApplicationJSONRequest) (data []byte, contentType string, err error) {
 	return json.Encode(req), "application/json", nil
 }
 

@@ -61,16 +61,6 @@ type ActivityGetThreadSubscriptionForAuthenticatedUserResponse interface {
 	activityGetThreadSubscriptionForAuthenticatedUserResponse()
 }
 
-// ActivityListPublicEventsForRepoNetworkResponse represents activity/list-public-events-for-repo-network response.
-type ActivityListPublicEventsForRepoNetworkResponse interface {
-	activityListPublicEventsForRepoNetworkResponse()
-}
-
-// ActivityListPublicEventsResponse represents activity/list-public-events response.
-type ActivityListPublicEventsResponse interface {
-	activityListPublicEventsResponse()
-}
-
 // ActivityListWatchedReposForAuthenticatedUserResponse represents activity/list-watched-repos-for-authenticated-user response.
 type ActivityListWatchedReposForAuthenticatedUserResponse interface {
 	activityListWatchedReposForAuthenticatedUserResponse()
@@ -226,11 +216,6 @@ type CodeScanningDeleteAnalysisResponse interface {
 	codeScanningDeleteAnalysisResponse()
 }
 
-// CodeScanningGetAlertResponse represents code-scanning/get-alert response.
-type CodeScanningGetAlertResponse interface {
-	codeScanningGetAlertResponse()
-}
-
 // CodeScanningGetAnalysisResponse represents code-scanning/get-analysis response.
 type CodeScanningGetAnalysisResponse interface {
 	codeScanningGetAnalysisResponse()
@@ -251,9 +236,9 @@ type CodeScanningListRecentAnalysesResponse interface {
 	codeScanningListRecentAnalysesResponse()
 }
 
-// CodeScanningUpdateAlertResponse represents code-scanning/update-alert response.
-type CodeScanningUpdateAlertResponse interface {
-	codeScanningUpdateAlertResponse()
+// CodeScanningUpdateAlertRequest represents code-scanning/update-alert request.
+type CodeScanningUpdateAlertRequest interface {
+	codeScanningUpdateAlertRequest()
 }
 
 // CodeScanningUploadSarifResponse represents code-scanning/upload-sarif response.
@@ -301,11 +286,6 @@ type GistsGetCommentResponse interface {
 	gistsGetCommentResponse()
 }
 
-// GistsGetResponse represents gists/get response.
-type GistsGetResponse interface {
-	gistsGetResponse()
-}
-
 // GistsListCommentsResponse represents gists/list-comments response.
 type GistsListCommentsResponse interface {
 	gistsListCommentsResponse()
@@ -314,11 +294,6 @@ type GistsListCommentsResponse interface {
 // GistsListCommitsResponse represents gists/list-commits response.
 type GistsListCommitsResponse interface {
 	gistsListCommitsResponse()
-}
-
-// GistsListForksResponse represents gists/list-forks response.
-type GistsListForksResponse interface {
-	gistsListForksResponse()
 }
 
 // GistsListResponse represents gists/list response.
@@ -421,6 +396,11 @@ type InteractionsSetRestrictionsForRepoResponse interface {
 	interactionsSetRestrictionsForRepoResponse()
 }
 
+// IssuesAddAssigneesRequest represents issues/add-assignees request.
+type IssuesAddAssigneesRequest interface {
+	issuesAddAssigneesRequest()
+}
+
 // IssuesCheckUserCanBeAssignedResponse represents issues/check-user-can-be-assigned response.
 type IssuesCheckUserCanBeAssignedResponse interface {
 	issuesCheckUserCanBeAssignedResponse()
@@ -449,11 +429,6 @@ type IssuesDeleteMilestoneResponse interface {
 // IssuesGetCommentResponse represents issues/get-comment response.
 type IssuesGetCommentResponse interface {
 	issuesGetCommentResponse()
-}
-
-// IssuesGetEventResponse represents issues/get-event response.
-type IssuesGetEventResponse interface {
-	issuesGetEventResponse()
 }
 
 // IssuesGetLabelResponse represents issues/get-label response.
@@ -494,6 +469,11 @@ type IssuesLockRequest interface {
 // IssuesRemoveAllLabelsResponse represents issues/remove-all-labels response.
 type IssuesRemoveAllLabelsResponse interface {
 	issuesRemoveAllLabelsResponse()
+}
+
+// IssuesRemoveAssigneesRequest represents issues/remove-assignees request.
+type IssuesRemoveAssigneesRequest interface {
+	issuesRemoveAssigneesRequest()
 }
 
 // IssuesRemoveLabelResponse represents issues/remove-label response.
@@ -626,11 +606,6 @@ type MigrationsUnlockRepoForOrgResponse interface {
 	migrationsUnlockRepoForOrgResponse()
 }
 
-// OAuthAuthorizationsCreateAuthorizationRequest represents oauth-authorizations/create-authorization request.
-type OAuthAuthorizationsCreateAuthorizationRequest interface {
-	oAuthAuthorizationsCreateAuthorizationRequest()
-}
-
 // OAuthAuthorizationsDeleteAuthorizationResponse represents oauth-authorizations/delete-authorization response.
 type OAuthAuthorizationsDeleteAuthorizationResponse interface {
 	oAuthAuthorizationsDeleteAuthorizationResponse()
@@ -651,16 +626,6 @@ type OAuthAuthorizationsGetGrantResponse interface {
 	oAuthAuthorizationsGetGrantResponse()
 }
 
-// OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest represents oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint request.
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest interface {
-	oAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest()
-}
-
-// OAuthAuthorizationsGetOrCreateAuthorizationForAppRequest represents oauth-authorizations/get-or-create-authorization-for-app request.
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppRequest interface {
-	oAuthAuthorizationsGetOrCreateAuthorizationForAppRequest()
-}
-
 // OAuthAuthorizationsListAuthorizationsResponse represents oauth-authorizations/list-authorizations response.
 type OAuthAuthorizationsListAuthorizationsResponse interface {
 	oAuthAuthorizationsListAuthorizationsResponse()
@@ -669,11 +634,6 @@ type OAuthAuthorizationsListAuthorizationsResponse interface {
 // OAuthAuthorizationsListGrantsResponse represents oauth-authorizations/list-grants response.
 type OAuthAuthorizationsListGrantsResponse interface {
 	oAuthAuthorizationsListGrantsResponse()
-}
-
-// OAuthAuthorizationsUpdateAuthorizationRequest represents oauth-authorizations/update-authorization request.
-type OAuthAuthorizationsUpdateAuthorizationRequest interface {
-	oAuthAuthorizationsUpdateAuthorizationRequest()
 }
 
 // OrgsCheckBlockedUserResponse represents orgs/check-blocked-user response.
@@ -931,11 +891,6 @@ type PullsDismissReviewResponse interface {
 	pullsDismissReviewResponse()
 }
 
-// PullsGetResponse represents pulls/get response.
-type PullsGetResponse interface {
-	pullsGetResponse()
-}
-
 // PullsGetReviewCommentResponse represents pulls/get-review-comment response.
 type PullsGetReviewCommentResponse interface {
 	pullsGetReviewCommentResponse()
@@ -1094,11 +1049,6 @@ type ReposCreateForkRequest interface {
 // ReposCreateInOrgRequest represents repos/create-in-org request.
 type ReposCreateInOrgRequest interface {
 	reposCreateInOrgRequest()
-}
-
-// ReposCreateOrUpdateEnvironmentRequest represents repos/create-or-update-environment request.
-type ReposCreateOrUpdateEnvironmentRequest interface {
-	reposCreateOrUpdateEnvironmentRequest()
 }
 
 // ReposCreateOrUpdateFileContentsRequest represents repos/create-or-update-file-contents request.
@@ -1429,11 +1379,6 @@ type ScimProvisionAndInviteUserRequest interface {
 // ScimSetInformationForProvisionedUserRequest represents scim/set-information-for-provisioned-user request.
 type ScimSetInformationForProvisionedUserRequest interface {
 	scimSetInformationForProvisionedUserRequest()
-}
-
-// SearchTopicsResponse represents search/topics response.
-type SearchTopicsResponse interface {
-	searchTopicsResponse()
 }
 
 // SecretScanningGetAlertResponse represents secret-scanning/get-alert response.

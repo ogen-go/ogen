@@ -53,22 +53,30 @@ var (
 // WriteJSON implements json.Marshaler.
 func (s Balloon) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("amount_mib")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("amount_mib")
 	j.WriteInt(s.AmountMib)
-	field.Write("deflate_on_oom")
+
+	more.More()
+	j.WriteObjectField("deflate_on_oom")
 	j.WriteBool(s.DeflateOnOom)
+
 	if s.StatsPollingIntervalS.Set {
-		field.Write("stats_polling_interval_s")
+		more.More()
+		j.WriteObjectField("stats_polling_interval_s")
 		s.StatsPollingIntervalS.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes Balloon json value to io.Writer.
 func (s Balloon) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -116,62 +124,92 @@ func (s *Balloon) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s BalloonStats) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("actual_mib")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("actual_mib")
 	j.WriteInt(s.ActualMib)
-	field.Write("actual_pages")
+
+	more.More()
+	j.WriteObjectField("actual_pages")
 	j.WriteInt(s.ActualPages)
+
 	if s.AvailableMemory.Set {
-		field.Write("available_memory")
+		more.More()
+		j.WriteObjectField("available_memory")
 		s.AvailableMemory.WriteJSON(j)
 	}
+
 	if s.DiskCaches.Set {
-		field.Write("disk_caches")
+		more.More()
+		j.WriteObjectField("disk_caches")
 		s.DiskCaches.WriteJSON(j)
 	}
+
 	if s.FreeMemory.Set {
-		field.Write("free_memory")
+		more.More()
+		j.WriteObjectField("free_memory")
 		s.FreeMemory.WriteJSON(j)
 	}
+
 	if s.HugetlbAllocations.Set {
-		field.Write("hugetlb_allocations")
+		more.More()
+		j.WriteObjectField("hugetlb_allocations")
 		s.HugetlbAllocations.WriteJSON(j)
 	}
+
 	if s.HugetlbFailures.Set {
-		field.Write("hugetlb_failures")
+		more.More()
+		j.WriteObjectField("hugetlb_failures")
 		s.HugetlbFailures.WriteJSON(j)
 	}
+
 	if s.MajorFaults.Set {
-		field.Write("major_faults")
+		more.More()
+		j.WriteObjectField("major_faults")
 		s.MajorFaults.WriteJSON(j)
 	}
+
 	if s.MinorFaults.Set {
-		field.Write("minor_faults")
+		more.More()
+		j.WriteObjectField("minor_faults")
 		s.MinorFaults.WriteJSON(j)
 	}
+
 	if s.SwapIn.Set {
-		field.Write("swap_in")
+		more.More()
+		j.WriteObjectField("swap_in")
 		s.SwapIn.WriteJSON(j)
 	}
+
 	if s.SwapOut.Set {
-		field.Write("swap_out")
+		more.More()
+		j.WriteObjectField("swap_out")
 		s.SwapOut.WriteJSON(j)
 	}
-	field.Write("target_mib")
+
+	more.More()
+	j.WriteObjectField("target_mib")
 	j.WriteInt(s.TargetMib)
-	field.Write("target_pages")
+
+	more.More()
+	j.WriteObjectField("target_pages")
 	j.WriteInt(s.TargetPages)
+
 	if s.TotalMemory.Set {
-		field.Write("total_memory")
+		more.More()
+		j.WriteObjectField("total_memory")
 		s.TotalMemory.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes BalloonStats json value to io.Writer.
 func (s BalloonStats) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -288,16 +326,20 @@ func (s *BalloonStats) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s BalloonStatsUpdate) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("stats_polling_interval_s")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("stats_polling_interval_s")
 	j.WriteInt(s.StatsPollingIntervalS)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes BalloonStatsUpdate json value to io.Writer.
 func (s BalloonStatsUpdate) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -335,16 +377,20 @@ func (s *BalloonStatsUpdate) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s BalloonUpdate) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("amount_mib")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("amount_mib")
 	j.WriteInt(s.AmountMib)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes BalloonUpdate json value to io.Writer.
 func (s BalloonUpdate) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -382,24 +428,31 @@ func (s *BalloonUpdate) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s BootSource) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.BootArgs.Set {
-		field.Write("boot_args")
+		more.More()
+		j.WriteObjectField("boot_args")
 		s.BootArgs.WriteJSON(j)
 	}
+
 	if s.InitrdPath.Set {
-		field.Write("initrd_path")
+		more.More()
+		j.WriteObjectField("initrd_path")
 		s.InitrdPath.WriteJSON(j)
 	}
-	field.Write("kernel_image_path")
+
+	more.More()
+	j.WriteObjectField("kernel_image_path")
 	j.WriteString(s.KernelImagePath)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes BootSource json value to io.Writer.
 func (s BootSource) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -451,34 +504,49 @@ func (s *BootSource) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s Drive) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.CacheType.Set {
-		field.Write("cache_type")
+		more.More()
+		j.WriteObjectField("cache_type")
 		s.CacheType.WriteJSON(j)
 	}
-	field.Write("drive_id")
+
+	more.More()
+	j.WriteObjectField("drive_id")
 	j.WriteString(s.DriveID)
-	field.Write("is_read_only")
+
+	more.More()
+	j.WriteObjectField("is_read_only")
 	j.WriteBool(s.IsReadOnly)
-	field.Write("is_root_device")
+
+	more.More()
+	j.WriteObjectField("is_root_device")
 	j.WriteBool(s.IsRootDevice)
+
 	if s.Partuuid.Set {
-		field.Write("partuuid")
+		more.More()
+		j.WriteObjectField("partuuid")
 		s.Partuuid.WriteJSON(j)
 	}
-	field.Write("path_on_host")
+
+	more.More()
+	j.WriteObjectField("path_on_host")
 	j.WriteString(s.PathOnHost)
+
 	if s.RateLimiter.Set {
-		field.Write("rate_limiter")
+		more.More()
+		j.WriteObjectField("rate_limiter")
 		s.RateLimiter.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes Drive json value to io.Writer.
 func (s Drive) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -546,18 +614,21 @@ func (s *Drive) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s Error) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.FaultMessage.Set {
-		field.Write("fault_message")
+		more.More()
+		j.WriteObjectField("fault_message")
 		s.FaultMessage.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes Error json value to io.Writer.
 func (s Error) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -599,14 +670,15 @@ func (s *Error) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s ErrorStatusCode) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes ErrorStatusCode json value to io.Writer.
 func (s ErrorStatusCode) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -641,44 +713,85 @@ func (s *ErrorStatusCode) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s FullVmConfiguration) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.BalloonDevice.Set {
-		field.Write("balloon_device")
+		more.More()
+		j.WriteObjectField("balloon_device")
 		s.BalloonDevice.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "BlockDevices".
+
+	if s.BlockDevices != nil {
+		more.More()
+		j.WriteObjectField("block_devices")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.BlockDevices {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.BootSource.Set {
-		field.Write("boot_source")
+		more.More()
+		j.WriteObjectField("boot_source")
 		s.BootSource.WriteJSON(j)
 	}
+
 	if s.Logger.Set {
-		field.Write("logger")
+		more.More()
+		j.WriteObjectField("logger")
 		s.Logger.WriteJSON(j)
 	}
+
 	if s.MachineConfig.Set {
-		field.Write("machine_config")
+		more.More()
+		j.WriteObjectField("machine_config")
 		s.MachineConfig.WriteJSON(j)
 	}
+
 	if s.Metrics.Set {
-		field.Write("metrics")
+		more.More()
+		j.WriteObjectField("metrics")
 		s.Metrics.WriteJSON(j)
 	}
+
 	if s.MmdsConfig.Set {
-		field.Write("mmds_config")
+		more.More()
+		j.WriteObjectField("mmds_config")
 		s.MmdsConfig.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "NetDevices".
+
+	if s.NetDevices != nil {
+		more.More()
+		j.WriteObjectField("net_devices")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.NetDevices {
+			more.More()
+			elem.WriteJSON(j)
+		}
+		j.WriteArrayEnd()
+		more.Up()
+
+	}
+
 	if s.VsockDevice.Set {
-		field.Write("vsock_device")
+		more.More()
+		j.WriteObjectField("vsock_device")
 		s.VsockDevice.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes FullVmConfiguration json value to io.Writer.
 func (s FullVmConfiguration) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -710,7 +823,7 @@ func (s *FullVmConfiguration) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "block_devices":
-			// Unsupported kind "pointer" for field "BlockDevices".
+			// Unsupported kind "array" for field "BlockDevices".
 			i.Skip()
 			return true
 		case "boot_source":
@@ -749,7 +862,7 @@ func (s *FullVmConfiguration) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "net_devices":
-			// Unsupported kind "pointer" for field "NetDevices".
+			// Unsupported kind "array" for field "NetDevices".
 			i.Skip()
 			return true
 		case "vsock_device":
@@ -770,16 +883,20 @@ func (s *FullVmConfiguration) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s InstanceActionInfo) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("action_type")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("action_type")
 	j.WriteString(s.ActionType)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes InstanceActionInfo json value to io.Writer.
 func (s InstanceActionInfo) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -817,22 +934,32 @@ func (s *InstanceActionInfo) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s InstanceInfo) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("app_name")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("app_name")
 	j.WriteString(s.AppName)
-	field.Write("id")
+
+	more.More()
+	j.WriteObjectField("id")
 	j.WriteString(s.ID)
-	field.Write("state")
+
+	more.More()
+	j.WriteObjectField("state")
 	j.WriteString(s.State)
-	field.Write("vmm_version")
+
+	more.More()
+	j.WriteObjectField("vmm_version")
 	j.WriteString(s.VmmVersion)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes InstanceInfo json value to io.Writer.
 func (s InstanceInfo) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -879,28 +1006,37 @@ func (s *InstanceInfo) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s Logger) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Level.Set {
-		field.Write("level")
+		more.More()
+		j.WriteObjectField("level")
 		s.Level.WriteJSON(j)
 	}
-	field.Write("log_path")
+
+	more.More()
+	j.WriteObjectField("log_path")
 	j.WriteString(s.LogPath)
+
 	if s.ShowLevel.Set {
-		field.Write("show_level")
+		more.More()
+		j.WriteObjectField("show_level")
 		s.ShowLevel.WriteJSON(j)
 	}
+
 	if s.ShowLogOrigin.Set {
-		field.Write("show_log_origin")
+		more.More()
+		j.WriteObjectField("show_log_origin")
 		s.ShowLogOrigin.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes Logger json value to io.Writer.
 func (s Logger) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -959,28 +1095,39 @@ func (s *Logger) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s MachineConfiguration) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.CPUTemplate.Set {
-		field.Write("cpu_template")
+		more.More()
+		j.WriteObjectField("cpu_template")
 		s.CPUTemplate.WriteJSON(j)
 	}
-	field.Write("ht_enabled")
+
+	more.More()
+	j.WriteObjectField("ht_enabled")
 	j.WriteBool(s.HtEnabled)
-	field.Write("mem_size_mib")
+
+	more.More()
+	j.WriteObjectField("mem_size_mib")
 	j.WriteInt(s.MemSizeMib)
+
 	if s.TrackDirtyPages.Set {
-		field.Write("track_dirty_pages")
+		more.More()
+		j.WriteObjectField("track_dirty_pages")
 		s.TrackDirtyPages.WriteJSON(j)
 	}
-	field.Write("vcpu_count")
+
+	more.More()
+	j.WriteObjectField("vcpu_count")
 	j.WriteInt(s.VcpuCount)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes MachineConfiguration json value to io.Writer.
 func (s MachineConfiguration) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1038,16 +1185,20 @@ func (s *MachineConfiguration) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s Metrics) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("metrics_path")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("metrics_path")
 	j.WriteString(s.MetricsPath)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes Metrics json value to io.Writer.
 func (s Metrics) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1085,18 +1236,21 @@ func (s *Metrics) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s MmdsConfig) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Ipv4Address.Set {
-		field.Write("ipv4_address")
+		more.More()
+		j.WriteObjectField("ipv4_address")
 		s.Ipv4Address.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes MmdsConfig json value to io.Writer.
 func (s MmdsConfig) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1138,34 +1292,47 @@ func (s *MmdsConfig) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s NetworkInterface) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.AllowMmdsRequests.Set {
-		field.Write("allow_mmds_requests")
+		more.More()
+		j.WriteObjectField("allow_mmds_requests")
 		s.AllowMmdsRequests.WriteJSON(j)
 	}
+
 	if s.GuestMAC.Set {
-		field.Write("guest_mac")
+		more.More()
+		j.WriteObjectField("guest_mac")
 		s.GuestMAC.WriteJSON(j)
 	}
-	field.Write("host_dev_name")
+
+	more.More()
+	j.WriteObjectField("host_dev_name")
 	j.WriteString(s.HostDevName)
-	field.Write("iface_id")
+
+	more.More()
+	j.WriteObjectField("iface_id")
 	j.WriteString(s.IfaceID)
+
 	if s.RxRateLimiter.Set {
-		field.Write("rx_rate_limiter")
+		more.More()
+		j.WriteObjectField("rx_rate_limiter")
 		s.RxRateLimiter.WriteJSON(j)
 	}
+
 	if s.TxRateLimiter.Set {
-		field.Write("tx_rate_limiter")
+		more.More()
+		j.WriteObjectField("tx_rate_limiter")
 		s.TxRateLimiter.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes NetworkInterface json value to io.Writer.
 func (s NetworkInterface) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1540,24 +1707,32 @@ func (o *OptVsock) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s PartialDrive) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("drive_id")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("drive_id")
 	j.WriteString(s.DriveID)
+
 	if s.PathOnHost.Set {
-		field.Write("path_on_host")
+		more.More()
+		j.WriteObjectField("path_on_host")
 		s.PathOnHost.WriteJSON(j)
 	}
+
 	if s.RateLimiter.Set {
-		field.Write("rate_limiter")
+		more.More()
+		j.WriteObjectField("rate_limiter")
 		s.RateLimiter.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes PartialDrive json value to io.Writer.
 func (s PartialDrive) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1609,24 +1784,32 @@ func (s *PartialDrive) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s PartialNetworkInterface) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("iface_id")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("iface_id")
 	j.WriteString(s.IfaceID)
+
 	if s.RxRateLimiter.Set {
-		field.Write("rx_rate_limiter")
+		more.More()
+		j.WriteObjectField("rx_rate_limiter")
 		s.RxRateLimiter.WriteJSON(j)
 	}
+
 	if s.TxRateLimiter.Set {
-		field.Write("tx_rate_limiter")
+		more.More()
+		j.WriteObjectField("tx_rate_limiter")
 		s.TxRateLimiter.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes PartialNetworkInterface json value to io.Writer.
 func (s PartialNetworkInterface) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1678,22 +1861,27 @@ func (s *PartialNetworkInterface) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s RateLimiter) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.Bandwidth.Set {
-		field.Write("bandwidth")
+		more.More()
+		j.WriteObjectField("bandwidth")
 		s.Bandwidth.WriteJSON(j)
 	}
+
 	if s.Ops.Set {
-		field.Write("ops")
+		more.More()
+		j.WriteObjectField("ops")
 		s.Ops.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes RateLimiter json value to io.Writer.
 func (s RateLimiter) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1742,26 +1930,36 @@ func (s *RateLimiter) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s SnapshotCreateParams) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("mem_file_path")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("mem_file_path")
 	j.WriteString(s.MemFilePath)
-	field.Write("snapshot_path")
+
+	more.More()
+	j.WriteObjectField("snapshot_path")
 	j.WriteString(s.SnapshotPath)
+
 	if s.SnapshotType.Set {
-		field.Write("snapshot_type")
+		more.More()
+		j.WriteObjectField("snapshot_type")
 		s.SnapshotType.WriteJSON(j)
 	}
+
 	if s.Version.Set {
-		field.Write("version")
+		more.More()
+		j.WriteObjectField("version")
 		s.Version.WriteJSON(j)
 	}
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes SnapshotCreateParams json value to io.Writer.
 func (s SnapshotCreateParams) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1816,26 +2014,35 @@ func (s *SnapshotCreateParams) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s SnapshotLoadParams) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.EnableDiffSnapshots.Set {
-		field.Write("enable_diff_snapshots")
+		more.More()
+		j.WriteObjectField("enable_diff_snapshots")
 		s.EnableDiffSnapshots.WriteJSON(j)
 	}
-	field.Write("mem_file_path")
+
+	more.More()
+	j.WriteObjectField("mem_file_path")
 	j.WriteString(s.MemFilePath)
+
 	if s.ResumeVM.Set {
-		field.Write("resume_vm")
+		more.More()
+		j.WriteObjectField("resume_vm")
 		s.ResumeVM.WriteJSON(j)
 	}
-	field.Write("snapshot_path")
+
+	more.More()
+	j.WriteObjectField("snapshot_path")
 	j.WriteString(s.SnapshotPath)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes SnapshotLoadParams json value to io.Writer.
 func (s SnapshotLoadParams) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1890,22 +2097,29 @@ func (s *SnapshotLoadParams) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s TokenBucket) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
+	more := json.NewMore(j)
+	defer more.Reset()
 	if s.OneTimeBurst.Set {
-		field.Write("one_time_burst")
+		more.More()
+		j.WriteObjectField("one_time_burst")
 		s.OneTimeBurst.WriteJSON(j)
 	}
-	field.Write("refill_time")
+
+	more.More()
+	j.WriteObjectField("refill_time")
 	j.WriteInt64(s.RefillTime)
-	field.Write("size")
+
+	more.More()
+	j.WriteObjectField("size")
 	j.WriteInt64(s.Size)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes TokenBucket json value to io.Writer.
 func (s TokenBucket) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -1953,16 +2167,20 @@ func (s *TokenBucket) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s VM) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("state")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("state")
 	j.WriteString(s.State)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes VM json value to io.Writer.
 func (s VM) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
@@ -2000,20 +2218,28 @@ func (s *VM) ReadJSON(i *json.Iterator) error {
 // WriteJSON implements json.Marshaler.
 func (s Vsock) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
-	field := json.NewFieldWriter(j)
-	defer field.Reset()
-	field.Write("guest_cid")
+	more := json.NewMore(j)
+	defer more.Reset()
+
+	more.More()
+	j.WriteObjectField("guest_cid")
 	j.WriteInt(s.GuestCid)
-	field.Write("uds_path")
+
+	more.More()
+	j.WriteObjectField("uds_path")
 	j.WriteString(s.UdsPath)
-	field.Write("vsock_id")
+
+	more.More()
+	j.WriteObjectField("vsock_id")
 	j.WriteString(s.VsockID)
+
 	j.WriteObjectEnd()
 }
 
 // WriteJSONTo writes Vsock json value to io.Writer.
 func (s Vsock) WriteJSONTo(w io.Writer) error {
-	j := json.NewStream(w)
+	j := json.GetStream(w)
+	defer json.PutStream(j)
 	s.WriteJSON(j)
 	return j.Flush()
 }
