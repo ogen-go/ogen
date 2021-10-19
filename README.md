@@ -37,6 +37,7 @@ go get github.com/ogen-go/ogen
     * When nullable, `nil` denotes that value is `nil`
     * When required, `nil` currently the same as `[]`, but is actually invalid
     * If both nullable and required, wrapper will be generated (TODO)
+* Validators for values generated according to specification
 
 Example generated structure from schema:
 ```go
