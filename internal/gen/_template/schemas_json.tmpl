@@ -49,7 +49,7 @@ func (s *{{ $s.Name }}) ReadJSON(i *json.Iterator) error {
     {{- if $f.Type.GenericVariant.Optional }}
         s.{{ $f.Name }}.Reset()
     {{- end }}
-    {{- if $f.Type.IsStruct }}
+    {{- if or ($f.Type.IsStruct) ($f.Type.IsEnum) }}
         if err := s.{{ $f.Name }}.ReadJSON(i); err != nil {
             i.ReportError("Field {{ $f.Name }}", err.Error())
             return false
@@ -162,6 +162,17 @@ func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if $g.FormatCustom }}, forma
     }
     return nil
 }
+{{- else if $s.IsEnum }}
+// WriteJSON implements json.Marshaler.
+func (s {{ $s.Name }}) WriteJSON(j *json.Stream) {
+    j.{{ $s.JSONWrite }}({{ $s.Primitive }}(s))
+}
+
+// ReadJSON reads {{ $s.Name }} from json stream.
+func (s *{{ $s.Name }}) ReadJSON(i *json.Iterator) error {
+    *s = {{ $s.Name }}(i.{{ $s.JSONRead }}())
+    return i.Error
+}
 {{- end }}
 
 {{- end }}
@@ -169,7 +180,7 @@ func (o *{{ $s.Name }}) ReadJSON(i *json.Iterator{{ if $g.FormatCustom }}, forma
 {{ end }}
 
 {{ define "json_array" }}
-{{- /*gotype: github.com/ogen-go/ogen/internal/ast.Leaf*/ -}}
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
 more.Down()
 j.WriteArrayStart()
 for _, elem := range {{ $.Var }} {
@@ -180,7 +191,7 @@ more.Up()
 {{ end }}
 
 {{ define "json_start" }}
-{{- /*gotype: github.com/ogen-go/ogen/internal/ast.Leaf*/ -}}
+{{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
 more.More()
 {{- if $.Field }}
 j.WriteObjectField("{{ $.Field }}")
@@ -188,8 +199,8 @@ j.WriteObjectField("{{ $.Field }}")
 {{ end }}
 
 {{ define "json_value" }}
-    {{- /*gotype: github.com/ogen-go/ogen/internal/ast.Leaf*/ -}}
-    {{- if $.Type.IsStruct }}
+    {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
+    {{- if or ($.Type.IsStruct) ($.Type.IsEnum) }}
         {{- template "json_start" $ }}
         {{ $.Var }}.WriteJSON(j)
     {{- else if $.Type.GenericOf -}}

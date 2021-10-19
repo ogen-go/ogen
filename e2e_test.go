@@ -117,6 +117,7 @@ func TestIntegration(t *testing.T) {
 			IPV4:         net.IPv4(127, 0, 0, 1),
 			IPV6:         net.ParseIP("2001:0db8:85a3:0000:0000:8a2e:0370:7334"),
 			Next:         api.NewOptData(api.Data{Description: api.NewOptString("Foo")}),
+			Kind:         api.PetKindSmol,
 
 			// TODO(ernado): support decoding and check those
 			Friends: nil,
@@ -144,6 +145,7 @@ func TestIntegration(t *testing.T) {
 			a.Equal(exp.NullStr, got.NullStr, "NullStr")
 			a.Equal(exp.Rate, got.Rate, "Rate")
 			a.Equal(exp.Tag, got.Tag, "Tag")
+			a.Equal(exp.Kind, got.Kind, "Kind")
 
 			a.Equal(exp.TestDate.Set, got.TestDate.Set, "TestDate")
 			a.True(exp.TestDate.Value.Equal(got.TestDate.Value), "TestDate %s (exp) != %s (got)", exp.TestDate.Value, got.TestDate.Value)
@@ -157,11 +159,11 @@ func TestIntegration(t *testing.T) {
 
 			// Probably we need separate type for Time.
 			a.Equal(exp.TestTime.Set, got.TestTime.Set, "TestTime")
-			a.Equal(exp.TestTime.Value.Hour(), got.TestTime.Value.Hour())
-			a.Equal(exp.TestTime.Value.Minute(), got.TestTime.Value.Minute())
-			a.Equal(exp.TestTime.Value.Second(), got.TestTime.Value.Second())
+			a.Equal(exp.TestTime.Value.Hour(), got.TestTime.Value.Hour(), "TestTime hour")
+			a.Equal(exp.TestTime.Value.Minute(), got.TestTime.Value.Minute(), "TestTime hour")
+			a.Equal(exp.TestTime.Value.Second(), got.TestTime.Value.Second(), "TestTime hour")
 
-			a.Equal(pet.UniqueID, got.UniqueID)
+			a.Equal(pet.UniqueID, got.UniqueID, "UniqueID")
 
 			a.True(pet.IP.Equal(got.IP), "IP")
 			a.True(pet.IPV4.Equal(got.IPV4), "IPV4")

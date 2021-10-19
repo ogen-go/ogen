@@ -618,7 +618,7 @@ func (s ActionsCreateOrUpdateOrgSecretApplicationJSONRequest) WriteJSON(j *json.
 
 	more.More()
 	j.WriteObjectField("visibility")
-	j.WriteString(s.Visibility)
+	s.Visibility.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -669,13 +669,27 @@ func (s *ActionsCreateOrUpdateOrgSecretApplicationJSONRequest) ReadJSON(i *json.
 			i.Skip()
 			return true
 		case "visibility":
-			s.Visibility = i.ReadString()
-			return i.Error == nil
+			if err := s.Visibility.ReadJSON(i); err != nil {
+				i.ReportError("Field Visibility", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibility from json stream.
+func (s *ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+	*s = ActionsCreateOrUpdateOrgSecretApplicationJSONRequestVisibility(i.ReadString())
 	return i.Error
 }
 
@@ -849,6 +863,17 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest) ReadJSO
 }
 
 // WriteJSON implements json.Marshaler.
+func (s ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility from json stream.
+func (s *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+	*s = ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s ActionsEnterprisePermissions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -861,7 +886,7 @@ func (s ActionsEnterprisePermissions) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("enabled_organizations")
-	j.WriteString(s.EnabledOrganizations)
+	s.EnabledOrganizations.WriteJSON(j)
 
 	// Unsupported kind "pointer" for field "selected_actions_url".
 
@@ -909,8 +934,11 @@ func (s *ActionsEnterprisePermissions) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "enabled_organizations":
-			s.EnabledOrganizations = i.ReadString()
-			return i.Error == nil
+			if err := s.EnabledOrganizations.ReadJSON(i); err != nil {
+				i.ReportError("Field EnabledOrganizations", err.Error())
+				return false
+			}
+			return true
 		case "selected_actions_url":
 			// Unsupported kind "pointer" for field "SelectedActionsURL".
 			i.Skip()
@@ -1789,7 +1817,7 @@ func (s ActionsOrganizationPermissions) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("enabled_repositories")
-	j.WriteString(s.EnabledRepositories)
+	s.EnabledRepositories.WriteJSON(j)
 
 	// Unsupported kind "pointer" for field "selected_actions_url".
 
@@ -1837,8 +1865,11 @@ func (s *ActionsOrganizationPermissions) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "enabled_repositories":
-			s.EnabledRepositories = i.ReadString()
-			return i.Error == nil
+			if err := s.EnabledRepositories.ReadJSON(i); err != nil {
+				i.ReportError("Field EnabledRepositories", err.Error())
+				return false
+			}
+			return true
 		case "selected_actions_url":
 			// Unsupported kind "pointer" for field "SelectedActionsURL".
 			i.Skip()
@@ -2058,7 +2089,7 @@ func (s ActionsReviewPendingDeploymentsForRunApplicationJSONRequest) WriteJSON(j
 
 	more.More()
 	j.WriteObjectField("state")
-	j.WriteString(s.State)
+	s.State.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -2098,13 +2129,27 @@ func (s *ActionsReviewPendingDeploymentsForRunApplicationJSONRequest) ReadJSON(i
 			i.Skip()
 			return true
 		case "state":
-			s.State = i.ReadString()
-			return i.Error == nil
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsReviewPendingDeploymentsForRunApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ActionsReviewPendingDeploymentsForRunApplicationJSONRequestState from json stream.
+func (s *ActionsReviewPendingDeploymentsForRunApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
+	*s = ActionsReviewPendingDeploymentsForRunApplicationJSONRequestState(i.ReadString())
 	return i.Error
 }
 
@@ -2196,7 +2241,7 @@ func (s ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest) Wr
 
 	more.More()
 	j.WriteObjectField("enabled_repositories")
-	j.WriteString(s.EnabledRepositories)
+	s.EnabledRepositories.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -2236,8 +2281,11 @@ func (s *ActionsSetGithubActionsPermissionsOrganizationApplicationJSONRequest) R
 			}
 			return true
 		case "enabled_repositories":
-			s.EnabledRepositories = i.ReadString()
-			return i.Error == nil
+			if err := s.EnabledRepositories.ReadJSON(i); err != nil {
+				i.ReportError("Field EnabledRepositories", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -2601,6 +2649,17 @@ func (s *ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest) ReadJSO
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility from json stream.
+func (s *ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+	*s = ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequestVisibility(i.ReadString())
 	return i.Error
 }
 
@@ -2976,6 +3035,17 @@ func (s *ActivitySetThreadSubscriptionApplicationJSONRequest) ReadJSON(i *json.I
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AllowedActions) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AllowedActions from json stream.
+func (s *AllowedActions) ReadJSON(i *json.Iterator) error {
+	*s = AllowedActions(i.ReadString())
 	return i.Error
 }
 
@@ -3422,6 +3492,347 @@ func (s *AppPermissions) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsActions) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsActions from json stream.
+func (s *AppPermissionsActions) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsActions(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsAdministration) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsAdministration from json stream.
+func (s *AppPermissionsAdministration) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsAdministration(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsChecks) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsChecks from json stream.
+func (s *AppPermissionsChecks) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsChecks(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsContentReferences) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsContentReferences from json stream.
+func (s *AppPermissionsContentReferences) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsContentReferences(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsContents) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsContents from json stream.
+func (s *AppPermissionsContents) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsContents(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsDeployments) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsDeployments from json stream.
+func (s *AppPermissionsDeployments) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsDeployments(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsEnvironments) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsEnvironments from json stream.
+func (s *AppPermissionsEnvironments) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsEnvironments(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsIssues) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsIssues from json stream.
+func (s *AppPermissionsIssues) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsIssues(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsMembers) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsMembers from json stream.
+func (s *AppPermissionsMembers) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsMembers(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsMetadata) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsMetadata from json stream.
+func (s *AppPermissionsMetadata) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsMetadata(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsOrganizationAdministration) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsOrganizationAdministration from json stream.
+func (s *AppPermissionsOrganizationAdministration) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsOrganizationAdministration(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsOrganizationHooks) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsOrganizationHooks from json stream.
+func (s *AppPermissionsOrganizationHooks) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsOrganizationHooks(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsOrganizationPackages) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsOrganizationPackages from json stream.
+func (s *AppPermissionsOrganizationPackages) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsOrganizationPackages(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsOrganizationPlan) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsOrganizationPlan from json stream.
+func (s *AppPermissionsOrganizationPlan) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsOrganizationPlan(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsOrganizationProjects) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsOrganizationProjects from json stream.
+func (s *AppPermissionsOrganizationProjects) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsOrganizationProjects(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsOrganizationSecrets) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsOrganizationSecrets from json stream.
+func (s *AppPermissionsOrganizationSecrets) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsOrganizationSecrets(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsOrganizationSelfHostedRunners) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsOrganizationSelfHostedRunners from json stream.
+func (s *AppPermissionsOrganizationSelfHostedRunners) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsOrganizationSelfHostedRunners(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsOrganizationUserBlocking) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsOrganizationUserBlocking from json stream.
+func (s *AppPermissionsOrganizationUserBlocking) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsOrganizationUserBlocking(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsPackages) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsPackages from json stream.
+func (s *AppPermissionsPackages) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsPackages(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsPages) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsPages from json stream.
+func (s *AppPermissionsPages) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsPages(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsPullRequests) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsPullRequests from json stream.
+func (s *AppPermissionsPullRequests) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsPullRequests(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsRepositoryHooks) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsRepositoryHooks from json stream.
+func (s *AppPermissionsRepositoryHooks) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsRepositoryHooks(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsRepositoryProjects) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsRepositoryProjects from json stream.
+func (s *AppPermissionsRepositoryProjects) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsRepositoryProjects(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsSecretScanningAlerts) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsSecretScanningAlerts from json stream.
+func (s *AppPermissionsSecretScanningAlerts) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsSecretScanningAlerts(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsSecrets) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsSecrets from json stream.
+func (s *AppPermissionsSecrets) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsSecrets(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsSecurityEvents) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsSecurityEvents from json stream.
+func (s *AppPermissionsSecurityEvents) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsSecurityEvents(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsSingleFile) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsSingleFile from json stream.
+func (s *AppPermissionsSingleFile) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsSingleFile(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsStatuses) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsStatuses from json stream.
+func (s *AppPermissionsStatuses) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsStatuses(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsTeamDiscussions) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsTeamDiscussions from json stream.
+func (s *AppPermissionsTeamDiscussions) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsTeamDiscussions(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsVulnerabilityAlerts) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsVulnerabilityAlerts from json stream.
+func (s *AppPermissionsVulnerabilityAlerts) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsVulnerabilityAlerts(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AppPermissionsWorkflows) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AppPermissionsWorkflows from json stream.
+func (s *AppPermissionsWorkflows) ReadJSON(i *json.Iterator) error {
+	*s = AppPermissionsWorkflows(i.ReadString())
 	return i.Error
 }
 
@@ -4488,6 +4899,28 @@ func (s *AuthenticationToken) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AuthenticationTokenRepositorySelection) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AuthenticationTokenRepositorySelection from json stream.
+func (s *AuthenticationTokenRepositorySelection) ReadJSON(i *json.Iterator) error {
+	*s = AuthenticationTokenRepositorySelection(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s AuthorAssociation) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads AuthorAssociation from json stream.
+func (s *AuthorAssociation) ReadJSON(i *json.Iterator) error {
+	*s = AuthorAssociation(i.ReadString())
 	return i.Error
 }
 
@@ -7680,7 +8113,7 @@ func (s CheckRun) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("status")
-	j.WriteString(s.Status)
+	s.Status.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("url")
@@ -7793,8 +8226,11 @@ func (s *CheckRun) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "status":
-			s.Status = i.ReadString()
-			return i.Error == nil
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
+			return true
 		case "url":
 			s.URL = i.ReadString()
 			return i.Error == nil
@@ -7854,6 +8290,17 @@ func (s *CheckRunCheckSuite) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s CheckRunConclusion) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads CheckRunConclusion from json stream.
+func (s *CheckRunConclusion) ReadJSON(i *json.Iterator) error {
+	*s = CheckRunConclusion(i.ReadString())
 	return i.Error
 }
 
@@ -7947,6 +8394,17 @@ func (s *CheckRunOutput) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s CheckRunStatus) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads CheckRunStatus from json stream.
+func (s *CheckRunStatus) ReadJSON(i *json.Iterator) error {
+	*s = CheckRunStatus(i.ReadString())
 	return i.Error
 }
 
@@ -8159,6 +8617,17 @@ func (s *CheckSuite) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s CheckSuiteConclusion) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads CheckSuiteConclusion from json stream.
+func (s *CheckSuiteConclusion) ReadJSON(i *json.Iterator) error {
+	*s = CheckSuiteConclusion(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s CheckSuitePreference) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -8337,6 +8806,17 @@ func (s *CheckSuitePreferencePreferencesAutoTriggerChecksItem) ReadJSON(i *json.
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s CheckSuiteStatus) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads CheckSuiteStatus from json stream.
+func (s *CheckSuiteStatus) ReadJSON(i *json.Iterator) error {
+	*s = CheckSuiteStatus(i.ReadString())
 	return i.Error
 }
 
@@ -8747,6 +9227,28 @@ func (s *CodeOfConductSimple) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s CodeScanningAlertClassification) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads CodeScanningAlertClassification from json stream.
+func (s *CodeScanningAlertClassification) ReadJSON(i *json.Iterator) error {
+	*s = CodeScanningAlertClassification(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s CodeScanningAlertDismissedReason) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads CodeScanningAlertDismissedReason from json stream.
+func (s *CodeScanningAlertDismissedReason) ReadJSON(i *json.Iterator) error {
+	*s = CodeScanningAlertDismissedReason(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s CodeScanningAlertInstance) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -8763,7 +9265,7 @@ func (s CodeScanningAlertInstance) WriteJSON(j *json.Stream) {
 		j.WriteArrayStart()
 		for _, elem := range s.Classifications {
 			more.More()
-			j.WriteString(elem)
+			elem.WriteJSON(j)
 		}
 		j.WriteArrayEnd()
 		more.Up()
@@ -9058,6 +9560,28 @@ func (s *CodeScanningAlertLocation) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s CodeScanningAlertSetState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads CodeScanningAlertSetState from json stream.
+func (s *CodeScanningAlertSetState) ReadJSON(i *json.Iterator) error {
+	*s = CodeScanningAlertSetState(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s CodeScanningAlertState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads CodeScanningAlertState from json stream.
+func (s *CodeScanningAlertState) ReadJSON(i *json.Iterator) error {
+	*s = CodeScanningAlertState(i.ReadString())
 	return i.Error
 }
 
@@ -9476,6 +10000,17 @@ func (s *CodeScanningSarifsStatus) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s CodeScanningSarifsStatusProcessingStatus) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads CodeScanningSarifsStatusProcessingStatus from json stream.
+func (s *CodeScanningSarifsStatusProcessingStatus) ReadJSON(i *json.Iterator) error {
+	*s = CodeScanningSarifsStatusProcessingStatus(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s CodeScanningUpdateAlertApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -9488,7 +10023,7 @@ func (s CodeScanningUpdateAlertApplicationJSONRequest) WriteJSON(j *json.Stream)
 
 	more.More()
 	j.WriteObjectField("state")
-	j.WriteString(s.State)
+	s.State.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -9528,8 +10063,11 @@ func (s *CodeScanningUpdateAlertApplicationJSONRequest) ReadJSON(i *json.Iterato
 			}
 			return true
 		case "state":
-			s.State = i.ReadString()
-			return i.Error == nil
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -10063,10 +10601,9 @@ func (s CommitComment) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("author_association")
-	j.WriteString(s.AuthorAssociation)
+	s.AuthorAssociation.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("body")
@@ -10153,8 +10690,11 @@ func (s *CommitComment) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "author_association":
-			s.AuthorAssociation = i.ReadString()
-			return i.Error == nil
+			if err := s.AuthorAssociation.ReadJSON(i); err != nil {
+				i.ReportError("Field AuthorAssociation", err.Error())
+				return false
+			}
+			return true
 		case "body":
 			s.Body = i.ReadString()
 			return i.Error == nil
@@ -10478,7 +11018,7 @@ func (s CommitComparison) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("status")
-	j.WriteString(s.Status)
+	s.Status.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("total_commits")
@@ -10577,8 +11117,11 @@ func (s *CommitComparison) ReadJSON(i *json.Iterator) error {
 			s.PermalinkURL = v
 			return true
 		case "status":
-			s.Status = i.ReadString()
-			return i.Error == nil
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
+			return true
 		case "total_commits":
 			s.TotalCommits = i.ReadInt()
 			return i.Error == nil
@@ -10595,6 +11138,17 @@ func (s *CommitComparison) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s CommitComparisonStatus) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads CommitComparisonStatus from json stream.
+func (s *CommitComparisonStatus) ReadJSON(i *json.Iterator) error {
+	*s = CommitComparisonStatus(i.ReadString())
 	return i.Error
 }
 
@@ -12546,7 +13100,7 @@ func (s DeploymentStatus) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("state")
-	j.WriteString(s.State)
+	s.State.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("target_url")
@@ -12658,8 +13212,11 @@ func (s *DeploymentStatus) ReadJSON(i *json.Iterator) error {
 			s.RepositoryURL = v
 			return true
 		case "state":
-			s.State = i.ReadString()
-			return i.Error == nil
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
+			return true
 		case "target_url":
 			v, err := json.ReadURI(i)
 			if err != nil {
@@ -12689,6 +13246,17 @@ func (s *DeploymentStatus) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s DeploymentStatusState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads DeploymentStatusState from json stream.
+func (s *DeploymentStatusState) ReadJSON(i *json.Iterator) error {
+	*s = DeploymentStatusState(i.ReadString())
 	return i.Error
 }
 
@@ -12744,7 +13312,7 @@ func (s DiffEntry) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("status")
-	j.WriteString(s.Status)
+	s.Status.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -12830,13 +13398,27 @@ func (s *DiffEntry) ReadJSON(i *json.Iterator) error {
 			s.Sha = i.ReadString()
 			return i.Error == nil
 		case "status":
-			s.Status = i.ReadString()
-			return i.Error == nil
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s DiffEntryStatus) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads DiffEntryStatus from json stream.
+func (s *DiffEntryStatus) ReadJSON(i *json.Iterator) error {
+	*s = DiffEntryStatus(i.ReadString())
 	return i.Error
 }
 
@@ -12912,6 +13494,28 @@ func (s *Email) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s EnabledOrganizations) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads EnabledOrganizations from json stream.
+func (s *EnabledOrganizations) ReadJSON(i *json.Iterator) error {
+	*s = EnabledOrganizations(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s EnabledRepositories) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads EnabledRepositories from json stream.
+func (s *EnabledRepositories) ReadJSON(i *json.Iterator) error {
+	*s = EnabledRepositories(i.ReadString())
 	return i.Error
 }
 
@@ -13012,6 +13616,17 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONR
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility from json stream.
+func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+	*s = EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility(i.ReadString())
 	return i.Error
 }
 
@@ -13784,7 +14399,7 @@ func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONReque
 
 	more.More()
 	j.WriteObjectField("enabled_organizations")
-	j.WriteString(s.EnabledOrganizations)
+	s.EnabledOrganizations.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -13824,8 +14439,11 @@ func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseApplicationJSONRequ
 			}
 			return true
 		case "enabled_organizations":
-			s.EnabledOrganizations = i.ReadString()
-			return i.Error == nil
+			if err := s.EnabledOrganizations.ReadJSON(i); err != nil {
+				i.ReportError("Field EnabledOrganizations", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -14572,6 +15190,17 @@ func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONR
 }
 
 // WriteJSON implements json.Marshaler.
+func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility from json stream.
+func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+	*s = EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONRequestVisibility(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s EnvironmentApprovals) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -14594,7 +15223,7 @@ func (s EnvironmentApprovals) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("state")
-	j.WriteString(s.State)
+	s.State.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("user")
@@ -14638,8 +15267,11 @@ func (s *EnvironmentApprovals) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "state":
-			s.State = i.ReadString()
-			return i.Error == nil
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
+			return true
 		case "user":
 			if err := s.User.ReadJSON(i); err != nil {
 				i.ReportError("Field User", err.Error())
@@ -14785,6 +15417,17 @@ func (s *EnvironmentApprovalsEnvironmentsItem) ReadJSON(i *json.Iterator) error 
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s EnvironmentApprovalsState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads EnvironmentApprovalsState from json stream.
+func (s *EnvironmentApprovalsState) ReadJSON(i *json.Iterator) error {
+	*s = EnvironmentApprovalsState(i.ReadString())
 	return i.Error
 }
 
@@ -17304,6 +17947,17 @@ func (s *FullRepositorySecurityAndAnalysisAdvancedSecurity) ReadJSON(i *json.Ite
 }
 
 // WriteJSON implements json.Marshaler.
+func (s FullRepositorySecurityAndAnalysisAdvancedSecurityStatus) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads FullRepositorySecurityAndAnalysisAdvancedSecurityStatus from json stream.
+func (s *FullRepositorySecurityAndAnalysisAdvancedSecurityStatus) ReadJSON(i *json.Iterator) error {
+	*s = FullRepositorySecurityAndAnalysisAdvancedSecurityStatus(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s FullRepositorySecurityAndAnalysisSecretScanning) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -17360,14 +18014,24 @@ func (s *FullRepositorySecurityAndAnalysisSecretScanning) ReadJSON(i *json.Itera
 }
 
 // WriteJSON implements json.Marshaler.
+func (s FullRepositorySecurityAndAnalysisSecretScanningStatus) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads FullRepositorySecurityAndAnalysisSecretScanningStatus from json stream.
+func (s *FullRepositorySecurityAndAnalysisSecretScanningStatus) ReadJSON(i *json.Iterator) error {
+	*s = FullRepositorySecurityAndAnalysisSecretScanningStatus(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s GistComment) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("author_association")
-	j.WriteString(s.AuthorAssociation)
+	s.AuthorAssociation.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("body")
@@ -17428,8 +18092,11 @@ func (s *GistComment) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "author_association":
-			s.AuthorAssociation = i.ReadString()
-			return i.Error == nil
+			if err := s.AuthorAssociation.ReadJSON(i); err != nil {
+				i.ReportError("Field AuthorAssociation", err.Error())
+				return false
+			}
+			return true
 		case "body":
 			s.Body = i.ReadString()
 			return i.Error == nil
@@ -18679,7 +19346,7 @@ func (s GitCreateTagApplicationJSONRequest) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("type")
-	j.WriteString(s.Type)
+	s.Type.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -18728,8 +19395,11 @@ func (s *GitCreateTagApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "type":
-			s.Type = i.ReadString()
-			return i.Error == nil
+			if err := s.Type.ReadJSON(i); err != nil {
+				i.ReportError("Field Type", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -18805,6 +19475,17 @@ func (s *GitCreateTagApplicationJSONRequestTagger) ReadJSON(i *json.Iterator) er
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s GitCreateTagApplicationJSONRequestType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads GitCreateTagApplicationJSONRequestType from json stream.
+func (s *GitCreateTagApplicationJSONRequestType) ReadJSON(i *json.Iterator) error {
+	*s = GitCreateTagApplicationJSONRequestType(i.ReadString())
 	return i.Error
 }
 
@@ -18984,6 +19665,28 @@ func (s *GitCreateTreeApplicationJSONRequestTreeItem) ReadJSON(i *json.Iterator)
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s GitCreateTreeApplicationJSONRequestTreeItemMode) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads GitCreateTreeApplicationJSONRequestTreeItemMode from json stream.
+func (s *GitCreateTreeApplicationJSONRequestTreeItemMode) ReadJSON(i *json.Iterator) error {
+	*s = GitCreateTreeApplicationJSONRequestTreeItemMode(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s GitCreateTreeApplicationJSONRequestTreeItemType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads GitCreateTreeApplicationJSONRequestTreeItemType from json stream.
+func (s *GitCreateTreeApplicationJSONRequestTreeItemType) ReadJSON(i *json.Iterator) error {
+	*s = GitCreateTreeApplicationJSONRequestTreeItemType(i.ReadString())
 	return i.Error
 }
 
@@ -20551,7 +21254,7 @@ func (s Import) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("status")
-	j.WriteString(s.Status)
+	s.Status.WriteJSON(j)
 
 	if s.StatusText.Set {
 		more.More()
@@ -20724,8 +21427,11 @@ func (s *Import) ReadJSON(i *json.Iterator) error {
 			s.RepositoryURL = v
 			return true
 		case "status":
-			s.Status = i.ReadString()
-			return i.Error == nil
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
+			return true
 		case "status_text":
 			s.StatusText.Reset()
 			if err := s.StatusText.ReadJSON(i); err != nil {
@@ -20865,6 +21571,17 @@ func (s *ImportProjectChoicesItem) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ImportStatus) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ImportStatus from json stream.
+func (s *ImportStatus) ReadJSON(i *json.Iterator) error {
+	*s = ImportStatus(i.ReadString())
 	return i.Error
 }
 
@@ -21011,6 +21728,17 @@ func (s *InstallationToken) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s InstallationTokenRepositorySelection) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads InstallationTokenRepositorySelection from json stream.
+func (s *InstallationTokenRepositorySelection) ReadJSON(i *json.Iterator) error {
+	*s = InstallationTokenRepositorySelection(i.ReadString())
 	return i.Error
 }
 
@@ -21358,6 +22086,28 @@ func (s *IntegrationPermissions) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s InteractionExpiry) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads InteractionExpiry from json stream.
+func (s *InteractionExpiry) ReadJSON(i *json.Iterator) error {
+	*s = InteractionExpiry(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s InteractionGroup) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads InteractionGroup from json stream.
+func (s *InteractionGroup) ReadJSON(i *json.Iterator) error {
+	*s = InteractionGroup(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s InteractionLimit) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -21370,7 +22120,7 @@ func (s InteractionLimit) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("limit")
-	j.WriteString(s.Limit)
+	s.Limit.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -21410,8 +22160,11 @@ func (s *InteractionLimit) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "limit":
-			s.Limit = i.ReadString()
-			return i.Error == nil
+			if err := s.Limit.ReadJSON(i); err != nil {
+				i.ReportError("Field Limit", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -21432,7 +22185,7 @@ func (s InteractionLimitResponse) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("limit")
-	j.WriteString(s.Limit)
+	s.Limit.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("origin")
@@ -21477,8 +22230,11 @@ func (s *InteractionLimitResponse) ReadJSON(i *json.Iterator) error {
 			s.ExpiresAt = v
 			return true
 		case "limit":
-			s.Limit = i.ReadString()
-			return i.Error == nil
+			if err := s.Limit.ReadJSON(i); err != nil {
+				i.ReportError("Field Limit", err.Error())
+				return false
+			}
+			return true
 		case "origin":
 			s.Origin = i.ReadString()
 			return i.Error == nil
@@ -21495,10 +22251,9 @@ func (s IssueComment) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("author_association")
-	j.WriteString(s.AuthorAssociation)
+	s.AuthorAssociation.WriteJSON(j)
 
 	if s.Body.Set {
 		more.More()
@@ -21593,8 +22348,11 @@ func (s *IssueComment) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "author_association":
-			s.AuthorAssociation = i.ReadString()
-			return i.Error == nil
+			if err := s.AuthorAssociation.ReadJSON(i); err != nil {
+				i.ReportError("Field AuthorAssociation", err.Error())
+				return false
+			}
+			return true
 		case "body":
 			s.Body.Reset()
 			if err := s.Body.ReadJSON(i); err != nil {
@@ -21968,6 +22726,17 @@ func (s *IssuesCreateMilestoneApplicationJSONRequest) ReadJSON(i *json.Iterator)
 }
 
 // WriteJSON implements json.Marshaler.
+func (s IssuesCreateMilestoneApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads IssuesCreateMilestoneApplicationJSONRequestState from json stream.
+func (s *IssuesCreateMilestoneApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
+	*s = IssuesCreateMilestoneApplicationJSONRequestState(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s IssuesLockApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -22020,6 +22789,17 @@ func (s *IssuesLockApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s IssuesLockApplicationJSONRequestLockReason) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads IssuesLockApplicationJSONRequestLockReason from json stream.
+func (s *IssuesLockApplicationJSONRequestLockReason) ReadJSON(i *json.Iterator) error {
+	*s = IssuesLockApplicationJSONRequestLockReason(i.ReadString())
 	return i.Error
 }
 
@@ -22313,6 +23093,17 @@ func (s *IssuesUpdateMilestoneApplicationJSONRequest) ReadJSON(i *json.Iterator)
 }
 
 // WriteJSON implements json.Marshaler.
+func (s IssuesUpdateMilestoneApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads IssuesUpdateMilestoneApplicationJSONRequestState from json stream.
+func (s *IssuesUpdateMilestoneApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
+	*s = IssuesUpdateMilestoneApplicationJSONRequestState(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s Job) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -22364,7 +23155,7 @@ func (s Job) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("status")
-	j.WriteString(s.Status)
+	s.Status.WriteJSON(j)
 
 	if s.Steps != nil {
 		more.More()
@@ -22462,8 +23253,11 @@ func (s *Job) ReadJSON(i *json.Iterator) error {
 			s.StartedAt = v
 			return true
 		case "status":
-			s.Status = i.ReadString()
-			return i.Error == nil
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
+			return true
 		case "steps":
 			// Unsupported kind "array" for field "Steps".
 			i.Skip()
@@ -22476,6 +23270,17 @@ func (s *Job) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s JobStatus) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads JobStatus from json stream.
+func (s *JobStatus) ReadJSON(i *json.Iterator) error {
+	*s = JobStatus(i.ReadString())
 	return i.Error
 }
 
@@ -22510,7 +23315,7 @@ func (s JobStepsItem) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("status")
-	j.WriteString(s.Status)
+	s.Status.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -22569,13 +23374,27 @@ func (s *JobStepsItem) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "status":
-			s.Status = i.ReadString()
-			return i.Error == nil
+			if err := s.Status.ReadJSON(i); err != nil {
+				i.ReportError("Field Status", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s JobStepsItemStatus) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads JobStepsItemStatus from json stream.
+func (s *JobStepsItemStatus) ReadJSON(i *json.Iterator) error {
+	*s = JobStepsItemStatus(i.ReadString())
 	return i.Error
 }
 
@@ -23519,6 +24338,17 @@ func (s *MarkdownRenderApplicationJSONRequest) ReadJSON(i *json.Iterator) error 
 }
 
 // WriteJSON implements json.Marshaler.
+func (s MarkdownRenderApplicationJSONRequestMode) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads MarkdownRenderApplicationJSONRequestMode from json stream.
+func (s *MarkdownRenderApplicationJSONRequestMode) ReadJSON(i *json.Iterator) error {
+	*s = MarkdownRenderApplicationJSONRequestMode(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s MarketplaceAccount) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -24247,6 +25077,17 @@ func (s *MergedUpstream) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s MergedUpstreamMergeType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads MergedUpstreamMergeType from json stream.
+func (s *MergedUpstreamMergeType) ReadJSON(i *json.Iterator) error {
+	*s = MergedUpstreamMergeType(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s MetaRoot) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -24733,6 +25574,28 @@ func (s *Migration) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s MigrationsGetStatusForOrgExcludeItem) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads MigrationsGetStatusForOrgExcludeItem from json stream.
+func (s *MigrationsGetStatusForOrgExcludeItem) ReadJSON(i *json.Iterator) error {
+	*s = MigrationsGetStatusForOrgExcludeItem(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s MigrationsListForOrgExcludeItem) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads MigrationsListForOrgExcludeItem from json stream.
+func (s *MigrationsListForOrgExcludeItem) ReadJSON(i *json.Iterator) error {
+	*s = MigrationsListForOrgExcludeItem(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s MigrationsMapCommitAuthorApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -24806,10 +25669,9 @@ func (s MigrationsSetLfsPreferenceApplicationJSONRequest) WriteJSON(j *json.Stre
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("use_lfs")
-	j.WriteString(s.UseLfs)
+	s.UseLfs.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -24842,13 +25704,27 @@ func (s *MigrationsSetLfsPreferenceApplicationJSONRequest) ReadJSON(i *json.Iter
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "use_lfs":
-			s.UseLfs = i.ReadString()
-			return i.Error == nil
+			if err := s.UseLfs.ReadJSON(i); err != nil {
+				i.ReportError("Field UseLfs", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s MigrationsSetLfsPreferenceApplicationJSONRequestUseLfs) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads MigrationsSetLfsPreferenceApplicationJSONRequestUseLfs from json stream.
+func (s *MigrationsSetLfsPreferenceApplicationJSONRequestUseLfs) ReadJSON(i *json.Iterator) error {
+	*s = MigrationsSetLfsPreferenceApplicationJSONRequestUseLfs(i.ReadString())
 	return i.Error
 }
 
@@ -24864,7 +25740,7 @@ func (s MigrationsStartForAuthenticatedUserApplicationJSONRequest) WriteJSON(j *
 		j.WriteArrayStart()
 		for _, elem := range s.Exclude {
 			more.More()
-			j.WriteString(elem)
+			elem.WriteJSON(j)
 		}
 		j.WriteArrayEnd()
 		more.Up()
@@ -24981,6 +25857,17 @@ func (s *MigrationsStartForAuthenticatedUserApplicationJSONRequest) ReadJSON(i *
 }
 
 // WriteJSON implements json.Marshaler.
+func (s MigrationsStartForAuthenticatedUserApplicationJSONRequestExcludeItem) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads MigrationsStartForAuthenticatedUserApplicationJSONRequestExcludeItem from json stream.
+func (s *MigrationsStartForAuthenticatedUserApplicationJSONRequestExcludeItem) ReadJSON(i *json.Iterator) error {
+	*s = MigrationsStartForAuthenticatedUserApplicationJSONRequestExcludeItem(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s MigrationsStartForOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -24992,7 +25879,7 @@ func (s MigrationsStartForOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		j.WriteArrayStart()
 		for _, elem := range s.Exclude {
 			more.More()
-			j.WriteString(elem)
+			elem.WriteJSON(j)
 		}
 		j.WriteArrayEnd()
 		more.Up()
@@ -25109,6 +25996,17 @@ func (s *MigrationsStartForOrgApplicationJSONRequest) ReadJSON(i *json.Iterator)
 }
 
 // WriteJSON implements json.Marshaler.
+func (s MigrationsStartForOrgApplicationJSONRequestExcludeItem) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads MigrationsStartForOrgApplicationJSONRequestExcludeItem from json stream.
+func (s *MigrationsStartForOrgApplicationJSONRequestExcludeItem) ReadJSON(i *json.Iterator) error {
+	*s = MigrationsStartForOrgApplicationJSONRequestExcludeItem(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s MigrationsStartImportApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -25207,6 +26105,17 @@ func (s *MigrationsStartImportApplicationJSONRequest) ReadJSON(i *json.Iterator)
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s MigrationsStartImportApplicationJSONRequestVcs) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads MigrationsStartImportApplicationJSONRequestVcs from json stream.
+func (s *MigrationsStartImportApplicationJSONRequestVcs) ReadJSON(i *json.Iterator) error {
+	*s = MigrationsStartImportApplicationJSONRequestVcs(i.ReadString())
 	return i.Error
 }
 
@@ -25360,7 +26269,7 @@ func (s Milestone) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("state")
-	j.WriteString(s.State)
+	s.State.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("title")
@@ -25468,8 +26377,11 @@ func (s *Milestone) ReadJSON(i *json.Iterator) error {
 			s.OpenIssues = i.ReadInt()
 			return i.Error == nil
 		case "state":
-			s.State = i.ReadString()
-			return i.Error == nil
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
+			return true
 		case "title":
 			s.Title = i.ReadString()
 			return i.Error == nil
@@ -25494,6 +26406,17 @@ func (s *Milestone) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s MilestoneState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads MilestoneState from json stream.
+func (s *MilestoneState) ReadJSON(i *json.Iterator) error {
+	*s = MilestoneState(i.ReadString())
 	return i.Error
 }
 
@@ -30346,7 +31269,7 @@ func (s NullableScopedInstallation) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("repository_selection")
-	j.WriteString(s.RepositorySelection)
+	s.RepositorySelection.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("single_file_name")
@@ -30424,8 +31347,11 @@ func (s *NullableScopedInstallation) ReadJSON(i *json.Iterator) error {
 			s.RepositoriesURL = v
 			return true
 		case "repository_selection":
-			s.RepositorySelection = i.ReadString()
-			return i.Error == nil
+			if err := s.RepositorySelection.ReadJSON(i); err != nil {
+				i.ReportError("Field RepositorySelection", err.Error())
+				return false
+			}
+			return true
 		case "single_file_name":
 			if err := s.SingleFileName.ReadJSON(i); err != nil {
 				i.ReportError("Field SingleFileName", err.Error())
@@ -30441,6 +31367,17 @@ func (s *NullableScopedInstallation) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s NullableScopedInstallationRepositorySelection) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads NullableScopedInstallationRepositorySelection from json stream.
+func (s *NullableScopedInstallationRepositorySelection) ReadJSON(i *json.Iterator) error {
+	*s = NullableScopedInstallationRepositorySelection(i.ReadString())
 	return i.Error
 }
 
@@ -35231,11 +36168,11 @@ func (s OrgMembership) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("role")
-	j.WriteString(s.Role)
+	s.Role.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("state")
-	j.WriteString(s.State)
+	s.State.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("url")
@@ -35297,11 +36234,17 @@ func (s *OrgMembership) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "role":
-			s.Role = i.ReadString()
-			return i.Error == nil
+			if err := s.Role.ReadJSON(i); err != nil {
+				i.ReportError("Field Role", err.Error())
+				return false
+			}
+			return true
 		case "state":
-			s.State = i.ReadString()
-			return i.Error == nil
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
+			return true
 		case "url":
 			v, err := json.ReadURI(i)
 			if err != nil {
@@ -35376,6 +36319,28 @@ func (s *OrgMembershipPermissions) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s OrgMembershipRole) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads OrgMembershipRole from json stream.
+func (s *OrgMembershipRole) ReadJSON(i *json.Iterator) error {
+	*s = OrgMembershipRole(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrgMembershipState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads OrgMembershipState from json stream.
+func (s *OrgMembershipState) ReadJSON(i *json.Iterator) error {
+	*s = OrgMembershipState(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s OrganizationActionsSecret) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -35401,7 +36366,7 @@ func (s OrganizationActionsSecret) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("visibility")
-	j.WriteString(s.Visibility)
+	s.Visibility.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -35460,13 +36425,27 @@ func (s *OrganizationActionsSecret) ReadJSON(i *json.Iterator) error {
 			s.UpdatedAt = v
 			return true
 		case "visibility":
-			s.Visibility = i.ReadString()
-			return i.Error == nil
+			if err := s.Visibility.ReadJSON(i); err != nil {
+				i.ReportError("Field Visibility", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrganizationActionsSecretVisibility) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads OrganizationActionsSecretVisibility from json stream.
+func (s *OrganizationActionsSecretVisibility) ReadJSON(i *json.Iterator) error {
+	*s = OrganizationActionsSecretVisibility(i.ReadString())
 	return i.Error
 }
 
@@ -36492,6 +37471,17 @@ func (s *OrgsCreateInvitationApplicationJSONRequest) ReadJSON(i *json.Iterator) 
 }
 
 // WriteJSON implements json.Marshaler.
+func (s OrgsCreateInvitationApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads OrgsCreateInvitationApplicationJSONRequestRole from json stream.
+func (s *OrgsCreateInvitationApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
+	*s = OrgsCreateInvitationApplicationJSONRequestRole(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s OrgsRemoveOutsideCollaboratorUnprocessableEntity) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -36613,6 +37603,17 @@ func (s *OrgsSetMembershipForUserApplicationJSONRequest) ReadJSON(i *json.Iterat
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrgsSetMembershipForUserApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads OrgsSetMembershipForUserApplicationJSONRequestRole from json stream.
+func (s *OrgsSetMembershipForUserApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
+	*s = OrgsSetMembershipForUserApplicationJSONRequestRole(i.ReadString())
 	return i.Error
 }
 
@@ -36907,14 +37908,35 @@ func (s *OrgsUpdateApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission from json stream.
+func (s *OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission) ReadJSON(i *json.Iterator) error {
+	*s = OrgsUpdateApplicationJSONRequestDefaultRepositoryPermission(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType from json stream.
+func (s *OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType) ReadJSON(i *json.Iterator) error {
+	*s = OrgsUpdateApplicationJSONRequestMembersAllowedRepositoryCreationType(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("state")
-	j.WriteString(s.State)
+	s.State.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -36947,13 +37969,27 @@ func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest) ReadJSO
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "state":
-			s.State = i.ReadString()
-			return i.Error == nil
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequestState from json stream.
+func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
+	*s = OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequestState(i.ReadString())
 	return i.Error
 }
 
@@ -37427,6 +38463,28 @@ func (s *PageBuildStatus) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s PageProtectedDomainState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PageProtectedDomainState from json stream.
+func (s *PageProtectedDomainState) ReadJSON(i *json.Iterator) error {
+	*s = PageProtectedDomainState(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PageStatus) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PageStatus from json stream.
+func (s *PageStatus) ReadJSON(i *json.Iterator) error {
+	*s = PageStatus(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s PagesHTTPSCertificate) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -37455,7 +38513,7 @@ func (s PagesHTTPSCertificate) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("state")
-	j.WriteString(s.State)
+	s.State.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -37502,13 +38560,27 @@ func (s *PagesHTTPSCertificate) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "state":
-			s.State = i.ReadString()
-			return i.Error == nil
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PagesHTTPSCertificateState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PagesHTTPSCertificateState from json stream.
+func (s *PagesHTTPSCertificateState) ReadJSON(i *json.Iterator) error {
+	*s = PagesHTTPSCertificateState(i.ReadString())
 	return i.Error
 }
 
@@ -39784,6 +40856,17 @@ func (s *ProjectColumn) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s ProjectOrganizationPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ProjectOrganizationPermission from json stream.
+func (s *ProjectOrganizationPermission) ReadJSON(i *json.Iterator) error {
+	*s = ProjectOrganizationPermission(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s ProjectsAddCollaboratorApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -39836,6 +40919,17 @@ func (s *ProjectsAddCollaboratorApplicationJSONRequest) ReadJSON(i *json.Iterato
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ProjectsAddCollaboratorApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ProjectsAddCollaboratorApplicationJSONRequestPermission from json stream.
+func (s *ProjectsAddCollaboratorApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+	*s = ProjectsAddCollaboratorApplicationJSONRequestPermission(i.ReadString())
 	return i.Error
 }
 
@@ -40654,6 +41748,17 @@ func (s *ProjectsUpdateApplicationJSONRequest) ReadJSON(i *json.Iterator) error 
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ProjectsUpdateApplicationJSONRequestOrganizationPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ProjectsUpdateApplicationJSONRequestOrganizationPermission from json stream.
+func (s *ProjectsUpdateApplicationJSONRequestOrganizationPermission) ReadJSON(i *json.Iterator) error {
+	*s = ProjectsUpdateApplicationJSONRequestOrganizationPermission(i.ReadString())
 	return i.Error
 }
 
@@ -42285,10 +43390,9 @@ func (s PullRequestReview) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("author_association")
-	j.WriteString(s.AuthorAssociation)
+	s.AuthorAssociation.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("body")
@@ -42375,8 +43479,11 @@ func (s *PullRequestReview) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "author_association":
-			s.AuthorAssociation = i.ReadString()
-			return i.Error == nil
+			if err := s.AuthorAssociation.ReadJSON(i); err != nil {
+				i.ReportError("Field AuthorAssociation", err.Error())
+				return false
+			}
+			return true
 		case "body":
 			s.Body = i.ReadString()
 			return i.Error == nil
@@ -42454,10 +43561,9 @@ func (s PullRequestReviewComment) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("author_association")
-	j.WriteString(s.AuthorAssociation)
+	s.AuthorAssociation.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("body")
@@ -42618,8 +43724,11 @@ func (s *PullRequestReviewComment) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "author_association":
-			s.AuthorAssociation = i.ReadString()
-			return i.Error == nil
+			if err := s.AuthorAssociation.ReadJSON(i); err != nil {
+				i.ReportError("Field AuthorAssociation", err.Error())
+				return false
+			}
+			return true
 		case "body":
 			s.Body = i.ReadString()
 			return i.Error == nil
@@ -43016,6 +44125,28 @@ func (s *PullRequestReviewCommentLinksSelf) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PullRequestReviewCommentSide) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PullRequestReviewCommentSide from json stream.
+func (s *PullRequestReviewCommentSide) ReadJSON(i *json.Iterator) error {
+	*s = PullRequestReviewCommentSide(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PullRequestReviewCommentStartSide) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PullRequestReviewCommentStartSide from json stream.
+func (s *PullRequestReviewCommentStartSide) ReadJSON(i *json.Iterator) error {
+	*s = PullRequestReviewCommentStartSide(i.ReadString())
 	return i.Error
 }
 
@@ -43655,6 +44786,17 @@ func (s *PullsCreateReviewApplicationJSONRequestCommentsItem) ReadJSON(i *json.I
 }
 
 // WriteJSON implements json.Marshaler.
+func (s PullsCreateReviewApplicationJSONRequestEvent) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PullsCreateReviewApplicationJSONRequestEvent from json stream.
+func (s *PullsCreateReviewApplicationJSONRequestEvent) ReadJSON(i *json.Iterator) error {
+	*s = PullsCreateReviewApplicationJSONRequestEvent(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s PullsCreateReviewCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -43806,6 +44948,28 @@ func (s *PullsCreateReviewCommentApplicationJSONRequest) ReadJSON(i *json.Iterat
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PullsCreateReviewCommentApplicationJSONRequestSide) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PullsCreateReviewCommentApplicationJSONRequestSide from json stream.
+func (s *PullsCreateReviewCommentApplicationJSONRequestSide) ReadJSON(i *json.Iterator) error {
+	*s = PullsCreateReviewCommentApplicationJSONRequestSide(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PullsCreateReviewCommentApplicationJSONRequestStartSide) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PullsCreateReviewCommentApplicationJSONRequestStartSide from json stream.
+func (s *PullsCreateReviewCommentApplicationJSONRequestStartSide) ReadJSON(i *json.Iterator) error {
+	*s = PullsCreateReviewCommentApplicationJSONRequestStartSide(i.ReadString())
 	return i.Error
 }
 
@@ -43964,6 +45128,17 @@ func (s *PullsMergeApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PullsMergeApplicationJSONRequestMergeMethod) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PullsMergeApplicationJSONRequestMergeMethod from json stream.
+func (s *PullsMergeApplicationJSONRequestMergeMethod) ReadJSON(i *json.Iterator) error {
+	*s = PullsMergeApplicationJSONRequestMergeMethod(i.ReadString())
 	return i.Error
 }
 
@@ -44194,7 +45369,7 @@ func (s PullsSubmitReviewApplicationJSONRequest) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("event")
-	j.WriteString(s.Event)
+	s.Event.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -44234,13 +45409,27 @@ func (s *PullsSubmitReviewApplicationJSONRequest) ReadJSON(i *json.Iterator) err
 			}
 			return true
 		case "event":
-			s.Event = i.ReadString()
-			return i.Error == nil
+			if err := s.Event.ReadJSON(i); err != nil {
+				i.ReportError("Field Event", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PullsSubmitReviewApplicationJSONRequestEvent) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PullsSubmitReviewApplicationJSONRequestEvent from json stream.
+func (s *PullsSubmitReviewApplicationJSONRequestEvent) ReadJSON(i *json.Iterator) error {
+	*s = PullsSubmitReviewApplicationJSONRequestEvent(i.ReadString())
 	return i.Error
 }
 
@@ -44349,6 +45538,17 @@ func (s *PullsUpdateApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PullsUpdateApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PullsUpdateApplicationJSONRequestState from json stream.
+func (s *PullsUpdateApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
+	*s = PullsUpdateApplicationJSONRequestState(i.ReadString())
 	return i.Error
 }
 
@@ -44847,10 +46047,9 @@ func (s Reaction) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("content")
-	j.WriteString(s.Content)
+	s.Content.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("created_at")
@@ -44899,8 +46098,11 @@ func (s *Reaction) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
-			s.Content = i.ReadString()
-			return i.Error == nil
+			if err := s.Content.ReadJSON(i); err != nil {
+				i.ReportError("Field Content", err.Error())
+				return false
+			}
+			return true
 		case "created_at":
 			v, err := json.ReadDateTime(i)
 			if err != nil {
@@ -44926,6 +46128,17 @@ func (s *Reaction) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReactionContent) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReactionContent from json stream.
+func (s *ReactionContent) ReadJSON(i *json.Iterator) error {
+	*s = ReactionContent(i.ReadString())
 	return i.Error
 }
 
@@ -45053,10 +46266,9 @@ func (s ReactionsCreateForCommitCommentApplicationJSONRequest) WriteJSON(j *json
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("content")
-	j.WriteString(s.Content)
+	s.Content.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -45089,8 +46301,11 @@ func (s *ReactionsCreateForCommitCommentApplicationJSONRequest) ReadJSON(i *json
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
-			s.Content = i.ReadString()
-			return i.Error == nil
+			if err := s.Content.ReadJSON(i); err != nil {
+				i.ReportError("Field Content", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -45100,14 +46315,24 @@ func (s *ReactionsCreateForCommitCommentApplicationJSONRequest) ReadJSON(i *json
 }
 
 // WriteJSON implements json.Marshaler.
+func (s ReactionsCreateForCommitCommentApplicationJSONRequestContent) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReactionsCreateForCommitCommentApplicationJSONRequestContent from json stream.
+func (s *ReactionsCreateForCommitCommentApplicationJSONRequestContent) ReadJSON(i *json.Iterator) error {
+	*s = ReactionsCreateForCommitCommentApplicationJSONRequestContent(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s ReactionsCreateForIssueApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("content")
-	j.WriteString(s.Content)
+	s.Content.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -45140,8 +46365,11 @@ func (s *ReactionsCreateForIssueApplicationJSONRequest) ReadJSON(i *json.Iterato
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
-			s.Content = i.ReadString()
-			return i.Error == nil
+			if err := s.Content.ReadJSON(i); err != nil {
+				i.ReportError("Field Content", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -45151,14 +46379,24 @@ func (s *ReactionsCreateForIssueApplicationJSONRequest) ReadJSON(i *json.Iterato
 }
 
 // WriteJSON implements json.Marshaler.
+func (s ReactionsCreateForIssueApplicationJSONRequestContent) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReactionsCreateForIssueApplicationJSONRequestContent from json stream.
+func (s *ReactionsCreateForIssueApplicationJSONRequestContent) ReadJSON(i *json.Iterator) error {
+	*s = ReactionsCreateForIssueApplicationJSONRequestContent(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s ReactionsCreateForIssueCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("content")
-	j.WriteString(s.Content)
+	s.Content.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -45191,8 +46429,11 @@ func (s *ReactionsCreateForIssueCommentApplicationJSONRequest) ReadJSON(i *json.
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
-			s.Content = i.ReadString()
-			return i.Error == nil
+			if err := s.Content.ReadJSON(i); err != nil {
+				i.ReportError("Field Content", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -45202,14 +46443,24 @@ func (s *ReactionsCreateForIssueCommentApplicationJSONRequest) ReadJSON(i *json.
 }
 
 // WriteJSON implements json.Marshaler.
+func (s ReactionsCreateForIssueCommentApplicationJSONRequestContent) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReactionsCreateForIssueCommentApplicationJSONRequestContent from json stream.
+func (s *ReactionsCreateForIssueCommentApplicationJSONRequestContent) ReadJSON(i *json.Iterator) error {
+	*s = ReactionsCreateForIssueCommentApplicationJSONRequestContent(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("content")
-	j.WriteString(s.Content)
+	s.Content.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -45242,8 +46493,11 @@ func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest) ReadJ
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
-			s.Content = i.ReadString()
-			return i.Error == nil
+			if err := s.Content.ReadJSON(i); err != nil {
+				i.ReportError("Field Content", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -45253,14 +46507,24 @@ func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONRequest) ReadJ
 }
 
 // WriteJSON implements json.Marshaler.
+func (s ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent from json stream.
+func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent) ReadJSON(i *json.Iterator) error {
+	*s = ReactionsCreateForPullRequestReviewCommentApplicationJSONRequestContent(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s ReactionsCreateForReleaseApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("content")
-	j.WriteString(s.Content)
+	s.Content.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -45293,8 +46557,11 @@ func (s *ReactionsCreateForReleaseApplicationJSONRequest) ReadJSON(i *json.Itera
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
-			s.Content = i.ReadString()
-			return i.Error == nil
+			if err := s.Content.ReadJSON(i); err != nil {
+				i.ReportError("Field Content", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -45304,14 +46571,24 @@ func (s *ReactionsCreateForReleaseApplicationJSONRequest) ReadJSON(i *json.Itera
 }
 
 // WriteJSON implements json.Marshaler.
+func (s ReactionsCreateForReleaseApplicationJSONRequestContent) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReactionsCreateForReleaseApplicationJSONRequestContent from json stream.
+func (s *ReactionsCreateForReleaseApplicationJSONRequestContent) ReadJSON(i *json.Iterator) error {
+	*s = ReactionsCreateForReleaseApplicationJSONRequestContent(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("content")
-	j.WriteString(s.Content)
+	s.Content.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -45344,8 +46621,11 @@ func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest) Rea
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
-			s.Content = i.ReadString()
-			return i.Error == nil
+			if err := s.Content.ReadJSON(i); err != nil {
+				i.ReportError("Field Content", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -45355,14 +46635,24 @@ func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequest) Rea
 }
 
 // WriteJSON implements json.Marshaler.
+func (s ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent from json stream.
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent) ReadJSON(i *json.Iterator) error {
+	*s = ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONRequestContent(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("content")
-	j.WriteString(s.Content)
+	s.Content.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -45395,8 +46685,11 @@ func (s *ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest) Re
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
-			s.Content = i.ReadString()
-			return i.Error == nil
+			if err := s.Content.ReadJSON(i); err != nil {
+				i.ReportError("Field Content", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -45406,14 +46699,24 @@ func (s *ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequest) Re
 }
 
 // WriteJSON implements json.Marshaler.
+func (s ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent from json stream.
+func (s *ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent) ReadJSON(i *json.Iterator) error {
+	*s = ReactionsCreateForTeamDiscussionCommentLegacyApplicationJSONRequestContent(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("content")
-	j.WriteString(s.Content)
+	s.Content.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -45446,8 +46749,11 @@ func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest) ReadJSON(i
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
-			s.Content = i.ReadString()
-			return i.Error == nil
+			if err := s.Content.ReadJSON(i); err != nil {
+				i.ReportError("Field Content", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -45457,14 +46763,24 @@ func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest) ReadJSON(i
 }
 
 // WriteJSON implements json.Marshaler.
+func (s ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent from json stream.
+func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent) ReadJSON(i *json.Iterator) error {
+	*s = ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequestContent(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("content")
-	j.WriteString(s.Content)
+	s.Content.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -45497,13 +46813,27 @@ func (s *ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest) ReadJSON(
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "content":
-			s.Content = i.ReadString()
-			return i.Error == nil
+			if err := s.Content.ReadJSON(i); err != nil {
+				i.ReportError("Field Content", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent from json stream.
+func (s *ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent) ReadJSON(i *json.Iterator) error {
+	*s = ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequestContent(i.ReadString())
 	return i.Error
 }
 
@@ -45899,7 +47229,7 @@ func (s ReleaseAsset) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("state")
-	j.WriteString(s.State)
+	s.State.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("url")
@@ -45984,8 +47314,11 @@ func (s *ReleaseAsset) ReadJSON(i *json.Iterator) error {
 			s.Size = i.ReadInt()
 			return i.Error == nil
 		case "state":
-			s.State = i.ReadString()
-			return i.Error == nil
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
+			return true
 		case "url":
 			v, err := json.ReadURI(i)
 			if err != nil {
@@ -46013,6 +47346,17 @@ func (s *ReleaseAsset) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReleaseAssetState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReleaseAssetState from json stream.
+func (s *ReleaseAssetState) ReadJSON(i *json.Iterator) error {
+	*s = ReleaseAssetState(i.ReadString())
 	return i.Error
 }
 
@@ -46082,6 +47426,17 @@ func (s *ReposAddCollaboratorApplicationJSONRequest) ReadJSON(i *json.Iterator) 
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposAddCollaboratorApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReposAddCollaboratorApplicationJSONRequestPermission from json stream.
+func (s *ReposAddCollaboratorApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+	*s = ReposAddCollaboratorApplicationJSONRequestPermission(i.ReadString())
 	return i.Error
 }
 
@@ -46252,7 +47607,7 @@ func (s ReposCreateCommitStatusApplicationJSONRequest) WriteJSON(j *json.Stream)
 
 	more.More()
 	j.WriteObjectField("state")
-	j.WriteString(s.State)
+	s.State.WriteJSON(j)
 
 	if s.TargetURL.Set {
 		more.More()
@@ -46305,8 +47660,11 @@ func (s *ReposCreateCommitStatusApplicationJSONRequest) ReadJSON(i *json.Iterato
 			}
 			return true
 		case "state":
-			s.State = i.ReadString()
-			return i.Error == nil
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
+			return true
 		case "target_url":
 			s.TargetURL.Reset()
 			if err := s.TargetURL.ReadJSON(i); err != nil {
@@ -46319,6 +47677,17 @@ func (s *ReposCreateCommitStatusApplicationJSONRequest) ReadJSON(i *json.Iterato
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposCreateCommitStatusApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReposCreateCommitStatusApplicationJSONRequestState from json stream.
+func (s *ReposCreateCommitStatusApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
+	*s = ReposCreateCommitStatusApplicationJSONRequestState(i.ReadString())
 	return i.Error
 }
 
@@ -46436,7 +47805,7 @@ func (s ReposCreateDeploymentStatusApplicationJSONRequest) WriteJSON(j *json.Str
 
 	more.More()
 	j.WriteObjectField("state")
-	j.WriteString(s.State)
+	s.State.WriteJSON(j)
 
 	if s.TargetURL.Set {
 		more.More()
@@ -46510,8 +47879,11 @@ func (s *ReposCreateDeploymentStatusApplicationJSONRequest) ReadJSON(i *json.Ite
 			}
 			return true
 		case "state":
-			s.State = i.ReadString()
-			return i.Error == nil
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
+			return true
 		case "target_url":
 			s.TargetURL.Reset()
 			if err := s.TargetURL.ReadJSON(i); err != nil {
@@ -46524,6 +47896,28 @@ func (s *ReposCreateDeploymentStatusApplicationJSONRequest) ReadJSON(i *json.Ite
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposCreateDeploymentStatusApplicationJSONRequestEnvironment) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReposCreateDeploymentStatusApplicationJSONRequestEnvironment from json stream.
+func (s *ReposCreateDeploymentStatusApplicationJSONRequestEnvironment) ReadJSON(i *json.Iterator) error {
+	*s = ReposCreateDeploymentStatusApplicationJSONRequestEnvironment(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposCreateDeploymentStatusApplicationJSONRequestState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReposCreateDeploymentStatusApplicationJSONRequestState from json stream.
+func (s *ReposCreateDeploymentStatusApplicationJSONRequestState) ReadJSON(i *json.Iterator) error {
+	*s = ReposCreateDeploymentStatusApplicationJSONRequestState(i.ReadString())
 	return i.Error
 }
 
@@ -47183,6 +48577,17 @@ func (s *ReposCreateInOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) erro
 }
 
 // WriteJSON implements json.Marshaler.
+func (s ReposCreateInOrgApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReposCreateInOrgApplicationJSONRequestVisibility from json stream.
+func (s *ReposCreateInOrgApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+	*s = ReposCreateInOrgApplicationJSONRequestVisibility(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s ReposCreateOrUpdateFileContentsApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -47545,6 +48950,17 @@ func (s *ReposCreatePagesSiteApplicationJSONRequestSource) ReadJSON(i *json.Iter
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposCreatePagesSiteApplicationJSONRequestSourcePath) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReposCreatePagesSiteApplicationJSONRequestSourcePath from json stream.
+func (s *ReposCreatePagesSiteApplicationJSONRequestSourcePath) ReadJSON(i *json.Iterator) error {
+	*s = ReposCreatePagesSiteApplicationJSONRequestSourcePath(i.ReadString())
 	return i.Error
 }
 
@@ -48840,6 +50256,17 @@ func (s *ReposUpdateApplicationJSONRequestSecurityAndAnalysisSecretScanning) Rea
 }
 
 // WriteJSON implements json.Marshaler.
+func (s ReposUpdateApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReposUpdateApplicationJSONRequestVisibility from json stream.
+func (s *ReposUpdateApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+	*s = ReposUpdateApplicationJSONRequestVisibility(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s ReposUpdateBranchProtectionApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -49408,6 +50835,17 @@ func (s *ReposUpdateInvitationApplicationJSONRequest) ReadJSON(i *json.Iterator)
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReposUpdateInvitationApplicationJSONRequestPermissions) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReposUpdateInvitationApplicationJSONRequestPermissions from json stream.
+func (s *ReposUpdateInvitationApplicationJSONRequestPermissions) ReadJSON(i *json.Iterator) error {
+	*s = ReposUpdateInvitationApplicationJSONRequestPermissions(i.ReadString())
 	return i.Error
 }
 
@@ -50861,7 +52299,7 @@ func (s RepositoryInvitation) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("permissions")
-	j.WriteString(s.Permissions)
+	s.Permissions.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("repository")
@@ -50938,8 +52376,11 @@ func (s *RepositoryInvitation) ReadJSON(i *json.Iterator) error {
 			s.NodeID = i.ReadString()
 			return i.Error == nil
 		case "permissions":
-			s.Permissions = i.ReadString()
-			return i.Error == nil
+			if err := s.Permissions.ReadJSON(i); err != nil {
+				i.ReportError("Field Permissions", err.Error())
+				return false
+			}
+			return true
 		case "repository":
 			if err := s.Repository.ReadJSON(i); err != nil {
 				i.ReportError("Field Repository", err.Error())
@@ -50954,6 +52395,17 @@ func (s *RepositoryInvitation) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s RepositoryInvitationPermissions) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads RepositoryInvitationPermissions from json stream.
+func (s *RepositoryInvitationPermissions) ReadJSON(i *json.Iterator) error {
+	*s = RepositoryInvitationPermissions(i.ReadString())
 	return i.Error
 }
 
@@ -52643,10 +54095,9 @@ func (s ReviewComment) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("author_association")
-	j.WriteString(s.AuthorAssociation)
+	s.AuthorAssociation.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("body")
@@ -52807,8 +54258,11 @@ func (s *ReviewComment) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "author_association":
-			s.AuthorAssociation = i.ReadString()
-			return i.Error == nil
+			if err := s.AuthorAssociation.ReadJSON(i); err != nil {
+				i.ReportError("Field AuthorAssociation", err.Error())
+				return false
+			}
+			return true
 		case "body":
 			s.Body = i.ReadString()
 			return i.Error == nil
@@ -53045,6 +54499,28 @@ func (s *ReviewCommentLinks) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReviewCommentSide) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReviewCommentSide from json stream.
+func (s *ReviewCommentSide) ReadJSON(i *json.Iterator) error {
+	*s = ReviewCommentSide(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s ReviewCommentStartSide) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads ReviewCommentStartSide from json stream.
+func (s *ReviewCommentStartSide) ReadJSON(i *json.Iterator) error {
+	*s = ReviewCommentStartSide(i.ReadString())
 	return i.Error
 }
 
@@ -53537,6 +55013,17 @@ func (s *RunnerLabelsItem) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s RunnerLabelsItemType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads RunnerLabelsItemType from json stream.
+func (s *RunnerLabelsItemType) ReadJSON(i *json.Iterator) error {
+	*s = RunnerLabelsItemType(i.ReadString())
 	return i.Error
 }
 
@@ -56144,6 +57631,28 @@ func (s *SecretScanningAlert) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s SecretScanningAlertResolution) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads SecretScanningAlertResolution from json stream.
+func (s *SecretScanningAlertResolution) ReadJSON(i *json.Iterator) error {
+	*s = SecretScanningAlertResolution(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s SecretScanningAlertState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads SecretScanningAlertState from json stream.
+func (s *SecretScanningAlertState) ReadJSON(i *json.Iterator) error {
+	*s = SecretScanningAlertState(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s SecretScanningUpdateAlertApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -56156,7 +57665,7 @@ func (s SecretScanningUpdateAlertApplicationJSONRequest) WriteJSON(j *json.Strea
 
 	more.More()
 	j.WriteObjectField("state")
-	j.WriteString(s.State)
+	s.State.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -56196,8 +57705,11 @@ func (s *SecretScanningUpdateAlertApplicationJSONRequest) ReadJSON(i *json.Itera
 			}
 			return true
 		case "state":
-			s.State = i.ReadString()
-			return i.Error == nil
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -58343,18 +59855,28 @@ func (s *TeamFull) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s TeamFullPrivacy) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads TeamFullPrivacy from json stream.
+func (s *TeamFullPrivacy) ReadJSON(i *json.Iterator) error {
+	*s = TeamFullPrivacy(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s TeamMembership) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("role")
-	j.WriteString(s.Role)
+	s.Role.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("state")
-	j.WriteString(s.State)
+	s.State.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("url")
@@ -58391,11 +59913,17 @@ func (s *TeamMembership) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "role":
-			s.Role = i.ReadString()
-			return i.Error == nil
+			if err := s.Role.ReadJSON(i); err != nil {
+				i.ReportError("Field Role", err.Error())
+				return false
+			}
+			return true
 		case "state":
-			s.State = i.ReadString()
-			return i.Error == nil
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
+			return true
 		case "url":
 			v, err := json.ReadURI(i)
 			if err != nil {
@@ -58409,6 +59937,28 @@ func (s *TeamMembership) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamMembershipRole) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads TeamMembershipRole from json stream.
+func (s *TeamMembershipRole) ReadJSON(i *json.Iterator) error {
+	*s = TeamMembershipRole(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamMembershipState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads TeamMembershipState from json stream.
+func (s *TeamMembershipState) ReadJSON(i *json.Iterator) error {
+	*s = TeamMembershipState(i.ReadString())
 	return i.Error
 }
 
@@ -59741,6 +61291,17 @@ func (s *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequest) ReadJSON(
 }
 
 // WriteJSON implements json.Marshaler.
+func (s TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole from json stream.
+func (s *TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
+	*s = TeamsAddOrUpdateMembershipForUserInOrgApplicationJSONRequestRole(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -59797,6 +61358,17 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequest) ReadJSON
 }
 
 // WriteJSON implements json.Marshaler.
+func (s TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole from json stream.
+func (s *TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole) ReadJSON(i *json.Iterator) error {
+	*s = TeamsAddOrUpdateMembershipForUserLegacyApplicationJSONRequestRole(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -59849,6 +61421,17 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequest) ReadJSON
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission from json stream.
+func (s *TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+	*s = TeamsAddOrUpdateProjectPermissionsInOrgApplicationJSONRequestPermission(i.ReadString())
 	return i.Error
 }
 
@@ -59978,6 +61561,17 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequest) ReadJSO
 }
 
 // WriteJSON implements json.Marshaler.
+func (s TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission from json stream.
+func (s *TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+	*s = TeamsAddOrUpdateProjectPermissionsLegacyApplicationJSONRequestPermission(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateProjectPermissionsLegacyForbidden) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -60103,6 +61697,17 @@ func (s *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequest) ReadJSON(i 
 }
 
 // WriteJSON implements json.Marshaler.
+func (s TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission from json stream.
+func (s *TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+	*s = TeamsAddOrUpdateRepoPermissionsInOrgApplicationJSONRequestPermission(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -60155,6 +61760,17 @@ func (s *TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequest) ReadJSON(i
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission from json stream.
+func (s *TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+	*s = TeamsAddOrUpdateRepoPermissionsLegacyApplicationJSONRequestPermission(i.ReadString())
 	return i.Error
 }
 
@@ -60293,6 +61909,28 @@ func (s *TeamsCreateApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsCreateApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads TeamsCreateApplicationJSONRequestPermission from json stream.
+func (s *TeamsCreateApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+	*s = TeamsCreateApplicationJSONRequestPermission(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsCreateApplicationJSONRequestPrivacy) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads TeamsCreateApplicationJSONRequestPrivacy from json stream.
+func (s *TeamsCreateApplicationJSONRequestPrivacy) ReadJSON(i *json.Iterator) error {
+	*s = TeamsCreateApplicationJSONRequestPrivacy(i.ReadString())
 	return i.Error
 }
 
@@ -61189,6 +62827,28 @@ func (s *TeamsUpdateInOrgApplicationJSONRequest) ReadJSON(i *json.Iterator) erro
 }
 
 // WriteJSON implements json.Marshaler.
+func (s TeamsUpdateInOrgApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads TeamsUpdateInOrgApplicationJSONRequestPermission from json stream.
+func (s *TeamsUpdateInOrgApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+	*s = TeamsUpdateInOrgApplicationJSONRequestPermission(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsUpdateInOrgApplicationJSONRequestPrivacy) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads TeamsUpdateInOrgApplicationJSONRequestPrivacy from json stream.
+func (s *TeamsUpdateInOrgApplicationJSONRequestPrivacy) ReadJSON(i *json.Iterator) error {
+	*s = TeamsUpdateInOrgApplicationJSONRequestPrivacy(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s TeamsUpdateLegacyApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -61287,6 +62947,28 @@ func (s *TeamsUpdateLegacyApplicationJSONRequest) ReadJSON(i *json.Iterator) err
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsUpdateLegacyApplicationJSONRequestPermission) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads TeamsUpdateLegacyApplicationJSONRequestPermission from json stream.
+func (s *TeamsUpdateLegacyApplicationJSONRequestPermission) ReadJSON(i *json.Iterator) error {
+	*s = TeamsUpdateLegacyApplicationJSONRequestPermission(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s TeamsUpdateLegacyApplicationJSONRequestPrivacy) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads TeamsUpdateLegacyApplicationJSONRequestPrivacy from json stream.
+func (s *TeamsUpdateLegacyApplicationJSONRequestPrivacy) ReadJSON(i *json.Iterator) error {
+	*s = TeamsUpdateLegacyApplicationJSONRequestPrivacy(i.ReadString())
 	return i.Error
 }
 
@@ -61888,10 +63570,9 @@ func (s UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest) Wr
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("visibility")
-	j.WriteString(s.Visibility)
+	s.Visibility.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -61924,13 +63605,27 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest) R
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "visibility":
-			s.Visibility = i.ReadString()
-			return i.Error == nil
+			if err := s.Visibility.ReadJSON(i); err != nil {
+				i.ReportError("Field Visibility", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequestVisibility) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequestVisibility from json stream.
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequestVisibility) ReadJSON(i *json.Iterator) error {
+	*s = UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequestVisibility(i.ReadString())
 	return i.Error
 }
 
@@ -62276,7 +63971,7 @@ func (s Workflow) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("state")
-	j.WriteString(s.State)
+	s.State.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("url")
@@ -62350,8 +64045,11 @@ func (s *Workflow) ReadJSON(i *json.Iterator) error {
 			s.Path = i.ReadString()
 			return i.Error == nil
 		case "state":
-			s.State = i.ReadString()
-			return i.Error == nil
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
+			return true
 		case "url":
 			s.URL = i.ReadString()
 			return i.Error == nil
@@ -63021,5 +64719,16 @@ func (s *WorkflowRunUsageBillableWINDOWS) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s WorkflowState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads WorkflowState from json stream.
+func (s *WorkflowState) ReadJSON(i *json.Iterator) error {
+	*s = WorkflowState(i.ReadString())
 	return i.Error
 }

@@ -209,6 +209,10 @@ func (s *Schema) IsArray() bool {
 	return s.Is(KindArray)
 }
 
+func (s *Schema) IsEnum() bool {
+	return s.Is(KindEnum)
+}
+
 func (s *Schema) IsInteger() bool {
 	switch s.Primitive {
 	case "int", "int8", "int16", "int32", "int64",

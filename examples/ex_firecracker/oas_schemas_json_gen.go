@@ -502,6 +502,17 @@ func (s *BootSource) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s CpuTemplate) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads CpuTemplate from json stream.
+func (s *CpuTemplate) ReadJSON(i *json.Iterator) error {
+	*s = CpuTemplate(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s Drive) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -885,10 +896,9 @@ func (s InstanceActionInfo) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("action_type")
-	j.WriteString(s.ActionType)
+	s.ActionType.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -921,13 +931,27 @@ func (s *InstanceActionInfo) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "action_type":
-			s.ActionType = i.ReadString()
-			return i.Error == nil
+			if err := s.ActionType.ReadJSON(i); err != nil {
+				i.ReportError("Field ActionType", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s InstanceActionInfoActionType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads InstanceActionInfoActionType from json stream.
+func (s *InstanceActionInfoActionType) ReadJSON(i *json.Iterator) error {
+	*s = InstanceActionInfoActionType(i.ReadString())
 	return i.Error
 }
 
@@ -947,7 +971,7 @@ func (s InstanceInfo) WriteJSON(j *json.Stream) {
 
 	more.More()
 	j.WriteObjectField("state")
-	j.WriteString(s.State)
+	s.State.WriteJSON(j)
 
 	more.More()
 	j.WriteObjectField("vmm_version")
@@ -990,8 +1014,11 @@ func (s *InstanceInfo) ReadJSON(i *json.Iterator) error {
 			s.ID = i.ReadString()
 			return i.Error == nil
 		case "state":
-			s.State = i.ReadString()
-			return i.Error == nil
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
+			return true
 		case "vmm_version":
 			s.VmmVersion = i.ReadString()
 			return i.Error == nil
@@ -1000,6 +1027,17 @@ func (s *InstanceInfo) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s InstanceInfoState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads InstanceInfoState from json stream.
+func (s *InstanceInfoState) ReadJSON(i *json.Iterator) error {
+	*s = InstanceInfoState(i.ReadString())
 	return i.Error
 }
 
@@ -1089,6 +1127,17 @@ func (s *Logger) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s LoggerLevel) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads LoggerLevel from json stream.
+func (s *LoggerLevel) ReadJSON(i *json.Iterator) error {
+	*s = LoggerLevel(i.ReadString())
 	return i.Error
 }
 
@@ -2012,6 +2061,17 @@ func (s *SnapshotCreateParams) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s SnapshotCreateParamsSnapshotType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads SnapshotCreateParamsSnapshotType from json stream.
+func (s *SnapshotCreateParamsSnapshotType) ReadJSON(i *json.Iterator) error {
+	*s = SnapshotCreateParamsSnapshotType(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s SnapshotLoadParams) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -2169,10 +2229,9 @@ func (s VM) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("state")
-	j.WriteString(s.State)
+	s.State.WriteJSON(j)
 
 	j.WriteObjectEnd()
 }
@@ -2205,13 +2264,27 @@ func (s *VM) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "state":
-			s.State = i.ReadString()
-			return i.Error == nil
+			if err := s.State.ReadJSON(i); err != nil {
+				i.ReportError("Field State", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s VMState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads VMState from json stream.
+func (s *VMState) ReadJSON(i *json.Iterator) error {
+	*s = VMState(i.ReadString())
 	return i.Error
 }
 

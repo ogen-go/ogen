@@ -5,6 +5,7 @@
   "ip_v4": "127.0.0.1",
   "ip_v6": "2001:db8:85a3::8a2e:370:7334",
   "name": "SomePet",
+  "kind": "smol",
   "next": {
     "description": "Foo"
   },

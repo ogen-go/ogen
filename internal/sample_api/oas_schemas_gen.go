@@ -465,6 +465,7 @@ type Pet struct {
 	IP           net.IP        `json:"ip"`
 	IPV4         net.IP        `json:"ip_v4"`
 	IPV6         net.IP        `json:"ip_v6"`
+	Kind         PetKind       `json:"kind"`
 	Name         string        `json:"name"`
 	Next         OptData       `json:"next"`
 	Nickname     NilString     `json:"nickname"`
@@ -502,6 +503,13 @@ type PetGetDefaultStatusCode struct {
 }
 
 func (*PetGetDefaultStatusCode) petGetResponse() {}
+
+type PetKind string
+
+const (
+	PetKindBig  PetKind = "big"
+	PetKindSmol PetKind = "smol"
+)
 
 type PetType string
 

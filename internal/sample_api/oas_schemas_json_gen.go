@@ -507,6 +507,10 @@ func (s Pet) WriteJSON(j *json.Stream) {
 	json.WriteIP(j, s.IPV6)
 
 	more.More()
+	j.WriteObjectField("kind")
+	s.Kind.WriteJSON(j)
+
+	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
 
@@ -676,6 +680,12 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 				return false
 			}
 			s.IPV6 = v
+			return true
+		case "kind":
+			if err := s.Kind.ReadJSON(i); err != nil {
+				i.ReportError("Field Kind", err.Error())
+				return false
+			}
 			return true
 		case "name":
 			s.Name = i.ReadString()
@@ -883,5 +893,27 @@ func (s *PetGetDefaultStatusCode) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PetKind) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PetKind from json stream.
+func (s *PetKind) ReadJSON(i *json.Iterator) error {
+	*s = PetKind(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s PetType) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads PetType from json stream.
+func (s *PetType) ReadJSON(i *json.Iterator) error {
+	*s = PetType(i.ReadString())
 	return i.Error
 }

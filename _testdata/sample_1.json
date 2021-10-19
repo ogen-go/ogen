@@ -254,6 +254,10 @@
             "type": "string",
             "enum": ["fifa", "fofa"]
           },
+          "kind": {
+            "type": "string",
+            "enum": ["big", "smol"]
+          },
           "tag": {
             "type": "string",
             "format": "uuid"
@@ -347,7 +351,8 @@
           "ip",
           "ip_v4",
           "ip_v6",
-          "uri"
+          "uri",
+          "kind"
         ]
       }
     },
