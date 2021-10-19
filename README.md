@@ -23,6 +23,7 @@ go get github.com/ogen-go/ogen
 # Features
 
 * No reflection or `interface{}`
+  * All json encoding are code-generated, optimized and uses `jsoniter` for speed and overcoming `encoding/json` limitations
 * No more boilerplate
   * Structures are generated from OpenAPI v3 specification
   * Arguments, headers, url queries are parsed according to specification into structures
@@ -36,6 +37,55 @@ go get github.com/ogen-go/ogen
     * When nullable, `nil` denotes that value is `nil`
     * When required, `nil` currently the same as `[]`, but is actually invalid
     * If both nullable and required, wrapper will be generated (TODO)
+
+Example generated structure from schema:
+```go
+// Pet describes #/components/schemas/Pet.
+type Pet struct {
+	Birthday     time.Time     `json:"birthday"`
+	Friends      []Pet         `json:"friends"`
+	ID           int64         `json:"id"`
+	IP           net.IP        `json:"ip"`
+	IPV4         net.IP        `json:"ip_v4"`
+	IPV6         net.IP        `json:"ip_v6"`
+	Kind         PetKind       `json:"kind"`
+	Name         string        `json:"name"`
+	Next         OptData       `json:"next"`
+	Nickname     NilString     `json:"nickname"`
+	NullStr      OptNilString  `json:"nullStr"`
+	Rate         time.Duration `json:"rate"`
+	Tag          OptUUID       `json:"tag"`
+	TestArray1   [][]string    `json:"testArray1"`
+	TestDate     OptTime       `json:"testDate"`
+	TestDateTime OptTime       `json:"testDateTime"`
+	TestDuration OptDuration   `json:"testDuration"`
+	TestFloat1   OptFloat64    `json:"testFloat1"`
+	TestInteger1 OptInt        `json:"testInteger1"`
+	TestTime     OptTime       `json:"testTime"`
+	Type         OptPetType    `json:"type"`
+	URI          url.URL       `json:"uri"`
+	UniqueID     uuid.UUID     `json:"unique_id"`
+}
+```
+
+Example generated server interface:
+```go
+// Server handles operations described by OpenAPI v3 specification.
+type Server interface {
+	PetGetByName(ctx context.Context, params PetGetByNameParams) (Pet, error)
+	// ...
+}
+```
+
+Example generated client method signature:
+```go
+type PetGetByNameParams struct {
+    Name string
+}
+
+// GET /pet/{name}
+func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (res Pet, err error)
+```
 
 # Draft Roadmap
 
