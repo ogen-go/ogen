@@ -24,6 +24,8 @@ func (n fmtFs) WriteFile(baseName string, source []byte) error {
 }
 
 func TestGenerate(t *testing.T) {
+	t.Parallel()
+
 	for _, tc := range []struct {
 		Name    string
 		Options gen.Options
