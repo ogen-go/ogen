@@ -124,6 +124,10 @@ type Schema struct {
 }
 
 func (s Schema) canRawJSON() bool {
+	if !s.Is(KindPrimitive, KindEnum) {
+		return false
+	}
+
 	if s.IsNumeric() {
 		return true
 	}
@@ -160,6 +164,10 @@ func (s Schema) JSONType() string {
 // Mostly used for encoding or decoding of generics, like "json.WriteUUID",
 // where UUID is JSONHelper.
 func (s Schema) JSONHelper() string {
+	if !s.Is(KindPrimitive, KindEnum) {
+		return ""
+	}
+
 	switch s.Format {
 	case "uuid":
 		return "UUID"
