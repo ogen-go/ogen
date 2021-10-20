@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"time"
 )
 
 type QueryStyle string
@@ -101,6 +102,15 @@ func (d *QueryDecoder) DecodeBool() (bool, error) {
 	}
 
 	return strconv.ParseBool(s)
+}
+
+func (d *QueryDecoder) DecodeTime() (time.Time, error) {
+	s, err := d.DecodeString()
+	if err != nil {
+		return time.Time{}, err
+	}
+
+	return time.Parse(time.RFC3339, s)
 }
 
 func (d *QueryDecoder) decodeArray(push func(string) error) error {
