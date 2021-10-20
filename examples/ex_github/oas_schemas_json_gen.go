@@ -5358,11 +5358,6 @@ func (s AuthenticationToken) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("expires_at")
 	json.WriteDateTime(j, s.ExpiresAt)
-	if s.Permissions != nil {
-		more.More()
-		j.WriteObjectField("permissions")
-		s.Permissions.WriteJSON(j)
-	}
 	if s.Repositories != nil {
 		more.More()
 		j.WriteObjectField("repositories")
@@ -5425,10 +5420,6 @@ func (s *AuthenticationToken) ReadJSON(i *json.Iterator) error {
 				return false
 			}
 			s.ExpiresAt = v
-			return true
-		case "permissions":
-			// Unsupported kind "pointer" for field "Permissions".
-			i.Skip()
 			return true
 		case "repositories":
 			// Unsupported kind "array" for field "Repositories".
@@ -5821,7 +5812,6 @@ func (s BaseGist) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("description")
 	s.Description.WriteJSON(j)
-	// Unsupported kind "primitive" for field "files".
 	if s.Forks != nil {
 		more.More()
 		j.WriteObjectField("forks")
@@ -5948,10 +5938,6 @@ func (s *BaseGist) ReadJSON(i *json.Iterator) error {
 				i.ReportError("Field Description", err.Error())
 				return false
 			}
-			return true
-		case "files":
-			// Unsupported kind "primitive" for field "Files".
-			i.Skip()
 			return true
 		case "forks":
 			// Unsupported kind "array" for field "Forks".
@@ -21470,20 +21456,6 @@ func (s HookDeliveryRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("headers")
-	if s.Headers == nil {
-		j.WriteNil()
-	} else {
-		s.Headers.WriteJSON(j)
-	}
-	more.More()
-	j.WriteObjectField("payload")
-	if s.Payload == nil {
-		j.WriteNil()
-	} else {
-		s.Payload.WriteJSON(j)
-	}
 	j.WriteObjectEnd()
 }
 
@@ -21514,14 +21486,6 @@ func (s *HookDeliveryRequest) ReadJSONFrom(r io.Reader) error {
 func (s *HookDeliveryRequest) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
-		case "headers":
-			// Unsupported kind "pointer" for field "Headers".
-			i.Skip()
-			return true
-		case "payload":
-			// Unsupported kind "pointer" for field "Payload".
-			i.Skip()
-			return true
 		default:
 			i.Skip()
 			return true
@@ -21535,13 +21499,6 @@ func (s HookDeliveryResponse) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("headers")
-	if s.Headers == nil {
-		j.WriteNil()
-	} else {
-		s.Headers.WriteJSON(j)
-	}
 	more.More()
 	j.WriteObjectField("payload")
 	s.Payload.WriteJSON(j)
@@ -21575,10 +21532,6 @@ func (s *HookDeliveryResponse) ReadJSONFrom(r io.Reader) error {
 func (s *HookDeliveryResponse) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
-		case "headers":
-			// Unsupported kind "pointer" for field "Headers".
-			i.Skip()
-			return true
 		case "payload":
 			if err := s.Payload.ReadJSON(i); err != nil {
 				i.ReportError("Field Payload", err.Error())
@@ -48169,11 +48122,6 @@ func (s ReposCreateDispatchEventApplicationJSONRequest) WriteJSON(j *json.Stream
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	if s.ClientPayload != nil {
-		more.More()
-		j.WriteObjectField("client_payload")
-		s.ClientPayload.WriteJSON(j)
-	}
 	more.More()
 	j.WriteObjectField("event_type")
 	j.WriteString(s.EventType)
@@ -48207,10 +48155,6 @@ func (s *ReposCreateDispatchEventApplicationJSONRequest) ReadJSONFrom(r io.Reade
 func (s *ReposCreateDispatchEventApplicationJSONRequest) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
-		case "client_payload":
-			// Unsupported kind "pointer" for field "ClientPayload".
-			i.Skip()
-			return true
 		case "event_type":
 			s.EventType = i.ReadString()
 			return i.Error == nil

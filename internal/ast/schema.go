@@ -46,6 +46,9 @@ func (s Schema) JSONFields() []SchemaField {
 		if f.Tag == "-" {
 			continue
 		}
+		if f.Type.BlankStruct() {
+			continue
+		}
 		fields = append(fields, f)
 	}
 	return fields
@@ -67,6 +70,16 @@ const (
 	NilOptional NilSemantic = "optional" // nil is "no value"
 	NilNull     NilSemantic = "null"     // nil is null
 )
+
+func (s Schema) BlankStruct() bool {
+	if s.Primitive == "struct{}" {
+		return true
+	}
+	if s.PointerTo != nil && s.PointerTo.BlankStruct() {
+		return true
+	}
+	return false
+}
 
 type Schema struct {
 	Kind        SchemaKind

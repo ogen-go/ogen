@@ -2924,7 +2924,7 @@ type IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList struct {
 
 // IoK8sAPIAdmissionregistrationV1WebhookClientConfig describes #/components/schemas/io.k8s.api.admissionregistration.v1.WebhookClientConfig.
 type IoK8sAPIAdmissionregistrationV1WebhookClientConfig struct {
-	CaBundle *[]byte                                            `json:"caBundle"`
+	CaBundle []byte                                             `json:"caBundle"`
 	Service  OptIoK8sAPIAdmissionregistrationV1ServiceReference `json:"service"`
 	URL      OptString                                          `json:"url"`
 }
@@ -3896,7 +3896,7 @@ type IoK8sAPICertificatesV1CertificateSigningRequestSpec struct {
 
 // IoK8sAPICertificatesV1CertificateSigningRequestStatus describes #/components/schemas/io.k8s.api.certificates.v1.CertificateSigningRequestStatus.
 type IoK8sAPICertificatesV1CertificateSigningRequestStatus struct {
-	Certificate *[]byte                                                    `json:"certificate"`
+	Certificate []byte                                                     `json:"certificate"`
 	Conditions  []IoK8sAPICertificatesV1CertificateSigningRequestCondition `json:"conditions"`
 }
 
@@ -6918,7 +6918,7 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference struct {
 
 // IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig describes #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.WebhookClientConfig.
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig struct {
-	CaBundle *[]byte                                                              `json:"caBundle"`
+	CaBundle []byte                                                               `json:"caBundle"`
 	Service  OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference `json:"service"`
 	URL      OptString                                                            `json:"url"`
 }
@@ -7167,7 +7167,7 @@ type IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList struct {
 
 // IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec describes #/components/schemas/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIServiceSpec.
 type IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec struct {
-	CaBundle              *[]byte                                                        `json:"caBundle"`
+	CaBundle              []byte                                                         `json:"caBundle"`
 	Group                 OptString                                                      `json:"group"`
 	GroupPriorityMinimum  int32                                                          `json:"groupPriorityMinimum"`
 	InsecureSkipTLSVerify OptBool                                                        `json:"insecureSkipTLSVerify"`

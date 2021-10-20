@@ -171,7 +171,7 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 						v,
 					)
 					g.side = append(g.side, prop)
-				} else if prop.IsArray() {
+				} else if prop.IsArray() || prop.Primitive == "[]byte" {
 					// Using special case for array nil value if possible.
 					switch {
 					case v.OnlyOptional():
