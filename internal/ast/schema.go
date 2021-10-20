@@ -57,6 +57,10 @@ func (s Schema) IsStruct() bool {
 	return s.Is(KindStruct)
 }
 
+func (s Schema) IsAlias() bool {
+	return s.Is(KindAlias)
+}
+
 func (s Schema) IsGeneric() bool {
 	return s.Is(KindGeneric)
 }

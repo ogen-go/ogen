@@ -45,7 +45,7 @@ w.WriteHeader({{ $.StatusCode }})
 {{- if $.NoContent }}{{- /* Encode content */}}
 return nil
 {{- else if eq $.ContentType "application/json" }}
-{{- if eq $.Schema.Kind "array" }}
+{{- if $.Schema.IsArray }}
     js := json.NewStream(w)
     js.WriteArrayStart()
     for i, elem := range response {

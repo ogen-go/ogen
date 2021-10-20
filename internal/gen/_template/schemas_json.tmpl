@@ -173,10 +173,14 @@ func (s *{{ $s.Name }}) ReadJSON(i *json.Iterator) error {
     *s = {{ $s.Name }}(i.{{ $s.JSONRead }}())
     return i.Error
 }
+{{- else if $s.IsAlias }}
+func ({{ $s.Name }}) WriteJSON(j *json.Stream) {}
+func ({{ $s.Name }}) ReadJSON(i *json.Iterator) error { return nil }
+func ({{ $s.Name }}) ReadJSONFrom(r io.Reader) error { return nil }
+func ({{ $s.Name }}) WriteJSONTo(w io.Writer) error { return nil }
 {{- end }}
 
 {{- end }}
-
 {{ end }}
 
 {{- define "json_array" }}

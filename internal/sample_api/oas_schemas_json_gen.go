@@ -274,6 +274,11 @@ func (o *NilString) ReadJSON(i *json.Iterator) error {
 	return nil
 }
 
+func (NotFound) WriteJSON(j *json.Stream)        {}
+func (NotFound) ReadJSON(i *json.Iterator) error { return nil }
+func (NotFound) ReadJSONFrom(r io.Reader) error  { return nil }
+func (NotFound) WriteJSONTo(w io.Writer) error   { return nil }
+
 // WriteJSON writes json value of Data to json stream.
 func (o OptData) WriteJSON(j *json.Stream) {
 	o.Value.WriteJSON(j)
@@ -770,6 +775,11 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 	})
 	return i.Error
 }
+
+func (PetCreateTextPlainRequest) WriteJSON(j *json.Stream)        {}
+func (PetCreateTextPlainRequest) ReadJSON(i *json.Iterator) error { return nil }
+func (PetCreateTextPlainRequest) ReadJSONFrom(r io.Reader) error  { return nil }
+func (PetCreateTextPlainRequest) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
 func (s PetGetDefault) WriteJSON(j *json.Stream) {

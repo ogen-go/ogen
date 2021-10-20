@@ -486,6 +486,16 @@ func (s *CpuTemplate) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
+func (CreateSnapshotNoContent) WriteJSON(j *json.Stream)        {}
+func (CreateSnapshotNoContent) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateSnapshotNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateSnapshotNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateSyncActionNoContent) WriteJSON(j *json.Stream)        {}
+func (CreateSyncActionNoContent) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateSyncActionNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateSyncActionNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+
 // WriteJSON implements json.Marshaler.
 func (s Drive) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
@@ -990,6 +1000,11 @@ func (s *InstanceInfoState) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
+func (LoadSnapshotNoContent) WriteJSON(j *json.Stream)        {}
+func (LoadSnapshotNoContent) ReadJSON(i *json.Iterator) error { return nil }
+func (LoadSnapshotNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
+func (LoadSnapshotNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+
 // WriteJSON implements json.Marshaler.
 func (s Logger) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
@@ -1274,6 +1289,36 @@ func (s *MmdsConfig) ReadJSON(i *json.Iterator) error {
 	})
 	return i.Error
 }
+
+func (MmdsConfigPutNoContent) WriteJSON(j *json.Stream)        {}
+func (MmdsConfigPutNoContent) ReadJSON(i *json.Iterator) error { return nil }
+func (MmdsConfigPutNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
+func (MmdsConfigPutNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (MmdsGetOK) WriteJSON(j *json.Stream)        {}
+func (MmdsGetOK) ReadJSON(i *json.Iterator) error { return nil }
+func (MmdsGetOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (MmdsGetOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (MmdsPatchApplicationJSONRequest) WriteJSON(j *json.Stream)        {}
+func (MmdsPatchApplicationJSONRequest) ReadJSON(i *json.Iterator) error { return nil }
+func (MmdsPatchApplicationJSONRequest) ReadJSONFrom(r io.Reader) error  { return nil }
+func (MmdsPatchApplicationJSONRequest) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (MmdsPatchNoContent) WriteJSON(j *json.Stream)        {}
+func (MmdsPatchNoContent) ReadJSON(i *json.Iterator) error { return nil }
+func (MmdsPatchNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
+func (MmdsPatchNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (MmdsPutApplicationJSONRequest) WriteJSON(j *json.Stream)        {}
+func (MmdsPutApplicationJSONRequest) ReadJSON(i *json.Iterator) error { return nil }
+func (MmdsPutApplicationJSONRequest) ReadJSONFrom(r io.Reader) error  { return nil }
+func (MmdsPutApplicationJSONRequest) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (MmdsPutNoContent) WriteJSON(j *json.Stream)        {}
+func (MmdsPutNoContent) ReadJSON(i *json.Iterator) error { return nil }
+func (MmdsPutNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
+func (MmdsPutNoContent) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
 func (s NetworkInterface) WriteJSON(j *json.Stream) {
@@ -1829,6 +1874,76 @@ func (s *PartialNetworkInterface) ReadJSON(i *json.Iterator) error {
 	})
 	return i.Error
 }
+
+func (PatchBalloonNoContent) WriteJSON(j *json.Stream)        {}
+func (PatchBalloonNoContent) ReadJSON(i *json.Iterator) error { return nil }
+func (PatchBalloonNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
+func (PatchBalloonNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (PatchBalloonStatsIntervalNoContent) WriteJSON(j *json.Stream)        {}
+func (PatchBalloonStatsIntervalNoContent) ReadJSON(i *json.Iterator) error { return nil }
+func (PatchBalloonStatsIntervalNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
+func (PatchBalloonStatsIntervalNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (PatchGuestDriveByIDNoContent) WriteJSON(j *json.Stream)        {}
+func (PatchGuestDriveByIDNoContent) ReadJSON(i *json.Iterator) error { return nil }
+func (PatchGuestDriveByIDNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
+func (PatchGuestDriveByIDNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (PatchGuestNetworkInterfaceByIDNoContent) WriteJSON(j *json.Stream)        {}
+func (PatchGuestNetworkInterfaceByIDNoContent) ReadJSON(i *json.Iterator) error { return nil }
+func (PatchGuestNetworkInterfaceByIDNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
+func (PatchGuestNetworkInterfaceByIDNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (PatchMachineConfigurationNoContent) WriteJSON(j *json.Stream)        {}
+func (PatchMachineConfigurationNoContent) ReadJSON(i *json.Iterator) error { return nil }
+func (PatchMachineConfigurationNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
+func (PatchMachineConfigurationNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (PatchVmNoContent) WriteJSON(j *json.Stream)        {}
+func (PatchVmNoContent) ReadJSON(i *json.Iterator) error { return nil }
+func (PatchVmNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
+func (PatchVmNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (PutBalloonNoContent) WriteJSON(j *json.Stream)        {}
+func (PutBalloonNoContent) ReadJSON(i *json.Iterator) error { return nil }
+func (PutBalloonNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
+func (PutBalloonNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (PutGuestBootSourceNoContent) WriteJSON(j *json.Stream)        {}
+func (PutGuestBootSourceNoContent) ReadJSON(i *json.Iterator) error { return nil }
+func (PutGuestBootSourceNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
+func (PutGuestBootSourceNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (PutGuestDriveByIDNoContent) WriteJSON(j *json.Stream)        {}
+func (PutGuestDriveByIDNoContent) ReadJSON(i *json.Iterator) error { return nil }
+func (PutGuestDriveByIDNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
+func (PutGuestDriveByIDNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (PutGuestNetworkInterfaceByIDNoContent) WriteJSON(j *json.Stream)        {}
+func (PutGuestNetworkInterfaceByIDNoContent) ReadJSON(i *json.Iterator) error { return nil }
+func (PutGuestNetworkInterfaceByIDNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
+func (PutGuestNetworkInterfaceByIDNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (PutGuestVsockNoContent) WriteJSON(j *json.Stream)        {}
+func (PutGuestVsockNoContent) ReadJSON(i *json.Iterator) error { return nil }
+func (PutGuestVsockNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
+func (PutGuestVsockNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (PutLoggerNoContent) WriteJSON(j *json.Stream)        {}
+func (PutLoggerNoContent) ReadJSON(i *json.Iterator) error { return nil }
+func (PutLoggerNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
+func (PutLoggerNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (PutMachineConfigurationNoContent) WriteJSON(j *json.Stream)        {}
+func (PutMachineConfigurationNoContent) ReadJSON(i *json.Iterator) error { return nil }
+func (PutMachineConfigurationNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
+func (PutMachineConfigurationNoContent) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (PutMetricsNoContent) WriteJSON(j *json.Stream)        {}
+func (PutMetricsNoContent) ReadJSON(i *json.Iterator) error { return nil }
+func (PutMetricsNoContent) ReadJSONFrom(r io.Reader) error  { return nil }
+func (PutMetricsNoContent) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
 func (s RateLimiter) WriteJSON(j *json.Stream) {

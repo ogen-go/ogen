@@ -50,6 +50,5423 @@ var (
 	_ = net.IP{}
 )
 
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationJSONAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationJSONCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationYamlAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationYamlCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateApiextensionsV1CustomResourceDefinitionApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateApiextensionsV1CustomResourceDefinitionUnauthorized) WriteJSON(j *json.Stream) {}
+func (CreateApiextensionsV1CustomResourceDefinitionUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateApiextensionsV1CustomResourceDefinitionUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateApiextensionsV1CustomResourceDefinitionUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateApiregistrationV1APIServiceApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
+func (CreateApiregistrationV1APIServiceApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateApiregistrationV1APIServiceApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateApiregistrationV1APIServiceApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateApiregistrationV1APIServiceApplicationJSONCreated) WriteJSON(j *json.Stream) {}
+func (CreateApiregistrationV1APIServiceApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateApiregistrationV1APIServiceApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateApiregistrationV1APIServiceApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateApiregistrationV1APIServiceApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (CreateApiregistrationV1APIServiceApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateApiregistrationV1APIServiceApplicationJSONOK) ReadJSONFrom(r io.Reader) error { return nil }
+func (CreateApiregistrationV1APIServiceApplicationJSONOK) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (CreateApiregistrationV1APIServiceApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateApiregistrationV1APIServiceApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateApiregistrationV1APIServiceApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateApiregistrationV1APIServiceApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateApiregistrationV1APIServiceApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateApiregistrationV1APIServiceApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateApiregistrationV1APIServiceApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateApiregistrationV1APIServiceApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateApiregistrationV1APIServiceApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (CreateApiregistrationV1APIServiceApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateApiregistrationV1APIServiceApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateApiregistrationV1APIServiceApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateApiregistrationV1APIServiceApplicationYamlAccepted) WriteJSON(j *json.Stream) {}
+func (CreateApiregistrationV1APIServiceApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateApiregistrationV1APIServiceApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateApiregistrationV1APIServiceApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateApiregistrationV1APIServiceApplicationYamlCreated) WriteJSON(j *json.Stream) {}
+func (CreateApiregistrationV1APIServiceApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateApiregistrationV1APIServiceApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateApiregistrationV1APIServiceApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateApiregistrationV1APIServiceApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (CreateApiregistrationV1APIServiceApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateApiregistrationV1APIServiceApplicationYamlOK) ReadJSONFrom(r io.Reader) error { return nil }
+func (CreateApiregistrationV1APIServiceApplicationYamlOK) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (CreateApiregistrationV1APIServiceUnauthorized) WriteJSON(j *json.Stream)        {}
+func (CreateApiregistrationV1APIServiceUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateApiregistrationV1APIServiceUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateApiregistrationV1APIServiceUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateAuthenticationV1TokenReviewApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
+func (CreateAuthenticationV1TokenReviewApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthenticationV1TokenReviewApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthenticationV1TokenReviewApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthenticationV1TokenReviewApplicationJSONCreated) WriteJSON(j *json.Stream) {}
+func (CreateAuthenticationV1TokenReviewApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthenticationV1TokenReviewApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthenticationV1TokenReviewApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthenticationV1TokenReviewApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (CreateAuthenticationV1TokenReviewApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthenticationV1TokenReviewApplicationJSONOK) ReadJSONFrom(r io.Reader) error { return nil }
+func (CreateAuthenticationV1TokenReviewApplicationJSONOK) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (CreateAuthenticationV1TokenReviewApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateAuthenticationV1TokenReviewApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthenticationV1TokenReviewApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthenticationV1TokenReviewApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthenticationV1TokenReviewApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateAuthenticationV1TokenReviewApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthenticationV1TokenReviewApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthenticationV1TokenReviewApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthenticationV1TokenReviewApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (CreateAuthenticationV1TokenReviewApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthenticationV1TokenReviewApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthenticationV1TokenReviewApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthenticationV1TokenReviewApplicationYamlAccepted) WriteJSON(j *json.Stream) {}
+func (CreateAuthenticationV1TokenReviewApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthenticationV1TokenReviewApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthenticationV1TokenReviewApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthenticationV1TokenReviewApplicationYamlCreated) WriteJSON(j *json.Stream) {}
+func (CreateAuthenticationV1TokenReviewApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthenticationV1TokenReviewApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthenticationV1TokenReviewApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthenticationV1TokenReviewApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (CreateAuthenticationV1TokenReviewApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthenticationV1TokenReviewApplicationYamlOK) ReadJSONFrom(r io.Reader) error { return nil }
+func (CreateAuthenticationV1TokenReviewApplicationYamlOK) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (CreateAuthenticationV1TokenReviewUnauthorized) WriteJSON(j *json.Stream)        {}
+func (CreateAuthenticationV1TokenReviewUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateAuthenticationV1TokenReviewUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateAuthenticationV1TokenReviewUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONCreated) WriteJSON(j *json.Stream) {}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlCreated) WriteJSON(j *json.Stream) {}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized) WriteJSON(j *json.Stream) {}
+func (CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectAccessReviewUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONCreated) WriteJSON(j *json.Stream) {}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlAccepted) WriteJSON(j *json.Stream) {}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlCreated) WriteJSON(j *json.Stream) {}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized) WriteJSON(j *json.Stream) {}
+func (CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SelfSubjectRulesReviewUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SubjectAccessReviewApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SubjectAccessReviewApplicationJSONCreated) WriteJSON(j *json.Stream) {}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SubjectAccessReviewApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SubjectAccessReviewApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SubjectAccessReviewApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SubjectAccessReviewApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SubjectAccessReviewApplicationYamlAccepted) WriteJSON(j *json.Stream) {}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SubjectAccessReviewApplicationYamlCreated) WriteJSON(j *json.Stream) {}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SubjectAccessReviewApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SubjectAccessReviewApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateAuthorizationV1SubjectAccessReviewUnauthorized) WriteJSON(j *json.Stream) {}
+func (CreateAuthorizationV1SubjectAccessReviewUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateAuthorizationV1SubjectAccessReviewUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateAuthorizationV1SubjectAccessReviewUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateCertificatesV1CertificateSigningRequestApplicationJSONAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateCertificatesV1CertificateSigningRequestApplicationJSONCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateCertificatesV1CertificateSigningRequestApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (CreateCertificatesV1CertificateSigningRequestApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateCertificatesV1CertificateSigningRequestApplicationYamlAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateCertificatesV1CertificateSigningRequestApplicationYamlCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateCertificatesV1CertificateSigningRequestApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (CreateCertificatesV1CertificateSigningRequestApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateCertificatesV1CertificateSigningRequestApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateCertificatesV1CertificateSigningRequestUnauthorized) WriteJSON(j *json.Stream) {}
+func (CreateCertificatesV1CertificateSigningRequestUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCertificatesV1CertificateSigningRequestUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateCertificatesV1CertificateSigningRequestUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateCoreV1NamespaceApplicationJSONAccepted) WriteJSON(j *json.Stream)        {}
+func (CreateCoreV1NamespaceApplicationJSONAccepted) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateCoreV1NamespaceApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateCoreV1NamespaceApplicationJSONAccepted) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateCoreV1NamespaceApplicationJSONCreated) WriteJSON(j *json.Stream)        {}
+func (CreateCoreV1NamespaceApplicationJSONCreated) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateCoreV1NamespaceApplicationJSONCreated) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateCoreV1NamespaceApplicationJSONCreated) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateCoreV1NamespaceApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (CreateCoreV1NamespaceApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateCoreV1NamespaceApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateCoreV1NamespaceApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateCoreV1NamespaceApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {}
+func (CreateCoreV1NamespaceApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCoreV1NamespaceApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateCoreV1NamespaceApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateCoreV1NamespaceApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {}
+func (CreateCoreV1NamespaceApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCoreV1NamespaceApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateCoreV1NamespaceApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateCoreV1NamespaceApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (CreateCoreV1NamespaceApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCoreV1NamespaceApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateCoreV1NamespaceApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateCoreV1NamespaceApplicationYamlAccepted) WriteJSON(j *json.Stream)        {}
+func (CreateCoreV1NamespaceApplicationYamlAccepted) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateCoreV1NamespaceApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateCoreV1NamespaceApplicationYamlAccepted) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateCoreV1NamespaceApplicationYamlCreated) WriteJSON(j *json.Stream)        {}
+func (CreateCoreV1NamespaceApplicationYamlCreated) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateCoreV1NamespaceApplicationYamlCreated) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateCoreV1NamespaceApplicationYamlCreated) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateCoreV1NamespaceApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (CreateCoreV1NamespaceApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateCoreV1NamespaceApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateCoreV1NamespaceApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateCoreV1NamespaceUnauthorized) WriteJSON(j *json.Stream)        {}
+func (CreateCoreV1NamespaceUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateCoreV1NamespaceUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateCoreV1NamespaceUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateCoreV1NodeApplicationJSONAccepted) WriteJSON(j *json.Stream)        {}
+func (CreateCoreV1NodeApplicationJSONAccepted) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateCoreV1NodeApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateCoreV1NodeApplicationJSONAccepted) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateCoreV1NodeApplicationJSONCreated) WriteJSON(j *json.Stream)        {}
+func (CreateCoreV1NodeApplicationJSONCreated) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateCoreV1NodeApplicationJSONCreated) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateCoreV1NodeApplicationJSONCreated) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateCoreV1NodeApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (CreateCoreV1NodeApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateCoreV1NodeApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateCoreV1NodeApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateCoreV1NodeApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {}
+func (CreateCoreV1NodeApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCoreV1NodeApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateCoreV1NodeApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateCoreV1NodeApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {}
+func (CreateCoreV1NodeApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCoreV1NodeApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateCoreV1NodeApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateCoreV1NodeApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (CreateCoreV1NodeApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCoreV1NodeApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error { return nil }
+func (CreateCoreV1NodeApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (CreateCoreV1NodeApplicationYamlAccepted) WriteJSON(j *json.Stream)        {}
+func (CreateCoreV1NodeApplicationYamlAccepted) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateCoreV1NodeApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateCoreV1NodeApplicationYamlAccepted) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateCoreV1NodeApplicationYamlCreated) WriteJSON(j *json.Stream)        {}
+func (CreateCoreV1NodeApplicationYamlCreated) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateCoreV1NodeApplicationYamlCreated) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateCoreV1NodeApplicationYamlCreated) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateCoreV1NodeApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (CreateCoreV1NodeApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateCoreV1NodeApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateCoreV1NodeApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateCoreV1NodeUnauthorized) WriteJSON(j *json.Stream)        {}
+func (CreateCoreV1NodeUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateCoreV1NodeUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateCoreV1NodeUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateCoreV1PersistentVolumeApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
+func (CreateCoreV1PersistentVolumeApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCoreV1PersistentVolumeApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateCoreV1PersistentVolumeApplicationJSONAccepted) WriteJSONTo(w io.Writer) error { return nil }
+
+func (CreateCoreV1PersistentVolumeApplicationJSONCreated) WriteJSON(j *json.Stream) {}
+func (CreateCoreV1PersistentVolumeApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCoreV1PersistentVolumeApplicationJSONCreated) ReadJSONFrom(r io.Reader) error { return nil }
+func (CreateCoreV1PersistentVolumeApplicationJSONCreated) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (CreateCoreV1PersistentVolumeApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (CreateCoreV1PersistentVolumeApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateCoreV1PersistentVolumeApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateCoreV1PersistentVolumeApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateCoreV1PersistentVolumeApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateCoreV1PersistentVolumeApplicationYamlAccepted) WriteJSON(j *json.Stream) {}
+func (CreateCoreV1PersistentVolumeApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCoreV1PersistentVolumeApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateCoreV1PersistentVolumeApplicationYamlAccepted) WriteJSONTo(w io.Writer) error { return nil }
+
+func (CreateCoreV1PersistentVolumeApplicationYamlCreated) WriteJSON(j *json.Stream) {}
+func (CreateCoreV1PersistentVolumeApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateCoreV1PersistentVolumeApplicationYamlCreated) ReadJSONFrom(r io.Reader) error { return nil }
+func (CreateCoreV1PersistentVolumeApplicationYamlCreated) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (CreateCoreV1PersistentVolumeApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (CreateCoreV1PersistentVolumeApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateCoreV1PersistentVolumeApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateCoreV1PersistentVolumeApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateCoreV1PersistentVolumeUnauthorized) WriteJSON(j *json.Stream)        {}
+func (CreateCoreV1PersistentVolumeUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateCoreV1PersistentVolumeUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateCoreV1PersistentVolumeUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONCreated) WriteJSON(j *json.Stream) {}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlAccepted) WriteJSON(j *json.Stream) {}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlCreated) WriteJSON(j *json.Stream) {}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) WriteJSON(j *json.Stream) {}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONCreated) WriteJSON(j *json.Stream) {}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlAccepted) WriteJSON(j *json.Stream) {}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlCreated) WriteJSON(j *json.Stream) {}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) WriteJSON(j *json.Stream) {}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationJSONAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationJSONCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationYamlAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationYamlCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateInternalApiserverV1alpha1StorageVersionApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateInternalApiserverV1alpha1StorageVersionUnauthorized) WriteJSON(j *json.Stream) {}
+func (CreateInternalApiserverV1alpha1StorageVersionUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateInternalApiserverV1alpha1StorageVersionUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateInternalApiserverV1alpha1StorageVersionUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNetworkingV1IngressClassApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
+func (CreateNetworkingV1IngressClassApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNetworkingV1IngressClassApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNetworkingV1IngressClassApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNetworkingV1IngressClassApplicationJSONCreated) WriteJSON(j *json.Stream) {}
+func (CreateNetworkingV1IngressClassApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNetworkingV1IngressClassApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNetworkingV1IngressClassApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNetworkingV1IngressClassApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (CreateNetworkingV1IngressClassApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateNetworkingV1IngressClassApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateNetworkingV1IngressClassApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateNetworkingV1IngressClassApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateNetworkingV1IngressClassApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNetworkingV1IngressClassApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNetworkingV1IngressClassApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNetworkingV1IngressClassApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateNetworkingV1IngressClassApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNetworkingV1IngressClassApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNetworkingV1IngressClassApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNetworkingV1IngressClassApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (CreateNetworkingV1IngressClassApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNetworkingV1IngressClassApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNetworkingV1IngressClassApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNetworkingV1IngressClassApplicationYamlAccepted) WriteJSON(j *json.Stream) {}
+func (CreateNetworkingV1IngressClassApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNetworkingV1IngressClassApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNetworkingV1IngressClassApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNetworkingV1IngressClassApplicationYamlCreated) WriteJSON(j *json.Stream) {}
+func (CreateNetworkingV1IngressClassApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNetworkingV1IngressClassApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNetworkingV1IngressClassApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNetworkingV1IngressClassApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (CreateNetworkingV1IngressClassApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateNetworkingV1IngressClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateNetworkingV1IngressClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateNetworkingV1IngressClassUnauthorized) WriteJSON(j *json.Stream)        {}
+func (CreateNetworkingV1IngressClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateNetworkingV1IngressClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateNetworkingV1IngressClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateNodeV1RuntimeClassApplicationJSONAccepted) WriteJSON(j *json.Stream)        {}
+func (CreateNodeV1RuntimeClassApplicationJSONAccepted) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateNodeV1RuntimeClassApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateNodeV1RuntimeClassApplicationJSONAccepted) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateNodeV1RuntimeClassApplicationJSONCreated) WriteJSON(j *json.Stream)        {}
+func (CreateNodeV1RuntimeClassApplicationJSONCreated) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateNodeV1RuntimeClassApplicationJSONCreated) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateNodeV1RuntimeClassApplicationJSONCreated) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateNodeV1RuntimeClassApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (CreateNodeV1RuntimeClassApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateNodeV1RuntimeClassApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateNodeV1RuntimeClassApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateNodeV1RuntimeClassApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {}
+func (CreateNodeV1RuntimeClassApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNodeV1RuntimeClassApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNodeV1RuntimeClassApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNodeV1RuntimeClassApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {}
+func (CreateNodeV1RuntimeClassApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNodeV1RuntimeClassApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNodeV1RuntimeClassApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNodeV1RuntimeClassApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (CreateNodeV1RuntimeClassApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNodeV1RuntimeClassApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNodeV1RuntimeClassApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNodeV1RuntimeClassApplicationYamlAccepted) WriteJSON(j *json.Stream)        {}
+func (CreateNodeV1RuntimeClassApplicationYamlAccepted) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateNodeV1RuntimeClassApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateNodeV1RuntimeClassApplicationYamlAccepted) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateNodeV1RuntimeClassApplicationYamlCreated) WriteJSON(j *json.Stream)        {}
+func (CreateNodeV1RuntimeClassApplicationYamlCreated) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateNodeV1RuntimeClassApplicationYamlCreated) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateNodeV1RuntimeClassApplicationYamlCreated) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateNodeV1RuntimeClassApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (CreateNodeV1RuntimeClassApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateNodeV1RuntimeClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateNodeV1RuntimeClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateNodeV1RuntimeClassUnauthorized) WriteJSON(j *json.Stream)        {}
+func (CreateNodeV1RuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateNodeV1RuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateNodeV1RuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateNodeV1alpha1RuntimeClassApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
+func (CreateNodeV1alpha1RuntimeClassApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNodeV1alpha1RuntimeClassApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNodeV1alpha1RuntimeClassApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNodeV1alpha1RuntimeClassApplicationJSONCreated) WriteJSON(j *json.Stream) {}
+func (CreateNodeV1alpha1RuntimeClassApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNodeV1alpha1RuntimeClassApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNodeV1alpha1RuntimeClassApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNodeV1alpha1RuntimeClassApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (CreateNodeV1alpha1RuntimeClassApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateNodeV1alpha1RuntimeClassApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateNodeV1alpha1RuntimeClassApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (CreateNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNodeV1alpha1RuntimeClassApplicationYamlAccepted) WriteJSON(j *json.Stream) {}
+func (CreateNodeV1alpha1RuntimeClassApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNodeV1alpha1RuntimeClassApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNodeV1alpha1RuntimeClassApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNodeV1alpha1RuntimeClassApplicationYamlCreated) WriteJSON(j *json.Stream) {}
+func (CreateNodeV1alpha1RuntimeClassApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNodeV1alpha1RuntimeClassApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNodeV1alpha1RuntimeClassApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNodeV1alpha1RuntimeClassApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (CreateNodeV1alpha1RuntimeClassApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateNodeV1alpha1RuntimeClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateNodeV1alpha1RuntimeClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateNodeV1alpha1RuntimeClassUnauthorized) WriteJSON(j *json.Stream)        {}
+func (CreateNodeV1alpha1RuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateNodeV1alpha1RuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateNodeV1alpha1RuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateNodeV1beta1RuntimeClassApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
+func (CreateNodeV1beta1RuntimeClassApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNodeV1beta1RuntimeClassApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNodeV1beta1RuntimeClassApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNodeV1beta1RuntimeClassApplicationJSONCreated) WriteJSON(j *json.Stream) {}
+func (CreateNodeV1beta1RuntimeClassApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNodeV1beta1RuntimeClassApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNodeV1beta1RuntimeClassApplicationJSONCreated) WriteJSONTo(w io.Writer) error { return nil }
+
+func (CreateNodeV1beta1RuntimeClassApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (CreateNodeV1beta1RuntimeClassApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateNodeV1beta1RuntimeClassApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateNodeV1beta1RuntimeClassApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (CreateNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNodeV1beta1RuntimeClassApplicationYamlAccepted) WriteJSON(j *json.Stream) {}
+func (CreateNodeV1beta1RuntimeClassApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNodeV1beta1RuntimeClassApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNodeV1beta1RuntimeClassApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateNodeV1beta1RuntimeClassApplicationYamlCreated) WriteJSON(j *json.Stream) {}
+func (CreateNodeV1beta1RuntimeClassApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateNodeV1beta1RuntimeClassApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateNodeV1beta1RuntimeClassApplicationYamlCreated) WriteJSONTo(w io.Writer) error { return nil }
+
+func (CreateNodeV1beta1RuntimeClassApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (CreateNodeV1beta1RuntimeClassApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateNodeV1beta1RuntimeClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateNodeV1beta1RuntimeClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateNodeV1beta1RuntimeClassUnauthorized) WriteJSON(j *json.Stream)        {}
+func (CreateNodeV1beta1RuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateNodeV1beta1RuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateNodeV1beta1RuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationJSONCreated) WriteJSON(j *json.Stream) {}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationYamlAccepted) WriteJSON(j *json.Stream) {}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationYamlCreated) WriteJSON(j *json.Stream) {}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreatePolicyV1beta1PodSecurityPolicyApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreatePolicyV1beta1PodSecurityPolicyUnauthorized) WriteJSON(j *json.Stream)        {}
+func (CreatePolicyV1beta1PodSecurityPolicyUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (CreatePolicyV1beta1PodSecurityPolicyUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreatePolicyV1beta1PodSecurityPolicyUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateRbacAuthorizationV1ClusterRoleApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateRbacAuthorizationV1ClusterRoleApplicationJSONCreated) WriteJSON(j *json.Stream) {}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateRbacAuthorizationV1ClusterRoleApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateRbacAuthorizationV1ClusterRoleApplicationYamlAccepted) WriteJSON(j *json.Stream) {}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateRbacAuthorizationV1ClusterRoleApplicationYamlCreated) WriteJSON(j *json.Stream) {}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateRbacAuthorizationV1ClusterRoleApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONCreated) WriteJSON(j *json.Stream) {}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlAccepted) WriteJSON(j *json.Stream) {}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlCreated) WriteJSON(j *json.Stream) {}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized) WriteJSON(j *json.Stream) {}
+func (CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateRbacAuthorizationV1ClusterRoleBindingUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateRbacAuthorizationV1ClusterRoleUnauthorized) WriteJSON(j *json.Stream)        {}
+func (CreateRbacAuthorizationV1ClusterRoleUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateRbacAuthorizationV1ClusterRoleUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateRbacAuthorizationV1ClusterRoleUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateSchedulingV1PriorityClassApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
+func (CreateSchedulingV1PriorityClassApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateSchedulingV1PriorityClassApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateSchedulingV1PriorityClassApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateSchedulingV1PriorityClassApplicationJSONCreated) WriteJSON(j *json.Stream) {}
+func (CreateSchedulingV1PriorityClassApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateSchedulingV1PriorityClassApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateSchedulingV1PriorityClassApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateSchedulingV1PriorityClassApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (CreateSchedulingV1PriorityClassApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateSchedulingV1PriorityClassApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateSchedulingV1PriorityClassApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateSchedulingV1PriorityClassApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateSchedulingV1PriorityClassApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateSchedulingV1PriorityClassApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateSchedulingV1PriorityClassApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateSchedulingV1PriorityClassApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateSchedulingV1PriorityClassApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateSchedulingV1PriorityClassApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateSchedulingV1PriorityClassApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateSchedulingV1PriorityClassApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (CreateSchedulingV1PriorityClassApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateSchedulingV1PriorityClassApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateSchedulingV1PriorityClassApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateSchedulingV1PriorityClassApplicationYamlAccepted) WriteJSON(j *json.Stream) {}
+func (CreateSchedulingV1PriorityClassApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateSchedulingV1PriorityClassApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateSchedulingV1PriorityClassApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateSchedulingV1PriorityClassApplicationYamlCreated) WriteJSON(j *json.Stream) {}
+func (CreateSchedulingV1PriorityClassApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateSchedulingV1PriorityClassApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateSchedulingV1PriorityClassApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateSchedulingV1PriorityClassApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (CreateSchedulingV1PriorityClassApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateSchedulingV1PriorityClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateSchedulingV1PriorityClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateSchedulingV1PriorityClassUnauthorized) WriteJSON(j *json.Stream)        {}
+func (CreateSchedulingV1PriorityClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateSchedulingV1PriorityClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateSchedulingV1PriorityClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1CSIDriverApplicationJSONAccepted) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1CSIDriverApplicationJSONAccepted) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1CSIDriverApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1CSIDriverApplicationJSONAccepted) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1CSIDriverApplicationJSONCreated) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1CSIDriverApplicationJSONCreated) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1CSIDriverApplicationJSONCreated) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1CSIDriverApplicationJSONCreated) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1CSIDriverApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1CSIDriverApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1CSIDriverApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1CSIDriverApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1CSIDriverApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {}
+func (CreateStorageV1CSIDriverApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateStorageV1CSIDriverApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateStorageV1CSIDriverApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateStorageV1CSIDriverApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {}
+func (CreateStorageV1CSIDriverApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateStorageV1CSIDriverApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateStorageV1CSIDriverApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateStorageV1CSIDriverApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (CreateStorageV1CSIDriverApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateStorageV1CSIDriverApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateStorageV1CSIDriverApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateStorageV1CSIDriverApplicationYamlAccepted) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1CSIDriverApplicationYamlAccepted) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1CSIDriverApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1CSIDriverApplicationYamlAccepted) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1CSIDriverApplicationYamlCreated) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1CSIDriverApplicationYamlCreated) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1CSIDriverApplicationYamlCreated) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1CSIDriverApplicationYamlCreated) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1CSIDriverApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1CSIDriverApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1CSIDriverApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1CSIDriverApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1CSIDriverUnauthorized) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1CSIDriverUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1CSIDriverUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1CSIDriverUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1CSINodeApplicationJSONAccepted) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1CSINodeApplicationJSONAccepted) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1CSINodeApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1CSINodeApplicationJSONAccepted) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1CSINodeApplicationJSONCreated) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1CSINodeApplicationJSONCreated) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1CSINodeApplicationJSONCreated) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1CSINodeApplicationJSONCreated) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1CSINodeApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1CSINodeApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1CSINodeApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1CSINodeApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1CSINodeApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {}
+func (CreateStorageV1CSINodeApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateStorageV1CSINodeApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateStorageV1CSINodeApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateStorageV1CSINodeApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {}
+func (CreateStorageV1CSINodeApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateStorageV1CSINodeApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateStorageV1CSINodeApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateStorageV1CSINodeApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (CreateStorageV1CSINodeApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateStorageV1CSINodeApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateStorageV1CSINodeApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateStorageV1CSINodeApplicationYamlAccepted) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1CSINodeApplicationYamlAccepted) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1CSINodeApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1CSINodeApplicationYamlAccepted) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1CSINodeApplicationYamlCreated) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1CSINodeApplicationYamlCreated) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1CSINodeApplicationYamlCreated) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1CSINodeApplicationYamlCreated) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1CSINodeApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1CSINodeApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1CSINodeApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1CSINodeApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1CSINodeUnauthorized) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1CSINodeUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1CSINodeUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1CSINodeUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1StorageClassApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
+func (CreateStorageV1StorageClassApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateStorageV1StorageClassApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error { return nil }
+func (CreateStorageV1StorageClassApplicationJSONAccepted) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (CreateStorageV1StorageClassApplicationJSONCreated) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1StorageClassApplicationJSONCreated) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1StorageClassApplicationJSONCreated) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1StorageClassApplicationJSONCreated) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1StorageClassApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1StorageClassApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1StorageClassApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1StorageClassApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1StorageClassApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateStorageV1StorageClassApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateStorageV1StorageClassApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateStorageV1StorageClassApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateStorageV1StorageClassApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {}
+func (CreateStorageV1StorageClassApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateStorageV1StorageClassApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateStorageV1StorageClassApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateStorageV1StorageClassApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (CreateStorageV1StorageClassApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateStorageV1StorageClassApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateStorageV1StorageClassApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateStorageV1StorageClassApplicationYamlAccepted) WriteJSON(j *json.Stream) {}
+func (CreateStorageV1StorageClassApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateStorageV1StorageClassApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error { return nil }
+func (CreateStorageV1StorageClassApplicationYamlAccepted) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (CreateStorageV1StorageClassApplicationYamlCreated) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1StorageClassApplicationYamlCreated) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1StorageClassApplicationYamlCreated) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1StorageClassApplicationYamlCreated) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1StorageClassApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1StorageClassApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1StorageClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1StorageClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1StorageClassUnauthorized) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1StorageClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1StorageClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1StorageClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1VolumeAttachmentApplicationJSONAccepted) WriteJSON(j *json.Stream) {}
+func (CreateStorageV1VolumeAttachmentApplicationJSONAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateStorageV1VolumeAttachmentApplicationJSONAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateStorageV1VolumeAttachmentApplicationJSONAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateStorageV1VolumeAttachmentApplicationJSONCreated) WriteJSON(j *json.Stream) {}
+func (CreateStorageV1VolumeAttachmentApplicationJSONCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateStorageV1VolumeAttachmentApplicationJSONCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateStorageV1VolumeAttachmentApplicationJSONCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateStorageV1VolumeAttachmentApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1VolumeAttachmentApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1VolumeAttachmentApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1VolumeAttachmentApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufAccepted) WriteJSON(j *json.Stream) {
+}
+func (CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufCreated) WriteJSON(j *json.Stream) {
+}
+func (CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateStorageV1VolumeAttachmentApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateStorageV1VolumeAttachmentApplicationYamlAccepted) WriteJSON(j *json.Stream) {}
+func (CreateStorageV1VolumeAttachmentApplicationYamlAccepted) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateStorageV1VolumeAttachmentApplicationYamlAccepted) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateStorageV1VolumeAttachmentApplicationYamlAccepted) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateStorageV1VolumeAttachmentApplicationYamlCreated) WriteJSON(j *json.Stream) {}
+func (CreateStorageV1VolumeAttachmentApplicationYamlCreated) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (CreateStorageV1VolumeAttachmentApplicationYamlCreated) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (CreateStorageV1VolumeAttachmentApplicationYamlCreated) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (CreateStorageV1VolumeAttachmentApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1VolumeAttachmentApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1VolumeAttachmentApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1VolumeAttachmentApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (CreateStorageV1VolumeAttachmentUnauthorized) WriteJSON(j *json.Stream)        {}
+func (CreateStorageV1VolumeAttachmentUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (CreateStorageV1VolumeAttachmentUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (CreateStorageV1VolumeAttachmentUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteApiextensionsV1CollectionCustomResourceDefinitionApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteApiextensionsV1CollectionCustomResourceDefinitionUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteApiregistrationV1CollectionAPIServiceApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (DeleteApiregistrationV1CollectionAPIServiceApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteApiregistrationV1CollectionAPIServiceApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteApiregistrationV1CollectionAPIServiceApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteApiregistrationV1CollectionAPIServiceApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteApiregistrationV1CollectionAPIServiceApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteApiregistrationV1CollectionAPIServiceApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteApiregistrationV1CollectionAPIServiceApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteApiregistrationV1CollectionAPIServiceApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (DeleteApiregistrationV1CollectionAPIServiceApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteApiregistrationV1CollectionAPIServiceApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteApiregistrationV1CollectionAPIServiceApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteApiregistrationV1CollectionAPIServiceUnauthorized) WriteJSON(j *json.Stream) {}
+func (DeleteApiregistrationV1CollectionAPIServiceUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteApiregistrationV1CollectionAPIServiceUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteApiregistrationV1CollectionAPIServiceUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteCertificatesV1CollectionCertificateSigningRequestApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteCertificatesV1CollectionCertificateSigningRequestApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteCertificatesV1CollectionCertificateSigningRequestApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteCertificatesV1CollectionCertificateSigningRequestApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteCertificatesV1CollectionCertificateSigningRequestApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteCertificatesV1CollectionCertificateSigningRequestApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteCertificatesV1CollectionCertificateSigningRequestApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteCertificatesV1CollectionCertificateSigningRequestApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteCertificatesV1CollectionCertificateSigningRequestApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteCertificatesV1CollectionCertificateSigningRequestApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteCertificatesV1CollectionCertificateSigningRequestApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteCertificatesV1CollectionCertificateSigningRequestApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteCertificatesV1CollectionCertificateSigningRequestUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteCoreV1CollectionNodeApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (DeleteCoreV1CollectionNodeApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (DeleteCoreV1CollectionNodeApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (DeleteCoreV1CollectionNodeApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (DeleteCoreV1CollectionNodeApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (DeleteCoreV1CollectionNodeApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteCoreV1CollectionNodeApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteCoreV1CollectionNodeApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteCoreV1CollectionNodeApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (DeleteCoreV1CollectionNodeApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (DeleteCoreV1CollectionNodeApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (DeleteCoreV1CollectionNodeApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (DeleteCoreV1CollectionNodeUnauthorized) WriteJSON(j *json.Stream)        {}
+func (DeleteCoreV1CollectionNodeUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (DeleteCoreV1CollectionNodeUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (DeleteCoreV1CollectionNodeUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (DeleteCoreV1CollectionPersistentVolumeApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (DeleteCoreV1CollectionPersistentVolumeApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteCoreV1CollectionPersistentVolumeApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteCoreV1CollectionPersistentVolumeApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteCoreV1CollectionPersistentVolumeApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteCoreV1CollectionPersistentVolumeApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteCoreV1CollectionPersistentVolumeApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteCoreV1CollectionPersistentVolumeApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteCoreV1CollectionPersistentVolumeApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (DeleteCoreV1CollectionPersistentVolumeApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteCoreV1CollectionPersistentVolumeApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteCoreV1CollectionPersistentVolumeApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteCoreV1CollectionPersistentVolumeUnauthorized) WriteJSON(j *json.Stream) {}
+func (DeleteCoreV1CollectionPersistentVolumeUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteCoreV1CollectionPersistentVolumeUnauthorized) ReadJSONFrom(r io.Reader) error { return nil }
+func (DeleteCoreV1CollectionPersistentVolumeUnauthorized) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized) WriteJSON(j *json.Stream) {}
+func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionFlowSchemaUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta1CollectionPriorityLevelConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized) WriteJSON(j *json.Stream) {}
+func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionFlowSchemaUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteFlowcontrolApiserverV1beta2CollectionPriorityLevelConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteInternalApiserverV1alpha1CollectionStorageVersionApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteInternalApiserverV1alpha1CollectionStorageVersionUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteNetworkingV1CollectionIngressClassApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (DeleteNetworkingV1CollectionIngressClassApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteNetworkingV1CollectionIngressClassApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteNetworkingV1CollectionIngressClassApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteNetworkingV1CollectionIngressClassApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteNetworkingV1CollectionIngressClassApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteNetworkingV1CollectionIngressClassApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteNetworkingV1CollectionIngressClassApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteNetworkingV1CollectionIngressClassApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (DeleteNetworkingV1CollectionIngressClassApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteNetworkingV1CollectionIngressClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteNetworkingV1CollectionIngressClassApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteNetworkingV1CollectionIngressClassUnauthorized) WriteJSON(j *json.Stream) {}
+func (DeleteNetworkingV1CollectionIngressClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteNetworkingV1CollectionIngressClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteNetworkingV1CollectionIngressClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteNodeV1CollectionRuntimeClassApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (DeleteNodeV1CollectionRuntimeClassApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteNodeV1CollectionRuntimeClassApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteNodeV1CollectionRuntimeClassApplicationJSONOK) WriteJSONTo(w io.Writer) error { return nil }
+
+func (DeleteNodeV1CollectionRuntimeClassApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteNodeV1CollectionRuntimeClassApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteNodeV1CollectionRuntimeClassApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteNodeV1CollectionRuntimeClassApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteNodeV1CollectionRuntimeClassApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (DeleteNodeV1CollectionRuntimeClassApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteNodeV1CollectionRuntimeClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteNodeV1CollectionRuntimeClassApplicationYamlOK) WriteJSONTo(w io.Writer) error { return nil }
+
+func (DeleteNodeV1CollectionRuntimeClassUnauthorized) WriteJSON(j *json.Stream)        {}
+func (DeleteNodeV1CollectionRuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (DeleteNodeV1CollectionRuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (DeleteNodeV1CollectionRuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (DeleteNodeV1alpha1CollectionRuntimeClassApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (DeleteNodeV1alpha1CollectionRuntimeClassApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteNodeV1alpha1CollectionRuntimeClassApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteNodeV1alpha1CollectionRuntimeClassApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteNodeV1alpha1CollectionRuntimeClassApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteNodeV1alpha1CollectionRuntimeClassApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteNodeV1alpha1CollectionRuntimeClassApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteNodeV1alpha1CollectionRuntimeClassApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteNodeV1alpha1CollectionRuntimeClassApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (DeleteNodeV1alpha1CollectionRuntimeClassApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteNodeV1alpha1CollectionRuntimeClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteNodeV1alpha1CollectionRuntimeClassApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized) WriteJSON(j *json.Stream) {}
+func (DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteNodeV1alpha1CollectionRuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteNodeV1beta1CollectionRuntimeClassApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (DeleteNodeV1beta1CollectionRuntimeClassApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteNodeV1beta1CollectionRuntimeClassApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteNodeV1beta1CollectionRuntimeClassApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteNodeV1beta1CollectionRuntimeClassApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteNodeV1beta1CollectionRuntimeClassApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteNodeV1beta1CollectionRuntimeClassApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteNodeV1beta1CollectionRuntimeClassApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteNodeV1beta1CollectionRuntimeClassApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (DeleteNodeV1beta1CollectionRuntimeClassApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteNodeV1beta1CollectionRuntimeClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteNodeV1beta1CollectionRuntimeClassApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteNodeV1beta1CollectionRuntimeClassUnauthorized) WriteJSON(j *json.Stream) {}
+func (DeleteNodeV1beta1CollectionRuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteNodeV1beta1CollectionRuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteNodeV1beta1CollectionRuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error { return nil }
+
+func (DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeletePolicyV1beta1CollectionPodSecurityPolicyApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized) WriteJSON(j *json.Stream) {}
+func (DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeletePolicyV1beta1CollectionPodSecurityPolicyUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteRbacAuthorizationV1CollectionClusterRoleApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteRbacAuthorizationV1CollectionClusterRoleApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteRbacAuthorizationV1CollectionClusterRoleApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized) WriteJSON(j *json.Stream) {}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleBindingUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized) WriteJSON(j *json.Stream) {}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteRbacAuthorizationV1CollectionClusterRoleUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteSchedulingV1CollectionPriorityClassApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (DeleteSchedulingV1CollectionPriorityClassApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteSchedulingV1CollectionPriorityClassApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteSchedulingV1CollectionPriorityClassApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteSchedulingV1CollectionPriorityClassApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteSchedulingV1CollectionPriorityClassApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteSchedulingV1CollectionPriorityClassApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteSchedulingV1CollectionPriorityClassApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteSchedulingV1CollectionPriorityClassApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (DeleteSchedulingV1CollectionPriorityClassApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteSchedulingV1CollectionPriorityClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteSchedulingV1CollectionPriorityClassApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteSchedulingV1CollectionPriorityClassUnauthorized) WriteJSON(j *json.Stream) {}
+func (DeleteSchedulingV1CollectionPriorityClassUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteSchedulingV1CollectionPriorityClassUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteSchedulingV1CollectionPriorityClassUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteStorageV1CollectionCSIDriverApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (DeleteStorageV1CollectionCSIDriverApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteStorageV1CollectionCSIDriverApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteStorageV1CollectionCSIDriverApplicationJSONOK) WriteJSONTo(w io.Writer) error { return nil }
+
+func (DeleteStorageV1CollectionCSIDriverApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteStorageV1CollectionCSIDriverApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteStorageV1CollectionCSIDriverApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteStorageV1CollectionCSIDriverApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteStorageV1CollectionCSIDriverApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (DeleteStorageV1CollectionCSIDriverApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteStorageV1CollectionCSIDriverApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteStorageV1CollectionCSIDriverApplicationYamlOK) WriteJSONTo(w io.Writer) error { return nil }
+
+func (DeleteStorageV1CollectionCSIDriverUnauthorized) WriteJSON(j *json.Stream)        {}
+func (DeleteStorageV1CollectionCSIDriverUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (DeleteStorageV1CollectionCSIDriverUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (DeleteStorageV1CollectionCSIDriverUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (DeleteStorageV1CollectionCSINodeApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (DeleteStorageV1CollectionCSINodeApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (DeleteStorageV1CollectionCSINodeApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (DeleteStorageV1CollectionCSINodeApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (DeleteStorageV1CollectionCSINodeApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (DeleteStorageV1CollectionCSINodeApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteStorageV1CollectionCSINodeApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteStorageV1CollectionCSINodeApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteStorageV1CollectionCSINodeApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (DeleteStorageV1CollectionCSINodeApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (DeleteStorageV1CollectionCSINodeApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (DeleteStorageV1CollectionCSINodeApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (DeleteStorageV1CollectionCSINodeUnauthorized) WriteJSON(j *json.Stream)        {}
+func (DeleteStorageV1CollectionCSINodeUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (DeleteStorageV1CollectionCSINodeUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (DeleteStorageV1CollectionCSINodeUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (DeleteStorageV1CollectionStorageClassApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (DeleteStorageV1CollectionStorageClassApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteStorageV1CollectionStorageClassApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteStorageV1CollectionStorageClassApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteStorageV1CollectionStorageClassApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteStorageV1CollectionStorageClassApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteStorageV1CollectionStorageClassApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteStorageV1CollectionStorageClassApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteStorageV1CollectionStorageClassApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (DeleteStorageV1CollectionStorageClassApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteStorageV1CollectionStorageClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteStorageV1CollectionStorageClassApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteStorageV1CollectionStorageClassUnauthorized) WriteJSON(j *json.Stream)        {}
+func (DeleteStorageV1CollectionStorageClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (DeleteStorageV1CollectionStorageClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (DeleteStorageV1CollectionStorageClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (DeleteStorageV1CollectionVolumeAttachmentApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (DeleteStorageV1CollectionVolumeAttachmentApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteStorageV1CollectionVolumeAttachmentApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteStorageV1CollectionVolumeAttachmentApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteStorageV1CollectionVolumeAttachmentApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (DeleteStorageV1CollectionVolumeAttachmentApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteStorageV1CollectionVolumeAttachmentApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteStorageV1CollectionVolumeAttachmentApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteStorageV1CollectionVolumeAttachmentApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (DeleteStorageV1CollectionVolumeAttachmentApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteStorageV1CollectionVolumeAttachmentApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteStorageV1CollectionVolumeAttachmentApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (DeleteStorageV1CollectionVolumeAttachmentUnauthorized) WriteJSON(j *json.Stream) {}
+func (DeleteStorageV1CollectionVolumeAttachmentUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (DeleteStorageV1CollectionVolumeAttachmentUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (DeleteStorageV1CollectionVolumeAttachmentUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetAPIVersionsApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetAPIVersionsApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAPIVersionsApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAPIVersionsApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAPIVersionsApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream)        {}
+func (GetAPIVersionsApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAPIVersionsApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAPIVersionsApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAPIVersionsApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetAPIVersionsApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAPIVersionsApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAPIVersionsApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAPIVersionsUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetAPIVersionsUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAPIVersionsUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAPIVersionsUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAdmissionregistrationAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetAdmissionregistrationAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAdmissionregistrationAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAdmissionregistrationAPIGroupApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAdmissionregistrationAPIGroupApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetAdmissionregistrationAPIGroupApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetAdmissionregistrationAPIGroupApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetAdmissionregistrationAPIGroupApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetAdmissionregistrationAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetAdmissionregistrationAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAdmissionregistrationAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAdmissionregistrationAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAdmissionregistrationAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetAdmissionregistrationAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAdmissionregistrationAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAdmissionregistrationAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAdmissionregistrationV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (GetAdmissionregistrationV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetAdmissionregistrationV1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetAdmissionregistrationV1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetAdmissionregistrationV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (GetAdmissionregistrationV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetAdmissionregistrationV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetAdmissionregistrationV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetAdmissionregistrationV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (GetAdmissionregistrationV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetAdmissionregistrationV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetAdmissionregistrationV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetAdmissionregistrationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {}
+func (GetAdmissionregistrationV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetAdmissionregistrationV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error { return nil }
+func (GetAdmissionregistrationV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (GetApiextensionsAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetApiextensionsAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetApiextensionsAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetApiextensionsAPIGroupApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetApiextensionsAPIGroupApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetApiextensionsAPIGroupApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetApiextensionsAPIGroupApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetApiextensionsAPIGroupApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetApiextensionsAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetApiextensionsAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetApiextensionsAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetApiextensionsAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetApiextensionsAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetApiextensionsAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetApiextensionsAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetApiextensionsAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetApiextensionsV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetApiextensionsV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetApiextensionsV1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetApiextensionsV1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetApiextensionsV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetApiextensionsV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetApiextensionsV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetApiextensionsV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetApiextensionsV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetApiextensionsV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetApiextensionsV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetApiextensionsV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetApiextensionsV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetApiextensionsV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetApiextensionsV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetApiextensionsV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetApiregistrationAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetApiregistrationAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetApiregistrationAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetApiregistrationAPIGroupApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetApiregistrationAPIGroupApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetApiregistrationAPIGroupApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetApiregistrationAPIGroupApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetApiregistrationAPIGroupApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetApiregistrationAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetApiregistrationAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetApiregistrationAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetApiregistrationAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetApiregistrationAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetApiregistrationAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetApiregistrationAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetApiregistrationAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetApiregistrationV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetApiregistrationV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetApiregistrationV1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetApiregistrationV1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetApiregistrationV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetApiregistrationV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetApiregistrationV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetApiregistrationV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetApiregistrationV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetApiregistrationV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetApiregistrationV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetApiregistrationV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetApiregistrationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetApiregistrationV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetApiregistrationV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetApiregistrationV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAppsAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetAppsAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAppsAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAppsAPIGroupApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAppsAPIGroupApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream)        {}
+func (GetAppsAPIGroupApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAppsAPIGroupApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAppsAPIGroupApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAppsAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetAppsAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAppsAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAppsAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAppsAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetAppsAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAppsAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAppsAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAppsV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetAppsV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAppsV1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAppsV1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAppsV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetAppsV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetAppsV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetAppsV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetAppsV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetAppsV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAppsV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAppsV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAppsV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetAppsV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAppsV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAppsV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAuthenticationAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetAuthenticationAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAuthenticationAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAuthenticationAPIGroupApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAuthenticationAPIGroupApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetAuthenticationAPIGroupApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetAuthenticationAPIGroupApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetAuthenticationAPIGroupApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetAuthenticationAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetAuthenticationAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAuthenticationAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAuthenticationAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAuthenticationAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetAuthenticationAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAuthenticationAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAuthenticationAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAuthenticationV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetAuthenticationV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAuthenticationV1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAuthenticationV1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAuthenticationV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetAuthenticationV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetAuthenticationV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetAuthenticationV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetAuthenticationV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetAuthenticationV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAuthenticationV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAuthenticationV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAuthenticationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetAuthenticationV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAuthenticationV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAuthenticationV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAuthorizationAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetAuthorizationAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAuthorizationAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAuthorizationAPIGroupApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAuthorizationAPIGroupApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetAuthorizationAPIGroupApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetAuthorizationAPIGroupApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetAuthorizationAPIGroupApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetAuthorizationAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetAuthorizationAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAuthorizationAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAuthorizationAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAuthorizationAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetAuthorizationAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAuthorizationAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAuthorizationAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAuthorizationV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetAuthorizationV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAuthorizationV1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAuthorizationV1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAuthorizationV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetAuthorizationV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetAuthorizationV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetAuthorizationV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetAuthorizationV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetAuthorizationV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAuthorizationV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAuthorizationV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAuthorizationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetAuthorizationV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAuthorizationV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAuthorizationV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAutoscalingAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetAutoscalingAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAutoscalingAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAutoscalingAPIGroupApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAutoscalingAPIGroupApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetAutoscalingAPIGroupApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetAutoscalingAPIGroupApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetAutoscalingAPIGroupApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetAutoscalingAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetAutoscalingAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAutoscalingAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAutoscalingAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAutoscalingAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetAutoscalingAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAutoscalingAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAutoscalingAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAutoscalingV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetAutoscalingV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAutoscalingV1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAutoscalingV1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAutoscalingV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetAutoscalingV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetAutoscalingV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetAutoscalingV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetAutoscalingV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetAutoscalingV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAutoscalingV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAutoscalingV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAutoscalingV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetAutoscalingV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAutoscalingV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAutoscalingV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAutoscalingV2beta1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (GetAutoscalingV2beta1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetAutoscalingV2beta1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error { return nil }
+func (GetAutoscalingV2beta1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (GetAutoscalingV2beta1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (GetAutoscalingV2beta1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetAutoscalingV2beta1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetAutoscalingV2beta1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetAutoscalingV2beta1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (GetAutoscalingV2beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetAutoscalingV2beta1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error { return nil }
+func (GetAutoscalingV2beta1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (GetAutoscalingV2beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetAutoscalingV2beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAutoscalingV2beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAutoscalingV2beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetAutoscalingV2beta2APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (GetAutoscalingV2beta2APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetAutoscalingV2beta2APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error { return nil }
+func (GetAutoscalingV2beta2APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (GetAutoscalingV2beta2APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (GetAutoscalingV2beta2APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetAutoscalingV2beta2APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetAutoscalingV2beta2APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetAutoscalingV2beta2APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (GetAutoscalingV2beta2APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetAutoscalingV2beta2APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error { return nil }
+func (GetAutoscalingV2beta2APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (GetAutoscalingV2beta2APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetAutoscalingV2beta2APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetAutoscalingV2beta2APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetAutoscalingV2beta2APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetBatchAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetBatchAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetBatchAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetBatchAPIGroupApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetBatchAPIGroupApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetBatchAPIGroupApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetBatchAPIGroupApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error { return nil }
+func (GetBatchAPIGroupApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (GetBatchAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetBatchAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetBatchAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetBatchAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetBatchAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetBatchAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetBatchAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetBatchAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetBatchV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetBatchV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetBatchV1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetBatchV1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetBatchV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetBatchV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetBatchV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetBatchV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetBatchV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetBatchV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetBatchV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetBatchV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetBatchV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetBatchV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetBatchV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetBatchV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetBatchV1beta1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetBatchV1beta1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetBatchV1beta1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetBatchV1beta1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetBatchV1beta1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetBatchV1beta1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetBatchV1beta1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetBatchV1beta1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetBatchV1beta1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetBatchV1beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetBatchV1beta1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetBatchV1beta1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetBatchV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetBatchV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetBatchV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetBatchV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetCertificatesAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetCertificatesAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetCertificatesAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetCertificatesAPIGroupApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetCertificatesAPIGroupApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetCertificatesAPIGroupApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetCertificatesAPIGroupApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetCertificatesAPIGroupApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetCertificatesAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetCertificatesAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetCertificatesAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetCertificatesAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetCertificatesAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetCertificatesAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetCertificatesAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetCertificatesAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetCertificatesV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetCertificatesV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetCertificatesV1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetCertificatesV1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetCertificatesV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetCertificatesV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetCertificatesV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetCertificatesV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetCertificatesV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetCertificatesV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetCertificatesV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetCertificatesV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetCertificatesV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetCertificatesV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetCertificatesV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetCertificatesV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetCodeVersionUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetCodeVersionUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetCodeVersionUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetCodeVersionUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetCoordinationAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetCoordinationAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetCoordinationAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetCoordinationAPIGroupApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetCoordinationAPIGroupApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetCoordinationAPIGroupApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetCoordinationAPIGroupApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetCoordinationAPIGroupApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetCoordinationAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetCoordinationAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetCoordinationAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetCoordinationAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetCoordinationAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetCoordinationAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetCoordinationAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetCoordinationAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetCoordinationV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetCoordinationV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetCoordinationV1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetCoordinationV1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetCoordinationV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetCoordinationV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetCoordinationV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetCoordinationV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetCoordinationV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetCoordinationV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetCoordinationV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetCoordinationV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetCoordinationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetCoordinationV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetCoordinationV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetCoordinationV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetCoreAPIVersionsApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetCoreAPIVersionsApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetCoreAPIVersionsApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetCoreAPIVersionsApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetCoreAPIVersionsApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetCoreAPIVersionsApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetCoreAPIVersionsApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetCoreAPIVersionsApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetCoreAPIVersionsApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetCoreAPIVersionsApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetCoreAPIVersionsApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetCoreAPIVersionsApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetCoreAPIVersionsUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetCoreAPIVersionsUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetCoreAPIVersionsUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetCoreAPIVersionsUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetCoreV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetCoreV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetCoreV1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetCoreV1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetCoreV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetCoreV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetCoreV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetCoreV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetCoreV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetCoreV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetCoreV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetCoreV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetCoreV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetCoreV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetCoreV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetCoreV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetDiscoveryAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetDiscoveryAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetDiscoveryAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetDiscoveryAPIGroupApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetDiscoveryAPIGroupApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetDiscoveryAPIGroupApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetDiscoveryAPIGroupApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetDiscoveryAPIGroupApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetDiscoveryAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetDiscoveryAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetDiscoveryAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetDiscoveryAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetDiscoveryAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetDiscoveryAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetDiscoveryAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetDiscoveryAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetDiscoveryV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetDiscoveryV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetDiscoveryV1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetDiscoveryV1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetDiscoveryV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetDiscoveryV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetDiscoveryV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetDiscoveryV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetDiscoveryV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetDiscoveryV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetDiscoveryV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetDiscoveryV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetDiscoveryV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetDiscoveryV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetDiscoveryV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetDiscoveryV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetDiscoveryV1beta1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetDiscoveryV1beta1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetDiscoveryV1beta1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetDiscoveryV1beta1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetDiscoveryV1beta1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetDiscoveryV1beta1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetDiscoveryV1beta1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetDiscoveryV1beta1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetDiscoveryV1beta1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetDiscoveryV1beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetDiscoveryV1beta1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetDiscoveryV1beta1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetDiscoveryV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetDiscoveryV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetDiscoveryV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetDiscoveryV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetEventsAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetEventsAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetEventsAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetEventsAPIGroupApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetEventsAPIGroupApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetEventsAPIGroupApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetEventsAPIGroupApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetEventsAPIGroupApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error { return nil }
+
+func (GetEventsAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetEventsAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetEventsAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetEventsAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetEventsAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetEventsAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetEventsAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetEventsAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetEventsV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetEventsV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetEventsV1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetEventsV1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetEventsV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetEventsV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetEventsV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetEventsV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetEventsV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetEventsV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetEventsV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetEventsV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetEventsV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetEventsV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetEventsV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetEventsV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetEventsV1beta1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetEventsV1beta1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetEventsV1beta1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetEventsV1beta1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetEventsV1beta1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetEventsV1beta1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetEventsV1beta1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetEventsV1beta1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetEventsV1beta1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetEventsV1beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetEventsV1beta1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetEventsV1beta1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetEventsV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetEventsV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetEventsV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetEventsV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetFlowcontrolApiserverAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetFlowcontrolApiserverAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetFlowcontrolApiserverAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetFlowcontrolApiserverAPIGroupApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetFlowcontrolApiserverAPIGroupApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetFlowcontrolApiserverAPIGroupApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetFlowcontrolApiserverAPIGroupApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetFlowcontrolApiserverAPIGroupApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetFlowcontrolApiserverAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetFlowcontrolApiserverAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetFlowcontrolApiserverAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetFlowcontrolApiserverAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetFlowcontrolApiserverAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetFlowcontrolApiserverAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetFlowcontrolApiserverAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetFlowcontrolApiserverAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetFlowcontrolApiserverV1beta1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (GetFlowcontrolApiserverV1beta1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetFlowcontrolApiserverV1beta1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetFlowcontrolApiserverV1beta1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetFlowcontrolApiserverV1beta1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (GetFlowcontrolApiserverV1beta1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetFlowcontrolApiserverV1beta1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetFlowcontrolApiserverV1beta1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetFlowcontrolApiserverV1beta1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (GetFlowcontrolApiserverV1beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetFlowcontrolApiserverV1beta1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetFlowcontrolApiserverV1beta1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {}
+func (GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetFlowcontrolApiserverV1beta2APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (GetFlowcontrolApiserverV1beta2APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetFlowcontrolApiserverV1beta2APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetFlowcontrolApiserverV1beta2APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetFlowcontrolApiserverV1beta2APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (GetFlowcontrolApiserverV1beta2APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetFlowcontrolApiserverV1beta2APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetFlowcontrolApiserverV1beta2APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetFlowcontrolApiserverV1beta2APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (GetFlowcontrolApiserverV1beta2APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetFlowcontrolApiserverV1beta2APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetFlowcontrolApiserverV1beta2APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) WriteJSON(j *json.Stream) {}
+func (GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetInternalApiserverAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetInternalApiserverAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetInternalApiserverAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetInternalApiserverAPIGroupApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetInternalApiserverAPIGroupApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetInternalApiserverAPIGroupApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetInternalApiserverAPIGroupApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetInternalApiserverAPIGroupApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetInternalApiserverAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetInternalApiserverAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetInternalApiserverAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetInternalApiserverAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetInternalApiserverAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetInternalApiserverAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetInternalApiserverAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetInternalApiserverAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetInternalApiserverV1alpha1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (GetInternalApiserverV1alpha1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetInternalApiserverV1alpha1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetInternalApiserverV1alpha1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetInternalApiserverV1alpha1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (GetInternalApiserverV1alpha1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetInternalApiserverV1alpha1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetInternalApiserverV1alpha1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetInternalApiserverV1alpha1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (GetInternalApiserverV1alpha1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetInternalApiserverV1alpha1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetInternalApiserverV1alpha1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetInternalApiserverV1alpha1APIResourcesUnauthorized) WriteJSON(j *json.Stream) {}
+func (GetInternalApiserverV1alpha1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetInternalApiserverV1alpha1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetInternalApiserverV1alpha1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetNetworkingAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetNetworkingAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetNetworkingAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetNetworkingAPIGroupApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetNetworkingAPIGroupApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetNetworkingAPIGroupApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetNetworkingAPIGroupApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetNetworkingAPIGroupApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetNetworkingAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetNetworkingAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetNetworkingAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetNetworkingAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetNetworkingAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetNetworkingAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetNetworkingAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetNetworkingAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetNetworkingV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetNetworkingV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetNetworkingV1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetNetworkingV1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetNetworkingV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetNetworkingV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetNetworkingV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetNetworkingV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetNetworkingV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetNetworkingV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetNetworkingV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetNetworkingV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetNetworkingV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetNetworkingV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetNetworkingV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetNetworkingV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetNodeAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetNodeAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetNodeAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetNodeAPIGroupApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetNodeAPIGroupApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream)        {}
+func (GetNodeAPIGroupApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetNodeAPIGroupApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetNodeAPIGroupApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetNodeAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetNodeAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetNodeAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetNodeAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetNodeAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetNodeAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetNodeAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetNodeAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetNodeV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetNodeV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetNodeV1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetNodeV1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetNodeV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetNodeV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetNodeV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetNodeV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetNodeV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetNodeV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetNodeV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetNodeV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetNodeV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetNodeV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetNodeV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetNodeV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetNodeV1alpha1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetNodeV1alpha1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetNodeV1alpha1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetNodeV1alpha1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetNodeV1alpha1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetNodeV1alpha1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetNodeV1alpha1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetNodeV1alpha1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetNodeV1alpha1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetNodeV1alpha1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetNodeV1alpha1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetNodeV1alpha1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetNodeV1alpha1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetNodeV1alpha1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetNodeV1alpha1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetNodeV1alpha1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetNodeV1beta1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetNodeV1beta1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetNodeV1beta1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetNodeV1beta1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetNodeV1beta1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetNodeV1beta1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetNodeV1beta1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetNodeV1beta1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetNodeV1beta1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetNodeV1beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetNodeV1beta1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetNodeV1beta1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetNodeV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetNodeV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetNodeV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetNodeV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetPolicyAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetPolicyAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetPolicyAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetPolicyAPIGroupApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetPolicyAPIGroupApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetPolicyAPIGroupApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetPolicyAPIGroupApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetPolicyAPIGroupApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error { return nil }
+
+func (GetPolicyAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetPolicyAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetPolicyAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetPolicyAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetPolicyAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetPolicyAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetPolicyAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetPolicyAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetPolicyV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetPolicyV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetPolicyV1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetPolicyV1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetPolicyV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetPolicyV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetPolicyV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetPolicyV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetPolicyV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetPolicyV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetPolicyV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetPolicyV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetPolicyV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetPolicyV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetPolicyV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetPolicyV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetPolicyV1beta1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetPolicyV1beta1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetPolicyV1beta1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetPolicyV1beta1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetPolicyV1beta1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetPolicyV1beta1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetPolicyV1beta1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetPolicyV1beta1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetPolicyV1beta1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetPolicyV1beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetPolicyV1beta1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetPolicyV1beta1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetPolicyV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetPolicyV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetPolicyV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetPolicyV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetRbacAuthorizationAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetRbacAuthorizationAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetRbacAuthorizationAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetRbacAuthorizationAPIGroupApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetRbacAuthorizationAPIGroupApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetRbacAuthorizationAPIGroupApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetRbacAuthorizationAPIGroupApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetRbacAuthorizationAPIGroupApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetRbacAuthorizationAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetRbacAuthorizationAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetRbacAuthorizationAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetRbacAuthorizationAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetRbacAuthorizationAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetRbacAuthorizationAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetRbacAuthorizationAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetRbacAuthorizationAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetRbacAuthorizationV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (GetRbacAuthorizationV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetRbacAuthorizationV1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetRbacAuthorizationV1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error { return nil }
+
+func (GetRbacAuthorizationV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (GetRbacAuthorizationV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetRbacAuthorizationV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetRbacAuthorizationV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetRbacAuthorizationV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (GetRbacAuthorizationV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetRbacAuthorizationV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetRbacAuthorizationV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error { return nil }
+
+func (GetRbacAuthorizationV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetRbacAuthorizationV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetRbacAuthorizationV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetRbacAuthorizationV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetSchedulingAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetSchedulingAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetSchedulingAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetSchedulingAPIGroupApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetSchedulingAPIGroupApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetSchedulingAPIGroupApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetSchedulingAPIGroupApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetSchedulingAPIGroupApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetSchedulingAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetSchedulingAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetSchedulingAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetSchedulingAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetSchedulingAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetSchedulingAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetSchedulingAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetSchedulingAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetSchedulingV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetSchedulingV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetSchedulingV1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetSchedulingV1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetSchedulingV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetSchedulingV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetSchedulingV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetSchedulingV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetSchedulingV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetSchedulingV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetSchedulingV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetSchedulingV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetSchedulingV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetSchedulingV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetSchedulingV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetSchedulingV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetServiceAccountIssuerOpenIDConfigurationOK) WriteJSON(j *json.Stream)        {}
+func (GetServiceAccountIssuerOpenIDConfigurationOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetServiceAccountIssuerOpenIDConfigurationOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetServiceAccountIssuerOpenIDConfigurationOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetServiceAccountIssuerOpenIDConfigurationUnauthorized) WriteJSON(j *json.Stream) {}
+func (GetServiceAccountIssuerOpenIDConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetServiceAccountIssuerOpenIDConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetServiceAccountIssuerOpenIDConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetServiceAccountIssuerOpenIDKeysetOK) WriteJSON(j *json.Stream)        {}
+func (GetServiceAccountIssuerOpenIDKeysetOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetServiceAccountIssuerOpenIDKeysetOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetServiceAccountIssuerOpenIDKeysetOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetServiceAccountIssuerOpenIDKeysetUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetServiceAccountIssuerOpenIDKeysetUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetServiceAccountIssuerOpenIDKeysetUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetServiceAccountIssuerOpenIDKeysetUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetStorageAPIGroupApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetStorageAPIGroupApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetStorageAPIGroupApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetStorageAPIGroupApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetStorageAPIGroupApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetStorageAPIGroupApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetStorageAPIGroupApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetStorageAPIGroupApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetStorageAPIGroupApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetStorageAPIGroupApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetStorageAPIGroupApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetStorageAPIGroupApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetStorageAPIGroupUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetStorageAPIGroupUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetStorageAPIGroupUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetStorageAPIGroupUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetStorageV1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetStorageV1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetStorageV1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetStorageV1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetStorageV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetStorageV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetStorageV1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetStorageV1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetStorageV1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetStorageV1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetStorageV1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetStorageV1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetStorageV1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetStorageV1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetStorageV1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetStorageV1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetStorageV1alpha1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetStorageV1alpha1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetStorageV1alpha1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetStorageV1alpha1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetStorageV1alpha1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetStorageV1alpha1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetStorageV1alpha1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetStorageV1alpha1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetStorageV1alpha1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetStorageV1alpha1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetStorageV1alpha1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetStorageV1alpha1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetStorageV1alpha1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetStorageV1alpha1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetStorageV1alpha1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetStorageV1alpha1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetStorageV1beta1APIResourcesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (GetStorageV1beta1APIResourcesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetStorageV1beta1APIResourcesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetStorageV1beta1APIResourcesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetStorageV1beta1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (GetStorageV1beta1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (GetStorageV1beta1APIResourcesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (GetStorageV1beta1APIResourcesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (GetStorageV1beta1APIResourcesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (GetStorageV1beta1APIResourcesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (GetStorageV1beta1APIResourcesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetStorageV1beta1APIResourcesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (GetStorageV1beta1APIResourcesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (GetStorageV1beta1APIResourcesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (GetStorageV1beta1APIResourcesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (GetStorageV1beta1APIResourcesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
@@ -1374,6 +6791,15 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) ReadJSON(i *json.I
 	})
 	return i.Error
 }
+
+func (IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) WriteJSON(j *json.Stream) {}
+func (IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) WriteJSONTo(w io.Writer) error { return nil }
 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) WriteJSON(j *json.Stream) {
@@ -43646,6 +49072,18 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 	return i.Error
 }
 
+func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) WriteJSON(j *json.Stream) {
+}
+func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
@@ -43826,6 +49264,17 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation)
 		}
 	})
 	return i.Error
+}
+
+func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) WriteJSON(j *json.Stream) {}
+func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) WriteJSONTo(w io.Writer) error {
+	return nil
 }
 
 // WriteJSON implements json.Marshaler.
@@ -44347,6 +49796,30 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 	return i.Error
 }
 
+func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) WriteJSON(j *json.Stream) {
+}
+func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) WriteJSON(j *json.Stream) {
+}
+func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
@@ -44566,6 +50039,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Rea
 	})
 	return i.Error
 }
+
+func (IoK8sApimachineryPkgAPIResourceQuantity) WriteJSON(j *json.Stream)        {}
+func (IoK8sApimachineryPkgAPIResourceQuantity) ReadJSON(i *json.Iterator) error { return nil }
+func (IoK8sApimachineryPkgAPIResourceQuantity) ReadJSONFrom(r io.Reader) error  { return nil }
+func (IoK8sApimachineryPkgAPIResourceQuantity) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIGroup) WriteJSON(j *json.Stream) {
@@ -45309,6 +50787,11 @@ func (s *IoK8sApimachineryPkgApisMetaV1DeleteOptions) ReadJSON(i *json.Iterator)
 	return i.Error
 }
 
+func (IoK8sApimachineryPkgApisMetaV1FieldsV1) WriteJSON(j *json.Stream)        {}
+func (IoK8sApimachineryPkgApisMetaV1FieldsV1) ReadJSON(i *json.Iterator) error { return nil }
+func (IoK8sApimachineryPkgApisMetaV1FieldsV1) ReadJSONFrom(r io.Reader) error  { return nil }
+func (IoK8sApimachineryPkgApisMetaV1FieldsV1) WriteJSONTo(w io.Writer) error   { return nil }
+
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
@@ -45702,6 +51185,11 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) ReadJSON(i *json.Iter
 	})
 	return i.Error
 }
+
+func (IoK8sApimachineryPkgApisMetaV1MicroTime) WriteJSON(j *json.Stream)        {}
+func (IoK8sApimachineryPkgApisMetaV1MicroTime) ReadJSON(i *json.Iterator) error { return nil }
+func (IoK8sApimachineryPkgApisMetaV1MicroTime) ReadJSONFrom(r io.Reader) error  { return nil }
+func (IoK8sApimachineryPkgApisMetaV1MicroTime) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) WriteJSON(j *json.Stream) {
@@ -46472,6 +51960,11 @@ func (s *IoK8sApimachineryPkgApisMetaV1StatusDetails) ReadJSON(i *json.Iterator)
 	return i.Error
 }
 
+func (IoK8sApimachineryPkgApisMetaV1Time) WriteJSON(j *json.Stream)        {}
+func (IoK8sApimachineryPkgApisMetaV1Time) ReadJSON(i *json.Iterator) error { return nil }
+func (IoK8sApimachineryPkgApisMetaV1Time) ReadJSONFrom(r io.Reader) error  { return nil }
+func (IoK8sApimachineryPkgApisMetaV1Time) WriteJSONTo(w io.Writer) error   { return nil }
+
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
@@ -46525,6 +52018,16 @@ func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) ReadJSON(i *json.Iterator) er
 	})
 	return i.Error
 }
+
+func (IoK8sApimachineryPkgRuntimeRawExtension) WriteJSON(j *json.Stream)        {}
+func (IoK8sApimachineryPkgRuntimeRawExtension) ReadJSON(i *json.Iterator) error { return nil }
+func (IoK8sApimachineryPkgRuntimeRawExtension) ReadJSONFrom(r io.Reader) error  { return nil }
+func (IoK8sApimachineryPkgRuntimeRawExtension) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (IoK8sApimachineryPkgUtilIntstrIntOrString) WriteJSON(j *json.Stream)        {}
+func (IoK8sApimachineryPkgUtilIntstrIntOrString) ReadJSON(i *json.Iterator) error { return nil }
+func (IoK8sApimachineryPkgUtilIntstrIntOrString) ReadJSONFrom(r io.Reader) error  { return nil }
+func (IoK8sApimachineryPkgUtilIntstrIntOrString) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
 func (s IoK8sApimachineryPkgVersionInfo) WriteJSON(j *json.Stream) {
@@ -47148,6 +52651,3791 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) ReadJSON(i
 	})
 	return i.Error
 }
+
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListApiextensionsV1CustomResourceDefinitionApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListApiextensionsV1CustomResourceDefinitionApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListApiextensionsV1CustomResourceDefinitionApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListApiextensionsV1CustomResourceDefinitionApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListApiextensionsV1CustomResourceDefinitionApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListApiextensionsV1CustomResourceDefinitionApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListApiextensionsV1CustomResourceDefinitionApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListApiextensionsV1CustomResourceDefinitionApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListApiextensionsV1CustomResourceDefinitionApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListApiextensionsV1CustomResourceDefinitionApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListApiextensionsV1CustomResourceDefinitionApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListApiextensionsV1CustomResourceDefinitionApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListApiextensionsV1CustomResourceDefinitionApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListApiextensionsV1CustomResourceDefinitionUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListApiextensionsV1CustomResourceDefinitionUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListApiextensionsV1CustomResourceDefinitionUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListApiextensionsV1CustomResourceDefinitionUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListApiregistrationV1APIServiceApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (ListApiregistrationV1APIServiceApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListApiregistrationV1APIServiceApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListApiregistrationV1APIServiceApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListApiregistrationV1APIServiceApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListApiregistrationV1APIServiceApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListApiregistrationV1APIServiceApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListApiregistrationV1APIServiceApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListApiregistrationV1APIServiceApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (ListApiregistrationV1APIServiceApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListApiregistrationV1APIServiceApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListApiregistrationV1APIServiceApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListApiregistrationV1APIServiceApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListApiregistrationV1APIServiceApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListApiregistrationV1APIServiceApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListApiregistrationV1APIServiceApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListApiregistrationV1APIServiceApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (ListApiregistrationV1APIServiceApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListApiregistrationV1APIServiceApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListApiregistrationV1APIServiceApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListApiregistrationV1APIServiceUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListApiregistrationV1APIServiceUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListApiregistrationV1APIServiceUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListApiregistrationV1APIServiceUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1ControllerRevisionForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1ControllerRevisionForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListAppsV1ControllerRevisionForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1ControllerRevisionForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1ControllerRevisionForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1ControllerRevisionForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListAppsV1ControllerRevisionForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1ControllerRevisionForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1ControllerRevisionForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1ControllerRevisionForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListAppsV1ControllerRevisionForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1ControllerRevisionForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1ControllerRevisionForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1DaemonSetForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListAppsV1DaemonSetForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1DaemonSetForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1DaemonSetForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1DaemonSetForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListAppsV1DaemonSetForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1DaemonSetForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1DaemonSetForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1DaemonSetForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListAppsV1DaemonSetForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1DaemonSetForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1DaemonSetForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1DaemonSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListAppsV1DaemonSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1DaemonSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1DaemonSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1DaemonSetForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListAppsV1DaemonSetForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1DaemonSetForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1DaemonSetForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1DaemonSetForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListAppsV1DaemonSetForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListAppsV1DaemonSetForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListAppsV1DaemonSetForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListAppsV1DeploymentForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListAppsV1DeploymentForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1DeploymentForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1DeploymentForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1DeploymentForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListAppsV1DeploymentForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1DeploymentForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1DeploymentForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1DeploymentForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListAppsV1DeploymentForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1DeploymentForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1DeploymentForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1DeploymentForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListAppsV1DeploymentForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1DeploymentForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1DeploymentForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1DeploymentForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListAppsV1DeploymentForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1DeploymentForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1DeploymentForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1DeploymentForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListAppsV1DeploymentForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListAppsV1DeploymentForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListAppsV1DeploymentForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1ReplicaSetForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1ReplicaSetForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListAppsV1ReplicaSetForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1ReplicaSetForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1ReplicaSetForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1ReplicaSetForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListAppsV1ReplicaSetForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1ReplicaSetForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1ReplicaSetForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1ReplicaSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListAppsV1ReplicaSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1ReplicaSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1ReplicaSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1ReplicaSetForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListAppsV1ReplicaSetForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1ReplicaSetForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1ReplicaSetForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1ReplicaSetForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListAppsV1ReplicaSetForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListAppsV1ReplicaSetForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListAppsV1ReplicaSetForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListAppsV1StatefulSetForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListAppsV1StatefulSetForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1StatefulSetForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1StatefulSetForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1StatefulSetForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListAppsV1StatefulSetForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1StatefulSetForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1StatefulSetForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1StatefulSetForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListAppsV1StatefulSetForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1StatefulSetForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1StatefulSetForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1StatefulSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListAppsV1StatefulSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1StatefulSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1StatefulSetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1StatefulSetForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListAppsV1StatefulSetForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAppsV1StatefulSetForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAppsV1StatefulSetForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAppsV1StatefulSetForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListAppsV1StatefulSetForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListAppsV1StatefulSetForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListAppsV1StatefulSetForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListBatchV1CronJobForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListBatchV1CronJobForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListBatchV1CronJobForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListBatchV1CronJobForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error { return nil }
+
+func (ListBatchV1CronJobForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListBatchV1CronJobForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListBatchV1CronJobForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListBatchV1CronJobForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListBatchV1CronJobForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListBatchV1CronJobForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListBatchV1CronJobForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListBatchV1CronJobForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListBatchV1CronJobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListBatchV1CronJobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListBatchV1CronJobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListBatchV1CronJobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListBatchV1CronJobForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListBatchV1CronJobForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListBatchV1CronJobForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListBatchV1CronJobForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error { return nil }
+
+func (ListBatchV1CronJobForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListBatchV1CronJobForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListBatchV1CronJobForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListBatchV1CronJobForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListBatchV1JobForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (ListBatchV1JobForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListBatchV1JobForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListBatchV1JobForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListBatchV1JobForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListBatchV1JobForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListBatchV1JobForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListBatchV1JobForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListBatchV1JobForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (ListBatchV1JobForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListBatchV1JobForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListBatchV1JobForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListBatchV1JobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListBatchV1JobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListBatchV1JobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListBatchV1JobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListBatchV1JobForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (ListBatchV1JobForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListBatchV1JobForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListBatchV1JobForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListBatchV1JobForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListBatchV1JobForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListBatchV1JobForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListBatchV1JobForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListBatchV1beta1CronJobForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListBatchV1beta1CronJobForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListBatchV1beta1CronJobForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListBatchV1beta1CronJobForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListBatchV1beta1CronJobForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListBatchV1beta1CronJobForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListBatchV1beta1CronJobForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListBatchV1beta1CronJobForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListBatchV1beta1CronJobForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListBatchV1beta1CronJobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListBatchV1beta1CronJobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListBatchV1beta1CronJobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListBatchV1beta1CronJobForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListBatchV1beta1CronJobForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListBatchV1beta1CronJobForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListBatchV1beta1CronJobForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListBatchV1beta1CronJobForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListBatchV1beta1CronJobForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListBatchV1beta1CronJobForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListBatchV1beta1CronJobForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListBatchV1beta1CronJobForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error { return nil }
+
+func (ListCertificatesV1CertificateSigningRequestApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListCertificatesV1CertificateSigningRequestApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCertificatesV1CertificateSigningRequestApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCertificatesV1CertificateSigningRequestApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCertificatesV1CertificateSigningRequestApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCertificatesV1CertificateSigningRequestApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCertificatesV1CertificateSigningRequestApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCertificatesV1CertificateSigningRequestApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCertificatesV1CertificateSigningRequestApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCertificatesV1CertificateSigningRequestApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListCertificatesV1CertificateSigningRequestApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCertificatesV1CertificateSigningRequestApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCertificatesV1CertificateSigningRequestApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCertificatesV1CertificateSigningRequestUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListCertificatesV1CertificateSigningRequestUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCertificatesV1CertificateSigningRequestUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCertificatesV1CertificateSigningRequestUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoordinationV1LeaseForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListCoordinationV1LeaseForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoordinationV1LeaseForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoordinationV1LeaseForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoordinationV1LeaseForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoordinationV1LeaseForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoordinationV1LeaseForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoordinationV1LeaseForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoordinationV1LeaseForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoordinationV1LeaseForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoordinationV1LeaseForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoordinationV1LeaseForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoordinationV1LeaseForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoordinationV1LeaseForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoordinationV1LeaseForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoordinationV1LeaseForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoordinationV1LeaseForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListCoordinationV1LeaseForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoordinationV1LeaseForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoordinationV1LeaseForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoordinationV1LeaseForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListCoordinationV1LeaseForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoordinationV1LeaseForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoordinationV1LeaseForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error { return nil }
+
+func (ListCoreV1ComponentStatusApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1ComponentStatusApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1ComponentStatusApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1ComponentStatusApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1ComponentStatusApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1ComponentStatusApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ComponentStatusApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ComponentStatusApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ComponentStatusApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1ComponentStatusApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ComponentStatusApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ComponentStatusApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ComponentStatusApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1ComponentStatusApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ComponentStatusApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ComponentStatusApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ComponentStatusApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1ComponentStatusApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1ComponentStatusApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1ComponentStatusApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1ComponentStatusUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1ComponentStatusUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1ComponentStatusUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1ComponentStatusUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1ConfigMapForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1ConfigMapForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ConfigMapForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ConfigMapForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ConfigMapForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1ConfigMapForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ConfigMapForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ConfigMapForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ConfigMapForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1ConfigMapForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ConfigMapForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ConfigMapForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ConfigMapForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1ConfigMapForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ConfigMapForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ConfigMapForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ConfigMapForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1ConfigMapForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ConfigMapForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ConfigMapForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ConfigMapForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1ConfigMapForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1ConfigMapForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1ConfigMapForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1EndpointsForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1EndpointsForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1EndpointsForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1EndpointsForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1EndpointsForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1EndpointsForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1EndpointsForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1EndpointsForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1EndpointsForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1EndpointsForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1EndpointsForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1EndpointsForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1EndpointsForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1EndpointsForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1EndpointsForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1EndpointsForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1EndpointsForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1EndpointsForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1EndpointsForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1EndpointsForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1EndpointsForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1EndpointsForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1EndpointsForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1EndpointsForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1EventForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1EventForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1EventForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1EventForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1EventForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1EventForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1EventForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1EventForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1EventForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1EventForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1EventForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1EventForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1EventForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1EventForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1EventForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1EventForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1EventForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1EventForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1EventForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1EventForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1LimitRangeForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1LimitRangeForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1LimitRangeForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1LimitRangeForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1LimitRangeForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1LimitRangeForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1LimitRangeForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1LimitRangeForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1LimitRangeForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1LimitRangeForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1LimitRangeForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1LimitRangeForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1LimitRangeForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1LimitRangeForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1LimitRangeForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1LimitRangeForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1LimitRangeForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1LimitRangeForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1LimitRangeForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1LimitRangeForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1LimitRangeForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1LimitRangeForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1LimitRangeForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1LimitRangeForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1NamespaceApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1NamespaceApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1NamespaceApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1NamespaceApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1NamespaceApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1NamespaceApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1NamespaceApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1NamespaceApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1NamespaceApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1NamespaceApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1NamespaceApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1NamespaceApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1NamespaceApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1NamespaceApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1NamespaceApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1NamespaceApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1NamespaceApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1NamespaceApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1NamespaceApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1NamespaceApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1NamespaceUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1NamespaceUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1NamespaceUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1NamespaceUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1NodeApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1NodeApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1NodeApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1NodeApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1NodeApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1NodeApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1NodeApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1NodeApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1NodeApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1NodeApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1NodeApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1NodeApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1NodeApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1NodeApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1NodeApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1NodeApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1NodeApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1NodeApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1NodeApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1NodeApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1NodeUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1NodeUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1NodeUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1NodeUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1PersistentVolumeApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1PersistentVolumeApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1PersistentVolumeApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1PersistentVolumeApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1PersistentVolumeApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1PersistentVolumeApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1PersistentVolumeApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1PersistentVolumeApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1PersistentVolumeApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1PersistentVolumeApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1PersistentVolumeApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1PersistentVolumeApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1PersistentVolumeApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1PersistentVolumeApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1PersistentVolumeApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1PersistentVolumeApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1PersistentVolumeApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1PersistentVolumeApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1PersistentVolumeApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1PersistentVolumeApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1PersistentVolumeUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1PersistentVolumeUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1PersistentVolumeUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1PersistentVolumeUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1PodForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1PodForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1PodForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1PodForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1PodForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1PodForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1PodForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1PodForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1PodForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1PodForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1PodForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1PodForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1PodForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1PodForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1PodForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1PodForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1PodForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1PodForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1PodForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1PodForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1PodForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1PodForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1PodForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1PodForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1PodTemplateForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1PodTemplateForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1PodTemplateForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1PodTemplateForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1PodTemplateForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1PodTemplateForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1PodTemplateForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1PodTemplateForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1PodTemplateForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1PodTemplateForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1PodTemplateForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1PodTemplateForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1PodTemplateForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1PodTemplateForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1PodTemplateForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1PodTemplateForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1PodTemplateForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1PodTemplateForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1PodTemplateForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1PodTemplateForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1PodTemplateForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1PodTemplateForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1PodTemplateForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1PodTemplateForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ReplicationControllerForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ReplicationControllerForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1ReplicationControllerForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ReplicationControllerForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ReplicationControllerForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ReplicationControllerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1ReplicationControllerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ReplicationControllerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ReplicationControllerForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ReplicationControllerForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1ReplicationControllerForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ReplicationControllerForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ReplicationControllerForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ResourceQuotaForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ResourceQuotaForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1ResourceQuotaForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ResourceQuotaForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ResourceQuotaForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ResourceQuotaForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1ResourceQuotaForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ResourceQuotaForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ResourceQuotaForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ResourceQuotaForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1ResourceQuotaForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ResourceQuotaForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ResourceQuotaForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error { return nil }
+
+func (ListCoreV1SecretForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1SecretForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1SecretForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1SecretForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1SecretForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1SecretForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1SecretForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1SecretForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1SecretForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1SecretForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1SecretForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1SecretForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1SecretForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1SecretForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1SecretForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1SecretForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1SecretForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1SecretForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1SecretForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1SecretForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1SecretForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1SecretForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1SecretForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1SecretForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListCoreV1ServiceAccountForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1ServiceAccountForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ServiceAccountForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ServiceAccountForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ServiceAccountForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1ServiceAccountForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ServiceAccountForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ServiceAccountForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ServiceAccountForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1ServiceAccountForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ServiceAccountForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ServiceAccountForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ServiceAccountForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1ServiceAccountForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ServiceAccountForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ServiceAccountForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ServiceAccountForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1ServiceAccountForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ServiceAccountForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ServiceAccountForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ServiceAccountForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListCoreV1ServiceAccountForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ServiceAccountForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ServiceAccountForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ServiceForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1ServiceForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ServiceForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error { return nil }
+func (ListCoreV1ServiceForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (ListCoreV1ServiceForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1ServiceForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ServiceForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ServiceForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ServiceForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1ServiceForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ServiceForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ServiceForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ServiceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListCoreV1ServiceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ServiceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListCoreV1ServiceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListCoreV1ServiceForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListCoreV1ServiceForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListCoreV1ServiceForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error { return nil }
+func (ListCoreV1ServiceForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (ListCoreV1ServiceForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListCoreV1ServiceForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListCoreV1ServiceForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListCoreV1ServiceForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListDiscoveryV1EndpointSliceForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListEventsV1EventForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListEventsV1EventForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListEventsV1EventForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error { return nil }
+func (ListEventsV1EventForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (ListEventsV1EventForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListEventsV1EventForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListEventsV1EventForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListEventsV1EventForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListEventsV1EventForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListEventsV1EventForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListEventsV1EventForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListEventsV1EventForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListEventsV1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListEventsV1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListEventsV1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListEventsV1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListEventsV1EventForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListEventsV1EventForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListEventsV1EventForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error { return nil }
+func (ListEventsV1EventForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (ListEventsV1EventForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListEventsV1EventForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListEventsV1EventForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListEventsV1EventForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListEventsV1beta1EventForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListEventsV1beta1EventForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListEventsV1beta1EventForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListEventsV1beta1EventForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListEventsV1beta1EventForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListEventsV1beta1EventForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListEventsV1beta1EventForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListEventsV1beta1EventForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListEventsV1beta1EventForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListEventsV1beta1EventForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListEventsV1beta1EventForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListEventsV1beta1EventForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListEventsV1beta1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListEventsV1beta1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListEventsV1beta1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListEventsV1beta1EventForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListEventsV1beta1EventForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListEventsV1beta1EventForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListEventsV1beta1EventForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListEventsV1beta1EventForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListEventsV1beta1EventForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListEventsV1beta1EventForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListEventsV1beta1EventForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error { return nil }
+func (ListEventsV1beta1EventForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1FlowSchemaApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2FlowSchemaApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListInternalApiserverV1alpha1StorageVersionApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListInternalApiserverV1alpha1StorageVersionApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListInternalApiserverV1alpha1StorageVersionApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListInternalApiserverV1alpha1StorageVersionApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListInternalApiserverV1alpha1StorageVersionApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListInternalApiserverV1alpha1StorageVersionApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListInternalApiserverV1alpha1StorageVersionApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListInternalApiserverV1alpha1StorageVersionApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListInternalApiserverV1alpha1StorageVersionApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListInternalApiserverV1alpha1StorageVersionApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListInternalApiserverV1alpha1StorageVersionApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListInternalApiserverV1alpha1StorageVersionApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListInternalApiserverV1alpha1StorageVersionApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListInternalApiserverV1alpha1StorageVersionUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListInternalApiserverV1alpha1StorageVersionUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListInternalApiserverV1alpha1StorageVersionUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListInternalApiserverV1alpha1StorageVersionUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNetworkingV1IngressClassApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (ListNetworkingV1IngressClassApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListNetworkingV1IngressClassApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListNetworkingV1IngressClassApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListNetworkingV1IngressClassApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListNetworkingV1IngressClassApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNetworkingV1IngressClassApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNetworkingV1IngressClassApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNetworkingV1IngressClassApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (ListNetworkingV1IngressClassApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNetworkingV1IngressClassApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNetworkingV1IngressClassApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNetworkingV1IngressClassApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListNetworkingV1IngressClassApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNetworkingV1IngressClassApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNetworkingV1IngressClassApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNetworkingV1IngressClassApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (ListNetworkingV1IngressClassApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListNetworkingV1IngressClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListNetworkingV1IngressClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListNetworkingV1IngressClassUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListNetworkingV1IngressClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListNetworkingV1IngressClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListNetworkingV1IngressClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListNetworkingV1IngressForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListNetworkingV1IngressForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNetworkingV1IngressForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNetworkingV1IngressForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNetworkingV1IngressForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListNetworkingV1IngressForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNetworkingV1IngressForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNetworkingV1IngressForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNetworkingV1IngressForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListNetworkingV1IngressForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNetworkingV1IngressForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNetworkingV1IngressForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNetworkingV1IngressForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListNetworkingV1IngressForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNetworkingV1IngressForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNetworkingV1IngressForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNetworkingV1IngressForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListNetworkingV1IngressForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNetworkingV1IngressForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNetworkingV1IngressForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNetworkingV1IngressForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListNetworkingV1IngressForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNetworkingV1IngressForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNetworkingV1IngressForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error { return nil }
+
+func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNetworkingV1NetworkPolicyForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNodeV1RuntimeClassApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (ListNodeV1RuntimeClassApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListNodeV1RuntimeClassApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListNodeV1RuntimeClassApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListNodeV1RuntimeClassApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListNodeV1RuntimeClassApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNodeV1RuntimeClassApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error { return nil }
+func (ListNodeV1RuntimeClassApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (ListNodeV1RuntimeClassApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (ListNodeV1RuntimeClassApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNodeV1RuntimeClassApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNodeV1RuntimeClassApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNodeV1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListNodeV1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNodeV1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNodeV1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNodeV1RuntimeClassApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (ListNodeV1RuntimeClassApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListNodeV1RuntimeClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListNodeV1RuntimeClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListNodeV1RuntimeClassUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListNodeV1RuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListNodeV1RuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListNodeV1RuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListNodeV1alpha1RuntimeClassApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (ListNodeV1alpha1RuntimeClassApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListNodeV1alpha1RuntimeClassApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListNodeV1alpha1RuntimeClassApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListNodeV1alpha1RuntimeClassApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListNodeV1alpha1RuntimeClassApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNodeV1alpha1RuntimeClassApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNodeV1alpha1RuntimeClassApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (ListNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNodeV1alpha1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNodeV1alpha1RuntimeClassApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (ListNodeV1alpha1RuntimeClassApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListNodeV1alpha1RuntimeClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListNodeV1alpha1RuntimeClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListNodeV1alpha1RuntimeClassUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListNodeV1alpha1RuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListNodeV1alpha1RuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListNodeV1alpha1RuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListNodeV1beta1RuntimeClassApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (ListNodeV1beta1RuntimeClassApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListNodeV1beta1RuntimeClassApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListNodeV1beta1RuntimeClassApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListNodeV1beta1RuntimeClassApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListNodeV1beta1RuntimeClassApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNodeV1beta1RuntimeClassApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNodeV1beta1RuntimeClassApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (ListNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListNodeV1beta1RuntimeClassApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListNodeV1beta1RuntimeClassApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (ListNodeV1beta1RuntimeClassApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListNodeV1beta1RuntimeClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListNodeV1beta1RuntimeClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListNodeV1beta1RuntimeClassUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListNodeV1beta1RuntimeClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListNodeV1beta1RuntimeClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListNodeV1beta1RuntimeClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListPolicyV1beta1PodSecurityPolicyApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListPolicyV1beta1PodSecurityPolicyApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListPolicyV1beta1PodSecurityPolicyApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListPolicyV1beta1PodSecurityPolicyApplicationJSONOK) WriteJSONTo(w io.Writer) error { return nil }
+
+func (ListPolicyV1beta1PodSecurityPolicyApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListPolicyV1beta1PodSecurityPolicyApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListPolicyV1beta1PodSecurityPolicyApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListPolicyV1beta1PodSecurityPolicyApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListPolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListPolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListPolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListPolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListPolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListPolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListPolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListPolicyV1beta1PodSecurityPolicyApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListPolicyV1beta1PodSecurityPolicyApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListPolicyV1beta1PodSecurityPolicyApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListPolicyV1beta1PodSecurityPolicyApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListPolicyV1beta1PodSecurityPolicyApplicationYamlOK) WriteJSONTo(w io.Writer) error { return nil }
+
+func (ListPolicyV1beta1PodSecurityPolicyUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListPolicyV1beta1PodSecurityPolicyUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListPolicyV1beta1PodSecurityPolicyUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListPolicyV1beta1PodSecurityPolicyUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListRbacAuthorizationV1ClusterRoleApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListRbacAuthorizationV1ClusterRoleApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleApplicationJSONOK) WriteJSONTo(w io.Writer) error { return nil }
+
+func (ListRbacAuthorizationV1ClusterRoleApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListRbacAuthorizationV1ClusterRoleApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListRbacAuthorizationV1ClusterRoleApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListRbacAuthorizationV1ClusterRoleApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleApplicationYamlOK) WriteJSONTo(w io.Writer) error { return nil }
+
+func (ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleBindingApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleBindingApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleBindingApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListRbacAuthorizationV1ClusterRoleUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListRbacAuthorizationV1ClusterRoleUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListRbacAuthorizationV1ClusterRoleUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListRbacAuthorizationV1ClusterRoleUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListSchedulingV1PriorityClassApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (ListSchedulingV1PriorityClassApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListSchedulingV1PriorityClassApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListSchedulingV1PriorityClassApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListSchedulingV1PriorityClassApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListSchedulingV1PriorityClassApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListSchedulingV1PriorityClassApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListSchedulingV1PriorityClassApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListSchedulingV1PriorityClassApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (ListSchedulingV1PriorityClassApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListSchedulingV1PriorityClassApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListSchedulingV1PriorityClassApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListSchedulingV1PriorityClassApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListSchedulingV1PriorityClassApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListSchedulingV1PriorityClassApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListSchedulingV1PriorityClassApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListSchedulingV1PriorityClassApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (ListSchedulingV1PriorityClassApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListSchedulingV1PriorityClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListSchedulingV1PriorityClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListSchedulingV1PriorityClassUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListSchedulingV1PriorityClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListSchedulingV1PriorityClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListSchedulingV1PriorityClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListStorageV1CSIDriverApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (ListStorageV1CSIDriverApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListStorageV1CSIDriverApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListStorageV1CSIDriverApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListStorageV1CSIDriverApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListStorageV1CSIDriverApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1CSIDriverApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error { return nil }
+func (ListStorageV1CSIDriverApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (ListStorageV1CSIDriverApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (ListStorageV1CSIDriverApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1CSIDriverApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1CSIDriverApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1CSIDriverApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListStorageV1CSIDriverApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1CSIDriverApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1CSIDriverApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1CSIDriverApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (ListStorageV1CSIDriverApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListStorageV1CSIDriverApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListStorageV1CSIDriverApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListStorageV1CSIDriverUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListStorageV1CSIDriverUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListStorageV1CSIDriverUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListStorageV1CSIDriverUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListStorageV1CSINodeApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (ListStorageV1CSINodeApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListStorageV1CSINodeApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListStorageV1CSINodeApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListStorageV1CSINodeApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream)        {}
+func (ListStorageV1CSINodeApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListStorageV1CSINodeApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListStorageV1CSINodeApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListStorageV1CSINodeApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (ListStorageV1CSINodeApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1CSINodeApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1CSINodeApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1CSINodeApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListStorageV1CSINodeApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1CSINodeApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1CSINodeApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1CSINodeApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (ListStorageV1CSINodeApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListStorageV1CSINodeApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListStorageV1CSINodeApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListStorageV1CSINodeUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListStorageV1CSINodeUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListStorageV1CSINodeUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListStorageV1CSINodeUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListStorageV1StorageClassApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (ListStorageV1StorageClassApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListStorageV1StorageClassApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListStorageV1StorageClassApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListStorageV1StorageClassApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListStorageV1StorageClassApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1StorageClassApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1StorageClassApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1StorageClassApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (ListStorageV1StorageClassApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1StorageClassApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1StorageClassApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1StorageClassApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListStorageV1StorageClassApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1StorageClassApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1StorageClassApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1StorageClassApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (ListStorageV1StorageClassApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListStorageV1StorageClassApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListStorageV1StorageClassApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListStorageV1StorageClassUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListStorageV1StorageClassUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListStorageV1StorageClassUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListStorageV1StorageClassUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListStorageV1VolumeAttachmentApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (ListStorageV1VolumeAttachmentApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListStorageV1VolumeAttachmentApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListStorageV1VolumeAttachmentApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListStorageV1VolumeAttachmentApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (ListStorageV1VolumeAttachmentApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1VolumeAttachmentApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1VolumeAttachmentApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1VolumeAttachmentApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (ListStorageV1VolumeAttachmentApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1VolumeAttachmentApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1VolumeAttachmentApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1VolumeAttachmentApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListStorageV1VolumeAttachmentApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1VolumeAttachmentApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1VolumeAttachmentApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1VolumeAttachmentApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (ListStorageV1VolumeAttachmentApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (ListStorageV1VolumeAttachmentApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListStorageV1VolumeAttachmentApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListStorageV1VolumeAttachmentUnauthorized) WriteJSON(j *json.Stream)        {}
+func (ListStorageV1VolumeAttachmentUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (ListStorageV1VolumeAttachmentUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (ListStorageV1VolumeAttachmentUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (LogFileListHandler) WriteJSON(j *json.Stream)        {}
+func (LogFileListHandler) ReadJSON(i *json.Iterator) error { return nil }
+func (LogFileListHandler) ReadJSONFrom(r io.Reader) error  { return nil }
+func (LogFileListHandler) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON writes json value of bool to json stream.
 func (o OptBool) WriteJSON(j *json.Stream) {
@@ -52096,5 +61384,3983 @@ func (o *OptString) ReadJSON(i *json.Iterator) error {
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptString", i.WhatIsNext())
 	}
+	return nil
+}
+
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchApiextensionsV1CustomResourceDefinitionListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchApiextensionsV1CustomResourceDefinitionListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchApiextensionsV1CustomResourceDefinitionListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchApiextensionsV1CustomResourceDefinitionListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchApiextensionsV1CustomResourceDefinitionListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchApiextensionsV1CustomResourceDefinitionListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchApiextensionsV1CustomResourceDefinitionListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchApiextensionsV1CustomResourceDefinitionListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchApiextensionsV1CustomResourceDefinitionListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchApiextensionsV1CustomResourceDefinitionListApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchApiextensionsV1CustomResourceDefinitionListApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchApiextensionsV1CustomResourceDefinitionListApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchApiextensionsV1CustomResourceDefinitionListApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchApiregistrationV1APIServiceListApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchApiregistrationV1APIServiceListApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchApiregistrationV1APIServiceListApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchApiregistrationV1APIServiceListApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchApiregistrationV1APIServiceListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (WatchApiregistrationV1APIServiceListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchApiregistrationV1APIServiceListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchApiregistrationV1APIServiceListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchApiregistrationV1APIServiceListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchApiregistrationV1APIServiceListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchApiregistrationV1APIServiceListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchApiregistrationV1APIServiceListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchApiregistrationV1APIServiceListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchApiregistrationV1APIServiceListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchApiregistrationV1APIServiceListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchApiregistrationV1APIServiceListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchApiregistrationV1APIServiceListApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchApiregistrationV1APIServiceListApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchApiregistrationV1APIServiceListApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchApiregistrationV1APIServiceListApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchApiregistrationV1APIServiceListUnauthorized) WriteJSON(j *json.Stream)        {}
+func (WatchApiregistrationV1APIServiceListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchApiregistrationV1APIServiceListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchApiregistrationV1APIServiceListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1ControllerRevisionListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1DaemonSetListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1DaemonSetListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAppsV1DaemonSetListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1DaemonSetListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1DaemonSetListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1DaemonSetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAppsV1DaemonSetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1DaemonSetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1DaemonSetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1DaemonSetListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchAppsV1DaemonSetListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1DaemonSetListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1DaemonSetListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1DeploymentListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchAppsV1DeploymentListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1DeploymentListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1DeploymentListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1DeploymentListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAppsV1DeploymentListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1DeploymentListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1DeploymentListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1DeploymentListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAppsV1DeploymentListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1DeploymentListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1DeploymentListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1DeploymentListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAppsV1DeploymentListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1DeploymentListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1DeploymentListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1DeploymentListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchAppsV1DeploymentListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1DeploymentListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1DeploymentListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1DeploymentListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchAppsV1DeploymentListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1DeploymentListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1DeploymentListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1ReplicaSetListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1StatefulSetListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1StatefulSetListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAppsV1StatefulSetListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1StatefulSetListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1StatefulSetListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1StatefulSetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAppsV1StatefulSetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1StatefulSetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1StatefulSetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1StatefulSetListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchAppsV1StatefulSetListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1StatefulSetListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1StatefulSetListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchBatchV1CronJobListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchBatchV1CronJobListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchBatchV1CronJobListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchBatchV1CronJobListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchBatchV1CronJobListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchBatchV1CronJobListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchBatchV1CronJobListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchBatchV1CronJobListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchBatchV1CronJobListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchBatchV1CronJobListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchBatchV1CronJobListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchBatchV1CronJobListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchBatchV1CronJobListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchBatchV1CronJobListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchBatchV1CronJobListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchBatchV1CronJobListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchBatchV1CronJobListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchBatchV1CronJobListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchBatchV1CronJobListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchBatchV1CronJobListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchBatchV1CronJobListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchBatchV1CronJobListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchBatchV1CronJobListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchBatchV1CronJobListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error { return nil }
+
+func (WatchBatchV1JobListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchBatchV1JobListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchBatchV1JobListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchBatchV1JobListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchBatchV1JobListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (WatchBatchV1JobListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchBatchV1JobListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchBatchV1JobListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchBatchV1JobListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchBatchV1JobListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchBatchV1JobListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchBatchV1JobListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchBatchV1JobListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchBatchV1JobListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchBatchV1JobListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchBatchV1JobListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchBatchV1JobListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchBatchV1JobListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchBatchV1JobListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchBatchV1JobListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchBatchV1JobListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (WatchBatchV1JobListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchBatchV1JobListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchBatchV1JobListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchBatchV1beta1CronJobListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCertificatesV1CertificateSigningRequestListApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchCertificatesV1CertificateSigningRequestListApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCertificatesV1CertificateSigningRequestListApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCertificatesV1CertificateSigningRequestListApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCertificatesV1CertificateSigningRequestListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCertificatesV1CertificateSigningRequestListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCertificatesV1CertificateSigningRequestListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCertificatesV1CertificateSigningRequestListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCertificatesV1CertificateSigningRequestListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCertificatesV1CertificateSigningRequestListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCertificatesV1CertificateSigningRequestListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCertificatesV1CertificateSigningRequestListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCertificatesV1CertificateSigningRequestListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCertificatesV1CertificateSigningRequestListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCertificatesV1CertificateSigningRequestListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCertificatesV1CertificateSigningRequestListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCertificatesV1CertificateSigningRequestListApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchCertificatesV1CertificateSigningRequestListApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCertificatesV1CertificateSigningRequestListApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCertificatesV1CertificateSigningRequestListApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCertificatesV1CertificateSigningRequestListUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchCertificatesV1CertificateSigningRequestListUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCertificatesV1CertificateSigningRequestListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCertificatesV1CertificateSigningRequestListUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoordinationV1LeaseListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoordinationV1LeaseListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoordinationV1LeaseListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoordinationV1LeaseListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoordinationV1LeaseListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoordinationV1LeaseListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoordinationV1LeaseListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoordinationV1LeaseListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoordinationV1LeaseListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoordinationV1LeaseListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchCoordinationV1LeaseListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoordinationV1LeaseListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoordinationV1LeaseListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ConfigMapListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ConfigMapListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1ConfigMapListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ConfigMapListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ConfigMapListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ConfigMapListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1ConfigMapListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ConfigMapListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ConfigMapListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ConfigMapListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1ConfigMapListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ConfigMapListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ConfigMapListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1EndpointsListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1EndpointsListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1EndpointsListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1EndpointsListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1EndpointsListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1EndpointsListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1EndpointsListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1EndpointsListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1EndpointsListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1EndpointsListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1EndpointsListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1EndpointsListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1EndpointsListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1EndpointsListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1EndpointsListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1EndpointsListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1EndpointsListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1EndpointsListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1EndpointsListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1EndpointsListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1EndpointsListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1EndpointsListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1EndpointsListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1EndpointsListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1EventListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1EventListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1EventListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1EventListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1EventListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1EventListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1EventListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1EventListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1EventListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1EventListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1EventListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1EventListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1EventListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1EventListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1EventListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1EventListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1EventListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1EventListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1EventListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1EventListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1EventListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (WatchCoreV1EventListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchCoreV1EventListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchCoreV1EventListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1LimitRangeListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1LimitRangeListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1LimitRangeListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1LimitRangeListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1LimitRangeListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1LimitRangeListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1LimitRangeListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1LimitRangeListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1LimitRangeListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1LimitRangeListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1LimitRangeListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1LimitRangeListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1LimitRangeListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1NamespaceListApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (WatchCoreV1NamespaceListApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchCoreV1NamespaceListApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchCoreV1NamespaceListApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchCoreV1NamespaceListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1NamespaceListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1NamespaceListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1NamespaceListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1NamespaceListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1NamespaceListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1NamespaceListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1NamespaceListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1NamespaceListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1NamespaceListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1NamespaceListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1NamespaceListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1NamespaceListApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (WatchCoreV1NamespaceListApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchCoreV1NamespaceListApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchCoreV1NamespaceListApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchCoreV1NamespaceListUnauthorized) WriteJSON(j *json.Stream)        {}
+func (WatchCoreV1NamespaceListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchCoreV1NamespaceListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchCoreV1NamespaceListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchCoreV1NodeListApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (WatchCoreV1NodeListApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchCoreV1NodeListApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchCoreV1NodeListApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchCoreV1NodeListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream)        {}
+func (WatchCoreV1NodeListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchCoreV1NodeListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchCoreV1NodeListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchCoreV1NodeListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1NodeListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1NodeListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1NodeListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1NodeListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1NodeListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1NodeListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1NodeListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1NodeListApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (WatchCoreV1NodeListApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchCoreV1NodeListApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchCoreV1NodeListApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchCoreV1NodeListUnauthorized) WriteJSON(j *json.Stream)        {}
+func (WatchCoreV1NodeListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchCoreV1NodeListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchCoreV1NodeListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1PersistentVolumeListApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (WatchCoreV1PersistentVolumeListApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchCoreV1PersistentVolumeListApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchCoreV1PersistentVolumeListApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchCoreV1PersistentVolumeListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1PersistentVolumeListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1PersistentVolumeListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1PersistentVolumeListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1PersistentVolumeListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1PersistentVolumeListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1PersistentVolumeListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1PersistentVolumeListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1PersistentVolumeListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1PersistentVolumeListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1PersistentVolumeListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1PersistentVolumeListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1PersistentVolumeListApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (WatchCoreV1PersistentVolumeListApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchCoreV1PersistentVolumeListApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchCoreV1PersistentVolumeListApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchCoreV1PersistentVolumeListUnauthorized) WriteJSON(j *json.Stream)        {}
+func (WatchCoreV1PersistentVolumeListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchCoreV1PersistentVolumeListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchCoreV1PersistentVolumeListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchCoreV1PodListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1PodListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1PodListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1PodListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error { return nil }
+
+func (WatchCoreV1PodListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1PodListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1PodListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1PodListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1PodListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1PodListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1PodListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1PodListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1PodListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1PodListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1PodListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1PodListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1PodListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1PodListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1PodListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1PodListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error { return nil }
+
+func (WatchCoreV1PodListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (WatchCoreV1PodListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchCoreV1PodListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchCoreV1PodListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1PodTemplateListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1PodTemplateListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1PodTemplateListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1PodTemplateListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1PodTemplateListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1PodTemplateListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1PodTemplateListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1PodTemplateListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1PodTemplateListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1PodTemplateListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1PodTemplateListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1PodTemplateListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1PodTemplateListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ReplicationControllerListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ResourceQuotaListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1SecretListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1SecretListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1SecretListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1SecretListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1SecretListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1SecretListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1SecretListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1SecretListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1SecretListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1SecretListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1SecretListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1SecretListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1SecretListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1SecretListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1SecretListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1SecretListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1SecretListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1SecretListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1SecretListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1SecretListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1SecretListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream)        {}
+func (WatchCoreV1SecretListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchCoreV1SecretListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchCoreV1SecretListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ServiceAccountListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ServiceListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1ServiceListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ServiceListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ServiceListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ServiceListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1ServiceListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ServiceListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ServiceListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ServiceListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1ServiceListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ServiceListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ServiceListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ServiceListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchCoreV1ServiceListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ServiceListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ServiceListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ServiceListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1ServiceListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ServiceListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchCoreV1ServiceListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchCoreV1ServiceListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchCoreV1ServiceListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchCoreV1ServiceListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error { return nil }
+func (WatchCoreV1ServiceListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchEventsV1EventListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchEventsV1EventListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchEventsV1EventListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchEventsV1EventListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchEventsV1EventListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (WatchEventsV1EventListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchEventsV1EventListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchEventsV1EventListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchEventsV1EventListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchEventsV1EventListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchEventsV1EventListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchEventsV1EventListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchEventsV1EventListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchEventsV1EventListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchEventsV1EventListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchEventsV1EventListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchEventsV1EventListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchEventsV1EventListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchEventsV1EventListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchEventsV1EventListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchEventsV1EventListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchEventsV1EventListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchEventsV1EventListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error { return nil }
+func (WatchEventsV1EventListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (WatchEventsV1beta1EventListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchEventsV1beta1EventListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchEventsV1beta1EventListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchEventsV1beta1EventListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchEventsV1beta1EventListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchEventsV1beta1EventListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchEventsV1beta1EventListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchEventsV1beta1EventListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchEventsV1beta1EventListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchEventsV1beta1EventListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchEventsV1beta1EventListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchEventsV1beta1EventListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchEventsV1beta1EventListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchEventsV1beta1EventListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchEventsV1beta1EventListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchEventsV1beta1EventListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchEventsV1beta1EventListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchEventsV1beta1EventListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchEventsV1beta1EventListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchEventsV1beta1EventListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchEventsV1beta1EventListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchEventsV1beta1EventListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchEventsV1beta1EventListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchEventsV1beta1EventListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchInternalApiserverV1alpha1StorageVersionListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchInternalApiserverV1alpha1StorageVersionListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchInternalApiserverV1alpha1StorageVersionListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchInternalApiserverV1alpha1StorageVersionListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchInternalApiserverV1alpha1StorageVersionListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchInternalApiserverV1alpha1StorageVersionListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchInternalApiserverV1alpha1StorageVersionListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchInternalApiserverV1alpha1StorageVersionListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchInternalApiserverV1alpha1StorageVersionListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchInternalApiserverV1alpha1StorageVersionListApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchInternalApiserverV1alpha1StorageVersionListApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchInternalApiserverV1alpha1StorageVersionListApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchInternalApiserverV1alpha1StorageVersionListApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNetworkingV1IngressClassListApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchNetworkingV1IngressClassListApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNetworkingV1IngressClassListApplicationJSONOK) ReadJSONFrom(r io.Reader) error { return nil }
+func (WatchNetworkingV1IngressClassListApplicationJSONOK) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (WatchNetworkingV1IngressClassListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (WatchNetworkingV1IngressClassListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNetworkingV1IngressClassListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNetworkingV1IngressClassListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNetworkingV1IngressClassListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchNetworkingV1IngressClassListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNetworkingV1IngressClassListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNetworkingV1IngressClassListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNetworkingV1IngressClassListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchNetworkingV1IngressClassListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNetworkingV1IngressClassListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNetworkingV1IngressClassListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNetworkingV1IngressClassListApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchNetworkingV1IngressClassListApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNetworkingV1IngressClassListApplicationYamlOK) ReadJSONFrom(r io.Reader) error { return nil }
+func (WatchNetworkingV1IngressClassListApplicationYamlOK) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (WatchNetworkingV1IngressClassListUnauthorized) WriteJSON(j *json.Stream)        {}
+func (WatchNetworkingV1IngressClassListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchNetworkingV1IngressClassListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchNetworkingV1IngressClassListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchNetworkingV1IngressListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchNetworkingV1IngressListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNetworkingV1IngressListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNetworkingV1IngressListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNetworkingV1IngressListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchNetworkingV1IngressListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNetworkingV1IngressListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNetworkingV1IngressListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNetworkingV1IngressListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchNetworkingV1IngressListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNetworkingV1IngressListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNetworkingV1IngressListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNetworkingV1IngressListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchNetworkingV1IngressListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNetworkingV1IngressListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNetworkingV1IngressListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNetworkingV1IngressListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchNetworkingV1IngressListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNetworkingV1IngressListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNetworkingV1IngressListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNetworkingV1IngressListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchNetworkingV1IngressListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNetworkingV1IngressListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNetworkingV1IngressListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNodeV1RuntimeClassListApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (WatchNodeV1RuntimeClassListApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchNodeV1RuntimeClassListApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchNodeV1RuntimeClassListApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchNodeV1RuntimeClassListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (WatchNodeV1RuntimeClassListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNodeV1RuntimeClassListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNodeV1RuntimeClassListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNodeV1RuntimeClassListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (WatchNodeV1RuntimeClassListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNodeV1RuntimeClassListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNodeV1RuntimeClassListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNodeV1RuntimeClassListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchNodeV1RuntimeClassListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNodeV1RuntimeClassListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNodeV1RuntimeClassListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNodeV1RuntimeClassListApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (WatchNodeV1RuntimeClassListApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchNodeV1RuntimeClassListApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchNodeV1RuntimeClassListApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchNodeV1RuntimeClassListUnauthorized) WriteJSON(j *json.Stream)        {}
+func (WatchNodeV1RuntimeClassListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchNodeV1RuntimeClassListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchNodeV1RuntimeClassListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchNodeV1alpha1RuntimeClassListApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchNodeV1alpha1RuntimeClassListApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNodeV1alpha1RuntimeClassListApplicationJSONOK) ReadJSONFrom(r io.Reader) error { return nil }
+func (WatchNodeV1alpha1RuntimeClassListApplicationJSONOK) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (WatchNodeV1alpha1RuntimeClassListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (WatchNodeV1alpha1RuntimeClassListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNodeV1alpha1RuntimeClassListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNodeV1alpha1RuntimeClassListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNodeV1alpha1RuntimeClassListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchNodeV1alpha1RuntimeClassListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNodeV1alpha1RuntimeClassListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNodeV1alpha1RuntimeClassListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNodeV1alpha1RuntimeClassListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchNodeV1alpha1RuntimeClassListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNodeV1alpha1RuntimeClassListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNodeV1alpha1RuntimeClassListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNodeV1alpha1RuntimeClassListApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchNodeV1alpha1RuntimeClassListApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNodeV1alpha1RuntimeClassListApplicationYamlOK) ReadJSONFrom(r io.Reader) error { return nil }
+func (WatchNodeV1alpha1RuntimeClassListApplicationYamlOK) WriteJSONTo(w io.Writer) error  { return nil }
+
+func (WatchNodeV1alpha1RuntimeClassListUnauthorized) WriteJSON(j *json.Stream)        {}
+func (WatchNodeV1alpha1RuntimeClassListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchNodeV1alpha1RuntimeClassListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchNodeV1alpha1RuntimeClassListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchNodeV1beta1RuntimeClassListApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (WatchNodeV1beta1RuntimeClassListApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchNodeV1beta1RuntimeClassListApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchNodeV1beta1RuntimeClassListApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchNodeV1beta1RuntimeClassListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (WatchNodeV1beta1RuntimeClassListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNodeV1beta1RuntimeClassListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNodeV1beta1RuntimeClassListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNodeV1beta1RuntimeClassListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (WatchNodeV1beta1RuntimeClassListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNodeV1beta1RuntimeClassListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNodeV1beta1RuntimeClassListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNodeV1beta1RuntimeClassListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchNodeV1beta1RuntimeClassListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchNodeV1beta1RuntimeClassListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchNodeV1beta1RuntimeClassListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchNodeV1beta1RuntimeClassListApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (WatchNodeV1beta1RuntimeClassListApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchNodeV1beta1RuntimeClassListApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchNodeV1beta1RuntimeClassListApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchNodeV1beta1RuntimeClassListUnauthorized) WriteJSON(j *json.Stream)        {}
+func (WatchNodeV1beta1RuntimeClassListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchNodeV1beta1RuntimeClassListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchNodeV1beta1RuntimeClassListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodSecurityPolicyListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchPolicyV1beta1PodSecurityPolicyListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchPolicyV1beta1PodSecurityPolicyListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodSecurityPolicyListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodSecurityPolicyListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchPolicyV1beta1PodSecurityPolicyListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchPolicyV1beta1PodSecurityPolicyListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodSecurityPolicyListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodSecurityPolicyListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchPolicyV1beta1PodSecurityPolicyListApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchPolicyV1beta1PodSecurityPolicyListApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodSecurityPolicyListApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodSecurityPolicyListApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) WriteJSONTo(w io.Writer) error { return nil }
+
+func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleBindingListApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1ClusterRoleListApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchRbacAuthorizationV1ClusterRoleListApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleListApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleListApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1ClusterRoleListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchRbacAuthorizationV1ClusterRoleListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1ClusterRoleListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchRbacAuthorizationV1ClusterRoleListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1ClusterRoleListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchRbacAuthorizationV1ClusterRoleListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1ClusterRoleListApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchRbacAuthorizationV1ClusterRoleListApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleListApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleListApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1ClusterRoleListUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchRbacAuthorizationV1ClusterRoleListUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleListUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1ClusterRoleListUnauthorized) WriteJSONTo(w io.Writer) error { return nil }
+
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {}
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchSchedulingV1PriorityClassListApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchSchedulingV1PriorityClassListApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchSchedulingV1PriorityClassListApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchSchedulingV1PriorityClassListApplicationJSONOK) WriteJSONTo(w io.Writer) error { return nil }
+
+func (WatchSchedulingV1PriorityClassListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (WatchSchedulingV1PriorityClassListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchSchedulingV1PriorityClassListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchSchedulingV1PriorityClassListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchSchedulingV1PriorityClassListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchSchedulingV1PriorityClassListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchSchedulingV1PriorityClassListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchSchedulingV1PriorityClassListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchSchedulingV1PriorityClassListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchSchedulingV1PriorityClassListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchSchedulingV1PriorityClassListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchSchedulingV1PriorityClassListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchSchedulingV1PriorityClassListApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchSchedulingV1PriorityClassListApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchSchedulingV1PriorityClassListApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchSchedulingV1PriorityClassListApplicationYamlOK) WriteJSONTo(w io.Writer) error { return nil }
+
+func (WatchSchedulingV1PriorityClassListUnauthorized) WriteJSON(j *json.Stream)        {}
+func (WatchSchedulingV1PriorityClassListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchSchedulingV1PriorityClassListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchSchedulingV1PriorityClassListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchStorageV1CSIDriverListApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (WatchStorageV1CSIDriverListApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchStorageV1CSIDriverListApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchStorageV1CSIDriverListApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchStorageV1CSIDriverListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (WatchStorageV1CSIDriverListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1CSIDriverListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1CSIDriverListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1CSIDriverListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (WatchStorageV1CSIDriverListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1CSIDriverListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1CSIDriverListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1CSIDriverListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchStorageV1CSIDriverListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1CSIDriverListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1CSIDriverListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1CSIDriverListApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (WatchStorageV1CSIDriverListApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchStorageV1CSIDriverListApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchStorageV1CSIDriverListApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchStorageV1CSIDriverListUnauthorized) WriteJSON(j *json.Stream)        {}
+func (WatchStorageV1CSIDriverListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchStorageV1CSIDriverListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchStorageV1CSIDriverListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchStorageV1CSINodeListApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (WatchStorageV1CSINodeListApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchStorageV1CSINodeListApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchStorageV1CSINodeListApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchStorageV1CSINodeListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (WatchStorageV1CSINodeListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1CSINodeListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1CSINodeListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1CSINodeListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (WatchStorageV1CSINodeListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1CSINodeListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1CSINodeListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1CSINodeListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchStorageV1CSINodeListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1CSINodeListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1CSINodeListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1CSINodeListApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (WatchStorageV1CSINodeListApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchStorageV1CSINodeListApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchStorageV1CSINodeListApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchStorageV1CSINodeListUnauthorized) WriteJSON(j *json.Stream)        {}
+func (WatchStorageV1CSINodeListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchStorageV1CSINodeListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchStorageV1CSINodeListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchStorageV1StorageClassListApplicationJSONOK) WriteJSON(j *json.Stream)        {}
+func (WatchStorageV1StorageClassListApplicationJSONOK) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchStorageV1StorageClassListApplicationJSONOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchStorageV1StorageClassListApplicationJSONOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchStorageV1StorageClassListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (WatchStorageV1StorageClassListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1StorageClassListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1StorageClassListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1StorageClassListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {}
+func (WatchStorageV1StorageClassListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1StorageClassListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1StorageClassListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1StorageClassListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchStorageV1StorageClassListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1StorageClassListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1StorageClassListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1StorageClassListApplicationYamlOK) WriteJSON(j *json.Stream)        {}
+func (WatchStorageV1StorageClassListApplicationYamlOK) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchStorageV1StorageClassListApplicationYamlOK) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchStorageV1StorageClassListApplicationYamlOK) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchStorageV1StorageClassListUnauthorized) WriteJSON(j *json.Stream)        {}
+func (WatchStorageV1StorageClassListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchStorageV1StorageClassListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchStorageV1StorageClassListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchStorageV1VolumeAttachmentListApplicationJSONOK) WriteJSON(j *json.Stream) {}
+func (WatchStorageV1VolumeAttachmentListApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1VolumeAttachmentListApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1VolumeAttachmentListApplicationJSONOK) WriteJSONTo(w io.Writer) error { return nil }
+
+func (WatchStorageV1VolumeAttachmentListApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {}
+func (WatchStorageV1VolumeAttachmentListApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1VolumeAttachmentListApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1VolumeAttachmentListApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1VolumeAttachmentListApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchStorageV1VolumeAttachmentListApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1VolumeAttachmentListApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1VolumeAttachmentListApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1VolumeAttachmentListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchStorageV1VolumeAttachmentListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1VolumeAttachmentListApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1VolumeAttachmentListApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1VolumeAttachmentListApplicationYamlOK) WriteJSON(j *json.Stream) {}
+func (WatchStorageV1VolumeAttachmentListApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1VolumeAttachmentListApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1VolumeAttachmentListApplicationYamlOK) WriteJSONTo(w io.Writer) error { return nil }
+
+func (WatchStorageV1VolumeAttachmentListUnauthorized) WriteJSON(j *json.Stream)        {}
+func (WatchStorageV1VolumeAttachmentListUnauthorized) ReadJSON(i *json.Iterator) error { return nil }
+func (WatchStorageV1VolumeAttachmentListUnauthorized) ReadJSONFrom(r io.Reader) error  { return nil }
+func (WatchStorageV1VolumeAttachmentListUnauthorized) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONOK) WriteJSON(j *json.Stream) {
+}
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationJSONStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSON(j *json.Stream) {
+}
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSON(j *json.Stream) {
+}
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationVndKubernetesProtobufStreamWatchOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationYamlOK) WriteJSON(j *json.Stream) {
+}
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationYamlOK) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationYamlOK) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesApplicationYamlOK) WriteJSONTo(w io.Writer) error {
+	return nil
+}
+
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) WriteJSON(j *json.Stream) {
+}
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) ReadJSON(i *json.Iterator) error {
+	return nil
+}
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) ReadJSONFrom(r io.Reader) error {
+	return nil
+}
+func (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) WriteJSONTo(w io.Writer) error {
 	return nil
 }
