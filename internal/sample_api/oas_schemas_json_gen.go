@@ -518,7 +518,11 @@ func (s Pet) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("nullStr")
 		s.NullStr.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "primary".
+	if s.Primary != nil {
+		more.More()
+		j.WriteObjectField("primary")
+		s.Primary.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("rate")
 	json.WriteDuration(j, s.Rate)

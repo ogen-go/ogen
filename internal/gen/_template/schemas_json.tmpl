@@ -204,9 +204,23 @@ j.WriteObjectField("{{ $.Field }}")
 
 {{- define "json_value" -}}
     {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
-    {{- if or ($.Type.IsStruct) ($.Type.IsEnum) -}}
+    {{- if or ($.Type.IsStruct) ($.Type.IsEnum) ($.Type.IsPointer) -}}
+        {{- if or (eq $.Type.NilSemantic "invalid") (eq $.Type.NilSemantic "optional") -}}
+        if {{ $.Var }} != nil {
+            {{- template "json_start" $ }}
+            {{ $.Var }}.WriteJSON(j)
+        }
+        {{- else if eq $.Type.NilSemantic "null" -}}
+        {{- template "json_start" $ }}
+        if {{ $.Var }} == nil {
+            j.WriteNil()
+        } else {
+            {{ $.Var }}.WriteJSON(j)
+        }
+        {{- else -}}
         {{- template "json_start" $ }}
         {{ $.Var }}.WriteJSON(j)
+        {{- end -}}
     {{- else if $.Type.GenericOf -}}
         {{- $g := $.Type.GenericOf -}}
         {{- $v := $.Type.GenericVariant -}}

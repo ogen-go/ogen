@@ -984,7 +984,11 @@ func (s ActionsEnterprisePermissions) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("enabled_organizations")
 	s.EnabledOrganizations.WriteJSON(j)
-	// Unsupported kind "pointer" for field "selected_actions_url".
+	if s.SelectedActionsURL != nil {
+		more.More()
+		j.WriteObjectField("selected_actions_url")
+		s.SelectedActionsURL.WriteJSON(j)
+	}
 	if s.SelectedOrganizationsURL.Set {
 		more.More()
 		j.WriteObjectField("selected_organizations_url")
@@ -1884,7 +1888,11 @@ func (s ActionsOrganizationPermissions) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("enabled_repositories")
 	s.EnabledRepositories.WriteJSON(j)
-	// Unsupported kind "pointer" for field "selected_actions_url".
+	if s.SelectedActionsURL != nil {
+		more.More()
+		j.WriteObjectField("selected_actions_url")
+		s.SelectedActionsURL.WriteJSON(j)
+	}
 	if s.SelectedRepositoriesURL.Set {
 		more.More()
 		j.WriteObjectField("selected_repositories_url")
@@ -2095,7 +2103,11 @@ func (s ActionsRepositoryPermissions) WriteJSON(j *json.Stream) {
 		s.AllowedActions.WriteJSON(j)
 	}
 	// Unsupported kind "alias" for field "enabled".
-	// Unsupported kind "pointer" for field "selected_actions_url".
+	if s.SelectedActionsURL != nil {
+		more.More()
+		j.WriteObjectField("selected_actions_url")
+		s.SelectedActionsURL.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -5346,7 +5358,11 @@ func (s AuthenticationToken) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("expires_at")
 	json.WriteDateTime(j, s.ExpiresAt)
-	// Unsupported kind "pointer" for field "permissions".
+	if s.Permissions != nil {
+		more.More()
+		j.WriteObjectField("permissions")
+		s.Permissions.WriteJSON(j)
+	}
 	if s.Repositories != nil {
 		more.More()
 		j.WriteObjectField("repositories")
@@ -9563,8 +9579,16 @@ func (s CodeScanningAlertInstance) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	// Unsupported kind "pointer" for field "analysis_key".
-	// Unsupported kind "pointer" for field "category".
+	if s.AnalysisKey != nil {
+		more.More()
+		j.WriteObjectField("analysis_key")
+		s.AnalysisKey.WriteJSON(j)
+	}
+	if s.Category != nil {
+		more.More()
+		j.WriteObjectField("category")
+		s.Category.WriteJSON(j)
+	}
 	if s.Classifications != nil {
 		more.More()
 		j.WriteObjectField("classifications")
@@ -9582,7 +9606,11 @@ func (s CodeScanningAlertInstance) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("commit_sha")
 		s.CommitSha.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "environment".
+	if s.Environment != nil {
+		more.More()
+		j.WriteObjectField("environment")
+		s.Environment.WriteJSON(j)
+	}
 	if s.HTMLURL.Set {
 		more.More()
 		j.WriteObjectField("html_url")
@@ -9598,7 +9626,11 @@ func (s CodeScanningAlertInstance) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "ref".
+	if s.Ref != nil {
+		more.More()
+		j.WriteObjectField("ref")
+		s.Ref.WriteJSON(j)
+	}
 	if s.State.Set {
 		more.More()
 		j.WriteObjectField("state")
@@ -9883,7 +9915,11 @@ func (s CodeScanningAnalysis) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "alias" for field "analysis_key".
-	// Unsupported kind "pointer" for field "category".
+	if s.Category != nil {
+		more.More()
+		j.WriteObjectField("category")
+		s.Category.WriteJSON(j)
+	}
 	// Unsupported kind "alias" for field "commit_sha".
 	// Unsupported kind "alias" for field "created_at".
 	more.More()
@@ -10118,9 +10154,21 @@ func (s CodeScanningAnalysisTool) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	// Unsupported kind "pointer" for field "guid".
-	// Unsupported kind "pointer" for field "name".
-	// Unsupported kind "pointer" for field "version".
+	if s.GUID != nil {
+		more.More()
+		j.WriteObjectField("guid")
+		s.GUID.WriteJSON(j)
+	}
+	if s.Name != nil {
+		more.More()
+		j.WriteObjectField("name")
+		s.Name.WriteJSON(j)
+	}
+	if s.Version != nil {
+		more.More()
+		j.WriteObjectField("version")
+		s.Version.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -10296,7 +10344,11 @@ func (s CodeScanningSarifsReceipt) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	// Unsupported kind "pointer" for field "id".
+	if s.ID != nil {
+		more.More()
+		j.WriteObjectField("id")
+		s.ID.WriteJSON(j)
+	}
 	if s.URL.Set {
 		more.More()
 		j.WriteObjectField("url")
@@ -21418,8 +21470,20 @@ func (s HookDeliveryRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	// Unsupported kind "pointer" for field "headers".
-	// Unsupported kind "pointer" for field "payload".
+	more.More()
+	j.WriteObjectField("headers")
+	if s.Headers == nil {
+		j.WriteNil()
+	} else {
+		s.Headers.WriteJSON(j)
+	}
+	more.More()
+	j.WriteObjectField("payload")
+	if s.Payload == nil {
+		j.WriteNil()
+	} else {
+		s.Payload.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -21471,7 +21535,13 @@ func (s HookDeliveryResponse) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	// Unsupported kind "pointer" for field "headers".
+	more.More()
+	j.WriteObjectField("headers")
+	if s.Headers == nil {
+		j.WriteNil()
+	} else {
+		s.Headers.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("payload")
 	s.Payload.WriteJSON(j)
@@ -48099,7 +48169,11 @@ func (s ReposCreateDispatchEventApplicationJSONRequest) WriteJSON(j *json.Stream
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	// Unsupported kind "pointer" for field "client_payload".
+	if s.ClientPayload != nil {
+		more.More()
+		j.WriteObjectField("client_payload")
+		s.ClientPayload.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("event_type")
 	j.WriteString(s.EventType)
@@ -57524,14 +57598,26 @@ func (s SecretScanningAlert) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	// Unsupported kind "pointer" for field "created_at".
-	// Unsupported kind "pointer" for field "html_url".
+	if s.CreatedAt != nil {
+		more.More()
+		j.WriteObjectField("created_at")
+		s.CreatedAt.WriteJSON(j)
+	}
+	if s.HTMLURL != nil {
+		more.More()
+		j.WriteObjectField("html_url")
+		s.HTMLURL.WriteJSON(j)
+	}
 	if s.LocationsURL.Set {
 		more.More()
 		j.WriteObjectField("locations_url")
 		s.LocationsURL.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "number".
+	if s.Number != nil {
+		more.More()
+		j.WriteObjectField("number")
+		s.Number.WriteJSON(j)
+	}
 	if s.Resolution.Set {
 		more.More()
 		j.WriteObjectField("resolution")
@@ -57562,7 +57648,11 @@ func (s SecretScanningAlert) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("state")
 		s.State.WriteJSON(j)
 	}
-	// Unsupported kind "pointer" for field "url".
+	if s.URL != nil {
+		more.More()
+		j.WriteObjectField("url")
+		s.URL.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 

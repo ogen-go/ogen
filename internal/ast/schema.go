@@ -51,18 +51,6 @@ func (s Schema) JSONFields() []SchemaField {
 	return fields
 }
 
-func (s Schema) IsStruct() bool {
-	return s.Is(KindStruct)
-}
-
-func (s Schema) IsAlias() bool {
-	return s.Is(KindAlias)
-}
-
-func (s Schema) IsGeneric() bool {
-	return s.Is(KindGeneric)
-}
-
 func (s Schema) CanGeneric() bool {
 	if s.Primitive == "[]byte" || s.Type() == "struct{}" {
 		return false
@@ -206,13 +194,12 @@ func (s Schema) JSONRead() string {
 	return "Read" + s.jsonFn()
 }
 
-func (s *Schema) IsArray() bool {
-	return s.Is(KindArray)
-}
-
-func (s *Schema) IsEnum() bool {
-	return s.Is(KindEnum)
-}
+func (s Schema) IsArray() bool   { return s.Is(KindArray) }
+func (s Schema) IsEnum() bool    { return s.Is(KindEnum) }
+func (s Schema) IsPointer() bool { return s.Is(KindPointer) }
+func (s Schema) IsStruct() bool  { return s.Is(KindStruct) }
+func (s Schema) IsAlias() bool   { return s.Is(KindAlias) }
+func (s Schema) IsGeneric() bool { return s.Is(KindGeneric) }
 
 func (s *Schema) IsInteger() bool {
 	switch s.Primitive {
