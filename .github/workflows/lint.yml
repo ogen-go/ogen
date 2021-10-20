@@ -91,7 +91,7 @@ jobs:
         run: go mod download && go mod tidy
 
       - name: Generate files
-        run: make generate
+        run: make generate examples
 
       - name: Check git diff
         run: git diff --exit-code
