@@ -62,7 +62,7 @@ func (s *Pet) Validate() error {
 			MinExclusive: false,
 			MaxExclusive: false,
 		}
-		if err := validator.Validate(s.ID); err != nil {
+		if err := validator.Validate(int64(s.ID)); err != nil {
 			failures = append(failures, validate.FieldError{Name: "id", Error: err})
 		}
 	}
@@ -74,7 +74,7 @@ func (s *Pet) Validate() error {
 			MaxLength:    24,
 			MaxLengthSet: true,
 		}
-		if err := validator.Validate(s.Name); err != nil {
+		if err := validator.Validate(string(s.Name)); err != nil {
 			failures = append(failures, validate.FieldError{Name: "name", Error: err})
 		}
 	}

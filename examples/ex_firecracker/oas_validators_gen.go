@@ -97,7 +97,7 @@ func (s *MachineConfiguration) Validate() error {
 			MinExclusive: false,
 			MaxExclusive: false,
 		}
-		if err := validator.Validate(s.VcpuCount); err != nil {
+		if err := validator.Validate(int64(s.VcpuCount)); err != nil {
 			failures = append(failures, validate.FieldError{Name: "vcpu_count", Error: err})
 		}
 	}
@@ -153,7 +153,7 @@ func (s *TokenBucket) Validate() error {
 			MinExclusive: false,
 			MaxExclusive: false,
 		}
-		if err := validator.Validate(s.RefillTime); err != nil {
+		if err := validator.Validate(int64(s.RefillTime)); err != nil {
 			failures = append(failures, validate.FieldError{Name: "refill_time", Error: err})
 		}
 	}
@@ -167,7 +167,7 @@ func (s *TokenBucket) Validate() error {
 			MinExclusive: false,
 			MaxExclusive: false,
 		}
-		if err := validator.Validate(s.Size); err != nil {
+		if err := validator.Validate(int64(s.Size)); err != nil {
 			failures = append(failures, validate.FieldError{Name: "size", Error: err})
 		}
 	}
@@ -195,7 +195,7 @@ func (s *Vsock) Validate() error {
 			MinExclusive: false,
 			MaxExclusive: false,
 		}
-		if err := validator.Validate(s.GuestCid); err != nil {
+		if err := validator.Validate(int64(s.GuestCid)); err != nil {
 			failures = append(failures, validate.FieldError{Name: "guest_cid", Error: err})
 		}
 	}

@@ -22,7 +22,7 @@ func (s *{{ $s.Name }}) Validate() error {
                 MaxLength:    {{ $f.Type.Validators.String.MaxLength }},
                 MaxLengthSet: {{ $f.Type.Validators.String.MaxLengthSet }},
             }
-            if err := validator.Validate(s.{{ $fieldName }}); err != nil {
+            if err := validator.Validate(string(s.{{ $fieldName }})); err != nil {
                 failures = append(failures, validate.FieldError{Name: "{{ $f.Tag }}", Error: err})
             }
         }
@@ -38,7 +38,7 @@ func (s *{{ $s.Name }}) Validate() error {
                 MinExclusive:   {{ $f.Type.Validators.Int.MinExclusive }},
                 MaxExclusive:   {{ $f.Type.Validators.Int.MaxExclusive }},
             }
-            if err := validator.Validate(s.{{ $fieldName }}); err != nil {
+            if err := validator.Validate(int64(s.{{ $fieldName }})); err != nil {
                 failures = append(failures, validate.FieldError{Name: "{{ $f.Tag }}", Error: err})
             }
         }

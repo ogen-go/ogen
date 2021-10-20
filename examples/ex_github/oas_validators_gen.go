@@ -165,7 +165,7 @@ func (s *AppsCreateContentAttachmentApplicationJSONRequest) Validate() error {
 			MaxLength:    262144,
 			MaxLengthSet: true,
 		}
-		if err := validator.Validate(s.Body); err != nil {
+		if err := validator.Validate(string(s.Body)); err != nil {
 			failures = append(failures, validate.FieldError{Name: "body", Error: err})
 		}
 	}
@@ -177,7 +177,7 @@ func (s *AppsCreateContentAttachmentApplicationJSONRequest) Validate() error {
 			MaxLength:    1024,
 			MaxLengthSet: true,
 		}
-		if err := validator.Validate(s.Title); err != nil {
+		if err := validator.Validate(string(s.Title)); err != nil {
 			failures = append(failures, validate.FieldError{Name: "title", Error: err})
 		}
 	}
@@ -308,7 +308,7 @@ func (s *ContentReferenceAttachment) Validate() error {
 			MaxLength:    262144,
 			MaxLengthSet: true,
 		}
-		if err := validator.Validate(s.Body); err != nil {
+		if err := validator.Validate(string(s.Body)); err != nil {
 			failures = append(failures, validate.FieldError{Name: "body", Error: err})
 		}
 	}
@@ -320,7 +320,7 @@ func (s *ContentReferenceAttachment) Validate() error {
 			MaxLength:    1024,
 			MaxLengthSet: true,
 		}
-		if err := validator.Validate(s.Title); err != nil {
+		if err := validator.Validate(string(s.Title)); err != nil {
 			failures = append(failures, validate.FieldError{Name: "title", Error: err})
 		}
 	}
@@ -339,7 +339,7 @@ func (s *DeploymentStatus) Validate() error {
 			MaxLength:    140,
 			MaxLengthSet: true,
 		}
-		if err := validator.Validate(s.Description); err != nil {
+		if err := validator.Validate(string(s.Description)); err != nil {
 			failures = append(failures, validate.FieldError{Name: "description", Error: err})
 		}
 	}
@@ -435,7 +435,7 @@ func (s *GistComment) Validate() error {
 			MaxLength:    65535,
 			MaxLengthSet: true,
 		}
-		if err := validator.Validate(s.Body); err != nil {
+		if err := validator.Validate(string(s.Body)); err != nil {
 			failures = append(failures, validate.FieldError{Name: "body", Error: err})
 		}
 	}
@@ -454,7 +454,7 @@ func (s *GistsCreateCommentApplicationJSONRequest) Validate() error {
 			MaxLength:    65535,
 			MaxLengthSet: true,
 		}
-		if err := validator.Validate(s.Body); err != nil {
+		if err := validator.Validate(string(s.Body)); err != nil {
 			failures = append(failures, validate.FieldError{Name: "body", Error: err})
 		}
 	}
@@ -473,7 +473,7 @@ func (s *GistsUpdateCommentApplicationJSONRequest) Validate() error {
 			MaxLength:    65535,
 			MaxLengthSet: true,
 		}
-		if err := validator.Validate(s.Body); err != nil {
+		if err := validator.Validate(string(s.Body)); err != nil {
 			failures = append(failures, validate.FieldError{Name: "body", Error: err})
 		}
 	}
@@ -520,7 +520,7 @@ func (s *GitRefObject) Validate() error {
 			MaxLength:    40,
 			MaxLengthSet: true,
 		}
-		if err := validator.Validate(s.Sha); err != nil {
+		if err := validator.Validate(string(s.Sha)); err != nil {
 			failures = append(failures, validate.FieldError{Name: "sha", Error: err})
 		}
 	}
@@ -903,7 +903,7 @@ func (s *ReposCreateDispatchEventApplicationJSONRequest) Validate() error {
 			MaxLength:    100,
 			MaxLengthSet: true,
 		}
-		if err := validator.Validate(s.EventType); err != nil {
+		if err := validator.Validate(string(s.EventType)); err != nil {
 			failures = append(failures, validate.FieldError{Name: "event_type", Error: err})
 		}
 	}
