@@ -43,17 +43,6 @@ func (g *Generator) generateResponses(methodName string, responses ogen.Response
 			return nil, xerrors.Errorf("invalid status code: '%s'", status)
 		}
 
-		// Referenced response.
-		if ref := response.Ref; ref != "" {
-			r, err := g.resolveResponse(ref)
-			if err != nil {
-				return nil, xerrors.Errorf("%s: %w", status, err)
-			}
-
-			result.StatusCode[statusCode] = r
-			continue
-		}
-
 		responseName := pascal(methodName)
 		if len(responses) > 1 {
 			// Avoid collision with <methodName>Response interface.
