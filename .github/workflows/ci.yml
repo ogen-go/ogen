@@ -48,10 +48,10 @@ jobs:
       - name: Run tests
         run: make test
 
-  examples:
+  text-examples:
     runs-on: ubuntu-latest
-    needs:
-      - test
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2.3.5
       - name: Run tests
         run: cd examples && go test ./...
