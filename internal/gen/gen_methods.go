@@ -36,7 +36,7 @@ func (g *Generator) generateMethods() error {
 	}
 
 	sort.SliceStable(g.methods, func(i, j int) bool {
-		return strings.Compare(g.methods[i].RawPath, g.methods[j].RawPath) < 0
+		return strings.Compare(g.methods[i].RawPath(), g.methods[j].RawPath()) < 0
 	})
 
 	return nil
@@ -53,7 +53,6 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 	m := &ast.Method{
 		OperationID: op.OperationID,
 		Name:        methodName,
-		RawPath:     path,
 		HTTPMethod:  method,
 	}
 

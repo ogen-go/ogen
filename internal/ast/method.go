@@ -4,7 +4,6 @@ type Method struct {
 	Name        string
 	OperationID string
 	PathParts   []PathPart
-	RawPath     string
 	HTTPMethod  string
 	Parameters  []*Parameter
 
@@ -18,6 +17,17 @@ type Method struct {
 type PathPart struct {
 	Raw   string
 	Param *Parameter
+}
+
+func (m *Method) RawPath() (path string) {
+	for _, part := range m.PathParts {
+		if part.Raw != "" {
+			path += part.Raw
+			continue
+		}
+		path += "{" + part.Param.SourceName + "}"
+	}
+	return
 }
 
 func (m *Method) PathParams() []*Parameter   { return m.getParams(LocationPath) }
