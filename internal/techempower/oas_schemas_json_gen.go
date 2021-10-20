@@ -58,7 +58,6 @@ func (s HelloWorld) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("message")
 	j.WriteString(s.Message)
-
 	j.WriteObjectEnd()
 }
 
@@ -108,11 +107,9 @@ func (s WorldObject) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("id")
 	j.WriteInt64(s.ID)
-
 	more.More()
 	j.WriteObjectField("randomNumber")
 	j.WriteInt64(s.RandomNumber)
-
 	j.WriteObjectEnd()
 }
 

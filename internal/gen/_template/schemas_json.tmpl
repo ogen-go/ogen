@@ -12,7 +12,7 @@ func (s {{ $s.Name }}) WriteJSON(j *json.Stream) {
     more := json.NewMore(j)
     defer more.Reset()
     {{- range $f := $s.JSONFields }}
-        {{ template "json_value" field_elem $f }}
+        {{ template "json_value" field_elem $f -}}
     {{- end }}
     j.WriteObjectEnd()
 }
@@ -184,21 +184,21 @@ func (s *{{ $s.Name }}) ReadJSON(i *json.Iterator) error {
 more.Down()
 j.WriteArrayStart()
 for _, elem := range {{ $.Var }} {
-    {{- template "json_value" array_elem $.Type.Item -}}
+    {{ template "json_value" array_elem $.Type.Item }}
 }
 j.WriteArrayEnd()
 more.Up()
 {{- end }}
 
-{{ define "json_start" }}
+{{- define "json_start" -}}
 {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
 more.More()
 {{- if $.Field }}
 j.WriteObjectField("{{ $.Field }}")
 {{- end -}}
-{{ end }}
+{{- end -}}
 
-{{- define "json_value" }}
+{{- define "json_value" -}}
     {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
     {{- if or ($.Type.IsStruct) ($.Type.IsEnum) -}}
         {{- template "json_start" $ }}
@@ -211,10 +211,10 @@ j.WriteObjectField("{{ $.Field }}")
                 {{- template "json_start" $ }}
                 {{ $.Var }}.WriteJSON(j{{ if $g.FormatCustom }}, json.Write{{ $g.JSONHelper }}{{ end }})
             }
-        {{- else }}
+        {{- else -}}
             {{- template "json_start" $ }}
             {{ $.Var }}.WriteJSON(j{{ if $g.FormatCustom }}, json.Write{{ $g.JSONHelper }}{{ end }})
-        {{- end }}
+        {{- end -}}
     {{- else if $.Type.JSONHelper -}}
         {{ template "json_start" $ }}
         json.Write{{ $.Type.JSONHelper }}(j, {{ $.Var }})
@@ -237,8 +237,8 @@ j.WriteObjectField("{{ $.Field }}")
             } else {
                 {{- template "json_array" $ -}}
             }
-        {{- end }}
+        {{- end -}}
     {{- else -}}
         // Unsupported kind "{{ $.Type.Kind  }}" for field "{{ $.Field }}".
     {{- end }}
-{{ end }}
+{{- end -}}
