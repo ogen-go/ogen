@@ -58,17 +58,14 @@ func (s Balloon) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("amount_mib")
 	j.WriteInt(s.AmountMib)
-
 	more.More()
 	j.WriteObjectField("deflate_on_oom")
 	j.WriteBool(s.DeflateOnOom)
-
 	if s.StatsPollingIntervalS.Set {
 		more.More()
 		j.WriteObjectField("stats_polling_interval_s")
 		s.StatsPollingIntervalS.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -128,79 +125,65 @@ func (s BalloonStats) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("actual_mib")
 	j.WriteInt(s.ActualMib)
-
 	more.More()
 	j.WriteObjectField("actual_pages")
 	j.WriteInt(s.ActualPages)
-
 	if s.AvailableMemory.Set {
 		more.More()
 		j.WriteObjectField("available_memory")
 		s.AvailableMemory.WriteJSON(j)
 	}
-
 	if s.DiskCaches.Set {
 		more.More()
 		j.WriteObjectField("disk_caches")
 		s.DiskCaches.WriteJSON(j)
 	}
-
 	if s.FreeMemory.Set {
 		more.More()
 		j.WriteObjectField("free_memory")
 		s.FreeMemory.WriteJSON(j)
 	}
-
 	if s.HugetlbAllocations.Set {
 		more.More()
 		j.WriteObjectField("hugetlb_allocations")
 		s.HugetlbAllocations.WriteJSON(j)
 	}
-
 	if s.HugetlbFailures.Set {
 		more.More()
 		j.WriteObjectField("hugetlb_failures")
 		s.HugetlbFailures.WriteJSON(j)
 	}
-
 	if s.MajorFaults.Set {
 		more.More()
 		j.WriteObjectField("major_faults")
 		s.MajorFaults.WriteJSON(j)
 	}
-
 	if s.MinorFaults.Set {
 		more.More()
 		j.WriteObjectField("minor_faults")
 		s.MinorFaults.WriteJSON(j)
 	}
-
 	if s.SwapIn.Set {
 		more.More()
 		j.WriteObjectField("swap_in")
 		s.SwapIn.WriteJSON(j)
 	}
-
 	if s.SwapOut.Set {
 		more.More()
 		j.WriteObjectField("swap_out")
 		s.SwapOut.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("target_mib")
 	j.WriteInt(s.TargetMib)
-
 	more.More()
 	j.WriteObjectField("target_pages")
 	j.WriteInt(s.TargetPages)
-
 	if s.TotalMemory.Set {
 		more.More()
 		j.WriteObjectField("total_memory")
 		s.TotalMemory.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -329,7 +312,6 @@ func (s BalloonStatsUpdate) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("stats_polling_interval_s")
 	j.WriteInt(s.StatsPollingIntervalS)
-
 	j.WriteObjectEnd()
 }
 
@@ -379,7 +361,6 @@ func (s BalloonUpdate) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("amount_mib")
 	j.WriteInt(s.AmountMib)
-
 	j.WriteObjectEnd()
 }
 
@@ -431,17 +412,14 @@ func (s BootSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("boot_args")
 		s.BootArgs.WriteJSON(j)
 	}
-
 	if s.InitrdPath.Set {
 		more.More()
 		j.WriteObjectField("initrd_path")
 		s.InitrdPath.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("kernel_image_path")
 	j.WriteString(s.KernelImagePath)
-
 	j.WriteObjectEnd()
 }
 
@@ -518,35 +496,28 @@ func (s Drive) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("cache_type")
 		s.CacheType.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("drive_id")
 	j.WriteString(s.DriveID)
-
 	more.More()
 	j.WriteObjectField("is_read_only")
 	j.WriteBool(s.IsReadOnly)
-
 	more.More()
 	j.WriteObjectField("is_root_device")
 	j.WriteBool(s.IsRootDevice)
-
 	if s.Partuuid.Set {
 		more.More()
 		j.WriteObjectField("partuuid")
 		s.Partuuid.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("path_on_host")
 	j.WriteString(s.PathOnHost)
-
 	if s.RateLimiter.Set {
 		more.More()
 		j.WriteObjectField("rate_limiter")
 		s.RateLimiter.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -628,7 +599,6 @@ func (s Error) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("fault_message")
 		s.FaultMessage.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -727,7 +697,6 @@ func (s FullVmConfiguration) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("balloon_device")
 		s.BalloonDevice.WriteJSON(j)
 	}
-
 	if s.BlockDevices != nil {
 		more.More()
 		j.WriteObjectField("block_devices")
@@ -740,37 +709,31 @@ func (s FullVmConfiguration) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.BootSource.Set {
 		more.More()
 		j.WriteObjectField("boot_source")
 		s.BootSource.WriteJSON(j)
 	}
-
 	if s.Logger.Set {
 		more.More()
 		j.WriteObjectField("logger")
 		s.Logger.WriteJSON(j)
 	}
-
 	if s.MachineConfig.Set {
 		more.More()
 		j.WriteObjectField("machine_config")
 		s.MachineConfig.WriteJSON(j)
 	}
-
 	if s.Metrics.Set {
 		more.More()
 		j.WriteObjectField("metrics")
 		s.Metrics.WriteJSON(j)
 	}
-
 	if s.MmdsConfig.Set {
 		more.More()
 		j.WriteObjectField("mmds_config")
 		s.MmdsConfig.WriteJSON(j)
 	}
-
 	if s.NetDevices != nil {
 		more.More()
 		j.WriteObjectField("net_devices")
@@ -783,13 +746,11 @@ func (s FullVmConfiguration) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.VsockDevice.Set {
 		more.More()
 		j.WriteObjectField("vsock_device")
 		s.VsockDevice.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -893,7 +854,6 @@ func (s InstanceActionInfo) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("action_type")
 	s.ActionType.WriteJSON(j)
-
 	j.WriteObjectEnd()
 }
 
@@ -957,19 +917,15 @@ func (s InstanceInfo) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("app_name")
 	j.WriteString(s.AppName)
-
 	more.More()
 	j.WriteObjectField("id")
 	j.WriteString(s.ID)
-
 	more.More()
 	j.WriteObjectField("state")
 	s.State.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("vmm_version")
 	j.WriteString(s.VmmVersion)
-
 	j.WriteObjectEnd()
 }
 
@@ -1044,23 +1000,19 @@ func (s Logger) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("level")
 		s.Level.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("log_path")
 	j.WriteString(s.LogPath)
-
 	if s.ShowLevel.Set {
 		more.More()
 		j.WriteObjectField("show_level")
 		s.ShowLevel.WriteJSON(j)
 	}
-
 	if s.ShowLogOrigin.Set {
 		more.More()
 		j.WriteObjectField("show_log_origin")
 		s.ShowLogOrigin.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -1144,25 +1096,20 @@ func (s MachineConfiguration) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("cpu_template")
 		s.CPUTemplate.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("ht_enabled")
 	j.WriteBool(s.HtEnabled)
-
 	more.More()
 	j.WriteObjectField("mem_size_mib")
 	j.WriteInt(s.MemSizeMib)
-
 	if s.TrackDirtyPages.Set {
 		more.More()
 		j.WriteObjectField("track_dirty_pages")
 		s.TrackDirtyPages.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("vcpu_count")
 	j.WriteInt(s.VcpuCount)
-
 	j.WriteObjectEnd()
 }
 
@@ -1232,7 +1179,6 @@ func (s Metrics) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("metrics_path")
 	j.WriteString(s.MetricsPath)
-
 	j.WriteObjectEnd()
 }
 
@@ -1284,7 +1230,6 @@ func (s MmdsConfig) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("ipv4_address")
 		s.Ipv4Address.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -1340,33 +1285,27 @@ func (s NetworkInterface) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("allow_mmds_requests")
 		s.AllowMmdsRequests.WriteJSON(j)
 	}
-
 	if s.GuestMAC.Set {
 		more.More()
 		j.WriteObjectField("guest_mac")
 		s.GuestMAC.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("host_dev_name")
 	j.WriteString(s.HostDevName)
-
 	more.More()
 	j.WriteObjectField("iface_id")
 	j.WriteString(s.IfaceID)
-
 	if s.RxRateLimiter.Set {
 		more.More()
 		j.WriteObjectField("rx_rate_limiter")
 		s.RxRateLimiter.WriteJSON(j)
 	}
-
 	if s.TxRateLimiter.Set {
 		more.More()
 		j.WriteObjectField("tx_rate_limiter")
 		s.TxRateLimiter.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -1753,19 +1692,16 @@ func (s PartialDrive) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("drive_id")
 	j.WriteString(s.DriveID)
-
 	if s.PathOnHost.Set {
 		more.More()
 		j.WriteObjectField("path_on_host")
 		s.PathOnHost.WriteJSON(j)
 	}
-
 	if s.RateLimiter.Set {
 		more.More()
 		j.WriteObjectField("rate_limiter")
 		s.RateLimiter.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -1829,19 +1765,16 @@ func (s PartialNetworkInterface) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("iface_id")
 	j.WriteString(s.IfaceID)
-
 	if s.RxRateLimiter.Set {
 		more.More()
 		j.WriteObjectField("rx_rate_limiter")
 		s.RxRateLimiter.WriteJSON(j)
 	}
-
 	if s.TxRateLimiter.Set {
 		more.More()
 		j.WriteObjectField("tx_rate_limiter")
 		s.TxRateLimiter.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -1907,13 +1840,11 @@ func (s RateLimiter) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("bandwidth")
 		s.Bandwidth.WriteJSON(j)
 	}
-
 	if s.Ops.Set {
 		more.More()
 		j.WriteObjectField("ops")
 		s.Ops.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -1974,23 +1905,19 @@ func (s SnapshotCreateParams) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("mem_file_path")
 	j.WriteString(s.MemFilePath)
-
 	more.More()
 	j.WriteObjectField("snapshot_path")
 	j.WriteString(s.SnapshotPath)
-
 	if s.SnapshotType.Set {
 		more.More()
 		j.WriteObjectField("snapshot_type")
 		s.SnapshotType.WriteJSON(j)
 	}
-
 	if s.Version.Set {
 		more.More()
 		j.WriteObjectField("version")
 		s.Version.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -2070,21 +1997,17 @@ func (s SnapshotLoadParams) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("enable_diff_snapshots")
 		s.EnableDiffSnapshots.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("mem_file_path")
 	j.WriteString(s.MemFilePath)
-
 	if s.ResumeVM.Set {
 		more.More()
 		j.WriteObjectField("resume_vm")
 		s.ResumeVM.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("snapshot_path")
 	j.WriteString(s.SnapshotPath)
-
 	j.WriteObjectEnd()
 }
 
@@ -2153,15 +2076,12 @@ func (s TokenBucket) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("one_time_burst")
 		s.OneTimeBurst.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("refill_time")
 	j.WriteInt64(s.RefillTime)
-
 	more.More()
 	j.WriteObjectField("size")
 	j.WriteInt64(s.Size)
-
 	j.WriteObjectEnd()
 }
 
@@ -2221,7 +2141,6 @@ func (s VM) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("state")
 	s.State.WriteJSON(j)
-
 	j.WriteObjectEnd()
 }
 
@@ -2285,15 +2204,12 @@ func (s Vsock) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("guest_cid")
 	j.WriteInt(s.GuestCid)
-
 	more.More()
 	j.WriteObjectField("uds_path")
 	j.WriteString(s.UdsPath)
-
 	more.More()
 	j.WriteObjectField("vsock_id")
 	j.WriteString(s.VsockID)
-
 	j.WriteObjectEnd()
 }
 

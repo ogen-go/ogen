@@ -65,45 +65,37 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) WriteJSON(j *json.Stream
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	more.More()
 	j.WriteObjectField("clientConfig")
 	s.ClientConfig.WriteJSON(j)
-
 	if s.FailurePolicy.Set {
 		more.More()
 		j.WriteObjectField("failurePolicy")
 		s.FailurePolicy.WriteJSON(j)
 	}
-
 	if s.MatchPolicy.Set {
 		more.More()
 		j.WriteObjectField("matchPolicy")
 		s.MatchPolicy.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	if s.NamespaceSelector.Set {
 		more.More()
 		j.WriteObjectField("namespaceSelector")
 		s.NamespaceSelector.WriteJSON(j)
 	}
-
 	if s.ObjectSelector.Set {
 		more.More()
 		j.WriteObjectField("objectSelector")
 		s.ObjectSelector.WriteJSON(j)
 	}
-
 	if s.ReinvocationPolicy.Set {
 		more.More()
 		j.WriteObjectField("reinvocationPolicy")
 		s.ReinvocationPolicy.WriteJSON(j)
 	}
-
 	if s.Rules != nil {
 		more.More()
 		j.WriteObjectField("rules")
@@ -116,17 +108,14 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) WriteJSON(j *json.Stream
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("sideEffects")
 	j.WriteString(s.SideEffects)
-
 	if s.TimeoutSeconds.Set {
 		more.More()
 		j.WriteObjectField("timeoutSeconds")
 		s.TimeoutSeconds.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -237,19 +226,16 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) WriteJSON(j
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Webhooks != nil {
 		more.More()
 		j.WriteObjectField("webhooks")
@@ -262,7 +248,6 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) WriteJSON(j
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -336,7 +321,6 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) WriteJS
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -347,19 +331,16 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) WriteJS
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -440,7 +421,6 @@ func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) WriteJSON(j *json.Str
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.ApiVersions != nil {
 		more.More()
 		j.WriteObjectField("apiVersions")
@@ -453,7 +433,6 @@ func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) WriteJSON(j *json.Str
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Operations != nil {
 		more.More()
 		j.WriteObjectField("operations")
@@ -466,7 +445,6 @@ func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) WriteJSON(j *json.Str
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Resources != nil {
 		more.More()
 		j.WriteObjectField("resources")
@@ -479,13 +457,11 @@ func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) WriteJSON(j *json.Str
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Scope.Set {
 		more.More()
 		j.WriteObjectField("scope")
 		s.Scope.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -555,23 +531,19 @@ func (s IoK8sAPIAdmissionregistrationV1ServiceReference) WriteJSON(j *json.Strea
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	more.More()
 	j.WriteObjectField("namespace")
 	j.WriteString(s.Namespace)
-
 	if s.Path.Set {
 		more.More()
 		j.WriteObjectField("path")
 		s.Path.WriteJSON(j)
 	}
-
 	if s.Port.Set {
 		more.More()
 		j.WriteObjectField("port")
 		s.Port.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -645,39 +617,32 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) WriteJSON(j *json.Stre
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	more.More()
 	j.WriteObjectField("clientConfig")
 	s.ClientConfig.WriteJSON(j)
-
 	if s.FailurePolicy.Set {
 		more.More()
 		j.WriteObjectField("failurePolicy")
 		s.FailurePolicy.WriteJSON(j)
 	}
-
 	if s.MatchPolicy.Set {
 		more.More()
 		j.WriteObjectField("matchPolicy")
 		s.MatchPolicy.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	if s.NamespaceSelector.Set {
 		more.More()
 		j.WriteObjectField("namespaceSelector")
 		s.NamespaceSelector.WriteJSON(j)
 	}
-
 	if s.ObjectSelector.Set {
 		more.More()
 		j.WriteObjectField("objectSelector")
 		s.ObjectSelector.WriteJSON(j)
 	}
-
 	if s.Rules != nil {
 		more.More()
 		j.WriteObjectField("rules")
@@ -690,17 +655,14 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) WriteJSON(j *json.Stre
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("sideEffects")
 	j.WriteString(s.SideEffects)
-
 	if s.TimeoutSeconds.Set {
 		more.More()
 		j.WriteObjectField("timeoutSeconds")
 		s.TimeoutSeconds.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -804,19 +766,16 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) WriteJSON
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Webhooks != nil {
 		more.More()
 		j.WriteObjectField("webhooks")
@@ -829,7 +788,6 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) WriteJSON
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -903,7 +861,6 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Write
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -914,19 +871,16 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Write
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -996,19 +950,16 @@ func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) WriteJSON(j *json.St
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "caBundle".
-
 	if s.Service.Set {
 		more.More()
 		j.WriteObjectField("service")
 		s.Service.WriteJSON(j)
 	}
-
 	if s.URL.Set {
 		more.More()
 		j.WriteObjectField("url")
 		s.URL.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -1075,7 +1026,6 @@ func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) WriteJSON(j *json
 		j.WriteObjectField("apiServerID")
 		s.ApiServerID.WriteJSON(j)
 	}
-
 	if s.DecodableVersions != nil {
 		more.More()
 		j.WriteObjectField("decodableVersions")
@@ -1088,13 +1038,11 @@ func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) WriteJSON(j *json
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.EncodingVersion.Set {
 		more.More()
 		j.WriteObjectField("encodingVersion")
 		s.EncodingVersion.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -1161,25 +1109,20 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) WriteJSON(j *json.Strea
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	// Unsupported kind "alias" for field "spec".
-
 	more.More()
 	j.WriteObjectField("status")
 	s.Status.WriteJSON(j)
-
 	j.WriteObjectEnd()
 }
 
@@ -1255,31 +1198,25 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) WriteJSON(j *j
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "lastTransitionTime".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.ObservedGeneration.Set {
 		more.More()
 		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("reason")
 	j.WriteString(s.Reason)
-
 	more.More()
 	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -1355,7 +1292,6 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) WriteJSON(j *json.S
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -1366,19 +1302,16 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) WriteJSON(j *json.S
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -1452,7 +1385,6 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) WriteJSON(j *json
 		j.WriteObjectField("commonEncodingVersion")
 		s.CommonEncodingVersion.WriteJSON(j)
 	}
-
 	if s.Conditions != nil {
 		more.More()
 		j.WriteObjectField("conditions")
@@ -1465,7 +1397,6 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) WriteJSON(j *json
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.StorageVersions != nil {
 		more.More()
 		j.WriteObjectField("storageVersions")
@@ -1478,7 +1409,6 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) WriteJSON(j *json
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -1542,25 +1472,20 @@ func (s IoK8sAPIAppsV1ControllerRevision) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "data".
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("revision")
 	j.WriteInt64(s.Revision)
-
 	j.WriteObjectEnd()
 }
 
@@ -1637,7 +1562,6 @@ func (s IoK8sAPIAppsV1ControllerRevisionList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -1648,19 +1572,16 @@ func (s IoK8sAPIAppsV1ControllerRevisionList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -1734,31 +1655,26 @@ func (s IoK8sAPIAppsV1DaemonSet) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -1838,27 +1754,22 @@ func (s IoK8sAPIAppsV1DaemonSetCondition) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "lastTransitionTime".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -1931,7 +1842,6 @@ func (s IoK8sAPIAppsV1DaemonSetList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -1942,19 +1852,16 @@ func (s IoK8sAPIAppsV1DaemonSetList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -2028,27 +1935,22 @@ func (s IoK8sAPIAppsV1DaemonSetSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("minReadySeconds")
 		s.MinReadySeconds.WriteJSON(j)
 	}
-
 	if s.RevisionHistoryLimit.Set {
 		more.More()
 		j.WriteObjectField("revisionHistoryLimit")
 		s.RevisionHistoryLimit.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("selector")
 	s.Selector.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("template")
 	s.Template.WriteJSON(j)
-
 	if s.UpdateStrategy.Set {
 		more.More()
 		j.WriteObjectField("updateStrategy")
 		s.UpdateStrategy.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -2130,7 +2032,6 @@ func (s IoK8sAPIAppsV1DaemonSetStatus) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("collisionCount")
 		s.CollisionCount.WriteJSON(j)
 	}
-
 	if s.Conditions != nil {
 		more.More()
 		j.WriteObjectField("conditions")
@@ -2143,47 +2044,38 @@ func (s IoK8sAPIAppsV1DaemonSetStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("currentNumberScheduled")
 	j.WriteInt32(s.CurrentNumberScheduled)
-
 	more.More()
 	j.WriteObjectField("desiredNumberScheduled")
 	j.WriteInt32(s.DesiredNumberScheduled)
-
 	if s.NumberAvailable.Set {
 		more.More()
 		j.WriteObjectField("numberAvailable")
 		s.NumberAvailable.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("numberMisscheduled")
 	j.WriteInt32(s.NumberMisscheduled)
-
 	more.More()
 	j.WriteObjectField("numberReady")
 	j.WriteInt32(s.NumberReady)
-
 	if s.NumberUnavailable.Set {
 		more.More()
 		j.WriteObjectField("numberUnavailable")
 		s.NumberUnavailable.WriteJSON(j)
 	}
-
 	if s.ObservedGeneration.Set {
 		more.More()
 		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
-
 	if s.UpdatedNumberScheduled.Set {
 		more.More()
 		j.WriteObjectField("updatedNumberScheduled")
 		s.UpdatedNumberScheduled.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -2283,13 +2175,11 @@ func (s IoK8sAPIAppsV1DaemonSetUpdateStrategy) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("rollingUpdate")
 		s.RollingUpdate.WriteJSON(j)
 	}
-
 	if s.Type.Set {
 		more.More()
 		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -2352,31 +2242,26 @@ func (s IoK8sAPIAppsV1Deployment) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -2456,29 +2341,23 @@ func (s IoK8sAPIAppsV1DeploymentCondition) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "lastTransitionTime".
-
 	// Unsupported kind "pointer" for field "lastUpdateTime".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -2555,7 +2434,6 @@ func (s IoK8sAPIAppsV1DeploymentList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -2566,19 +2444,16 @@ func (s IoK8sAPIAppsV1DeploymentList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -2652,45 +2527,37 @@ func (s IoK8sAPIAppsV1DeploymentSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("minReadySeconds")
 		s.MinReadySeconds.WriteJSON(j)
 	}
-
 	if s.Paused.Set {
 		more.More()
 		j.WriteObjectField("paused")
 		s.Paused.WriteJSON(j)
 	}
-
 	if s.ProgressDeadlineSeconds.Set {
 		more.More()
 		j.WriteObjectField("progressDeadlineSeconds")
 		s.ProgressDeadlineSeconds.WriteJSON(j)
 	}
-
 	if s.Replicas.Set {
 		more.More()
 		j.WriteObjectField("replicas")
 		s.Replicas.WriteJSON(j)
 	}
-
 	if s.RevisionHistoryLimit.Set {
 		more.More()
 		j.WriteObjectField("revisionHistoryLimit")
 		s.RevisionHistoryLimit.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("selector")
 	s.Selector.WriteJSON(j)
-
 	if s.Strategy.Set {
 		more.More()
 		j.WriteObjectField("strategy")
 		s.Strategy.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("template")
 	s.Template.WriteJSON(j)
-
 	j.WriteObjectEnd()
 }
 
@@ -2793,13 +2660,11 @@ func (s IoK8sAPIAppsV1DeploymentStatus) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("availableReplicas")
 		s.AvailableReplicas.WriteJSON(j)
 	}
-
 	if s.CollisionCount.Set {
 		more.More()
 		j.WriteObjectField("collisionCount")
 		s.CollisionCount.WriteJSON(j)
 	}
-
 	if s.Conditions != nil {
 		more.More()
 		j.WriteObjectField("conditions")
@@ -2812,37 +2677,31 @@ func (s IoK8sAPIAppsV1DeploymentStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.ObservedGeneration.Set {
 		more.More()
 		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
-
 	if s.ReadyReplicas.Set {
 		more.More()
 		j.WriteObjectField("readyReplicas")
 		s.ReadyReplicas.WriteJSON(j)
 	}
-
 	if s.Replicas.Set {
 		more.More()
 		j.WriteObjectField("replicas")
 		s.Replicas.WriteJSON(j)
 	}
-
 	if s.UnavailableReplicas.Set {
 		more.More()
 		j.WriteObjectField("unavailableReplicas")
 		s.UnavailableReplicas.WriteJSON(j)
 	}
-
 	if s.UpdatedReplicas.Set {
 		more.More()
 		j.WriteObjectField("updatedReplicas")
 		s.UpdatedReplicas.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -2944,13 +2803,11 @@ func (s IoK8sAPIAppsV1DeploymentStrategy) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("rollingUpdate")
 		s.RollingUpdate.WriteJSON(j)
 	}
-
 	if s.Type.Set {
 		more.More()
 		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -3013,31 +2870,26 @@ func (s IoK8sAPIAppsV1ReplicaSet) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -3117,27 +2969,22 @@ func (s IoK8sAPIAppsV1ReplicaSetCondition) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "lastTransitionTime".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -3210,7 +3057,6 @@ func (s IoK8sAPIAppsV1ReplicaSetList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -3221,19 +3067,16 @@ func (s IoK8sAPIAppsV1ReplicaSetList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -3307,23 +3150,19 @@ func (s IoK8sAPIAppsV1ReplicaSetSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("minReadySeconds")
 		s.MinReadySeconds.WriteJSON(j)
 	}
-
 	if s.Replicas.Set {
 		more.More()
 		j.WriteObjectField("replicas")
 		s.Replicas.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("selector")
 	s.Selector.WriteJSON(j)
-
 	if s.Template.Set {
 		more.More()
 		j.WriteObjectField("template")
 		s.Template.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -3399,7 +3238,6 @@ func (s IoK8sAPIAppsV1ReplicaSetStatus) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("availableReplicas")
 		s.AvailableReplicas.WriteJSON(j)
 	}
-
 	if s.Conditions != nil {
 		more.More()
 		j.WriteObjectField("conditions")
@@ -3412,29 +3250,24 @@ func (s IoK8sAPIAppsV1ReplicaSetStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.FullyLabeledReplicas.Set {
 		more.More()
 		j.WriteObjectField("fullyLabeledReplicas")
 		s.FullyLabeledReplicas.WriteJSON(j)
 	}
-
 	if s.ObservedGeneration.Set {
 		more.More()
 		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
-
 	if s.ReadyReplicas.Set {
 		more.More()
 		j.WriteObjectField("readyReplicas")
 		s.ReadyReplicas.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("replicas")
 	j.WriteInt32(s.Replicas)
-
 	j.WriteObjectEnd()
 }
 
@@ -3514,9 +3347,7 @@ func (s IoK8sAPIAppsV1RollingUpdateDaemonSet) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "maxSurge".
-
 	// Unsupported kind "pointer" for field "maxUnavailable".
-
 	j.WriteObjectEnd()
 }
 
@@ -3569,9 +3400,7 @@ func (s IoK8sAPIAppsV1RollingUpdateDeployment) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "maxSurge".
-
 	// Unsupported kind "pointer" for field "maxUnavailable".
-
 	j.WriteObjectEnd()
 }
 
@@ -3628,7 +3457,6 @@ func (s IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) WriteJSON(j *json.Stream
 		j.WriteObjectField("partition")
 		s.Partition.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -3684,31 +3512,26 @@ func (s IoK8sAPIAppsV1StatefulSet) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -3788,27 +3611,22 @@ func (s IoK8sAPIAppsV1StatefulSetCondition) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "lastTransitionTime".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -3881,7 +3699,6 @@ func (s IoK8sAPIAppsV1StatefulSetList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -3892,19 +3709,16 @@ func (s IoK8sAPIAppsV1StatefulSetList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -3978,43 +3792,35 @@ func (s IoK8sAPIAppsV1StatefulSetSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("minReadySeconds")
 		s.MinReadySeconds.WriteJSON(j)
 	}
-
 	if s.PodManagementPolicy.Set {
 		more.More()
 		j.WriteObjectField("podManagementPolicy")
 		s.PodManagementPolicy.WriteJSON(j)
 	}
-
 	if s.Replicas.Set {
 		more.More()
 		j.WriteObjectField("replicas")
 		s.Replicas.WriteJSON(j)
 	}
-
 	if s.RevisionHistoryLimit.Set {
 		more.More()
 		j.WriteObjectField("revisionHistoryLimit")
 		s.RevisionHistoryLimit.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("selector")
 	s.Selector.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("serviceName")
 	j.WriteString(s.ServiceName)
-
 	more.More()
 	j.WriteObjectField("template")
 	s.Template.WriteJSON(j)
-
 	if s.UpdateStrategy.Set {
 		more.More()
 		j.WriteObjectField("updateStrategy")
 		s.UpdateStrategy.WriteJSON(j)
 	}
-
 	if s.VolumeClaimTemplates != nil {
 		more.More()
 		j.WriteObjectField("volumeClaimTemplates")
@@ -4027,7 +3833,6 @@ func (s IoK8sAPIAppsV1StatefulSetSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -4128,13 +3933,11 @@ func (s IoK8sAPIAppsV1StatefulSetStatus) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("availableReplicas")
 	j.WriteInt32(s.AvailableReplicas)
-
 	if s.CollisionCount.Set {
 		more.More()
 		j.WriteObjectField("collisionCount")
 		s.CollisionCount.WriteJSON(j)
 	}
-
 	if s.Conditions != nil {
 		more.More()
 		j.WriteObjectField("conditions")
@@ -4147,47 +3950,39 @@ func (s IoK8sAPIAppsV1StatefulSetStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.CurrentReplicas.Set {
 		more.More()
 		j.WriteObjectField("currentReplicas")
 		s.CurrentReplicas.WriteJSON(j)
 	}
-
 	if s.CurrentRevision.Set {
 		more.More()
 		j.WriteObjectField("currentRevision")
 		s.CurrentRevision.WriteJSON(j)
 	}
-
 	if s.ObservedGeneration.Set {
 		more.More()
 		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
-
 	if s.ReadyReplicas.Set {
 		more.More()
 		j.WriteObjectField("readyReplicas")
 		s.ReadyReplicas.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("replicas")
 	j.WriteInt32(s.Replicas)
-
 	if s.UpdateRevision.Set {
 		more.More()
 		j.WriteObjectField("updateRevision")
 		s.UpdateRevision.WriteJSON(j)
 	}
-
 	if s.UpdatedReplicas.Set {
 		more.More()
 		j.WriteObjectField("updatedReplicas")
 		s.UpdatedReplicas.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -4295,13 +4090,11 @@ func (s IoK8sAPIAppsV1StatefulSetUpdateStrategy) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("rollingUpdate")
 		s.RollingUpdate.WriteJSON(j)
 	}
-
 	if s.Type.Set {
 		more.More()
 		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -4364,29 +4157,24 @@ func (s IoK8sAPIAuthenticationV1TokenReview) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -4476,13 +4264,11 @@ func (s IoK8sAPIAuthenticationV1TokenReviewSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Token.Set {
 		more.More()
 		j.WriteObjectField("token")
 		s.Token.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -4549,25 +4335,21 @@ func (s IoK8sAPIAuthenticationV1TokenReviewStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Authenticated.Set {
 		more.More()
 		j.WriteObjectField("authenticated")
 		s.Authenticated.WriteJSON(j)
 	}
-
 	if s.Error.Set {
 		more.More()
 		j.WriteObjectField("error")
 		s.Error.WriteJSON(j)
 	}
-
 	if s.User.Set {
 		more.More()
 		j.WriteObjectField("user")
 		s.User.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -4637,7 +4419,6 @@ func (s IoK8sAPIAuthenticationV1UserInfo) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "extra".
-
 	if s.Groups != nil {
 		more.More()
 		j.WriteObjectField("groups")
@@ -4650,19 +4431,16 @@ func (s IoK8sAPIAuthenticationV1UserInfo) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.UID.Set {
 		more.More()
 		j.WriteObjectField("uid")
 		s.UID.WriteJSON(j)
 	}
-
 	if s.Username.Set {
 		more.More()
 		j.WriteObjectField("username")
 		s.Username.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -4733,13 +4511,11 @@ func (s IoK8sAPIAuthorizationV1NonResourceAttributes) WriteJSON(j *json.Stream) 
 		j.WriteObjectField("path")
 		s.Path.WriteJSON(j)
 	}
-
 	if s.Verb.Set {
 		more.More()
 		j.WriteObjectField("verb")
 		s.Verb.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -4809,7 +4585,6 @@ func (s IoK8sAPIAuthorizationV1NonResourceRule) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("verbs")
 	more.Down()
@@ -4820,7 +4595,6 @@ func (s IoK8sAPIAuthorizationV1NonResourceRule) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	j.WriteObjectEnd()
 }
 
@@ -4877,43 +4651,36 @@ func (s IoK8sAPIAuthorizationV1ResourceAttributes) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("group")
 		s.Group.WriteJSON(j)
 	}
-
 	if s.Name.Set {
 		more.More()
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	if s.Namespace.Set {
 		more.More()
 		j.WriteObjectField("namespace")
 		s.Namespace.WriteJSON(j)
 	}
-
 	if s.Resource.Set {
 		more.More()
 		j.WriteObjectField("resource")
 		s.Resource.WriteJSON(j)
 	}
-
 	if s.Subresource.Set {
 		more.More()
 		j.WriteObjectField("subresource")
 		s.Subresource.WriteJSON(j)
 	}
-
 	if s.Verb.Set {
 		more.More()
 		j.WriteObjectField("verb")
 		s.Verb.WriteJSON(j)
 	}
-
 	if s.Version.Set {
 		more.More()
 		j.WriteObjectField("version")
 		s.Version.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -5018,7 +4785,6 @@ func (s IoK8sAPIAuthorizationV1ResourceRule) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.ResourceNames != nil {
 		more.More()
 		j.WriteObjectField("resourceNames")
@@ -5031,7 +4797,6 @@ func (s IoK8sAPIAuthorizationV1ResourceRule) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Resources != nil {
 		more.More()
 		j.WriteObjectField("resources")
@@ -5044,7 +4809,6 @@ func (s IoK8sAPIAuthorizationV1ResourceRule) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("verbs")
 	more.Down()
@@ -5055,7 +4819,6 @@ func (s IoK8sAPIAuthorizationV1ResourceRule) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	j.WriteObjectEnd()
 }
 
@@ -5120,29 +4883,24 @@ func (s IoK8sAPIAuthorizationV1SelfSubjectAccessReview) WriteJSON(j *json.Stream
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -5225,13 +4983,11 @@ func (s IoK8sAPIAuthorizationV1SelfSubjectAccessReviewSpec) WriteJSON(j *json.St
 		j.WriteObjectField("nonResourceAttributes")
 		s.NonResourceAttributes.WriteJSON(j)
 	}
-
 	if s.ResourceAttributes.Set {
 		more.More()
 		j.WriteObjectField("resourceAttributes")
 		s.ResourceAttributes.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -5294,29 +5050,24 @@ func (s IoK8sAPIAuthorizationV1SelfSubjectRulesReview) WriteJSON(j *json.Stream)
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -5399,7 +5150,6 @@ func (s IoK8sAPIAuthorizationV1SelfSubjectRulesReviewSpec) WriteJSON(j *json.Str
 		j.WriteObjectField("namespace")
 		s.Namespace.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -5455,29 +5205,24 @@ func (s IoK8sAPIAuthorizationV1SubjectAccessReview) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -5556,7 +5301,6 @@ func (s IoK8sAPIAuthorizationV1SubjectAccessReviewSpec) WriteJSON(j *json.Stream
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "extra".
-
 	if s.Groups != nil {
 		more.More()
 		j.WriteObjectField("groups")
@@ -5569,31 +5313,26 @@ func (s IoK8sAPIAuthorizationV1SubjectAccessReviewSpec) WriteJSON(j *json.Stream
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.NonResourceAttributes.Set {
 		more.More()
 		j.WriteObjectField("nonResourceAttributes")
 		s.NonResourceAttributes.WriteJSON(j)
 	}
-
 	if s.ResourceAttributes.Set {
 		more.More()
 		j.WriteObjectField("resourceAttributes")
 		s.ResourceAttributes.WriteJSON(j)
 	}
-
 	if s.UID.Set {
 		more.More()
 		j.WriteObjectField("uid")
 		s.UID.WriteJSON(j)
 	}
-
 	if s.User.Set {
 		more.More()
 		j.WriteObjectField("user")
 		s.User.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -5676,25 +5415,21 @@ func (s IoK8sAPIAuthorizationV1SubjectAccessReviewStatus) WriteJSON(j *json.Stre
 	more.More()
 	j.WriteObjectField("allowed")
 	j.WriteBool(s.Allowed)
-
 	if s.Denied.Set {
 		more.More()
 		j.WriteObjectField("denied")
 		s.Denied.WriteJSON(j)
 	}
-
 	if s.EvaluationError.Set {
 		more.More()
 		j.WriteObjectField("evaluationError")
 		s.EvaluationError.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -5767,11 +5502,9 @@ func (s IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) WriteJSON(j *json.Strea
 		j.WriteObjectField("evaluationError")
 		s.EvaluationError.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("incomplete")
 	j.WriteBool(s.Incomplete)
-
 	more.More()
 	j.WriteObjectField("nonResourceRules")
 	more.Down()
@@ -5782,7 +5515,6 @@ func (s IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) WriteJSON(j *json.Strea
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	more.More()
 	j.WriteObjectField("resourceRules")
 	more.Down()
@@ -5793,7 +5525,6 @@ func (s IoK8sAPIAuthorizationV1SubjectRulesReviewStatus) WriteJSON(j *json.Strea
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	j.WriteObjectEnd()
 }
 
@@ -5860,15 +5591,12 @@ func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) WriteJSON(j *json.Stre
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	j.WriteObjectEnd()
 }
 
@@ -5930,31 +5658,26 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) WriteJSON(j *json.Stream) 
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -6038,7 +5761,6 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) WriteJSON(j *json.Stre
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -6049,19 +5771,16 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) WriteJSON(j *json.Stre
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -6133,23 +5852,19 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) WriteJSON(j *json.Stre
 	more.More()
 	j.WriteObjectField("maxReplicas")
 	j.WriteInt32(s.MaxReplicas)
-
 	if s.MinReplicas.Set {
 		more.More()
 		j.WriteObjectField("minReplicas")
 		s.MinReplicas.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("scaleTargetRef")
 	s.ScaleTargetRef.WriteJSON(j)
-
 	if s.TargetCPUUtilizationPercentage.Set {
 		more.More()
 		j.WriteObjectField("targetCPUUtilizationPercentage")
 		s.TargetCPUUtilizationPercentage.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -6221,23 +5936,18 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) WriteJSON(j *json.St
 		j.WriteObjectField("currentCPUUtilizationPercentage")
 		s.CurrentCPUUtilizationPercentage.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("currentReplicas")
 	j.WriteInt32(s.CurrentReplicas)
-
 	more.More()
 	j.WriteObjectField("desiredReplicas")
 	j.WriteInt32(s.DesiredReplicas)
-
 	// Unsupported kind "pointer" for field "lastScaleTime".
-
 	if s.ObservedGeneration.Set {
 		more.More()
 		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -6308,19 +6018,15 @@ func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) WriteJSON(j *js
 	more.More()
 	j.WriteObjectField("container")
 	j.WriteString(s.Container)
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	if s.TargetAverageUtilization.Set {
 		more.More()
 		j.WriteObjectField("targetAverageUtilization")
 		s.TargetAverageUtilization.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "targetAverageValue".
-
 	j.WriteObjectEnd()
 }
 
@@ -6384,19 +6090,15 @@ func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) WriteJSON(j *js
 	more.More()
 	j.WriteObjectField("container")
 	j.WriteString(s.Container)
-
 	if s.CurrentAverageUtilization.Set {
 		more.More()
 		j.WriteObjectField("currentAverageUtilization")
 		s.CurrentAverageUtilization.WriteJSON(j)
 	}
-
 	// Unsupported kind "alias" for field "currentAverageValue".
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	j.WriteObjectEnd()
 }
 
@@ -6462,15 +6164,12 @@ func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) WriteJSON(j *json
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	j.WriteObjectEnd()
 }
 
@@ -6530,17 +6229,13 @@ func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) WriteJSON(j *json.Stream
 	more.More()
 	j.WriteObjectField("metricName")
 	j.WriteString(s.MetricName)
-
 	if s.MetricSelector.Set {
 		more.More()
 		j.WriteObjectField("metricSelector")
 		s.MetricSelector.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "targetAverageValue".
-
 	// Unsupported kind "pointer" for field "targetValue".
-
 	j.WriteObjectEnd()
 }
 
@@ -6603,19 +6298,15 @@ func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) WriteJSON(j *json.Stream
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "currentAverageValue".
-
 	// Unsupported kind "alias" for field "currentValue".
-
 	more.More()
 	j.WriteObjectField("metricName")
 	j.WriteString(s.MetricName)
-
 	if s.MetricSelector.Set {
 		more.More()
 		j.WriteObjectField("metricSelector")
 		s.MetricSelector.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -6682,31 +6373,26 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) WriteJSON(j *json.Str
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -6786,27 +6472,22 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) WriteJSON(j 
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "lastTransitionTime".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -6879,7 +6560,6 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) WriteJSON(j *json
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -6890,19 +6570,16 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) WriteJSON(j *json
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -6974,7 +6651,6 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) WriteJSON(j *json
 	more.More()
 	j.WriteObjectField("maxReplicas")
 	j.WriteInt32(s.MaxReplicas)
-
 	if s.Metrics != nil {
 		more.More()
 		j.WriteObjectField("metrics")
@@ -6987,17 +6663,14 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) WriteJSON(j *json
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.MinReplicas.Set {
 		more.More()
 		j.WriteObjectField("minReplicas")
 		s.MinReplicas.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("scaleTargetRef")
 	s.ScaleTargetRef.WriteJSON(j)
-
 	j.WriteObjectEnd()
 }
 
@@ -7071,7 +6744,6 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) WriteJSON(j *js
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.CurrentMetrics != nil {
 		more.More()
 		j.WriteObjectField("currentMetrics")
@@ -7084,23 +6756,18 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) WriteJSON(j *js
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("currentReplicas")
 	j.WriteInt32(s.CurrentReplicas)
-
 	more.More()
 	j.WriteObjectField("desiredReplicas")
 	j.WriteInt32(s.DesiredReplicas)
-
 	// Unsupported kind "pointer" for field "lastScaleTime".
-
 	if s.ObservedGeneration.Set {
 		more.More()
 		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -7174,35 +6841,29 @@ func (s IoK8sAPIAutoscalingV2beta1MetricSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("containerResource")
 		s.ContainerResource.WriteJSON(j)
 	}
-
 	if s.External.Set {
 		more.More()
 		j.WriteObjectField("external")
 		s.External.WriteJSON(j)
 	}
-
 	if s.Object.Set {
 		more.More()
 		j.WriteObjectField("object")
 		s.Object.WriteJSON(j)
 	}
-
 	if s.Pods.Set {
 		more.More()
 		j.WriteObjectField("pods")
 		s.Pods.WriteJSON(j)
 	}
-
 	if s.Resource.Set {
 		more.More()
 		j.WriteObjectField("resource")
 		s.Resource.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -7289,35 +6950,29 @@ func (s IoK8sAPIAutoscalingV2beta1MetricStatus) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("containerResource")
 		s.ContainerResource.WriteJSON(j)
 	}
-
 	if s.External.Set {
 		more.More()
 		j.WriteObjectField("external")
 		s.External.WriteJSON(j)
 	}
-
 	if s.Object.Set {
 		more.More()
 		j.WriteObjectField("object")
 		s.Object.WriteJSON(j)
 	}
-
 	if s.Pods.Set {
 		more.More()
 		j.WriteObjectField("pods")
 		s.Pods.WriteJSON(j)
 	}
-
 	if s.Resource.Set {
 		more.More()
 		j.WriteObjectField("resource")
 		s.Resource.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -7400,23 +7055,18 @@ func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) WriteJSON(j *json.Stream) 
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "averageValue".
-
 	more.More()
 	j.WriteObjectField("metricName")
 	j.WriteString(s.MetricName)
-
 	if s.Selector.Set {
 		more.More()
 		j.WriteObjectField("selector")
 		s.Selector.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("target")
 	s.Target.WriteJSON(j)
-
 	// Unsupported kind "alias" for field "targetValue".
-
 	j.WriteObjectEnd()
 }
 
@@ -7485,23 +7135,18 @@ func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) WriteJSON(j *json.Stream) 
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "averageValue".
-
 	// Unsupported kind "alias" for field "currentValue".
-
 	more.More()
 	j.WriteObjectField("metricName")
 	j.WriteString(s.MetricName)
-
 	if s.Selector.Set {
 		more.More()
 		j.WriteObjectField("selector")
 		s.Selector.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("target")
 	s.Target.WriteJSON(j)
-
 	j.WriteObjectEnd()
 }
 
@@ -7572,15 +7217,12 @@ func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("metricName")
 	j.WriteString(s.MetricName)
-
 	if s.Selector.Set {
 		more.More()
 		j.WriteObjectField("selector")
 		s.Selector.WriteJSON(j)
 	}
-
 	// Unsupported kind "alias" for field "targetAverageValue".
-
 	j.WriteObjectEnd()
 }
 
@@ -7639,17 +7281,14 @@ func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "alias" for field "currentAverageValue".
-
 	more.More()
 	j.WriteObjectField("metricName")
 	j.WriteString(s.MetricName)
-
 	if s.Selector.Set {
 		more.More()
 		j.WriteObjectField("selector")
 		s.Selector.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -7710,15 +7349,12 @@ func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) WriteJSON(j *json.Stream
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	if s.TargetAverageUtilization.Set {
 		more.More()
 		j.WriteObjectField("targetAverageUtilization")
 		s.TargetAverageUtilization.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "targetAverageValue".
-
 	j.WriteObjectEnd()
 }
 
@@ -7781,13 +7417,10 @@ func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) WriteJSON(j *json.Stream
 		j.WriteObjectField("currentAverageUtilization")
 		s.CurrentAverageUtilization.WriteJSON(j)
 	}
-
 	// Unsupported kind "alias" for field "currentAverageValue".
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	j.WriteObjectEnd()
 }
 
@@ -7848,15 +7481,12 @@ func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) WriteJSON(j *js
 	more.More()
 	j.WriteObjectField("container")
 	j.WriteString(s.Container)
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	more.More()
 	j.WriteObjectField("target")
 	s.Target.WriteJSON(j)
-
 	j.WriteObjectEnd()
 }
 
@@ -7915,15 +7545,12 @@ func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) WriteJSON(j *js
 	more.More()
 	j.WriteObjectField("container")
 	j.WriteString(s.Container)
-
 	more.More()
 	j.WriteObjectField("current")
 	s.Current.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	j.WriteObjectEnd()
 }
 
@@ -7984,15 +7611,12 @@ func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) WriteJSON(j *json
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	j.WriteObjectEnd()
 }
 
@@ -8052,11 +7676,9 @@ func (s IoK8sAPIAutoscalingV2beta2ExternalMetricSource) WriteJSON(j *json.Stream
 	more.More()
 	j.WriteObjectField("metric")
 	s.Metric.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("target")
 	s.Target.WriteJSON(j)
-
 	j.WriteObjectEnd()
 }
 
@@ -8115,11 +7737,9 @@ func (s IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) WriteJSON(j *json.Stream
 	more.More()
 	j.WriteObjectField("current")
 	s.Current.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("metric")
 	s.Metric.WriteJSON(j)
-
 	j.WriteObjectEnd()
 }
 
@@ -8178,15 +7798,12 @@ func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("periodSeconds")
 	j.WriteInt32(s.PeriodSeconds)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	more.More()
 	j.WriteObjectField("value")
 	j.WriteInt32(s.Value)
-
 	j.WriteObjectEnd()
 }
 
@@ -8251,19 +7868,16 @@ func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.SelectPolicy.Set {
 		more.More()
 		j.WriteObjectField("selectPolicy")
 		s.SelectPolicy.WriteJSON(j)
 	}
-
 	if s.StabilizationWindowSeconds.Set {
 		more.More()
 		j.WriteObjectField("stabilizationWindowSeconds")
 		s.StabilizationWindowSeconds.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -8330,31 +7944,26 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) WriteJSON(j *json.Str
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -8438,13 +8047,11 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) WriteJSON(j *
 		j.WriteObjectField("scaleDown")
 		s.ScaleDown.WriteJSON(j)
 	}
-
 	if s.ScaleUp.Set {
 		more.More()
 		j.WriteObjectField("scaleUp")
 		s.ScaleUp.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -8503,27 +8110,22 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) WriteJSON(j 
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "lastTransitionTime".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -8596,7 +8198,6 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) WriteJSON(j *json
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -8607,19 +8208,16 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) WriteJSON(j *json
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -8693,11 +8291,9 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) WriteJSON(j *json
 		j.WriteObjectField("behavior")
 		s.Behavior.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("maxReplicas")
 	j.WriteInt32(s.MaxReplicas)
-
 	if s.Metrics != nil {
 		more.More()
 		j.WriteObjectField("metrics")
@@ -8710,17 +8306,14 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) WriteJSON(j *json
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.MinReplicas.Set {
 		more.More()
 		j.WriteObjectField("minReplicas")
 		s.MinReplicas.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("scaleTargetRef")
 	s.ScaleTargetRef.WriteJSON(j)
-
 	j.WriteObjectEnd()
 }
 
@@ -8801,7 +8394,6 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) WriteJSON(j *js
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.CurrentMetrics != nil {
 		more.More()
 		j.WriteObjectField("currentMetrics")
@@ -8814,23 +8406,18 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) WriteJSON(j *js
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("currentReplicas")
 	j.WriteInt32(s.CurrentReplicas)
-
 	more.More()
 	j.WriteObjectField("desiredReplicas")
 	j.WriteInt32(s.DesiredReplicas)
-
 	// Unsupported kind "pointer" for field "lastScaleTime".
-
 	if s.ObservedGeneration.Set {
 		more.More()
 		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -8902,13 +8489,11 @@ func (s IoK8sAPIAutoscalingV2beta2MetricIdentifier) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	if s.Selector.Set {
 		more.More()
 		j.WriteObjectField("selector")
 		s.Selector.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -8967,35 +8552,29 @@ func (s IoK8sAPIAutoscalingV2beta2MetricSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("containerResource")
 		s.ContainerResource.WriteJSON(j)
 	}
-
 	if s.External.Set {
 		more.More()
 		j.WriteObjectField("external")
 		s.External.WriteJSON(j)
 	}
-
 	if s.Object.Set {
 		more.More()
 		j.WriteObjectField("object")
 		s.Object.WriteJSON(j)
 	}
-
 	if s.Pods.Set {
 		more.More()
 		j.WriteObjectField("pods")
 		s.Pods.WriteJSON(j)
 	}
-
 	if s.Resource.Set {
 		more.More()
 		j.WriteObjectField("resource")
 		s.Resource.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -9082,35 +8661,29 @@ func (s IoK8sAPIAutoscalingV2beta2MetricStatus) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("containerResource")
 		s.ContainerResource.WriteJSON(j)
 	}
-
 	if s.External.Set {
 		more.More()
 		j.WriteObjectField("external")
 		s.External.WriteJSON(j)
 	}
-
 	if s.Object.Set {
 		more.More()
 		j.WriteObjectField("object")
 		s.Object.WriteJSON(j)
 	}
-
 	if s.Pods.Set {
 		more.More()
 		j.WriteObjectField("pods")
 		s.Pods.WriteJSON(j)
 	}
-
 	if s.Resource.Set {
 		more.More()
 		j.WriteObjectField("resource")
 		s.Resource.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -9197,15 +8770,11 @@ func (s IoK8sAPIAutoscalingV2beta2MetricTarget) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("averageUtilization")
 		s.AverageUtilization.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "averageValue".
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	// Unsupported kind "pointer" for field "value".
-
 	j.WriteObjectEnd()
 }
 
@@ -9272,11 +8841,8 @@ func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("averageUtilization")
 		s.AverageUtilization.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "averageValue".
-
 	// Unsupported kind "pointer" for field "value".
-
 	j.WriteObjectEnd()
 }
 
@@ -9338,15 +8904,12 @@ func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) WriteJSON(j *json.Stream) 
 	more.More()
 	j.WriteObjectField("describedObject")
 	s.DescribedObject.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("metric")
 	s.Metric.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("target")
 	s.Target.WriteJSON(j)
-
 	j.WriteObjectEnd()
 }
 
@@ -9411,15 +8974,12 @@ func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) WriteJSON(j *json.Stream) 
 	more.More()
 	j.WriteObjectField("current")
 	s.Current.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("describedObject")
 	s.DescribedObject.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("metric")
 	s.Metric.WriteJSON(j)
-
 	j.WriteObjectEnd()
 }
 
@@ -9484,11 +9044,9 @@ func (s IoK8sAPIAutoscalingV2beta2PodsMetricSource) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("metric")
 	s.Metric.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("target")
 	s.Target.WriteJSON(j)
-
 	j.WriteObjectEnd()
 }
 
@@ -9547,11 +9105,9 @@ func (s IoK8sAPIAutoscalingV2beta2PodsMetricStatus) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("current")
 	s.Current.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("metric")
 	s.Metric.WriteJSON(j)
-
 	j.WriteObjectEnd()
 }
 
@@ -9610,11 +9166,9 @@ func (s IoK8sAPIAutoscalingV2beta2ResourceMetricSource) WriteJSON(j *json.Stream
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	more.More()
 	j.WriteObjectField("target")
 	s.Target.WriteJSON(j)
-
 	j.WriteObjectEnd()
 }
 
@@ -9670,11 +9224,9 @@ func (s IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) WriteJSON(j *json.Stream
 	more.More()
 	j.WriteObjectField("current")
 	s.Current.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	j.WriteObjectEnd()
 }
 
@@ -9732,31 +9284,26 @@ func (s IoK8sAPIBatchV1CronJob) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -9840,7 +9387,6 @@ func (s IoK8sAPIBatchV1CronJobList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -9851,19 +9397,16 @@ func (s IoK8sAPIBatchV1CronJobList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -9937,39 +9480,32 @@ func (s IoK8sAPIBatchV1CronJobSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("concurrencyPolicy")
 		s.ConcurrencyPolicy.WriteJSON(j)
 	}
-
 	if s.FailedJobsHistoryLimit.Set {
 		more.More()
 		j.WriteObjectField("failedJobsHistoryLimit")
 		s.FailedJobsHistoryLimit.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("jobTemplate")
 	s.JobTemplate.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("schedule")
 	j.WriteString(s.Schedule)
-
 	if s.StartingDeadlineSeconds.Set {
 		more.More()
 		j.WriteObjectField("startingDeadlineSeconds")
 		s.StartingDeadlineSeconds.WriteJSON(j)
 	}
-
 	if s.SuccessfulJobsHistoryLimit.Set {
 		more.More()
 		j.WriteObjectField("successfulJobsHistoryLimit")
 		s.SuccessfulJobsHistoryLimit.WriteJSON(j)
 	}
-
 	if s.Suspend.Set {
 		more.More()
 		j.WriteObjectField("suspend")
 		s.Suspend.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -10069,11 +9605,8 @@ func (s IoK8sAPIBatchV1CronJobStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	// Unsupported kind "pointer" for field "lastScheduleTime".
-
 	// Unsupported kind "pointer" for field "lastSuccessfulTime".
-
 	j.WriteObjectEnd()
 }
 
@@ -10134,31 +9667,26 @@ func (s IoK8sAPIBatchV1Job) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -10238,29 +9766,23 @@ func (s IoK8sAPIBatchV1JobCondition) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "lastProbeTime".
-
 	// Unsupported kind "pointer" for field "lastTransitionTime".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -10337,7 +9859,6 @@ func (s IoK8sAPIBatchV1JobList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -10348,19 +9869,16 @@ func (s IoK8sAPIBatchV1JobList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -10434,59 +9952,49 @@ func (s IoK8sAPIBatchV1JobSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("activeDeadlineSeconds")
 		s.ActiveDeadlineSeconds.WriteJSON(j)
 	}
-
 	if s.BackoffLimit.Set {
 		more.More()
 		j.WriteObjectField("backoffLimit")
 		s.BackoffLimit.WriteJSON(j)
 	}
-
 	if s.CompletionMode.Set {
 		more.More()
 		j.WriteObjectField("completionMode")
 		s.CompletionMode.WriteJSON(j)
 	}
-
 	if s.Completions.Set {
 		more.More()
 		j.WriteObjectField("completions")
 		s.Completions.WriteJSON(j)
 	}
-
 	if s.ManualSelector.Set {
 		more.More()
 		j.WriteObjectField("manualSelector")
 		s.ManualSelector.WriteJSON(j)
 	}
-
 	if s.Parallelism.Set {
 		more.More()
 		j.WriteObjectField("parallelism")
 		s.Parallelism.WriteJSON(j)
 	}
-
 	if s.Selector.Set {
 		more.More()
 		j.WriteObjectField("selector")
 		s.Selector.WriteJSON(j)
 	}
-
 	if s.Suspend.Set {
 		more.More()
 		j.WriteObjectField("suspend")
 		s.Suspend.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("template")
 	s.Template.WriteJSON(j)
-
 	if s.TtlSecondsAfterFinished.Set {
 		more.More()
 		j.WriteObjectField("ttlSecondsAfterFinished")
 		s.TtlSecondsAfterFinished.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -10604,15 +10112,12 @@ func (s IoK8sAPIBatchV1JobStatus) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("active")
 		s.Active.WriteJSON(j)
 	}
-
 	if s.CompletedIndexes.Set {
 		more.More()
 		j.WriteObjectField("completedIndexes")
 		s.CompletedIndexes.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "completionTime".
-
 	if s.Conditions != nil {
 		more.More()
 		j.WriteObjectField("conditions")
@@ -10625,27 +10130,22 @@ func (s IoK8sAPIBatchV1JobStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Failed.Set {
 		more.More()
 		j.WriteObjectField("failed")
 		s.Failed.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "startTime".
-
 	if s.Succeeded.Set {
 		more.More()
 		j.WriteObjectField("succeeded")
 		s.Succeeded.WriteJSON(j)
 	}
-
 	if s.UncountedTerminatedPods.Set {
 		more.More()
 		j.WriteObjectField("uncountedTerminatedPods")
 		s.UncountedTerminatedPods.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -10741,13 +10241,11 @@ func (s IoK8sAPIBatchV1JobTemplateSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -10817,7 +10315,6 @@ func (s IoK8sAPIBatchV1UncountedTerminatedPods) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Succeeded != nil {
 		more.More()
 		j.WriteObjectField("succeeded")
@@ -10830,7 +10327,6 @@ func (s IoK8sAPIBatchV1UncountedTerminatedPods) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -10887,31 +10383,26 @@ func (s IoK8sAPIBatchV1beta1CronJob) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -10995,7 +10486,6 @@ func (s IoK8sAPIBatchV1beta1CronJobList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -11006,19 +10496,16 @@ func (s IoK8sAPIBatchV1beta1CronJobList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -11092,39 +10579,32 @@ func (s IoK8sAPIBatchV1beta1CronJobSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("concurrencyPolicy")
 		s.ConcurrencyPolicy.WriteJSON(j)
 	}
-
 	if s.FailedJobsHistoryLimit.Set {
 		more.More()
 		j.WriteObjectField("failedJobsHistoryLimit")
 		s.FailedJobsHistoryLimit.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("jobTemplate")
 	s.JobTemplate.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("schedule")
 	j.WriteString(s.Schedule)
-
 	if s.StartingDeadlineSeconds.Set {
 		more.More()
 		j.WriteObjectField("startingDeadlineSeconds")
 		s.StartingDeadlineSeconds.WriteJSON(j)
 	}
-
 	if s.SuccessfulJobsHistoryLimit.Set {
 		more.More()
 		j.WriteObjectField("successfulJobsHistoryLimit")
 		s.SuccessfulJobsHistoryLimit.WriteJSON(j)
 	}
-
 	if s.Suspend.Set {
 		more.More()
 		j.WriteObjectField("suspend")
 		s.Suspend.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -11224,11 +10704,8 @@ func (s IoK8sAPIBatchV1beta1CronJobStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	// Unsupported kind "pointer" for field "lastScheduleTime".
-
 	// Unsupported kind "pointer" for field "lastSuccessfulTime".
-
 	j.WriteObjectEnd()
 }
 
@@ -11289,13 +10766,11 @@ func (s IoK8sAPIBatchV1beta1JobTemplateSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -11358,29 +10833,24 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequest) WriteJSON(j *json.Strea
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -11459,29 +10929,23 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) WriteJSON(j *j
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "lastTransitionTime".
-
 	// Unsupported kind "pointer" for field "lastUpdateTime".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -11558,7 +11022,6 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestList) WriteJSON(j *json.S
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -11569,19 +11032,16 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestList) WriteJSON(j *json.S
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -11655,9 +11115,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) WriteJSON(j *json.S
 		j.WriteObjectField("expirationSeconds")
 		s.ExpirationSeconds.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "extra".
-
 	if s.Groups != nil {
 		more.More()
 		j.WriteObjectField("groups")
@@ -11670,19 +11128,15 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) WriteJSON(j *json.S
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	// Unsupported kind "primitive" for field "request".
-
 	more.More()
 	j.WriteObjectField("signerName")
 	j.WriteString(s.SignerName)
-
 	if s.UID.Set {
 		more.More()
 		j.WriteObjectField("uid")
 		s.UID.WriteJSON(j)
 	}
-
 	if s.Usages != nil {
 		more.More()
 		j.WriteObjectField("usages")
@@ -11695,13 +11149,11 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) WriteJSON(j *json.S
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Username.Set {
 		more.More()
 		j.WriteObjectField("username")
 		s.Username.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -11786,7 +11238,6 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) WriteJSON(j *json
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "certificate".
-
 	if s.Conditions != nil {
 		more.More()
 		j.WriteObjectField("conditions")
@@ -11799,7 +11250,6 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) WriteJSON(j *json
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -11856,25 +11306,21 @@ func (s IoK8sAPICoordinationV1Lease) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -11951,7 +11397,6 @@ func (s IoK8sAPICoordinationV1LeaseList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -11962,19 +11407,16 @@ func (s IoK8sAPICoordinationV1LeaseList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -12044,27 +11486,22 @@ func (s IoK8sAPICoordinationV1LeaseSpec) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "acquireTime".
-
 	if s.HolderIdentity.Set {
 		more.More()
 		j.WriteObjectField("holderIdentity")
 		s.HolderIdentity.WriteJSON(j)
 	}
-
 	if s.LeaseDurationSeconds.Set {
 		more.More()
 		j.WriteObjectField("leaseDurationSeconds")
 		s.LeaseDurationSeconds.WriteJSON(j)
 	}
-
 	if s.LeaseTransitions.Set {
 		more.More()
 		j.WriteObjectField("leaseTransitions")
 		s.LeaseTransitions.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "renewTime".
-
 	j.WriteObjectEnd()
 }
 
@@ -12142,23 +11579,19 @@ func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) WriteJSON(j *json.Stream
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	if s.Partition.Set {
 		more.More()
 		j.WriteObjectField("partition")
 		s.Partition.WriteJSON(j)
 	}
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("volumeID")
 	j.WriteString(s.VolumeID)
-
 	j.WriteObjectEnd()
 }
 
@@ -12231,19 +11664,16 @@ func (s IoK8sAPICoreV1Affinity) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("nodeAffinity")
 		s.NodeAffinity.WriteJSON(j)
 	}
-
 	if s.PodAffinity.Set {
 		more.More()
 		j.WriteObjectField("podAffinity")
 		s.PodAffinity.WriteJSON(j)
 	}
-
 	if s.PodAntiAffinity.Set {
 		more.More()
 		j.WriteObjectField("podAntiAffinity")
 		s.PodAntiAffinity.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -12311,11 +11741,9 @@ func (s IoK8sAPICoreV1AttachedVolume) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("devicePath")
 	j.WriteString(s.DevicePath)
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	j.WriteObjectEnd()
 }
 
@@ -12370,33 +11798,27 @@ func (s IoK8sAPICoreV1AzureDiskVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("cachingMode")
 		s.CachingMode.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("diskName")
 	j.WriteString(s.DiskName)
-
 	more.More()
 	j.WriteObjectField("diskURI")
 	j.WriteString(s.DiskURI)
-
 	if s.FsType.Set {
 		more.More()
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -12479,21 +11901,17 @@ func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) WriteJSON(j *json.Stream)
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("secretName")
 	j.WriteString(s.SecretName)
-
 	if s.SecretNamespace.Set {
 		more.More()
 		j.WriteObjectField("secretNamespace")
 		s.SecretNamespace.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("shareName")
 	j.WriteString(s.ShareName)
-
 	j.WriteObjectEnd()
 }
 
@@ -12562,15 +11980,12 @@ func (s IoK8sAPICoreV1AzureFileVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("secretName")
 	j.WriteString(s.SecretName)
-
 	more.More()
 	j.WriteObjectField("shareName")
 	j.WriteString(s.ShareName)
-
 	j.WriteObjectEnd()
 }
 
@@ -12632,47 +12047,38 @@ func (s IoK8sAPICoreV1CSIPersistentVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("controllerExpandSecretRef")
 		s.ControllerExpandSecretRef.WriteJSON(j)
 	}
-
 	if s.ControllerPublishSecretRef.Set {
 		more.More()
 		j.WriteObjectField("controllerPublishSecretRef")
 		s.ControllerPublishSecretRef.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("driver")
 	j.WriteString(s.Driver)
-
 	if s.FsType.Set {
 		more.More()
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	if s.NodePublishSecretRef.Set {
 		more.More()
 		j.WriteObjectField("nodePublishSecretRef")
 		s.NodePublishSecretRef.WriteJSON(j)
 	}
-
 	if s.NodeStageSecretRef.Set {
 		more.More()
 		j.WriteObjectField("nodeStageSecretRef")
 		s.NodeStageSecretRef.WriteJSON(j)
 	}
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "volumeAttributes".
-
 	more.More()
 	j.WriteObjectField("volumeHandle")
 	j.WriteString(s.VolumeHandle)
-
 	j.WriteObjectEnd()
 }
 
@@ -12771,27 +12177,22 @@ func (s IoK8sAPICoreV1CSIVolumeSource) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("driver")
 	j.WriteString(s.Driver)
-
 	if s.FsType.Set {
 		more.More()
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	if s.NodePublishSecretRef.Set {
 		more.More()
 		j.WriteObjectField("nodePublishSecretRef")
 		s.NodePublishSecretRef.WriteJSON(j)
 	}
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "volumeAttributes".
-
 	j.WriteObjectEnd()
 }
 
@@ -12875,7 +12276,6 @@ func (s IoK8sAPICoreV1Capabilities) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Drop != nil {
 		more.More()
 		j.WriteObjectField("drop")
@@ -12888,7 +12288,6 @@ func (s IoK8sAPICoreV1Capabilities) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -12950,37 +12349,31 @@ func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Path.Set {
 		more.More()
 		j.WriteObjectField("path")
 		s.Path.WriteJSON(j)
 	}
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	if s.SecretFile.Set {
 		more.More()
 		j.WriteObjectField("secretFile")
 		s.SecretFile.WriteJSON(j)
 	}
-
 	if s.SecretRef.Set {
 		more.More()
 		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
-
 	if s.User.Set {
 		more.More()
 		j.WriteObjectField("user")
 		s.User.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -13073,37 +12466,31 @@ func (s IoK8sAPICoreV1CephFSVolumeSource) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Path.Set {
 		more.More()
 		j.WriteObjectField("path")
 		s.Path.WriteJSON(j)
 	}
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	if s.SecretFile.Set {
 		more.More()
 		j.WriteObjectField("secretFile")
 		s.SecretFile.WriteJSON(j)
 	}
-
 	if s.SecretRef.Set {
 		more.More()
 		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
-
 	if s.User.Set {
 		more.More()
 		j.WriteObjectField("user")
 		s.User.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -13191,23 +12578,19 @@ func (s IoK8sAPICoreV1CinderPersistentVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	if s.SecretRef.Set {
 		more.More()
 		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("volumeID")
 	j.WriteString(s.VolumeID)
-
 	j.WriteObjectEnd()
 }
 
@@ -13280,23 +12663,19 @@ func (s IoK8sAPICoreV1CinderVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	if s.SecretRef.Set {
 		more.More()
 		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("volumeID")
 	j.WriteString(s.VolumeID)
-
 	j.WriteObjectEnd()
 }
 
@@ -13369,7 +12748,6 @@ func (s IoK8sAPICoreV1ClientIPConfig) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("timeoutSeconds")
 		s.TimeoutSeconds.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -13425,21 +12803,17 @@ func (s IoK8sAPICoreV1ComponentCondition) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("error")
 		s.Error.WriteJSON(j)
 	}
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -13508,7 +12882,6 @@ func (s IoK8sAPICoreV1ComponentStatus) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Conditions != nil {
 		more.More()
 		j.WriteObjectField("conditions")
@@ -13521,19 +12894,16 @@ func (s IoK8sAPICoreV1ComponentStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -13607,7 +12977,6 @@ func (s IoK8sAPICoreV1ComponentStatusList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -13618,19 +12987,16 @@ func (s IoK8sAPICoreV1ComponentStatusList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -13704,29 +13070,23 @@ func (s IoK8sAPICoreV1ConfigMap) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "binaryData".
-
 	// Unsupported kind "pointer" for field "data".
-
 	if s.Immutable.Set {
 		more.More()
 		j.WriteObjectField("immutable")
 		s.Immutable.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -13811,13 +13171,11 @@ func (s IoK8sAPICoreV1ConfigMapEnvSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	if s.Optional.Set {
 		more.More()
 		j.WriteObjectField("optional")
 		s.Optional.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -13878,19 +13236,16 @@ func (s IoK8sAPICoreV1ConfigMapKeySelector) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("key")
 	j.WriteString(s.Key)
-
 	if s.Name.Set {
 		more.More()
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	if s.Optional.Set {
 		more.More()
 		j.WriteObjectField("optional")
 		s.Optional.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -13956,7 +13311,6 @@ func (s IoK8sAPICoreV1ConfigMapList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -13967,19 +13321,16 @@ func (s IoK8sAPICoreV1ConfigMapList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -14051,27 +13402,22 @@ func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("kubeletConfigKey")
 	j.WriteString(s.KubeletConfigKey)
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	more.More()
 	j.WriteObjectField("namespace")
 	j.WriteString(s.Namespace)
-
 	if s.ResourceVersion.Set {
 		more.More()
 		j.WriteObjectField("resourceVersion")
 		s.ResourceVersion.WriteJSON(j)
 	}
-
 	if s.UID.Set {
 		more.More()
 		j.WriteObjectField("uid")
 		s.UID.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -14150,19 +13496,16 @@ func (s IoK8sAPICoreV1ConfigMapProjection) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Name.Set {
 		more.More()
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	if s.Optional.Set {
 		more.More()
 		j.WriteObjectField("optional")
 		s.Optional.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -14229,7 +13572,6 @@ func (s IoK8sAPICoreV1ConfigMapVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("defaultMode")
 		s.DefaultMode.WriteJSON(j)
 	}
-
 	if s.Items != nil {
 		more.More()
 		j.WriteObjectField("items")
@@ -14242,19 +13584,16 @@ func (s IoK8sAPICoreV1ConfigMapVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Name.Set {
 		more.More()
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	if s.Optional.Set {
 		more.More()
 		j.WriteObjectField("optional")
 		s.Optional.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -14335,7 +13674,6 @@ func (s IoK8sAPICoreV1Container) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Command != nil {
 		more.More()
 		j.WriteObjectField("command")
@@ -14348,7 +13686,6 @@ func (s IoK8sAPICoreV1Container) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Env != nil {
 		more.More()
 		j.WriteObjectField("env")
@@ -14361,7 +13698,6 @@ func (s IoK8sAPICoreV1Container) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.EnvFrom != nil {
 		more.More()
 		j.WriteObjectField("envFrom")
@@ -14374,35 +13710,29 @@ func (s IoK8sAPICoreV1Container) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Image.Set {
 		more.More()
 		j.WriteObjectField("image")
 		s.Image.WriteJSON(j)
 	}
-
 	if s.ImagePullPolicy.Set {
 		more.More()
 		j.WriteObjectField("imagePullPolicy")
 		s.ImagePullPolicy.WriteJSON(j)
 	}
-
 	if s.Lifecycle.Set {
 		more.More()
 		j.WriteObjectField("lifecycle")
 		s.Lifecycle.WriteJSON(j)
 	}
-
 	if s.LivenessProbe.Set {
 		more.More()
 		j.WriteObjectField("livenessProbe")
 		s.LivenessProbe.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	if s.Ports != nil {
 		more.More()
 		j.WriteObjectField("ports")
@@ -14415,61 +13745,51 @@ func (s IoK8sAPICoreV1Container) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.ReadinessProbe.Set {
 		more.More()
 		j.WriteObjectField("readinessProbe")
 		s.ReadinessProbe.WriteJSON(j)
 	}
-
 	if s.Resources.Set {
 		more.More()
 		j.WriteObjectField("resources")
 		s.Resources.WriteJSON(j)
 	}
-
 	if s.SecurityContext.Set {
 		more.More()
 		j.WriteObjectField("securityContext")
 		s.SecurityContext.WriteJSON(j)
 	}
-
 	if s.StartupProbe.Set {
 		more.More()
 		j.WriteObjectField("startupProbe")
 		s.StartupProbe.WriteJSON(j)
 	}
-
 	if s.Stdin.Set {
 		more.More()
 		j.WriteObjectField("stdin")
 		s.Stdin.WriteJSON(j)
 	}
-
 	if s.StdinOnce.Set {
 		more.More()
 		j.WriteObjectField("stdinOnce")
 		s.StdinOnce.WriteJSON(j)
 	}
-
 	if s.TerminationMessagePath.Set {
 		more.More()
 		j.WriteObjectField("terminationMessagePath")
 		s.TerminationMessagePath.WriteJSON(j)
 	}
-
 	if s.TerminationMessagePolicy.Set {
 		more.More()
 		j.WriteObjectField("terminationMessagePolicy")
 		s.TerminationMessagePolicy.WriteJSON(j)
 	}
-
 	if s.Tty.Set {
 		more.More()
 		j.WriteObjectField("tty")
 		s.Tty.WriteJSON(j)
 	}
-
 	if s.VolumeDevices != nil {
 		more.More()
 		j.WriteObjectField("volumeDevices")
@@ -14482,7 +13802,6 @@ func (s IoK8sAPICoreV1Container) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.VolumeMounts != nil {
 		more.More()
 		j.WriteObjectField("volumeMounts")
@@ -14495,13 +13814,11 @@ func (s IoK8sAPICoreV1Container) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.WorkingDir.Set {
 		more.More()
 		j.WriteObjectField("workingDir")
 		s.WorkingDir.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -14686,13 +14003,11 @@ func (s IoK8sAPICoreV1ContainerImage) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.SizeBytes.Set {
 		more.More()
 		j.WriteObjectField("sizeBytes")
 		s.SizeBytes.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -14750,31 +14065,26 @@ func (s IoK8sAPICoreV1ContainerPort) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("containerPort")
 	j.WriteInt32(s.ContainerPort)
-
 	if s.HostIP.Set {
 		more.More()
 		j.WriteObjectField("hostIP")
 		s.HostIP.WriteJSON(j)
 	}
-
 	if s.HostPort.Set {
 		more.More()
 		j.WriteObjectField("hostPort")
 		s.HostPort.WriteJSON(j)
 	}
-
 	if s.Name.Set {
 		more.More()
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	if s.Protocol.Set {
 		more.More()
 		j.WriteObjectField("protocol")
 		s.Protocol.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -14854,19 +14164,16 @@ func (s IoK8sAPICoreV1ContainerState) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("running")
 		s.Running.WriteJSON(j)
 	}
-
 	if s.Terminated.Set {
 		more.More()
 		j.WriteObjectField("terminated")
 		s.Terminated.WriteJSON(j)
 	}
-
 	if s.Waiting.Set {
 		more.More()
 		j.WriteObjectField("waiting")
 		s.Waiting.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -14932,7 +14239,6 @@ func (s IoK8sAPICoreV1ContainerStateRunning) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "startedAt".
-
 	j.WriteObjectEnd()
 }
 
@@ -14985,33 +14291,26 @@ func (s IoK8sAPICoreV1ContainerStateTerminated) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("containerID")
 		s.ContainerID.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("exitCode")
 	j.WriteInt32(s.ExitCode)
-
 	// Unsupported kind "pointer" for field "finishedAt".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	if s.Signal.Set {
 		more.More()
 		j.WriteObjectField("signal")
 		s.Signal.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "startedAt".
-
 	j.WriteObjectEnd()
 }
 
@@ -15099,13 +14398,11 @@ func (s IoK8sAPICoreV1ContainerStateWaiting) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -15168,45 +14465,36 @@ func (s IoK8sAPICoreV1ContainerStatus) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("containerID")
 		s.ContainerID.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("image")
 	j.WriteString(s.Image)
-
 	more.More()
 	j.WriteObjectField("imageID")
 	j.WriteString(s.ImageID)
-
 	if s.LastState.Set {
 		more.More()
 		j.WriteObjectField("lastState")
 		s.LastState.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	more.More()
 	j.WriteObjectField("ready")
 	j.WriteBool(s.Ready)
-
 	more.More()
 	j.WriteObjectField("restartCount")
 	j.WriteInt32(s.RestartCount)
-
 	if s.Started.Set {
 		more.More()
 		j.WriteObjectField("started")
 		s.Started.WriteJSON(j)
 	}
-
 	if s.State.Set {
 		more.More()
 		j.WriteObjectField("state")
 		s.State.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -15296,7 +14584,6 @@ func (s IoK8sAPICoreV1DaemonEndpoint) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("Port")
 	j.WriteInt32(s.Port)
-
 	j.WriteObjectEnd()
 }
 
@@ -15355,7 +14642,6 @@ func (s IoK8sAPICoreV1DownwardAPIProjection) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -15408,23 +14694,19 @@ func (s IoK8sAPICoreV1DownwardAPIVolumeFile) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("fieldRef")
 		s.FieldRef.WriteJSON(j)
 	}
-
 	if s.Mode.Set {
 		more.More()
 		j.WriteObjectField("mode")
 		s.Mode.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("path")
 	j.WriteString(s.Path)
-
 	if s.ResourceFieldRef.Set {
 		more.More()
 		j.WriteObjectField("resourceFieldRef")
 		s.ResourceFieldRef.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -15497,7 +14779,6 @@ func (s IoK8sAPICoreV1DownwardAPIVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("defaultMode")
 		s.DefaultMode.WriteJSON(j)
 	}
-
 	if s.Items != nil {
 		more.More()
 		j.WriteObjectField("items")
@@ -15510,7 +14791,6 @@ func (s IoK8sAPICoreV1DownwardAPIVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -15570,9 +14850,7 @@ func (s IoK8sAPICoreV1EmptyDirVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("medium")
 		s.Medium.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "sizeLimit".
-
 	j.WriteObjectEnd()
 }
 
@@ -15632,23 +14910,19 @@ func (s IoK8sAPICoreV1EndpointAddress) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("hostname")
 		s.Hostname.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("ip")
 	j.WriteString(s.IP)
-
 	if s.NodeName.Set {
 		more.More()
 		j.WriteObjectField("nodeName")
 		s.NodeName.WriteJSON(j)
 	}
-
 	if s.TargetRef.Set {
 		more.More()
 		j.WriteObjectField("targetRef")
 		s.TargetRef.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -15721,23 +14995,19 @@ func (s IoK8sAPICoreV1EndpointPort) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("appProtocol")
 		s.AppProtocol.WriteJSON(j)
 	}
-
 	if s.Name.Set {
 		more.More()
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("port")
 	j.WriteInt32(s.Port)
-
 	if s.Protocol.Set {
 		more.More()
 		j.WriteObjectField("protocol")
 		s.Protocol.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -15817,7 +15087,6 @@ func (s IoK8sAPICoreV1EndpointSubset) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.NotReadyAddresses != nil {
 		more.More()
 		j.WriteObjectField("notReadyAddresses")
@@ -15830,7 +15099,6 @@ func (s IoK8sAPICoreV1EndpointSubset) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Ports != nil {
 		more.More()
 		j.WriteObjectField("ports")
@@ -15843,7 +15111,6 @@ func (s IoK8sAPICoreV1EndpointSubset) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -15904,19 +15171,16 @@ func (s IoK8sAPICoreV1Endpoints) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Subsets != nil {
 		more.More()
 		j.WriteObjectField("subsets")
@@ -15929,7 +15193,6 @@ func (s IoK8sAPICoreV1Endpoints) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -16003,7 +15266,6 @@ func (s IoK8sAPICoreV1EndpointsList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -16014,19 +15276,16 @@ func (s IoK8sAPICoreV1EndpointsList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -16100,19 +15359,16 @@ func (s IoK8sAPICoreV1EnvFromSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("configMapRef")
 		s.ConfigMapRef.WriteJSON(j)
 	}
-
 	if s.Prefix.Set {
 		more.More()
 		j.WriteObjectField("prefix")
 		s.Prefix.WriteJSON(j)
 	}
-
 	if s.SecretRef.Set {
 		more.More()
 		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -16180,19 +15436,16 @@ func (s IoK8sAPICoreV1EnvVar) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	if s.Value.Set {
 		more.More()
 		j.WriteObjectField("value")
 		s.Value.WriteJSON(j)
 	}
-
 	if s.ValueFrom.Set {
 		more.More()
 		j.WriteObjectField("valueFrom")
 		s.ValueFrom.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -16258,25 +15511,21 @@ func (s IoK8sAPICoreV1EnvVarSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("configMapKeyRef")
 		s.ConfigMapKeyRef.WriteJSON(j)
 	}
-
 	if s.FieldRef.Set {
 		more.More()
 		j.WriteObjectField("fieldRef")
 		s.FieldRef.WriteJSON(j)
 	}
-
 	if s.ResourceFieldRef.Set {
 		more.More()
 		j.WriteObjectField("resourceFieldRef")
 		s.ResourceFieldRef.WriteJSON(j)
 	}
-
 	if s.SecretKeyRef.Set {
 		more.More()
 		j.WriteObjectField("secretKeyRef")
 		s.SecretKeyRef.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -16360,7 +15609,6 @@ func (s IoK8sAPICoreV1EphemeralContainer) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Command != nil {
 		more.More()
 		j.WriteObjectField("command")
@@ -16373,7 +15621,6 @@ func (s IoK8sAPICoreV1EphemeralContainer) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Env != nil {
 		more.More()
 		j.WriteObjectField("env")
@@ -16386,7 +15633,6 @@ func (s IoK8sAPICoreV1EphemeralContainer) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.EnvFrom != nil {
 		more.More()
 		j.WriteObjectField("envFrom")
@@ -16399,35 +15645,29 @@ func (s IoK8sAPICoreV1EphemeralContainer) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Image.Set {
 		more.More()
 		j.WriteObjectField("image")
 		s.Image.WriteJSON(j)
 	}
-
 	if s.ImagePullPolicy.Set {
 		more.More()
 		j.WriteObjectField("imagePullPolicy")
 		s.ImagePullPolicy.WriteJSON(j)
 	}
-
 	if s.Lifecycle.Set {
 		more.More()
 		j.WriteObjectField("lifecycle")
 		s.Lifecycle.WriteJSON(j)
 	}
-
 	if s.LivenessProbe.Set {
 		more.More()
 		j.WriteObjectField("livenessProbe")
 		s.LivenessProbe.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	if s.Ports != nil {
 		more.More()
 		j.WriteObjectField("ports")
@@ -16440,67 +15680,56 @@ func (s IoK8sAPICoreV1EphemeralContainer) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.ReadinessProbe.Set {
 		more.More()
 		j.WriteObjectField("readinessProbe")
 		s.ReadinessProbe.WriteJSON(j)
 	}
-
 	if s.Resources.Set {
 		more.More()
 		j.WriteObjectField("resources")
 		s.Resources.WriteJSON(j)
 	}
-
 	if s.SecurityContext.Set {
 		more.More()
 		j.WriteObjectField("securityContext")
 		s.SecurityContext.WriteJSON(j)
 	}
-
 	if s.StartupProbe.Set {
 		more.More()
 		j.WriteObjectField("startupProbe")
 		s.StartupProbe.WriteJSON(j)
 	}
-
 	if s.Stdin.Set {
 		more.More()
 		j.WriteObjectField("stdin")
 		s.Stdin.WriteJSON(j)
 	}
-
 	if s.StdinOnce.Set {
 		more.More()
 		j.WriteObjectField("stdinOnce")
 		s.StdinOnce.WriteJSON(j)
 	}
-
 	if s.TargetContainerName.Set {
 		more.More()
 		j.WriteObjectField("targetContainerName")
 		s.TargetContainerName.WriteJSON(j)
 	}
-
 	if s.TerminationMessagePath.Set {
 		more.More()
 		j.WriteObjectField("terminationMessagePath")
 		s.TerminationMessagePath.WriteJSON(j)
 	}
-
 	if s.TerminationMessagePolicy.Set {
 		more.More()
 		j.WriteObjectField("terminationMessagePolicy")
 		s.TerminationMessagePolicy.WriteJSON(j)
 	}
-
 	if s.Tty.Set {
 		more.More()
 		j.WriteObjectField("tty")
 		s.Tty.WriteJSON(j)
 	}
-
 	if s.VolumeDevices != nil {
 		more.More()
 		j.WriteObjectField("volumeDevices")
@@ -16513,7 +15742,6 @@ func (s IoK8sAPICoreV1EphemeralContainer) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.VolumeMounts != nil {
 		more.More()
 		j.WriteObjectField("volumeMounts")
@@ -16526,13 +15754,11 @@ func (s IoK8sAPICoreV1EphemeralContainer) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.WorkingDir.Set {
 		more.More()
 		j.WriteObjectField("workingDir")
 		s.WorkingDir.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -16717,7 +15943,6 @@ func (s IoK8sAPICoreV1EphemeralVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("volumeClaimTemplate")
 		s.VolumeClaimTemplate.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -16773,87 +15998,70 @@ func (s IoK8sAPICoreV1Event) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("action")
 		s.Action.WriteJSON(j)
 	}
-
 	if s.ApiVersion.Set {
 		more.More()
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Count.Set {
 		more.More()
 		j.WriteObjectField("count")
 		s.Count.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "eventTime".
-
 	// Unsupported kind "pointer" for field "firstTimestamp".
-
 	more.More()
 	j.WriteObjectField("involvedObject")
 	s.InvolvedObject.WriteJSON(j)
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "lastTimestamp".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("metadata")
 	s.Metadata.WriteJSON(j)
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	if s.Related.Set {
 		more.More()
 		j.WriteObjectField("related")
 		s.Related.WriteJSON(j)
 	}
-
 	if s.ReportingComponent.Set {
 		more.More()
 		j.WriteObjectField("reportingComponent")
 		s.ReportingComponent.WriteJSON(j)
 	}
-
 	if s.ReportingInstance.Set {
 		more.More()
 		j.WriteObjectField("reportingInstance")
 		s.ReportingInstance.WriteJSON(j)
 	}
-
 	if s.Series.Set {
 		more.More()
 		j.WriteObjectField("series")
 		s.Series.WriteJSON(j)
 	}
-
 	if s.Source.Set {
 		more.More()
 		j.WriteObjectField("source")
 		s.Source.WriteJSON(j)
 	}
-
 	if s.Type.Set {
 		more.More()
 		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -17010,7 +16218,6 @@ func (s IoK8sAPICoreV1EventList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -17021,19 +16228,16 @@ func (s IoK8sAPICoreV1EventList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -17107,9 +16311,7 @@ func (s IoK8sAPICoreV1EventSeries) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("count")
 		s.Count.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "lastObservedTime".
-
 	j.WriteObjectEnd()
 }
 
@@ -17169,13 +16371,11 @@ func (s IoK8sAPICoreV1EventSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("component")
 		s.Component.WriteJSON(j)
 	}
-
 	if s.Host.Set {
 		more.More()
 		j.WriteObjectField("host")
 		s.Host.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -17245,7 +16445,6 @@ func (s IoK8sAPICoreV1ExecAction) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -17298,19 +16497,16 @@ func (s IoK8sAPICoreV1FCVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	if s.Lun.Set {
 		more.More()
 		j.WriteObjectField("lun")
 		s.Lun.WriteJSON(j)
 	}
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	if s.TargetWWNs != nil {
 		more.More()
 		j.WriteObjectField("targetWWNs")
@@ -17323,7 +16519,6 @@ func (s IoK8sAPICoreV1FCVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Wwids != nil {
 		more.More()
 		j.WriteObjectField("wwids")
@@ -17336,7 +16531,6 @@ func (s IoK8sAPICoreV1FCVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -17412,27 +16606,22 @@ func (s IoK8sAPICoreV1FlexPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("driver")
 	j.WriteString(s.Driver)
-
 	if s.FsType.Set {
 		more.More()
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "options".
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	if s.SecretRef.Set {
 		more.More()
 		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -17507,27 +16696,22 @@ func (s IoK8sAPICoreV1FlexVolumeSource) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("driver")
 	j.WriteString(s.Driver)
-
 	if s.FsType.Set {
 		more.More()
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "options".
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	if s.SecretRef.Set {
 		more.More()
 		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -17604,13 +16788,11 @@ func (s IoK8sAPICoreV1FlockerVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("datasetName")
 		s.DatasetName.WriteJSON(j)
 	}
-
 	if s.DatasetUUID.Set {
 		more.More()
 		j.WriteObjectField("datasetUUID")
 		s.DatasetUUID.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -17673,23 +16855,19 @@ func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	if s.Partition.Set {
 		more.More()
 		j.WriteObjectField("partition")
 		s.Partition.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("pdName")
 	j.WriteString(s.PdName)
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -17762,17 +16940,14 @@ func (s IoK8sAPICoreV1GitRepoVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("directory")
 		s.Directory.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("repository")
 	j.WriteString(s.Repository)
-
 	if s.Revision.Set {
 		more.More()
 		j.WriteObjectField("revision")
 		s.Revision.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -17836,23 +17011,19 @@ func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) WriteJSON(j *json.Stream)
 	more.More()
 	j.WriteObjectField("endpoints")
 	j.WriteString(s.Endpoints)
-
 	if s.EndpointsNamespace.Set {
 		more.More()
 		j.WriteObjectField("endpointsNamespace")
 		s.EndpointsNamespace.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("path")
 	j.WriteString(s.Path)
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -17919,17 +17090,14 @@ func (s IoK8sAPICoreV1GlusterfsVolumeSource) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("endpoints")
 	j.WriteString(s.Endpoints)
-
 	more.More()
 	j.WriteObjectField("path")
 	j.WriteString(s.Path)
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -17991,7 +17159,6 @@ func (s IoK8sAPICoreV1HTTPGetAction) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("host")
 		s.Host.WriteJSON(j)
 	}
-
 	if s.HttpHeaders != nil {
 		more.More()
 		j.WriteObjectField("httpHeaders")
@@ -18004,21 +17171,17 @@ func (s IoK8sAPICoreV1HTTPGetAction) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Path.Set {
 		more.More()
 		j.WriteObjectField("path")
 		s.Path.WriteJSON(j)
 	}
-
 	// Unsupported kind "alias" for field "port".
-
 	if s.Scheme.Set {
 		more.More()
 		j.WriteObjectField("scheme")
 		s.Scheme.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -18094,11 +17257,9 @@ func (s IoK8sAPICoreV1HTTPHeader) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	more.More()
 	j.WriteObjectField("value")
 	j.WriteString(s.Value)
-
 	j.WriteObjectEnd()
 }
 
@@ -18153,19 +17314,16 @@ func (s IoK8sAPICoreV1Handler) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("exec")
 		s.Exec.WriteJSON(j)
 	}
-
 	if s.HttpGet.Set {
 		more.More()
 		j.WriteObjectField("httpGet")
 		s.HttpGet.WriteJSON(j)
 	}
-
 	if s.TcpSocket.Set {
 		more.More()
 		j.WriteObjectField("tcpSocket")
 		s.TcpSocket.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -18242,13 +17400,11 @@ func (s IoK8sAPICoreV1HostAlias) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.IP.Set {
 		more.More()
 		j.WriteObjectField("ip")
 		s.IP.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -18306,13 +17462,11 @@ func (s IoK8sAPICoreV1HostPathVolumeSource) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("path")
 	j.WriteString(s.Path)
-
 	if s.Type.Set {
 		more.More()
 		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -18371,39 +17525,32 @@ func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("chapAuthDiscovery")
 		s.ChapAuthDiscovery.WriteJSON(j)
 	}
-
 	if s.ChapAuthSession.Set {
 		more.More()
 		j.WriteObjectField("chapAuthSession")
 		s.ChapAuthSession.WriteJSON(j)
 	}
-
 	if s.FsType.Set {
 		more.More()
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	if s.InitiatorName.Set {
 		more.More()
 		j.WriteObjectField("initiatorName")
 		s.InitiatorName.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("iqn")
 	j.WriteString(s.Iqn)
-
 	if s.IscsiInterface.Set {
 		more.More()
 		j.WriteObjectField("iscsiInterface")
 		s.IscsiInterface.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("lun")
 	j.WriteInt32(s.Lun)
-
 	if s.Portals != nil {
 		more.More()
 		j.WriteObjectField("portals")
@@ -18416,23 +17563,19 @@ func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	if s.SecretRef.Set {
 		more.More()
 		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("targetPortal")
 	j.WriteString(s.TargetPortal)
-
 	j.WriteObjectEnd()
 }
 
@@ -18543,39 +17686,32 @@ func (s IoK8sAPICoreV1ISCSIVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("chapAuthDiscovery")
 		s.ChapAuthDiscovery.WriteJSON(j)
 	}
-
 	if s.ChapAuthSession.Set {
 		more.More()
 		j.WriteObjectField("chapAuthSession")
 		s.ChapAuthSession.WriteJSON(j)
 	}
-
 	if s.FsType.Set {
 		more.More()
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	if s.InitiatorName.Set {
 		more.More()
 		j.WriteObjectField("initiatorName")
 		s.InitiatorName.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("iqn")
 	j.WriteString(s.Iqn)
-
 	if s.IscsiInterface.Set {
 		more.More()
 		j.WriteObjectField("iscsiInterface")
 		s.IscsiInterface.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("lun")
 	j.WriteInt32(s.Lun)
-
 	if s.Portals != nil {
 		more.More()
 		j.WriteObjectField("portals")
@@ -18588,23 +17724,19 @@ func (s IoK8sAPICoreV1ISCSIVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	if s.SecretRef.Set {
 		more.More()
 		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("targetPortal")
 	j.WriteString(s.TargetPortal)
-
 	j.WriteObjectEnd()
 }
 
@@ -18713,17 +17845,14 @@ func (s IoK8sAPICoreV1KeyToPath) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("key")
 	j.WriteString(s.Key)
-
 	if s.Mode.Set {
 		more.More()
 		j.WriteObjectField("mode")
 		s.Mode.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("path")
 	j.WriteString(s.Path)
-
 	j.WriteObjectEnd()
 }
 
@@ -18785,13 +17914,11 @@ func (s IoK8sAPICoreV1Lifecycle) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("postStart")
 		s.PostStart.WriteJSON(j)
 	}
-
 	if s.PreStop.Set {
 		more.More()
 		j.WriteObjectField("preStop")
 		s.PreStop.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -18854,25 +17981,21 @@ func (s IoK8sAPICoreV1LimitRange) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -18945,19 +18068,13 @@ func (s IoK8sAPICoreV1LimitRangeItem) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "default".
-
 	// Unsupported kind "pointer" for field "defaultRequest".
-
 	// Unsupported kind "pointer" for field "max".
-
 	// Unsupported kind "pointer" for field "maxLimitRequestRatio".
-
 	// Unsupported kind "pointer" for field "min".
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -19029,7 +18146,6 @@ func (s IoK8sAPICoreV1LimitRangeList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -19040,19 +18156,16 @@ func (s IoK8sAPICoreV1LimitRangeList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -19131,7 +18244,6 @@ func (s IoK8sAPICoreV1LimitRangeSpec) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	j.WriteObjectEnd()
 }
 
@@ -19184,13 +18296,11 @@ func (s IoK8sAPICoreV1LoadBalancerIngress) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("hostname")
 		s.Hostname.WriteJSON(j)
 	}
-
 	if s.IP.Set {
 		more.More()
 		j.WriteObjectField("ip")
 		s.IP.WriteJSON(j)
 	}
-
 	if s.Ports != nil {
 		more.More()
 		j.WriteObjectField("ports")
@@ -19203,7 +18313,6 @@ func (s IoK8sAPICoreV1LoadBalancerIngress) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -19277,7 +18386,6 @@ func (s IoK8sAPICoreV1LoadBalancerStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -19330,7 +18438,6 @@ func (s IoK8sAPICoreV1LocalObjectReference) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -19386,11 +18493,9 @@ func (s IoK8sAPICoreV1LocalVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("path")
 	j.WriteString(s.Path)
-
 	j.WriteObjectEnd()
 }
 
@@ -19447,17 +18552,14 @@ func (s IoK8sAPICoreV1NFSVolumeSource) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("path")
 	j.WriteString(s.Path)
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("server")
 	j.WriteString(s.Server)
-
 	j.WriteObjectEnd()
 }
 
@@ -19519,31 +18621,26 @@ func (s IoK8sAPICoreV1Namespace) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -19623,27 +18720,22 @@ func (s IoK8sAPICoreV1NamespaceCondition) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "lastTransitionTime".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -19716,7 +18808,6 @@ func (s IoK8sAPICoreV1NamespaceList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -19727,19 +18818,16 @@ func (s IoK8sAPICoreV1NamespaceList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -19820,7 +18908,6 @@ func (s IoK8sAPICoreV1NamespaceSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -19880,13 +18967,11 @@ func (s IoK8sAPICoreV1NamespaceStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Phase.Set {
 		more.More()
 		j.WriteObjectField("phase")
 		s.Phase.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -19946,31 +19031,26 @@ func (s IoK8sAPICoreV1Node) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -20052,11 +19132,9 @@ func (s IoK8sAPICoreV1NodeAddress) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("address")
 	j.WriteString(s.Address)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -20118,13 +19196,11 @@ func (s IoK8sAPICoreV1NodeAffinity) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.RequiredDuringSchedulingIgnoredDuringExecution.Set {
 		more.More()
 		j.WriteObjectField("requiredDuringSchedulingIgnoredDuringExecution")
 		s.RequiredDuringSchedulingIgnoredDuringExecution.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -20180,29 +19256,23 @@ func (s IoK8sAPICoreV1NodeCondition) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "lastHeartbeatTime".
-
 	// Unsupported kind "pointer" for field "lastTransitionTime".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -20279,7 +19349,6 @@ func (s IoK8sAPICoreV1NodeConfigSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("configMap")
 		s.ConfigMap.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -20335,25 +19404,21 @@ func (s IoK8sAPICoreV1NodeConfigStatus) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("active")
 		s.Active.WriteJSON(j)
 	}
-
 	if s.Assigned.Set {
 		more.More()
 		j.WriteObjectField("assigned")
 		s.Assigned.WriteJSON(j)
 	}
-
 	if s.Error.Set {
 		more.More()
 		j.WriteObjectField("error")
 		s.Error.WriteJSON(j)
 	}
-
 	if s.LastKnownGood.Set {
 		more.More()
 		j.WriteObjectField("lastKnownGood")
 		s.LastKnownGood.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -20430,7 +19495,6 @@ func (s IoK8sAPICoreV1NodeDaemonEndpoints) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("kubeletEndpoint")
 		s.KubeletEndpoint.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -20486,7 +19550,6 @@ func (s IoK8sAPICoreV1NodeList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -20497,19 +19560,16 @@ func (s IoK8sAPICoreV1NodeList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -20588,7 +19648,6 @@ func (s IoK8sAPICoreV1NodeSelector) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	j.WriteObjectEnd()
 }
 
@@ -20639,11 +19698,9 @@ func (s IoK8sAPICoreV1NodeSelectorRequirement) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("key")
 	j.WriteString(s.Key)
-
 	more.More()
 	j.WriteObjectField("operator")
 	j.WriteString(s.Operator)
-
 	if s.Values != nil {
 		more.More()
 		j.WriteObjectField("values")
@@ -20656,7 +19713,6 @@ func (s IoK8sAPICoreV1NodeSelectorRequirement) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -20722,7 +19778,6 @@ func (s IoK8sAPICoreV1NodeSelectorTerm) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.MatchFields != nil {
 		more.More()
 		j.WriteObjectField("matchFields")
@@ -20735,7 +19790,6 @@ func (s IoK8sAPICoreV1NodeSelectorTerm) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -20792,19 +19846,16 @@ func (s IoK8sAPICoreV1NodeSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("configSource")
 		s.ConfigSource.WriteJSON(j)
 	}
-
 	if s.ExternalID.Set {
 		more.More()
 		j.WriteObjectField("externalID")
 		s.ExternalID.WriteJSON(j)
 	}
-
 	if s.PodCIDR.Set {
 		more.More()
 		j.WriteObjectField("podCIDR")
 		s.PodCIDR.WriteJSON(j)
 	}
-
 	if s.PodCIDRs != nil {
 		more.More()
 		j.WriteObjectField("podCIDRs")
@@ -20817,13 +19868,11 @@ func (s IoK8sAPICoreV1NodeSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.ProviderID.Set {
 		more.More()
 		j.WriteObjectField("providerID")
 		s.ProviderID.WriteJSON(j)
 	}
-
 	if s.Taints != nil {
 		more.More()
 		j.WriteObjectField("taints")
@@ -20836,13 +19885,11 @@ func (s IoK8sAPICoreV1NodeSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Unschedulable.Set {
 		more.More()
 		j.WriteObjectField("unschedulable")
 		s.Unschedulable.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -20941,11 +19988,8 @@ func (s IoK8sAPICoreV1NodeStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	// Unsupported kind "pointer" for field "allocatable".
-
 	// Unsupported kind "pointer" for field "capacity".
-
 	if s.Conditions != nil {
 		more.More()
 		j.WriteObjectField("conditions")
@@ -20958,19 +20002,16 @@ func (s IoK8sAPICoreV1NodeStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Config.Set {
 		more.More()
 		j.WriteObjectField("config")
 		s.Config.WriteJSON(j)
 	}
-
 	if s.DaemonEndpoints.Set {
 		more.More()
 		j.WriteObjectField("daemonEndpoints")
 		s.DaemonEndpoints.WriteJSON(j)
 	}
-
 	if s.Images != nil {
 		more.More()
 		j.WriteObjectField("images")
@@ -20983,19 +20024,16 @@ func (s IoK8sAPICoreV1NodeStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.NodeInfo.Set {
 		more.More()
 		j.WriteObjectField("nodeInfo")
 		s.NodeInfo.WriteJSON(j)
 	}
-
 	if s.Phase.Set {
 		more.More()
 		j.WriteObjectField("phase")
 		s.Phase.WriteJSON(j)
 	}
-
 	if s.VolumesAttached != nil {
 		more.More()
 		j.WriteObjectField("volumesAttached")
@@ -21008,7 +20046,6 @@ func (s IoK8sAPICoreV1NodeStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.VolumesInUse != nil {
 		more.More()
 		j.WriteObjectField("volumesInUse")
@@ -21021,7 +20058,6 @@ func (s IoK8sAPICoreV1NodeStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -21124,43 +20160,33 @@ func (s IoK8sAPICoreV1NodeSystemInfo) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("architecture")
 	j.WriteString(s.Architecture)
-
 	more.More()
 	j.WriteObjectField("bootID")
 	j.WriteString(s.BootID)
-
 	more.More()
 	j.WriteObjectField("containerRuntimeVersion")
 	j.WriteString(s.ContainerRuntimeVersion)
-
 	more.More()
 	j.WriteObjectField("kernelVersion")
 	j.WriteString(s.KernelVersion)
-
 	more.More()
 	j.WriteObjectField("kubeProxyVersion")
 	j.WriteString(s.KubeProxyVersion)
-
 	more.More()
 	j.WriteObjectField("kubeletVersion")
 	j.WriteString(s.KubeletVersion)
-
 	more.More()
 	j.WriteObjectField("machineID")
 	j.WriteString(s.MachineID)
-
 	more.More()
 	j.WriteObjectField("operatingSystem")
 	j.WriteString(s.OperatingSystem)
-
 	more.More()
 	j.WriteObjectField("osImage")
 	j.WriteString(s.OsImage)
-
 	more.More()
 	j.WriteObjectField("systemUUID")
 	j.WriteString(s.SystemUUID)
-
 	j.WriteObjectEnd()
 }
 
@@ -21239,11 +20265,9 @@ func (s IoK8sAPICoreV1ObjectFieldSelector) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("fieldPath")
 	j.WriteString(s.FieldPath)
-
 	j.WriteObjectEnd()
 }
 
@@ -21302,43 +20326,36 @@ func (s IoK8sAPICoreV1ObjectReference) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.FieldPath.Set {
 		more.More()
 		j.WriteObjectField("fieldPath")
 		s.FieldPath.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Name.Set {
 		more.More()
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	if s.Namespace.Set {
 		more.More()
 		j.WriteObjectField("namespace")
 		s.Namespace.WriteJSON(j)
 	}
-
 	if s.ResourceVersion.Set {
 		more.More()
 		j.WriteObjectField("resourceVersion")
 		s.ResourceVersion.WriteJSON(j)
 	}
-
 	if s.UID.Set {
 		more.More()
 		j.WriteObjectField("uid")
 		s.UID.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -21436,31 +20453,26 @@ func (s IoK8sAPICoreV1PersistentVolume) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -21544,31 +20556,26 @@ func (s IoK8sAPICoreV1PersistentVolumeClaim) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -21648,29 +20655,23 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) WriteJSON(j *json.Stream) 
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "lastProbeTime".
-
 	// Unsupported kind "pointer" for field "lastTransitionTime".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -21747,7 +20748,6 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -21758,19 +20758,16 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -21851,49 +20848,41 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.DataSource.Set {
 		more.More()
 		j.WriteObjectField("dataSource")
 		s.DataSource.WriteJSON(j)
 	}
-
 	if s.DataSourceRef.Set {
 		more.More()
 		j.WriteObjectField("dataSourceRef")
 		s.DataSourceRef.WriteJSON(j)
 	}
-
 	if s.Resources.Set {
 		more.More()
 		j.WriteObjectField("resources")
 		s.Resources.WriteJSON(j)
 	}
-
 	if s.Selector.Set {
 		more.More()
 		j.WriteObjectField("selector")
 		s.Selector.WriteJSON(j)
 	}
-
 	if s.StorageClassName.Set {
 		more.More()
 		j.WriteObjectField("storageClassName")
 		s.StorageClassName.WriteJSON(j)
 	}
-
 	if s.VolumeMode.Set {
 		more.More()
 		j.WriteObjectField("volumeMode")
 		s.VolumeMode.WriteJSON(j)
 	}
-
 	if s.VolumeName.Set {
 		more.More()
 		j.WriteObjectField("volumeName")
 		s.VolumeName.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -22002,9 +20991,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	// Unsupported kind "pointer" for field "capacity".
-
 	if s.Conditions != nil {
 		more.More()
 		j.WriteObjectField("conditions")
@@ -22017,13 +21004,11 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Phase.Set {
 		more.More()
 		j.WriteObjectField("phase")
 		s.Phase.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -22091,11 +21076,9 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimTemplate) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
-
 	j.WriteObjectEnd()
 }
 
@@ -22155,13 +21138,11 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) WriteJSON(j *json.Strea
 	more.More()
 	j.WriteObjectField("claimName")
 	j.WriteString(s.ClaimName)
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -22220,7 +21201,6 @@ func (s IoK8sAPICoreV1PersistentVolumeList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -22231,19 +21211,16 @@ func (s IoK8sAPICoreV1PersistentVolumeList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -22324,99 +21301,82 @@ func (s IoK8sAPICoreV1PersistentVolumeSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.AwsElasticBlockStore.Set {
 		more.More()
 		j.WriteObjectField("awsElasticBlockStore")
 		s.AwsElasticBlockStore.WriteJSON(j)
 	}
-
 	if s.AzureDisk.Set {
 		more.More()
 		j.WriteObjectField("azureDisk")
 		s.AzureDisk.WriteJSON(j)
 	}
-
 	if s.AzureFile.Set {
 		more.More()
 		j.WriteObjectField("azureFile")
 		s.AzureFile.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "capacity".
-
 	if s.Cephfs.Set {
 		more.More()
 		j.WriteObjectField("cephfs")
 		s.Cephfs.WriteJSON(j)
 	}
-
 	if s.Cinder.Set {
 		more.More()
 		j.WriteObjectField("cinder")
 		s.Cinder.WriteJSON(j)
 	}
-
 	if s.ClaimRef.Set {
 		more.More()
 		j.WriteObjectField("claimRef")
 		s.ClaimRef.WriteJSON(j)
 	}
-
 	if s.Csi.Set {
 		more.More()
 		j.WriteObjectField("csi")
 		s.Csi.WriteJSON(j)
 	}
-
 	if s.Fc.Set {
 		more.More()
 		j.WriteObjectField("fc")
 		s.Fc.WriteJSON(j)
 	}
-
 	if s.FlexVolume.Set {
 		more.More()
 		j.WriteObjectField("flexVolume")
 		s.FlexVolume.WriteJSON(j)
 	}
-
 	if s.Flocker.Set {
 		more.More()
 		j.WriteObjectField("flocker")
 		s.Flocker.WriteJSON(j)
 	}
-
 	if s.GcePersistentDisk.Set {
 		more.More()
 		j.WriteObjectField("gcePersistentDisk")
 		s.GcePersistentDisk.WriteJSON(j)
 	}
-
 	if s.Glusterfs.Set {
 		more.More()
 		j.WriteObjectField("glusterfs")
 		s.Glusterfs.WriteJSON(j)
 	}
-
 	if s.HostPath.Set {
 		more.More()
 		j.WriteObjectField("hostPath")
 		s.HostPath.WriteJSON(j)
 	}
-
 	if s.Iscsi.Set {
 		more.More()
 		j.WriteObjectField("iscsi")
 		s.Iscsi.WriteJSON(j)
 	}
-
 	if s.Local.Set {
 		more.More()
 		j.WriteObjectField("local")
 		s.Local.WriteJSON(j)
 	}
-
 	if s.MountOptions != nil {
 		more.More()
 		j.WriteObjectField("mountOptions")
@@ -22429,79 +21389,66 @@ func (s IoK8sAPICoreV1PersistentVolumeSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Nfs.Set {
 		more.More()
 		j.WriteObjectField("nfs")
 		s.Nfs.WriteJSON(j)
 	}
-
 	if s.NodeAffinity.Set {
 		more.More()
 		j.WriteObjectField("nodeAffinity")
 		s.NodeAffinity.WriteJSON(j)
 	}
-
 	if s.PersistentVolumeReclaimPolicy.Set {
 		more.More()
 		j.WriteObjectField("persistentVolumeReclaimPolicy")
 		s.PersistentVolumeReclaimPolicy.WriteJSON(j)
 	}
-
 	if s.PhotonPersistentDisk.Set {
 		more.More()
 		j.WriteObjectField("photonPersistentDisk")
 		s.PhotonPersistentDisk.WriteJSON(j)
 	}
-
 	if s.PortworxVolume.Set {
 		more.More()
 		j.WriteObjectField("portworxVolume")
 		s.PortworxVolume.WriteJSON(j)
 	}
-
 	if s.Quobyte.Set {
 		more.More()
 		j.WriteObjectField("quobyte")
 		s.Quobyte.WriteJSON(j)
 	}
-
 	if s.Rbd.Set {
 		more.More()
 		j.WriteObjectField("rbd")
 		s.Rbd.WriteJSON(j)
 	}
-
 	if s.ScaleIO.Set {
 		more.More()
 		j.WriteObjectField("scaleIO")
 		s.ScaleIO.WriteJSON(j)
 	}
-
 	if s.StorageClassName.Set {
 		more.More()
 		j.WriteObjectField("storageClassName")
 		s.StorageClassName.WriteJSON(j)
 	}
-
 	if s.Storageos.Set {
 		more.More()
 		j.WriteObjectField("storageos")
 		s.Storageos.WriteJSON(j)
 	}
-
 	if s.VolumeMode.Set {
 		more.More()
 		j.WriteObjectField("volumeMode")
 		s.VolumeMode.WriteJSON(j)
 	}
-
 	if s.VsphereVolume.Set {
 		more.More()
 		j.WriteObjectField("vsphereVolume")
 		s.VsphereVolume.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -22751,19 +21698,16 @@ func (s IoK8sAPICoreV1PersistentVolumeStatus) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Phase.Set {
 		more.More()
 		j.WriteObjectField("phase")
 		s.Phase.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -22833,11 +21777,9 @@ func (s IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) WriteJSON(j *json.Stream
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("pdID")
 	j.WriteString(s.PdID)
-
 	j.WriteObjectEnd()
 }
 
@@ -22896,31 +21838,26 @@ func (s IoK8sAPICoreV1Pod) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -23011,7 +21948,6 @@ func (s IoK8sAPICoreV1PodAffinity) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.RequiredDuringSchedulingIgnoredDuringExecution != nil {
 		more.More()
 		j.WriteObjectField("requiredDuringSchedulingIgnoredDuringExecution")
@@ -23024,7 +21960,6 @@ func (s IoK8sAPICoreV1PodAffinity) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -23081,13 +22016,11 @@ func (s IoK8sAPICoreV1PodAffinityTerm) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("labelSelector")
 		s.LabelSelector.WriteJSON(j)
 	}
-
 	if s.NamespaceSelector.Set {
 		more.More()
 		j.WriteObjectField("namespaceSelector")
 		s.NamespaceSelector.WriteJSON(j)
 	}
-
 	if s.Namespaces != nil {
 		more.More()
 		j.WriteObjectField("namespaces")
@@ -23100,11 +22033,9 @@ func (s IoK8sAPICoreV1PodAffinityTerm) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("topologyKey")
 	j.WriteString(s.TopologyKey)
-
 	j.WriteObjectEnd()
 }
 
@@ -23181,7 +22112,6 @@ func (s IoK8sAPICoreV1PodAntiAffinity) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.RequiredDuringSchedulingIgnoredDuringExecution != nil {
 		more.More()
 		j.WriteObjectField("requiredDuringSchedulingIgnoredDuringExecution")
@@ -23194,7 +22124,6 @@ func (s IoK8sAPICoreV1PodAntiAffinity) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -23247,29 +22176,23 @@ func (s IoK8sAPICoreV1PodCondition) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "lastProbeTime".
-
 	// Unsupported kind "pointer" for field "lastTransitionTime".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -23353,7 +22276,6 @@ func (s IoK8sAPICoreV1PodDNSConfig) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Options != nil {
 		more.More()
 		j.WriteObjectField("options")
@@ -23366,7 +22288,6 @@ func (s IoK8sAPICoreV1PodDNSConfig) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Searches != nil {
 		more.More()
 		j.WriteObjectField("searches")
@@ -23379,7 +22300,6 @@ func (s IoK8sAPICoreV1PodDNSConfig) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -23440,13 +22360,11 @@ func (s IoK8sAPICoreV1PodDNSConfigOption) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	if s.Value.Set {
 		more.More()
 		j.WriteObjectField("value")
 		s.Value.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -23509,7 +22427,6 @@ func (s IoK8sAPICoreV1PodIP) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("ip")
 		s.IP.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -23565,7 +22482,6 @@ func (s IoK8sAPICoreV1PodList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -23576,19 +22492,16 @@ func (s IoK8sAPICoreV1PodList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -23660,7 +22573,6 @@ func (s IoK8sAPICoreV1PodReadinessGate) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("conditionType")
 	j.WriteString(s.ConditionType)
-
 	j.WriteObjectEnd()
 }
 
@@ -23712,43 +22624,36 @@ func (s IoK8sAPICoreV1PodSecurityContext) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("fsGroup")
 		s.FsGroup.WriteJSON(j)
 	}
-
 	if s.FsGroupChangePolicy.Set {
 		more.More()
 		j.WriteObjectField("fsGroupChangePolicy")
 		s.FsGroupChangePolicy.WriteJSON(j)
 	}
-
 	if s.RunAsGroup.Set {
 		more.More()
 		j.WriteObjectField("runAsGroup")
 		s.RunAsGroup.WriteJSON(j)
 	}
-
 	if s.RunAsNonRoot.Set {
 		more.More()
 		j.WriteObjectField("runAsNonRoot")
 		s.RunAsNonRoot.WriteJSON(j)
 	}
-
 	if s.RunAsUser.Set {
 		more.More()
 		j.WriteObjectField("runAsUser")
 		s.RunAsUser.WriteJSON(j)
 	}
-
 	if s.SeLinuxOptions.Set {
 		more.More()
 		j.WriteObjectField("seLinuxOptions")
 		s.SeLinuxOptions.WriteJSON(j)
 	}
-
 	if s.SeccompProfile.Set {
 		more.More()
 		j.WriteObjectField("seccompProfile")
 		s.SeccompProfile.WriteJSON(j)
 	}
-
 	if s.SupplementalGroups != nil {
 		more.More()
 		j.WriteObjectField("supplementalGroups")
@@ -23761,7 +22666,6 @@ func (s IoK8sAPICoreV1PodSecurityContext) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Sysctls != nil {
 		more.More()
 		j.WriteObjectField("sysctls")
@@ -23774,13 +22678,11 @@ func (s IoK8sAPICoreV1PodSecurityContext) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.WindowsOptions.Set {
 		more.More()
 		j.WriteObjectField("windowsOptions")
 		s.WindowsOptions.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -23893,19 +22795,16 @@ func (s IoK8sAPICoreV1PodSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("activeDeadlineSeconds")
 		s.ActiveDeadlineSeconds.WriteJSON(j)
 	}
-
 	if s.Affinity.Set {
 		more.More()
 		j.WriteObjectField("affinity")
 		s.Affinity.WriteJSON(j)
 	}
-
 	if s.AutomountServiceAccountToken.Set {
 		more.More()
 		j.WriteObjectField("automountServiceAccountToken")
 		s.AutomountServiceAccountToken.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("containers")
 	more.Down()
@@ -23916,25 +22815,21 @@ func (s IoK8sAPICoreV1PodSpec) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.DnsConfig.Set {
 		more.More()
 		j.WriteObjectField("dnsConfig")
 		s.DnsConfig.WriteJSON(j)
 	}
-
 	if s.DnsPolicy.Set {
 		more.More()
 		j.WriteObjectField("dnsPolicy")
 		s.DnsPolicy.WriteJSON(j)
 	}
-
 	if s.EnableServiceLinks.Set {
 		more.More()
 		j.WriteObjectField("enableServiceLinks")
 		s.EnableServiceLinks.WriteJSON(j)
 	}
-
 	if s.EphemeralContainers != nil {
 		more.More()
 		j.WriteObjectField("ephemeralContainers")
@@ -23947,7 +22842,6 @@ func (s IoK8sAPICoreV1PodSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.HostAliases != nil {
 		more.More()
 		j.WriteObjectField("hostAliases")
@@ -23960,31 +22854,26 @@ func (s IoK8sAPICoreV1PodSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.HostIPC.Set {
 		more.More()
 		j.WriteObjectField("hostIPC")
 		s.HostIPC.WriteJSON(j)
 	}
-
 	if s.HostNetwork.Set {
 		more.More()
 		j.WriteObjectField("hostNetwork")
 		s.HostNetwork.WriteJSON(j)
 	}
-
 	if s.HostPID.Set {
 		more.More()
 		j.WriteObjectField("hostPID")
 		s.HostPID.WriteJSON(j)
 	}
-
 	if s.Hostname.Set {
 		more.More()
 		j.WriteObjectField("hostname")
 		s.Hostname.WriteJSON(j)
 	}
-
 	if s.ImagePullSecrets != nil {
 		more.More()
 		j.WriteObjectField("imagePullSecrets")
@@ -23997,7 +22886,6 @@ func (s IoK8sAPICoreV1PodSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.InitContainers != nil {
 		more.More()
 		j.WriteObjectField("initContainers")
@@ -24010,35 +22898,28 @@ func (s IoK8sAPICoreV1PodSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.NodeName.Set {
 		more.More()
 		j.WriteObjectField("nodeName")
 		s.NodeName.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "nodeSelector".
-
 	// Unsupported kind "pointer" for field "overhead".
-
 	if s.PreemptionPolicy.Set {
 		more.More()
 		j.WriteObjectField("preemptionPolicy")
 		s.PreemptionPolicy.WriteJSON(j)
 	}
-
 	if s.Priority.Set {
 		more.More()
 		j.WriteObjectField("priority")
 		s.Priority.WriteJSON(j)
 	}
-
 	if s.PriorityClassName.Set {
 		more.More()
 		j.WriteObjectField("priorityClassName")
 		s.PriorityClassName.WriteJSON(j)
 	}
-
 	if s.ReadinessGates != nil {
 		more.More()
 		j.WriteObjectField("readinessGates")
@@ -24051,67 +22932,56 @@ func (s IoK8sAPICoreV1PodSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.RestartPolicy.Set {
 		more.More()
 		j.WriteObjectField("restartPolicy")
 		s.RestartPolicy.WriteJSON(j)
 	}
-
 	if s.RuntimeClassName.Set {
 		more.More()
 		j.WriteObjectField("runtimeClassName")
 		s.RuntimeClassName.WriteJSON(j)
 	}
-
 	if s.SchedulerName.Set {
 		more.More()
 		j.WriteObjectField("schedulerName")
 		s.SchedulerName.WriteJSON(j)
 	}
-
 	if s.SecurityContext.Set {
 		more.More()
 		j.WriteObjectField("securityContext")
 		s.SecurityContext.WriteJSON(j)
 	}
-
 	if s.ServiceAccount.Set {
 		more.More()
 		j.WriteObjectField("serviceAccount")
 		s.ServiceAccount.WriteJSON(j)
 	}
-
 	if s.ServiceAccountName.Set {
 		more.More()
 		j.WriteObjectField("serviceAccountName")
 		s.ServiceAccountName.WriteJSON(j)
 	}
-
 	if s.SetHostnameAsFQDN.Set {
 		more.More()
 		j.WriteObjectField("setHostnameAsFQDN")
 		s.SetHostnameAsFQDN.WriteJSON(j)
 	}
-
 	if s.ShareProcessNamespace.Set {
 		more.More()
 		j.WriteObjectField("shareProcessNamespace")
 		s.ShareProcessNamespace.WriteJSON(j)
 	}
-
 	if s.Subdomain.Set {
 		more.More()
 		j.WriteObjectField("subdomain")
 		s.Subdomain.WriteJSON(j)
 	}
-
 	if s.TerminationGracePeriodSeconds.Set {
 		more.More()
 		j.WriteObjectField("terminationGracePeriodSeconds")
 		s.TerminationGracePeriodSeconds.WriteJSON(j)
 	}
-
 	if s.Tolerations != nil {
 		more.More()
 		j.WriteObjectField("tolerations")
@@ -24124,7 +22994,6 @@ func (s IoK8sAPICoreV1PodSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.TopologySpreadConstraints != nil {
 		more.More()
 		j.WriteObjectField("topologySpreadConstraints")
@@ -24137,7 +23006,6 @@ func (s IoK8sAPICoreV1PodSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Volumes != nil {
 		more.More()
 		j.WriteObjectField("volumes")
@@ -24150,7 +23018,6 @@ func (s IoK8sAPICoreV1PodSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -24418,7 +23285,6 @@ func (s IoK8sAPICoreV1PodStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.ContainerStatuses != nil {
 		more.More()
 		j.WriteObjectField("containerStatuses")
@@ -24431,7 +23297,6 @@ func (s IoK8sAPICoreV1PodStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.EphemeralContainerStatuses != nil {
 		more.More()
 		j.WriteObjectField("ephemeralContainerStatuses")
@@ -24444,13 +23309,11 @@ func (s IoK8sAPICoreV1PodStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.HostIP.Set {
 		more.More()
 		j.WriteObjectField("hostIP")
 		s.HostIP.WriteJSON(j)
 	}
-
 	if s.InitContainerStatuses != nil {
 		more.More()
 		j.WriteObjectField("initContainerStatuses")
@@ -24463,31 +23326,26 @@ func (s IoK8sAPICoreV1PodStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.NominatedNodeName.Set {
 		more.More()
 		j.WriteObjectField("nominatedNodeName")
 		s.NominatedNodeName.WriteJSON(j)
 	}
-
 	if s.Phase.Set {
 		more.More()
 		j.WriteObjectField("phase")
 		s.Phase.WriteJSON(j)
 	}
-
 	if s.PodIP.Set {
 		more.More()
 		j.WriteObjectField("podIP")
 		s.PodIP.WriteJSON(j)
 	}
-
 	if s.PodIPs != nil {
 		more.More()
 		j.WriteObjectField("podIPs")
@@ -24500,21 +23358,17 @@ func (s IoK8sAPICoreV1PodStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.QosClass.Set {
 		more.More()
 		j.WriteObjectField("qosClass")
 		s.QosClass.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "startTime".
-
 	j.WriteObjectEnd()
 }
 
@@ -24636,25 +23490,21 @@ func (s IoK8sAPICoreV1PodTemplate) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Template.Set {
 		more.More()
 		j.WriteObjectField("template")
 		s.Template.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -24731,7 +23581,6 @@ func (s IoK8sAPICoreV1PodTemplateList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -24742,19 +23591,16 @@ func (s IoK8sAPICoreV1PodTemplateList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -24828,13 +23674,11 @@ func (s IoK8sAPICoreV1PodTemplateSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -24897,15 +23741,12 @@ func (s IoK8sAPICoreV1PortStatus) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("error")
 		s.Error.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("port")
 	j.WriteInt32(s.Port)
-
 	more.More()
 	j.WriteObjectField("protocol")
 	j.WriteString(s.Protocol)
-
 	j.WriteObjectEnd()
 }
 
@@ -24967,17 +23808,14 @@ func (s IoK8sAPICoreV1PortworxVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("volumeID")
 	j.WriteString(s.VolumeID)
-
 	j.WriteObjectEnd()
 }
 
@@ -25041,11 +23879,9 @@ func (s IoK8sAPICoreV1PreferredSchedulingTerm) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("preference")
 	s.Preference.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("weight")
 	j.WriteInt32(s.Weight)
-
 	j.WriteObjectEnd()
 }
 
@@ -25103,55 +23939,46 @@ func (s IoK8sAPICoreV1Probe) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("exec")
 		s.Exec.WriteJSON(j)
 	}
-
 	if s.FailureThreshold.Set {
 		more.More()
 		j.WriteObjectField("failureThreshold")
 		s.FailureThreshold.WriteJSON(j)
 	}
-
 	if s.HttpGet.Set {
 		more.More()
 		j.WriteObjectField("httpGet")
 		s.HttpGet.WriteJSON(j)
 	}
-
 	if s.InitialDelaySeconds.Set {
 		more.More()
 		j.WriteObjectField("initialDelaySeconds")
 		s.InitialDelaySeconds.WriteJSON(j)
 	}
-
 	if s.PeriodSeconds.Set {
 		more.More()
 		j.WriteObjectField("periodSeconds")
 		s.PeriodSeconds.WriteJSON(j)
 	}
-
 	if s.SuccessThreshold.Set {
 		more.More()
 		j.WriteObjectField("successThreshold")
 		s.SuccessThreshold.WriteJSON(j)
 	}
-
 	if s.TcpSocket.Set {
 		more.More()
 		j.WriteObjectField("tcpSocket")
 		s.TcpSocket.WriteJSON(j)
 	}
-
 	if s.TerminationGracePeriodSeconds.Set {
 		more.More()
 		j.WriteObjectField("terminationGracePeriodSeconds")
 		s.TerminationGracePeriodSeconds.WriteJSON(j)
 	}
-
 	if s.TimeoutSeconds.Set {
 		more.More()
 		j.WriteObjectField("timeoutSeconds")
 		s.TimeoutSeconds.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -25263,7 +24090,6 @@ func (s IoK8sAPICoreV1ProjectedVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("defaultMode")
 		s.DefaultMode.WriteJSON(j)
 	}
-
 	if s.Sources != nil {
 		more.More()
 		j.WriteObjectField("sources")
@@ -25276,7 +24102,6 @@ func (s IoK8sAPICoreV1ProjectedVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -25336,33 +24161,27 @@ func (s IoK8sAPICoreV1QuobyteVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("group")
 		s.Group.WriteJSON(j)
 	}
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("registry")
 	j.WriteString(s.Registry)
-
 	if s.Tenant.Set {
 		more.More()
 		j.WriteObjectField("tenant")
 		s.Tenant.WriteJSON(j)
 	}
-
 	if s.User.Set {
 		more.More()
 		j.WriteObjectField("user")
 		s.User.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("volume")
 	j.WriteString(s.Volume)
-
 	j.WriteObjectEnd()
 }
 
@@ -25445,17 +24264,14 @@ func (s IoK8sAPICoreV1RBDPersistentVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("image")
 	j.WriteString(s.Image)
-
 	if s.Keyring.Set {
 		more.More()
 		j.WriteObjectField("keyring")
 		s.Keyring.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("monitors")
 	more.Down()
@@ -25466,31 +24282,26 @@ func (s IoK8sAPICoreV1RBDPersistentVolumeSource) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Pool.Set {
 		more.More()
 		j.WriteObjectField("pool")
 		s.Pool.WriteJSON(j)
 	}
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	if s.SecretRef.Set {
 		more.More()
 		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
-
 	if s.User.Set {
 		more.More()
 		j.WriteObjectField("user")
 		s.User.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -25588,17 +24399,14 @@ func (s IoK8sAPICoreV1RBDVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("image")
 	j.WriteString(s.Image)
-
 	if s.Keyring.Set {
 		more.More()
 		j.WriteObjectField("keyring")
 		s.Keyring.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("monitors")
 	more.Down()
@@ -25609,31 +24417,26 @@ func (s IoK8sAPICoreV1RBDVolumeSource) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Pool.Set {
 		more.More()
 		j.WriteObjectField("pool")
 		s.Pool.WriteJSON(j)
 	}
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	if s.SecretRef.Set {
 		more.More()
 		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
-
 	if s.User.Set {
 		more.More()
 		j.WriteObjectField("user")
 		s.User.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -25731,31 +24534,26 @@ func (s IoK8sAPICoreV1ReplicationController) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -25835,27 +24633,22 @@ func (s IoK8sAPICoreV1ReplicationControllerCondition) WriteJSON(j *json.Stream) 
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "lastTransitionTime".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -25928,7 +24721,6 @@ func (s IoK8sAPICoreV1ReplicationControllerList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -25939,19 +24731,16 @@ func (s IoK8sAPICoreV1ReplicationControllerList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -26025,21 +24814,17 @@ func (s IoK8sAPICoreV1ReplicationControllerSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("minReadySeconds")
 		s.MinReadySeconds.WriteJSON(j)
 	}
-
 	if s.Replicas.Set {
 		more.More()
 		j.WriteObjectField("replicas")
 		s.Replicas.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "selector".
-
 	if s.Template.Set {
 		more.More()
 		j.WriteObjectField("template")
 		s.Template.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -26113,7 +24898,6 @@ func (s IoK8sAPICoreV1ReplicationControllerStatus) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("availableReplicas")
 		s.AvailableReplicas.WriteJSON(j)
 	}
-
 	if s.Conditions != nil {
 		more.More()
 		j.WriteObjectField("conditions")
@@ -26126,29 +24910,24 @@ func (s IoK8sAPICoreV1ReplicationControllerStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.FullyLabeledReplicas.Set {
 		more.More()
 		j.WriteObjectField("fullyLabeledReplicas")
 		s.FullyLabeledReplicas.WriteJSON(j)
 	}
-
 	if s.ObservedGeneration.Set {
 		more.More()
 		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
-
 	if s.ReadyReplicas.Set {
 		more.More()
 		j.WriteObjectField("readyReplicas")
 		s.ReadyReplicas.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("replicas")
 	j.WriteInt32(s.Replicas)
-
 	j.WriteObjectEnd()
 }
 
@@ -26232,13 +25011,10 @@ func (s IoK8sAPICoreV1ResourceFieldSelector) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("containerName")
 		s.ContainerName.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "divisor".
-
 	more.More()
 	j.WriteObjectField("resource")
 	j.WriteString(s.Resource)
-
 	j.WriteObjectEnd()
 }
 
@@ -26301,31 +25077,26 @@ func (s IoK8sAPICoreV1ResourceQuota) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -26409,7 +25180,6 @@ func (s IoK8sAPICoreV1ResourceQuotaList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -26420,19 +25190,16 @@ func (s IoK8sAPICoreV1ResourceQuotaList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -26502,13 +25269,11 @@ func (s IoK8sAPICoreV1ResourceQuotaSpec) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "hard".
-
 	if s.ScopeSelector.Set {
 		more.More()
 		j.WriteObjectField("scopeSelector")
 		s.ScopeSelector.WriteJSON(j)
 	}
-
 	if s.Scopes != nil {
 		more.More()
 		j.WriteObjectField("scopes")
@@ -26521,7 +25286,6 @@ func (s IoK8sAPICoreV1ResourceQuotaSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -26581,9 +25345,7 @@ func (s IoK8sAPICoreV1ResourceQuotaStatus) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "hard".
-
 	// Unsupported kind "pointer" for field "used".
-
 	j.WriteObjectEnd()
 }
 
@@ -26636,9 +25398,7 @@ func (s IoK8sAPICoreV1ResourceRequirements) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "limits".
-
 	// Unsupported kind "pointer" for field "requests".
-
 	j.WriteObjectEnd()
 }
 
@@ -26695,25 +25455,21 @@ func (s IoK8sAPICoreV1SELinuxOptions) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("level")
 		s.Level.WriteJSON(j)
 	}
-
 	if s.Role.Set {
 		more.More()
 		j.WriteObjectField("role")
 		s.Role.WriteJSON(j)
 	}
-
 	if s.Type.Set {
 		more.More()
 		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
-
 	if s.User.Set {
 		more.More()
 		j.WriteObjectField("user")
 		s.User.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -26790,55 +25546,45 @@ func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("gateway")
 	j.WriteString(s.Gateway)
-
 	if s.ProtectionDomain.Set {
 		more.More()
 		j.WriteObjectField("protectionDomain")
 		s.ProtectionDomain.WriteJSON(j)
 	}
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("secretRef")
 	s.SecretRef.WriteJSON(j)
-
 	if s.SslEnabled.Set {
 		more.More()
 		j.WriteObjectField("sslEnabled")
 		s.SslEnabled.WriteJSON(j)
 	}
-
 	if s.StorageMode.Set {
 		more.More()
 		j.WriteObjectField("storageMode")
 		s.StorageMode.WriteJSON(j)
 	}
-
 	if s.StoragePool.Set {
 		more.More()
 		j.WriteObjectField("storagePool")
 		s.StoragePool.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("system")
 	j.WriteString(s.System)
-
 	if s.VolumeName.Set {
 		more.More()
 		j.WriteObjectField("volumeName")
 		s.VolumeName.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -26948,55 +25694,45 @@ func (s IoK8sAPICoreV1ScaleIOVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("gateway")
 	j.WriteString(s.Gateway)
-
 	if s.ProtectionDomain.Set {
 		more.More()
 		j.WriteObjectField("protectionDomain")
 		s.ProtectionDomain.WriteJSON(j)
 	}
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("secretRef")
 	s.SecretRef.WriteJSON(j)
-
 	if s.SslEnabled.Set {
 		more.More()
 		j.WriteObjectField("sslEnabled")
 		s.SslEnabled.WriteJSON(j)
 	}
-
 	if s.StorageMode.Set {
 		more.More()
 		j.WriteObjectField("storageMode")
 		s.StorageMode.WriteJSON(j)
 	}
-
 	if s.StoragePool.Set {
 		more.More()
 		j.WriteObjectField("storagePool")
 		s.StoragePool.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("system")
 	j.WriteString(s.System)
-
 	if s.VolumeName.Set {
 		more.More()
 		j.WriteObjectField("volumeName")
 		s.VolumeName.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -27113,7 +25849,6 @@ func (s IoK8sAPICoreV1ScopeSelector) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -27164,11 +25899,9 @@ func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) WriteJSON(j *json.Strea
 	more.More()
 	j.WriteObjectField("operator")
 	j.WriteString(s.Operator)
-
 	more.More()
 	j.WriteObjectField("scopeName")
 	j.WriteString(s.ScopeName)
-
 	if s.Values != nil {
 		more.More()
 		j.WriteObjectField("values")
@@ -27181,7 +25914,6 @@ func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) WriteJSON(j *json.Strea
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -27240,11 +25972,9 @@ func (s IoK8sAPICoreV1SeccompProfile) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("localhostProfile")
 		s.LocalhostProfile.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -27303,35 +26033,28 @@ func (s IoK8sAPICoreV1Secret) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "data".
-
 	if s.Immutable.Set {
 		more.More()
 		j.WriteObjectField("immutable")
 		s.Immutable.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "stringData".
-
 	if s.Type.Set {
 		more.More()
 		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -27423,13 +26146,11 @@ func (s IoK8sAPICoreV1SecretEnvSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	if s.Optional.Set {
 		more.More()
 		j.WriteObjectField("optional")
 		s.Optional.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -27490,19 +26211,16 @@ func (s IoK8sAPICoreV1SecretKeySelector) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("key")
 	j.WriteString(s.Key)
-
 	if s.Name.Set {
 		more.More()
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	if s.Optional.Set {
 		more.More()
 		j.WriteObjectField("optional")
 		s.Optional.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -27568,7 +26286,6 @@ func (s IoK8sAPICoreV1SecretList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -27579,19 +26296,16 @@ func (s IoK8sAPICoreV1SecretList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -27672,19 +26386,16 @@ func (s IoK8sAPICoreV1SecretProjection) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Name.Set {
 		more.More()
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	if s.Optional.Set {
 		more.More()
 		j.WriteObjectField("optional")
 		s.Optional.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -27751,13 +26462,11 @@ func (s IoK8sAPICoreV1SecretReference) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	if s.Namespace.Set {
 		more.More()
 		j.WriteObjectField("namespace")
 		s.Namespace.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -27820,7 +26529,6 @@ func (s IoK8sAPICoreV1SecretVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("defaultMode")
 		s.DefaultMode.WriteJSON(j)
 	}
-
 	if s.Items != nil {
 		more.More()
 		j.WriteObjectField("items")
@@ -27833,19 +26541,16 @@ func (s IoK8sAPICoreV1SecretVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Optional.Set {
 		more.More()
 		j.WriteObjectField("optional")
 		s.Optional.WriteJSON(j)
 	}
-
 	if s.SecretName.Set {
 		more.More()
 		j.WriteObjectField("secretName")
 		s.SecretName.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -27919,67 +26624,56 @@ func (s IoK8sAPICoreV1SecurityContext) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("allowPrivilegeEscalation")
 		s.AllowPrivilegeEscalation.WriteJSON(j)
 	}
-
 	if s.Capabilities.Set {
 		more.More()
 		j.WriteObjectField("capabilities")
 		s.Capabilities.WriteJSON(j)
 	}
-
 	if s.Privileged.Set {
 		more.More()
 		j.WriteObjectField("privileged")
 		s.Privileged.WriteJSON(j)
 	}
-
 	if s.ProcMount.Set {
 		more.More()
 		j.WriteObjectField("procMount")
 		s.ProcMount.WriteJSON(j)
 	}
-
 	if s.ReadOnlyRootFilesystem.Set {
 		more.More()
 		j.WriteObjectField("readOnlyRootFilesystem")
 		s.ReadOnlyRootFilesystem.WriteJSON(j)
 	}
-
 	if s.RunAsGroup.Set {
 		more.More()
 		j.WriteObjectField("runAsGroup")
 		s.RunAsGroup.WriteJSON(j)
 	}
-
 	if s.RunAsNonRoot.Set {
 		more.More()
 		j.WriteObjectField("runAsNonRoot")
 		s.RunAsNonRoot.WriteJSON(j)
 	}
-
 	if s.RunAsUser.Set {
 		more.More()
 		j.WriteObjectField("runAsUser")
 		s.RunAsUser.WriteJSON(j)
 	}
-
 	if s.SeLinuxOptions.Set {
 		more.More()
 		j.WriteObjectField("seLinuxOptions")
 		s.SeLinuxOptions.WriteJSON(j)
 	}
-
 	if s.SeccompProfile.Set {
 		more.More()
 		j.WriteObjectField("seccompProfile")
 		s.SeccompProfile.WriteJSON(j)
 	}
-
 	if s.WindowsOptions.Set {
 		more.More()
 		j.WriteObjectField("windowsOptions")
 		s.WindowsOptions.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -28105,31 +26799,26 @@ func (s IoK8sAPICoreV1Service) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -28213,13 +26902,11 @@ func (s IoK8sAPICoreV1ServiceAccount) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.AutomountServiceAccountToken.Set {
 		more.More()
 		j.WriteObjectField("automountServiceAccountToken")
 		s.AutomountServiceAccountToken.WriteJSON(j)
 	}
-
 	if s.ImagePullSecrets != nil {
 		more.More()
 		j.WriteObjectField("imagePullSecrets")
@@ -28232,19 +26919,16 @@ func (s IoK8sAPICoreV1ServiceAccount) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Secrets != nil {
 		more.More()
 		j.WriteObjectField("secrets")
@@ -28257,7 +26941,6 @@ func (s IoK8sAPICoreV1ServiceAccount) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -28342,7 +27025,6 @@ func (s IoK8sAPICoreV1ServiceAccountList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -28353,19 +27035,16 @@ func (s IoK8sAPICoreV1ServiceAccountList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -28439,17 +27118,14 @@ func (s IoK8sAPICoreV1ServiceAccountTokenProjection) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("audience")
 		s.Audience.WriteJSON(j)
 	}
-
 	if s.ExpirationSeconds.Set {
 		more.More()
 		j.WriteObjectField("expirationSeconds")
 		s.ExpirationSeconds.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("path")
 	j.WriteString(s.Path)
-
 	j.WriteObjectEnd()
 }
 
@@ -28515,7 +27191,6 @@ func (s IoK8sAPICoreV1ServiceList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -28526,19 +27201,16 @@ func (s IoK8sAPICoreV1ServiceList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -28612,31 +27284,25 @@ func (s IoK8sAPICoreV1ServicePort) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("appProtocol")
 		s.AppProtocol.WriteJSON(j)
 	}
-
 	if s.Name.Set {
 		more.More()
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	if s.NodePort.Set {
 		more.More()
 		j.WriteObjectField("nodePort")
 		s.NodePort.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("port")
 	j.WriteInt32(s.Port)
-
 	if s.Protocol.Set {
 		more.More()
 		j.WriteObjectField("protocol")
 		s.Protocol.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "targetPort".
-
 	j.WriteObjectEnd()
 }
 
@@ -28720,13 +27386,11 @@ func (s IoK8sAPICoreV1ServiceSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("allocateLoadBalancerNodePorts")
 		s.AllocateLoadBalancerNodePorts.WriteJSON(j)
 	}
-
 	if s.ClusterIP.Set {
 		more.More()
 		j.WriteObjectField("clusterIP")
 		s.ClusterIP.WriteJSON(j)
 	}
-
 	if s.ClusterIPs != nil {
 		more.More()
 		j.WriteObjectField("clusterIPs")
@@ -28739,7 +27403,6 @@ func (s IoK8sAPICoreV1ServiceSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.ExternalIPs != nil {
 		more.More()
 		j.WriteObjectField("externalIPs")
@@ -28752,31 +27415,26 @@ func (s IoK8sAPICoreV1ServiceSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.ExternalName.Set {
 		more.More()
 		j.WriteObjectField("externalName")
 		s.ExternalName.WriteJSON(j)
 	}
-
 	if s.ExternalTrafficPolicy.Set {
 		more.More()
 		j.WriteObjectField("externalTrafficPolicy")
 		s.ExternalTrafficPolicy.WriteJSON(j)
 	}
-
 	if s.HealthCheckNodePort.Set {
 		more.More()
 		j.WriteObjectField("healthCheckNodePort")
 		s.HealthCheckNodePort.WriteJSON(j)
 	}
-
 	if s.InternalTrafficPolicy.Set {
 		more.More()
 		j.WriteObjectField("internalTrafficPolicy")
 		s.InternalTrafficPolicy.WriteJSON(j)
 	}
-
 	if s.IpFamilies != nil {
 		more.More()
 		j.WriteObjectField("ipFamilies")
@@ -28789,25 +27447,21 @@ func (s IoK8sAPICoreV1ServiceSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.IpFamilyPolicy.Set {
 		more.More()
 		j.WriteObjectField("ipFamilyPolicy")
 		s.IpFamilyPolicy.WriteJSON(j)
 	}
-
 	if s.LoadBalancerClass.Set {
 		more.More()
 		j.WriteObjectField("loadBalancerClass")
 		s.LoadBalancerClass.WriteJSON(j)
 	}
-
 	if s.LoadBalancerIP.Set {
 		more.More()
 		j.WriteObjectField("loadBalancerIP")
 		s.LoadBalancerIP.WriteJSON(j)
 	}
-
 	if s.LoadBalancerSourceRanges != nil {
 		more.More()
 		j.WriteObjectField("loadBalancerSourceRanges")
@@ -28820,7 +27474,6 @@ func (s IoK8sAPICoreV1ServiceSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Ports != nil {
 		more.More()
 		j.WriteObjectField("ports")
@@ -28833,33 +27486,27 @@ func (s IoK8sAPICoreV1ServiceSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.PublishNotReadyAddresses.Set {
 		more.More()
 		j.WriteObjectField("publishNotReadyAddresses")
 		s.PublishNotReadyAddresses.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "selector".
-
 	if s.SessionAffinity.Set {
 		more.More()
 		j.WriteObjectField("sessionAffinity")
 		s.SessionAffinity.WriteJSON(j)
 	}
-
 	if s.SessionAffinityConfig.Set {
 		more.More()
 		j.WriteObjectField("sessionAffinityConfig")
 		s.SessionAffinityConfig.WriteJSON(j)
 	}
-
 	if s.Type.Set {
 		more.More()
 		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -29030,13 +27677,11 @@ func (s IoK8sAPICoreV1ServiceStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.LoadBalancer.Set {
 		more.More()
 		j.WriteObjectField("loadBalancer")
 		s.LoadBalancer.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -29096,7 +27741,6 @@ func (s IoK8sAPICoreV1SessionAffinityConfig) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("clientIP")
 		s.ClientIP.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -29152,31 +27796,26 @@ func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) WriteJSON(j *json.Stream)
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	if s.SecretRef.Set {
 		more.More()
 		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
-
 	if s.VolumeName.Set {
 		more.More()
 		j.WriteObjectField("volumeName")
 		s.VolumeName.WriteJSON(j)
 	}
-
 	if s.VolumeNamespace.Set {
 		more.More()
 		j.WriteObjectField("volumeNamespace")
 		s.VolumeNamespace.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -29260,31 +27899,26 @@ func (s IoK8sAPICoreV1StorageOSVolumeSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	if s.SecretRef.Set {
 		more.More()
 		j.WriteObjectField("secretRef")
 		s.SecretRef.WriteJSON(j)
 	}
-
 	if s.VolumeName.Set {
 		more.More()
 		j.WriteObjectField("volumeName")
 		s.VolumeName.WriteJSON(j)
 	}
-
 	if s.VolumeNamespace.Set {
 		more.More()
 		j.WriteObjectField("volumeNamespace")
 		s.VolumeNamespace.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -29366,11 +28000,9 @@ func (s IoK8sAPICoreV1Sysctl) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	more.More()
 	j.WriteObjectField("value")
 	j.WriteString(s.Value)
-
 	j.WriteObjectEnd()
 }
 
@@ -29425,9 +28057,7 @@ func (s IoK8sAPICoreV1TCPSocketAction) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("host")
 		s.Host.WriteJSON(j)
 	}
-
 	// Unsupported kind "alias" for field "port".
-
 	j.WriteObjectEnd()
 }
 
@@ -29485,19 +28115,15 @@ func (s IoK8sAPICoreV1Taint) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("effect")
 	j.WriteString(s.Effect)
-
 	more.More()
 	j.WriteObjectField("key")
 	j.WriteString(s.Key)
-
 	// Unsupported kind "pointer" for field "timeAdded".
-
 	if s.Value.Set {
 		more.More()
 		j.WriteObjectField("value")
 		s.Value.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -29563,31 +28189,26 @@ func (s IoK8sAPICoreV1Toleration) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("effect")
 		s.Effect.WriteJSON(j)
 	}
-
 	if s.Key.Set {
 		more.More()
 		j.WriteObjectField("key")
 		s.Key.WriteJSON(j)
 	}
-
 	if s.Operator.Set {
 		more.More()
 		j.WriteObjectField("operator")
 		s.Operator.WriteJSON(j)
 	}
-
 	if s.TolerationSeconds.Set {
 		more.More()
 		j.WriteObjectField("tolerationSeconds")
 		s.TolerationSeconds.WriteJSON(j)
 	}
-
 	if s.Value.Set {
 		more.More()
 		j.WriteObjectField("value")
 		s.Value.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -29669,7 +28290,6 @@ func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) WriteJSON(j *json.Stream
 	more.More()
 	j.WriteObjectField("key")
 	j.WriteString(s.Key)
-
 	more.More()
 	j.WriteObjectField("values")
 	more.Down()
@@ -29680,7 +28300,6 @@ func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) WriteJSON(j *json.Stream
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	j.WriteObjectEnd()
 }
 
@@ -29743,7 +28362,6 @@ func (s IoK8sAPICoreV1TopologySelectorTerm) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -29796,19 +28414,15 @@ func (s IoK8sAPICoreV1TopologySpreadConstraint) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("labelSelector")
 		s.LabelSelector.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("maxSkew")
 	j.WriteInt32(s.MaxSkew)
-
 	more.More()
 	j.WriteObjectField("topologyKey")
 	j.WriteString(s.TopologyKey)
-
 	more.More()
 	j.WriteObjectField("whenUnsatisfiable")
 	j.WriteString(s.WhenUnsatisfiable)
-
 	j.WriteObjectEnd()
 }
 
@@ -29873,15 +28487,12 @@ func (s IoK8sAPICoreV1TypedLocalObjectReference) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiGroup")
 		s.ApiGroup.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	j.WriteObjectEnd()
 }
 
@@ -29943,179 +28554,149 @@ func (s IoK8sAPICoreV1Volume) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("awsElasticBlockStore")
 		s.AwsElasticBlockStore.WriteJSON(j)
 	}
-
 	if s.AzureDisk.Set {
 		more.More()
 		j.WriteObjectField("azureDisk")
 		s.AzureDisk.WriteJSON(j)
 	}
-
 	if s.AzureFile.Set {
 		more.More()
 		j.WriteObjectField("azureFile")
 		s.AzureFile.WriteJSON(j)
 	}
-
 	if s.Cephfs.Set {
 		more.More()
 		j.WriteObjectField("cephfs")
 		s.Cephfs.WriteJSON(j)
 	}
-
 	if s.Cinder.Set {
 		more.More()
 		j.WriteObjectField("cinder")
 		s.Cinder.WriteJSON(j)
 	}
-
 	if s.ConfigMap.Set {
 		more.More()
 		j.WriteObjectField("configMap")
 		s.ConfigMap.WriteJSON(j)
 	}
-
 	if s.Csi.Set {
 		more.More()
 		j.WriteObjectField("csi")
 		s.Csi.WriteJSON(j)
 	}
-
 	if s.DownwardAPI.Set {
 		more.More()
 		j.WriteObjectField("downwardAPI")
 		s.DownwardAPI.WriteJSON(j)
 	}
-
 	if s.EmptyDir.Set {
 		more.More()
 		j.WriteObjectField("emptyDir")
 		s.EmptyDir.WriteJSON(j)
 	}
-
 	if s.Ephemeral.Set {
 		more.More()
 		j.WriteObjectField("ephemeral")
 		s.Ephemeral.WriteJSON(j)
 	}
-
 	if s.Fc.Set {
 		more.More()
 		j.WriteObjectField("fc")
 		s.Fc.WriteJSON(j)
 	}
-
 	if s.FlexVolume.Set {
 		more.More()
 		j.WriteObjectField("flexVolume")
 		s.FlexVolume.WriteJSON(j)
 	}
-
 	if s.Flocker.Set {
 		more.More()
 		j.WriteObjectField("flocker")
 		s.Flocker.WriteJSON(j)
 	}
-
 	if s.GcePersistentDisk.Set {
 		more.More()
 		j.WriteObjectField("gcePersistentDisk")
 		s.GcePersistentDisk.WriteJSON(j)
 	}
-
 	if s.GitRepo.Set {
 		more.More()
 		j.WriteObjectField("gitRepo")
 		s.GitRepo.WriteJSON(j)
 	}
-
 	if s.Glusterfs.Set {
 		more.More()
 		j.WriteObjectField("glusterfs")
 		s.Glusterfs.WriteJSON(j)
 	}
-
 	if s.HostPath.Set {
 		more.More()
 		j.WriteObjectField("hostPath")
 		s.HostPath.WriteJSON(j)
 	}
-
 	if s.Iscsi.Set {
 		more.More()
 		j.WriteObjectField("iscsi")
 		s.Iscsi.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	if s.Nfs.Set {
 		more.More()
 		j.WriteObjectField("nfs")
 		s.Nfs.WriteJSON(j)
 	}
-
 	if s.PersistentVolumeClaim.Set {
 		more.More()
 		j.WriteObjectField("persistentVolumeClaim")
 		s.PersistentVolumeClaim.WriteJSON(j)
 	}
-
 	if s.PhotonPersistentDisk.Set {
 		more.More()
 		j.WriteObjectField("photonPersistentDisk")
 		s.PhotonPersistentDisk.WriteJSON(j)
 	}
-
 	if s.PortworxVolume.Set {
 		more.More()
 		j.WriteObjectField("portworxVolume")
 		s.PortworxVolume.WriteJSON(j)
 	}
-
 	if s.Projected.Set {
 		more.More()
 		j.WriteObjectField("projected")
 		s.Projected.WriteJSON(j)
 	}
-
 	if s.Quobyte.Set {
 		more.More()
 		j.WriteObjectField("quobyte")
 		s.Quobyte.WriteJSON(j)
 	}
-
 	if s.Rbd.Set {
 		more.More()
 		j.WriteObjectField("rbd")
 		s.Rbd.WriteJSON(j)
 	}
-
 	if s.ScaleIO.Set {
 		more.More()
 		j.WriteObjectField("scaleIO")
 		s.ScaleIO.WriteJSON(j)
 	}
-
 	if s.Secret.Set {
 		more.More()
 		j.WriteObjectField("secret")
 		s.Secret.WriteJSON(j)
 	}
-
 	if s.Storageos.Set {
 		more.More()
 		j.WriteObjectField("storageos")
 		s.Storageos.WriteJSON(j)
 	}
-
 	if s.VsphereVolume.Set {
 		more.More()
 		j.WriteObjectField("vsphereVolume")
 		s.VsphereVolume.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -30368,11 +28949,9 @@ func (s IoK8sAPICoreV1VolumeDevice) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("devicePath")
 	j.WriteString(s.DevicePath)
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	j.WriteObjectEnd()
 }
 
@@ -30425,35 +29004,29 @@ func (s IoK8sAPICoreV1VolumeMount) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("mountPath")
 	j.WriteString(s.MountPath)
-
 	if s.MountPropagation.Set {
 		more.More()
 		j.WriteObjectField("mountPropagation")
 		s.MountPropagation.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	if s.SubPath.Set {
 		more.More()
 		j.WriteObjectField("subPath")
 		s.SubPath.WriteJSON(j)
 	}
-
 	if s.SubPathExpr.Set {
 		more.More()
 		j.WriteObjectField("subPathExpr")
 		s.SubPathExpr.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -30536,7 +29109,6 @@ func (s IoK8sAPICoreV1VolumeNodeAffinity) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("required")
 		s.Required.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -30592,25 +29164,21 @@ func (s IoK8sAPICoreV1VolumeProjection) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("configMap")
 		s.ConfigMap.WriteJSON(j)
 	}
-
 	if s.DownwardAPI.Set {
 		more.More()
 		j.WriteObjectField("downwardAPI")
 		s.DownwardAPI.WriteJSON(j)
 	}
-
 	if s.Secret.Set {
 		more.More()
 		j.WriteObjectField("secret")
 		s.Secret.WriteJSON(j)
 	}
-
 	if s.ServiceAccountToken.Set {
 		more.More()
 		j.WriteObjectField("serviceAccountToken")
 		s.ServiceAccountToken.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -30687,23 +29255,19 @@ func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) WriteJSON(j *json.Stream) 
 		j.WriteObjectField("fsType")
 		s.FsType.WriteJSON(j)
 	}
-
 	if s.StoragePolicyID.Set {
 		more.More()
 		j.WriteObjectField("storagePolicyID")
 		s.StoragePolicyID.WriteJSON(j)
 	}
-
 	if s.StoragePolicyName.Set {
 		more.More()
 		j.WriteObjectField("storagePolicyName")
 		s.StoragePolicyName.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("volumePath")
 	j.WriteString(s.VolumePath)
-
 	j.WriteObjectEnd()
 }
 
@@ -30774,11 +29338,9 @@ func (s IoK8sAPICoreV1WeightedPodAffinityTerm) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("podAffinityTerm")
 	s.PodAffinityTerm.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("weight")
 	j.WriteInt32(s.Weight)
-
 	j.WriteObjectEnd()
 }
 
@@ -30836,25 +29398,21 @@ func (s IoK8sAPICoreV1WindowsSecurityContextOptions) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("gmsaCredentialSpec")
 		s.GmsaCredentialSpec.WriteJSON(j)
 	}
-
 	if s.GmsaCredentialSpecName.Set {
 		more.More()
 		j.WriteObjectField("gmsaCredentialSpecName")
 		s.GmsaCredentialSpecName.WriteJSON(j)
 	}
-
 	if s.HostProcess.Set {
 		more.More()
 		j.WriteObjectField("hostProcess")
 		s.HostProcess.WriteJSON(j)
 	}
-
 	if s.RunAsUserName.Set {
 		more.More()
 		j.WriteObjectField("runAsUserName")
 		s.RunAsUserName.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -30936,45 +29494,37 @@ func (s IoK8sAPIDiscoveryV1Endpoint) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Conditions.Set {
 		more.More()
 		j.WriteObjectField("conditions")
 		s.Conditions.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "deprecatedTopology".
-
 	if s.Hints.Set {
 		more.More()
 		j.WriteObjectField("hints")
 		s.Hints.WriteJSON(j)
 	}
-
 	if s.Hostname.Set {
 		more.More()
 		j.WriteObjectField("hostname")
 		s.Hostname.WriteJSON(j)
 	}
-
 	if s.NodeName.Set {
 		more.More()
 		j.WriteObjectField("nodeName")
 		s.NodeName.WriteJSON(j)
 	}
-
 	if s.TargetRef.Set {
 		more.More()
 		j.WriteObjectField("targetRef")
 		s.TargetRef.WriteJSON(j)
 	}
-
 	if s.Zone.Set {
 		more.More()
 		j.WriteObjectField("zone")
 		s.Zone.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -31073,19 +29623,16 @@ func (s IoK8sAPIDiscoveryV1EndpointConditions) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("ready")
 		s.Ready.WriteJSON(j)
 	}
-
 	if s.Serving.Set {
 		more.More()
 		j.WriteObjectField("serving")
 		s.Serving.WriteJSON(j)
 	}
-
 	if s.Terminating.Set {
 		more.More()
 		j.WriteObjectField("terminating")
 		s.Terminating.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -31162,7 +29709,6 @@ func (s IoK8sAPIDiscoveryV1EndpointHints) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -31215,25 +29761,21 @@ func (s IoK8sAPIDiscoveryV1EndpointPort) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("appProtocol")
 		s.AppProtocol.WriteJSON(j)
 	}
-
 	if s.Name.Set {
 		more.More()
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	if s.Port.Set {
 		more.More()
 		j.WriteObjectField("port")
 		s.Port.WriteJSON(j)
 	}
-
 	if s.Protocol.Set {
 		more.More()
 		j.WriteObjectField("protocol")
 		s.Protocol.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -31308,13 +29850,11 @@ func (s IoK8sAPIDiscoveryV1EndpointSlice) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("addressType")
 	j.WriteString(s.AddressType)
-
 	if s.ApiVersion.Set {
 		more.More()
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("endpoints")
 	more.Down()
@@ -31325,19 +29865,16 @@ func (s IoK8sAPIDiscoveryV1EndpointSlice) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Ports != nil {
 		more.More()
 		j.WriteObjectField("ports")
@@ -31350,7 +29887,6 @@ func (s IoK8sAPIDiscoveryV1EndpointSlice) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -31431,7 +29967,6 @@ func (s IoK8sAPIDiscoveryV1EndpointSliceList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -31442,19 +29977,16 @@ func (s IoK8sAPIDiscoveryV1EndpointSliceList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -31526,7 +30058,6 @@ func (s IoK8sAPIDiscoveryV1ForZone) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	j.WriteObjectEnd()
 }
 
@@ -31583,39 +30114,32 @@ func (s IoK8sAPIDiscoveryV1beta1Endpoint) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Conditions.Set {
 		more.More()
 		j.WriteObjectField("conditions")
 		s.Conditions.WriteJSON(j)
 	}
-
 	if s.Hints.Set {
 		more.More()
 		j.WriteObjectField("hints")
 		s.Hints.WriteJSON(j)
 	}
-
 	if s.Hostname.Set {
 		more.More()
 		j.WriteObjectField("hostname")
 		s.Hostname.WriteJSON(j)
 	}
-
 	if s.NodeName.Set {
 		more.More()
 		j.WriteObjectField("nodeName")
 		s.NodeName.WriteJSON(j)
 	}
-
 	if s.TargetRef.Set {
 		more.More()
 		j.WriteObjectField("targetRef")
 		s.TargetRef.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "topology".
-
 	j.WriteObjectEnd()
 }
 
@@ -31707,19 +30231,16 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("ready")
 		s.Ready.WriteJSON(j)
 	}
-
 	if s.Serving.Set {
 		more.More()
 		j.WriteObjectField("serving")
 		s.Serving.WriteJSON(j)
 	}
-
 	if s.Terminating.Set {
 		more.More()
 		j.WriteObjectField("terminating")
 		s.Terminating.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -31796,7 +30317,6 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointHints) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -31849,25 +30369,21 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointPort) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("appProtocol")
 		s.AppProtocol.WriteJSON(j)
 	}
-
 	if s.Name.Set {
 		more.More()
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	if s.Port.Set {
 		more.More()
 		j.WriteObjectField("port")
 		s.Port.WriteJSON(j)
 	}
-
 	if s.Protocol.Set {
 		more.More()
 		j.WriteObjectField("protocol")
 		s.Protocol.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -31942,13 +30458,11 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("addressType")
 	j.WriteString(s.AddressType)
-
 	if s.ApiVersion.Set {
 		more.More()
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("endpoints")
 	more.Down()
@@ -31959,19 +30473,16 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Ports != nil {
 		more.More()
 		j.WriteObjectField("ports")
@@ -31984,7 +30495,6 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -32065,7 +30575,6 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -32076,19 +30585,16 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -32160,7 +30666,6 @@ func (s IoK8sAPIDiscoveryV1beta1ForZone) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	j.WriteObjectEnd()
 }
 
@@ -32212,91 +30717,74 @@ func (s IoK8sAPIEventsV1Event) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("action")
 		s.Action.WriteJSON(j)
 	}
-
 	if s.ApiVersion.Set {
 		more.More()
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.DeprecatedCount.Set {
 		more.More()
 		j.WriteObjectField("deprecatedCount")
 		s.DeprecatedCount.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "deprecatedFirstTimestamp".
-
 	// Unsupported kind "pointer" for field "deprecatedLastTimestamp".
-
 	if s.DeprecatedSource.Set {
 		more.More()
 		j.WriteObjectField("deprecatedSource")
 		s.DeprecatedSource.WriteJSON(j)
 	}
-
 	// Unsupported kind "alias" for field "eventTime".
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Note.Set {
 		more.More()
 		j.WriteObjectField("note")
 		s.Note.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	if s.Regarding.Set {
 		more.More()
 		j.WriteObjectField("regarding")
 		s.Regarding.WriteJSON(j)
 	}
-
 	if s.Related.Set {
 		more.More()
 		j.WriteObjectField("related")
 		s.Related.WriteJSON(j)
 	}
-
 	if s.ReportingController.Set {
 		more.More()
 		j.WriteObjectField("reportingController")
 		s.ReportingController.WriteJSON(j)
 	}
-
 	if s.ReportingInstance.Set {
 		more.More()
 		j.WriteObjectField("reportingInstance")
 		s.ReportingInstance.WriteJSON(j)
 	}
-
 	if s.Series.Set {
 		more.More()
 		j.WriteObjectField("series")
 		s.Series.WriteJSON(j)
 	}
-
 	if s.Type.Set {
 		more.More()
 		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -32455,7 +30943,6 @@ func (s IoK8sAPIEventsV1EventList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -32466,19 +30953,16 @@ func (s IoK8sAPIEventsV1EventList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -32550,9 +31034,7 @@ func (s IoK8sAPIEventsV1EventSeries) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("count")
 	j.WriteInt32(s.Count)
-
 	// Unsupported kind "alias" for field "lastObservedTime".
-
 	j.WriteObjectEnd()
 }
 
@@ -32608,91 +31090,74 @@ func (s IoK8sAPIEventsV1beta1Event) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("action")
 		s.Action.WriteJSON(j)
 	}
-
 	if s.ApiVersion.Set {
 		more.More()
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.DeprecatedCount.Set {
 		more.More()
 		j.WriteObjectField("deprecatedCount")
 		s.DeprecatedCount.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "deprecatedFirstTimestamp".
-
 	// Unsupported kind "pointer" for field "deprecatedLastTimestamp".
-
 	if s.DeprecatedSource.Set {
 		more.More()
 		j.WriteObjectField("deprecatedSource")
 		s.DeprecatedSource.WriteJSON(j)
 	}
-
 	// Unsupported kind "alias" for field "eventTime".
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Note.Set {
 		more.More()
 		j.WriteObjectField("note")
 		s.Note.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	if s.Regarding.Set {
 		more.More()
 		j.WriteObjectField("regarding")
 		s.Regarding.WriteJSON(j)
 	}
-
 	if s.Related.Set {
 		more.More()
 		j.WriteObjectField("related")
 		s.Related.WriteJSON(j)
 	}
-
 	if s.ReportingController.Set {
 		more.More()
 		j.WriteObjectField("reportingController")
 		s.ReportingController.WriteJSON(j)
 	}
-
 	if s.ReportingInstance.Set {
 		more.More()
 		j.WriteObjectField("reportingInstance")
 		s.ReportingInstance.WriteJSON(j)
 	}
-
 	if s.Series.Set {
 		more.More()
 		j.WriteObjectField("series")
 		s.Series.WriteJSON(j)
 	}
-
 	if s.Type.Set {
 		more.More()
 		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -32851,7 +31316,6 @@ func (s IoK8sAPIEventsV1beta1EventList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -32862,19 +31326,16 @@ func (s IoK8sAPIEventsV1beta1EventList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -32946,9 +31407,7 @@ func (s IoK8sAPIEventsV1beta1EventSeries) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("count")
 	j.WriteInt32(s.Count)
-
 	// Unsupported kind "alias" for field "lastObservedTime".
-
 	j.WriteObjectEnd()
 }
 
@@ -33002,7 +31461,6 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) WriteJSON(j *json.Str
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -33054,31 +31512,26 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -33158,31 +31611,26 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) WriteJSON(j *json.Stream)
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "lastTransitionTime".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	if s.Type.Set {
 		more.More()
 		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -33263,7 +31711,6 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -33274,19 +31721,16 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -33360,17 +31804,14 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("distinguisherMethod")
 		s.DistinguisherMethod.WriteJSON(j)
 	}
-
 	if s.MatchingPrecedence.Set {
 		more.More()
 		j.WriteObjectField("matchingPrecedence")
 		s.MatchingPrecedence.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("priorityLevelConfiguration")
 	s.PriorityLevelConfiguration.WriteJSON(j)
-
 	if s.Rules != nil {
 		more.More()
 		j.WriteObjectField("rules")
@@ -33383,7 +31824,6 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -33463,7 +31903,6 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -33514,7 +31953,6 @@ func (s IoK8sAPIFlowcontrolV1beta1GroupSubject) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	j.WriteObjectEnd()
 }
 
@@ -33566,11 +32004,9 @@ func (s IoK8sAPIFlowcontrolV1beta1LimitResponse) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("queuing")
 		s.Queuing.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -33629,13 +32065,11 @@ func (s IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) WriteJSON(j
 		j.WriteObjectField("assuredConcurrencyShares")
 		s.AssuredConcurrencyShares.WriteJSON(j)
 	}
-
 	if s.LimitResponse.Set {
 		more.More()
 		j.WriteObjectField("limitResponse")
 		s.LimitResponse.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -33703,7 +32137,6 @@ func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) WriteJSON(j *json.Strea
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	more.More()
 	j.WriteObjectField("verbs")
 	more.Down()
@@ -33714,7 +32147,6 @@ func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) WriteJSON(j *json.Strea
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	j.WriteObjectEnd()
 }
 
@@ -33778,7 +32210,6 @@ func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) WriteJSON(j *json.Str
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.ResourceRules != nil {
 		more.More()
 		j.WriteObjectField("resourceRules")
@@ -33791,7 +32222,6 @@ func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) WriteJSON(j *json.Str
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("subjects")
 	more.Down()
@@ -33802,7 +32232,6 @@ func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) WriteJSON(j *json.Str
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	j.WriteObjectEnd()
 }
 
@@ -33863,31 +32292,26 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) WriteJSON(j *json.
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -33967,31 +32391,26 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) WriteJSON
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "lastTransitionTime".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	if s.Type.Set {
 		more.More()
 		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -34072,7 +32491,6 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) WriteJSON(j *j
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -34083,19 +32501,16 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) WriteJSON(j *j
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -34167,7 +32582,6 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) WriteJSON
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	j.WriteObjectEnd()
 }
 
@@ -34219,11 +32633,9 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) WriteJSON(j *j
 		j.WriteObjectField("limited")
 		s.Limited.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -34289,7 +32701,6 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) WriteJSON(j 
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -34342,19 +32753,16 @@ func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) WriteJSON(j *json.Stream
 		j.WriteObjectField("handSize")
 		s.HandSize.WriteJSON(j)
 	}
-
 	if s.QueueLengthLimit.Set {
 		more.More()
 		j.WriteObjectField("queueLengthLimit")
 		s.QueueLengthLimit.WriteJSON(j)
 	}
-
 	if s.Queues.Set {
 		more.More()
 		j.WriteObjectField("queues")
 		s.Queues.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -34429,13 +32837,11 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) WriteJSON(j *json.Stream) 
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.ClusterScope.Set {
 		more.More()
 		j.WriteObjectField("clusterScope")
 		s.ClusterScope.WriteJSON(j)
 	}
-
 	if s.Namespaces != nil {
 		more.More()
 		j.WriteObjectField("namespaces")
@@ -34448,7 +32854,6 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) WriteJSON(j *json.Stream) 
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("resources")
 	more.Down()
@@ -34459,7 +32864,6 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) WriteJSON(j *json.Stream) 
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	more.More()
 	j.WriteObjectField("verbs")
 	more.Down()
@@ -34470,7 +32874,6 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) WriteJSON(j *json.Stream) 
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	j.WriteObjectEnd()
 }
 
@@ -34540,11 +32943,9 @@ func (s IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) WriteJSON(j *json.Strea
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	more.More()
 	j.WriteObjectField("namespace")
 	j.WriteString(s.Namespace)
-
 	j.WriteObjectEnd()
 }
 
@@ -34599,23 +33000,19 @@ func (s IoK8sAPIFlowcontrolV1beta1Subject) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("group")
 		s.Group.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-
 	if s.ServiceAccount.Set {
 		more.More()
 		j.WriteObjectField("serviceAccount")
 		s.ServiceAccount.WriteJSON(j)
 	}
-
 	if s.User.Set {
 		more.More()
 		j.WriteObjectField("user")
 		s.User.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -34686,7 +33083,6 @@ func (s IoK8sAPIFlowcontrolV1beta1UserSubject) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	j.WriteObjectEnd()
 }
 
@@ -34736,7 +33132,6 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) WriteJSON(j *json.Str
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -34788,31 +33183,26 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -34892,31 +33282,26 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) WriteJSON(j *json.Stream)
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "lastTransitionTime".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	if s.Type.Set {
 		more.More()
 		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -34997,7 +33382,6 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -35008,19 +33392,16 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -35094,17 +33475,14 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("distinguisherMethod")
 		s.DistinguisherMethod.WriteJSON(j)
 	}
-
 	if s.MatchingPrecedence.Set {
 		more.More()
 		j.WriteObjectField("matchingPrecedence")
 		s.MatchingPrecedence.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("priorityLevelConfiguration")
 	s.PriorityLevelConfiguration.WriteJSON(j)
-
 	if s.Rules != nil {
 		more.More()
 		j.WriteObjectField("rules")
@@ -35117,7 +33495,6 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -35197,7 +33574,6 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -35248,7 +33624,6 @@ func (s IoK8sAPIFlowcontrolV1beta2GroupSubject) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	j.WriteObjectEnd()
 }
 
@@ -35300,11 +33675,9 @@ func (s IoK8sAPIFlowcontrolV1beta2LimitResponse) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("queuing")
 		s.Queuing.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -35363,13 +33736,11 @@ func (s IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) WriteJSON(j
 		j.WriteObjectField("assuredConcurrencyShares")
 		s.AssuredConcurrencyShares.WriteJSON(j)
 	}
-
 	if s.LimitResponse.Set {
 		more.More()
 		j.WriteObjectField("limitResponse")
 		s.LimitResponse.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -35437,7 +33808,6 @@ func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) WriteJSON(j *json.Strea
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	more.More()
 	j.WriteObjectField("verbs")
 	more.Down()
@@ -35448,7 +33818,6 @@ func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) WriteJSON(j *json.Strea
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	j.WriteObjectEnd()
 }
 
@@ -35512,7 +33881,6 @@ func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) WriteJSON(j *json.Str
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.ResourceRules != nil {
 		more.More()
 		j.WriteObjectField("resourceRules")
@@ -35525,7 +33893,6 @@ func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) WriteJSON(j *json.Str
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("subjects")
 	more.Down()
@@ -35536,7 +33903,6 @@ func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) WriteJSON(j *json.Str
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	j.WriteObjectEnd()
 }
 
@@ -35597,31 +33963,26 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) WriteJSON(j *json.
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -35701,31 +34062,26 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) WriteJSON
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "lastTransitionTime".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	if s.Type.Set {
 		more.More()
 		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -35806,7 +34162,6 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) WriteJSON(j *j
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -35817,19 +34172,16 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) WriteJSON(j *j
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -35901,7 +34253,6 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) WriteJSON
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	j.WriteObjectEnd()
 }
 
@@ -35953,11 +34304,9 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) WriteJSON(j *j
 		j.WriteObjectField("limited")
 		s.Limited.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -36023,7 +34372,6 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) WriteJSON(j 
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -36076,19 +34424,16 @@ func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) WriteJSON(j *json.Stream
 		j.WriteObjectField("handSize")
 		s.HandSize.WriteJSON(j)
 	}
-
 	if s.QueueLengthLimit.Set {
 		more.More()
 		j.WriteObjectField("queueLengthLimit")
 		s.QueueLengthLimit.WriteJSON(j)
 	}
-
 	if s.Queues.Set {
 		more.More()
 		j.WriteObjectField("queues")
 		s.Queues.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -36163,13 +34508,11 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) WriteJSON(j *json.Stream) 
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.ClusterScope.Set {
 		more.More()
 		j.WriteObjectField("clusterScope")
 		s.ClusterScope.WriteJSON(j)
 	}
-
 	if s.Namespaces != nil {
 		more.More()
 		j.WriteObjectField("namespaces")
@@ -36182,7 +34525,6 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) WriteJSON(j *json.Stream) 
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("resources")
 	more.Down()
@@ -36193,7 +34535,6 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) WriteJSON(j *json.Stream) 
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	more.More()
 	j.WriteObjectField("verbs")
 	more.Down()
@@ -36204,7 +34545,6 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) WriteJSON(j *json.Stream) 
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	j.WriteObjectEnd()
 }
 
@@ -36274,11 +34614,9 @@ func (s IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) WriteJSON(j *json.Strea
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	more.More()
 	j.WriteObjectField("namespace")
 	j.WriteString(s.Namespace)
-
 	j.WriteObjectEnd()
 }
 
@@ -36333,23 +34671,19 @@ func (s IoK8sAPIFlowcontrolV1beta2Subject) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("group")
 		s.Group.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-
 	if s.ServiceAccount.Set {
 		more.More()
 		j.WriteObjectField("serviceAccount")
 		s.ServiceAccount.WriteJSON(j)
 	}
-
 	if s.User.Set {
 		more.More()
 		j.WriteObjectField("user")
 		s.User.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -36420,7 +34754,6 @@ func (s IoK8sAPIFlowcontrolV1beta2UserSubject) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	j.WriteObjectEnd()
 }
 
@@ -36470,17 +34803,14 @@ func (s IoK8sAPINetworkingV1HTTPIngressPath) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("backend")
 	s.Backend.WriteJSON(j)
-
 	if s.Path.Set {
 		more.More()
 		j.WriteObjectField("path")
 		s.Path.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("pathType")
 	j.WriteString(s.PathType)
-
 	j.WriteObjectEnd()
 }
 
@@ -36550,7 +34880,6 @@ func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	j.WriteObjectEnd()
 }
 
@@ -36601,7 +34930,6 @@ func (s IoK8sAPINetworkingV1IPBlock) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("cidr")
 	j.WriteString(s.Cidr)
-
 	if s.Except != nil {
 		more.More()
 		j.WriteObjectField("except")
@@ -36614,7 +34942,6 @@ func (s IoK8sAPINetworkingV1IPBlock) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -36670,31 +34997,26 @@ func (s IoK8sAPINetworkingV1Ingress) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -36778,13 +35100,11 @@ func (s IoK8sAPINetworkingV1IngressBackend) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("resource")
 		s.Resource.WriteJSON(j)
 	}
-
 	if s.Service.Set {
 		more.More()
 		j.WriteObjectField("service")
 		s.Service.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -36847,25 +35167,21 @@ func (s IoK8sAPINetworkingV1IngressClass) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -36942,7 +35258,6 @@ func (s IoK8sAPINetworkingV1IngressClassList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -36953,19 +35268,16 @@ func (s IoK8sAPINetworkingV1IngressClassList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -37039,27 +35351,22 @@ func (s IoK8sAPINetworkingV1IngressClassParametersReference) WriteJSON(j *json.S
 		j.WriteObjectField("apiGroup")
 		s.ApiGroup.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	if s.Namespace.Set {
 		more.More()
 		j.WriteObjectField("namespace")
 		s.Namespace.WriteJSON(j)
 	}
-
 	if s.Scope.Set {
 		more.More()
 		j.WriteObjectField("scope")
 		s.Scope.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -37135,13 +35442,11 @@ func (s IoK8sAPINetworkingV1IngressClassSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("controller")
 		s.Controller.WriteJSON(j)
 	}
-
 	if s.Parameters.Set {
 		more.More()
 		j.WriteObjectField("parameters")
 		s.Parameters.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -37204,7 +35509,6 @@ func (s IoK8sAPINetworkingV1IngressList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -37215,19 +35519,16 @@ func (s IoK8sAPINetworkingV1IngressList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -37301,13 +35602,11 @@ func (s IoK8sAPINetworkingV1IngressRule) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("http")
 		s.HTTP.WriteJSON(j)
 	}
-
 	if s.Host.Set {
 		more.More()
 		j.WriteObjectField("host")
 		s.Host.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -37368,13 +35667,11 @@ func (s IoK8sAPINetworkingV1IngressServiceBackend) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	if s.Port.Set {
 		more.More()
 		j.WriteObjectField("port")
 		s.Port.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -37433,13 +35730,11 @@ func (s IoK8sAPINetworkingV1IngressSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("defaultBackend")
 		s.DefaultBackend.WriteJSON(j)
 	}
-
 	if s.IngressClassName.Set {
 		more.More()
 		j.WriteObjectField("ingressClassName")
 		s.IngressClassName.WriteJSON(j)
 	}
-
 	if s.Rules != nil {
 		more.More()
 		j.WriteObjectField("rules")
@@ -37452,7 +35747,6 @@ func (s IoK8sAPINetworkingV1IngressSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.TLS != nil {
 		more.More()
 		j.WriteObjectField("tls")
@@ -37465,7 +35759,6 @@ func (s IoK8sAPINetworkingV1IngressSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -37536,7 +35829,6 @@ func (s IoK8sAPINetworkingV1IngressStatus) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("loadBalancer")
 		s.LoadBalancer.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -37599,13 +35891,11 @@ func (s IoK8sAPINetworkingV1IngressTLS) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.SecretName.Set {
 		more.More()
 		j.WriteObjectField("secretName")
 		s.SecretName.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -37665,25 +35955,21 @@ func (s IoK8sAPINetworkingV1NetworkPolicy) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -37767,7 +36053,6 @@ func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.To != nil {
 		more.More()
 		j.WriteObjectField("to")
@@ -37780,7 +36065,6 @@ func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -37844,7 +36128,6 @@ func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) WriteJSON(j *json.Stream) 
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Ports != nil {
 		more.More()
 		j.WriteObjectField("ports")
@@ -37857,7 +36140,6 @@ func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) WriteJSON(j *json.Stream) 
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -37914,7 +36196,6 @@ func (s IoK8sAPINetworkingV1NetworkPolicyList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -37925,19 +36206,16 @@ func (s IoK8sAPINetworkingV1NetworkPolicyList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -38011,19 +36289,16 @@ func (s IoK8sAPINetworkingV1NetworkPolicyPeer) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("ipBlock")
 		s.IpBlock.WriteJSON(j)
 	}
-
 	if s.NamespaceSelector.Set {
 		more.More()
 		j.WriteObjectField("namespaceSelector")
 		s.NamespaceSelector.WriteJSON(j)
 	}
-
 	if s.PodSelector.Set {
 		more.More()
 		j.WriteObjectField("podSelector")
 		s.PodSelector.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -38093,15 +36368,12 @@ func (s IoK8sAPINetworkingV1NetworkPolicyPort) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("endPort")
 		s.EndPort.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "port".
-
 	if s.Protocol.Set {
 		more.More()
 		j.WriteObjectField("protocol")
 		s.Protocol.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -38175,7 +36447,6 @@ func (s IoK8sAPINetworkingV1NetworkPolicySpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Ingress != nil {
 		more.More()
 		j.WriteObjectField("ingress")
@@ -38188,11 +36459,9 @@ func (s IoK8sAPINetworkingV1NetworkPolicySpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("podSelector")
 	s.PodSelector.WriteJSON(j)
-
 	if s.PolicyTypes != nil {
 		more.More()
 		j.WriteObjectField("policyTypes")
@@ -38205,7 +36474,6 @@ func (s IoK8sAPINetworkingV1NetworkPolicySpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -38272,13 +36540,11 @@ func (s IoK8sAPINetworkingV1ServiceBackendPort) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	if s.Number.Set {
 		more.More()
 		j.WriteObjectField("number")
 		s.Number.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -38337,7 +36603,6 @@ func (s IoK8sAPINodeV1Overhead) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "podFixed".
-
 	j.WriteObjectEnd()
 }
 
@@ -38390,35 +36655,29 @@ func (s IoK8sAPINodeV1RuntimeClass) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("handler")
 	j.WriteString(s.Handler)
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Overhead.Set {
 		more.More()
 		j.WriteObjectField("overhead")
 		s.Overhead.WriteJSON(j)
 	}
-
 	if s.Scheduling.Set {
 		more.More()
 		j.WriteObjectField("scheduling")
 		s.Scheduling.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -38505,7 +36764,6 @@ func (s IoK8sAPINodeV1RuntimeClassList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -38516,19 +36774,16 @@ func (s IoK8sAPINodeV1RuntimeClassList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -38598,7 +36853,6 @@ func (s IoK8sAPINodeV1Scheduling) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "nodeSelector".
-
 	if s.Tolerations != nil {
 		more.More()
 		j.WriteObjectField("tolerations")
@@ -38611,7 +36865,6 @@ func (s IoK8sAPINodeV1Scheduling) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -38664,7 +36917,6 @@ func (s IoK8sAPINodeV1alpha1Overhead) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "podFixed".
-
 	j.WriteObjectEnd()
 }
 
@@ -38717,23 +36969,19 @@ func (s IoK8sAPINodeV1alpha1RuntimeClass) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
-
 	j.WriteObjectEnd()
 }
 
@@ -38809,7 +37057,6 @@ func (s IoK8sAPINodeV1alpha1RuntimeClassList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -38820,19 +37067,16 @@ func (s IoK8sAPINodeV1alpha1RuntimeClassList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -38906,17 +37150,14 @@ func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("overhead")
 		s.Overhead.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("runtimeHandler")
 	j.WriteString(s.RuntimeHandler)
-
 	if s.Scheduling.Set {
 		more.More()
 		j.WriteObjectField("scheduling")
 		s.Scheduling.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -38978,7 +37219,6 @@ func (s IoK8sAPINodeV1alpha1Scheduling) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "nodeSelector".
-
 	if s.Tolerations != nil {
 		more.More()
 		j.WriteObjectField("tolerations")
@@ -38991,7 +37231,6 @@ func (s IoK8sAPINodeV1alpha1Scheduling) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -39044,7 +37283,6 @@ func (s IoK8sAPINodeV1beta1Overhead) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "podFixed".
-
 	j.WriteObjectEnd()
 }
 
@@ -39097,35 +37335,29 @@ func (s IoK8sAPINodeV1beta1RuntimeClass) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("handler")
 	j.WriteString(s.Handler)
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Overhead.Set {
 		more.More()
 		j.WriteObjectField("overhead")
 		s.Overhead.WriteJSON(j)
 	}
-
 	if s.Scheduling.Set {
 		more.More()
 		j.WriteObjectField("scheduling")
 		s.Scheduling.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -39212,7 +37444,6 @@ func (s IoK8sAPINodeV1beta1RuntimeClassList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -39223,19 +37454,16 @@ func (s IoK8sAPINodeV1beta1RuntimeClassList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -39305,7 +37533,6 @@ func (s IoK8sAPINodeV1beta1Scheduling) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "nodeSelector".
-
 	if s.Tolerations != nil {
 		more.More()
 		j.WriteObjectField("tolerations")
@@ -39318,7 +37545,6 @@ func (s IoK8sAPINodeV1beta1Scheduling) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -39375,31 +37601,26 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudget) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -39483,7 +37704,6 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -39494,19 +37714,16 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -39576,15 +37793,12 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "maxUnavailable".
-
 	// Unsupported kind "pointer" for field "minAvailable".
-
 	if s.Selector.Set {
 		more.More()
 		j.WriteObjectField("selector")
 		s.Selector.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -39655,31 +37869,24 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("currentHealthy")
 	j.WriteInt32(s.CurrentHealthy)
-
 	more.More()
 	j.WriteObjectField("desiredHealthy")
 	j.WriteInt32(s.DesiredHealthy)
-
 	// Unsupported kind "pointer" for field "disruptedPods".
-
 	more.More()
 	j.WriteObjectField("disruptionsAllowed")
 	j.WriteInt32(s.DisruptionsAllowed)
-
 	more.More()
 	j.WriteObjectField("expectedPods")
 	j.WriteInt32(s.ExpectedPods)
-
 	if s.ObservedGeneration.Set {
 		more.More()
 		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -39753,7 +37960,6 @@ func (s IoK8sAPIPolicyV1beta1AllowedCSIDriver) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	j.WriteObjectEnd()
 }
 
@@ -39803,7 +38009,6 @@ func (s IoK8sAPIPolicyV1beta1AllowedFlexVolume) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("driver")
 	j.WriteString(s.Driver)
-
 	j.WriteObjectEnd()
 }
 
@@ -39855,13 +38060,11 @@ func (s IoK8sAPIPolicyV1beta1AllowedHostPath) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("pathPrefix")
 		s.PathPrefix.WriteJSON(j)
 	}
-
 	if s.ReadOnly.Set {
 		more.More()
 		j.WriteObjectField("readOnly")
 		s.ReadOnly.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -39931,13 +38134,11 @@ func (s IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Rule.Set {
 		more.More()
 		j.WriteObjectField("rule")
 		s.Rule.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -39995,11 +38196,9 @@ func (s IoK8sAPIPolicyV1beta1HostPortRange) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("max")
 	j.WriteInt32(s.Max)
-
 	more.More()
 	j.WriteObjectField("min")
 	j.WriteInt32(s.Min)
-
 	j.WriteObjectEnd()
 }
 
@@ -40052,11 +38251,9 @@ func (s IoK8sAPIPolicyV1beta1IDRange) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("max")
 	j.WriteInt64(s.Max)
-
 	more.More()
 	j.WriteObjectField("min")
 	j.WriteInt64(s.Min)
-
 	j.WriteObjectEnd()
 }
 
@@ -40111,31 +38308,26 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -40219,7 +38411,6 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) WriteJSON(j *json.Stream) 
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -40230,19 +38421,16 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) WriteJSON(j *json.Stream) 
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -40312,15 +38500,12 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) WriteJSON(j *json.Stream) 
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "maxUnavailable".
-
 	// Unsupported kind "pointer" for field "minAvailable".
-
 	if s.Selector.Set {
 		more.More()
 		j.WriteObjectField("selector")
 		s.Selector.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -40391,31 +38576,24 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) WriteJSON(j *json.Stream
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("currentHealthy")
 	j.WriteInt32(s.CurrentHealthy)
-
 	more.More()
 	j.WriteObjectField("desiredHealthy")
 	j.WriteInt32(s.DesiredHealthy)
-
 	// Unsupported kind "pointer" for field "disruptedPods".
-
 	more.More()
 	j.WriteObjectField("disruptionsAllowed")
 	j.WriteInt32(s.DisruptionsAllowed)
-
 	more.More()
 	j.WriteObjectField("expectedPods")
 	j.WriteInt32(s.ExpectedPods)
-
 	if s.ObservedGeneration.Set {
 		more.More()
 		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -40491,25 +38669,21 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -40586,7 +38760,6 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -40597,19 +38770,16 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -40683,7 +38853,6 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("allowPrivilegeEscalation")
 		s.AllowPrivilegeEscalation.WriteJSON(j)
 	}
-
 	if s.AllowedCSIDrivers != nil {
 		more.More()
 		j.WriteObjectField("allowedCSIDrivers")
@@ -40696,7 +38865,6 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.AllowedCapabilities != nil {
 		more.More()
 		j.WriteObjectField("allowedCapabilities")
@@ -40709,7 +38877,6 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.AllowedFlexVolumes != nil {
 		more.More()
 		j.WriteObjectField("allowedFlexVolumes")
@@ -40722,7 +38889,6 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.AllowedHostPaths != nil {
 		more.More()
 		j.WriteObjectField("allowedHostPaths")
@@ -40735,7 +38901,6 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.AllowedProcMountTypes != nil {
 		more.More()
 		j.WriteObjectField("allowedProcMountTypes")
@@ -40748,7 +38913,6 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.AllowedUnsafeSysctls != nil {
 		more.More()
 		j.WriteObjectField("allowedUnsafeSysctls")
@@ -40761,7 +38925,6 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.DefaultAddCapabilities != nil {
 		more.More()
 		j.WriteObjectField("defaultAddCapabilities")
@@ -40774,13 +38937,11 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.DefaultAllowPrivilegeEscalation.Set {
 		more.More()
 		j.WriteObjectField("defaultAllowPrivilegeEscalation")
 		s.DefaultAllowPrivilegeEscalation.WriteJSON(j)
 	}
-
 	if s.ForbiddenSysctls != nil {
 		more.More()
 		j.WriteObjectField("forbiddenSysctls")
@@ -40793,29 +38954,24 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("fsGroup")
 	s.FsGroup.WriteJSON(j)
-
 	if s.HostIPC.Set {
 		more.More()
 		j.WriteObjectField("hostIPC")
 		s.HostIPC.WriteJSON(j)
 	}
-
 	if s.HostNetwork.Set {
 		more.More()
 		j.WriteObjectField("hostNetwork")
 		s.HostNetwork.WriteJSON(j)
 	}
-
 	if s.HostPID.Set {
 		more.More()
 		j.WriteObjectField("hostPID")
 		s.HostPID.WriteJSON(j)
 	}
-
 	if s.HostPorts != nil {
 		more.More()
 		j.WriteObjectField("hostPorts")
@@ -40828,19 +38984,16 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Privileged.Set {
 		more.More()
 		j.WriteObjectField("privileged")
 		s.Privileged.WriteJSON(j)
 	}
-
 	if s.ReadOnlyRootFilesystem.Set {
 		more.More()
 		j.WriteObjectField("readOnlyRootFilesystem")
 		s.ReadOnlyRootFilesystem.WriteJSON(j)
 	}
-
 	if s.RequiredDropCapabilities != nil {
 		more.More()
 		j.WriteObjectField("requiredDropCapabilities")
@@ -40853,31 +39006,25 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.RunAsGroup.Set {
 		more.More()
 		j.WriteObjectField("runAsGroup")
 		s.RunAsGroup.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("runAsUser")
 	s.RunAsUser.WriteJSON(j)
-
 	if s.RuntimeClass.Set {
 		more.More()
 		j.WriteObjectField("runtimeClass")
 		s.RuntimeClass.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("seLinux")
 	s.SeLinux.WriteJSON(j)
-
 	more.More()
 	j.WriteObjectField("supplementalGroups")
 	s.SupplementalGroups.WriteJSON(j)
-
 	if s.Volumes != nil {
 		more.More()
 		j.WriteObjectField("volumes")
@@ -40890,7 +39037,6 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -41077,11 +39223,9 @@ func (s IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) WriteJSON(j *json.Stream
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("rule")
 	j.WriteString(s.Rule)
-
 	j.WriteObjectEnd()
 }
 
@@ -41144,11 +39288,9 @@ func (s IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) WriteJSON(j *json.Stream)
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("rule")
 	j.WriteString(s.Rule)
-
 	j.WriteObjectEnd()
 }
 
@@ -41209,13 +39351,11 @@ func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) WriteJSON(j *json.Stre
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.DefaultRuntimeClassName.Set {
 		more.More()
 		j.WriteObjectField("defaultRuntimeClassName")
 		s.DefaultRuntimeClassName.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -41273,13 +39413,11 @@ func (s IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("rule")
 	j.WriteString(s.Rule)
-
 	if s.SeLinuxOptions.Set {
 		more.More()
 		j.WriteObjectField("seLinuxOptions")
 		s.SeLinuxOptions.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -41345,13 +39483,11 @@ func (s IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) WriteJSON(j *jso
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Rule.Set {
 		more.More()
 		j.WriteObjectField("rule")
 		s.Rule.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -41418,7 +39554,6 @@ func (s IoK8sAPIRbacV1AggregationRule) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -41471,25 +39606,21 @@ func (s IoK8sAPIRbacV1ClusterRole) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("aggregationRule")
 		s.AggregationRule.WriteJSON(j)
 	}
-
 	if s.ApiVersion.Set {
 		more.More()
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Rules != nil {
 		more.More()
 		j.WriteObjectField("rules")
@@ -41502,7 +39633,6 @@ func (s IoK8sAPIRbacV1ClusterRole) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -41583,23 +39713,19 @@ func (s IoK8sAPIRbacV1ClusterRoleBinding) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("roleRef")
 	s.RoleRef.WriteJSON(j)
-
 	if s.Subjects != nil {
 		more.More()
 		j.WriteObjectField("subjects")
@@ -41612,7 +39738,6 @@ func (s IoK8sAPIRbacV1ClusterRoleBinding) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -41692,7 +39817,6 @@ func (s IoK8sAPIRbacV1ClusterRoleBindingList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -41703,19 +39827,16 @@ func (s IoK8sAPIRbacV1ClusterRoleBindingList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -41789,7 +39910,6 @@ func (s IoK8sAPIRbacV1ClusterRoleList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -41800,19 +39920,16 @@ func (s IoK8sAPIRbacV1ClusterRoleList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -41893,7 +40010,6 @@ func (s IoK8sAPIRbacV1PolicyRule) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.NonResourceURLs != nil {
 		more.More()
 		j.WriteObjectField("nonResourceURLs")
@@ -41906,7 +40022,6 @@ func (s IoK8sAPIRbacV1PolicyRule) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.ResourceNames != nil {
 		more.More()
 		j.WriteObjectField("resourceNames")
@@ -41919,7 +40034,6 @@ func (s IoK8sAPIRbacV1PolicyRule) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Resources != nil {
 		more.More()
 		j.WriteObjectField("resources")
@@ -41932,7 +40046,6 @@ func (s IoK8sAPIRbacV1PolicyRule) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("verbs")
 	more.Down()
@@ -41943,7 +40056,6 @@ func (s IoK8sAPIRbacV1PolicyRule) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	j.WriteObjectEnd()
 }
 
@@ -42012,19 +40124,16 @@ func (s IoK8sAPIRbacV1Role) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Rules != nil {
 		more.More()
 		j.WriteObjectField("rules")
@@ -42037,7 +40146,6 @@ func (s IoK8sAPIRbacV1Role) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -42111,23 +40219,19 @@ func (s IoK8sAPIRbacV1RoleBinding) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("roleRef")
 	s.RoleRef.WriteJSON(j)
-
 	if s.Subjects != nil {
 		more.More()
 		j.WriteObjectField("subjects")
@@ -42140,7 +40244,6 @@ func (s IoK8sAPIRbacV1RoleBinding) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -42220,7 +40323,6 @@ func (s IoK8sAPIRbacV1RoleBindingList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -42231,19 +40333,16 @@ func (s IoK8sAPIRbacV1RoleBindingList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -42317,7 +40416,6 @@ func (s IoK8sAPIRbacV1RoleList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -42328,19 +40426,16 @@ func (s IoK8sAPIRbacV1RoleList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -42412,15 +40507,12 @@ func (s IoK8sAPIRbacV1RoleRef) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("apiGroup")
 	j.WriteString(s.ApiGroup)
-
 	more.More()
 	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	j.WriteObjectEnd()
 }
 
@@ -42478,21 +40570,17 @@ func (s IoK8sAPIRbacV1Subject) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiGroup")
 		s.ApiGroup.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	if s.Namespace.Set {
 		more.More()
 		j.WriteObjectField("namespace")
 		s.Namespace.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -42561,41 +40649,34 @@ func (s IoK8sAPISchedulingV1PriorityClass) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Description.Set {
 		more.More()
 		j.WriteObjectField("description")
 		s.Description.WriteJSON(j)
 	}
-
 	if s.GlobalDefault.Set {
 		more.More()
 		j.WriteObjectField("globalDefault")
 		s.GlobalDefault.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.PreemptionPolicy.Set {
 		more.More()
 		j.WriteObjectField("preemptionPolicy")
 		s.PreemptionPolicy.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("value")
 	j.WriteInt32(s.Value)
-
 	j.WriteObjectEnd()
 }
 
@@ -42689,7 +40770,6 @@ func (s IoK8sAPISchedulingV1PriorityClassList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -42700,19 +40780,16 @@ func (s IoK8sAPISchedulingV1PriorityClassList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -42786,23 +40863,19 @@ func (s IoK8sAPIStorageV1CSIDriver) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
-
 	j.WriteObjectEnd()
 }
 
@@ -42878,7 +40951,6 @@ func (s IoK8sAPIStorageV1CSIDriverList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -42889,19 +40961,16 @@ func (s IoK8sAPIStorageV1CSIDriverList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -42975,31 +41044,26 @@ func (s IoK8sAPIStorageV1CSIDriverSpec) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("attachRequired")
 		s.AttachRequired.WriteJSON(j)
 	}
-
 	if s.FsGroupPolicy.Set {
 		more.More()
 		j.WriteObjectField("fsGroupPolicy")
 		s.FsGroupPolicy.WriteJSON(j)
 	}
-
 	if s.PodInfoOnMount.Set {
 		more.More()
 		j.WriteObjectField("podInfoOnMount")
 		s.PodInfoOnMount.WriteJSON(j)
 	}
-
 	if s.RequiresRepublish.Set {
 		more.More()
 		j.WriteObjectField("requiresRepublish")
 		s.RequiresRepublish.WriteJSON(j)
 	}
-
 	if s.StorageCapacity.Set {
 		more.More()
 		j.WriteObjectField("storageCapacity")
 		s.StorageCapacity.WriteJSON(j)
 	}
-
 	if s.TokenRequests != nil {
 		more.More()
 		j.WriteObjectField("tokenRequests")
@@ -43012,7 +41076,6 @@ func (s IoK8sAPIStorageV1CSIDriverSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.VolumeLifecycleModes != nil {
 		more.More()
 		j.WriteObjectField("volumeLifecycleModes")
@@ -43025,7 +41088,6 @@ func (s IoK8sAPIStorageV1CSIDriverSpec) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -43117,23 +41179,19 @@ func (s IoK8sAPIStorageV1CSINode) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
-
 	j.WriteObjectEnd()
 }
 
@@ -43209,15 +41267,12 @@ func (s IoK8sAPIStorageV1CSINodeDriver) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("allocatable")
 		s.Allocatable.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	more.More()
 	j.WriteObjectField("nodeID")
 	j.WriteString(s.NodeID)
-
 	if s.TopologyKeys != nil {
 		more.More()
 		j.WriteObjectField("topologyKeys")
@@ -43230,7 +41285,6 @@ func (s IoK8sAPIStorageV1CSINodeDriver) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -43296,7 +41350,6 @@ func (s IoK8sAPIStorageV1CSINodeList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -43307,19 +41360,16 @@ func (s IoK8sAPIStorageV1CSINodeList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -43398,7 +41448,6 @@ func (s IoK8sAPIStorageV1CSINodeSpec) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	j.WriteObjectEnd()
 }
 
@@ -43451,7 +41500,6 @@ func (s IoK8sAPIStorageV1StorageClass) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("allowVolumeExpansion")
 		s.AllowVolumeExpansion.WriteJSON(j)
 	}
-
 	if s.AllowedTopologies != nil {
 		more.More()
 		j.WriteObjectField("allowedTopologies")
@@ -43464,25 +41512,21 @@ func (s IoK8sAPIStorageV1StorageClass) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.ApiVersion.Set {
 		more.More()
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.MountOptions != nil {
 		more.More()
 		j.WriteObjectField("mountOptions")
@@ -43495,25 +41539,20 @@ func (s IoK8sAPIStorageV1StorageClass) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	// Unsupported kind "pointer" for field "parameters".
-
 	more.More()
 	j.WriteObjectField("provisioner")
 	j.WriteString(s.Provisioner)
-
 	if s.ReclaimPolicy.Set {
 		more.More()
 		j.WriteObjectField("reclaimPolicy")
 		s.ReclaimPolicy.WriteJSON(j)
 	}
-
 	if s.VolumeBindingMode.Set {
 		more.More()
 		j.WriteObjectField("volumeBindingMode")
 		s.VolumeBindingMode.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -43619,7 +41658,6 @@ func (s IoK8sAPIStorageV1StorageClassList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -43630,19 +41668,16 @@ func (s IoK8sAPIStorageV1StorageClassList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -43714,13 +41749,11 @@ func (s IoK8sAPIStorageV1TokenRequest) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("audience")
 	j.WriteString(s.Audience)
-
 	if s.ExpirationSeconds.Set {
 		more.More()
 		j.WriteObjectField("expirationSeconds")
 		s.ExpirationSeconds.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -43779,29 +41812,24 @@ func (s IoK8sAPIStorageV1VolumeAttachment) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -43884,7 +41912,6 @@ func (s IoK8sAPIStorageV1VolumeAttachmentList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -43895,19 +41922,16 @@ func (s IoK8sAPIStorageV1VolumeAttachmentList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -43981,13 +42005,11 @@ func (s IoK8sAPIStorageV1VolumeAttachmentSource) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("inlineVolumeSpec")
 		s.InlineVolumeSpec.WriteJSON(j)
 	}
-
 	if s.PersistentVolumeName.Set {
 		more.More()
 		j.WriteObjectField("persistentVolumeName")
 		s.PersistentVolumeName.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -44048,15 +42070,12 @@ func (s IoK8sAPIStorageV1VolumeAttachmentSpec) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("attacher")
 	j.WriteString(s.Attacher)
-
 	more.More()
 	j.WriteObjectField("nodeName")
 	j.WriteString(s.NodeName)
-
 	more.More()
 	j.WriteObjectField("source")
 	s.Source.WriteJSON(j)
-
 	j.WriteObjectEnd()
 }
 
@@ -44117,19 +42136,15 @@ func (s IoK8sAPIStorageV1VolumeAttachmentStatus) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("attachError")
 		s.AttachError.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("attached")
 	j.WriteBool(s.Attached)
-
 	// Unsupported kind "pointer" for field "attachmentMetadata".
-
 	if s.DetachError.Set {
 		more.More()
 		j.WriteObjectField("detachError")
 		s.DetachError.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -44199,9 +42214,7 @@ func (s IoK8sAPIStorageV1VolumeError) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "time".
-
 	j.WriteObjectEnd()
 }
 
@@ -44261,7 +42274,6 @@ func (s IoK8sAPIStorageV1VolumeNodeResources) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("count")
 		s.Count.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -44317,33 +42329,26 @@ func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "capacity".
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "maximumVolumeSize".
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.NodeTopology.Set {
 		more.More()
 		j.WriteObjectField("nodeTopology")
 		s.NodeTopology.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("storageClassName")
 	j.WriteString(s.StorageClassName)
-
 	j.WriteObjectEnd()
 }
 
@@ -44431,7 +42436,6 @@ func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) WriteJSON(j *json.Stream)
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -44442,19 +42446,16 @@ func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) WriteJSON(j *json.Stream)
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -44528,33 +42529,26 @@ func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "capacity".
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "maximumVolumeSize".
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.NodeTopology.Set {
 		more.More()
 		j.WriteObjectField("nodeTopology")
 		s.NodeTopology.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("storageClassName")
 	j.WriteString(s.StorageClassName)
-
 	j.WriteObjectEnd()
 }
 
@@ -44642,7 +42636,6 @@ func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) WriteJSON(j *json.Stream) 
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -44653,19 +42646,16 @@ func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) WriteJSON(j *json.Stream) 
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -44739,31 +42729,25 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDef
 		j.WriteObjectField("description")
 		s.Description.WriteJSON(j)
 	}
-
 	if s.Format.Set {
 		more.More()
 		j.WriteObjectField("format")
 		s.Format.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("jsonPath")
 	j.WriteString(s.JsonPath)
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	if s.Priority.Set {
 		more.More()
 		j.WriteObjectField("priority")
 		s.Priority.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -44840,13 +42824,11 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversio
 	more.More()
 	j.WriteObjectField("strategy")
 	j.WriteString(s.Strategy)
-
 	if s.Webhook.Set {
 		more.More()
 		j.WriteObjectField("webhook")
 		s.Webhook.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -44905,29 +42887,24 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("spec")
 	s.Spec.WriteJSON(j)
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -45006,27 +42983,22 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "lastTransitionTime".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -45099,7 +43071,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -45110,19 +43081,16 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -45203,21 +43171,17 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-
 	if s.ListKind.Set {
 		more.More()
 		j.WriteObjectField("listKind")
 		s.ListKind.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("plural")
 	j.WriteString(s.Plural)
-
 	if s.ShortNames != nil {
 		more.More()
 		j.WriteObjectField("shortNames")
@@ -45230,13 +43194,11 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Singular.Set {
 		more.More()
 		j.WriteObjectField("singular")
 		s.Singular.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -45313,25 +43275,20 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		j.WriteObjectField("conversion")
 		s.Conversion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("group")
 	j.WriteString(s.Group)
-
 	more.More()
 	j.WriteObjectField("names")
 	s.Names.WriteJSON(j)
-
 	if s.PreserveUnknownFields.Set {
 		more.More()
 		j.WriteObjectField("preserveUnknownFields")
 		s.PreserveUnknownFields.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("scope")
 	j.WriteString(s.Scope)
-
 	more.More()
 	j.WriteObjectField("versions")
 	more.Down()
@@ -45342,7 +43299,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	j.WriteObjectEnd()
 }
 
@@ -45421,7 +43377,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		j.WriteObjectField("acceptedNames")
 		s.AcceptedNames.WriteJSON(j)
 	}
-
 	if s.Conditions != nil {
 		more.More()
 		j.WriteObjectField("conditions")
@@ -45434,7 +43389,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.StoredVersions != nil {
 		more.More()
 		j.WriteObjectField("storedVersions")
@@ -45447,7 +43401,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -45518,43 +43471,35 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Deprecated.Set {
 		more.More()
 		j.WriteObjectField("deprecated")
 		s.Deprecated.WriteJSON(j)
 	}
-
 	if s.DeprecationWarning.Set {
 		more.More()
 		j.WriteObjectField("deprecationWarning")
 		s.DeprecationWarning.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	if s.Schema.Set {
 		more.More()
 		j.WriteObjectField("schema")
 		s.Schema.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("served")
 	j.WriteBool(s.Served)
-
 	more.More()
 	j.WriteObjectField("storage")
 	j.WriteBool(s.Storage)
-
 	if s.Subresources.Set {
 		more.More()
 		j.WriteObjectField("subresources")
 		s.Subresources.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -45644,15 +43589,12 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresour
 		j.WriteObjectField("labelSelectorPath")
 		s.LabelSelectorPath.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("specReplicasPath")
 	j.WriteString(s.SpecReplicasPath)
-
 	more.More()
 	j.WriteObjectField("statusReplicasPath")
 	j.WriteString(s.StatusReplicasPath)
-
 	j.WriteObjectEnd()
 }
 
@@ -45714,9 +43656,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresour
 		j.WriteObjectField("scale")
 		s.Scale.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "status".
-
 	j.WriteObjectEnd()
 }
 
@@ -45776,7 +43716,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidatio
 		j.WriteObjectField("openAPIV3Schema")
 		s.OpenAPIV3Schema.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -45832,13 +43771,11 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) 
 		j.WriteObjectField("description")
 		s.Description.WriteJSON(j)
 	}
-
 	if s.URL.Set {
 		more.More()
 		j.WriteObjectField("url")
 		s.URL.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -45897,9 +43834,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJ
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "additionalItems".
-
 	// Unsupported kind "pointer" for field "additionalProperties".
-
 	if s.AllOf != nil {
 		more.More()
 		j.WriteObjectField("allOf")
@@ -45912,7 +43847,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJ
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.AnyOf != nil {
 		more.More()
 		j.WriteObjectField("anyOf")
@@ -45925,130 +43859,107 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJ
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	// Unsupported kind "pointer" for field "default".
-
 	// Unsupported kind "pointer" for field "definitions".
-
 	// Unsupported kind "pointer" for field "dependencies".
-
 	if s.Description.Set {
 		more.More()
 		j.WriteObjectField("description")
 		s.Description.WriteJSON(j)
 	}
-
 	if s.Enum != nil {
 		more.More()
 		j.WriteObjectField("enum")
 		more.Down()
 		j.WriteArrayStart()
-		for _, elem := range s.Enum { // Unsupported kind "alias" for field "".
+		for _, elem := range s.Enum {
+			// Unsupported kind "alias" for field "".
 		}
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	// Unsupported kind "pointer" for field "example".
-
 	if s.ExclusiveMaximum.Set {
 		more.More()
 		j.WriteObjectField("exclusiveMaximum")
 		s.ExclusiveMaximum.WriteJSON(j)
 	}
-
 	if s.ExclusiveMinimum.Set {
 		more.More()
 		j.WriteObjectField("exclusiveMinimum")
 		s.ExclusiveMinimum.WriteJSON(j)
 	}
-
 	if s.ExternalDocs.Set {
 		more.More()
 		j.WriteObjectField("externalDocs")
 		s.ExternalDocs.WriteJSON(j)
 	}
-
 	if s.Format.Set {
 		more.More()
 		j.WriteObjectField("format")
 		s.Format.WriteJSON(j)
 	}
-
 	if s.ID.Set {
 		more.More()
 		j.WriteObjectField("id")
 		s.ID.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "items".
-
 	if s.MaxItems.Set {
 		more.More()
 		j.WriteObjectField("maxItems")
 		s.MaxItems.WriteJSON(j)
 	}
-
 	if s.MaxLength.Set {
 		more.More()
 		j.WriteObjectField("maxLength")
 		s.MaxLength.WriteJSON(j)
 	}
-
 	if s.MaxProperties.Set {
 		more.More()
 		j.WriteObjectField("maxProperties")
 		s.MaxProperties.WriteJSON(j)
 	}
-
 	if s.Maximum.Set {
 		more.More()
 		j.WriteObjectField("maximum")
 		s.Maximum.WriteJSON(j)
 	}
-
 	if s.MinItems.Set {
 		more.More()
 		j.WriteObjectField("minItems")
 		s.MinItems.WriteJSON(j)
 	}
-
 	if s.MinLength.Set {
 		more.More()
 		j.WriteObjectField("minLength")
 		s.MinLength.WriteJSON(j)
 	}
-
 	if s.MinProperties.Set {
 		more.More()
 		j.WriteObjectField("minProperties")
 		s.MinProperties.WriteJSON(j)
 	}
-
 	if s.Minimum.Set {
 		more.More()
 		j.WriteObjectField("minimum")
 		s.Minimum.WriteJSON(j)
 	}
-
 	if s.MultipleOf.Set {
 		more.More()
 		j.WriteObjectField("multipleOf")
 		s.MultipleOf.WriteJSON(j)
 	}
-
 	if s.Not.Set {
 		more.More()
 		j.WriteObjectField("not")
 		s.Not.WriteJSON(j)
 	}
-
 	if s.Nullable.Set {
 		more.More()
 		j.WriteObjectField("nullable")
 		s.Nullable.WriteJSON(j)
 	}
-
 	if s.OneOf != nil {
 		more.More()
 		j.WriteObjectField("oneOf")
@@ -46061,23 +43972,18 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJ
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Pattern.Set {
 		more.More()
 		j.WriteObjectField("pattern")
 		s.Pattern.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "patternProperties".
-
 	// Unsupported kind "pointer" for field "properties".
-
 	if s.Ref.Set {
 		more.More()
 		j.WriteObjectField("$ref")
 		s.Ref.WriteJSON(j)
 	}
-
 	if s.Required != nil {
 		more.More()
 		j.WriteObjectField("required")
@@ -46090,43 +43996,36 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJ
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Schema.Set {
 		more.More()
 		j.WriteObjectField("$schema")
 		s.Schema.WriteJSON(j)
 	}
-
 	if s.Title.Set {
 		more.More()
 		j.WriteObjectField("title")
 		s.Title.WriteJSON(j)
 	}
-
 	if s.Type.Set {
 		more.More()
 		j.WriteObjectField("type")
 		s.Type.WriteJSON(j)
 	}
-
 	if s.UniqueItems.Set {
 		more.More()
 		j.WriteObjectField("uniqueItems")
 		s.UniqueItems.WriteJSON(j)
 	}
-
 	if s.XMinusKubernetesMinusEmbeddedMinusResource.Set {
 		more.More()
 		j.WriteObjectField("x-kubernetes-embedded-resource")
 		s.XMinusKubernetesMinusEmbeddedMinusResource.WriteJSON(j)
 	}
-
 	if s.XMinusKubernetesMinusIntMinusOrMinusString.Set {
 		more.More()
 		j.WriteObjectField("x-kubernetes-int-or-string")
 		s.XMinusKubernetesMinusIntMinusOrMinusString.WriteJSON(j)
 	}
-
 	if s.XMinusKubernetesMinusListMinusMapMinusKeys != nil {
 		more.More()
 		j.WriteObjectField("x-kubernetes-list-map-keys")
@@ -46139,25 +44038,21 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJ
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.XMinusKubernetesMinusListMinusType.Set {
 		more.More()
 		j.WriteObjectField("x-kubernetes-list-type")
 		s.XMinusKubernetesMinusListMinusType.WriteJSON(j)
 	}
-
 	if s.XMinusKubernetesMinusMapMinusType.Set {
 		more.More()
 		j.WriteObjectField("x-kubernetes-map-type")
 		s.XMinusKubernetesMinusMapMinusType.WriteJSON(j)
 	}
-
 	if s.XMinusKubernetesMinusPreserveMinusUnknownMinusFields.Set {
 		more.More()
 		j.WriteObjectField("x-kubernetes-preserve-unknown-fields")
 		s.XMinusKubernetesMinusPreserveMinusUnknownMinusFields.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -46460,23 +44355,19 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Write
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	more.More()
 	j.WriteObjectField("namespace")
 	j.WriteString(s.Namespace)
-
 	if s.Path.Set {
 		more.More()
 		j.WriteObjectField("path")
 		s.Path.WriteJSON(j)
 	}
-
 	if s.Port.Set {
 		more.More()
 		j.WriteObjectField("port")
 		s.Port.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -46541,19 +44432,16 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Wr
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "caBundle".
-
 	if s.Service.Set {
 		more.More()
 		j.WriteObjectField("service")
 		s.Service.WriteJSON(j)
 	}
-
 	if s.URL.Set {
 		more.More()
 		j.WriteObjectField("url")
 		s.URL.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -46620,7 +44508,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Writ
 		j.WriteObjectField("clientConfig")
 		s.ClientConfig.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("conversionReviewVersions")
 	more.Down()
@@ -46631,7 +44518,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Writ
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	j.WriteObjectEnd()
 }
 
@@ -46691,23 +44577,19 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroup) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	if s.PreferredVersion.Set {
 		more.More()
 		j.WriteObjectField("preferredVersion")
 		s.PreferredVersion.WriteJSON(j)
 	}
-
 	if s.ServerAddressByClientCIDRs != nil {
 		more.More()
 		j.WriteObjectField("serverAddressByClientCIDRs")
@@ -46720,7 +44602,6 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroup) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("versions")
 	more.Down()
@@ -46731,7 +44612,6 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroup) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	j.WriteObjectEnd()
 }
 
@@ -46812,7 +44692,6 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("groups")
 	more.Down()
@@ -46823,13 +44702,11 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -46903,25 +44780,20 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResource) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Group.Set {
 		more.More()
 		j.WriteObjectField("group")
 		s.Group.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	more.More()
 	j.WriteObjectField("namespaced")
 	j.WriteBool(s.Namespaced)
-
 	if s.ShortNames != nil {
 		more.More()
 		j.WriteObjectField("shortNames")
@@ -46934,17 +44806,14 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResource) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	more.More()
 	j.WriteObjectField("singularName")
 	j.WriteString(s.SingularName)
-
 	if s.StorageVersionHash.Set {
 		more.More()
 		j.WriteObjectField("storageVersionHash")
 		s.StorageVersionHash.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("verbs")
 	more.Down()
@@ -46955,13 +44824,11 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResource) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Version.Set {
 		more.More()
 		j.WriteObjectField("version")
 		s.Version.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -47055,17 +44922,14 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) WriteJSON(j *json.Stream)
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("groupVersion")
 	j.WriteString(s.GroupVersion)
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("resources")
 	more.Down()
@@ -47076,7 +44940,6 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) WriteJSON(j *json.Stream)
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	j.WriteObjectEnd()
 }
 
@@ -47146,13 +45009,11 @@ func (s IoK8sApimachineryPkgApisMetaV1APIVersions) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("serverAddressByClientCIDRs")
 	more.Down()
@@ -47163,7 +45024,6 @@ func (s IoK8sApimachineryPkgApisMetaV1APIVersions) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	more.More()
 	j.WriteObjectField("versions")
 	more.Down()
@@ -47174,7 +45034,6 @@ func (s IoK8sApimachineryPkgApisMetaV1APIVersions) WriteJSON(j *json.Stream) {
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	j.WriteObjectEnd()
 }
 
@@ -47241,29 +45100,23 @@ func (s IoK8sApimachineryPkgApisMetaV1Condition) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "alias" for field "lastTransitionTime".
-
 	more.More()
 	j.WriteObjectField("message")
 	j.WriteString(s.Message)
-
 	if s.ObservedGeneration.Set {
 		more.More()
 		j.WriteObjectField("observedGeneration")
 		s.ObservedGeneration.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("reason")
 	j.WriteString(s.Reason)
-
 	more.More()
 	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -47335,7 +45188,6 @@ func (s IoK8sApimachineryPkgApisMetaV1DeleteOptions) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.DryRun != nil {
 		more.More()
 		j.WriteObjectField("dryRun")
@@ -47348,37 +45200,31 @@ func (s IoK8sApimachineryPkgApisMetaV1DeleteOptions) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.GracePeriodSeconds.Set {
 		more.More()
 		j.WriteObjectField("gracePeriodSeconds")
 		s.GracePeriodSeconds.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.OrphanDependents.Set {
 		more.More()
 		j.WriteObjectField("orphanDependents")
 		s.OrphanDependents.WriteJSON(j)
 	}
-
 	if s.Preconditions.Set {
 		more.More()
 		j.WriteObjectField("preconditions")
 		s.Preconditions.WriteJSON(j)
 	}
-
 	if s.PropagationPolicy.Set {
 		more.More()
 		j.WriteObjectField("propagationPolicy")
 		s.PropagationPolicy.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -47471,11 +45317,9 @@ func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) WriteJSON(j *jso
 	more.More()
 	j.WriteObjectField("groupVersion")
 	j.WriteString(s.GroupVersion)
-
 	more.More()
 	j.WriteObjectField("version")
 	j.WriteString(s.Version)
-
 	j.WriteObjectEnd()
 }
 
@@ -47537,9 +45381,7 @@ func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	// Unsupported kind "pointer" for field "matchLabels".
-
 	j.WriteObjectEnd()
 }
 
@@ -47594,11 +45436,9 @@ func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) WriteJSON(j *jso
 	more.More()
 	j.WriteObjectField("key")
 	j.WriteString(s.Key)
-
 	more.More()
 	j.WriteObjectField("operator")
 	j.WriteString(s.Operator)
-
 	if s.Values != nil {
 		more.More()
 		j.WriteObjectField("values")
@@ -47611,7 +45451,6 @@ func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) WriteJSON(j *jso
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -47670,25 +45509,21 @@ func (s IoK8sApimachineryPkgApisMetaV1ListMeta) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("continue")
 		s.Continue.WriteJSON(j)
 	}
-
 	if s.RemainingItemCount.Set {
 		more.More()
 		j.WriteObjectField("remainingItemCount")
 		s.RemainingItemCount.WriteJSON(j)
 	}
-
 	if s.ResourceVersion.Set {
 		more.More()
 		j.WriteObjectField("resourceVersion")
 		s.ResourceVersion.WriteJSON(j)
 	}
-
 	if s.SelfLink.Set {
 		more.More()
 		j.WriteObjectField("selfLink")
 		s.SelfLink.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -47765,35 +45600,28 @@ func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) WriteJSON(j *json.Stre
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.FieldsType.Set {
 		more.More()
 		j.WriteObjectField("fieldsType")
 		s.FieldsType.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "fieldsV1".
-
 	if s.Manager.Set {
 		more.More()
 		j.WriteObjectField("manager")
 		s.Manager.WriteJSON(j)
 	}
-
 	if s.Operation.Set {
 		more.More()
 		j.WriteObjectField("operation")
 		s.Operation.WriteJSON(j)
 	}
-
 	if s.Subresource.Set {
 		more.More()
 		j.WriteObjectField("subresource")
 		s.Subresource.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "time".
-
 	j.WriteObjectEnd()
 }
 
@@ -47881,23 +45709,18 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "annotations".
-
 	if s.ClusterName.Set {
 		more.More()
 		j.WriteObjectField("clusterName")
 		s.ClusterName.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "creationTimestamp".
-
 	if s.DeletionGracePeriodSeconds.Set {
 		more.More()
 		j.WriteObjectField("deletionGracePeriodSeconds")
 		s.DeletionGracePeriodSeconds.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "deletionTimestamp".
-
 	if s.Finalizers != nil {
 		more.More()
 		j.WriteObjectField("finalizers")
@@ -47910,21 +45733,17 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.GenerateName.Set {
 		more.More()
 		j.WriteObjectField("generateName")
 		s.GenerateName.WriteJSON(j)
 	}
-
 	if s.Generation.Set {
 		more.More()
 		j.WriteObjectField("generation")
 		s.Generation.WriteJSON(j)
 	}
-
 	// Unsupported kind "pointer" for field "labels".
-
 	if s.ManagedFields != nil {
 		more.More()
 		j.WriteObjectField("managedFields")
@@ -47937,19 +45756,16 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Name.Set {
 		more.More()
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	if s.Namespace.Set {
 		more.More()
 		j.WriteObjectField("namespace")
 		s.Namespace.WriteJSON(j)
 	}
-
 	if s.OwnerReferences != nil {
 		more.More()
 		j.WriteObjectField("ownerReferences")
@@ -47962,25 +45778,21 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.ResourceVersion.Set {
 		more.More()
 		j.WriteObjectField("resourceVersion")
 		s.ResourceVersion.WriteJSON(j)
 	}
-
 	if s.SelfLink.Set {
 		more.More()
 		j.WriteObjectField("selfLink")
 		s.SelfLink.WriteJSON(j)
 	}
-
 	if s.UID.Set {
 		more.More()
 		j.WriteObjectField("uid")
 		s.UID.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -48118,31 +45930,25 @@ func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) WriteJSON(j *json.Stream) 
 	more.More()
 	j.WriteObjectField("apiVersion")
 	j.WriteString(s.ApiVersion)
-
 	if s.BlockOwnerDeletion.Set {
 		more.More()
 		j.WriteObjectField("blockOwnerDeletion")
 		s.BlockOwnerDeletion.WriteJSON(j)
 	}
-
 	if s.Controller.Set {
 		more.More()
 		j.WriteObjectField("controller")
 		s.Controller.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("kind")
 	j.WriteString(s.Kind)
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-
 	more.More()
 	j.WriteObjectField("uid")
 	j.WriteString(s.UID)
-
 	j.WriteObjectEnd()
 }
 
@@ -48217,13 +46023,11 @@ func (s IoK8sApimachineryPkgApisMetaV1Preconditions) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("resourceVersion")
 		s.ResourceVersion.WriteJSON(j)
 	}
-
 	if s.UID.Set {
 		more.More()
 		j.WriteObjectField("uid")
 		s.UID.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -48284,11 +46088,9 @@ func (s IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) WriteJSON(j *js
 	more.More()
 	j.WriteObjectField("clientCIDR")
 	j.WriteString(s.ClientCIDR)
-
 	more.More()
 	j.WriteObjectField("serverAddress")
 	j.WriteString(s.ServerAddress)
-
 	j.WriteObjectEnd()
 }
 
@@ -48343,49 +46145,41 @@ func (s IoK8sApimachineryPkgApisMetaV1Status) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Code.Set {
 		more.More()
 		j.WriteObjectField("code")
 		s.Code.WriteJSON(j)
 	}
-
 	if s.Details.Set {
 		more.More()
 		j.WriteObjectField("details")
 		s.Details.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -48490,19 +46284,16 @@ func (s IoK8sApimachineryPkgApisMetaV1StatusCause) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("field")
 		s.Field.WriteJSON(j)
 	}
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -48579,37 +46370,31 @@ func (s IoK8sApimachineryPkgApisMetaV1StatusDetails) WriteJSON(j *json.Stream) {
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	if s.Group.Set {
 		more.More()
 		j.WriteObjectField("group")
 		s.Group.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Name.Set {
 		more.More()
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	if s.RetryAfterSeconds.Set {
 		more.More()
 		j.WriteObjectField("retryAfterSeconds")
 		s.RetryAfterSeconds.WriteJSON(j)
 	}
-
 	if s.UID.Set {
 		more.More()
 		j.WriteObjectField("uid")
 		s.UID.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -48693,11 +46478,9 @@ func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) WriteJSON(j *json.Stream) {
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "alias" for field "object".
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -48751,39 +46534,30 @@ func (s IoK8sApimachineryPkgVersionInfo) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("buildDate")
 	j.WriteString(s.BuildDate)
-
 	more.More()
 	j.WriteObjectField("compiler")
 	j.WriteString(s.Compiler)
-
 	more.More()
 	j.WriteObjectField("gitCommit")
 	j.WriteString(s.GitCommit)
-
 	more.More()
 	j.WriteObjectField("gitTreeState")
 	j.WriteString(s.GitTreeState)
-
 	more.More()
 	j.WriteObjectField("gitVersion")
 	j.WriteString(s.GitVersion)
-
 	more.More()
 	j.WriteObjectField("goVersion")
 	j.WriteString(s.GoVersion)
-
 	more.More()
 	j.WriteObjectField("major")
 	j.WriteString(s.Major)
-
 	more.More()
 	j.WriteObjectField("minor")
 	j.WriteString(s.Minor)
-
 	more.More()
 	j.WriteObjectField("platform")
 	j.WriteString(s.Platform)
-
 	j.WriteObjectEnd()
 }
 
@@ -48859,31 +46633,26 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) WriteJSON(j *json
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	if s.Spec.Set {
 		more.More()
 		j.WriteObjectField("spec")
 		s.Spec.WriteJSON(j)
 	}
-
 	if s.Status.Set {
 		more.More()
 		j.WriteObjectField("status")
 		s.Status.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -48963,27 +46732,22 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) WriteJSO
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "lastTransitionTime".
-
 	if s.Message.Set {
 		more.More()
 		j.WriteObjectField("message")
 		s.Message.WriteJSON(j)
 	}
-
 	if s.Reason.Set {
 		more.More()
 		j.WriteObjectField("reason")
 		s.Reason.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("status")
 	j.WriteString(s.Status)
-
 	more.More()
 	j.WriteObjectField("type")
 	j.WriteString(s.Type)
-
 	j.WriteObjectEnd()
 }
 
@@ -49056,7 +46820,6 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) WriteJSON(j *
 		j.WriteObjectField("apiVersion")
 		s.ApiVersion.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("items")
 	more.Down()
@@ -49067,19 +46830,16 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) WriteJSON(j *
 	}
 	j.WriteArrayEnd()
 	more.Up()
-
 	if s.Kind.Set {
 		more.More()
 		j.WriteObjectField("kind")
 		s.Kind.WriteJSON(j)
 	}
-
 	if s.Metadata.Set {
 		more.More()
 		j.WriteObjectField("metadata")
 		s.Metadata.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -49149,39 +46909,32 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) WriteJSON(j *
 	more := json.NewMore(j)
 	defer more.Reset()
 	// Unsupported kind "pointer" for field "caBundle".
-
 	if s.Group.Set {
 		more.More()
 		j.WriteObjectField("group")
 		s.Group.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("groupPriorityMinimum")
 	j.WriteInt32(s.GroupPriorityMinimum)
-
 	if s.InsecureSkipTLSVerify.Set {
 		more.More()
 		j.WriteObjectField("insecureSkipTLSVerify")
 		s.InsecureSkipTLSVerify.WriteJSON(j)
 	}
-
 	if s.Service.Set {
 		more.More()
 		j.WriteObjectField("service")
 		s.Service.WriteJSON(j)
 	}
-
 	if s.Version.Set {
 		more.More()
 		j.WriteObjectField("version")
 		s.Version.WriteJSON(j)
 	}
-
 	more.More()
 	j.WriteObjectField("versionPriority")
 	j.WriteInt32(s.VersionPriority)
-
 	j.WriteObjectEnd()
 }
 
@@ -49275,7 +47028,6 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) WriteJSON(j
 		j.WriteArrayEnd()
 		more.Up()
 	}
-
 	j.WriteObjectEnd()
 }
 
@@ -49328,19 +47080,16 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) WriteJSON(j
 		j.WriteObjectField("name")
 		s.Name.WriteJSON(j)
 	}
-
 	if s.Namespace.Set {
 		more.More()
 		j.WriteObjectField("namespace")
 		s.Namespace.WriteJSON(j)
 	}
-
 	if s.Port.Set {
 		more.More()
 		j.WriteObjectField("port")
 		s.Port.WriteJSON(j)
 	}
-
 	j.WriteObjectEnd()
 }
 
