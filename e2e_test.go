@@ -87,7 +87,11 @@ func (s *sampleAPIServer) PetGetByName(ctx context.Context, params api.PetGetByN
 var petTestData string
 
 func TestIntegration(t *testing.T) {
+	t.Parallel()
+
 	t.Run("Sample", func(t *testing.T) {
+		t.Parallel()
+
 		t.Run("Validate", func(t *testing.T) {
 			badPet := api.Pet{
 				Name: "k",
@@ -205,6 +209,7 @@ func TestIntegration(t *testing.T) {
 	t.Run("TechEmpower", func(t *testing.T) {
 		// Using TechEmpower as most popular general purpose framework benchmark.
 		// https://github.com/TechEmpower/FrameworkBenchmarks/wiki/Project-Information-Framework-Tests-Overview#test-types
+		t.Parallel()
 
 		mux := chi.NewRouter()
 		techempower.Register(mux, techEmpowerServer{})

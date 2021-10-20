@@ -67,6 +67,8 @@ func TestGenerate(t *testing.T) {
 		},
 	} {
 		t.Run(tc.Name, func(t *testing.T) {
+			t.Parallel()
+
 			f, err := testdata.Open(path.Join("_testdata", tc.Name))
 			require.NoError(t, err)
 			defer require.NoError(t, f.Close())

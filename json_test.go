@@ -46,6 +46,8 @@ func encodeObject(v json.Marshaler) []byte {
 }
 
 func TestJSONGenerics(t *testing.T) {
+	t.Parallel()
+
 	for _, tc := range []struct {
 		Name   string
 		Value  api.OptNilString
@@ -67,6 +69,8 @@ func TestJSONGenerics(t *testing.T) {
 		},
 	} {
 		t.Run(tc.Name, func(t *testing.T) {
+			t.Parallel()
+
 			result := encodeObject(tc.Value)
 			require.Equal(t, tc.Result, string(result), "encoding result mismatch")
 			var v api.OptNilString
@@ -78,6 +82,8 @@ func TestJSONGenerics(t *testing.T) {
 }
 
 func TestJSONExample(t *testing.T) {
+	t.Parallel()
+
 	date := time.Date(2011, 10, 10, 7, 12, 34, 4125, time.UTC)
 	pet := api.Pet{
 		Friends:  []api.Pet{},
