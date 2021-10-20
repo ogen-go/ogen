@@ -111,12 +111,16 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 
 	switch {
 	case len(schema.Enum) > 0:
-		typ, err := g.parseSimple(schema.Type, schema.Format)
+		simple, err := g.parseSimple(schema.Type, schema.Format)
 		if err != nil {
 			return nil, err
 		}
 
-		enum, err := ast.Enum(name, typ, schema.Enum)
+		if simple.Kind != ast.KindPrimitive {
+			return nil, xerrors.Errorf("unsupported enum type '%s' format '%s'", schema.Type, schema.Format)
+		}
+
+		enum, err := ast.Enum(name, simple.Primitive, schema.Enum)
 		if err != nil {
 			return nil, err
 		}
@@ -133,7 +137,7 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 	switch schema.Type {
 	case "object":
 		if len(schema.Properties) == 0 {
-			return sideEffect(ast.Primitive("struct{}")), nil
+			return sideEffect(ast.Primitive(ast.EmptyStruct)), nil
 		}
 
 		if schema.Items != nil {
@@ -171,7 +175,7 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 						v,
 					)
 					g.side = append(g.side, prop)
-				} else if prop.IsArray() || prop.Primitive == "[]byte" {
+				} else if prop.IsArray() {
 					// Using special case for array nil value if possible.
 					switch {
 					case v.OnlyOptional():
@@ -209,7 +213,7 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 	case "array":
 		if schema.Items == nil {
 			// Fallback to string.
-			return sideEffect(ast.Array(ast.Primitive("string"))), nil
+			return sideEffect(ast.Array(ast.Primitive(ast.String))), nil
 		}
 		if len(schema.Properties) > 0 {
 			return nil, xerrors.New("array cannot contain properties")
@@ -223,10 +227,10 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 		return sideEffect(ast.Array(item)), nil
 
 	case "":
-		return sideEffect(ast.Primitive("string")), nil
+		return sideEffect(ast.Primitive(ast.String)), nil
 
 	default:
-		simpleType, err := g.parseSimple(
+		simple, err := g.parseSimple(
 			strings.ToLower(schema.Type),
 			strings.ToLower(schema.Format),
 		)
@@ -234,7 +238,7 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 			return nil, xerrors.Errorf("parse: %w", err)
 		}
 
-		return sideEffect(ast.Primitive(simpleType)), nil
+		return sideEffect(simple), nil
 	}
 }
 
@@ -261,52 +265,56 @@ func (g *schemaGen) ref(ref string) (*ast.Schema, error) {
 	return g.generate(pascal(name), component, false, ref)
 }
 
-func (g *schemaGen) parseSimple(typ, format string) (string, error) {
-	simpleTypes := map[string]map[string]string{
-		"integer": {
-			"int32": "int32",
-			"int64": "int64",
-			"":      "int",
-		},
-		"number": {
-			"float":  "float32",
-			"double": "float64",
-			"":       "float64",
-		},
-		"string": {
-			"":          "string",
-			"byte":      "[]byte",
-			"date-time": "time.Time",
-			"time":      "time.Time",
-			"date":      "time.Time",
-			"duration":  "time.Duration",
-			"password":  "string",
-			"uuid":      "uuid.UUID",
-			"ipv4":      "net.IP",
-			"ipv6":      "net.IP",
-			"ip":        "net.IP",
-			"uri":       "url.URL",
-			// TODO: support binary format
-		},
-		"boolean": {
-			"": "bool",
-		},
-	}
-
-	formats, exists := simpleTypes[typ]
-	if !exists {
-		return "", fmt.Errorf("unsupported type: '%s'", typ)
-	}
-
-	fType, exists := formats[format]
-	if !exists {
-		// Fallback to string.
-		if typ == "string" {
-			return "string", nil
+func (g *schemaGen) parseSimple(typ, format string) (*ast.Schema, error) {
+	switch typ {
+	case "integer":
+		switch format {
+		case "int32":
+			return ast.Primitive(ast.Int32), nil
+		case "int64":
+			return ast.Primitive(ast.Int64), nil
+		case "":
+			return ast.Primitive(ast.Int), nil
+		default:
+			return nil, xerrors.Errorf("unexpected integer format: '%s'", format)
 		}
-
-		return "", xerrors.Errorf("unsupported format '%s' for type '%s'", format, typ)
+	case "number":
+		switch format {
+		case "float":
+			return ast.Primitive(ast.Float32), nil
+		case "double", "":
+			return ast.Primitive(ast.Float64), nil
+		default:
+			return nil, xerrors.Errorf("unexpected number format: '%s'", format)
+		}
+	case "string":
+		switch format {
+		case "byte":
+			return ast.Array(ast.Primitive(ast.Byte)), nil
+		case "date-time", "time", "date":
+			return ast.Primitive(ast.Time), nil
+		case "duration":
+			return ast.Primitive(ast.Duration), nil
+		case "uuid":
+			return ast.Primitive(ast.UUID), nil
+		case "ipv4", "ipv6", "ip":
+			return ast.Primitive(ast.IP), nil
+		case "uri":
+			return ast.Primitive(ast.URL), nil
+		case "password", "":
+			return ast.Primitive(ast.String), nil
+		default:
+			// return nil, xerrors.Errorf("unexpected string format: '%s'", format)
+			return ast.Primitive(ast.String), nil
+		}
+	case "boolean":
+		switch format {
+		case "":
+			return ast.Primitive(ast.Bool), nil
+		default:
+			return nil, xerrors.Errorf("unexpected bool format: '%s'", format)
+		}
+	default:
+		return nil, xerrors.Errorf("unexpected type: '%s'", typ)
 	}
-
-	return fType, nil
 }

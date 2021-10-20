@@ -85,7 +85,7 @@ func (g *Generator) createDefaultResponse(methodName string, r ogen.Response) (*
 		statusCode := ast.Struct(methodName + "Default")
 		statusCode.Fields = append(statusCode.Fields, ast.SchemaField{
 			Name: "StatusCode",
-			Type: ast.Primitive("int"),
+			Type: ast.Primitive(ast.Int),
 			Tag:  "-",
 		})
 		g.schemas[methodName+"Default"] = statusCode
@@ -133,7 +133,7 @@ func (g *Generator) generateResponse(respName string, resp ogen.Response) (*ast.
 	// Response without content.
 	// Create empty struct.
 	if len(resp.Content) == 0 {
-		s := ast.Alias(respName, ast.Primitive("struct{}"))
+		s := ast.Alias(respName, ast.Primitive(ast.EmptyStruct))
 		g.schemas[s.Name] = s
 		response.NoContent = s
 		return response, nil
@@ -220,7 +220,7 @@ func (g *Generator) wrapStatusCode(schema *ast.Schema) *ast.Schema {
 	newSchema.Fields = []ast.SchemaField{
 		{
 			Name: "StatusCode",
-			Type: ast.Primitive("int"),
+			Type: ast.Primitive(ast.Int),
 			Tag:  "-",
 		},
 		{

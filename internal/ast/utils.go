@@ -9,7 +9,7 @@ import (
 
 var errNullValue = xerrors.New("json null value")
 
-func parseJSONValue(typ string, v json.RawMessage) (interface{}, error) {
+func parseJSONValue(typ PrimitiveType, v json.RawMessage) (interface{}, error) {
 	var (
 		iter = jsoniter.ParseBytes(jsoniter.ConfigDefault, v)
 		next = iter.WhatIsNext()
@@ -41,13 +41,13 @@ func parseJSONValue(typ string, v json.RawMessage) (interface{}, error) {
 	}
 
 	switch typ {
-	case "string":
+	case String:
 		if next != jsoniter.StringValue {
 			expect, actual := typ, str(next)
 			return nil, xerrors.Errorf("expect type '%s', got '%s'", expect, actual)
 		}
 		return iter.ReadString(), nil
-	case "int", "int8", "int16", "int32", "int64":
+	case Int, Int8, Int16, Int32, Int64:
 		if next != jsoniter.NumberValue {
 			expect, actual := typ, str(next)
 			return nil, xerrors.Errorf("expect type '%s', got '%s'", expect, actual)
@@ -59,7 +59,7 @@ func parseJSONValue(typ string, v json.RawMessage) (interface{}, error) {
 		}
 
 		return iter.ReadNumber().Int64()
-	case "float32", "float64":
+	case Float32, Float64:
 		if next != jsoniter.NumberValue {
 			expect, actual := typ, str(next)
 			return nil, xerrors.Errorf("expect type '%s', got '%s'", expect, actual)
@@ -71,7 +71,7 @@ func parseJSONValue(typ string, v json.RawMessage) (interface{}, error) {
 		}
 
 		return iter.ReadNumber().Float64()
-	case "bool":
+	case Bool:
 		if next != jsoniter.BoolValue {
 			expect, actual := typ, str(next)
 			return nil, xerrors.Errorf("expect type '%s', got '%s'", expect, actual)

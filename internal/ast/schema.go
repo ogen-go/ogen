@@ -32,7 +32,7 @@ type Validators struct {
 
 func (s Schema) FormatCustom() bool {
 	switch s.Primitive {
-	case "time.Time":
+	case Time:
 		return true
 	default:
 		return false
@@ -55,8 +55,15 @@ func (s Schema) JSONFields() []SchemaField {
 }
 
 func (s Schema) CanGeneric() bool {
-	if s.Primitive == "[]byte" || s.Type() == "struct{}" {
-		return false
+	switch s.Kind {
+	case KindPrimitive:
+		if s.Primitive == EmptyStruct {
+			return false
+		}
+	case KindArray:
+		if s.Item.Primitive == Byte {
+			return false
+		}
 	}
 	return s.Is(KindPrimitive, KindEnum, KindStruct)
 }
@@ -72,7 +79,7 @@ const (
 )
 
 func (s Schema) BlankStruct() bool {
-	if s.Primitive == "struct{}" {
+	if s.Primitive == EmptyStruct {
 		return true
 	}
 	if s.PointerTo != nil && s.PointerTo.BlankStruct() {
@@ -94,7 +101,7 @@ type Schema struct {
 
 	AliasTo   *Schema
 	PointerTo *Schema
-	Primitive string
+	Primitive PrimitiveType
 	Item      *Schema
 
 	EnumValues []interface{}
@@ -121,7 +128,7 @@ func (s Schema) canRawJSON() bool {
 		return true
 	}
 	switch s.Primitive {
-	case "bool", "string":
+	case Bool, String:
 		return true
 	default:
 		return false
@@ -139,9 +146,9 @@ func (s Schema) JSONType() string {
 		return "ObjectValue"
 	}
 	switch s.Primitive {
-	case "bool":
+	case Bool:
 		return "BoolValue"
-	case "string", "time.Time", "time.Duration", "uuid.UUID", "net.IP", "url.URL":
+	case String, Time, Duration, UUID, IP, URL:
 		return "StringValue"
 	default:
 		return ""
@@ -188,7 +195,7 @@ func (s Schema) jsonFn() string {
 	if !s.canRawJSON() {
 		return ""
 	}
-	return capitalize(s.Primitive)
+	return capitalize(s.Primitive.String())
 }
 
 // JSONWrite returns function name from json package that writes value.
@@ -223,8 +230,8 @@ func (s Schema) RecursiveTo(to *Schema) bool {
 
 func (s *Schema) IsInteger() bool {
 	switch s.Primitive {
-	case "int", "int8", "int16", "int32", "int64",
-		"uint", "uint8", "uint16", "uint32", "uint64":
+	case Int, Int8, Int16, Int32, Int64,
+		Uint, Uint8, Uint16, Uint32, Uint64:
 		return true
 	default:
 		return false
@@ -233,7 +240,7 @@ func (s *Schema) IsInteger() bool {
 
 func (s *Schema) IsFloat() bool {
 	switch s.Primitive {
-	case "float32", "float64":
+	case Float32, Float64:
 		return true
 	default:
 		return false
@@ -320,12 +327,10 @@ func (s Schema) EncodeFn() string {
 		return s.Item.EncodeFn() + "Array"
 	}
 	switch s.Primitive {
-	case "interface{}":
-		return "Interface"
-	case "int", "int64", "int32", "string", "bool", "float32", "float64":
-		return capitalize(s.Primitive)
-	case "uuid.UUID", "time.Time":
-		return afterDot(s.Primitive)
+	case Int, Int64, Int32, String, Bool, Float32, Float64:
+		return capitalize(s.Primitive.String())
+	case UUID, Time:
+		return afterDot(s.Primitive.String())
 	default:
 		return ""
 	}
@@ -352,7 +357,7 @@ func (s Schema) Type() string {
 	case KindAlias:
 		return s.Name
 	case KindPrimitive:
-		return s.Primitive
+		return s.Primitive.String()
 	case KindGeneric:
 		return s.Name
 	case KindArray:
@@ -420,7 +425,7 @@ func Struct(name string) *Schema {
 	}
 }
 
-func Primitive(typ string) *Schema {
+func Primitive(typ PrimitiveType) *Schema {
 	return &Schema{
 		Kind:      KindPrimitive,
 		Primitive: typ,
@@ -493,7 +498,7 @@ func Array(item *Schema) *Schema {
 	}
 }
 
-func Enum(name, typ string, rawValues []json.RawMessage) (*Schema, error) {
+func Enum(name string, typ PrimitiveType, rawValues []json.RawMessage) (*Schema, error) {
 	var (
 		values []interface{}
 		uniq   = map[interface{}]struct{}{}

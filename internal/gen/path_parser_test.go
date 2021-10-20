@@ -12,13 +12,13 @@ func TestPathParser(t *testing.T) {
 		bar = &ast.Parameter{
 			Name:       "Bar",
 			SourceName: "bar",
-			Schema:     ast.Primitive("int"),
+			Schema:     ast.Primitive(ast.Int),
 			In:         ast.LocationPath,
 		}
 		baz = &ast.Parameter{
 			Name:       "Baz",
 			SourceName: "baz",
-			Schema:     ast.Primitive("string"),
+			Schema:     ast.Primitive(ast.String),
 			In:         ast.LocationPath,
 		}
 	)

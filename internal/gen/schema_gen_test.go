@@ -30,12 +30,12 @@ func TestSchemaSimple(t *testing.T) {
 		Fields: []ast.SchemaField{
 			{
 				Name: "ID",
-				Type: ast.Primitive("int"),
+				Type: ast.Primitive(ast.Int),
 				Tag:  "id",
 			},
 			{
 				Name: "Name",
-				Type: ast.Primitive("string"),
+				Type: ast.Primitive(ast.String),
 				Tag:  "name",
 			},
 		},
@@ -79,12 +79,12 @@ func TestSchemaRecursive(t *testing.T) {
 		},
 		{
 			Name: "ID",
-			Type: ast.Primitive("int"),
+			Type: ast.Primitive(ast.Int),
 			Tag:  "id",
 		},
 		{
 			Name: "Name",
-			Type: ast.Primitive("string"),
+			Type: ast.Primitive(ast.String),
 			Tag:  "name",
 		},
 	}
@@ -102,12 +102,12 @@ func TestSchemaRecursive(t *testing.T) {
 				},
 				{
 					Name: "ID",
-					Type: ast.Primitive("int"),
+					Type: ast.Primitive(ast.Int),
 					Tag:  "id",
 				},
 				{
 					Name: "Name",
-					Type: ast.Primitive("string"),
+					Type: ast.Primitive(ast.String),
 					Tag:  "name",
 				},
 			},
@@ -135,17 +135,17 @@ func TestSchemaSideEffects(t *testing.T) {
 			Fields: []ast.SchemaField{
 				{
 					Name: "Age",
-					Type: ast.Primitive("int"),
+					Type: ast.Primitive(ast.Int),
 					Tag:  "age",
 				},
 				{
 					Name: "ID",
-					Type: ast.Primitive("int"),
+					Type: ast.Primitive(ast.Int),
 					Tag:  "id",
 				},
 				{
 					Name: "Name",
-					Type: ast.Primitive("string"),
+					Type: ast.Primitive(ast.String),
 					Tag:  "name",
 				},
 			},
@@ -158,7 +158,7 @@ func TestSchemaSideEffects(t *testing.T) {
 		Fields: []ast.SchemaField{
 			{
 				Name: "Name",
-				Type: ast.Primitive("string"),
+				Type: ast.Primitive(ast.String),
 				Tag:  "name",
 			},
 			{
@@ -217,7 +217,7 @@ func TestSchemaReferencedArray(t *testing.T) {
 			NilSemantic: ast.NilInvalid,
 			Item: &ast.Schema{
 				Kind:      ast.KindPrimitive,
-				Primitive: "string",
+				Primitive: ast.String,
 			},
 		},
 	}

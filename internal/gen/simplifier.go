@@ -121,7 +121,7 @@ func (g *Generator) unwrapAlias(schema *ast.Schema) (*ast.Schema, bool) {
 
 	to := schema.AliasTo
 	if to.Is(ast.KindPrimitive) {
-		if to.Primitive == "struct{}" {
+		if to.Primitive == ast.EmptyStruct {
 			return schema, false
 		}
 	}
