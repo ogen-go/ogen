@@ -6884,7 +6884,7 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps struct {
 	MinProperties                                        OptInt64                                                                  `json:"minProperties"`
 	Minimum                                              OptFloat64                                                                `json:"minimum"`
 	MultipleOf                                           OptFloat64                                                                `json:"multipleOf"`
-	Not                                                  OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps       `json:"not"`
+	Not                                                  *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps         `json:"not"`
 	Nullable                                             OptBool                                                                   `json:"nullable"`
 	OneOf                                                []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps        `json:"oneOf"`
 	Pattern                                              OptString                                                                 `json:"pattern"`

@@ -162,7 +162,7 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 				Optional: optional(propName),
 			}
 			if v.Any() {
-				if prop.CanGeneric() {
+				if prop.CanGeneric() && !s.RecursiveTo(prop) {
 					// Box value with generic wrapper.
 					prop.Format = propSchema.Format
 					prop = ast.Generic(
@@ -192,7 +192,7 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 						panic("unreachable")
 					}
 				}
-			} else if prop.IsStruct() && s.IsStruct() && prop.Name == s.Name {
+			} else if s.RecursiveTo(prop) {
 				prop = ast.Pointer(prop, ast.NilInvalid)
 			}
 			s.Fields = append(s.Fields, ast.SchemaField{

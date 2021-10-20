@@ -355,8 +355,7 @@
           "ip_v4",
           "ip_v6",
           "uri",
-          "kind",
-          "primary"
+          "kind"
         ]
       }
     },

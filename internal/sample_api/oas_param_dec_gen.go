@@ -143,6 +143,11 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 		if err != nil {
 			return fmt.Errorf("parse header param 'x-tags': %w", err)
 		}
+		if err := func() error {
+			return nil
+		}(); err != nil {
+			return fmt.Errorf("validate Header x-tags: %w", err)
+		}
 
 		params.XTags = []uuid.UUID(v)
 		return nil
@@ -160,6 +165,11 @@ func decodePetGetParams(r *http.Request) (PetGetParams, error) {
 		v, err := conv.ToStringArray(param)
 		if err != nil {
 			return fmt.Errorf("parse header param 'x-scope': %w", err)
+		}
+		if err := func() error {
+			return nil
+		}(); err != nil {
+			return fmt.Errorf("validate Header x-scope: %w", err)
 		}
 
 		params.XScope = []string(v)

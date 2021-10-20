@@ -74,6 +74,9 @@ func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
 
 		return request, nil
 	default:
@@ -136,6 +139,9 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
 
 		return request, nil
 	default:
@@ -149,6 +155,9 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r *htt
 		var request EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseApplicationJSONRequest
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
 		}
 
 		return request, nil
@@ -275,6 +284,9 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
 
 		return request, nil
 	default:
@@ -337,6 +349,9 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r *http.Reque
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
 
 		return request, nil
 	default:
@@ -350,6 +365,9 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.Request) (req
 		var request ActionsSetSelfHostedRunnersInGroupForOrgApplicationJSONRequest
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
 		}
 
 		return request, nil
@@ -381,6 +399,9 @@ func decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Request) (req Acti
 		var request ActionsSetSelectedReposForOrgSecretApplicationJSONRequest
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
 		}
 
 		return request, nil
@@ -699,6 +720,9 @@ func decodeReposUpdateBranchProtectionRequest(r *http.Request) (req ReposUpdateB
 		var request ReposUpdateBranchProtectionApplicationJSONRequest
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
 		}
 
 		return request, nil
@@ -1071,6 +1095,9 @@ func decodeReposReplaceAllTopicsRequest(r *http.Request) (req ReposReplaceAllTop
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
 
 		return request, nil
 	default:
@@ -1127,6 +1154,9 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r *http.Reque
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
 
 		return request, nil
 	default:
@@ -1140,6 +1170,9 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r *
 		var request EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSONRequest
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
 		}
 
 		return request, nil
@@ -1155,6 +1188,9 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r *http.Reques
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
 
 		return request, nil
 	default:
@@ -1169,6 +1205,9 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r *h
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
 		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
+		}
 
 		return request, nil
 	default:
@@ -1182,6 +1221,9 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r *http.Reques
 		var request EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest
 		if err := request.ReadJSONFrom(r.Body); err != nil {
 			return req, fmt.Errorf("json: %w", err)
+		}
+		if err := request.Validate(); err != nil {
+			return req, fmt.Errorf("validate: %w", err)
 		}
 
 		return request, nil

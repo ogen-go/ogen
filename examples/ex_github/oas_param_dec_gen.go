@@ -29561,6 +29561,11 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(r *http.Request) (Migra
 		if err != nil {
 			return err
 		}
+		if err := func() error {
+			return nil
+		}(); err != nil {
+			return fmt.Errorf("validate Query exclude: %w", err)
+		}
 
 		params.Exclude = []string(v)
 		return nil

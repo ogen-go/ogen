@@ -49915,7 +49915,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJ
 		j.WriteObjectField("multipleOf")
 		s.MultipleOf.WriteJSON(j)
 	}
-	if s.Not.Set {
+	if s.Not != nil {
 		more.More()
 		j.WriteObjectField("not")
 		s.Not.WriteJSON(j)
@@ -50202,11 +50202,8 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) ReadJ
 			}
 			return true
 		case "not":
-			s.Not.Reset()
-			if err := s.Not.ReadJSON(i); err != nil {
-				i.ReportError("Field Not", err.Error())
-				return false
-			}
+			// Unsupported kind "pointer" for field "Not".
+			i.Skip()
 			return true
 		case "nullable":
 			s.Nullable.Reset()

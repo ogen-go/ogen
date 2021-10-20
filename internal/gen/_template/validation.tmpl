@@ -12,8 +12,21 @@ func (s *{{ $s.Name }}) Validate() error {
     {{- range $f := $s.Fields }}{{/*Range fields*/}}
     {{- if $f.Type.NeedValidation }}
         {{- $fieldName := $f.Name }}
+        {{- $validated := false }}
         {{- if $f.Type.GenericOf }}{{ $fieldName = sprintf "%s.Value" $fieldName }}{{ end }}
+        {{- if eq $f.Type.NilSemantic "invalid" }}
+        if s.{{ $fieldName }} == nil {
+            {{- /*TODO: continue validation instead return*/ -}}
+            return &validate.Error{
+                Fields: append(failures, validate.FieldError{
+                    Name: "{{ $f.Tag }}",
+                    Error: fmt.Errorf("required, can't be nil"),
+                }),
+            }
+        }
+        {{- end }}
         {{- if $f.Type.Validators.String.Set }}
+        {{- $validated = true }}
         {
             // Validate '{{ $f.Tag }}' field.
             validator := validate.String{
@@ -28,6 +41,7 @@ func (s *{{ $s.Name }}) Validate() error {
         }
         {{- end }}
         {{- if $f.Type.Validators.Int.Set }}
+        {{- $validated = true }}
         {
             // Validate '{{ $f.Tag }}' field.
             validator := validate.Int{

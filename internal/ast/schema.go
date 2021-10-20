@@ -201,6 +201,13 @@ func (s Schema) IsStruct() bool  { return s.Is(KindStruct) }
 func (s Schema) IsAlias() bool   { return s.Is(KindAlias) }
 func (s Schema) IsGeneric() bool { return s.Is(KindGeneric) }
 
+func (s Schema) RecursiveTo(to *Schema) bool {
+	if s.Kind != to.Kind {
+		return false
+	}
+	return s.Name == to.Name
+}
+
 func (s *Schema) IsInteger() bool {
 	switch s.Primitive {
 	case "int", "int8", "int16", "int32", "int64",
@@ -251,10 +258,16 @@ func (s *Schema) needValidation(visited map[*Schema]struct{}) (result bool) {
 	case KindAlias:
 		return s.AliasTo.needValidation(visited)
 	case KindPointer:
+		if s.NilSemantic == NilInvalid {
+			return true
+		}
 		return s.PointerTo.needValidation(visited)
 	case KindGeneric:
 		return s.GenericOf.needValidation(visited)
 	case KindArray:
+		if s.NilSemantic == NilInvalid {
+			return true
+		}
 		if s.Validators.Array.Set() {
 			return true
 		}
