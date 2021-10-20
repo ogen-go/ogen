@@ -15365,7 +15365,7 @@ func (s EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest) W
 	more.Down()
 	j.WriteArrayStart()
 	for _, elem := range s.Operations {
-		// Unsupported kind "primitive" for field "".
+		_ = elem // Unsupported kind "primitive" for field "".
 	}
 	j.WriteArrayEnd()
 	more.Up()

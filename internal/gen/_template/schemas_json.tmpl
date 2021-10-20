@@ -243,6 +243,9 @@ j.WriteObjectField("{{ $.Field }}")
             }
         {{- end -}}
     {{- else -}}
+        {{- if $.ArrElem -}}
+        _ = elem
+        {{- end -}}
         // Unsupported kind "{{ $.Type.Kind  }}" for field "{{ $.Field }}".
     {{- end }}
 {{- end -}}

@@ -49322,7 +49322,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) WriteJ
 		more.Down()
 		j.WriteArrayStart()
 		for _, elem := range s.Enum {
-			// Unsupported kind "alias" for field "".
+			_ = elem // Unsupported kind "alias" for field "".
 		}
 		j.WriteArrayEnd()
 		more.Up()
