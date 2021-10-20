@@ -47,3 +47,11 @@ jobs:
 
       - name: Run tests
         run: make test
+
+  examples:
+    runs-on: ubuntu-latest
+    needs:
+      - test
+    steps:
+      - name: Run tests
+        run: cd examples && go test ./...
