@@ -55,7 +55,6 @@ func (s Balloon) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("amount_mib")
 	j.WriteInt(s.AmountMib)
@@ -126,7 +125,6 @@ func (s BalloonStats) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("actual_mib")
 	j.WriteInt(s.ActualMib)
@@ -328,7 +326,6 @@ func (s BalloonStatsUpdate) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("stats_polling_interval_s")
 	j.WriteInt(s.StatsPollingIntervalS)
@@ -379,7 +376,6 @@ func (s BalloonUpdate) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("amount_mib")
 	j.WriteInt(s.AmountMib)
@@ -743,7 +739,6 @@ func (s FullVmConfiguration) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.BootSource.Set {
@@ -787,7 +782,6 @@ func (s FullVmConfiguration) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.VsockDevice.Set {
@@ -960,7 +954,6 @@ func (s InstanceInfo) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("app_name")
 	j.WriteString(s.AppName)
@@ -1236,7 +1229,6 @@ func (s Metrics) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("metrics_path")
 	j.WriteString(s.MetricsPath)
@@ -1758,7 +1750,6 @@ func (s PartialDrive) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("drive_id")
 	j.WriteString(s.DriveID)
@@ -1835,7 +1826,6 @@ func (s PartialNetworkInterface) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("iface_id")
 	j.WriteString(s.IfaceID)
@@ -1981,7 +1971,6 @@ func (s SnapshotCreateParams) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("mem_file_path")
 	j.WriteString(s.MemFilePath)
@@ -2293,7 +2282,6 @@ func (s Vsock) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("guest_cid")
 	j.WriteInt(s.GuestCid)

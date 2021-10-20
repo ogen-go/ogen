@@ -66,7 +66,6 @@ func (s APIOverview) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Actions != nil {
@@ -80,7 +79,6 @@ func (s APIOverview) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Dependabot != nil {
@@ -94,7 +92,6 @@ func (s APIOverview) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Git != nil {
@@ -108,7 +105,6 @@ func (s APIOverview) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Hooks != nil {
@@ -122,7 +118,6 @@ func (s APIOverview) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Importer != nil {
@@ -136,7 +131,6 @@ func (s APIOverview) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Packages != nil {
@@ -150,7 +144,6 @@ func (s APIOverview) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Pages != nil {
@@ -164,7 +157,6 @@ func (s APIOverview) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.SSHKeyFingerprints.Set {
@@ -188,7 +180,6 @@ func (s APIOverview) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	j.WriteObjectEnd()
@@ -375,7 +366,6 @@ func (s ActionsBillingUsage) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("included_minutes")
 	j.WriteInt(s.IncludedMinutes)
@@ -532,7 +522,6 @@ func (s ActionsCreateOrUpdateEnvironmentSecretApplicationJSONRequest) WriteJSON(
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("encrypted_value")
 	j.WriteString(s.EncryptedValue)
@@ -613,7 +602,6 @@ func (s ActionsCreateOrUpdateOrgSecretApplicationJSONRequest) WriteJSON(j *json.
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -767,7 +755,6 @@ func (s ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest) WriteJSO
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
@@ -783,7 +770,6 @@ func (s ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest) WriteJSO
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.SelectedRepositoryIds != nil {
@@ -797,7 +783,6 @@ func (s ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest) WriteJSO
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Visibility.Set {
@@ -1288,7 +1273,6 @@ func (s ActionsListRepoWorkflows) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("total_count")
 	j.WriteInt(s.TotalCount)
@@ -2071,7 +2055,6 @@ func (s ActionsReviewPendingDeploymentsForRunApplicationJSONRequest) WriteJSON(j
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("comment")
 	j.WriteString(s.Comment)
@@ -2158,7 +2141,6 @@ func (s ActionsSecret) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
@@ -2593,7 +2575,6 @@ func (s ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest) WriteJSO
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
@@ -3965,7 +3946,6 @@ func (s ApplicationGrantApp) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("client_id")
 	j.WriteString(s.ClientID)
@@ -4035,7 +4015,6 @@ func (s AppsCheckTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("access_token")
 	j.WriteString(s.AccessToken)
@@ -4086,7 +4065,6 @@ func (s AppsCreateContentAttachmentApplicationJSONRequest) WriteJSON(j *json.Str
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("body")
 	j.WriteString(s.Body)
@@ -4161,7 +4139,6 @@ func (s AppsCreateInstallationAccessTokenApplicationJSONRequest) WriteJSON(j *js
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.RepositoryIds != nil {
@@ -4175,7 +4152,6 @@ func (s AppsCreateInstallationAccessTokenApplicationJSONRequest) WriteJSON(j *js
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	j.WriteObjectEnd()
@@ -4236,7 +4212,6 @@ func (s AppsDeleteAuthorizationApplicationJSONRequest) WriteJSON(j *json.Stream)
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("access_token")
 	j.WriteString(s.AccessToken)
@@ -4287,7 +4262,6 @@ func (s AppsDeleteTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("access_token")
 	j.WriteString(s.AccessToken)
@@ -4494,7 +4468,6 @@ func (s AppsResetTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("access_token")
 	j.WriteString(s.AccessToken)
@@ -4545,7 +4518,6 @@ func (s AppsScopeTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("access_token")
 	j.WriteString(s.AccessToken)
@@ -4567,7 +4539,6 @@ func (s AppsScopeTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.RepositoryIds != nil {
@@ -4581,7 +4552,6 @@ func (s AppsScopeTokenApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Target.Set {
@@ -4671,7 +4641,6 @@ func (s Artifact) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("archive_download_url")
 	j.WriteString(s.ArchiveDownloadURL)
@@ -4794,7 +4763,6 @@ func (s AuthenticationToken) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("expires_at")
 	json.WriteDateTime(j, s.ExpiresAt)
@@ -4812,7 +4780,6 @@ func (s AuthenticationToken) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.RepositorySelection.Set {
@@ -4980,7 +4947,6 @@ func (s Authorization) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -5138,7 +5104,6 @@ func (s AuthorizationApp) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("client_id")
 	j.WriteString(s.ClientID)
@@ -5208,7 +5173,6 @@ func (s Autolink) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("id")
 	j.WriteInt(s.ID)
@@ -5273,7 +5237,6 @@ func (s BaseGist) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("comments")
 	j.WriteInt(s.Comments)
@@ -5307,7 +5270,6 @@ func (s BaseGist) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -5337,7 +5299,6 @@ func (s BaseGist) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -5636,7 +5597,6 @@ func (s Blob) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("content")
 	j.WriteString(s.Content)
@@ -6179,7 +6139,6 @@ func (s BranchProtectionRequiredSignatures) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("enabled")
 	j.WriteBool(s.Enabled)
@@ -6511,7 +6470,6 @@ func (s BranchRestrictionPolicyAppsItem) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.ExternalURL.Set {
@@ -7672,7 +7630,6 @@ func (s BranchShortCommit) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("sha")
 	j.WriteString(s.Sha)
@@ -7855,7 +7812,6 @@ func (s BranchWithProtectionLinks) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("html")
 	j.WriteString(s.HTML)
@@ -8247,7 +8203,6 @@ func (s CheckRunCheckSuite) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("id")
 	j.WriteInt(s.ID)
@@ -8309,7 +8264,6 @@ func (s CheckRunOutput) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("annotations_count")
 	j.WriteInt(s.AnnotationsCount)
@@ -8474,7 +8428,6 @@ func (s CheckSuite) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -8706,7 +8659,6 @@ func (s CheckSuitePreferencePreferences) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	j.WriteObjectEnd()
@@ -8756,7 +8708,6 @@ func (s CheckSuitePreferencePreferencesAutoTriggerChecksItem) WriteJSON(j *json.
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("app_id")
 	j.WriteInt(s.AppID)
@@ -8825,7 +8776,6 @@ func (s ChecksCreateSuiteApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("head_sha")
 	j.WriteString(s.HeadSha)
@@ -8952,7 +8902,6 @@ func (s ChecksSetSuitesPreferencesApplicationJSONRequest) WriteJSON(j *json.Stre
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	j.WriteObjectEnd()
@@ -9002,7 +8951,6 @@ func (s ChecksSetSuitesPreferencesApplicationJSONRequestAutoTriggerChecksItem) W
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("app_id")
 	j.WriteInt(s.AppID)
@@ -9253,7 +9201,6 @@ func (s CodeScanningAlertInstance) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	// Unsupported kind "pointer" for field "analysis_key".
 
 	// Unsupported kind "pointer" for field "category".
@@ -9269,7 +9216,6 @@ func (s CodeScanningAlertInstance) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.CommitSha.Set {
@@ -9590,7 +9536,6 @@ func (s CodeScanningAnalysis) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	// Unsupported kind "alias" for field "analysis_key".
 
 	// Unsupported kind "pointer" for field "category".
@@ -9810,7 +9755,6 @@ func (s CodeScanningAnalysisTool) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	// Unsupported kind "pointer" for field "guid".
 
 	// Unsupported kind "pointer" for field "name".
@@ -9872,7 +9816,6 @@ func (s CodeScanningSarifsReceipt) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	// Unsupported kind "pointer" for field "id".
 
 	if s.URL.Set {
@@ -10181,7 +10124,6 @@ func (s CombinedBillingUsage) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("days_left_in_billing_cycle")
 	j.WriteInt(s.DaysLeftInBillingCycle)
@@ -10246,7 +10188,6 @@ func (s CombinedCommitStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("commit_url")
 	json.WriteURI(j, s.CommitURL)
@@ -10387,7 +10328,6 @@ func (s Commit) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -10895,7 +10835,6 @@ func (s CommitCommitTree) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("sha")
 	j.WriteString(s.Sha)
@@ -10958,7 +10897,6 @@ func (s CommitComparison) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ahead_by")
 	j.WriteInt(s.AheadBy)
@@ -10997,7 +10935,6 @@ func (s CommitComparison) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -11716,7 +11653,6 @@ func (s ContentFile) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("content")
 	j.WriteString(s.Content)
@@ -11962,7 +11898,6 @@ func (s ContentReferenceAttachment) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("body")
 	j.WriteString(s.Body)
@@ -12040,7 +11975,6 @@ func (s ContentTraffic) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("count")
 	j.WriteInt(s.Count)
@@ -12643,7 +12577,6 @@ func (s CredentialAuthorization) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.TokenLastEight.Set {
@@ -12758,7 +12691,6 @@ func (s DeployKey) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("created_at")
 	j.WriteString(s.CreatedAt)
@@ -12851,7 +12783,6 @@ func (s DeploymentSimple) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
@@ -13045,7 +12976,6 @@ func (s DeploymentStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
@@ -13265,7 +13195,6 @@ func (s DiffEntry) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("additions")
 	j.WriteInt(s.Additions)
@@ -13427,7 +13356,6 @@ func (s Email) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("email")
 	j.WriteString(s.Email)
@@ -13524,7 +13452,6 @@ func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRe
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
@@ -13540,7 +13467,6 @@ func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRe
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.SelectedOrganizationIds != nil {
@@ -13554,7 +13480,6 @@ func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseApplicationJSONRe
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Visibility.Set {
@@ -13841,7 +13766,6 @@ func (s EnterpriseAdminListSelfHostedRunnersForEnterprise) WriteJSON(j *json.Str
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.TotalCount.Set {
@@ -13969,7 +13893,6 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest) 
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("displayName")
 	j.WriteString(s.DisplayName)
@@ -13985,7 +13908,6 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequest) 
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -14053,7 +13975,6 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupApplicationJSONRequestMe
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("value")
 	j.WriteString(s.Value)
@@ -14126,7 +14047,6 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequest) W
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -14212,7 +14132,6 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestEma
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("primary")
 	j.WriteBool(s.Primary)
@@ -14333,7 +14252,6 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseUserApplicationJSONRequestNam
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("familyName")
 	j.WriteString(s.FamilyName)
@@ -14457,7 +14375,6 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSO
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("displayName")
 	j.WriteString(s.DisplayName)
@@ -14473,7 +14390,6 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSO
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -14541,7 +14457,6 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupApplicationJSO
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("value")
 	j.WriteString(s.Value)
@@ -14614,7 +14529,6 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSON
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -14700,7 +14614,6 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSON
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("primary")
 	j.WriteBool(s.Primary)
@@ -14821,7 +14734,6 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserApplicationJSON
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("familyName")
 	j.WriteString(s.FamilyName)
@@ -15057,8 +14969,7 @@ func (s EnterpriseAdminUpdateAttributeForEnterpriseUserApplicationJSONRequest) W
 	j.WriteObjectField("Operations")
 	more.Down()
 	j.WriteArrayStart()
-	for _, elem := range s.Operations {
-		// Unsupported kind "primitive" for field "".
+	for _, elem := range s.Operations { // Unsupported kind "primitive" for field "".
 	}
 	j.WriteArrayEnd()
 	more.Up()
@@ -15205,7 +15116,6 @@ func (s EnvironmentApprovals) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("comment")
 	j.WriteString(s.Comment)
@@ -15459,7 +15369,6 @@ func (s Feed) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.CurrentUserPublicURL.Set {
@@ -15615,7 +15524,6 @@ func (s FeedLinks) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.CurrentUserPublic.Set {
@@ -15836,7 +15744,6 @@ func (s FileCommitCommit) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Sha.Set {
@@ -17195,7 +17102,6 @@ func (s FullRepository) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -17735,7 +17641,6 @@ func (s FullRepositoryPermissions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("admin")
 	j.WriteBool(s.Admin)
@@ -18325,7 +18230,6 @@ func (s GistsCreateCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("body")
 	j.WriteString(s.Body)
@@ -18376,7 +18280,6 @@ func (s GistsUpdateCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("body")
 	j.WriteString(s.Body)
@@ -18570,7 +18473,6 @@ func (s GitCommitAuthor) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("date")
 	json.WriteDateTime(j, s.Date)
@@ -18640,7 +18542,6 @@ func (s GitCommitCommitter) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("date")
 	json.WriteDateTime(j, s.Date)
@@ -18710,7 +18611,6 @@ func (s GitCommitParentsItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("html_url")
 	json.WriteURI(j, s.HTMLURL)
@@ -18785,7 +18685,6 @@ func (s GitCommitTree) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("sha")
 	j.WriteString(s.Sha)
@@ -18925,7 +18824,6 @@ func (s GitCreateBlobApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("content")
 	j.WriteString(s.Content)
@@ -19016,7 +18914,6 @@ func (s GitCreateCommitApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Signature.Set {
@@ -19325,7 +19222,6 @@ func (s GitCreateTagApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("message")
 	j.WriteString(s.Message)
@@ -19695,7 +19591,6 @@ func (s GitRef) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("node_id")
 	j.WriteString(s.NodeID)
@@ -19775,7 +19670,6 @@ func (s GitRefObject) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("sha")
 	j.WriteString(s.Sha)
@@ -19845,7 +19739,6 @@ func (s GitTag) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("message")
 	j.WriteString(s.Message)
@@ -19962,7 +19855,6 @@ func (s GitTagObject) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("sha")
 	j.WriteString(s.Sha)
@@ -20032,7 +19924,6 @@ func (s GitTagTagger) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("date")
 	j.WriteString(s.Date)
@@ -20097,7 +19988,6 @@ func (s GitTree) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("sha")
 	j.WriteString(s.Sha)
@@ -20366,7 +20256,6 @@ func (s GitignoreTemplate) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
@@ -20424,7 +20313,6 @@ func (s GpgKey) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("can_certify")
 	j.WriteBool(s.CanCertify)
@@ -20699,7 +20587,6 @@ func (s GpgKeySubkeysItem) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.ExpiresAt.Set {
@@ -20749,7 +20636,6 @@ func (s GpgKeySubkeysItem) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	j.WriteObjectEnd()
@@ -20891,7 +20777,6 @@ func (s GroupMapping) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	j.WriteObjectEnd()
@@ -20941,7 +20826,6 @@ func (s GroupMappingGroupsItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("group_description")
 	j.WriteString(s.GroupDescription)
@@ -21239,7 +21123,6 @@ func (s Import) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.PushPercent.Set {
@@ -21590,7 +21473,6 @@ func (s InstallationToken) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("expires_at")
 	j.WriteString(s.ExpiresAt)
@@ -21618,7 +21500,6 @@ func (s InstallationToken) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.RepositorySelection.Set {
@@ -21644,7 +21525,6 @@ func (s InstallationToken) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -22178,7 +22058,6 @@ func (s InteractionLimitResponse) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("expires_at")
 	json.WriteDateTime(j, s.ExpiresAt)
@@ -22464,7 +22343,6 @@ func (s IssuesAddAssigneesApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	j.WriteObjectEnd()
@@ -22514,7 +22392,6 @@ func (s IssuesCreateCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("body")
 	j.WriteString(s.Body)
@@ -22819,7 +22696,6 @@ func (s IssuesRemoveAssigneesApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	j.WriteObjectEnd()
@@ -22869,7 +22745,6 @@ func (s IssuesUpdateCommentApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("body")
 	j.WriteString(s.Body)
@@ -23108,7 +22983,6 @@ func (s Job) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("check_run_url")
 	j.WriteString(s.CheckRunURL)
@@ -23168,7 +23042,6 @@ func (s Job) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -23403,7 +23276,6 @@ func (s Key) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
@@ -23501,7 +23373,6 @@ func (s KeySimple) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("id")
 	j.WriteInt(s.ID)
@@ -23559,7 +23430,6 @@ func (s Label) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("color")
 	j.WriteString(s.Color)
@@ -23660,7 +23530,6 @@ func (s License) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("body")
 	j.WriteString(s.Body)
@@ -23830,7 +23699,6 @@ func (s LicenseContent) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("content")
 	j.WriteString(s.Content)
@@ -24157,7 +24025,6 @@ func (s Link) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("href")
 	j.WriteString(s.Href)
@@ -24208,7 +24075,6 @@ func (s LinkWithType) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("href")
 	j.WriteString(s.Href)
@@ -24468,7 +24334,6 @@ func (s MarketplaceListingPlan) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("accounts_url")
 	json.WriteURI(j, s.AccountsURL)
@@ -25092,7 +24957,6 @@ func (s MetaRoot) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("authorizations_url")
 	j.WriteString(s.AuthorizationsURL)
@@ -25394,7 +25258,6 @@ func (s Migration) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -25744,7 +25607,6 @@ func (s MigrationsStartForAuthenticatedUserApplicationJSONRequest) WriteJSON(j *
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.ExcludeAttachments.Set {
@@ -25883,7 +25745,6 @@ func (s MigrationsStartForOrgApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.ExcludeAttachments.Set {
@@ -26810,7 +26671,6 @@ func (s MinimalRepository) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -28195,7 +28055,6 @@ func (s NullableCommunityHealthFile) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("html_url")
 	json.WriteURI(j, s.HTMLURL)
@@ -29158,7 +29017,6 @@ func (s NullableRepository) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -29672,7 +29530,6 @@ func (s NullableRepositoryPermissions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("admin")
 	j.WriteBool(s.Admin)
@@ -30224,7 +30081,6 @@ func (s NullableRepositoryTemplateRepository) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.TreesURL.Set {
@@ -31286,7 +31142,6 @@ func (s NullableScopedInstallation) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	j.WriteObjectEnd()
@@ -31482,7 +31337,6 @@ func (s NullableSimpleCommitAuthor) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("email")
 	j.WriteString(s.Email)
@@ -31540,7 +31394,6 @@ func (s NullableSimpleCommitCommitter) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("email")
 	j.WriteString(s.Email)
@@ -31598,7 +31451,6 @@ func (s NullableSimpleUser) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("avatar_url")
 	json.WriteURI(j, s.AvatarURL)
@@ -35899,7 +35751,6 @@ func (s OrgHook) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("active")
 	j.WriteBool(s.Active)
@@ -36272,7 +36123,6 @@ func (s OrgMembershipPermissions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("can_create_repository")
 	j.WriteBool(s.CanCreateRepository)
@@ -36345,7 +36195,6 @@ func (s OrganizationActionsSecret) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
@@ -36454,7 +36303,6 @@ func (s OrganizationFull) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("avatar_url")
 	j.WriteString(s.AvatarURL)
@@ -37087,7 +36935,6 @@ func (s OrganizationInvitation) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("created_at")
 	j.WriteString(s.CreatedAt)
@@ -37229,7 +37076,6 @@ func (s OrganizationSimple) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("avatar_url")
 	j.WriteString(s.AvatarURL)
@@ -37404,7 +37250,6 @@ func (s OrgsCreateInvitationApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	j.WriteObjectEnd()
@@ -37998,7 +37843,6 @@ func (s PackagesBillingUsage) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("included_gigabytes_bandwidth")
 	j.WriteInt(s.IncludedGigabytesBandwidth)
@@ -38230,7 +38074,6 @@ func (s PageBuild) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("commit")
 	j.WriteString(s.Commit)
@@ -38404,7 +38247,6 @@ func (s PageBuildStatus) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("status")
 	j.WriteString(s.Status)
@@ -38489,7 +38331,6 @@ func (s PagesHTTPSCertificate) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("description")
 	j.WriteString(s.Description)
@@ -39472,7 +39313,6 @@ func (s PagesSourceHash) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("branch")
 	j.WriteString(s.Branch)
@@ -39603,7 +39443,6 @@ func (s PorterAuthor) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("email")
 	j.WriteString(s.Email)
@@ -39706,7 +39545,6 @@ func (s PorterLargeFile) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("oid")
 	j.WriteString(s.Oid)
@@ -39778,7 +39616,6 @@ func (s PreviewHeaderMissing) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("documentation_url")
 	j.WriteString(s.DocumentationURL)
@@ -39836,7 +39673,6 @@ func (s PrivateUser) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("avatar_url")
 	json.WriteURI(j, s.AvatarURL)
@@ -40278,7 +40114,6 @@ func (s PrivateUserPlan) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("collaborators")
 	j.WriteInt(s.Collaborators)
@@ -40735,7 +40570,6 @@ func (s ProjectColumn) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("cards_url")
 	json.WriteURI(j, s.CardsURL)
@@ -40938,7 +40772,6 @@ func (s ProjectsCreateColumnApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
@@ -41195,7 +41028,6 @@ func (s ProjectsDeleteCardForbidden) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Message.Set {
@@ -41282,7 +41114,6 @@ func (s ProjectsDeleteForbidden) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Message.Set {
@@ -41432,7 +41263,6 @@ func (s ProjectsMoveCardForbidden) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Message.Set {
@@ -41597,7 +41427,6 @@ func (s ProjectsMoveColumnApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("position")
 	j.WriteString(s.Position)
@@ -41836,7 +41665,6 @@ func (s ProjectsUpdateColumnApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
@@ -41904,7 +41732,6 @@ func (s ProjectsUpdateForbidden) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Message.Set {
@@ -42146,7 +41973,6 @@ func (s ProtectedBranchAdminEnforced) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("enabled")
 	j.WriteBool(s.Enabled)
@@ -42209,7 +42035,6 @@ func (s ProtectedBranchAllowDeletions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("enabled")
 	j.WriteBool(s.Enabled)
@@ -42260,7 +42085,6 @@ func (s ProtectedBranchAllowForcePushes) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("enabled")
 	j.WriteBool(s.Enabled)
@@ -42311,7 +42135,6 @@ func (s ProtectedBranchEnforceAdmins) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("enabled")
 	j.WriteBool(s.Enabled)
@@ -42374,7 +42197,6 @@ func (s ProtectedBranchPullRequestReview) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("dismiss_stale_reviews")
 	j.WriteBool(s.DismissStaleReviews)
@@ -42482,7 +42304,6 @@ func (s ProtectedBranchPullRequestReviewDismissalRestrictions) WriteJSON(j *json
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.TeamsURL.Set {
@@ -42508,7 +42329,6 @@ func (s ProtectedBranchPullRequestReviewDismissalRestrictions) WriteJSON(j *json
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.UsersURL.Set {
@@ -42645,7 +42465,6 @@ func (s ProtectedBranchRequiredLinearHistory) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("enabled")
 	j.WriteBool(s.Enabled)
@@ -42912,7 +42731,6 @@ func (s ProtectedBranchRequiredSignatures) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("enabled")
 	j.WriteBool(s.Enabled)
@@ -42975,7 +42793,6 @@ func (s PullRequestMergeResult) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("merged")
 	j.WriteBool(s.Merged)
@@ -43124,7 +42941,6 @@ func (s PullRequestMinimalBase) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ref")
 	j.WriteString(s.Ref)
@@ -43192,7 +43008,6 @@ func (s PullRequestMinimalBaseRepo) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("id")
 	j.WriteInt(s.ID)
@@ -43257,7 +43072,6 @@ func (s PullRequestMinimalHead) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("ref")
 	j.WriteString(s.Ref)
@@ -43325,7 +43139,6 @@ func (s PullRequestMinimalHeadRepo) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("id")
 	j.WriteInt(s.ID)
@@ -43965,7 +43778,6 @@ func (s PullRequestReviewCommentLinksHTML) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("href")
 	json.WriteURI(j, s.Href)
@@ -44021,7 +43833,6 @@ func (s PullRequestReviewCommentLinksPullRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("href")
 	json.WriteURI(j, s.Href)
@@ -44077,7 +43888,6 @@ func (s PullRequestReviewCommentLinksSelf) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("href")
 	json.WriteURI(j, s.Href)
@@ -44218,7 +44028,6 @@ func (s PullRequestReviewLinksHTML) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("href")
 	j.WriteString(s.Href)
@@ -44269,7 +44078,6 @@ func (s PullRequestReviewLinksPullRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("href")
 	j.WriteString(s.Href)
@@ -44393,7 +44201,6 @@ func (s PullsCreateApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("base")
 	j.WriteString(s.Base)
@@ -44516,7 +44323,6 @@ func (s PullsCreateReplyForReviewCommentApplicationJSONRequest) WriteJSON(j *jso
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("body")
 	j.WriteString(s.Body)
@@ -44584,7 +44390,6 @@ func (s PullsCreateReviewApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.CommitID.Set {
@@ -44667,7 +44472,6 @@ func (s PullsCreateReviewApplicationJSONRequestCommentsItem) WriteJSON(j *json.S
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("body")
 	j.WriteString(s.Body)
@@ -44801,7 +44605,6 @@ func (s PullsCreateReviewCommentApplicationJSONRequest) WriteJSON(j *json.Stream
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("body")
 	j.WriteString(s.Body)
@@ -45307,7 +45110,6 @@ func (s PullsRemoveRequestedReviewersApplicationJSONRequest) WriteJSON(j *json.S
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	j.WriteObjectEnd()
@@ -45682,7 +45484,6 @@ func (s PullsUpdateReviewApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("body")
 	j.WriteString(s.Body)
@@ -45733,7 +45534,6 @@ func (s PullsUpdateReviewCommentApplicationJSONRequest) WriteJSON(j *json.Stream
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("body")
 	j.WriteString(s.Body)
@@ -45784,7 +45584,6 @@ func (s RateLimit) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("limit")
 	j.WriteInt(s.Limit)
@@ -46147,7 +45946,6 @@ func (s ReactionRollup) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("confused")
 	j.WriteInt(s.Confused)
@@ -46842,7 +46640,6 @@ func (s ReferrerTraffic) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("count")
 	j.WriteInt(s.Count)
@@ -47190,7 +46987,6 @@ func (s ReleaseAsset) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("browser_download_url")
 	json.WriteURI(j, s.BrowserDownloadURL)
@@ -47445,7 +47241,6 @@ func (s ReposCreateAutolinkApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("key_prefix")
 	j.WriteString(s.KeyPrefix)
@@ -47503,7 +47298,6 @@ func (s ReposCreateCommitCommentApplicationJSONRequest) WriteJSON(j *json.Stream
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("body")
 	j.WriteString(s.Body)
@@ -47696,7 +47490,6 @@ func (s ReposCreateDeployKeyApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("key")
 	j.WriteString(s.Key)
@@ -47926,7 +47719,6 @@ func (s ReposCreateDispatchEventApplicationJSONRequest) WriteJSON(j *json.Stream
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	// Unsupported kind "pointer" for field "client_payload".
 
 	more.More()
@@ -48894,7 +48686,6 @@ func (s ReposCreatePagesSiteApplicationJSONRequestSource) WriteJSON(j *json.Stre
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("branch")
 	j.WriteString(s.Branch)
@@ -49502,7 +49293,6 @@ func (s ReposMergeApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("base")
 	j.WriteString(s.Base)
@@ -49573,7 +49363,6 @@ func (s ReposMergeUpstreamApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("branch")
 	j.WriteString(s.Branch)
@@ -49624,7 +49413,6 @@ func (s ReposRenameBranchApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("new_name")
 	j.WriteString(s.NewName)
@@ -49733,7 +49521,6 @@ func (s ReposTransferApplicationJSONRequest) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("new_owner")
 	j.WriteString(s.NewOwner)
@@ -49749,7 +49536,6 @@ func (s ReposTransferApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	j.WriteObjectEnd()
@@ -50512,7 +50298,6 @@ func (s ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestRevi
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Users != nil {
@@ -50526,7 +50311,6 @@ func (s ReposUpdateBranchProtectionApplicationJSONRequestRequiredPullRequestRevi
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	j.WriteObjectEnd()
@@ -50656,7 +50440,6 @@ func (s ReposUpdateBranchProtectionApplicationJSONRequestRestrictions) WriteJSON
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -50736,7 +50519,6 @@ func (s ReposUpdateCommitCommentApplicationJSONRequest) WriteJSON(j *json.Stream
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("body")
 	j.WriteString(s.Body)
@@ -50960,7 +50742,6 @@ func (s ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRes
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Users != nil {
@@ -50974,7 +50755,6 @@ func (s ReposUpdatePullRequestReviewProtectionApplicationJSONRequestDismissalRes
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	j.WriteObjectEnd()
@@ -51255,7 +51035,6 @@ func (s ReposUpdateStatusCheckProtectionApplicationJSONRequest) WriteJSON(j *jso
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Strict.Set {
@@ -51691,7 +51470,6 @@ func (s Repository) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -52205,7 +51983,6 @@ func (s RepositoryCollaboratorPermission) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("permission")
 	j.WriteString(s.Permission)
@@ -52266,7 +52043,6 @@ func (s RepositoryInvitation) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
@@ -52414,7 +52190,6 @@ func (s RepositoryPermissions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("admin")
 	j.WriteBool(s.Admin)
@@ -52505,7 +52280,6 @@ func (s RepositorySubscription) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
@@ -53070,7 +52844,6 @@ func (s RepositoryTemplateRepository) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.TreesURL.Set {
@@ -54529,7 +54302,6 @@ func (s Runner) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("busy")
 	j.WriteBool(s.Busy)
@@ -54623,7 +54395,6 @@ func (s RunnerApplication) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("architecture")
 	j.WriteString(s.Architecture)
@@ -54721,7 +54492,6 @@ func (s RunnerGroupsEnterprise) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("allows_public_repositories")
 	j.WriteBool(s.AllowsPublicRepositories)
@@ -54820,7 +54590,6 @@ func (s RunnerGroupsOrg) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("allows_public_repositories")
 	j.WriteBool(s.AllowsPublicRepositories)
@@ -55059,7 +54828,6 @@ func (s ScimEnterpriseGroup) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Meta.Set {
@@ -55348,7 +55116,6 @@ func (s ScimEnterpriseUser) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.ExternalId.Set {
@@ -55368,7 +55135,6 @@ func (s ScimEnterpriseUser) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -55828,7 +55594,6 @@ func (s ScimError) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.ScimType.Set {
@@ -55925,7 +55690,6 @@ func (s ScimGroupListEnterprise) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("itemsPerPage")
 	j.WriteFloat64(s.ItemsPerPage)
@@ -56047,7 +55811,6 @@ func (s ScimGroupListEnterpriseResourcesItem) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.Meta.Set {
@@ -56359,7 +56122,6 @@ func (s ScimProvisionAndInviteUserApplicationJSONRequest) WriteJSON(j *json.Stre
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -56377,7 +56139,6 @@ func (s ScimProvisionAndInviteUserApplicationJSONRequest) WriteJSON(j *json.Stre
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -56545,7 +56306,6 @@ func (s ScimProvisionAndInviteUserApplicationJSONRequestName) WriteJSON(j *json.
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("familyName")
 	j.WriteString(s.FamilyName)
@@ -56656,7 +56416,6 @@ func (s ScimSetInformationForProvisionedUserApplicationJSONRequest) WriteJSON(j 
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -56674,7 +56433,6 @@ func (s ScimSetInformationForProvisionedUserApplicationJSONRequest) WriteJSON(j 
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -56842,7 +56600,6 @@ func (s ScimSetInformationForProvisionedUserApplicationJSONRequestName) WriteJSO
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("familyName")
 	j.WriteString(s.FamilyName)
@@ -56913,7 +56670,6 @@ func (s ScimUserListEnterprise) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("itemsPerPage")
 	j.WriteFloat64(s.ItemsPerPage)
@@ -57025,7 +56781,6 @@ func (s ScimUserListEnterpriseResourcesItem) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.ExternalId.Set {
@@ -57045,7 +56800,6 @@ func (s ScimUserListEnterpriseResourcesItem) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -57476,7 +57230,6 @@ func (s SecretScanningAlert) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	// Unsupported kind "pointer" for field "created_at".
 
 	// Unsupported kind "pointer" for field "html_url".
@@ -57740,7 +57493,6 @@ func (s SelectedActions) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.VerifiedAllowed.Set {
@@ -57892,7 +57644,6 @@ func (s ShortBlob) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("sha")
 	j.WriteString(s.Sha)
@@ -58043,7 +57794,6 @@ func (s ShortBranchCommit) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("sha")
 	j.WriteString(s.Sha)
@@ -58202,7 +57952,6 @@ func (s SimpleCommitAuthor) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("email")
 	j.WriteString(s.Email)
@@ -58260,7 +58009,6 @@ func (s SimpleCommitCommitter) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("email")
 	j.WriteString(s.Email)
@@ -58470,7 +58218,6 @@ func (s SimpleUser) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("avatar_url")
 	json.WriteURI(j, s.AvatarURL)
@@ -59028,7 +58775,6 @@ func (s TagCommit) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("sha")
 	j.WriteString(s.Sha)
@@ -59640,7 +59386,6 @@ func (s TeamFull) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("created_at")
 	json.WriteDateTime(j, s.CreatedAt)
@@ -59967,7 +59712,6 @@ func (s TeamPermissions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("admin")
 	j.WriteBool(s.Admin)
@@ -60222,7 +59966,6 @@ func (s TeamProjectPermissions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("admin")
 	j.WriteBool(s.Admin)
@@ -60648,7 +60391,6 @@ func (s TeamRepository) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -61148,7 +60890,6 @@ func (s TeamRepositoryPermissions) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("admin")
 	j.WriteBool(s.Admin)
@@ -61796,7 +61537,6 @@ func (s TeamsCreateApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -61832,7 +61572,6 @@ func (s TeamsCreateApplicationJSONRequest) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	j.WriteObjectEnd()
@@ -61939,7 +61678,6 @@ func (s TeamsCreateDiscussionCommentInOrgApplicationJSONRequest) WriteJSON(j *js
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("body")
 	j.WriteString(s.Body)
@@ -61990,7 +61728,6 @@ func (s TeamsCreateDiscussionCommentLegacyApplicationJSONRequest) WriteJSON(j *j
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("body")
 	j.WriteString(s.Body)
@@ -62041,7 +61778,6 @@ func (s TeamsCreateDiscussionInOrgApplicationJSONRequest) WriteJSON(j *json.Stre
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("body")
 	j.WriteString(s.Body)
@@ -62112,7 +61848,6 @@ func (s TeamsCreateDiscussionLegacyApplicationJSONRequest) WriteJSON(j *json.Str
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("body")
 	j.WriteString(s.Body)
@@ -62194,7 +61929,6 @@ func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequest) Write
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	j.WriteObjectEnd()
@@ -62244,7 +61978,6 @@ func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgApplicationJSONRequestGroupsI
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("group_description")
 	j.WriteString(s.GroupDescription)
@@ -62483,7 +62216,6 @@ func (s TeamsUpdateDiscussionCommentInOrgApplicationJSONRequest) WriteJSON(j *js
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("body")
 	j.WriteString(s.Body)
@@ -62534,7 +62266,6 @@ func (s TeamsUpdateDiscussionCommentLegacyApplicationJSONRequest) WriteJSON(j *j
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("body")
 	j.WriteString(s.Body)
@@ -62977,7 +62708,6 @@ func (s Thread) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("id")
 	j.WriteString(s.ID)
@@ -63093,7 +62823,6 @@ func (s ThreadSubject) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("latest_comment_url")
 	j.WriteString(s.LatestCommentURL)
@@ -63455,7 +63184,6 @@ func (s UsersCreateGpgKeyForAuthenticatedApplicationJSONRequest) WriteJSON(j *js
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("armored_public_key")
 	j.WriteString(s.ArmoredPublicKey)
@@ -63506,7 +63234,6 @@ func (s UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONRequest) WriteJSON
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("key")
 	j.WriteString(s.Key)
@@ -63781,7 +63508,6 @@ func (s ValidationErrorSimple) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("documentation_url")
 	j.WriteString(s.DocumentationURL)
@@ -63797,7 +63523,6 @@ func (s ValidationErrorSimple) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -63934,7 +63659,6 @@ func (s Workflow) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("badge_url")
 	j.WriteString(s.BadgeURL)
@@ -64074,7 +63798,6 @@ func (s WorkflowRun) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("artifacts_url")
 	j.WriteString(s.ArtifactsURL)
@@ -64178,7 +63901,6 @@ func (s WorkflowRun) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -64553,7 +64275,6 @@ func (s WorkflowRunUsageBillableMACOS) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("jobs")
 	j.WriteInt(s.Jobs)
@@ -64611,7 +64332,6 @@ func (s WorkflowRunUsageBillableUBUNTU) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("jobs")
 	j.WriteInt(s.Jobs)
@@ -64669,7 +64389,6 @@ func (s WorkflowRunUsageBillableWINDOWS) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("jobs")
 	j.WriteInt(s.Jobs)

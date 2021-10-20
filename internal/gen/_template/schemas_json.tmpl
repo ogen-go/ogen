@@ -200,7 +200,7 @@ j.WriteObjectField("{{ $.Field }}")
 
 {{ define "json_value" }}
     {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
-    {{- if or ($.Type.IsStruct) ($.Type.IsEnum) }}
+    {{- if or ($.Type.IsStruct) ($.Type.IsEnum) -}}
         {{- template "json_start" $ }}
         {{ $.Var }}.WriteJSON(j)
     {{- else if $.Type.GenericOf -}}
@@ -215,30 +215,30 @@ j.WriteObjectField("{{ $.Field }}")
             {{- template "json_start" $ }}
             {{ $.Var }}.WriteJSON(j{{ if $g.FormatCustom }}, json.Write{{ $g.JSONHelper }}{{ end }})
         {{- end }}
-    {{- else if $.Type.JSONHelper }}
+    {{- else if $.Type.JSONHelper -}}
         {{ template "json_start" $ }}
         json.Write{{ $.Type.JSONHelper }}(j, {{ $.Var }})
-    {{- else if $.Type.JSONWrite }}
+    {{- else if $.Type.JSONWrite -}}
         {{ template "json_start" $ }}
         j.{{ $.Type.JSONWrite }}({{ $.Var }})
-    {{- else if $.Type.IsArray }}
+    {{- else if $.Type.IsArray -}}
         {{- if eq $.Type.ArrayVariant "required" -}}
             {{ template "json_start" $ }}
-            {{ template "json_array" $ }}
+            {{ template "json_array" $ -}}
         {{- else if eq $.Type.ArrayVariant "optional" -}}
             if {{ $.Var }} != nil {
                 {{ template "json_start" $ }}
-                {{ template "json_array" $ }}
+                {{ template "json_array" $ -}}
             }
-        {{- else if eq $.Type.ArrayVariant "nullable" }}
+        {{- else if eq $.Type.ArrayVariant "nullable" -}}
             {{- template "json_start" $ }}
             if {{ $.Var }} == nil {
                 j.WriteNil()
             } else {
-                {{ template "json_array" $ }}
+                {{- template "json_array" $ -}}
             }
         {{- end }}
-    {{- else }}
+    {{- else -}}
         // Unsupported kind "{{ $.Type.Kind  }}" for field "{{ $.Field }}".
     {{- end }}
 {{ end }}

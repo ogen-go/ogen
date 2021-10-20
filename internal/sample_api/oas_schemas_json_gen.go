@@ -111,7 +111,6 @@ func (s Error) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("code")
 	j.WriteInt64(s.Code)
@@ -471,7 +470,6 @@ func (s Pet) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("birthday")
 	json.WriteDate(j, s.Birthday)
@@ -487,7 +485,6 @@ func (s Pet) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	more.More()
@@ -559,7 +556,6 @@ func (s Pet) WriteJSON(j *json.Stream) {
 		}
 		j.WriteArrayEnd()
 		more.Up()
-
 	}
 
 	if s.TestDate.Set {
@@ -807,7 +803,6 @@ func (s PetGetDefault) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-
 	more.More()
 	j.WriteObjectField("message")
 	j.WriteString(s.Message)
