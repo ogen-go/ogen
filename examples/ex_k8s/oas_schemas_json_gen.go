@@ -6366,7 +6366,17 @@ func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) WriteJSON(j *json.St
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	// Unsupported kind "primitive" for field "caBundle".
+	if s.CaBundle != nil {
+		more.More()
+		j.WriteObjectField("caBundle")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.CaBundle {
+			_ = elem // Unsupported kind "primitive" for field "".
+		}
+		j.WriteArrayEnd()
+		more.Up()
+	}
 	if s.Service.Set {
 		more.More()
 		j.WriteObjectField("service")
@@ -6408,7 +6418,7 @@ func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) ReadJSON(i *json.It
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "caBundle":
-			// Unsupported kind "primitive" for field "CaBundle".
+			// Unsupported kind "array" for field "CaBundle".
 			i.Skip()
 			return true
 		case "service":
@@ -16691,7 +16701,15 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) WriteJSON(j *json.S
 		j.WriteArrayEnd()
 		more.Up()
 	}
-	// Unsupported kind "primitive" for field "request".
+	more.More()
+	j.WriteObjectField("request")
+	more.Down()
+	j.WriteArrayStart()
+	for _, elem := range s.Request {
+		_ = elem // Unsupported kind "primitive" for field "".
+	}
+	j.WriteArrayEnd()
+	more.Up()
 	more.More()
 	j.WriteObjectField("signerName")
 	j.WriteString(s.SignerName)
@@ -16759,7 +16777,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) ReadJSON(i *json.I
 			i.Skip()
 			return true
 		case "request":
-			// Unsupported kind "primitive" for field "Request".
+			// Unsupported kind "array" for field "Request".
 			i.Skip()
 			return true
 		case "signerName":
@@ -16796,7 +16814,17 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) WriteJSON(j *json
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	// Unsupported kind "primitive" for field "certificate".
+	if s.Certificate != nil {
+		more.More()
+		j.WriteObjectField("certificate")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.Certificate {
+			_ = elem // Unsupported kind "primitive" for field "".
+		}
+		j.WriteArrayEnd()
+		more.Up()
+	}
 	if s.Conditions != nil {
 		more.More()
 		j.WriteObjectField("conditions")
@@ -16840,7 +16868,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) ReadJSON(i *json
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "certificate":
-			// Unsupported kind "primitive" for field "Certificate".
+			// Unsupported kind "array" for field "Certificate".
 			i.Skip()
 			return true
 		case "conditions":
@@ -50012,7 +50040,17 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Wr
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	// Unsupported kind "primitive" for field "caBundle".
+	if s.CaBundle != nil {
+		more.More()
+		j.WriteObjectField("caBundle")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.CaBundle {
+			_ = elem // Unsupported kind "primitive" for field "".
+		}
+		j.WriteArrayEnd()
+		more.Up()
+	}
 	if s.Service.Set {
 		more.More()
 		j.WriteObjectField("service")
@@ -50054,7 +50092,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) R
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "caBundle":
-			// Unsupported kind "primitive" for field "CaBundle".
+			// Unsupported kind "array" for field "CaBundle".
 			i.Skip()
 			return true
 		case "service":
@@ -52524,7 +52562,17 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) WriteJSON(j *
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	// Unsupported kind "primitive" for field "caBundle".
+	if s.CaBundle != nil {
+		more.More()
+		j.WriteObjectField("caBundle")
+		more.Down()
+		j.WriteArrayStart()
+		for _, elem := range s.CaBundle {
+			_ = elem // Unsupported kind "primitive" for field "".
+		}
+		j.WriteArrayEnd()
+		more.Up()
+	}
 	if s.Group.Set {
 		more.More()
 		j.WriteObjectField("group")
@@ -52582,7 +52630,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) ReadJSON(i *
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "caBundle":
-			// Unsupported kind "primitive" for field "CaBundle".
+			// Unsupported kind "array" for field "CaBundle".
 			i.Skip()
 			return true
 		case "group":

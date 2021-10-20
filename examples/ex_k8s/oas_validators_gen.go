@@ -520,12 +520,34 @@ func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) Validate() error {
 	}
 	return nil
 }
+func (s *IoK8sAPICertificatesV1CertificateSigningRequest) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) Validate() error {
 	var failures []validate.FieldError
 	if s.Items == nil {
 		return &validate.Error{
 			Fields: append(failures, validate.FieldError{
 				Name:  "items",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Validate() error {
+	var failures []validate.FieldError
+	if s.Request == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "request",
 				Error: fmt.Errorf("required, can't be nil"),
 			}),
 		}
