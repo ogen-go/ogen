@@ -235,6 +235,9 @@
         "description": "cute and lovely creature",
         "type": "object",
         "properties": {
+          "primary": {
+            "$ref": "#/components/schemas/Pet"
+          },
           "id": {
             "type": "integer",
             "format": "int64",
@@ -352,7 +355,8 @@
           "ip_v4",
           "ip_v6",
           "uri",
-          "kind"
+          "kind",
+          "primary"
         ]
       }
     },

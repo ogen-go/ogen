@@ -226,15 +226,15 @@ j.WriteObjectField("{{ $.Field }}")
         {{ template "json_start" $ }}
         j.{{ $.Type.JSONWrite }}({{ $.Var }})
     {{- else if $.Type.IsArray -}}
-        {{- if eq $.Type.ArrayVariant "required" -}}
+        {{- if eq $.Type.NilSemantic "invalid" -}}
             {{ template "json_start" $ }}
             {{ template "json_array" $ -}}
-        {{- else if eq $.Type.ArrayVariant "optional" -}}
+        {{- else if eq $.Type.NilSemantic "optional" -}}
             if {{ $.Var }} != nil {
                 {{ template "json_start" $ }}
                 {{ template "json_array" $ -}}
             }
-        {{- else if eq $.Type.ArrayVariant "nullable" -}}
+        {{- else if eq $.Type.NilSemantic "null" -}}
             {{- template "json_start" $ }}
             if {{ $.Var }} == nil {
                 j.WriteNil()

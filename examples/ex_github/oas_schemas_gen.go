@@ -3108,6 +3108,24 @@ type GroupMappingGroupsItem struct {
 	SyncedAt         OptNilString `json:"synced_at"`
 }
 
+// HookDelivery describes #/components/schemas/hook-delivery.
+type HookDelivery struct {
+	Action         NilString            `json:"action"`
+	DeliveredAt    time.Time            `json:"delivered_at"`
+	Duration       float64              `json:"duration"`
+	Event          string               `json:"event"`
+	GUID           string               `json:"guid"`
+	ID             int                  `json:"id"`
+	InstallationID NilInt               `json:"installation_id"`
+	Redelivery     bool                 `json:"redelivery"`
+	RepositoryID   NilInt               `json:"repository_id"`
+	Request        HookDeliveryRequest  `json:"request"`
+	Response       HookDeliveryResponse `json:"response"`
+	Status         string               `json:"status"`
+	StatusCode     int                  `json:"status_code"`
+	URL            OptString            `json:"url"`
+}
+
 // HookDeliveryItem describes #/components/schemas/hook-delivery-item.
 type HookDeliveryItem struct {
 	Action         NilString `json:"action"`
@@ -3121,6 +3139,16 @@ type HookDeliveryItem struct {
 	RepositoryID   NilInt    `json:"repository_id"`
 	Status         string    `json:"status"`
 	StatusCode     int       `json:"status_code"`
+}
+
+type HookDeliveryRequest struct {
+	Headers *struct{} `json:"headers"`
+	Payload *struct{} `json:"payload"`
+}
+
+type HookDeliveryResponse struct {
+	Headers *struct{} `json:"headers"`
+	Payload NilString `json:"payload"`
 }
 
 // Import describes #/components/schemas/import.

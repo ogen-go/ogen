@@ -30,16 +30,16 @@ func (g *Generator) devirtSingleRequest(m *ast.Method) {
 		return
 	}
 
-	for ctype, schema := range m.RequestBody.Contents {
+	for contentType, schema := range m.RequestBody.Contents {
 		schema.Unimplement(iface)
 		schema, unwrapped := g.unwrapAlias(schema)
 		if unwrapped {
-			m.RequestBody.Contents[ctype] = schema
+			m.RequestBody.Contents[contentType] = schema
 		}
 
 		m.RequestType = schema
 		if !m.RequestBody.Required {
-			m.RequestType = ast.Pointer(schema)
+			m.RequestType = ast.Pointer(schema, ast.NilInvalid)
 		}
 	}
 }

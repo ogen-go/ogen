@@ -518,6 +518,7 @@ func (s Pet) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("nullStr")
 		s.NullStr.WriteJSON(j)
 	}
+	// Unsupported kind "pointer" for field "primary".
 	more.More()
 	j.WriteObjectField("rate")
 	json.WriteDuration(j, s.Rate)
@@ -683,6 +684,10 @@ func (s *Pet) ReadJSON(i *json.Iterator) error {
 				i.ReportError("Field NullStr", err.Error())
 				return false
 			}
+			return true
+		case "primary":
+			// Unsupported kind "pointer" for field "Primary".
+			i.Skip()
 			return true
 		case "rate":
 			v, err := json.ReadDuration(i)

@@ -470,6 +470,7 @@ type Pet struct {
 	Next         OptData       `json:"next"`
 	Nickname     NilString     `json:"nickname"`
 	NullStr      OptNilString  `json:"nullStr"`
+	Primary      *Pet          `json:"primary"`
 	Rate         time.Duration `json:"rate"`
 	Tag          OptUUID       `json:"tag"`
 	TestArray1   [][]string    `json:"testArray1"`

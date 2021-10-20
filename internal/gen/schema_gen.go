@@ -175,19 +175,25 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 					// Using special case for array nil value if possible.
 					switch {
 					case v.OnlyOptional():
-						prop.ArrayVariant = ast.ArrayOptional
+						prop.NilSemantic = ast.NilOptional
 					case v.OnlyNullable():
-						prop.ArrayVariant = ast.ArrayNullable
+						prop.NilSemantic = ast.NilNull
 					default:
 						// TODO(ernado): fallback to boxing
 						return nil, xerrors.Errorf("%s: %w", ref, &ErrNotImplemented{Name: "optional nullable array"})
 					}
-				} else if v.OnlyOptional() {
-					// Fallback to pointer.
-					prop = ast.Pointer(prop)
 				} else {
-					return nil, xerrors.Errorf("%s: %w", ref, &ErrNotImplemented{Name: "nullable"})
+					switch {
+					case v.OnlyOptional():
+						prop = ast.Pointer(prop, ast.NilOptional)
+					case v.OnlyNullable():
+						prop = ast.Pointer(prop, ast.NilNull)
+					default:
+						panic("unreachable")
+					}
 				}
+			} else if prop.IsStruct() && s.IsStruct() && prop.Name == s.Name {
+				prop = ast.Pointer(prop, ast.NilInvalid)
 			}
 			s.Fields = append(s.Fields, ast.SchemaField{
 				Name: pascalMP(propName),

@@ -20,10 +20,8 @@ const (
 	KindPrimitive SchemaKind = "primitive"
 	KindArray     SchemaKind = "array"
 	KindEnum      SchemaKind = "enum"
-	// KindPointer simulates optionals via go pointers.
-	// Deprecated. Use KindGeneric.
-	KindPointer SchemaKind = "pointer"
-	KindGeneric SchemaKind = "generic"
+	KindPointer   SchemaKind = "pointer"
+	KindGeneric   SchemaKind = "generic"
 )
 
 type Validators struct {
@@ -72,14 +70,14 @@ func (s Schema) CanGeneric() bool {
 	return s.Is(KindPrimitive, KindEnum, KindStruct)
 }
 
-// ArrayVariant specifies nil value semantics of slice.
-type ArrayVariant string
+// NilSemantic specifies nil value semantics.
+type NilSemantic string
 
-// Possible Array nil semantics.
+// Possible nil value semantics.
 const (
-	ArrayRequired ArrayVariant = "required" // nil is invalid
-	ArrayOptional ArrayVariant = "optional" // nil is "no value"
-	ArrayNullable ArrayVariant = "nullable" // nil is null
+	NilInvalid  NilSemantic = "invalid"  // nil is invalid
+	NilOptional NilSemantic = "optional" // nil is "no value"
+	NilNull     NilSemantic = "null"     // nil is null
 )
 
 type Schema struct {
@@ -88,6 +86,7 @@ type Schema struct {
 	Description string
 	Doc         string
 	Format      string
+	NilSemantic NilSemantic
 
 	GenericOf      *Schema
 	GenericVariant GenericVariant
@@ -95,9 +94,7 @@ type Schema struct {
 	AliasTo   *Schema
 	PointerTo *Schema
 	Primitive string
-
-	Item         *Schema
-	ArrayVariant ArrayVariant
+	Item      *Schema
 
 	EnumValues []interface{}
 	Fields     []SchemaField
@@ -426,12 +423,11 @@ func Alias(name string, typ *Schema) *Schema {
 }
 
 // Pointer makes new pointer type.
-//
-// Deprecated, use generics.
-func Pointer(to *Schema) *Schema {
+func Pointer(to *Schema, semantic NilSemantic) *Schema {
 	return &Schema{
-		Kind:      KindPointer,
-		PointerTo: to,
+		Kind:        KindPointer,
+		NilSemantic: semantic,
+		PointerTo:   to,
 	}
 }
 
@@ -478,9 +474,9 @@ func Generic(name string, of *Schema, v GenericVariant) *Schema {
 
 func Array(item *Schema) *Schema {
 	return &Schema{
-		Kind:         KindArray,
-		Item:         item,
-		ArrayVariant: ArrayRequired,
+		Kind:        KindArray,
+		Item:        item,
+		NilSemantic: NilInvalid,
 	}
 }
 

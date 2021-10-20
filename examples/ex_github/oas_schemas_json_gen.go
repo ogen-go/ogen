@@ -21138,6 +21138,159 @@ func (s *GroupMappingGroupsItem) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s HookDelivery) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	more.More()
+	j.WriteObjectField("action")
+	s.Action.WriteJSON(j)
+	more.More()
+	j.WriteObjectField("delivered_at")
+	json.WriteDateTime(j, s.DeliveredAt)
+	more.More()
+	j.WriteObjectField("duration")
+	j.WriteFloat64(s.Duration)
+	more.More()
+	j.WriteObjectField("event")
+	j.WriteString(s.Event)
+	more.More()
+	j.WriteObjectField("guid")
+	j.WriteString(s.GUID)
+	more.More()
+	j.WriteObjectField("id")
+	j.WriteInt(s.ID)
+	more.More()
+	j.WriteObjectField("installation_id")
+	s.InstallationID.WriteJSON(j)
+	more.More()
+	j.WriteObjectField("redelivery")
+	j.WriteBool(s.Redelivery)
+	more.More()
+	j.WriteObjectField("repository_id")
+	s.RepositoryID.WriteJSON(j)
+	more.More()
+	j.WriteObjectField("request")
+	s.Request.WriteJSON(j)
+	more.More()
+	j.WriteObjectField("response")
+	s.Response.WriteJSON(j)
+	more.More()
+	j.WriteObjectField("status")
+	j.WriteString(s.Status)
+	more.More()
+	j.WriteObjectField("status_code")
+	j.WriteInt(s.StatusCode)
+	if s.URL.Set {
+		more.More()
+		j.WriteObjectField("url")
+		s.URL.WriteJSON(j)
+	}
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes HookDelivery json value to io.Writer.
+func (s HookDelivery) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads HookDelivery json value from io.Reader.
+func (s *HookDelivery) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads HookDelivery from json stream.
+func (s *HookDelivery) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		case "action":
+			if err := s.Action.ReadJSON(i); err != nil {
+				i.ReportError("Field Action", err.Error())
+				return false
+			}
+			return true
+		case "delivered_at":
+			v, err := json.ReadDateTime(i)
+			if err != nil {
+				i.ReportError("Field DeliveredAt", err.Error())
+				return false
+			}
+			s.DeliveredAt = v
+			return true
+		case "duration":
+			s.Duration = i.ReadFloat64()
+			return i.Error == nil
+		case "event":
+			s.Event = i.ReadString()
+			return i.Error == nil
+		case "guid":
+			s.GUID = i.ReadString()
+			return i.Error == nil
+		case "id":
+			s.ID = i.ReadInt()
+			return i.Error == nil
+		case "installation_id":
+			if err := s.InstallationID.ReadJSON(i); err != nil {
+				i.ReportError("Field InstallationID", err.Error())
+				return false
+			}
+			return true
+		case "redelivery":
+			s.Redelivery = i.ReadBool()
+			return i.Error == nil
+		case "repository_id":
+			if err := s.RepositoryID.ReadJSON(i); err != nil {
+				i.ReportError("Field RepositoryID", err.Error())
+				return false
+			}
+			return true
+		case "request":
+			if err := s.Request.ReadJSON(i); err != nil {
+				i.ReportError("Field Request", err.Error())
+				return false
+			}
+			return true
+		case "response":
+			if err := s.Response.ReadJSON(i); err != nil {
+				i.ReportError("Field Response", err.Error())
+				return false
+			}
+			return true
+		case "status":
+			s.Status = i.ReadString()
+			return i.Error == nil
+		case "status_code":
+			s.StatusCode = i.ReadInt()
+			return i.Error == nil
+		case "url":
+			s.URL.Reset()
+			if err := s.URL.ReadJSON(i); err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s HookDeliveryItem) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -21252,6 +21405,116 @@ func (s *HookDeliveryItem) ReadJSON(i *json.Iterator) error {
 		case "status_code":
 			s.StatusCode = i.ReadInt()
 			return i.Error == nil
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s HookDeliveryRequest) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	// Unsupported kind "pointer" for field "headers".
+	// Unsupported kind "pointer" for field "payload".
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes HookDeliveryRequest json value to io.Writer.
+func (s HookDeliveryRequest) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads HookDeliveryRequest json value from io.Reader.
+func (s *HookDeliveryRequest) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads HookDeliveryRequest from json stream.
+func (s *HookDeliveryRequest) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		case "headers":
+			// Unsupported kind "pointer" for field "Headers".
+			i.Skip()
+			return true
+		case "payload":
+			// Unsupported kind "pointer" for field "Payload".
+			i.Skip()
+			return true
+		default:
+			i.Skip()
+			return true
+		}
+	})
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
+func (s HookDeliveryResponse) WriteJSON(j *json.Stream) {
+	j.WriteObjectStart()
+	more := json.NewMore(j)
+	defer more.Reset()
+	// Unsupported kind "pointer" for field "headers".
+	more.More()
+	j.WriteObjectField("payload")
+	s.Payload.WriteJSON(j)
+	j.WriteObjectEnd()
+}
+
+// WriteJSONTo writes HookDeliveryResponse json value to io.Writer.
+func (s HookDeliveryResponse) WriteJSONTo(w io.Writer) error {
+	j := json.GetStream(w)
+	defer json.PutStream(j)
+	s.WriteJSON(j)
+	return j.Flush()
+}
+
+// ReadJSONFrom reads HookDeliveryResponse json value from io.Reader.
+func (s *HookDeliveryResponse) ReadJSONFrom(r io.Reader) error {
+	buf := json.GetBuffer()
+	defer json.PutBuffer(buf)
+
+	if _, err := buf.ReadFrom(r); err != nil {
+		return err
+	}
+	i := json.GetIterator()
+	i.ResetBytes(buf.Bytes())
+	defer json.PutIterator(i)
+
+	return s.ReadJSON(i)
+}
+
+// ReadJSON reads HookDeliveryResponse from json stream.
+func (s *HookDeliveryResponse) ReadJSON(i *json.Iterator) error {
+	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
+		switch k {
+		case "headers":
+			// Unsupported kind "pointer" for field "Headers".
+			i.Skip()
+			return true
+		case "payload":
+			if err := s.Payload.ReadJSON(i); err != nil {
+				i.ReportError("Field Payload", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
