@@ -179,7 +179,7 @@ func (s *{{ $s.Name }}) ReadJSON(i *json.Iterator) error {
 
 {{ end }}
 
-{{ define "json_array" }}
+{{- define "json_array" }}
 {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
 more.Down()
 j.WriteArrayStart()
@@ -188,7 +188,7 @@ for _, elem := range {{ $.Var }} {
 }
 j.WriteArrayEnd()
 more.Up()
-{{ end }}
+{{- end }}
 
 {{ define "json_start" }}
 {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
@@ -198,7 +198,7 @@ j.WriteObjectField("{{ $.Field }}")
 {{- end -}}
 {{ end }}
 
-{{ define "json_value" }}
+{{- define "json_value" }}
     {{- /*gotype: github.com/ogen-go/ogen/internal/gen.Elem*/ -}}
     {{- if or ($.Type.IsStruct) ($.Type.IsEnum) -}}
         {{- template "json_start" $ }}
