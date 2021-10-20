@@ -1,8 +1,6 @@
 package gen
 
 import (
-	"fmt"
-	"regexp"
 	"strings"
 
 	"golang.org/x/xerrors"
@@ -11,21 +9,12 @@ import (
 	"github.com/ogen-go/ogen/internal/ast"
 )
 
-func (g *Generator) generateParams(method *ast.Method, methodParams []ogen.Parameter) ([]*ast.Parameter, error) {
+func (g *Generator) generateParams(methodName string, methodParams []ogen.Parameter) ([]*ast.Parameter, error) {
 	var result []*ast.Parameter
 	for _, p := range methodParams {
-		if p.Ref != "" {
-			componentParam, found := g.componentsParameter(p.Ref)
-			if !found {
-				return nil, xerrors.Errorf("parameter by reference '%s' not found", p.Ref)
-			}
-
-			p = componentParam
-		}
-
-		param, err := g.parseParameter(method, p)
+		param, err := g.generateParameter(methodName, p)
 		if err != nil {
-			return nil, xerrors.Errorf("parse parameter '%s': %w", p.Name, err)
+			return nil, xerrors.Errorf("generate parameter '%s': %w", p.Name, err)
 		}
 
 		result = append(result, param)
@@ -52,7 +41,15 @@ func (g *Generator) generateParams(method *ast.Method, methodParams []ogen.Param
 	return result, nil
 }
 
-func (g *Generator) parseParameter(method *ast.Method, param ogen.Parameter) (*ast.Parameter, error) {
+func (g *Generator) generateParameter(name string, param ogen.Parameter) (*ast.Parameter, error) {
+	if ref := param.Ref; ref != "" {
+		p, err := g.resolveParameter(ref)
+		if err != nil {
+			return nil, xerrors.Errorf("resolve '%s' reference: %w", ref, err)
+		}
+		return p, nil
+	}
+
 	types := map[string]ast.ParameterLocation{
 		"query":  ast.LocationQuery,
 		"header": ast.LocationHeader,
@@ -65,22 +62,7 @@ func (g *Generator) parseParameter(method *ast.Method, param ogen.Parameter) (*a
 		return nil, xerrors.Errorf("unsupported parameter type %s", param.In)
 	}
 
-	if locatedIn == ast.LocationPath {
-		if !param.Required {
-			return nil, xerrors.Errorf("parameters located in 'path' must be required")
-		}
-
-		exists, err := regexp.MatchString(fmt.Sprintf("{%s}", param.Name), method.RawPath)
-		if err != nil {
-			return nil, xerrors.Errorf("match path param '%s': %w", param.Name, err)
-		}
-
-		if !exists {
-			return nil, xerrors.Errorf("param '%s' not found in path '%s'", param.Name, method.RawPath)
-		}
-	}
-
-	name := pascal(method.Name, param.Name)
+	name = pascal(name, param.Name)
 	schema, err := g.generateSchema(name, param.Schema)
 	if err != nil {
 		return nil, xerrors.Errorf("schema: %w", err)
@@ -97,7 +79,7 @@ func (g *Generator) parseParameter(method *ast.Method, param ogen.Parameter) (*a
 		name = pascal(param.Name)
 	case ast.KindAlias:
 		if !schema.AliasTo.Is(ast.KindPrimitive) {
-			return nil, &ErrNotImplemented{"complex parameter types",}
+			return nil, &ErrNotImplemented{"complex parameter types"}
 		}
 
 		name = pascal(param.Name)

@@ -2,22 +2,25 @@ package gen
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/ogen-go/ogen/internal/ast"
+	"golang.org/x/xerrors"
 )
 
 func (g *Generator) resolveRequestBody(ref string) (*ast.RequestBody, error) {
-	cname, err := componentName(ref)
-	if err != nil {
-		return nil, err
+	const prefix = "#/components/requestBodies/"
+	if !strings.HasPrefix(ref, prefix) {
+		return nil, xerrors.Errorf("invalid requestBody reference: '%s'", ref)
 	}
 
-	name := pascal(cname)
+	componentName := strings.TrimPrefix(ref, prefix)
+	name := pascal(componentName)
 	if r, ok := g.requestBodies[name]; ok {
 		return r, nil
 	}
 
-	component, found := g.spec.Components.RequestBodies[cname]
+	component, found := g.spec.Components.RequestBodies[componentName]
 	if !found {
 		return nil, fmt.Errorf("component by reference '%s' not found", ref)
 	}
@@ -32,12 +35,13 @@ func (g *Generator) resolveRequestBody(ref string) (*ast.RequestBody, error) {
 }
 
 func (g *Generator) resolveResponse(ref string) (*ast.Response, error) {
-	cname, err := componentName(ref)
-	if err != nil {
-		return nil, err
+	const prefix = "#/components/responses/"
+	if !strings.HasPrefix(ref, prefix) {
+		return nil, xerrors.Errorf("invalid response reference: '%s'", ref)
 	}
 
-	name := pascal(cname)
+	componentName := strings.TrimPrefix(ref, prefix)
+	name := pascal(componentName)
 	if r, ok := g.responses[name]; ok {
 		// Example:
 		//   ...
@@ -69,7 +73,7 @@ func (g *Generator) resolveResponse(ref string) (*ast.Response, error) {
 		return newR, nil
 	}
 
-	component, found := g.spec.Components.Responses[cname]
+	component, found := g.spec.Components.Responses[componentName]
 	if !found {
 		return nil, fmt.Errorf("component by reference '%s' not found", ref)
 	}
@@ -81,4 +85,19 @@ func (g *Generator) resolveResponse(ref string) (*ast.Response, error) {
 
 	g.responses[name] = r
 	return r, nil
+}
+
+func (g *Generator) resolveParameter(ref string) (*ast.Parameter, error) {
+	const prefix = "#/components/parameters/"
+	if !strings.HasPrefix(ref, prefix) {
+		return nil, xerrors.Errorf("invalid parameter reference: '%s'", ref)
+	}
+
+	componentName := strings.TrimPrefix(ref, prefix)
+	component, found := g.spec.Components.Parameters[componentName]
+	if !found {
+		return nil, fmt.Errorf("component by reference '%s' not found", ref)
+	}
+
+	return g.generateParameter(componentName, component)
 }

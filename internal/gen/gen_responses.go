@@ -130,6 +130,15 @@ func (g *Generator) createDefaultResponse(methodName string, r ogen.Response) (*
 
 // generateResponse creates new response based on schema definition.
 func (g *Generator) generateResponse(respName string, resp ogen.Response) (*ast.Response, error) {
+	if ref := resp.Ref; ref != "" {
+		resp, err := g.resolveResponse(ref)
+		if err != nil {
+			return nil, xerrors.Errorf("resolve '%s' reference: %w", ref, err)
+		}
+
+		return resp, nil
+	}
+
 	response := ast.CreateResponse()
 
 	// Response without content.

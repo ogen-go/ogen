@@ -57,7 +57,7 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 		HTTPMethod:  method,
 	}
 
-	m.Parameters, err = g.generateParams(m, op.Parameters)
+	m.Parameters, err = g.generateParams(m.Name, op.Parameters)
 	if err != nil {
 		return xerrors.Errorf("parameters: %w", err)
 	}

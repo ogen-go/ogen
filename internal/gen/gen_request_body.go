@@ -9,7 +9,12 @@ import (
 
 func (g *Generator) generateRequestBody(name string, body *ogen.RequestBody) (*ast.RequestBody, error) {
 	if ref := body.Ref; ref != "" {
-		return g.resolveRequestBody(ref)
+		rbody, err := g.resolveRequestBody(ref)
+		if err != nil {
+			return nil, xerrors.Errorf("resolve '%s' reference: %w", ref, err)
+		}
+
+		return rbody, nil
 	}
 
 	reqBody := ast.CreateRequestBody()
