@@ -69,7 +69,7 @@ type License struct {
 
 // Server represents a Server.
 type Server struct {
-	Description string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
 	URL         string `json:"url"`
 }
 
