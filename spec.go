@@ -102,7 +102,7 @@ type PathItem struct {
 	// The referenced structure MUST be in the format of a Path Item Object.
 	// In case a Path Item Object field appears both
 	// in the defined object and the referenced object, the behavior is undefined.
-	Ref         string      `json:"$ref"`
+	Ref         string      `json:"$ref,omitempty"`
 	Description string      `json:"description,omitempty"`
 	Get         *Operation  `json:"get,omitempty"`
 	Put         *Operation  `json:"put,omitempty"`
