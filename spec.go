@@ -379,4 +379,7 @@ type Schema struct {
 	// If this keyword is not present, it may be considered present with a
 	// value of 0.
 	MinProperties *uint64 `json:"minProperties,omitempty"`
+
+	// Default value.
+	Default json.RawMessage `json:"default,omitempty"` // TODO: support
 }
