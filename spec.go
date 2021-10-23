@@ -212,7 +212,7 @@ type Schema struct {
 	Description string `json:"description,omitempty"`
 
 	// Value MUST be a string. Multiple types via an array are not supported.
-	Type string `json:"type"`
+	Type string `json:"type,omitempty"`
 
 	// See Data Type Formats for further details (https://swagger.io/specification/#data-type-format).
 	// While relying on JSON Schema's defined formats,
