@@ -8,8 +8,8 @@ type Spec struct {
 	// of the OpenAPI Specification version that the OpenAPI document uses.
 	OpenAPI    string      `json:"openapi"`
 	Info       Info        `json:"info"`
-	Servers    []Server    `json:"servers"`
-	Paths      Paths       `json:"paths"`
+	Servers    []Server    `json:"servers,omitempty"`
+	Paths      Paths       `json:"paths,omitempty"`
 	Components *Components `json:"components,omitempty"`
 }
 
@@ -43,9 +43,9 @@ type Info struct {
 	Title string `json:"title"`
 	// A short description of the API.
 	// CommonMark syntax MAY be used for rich text representation.
-	Description string `json:"description"`
+	Description string `json:"description,omitempty"`
 	// A URL to the Terms of Service for the API. MUST be in the format of a URL.
-	TermsOfService string `json:"termsOfService"`
+	TermsOfService string `json:"termsOfService,omitempty"`
 	// The contact information for the exposed API.
 	Contact *Contact `json:"contact,omitempty"`
 	// The license information for the exposed API.
@@ -56,21 +56,21 @@ type Info struct {
 
 // Contact information for the exposed API.
 type Contact struct {
-	Name  string `json:"name"`
-	URL   string `json:"url"`
-	Email string `json:"email"`
+	Name  string `json:"name,omitempty"`
+	URL   string `json:"url,omitempty"`
+	Email string `json:"email,omitempty"`
 }
 
 // License information for the exposed API.
 type License struct {
-	Name string `json:"name"`
-	URL  string `json:"url"`
+	Name string `json:"name,omitempty"`
+	URL  string `json:"url,omitempty"`
 }
 
 // Server represents a Server.
 type Server struct {
-	Name string `json:"name"`
-	URL  string `json:"url"`
+	Description string `json:"name,omitempty"`
+	URL         string `json:"url"`
 }
 
 // Components hold a set of reusable objects for different aspects of the OAS.
