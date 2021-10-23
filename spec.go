@@ -79,7 +79,7 @@ type Server struct {
 type Components struct {
 	Schemas    map[string]Schema    `json:"schemas,omitempty"`
 	Responses  map[string]Response  `json:"responses,omitempty"`
-	Parameters map[string]Parameter `json:"parameters"`
+	Parameters map[string]Parameter `json:"parameters,omitempty"`
 	// Examples        map[string]Example         `json:"example"`
 	RequestBodies map[string]RequestBody `json:"requestBodies,omitempty"`
 	// Headers         map[string]Header          `json:"headers"`
