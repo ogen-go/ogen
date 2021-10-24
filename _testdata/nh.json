@@ -1,0 +1,480 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Nhentai.net API",
+    "description": "Swagger description of nhentai.net API.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://nhentai.net/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "search",
+      "description": "Search books at nhentai.net"
+    },
+    {
+      "name": "book",
+      "description": "Get metadata of book"
+    },
+    {
+      "name": "image",
+      "description": "Get cover and pages"
+    }
+  ],
+  "paths": {
+    "/api/galleries/search": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Search for comics",
+        "operationId": "search",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search query.\n* You can search for multiple terms at the same time, and this will return only galleries that contain both terms. For example, anal tanlines finds all galleries that contain both anal and tanlines.\n* You can exclude terms by prefixing them with -. For example, anal tanlines -yaoi matches all galleries matching anal and tanlines but not yaoi.\n* Exact searches can be performed by wrapping terms in double quotes. For example, \"big breasts\" only matches galleries with \"big breasts\" somewhere in the title or in tags.\n* These can be combined with tag namespaces for finer control over the query: parodies:railgun -tag:\"big breasts\". ",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Number of result page.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SearchResponse"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You need to provide a search query.",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/api/galleries/tagged": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Search for comics by tag ID",
+        "operationId": "searchByTagID",
+        "parameters": [
+          {
+            "name": "tag_id",
+            "in": "query",
+            "description": "Tag ID.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Number of result page.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SearchResponse"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Just an error.",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/api/gallery/{book_id}": {
+      "get": {
+        "tags": [
+          "book"
+        ],
+        "summary": "Gets metadata of book",
+        "operationId": "getBook",
+        "parameters": [
+          {
+            "name": "book_id",
+            "in": "path",
+            "description": "ID of book.",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Book"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Invalid status value",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/galleries/{media_id}/{page}.{format}": {
+      "get": {
+        "tags": [
+          "image"
+        ],
+        "summary": "Gets page",
+        "operationId": "getPageImage",
+        "servers": [
+          {
+            "url": "https://i.nhentai.net",
+            "description": "Use CDN host instead of API"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "media_id",
+            "in": "path",
+            "description": "ID of book.",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "description": "Number of page.",
+            "required": true,
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "name": "format",
+            "in": "path",
+            "description": "Image format.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "jpg"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "image/*": {
+                "schema": {
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Invalid status value",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/galleries/{media_id}/{page}t.{format}": {
+      "get": {
+        "tags": [
+          "image"
+        ],
+        "summary": "Gets page thumbnail",
+        "operationId": "getPageThumbnailImage",
+        "servers": [
+          {
+            "url": "https://t.nhentai.net",
+            "description": "Use CDN host instead of API"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "media_id",
+            "in": "path",
+            "description": "ID of book.",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "description": "Number of page.",
+            "required": true,
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "name": "format",
+            "in": "path",
+            "description": "Image format.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "jpg"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "image/*": {
+                "schema": {
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Invalid status value",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/galleries/{media_id}/cover.{format}": {
+      "get": {
+        "tags": [
+          "image"
+        ],
+        "summary": "Gets page cover",
+        "operationId": "getPageCoverImage",
+        "servers": [
+          {
+            "url": "https://t.nhentai.net",
+            "description": "Use CDN host instead of API"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "media_id",
+            "in": "path",
+            "description": "ID of book.",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "name": "format",
+            "in": "path",
+            "description": "Image format.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "jpg"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "image/*": {
+                "schema": {
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Invalid status value",
+            "content": {}
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Tag": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "parody",
+              "character",
+              "tag",
+              "artist",
+              "group",
+              "category",
+              "language"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer"
+          }
+        }
+      },
+      "Title": {
+        "type": "object",
+        "properties": {
+          "english": {
+            "type": "string"
+          },
+          "japanese": {
+            "type": "string"
+          },
+          "pretty": {
+            "type": "string"
+          }
+        }
+      },
+      "Image": {
+        "type": "object",
+        "properties": {
+          "t": {
+            "type": "string"
+          },
+          "w": {
+            "minimum": 0,
+            "type": "integer",
+            "description": "width of image"
+          },
+          "h": {
+            "minimum": 0,
+            "type": "integer",
+            "description": "height of image"
+          }
+        }
+      },
+      "Images": {
+        "type": "object",
+        "properties": {
+          "pages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Image"
+            }
+          },
+          "cover": {
+            "$ref": "#/components/schemas/Image"
+          },
+          "thumbnail": {
+            "$ref": "#/components/schemas/Image"
+          }
+        }
+      },
+      "Book": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "media_id": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "images": {
+            "$ref": "#/components/schemas/Images"
+          },
+          "title": {
+            "$ref": "#/components/schemas/Title"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tag"
+            }
+          },
+          "scanlator": {
+            "type": "string"
+          },
+          "upload_date": {
+            "type": "integer"
+          },
+          "num_pages": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "num_favorites": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        }
+      },
+      "SearchResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Book"
+            }
+          },
+          "num_pages": {
+            "type": "integer",
+            "description": "total number of pages"
+          },
+          "per_page": {
+            "type": "integer",
+            "description": "elements on one page"
+          }
+        }
+      }
+    }
+  }
+}

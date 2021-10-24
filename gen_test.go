@@ -51,6 +51,9 @@ func TestGenerate(t *testing.T) {
 			Name: "sample_1.json",
 		},
 		{
+			Name: "nh.jqon",
+		},
+		{
 			Name: "techempower.json",
 		},
 		{
