@@ -688,7 +688,7 @@ func (c *Client) ExportChatInviteLink(ctx context.Context, req ExportChatInviteL
 	return result, nil
 }
 
-func (c *Client) ForwardMessage(ctx context.Context, req ForwardMessage) (res Result, err error) {
+func (c *Client) ForwardMessage(ctx context.Context, req ForwardMessage) (res Message, err error) {
 	body, contentType, err := encodeForwardMessageRequest(req)
 	if err != nil {
 		return res, err
@@ -1157,7 +1157,7 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, req RevokeChatInviteL
 	return result, nil
 }
 
-func (c *Client) SendAnimation(ctx context.Context, req SendAnimation) (res Result, err error) {
+func (c *Client) SendAnimation(ctx context.Context, req SendAnimation) (res Message, err error) {
 	body, contentType, err := encodeSendAnimationRequest(req)
 	if err != nil {
 		return res, err
@@ -1241,7 +1241,7 @@ func (c *Client) SendChatAction(ctx context.Context, req SendChatAction) (res Re
 	return result, nil
 }
 
-func (c *Client) SendContact(ctx context.Context, req SendContact) (res Result, err error) {
+func (c *Client) SendContact(ctx context.Context, req SendContact) (res Message, err error) {
 	body, contentType, err := encodeSendContactRequest(req)
 	if err != nil {
 		return res, err
@@ -1269,7 +1269,7 @@ func (c *Client) SendContact(ctx context.Context, req SendContact) (res Result, 
 	return result, nil
 }
 
-func (c *Client) SendDice(ctx context.Context, req SendDice) (res Result, err error) {
+func (c *Client) SendDice(ctx context.Context, req SendDice) (res Message, err error) {
 	body, contentType, err := encodeSendDiceRequest(req)
 	if err != nil {
 		return res, err
@@ -1297,7 +1297,7 @@ func (c *Client) SendDice(ctx context.Context, req SendDice) (res Result, err er
 	return result, nil
 }
 
-func (c *Client) SendDocument(ctx context.Context, req SendDocument) (res Result, err error) {
+func (c *Client) SendDocument(ctx context.Context, req SendDocument) (res Message, err error) {
 	body, contentType, err := encodeSendDocumentRequest(req)
 	if err != nil {
 		return res, err
@@ -1325,7 +1325,7 @@ func (c *Client) SendDocument(ctx context.Context, req SendDocument) (res Result
 	return result, nil
 }
 
-func (c *Client) SendGame(ctx context.Context, req SendGame) (res Result, err error) {
+func (c *Client) SendGame(ctx context.Context, req SendGame) (res Message, err error) {
 	body, contentType, err := encodeSendGameRequest(req)
 	if err != nil {
 		return res, err
@@ -1353,7 +1353,7 @@ func (c *Client) SendGame(ctx context.Context, req SendGame) (res Result, err er
 	return result, nil
 }
 
-func (c *Client) SendInvoice(ctx context.Context, req SendInvoice) (res Result, err error) {
+func (c *Client) SendInvoice(ctx context.Context, req SendInvoice) (res Message, err error) {
 	body, contentType, err := encodeSendInvoiceRequest(req)
 	if err != nil {
 		return res, err
@@ -1381,7 +1381,7 @@ func (c *Client) SendInvoice(ctx context.Context, req SendInvoice) (res Result, 
 	return result, nil
 }
 
-func (c *Client) SendLocation(ctx context.Context, req SendLocation) (res Result, err error) {
+func (c *Client) SendLocation(ctx context.Context, req SendLocation) (res Message, err error) {
 	body, contentType, err := encodeSendLocationRequest(req)
 	if err != nil {
 		return res, err
@@ -1437,7 +1437,7 @@ func (c *Client) SendMediaGroup(ctx context.Context, req SendMediaGroup) (res Re
 	return result, nil
 }
 
-func (c *Client) SendMessage(ctx context.Context, req SendMessage) (res Result, err error) {
+func (c *Client) SendMessage(ctx context.Context, req SendMessage) (res Message, err error) {
 	body, contentType, err := encodeSendMessageRequest(req)
 	if err != nil {
 		return res, err
@@ -1465,7 +1465,7 @@ func (c *Client) SendMessage(ctx context.Context, req SendMessage) (res Result, 
 	return result, nil
 }
 
-func (c *Client) SendPhoto(ctx context.Context, req SendPhoto) (res Result, err error) {
+func (c *Client) SendPhoto(ctx context.Context, req SendPhoto) (res Message, err error) {
 	body, contentType, err := encodeSendPhotoRequest(req)
 	if err != nil {
 		return res, err
@@ -1493,7 +1493,7 @@ func (c *Client) SendPhoto(ctx context.Context, req SendPhoto) (res Result, err 
 	return result, nil
 }
 
-func (c *Client) SendPoll(ctx context.Context, req SendPoll) (res Result, err error) {
+func (c *Client) SendPoll(ctx context.Context, req SendPoll) (res Message, err error) {
 	body, contentType, err := encodeSendPollRequest(req)
 	if err != nil {
 		return res, err
@@ -1521,7 +1521,7 @@ func (c *Client) SendPoll(ctx context.Context, req SendPoll) (res Result, err er
 	return result, nil
 }
 
-func (c *Client) SendSticker(ctx context.Context, req SendSticker) (res Result, err error) {
+func (c *Client) SendSticker(ctx context.Context, req SendSticker) (res Message, err error) {
 	body, contentType, err := encodeSendStickerRequest(req)
 	if err != nil {
 		return res, err
@@ -1549,7 +1549,7 @@ func (c *Client) SendSticker(ctx context.Context, req SendSticker) (res Result, 
 	return result, nil
 }
 
-func (c *Client) SendVenue(ctx context.Context, req SendVenue) (res Result, err error) {
+func (c *Client) SendVenue(ctx context.Context, req SendVenue) (res Message, err error) {
 	body, contentType, err := encodeSendVenueRequest(req)
 	if err != nil {
 		return res, err
@@ -1577,7 +1577,7 @@ func (c *Client) SendVenue(ctx context.Context, req SendVenue) (res Result, err 
 	return result, nil
 }
 
-func (c *Client) SendVideo(ctx context.Context, req SendVideo) (res Result, err error) {
+func (c *Client) SendVideo(ctx context.Context, req SendVideo) (res Message, err error) {
 	body, contentType, err := encodeSendVideoRequest(req)
 	if err != nil {
 		return res, err
@@ -1605,7 +1605,7 @@ func (c *Client) SendVideo(ctx context.Context, req SendVideo) (res Result, err 
 	return result, nil
 }
 
-func (c *Client) SendVideoNote(ctx context.Context, req SendVideoNote) (res Result, err error) {
+func (c *Client) SendVideoNote(ctx context.Context, req SendVideoNote) (res Message, err error) {
 	body, contentType, err := encodeSendVideoNoteRequest(req)
 	if err != nil {
 		return res, err
@@ -1633,7 +1633,7 @@ func (c *Client) SendVideoNote(ctx context.Context, req SendVideoNote) (res Resu
 	return result, nil
 }
 
-func (c *Client) SendVoice(ctx context.Context, req SendVoice) (res Result, err error) {
+func (c *Client) SendVoice(ctx context.Context, req SendVoice) (res Message, err error) {
 	body, contentType, err := encodeSendVoiceRequest(req)
 	if err != nil {
 		return res, err

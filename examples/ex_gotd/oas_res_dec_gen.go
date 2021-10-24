@@ -468,12 +468,12 @@ func decodeExportChatInviteLinkResponse(resp *http.Response) (res Result, err er
 	}
 }
 
-func decodeForwardMessageResponse(resp *http.Response) (res Result, err error) {
+func decodeForwardMessageResponse(resp *http.Response) (res Message, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response Result
+			var response Message
 			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
@@ -791,12 +791,12 @@ func decodeRevokeChatInviteLinkResponse(resp *http.Response) (res Result, err er
 	}
 }
 
-func decodeSendAnimationResponse(resp *http.Response) (res Result, err error) {
+func decodeSendAnimationResponse(resp *http.Response) (res Message, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response Result
+			var response Message
 			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
@@ -848,12 +848,12 @@ func decodeSendChatActionResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSendContactResponse(resp *http.Response) (res Result, err error) {
+func decodeSendContactResponse(resp *http.Response) (res Message, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response Result
+			var response Message
 			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
@@ -867,12 +867,12 @@ func decodeSendContactResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSendDiceResponse(resp *http.Response) (res Result, err error) {
+func decodeSendDiceResponse(resp *http.Response) (res Message, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response Result
+			var response Message
 			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
@@ -886,12 +886,12 @@ func decodeSendDiceResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSendDocumentResponse(resp *http.Response) (res Result, err error) {
+func decodeSendDocumentResponse(resp *http.Response) (res Message, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response Result
+			var response Message
 			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
@@ -905,12 +905,12 @@ func decodeSendDocumentResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSendGameResponse(resp *http.Response) (res Result, err error) {
+func decodeSendGameResponse(resp *http.Response) (res Message, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response Result
+			var response Message
 			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
@@ -924,12 +924,12 @@ func decodeSendGameResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSendInvoiceResponse(resp *http.Response) (res Result, err error) {
+func decodeSendInvoiceResponse(resp *http.Response) (res Message, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response Result
+			var response Message
 			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
@@ -943,12 +943,12 @@ func decodeSendInvoiceResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSendLocationResponse(resp *http.Response) (res Result, err error) {
+func decodeSendLocationResponse(resp *http.Response) (res Message, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response Result
+			var response Message
 			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
@@ -981,12 +981,12 @@ func decodeSendMediaGroupResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSendMessageResponse(resp *http.Response) (res Result, err error) {
+func decodeSendMessageResponse(resp *http.Response) (res Message, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response Result
+			var response Message
 			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
@@ -1000,12 +1000,12 @@ func decodeSendMessageResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSendPhotoResponse(resp *http.Response) (res Result, err error) {
+func decodeSendPhotoResponse(resp *http.Response) (res Message, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response Result
+			var response Message
 			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
@@ -1019,12 +1019,12 @@ func decodeSendPhotoResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSendPollResponse(resp *http.Response) (res Result, err error) {
+func decodeSendPollResponse(resp *http.Response) (res Message, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response Result
+			var response Message
 			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
@@ -1038,12 +1038,12 @@ func decodeSendPollResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSendStickerResponse(resp *http.Response) (res Result, err error) {
+func decodeSendStickerResponse(resp *http.Response) (res Message, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response Result
+			var response Message
 			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
@@ -1057,12 +1057,12 @@ func decodeSendStickerResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSendVenueResponse(resp *http.Response) (res Result, err error) {
+func decodeSendVenueResponse(resp *http.Response) (res Message, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response Result
+			var response Message
 			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
@@ -1076,12 +1076,12 @@ func decodeSendVenueResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSendVideoResponse(resp *http.Response) (res Result, err error) {
+func decodeSendVideoResponse(resp *http.Response) (res Message, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response Result
+			var response Message
 			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
@@ -1095,12 +1095,12 @@ func decodeSendVideoResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSendVideoNoteResponse(resp *http.Response) (res Result, err error) {
+func decodeSendVideoNoteResponse(resp *http.Response) (res Message, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response Result
+			var response Message
 			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}
@@ -1114,12 +1114,12 @@ func decodeSendVideoNoteResponse(resp *http.Response) (res Result, err error) {
 	}
 }
 
-func decodeSendVoiceResponse(resp *http.Response) (res Result, err error) {
+func decodeSendVoiceResponse(resp *http.Response) (res Message, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch resp.Header.Get("Content-Type") {
 		case "application/json":
-			var response Result
+			var response Message
 			if err := response.ReadJSONFrom(resp.Body); err != nil {
 				return res, err
 			}

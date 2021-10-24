@@ -97,7 +97,7 @@ type Server interface {
 	// ExportChatInviteLink implements exportChatInviteLink operation.
 	ExportChatInviteLink(ctx context.Context, req ExportChatInviteLink) (Result, error)
 	// ForwardMessage implements forwardMessage operation.
-	ForwardMessage(ctx context.Context, req ForwardMessage) (Result, error)
+	ForwardMessage(ctx context.Context, req ForwardMessage) (Message, error)
 	// GetChat implements getChat operation.
 	GetChat(ctx context.Context, req GetChat) (Result, error)
 	// GetChatAdministrators implements getChatAdministrators operation.
@@ -131,41 +131,41 @@ type Server interface {
 	// RevokeChatInviteLink implements revokeChatInviteLink operation.
 	RevokeChatInviteLink(ctx context.Context, req RevokeChatInviteLink) (Result, error)
 	// SendAnimation implements sendAnimation operation.
-	SendAnimation(ctx context.Context, req SendAnimation) (Result, error)
+	SendAnimation(ctx context.Context, req SendAnimation) (Message, error)
 	// SendAudio implements sendAudio operation.
 	SendAudio(ctx context.Context, req SendAudio) (Result, error)
 	// SendChatAction implements sendChatAction operation.
 	SendChatAction(ctx context.Context, req SendChatAction) (Result, error)
 	// SendContact implements sendContact operation.
-	SendContact(ctx context.Context, req SendContact) (Result, error)
+	SendContact(ctx context.Context, req SendContact) (Message, error)
 	// SendDice implements sendDice operation.
-	SendDice(ctx context.Context, req SendDice) (Result, error)
+	SendDice(ctx context.Context, req SendDice) (Message, error)
 	// SendDocument implements sendDocument operation.
-	SendDocument(ctx context.Context, req SendDocument) (Result, error)
+	SendDocument(ctx context.Context, req SendDocument) (Message, error)
 	// SendGame implements sendGame operation.
-	SendGame(ctx context.Context, req SendGame) (Result, error)
+	SendGame(ctx context.Context, req SendGame) (Message, error)
 	// SendInvoice implements sendInvoice operation.
-	SendInvoice(ctx context.Context, req SendInvoice) (Result, error)
+	SendInvoice(ctx context.Context, req SendInvoice) (Message, error)
 	// SendLocation implements sendLocation operation.
-	SendLocation(ctx context.Context, req SendLocation) (Result, error)
+	SendLocation(ctx context.Context, req SendLocation) (Message, error)
 	// SendMediaGroup implements sendMediaGroup operation.
 	SendMediaGroup(ctx context.Context, req SendMediaGroup) (Result, error)
 	// SendMessage implements sendMessage operation.
-	SendMessage(ctx context.Context, req SendMessage) (Result, error)
+	SendMessage(ctx context.Context, req SendMessage) (Message, error)
 	// SendPhoto implements sendPhoto operation.
-	SendPhoto(ctx context.Context, req SendPhoto) (Result, error)
+	SendPhoto(ctx context.Context, req SendPhoto) (Message, error)
 	// SendPoll implements sendPoll operation.
-	SendPoll(ctx context.Context, req SendPoll) (Result, error)
+	SendPoll(ctx context.Context, req SendPoll) (Message, error)
 	// SendSticker implements sendSticker operation.
-	SendSticker(ctx context.Context, req SendSticker) (Result, error)
+	SendSticker(ctx context.Context, req SendSticker) (Message, error)
 	// SendVenue implements sendVenue operation.
-	SendVenue(ctx context.Context, req SendVenue) (Result, error)
+	SendVenue(ctx context.Context, req SendVenue) (Message, error)
 	// SendVideo implements sendVideo operation.
-	SendVideo(ctx context.Context, req SendVideo) (Result, error)
+	SendVideo(ctx context.Context, req SendVideo) (Message, error)
 	// SendVideoNote implements sendVideoNote operation.
-	SendVideoNote(ctx context.Context, req SendVideoNote) (Result, error)
+	SendVideoNote(ctx context.Context, req SendVideoNote) (Message, error)
 	// SendVoice implements sendVoice operation.
-	SendVoice(ctx context.Context, req SendVoice) (Result, error)
+	SendVoice(ctx context.Context, req SendVoice) (Message, error)
 	// SetChatAdministratorCustomTitle implements setChatAdministratorCustomTitle operation.
 	SetChatAdministratorCustomTitle(ctx context.Context, req SetChatAdministratorCustomTitle) (Result, error)
 	// SetChatDescription implements setChatDescription operation.

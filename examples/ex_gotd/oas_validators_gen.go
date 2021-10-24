@@ -49,3 +49,26 @@ var (
 	_ = ht.NewRequest
 	_ = net.IP{}
 )
+
+func (s *Chat) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *Message) Validate() error {
+	var failures []validate.FieldError
+	if s.Chat == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "chat",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}

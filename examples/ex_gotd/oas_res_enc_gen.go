@@ -248,7 +248,7 @@ func encodeExportChatInviteLinkResponse(response Result, w http.ResponseWriter) 
 	return nil
 }
 
-func encodeForwardMessageResponse(response Result, w http.ResponseWriter) error {
+func encodeForwardMessageResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	if err := response.WriteJSONTo(w); err != nil {
@@ -401,7 +401,7 @@ func encodeRevokeChatInviteLinkResponse(response Result, w http.ResponseWriter) 
 	return nil
 }
 
-func encodeSendAnimationResponse(response Result, w http.ResponseWriter) error {
+func encodeSendAnimationResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	if err := response.WriteJSONTo(w); err != nil {
@@ -428,7 +428,7 @@ func encodeSendChatActionResponse(response Result, w http.ResponseWriter) error 
 	return nil
 }
 
-func encodeSendContactResponse(response Result, w http.ResponseWriter) error {
+func encodeSendContactResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	if err := response.WriteJSONTo(w); err != nil {
@@ -437,7 +437,7 @@ func encodeSendContactResponse(response Result, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendDiceResponse(response Result, w http.ResponseWriter) error {
+func encodeSendDiceResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	if err := response.WriteJSONTo(w); err != nil {
@@ -446,7 +446,7 @@ func encodeSendDiceResponse(response Result, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendDocumentResponse(response Result, w http.ResponseWriter) error {
+func encodeSendDocumentResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	if err := response.WriteJSONTo(w); err != nil {
@@ -455,7 +455,7 @@ func encodeSendDocumentResponse(response Result, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendGameResponse(response Result, w http.ResponseWriter) error {
+func encodeSendGameResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	if err := response.WriteJSONTo(w); err != nil {
@@ -464,7 +464,7 @@ func encodeSendGameResponse(response Result, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendInvoiceResponse(response Result, w http.ResponseWriter) error {
+func encodeSendInvoiceResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	if err := response.WriteJSONTo(w); err != nil {
@@ -473,7 +473,7 @@ func encodeSendInvoiceResponse(response Result, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendLocationResponse(response Result, w http.ResponseWriter) error {
+func encodeSendLocationResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	if err := response.WriteJSONTo(w); err != nil {
@@ -491,7 +491,7 @@ func encodeSendMediaGroupResponse(response Result, w http.ResponseWriter) error 
 	return nil
 }
 
-func encodeSendMessageResponse(response Result, w http.ResponseWriter) error {
+func encodeSendMessageResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	if err := response.WriteJSONTo(w); err != nil {
@@ -500,7 +500,7 @@ func encodeSendMessageResponse(response Result, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendPhotoResponse(response Result, w http.ResponseWriter) error {
+func encodeSendPhotoResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	if err := response.WriteJSONTo(w); err != nil {
@@ -509,7 +509,7 @@ func encodeSendPhotoResponse(response Result, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendPollResponse(response Result, w http.ResponseWriter) error {
+func encodeSendPollResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	if err := response.WriteJSONTo(w); err != nil {
@@ -518,7 +518,7 @@ func encodeSendPollResponse(response Result, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendStickerResponse(response Result, w http.ResponseWriter) error {
+func encodeSendStickerResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	if err := response.WriteJSONTo(w); err != nil {
@@ -527,7 +527,7 @@ func encodeSendStickerResponse(response Result, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendVenueResponse(response Result, w http.ResponseWriter) error {
+func encodeSendVenueResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	if err := response.WriteJSONTo(w); err != nil {
@@ -536,7 +536,7 @@ func encodeSendVenueResponse(response Result, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendVideoResponse(response Result, w http.ResponseWriter) error {
+func encodeSendVideoResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	if err := response.WriteJSONTo(w); err != nil {
@@ -545,7 +545,7 @@ func encodeSendVideoResponse(response Result, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendVideoNoteResponse(response Result, w http.ResponseWriter) error {
+func encodeSendVideoNoteResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	if err := response.WriteJSONTo(w); err != nil {
@@ -554,7 +554,7 @@ func encodeSendVideoNoteResponse(response Result, w http.ResponseWriter) error {
 	return nil
 }
 
-func encodeSendVoiceResponse(response Result, w http.ResponseWriter) error {
+func encodeSendVoiceResponse(response Message, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	if err := response.WriteJSONTo(w); err != nil {
