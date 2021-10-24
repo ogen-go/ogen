@@ -76,6 +76,8 @@ type Audio struct {
 	Title        OptString    `json:"title"`
 }
 
+type BotCommandScope struct{}
+
 // Chat describes #/components/schemas/Chat.
 type Chat struct {
 	Bio                   OptString          `json:"bio"`
@@ -165,6 +167,8 @@ type Game struct {
 }
 
 type InlineKeyboardMarkup struct{}
+
+type InputMedia struct{}
 
 // Invoice describes #/components/schemas/Invoice.
 type Invoice struct {

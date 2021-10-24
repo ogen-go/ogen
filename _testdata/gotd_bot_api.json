@@ -1714,7 +1714,7 @@
       }
     },
     "/setGameScore": {
-      "description": "A placeholder, currently holds no information. Use BotFather to set up your game.",
+      "description": "Use this method to set the score of the specified user in a game message. On success, if the message is not an inline message, the Message is returned, otherwise True is returned. Returns an error, if the new score is not greater than the user's current score in the chat and force is False.",
       "post": {
         "operationId": "setGameScore",
         "requestBody": {
@@ -2160,6 +2160,10 @@
           "description"
         ]
       },
+      "BotCommandScope": {
+        "description": "This object represents the scope to which bot commands are applied. Currently, the following 7 scopes are supported:",
+        "type": "object"
+      },
       "BotCommandScopeAllChatAdministrators": {
         "description": "Represents the scope of bot commands, covering all group and supergroup chat administrators.",
         "type": "object",
@@ -2250,7 +2254,7 @@
         ]
       },
       "BotCommandScopeDefault": {
-        "description": "This object represents the scope to which bot commands are applied. Currently, the following 7 scopes are supported:",
+        "description": "The following algorithm is used to determine the list of commands for a particular user viewing the bot menu. The first list of commands which is set is returned:",
         "type": "object",
         "properties": {
           "type": {
@@ -2262,6 +2266,10 @@
         "required": [
           "type"
         ]
+      },
+      "CallbackGame": {
+        "description": "A placeholder, currently holds no information. Use BotFather to set up your game.",
+        "type": "object"
       },
       "CallbackQuery": {
         "description": "This object represents an incoming callback query from a callback button in an inline keyboard. If the button that originated the query was attached to a message sent by the bot, the field message will be present. If the button was attached to a message sent via the bot (in inline mode), the field inline_message_id will be present. Exactly one of the fields data or game_short_name will be present.",
@@ -2438,6 +2446,10 @@
           "address"
         ]
       },
+      "ChatMember": {
+        "description": "This object contains information about one member of a chat. Currently, the following 6 types of chat members are supported:",
+        "type": "object"
+      },
       "ChatMemberAdministrator": {
         "description": "Represents a chat member that has some additional privileges.",
         "type": "object",
@@ -2577,7 +2589,7 @@
         ]
       },
       "ChatMemberOwner": {
-        "description": "This object contains information about one member of a chat. Currently, the following 6 types of chat members are supported:",
+        "description": "Represents a chat member that owns the chat and has all administrator privileges.",
         "type": "object",
         "properties": {
           "custom_title": {
@@ -4342,6 +4354,10 @@
           "longitude"
         ]
       },
+      "InputMedia": {
+        "description": "This object represents the content of a media message to be sent. It should be one of",
+        "type": "object"
+      },
       "InputMediaAnimation": {
         "description": "Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.",
         "type": "object",
@@ -4452,7 +4468,7 @@
         ]
       },
       "InputMediaPhoto": {
-        "description": "This object represents the content of a media message to be sent. It should be one of",
+        "description": "Represents a photo to be sent.",
         "type": "object",
         "properties": {
           "caption": {
@@ -5074,8 +5090,12 @@
           "credentials"
         ]
       },
-      "PassportElementErrorDataField": {
+      "PassportElementError": {
         "description": "This object represents an error in the Telegram Passport element which was submitted that should be resolved by the user. It should be one of:",
+        "type": "object"
+      },
+      "PassportElementErrorDataField": {
+        "description": "Represents an issue in one of the data fields that was provided by the user. The error is considered resolved when the field's value changes.",
         "type": "object",
         "properties": {
           "data_hash": {
@@ -6181,6 +6201,10 @@
             "description": "Sticker set name",
             "type": "string"
           },
+          "tgs_sticker": {
+            "description": "TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements",
+            "type": "string"
+          },
           "user_id": {
             "description": "User identifier of sticker set owner",
             "type": "integer"
@@ -6189,6 +6213,7 @@
         "required": [
           "user_id",
           "name",
+          "tgs_sticker",
           "emojis",
           "mask_position"
         ]
@@ -6409,6 +6434,10 @@
             "description": "Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only english letters, digits and underscores. Must begin with a letter, can't contain consecutive underscores and must end in “_by_\u003cbot username\u003e”. \u003cbot_username\u003e is case insensitive. 1-64 characters",
             "type": "string"
           },
+          "tgs_sticker": {
+            "description": "TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements",
+            "type": "string"
+          },
           "title": {
             "description": "Sticker set title, 1-64 characters",
             "type": "string"
@@ -6422,6 +6451,7 @@
           "user_id",
           "name",
           "title",
+          "tgs_sticker",
           "emojis",
           "contains_masks",
           "mask_position"
@@ -6455,9 +6485,14 @@
           "language_code": {
             "description": "A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given scope, for whose language there are no dedicated commands",
             "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/BotCommandScope",
+            "description": "A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault"
           }
         },
         "required": [
+          "scope",
           "language_code"
         ]
       },
@@ -6599,6 +6634,10 @@
             "description": "Required if chat_id and message_id are not specified. Identifier of the inline message",
             "type": "string"
           },
+          "media": {
+            "$ref": "#/components/schemas/InputMedia",
+            "description": "A JSON-serialized object for a new media content of the message"
+          },
           "message_id": {
             "description": "Required if inline_message_id is not specified. Identifier of the message to edit",
             "type": "integer"
@@ -6611,6 +6650,7 @@
         "required": [
           "message_id",
           "inline_message_id",
+          "media",
           "reply_markup"
         ]
       },
@@ -6770,9 +6810,14 @@
           "language_code": {
             "description": "A two-letter ISO 639-1 language code or an empty string",
             "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/BotCommandScope",
+            "description": "A JSON-serialized object, describing scope of users. Defaults to BotCommandScopeDefault"
           }
         },
         "required": [
+          "scope",
           "language_code"
         ]
       },
@@ -7816,7 +7861,16 @@
       },
       "setChatPhoto": {
         "description": "Input for setChatPhoto",
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "photo": {
+            "description": "New chat photo, uploaded using multipart/form-data",
+            "type": "string"
+          }
+        },
+        "required": [
+          "photo"
+        ]
       },
       "setChatStickerSet": {
         "description": "Input for setChatStickerSet",
@@ -7894,9 +7948,14 @@
           "language_code": {
             "description": "A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given scope, for whose language there are no dedicated commands",
             "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/BotCommandScope",
+            "description": "A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault"
           }
         },
         "required": [
+          "scope",
           "language_code"
         ]
       },
@@ -7953,6 +8012,10 @@
         "description": "Input for setWebhook",
         "type": "object",
         "properties": {
+          "certificate": {
+            "description": "Upload your public key certificate so that the root certificate in use can be checked. See our self-signed guide for details",
+            "type": "string"
+          },
           "drop_pending_updates": {
             "description": "Pass True to drop all pending updates",
             "type": "boolean"
@@ -7972,6 +8035,7 @@
         },
         "required": [
           "url",
+          "certificate",
           "ip_address",
           "max_connections",
           "drop_pending_updates"
@@ -8057,13 +8121,19 @@
         "description": "Input for uploadStickerFile",
         "type": "object",
         "properties": {
+          "png_sticker": {
+            "description": "PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. More info on Sending Files »",
+            "type": "string",
+            "default": "up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. More info on Sending Files »"
+          },
           "user_id": {
             "description": "User identifier of sticker file owner",
             "type": "integer"
           }
         },
         "required": [
-          "user_id"
+          "user_id",
+          "png_sticker"
         ]
       }
     }

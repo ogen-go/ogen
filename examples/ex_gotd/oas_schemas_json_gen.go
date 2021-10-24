@@ -304,6 +304,11 @@ func (s *Audio) ReadJSON(i *json.Iterator) error {
 	return i.Error
 }
 
+func (BotCommandScope) WriteJSON(j *json.Stream)        {}
+func (BotCommandScope) ReadJSON(i *json.Iterator) error { return nil }
+func (BotCommandScope) ReadJSONFrom(r io.Reader) error  { return nil }
+func (BotCommandScope) WriteJSONTo(w io.Writer) error   { return nil }
+
 // WriteJSON implements json.Marshaler.
 func (s Chat) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
@@ -1208,6 +1213,11 @@ func (InlineKeyboardMarkup) WriteJSON(j *json.Stream)        {}
 func (InlineKeyboardMarkup) ReadJSON(i *json.Iterator) error { return nil }
 func (InlineKeyboardMarkup) ReadJSONFrom(r io.Reader) error  { return nil }
 func (InlineKeyboardMarkup) WriteJSONTo(w io.Writer) error   { return nil }
+
+func (InputMedia) WriteJSON(j *json.Stream)        {}
+func (InputMedia) ReadJSON(i *json.Iterator) error { return nil }
+func (InputMedia) ReadJSONFrom(r io.Reader) error  { return nil }
+func (InputMedia) WriteJSONTo(w io.Writer) error   { return nil }
 
 // WriteJSON implements json.Marshaler.
 func (s Invoice) WriteJSON(j *json.Stream) {
