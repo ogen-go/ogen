@@ -72,7 +72,7 @@ func NewClient(serverURL string) *Client {
 	}
 }
 
-func (c *Client) AddStickerToSet(ctx context.Context, req AddStickerToSet) (res bool, err error) {
+func (c *Client) AddStickerToSet(ctx context.Context, req AddStickerToSet) (res Result, err error) {
 	body, contentType, err := encodeAddStickerToSetRequest(req)
 	if err != nil {
 		return res, err
@@ -100,7 +100,7 @@ func (c *Client) AddStickerToSet(ctx context.Context, req AddStickerToSet) (res 
 	return result, nil
 }
 
-func (c *Client) AnswerCallbackQuery(ctx context.Context, req AnswerCallbackQuery) (res string, err error) {
+func (c *Client) AnswerCallbackQuery(ctx context.Context, req AnswerCallbackQuery) (res Result, err error) {
 	body, contentType, err := encodeAnswerCallbackQueryRequest(req)
 	if err != nil {
 		return res, err
@@ -128,7 +128,7 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, req AnswerCallbackQuer
 	return result, nil
 }
 
-func (c *Client) AnswerInlineQuery(ctx context.Context, req AnswerInlineQuery) (res string, err error) {
+func (c *Client) AnswerInlineQuery(ctx context.Context, req AnswerInlineQuery) (res Result, err error) {
 	body, contentType, err := encodeAnswerInlineQueryRequest(req)
 	if err != nil {
 		return res, err
@@ -156,7 +156,7 @@ func (c *Client) AnswerInlineQuery(ctx context.Context, req AnswerInlineQuery) (
 	return result, nil
 }
 
-func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, req AnswerPreCheckoutQuery) (res string, err error) {
+func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, req AnswerPreCheckoutQuery) (res Result, err error) {
 	body, contentType, err := encodeAnswerPreCheckoutQueryRequest(req)
 	if err != nil {
 		return res, err
@@ -184,7 +184,7 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, req AnswerPreChecko
 	return result, nil
 }
 
-func (c *Client) AnswerShippingQuery(ctx context.Context, req AnswerShippingQuery) (res string, err error) {
+func (c *Client) AnswerShippingQuery(ctx context.Context, req AnswerShippingQuery) (res Result, err error) {
 	body, contentType, err := encodeAnswerShippingQueryRequest(req)
 	if err != nil {
 		return res, err
@@ -212,7 +212,7 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, req AnswerShippingQuer
 	return result, nil
 }
 
-func (c *Client) BanChatMember(ctx context.Context, req BanChatMember) (res bool, err error) {
+func (c *Client) BanChatMember(ctx context.Context, req BanChatMember) (res Result, err error) {
 	body, contentType, err := encodeBanChatMemberRequest(req)
 	if err != nil {
 		return res, err
@@ -240,7 +240,7 @@ func (c *Client) BanChatMember(ctx context.Context, req BanChatMember) (res bool
 	return result, nil
 }
 
-func (c *Client) CopyMessage(ctx context.Context, req CopyMessage) (res string, err error) {
+func (c *Client) CopyMessage(ctx context.Context, req CopyMessage) (res Result, err error) {
 	body, contentType, err := encodeCopyMessageRequest(req)
 	if err != nil {
 		return res, err
@@ -268,7 +268,7 @@ func (c *Client) CopyMessage(ctx context.Context, req CopyMessage) (res string, 
 	return result, nil
 }
 
-func (c *Client) CreateChatInviteLink(ctx context.Context, req CreateChatInviteLink) (res string, err error) {
+func (c *Client) CreateChatInviteLink(ctx context.Context, req CreateChatInviteLink) (res Result, err error) {
 	body, contentType, err := encodeCreateChatInviteLinkRequest(req)
 	if err != nil {
 		return res, err
@@ -296,7 +296,7 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, req CreateChatInviteL
 	return result, nil
 }
 
-func (c *Client) CreateNewStickerSet(ctx context.Context, req CreateNewStickerSet) (res bool, err error) {
+func (c *Client) CreateNewStickerSet(ctx context.Context, req CreateNewStickerSet) (res Result, err error) {
 	body, contentType, err := encodeCreateNewStickerSetRequest(req)
 	if err != nil {
 		return res, err
@@ -324,7 +324,7 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, req CreateNewStickerSe
 	return result, nil
 }
 
-func (c *Client) DeleteChatPhoto(ctx context.Context, req DeleteChatPhoto) (res bool, err error) {
+func (c *Client) DeleteChatPhoto(ctx context.Context, req DeleteChatPhoto) (res Result, err error) {
 	body, contentType, err := encodeDeleteChatPhotoRequest(req)
 	if err != nil {
 		return res, err
@@ -352,7 +352,7 @@ func (c *Client) DeleteChatPhoto(ctx context.Context, req DeleteChatPhoto) (res 
 	return result, nil
 }
 
-func (c *Client) DeleteChatStickerSet(ctx context.Context, req DeleteChatStickerSet) (res bool, err error) {
+func (c *Client) DeleteChatStickerSet(ctx context.Context, req DeleteChatStickerSet) (res Result, err error) {
 	body, contentType, err := encodeDeleteChatStickerSetRequest(req)
 	if err != nil {
 		return res, err
@@ -380,7 +380,7 @@ func (c *Client) DeleteChatStickerSet(ctx context.Context, req DeleteChatSticker
 	return result, nil
 }
 
-func (c *Client) DeleteMessage(ctx context.Context, req DeleteMessage) (res bool, err error) {
+func (c *Client) DeleteMessage(ctx context.Context, req DeleteMessage) (res Result, err error) {
 	body, contentType, err := encodeDeleteMessageRequest(req)
 	if err != nil {
 		return res, err
@@ -408,7 +408,7 @@ func (c *Client) DeleteMessage(ctx context.Context, req DeleteMessage) (res bool
 	return result, nil
 }
 
-func (c *Client) DeleteMyCommands(ctx context.Context, req DeleteMyCommands) (res bool, err error) {
+func (c *Client) DeleteMyCommands(ctx context.Context, req DeleteMyCommands) (res Result, err error) {
 	body, contentType, err := encodeDeleteMyCommandsRequest(req)
 	if err != nil {
 		return res, err
@@ -436,7 +436,7 @@ func (c *Client) DeleteMyCommands(ctx context.Context, req DeleteMyCommands) (re
 	return result, nil
 }
 
-func (c *Client) DeleteStickerFromSet(ctx context.Context, req DeleteStickerFromSet) (res bool, err error) {
+func (c *Client) DeleteStickerFromSet(ctx context.Context, req DeleteStickerFromSet) (res Result, err error) {
 	body, contentType, err := encodeDeleteStickerFromSetRequest(req)
 	if err != nil {
 		return res, err
@@ -464,7 +464,7 @@ func (c *Client) DeleteStickerFromSet(ctx context.Context, req DeleteStickerFrom
 	return result, nil
 }
 
-func (c *Client) DeleteWebhook(ctx context.Context, req DeleteWebhook) (res bool, err error) {
+func (c *Client) DeleteWebhook(ctx context.Context, req DeleteWebhook) (res Result, err error) {
 	body, contentType, err := encodeDeleteWebhookRequest(req)
 	if err != nil {
 		return res, err
@@ -492,7 +492,7 @@ func (c *Client) DeleteWebhook(ctx context.Context, req DeleteWebhook) (res bool
 	return result, nil
 }
 
-func (c *Client) EditChatInviteLink(ctx context.Context, req EditChatInviteLink) (res string, err error) {
+func (c *Client) EditChatInviteLink(ctx context.Context, req EditChatInviteLink) (res Result, err error) {
 	body, contentType, err := encodeEditChatInviteLinkRequest(req)
 	if err != nil {
 		return res, err
@@ -520,7 +520,7 @@ func (c *Client) EditChatInviteLink(ctx context.Context, req EditChatInviteLink)
 	return result, nil
 }
 
-func (c *Client) EditMessageCaption(ctx context.Context, req EditMessageCaption) (res string, err error) {
+func (c *Client) EditMessageCaption(ctx context.Context, req EditMessageCaption) (res Result, err error) {
 	body, contentType, err := encodeEditMessageCaptionRequest(req)
 	if err != nil {
 		return res, err
@@ -548,7 +548,7 @@ func (c *Client) EditMessageCaption(ctx context.Context, req EditMessageCaption)
 	return result, nil
 }
 
-func (c *Client) EditMessageLiveLocation(ctx context.Context, req EditMessageLiveLocation) (res string, err error) {
+func (c *Client) EditMessageLiveLocation(ctx context.Context, req EditMessageLiveLocation) (res Result, err error) {
 	body, contentType, err := encodeEditMessageLiveLocationRequest(req)
 	if err != nil {
 		return res, err
@@ -576,7 +576,7 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, req EditMessageLiv
 	return result, nil
 }
 
-func (c *Client) EditMessageMedia(ctx context.Context, req EditMessageMedia) (res string, err error) {
+func (c *Client) EditMessageMedia(ctx context.Context, req EditMessageMedia) (res Result, err error) {
 	body, contentType, err := encodeEditMessageMediaRequest(req)
 	if err != nil {
 		return res, err
@@ -604,7 +604,7 @@ func (c *Client) EditMessageMedia(ctx context.Context, req EditMessageMedia) (re
 	return result, nil
 }
 
-func (c *Client) EditMessageReplyMarkup(ctx context.Context, req EditMessageReplyMarkup) (res string, err error) {
+func (c *Client) EditMessageReplyMarkup(ctx context.Context, req EditMessageReplyMarkup) (res Result, err error) {
 	body, contentType, err := encodeEditMessageReplyMarkupRequest(req)
 	if err != nil {
 		return res, err
@@ -632,7 +632,7 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, req EditMessageRepl
 	return result, nil
 }
 
-func (c *Client) EditMessageText(ctx context.Context, req EditMessageText) (res string, err error) {
+func (c *Client) EditMessageText(ctx context.Context, req EditMessageText) (res Result, err error) {
 	body, contentType, err := encodeEditMessageTextRequest(req)
 	if err != nil {
 		return res, err
@@ -660,7 +660,7 @@ func (c *Client) EditMessageText(ctx context.Context, req EditMessageText) (res 
 	return result, nil
 }
 
-func (c *Client) ExportChatInviteLink(ctx context.Context, req ExportChatInviteLink) (res string, err error) {
+func (c *Client) ExportChatInviteLink(ctx context.Context, req ExportChatInviteLink) (res Result, err error) {
 	body, contentType, err := encodeExportChatInviteLinkRequest(req)
 	if err != nil {
 		return res, err
@@ -688,7 +688,7 @@ func (c *Client) ExportChatInviteLink(ctx context.Context, req ExportChatInviteL
 	return result, nil
 }
 
-func (c *Client) ForwardMessage(ctx context.Context, req ForwardMessage) (res string, err error) {
+func (c *Client) ForwardMessage(ctx context.Context, req ForwardMessage) (res Result, err error) {
 	body, contentType, err := encodeForwardMessageRequest(req)
 	if err != nil {
 		return res, err
@@ -716,7 +716,7 @@ func (c *Client) ForwardMessage(ctx context.Context, req ForwardMessage) (res st
 	return result, nil
 }
 
-func (c *Client) GetChat(ctx context.Context, req GetChat) (res string, err error) {
+func (c *Client) GetChat(ctx context.Context, req GetChat) (res Result, err error) {
 	body, contentType, err := encodeGetChatRequest(req)
 	if err != nil {
 		return res, err
@@ -744,7 +744,7 @@ func (c *Client) GetChat(ctx context.Context, req GetChat) (res string, err erro
 	return result, nil
 }
 
-func (c *Client) GetChatAdministrators(ctx context.Context, req GetChatAdministrators) (res string, err error) {
+func (c *Client) GetChatAdministrators(ctx context.Context, req GetChatAdministrators) (res Result, err error) {
 	body, contentType, err := encodeGetChatAdministratorsRequest(req)
 	if err != nil {
 		return res, err
@@ -772,7 +772,7 @@ func (c *Client) GetChatAdministrators(ctx context.Context, req GetChatAdministr
 	return result, nil
 }
 
-func (c *Client) GetChatMember(ctx context.Context, req GetChatMember) (res string, err error) {
+func (c *Client) GetChatMember(ctx context.Context, req GetChatMember) (res Result, err error) {
 	body, contentType, err := encodeGetChatMemberRequest(req)
 	if err != nil {
 		return res, err
@@ -800,7 +800,7 @@ func (c *Client) GetChatMember(ctx context.Context, req GetChatMember) (res stri
 	return result, nil
 }
 
-func (c *Client) GetChatMemberCount(ctx context.Context, req GetChatMemberCount) (res string, err error) {
+func (c *Client) GetChatMemberCount(ctx context.Context, req GetChatMemberCount) (res Result, err error) {
 	body, contentType, err := encodeGetChatMemberCountRequest(req)
 	if err != nil {
 		return res, err
@@ -828,7 +828,7 @@ func (c *Client) GetChatMemberCount(ctx context.Context, req GetChatMemberCount)
 	return result, nil
 }
 
-func (c *Client) GetFile(ctx context.Context, req GetFile) (res string, err error) {
+func (c *Client) GetFile(ctx context.Context, req GetFile) (res Result, err error) {
 	body, contentType, err := encodeGetFileRequest(req)
 	if err != nil {
 		return res, err
@@ -856,7 +856,7 @@ func (c *Client) GetFile(ctx context.Context, req GetFile) (res string, err erro
 	return result, nil
 }
 
-func (c *Client) GetGameHighScores(ctx context.Context, req GetGameHighScores) (res string, err error) {
+func (c *Client) GetGameHighScores(ctx context.Context, req GetGameHighScores) (res Result, err error) {
 	body, contentType, err := encodeGetGameHighScoresRequest(req)
 	if err != nil {
 		return res, err
@@ -905,7 +905,7 @@ func (c *Client) GetMe(ctx context.Context) (res User, err error) {
 	return result, nil
 }
 
-func (c *Client) GetMyCommands(ctx context.Context, req GetMyCommands) (res string, err error) {
+func (c *Client) GetMyCommands(ctx context.Context, req GetMyCommands) (res Result, err error) {
 	body, contentType, err := encodeGetMyCommandsRequest(req)
 	if err != nil {
 		return res, err
@@ -933,7 +933,7 @@ func (c *Client) GetMyCommands(ctx context.Context, req GetMyCommands) (res stri
 	return result, nil
 }
 
-func (c *Client) GetStickerSet(ctx context.Context, req GetStickerSet) (res string, err error) {
+func (c *Client) GetStickerSet(ctx context.Context, req GetStickerSet) (res Result, err error) {
 	body, contentType, err := encodeGetStickerSetRequest(req)
 	if err != nil {
 		return res, err
@@ -961,7 +961,7 @@ func (c *Client) GetStickerSet(ctx context.Context, req GetStickerSet) (res stri
 	return result, nil
 }
 
-func (c *Client) GetUpdates(ctx context.Context, req GetUpdates) (res string, err error) {
+func (c *Client) GetUpdates(ctx context.Context, req GetUpdates) (res Result, err error) {
 	body, contentType, err := encodeGetUpdatesRequest(req)
 	if err != nil {
 		return res, err
@@ -989,7 +989,7 @@ func (c *Client) GetUpdates(ctx context.Context, req GetUpdates) (res string, er
 	return result, nil
 }
 
-func (c *Client) GetUserProfilePhotos(ctx context.Context, req GetUserProfilePhotos) (res string, err error) {
+func (c *Client) GetUserProfilePhotos(ctx context.Context, req GetUserProfilePhotos) (res Result, err error) {
 	body, contentType, err := encodeGetUserProfilePhotosRequest(req)
 	if err != nil {
 		return res, err
@@ -1017,7 +1017,7 @@ func (c *Client) GetUserProfilePhotos(ctx context.Context, req GetUserProfilePho
 	return result, nil
 }
 
-func (c *Client) LeaveChat(ctx context.Context, req LeaveChat) (res bool, err error) {
+func (c *Client) LeaveChat(ctx context.Context, req LeaveChat) (res Result, err error) {
 	body, contentType, err := encodeLeaveChatRequest(req)
 	if err != nil {
 		return res, err
@@ -1045,7 +1045,7 @@ func (c *Client) LeaveChat(ctx context.Context, req LeaveChat) (res bool, err er
 	return result, nil
 }
 
-func (c *Client) PinChatMessage(ctx context.Context, req PinChatMessage) (res bool, err error) {
+func (c *Client) PinChatMessage(ctx context.Context, req PinChatMessage) (res Result, err error) {
 	body, contentType, err := encodePinChatMessageRequest(req)
 	if err != nil {
 		return res, err
@@ -1073,7 +1073,7 @@ func (c *Client) PinChatMessage(ctx context.Context, req PinChatMessage) (res bo
 	return result, nil
 }
 
-func (c *Client) PromoteChatMember(ctx context.Context, req PromoteChatMember) (res bool, err error) {
+func (c *Client) PromoteChatMember(ctx context.Context, req PromoteChatMember) (res Result, err error) {
 	body, contentType, err := encodePromoteChatMemberRequest(req)
 	if err != nil {
 		return res, err
@@ -1101,7 +1101,7 @@ func (c *Client) PromoteChatMember(ctx context.Context, req PromoteChatMember) (
 	return result, nil
 }
 
-func (c *Client) RestrictChatMember(ctx context.Context, req RestrictChatMember) (res bool, err error) {
+func (c *Client) RestrictChatMember(ctx context.Context, req RestrictChatMember) (res Result, err error) {
 	body, contentType, err := encodeRestrictChatMemberRequest(req)
 	if err != nil {
 		return res, err
@@ -1129,7 +1129,7 @@ func (c *Client) RestrictChatMember(ctx context.Context, req RestrictChatMember)
 	return result, nil
 }
 
-func (c *Client) RevokeChatInviteLink(ctx context.Context, req RevokeChatInviteLink) (res string, err error) {
+func (c *Client) RevokeChatInviteLink(ctx context.Context, req RevokeChatInviteLink) (res Result, err error) {
 	body, contentType, err := encodeRevokeChatInviteLinkRequest(req)
 	if err != nil {
 		return res, err
@@ -1157,7 +1157,7 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, req RevokeChatInviteL
 	return result, nil
 }
 
-func (c *Client) SendAnimation(ctx context.Context, req SendAnimation) (res Message, err error) {
+func (c *Client) SendAnimation(ctx context.Context, req SendAnimation) (res Result, err error) {
 	body, contentType, err := encodeSendAnimationRequest(req)
 	if err != nil {
 		return res, err
@@ -1185,7 +1185,7 @@ func (c *Client) SendAnimation(ctx context.Context, req SendAnimation) (res Mess
 	return result, nil
 }
 
-func (c *Client) SendAudio(ctx context.Context, req SendAudio) (res Message, err error) {
+func (c *Client) SendAudio(ctx context.Context, req SendAudio) (res Result, err error) {
 	body, contentType, err := encodeSendAudioRequest(req)
 	if err != nil {
 		return res, err
@@ -1213,7 +1213,7 @@ func (c *Client) SendAudio(ctx context.Context, req SendAudio) (res Message, err
 	return result, nil
 }
 
-func (c *Client) SendChatAction(ctx context.Context, req SendChatAction) (res bool, err error) {
+func (c *Client) SendChatAction(ctx context.Context, req SendChatAction) (res Result, err error) {
 	body, contentType, err := encodeSendChatActionRequest(req)
 	if err != nil {
 		return res, err
@@ -1241,7 +1241,7 @@ func (c *Client) SendChatAction(ctx context.Context, req SendChatAction) (res bo
 	return result, nil
 }
 
-func (c *Client) SendContact(ctx context.Context, req SendContact) (res Message, err error) {
+func (c *Client) SendContact(ctx context.Context, req SendContact) (res Result, err error) {
 	body, contentType, err := encodeSendContactRequest(req)
 	if err != nil {
 		return res, err
@@ -1269,7 +1269,7 @@ func (c *Client) SendContact(ctx context.Context, req SendContact) (res Message,
 	return result, nil
 }
 
-func (c *Client) SendDice(ctx context.Context, req SendDice) (res Message, err error) {
+func (c *Client) SendDice(ctx context.Context, req SendDice) (res Result, err error) {
 	body, contentType, err := encodeSendDiceRequest(req)
 	if err != nil {
 		return res, err
@@ -1297,7 +1297,7 @@ func (c *Client) SendDice(ctx context.Context, req SendDice) (res Message, err e
 	return result, nil
 }
 
-func (c *Client) SendDocument(ctx context.Context, req SendDocument) (res Message, err error) {
+func (c *Client) SendDocument(ctx context.Context, req SendDocument) (res Result, err error) {
 	body, contentType, err := encodeSendDocumentRequest(req)
 	if err != nil {
 		return res, err
@@ -1325,7 +1325,7 @@ func (c *Client) SendDocument(ctx context.Context, req SendDocument) (res Messag
 	return result, nil
 }
 
-func (c *Client) SendGame(ctx context.Context, req SendGame) (res Message, err error) {
+func (c *Client) SendGame(ctx context.Context, req SendGame) (res Result, err error) {
 	body, contentType, err := encodeSendGameRequest(req)
 	if err != nil {
 		return res, err
@@ -1353,7 +1353,7 @@ func (c *Client) SendGame(ctx context.Context, req SendGame) (res Message, err e
 	return result, nil
 }
 
-func (c *Client) SendInvoice(ctx context.Context, req SendInvoice) (res Message, err error) {
+func (c *Client) SendInvoice(ctx context.Context, req SendInvoice) (res Result, err error) {
 	body, contentType, err := encodeSendInvoiceRequest(req)
 	if err != nil {
 		return res, err
@@ -1381,7 +1381,7 @@ func (c *Client) SendInvoice(ctx context.Context, req SendInvoice) (res Message,
 	return result, nil
 }
 
-func (c *Client) SendLocation(ctx context.Context, req SendLocation) (res Message, err error) {
+func (c *Client) SendLocation(ctx context.Context, req SendLocation) (res Result, err error) {
 	body, contentType, err := encodeSendLocationRequest(req)
 	if err != nil {
 		return res, err
@@ -1409,7 +1409,7 @@ func (c *Client) SendLocation(ctx context.Context, req SendLocation) (res Messag
 	return result, nil
 }
 
-func (c *Client) SendMediaGroup(ctx context.Context, req SendMediaGroup) (res string, err error) {
+func (c *Client) SendMediaGroup(ctx context.Context, req SendMediaGroup) (res Result, err error) {
 	body, contentType, err := encodeSendMediaGroupRequest(req)
 	if err != nil {
 		return res, err
@@ -1437,7 +1437,7 @@ func (c *Client) SendMediaGroup(ctx context.Context, req SendMediaGroup) (res st
 	return result, nil
 }
 
-func (c *Client) SendMessage(ctx context.Context, req SendMessage) (res string, err error) {
+func (c *Client) SendMessage(ctx context.Context, req SendMessage) (res Result, err error) {
 	body, contentType, err := encodeSendMessageRequest(req)
 	if err != nil {
 		return res, err
@@ -1465,7 +1465,7 @@ func (c *Client) SendMessage(ctx context.Context, req SendMessage) (res string, 
 	return result, nil
 }
 
-func (c *Client) SendPhoto(ctx context.Context, req SendPhoto) (res Message, err error) {
+func (c *Client) SendPhoto(ctx context.Context, req SendPhoto) (res Result, err error) {
 	body, contentType, err := encodeSendPhotoRequest(req)
 	if err != nil {
 		return res, err
@@ -1493,7 +1493,7 @@ func (c *Client) SendPhoto(ctx context.Context, req SendPhoto) (res Message, err
 	return result, nil
 }
 
-func (c *Client) SendPoll(ctx context.Context, req SendPoll) (res Message, err error) {
+func (c *Client) SendPoll(ctx context.Context, req SendPoll) (res Result, err error) {
 	body, contentType, err := encodeSendPollRequest(req)
 	if err != nil {
 		return res, err
@@ -1521,7 +1521,7 @@ func (c *Client) SendPoll(ctx context.Context, req SendPoll) (res Message, err e
 	return result, nil
 }
 
-func (c *Client) SendSticker(ctx context.Context, req SendSticker) (res Message, err error) {
+func (c *Client) SendSticker(ctx context.Context, req SendSticker) (res Result, err error) {
 	body, contentType, err := encodeSendStickerRequest(req)
 	if err != nil {
 		return res, err
@@ -1549,7 +1549,7 @@ func (c *Client) SendSticker(ctx context.Context, req SendSticker) (res Message,
 	return result, nil
 }
 
-func (c *Client) SendVenue(ctx context.Context, req SendVenue) (res Message, err error) {
+func (c *Client) SendVenue(ctx context.Context, req SendVenue) (res Result, err error) {
 	body, contentType, err := encodeSendVenueRequest(req)
 	if err != nil {
 		return res, err
@@ -1577,7 +1577,7 @@ func (c *Client) SendVenue(ctx context.Context, req SendVenue) (res Message, err
 	return result, nil
 }
 
-func (c *Client) SendVideo(ctx context.Context, req SendVideo) (res Message, err error) {
+func (c *Client) SendVideo(ctx context.Context, req SendVideo) (res Result, err error) {
 	body, contentType, err := encodeSendVideoRequest(req)
 	if err != nil {
 		return res, err
@@ -1605,7 +1605,7 @@ func (c *Client) SendVideo(ctx context.Context, req SendVideo) (res Message, err
 	return result, nil
 }
 
-func (c *Client) SendVideoNote(ctx context.Context, req SendVideoNote) (res Message, err error) {
+func (c *Client) SendVideoNote(ctx context.Context, req SendVideoNote) (res Result, err error) {
 	body, contentType, err := encodeSendVideoNoteRequest(req)
 	if err != nil {
 		return res, err
@@ -1633,7 +1633,7 @@ func (c *Client) SendVideoNote(ctx context.Context, req SendVideoNote) (res Mess
 	return result, nil
 }
 
-func (c *Client) SendVoice(ctx context.Context, req SendVoice) (res Message, err error) {
+func (c *Client) SendVoice(ctx context.Context, req SendVoice) (res Result, err error) {
 	body, contentType, err := encodeSendVoiceRequest(req)
 	if err != nil {
 		return res, err
@@ -1661,7 +1661,7 @@ func (c *Client) SendVoice(ctx context.Context, req SendVoice) (res Message, err
 	return result, nil
 }
 
-func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, req SetChatAdministratorCustomTitle) (res bool, err error) {
+func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, req SetChatAdministratorCustomTitle) (res Result, err error) {
 	body, contentType, err := encodeSetChatAdministratorCustomTitleRequest(req)
 	if err != nil {
 		return res, err
@@ -1689,7 +1689,7 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, req SetCha
 	return result, nil
 }
 
-func (c *Client) SetChatDescription(ctx context.Context, req SetChatDescription) (res bool, err error) {
+func (c *Client) SetChatDescription(ctx context.Context, req SetChatDescription) (res Result, err error) {
 	body, contentType, err := encodeSetChatDescriptionRequest(req)
 	if err != nil {
 		return res, err
@@ -1717,7 +1717,7 @@ func (c *Client) SetChatDescription(ctx context.Context, req SetChatDescription)
 	return result, nil
 }
 
-func (c *Client) SetChatPermissions(ctx context.Context, req SetChatPermissions) (res bool, err error) {
+func (c *Client) SetChatPermissions(ctx context.Context, req SetChatPermissions) (res Result, err error) {
 	body, contentType, err := encodeSetChatPermissionsRequest(req)
 	if err != nil {
 		return res, err
@@ -1745,7 +1745,7 @@ func (c *Client) SetChatPermissions(ctx context.Context, req SetChatPermissions)
 	return result, nil
 }
 
-func (c *Client) SetChatPhoto(ctx context.Context, req SetChatPhoto) (res bool, err error) {
+func (c *Client) SetChatPhoto(ctx context.Context, req SetChatPhoto) (res Result, err error) {
 	body, contentType, err := encodeSetChatPhotoRequest(req)
 	if err != nil {
 		return res, err
@@ -1773,7 +1773,7 @@ func (c *Client) SetChatPhoto(ctx context.Context, req SetChatPhoto) (res bool, 
 	return result, nil
 }
 
-func (c *Client) SetChatStickerSet(ctx context.Context, req SetChatStickerSet) (res bool, err error) {
+func (c *Client) SetChatStickerSet(ctx context.Context, req SetChatStickerSet) (res Result, err error) {
 	body, contentType, err := encodeSetChatStickerSetRequest(req)
 	if err != nil {
 		return res, err
@@ -1801,7 +1801,7 @@ func (c *Client) SetChatStickerSet(ctx context.Context, req SetChatStickerSet) (
 	return result, nil
 }
 
-func (c *Client) SetChatTitle(ctx context.Context, req SetChatTitle) (res bool, err error) {
+func (c *Client) SetChatTitle(ctx context.Context, req SetChatTitle) (res Result, err error) {
 	body, contentType, err := encodeSetChatTitleRequest(req)
 	if err != nil {
 		return res, err
@@ -1829,7 +1829,7 @@ func (c *Client) SetChatTitle(ctx context.Context, req SetChatTitle) (res bool, 
 	return result, nil
 }
 
-func (c *Client) SetGameScore(ctx context.Context, req SetGameScore) (res string, err error) {
+func (c *Client) SetGameScore(ctx context.Context, req SetGameScore) (res Result, err error) {
 	body, contentType, err := encodeSetGameScoreRequest(req)
 	if err != nil {
 		return res, err
@@ -1857,7 +1857,7 @@ func (c *Client) SetGameScore(ctx context.Context, req SetGameScore) (res string
 	return result, nil
 }
 
-func (c *Client) SetMyCommands(ctx context.Context, req SetMyCommands) (res bool, err error) {
+func (c *Client) SetMyCommands(ctx context.Context, req SetMyCommands) (res Result, err error) {
 	body, contentType, err := encodeSetMyCommandsRequest(req)
 	if err != nil {
 		return res, err
@@ -1885,7 +1885,7 @@ func (c *Client) SetMyCommands(ctx context.Context, req SetMyCommands) (res bool
 	return result, nil
 }
 
-func (c *Client) SetPassportDataErrors(ctx context.Context, req SetPassportDataErrors) (res bool, err error) {
+func (c *Client) SetPassportDataErrors(ctx context.Context, req SetPassportDataErrors) (res Result, err error) {
 	body, contentType, err := encodeSetPassportDataErrorsRequest(req)
 	if err != nil {
 		return res, err
@@ -1913,7 +1913,7 @@ func (c *Client) SetPassportDataErrors(ctx context.Context, req SetPassportDataE
 	return result, nil
 }
 
-func (c *Client) SetStickerPositionInSet(ctx context.Context, req SetStickerPositionInSet) (res bool, err error) {
+func (c *Client) SetStickerPositionInSet(ctx context.Context, req SetStickerPositionInSet) (res Result, err error) {
 	body, contentType, err := encodeSetStickerPositionInSetRequest(req)
 	if err != nil {
 		return res, err
@@ -1941,7 +1941,7 @@ func (c *Client) SetStickerPositionInSet(ctx context.Context, req SetStickerPosi
 	return result, nil
 }
 
-func (c *Client) SetStickerSetThumb(ctx context.Context, req SetStickerSetThumb) (res bool, err error) {
+func (c *Client) SetStickerSetThumb(ctx context.Context, req SetStickerSetThumb) (res Result, err error) {
 	body, contentType, err := encodeSetStickerSetThumbRequest(req)
 	if err != nil {
 		return res, err
@@ -1969,7 +1969,7 @@ func (c *Client) SetStickerSetThumb(ctx context.Context, req SetStickerSetThumb)
 	return result, nil
 }
 
-func (c *Client) SetWebhook(ctx context.Context, req SetWebhook) (res bool, err error) {
+func (c *Client) SetWebhook(ctx context.Context, req SetWebhook) (res Result, err error) {
 	body, contentType, err := encodeSetWebhookRequest(req)
 	if err != nil {
 		return res, err
@@ -1997,7 +1997,7 @@ func (c *Client) SetWebhook(ctx context.Context, req SetWebhook) (res bool, err 
 	return result, nil
 }
 
-func (c *Client) StopMessageLiveLocation(ctx context.Context, req StopMessageLiveLocation) (res string, err error) {
+func (c *Client) StopMessageLiveLocation(ctx context.Context, req StopMessageLiveLocation) (res Result, err error) {
 	body, contentType, err := encodeStopMessageLiveLocationRequest(req)
 	if err != nil {
 		return res, err
@@ -2025,7 +2025,7 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, req StopMessageLiv
 	return result, nil
 }
 
-func (c *Client) StopPoll(ctx context.Context, req StopPoll) (res Poll, err error) {
+func (c *Client) StopPoll(ctx context.Context, req StopPoll) (res Result, err error) {
 	body, contentType, err := encodeStopPollRequest(req)
 	if err != nil {
 		return res, err
@@ -2053,7 +2053,7 @@ func (c *Client) StopPoll(ctx context.Context, req StopPoll) (res Poll, err erro
 	return result, nil
 }
 
-func (c *Client) UnbanChatMember(ctx context.Context, req UnbanChatMember) (res bool, err error) {
+func (c *Client) UnbanChatMember(ctx context.Context, req UnbanChatMember) (res Result, err error) {
 	body, contentType, err := encodeUnbanChatMemberRequest(req)
 	if err != nil {
 		return res, err
@@ -2081,7 +2081,7 @@ func (c *Client) UnbanChatMember(ctx context.Context, req UnbanChatMember) (res 
 	return result, nil
 }
 
-func (c *Client) UnpinAllChatMessages(ctx context.Context, req UnpinAllChatMessages) (res bool, err error) {
+func (c *Client) UnpinAllChatMessages(ctx context.Context, req UnpinAllChatMessages) (res Result, err error) {
 	body, contentType, err := encodeUnpinAllChatMessagesRequest(req)
 	if err != nil {
 		return res, err
@@ -2109,7 +2109,7 @@ func (c *Client) UnpinAllChatMessages(ctx context.Context, req UnpinAllChatMessa
 	return result, nil
 }
 
-func (c *Client) UnpinChatMessage(ctx context.Context, req UnpinChatMessage) (res bool, err error) {
+func (c *Client) UnpinChatMessage(ctx context.Context, req UnpinChatMessage) (res Result, err error) {
 	body, contentType, err := encodeUnpinChatMessageRequest(req)
 	if err != nil {
 		return res, err
@@ -2137,7 +2137,7 @@ func (c *Client) UnpinChatMessage(ctx context.Context, req UnpinChatMessage) (re
 	return result, nil
 }
 
-func (c *Client) UploadStickerFile(ctx context.Context, req UploadStickerFile) (res string, err error) {
+func (c *Client) UploadStickerFile(ctx context.Context, req UploadStickerFile) (res Result, err error) {
 	body, contentType, err := encodeUploadStickerFileRequest(req)
 	if err != nil {
 		return res, err
