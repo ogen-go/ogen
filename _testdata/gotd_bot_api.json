@@ -574,7 +574,7 @@
       }
     },
     "/editMessageText": {
-      "description": "Methods and objects used in the inline mode are described in the Inline mode section.",
+      "description": "Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.",
       "post": {
         "operationId": "editMessageText",
         "requestBody": {
@@ -630,7 +630,7 @@
       }
     },
     "/forwardMessage": {
-      "description": "The Bot API supports basic formatting for messages. You can use bold, italic, underlined and strikethrough text, as well as inline links and pre-formatted code in your bots' messages. Telegram clients will render them accordingly. You can use either markdown-style or HTML-style formatting.",
+      "description": "Use this method to forward messages of any kind. Service messages can't be forwarded. On success, the sent Message is returned.",
       "post": {
         "operationId": "forwardMessage",
         "requestBody": {
@@ -649,7 +649,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Result"
+                  "$ref": "#/components/schemas/ResultMsg"
                 }
               }
             }
@@ -831,11 +831,11 @@
         "operationId": "getMe",
         "responses": {
           "200": {
-            "description": "Basic information about the bot",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/ResultUsr"
                 }
               }
             }
@@ -1115,7 +1115,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Result"
+                  "$ref": "#/components/schemas/ResultMsg"
                 }
               }
             }
@@ -1124,7 +1124,7 @@
       }
     },
     "/sendAudio": {
-      "description": "Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.",
+      "description": "For sending voice messages, use the sendVoice method instead.",
       "post": {
         "operationId": "sendAudio",
         "requestBody": {
@@ -1152,7 +1152,7 @@
       }
     },
     "/sendChatAction": {
-      "description": "Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success.",
+      "description": "We only recommend using this method when a response from the bot will take a noticeable amount of time to arrive.",
       "post": {
         "operationId": "sendChatAction",
         "requestBody": {
@@ -1199,7 +1199,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Result"
+                  "$ref": "#/components/schemas/ResultMsg"
                 }
               }
             }
@@ -1227,7 +1227,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Result"
+                  "$ref": "#/components/schemas/ResultMsg"
                 }
               }
             }
@@ -1255,7 +1255,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Result"
+                  "$ref": "#/components/schemas/ResultMsg"
                 }
               }
             }
@@ -1283,7 +1283,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Result"
+                  "$ref": "#/components/schemas/ResultMsg"
                 }
               }
             }
@@ -1311,7 +1311,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Result"
+                  "$ref": "#/components/schemas/ResultMsg"
                 }
               }
             }
@@ -1339,7 +1339,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Result"
+                  "$ref": "#/components/schemas/ResultMsg"
                 }
               }
             }
@@ -1376,7 +1376,7 @@
       }
     },
     "/sendMessage": {
-      "description": "This object represents the contents of a file to be uploaded. Must be posted using multipart/form-data in the usual way that files are uploaded via the browser.",
+      "description": "Use this method to send text messages. On success, the sent Message is returned.",
       "post": {
         "operationId": "sendMessage",
         "requestBody": {
@@ -1395,7 +1395,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Result"
+                  "$ref": "#/components/schemas/ResultMsg"
                 }
               }
             }
@@ -1423,7 +1423,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Result"
+                  "$ref": "#/components/schemas/ResultMsg"
                 }
               }
             }
@@ -1451,7 +1451,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Result"
+                  "$ref": "#/components/schemas/ResultMsg"
                 }
               }
             }
@@ -1479,7 +1479,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Result"
+                  "$ref": "#/components/schemas/ResultMsg"
                 }
               }
             }
@@ -1507,7 +1507,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Result"
+                  "$ref": "#/components/schemas/ResultMsg"
                 }
               }
             }
@@ -1535,7 +1535,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Result"
+                  "$ref": "#/components/schemas/ResultMsg"
                 }
               }
             }
@@ -1563,7 +1563,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Result"
+                  "$ref": "#/components/schemas/ResultMsg"
                 }
               }
             }
@@ -1591,7 +1591,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Result"
+                  "$ref": "#/components/schemas/ResultMsg"
                 }
               }
             }
@@ -1824,7 +1824,7 @@
       }
     },
     "/setPassportDataErrors": {
-      "description": "Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.",
+      "description": "Use this if the data submitted by the user doesn't satisfy the standards your service requires for any reason. For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering, etc. Supply some details in the error message to make sure the user knows how to correct the issues.",
       "post": {
         "operationId": "setPassportDataErrors",
         "requestBody": {
@@ -1908,7 +1908,7 @@
       }
     },
     "/setWebhook": {
-      "description": "Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.",
+      "description": "If you'd like to make sure that the Webhook request comes from Telegram, we recommend using a secret path in the URL, e.g. https://www.example.com/\u003ctoken\u003e. Since nobody else knows your bot's token, you can be pretty sure it's us.",
       "post": {
         "operationId": "setWebhook",
         "requestBody": {
@@ -2314,7 +2314,7 @@
         ]
       },
       "BotCommandScopeDefault": {
-        "description": "The following algorithm is used to determine the list of commands for a particular user viewing the bot menu. The first list of commands which is set is returned:",
+        "description": "Represents the default scope of bot commands. Default commands are used if no commands with a narrower scope are specified for the user.",
         "type": "object",
         "properties": {
           "type": {
@@ -3202,7 +3202,7 @@
         ]
       },
       "InlineQueryResultArticle": {
-        "description": "This object represents one result of an inline query. Telegram clients currently support results of the following 20 types:",
+        "description": "Represents a link to an article or web page.",
         "type": "object",
         "properties": {
           "description": {
@@ -4787,7 +4787,7 @@
         ]
       },
       "LoginUrl": {
-        "description": "This object represents a parameter of the inline keyboard button used to automatically authorize a user. Serves as a great replacement for the Telegram Login Widget when the user is coming from Telegram. All the user needs to do is tap/click a button and confirm that they want to log in:",
+        "description": "Telegram apps support these buttons as of version 5.7.",
         "type": "object",
         "properties": {
           "bot_username": {
@@ -5715,6 +5715,9 @@
           "ok"
         ]
       },
+      "ResultUsr": {
+        "$ref": "#/components/schemas/User"
+      },
       "ShippingAddress": {
         "description": "This object represents a shipping address.",
         "type": "object",
@@ -5926,7 +5929,7 @@
         ]
       },
       "Update": {
-        "description": "Bot API 5.3",
+        "description": "This object represents an incoming update.At most one of the optional parameters can be present in any given update.",
         "type": "object",
         "properties": {
           "callback_query": {
@@ -6240,7 +6243,7 @@
         "type": "object"
       },
       "WebhookInfo": {
-        "description": "Use this method to get current webhook status. Requires no parameters. On success, returns a WebhookInfo object. If the bot is using getUpdates, will return an object with the url field empty.",
+        "description": "Contains information about the current status of a webhook.",
         "type": "object",
         "properties": {
           "has_custom_certificate": {
