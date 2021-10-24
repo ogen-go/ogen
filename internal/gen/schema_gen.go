@@ -196,7 +196,8 @@ func (g *schemaGen) generate(name string, schema ogen.Schema, root bool, ref str
 						panic("unreachable")
 					}
 				}
-			} else if s.RecursiveTo(prop) {
+			}
+			if s.RecursiveTo(prop) {
 				prop = ast.Pointer(prop, ast.NilInvalid)
 			}
 			s.Fields = append(s.Fields, ast.SchemaField{

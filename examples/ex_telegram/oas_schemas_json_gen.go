@@ -5618,9 +5618,11 @@ func (s Message) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("channel_chat_created")
 		s.ChannelChatCreated.WriteJSON(j)
 	}
-	more.More()
-	j.WriteObjectField("chat")
-	s.Chat.WriteJSON(j)
+	if s.Chat != nil {
+		more.More()
+		j.WriteObjectField("chat")
+		s.Chat.WriteJSON(j)
+	}
 	if s.ConnectedWebsite.Set {
 		more.More()
 		j.WriteObjectField("connected_website")
@@ -5676,7 +5678,7 @@ func (s Message) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("forward_from")
 		s.ForwardFrom.WriteJSON(j)
 	}
-	if s.ForwardFromChat.Set {
+	if s.ForwardFromChat != nil {
 		more.More()
 		j.WriteObjectField("forward_from_chat")
 		s.ForwardFromChat.WriteJSON(j)
@@ -5815,7 +5817,7 @@ func (s Message) WriteJSON(j *json.Stream) {
 		j.WriteObjectField("reply_to_message")
 		s.ReplyToMessage.WriteJSON(j)
 	}
-	if s.SenderChat.Set {
+	if s.SenderChat != nil {
 		more.More()
 		j.WriteObjectField("sender_chat")
 		s.SenderChat.WriteJSON(j)
@@ -5935,10 +5937,8 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "chat":
-			if err := s.Chat.ReadJSON(i); err != nil {
-				i.ReportError("Field Chat", err.Error())
-				return false
-			}
+			// Unsupported kind "pointer" for field "Chat".
+			i.Skip()
 			return true
 		case "connected_website":
 			s.ConnectedWebsite.Reset()
@@ -6004,11 +6004,8 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "forward_from_chat":
-			s.ForwardFromChat.Reset()
-			if err := s.ForwardFromChat.ReadJSON(i); err != nil {
-				i.ReportError("Field ForwardFromChat", err.Error())
-				return false
-			}
+			// Unsupported kind "pointer" for field "ForwardFromChat".
+			i.Skip()
 			return true
 		case "forward_from_message_id":
 			s.ForwardFromMessageID.Reset()
@@ -6153,11 +6150,8 @@ func (s *Message) ReadJSON(i *json.Iterator) error {
 			i.Skip()
 			return true
 		case "sender_chat":
-			s.SenderChat.Reset()
-			if err := s.SenderChat.ReadJSON(i); err != nil {
-				i.ReportError("Field SenderChat", err.Error())
-				return false
-			}
+			// Unsupported kind "pointer" for field "SenderChat".
+			i.Skip()
 			return true
 		case "sticker":
 			s.Sticker.Reset()
@@ -6415,26 +6409,6 @@ func (o *OptCallbackQuery) ReadJSON(i *json.Iterator) error {
 		return i.Error
 	default:
 		return fmt.Errorf("unexpected type %d while reading OptCallbackQuery", i.WhatIsNext())
-	}
-	return nil
-}
-
-// WriteJSON writes json value of Chat to json stream.
-func (o OptChat) WriteJSON(j *json.Stream) {
-	o.Value.WriteJSON(j)
-}
-
-// ReadJSON reads json value of Chat from json iterator.
-func (o *OptChat) ReadJSON(i *json.Iterator) error {
-	switch i.WhatIsNext() {
-	case json.ObjectValue:
-		o.Set = true
-		if err := o.Value.ReadJSON(i); err != nil {
-			return err
-		}
-		return i.Error
-	default:
-		return fmt.Errorf("unexpected type %d while reading OptChat", i.WhatIsNext())
 	}
 	return nil
 }

@@ -229,11 +229,41 @@ func (s Schema) IsStruct() bool  { return s.Is(KindStruct) }
 func (s Schema) IsAlias() bool   { return s.Is(KindAlias) }
 func (s Schema) IsGeneric() bool { return s.Is(KindGeneric) }
 
-func (s Schema) RecursiveTo(to *Schema) bool {
-	if s.Kind != to.Kind {
+// RecursiveTo reports whether target type is recursive to current.
+func (s *Schema) RecursiveTo(to *Schema) bool {
+	if to.Is(KindPrimitive, KindArray) {
 		return false
 	}
-	return s.Name == to.Name
+	return s.recurse(s, to)
+}
+
+// Equal reports whether two types are equal.
+func (s *Schema) Equal(target *Schema) bool {
+	if s.Kind != target.Kind {
+		return false
+	}
+	if s.Primitive != target.Primitive {
+		return false
+	}
+	return s.Type() == target.Type()
+}
+
+func (s *Schema) recurse(parent, target *Schema) bool {
+	if target.Equal(parent) {
+		return true
+	}
+	for _, f := range target.Fields {
+		if parent.RecursiveTo(f.Type) {
+			return true
+		}
+	}
+	if s.GenericOf != nil {
+		return s.GenericOf.RecursiveTo(target)
+	}
+	if target.GenericOf != nil {
+		return s.recurse(parent, target.GenericOf)
+	}
+	return false
 }
 
 func (s *Schema) IsInteger() bool {
