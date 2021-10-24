@@ -289,6 +289,62 @@ func (o *OptBool) ReadJSON(i *json.Iterator) error {
 	return nil
 }
 
+// WriteJSON writes json value of float64 to json stream.
+func (o OptFloat64) WriteJSON(j *json.Stream) {
+	j.WriteFloat64(float64(o.Value))
+}
+
+// ReadJSON reads json value of float64 from json iterator.
+func (o *OptFloat64) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.NumberValue:
+		o.Set = true
+		o.Value = float64(i.ReadFloat64())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptFloat64", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of int to json stream.
+func (o OptInt) WriteJSON(j *json.Stream) {
+	j.WriteInt(int(o.Value))
+}
+
+// ReadJSON reads json value of int from json iterator.
+func (o *OptInt) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.NumberValue:
+		o.Set = true
+		o.Value = int(i.ReadInt())
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptInt", i.WhatIsNext())
+	}
+	return nil
+}
+
+// WriteJSON writes json value of MaskPosition to json stream.
+func (o OptMaskPosition) WriteJSON(j *json.Stream) {
+	o.Value.WriteJSON(j)
+}
+
+// ReadJSON reads json value of MaskPosition from json iterator.
+func (o *OptMaskPosition) ReadJSON(i *json.Iterator) error {
+	switch i.WhatIsNext() {
+	case json.ObjectValue:
+		o.Set = true
+		if err := o.Value.ReadJSON(i); err != nil {
+			return err
+		}
+		return i.Error
+	default:
+		return fmt.Errorf("unexpected type %d while reading OptMaskPosition", i.WhatIsNext())
+	}
+	return nil
+}
+
 // WriteJSON writes json value of string to json stream.
 func (o OptString) WriteJSON(j *json.Stream) {
 	j.WriteString(string(o.Value))
@@ -509,15 +565,19 @@ func (s AddStickerToSet) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("emojis")
 	j.WriteString(s.Emojis)
-	more.More()
-	j.WriteObjectField("mask_position")
-	s.MaskPosition.WriteJSON(j)
+	if s.MaskPosition.Set {
+		more.More()
+		j.WriteObjectField("mask_position")
+		s.MaskPosition.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-	more.More()
-	j.WriteObjectField("tgs_sticker")
-	j.WriteString(s.TgsSticker)
+	if s.TgsSticker.Set {
+		more.More()
+		j.WriteObjectField("tgs_sticker")
+		s.TgsSticker.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -555,6 +615,7 @@ func (s *AddStickerToSet) ReadJSON(i *json.Iterator) error {
 			s.Emojis = i.ReadString()
 			return i.Error == nil
 		case "mask_position":
+			s.MaskPosition.Reset()
 			if err := s.MaskPosition.ReadJSON(i); err != nil {
 				i.ReportError("Field MaskPosition", err.Error())
 				return false
@@ -564,8 +625,12 @@ func (s *AddStickerToSet) ReadJSON(i *json.Iterator) error {
 			s.Name = i.ReadString()
 			return i.Error == nil
 		case "tgs_sticker":
-			s.TgsSticker = i.ReadString()
-			return i.Error == nil
+			s.TgsSticker.Reset()
+			if err := s.TgsSticker.ReadJSON(i); err != nil {
+				i.ReportError("Field TgsSticker", err.Error())
+				return false
+			}
+			return true
 		case "user_id":
 			s.UserID = i.ReadInt()
 			return i.Error == nil
@@ -582,21 +647,29 @@ func (s AnswerCallbackQuery) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("cache_time")
-	j.WriteInt(s.CacheTime)
+	if s.CacheTime.Set {
+		more.More()
+		j.WriteObjectField("cache_time")
+		s.CacheTime.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("callback_query_id")
 	j.WriteString(s.CallbackQueryID)
-	more.More()
-	j.WriteObjectField("show_alert")
-	j.WriteBool(s.ShowAlert)
-	more.More()
-	j.WriteObjectField("text")
-	j.WriteString(s.Text)
-	more.More()
-	j.WriteObjectField("url")
-	j.WriteString(s.URL)
+	if s.ShowAlert.Set {
+		more.More()
+		j.WriteObjectField("show_alert")
+		s.ShowAlert.WriteJSON(j)
+	}
+	if s.Text.Set {
+		more.More()
+		j.WriteObjectField("text")
+		s.Text.WriteJSON(j)
+	}
+	if s.URL.Set {
+		more.More()
+		j.WriteObjectField("url")
+		s.URL.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -628,20 +701,36 @@ func (s *AnswerCallbackQuery) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "cache_time":
-			s.CacheTime = i.ReadInt()
-			return i.Error == nil
+			s.CacheTime.Reset()
+			if err := s.CacheTime.ReadJSON(i); err != nil {
+				i.ReportError("Field CacheTime", err.Error())
+				return false
+			}
+			return true
 		case "callback_query_id":
 			s.CallbackQueryID = i.ReadString()
 			return i.Error == nil
 		case "show_alert":
-			s.ShowAlert = i.ReadBool()
-			return i.Error == nil
+			s.ShowAlert.Reset()
+			if err := s.ShowAlert.ReadJSON(i); err != nil {
+				i.ReportError("Field ShowAlert", err.Error())
+				return false
+			}
+			return true
 		case "text":
-			s.Text = i.ReadString()
-			return i.Error == nil
+			s.Text.Reset()
+			if err := s.Text.ReadJSON(i); err != nil {
+				i.ReportError("Field Text", err.Error())
+				return false
+			}
+			return true
 		case "url":
-			s.URL = i.ReadString()
-			return i.Error == nil
+			s.URL.Reset()
+			if err := s.URL.ReadJSON(i); err != nil {
+				i.ReportError("Field URL", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -655,24 +744,34 @@ func (s AnswerInlineQuery) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("cache_time")
-	j.WriteInt(s.CacheTime)
+	if s.CacheTime.Set {
+		more.More()
+		j.WriteObjectField("cache_time")
+		s.CacheTime.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("inline_query_id")
 	j.WriteString(s.InlineQueryID)
-	more.More()
-	j.WriteObjectField("is_personal")
-	j.WriteBool(s.IsPersonal)
-	more.More()
-	j.WriteObjectField("next_offset")
-	j.WriteString(s.NextOffset)
-	more.More()
-	j.WriteObjectField("switch_pm_parameter")
-	j.WriteString(s.SwitchPmParameter)
-	more.More()
-	j.WriteObjectField("switch_pm_text")
-	j.WriteString(s.SwitchPmText)
+	if s.IsPersonal.Set {
+		more.More()
+		j.WriteObjectField("is_personal")
+		s.IsPersonal.WriteJSON(j)
+	}
+	if s.NextOffset.Set {
+		more.More()
+		j.WriteObjectField("next_offset")
+		s.NextOffset.WriteJSON(j)
+	}
+	if s.SwitchPmParameter.Set {
+		more.More()
+		j.WriteObjectField("switch_pm_parameter")
+		s.SwitchPmParameter.WriteJSON(j)
+	}
+	if s.SwitchPmText.Set {
+		more.More()
+		j.WriteObjectField("switch_pm_text")
+		s.SwitchPmText.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -704,23 +803,43 @@ func (s *AnswerInlineQuery) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "cache_time":
-			s.CacheTime = i.ReadInt()
-			return i.Error == nil
+			s.CacheTime.Reset()
+			if err := s.CacheTime.ReadJSON(i); err != nil {
+				i.ReportError("Field CacheTime", err.Error())
+				return false
+			}
+			return true
 		case "inline_query_id":
 			s.InlineQueryID = i.ReadString()
 			return i.Error == nil
 		case "is_personal":
-			s.IsPersonal = i.ReadBool()
-			return i.Error == nil
+			s.IsPersonal.Reset()
+			if err := s.IsPersonal.ReadJSON(i); err != nil {
+				i.ReportError("Field IsPersonal", err.Error())
+				return false
+			}
+			return true
 		case "next_offset":
-			s.NextOffset = i.ReadString()
-			return i.Error == nil
+			s.NextOffset.Reset()
+			if err := s.NextOffset.ReadJSON(i); err != nil {
+				i.ReportError("Field NextOffset", err.Error())
+				return false
+			}
+			return true
 		case "switch_pm_parameter":
-			s.SwitchPmParameter = i.ReadString()
-			return i.Error == nil
+			s.SwitchPmParameter.Reset()
+			if err := s.SwitchPmParameter.ReadJSON(i); err != nil {
+				i.ReportError("Field SwitchPmParameter", err.Error())
+				return false
+			}
+			return true
 		case "switch_pm_text":
-			s.SwitchPmText = i.ReadString()
-			return i.Error == nil
+			s.SwitchPmText.Reset()
+			if err := s.SwitchPmText.ReadJSON(i); err != nil {
+				i.ReportError("Field SwitchPmText", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -734,9 +853,11 @@ func (s AnswerPreCheckoutQuery) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("error_message")
-	j.WriteString(s.ErrorMessage)
+	if s.ErrorMessage.Set {
+		more.More()
+		j.WriteObjectField("error_message")
+		s.ErrorMessage.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
@@ -774,8 +895,12 @@ func (s *AnswerPreCheckoutQuery) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "error_message":
-			s.ErrorMessage = i.ReadString()
-			return i.Error == nil
+			s.ErrorMessage.Reset()
+			if err := s.ErrorMessage.ReadJSON(i); err != nil {
+				i.ReportError("Field ErrorMessage", err.Error())
+				return false
+			}
+			return true
 		case "ok":
 			s.Ok = i.ReadBool()
 			return i.Error == nil
@@ -795,9 +920,11 @@ func (s AnswerShippingQuery) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("error_message")
-	j.WriteString(s.ErrorMessage)
+	if s.ErrorMessage.Set {
+		more.More()
+		j.WriteObjectField("error_message")
+		s.ErrorMessage.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("ok")
 	j.WriteBool(s.Ok)
@@ -835,8 +962,12 @@ func (s *AnswerShippingQuery) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "error_message":
-			s.ErrorMessage = i.ReadString()
-			return i.Error == nil
+			s.ErrorMessage.Reset()
+			if err := s.ErrorMessage.ReadJSON(i); err != nil {
+				i.ReportError("Field ErrorMessage", err.Error())
+				return false
+			}
+			return true
 		case "ok":
 			s.Ok = i.ReadBool()
 			return i.Error == nil
@@ -856,12 +987,16 @@ func (s BanChatMember) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("revoke_messages")
-	j.WriteBool(s.RevokeMessages)
-	more.More()
-	j.WriteObjectField("until_date")
-	j.WriteInt(s.UntilDate)
+	if s.RevokeMessages.Set {
+		more.More()
+		j.WriteObjectField("revoke_messages")
+		s.RevokeMessages.WriteJSON(j)
+	}
+	if s.UntilDate.Set {
+		more.More()
+		j.WriteObjectField("until_date")
+		s.UntilDate.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -896,11 +1031,19 @@ func (s *BanChatMember) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "revoke_messages":
-			s.RevokeMessages = i.ReadBool()
-			return i.Error == nil
+			s.RevokeMessages.Reset()
+			if err := s.RevokeMessages.ReadJSON(i); err != nil {
+				i.ReportError("Field RevokeMessages", err.Error())
+				return false
+			}
+			return true
 		case "until_date":
-			s.UntilDate = i.ReadInt()
-			return i.Error == nil
+			s.UntilDate.Reset()
+			if err := s.UntilDate.ReadJSON(i); err != nil {
+				i.ReportError("Field UntilDate", err.Error())
+				return false
+			}
+			return true
 		case "user_id":
 			s.UserID = i.ReadInt()
 			return i.Error == nil
@@ -917,24 +1060,34 @@ func (s CopyMessage) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("allow_sending_without_reply")
-	j.WriteBool(s.AllowSendingWithoutReply)
-	more.More()
-	j.WriteObjectField("caption")
-	j.WriteString(s.Caption)
-	more.More()
-	j.WriteObjectField("disable_notification")
-	j.WriteBool(s.DisableNotification)
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		j.WriteObjectField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(j)
+	}
+	if s.Caption.Set {
+		more.More()
+		j.WriteObjectField("caption")
+		s.Caption.WriteJSON(j)
+	}
+	if s.DisableNotification.Set {
+		more.More()
+		j.WriteObjectField("disable_notification")
+		s.DisableNotification.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("message_id")
 	j.WriteInt(s.MessageID)
-	more.More()
-	j.WriteObjectField("parse_mode")
-	j.WriteString(s.ParseMode)
-	more.More()
-	j.WriteObjectField("reply_to_message_id")
-	j.WriteInt(s.ReplyToMessageID)
+	if s.ParseMode.Set {
+		more.More()
+		j.WriteObjectField("parse_mode")
+		s.ParseMode.WriteJSON(j)
+	}
+	if s.ReplyToMessageID.Set {
+		more.More()
+		j.WriteObjectField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -966,23 +1119,43 @@ func (s *CopyMessage) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply = i.ReadBool()
-			return i.Error == nil
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+				return false
+			}
+			return true
 		case "caption":
-			s.Caption = i.ReadString()
-			return i.Error == nil
+			s.Caption.Reset()
+			if err := s.Caption.ReadJSON(i); err != nil {
+				i.ReportError("Field Caption", err.Error())
+				return false
+			}
+			return true
 		case "disable_notification":
-			s.DisableNotification = i.ReadBool()
-			return i.Error == nil
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableNotification", err.Error())
+				return false
+			}
+			return true
 		case "message_id":
 			s.MessageID = i.ReadInt()
 			return i.Error == nil
 		case "parse_mode":
-			s.ParseMode = i.ReadString()
-			return i.Error == nil
+			s.ParseMode.Reset()
+			if err := s.ParseMode.ReadJSON(i); err != nil {
+				i.ReportError("Field ParseMode", err.Error())
+				return false
+			}
+			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID = i.ReadInt()
-			return i.Error == nil
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field ReplyToMessageID", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -996,12 +1169,16 @@ func (s CreateChatInviteLink) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("expire_date")
-	j.WriteInt(s.ExpireDate)
-	more.More()
-	j.WriteObjectField("member_limit")
-	j.WriteInt(s.MemberLimit)
+	if s.ExpireDate.Set {
+		more.More()
+		j.WriteObjectField("expire_date")
+		s.ExpireDate.WriteJSON(j)
+	}
+	if s.MemberLimit.Set {
+		more.More()
+		j.WriteObjectField("member_limit")
+		s.MemberLimit.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -1033,11 +1210,19 @@ func (s *CreateChatInviteLink) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "expire_date":
-			s.ExpireDate = i.ReadInt()
-			return i.Error == nil
+			s.ExpireDate.Reset()
+			if err := s.ExpireDate.ReadJSON(i); err != nil {
+				i.ReportError("Field ExpireDate", err.Error())
+				return false
+			}
+			return true
 		case "member_limit":
-			s.MemberLimit = i.ReadInt()
-			return i.Error == nil
+			s.MemberLimit.Reset()
+			if err := s.MemberLimit.ReadJSON(i); err != nil {
+				i.ReportError("Field MemberLimit", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -1051,21 +1236,27 @@ func (s CreateNewStickerSet) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("contains_masks")
-	j.WriteBool(s.ContainsMasks)
+	if s.ContainsMasks.Set {
+		more.More()
+		j.WriteObjectField("contains_masks")
+		s.ContainsMasks.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("emojis")
 	j.WriteString(s.Emojis)
-	more.More()
-	j.WriteObjectField("mask_position")
-	s.MaskPosition.WriteJSON(j)
+	if s.MaskPosition.Set {
+		more.More()
+		j.WriteObjectField("mask_position")
+		s.MaskPosition.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("name")
 	j.WriteString(s.Name)
-	more.More()
-	j.WriteObjectField("tgs_sticker")
-	j.WriteString(s.TgsSticker)
+	if s.TgsSticker.Set {
+		more.More()
+		j.WriteObjectField("tgs_sticker")
+		s.TgsSticker.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("title")
 	j.WriteString(s.Title)
@@ -1103,12 +1294,17 @@ func (s *CreateNewStickerSet) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "contains_masks":
-			s.ContainsMasks = i.ReadBool()
-			return i.Error == nil
+			s.ContainsMasks.Reset()
+			if err := s.ContainsMasks.ReadJSON(i); err != nil {
+				i.ReportError("Field ContainsMasks", err.Error())
+				return false
+			}
+			return true
 		case "emojis":
 			s.Emojis = i.ReadString()
 			return i.Error == nil
 		case "mask_position":
+			s.MaskPosition.Reset()
 			if err := s.MaskPosition.ReadJSON(i); err != nil {
 				i.ReportError("Field MaskPosition", err.Error())
 				return false
@@ -1118,8 +1314,12 @@ func (s *CreateNewStickerSet) ReadJSON(i *json.Iterator) error {
 			s.Name = i.ReadString()
 			return i.Error == nil
 		case "tgs_sticker":
-			s.TgsSticker = i.ReadString()
-			return i.Error == nil
+			s.TgsSticker.Reset()
+			if err := s.TgsSticker.ReadJSON(i); err != nil {
+				i.ReportError("Field TgsSticker", err.Error())
+				return false
+			}
+			return true
 		case "title":
 			s.Title = i.ReadString()
 			return i.Error == nil
@@ -1198,10 +1398,16 @@ func (s DeleteMyCommands) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("language_code")
-	j.WriteString(s.LanguageCode)
-	// Unsupported kind "alias" for field "scope".
+	if s.LanguageCode.Set {
+		more.More()
+		j.WriteObjectField("language_code")
+		s.LanguageCode.WriteJSON(j)
+	}
+	if s.Scope != nil {
+		more.More()
+		j.WriteObjectField("scope")
+		s.Scope.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -1233,10 +1439,14 @@ func (s *DeleteMyCommands) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "language_code":
-			s.LanguageCode = i.ReadString()
-			return i.Error == nil
+			s.LanguageCode.Reset()
+			if err := s.LanguageCode.ReadJSON(i); err != nil {
+				i.ReportError("Field LanguageCode", err.Error())
+				return false
+			}
+			return true
 		case "scope":
-			// Unsupported kind "alias" for field "Scope".
+			// Unsupported kind "pointer" for field "Scope".
 			i.Skip()
 			return true
 		default:
@@ -1301,9 +1511,11 @@ func (s DeleteWebhook) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("drop_pending_updates")
-	j.WriteBool(s.DropPendingUpdates)
+	if s.DropPendingUpdates.Set {
+		more.More()
+		j.WriteObjectField("drop_pending_updates")
+		s.DropPendingUpdates.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -1335,8 +1547,12 @@ func (s *DeleteWebhook) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "drop_pending_updates":
-			s.DropPendingUpdates = i.ReadBool()
-			return i.Error == nil
+			s.DropPendingUpdates.Reset()
+			if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
+				i.ReportError("Field DropPendingUpdates", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -1350,15 +1566,19 @@ func (s EditChatInviteLink) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("expire_date")
-	j.WriteInt(s.ExpireDate)
+	if s.ExpireDate.Set {
+		more.More()
+		j.WriteObjectField("expire_date")
+		s.ExpireDate.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("invite_link")
 	j.WriteString(s.InviteLink)
-	more.More()
-	j.WriteObjectField("member_limit")
-	j.WriteInt(s.MemberLimit)
+	if s.MemberLimit.Set {
+		more.More()
+		j.WriteObjectField("member_limit")
+		s.MemberLimit.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -1390,14 +1610,22 @@ func (s *EditChatInviteLink) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "expire_date":
-			s.ExpireDate = i.ReadInt()
-			return i.Error == nil
+			s.ExpireDate.Reset()
+			if err := s.ExpireDate.ReadJSON(i); err != nil {
+				i.ReportError("Field ExpireDate", err.Error())
+				return false
+			}
+			return true
 		case "invite_link":
 			s.InviteLink = i.ReadString()
 			return i.Error == nil
 		case "member_limit":
-			s.MemberLimit = i.ReadInt()
-			return i.Error == nil
+			s.MemberLimit.Reset()
+			if err := s.MemberLimit.ReadJSON(i); err != nil {
+				i.ReportError("Field MemberLimit", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -1411,19 +1639,31 @@ func (s EditMessageCaption) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("caption")
-	j.WriteString(s.Caption)
-	more.More()
-	j.WriteObjectField("inline_message_id")
-	j.WriteString(s.InlineMessageID)
-	more.More()
-	j.WriteObjectField("message_id")
-	j.WriteInt(s.MessageID)
-	more.More()
-	j.WriteObjectField("parse_mode")
-	j.WriteString(s.ParseMode)
-	// Unsupported kind "alias" for field "reply_markup".
+	if s.Caption.Set {
+		more.More()
+		j.WriteObjectField("caption")
+		s.Caption.WriteJSON(j)
+	}
+	if s.InlineMessageID.Set {
+		more.More()
+		j.WriteObjectField("inline_message_id")
+		s.InlineMessageID.WriteJSON(j)
+	}
+	if s.MessageID.Set {
+		more.More()
+		j.WriteObjectField("message_id")
+		s.MessageID.WriteJSON(j)
+	}
+	if s.ParseMode.Set {
+		more.More()
+		j.WriteObjectField("parse_mode")
+		s.ParseMode.WriteJSON(j)
+	}
+	if s.ReplyMarkup != nil {
+		more.More()
+		j.WriteObjectField("reply_markup")
+		s.ReplyMarkup.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -1455,19 +1695,35 @@ func (s *EditMessageCaption) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "caption":
-			s.Caption = i.ReadString()
-			return i.Error == nil
+			s.Caption.Reset()
+			if err := s.Caption.ReadJSON(i); err != nil {
+				i.ReportError("Field Caption", err.Error())
+				return false
+			}
+			return true
 		case "inline_message_id":
-			s.InlineMessageID = i.ReadString()
-			return i.Error == nil
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field InlineMessageID", err.Error())
+				return false
+			}
+			return true
 		case "message_id":
-			s.MessageID = i.ReadInt()
-			return i.Error == nil
+			s.MessageID.Reset()
+			if err := s.MessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field MessageID", err.Error())
+				return false
+			}
+			return true
 		case "parse_mode":
-			s.ParseMode = i.ReadString()
-			return i.Error == nil
+			s.ParseMode.Reset()
+			if err := s.ParseMode.ReadJSON(i); err != nil {
+				i.ReportError("Field ParseMode", err.Error())
+				return false
+			}
+			return true
 		case "reply_markup":
-			// Unsupported kind "alias" for field "ReplyMarkup".
+			// Unsupported kind "pointer" for field "ReplyMarkup".
 			i.Skip()
 			return true
 		default:
@@ -1483,28 +1739,42 @@ func (s EditMessageLiveLocation) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("heading")
-	j.WriteInt(s.Heading)
-	more.More()
-	j.WriteObjectField("horizontal_accuracy")
-	j.WriteFloat64(s.HorizontalAccuracy)
-	more.More()
-	j.WriteObjectField("inline_message_id")
-	j.WriteString(s.InlineMessageID)
+	if s.Heading.Set {
+		more.More()
+		j.WriteObjectField("heading")
+		s.Heading.WriteJSON(j)
+	}
+	if s.HorizontalAccuracy.Set {
+		more.More()
+		j.WriteObjectField("horizontal_accuracy")
+		s.HorizontalAccuracy.WriteJSON(j)
+	}
+	if s.InlineMessageID.Set {
+		more.More()
+		j.WriteObjectField("inline_message_id")
+		s.InlineMessageID.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("latitude")
 	j.WriteFloat64(s.Latitude)
 	more.More()
 	j.WriteObjectField("longitude")
 	j.WriteFloat64(s.Longitude)
-	more.More()
-	j.WriteObjectField("message_id")
-	j.WriteInt(s.MessageID)
-	more.More()
-	j.WriteObjectField("proximity_alert_radius")
-	j.WriteInt(s.ProximityAlertRadius)
-	// Unsupported kind "alias" for field "reply_markup".
+	if s.MessageID.Set {
+		more.More()
+		j.WriteObjectField("message_id")
+		s.MessageID.WriteJSON(j)
+	}
+	if s.ProximityAlertRadius.Set {
+		more.More()
+		j.WriteObjectField("proximity_alert_radius")
+		s.ProximityAlertRadius.WriteJSON(j)
+	}
+	if s.ReplyMarkup != nil {
+		more.More()
+		j.WriteObjectField("reply_markup")
+		s.ReplyMarkup.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -1536,14 +1806,26 @@ func (s *EditMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "heading":
-			s.Heading = i.ReadInt()
-			return i.Error == nil
+			s.Heading.Reset()
+			if err := s.Heading.ReadJSON(i); err != nil {
+				i.ReportError("Field Heading", err.Error())
+				return false
+			}
+			return true
 		case "horizontal_accuracy":
-			s.HorizontalAccuracy = i.ReadFloat64()
-			return i.Error == nil
+			s.HorizontalAccuracy.Reset()
+			if err := s.HorizontalAccuracy.ReadJSON(i); err != nil {
+				i.ReportError("Field HorizontalAccuracy", err.Error())
+				return false
+			}
+			return true
 		case "inline_message_id":
-			s.InlineMessageID = i.ReadString()
-			return i.Error == nil
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field InlineMessageID", err.Error())
+				return false
+			}
+			return true
 		case "latitude":
 			s.Latitude = i.ReadFloat64()
 			return i.Error == nil
@@ -1551,13 +1833,21 @@ func (s *EditMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 			s.Longitude = i.ReadFloat64()
 			return i.Error == nil
 		case "message_id":
-			s.MessageID = i.ReadInt()
-			return i.Error == nil
+			s.MessageID.Reset()
+			if err := s.MessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field MessageID", err.Error())
+				return false
+			}
+			return true
 		case "proximity_alert_radius":
-			s.ProximityAlertRadius = i.ReadInt()
-			return i.Error == nil
+			s.ProximityAlertRadius.Reset()
+			if err := s.ProximityAlertRadius.ReadJSON(i); err != nil {
+				i.ReportError("Field ProximityAlertRadius", err.Error())
+				return false
+			}
+			return true
 		case "reply_markup":
-			// Unsupported kind "alias" for field "ReplyMarkup".
+			// Unsupported kind "pointer" for field "ReplyMarkup".
 			i.Skip()
 			return true
 		default:
@@ -1573,14 +1863,22 @@ func (s EditMessageMedia) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("inline_message_id")
-	j.WriteString(s.InlineMessageID)
+	if s.InlineMessageID.Set {
+		more.More()
+		j.WriteObjectField("inline_message_id")
+		s.InlineMessageID.WriteJSON(j)
+	}
 	// Unsupported kind "alias" for field "media".
-	more.More()
-	j.WriteObjectField("message_id")
-	j.WriteInt(s.MessageID)
-	// Unsupported kind "alias" for field "reply_markup".
+	if s.MessageID.Set {
+		more.More()
+		j.WriteObjectField("message_id")
+		s.MessageID.WriteJSON(j)
+	}
+	if s.ReplyMarkup != nil {
+		more.More()
+		j.WriteObjectField("reply_markup")
+		s.ReplyMarkup.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -1612,17 +1910,25 @@ func (s *EditMessageMedia) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "inline_message_id":
-			s.InlineMessageID = i.ReadString()
-			return i.Error == nil
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field InlineMessageID", err.Error())
+				return false
+			}
+			return true
 		case "media":
 			// Unsupported kind "alias" for field "Media".
 			i.Skip()
 			return true
 		case "message_id":
-			s.MessageID = i.ReadInt()
-			return i.Error == nil
+			s.MessageID.Reset()
+			if err := s.MessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field MessageID", err.Error())
+				return false
+			}
+			return true
 		case "reply_markup":
-			// Unsupported kind "alias" for field "ReplyMarkup".
+			// Unsupported kind "pointer" for field "ReplyMarkup".
 			i.Skip()
 			return true
 		default:
@@ -1638,13 +1944,21 @@ func (s EditMessageReplyMarkup) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("inline_message_id")
-	j.WriteString(s.InlineMessageID)
-	more.More()
-	j.WriteObjectField("message_id")
-	j.WriteInt(s.MessageID)
-	// Unsupported kind "alias" for field "reply_markup".
+	if s.InlineMessageID.Set {
+		more.More()
+		j.WriteObjectField("inline_message_id")
+		s.InlineMessageID.WriteJSON(j)
+	}
+	if s.MessageID.Set {
+		more.More()
+		j.WriteObjectField("message_id")
+		s.MessageID.WriteJSON(j)
+	}
+	if s.ReplyMarkup != nil {
+		more.More()
+		j.WriteObjectField("reply_markup")
+		s.ReplyMarkup.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -1676,13 +1990,21 @@ func (s *EditMessageReplyMarkup) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "inline_message_id":
-			s.InlineMessageID = i.ReadString()
-			return i.Error == nil
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field InlineMessageID", err.Error())
+				return false
+			}
+			return true
 		case "message_id":
-			s.MessageID = i.ReadInt()
-			return i.Error == nil
+			s.MessageID.Reset()
+			if err := s.MessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field MessageID", err.Error())
+				return false
+			}
+			return true
 		case "reply_markup":
-			// Unsupported kind "alias" for field "ReplyMarkup".
+			// Unsupported kind "pointer" for field "ReplyMarkup".
 			i.Skip()
 			return true
 		default:
@@ -1698,19 +2020,31 @@ func (s EditMessageText) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("disable_web_page_preview")
-	j.WriteBool(s.DisableWebPagePreview)
-	more.More()
-	j.WriteObjectField("inline_message_id")
-	j.WriteString(s.InlineMessageID)
-	more.More()
-	j.WriteObjectField("message_id")
-	j.WriteInt(s.MessageID)
-	more.More()
-	j.WriteObjectField("parse_mode")
-	j.WriteString(s.ParseMode)
-	// Unsupported kind "alias" for field "reply_markup".
+	if s.DisableWebPagePreview.Set {
+		more.More()
+		j.WriteObjectField("disable_web_page_preview")
+		s.DisableWebPagePreview.WriteJSON(j)
+	}
+	if s.InlineMessageID.Set {
+		more.More()
+		j.WriteObjectField("inline_message_id")
+		s.InlineMessageID.WriteJSON(j)
+	}
+	if s.MessageID.Set {
+		more.More()
+		j.WriteObjectField("message_id")
+		s.MessageID.WriteJSON(j)
+	}
+	if s.ParseMode.Set {
+		more.More()
+		j.WriteObjectField("parse_mode")
+		s.ParseMode.WriteJSON(j)
+	}
+	if s.ReplyMarkup != nil {
+		more.More()
+		j.WriteObjectField("reply_markup")
+		s.ReplyMarkup.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("text")
 	j.WriteString(s.Text)
@@ -1745,19 +2079,35 @@ func (s *EditMessageText) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "disable_web_page_preview":
-			s.DisableWebPagePreview = i.ReadBool()
-			return i.Error == nil
+			s.DisableWebPagePreview.Reset()
+			if err := s.DisableWebPagePreview.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableWebPagePreview", err.Error())
+				return false
+			}
+			return true
 		case "inline_message_id":
-			s.InlineMessageID = i.ReadString()
-			return i.Error == nil
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field InlineMessageID", err.Error())
+				return false
+			}
+			return true
 		case "message_id":
-			s.MessageID = i.ReadInt()
-			return i.Error == nil
+			s.MessageID.Reset()
+			if err := s.MessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field MessageID", err.Error())
+				return false
+			}
+			return true
 		case "parse_mode":
-			s.ParseMode = i.ReadString()
-			return i.Error == nil
+			s.ParseMode.Reset()
+			if err := s.ParseMode.ReadJSON(i); err != nil {
+				i.ReportError("Field ParseMode", err.Error())
+				return false
+			}
+			return true
 		case "reply_markup":
-			// Unsupported kind "alias" for field "ReplyMarkup".
+			// Unsupported kind "pointer" for field "ReplyMarkup".
 			i.Skip()
 			return true
 		case "text":
@@ -1781,9 +2131,11 @@ func (s ForwardMessage) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("disable_notification")
-	j.WriteBool(s.DisableNotification)
+	if s.DisableNotification.Set {
+		more.More()
+		j.WriteObjectField("disable_notification")
+		s.DisableNotification.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("message_id")
 	j.WriteInt(s.MessageID)
@@ -1818,8 +2170,12 @@ func (s *ForwardMessage) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "disable_notification":
-			s.DisableNotification = i.ReadBool()
-			return i.Error == nil
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableNotification", err.Error())
+				return false
+			}
+			return true
 		case "message_id":
 			s.MessageID = i.ReadInt()
 			return i.Error == nil
@@ -1949,15 +2305,21 @@ func (s GetGameHighScores) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("chat_id")
-	j.WriteInt(s.ChatID)
-	more.More()
-	j.WriteObjectField("inline_message_id")
-	j.WriteString(s.InlineMessageID)
-	more.More()
-	j.WriteObjectField("message_id")
-	j.WriteInt(s.MessageID)
+	if s.ChatID.Set {
+		more.More()
+		j.WriteObjectField("chat_id")
+		s.ChatID.WriteJSON(j)
+	}
+	if s.InlineMessageID.Set {
+		more.More()
+		j.WriteObjectField("inline_message_id")
+		s.InlineMessageID.WriteJSON(j)
+	}
+	if s.MessageID.Set {
+		more.More()
+		j.WriteObjectField("message_id")
+		s.MessageID.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -1992,14 +2354,26 @@ func (s *GetGameHighScores) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "chat_id":
-			s.ChatID = i.ReadInt()
-			return i.Error == nil
+			s.ChatID.Reset()
+			if err := s.ChatID.ReadJSON(i); err != nil {
+				i.ReportError("Field ChatID", err.Error())
+				return false
+			}
+			return true
 		case "inline_message_id":
-			s.InlineMessageID = i.ReadString()
-			return i.Error == nil
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field InlineMessageID", err.Error())
+				return false
+			}
+			return true
 		case "message_id":
-			s.MessageID = i.ReadInt()
-			return i.Error == nil
+			s.MessageID.Reset()
+			if err := s.MessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field MessageID", err.Error())
+				return false
+			}
+			return true
 		case "user_id":
 			s.UserID = i.ReadInt()
 			return i.Error == nil
@@ -2016,10 +2390,16 @@ func (s GetMyCommands) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("language_code")
-	j.WriteString(s.LanguageCode)
-	// Unsupported kind "alias" for field "scope".
+	if s.LanguageCode.Set {
+		more.More()
+		j.WriteObjectField("language_code")
+		s.LanguageCode.WriteJSON(j)
+	}
+	if s.Scope != nil {
+		more.More()
+		j.WriteObjectField("scope")
+		s.Scope.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -2051,10 +2431,14 @@ func (s *GetMyCommands) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "language_code":
-			s.LanguageCode = i.ReadString()
-			return i.Error == nil
+			s.LanguageCode.Reset()
+			if err := s.LanguageCode.ReadJSON(i); err != nil {
+				i.ReportError("Field LanguageCode", err.Error())
+				return false
+			}
+			return true
 		case "scope":
-			// Unsupported kind "alias" for field "Scope".
+			// Unsupported kind "pointer" for field "Scope".
 			i.Skip()
 			return true
 		default:
@@ -2119,15 +2503,21 @@ func (s GetUpdates) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("limit")
-	j.WriteInt(s.Limit)
-	more.More()
-	j.WriteObjectField("offset")
-	j.WriteInt(s.Offset)
-	more.More()
-	j.WriteObjectField("timeout")
-	j.WriteInt(s.Timeout)
+	if s.Limit.Set {
+		more.More()
+		j.WriteObjectField("limit")
+		s.Limit.WriteJSON(j)
+	}
+	if s.Offset.Set {
+		more.More()
+		j.WriteObjectField("offset")
+		s.Offset.WriteJSON(j)
+	}
+	if s.Timeout.Set {
+		more.More()
+		j.WriteObjectField("timeout")
+		s.Timeout.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -2159,14 +2549,26 @@ func (s *GetUpdates) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "limit":
-			s.Limit = i.ReadInt()
-			return i.Error == nil
+			s.Limit.Reset()
+			if err := s.Limit.ReadJSON(i); err != nil {
+				i.ReportError("Field Limit", err.Error())
+				return false
+			}
+			return true
 		case "offset":
-			s.Offset = i.ReadInt()
-			return i.Error == nil
+			s.Offset.Reset()
+			if err := s.Offset.ReadJSON(i); err != nil {
+				i.ReportError("Field Offset", err.Error())
+				return false
+			}
+			return true
 		case "timeout":
-			s.Timeout = i.ReadInt()
-			return i.Error == nil
+			s.Timeout.Reset()
+			if err := s.Timeout.ReadJSON(i); err != nil {
+				i.ReportError("Field Timeout", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -2180,12 +2582,16 @@ func (s GetUserProfilePhotos) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("limit")
-	j.WriteInt(s.Limit)
-	more.More()
-	j.WriteObjectField("offset")
-	j.WriteInt(s.Offset)
+	if s.Limit.Set {
+		more.More()
+		j.WriteObjectField("limit")
+		s.Limit.WriteJSON(j)
+	}
+	if s.Offset.Set {
+		more.More()
+		j.WriteObjectField("offset")
+		s.Offset.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -2220,11 +2626,19 @@ func (s *GetUserProfilePhotos) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "limit":
-			s.Limit = i.ReadInt()
-			return i.Error == nil
+			s.Limit.Reset()
+			if err := s.Limit.ReadJSON(i); err != nil {
+				i.ReportError("Field Limit", err.Error())
+				return false
+			}
+			return true
 		case "offset":
-			s.Offset = i.ReadInt()
-			return i.Error == nil
+			s.Offset.Reset()
+			if err := s.Offset.ReadJSON(i); err != nil {
+				i.ReportError("Field Offset", err.Error())
+				return false
+			}
+			return true
 		case "user_id":
 			s.UserID = i.ReadInt()
 			return i.Error == nil
@@ -2246,9 +2660,11 @@ func (s PinChatMessage) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("disable_notification")
-	j.WriteBool(s.DisableNotification)
+	if s.DisableNotification.Set {
+		more.More()
+		j.WriteObjectField("disable_notification")
+		s.DisableNotification.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("message_id")
 	j.WriteInt(s.MessageID)
@@ -2283,8 +2699,12 @@ func (s *PinChatMessage) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "disable_notification":
-			s.DisableNotification = i.ReadBool()
-			return i.Error == nil
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableNotification", err.Error())
+				return false
+			}
+			return true
 		case "message_id":
 			s.MessageID = i.ReadInt()
 			return i.Error == nil
@@ -2301,39 +2721,61 @@ func (s PromoteChatMember) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("can_change_info")
-	j.WriteBool(s.CanChangeInfo)
-	more.More()
-	j.WriteObjectField("can_delete_messages")
-	j.WriteBool(s.CanDeleteMessages)
-	more.More()
-	j.WriteObjectField("can_edit_messages")
-	j.WriteBool(s.CanEditMessages)
-	more.More()
-	j.WriteObjectField("can_invite_users")
-	j.WriteBool(s.CanInviteUsers)
-	more.More()
-	j.WriteObjectField("can_manage_chat")
-	j.WriteBool(s.CanManageChat)
-	more.More()
-	j.WriteObjectField("can_manage_voice_chats")
-	j.WriteBool(s.CanManageVoiceChats)
-	more.More()
-	j.WriteObjectField("can_pin_messages")
-	j.WriteBool(s.CanPinMessages)
-	more.More()
-	j.WriteObjectField("can_post_messages")
-	j.WriteBool(s.CanPostMessages)
-	more.More()
-	j.WriteObjectField("can_promote_members")
-	j.WriteBool(s.CanPromoteMembers)
-	more.More()
-	j.WriteObjectField("can_restrict_members")
-	j.WriteBool(s.CanRestrictMembers)
-	more.More()
-	j.WriteObjectField("is_anonymous")
-	j.WriteBool(s.IsAnonymous)
+	if s.CanChangeInfo.Set {
+		more.More()
+		j.WriteObjectField("can_change_info")
+		s.CanChangeInfo.WriteJSON(j)
+	}
+	if s.CanDeleteMessages.Set {
+		more.More()
+		j.WriteObjectField("can_delete_messages")
+		s.CanDeleteMessages.WriteJSON(j)
+	}
+	if s.CanEditMessages.Set {
+		more.More()
+		j.WriteObjectField("can_edit_messages")
+		s.CanEditMessages.WriteJSON(j)
+	}
+	if s.CanInviteUsers.Set {
+		more.More()
+		j.WriteObjectField("can_invite_users")
+		s.CanInviteUsers.WriteJSON(j)
+	}
+	if s.CanManageChat.Set {
+		more.More()
+		j.WriteObjectField("can_manage_chat")
+		s.CanManageChat.WriteJSON(j)
+	}
+	if s.CanManageVoiceChats.Set {
+		more.More()
+		j.WriteObjectField("can_manage_voice_chats")
+		s.CanManageVoiceChats.WriteJSON(j)
+	}
+	if s.CanPinMessages.Set {
+		more.More()
+		j.WriteObjectField("can_pin_messages")
+		s.CanPinMessages.WriteJSON(j)
+	}
+	if s.CanPostMessages.Set {
+		more.More()
+		j.WriteObjectField("can_post_messages")
+		s.CanPostMessages.WriteJSON(j)
+	}
+	if s.CanPromoteMembers.Set {
+		more.More()
+		j.WriteObjectField("can_promote_members")
+		s.CanPromoteMembers.WriteJSON(j)
+	}
+	if s.CanRestrictMembers.Set {
+		more.More()
+		j.WriteObjectField("can_restrict_members")
+		s.CanRestrictMembers.WriteJSON(j)
+	}
+	if s.IsAnonymous.Set {
+		more.More()
+		j.WriteObjectField("is_anonymous")
+		s.IsAnonymous.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -2368,38 +2810,82 @@ func (s *PromoteChatMember) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "can_change_info":
-			s.CanChangeInfo = i.ReadBool()
-			return i.Error == nil
+			s.CanChangeInfo.Reset()
+			if err := s.CanChangeInfo.ReadJSON(i); err != nil {
+				i.ReportError("Field CanChangeInfo", err.Error())
+				return false
+			}
+			return true
 		case "can_delete_messages":
-			s.CanDeleteMessages = i.ReadBool()
-			return i.Error == nil
+			s.CanDeleteMessages.Reset()
+			if err := s.CanDeleteMessages.ReadJSON(i); err != nil {
+				i.ReportError("Field CanDeleteMessages", err.Error())
+				return false
+			}
+			return true
 		case "can_edit_messages":
-			s.CanEditMessages = i.ReadBool()
-			return i.Error == nil
+			s.CanEditMessages.Reset()
+			if err := s.CanEditMessages.ReadJSON(i); err != nil {
+				i.ReportError("Field CanEditMessages", err.Error())
+				return false
+			}
+			return true
 		case "can_invite_users":
-			s.CanInviteUsers = i.ReadBool()
-			return i.Error == nil
+			s.CanInviteUsers.Reset()
+			if err := s.CanInviteUsers.ReadJSON(i); err != nil {
+				i.ReportError("Field CanInviteUsers", err.Error())
+				return false
+			}
+			return true
 		case "can_manage_chat":
-			s.CanManageChat = i.ReadBool()
-			return i.Error == nil
+			s.CanManageChat.Reset()
+			if err := s.CanManageChat.ReadJSON(i); err != nil {
+				i.ReportError("Field CanManageChat", err.Error())
+				return false
+			}
+			return true
 		case "can_manage_voice_chats":
-			s.CanManageVoiceChats = i.ReadBool()
-			return i.Error == nil
+			s.CanManageVoiceChats.Reset()
+			if err := s.CanManageVoiceChats.ReadJSON(i); err != nil {
+				i.ReportError("Field CanManageVoiceChats", err.Error())
+				return false
+			}
+			return true
 		case "can_pin_messages":
-			s.CanPinMessages = i.ReadBool()
-			return i.Error == nil
+			s.CanPinMessages.Reset()
+			if err := s.CanPinMessages.ReadJSON(i); err != nil {
+				i.ReportError("Field CanPinMessages", err.Error())
+				return false
+			}
+			return true
 		case "can_post_messages":
-			s.CanPostMessages = i.ReadBool()
-			return i.Error == nil
+			s.CanPostMessages.Reset()
+			if err := s.CanPostMessages.ReadJSON(i); err != nil {
+				i.ReportError("Field CanPostMessages", err.Error())
+				return false
+			}
+			return true
 		case "can_promote_members":
-			s.CanPromoteMembers = i.ReadBool()
-			return i.Error == nil
+			s.CanPromoteMembers.Reset()
+			if err := s.CanPromoteMembers.ReadJSON(i); err != nil {
+				i.ReportError("Field CanPromoteMembers", err.Error())
+				return false
+			}
+			return true
 		case "can_restrict_members":
-			s.CanRestrictMembers = i.ReadBool()
-			return i.Error == nil
+			s.CanRestrictMembers.Reset()
+			if err := s.CanRestrictMembers.ReadJSON(i); err != nil {
+				i.ReportError("Field CanRestrictMembers", err.Error())
+				return false
+			}
+			return true
 		case "is_anonymous":
-			s.IsAnonymous = i.ReadBool()
-			return i.Error == nil
+			s.IsAnonymous.Reset()
+			if err := s.IsAnonymous.ReadJSON(i); err != nil {
+				i.ReportError("Field IsAnonymous", err.Error())
+				return false
+			}
+			return true
 		case "user_id":
 			s.UserID = i.ReadInt()
 			return i.Error == nil
@@ -2419,9 +2905,11 @@ func (s RestrictChatMember) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("permissions")
 	s.Permissions.WriteJSON(j)
-	more.More()
-	j.WriteObjectField("until_date")
-	j.WriteInt(s.UntilDate)
+	if s.UntilDate.Set {
+		more.More()
+		j.WriteObjectField("until_date")
+		s.UntilDate.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -2462,8 +2950,12 @@ func (s *RestrictChatMember) ReadJSON(i *json.Iterator) error {
 			}
 			return true
 		case "until_date":
-			s.UntilDate = i.ReadInt()
-			return i.Error == nil
+			s.UntilDate.Reset()
+			if err := s.UntilDate.ReadJSON(i); err != nil {
+				i.ReportError("Field UntilDate", err.Error())
+				return false
+			}
+			return true
 		case "user_id":
 			s.UserID = i.ReadInt()
 			return i.Error == nil
@@ -2529,30 +3021,46 @@ func (s SendAnimation) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("allow_sending_without_reply")
-	j.WriteBool(s.AllowSendingWithoutReply)
-	more.More()
-	j.WriteObjectField("caption")
-	j.WriteString(s.Caption)
-	more.More()
-	j.WriteObjectField("disable_notification")
-	j.WriteBool(s.DisableNotification)
-	more.More()
-	j.WriteObjectField("duration")
-	j.WriteInt(s.Duration)
-	more.More()
-	j.WriteObjectField("height")
-	j.WriteInt(s.Height)
-	more.More()
-	j.WriteObjectField("parse_mode")
-	j.WriteString(s.ParseMode)
-	more.More()
-	j.WriteObjectField("reply_to_message_id")
-	j.WriteInt(s.ReplyToMessageID)
-	more.More()
-	j.WriteObjectField("width")
-	j.WriteInt(s.Width)
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		j.WriteObjectField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(j)
+	}
+	if s.Caption.Set {
+		more.More()
+		j.WriteObjectField("caption")
+		s.Caption.WriteJSON(j)
+	}
+	if s.DisableNotification.Set {
+		more.More()
+		j.WriteObjectField("disable_notification")
+		s.DisableNotification.WriteJSON(j)
+	}
+	if s.Duration.Set {
+		more.More()
+		j.WriteObjectField("duration")
+		s.Duration.WriteJSON(j)
+	}
+	if s.Height.Set {
+		more.More()
+		j.WriteObjectField("height")
+		s.Height.WriteJSON(j)
+	}
+	if s.ParseMode.Set {
+		more.More()
+		j.WriteObjectField("parse_mode")
+		s.ParseMode.WriteJSON(j)
+	}
+	if s.ReplyToMessageID.Set {
+		more.More()
+		j.WriteObjectField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(j)
+	}
+	if s.Width.Set {
+		more.More()
+		j.WriteObjectField("width")
+		s.Width.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -2584,29 +3092,61 @@ func (s *SendAnimation) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply = i.ReadBool()
-			return i.Error == nil
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+				return false
+			}
+			return true
 		case "caption":
-			s.Caption = i.ReadString()
-			return i.Error == nil
+			s.Caption.Reset()
+			if err := s.Caption.ReadJSON(i); err != nil {
+				i.ReportError("Field Caption", err.Error())
+				return false
+			}
+			return true
 		case "disable_notification":
-			s.DisableNotification = i.ReadBool()
-			return i.Error == nil
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableNotification", err.Error())
+				return false
+			}
+			return true
 		case "duration":
-			s.Duration = i.ReadInt()
-			return i.Error == nil
+			s.Duration.Reset()
+			if err := s.Duration.ReadJSON(i); err != nil {
+				i.ReportError("Field Duration", err.Error())
+				return false
+			}
+			return true
 		case "height":
-			s.Height = i.ReadInt()
-			return i.Error == nil
+			s.Height.Reset()
+			if err := s.Height.ReadJSON(i); err != nil {
+				i.ReportError("Field Height", err.Error())
+				return false
+			}
+			return true
 		case "parse_mode":
-			s.ParseMode = i.ReadString()
-			return i.Error == nil
+			s.ParseMode.Reset()
+			if err := s.ParseMode.ReadJSON(i); err != nil {
+				i.ReportError("Field ParseMode", err.Error())
+				return false
+			}
+			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID = i.ReadInt()
-			return i.Error == nil
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field ReplyToMessageID", err.Error())
+				return false
+			}
+			return true
 		case "width":
-			s.Width = i.ReadInt()
-			return i.Error == nil
+			s.Width.Reset()
+			if err := s.Width.ReadJSON(i); err != nil {
+				i.ReportError("Field Width", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -2620,30 +3160,46 @@ func (s SendAudio) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("allow_sending_without_reply")
-	j.WriteBool(s.AllowSendingWithoutReply)
-	more.More()
-	j.WriteObjectField("caption")
-	j.WriteString(s.Caption)
-	more.More()
-	j.WriteObjectField("disable_notification")
-	j.WriteBool(s.DisableNotification)
-	more.More()
-	j.WriteObjectField("duration")
-	j.WriteInt(s.Duration)
-	more.More()
-	j.WriteObjectField("parse_mode")
-	j.WriteString(s.ParseMode)
-	more.More()
-	j.WriteObjectField("performer")
-	j.WriteString(s.Performer)
-	more.More()
-	j.WriteObjectField("reply_to_message_id")
-	j.WriteInt(s.ReplyToMessageID)
-	more.More()
-	j.WriteObjectField("title")
-	j.WriteString(s.Title)
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		j.WriteObjectField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(j)
+	}
+	if s.Caption.Set {
+		more.More()
+		j.WriteObjectField("caption")
+		s.Caption.WriteJSON(j)
+	}
+	if s.DisableNotification.Set {
+		more.More()
+		j.WriteObjectField("disable_notification")
+		s.DisableNotification.WriteJSON(j)
+	}
+	if s.Duration.Set {
+		more.More()
+		j.WriteObjectField("duration")
+		s.Duration.WriteJSON(j)
+	}
+	if s.ParseMode.Set {
+		more.More()
+		j.WriteObjectField("parse_mode")
+		s.ParseMode.WriteJSON(j)
+	}
+	if s.Performer.Set {
+		more.More()
+		j.WriteObjectField("performer")
+		s.Performer.WriteJSON(j)
+	}
+	if s.ReplyToMessageID.Set {
+		more.More()
+		j.WriteObjectField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(j)
+	}
+	if s.Title.Set {
+		more.More()
+		j.WriteObjectField("title")
+		s.Title.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -2675,29 +3231,61 @@ func (s *SendAudio) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply = i.ReadBool()
-			return i.Error == nil
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+				return false
+			}
+			return true
 		case "caption":
-			s.Caption = i.ReadString()
-			return i.Error == nil
+			s.Caption.Reset()
+			if err := s.Caption.ReadJSON(i); err != nil {
+				i.ReportError("Field Caption", err.Error())
+				return false
+			}
+			return true
 		case "disable_notification":
-			s.DisableNotification = i.ReadBool()
-			return i.Error == nil
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableNotification", err.Error())
+				return false
+			}
+			return true
 		case "duration":
-			s.Duration = i.ReadInt()
-			return i.Error == nil
+			s.Duration.Reset()
+			if err := s.Duration.ReadJSON(i); err != nil {
+				i.ReportError("Field Duration", err.Error())
+				return false
+			}
+			return true
 		case "parse_mode":
-			s.ParseMode = i.ReadString()
-			return i.Error == nil
+			s.ParseMode.Reset()
+			if err := s.ParseMode.ReadJSON(i); err != nil {
+				i.ReportError("Field ParseMode", err.Error())
+				return false
+			}
+			return true
 		case "performer":
-			s.Performer = i.ReadString()
-			return i.Error == nil
+			s.Performer.Reset()
+			if err := s.Performer.ReadJSON(i); err != nil {
+				i.ReportError("Field Performer", err.Error())
+				return false
+			}
+			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID = i.ReadInt()
-			return i.Error == nil
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field ReplyToMessageID", err.Error())
+				return false
+			}
+			return true
 		case "title":
-			s.Title = i.ReadString()
-			return i.Error == nil
+			s.Title.Reset()
+			if err := s.Title.ReadJSON(i); err != nil {
+				i.ReportError("Field Title", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -2760,27 +3348,37 @@ func (s SendContact) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("allow_sending_without_reply")
-	j.WriteBool(s.AllowSendingWithoutReply)
-	more.More()
-	j.WriteObjectField("disable_notification")
-	j.WriteBool(s.DisableNotification)
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		j.WriteObjectField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(j)
+	}
+	if s.DisableNotification.Set {
+		more.More()
+		j.WriteObjectField("disable_notification")
+		s.DisableNotification.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("first_name")
 	j.WriteString(s.FirstName)
-	more.More()
-	j.WriteObjectField("last_name")
-	j.WriteString(s.LastName)
+	if s.LastName.Set {
+		more.More()
+		j.WriteObjectField("last_name")
+		s.LastName.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("phone_number")
 	j.WriteString(s.PhoneNumber)
-	more.More()
-	j.WriteObjectField("reply_to_message_id")
-	j.WriteInt(s.ReplyToMessageID)
-	more.More()
-	j.WriteObjectField("vcard")
-	j.WriteString(s.Vcard)
+	if s.ReplyToMessageID.Set {
+		more.More()
+		j.WriteObjectField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(j)
+	}
+	if s.Vcard.Set {
+		more.More()
+		j.WriteObjectField("vcard")
+		s.Vcard.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -2812,26 +3410,46 @@ func (s *SendContact) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply = i.ReadBool()
-			return i.Error == nil
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+				return false
+			}
+			return true
 		case "disable_notification":
-			s.DisableNotification = i.ReadBool()
-			return i.Error == nil
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableNotification", err.Error())
+				return false
+			}
+			return true
 		case "first_name":
 			s.FirstName = i.ReadString()
 			return i.Error == nil
 		case "last_name":
-			s.LastName = i.ReadString()
-			return i.Error == nil
+			s.LastName.Reset()
+			if err := s.LastName.ReadJSON(i); err != nil {
+				i.ReportError("Field LastName", err.Error())
+				return false
+			}
+			return true
 		case "phone_number":
 			s.PhoneNumber = i.ReadString()
 			return i.Error == nil
 		case "reply_to_message_id":
-			s.ReplyToMessageID = i.ReadInt()
-			return i.Error == nil
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field ReplyToMessageID", err.Error())
+				return false
+			}
+			return true
 		case "vcard":
-			s.Vcard = i.ReadString()
-			return i.Error == nil
+			s.Vcard.Reset()
+			if err := s.Vcard.ReadJSON(i); err != nil {
+				i.ReportError("Field Vcard", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -2845,18 +3463,26 @@ func (s SendDice) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("allow_sending_without_reply")
-	j.WriteBool(s.AllowSendingWithoutReply)
-	more.More()
-	j.WriteObjectField("disable_notification")
-	j.WriteBool(s.DisableNotification)
-	more.More()
-	j.WriteObjectField("emoji")
-	j.WriteString(s.Emoji)
-	more.More()
-	j.WriteObjectField("reply_to_message_id")
-	j.WriteInt(s.ReplyToMessageID)
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		j.WriteObjectField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(j)
+	}
+	if s.DisableNotification.Set {
+		more.More()
+		j.WriteObjectField("disable_notification")
+		s.DisableNotification.WriteJSON(j)
+	}
+	if s.Emoji.Set {
+		more.More()
+		j.WriteObjectField("emoji")
+		s.Emoji.WriteJSON(j)
+	}
+	if s.ReplyToMessageID.Set {
+		more.More()
+		j.WriteObjectField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -2888,17 +3514,33 @@ func (s *SendDice) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply = i.ReadBool()
-			return i.Error == nil
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+				return false
+			}
+			return true
 		case "disable_notification":
-			s.DisableNotification = i.ReadBool()
-			return i.Error == nil
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableNotification", err.Error())
+				return false
+			}
+			return true
 		case "emoji":
-			s.Emoji = i.ReadString()
-			return i.Error == nil
+			s.Emoji.Reset()
+			if err := s.Emoji.ReadJSON(i); err != nil {
+				i.ReportError("Field Emoji", err.Error())
+				return false
+			}
+			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID = i.ReadInt()
-			return i.Error == nil
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field ReplyToMessageID", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -2912,24 +3554,36 @@ func (s SendDocument) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("allow_sending_without_reply")
-	j.WriteBool(s.AllowSendingWithoutReply)
-	more.More()
-	j.WriteObjectField("caption")
-	j.WriteString(s.Caption)
-	more.More()
-	j.WriteObjectField("disable_content_type_detection")
-	j.WriteBool(s.DisableContentTypeDetection)
-	more.More()
-	j.WriteObjectField("disable_notification")
-	j.WriteBool(s.DisableNotification)
-	more.More()
-	j.WriteObjectField("parse_mode")
-	j.WriteString(s.ParseMode)
-	more.More()
-	j.WriteObjectField("reply_to_message_id")
-	j.WriteInt(s.ReplyToMessageID)
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		j.WriteObjectField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(j)
+	}
+	if s.Caption.Set {
+		more.More()
+		j.WriteObjectField("caption")
+		s.Caption.WriteJSON(j)
+	}
+	if s.DisableContentTypeDetection.Set {
+		more.More()
+		j.WriteObjectField("disable_content_type_detection")
+		s.DisableContentTypeDetection.WriteJSON(j)
+	}
+	if s.DisableNotification.Set {
+		more.More()
+		j.WriteObjectField("disable_notification")
+		s.DisableNotification.WriteJSON(j)
+	}
+	if s.ParseMode.Set {
+		more.More()
+		j.WriteObjectField("parse_mode")
+		s.ParseMode.WriteJSON(j)
+	}
+	if s.ReplyToMessageID.Set {
+		more.More()
+		j.WriteObjectField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -2961,23 +3615,47 @@ func (s *SendDocument) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply = i.ReadBool()
-			return i.Error == nil
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+				return false
+			}
+			return true
 		case "caption":
-			s.Caption = i.ReadString()
-			return i.Error == nil
+			s.Caption.Reset()
+			if err := s.Caption.ReadJSON(i); err != nil {
+				i.ReportError("Field Caption", err.Error())
+				return false
+			}
+			return true
 		case "disable_content_type_detection":
-			s.DisableContentTypeDetection = i.ReadBool()
-			return i.Error == nil
+			s.DisableContentTypeDetection.Reset()
+			if err := s.DisableContentTypeDetection.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableContentTypeDetection", err.Error())
+				return false
+			}
+			return true
 		case "disable_notification":
-			s.DisableNotification = i.ReadBool()
-			return i.Error == nil
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableNotification", err.Error())
+				return false
+			}
+			return true
 		case "parse_mode":
-			s.ParseMode = i.ReadString()
-			return i.Error == nil
+			s.ParseMode.Reset()
+			if err := s.ParseMode.ReadJSON(i); err != nil {
+				i.ReportError("Field ParseMode", err.Error())
+				return false
+			}
+			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID = i.ReadInt()
-			return i.Error == nil
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field ReplyToMessageID", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -2991,22 +3669,32 @@ func (s SendGame) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("allow_sending_without_reply")
-	j.WriteBool(s.AllowSendingWithoutReply)
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		j.WriteObjectField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("chat_id")
 	j.WriteInt(s.ChatID)
-	more.More()
-	j.WriteObjectField("disable_notification")
-	j.WriteBool(s.DisableNotification)
+	if s.DisableNotification.Set {
+		more.More()
+		j.WriteObjectField("disable_notification")
+		s.DisableNotification.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("game_short_name")
 	j.WriteString(s.GameShortName)
-	// Unsupported kind "alias" for field "reply_markup".
-	more.More()
-	j.WriteObjectField("reply_to_message_id")
-	j.WriteInt(s.ReplyToMessageID)
+	if s.ReplyMarkup != nil {
+		more.More()
+		j.WriteObjectField("reply_markup")
+		s.ReplyMarkup.WriteJSON(j)
+	}
+	if s.ReplyToMessageID.Set {
+		more.More()
+		j.WriteObjectField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -3038,24 +3726,36 @@ func (s *SendGame) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply = i.ReadBool()
-			return i.Error == nil
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+				return false
+			}
+			return true
 		case "chat_id":
 			s.ChatID = i.ReadInt()
 			return i.Error == nil
 		case "disable_notification":
-			s.DisableNotification = i.ReadBool()
-			return i.Error == nil
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableNotification", err.Error())
+				return false
+			}
+			return true
 		case "game_short_name":
 			s.GameShortName = i.ReadString()
 			return i.Error == nil
 		case "reply_markup":
-			// Unsupported kind "alias" for field "ReplyMarkup".
+			// Unsupported kind "pointer" for field "ReplyMarkup".
 			i.Skip()
 			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID = i.ReadInt()
-			return i.Error == nil
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field ReplyToMessageID", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -3069,70 +3769,108 @@ func (s SendInvoice) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("allow_sending_without_reply")
-	j.WriteBool(s.AllowSendingWithoutReply)
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		j.WriteObjectField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("currency")
 	j.WriteString(s.Currency)
 	more.More()
 	j.WriteObjectField("description")
 	j.WriteString(s.Description)
-	more.More()
-	j.WriteObjectField("disable_notification")
-	j.WriteBool(s.DisableNotification)
-	more.More()
-	j.WriteObjectField("is_flexible")
-	j.WriteBool(s.IsFlexible)
-	more.More()
-	j.WriteObjectField("max_tip_amount")
-	j.WriteInt(s.MaxTipAmount)
-	more.More()
-	j.WriteObjectField("need_email")
-	j.WriteBool(s.NeedEmail)
-	more.More()
-	j.WriteObjectField("need_name")
-	j.WriteBool(s.NeedName)
-	more.More()
-	j.WriteObjectField("need_phone_number")
-	j.WriteBool(s.NeedPhoneNumber)
-	more.More()
-	j.WriteObjectField("need_shipping_address")
-	j.WriteBool(s.NeedShippingAddress)
+	if s.DisableNotification.Set {
+		more.More()
+		j.WriteObjectField("disable_notification")
+		s.DisableNotification.WriteJSON(j)
+	}
+	if s.IsFlexible.Set {
+		more.More()
+		j.WriteObjectField("is_flexible")
+		s.IsFlexible.WriteJSON(j)
+	}
+	if s.MaxTipAmount.Set {
+		more.More()
+		j.WriteObjectField("max_tip_amount")
+		s.MaxTipAmount.WriteJSON(j)
+	}
+	if s.NeedEmail.Set {
+		more.More()
+		j.WriteObjectField("need_email")
+		s.NeedEmail.WriteJSON(j)
+	}
+	if s.NeedName.Set {
+		more.More()
+		j.WriteObjectField("need_name")
+		s.NeedName.WriteJSON(j)
+	}
+	if s.NeedPhoneNumber.Set {
+		more.More()
+		j.WriteObjectField("need_phone_number")
+		s.NeedPhoneNumber.WriteJSON(j)
+	}
+	if s.NeedShippingAddress.Set {
+		more.More()
+		j.WriteObjectField("need_shipping_address")
+		s.NeedShippingAddress.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("payload")
 	j.WriteString(s.Payload)
-	more.More()
-	j.WriteObjectField("photo_height")
-	j.WriteInt(s.PhotoHeight)
-	more.More()
-	j.WriteObjectField("photo_size")
-	j.WriteInt(s.PhotoSize)
-	more.More()
-	j.WriteObjectField("photo_url")
-	j.WriteString(s.PhotoURL)
-	more.More()
-	j.WriteObjectField("photo_width")
-	j.WriteInt(s.PhotoWidth)
-	more.More()
-	j.WriteObjectField("provider_data")
-	j.WriteString(s.ProviderData)
+	if s.PhotoHeight.Set {
+		more.More()
+		j.WriteObjectField("photo_height")
+		s.PhotoHeight.WriteJSON(j)
+	}
+	if s.PhotoSize.Set {
+		more.More()
+		j.WriteObjectField("photo_size")
+		s.PhotoSize.WriteJSON(j)
+	}
+	if s.PhotoURL.Set {
+		more.More()
+		j.WriteObjectField("photo_url")
+		s.PhotoURL.WriteJSON(j)
+	}
+	if s.PhotoWidth.Set {
+		more.More()
+		j.WriteObjectField("photo_width")
+		s.PhotoWidth.WriteJSON(j)
+	}
+	if s.ProviderData.Set {
+		more.More()
+		j.WriteObjectField("provider_data")
+		s.ProviderData.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("provider_token")
 	j.WriteString(s.ProviderToken)
-	// Unsupported kind "alias" for field "reply_markup".
-	more.More()
-	j.WriteObjectField("reply_to_message_id")
-	j.WriteInt(s.ReplyToMessageID)
-	more.More()
-	j.WriteObjectField("send_email_to_provider")
-	j.WriteBool(s.SendEmailToProvider)
-	more.More()
-	j.WriteObjectField("send_phone_number_to_provider")
-	j.WriteBool(s.SendPhoneNumberToProvider)
-	more.More()
-	j.WriteObjectField("start_parameter")
-	j.WriteString(s.StartParameter)
+	if s.ReplyMarkup != nil {
+		more.More()
+		j.WriteObjectField("reply_markup")
+		s.ReplyMarkup.WriteJSON(j)
+	}
+	if s.ReplyToMessageID.Set {
+		more.More()
+		j.WriteObjectField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(j)
+	}
+	if s.SendEmailToProvider.Set {
+		more.More()
+		j.WriteObjectField("send_email_to_provider")
+		s.SendEmailToProvider.WriteJSON(j)
+	}
+	if s.SendPhoneNumberToProvider.Set {
+		more.More()
+		j.WriteObjectField("send_phone_number_to_provider")
+		s.SendPhoneNumberToProvider.WriteJSON(j)
+	}
+	if s.StartParameter.Set {
+		more.More()
+		j.WriteObjectField("start_parameter")
+		s.StartParameter.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("title")
 	j.WriteString(s.Title)
@@ -3167,8 +3905,12 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply = i.ReadBool()
-			return i.Error == nil
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+				return false
+			}
+			return true
 		case "currency":
 			s.Currency = i.ReadString()
 			return i.Error == nil
@@ -3176,63 +3918,127 @@ func (s *SendInvoice) ReadJSON(i *json.Iterator) error {
 			s.Description = i.ReadString()
 			return i.Error == nil
 		case "disable_notification":
-			s.DisableNotification = i.ReadBool()
-			return i.Error == nil
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableNotification", err.Error())
+				return false
+			}
+			return true
 		case "is_flexible":
-			s.IsFlexible = i.ReadBool()
-			return i.Error == nil
+			s.IsFlexible.Reset()
+			if err := s.IsFlexible.ReadJSON(i); err != nil {
+				i.ReportError("Field IsFlexible", err.Error())
+				return false
+			}
+			return true
 		case "max_tip_amount":
-			s.MaxTipAmount = i.ReadInt()
-			return i.Error == nil
+			s.MaxTipAmount.Reset()
+			if err := s.MaxTipAmount.ReadJSON(i); err != nil {
+				i.ReportError("Field MaxTipAmount", err.Error())
+				return false
+			}
+			return true
 		case "need_email":
-			s.NeedEmail = i.ReadBool()
-			return i.Error == nil
+			s.NeedEmail.Reset()
+			if err := s.NeedEmail.ReadJSON(i); err != nil {
+				i.ReportError("Field NeedEmail", err.Error())
+				return false
+			}
+			return true
 		case "need_name":
-			s.NeedName = i.ReadBool()
-			return i.Error == nil
+			s.NeedName.Reset()
+			if err := s.NeedName.ReadJSON(i); err != nil {
+				i.ReportError("Field NeedName", err.Error())
+				return false
+			}
+			return true
 		case "need_phone_number":
-			s.NeedPhoneNumber = i.ReadBool()
-			return i.Error == nil
+			s.NeedPhoneNumber.Reset()
+			if err := s.NeedPhoneNumber.ReadJSON(i); err != nil {
+				i.ReportError("Field NeedPhoneNumber", err.Error())
+				return false
+			}
+			return true
 		case "need_shipping_address":
-			s.NeedShippingAddress = i.ReadBool()
-			return i.Error == nil
+			s.NeedShippingAddress.Reset()
+			if err := s.NeedShippingAddress.ReadJSON(i); err != nil {
+				i.ReportError("Field NeedShippingAddress", err.Error())
+				return false
+			}
+			return true
 		case "payload":
 			s.Payload = i.ReadString()
 			return i.Error == nil
 		case "photo_height":
-			s.PhotoHeight = i.ReadInt()
-			return i.Error == nil
+			s.PhotoHeight.Reset()
+			if err := s.PhotoHeight.ReadJSON(i); err != nil {
+				i.ReportError("Field PhotoHeight", err.Error())
+				return false
+			}
+			return true
 		case "photo_size":
-			s.PhotoSize = i.ReadInt()
-			return i.Error == nil
+			s.PhotoSize.Reset()
+			if err := s.PhotoSize.ReadJSON(i); err != nil {
+				i.ReportError("Field PhotoSize", err.Error())
+				return false
+			}
+			return true
 		case "photo_url":
-			s.PhotoURL = i.ReadString()
-			return i.Error == nil
+			s.PhotoURL.Reset()
+			if err := s.PhotoURL.ReadJSON(i); err != nil {
+				i.ReportError("Field PhotoURL", err.Error())
+				return false
+			}
+			return true
 		case "photo_width":
-			s.PhotoWidth = i.ReadInt()
-			return i.Error == nil
+			s.PhotoWidth.Reset()
+			if err := s.PhotoWidth.ReadJSON(i); err != nil {
+				i.ReportError("Field PhotoWidth", err.Error())
+				return false
+			}
+			return true
 		case "provider_data":
-			s.ProviderData = i.ReadString()
-			return i.Error == nil
+			s.ProviderData.Reset()
+			if err := s.ProviderData.ReadJSON(i); err != nil {
+				i.ReportError("Field ProviderData", err.Error())
+				return false
+			}
+			return true
 		case "provider_token":
 			s.ProviderToken = i.ReadString()
 			return i.Error == nil
 		case "reply_markup":
-			// Unsupported kind "alias" for field "ReplyMarkup".
+			// Unsupported kind "pointer" for field "ReplyMarkup".
 			i.Skip()
 			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID = i.ReadInt()
-			return i.Error == nil
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field ReplyToMessageID", err.Error())
+				return false
+			}
+			return true
 		case "send_email_to_provider":
-			s.SendEmailToProvider = i.ReadBool()
-			return i.Error == nil
+			s.SendEmailToProvider.Reset()
+			if err := s.SendEmailToProvider.ReadJSON(i); err != nil {
+				i.ReportError("Field SendEmailToProvider", err.Error())
+				return false
+			}
+			return true
 		case "send_phone_number_to_provider":
-			s.SendPhoneNumberToProvider = i.ReadBool()
-			return i.Error == nil
+			s.SendPhoneNumberToProvider.Reset()
+			if err := s.SendPhoneNumberToProvider.ReadJSON(i); err != nil {
+				i.ReportError("Field SendPhoneNumberToProvider", err.Error())
+				return false
+			}
+			return true
 		case "start_parameter":
-			s.StartParameter = i.ReadString()
-			return i.Error == nil
+			s.StartParameter.Reset()
+			if err := s.StartParameter.ReadJSON(i); err != nil {
+				i.ReportError("Field StartParameter", err.Error())
+				return false
+			}
+			return true
 		case "title":
 			s.Title = i.ReadString()
 			return i.Error == nil
@@ -3249,33 +4055,47 @@ func (s SendLocation) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("allow_sending_without_reply")
-	j.WriteBool(s.AllowSendingWithoutReply)
-	more.More()
-	j.WriteObjectField("disable_notification")
-	j.WriteBool(s.DisableNotification)
-	more.More()
-	j.WriteObjectField("heading")
-	j.WriteInt(s.Heading)
-	more.More()
-	j.WriteObjectField("horizontal_accuracy")
-	j.WriteFloat64(s.HorizontalAccuracy)
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		j.WriteObjectField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(j)
+	}
+	if s.DisableNotification.Set {
+		more.More()
+		j.WriteObjectField("disable_notification")
+		s.DisableNotification.WriteJSON(j)
+	}
+	if s.Heading.Set {
+		more.More()
+		j.WriteObjectField("heading")
+		s.Heading.WriteJSON(j)
+	}
+	if s.HorizontalAccuracy.Set {
+		more.More()
+		j.WriteObjectField("horizontal_accuracy")
+		s.HorizontalAccuracy.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("latitude")
 	j.WriteFloat64(s.Latitude)
-	more.More()
-	j.WriteObjectField("live_period")
-	j.WriteInt(s.LivePeriod)
+	if s.LivePeriod.Set {
+		more.More()
+		j.WriteObjectField("live_period")
+		s.LivePeriod.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("longitude")
 	j.WriteFloat64(s.Longitude)
-	more.More()
-	j.WriteObjectField("proximity_alert_radius")
-	j.WriteInt(s.ProximityAlertRadius)
-	more.More()
-	j.WriteObjectField("reply_to_message_id")
-	j.WriteInt(s.ReplyToMessageID)
+	if s.ProximityAlertRadius.Set {
+		more.More()
+		j.WriteObjectField("proximity_alert_radius")
+		s.ProximityAlertRadius.WriteJSON(j)
+	}
+	if s.ReplyToMessageID.Set {
+		more.More()
+		j.WriteObjectField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -3307,32 +4127,60 @@ func (s *SendLocation) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply = i.ReadBool()
-			return i.Error == nil
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+				return false
+			}
+			return true
 		case "disable_notification":
-			s.DisableNotification = i.ReadBool()
-			return i.Error == nil
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableNotification", err.Error())
+				return false
+			}
+			return true
 		case "heading":
-			s.Heading = i.ReadInt()
-			return i.Error == nil
+			s.Heading.Reset()
+			if err := s.Heading.ReadJSON(i); err != nil {
+				i.ReportError("Field Heading", err.Error())
+				return false
+			}
+			return true
 		case "horizontal_accuracy":
-			s.HorizontalAccuracy = i.ReadFloat64()
-			return i.Error == nil
+			s.HorizontalAccuracy.Reset()
+			if err := s.HorizontalAccuracy.ReadJSON(i); err != nil {
+				i.ReportError("Field HorizontalAccuracy", err.Error())
+				return false
+			}
+			return true
 		case "latitude":
 			s.Latitude = i.ReadFloat64()
 			return i.Error == nil
 		case "live_period":
-			s.LivePeriod = i.ReadInt()
-			return i.Error == nil
+			s.LivePeriod.Reset()
+			if err := s.LivePeriod.ReadJSON(i); err != nil {
+				i.ReportError("Field LivePeriod", err.Error())
+				return false
+			}
+			return true
 		case "longitude":
 			s.Longitude = i.ReadFloat64()
 			return i.Error == nil
 		case "proximity_alert_radius":
-			s.ProximityAlertRadius = i.ReadInt()
-			return i.Error == nil
+			s.ProximityAlertRadius.Reset()
+			if err := s.ProximityAlertRadius.ReadJSON(i); err != nil {
+				i.ReportError("Field ProximityAlertRadius", err.Error())
+				return false
+			}
+			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID = i.ReadInt()
-			return i.Error == nil
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field ReplyToMessageID", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -3346,15 +4194,21 @@ func (s SendMediaGroup) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("allow_sending_without_reply")
-	j.WriteBool(s.AllowSendingWithoutReply)
-	more.More()
-	j.WriteObjectField("disable_notification")
-	j.WriteBool(s.DisableNotification)
-	more.More()
-	j.WriteObjectField("reply_to_message_id")
-	j.WriteInt(s.ReplyToMessageID)
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		j.WriteObjectField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(j)
+	}
+	if s.DisableNotification.Set {
+		more.More()
+		j.WriteObjectField("disable_notification")
+		s.DisableNotification.WriteJSON(j)
+	}
+	if s.ReplyToMessageID.Set {
+		more.More()
+		j.WriteObjectField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -3386,14 +4240,26 @@ func (s *SendMediaGroup) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply = i.ReadBool()
-			return i.Error == nil
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+				return false
+			}
+			return true
 		case "disable_notification":
-			s.DisableNotification = i.ReadBool()
-			return i.Error == nil
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableNotification", err.Error())
+				return false
+			}
+			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID = i.ReadInt()
-			return i.Error == nil
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field ReplyToMessageID", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -3407,21 +4273,31 @@ func (s SendMessage) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("allow_sending_without_reply")
-	j.WriteBool(s.AllowSendingWithoutReply)
-	more.More()
-	j.WriteObjectField("disable_notification")
-	j.WriteBool(s.DisableNotification)
-	more.More()
-	j.WriteObjectField("disable_web_page_preview")
-	j.WriteBool(s.DisableWebPagePreview)
-	more.More()
-	j.WriteObjectField("parse_mode")
-	j.WriteString(s.ParseMode)
-	more.More()
-	j.WriteObjectField("reply_to_message_id")
-	j.WriteInt(s.ReplyToMessageID)
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		j.WriteObjectField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(j)
+	}
+	if s.DisableNotification.Set {
+		more.More()
+		j.WriteObjectField("disable_notification")
+		s.DisableNotification.WriteJSON(j)
+	}
+	if s.DisableWebPagePreview.Set {
+		more.More()
+		j.WriteObjectField("disable_web_page_preview")
+		s.DisableWebPagePreview.WriteJSON(j)
+	}
+	if s.ParseMode.Set {
+		more.More()
+		j.WriteObjectField("parse_mode")
+		s.ParseMode.WriteJSON(j)
+	}
+	if s.ReplyToMessageID.Set {
+		more.More()
+		j.WriteObjectField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("text")
 	j.WriteString(s.Text)
@@ -3456,20 +4332,40 @@ func (s *SendMessage) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply = i.ReadBool()
-			return i.Error == nil
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+				return false
+			}
+			return true
 		case "disable_notification":
-			s.DisableNotification = i.ReadBool()
-			return i.Error == nil
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableNotification", err.Error())
+				return false
+			}
+			return true
 		case "disable_web_page_preview":
-			s.DisableWebPagePreview = i.ReadBool()
-			return i.Error == nil
+			s.DisableWebPagePreview.Reset()
+			if err := s.DisableWebPagePreview.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableWebPagePreview", err.Error())
+				return false
+			}
+			return true
 		case "parse_mode":
-			s.ParseMode = i.ReadString()
-			return i.Error == nil
+			s.ParseMode.Reset()
+			if err := s.ParseMode.ReadJSON(i); err != nil {
+				i.ReportError("Field ParseMode", err.Error())
+				return false
+			}
+			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID = i.ReadInt()
-			return i.Error == nil
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field ReplyToMessageID", err.Error())
+				return false
+			}
+			return true
 		case "text":
 			s.Text = i.ReadString()
 			return i.Error == nil
@@ -3486,21 +4382,31 @@ func (s SendPhoto) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("allow_sending_without_reply")
-	j.WriteBool(s.AllowSendingWithoutReply)
-	more.More()
-	j.WriteObjectField("caption")
-	j.WriteString(s.Caption)
-	more.More()
-	j.WriteObjectField("disable_notification")
-	j.WriteBool(s.DisableNotification)
-	more.More()
-	j.WriteObjectField("parse_mode")
-	j.WriteString(s.ParseMode)
-	more.More()
-	j.WriteObjectField("reply_to_message_id")
-	j.WriteInt(s.ReplyToMessageID)
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		j.WriteObjectField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(j)
+	}
+	if s.Caption.Set {
+		more.More()
+		j.WriteObjectField("caption")
+		s.Caption.WriteJSON(j)
+	}
+	if s.DisableNotification.Set {
+		more.More()
+		j.WriteObjectField("disable_notification")
+		s.DisableNotification.WriteJSON(j)
+	}
+	if s.ParseMode.Set {
+		more.More()
+		j.WriteObjectField("parse_mode")
+		s.ParseMode.WriteJSON(j)
+	}
+	if s.ReplyToMessageID.Set {
+		more.More()
+		j.WriteObjectField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -3532,20 +4438,40 @@ func (s *SendPhoto) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply = i.ReadBool()
-			return i.Error == nil
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+				return false
+			}
+			return true
 		case "caption":
-			s.Caption = i.ReadString()
-			return i.Error == nil
+			s.Caption.Reset()
+			if err := s.Caption.ReadJSON(i); err != nil {
+				i.ReportError("Field Caption", err.Error())
+				return false
+			}
+			return true
 		case "disable_notification":
-			s.DisableNotification = i.ReadBool()
-			return i.Error == nil
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableNotification", err.Error())
+				return false
+			}
+			return true
 		case "parse_mode":
-			s.ParseMode = i.ReadString()
-			return i.Error == nil
+			s.ParseMode.Reset()
+			if err := s.ParseMode.ReadJSON(i); err != nil {
+				i.ReportError("Field ParseMode", err.Error())
+				return false
+			}
+			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID = i.ReadInt()
-			return i.Error == nil
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field ReplyToMessageID", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -3559,45 +4485,69 @@ func (s SendPoll) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("allow_sending_without_reply")
-	j.WriteBool(s.AllowSendingWithoutReply)
-	more.More()
-	j.WriteObjectField("allows_multiple_answers")
-	j.WriteBool(s.AllowsMultipleAnswers)
-	more.More()
-	j.WriteObjectField("close_date")
-	j.WriteInt(s.CloseDate)
-	more.More()
-	j.WriteObjectField("correct_option_id")
-	j.WriteInt(s.CorrectOptionID)
-	more.More()
-	j.WriteObjectField("disable_notification")
-	j.WriteBool(s.DisableNotification)
-	more.More()
-	j.WriteObjectField("explanation")
-	j.WriteString(s.Explanation)
-	more.More()
-	j.WriteObjectField("explanation_parse_mode")
-	j.WriteString(s.ExplanationParseMode)
-	more.More()
-	j.WriteObjectField("is_anonymous")
-	j.WriteBool(s.IsAnonymous)
-	more.More()
-	j.WriteObjectField("is_closed")
-	j.WriteBool(s.IsClosed)
-	more.More()
-	j.WriteObjectField("open_period")
-	j.WriteInt(s.OpenPeriod)
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		j.WriteObjectField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(j)
+	}
+	if s.AllowsMultipleAnswers.Set {
+		more.More()
+		j.WriteObjectField("allows_multiple_answers")
+		s.AllowsMultipleAnswers.WriteJSON(j)
+	}
+	if s.CloseDate.Set {
+		more.More()
+		j.WriteObjectField("close_date")
+		s.CloseDate.WriteJSON(j)
+	}
+	if s.CorrectOptionID.Set {
+		more.More()
+		j.WriteObjectField("correct_option_id")
+		s.CorrectOptionID.WriteJSON(j)
+	}
+	if s.DisableNotification.Set {
+		more.More()
+		j.WriteObjectField("disable_notification")
+		s.DisableNotification.WriteJSON(j)
+	}
+	if s.Explanation.Set {
+		more.More()
+		j.WriteObjectField("explanation")
+		s.Explanation.WriteJSON(j)
+	}
+	if s.ExplanationParseMode.Set {
+		more.More()
+		j.WriteObjectField("explanation_parse_mode")
+		s.ExplanationParseMode.WriteJSON(j)
+	}
+	if s.IsAnonymous.Set {
+		more.More()
+		j.WriteObjectField("is_anonymous")
+		s.IsAnonymous.WriteJSON(j)
+	}
+	if s.IsClosed.Set {
+		more.More()
+		j.WriteObjectField("is_closed")
+		s.IsClosed.WriteJSON(j)
+	}
+	if s.OpenPeriod.Set {
+		more.More()
+		j.WriteObjectField("open_period")
+		s.OpenPeriod.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("question")
 	j.WriteString(s.Question)
-	more.More()
-	j.WriteObjectField("reply_to_message_id")
-	j.WriteInt(s.ReplyToMessageID)
-	more.More()
-	j.WriteObjectField("type")
-	j.WriteString(s.Type)
+	if s.ReplyToMessageID.Set {
+		more.More()
+		j.WriteObjectField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(j)
+	}
+	if s.Type.Set {
+		more.More()
+		j.WriteObjectField("type")
+		s.Type.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -3629,44 +4579,92 @@ func (s *SendPoll) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply = i.ReadBool()
-			return i.Error == nil
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+				return false
+			}
+			return true
 		case "allows_multiple_answers":
-			s.AllowsMultipleAnswers = i.ReadBool()
-			return i.Error == nil
+			s.AllowsMultipleAnswers.Reset()
+			if err := s.AllowsMultipleAnswers.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowsMultipleAnswers", err.Error())
+				return false
+			}
+			return true
 		case "close_date":
-			s.CloseDate = i.ReadInt()
-			return i.Error == nil
+			s.CloseDate.Reset()
+			if err := s.CloseDate.ReadJSON(i); err != nil {
+				i.ReportError("Field CloseDate", err.Error())
+				return false
+			}
+			return true
 		case "correct_option_id":
-			s.CorrectOptionID = i.ReadInt()
-			return i.Error == nil
+			s.CorrectOptionID.Reset()
+			if err := s.CorrectOptionID.ReadJSON(i); err != nil {
+				i.ReportError("Field CorrectOptionID", err.Error())
+				return false
+			}
+			return true
 		case "disable_notification":
-			s.DisableNotification = i.ReadBool()
-			return i.Error == nil
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableNotification", err.Error())
+				return false
+			}
+			return true
 		case "explanation":
-			s.Explanation = i.ReadString()
-			return i.Error == nil
+			s.Explanation.Reset()
+			if err := s.Explanation.ReadJSON(i); err != nil {
+				i.ReportError("Field Explanation", err.Error())
+				return false
+			}
+			return true
 		case "explanation_parse_mode":
-			s.ExplanationParseMode = i.ReadString()
-			return i.Error == nil
+			s.ExplanationParseMode.Reset()
+			if err := s.ExplanationParseMode.ReadJSON(i); err != nil {
+				i.ReportError("Field ExplanationParseMode", err.Error())
+				return false
+			}
+			return true
 		case "is_anonymous":
-			s.IsAnonymous = i.ReadBool()
-			return i.Error == nil
+			s.IsAnonymous.Reset()
+			if err := s.IsAnonymous.ReadJSON(i); err != nil {
+				i.ReportError("Field IsAnonymous", err.Error())
+				return false
+			}
+			return true
 		case "is_closed":
-			s.IsClosed = i.ReadBool()
-			return i.Error == nil
+			s.IsClosed.Reset()
+			if err := s.IsClosed.ReadJSON(i); err != nil {
+				i.ReportError("Field IsClosed", err.Error())
+				return false
+			}
+			return true
 		case "open_period":
-			s.OpenPeriod = i.ReadInt()
-			return i.Error == nil
+			s.OpenPeriod.Reset()
+			if err := s.OpenPeriod.ReadJSON(i); err != nil {
+				i.ReportError("Field OpenPeriod", err.Error())
+				return false
+			}
+			return true
 		case "question":
 			s.Question = i.ReadString()
 			return i.Error == nil
 		case "reply_to_message_id":
-			s.ReplyToMessageID = i.ReadInt()
-			return i.Error == nil
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field ReplyToMessageID", err.Error())
+				return false
+			}
+			return true
 		case "type":
-			s.Type = i.ReadString()
-			return i.Error == nil
+			s.Type.Reset()
+			if err := s.Type.ReadJSON(i); err != nil {
+				i.ReportError("Field Type", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -3680,15 +4678,21 @@ func (s SendSticker) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("allow_sending_without_reply")
-	j.WriteBool(s.AllowSendingWithoutReply)
-	more.More()
-	j.WriteObjectField("disable_notification")
-	j.WriteBool(s.DisableNotification)
-	more.More()
-	j.WriteObjectField("reply_to_message_id")
-	j.WriteInt(s.ReplyToMessageID)
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		j.WriteObjectField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(j)
+	}
+	if s.DisableNotification.Set {
+		more.More()
+		j.WriteObjectField("disable_notification")
+		s.DisableNotification.WriteJSON(j)
+	}
+	if s.ReplyToMessageID.Set {
+		more.More()
+		j.WriteObjectField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -3720,14 +4724,26 @@ func (s *SendSticker) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply = i.ReadBool()
-			return i.Error == nil
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+				return false
+			}
+			return true
 		case "disable_notification":
-			s.DisableNotification = i.ReadBool()
-			return i.Error == nil
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableNotification", err.Error())
+				return false
+			}
+			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID = i.ReadInt()
-			return i.Error == nil
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field ReplyToMessageID", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -3744,33 +4760,47 @@ func (s SendVenue) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("address")
 	j.WriteString(s.Address)
-	more.More()
-	j.WriteObjectField("allow_sending_without_reply")
-	j.WriteBool(s.AllowSendingWithoutReply)
-	more.More()
-	j.WriteObjectField("disable_notification")
-	j.WriteBool(s.DisableNotification)
-	more.More()
-	j.WriteObjectField("foursquare_id")
-	j.WriteString(s.FoursquareID)
-	more.More()
-	j.WriteObjectField("foursquare_type")
-	j.WriteString(s.FoursquareType)
-	more.More()
-	j.WriteObjectField("google_place_id")
-	j.WriteString(s.GooglePlaceID)
-	more.More()
-	j.WriteObjectField("google_place_type")
-	j.WriteString(s.GooglePlaceType)
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		j.WriteObjectField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(j)
+	}
+	if s.DisableNotification.Set {
+		more.More()
+		j.WriteObjectField("disable_notification")
+		s.DisableNotification.WriteJSON(j)
+	}
+	if s.FoursquareID.Set {
+		more.More()
+		j.WriteObjectField("foursquare_id")
+		s.FoursquareID.WriteJSON(j)
+	}
+	if s.FoursquareType.Set {
+		more.More()
+		j.WriteObjectField("foursquare_type")
+		s.FoursquareType.WriteJSON(j)
+	}
+	if s.GooglePlaceID.Set {
+		more.More()
+		j.WriteObjectField("google_place_id")
+		s.GooglePlaceID.WriteJSON(j)
+	}
+	if s.GooglePlaceType.Set {
+		more.More()
+		j.WriteObjectField("google_place_type")
+		s.GooglePlaceType.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("latitude")
 	j.WriteFloat64(s.Latitude)
 	more.More()
 	j.WriteObjectField("longitude")
 	j.WriteFloat64(s.Longitude)
-	more.More()
-	j.WriteObjectField("reply_to_message_id")
-	j.WriteInt(s.ReplyToMessageID)
+	if s.ReplyToMessageID.Set {
+		more.More()
+		j.WriteObjectField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("title")
 	j.WriteString(s.Title)
@@ -3808,23 +4838,47 @@ func (s *SendVenue) ReadJSON(i *json.Iterator) error {
 			s.Address = i.ReadString()
 			return i.Error == nil
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply = i.ReadBool()
-			return i.Error == nil
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+				return false
+			}
+			return true
 		case "disable_notification":
-			s.DisableNotification = i.ReadBool()
-			return i.Error == nil
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableNotification", err.Error())
+				return false
+			}
+			return true
 		case "foursquare_id":
-			s.FoursquareID = i.ReadString()
-			return i.Error == nil
+			s.FoursquareID.Reset()
+			if err := s.FoursquareID.ReadJSON(i); err != nil {
+				i.ReportError("Field FoursquareID", err.Error())
+				return false
+			}
+			return true
 		case "foursquare_type":
-			s.FoursquareType = i.ReadString()
-			return i.Error == nil
+			s.FoursquareType.Reset()
+			if err := s.FoursquareType.ReadJSON(i); err != nil {
+				i.ReportError("Field FoursquareType", err.Error())
+				return false
+			}
+			return true
 		case "google_place_id":
-			s.GooglePlaceID = i.ReadString()
-			return i.Error == nil
+			s.GooglePlaceID.Reset()
+			if err := s.GooglePlaceID.ReadJSON(i); err != nil {
+				i.ReportError("Field GooglePlaceID", err.Error())
+				return false
+			}
+			return true
 		case "google_place_type":
-			s.GooglePlaceType = i.ReadString()
-			return i.Error == nil
+			s.GooglePlaceType.Reset()
+			if err := s.GooglePlaceType.ReadJSON(i); err != nil {
+				i.ReportError("Field GooglePlaceType", err.Error())
+				return false
+			}
+			return true
 		case "latitude":
 			s.Latitude = i.ReadFloat64()
 			return i.Error == nil
@@ -3832,8 +4886,12 @@ func (s *SendVenue) ReadJSON(i *json.Iterator) error {
 			s.Longitude = i.ReadFloat64()
 			return i.Error == nil
 		case "reply_to_message_id":
-			s.ReplyToMessageID = i.ReadInt()
-			return i.Error == nil
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field ReplyToMessageID", err.Error())
+				return false
+			}
+			return true
 		case "title":
 			s.Title = i.ReadString()
 			return i.Error == nil
@@ -3850,33 +4908,51 @@ func (s SendVideo) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("allow_sending_without_reply")
-	j.WriteBool(s.AllowSendingWithoutReply)
-	more.More()
-	j.WriteObjectField("caption")
-	j.WriteString(s.Caption)
-	more.More()
-	j.WriteObjectField("disable_notification")
-	j.WriteBool(s.DisableNotification)
-	more.More()
-	j.WriteObjectField("duration")
-	j.WriteInt(s.Duration)
-	more.More()
-	j.WriteObjectField("height")
-	j.WriteInt(s.Height)
-	more.More()
-	j.WriteObjectField("parse_mode")
-	j.WriteString(s.ParseMode)
-	more.More()
-	j.WriteObjectField("reply_to_message_id")
-	j.WriteInt(s.ReplyToMessageID)
-	more.More()
-	j.WriteObjectField("supports_streaming")
-	j.WriteBool(s.SupportsStreaming)
-	more.More()
-	j.WriteObjectField("width")
-	j.WriteInt(s.Width)
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		j.WriteObjectField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(j)
+	}
+	if s.Caption.Set {
+		more.More()
+		j.WriteObjectField("caption")
+		s.Caption.WriteJSON(j)
+	}
+	if s.DisableNotification.Set {
+		more.More()
+		j.WriteObjectField("disable_notification")
+		s.DisableNotification.WriteJSON(j)
+	}
+	if s.Duration.Set {
+		more.More()
+		j.WriteObjectField("duration")
+		s.Duration.WriteJSON(j)
+	}
+	if s.Height.Set {
+		more.More()
+		j.WriteObjectField("height")
+		s.Height.WriteJSON(j)
+	}
+	if s.ParseMode.Set {
+		more.More()
+		j.WriteObjectField("parse_mode")
+		s.ParseMode.WriteJSON(j)
+	}
+	if s.ReplyToMessageID.Set {
+		more.More()
+		j.WriteObjectField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(j)
+	}
+	if s.SupportsStreaming.Set {
+		more.More()
+		j.WriteObjectField("supports_streaming")
+		s.SupportsStreaming.WriteJSON(j)
+	}
+	if s.Width.Set {
+		more.More()
+		j.WriteObjectField("width")
+		s.Width.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -3908,32 +4984,68 @@ func (s *SendVideo) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply = i.ReadBool()
-			return i.Error == nil
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+				return false
+			}
+			return true
 		case "caption":
-			s.Caption = i.ReadString()
-			return i.Error == nil
+			s.Caption.Reset()
+			if err := s.Caption.ReadJSON(i); err != nil {
+				i.ReportError("Field Caption", err.Error())
+				return false
+			}
+			return true
 		case "disable_notification":
-			s.DisableNotification = i.ReadBool()
-			return i.Error == nil
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableNotification", err.Error())
+				return false
+			}
+			return true
 		case "duration":
-			s.Duration = i.ReadInt()
-			return i.Error == nil
+			s.Duration.Reset()
+			if err := s.Duration.ReadJSON(i); err != nil {
+				i.ReportError("Field Duration", err.Error())
+				return false
+			}
+			return true
 		case "height":
-			s.Height = i.ReadInt()
-			return i.Error == nil
+			s.Height.Reset()
+			if err := s.Height.ReadJSON(i); err != nil {
+				i.ReportError("Field Height", err.Error())
+				return false
+			}
+			return true
 		case "parse_mode":
-			s.ParseMode = i.ReadString()
-			return i.Error == nil
+			s.ParseMode.Reset()
+			if err := s.ParseMode.ReadJSON(i); err != nil {
+				i.ReportError("Field ParseMode", err.Error())
+				return false
+			}
+			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID = i.ReadInt()
-			return i.Error == nil
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field ReplyToMessageID", err.Error())
+				return false
+			}
+			return true
 		case "supports_streaming":
-			s.SupportsStreaming = i.ReadBool()
-			return i.Error == nil
+			s.SupportsStreaming.Reset()
+			if err := s.SupportsStreaming.ReadJSON(i); err != nil {
+				i.ReportError("Field SupportsStreaming", err.Error())
+				return false
+			}
+			return true
 		case "width":
-			s.Width = i.ReadInt()
-			return i.Error == nil
+			s.Width.Reset()
+			if err := s.Width.ReadJSON(i); err != nil {
+				i.ReportError("Field Width", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -3947,21 +5059,31 @@ func (s SendVideoNote) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("allow_sending_without_reply")
-	j.WriteBool(s.AllowSendingWithoutReply)
-	more.More()
-	j.WriteObjectField("disable_notification")
-	j.WriteBool(s.DisableNotification)
-	more.More()
-	j.WriteObjectField("duration")
-	j.WriteInt(s.Duration)
-	more.More()
-	j.WriteObjectField("length")
-	j.WriteInt(s.Length)
-	more.More()
-	j.WriteObjectField("reply_to_message_id")
-	j.WriteInt(s.ReplyToMessageID)
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		j.WriteObjectField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(j)
+	}
+	if s.DisableNotification.Set {
+		more.More()
+		j.WriteObjectField("disable_notification")
+		s.DisableNotification.WriteJSON(j)
+	}
+	if s.Duration.Set {
+		more.More()
+		j.WriteObjectField("duration")
+		s.Duration.WriteJSON(j)
+	}
+	if s.Length.Set {
+		more.More()
+		j.WriteObjectField("length")
+		s.Length.WriteJSON(j)
+	}
+	if s.ReplyToMessageID.Set {
+		more.More()
+		j.WriteObjectField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -3993,20 +5115,40 @@ func (s *SendVideoNote) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply = i.ReadBool()
-			return i.Error == nil
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+				return false
+			}
+			return true
 		case "disable_notification":
-			s.DisableNotification = i.ReadBool()
-			return i.Error == nil
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableNotification", err.Error())
+				return false
+			}
+			return true
 		case "duration":
-			s.Duration = i.ReadInt()
-			return i.Error == nil
+			s.Duration.Reset()
+			if err := s.Duration.ReadJSON(i); err != nil {
+				i.ReportError("Field Duration", err.Error())
+				return false
+			}
+			return true
 		case "length":
-			s.Length = i.ReadInt()
-			return i.Error == nil
+			s.Length.Reset()
+			if err := s.Length.ReadJSON(i); err != nil {
+				i.ReportError("Field Length", err.Error())
+				return false
+			}
+			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID = i.ReadInt()
-			return i.Error == nil
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field ReplyToMessageID", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -4020,24 +5162,36 @@ func (s SendVoice) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("allow_sending_without_reply")
-	j.WriteBool(s.AllowSendingWithoutReply)
-	more.More()
-	j.WriteObjectField("caption")
-	j.WriteString(s.Caption)
-	more.More()
-	j.WriteObjectField("disable_notification")
-	j.WriteBool(s.DisableNotification)
-	more.More()
-	j.WriteObjectField("duration")
-	j.WriteInt(s.Duration)
-	more.More()
-	j.WriteObjectField("parse_mode")
-	j.WriteString(s.ParseMode)
-	more.More()
-	j.WriteObjectField("reply_to_message_id")
-	j.WriteInt(s.ReplyToMessageID)
+	if s.AllowSendingWithoutReply.Set {
+		more.More()
+		j.WriteObjectField("allow_sending_without_reply")
+		s.AllowSendingWithoutReply.WriteJSON(j)
+	}
+	if s.Caption.Set {
+		more.More()
+		j.WriteObjectField("caption")
+		s.Caption.WriteJSON(j)
+	}
+	if s.DisableNotification.Set {
+		more.More()
+		j.WriteObjectField("disable_notification")
+		s.DisableNotification.WriteJSON(j)
+	}
+	if s.Duration.Set {
+		more.More()
+		j.WriteObjectField("duration")
+		s.Duration.WriteJSON(j)
+	}
+	if s.ParseMode.Set {
+		more.More()
+		j.WriteObjectField("parse_mode")
+		s.ParseMode.WriteJSON(j)
+	}
+	if s.ReplyToMessageID.Set {
+		more.More()
+		j.WriteObjectField("reply_to_message_id")
+		s.ReplyToMessageID.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -4069,23 +5223,47 @@ func (s *SendVoice) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "allow_sending_without_reply":
-			s.AllowSendingWithoutReply = i.ReadBool()
-			return i.Error == nil
+			s.AllowSendingWithoutReply.Reset()
+			if err := s.AllowSendingWithoutReply.ReadJSON(i); err != nil {
+				i.ReportError("Field AllowSendingWithoutReply", err.Error())
+				return false
+			}
+			return true
 		case "caption":
-			s.Caption = i.ReadString()
-			return i.Error == nil
+			s.Caption.Reset()
+			if err := s.Caption.ReadJSON(i); err != nil {
+				i.ReportError("Field Caption", err.Error())
+				return false
+			}
+			return true
 		case "disable_notification":
-			s.DisableNotification = i.ReadBool()
-			return i.Error == nil
+			s.DisableNotification.Reset()
+			if err := s.DisableNotification.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableNotification", err.Error())
+				return false
+			}
+			return true
 		case "duration":
-			s.Duration = i.ReadInt()
-			return i.Error == nil
+			s.Duration.Reset()
+			if err := s.Duration.ReadJSON(i); err != nil {
+				i.ReportError("Field Duration", err.Error())
+				return false
+			}
+			return true
 		case "parse_mode":
-			s.ParseMode = i.ReadString()
-			return i.Error == nil
+			s.ParseMode.Reset()
+			if err := s.ParseMode.ReadJSON(i); err != nil {
+				i.ReportError("Field ParseMode", err.Error())
+				return false
+			}
+			return true
 		case "reply_to_message_id":
-			s.ReplyToMessageID = i.ReadInt()
-			return i.Error == nil
+			s.ReplyToMessageID.Reset()
+			if err := s.ReplyToMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field ReplyToMessageID", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -4154,9 +5332,11 @@ func (s SetChatDescription) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("description")
-	j.WriteString(s.Description)
+	if s.Description.Set {
+		more.More()
+		j.WriteObjectField("description")
+		s.Description.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -4188,8 +5368,12 @@ func (s *SetChatDescription) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "description":
-			s.Description = i.ReadString()
-			return i.Error == nil
+			s.Description.Reset()
+			if err := s.Description.ReadJSON(i); err != nil {
+				i.ReportError("Field Description", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true
@@ -4402,21 +5586,31 @@ func (s SetGameScore) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("chat_id")
-	j.WriteInt(s.ChatID)
-	more.More()
-	j.WriteObjectField("disable_edit_message")
-	j.WriteBool(s.DisableEditMessage)
-	more.More()
-	j.WriteObjectField("force")
-	j.WriteBool(s.Force)
-	more.More()
-	j.WriteObjectField("inline_message_id")
-	j.WriteString(s.InlineMessageID)
-	more.More()
-	j.WriteObjectField("message_id")
-	j.WriteInt(s.MessageID)
+	if s.ChatID.Set {
+		more.More()
+		j.WriteObjectField("chat_id")
+		s.ChatID.WriteJSON(j)
+	}
+	if s.DisableEditMessage.Set {
+		more.More()
+		j.WriteObjectField("disable_edit_message")
+		s.DisableEditMessage.WriteJSON(j)
+	}
+	if s.Force.Set {
+		more.More()
+		j.WriteObjectField("force")
+		s.Force.WriteJSON(j)
+	}
+	if s.InlineMessageID.Set {
+		more.More()
+		j.WriteObjectField("inline_message_id")
+		s.InlineMessageID.WriteJSON(j)
+	}
+	if s.MessageID.Set {
+		more.More()
+		j.WriteObjectField("message_id")
+		s.MessageID.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("score")
 	j.WriteInt(s.Score)
@@ -4454,20 +5648,40 @@ func (s *SetGameScore) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "chat_id":
-			s.ChatID = i.ReadInt()
-			return i.Error == nil
+			s.ChatID.Reset()
+			if err := s.ChatID.ReadJSON(i); err != nil {
+				i.ReportError("Field ChatID", err.Error())
+				return false
+			}
+			return true
 		case "disable_edit_message":
-			s.DisableEditMessage = i.ReadBool()
-			return i.Error == nil
+			s.DisableEditMessage.Reset()
+			if err := s.DisableEditMessage.ReadJSON(i); err != nil {
+				i.ReportError("Field DisableEditMessage", err.Error())
+				return false
+			}
+			return true
 		case "force":
-			s.Force = i.ReadBool()
-			return i.Error == nil
+			s.Force.Reset()
+			if err := s.Force.ReadJSON(i); err != nil {
+				i.ReportError("Field Force", err.Error())
+				return false
+			}
+			return true
 		case "inline_message_id":
-			s.InlineMessageID = i.ReadString()
-			return i.Error == nil
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field InlineMessageID", err.Error())
+				return false
+			}
+			return true
 		case "message_id":
-			s.MessageID = i.ReadInt()
-			return i.Error == nil
+			s.MessageID.Reset()
+			if err := s.MessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field MessageID", err.Error())
+				return false
+			}
+			return true
 		case "score":
 			s.Score = i.ReadInt()
 			return i.Error == nil
@@ -4487,10 +5701,16 @@ func (s SetMyCommands) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("language_code")
-	j.WriteString(s.LanguageCode)
-	// Unsupported kind "alias" for field "scope".
+	if s.LanguageCode.Set {
+		more.More()
+		j.WriteObjectField("language_code")
+		s.LanguageCode.WriteJSON(j)
+	}
+	if s.Scope != nil {
+		more.More()
+		j.WriteObjectField("scope")
+		s.Scope.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -4522,10 +5742,14 @@ func (s *SetMyCommands) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "language_code":
-			s.LanguageCode = i.ReadString()
-			return i.Error == nil
+			s.LanguageCode.Reset()
+			if err := s.LanguageCode.ReadJSON(i); err != nil {
+				i.ReportError("Field LanguageCode", err.Error())
+				return false
+			}
+			return true
 		case "scope":
-			// Unsupported kind "alias" for field "Scope".
+			// Unsupported kind "pointer" for field "Scope".
 			i.Skip()
 			return true
 		default:
@@ -4700,18 +5924,26 @@ func (s SetWebhook) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("certificate")
-	j.WriteString(s.Certificate)
-	more.More()
-	j.WriteObjectField("drop_pending_updates")
-	j.WriteBool(s.DropPendingUpdates)
-	more.More()
-	j.WriteObjectField("ip_address")
-	j.WriteString(s.IPAddress)
-	more.More()
-	j.WriteObjectField("max_connections")
-	j.WriteInt(s.MaxConnections)
+	if s.Certificate.Set {
+		more.More()
+		j.WriteObjectField("certificate")
+		s.Certificate.WriteJSON(j)
+	}
+	if s.DropPendingUpdates.Set {
+		more.More()
+		j.WriteObjectField("drop_pending_updates")
+		s.DropPendingUpdates.WriteJSON(j)
+	}
+	if s.IPAddress.Set {
+		more.More()
+		j.WriteObjectField("ip_address")
+		s.IPAddress.WriteJSON(j)
+	}
+	if s.MaxConnections.Set {
+		more.More()
+		j.WriteObjectField("max_connections")
+		s.MaxConnections.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("url")
 	j.WriteString(s.URL)
@@ -4746,17 +5978,33 @@ func (s *SetWebhook) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "certificate":
-			s.Certificate = i.ReadString()
-			return i.Error == nil
+			s.Certificate.Reset()
+			if err := s.Certificate.ReadJSON(i); err != nil {
+				i.ReportError("Field Certificate", err.Error())
+				return false
+			}
+			return true
 		case "drop_pending_updates":
-			s.DropPendingUpdates = i.ReadBool()
-			return i.Error == nil
+			s.DropPendingUpdates.Reset()
+			if err := s.DropPendingUpdates.ReadJSON(i); err != nil {
+				i.ReportError("Field DropPendingUpdates", err.Error())
+				return false
+			}
+			return true
 		case "ip_address":
-			s.IPAddress = i.ReadString()
-			return i.Error == nil
+			s.IPAddress.Reset()
+			if err := s.IPAddress.ReadJSON(i); err != nil {
+				i.ReportError("Field IPAddress", err.Error())
+				return false
+			}
+			return true
 		case "max_connections":
-			s.MaxConnections = i.ReadInt()
-			return i.Error == nil
+			s.MaxConnections.Reset()
+			if err := s.MaxConnections.ReadJSON(i); err != nil {
+				i.ReportError("Field MaxConnections", err.Error())
+				return false
+			}
+			return true
 		case "url":
 			s.URL = i.ReadString()
 			return i.Error == nil
@@ -4773,13 +6021,21 @@ func (s StopMessageLiveLocation) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("inline_message_id")
-	j.WriteString(s.InlineMessageID)
-	more.More()
-	j.WriteObjectField("message_id")
-	j.WriteInt(s.MessageID)
-	// Unsupported kind "alias" for field "reply_markup".
+	if s.InlineMessageID.Set {
+		more.More()
+		j.WriteObjectField("inline_message_id")
+		s.InlineMessageID.WriteJSON(j)
+	}
+	if s.MessageID.Set {
+		more.More()
+		j.WriteObjectField("message_id")
+		s.MessageID.WriteJSON(j)
+	}
+	if s.ReplyMarkup != nil {
+		more.More()
+		j.WriteObjectField("reply_markup")
+		s.ReplyMarkup.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -4811,13 +6067,21 @@ func (s *StopMessageLiveLocation) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "inline_message_id":
-			s.InlineMessageID = i.ReadString()
-			return i.Error == nil
+			s.InlineMessageID.Reset()
+			if err := s.InlineMessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field InlineMessageID", err.Error())
+				return false
+			}
+			return true
 		case "message_id":
-			s.MessageID = i.ReadInt()
-			return i.Error == nil
+			s.MessageID.Reset()
+			if err := s.MessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field MessageID", err.Error())
+				return false
+			}
+			return true
 		case "reply_markup":
-			// Unsupported kind "alias" for field "ReplyMarkup".
+			// Unsupported kind "pointer" for field "ReplyMarkup".
 			i.Skip()
 			return true
 		default:
@@ -4836,7 +6100,11 @@ func (s StopPoll) WriteJSON(j *json.Stream) {
 	more.More()
 	j.WriteObjectField("message_id")
 	j.WriteInt(s.MessageID)
-	// Unsupported kind "alias" for field "reply_markup".
+	if s.ReplyMarkup != nil {
+		more.More()
+		j.WriteObjectField("reply_markup")
+		s.ReplyMarkup.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -4871,7 +6139,7 @@ func (s *StopPoll) ReadJSON(i *json.Iterator) error {
 			s.MessageID = i.ReadInt()
 			return i.Error == nil
 		case "reply_markup":
-			// Unsupported kind "alias" for field "ReplyMarkup".
+			// Unsupported kind "pointer" for field "ReplyMarkup".
 			i.Skip()
 			return true
 		default:
@@ -4887,9 +6155,11 @@ func (s UnbanChatMember) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("only_if_banned")
-	j.WriteBool(s.OnlyIfBanned)
+	if s.OnlyIfBanned.Set {
+		more.More()
+		j.WriteObjectField("only_if_banned")
+		s.OnlyIfBanned.WriteJSON(j)
+	}
 	more.More()
 	j.WriteObjectField("user_id")
 	j.WriteInt(s.UserID)
@@ -4924,8 +6194,12 @@ func (s *UnbanChatMember) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "only_if_banned":
-			s.OnlyIfBanned = i.ReadBool()
-			return i.Error == nil
+			s.OnlyIfBanned.Reset()
+			if err := s.OnlyIfBanned.ReadJSON(i); err != nil {
+				i.ReportError("Field OnlyIfBanned", err.Error())
+				return false
+			}
+			return true
 		case "user_id":
 			s.UserID = i.ReadInt()
 			return i.Error == nil
@@ -4947,9 +6221,11 @@ func (s UnpinChatMessage) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
 	defer more.Reset()
-	more.More()
-	j.WriteObjectField("message_id")
-	j.WriteInt(s.MessageID)
+	if s.MessageID.Set {
+		more.More()
+		j.WriteObjectField("message_id")
+		s.MessageID.WriteJSON(j)
+	}
 	j.WriteObjectEnd()
 }
 
@@ -4981,8 +6257,12 @@ func (s *UnpinChatMessage) ReadJSON(i *json.Iterator) error {
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "message_id":
-			s.MessageID = i.ReadInt()
-			return i.Error == nil
+			s.MessageID.Reset()
+			if err := s.MessageID.ReadJSON(i); err != nil {
+				i.ReportError("Field MessageID", err.Error())
+				return false
+			}
+			return true
 		default:
 			i.Skip()
 			return true

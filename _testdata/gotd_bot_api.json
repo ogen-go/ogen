@@ -6306,9 +6306,7 @@
         "required": [
           "user_id",
           "name",
-          "tgs_sticker",
-          "emojis",
-          "mask_position"
+          "emojis"
         ]
       },
       "answerCallbackQuery": {
@@ -6337,11 +6335,7 @@
           }
         },
         "required": [
-          "callback_query_id",
-          "text",
-          "show_alert",
-          "url",
-          "cache_time"
+          "callback_query_id"
         ]
       },
       "answerInlineQuery": {
@@ -6374,12 +6368,7 @@
           }
         },
         "required": [
-          "inline_query_id",
-          "cache_time",
-          "is_personal",
-          "next_offset",
-          "switch_pm_text",
-          "switch_pm_parameter"
+          "inline_query_id"
         ]
       },
       "answerPreCheckoutQuery": {
@@ -6401,8 +6390,7 @@
         },
         "required": [
           "pre_checkout_query_id",
-          "ok",
-          "error_message"
+          "ok"
         ]
       },
       "answerShippingQuery": {
@@ -6424,8 +6412,7 @@
         },
         "required": [
           "shipping_query_id",
-          "ok",
-          "error_message"
+          "ok"
         ]
       },
       "banChatMember": {
@@ -6446,9 +6433,7 @@
           }
         },
         "required": [
-          "user_id",
-          "until_date",
-          "revoke_messages"
+          "user_id"
         ]
       },
       "copyMessage": {
@@ -6481,12 +6466,7 @@
           }
         },
         "required": [
-          "message_id",
-          "caption",
-          "parse_mode",
-          "disable_notification",
-          "reply_to_message_id",
-          "allow_sending_without_reply"
+          "message_id"
         ]
       },
       "createChatInviteLink": {
@@ -6501,11 +6481,7 @@
             "description": "Maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999",
             "type": "integer"
           }
-        },
-        "required": [
-          "expire_date",
-          "member_limit"
-        ]
+        }
       },
       "createNewStickerSet": {
         "description": "Input for createNewStickerSet",
@@ -6544,10 +6520,7 @@
           "user_id",
           "name",
           "title",
-          "tgs_sticker",
-          "emojis",
-          "contains_masks",
-          "mask_position"
+          "emojis"
         ]
       },
       "deleteChatPhoto": {
@@ -6583,11 +6556,7 @@
             "$ref": "#/components/schemas/BotCommandScope",
             "description": "A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault"
           }
-        },
-        "required": [
-          "scope",
-          "language_code"
-        ]
+        }
       },
       "deleteStickerFromSet": {
         "description": "Input for deleteStickerFromSet",
@@ -6610,10 +6579,7 @@
             "description": "Pass True to drop all pending updates",
             "type": "boolean"
           }
-        },
-        "required": [
-          "drop_pending_updates"
-        ]
+        }
       },
       "editChatInviteLink": {
         "description": "Input for editChatInviteLink",
@@ -6633,9 +6599,7 @@
           }
         },
         "required": [
-          "invite_link",
-          "expire_date",
-          "member_limit"
+          "invite_link"
         ]
       },
       "editMessageCaption": {
@@ -6662,14 +6626,7 @@
             "$ref": "#/components/schemas/InlineKeyboardMarkup",
             "description": "A JSON-serialized object for an inline keyboard"
           }
-        },
-        "required": [
-          "message_id",
-          "inline_message_id",
-          "caption",
-          "parse_mode",
-          "reply_markup"
-        ]
+        }
       },
       "editMessageLiveLocation": {
         "description": "Input for editMessageLiveLocation",
@@ -6709,14 +6666,8 @@
           }
         },
         "required": [
-          "message_id",
-          "inline_message_id",
           "latitude",
-          "longitude",
-          "horizontal_accuracy",
-          "heading",
-          "proximity_alert_radius",
-          "reply_markup"
+          "longitude"
         ]
       },
       "editMessageMedia": {
@@ -6741,10 +6692,7 @@
           }
         },
         "required": [
-          "message_id",
-          "inline_message_id",
-          "media",
-          "reply_markup"
+          "media"
         ]
       },
       "editMessageReplyMarkup": {
@@ -6763,12 +6711,7 @@
             "$ref": "#/components/schemas/InlineKeyboardMarkup",
             "description": "A JSON-serialized object for an inline keyboard"
           }
-        },
-        "required": [
-          "message_id",
-          "inline_message_id",
-          "reply_markup"
-        ]
+        }
       },
       "editMessageText": {
         "description": "Input for editMessageText",
@@ -6800,12 +6743,7 @@
           }
         },
         "required": [
-          "message_id",
-          "inline_message_id",
-          "text",
-          "parse_mode",
-          "disable_web_page_preview",
-          "reply_markup"
+          "text"
         ]
       },
       "exportChatInviteLink": {
@@ -6826,7 +6764,6 @@
           }
         },
         "required": [
-          "disable_notification",
           "message_id"
         ]
       },
@@ -6890,10 +6827,7 @@
           }
         },
         "required": [
-          "user_id",
-          "chat_id",
-          "message_id",
-          "inline_message_id"
+          "user_id"
         ]
       },
       "getMyCommands": {
@@ -6908,11 +6842,7 @@
             "$ref": "#/components/schemas/BotCommandScope",
             "description": "A JSON-serialized object, describing scope of users. Defaults to BotCommandScopeDefault"
           }
-        },
-        "required": [
-          "scope",
-          "language_code"
-        ]
+        }
       },
       "getStickerSet": {
         "description": "Input for getStickerSet",
@@ -6943,12 +6873,7 @@
             "description": "Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling. Should be positive, short polling should be used for testing purposes only",
             "type": "integer"
           }
-        },
-        "required": [
-          "offset",
-          "limit",
-          "timeout"
-        ]
+        }
       },
       "getUserProfilePhotos": {
         "description": "Input for getUserProfilePhotos",
@@ -6968,9 +6893,7 @@
           }
         },
         "required": [
-          "user_id",
-          "offset",
-          "limit"
+          "user_id"
         ]
       },
       "leaveChat": {
@@ -6991,8 +6914,7 @@
           }
         },
         "required": [
-          "message_id",
-          "disable_notification"
+          "message_id"
         ]
       },
       "promoteChatMember": {
@@ -7049,18 +6971,7 @@
           }
         },
         "required": [
-          "user_id",
-          "is_anonymous",
-          "can_manage_chat",
-          "can_post_messages",
-          "can_edit_messages",
-          "can_delete_messages",
-          "can_manage_voice_chats",
-          "can_restrict_members",
-          "can_promote_members",
-          "can_change_info",
-          "can_invite_users",
-          "can_pin_messages"
+          "user_id"
         ]
       },
       "restrictChatMember": {
@@ -7082,8 +6993,7 @@
         },
         "required": [
           "user_id",
-          "permissions",
-          "until_date"
+          "permissions"
         ]
       },
       "revokeChatInviteLink": {
@@ -7135,17 +7045,7 @@
             "description": "Animation width",
             "type": "integer"
           }
-        },
-        "required": [
-          "duration",
-          "width",
-          "height",
-          "caption",
-          "parse_mode",
-          "disable_notification",
-          "reply_to_message_id",
-          "allow_sending_without_reply"
-        ]
+        }
       },
       "sendAudio": {
         "description": "Input for sendAudio",
@@ -7183,17 +7083,7 @@
             "description": "Track name",
             "type": "string"
           }
-        },
-        "required": [
-          "caption",
-          "parse_mode",
-          "duration",
-          "performer",
-          "title",
-          "disable_notification",
-          "reply_to_message_id",
-          "allow_sending_without_reply"
-        ]
+        }
       },
       "sendChatAction": {
         "description": "Input for sendChatAction",
@@ -7243,12 +7133,7 @@
         },
         "required": [
           "phone_number",
-          "first_name",
-          "last_name",
-          "vcard",
-          "disable_notification",
-          "reply_to_message_id",
-          "allow_sending_without_reply"
+          "first_name"
         ]
       },
       "sendDice": {
@@ -7271,13 +7156,7 @@
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
           }
-        },
-        "required": [
-          "emoji",
-          "disable_notification",
-          "reply_to_message_id",
-          "allow_sending_without_reply"
-        ]
+        }
       },
       "sendDocument": {
         "description": "Input for sendDocument",
@@ -7307,15 +7186,7 @@
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
           }
-        },
-        "required": [
-          "caption",
-          "parse_mode",
-          "disable_content_type_detection",
-          "disable_notification",
-          "reply_to_message_id",
-          "allow_sending_without_reply"
-        ]
+        }
       },
       "sendGame": {
         "description": "Input for sendGame",
@@ -7348,11 +7219,7 @@
         },
         "required": [
           "chat_id",
-          "game_short_name",
-          "disable_notification",
-          "reply_to_message_id",
-          "allow_sending_without_reply",
-          "reply_markup"
+          "game_short_name"
         ]
       },
       "sendInvoice": {
@@ -7457,25 +7324,7 @@
           "description",
           "payload",
           "provider_token",
-          "currency",
-          "max_tip_amount",
-          "start_parameter",
-          "provider_data",
-          "photo_url",
-          "photo_size",
-          "photo_width",
-          "photo_height",
-          "need_name",
-          "need_phone_number",
-          "need_email",
-          "need_shipping_address",
-          "send_phone_number_to_provider",
-          "send_email_to_provider",
-          "is_flexible",
-          "disable_notification",
-          "reply_to_message_id",
-          "allow_sending_without_reply",
-          "reply_markup"
+          "currency"
         ]
       },
       "sendLocation": {
@@ -7521,14 +7370,7 @@
         },
         "required": [
           "latitude",
-          "longitude",
-          "horizontal_accuracy",
-          "live_period",
-          "heading",
-          "proximity_alert_radius",
-          "disable_notification",
-          "reply_to_message_id",
-          "allow_sending_without_reply"
+          "longitude"
         ]
       },
       "sendMediaGroup": {
@@ -7547,12 +7389,7 @@
             "description": "If the messages are a reply, ID of the original message",
             "type": "integer"
           }
-        },
-        "required": [
-          "disable_notification",
-          "reply_to_message_id",
-          "allow_sending_without_reply"
-        ]
+        }
       },
       "sendMessage": {
         "description": "Input for sendMessage",
@@ -7584,12 +7421,7 @@
           }
         },
         "required": [
-          "text",
-          "parse_mode",
-          "disable_web_page_preview",
-          "disable_notification",
-          "reply_to_message_id",
-          "allow_sending_without_reply"
+          "text"
         ]
       },
       "sendPhoto": {
@@ -7616,14 +7448,7 @@
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
           }
-        },
-        "required": [
-          "caption",
-          "parse_mode",
-          "disable_notification",
-          "reply_to_message_id",
-          "allow_sending_without_reply"
-        ]
+        }
       },
       "sendPoll": {
         "description": "Input for sendPoll",
@@ -7683,19 +7508,7 @@
           }
         },
         "required": [
-          "question",
-          "is_anonymous",
-          "type",
-          "allows_multiple_answers",
-          "correct_option_id",
-          "explanation",
-          "explanation_parse_mode",
-          "open_period",
-          "close_date",
-          "is_closed",
-          "disable_notification",
-          "reply_to_message_id",
-          "allow_sending_without_reply"
+          "question"
         ]
       },
       "sendSticker": {
@@ -7714,12 +7527,7 @@
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
           }
-        },
-        "required": [
-          "disable_notification",
-          "reply_to_message_id",
-          "allow_sending_without_reply"
-        ]
+        }
       },
       "sendVenue": {
         "description": "Input for sendVenue",
@@ -7774,14 +7582,7 @@
           "latitude",
           "longitude",
           "title",
-          "address",
-          "foursquare_id",
-          "foursquare_type",
-          "google_place_id",
-          "google_place_type",
-          "disable_notification",
-          "reply_to_message_id",
-          "allow_sending_without_reply"
+          "address"
         ]
       },
       "sendVideo": {
@@ -7824,18 +7625,7 @@
             "description": "Video width",
             "type": "integer"
           }
-        },
-        "required": [
-          "duration",
-          "width",
-          "height",
-          "caption",
-          "parse_mode",
-          "supports_streaming",
-          "disable_notification",
-          "reply_to_message_id",
-          "allow_sending_without_reply"
-        ]
+        }
       },
       "sendVideoNote": {
         "description": "Input for sendVideoNote",
@@ -7861,14 +7651,7 @@
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
           }
-        },
-        "required": [
-          "duration",
-          "length",
-          "disable_notification",
-          "reply_to_message_id",
-          "allow_sending_without_reply"
-        ]
+        }
       },
       "sendVoice": {
         "description": "Input for sendVoice",
@@ -7898,15 +7681,7 @@
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
           }
-        },
-        "required": [
-          "caption",
-          "parse_mode",
-          "duration",
-          "disable_notification",
-          "reply_to_message_id",
-          "allow_sending_without_reply"
-        ]
+        }
       },
       "setChatAdministratorCustomTitle": {
         "description": "Input for setChatAdministratorCustomTitle",
@@ -7934,10 +7709,7 @@
             "description": "New chat description, 0-255 characters",
             "type": "string"
           }
-        },
-        "required": [
-          "description"
-        ]
+        }
       },
       "setChatPermissions": {
         "description": "Input for setChatPermissions",
@@ -8026,12 +7798,7 @@
         },
         "required": [
           "user_id",
-          "score",
-          "force",
-          "disable_edit_message",
-          "chat_id",
-          "message_id",
-          "inline_message_id"
+          "score"
         ]
       },
       "setMyCommands": {
@@ -8046,11 +7813,7 @@
             "$ref": "#/components/schemas/BotCommandScope",
             "description": "A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault"
           }
-        },
-        "required": [
-          "scope",
-          "language_code"
-        ]
+        }
       },
       "setPassportDataErrors": {
         "description": "Input for setPassportDataErrors",
@@ -8127,11 +7890,7 @@
           }
         },
         "required": [
-          "url",
-          "certificate",
-          "ip_address",
-          "max_connections",
-          "drop_pending_updates"
+          "url"
         ]
       },
       "stopMessageLiveLocation": {
@@ -8150,12 +7909,7 @@
             "$ref": "#/components/schemas/InlineKeyboardMarkup",
             "description": "A JSON-serialized object for a new inline keyboard"
           }
-        },
-        "required": [
-          "message_id",
-          "inline_message_id",
-          "reply_markup"
-        ]
+        }
       },
       "stopPoll": {
         "description": "Input for stopPoll",
@@ -8171,8 +7925,7 @@
           }
         },
         "required": [
-          "message_id",
-          "reply_markup"
+          "message_id"
         ]
       },
       "unbanChatMember": {
@@ -8189,8 +7942,7 @@
           }
         },
         "required": [
-          "user_id",
-          "only_if_banned"
+          "user_id"
         ]
       },
       "unpinAllChatMessages": {
@@ -8205,10 +7957,7 @@
             "description": "Identifier of a message to unpin. If not specified, the most recent pinned message (by sending date) will be unpinned",
             "type": "integer"
           }
-        },
-        "required": [
-          "message_id"
-        ]
+        }
       },
       "uploadStickerFile": {
         "description": "Input for uploadStickerFile",
