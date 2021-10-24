@@ -85,6 +85,8 @@ func (g *nameGen) checkPart(part string) string {
 		"TLS", "TTL", "UDP", "UI", "UID", "URI", "URL", "UTF8", "UUID", "VM",
 		"XML", "XMPP", "XSRF", "XSS", "SMS", "CDN", "TCP", "UDP", "DC", "PFS",
 		"P2P", "SHA256", "SHA1", "MD5", "SRP", "2FA", "OAuth", "OAuth2",
+
+		"PNG", "JPG", "GIF", "MP4", "WEBP",
 	}
 
 	for _, rule := range rules {

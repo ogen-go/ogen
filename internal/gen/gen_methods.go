@@ -72,16 +72,16 @@ func (g *Generator) generateMethod(path, method string, op ogen.Operation) (err 
 		iface.SetDoc(fmt.Sprintf("%s represents %s request.", iface.Name, op.OperationID))
 		g.interfaces[iface.Name] = iface
 
-		rbody, err := g.generateRequestBody(methodName, op.RequestBody)
+		reqBody, err := g.generateRequestBody(methodName, op.RequestBody)
 		if err != nil {
 			return xerrors.Errorf("requestBody: %w", err)
 		}
 
-		for _, schema := range rbody.Contents {
+		for _, schema := range reqBody.Contents {
 			schema.Implement(iface)
 		}
 
-		m.RequestBody = rbody
+		m.RequestBody = reqBody
 		m.RequestType = iface
 	}
 

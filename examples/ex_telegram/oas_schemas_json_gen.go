@@ -10973,7 +10973,7 @@ func (s *UploadStickerFilePostMultipartFormDataRequest) ReadJSON(i *json.Iterato
 	i.ReadObjectCB(func(i *json.Iterator, k string) bool {
 		switch k {
 		case "png_sticker":
-			// Unsupported kind "alias" for field "PngSticker".
+			// Unsupported kind "alias" for field "PNGSticker".
 			i.Skip()
 			return true
 		case "user_id":

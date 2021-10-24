@@ -2249,6 +2249,17 @@ func (s *TokenBucket) ReadJSON(i *json.Iterator) error {
 }
 
 // WriteJSON implements json.Marshaler.
+func (s VMState) WriteJSON(j *json.Stream) {
+	j.WriteString(string(s))
+}
+
+// ReadJSON reads VMState from json stream.
+func (s *VMState) ReadJSON(i *json.Iterator) error {
+	*s = VMState(i.ReadString())
+	return i.Error
+}
+
+// WriteJSON implements json.Marshaler.
 func (s VM) WriteJSON(j *json.Stream) {
 	j.WriteObjectStart()
 	more := json.NewMore(j)
@@ -2297,17 +2308,6 @@ func (s *VM) ReadJSON(i *json.Iterator) error {
 			return true
 		}
 	})
-	return i.Error
-}
-
-// WriteJSON implements json.Marshaler.
-func (s VMState) WriteJSON(j *json.Stream) {
-	j.WriteString(string(s))
-}
-
-// ReadJSON reads VMState from json stream.
-func (s *VMState) ReadJSON(i *json.Iterator) error {
-	*s = VMState(i.ReadString())
 	return i.Error
 }
 

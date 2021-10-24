@@ -2,6 +2,7 @@ package gen
 
 import (
 	"fmt"
+	"path"
 
 	"golang.org/x/xerrors"
 
@@ -39,15 +40,17 @@ func (g *Generator) generateSchema(name string, schema ogen.Schema) (*ast.Schema
 		if schema.Is(ast.KindPrimitive, ast.KindArray, ast.KindPointer) {
 			panic("unreachable")
 		}
-		if _, found := g.schemaRefs[ref]; found {
+
+		base := path.Base(ref)
+		if _, found := g.schemaRefs[base]; found {
 			panic(fmt.Sprintf("schema reference conflict: %s", ref))
 		}
-		if _, found := g.schemas[schema.Name]; found {
+		if _, found := g.schemas[base]; found {
 			panic(fmt.Sprintf("schema reference name conflict: %s", ref))
 		}
 
 		g.schemaRefs[ref] = schema
-		g.schemas[schema.Name] = schema
+		g.schemas[base] = schema
 	}
 
 	return s, nil

@@ -1015,17 +1015,17 @@ type TokenBucket struct {
 	Size         int64    `json:"size"`
 }
 
-// VM describes #/components/schemas/Vm.
-type VM struct {
-	State VMState `json:"state"`
-}
-
 type VMState string
 
 const (
 	VMStatePaused  VMState = "Paused"
 	VMStateResumed VMState = "Resumed"
 )
+
+// VM describes #/components/schemas/Vm.
+type VM struct {
+	State VMState `json:"state"`
+}
 
 // Vsock describes #/components/schemas/Vsock.
 type Vsock struct {

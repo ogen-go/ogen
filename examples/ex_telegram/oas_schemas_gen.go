@@ -2710,7 +2710,7 @@ type Update struct {
 }
 
 type UploadStickerFilePostMultipartFormDataRequest struct {
-	PngSticker InputFile `json:"png_sticker"`
+	PNGSticker InputFile `json:"png_sticker"`
 	UserID     int       `json:"user_id"`
 }
 

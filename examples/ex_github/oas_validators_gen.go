@@ -64,13 +64,6 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgApplicationJSONRequest) Validat
 	}
 	return nil
 }
-func (s *ActionsEnterprisePermissions) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s *ActionsListArtifactsForRepo) Validate() error {
 	var failures []validate.FieldError
 	if s.Artifacts == nil {
@@ -266,20 +259,6 @@ func (s *ActionsListWorkflowRunArtifacts) Validate() error {
 	}
 	return nil
 }
-func (s *ActionsOrganizationPermissions) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *ActionsRepositoryPermissions) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s *ActionsReviewPendingDeploymentsForRunApplicationJSONRequest) Validate() error {
 	var failures []validate.FieldError
 	if s.EnvironmentIds == nil {
@@ -376,28 +355,6 @@ func (s *ActionsUpdateSelfHostedRunnerGroupForOrgApplicationJSONRequest) Validat
 	}
 	return nil
 }
-func (s *AppPermissions) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *ApplicationGrant) Validate() error {
-	var failures []validate.FieldError
-	if s.Scopes == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "scopes",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s *AppsCreateContentAttachmentApplicationJSONRequest) Validate() error {
 	var failures []validate.FieldError
 	{
@@ -473,27 +430,6 @@ func (s *AppsScopeTokenApplicationJSONRequest) Validate() error {
 	}
 	return nil
 }
-func (s *AuthenticationToken) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *Authorization) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *BranchProtection) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s *BranchProtectionRequiredStatusChecks) Validate() error {
 	var failures []validate.FieldError
 	if s.Contexts == nil {
@@ -504,58 +440,6 @@ func (s *BranchProtectionRequiredStatusChecks) Validate() error {
 			}),
 		}
 	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *BranchRestrictionPolicy) Validate() error {
-	var failures []validate.FieldError
-	if s.Apps == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "apps",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if s.Teams == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "teams",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if s.Users == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "users",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *BranchWithProtection) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *CheckRun) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *CheckSuite) Validate() error {
-	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -576,27 +460,6 @@ func (s *ChecksListSuitesForRef) Validate() error {
 	}
 	return nil
 }
-func (s *CodeScanningAlertInstance) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *CodeScanningAnalysis) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *CodeScanningSarifsStatus) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s *CodeScanningUpdateAlertApplicationJSONRequest) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
@@ -605,152 +468,6 @@ func (s *CodeScanningUpdateAlertApplicationJSONRequest) Validate() error {
 	return nil
 }
 func (s *CodeScanningUploadSarifApplicationJSONRequest) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *CombinedCommitStatus) Validate() error {
-	var failures []validate.FieldError
-	if s.Statuses == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "statuses",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *Commit) Validate() error {
-	var failures []validate.FieldError
-	if s.Parents == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "parents",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *CommitActivity) Validate() error {
-	var failures []validate.FieldError
-	if s.Days == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "days",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *CommitComment) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *CommitComparison) Validate() error {
-	var failures []validate.FieldError
-	if s.Commits == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "commits",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *ContentReferenceAttachment) Validate() error {
-	var failures []validate.FieldError
-	{
-		// Validate 'body' field.
-		validator := validate.String{
-			MinLength:    0,
-			MinLengthSet: false,
-			MaxLength:    262144,
-			MaxLengthSet: true,
-		}
-		if err := validator.Validate(string(s.Body)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "body", Error: err})
-		}
-	}
-	{
-		// Validate 'title' field.
-		validator := validate.String{
-			MinLength:    0,
-			MinLengthSet: false,
-			MaxLength:    1024,
-			MaxLengthSet: true,
-		}
-		if err := validator.Validate(string(s.Title)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "title", Error: err})
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *ContributorActivity) Validate() error {
-	var failures []validate.FieldError
-	if s.Weeks == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "weeks",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *DeploymentSimple) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *DeploymentStatus) Validate() error {
-	var failures []validate.FieldError
-	{
-		// Validate 'description' field.
-		validator := validate.String{
-			MinLength:    0,
-			MinLengthSet: false,
-			MaxLength:    140,
-			MaxLengthSet: true,
-		}
-		if err := validator.Validate(string(s.Description)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "description", Error: err})
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *DiffEntry) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -989,28 +706,6 @@ func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseApplicationJSONR
 	}
 	return nil
 }
-func (s *EnvironmentApprovals) Validate() error {
-	var failures []validate.FieldError
-	if s.Environments == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "environments",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *FullRepository) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s *FullRepositorySecurityAndAnalysis) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
@@ -1027,25 +722,6 @@ func (s *FullRepositorySecurityAndAnalysisAdvancedSecurity) Validate() error {
 }
 func (s *FullRepositorySecurityAndAnalysisSecretScanning) Validate() error {
 	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *GistComment) Validate() error {
-	var failures []validate.FieldError
-	{
-		// Validate 'body' field.
-		validator := validate.String{
-			MinLength:    0,
-			MinLengthSet: false,
-			MaxLength:    65535,
-			MaxLengthSet: true,
-		}
-		if err := validator.Validate(string(s.Body)); err != nil {
-			failures = append(failures, validate.FieldError{Name: "body", Error: err})
-		}
-	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -1089,21 +765,6 @@ func (s *GistsUpdateCommentApplicationJSONRequest) Validate() error {
 	}
 	return nil
 }
-func (s *GitCommit) Validate() error {
-	var failures []validate.FieldError
-	if s.Parents == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "parents",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s *GitCreateTagApplicationJSONRequest) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
@@ -1133,13 +794,6 @@ func (s *GitCreateTreeApplicationJSONRequestTreeItem) Validate() error {
 	}
 	return nil
 }
-func (s *GitRef) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s *GitRefObject) Validate() error {
 	var failures []validate.FieldError
 	{
@@ -1154,94 +808,6 @@ func (s *GitRefObject) Validate() error {
 			failures = append(failures, validate.FieldError{Name: "sha", Error: err})
 		}
 	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *GitTree) Validate() error {
-	var failures []validate.FieldError
-	if s.Tree == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "tree",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *GpgKey) Validate() error {
-	var failures []validate.FieldError
-	if s.Emails == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "emails",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if s.Subkeys == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "subkeys",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *Import) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *InstallationToken) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *Integration) Validate() error {
-	var failures []validate.FieldError
-	if s.Events == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "events",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *InteractionLimit) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *InteractionLimitResponse) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *IssueComment) Validate() error {
-	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -1268,13 +834,6 @@ func (s *IssuesUpdateMilestoneApplicationJSONRequest) Validate() error {
 	}
 	return nil
 }
-func (s *Job) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s *JobStepsItem) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
@@ -1282,60 +841,7 @@ func (s *JobStepsItem) Validate() error {
 	}
 	return nil
 }
-func (s *License) Validate() error {
-	var failures []validate.FieldError
-	if s.Conditions == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "conditions",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if s.Limitations == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "limitations",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if s.Permissions == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "permissions",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s *MarkdownRenderApplicationJSONRequest) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *MarketplaceListingPlan) Validate() error {
-	var failures []validate.FieldError
-	if s.Bullets == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "bullets",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *MarketplacePurchase) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -1351,28 +857,6 @@ func (s *MarketplacePurchaseMarketplacePendingChange) Validate() error {
 }
 func (s *MarketplacePurchaseMarketplacePurchase) Validate() error {
 	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *MergedUpstream) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *Migration) Validate() error {
-	var failures []validate.FieldError
-	if s.Repositories == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "repositories",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -1422,64 +906,6 @@ func (s *MigrationsStartImportApplicationJSONRequest) Validate() error {
 	}
 	return nil
 }
-func (s *Milestone) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *NullableIntegration) Validate() error {
-	var failures []validate.FieldError
-	if s.Events == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "events",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *NullableScopedInstallation) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *OrgHook) Validate() error {
-	var failures []validate.FieldError
-	if s.Events == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "events",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *OrgMembership) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *OrganizationActionsSecret) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s *OrgsCreateInvitationApplicationJSONRequest) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
@@ -1508,58 +934,6 @@ func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONRequest) Validat
 	}
 	return nil
 }
-func (s *Page) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *PagesHTTPSCertificate) Validate() error {
-	var failures []validate.FieldError
-	if s.Domains == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "domains",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *ParticipationStats) Validate() error {
-	var failures []validate.FieldError
-	if s.All == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "all",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if s.Owner == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "owner",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *Project) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s *ProjectsAddCollaboratorApplicationJSONRequest) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
@@ -1574,20 +948,6 @@ func (s *ProjectsUpdateApplicationJSONRequest) Validate() error {
 	}
 	return nil
 }
-func (s *ProtectedBranch) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *ProtectedBranchPullRequestReview) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s *ProtectedBranchRequiredPullRequestReviews) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
@@ -1596,43 +956,6 @@ func (s *ProtectedBranchRequiredPullRequestReviews) Validate() error {
 	return nil
 }
 func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Validate() error {
-	var failures []validate.FieldError
-	if s.Teams == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "teams",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if s.Users == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "users",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *PullRequestReview) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *PullRequestReviewComment) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *PullRequestReviewRequest) Validate() error {
 	var failures []validate.FieldError
 	if s.Teams == nil {
 		return &validate.Error{
@@ -1705,13 +1028,6 @@ func (s *PullsUpdateApplicationJSONRequest) Validate() error {
 	}
 	return nil
 }
-func (s *Reaction) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s *ReactionsCreateForCommitCommentApplicationJSONRequest) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
@@ -1769,28 +1085,6 @@ func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONRequest) Validate()
 	return nil
 }
 func (s *ReactionsCreateForTeamDiscussionLegacyApplicationJSONRequest) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *Release) Validate() error {
-	var failures []validate.FieldError
-	if s.Assets == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "assets",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *ReleaseAsset) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -1932,90 +1226,8 @@ func (s *ReposUpdateInvitationApplicationJSONRequest) Validate() error {
 	}
 	return nil
 }
-func (s *RepositoryInvitation) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *ReviewComment) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *Runner) Validate() error {
-	var failures []validate.FieldError
-	if s.Labels == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "labels",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s *RunnerLabelsItem) Validate() error {
 	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *ScimEnterpriseGroup) Validate() error {
-	var failures []validate.FieldError
-	if s.Schemas == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "schemas",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *ScimEnterpriseUser) Validate() error {
-	var failures []validate.FieldError
-	if s.Schemas == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "schemas",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *ScimGroupListEnterprise) Validate() error {
-	var failures []validate.FieldError
-	if s.Resources == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "Resources",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if s.Schemas == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "schemas",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -2066,29 +1278,6 @@ func (s *ScimSetInformationForProvisionedUserApplicationJSONRequest) Validate() 
 	}
 	return nil
 }
-func (s *ScimUserListEnterprise) Validate() error {
-	var failures []validate.FieldError
-	if s.Resources == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "Resources",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if s.Schemas == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "schemas",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s *ScimUserListEnterpriseResourcesItem) Validate() error {
 	var failures []validate.FieldError
 	if s.Schemas == nil {
@@ -2104,50 +1293,7 @@ func (s *ScimUserListEnterpriseResourcesItem) Validate() error {
 	}
 	return nil
 }
-func (s *SecretScanningAlert) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s *SecretScanningUpdateAlertApplicationJSONRequest) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *ShortBranch) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *StatusCheckPolicy) Validate() error {
-	var failures []validate.FieldError
-	if s.Contexts == nil {
-		return &validate.Error{
-			Fields: append(failures, validate.FieldError{
-				Name:  "contexts",
-				Error: fmt.Errorf("required, can't be nil"),
-			}),
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *TeamFull) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *TeamMembership) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
@@ -2232,6 +1378,867 @@ func (s *TeamsUpdateLegacyApplicationJSONRequest) Validate() error {
 	}
 	return nil
 }
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ActionsEnterprisePermissions) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ActionsOrganizationPermissions) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ActionsRepositoryPermissions) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *AppPermissions) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ApplicationGrant) Validate() error {
+	var failures []validate.FieldError
+	if s.Scopes == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "scopes",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *AuthenticationToken) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *Authorization) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *BranchProtection) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *BranchRestrictionPolicy) Validate() error {
+	var failures []validate.FieldError
+	if s.Apps == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "apps",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if s.Teams == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "teams",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if s.Users == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "users",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *BranchWithProtection) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *CheckRun) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *CheckSuite) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *CodeScanningAlertInstance) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *CodeScanningAnalysis) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *CodeScanningSarifsStatus) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *CombinedCommitStatus) Validate() error {
+	var failures []validate.FieldError
+	if s.Statuses == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "statuses",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *Commit) Validate() error {
+	var failures []validate.FieldError
+	if s.Parents == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "parents",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *CommitActivity) Validate() error {
+	var failures []validate.FieldError
+	if s.Days == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "days",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *CommitComment) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *CommitComparison) Validate() error {
+	var failures []validate.FieldError
+	if s.Commits == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "commits",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ContentReferenceAttachment) Validate() error {
+	var failures []validate.FieldError
+	{
+		// Validate 'body' field.
+		validator := validate.String{
+			MinLength:    0,
+			MinLengthSet: false,
+			MaxLength:    262144,
+			MaxLengthSet: true,
+		}
+		if err := validator.Validate(string(s.Body)); err != nil {
+			failures = append(failures, validate.FieldError{Name: "body", Error: err})
+		}
+	}
+	{
+		// Validate 'title' field.
+		validator := validate.String{
+			MinLength:    0,
+			MinLengthSet: false,
+			MaxLength:    1024,
+			MaxLengthSet: true,
+		}
+		if err := validator.Validate(string(s.Title)); err != nil {
+			failures = append(failures, validate.FieldError{Name: "title", Error: err})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ContributorActivity) Validate() error {
+	var failures []validate.FieldError
+	if s.Weeks == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "weeks",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *DeploymentSimple) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *DeploymentStatus) Validate() error {
+	var failures []validate.FieldError
+	{
+		// Validate 'description' field.
+		validator := validate.String{
+			MinLength:    0,
+			MinLengthSet: false,
+			MaxLength:    140,
+			MaxLengthSet: true,
+		}
+		if err := validator.Validate(string(s.Description)); err != nil {
+			failures = append(failures, validate.FieldError{Name: "description", Error: err})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *DiffEntry) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *EnvironmentApprovals) Validate() error {
+	var failures []validate.FieldError
+	if s.Environments == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "environments",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *FullRepository) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *GistComment) Validate() error {
+	var failures []validate.FieldError
+	{
+		// Validate 'body' field.
+		validator := validate.String{
+			MinLength:    0,
+			MinLengthSet: false,
+			MaxLength:    65535,
+			MaxLengthSet: true,
+		}
+		if err := validator.Validate(string(s.Body)); err != nil {
+			failures = append(failures, validate.FieldError{Name: "body", Error: err})
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *GitCommit) Validate() error {
+	var failures []validate.FieldError
+	if s.Parents == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "parents",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *GitRef) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *GitTree) Validate() error {
+	var failures []validate.FieldError
+	if s.Tree == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "tree",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *GpgKey) Validate() error {
+	var failures []validate.FieldError
+	if s.Emails == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "emails",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if s.Subkeys == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "subkeys",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *Import) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *InstallationToken) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *Integration) Validate() error {
+	var failures []validate.FieldError
+	if s.Events == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "events",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *InteractionLimit) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *InteractionLimitResponse) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *IssueComment) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *Job) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *License) Validate() error {
+	var failures []validate.FieldError
+	if s.Conditions == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "conditions",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if s.Limitations == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "limitations",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if s.Permissions == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "permissions",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *MarketplaceListingPlan) Validate() error {
+	var failures []validate.FieldError
+	if s.Bullets == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "bullets",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *MarketplacePurchase) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *MergedUpstream) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *Migration) Validate() error {
+	var failures []validate.FieldError
+	if s.Repositories == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "repositories",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *Milestone) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *NullableIntegration) Validate() error {
+	var failures []validate.FieldError
+	if s.Events == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "events",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *NullableScopedInstallation) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *OrgHook) Validate() error {
+	var failures []validate.FieldError
+	if s.Events == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "events",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *OrgMembership) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *OrganizationActionsSecret) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *Page) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *PagesHTTPSCertificate) Validate() error {
+	var failures []validate.FieldError
+	if s.Domains == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "domains",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ParticipationStats) Validate() error {
+	var failures []validate.FieldError
+	if s.All == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "all",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if s.Owner == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "owner",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *Project) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ProtectedBranch) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ProtectedBranchPullRequestReview) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *PullRequestReview) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *PullRequestReviewComment) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *PullRequestReviewRequest) Validate() error {
+	var failures []validate.FieldError
+	if s.Teams == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "teams",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if s.Users == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "users",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *Reaction) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *Release) Validate() error {
+	var failures []validate.FieldError
+	if s.Assets == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "assets",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ReleaseAsset) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *RepositoryInvitation) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ReviewComment) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *Runner) Validate() error {
+	var failures []validate.FieldError
+	if s.Labels == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "labels",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ScimEnterpriseGroup) Validate() error {
+	var failures []validate.FieldError
+	if s.Schemas == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "schemas",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ScimEnterpriseUser) Validate() error {
+	var failures []validate.FieldError
+	if s.Schemas == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "schemas",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ScimGroupListEnterprise) Validate() error {
+	var failures []validate.FieldError
+	if s.Resources == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "Resources",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if s.Schemas == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "schemas",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ScimUserListEnterprise) Validate() error {
+	var failures []validate.FieldError
+	if s.Resources == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "Resources",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if s.Schemas == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "schemas",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *SecretScanningAlert) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ShortBranch) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *StatusCheckPolicy) Validate() error {
+	var failures []validate.FieldError
+	if s.Contexts == nil {
+		return &validate.Error{
+			Fields: append(failures, validate.FieldError{
+				Name:  "contexts",
+				Error: fmt.Errorf("required, can't be nil"),
+			}),
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *TeamFull) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *TeamMembership) Validate() error {
+	var failures []validate.FieldError
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s *Topic) Validate() error {
 	var failures []validate.FieldError
 	if s.Names == nil {
@@ -2248,13 +2255,6 @@ func (s *Topic) Validate() error {
 	return nil
 }
 func (s *UserMarketplacePurchase) Validate() error {
-	var failures []validate.FieldError
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONRequest) Validate() error {
 	var failures []validate.FieldError
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}

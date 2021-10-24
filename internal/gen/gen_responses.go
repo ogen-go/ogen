@@ -139,13 +139,13 @@ func (g *Generator) generateResponse(respName string, resp ogen.Response) (*ast.
 		return response, nil
 	}
 
-	var ctypes []string
+	var contentTypes []string
 	for ct := range resp.Content {
-		ctypes = append(ctypes, ct)
+		contentTypes = append(contentTypes, ct)
 	}
-	sort.Strings(ctypes)
+	sort.Strings(contentTypes)
 
-	for _, contentType := range ctypes {
+	for _, contentType := range contentTypes {
 		media := resp.Content[contentType]
 		// Create unique response name.
 		name := respName
